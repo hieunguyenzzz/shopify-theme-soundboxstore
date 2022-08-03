@@ -1,0 +1,16 @@
+<div class="index-section">
+  <div class="policy-page">
+    {% if page.title != blank %}
+    <div class="page-header">
+      <div class="page-title page-width">
+        <h1 class="title-font">{{ page.title }}</h1>
+      </div>
+    </div>
+    {% endif %}
+    <div class="section-wrap page-width">
+      <div class="page-content rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>

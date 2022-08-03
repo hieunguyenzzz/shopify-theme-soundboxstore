@@ -1,0 +1,148 @@
+{% if section.settings.image != blank %}
+<section class="image-text-section {{ section.settings.section_class }} image-text-section--product">
+  <div class="section-wrap">
+    <div class="section-image">
+      <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
+        <img src="{{ section.settings.image | img_url: "1920x" }}" {% if section.settings.mobile_image != blank %}class="desktop-only"{% endif %} alt="{{ section.settings.image.alt }}">
+        {% if section.settings.mobile_image != blank %}<img src="{{ section.settings.mobile_image | img_url: "767x" }}" class="mobile-only" alt="{{ section.settings.image.alt }}">{% endif %}
+      </div>
+    </div>
+    <div class="section-content page-width text-{{ section.settings.text_alignment }}">
+      <div class="content-wrap ">
+        {% if section.settings.title != blank %}
+        <h2 class="title-font">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+        {{ section.settings.description }}
+        {% endif %}
+        {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+        <div class="section-btn">
+          <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+          
+          {% if section.settings.button_text_2 != blank %}
+          <button type="button" class="btn btn--secondary specBtn">{{ section.settings.button_text_2 }}</button>
+          {% endif %}
+          
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Image text section",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+		{
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+		{
+          "type": "checkbox",
+          "id": "overlay",
+          "label": "Overlay",
+		  "default": true
+        },
+		{
+          "type": "range",
+          "id": "overlay_range",
+          "label": "Overlay range",
+		  "min": 0,
+		  "max": 100,
+		  "unit": "%",
+		  "step": 10,
+		  "default": 60
+        },
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+		{
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+		{
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+		{
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+		{
+          "type": "text",
+          "id": "button_text_2",
+          "label": "Get Specs Sheet Text"
+        },
+		/*{
+			"type" : "checkbox",
+			"id" : "getsheetbtn",
+			"label" : "Enale Get Specs Sheet",
+			"default" : false
+		},*/
+		{
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "default": "center-left",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "Top Left"
+            },
+			{
+              "value": "top-center",
+              "label": "Top center"
+            },
+			{
+              "value": "top-right",
+              "label": "Top right"
+            },
+			{
+              "value": "center-left",
+              "label": "Center left"
+            },
+			{
+              "value": "center-center",
+              "label": "Center center"
+            },
+			{
+              "value": "bottom-left",
+              "label": "Bottom left"
+            },
+			{
+              "value": "bottom-center",
+              "label": "Bottom center"
+            },
+			{
+              "value": "bottom-right",
+              "label": "Bottom right"
+            }
+          ]
+      },
+      {
+      "type": "text",
+      "id": "section_class",
+      "label": "Section class"
+      }
+	],
+    "presets": [
+      {
+        "name": "Image text section",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

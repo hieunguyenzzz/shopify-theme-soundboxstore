@@ -1,0 +1,83 @@
+<section class="faq-section">
+  <div class="page-width">
+    <div class="section-wrap">
+
+      {% for block in section.blocks %}
+      {% if block.type == "title-block" %}
+      <div class="title-block">
+        {% if block.settings.main-title != blank %}
+        <h2 class="title">{{ block.settings.main-title}}</h2>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+
+      {% if block.type == "accordion-block" %}
+      <div class="accordion">
+
+        {% if block.settings.accordion-title != blank or block.settings.accordion-content != blank %}
+        <div class="set">
+
+          {% if block.settings.accordion-title != blank %}
+          <h3 class="accordion-title">
+            {{ block.settings.accordion-title }} 
+          </h3>
+          {% endif %}
+
+          {% if block.settings.accordion-content != blank %}
+          <div class="accordion-content">
+            <div class="accordion-content-wrap">
+              {{ block.settings.accordion-content }}
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+      </div>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+"name": "Faq Section",
+    "settings": [
+
+    ],
+  	"blocks" :  [
+    {
+    "type" : "title-block",
+    "name" : "Title Block",
+      "settings" : [
+        {
+          "type" : "text",
+          "id" : "main-title",
+          "label" : "Title"
+        }
+      ]
+    },
+    {
+    "type" : "accordion-block",
+    "name" : "Accordion Block",
+      "settings" : [
+        {
+          "type" : "text",
+          "id" : "accordion-title",
+          "label" : "Accordion Title"
+        },
+        {
+          "type" : "richtext",
+          "id" : "accordion-content",
+          "label" : "Accordion Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

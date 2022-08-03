@@ -1,0 +1,60 @@
+{% if section.settings.image != blank %}
+<section class="image-three-column">
+  <div class="page-width">
+    <div class="section-wrap">
+      <div class="banner-image">
+        <div class="banner-image-wrap">
+          <img src="{{ section.settings.image | img_url:'1000x'}}" alt="{{ section.settings.image.alt }}">
+        </div>
+      </div>
+      <div class="flexbox">
+        {% for block in section.blocks %}
+        {% if block.settings.title != blank %}
+        <div class="column">
+          <div class="column-wrap">
+            {% if block.settings.title != blank %}
+            <h4>{{ block.settings.title }}</h4>
+            {% endif %}
+            {{ block.settings.description }}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "image three column",
+	"class": "index-section",
+    "settings": [
+		{
+          "type" : "image_picker",
+          "id" : "image",
+          "label" : "Image"
+        }
+	],
+	"max_blocks": 3,
+	"blocks" : [
+      {	
+        "name" : "Text Block",
+        "type" : "text-block",
+        "settings" : [
+            {	
+              "type" : "text",
+              "id" : "title",
+              "label" : "Title"
+            },
+            {	
+              "type" : "richtext",
+              "id" : "description",
+              "label" : "Description"
+            }
+       ]
+   	 }
+      ]
+  }
+{% endschema %}

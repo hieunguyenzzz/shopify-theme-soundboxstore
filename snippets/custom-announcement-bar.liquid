@@ -1,0 +1,35 @@
+<div class="custom-announcement-bar">
+  
+  {% if template.name == 'index' or section.settings.show-on-homepage == false %}
+  <a href="{{ section.settings.link }}" class="custom-announcement-bar__link">
+    <p class="custom-announcement-bar__message">{{ section.settings.announcement_bar_text }}</p>
+  </a>
+  {% endif %}
+  
+</div>
+
+
+<style>
+  .custom-announcement-bar {
+    text-align: center;
+  }
+  
+  .custom-announcement-bar .custom-announcement-bar__message {
+    {% if section.settings.bold-text %}  
+    font-weight:bold;
+    {% endif %}
+    
+    font-size: {{ section.settings.font-size }}px;
+    
+    padding: {{ section.settings.height }}px 0;
+    
+    background-color: {{ section.settings.background-color }};
+    
+    margin: 0;
+    
+    color: {{ section.settings.font-color }};
+    
+    text-transform: {{ section.settings.text-transform }};
+  }
+  .custom-announcement-bar a { text-decoration:none; }
+</style>

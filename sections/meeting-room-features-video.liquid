@@ -1,0 +1,289 @@
+<section class="meeting-rooms-features meeting-room-features-video">
+
+  <div class="page-width">
+    <div class="flexbox">
+      
+      <div class="col left-col">
+        <div class="col-wrap">
+         <div class="features-list">
+            {% for block in section.blocks %}
+           {% if block.type == "features_list_left" %}
+           
+            {% if block.settings.title != blank %}
+            <div class="features-list-row" data-type="{{ block.settings.title }}">
+              <div class="features-list-row-wrap">
+                <h5>{{ block.settings.title }}</h5>
+                {{ block.settings.description }}
+              </div>
+            </div>
+            {% endif %}
+           
+           {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+ 
+      
+      {% comment %}
+      {%- assign current_variant = product.selected_or_first_available_variant -%}
+      	{%- capture images_for_currentVar -%}
+          {%- for image in product.images -%}
+           {%- if image.alt == current_variant.sku -%}
+            {{ image | img_url:'master' }}
+            {%- if forloop.last == false -%}::{%- endif -%}
+      		{%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+      
+      {% assign prod_img_array = images_for_currentVar | split: '::'%}
+      <div class="col center-col">
+          <div class="col-wrap">
+            <img src="{{prod_img_array[1] }}" alt="product_features_image"/>
+            
+            
+           {% for block in section.blocks %}
+            {% if block.type == "hotspot_point" %}
+            
+              <span class="hotspot-icon unique-{{- block.id -}}" data-tooltip="{{ block.settings.hotspot_title }}">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="395.71px" height="395.71px" viewBox="0 0 395.71 395.71" style="enable-background:new 0 0 395.71 395.71;" xml:space="preserve">
+<g>
+	<path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+            </span>
+            
+            {% endif %}
+          {% endfor %}
+            
+            
+            
+          </div>
+      </div>
+      {% endcomment %}
+      
+      
+      <div class="col center-col">
+        <div class="col-wrap">
+          <div class="video-player">
+            <div class="video-wrapper">
+              
+              
+              <video playsinline  src="https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4" class="video video-primary" id="vid1"></video>
+              <video playsinline  src="https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4" poster="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/poster-video.png?v=1657195108" class="video video-secondary" id="vid2"></video>
+              
+            </div>
+          </div>
+          
+        
+          <div class="video-player-controls">
+            
+
+            <button class="play-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="29" stroke="#2D795E" stroke-width="2"/>
+                <path d="M41 28.2679C42.3333 29.0377 42.3333 30.9623 41 31.7321L26 40.3923C24.6667 41.1621 23 40.1999 23 38.6603L23 21.3397C23 19.8001 24.6667 18.8379 26 19.6077L41 28.2679Z" fill="#2D795E"/>
+              </svg>
+            </button>
+            <button class="stop-button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="29" stroke="#2D795E" stroke-width="2"/>
+                <rect x="22" y="18" width="4" height="24" rx="2" fill="#2D795E"/>
+                <rect x="34" y="18" width="4" height="24" rx="2" fill="#2D795E"/>
+              </svg>
+
+            </button>
+
+            
+          <div class="control">
+            <button class="videobtn firstvideo"></button>
+            <button class="videobtn secondvideo"></button>
+            <div class="label label-outside">Open Door</div>
+            <div class="switch"></div>
+            <div class="label label-inside">Close Door</div>
+          </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      <div class="col right-col">
+        <div class="col-wrap">
+          
+          {% comment %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-font">{{ section.settings.title }}</h2>
+          {% endif %}
+          {% endcomment %}
+          
+
+          <div class="features-list">
+            {% for block in section.blocks %}
+            {% if block.type == "features_list_right" %}
+            {% if block.settings.title != blank %}
+            <div class="features-list-row" data-type="{{ block.settings.title }}">
+              <div class="features-list-row-wrap">
+                <h5>{{ block.settings.title }}</h5>
+                {{ block.settings.description }}
+              </div>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  {% for block in section.blocks %}
+     {% if block.type == "hotspot_point" %}
+  {% if block.settings.point_x != blank or block.settings.point_y != blank  %}
+  .meeting-rooms-features .hotspot-icon.unique-{{- block.id -}}{left:{{- block.settings.point_x -}}% ; top:{{- block.settings.point_y -}}% }
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+</style>
+
+<script>
+  $(document).ready(function(){
+    $( "#vid2" ).trigger( "click" );
+  });
+  var x = document.getElementById("audio1"); 
+
+  function playAudio() { 
+    x.play(); 
+  } 
+
+  function pauseAudio() { 
+    x.pause(); 
+  } 
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Meeting Rooms Video",
+    "settings": [
+	],
+    "blocks": [
+      {
+        "type": "features_list_left",
+        "name": "Features List Left",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }
+		]
+      },
+		{
+        "type": "feature_middle_image",
+        "name": "Features Middle Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "middle-img",
+            "label": "Features Middle Image"
+          }
+         
+		]
+      },
+	{
+        "type": "features_list_right",
+        "name": "Features List Right",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }
+		]
+      },
+		{
+			"type" : "hotspot_point",
+			"name" : "Hotspot Points",
+			"settings": [
+				{
+
+				"type": "range",
+				"id": "point_x",
+				"label": "Left Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "default": 0
+
+				},
+				{
+
+				"type": "range",
+				"id": "point_y",
+				"label": "Top Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "%",
+                "default": 0
+
+				},
+				{
+				"type" : "text",
+				"id" : "hotspot_title",
+				"label" : "Enter Feature Title"
+		
+				}
+			]
+		
+		}
+    ]
+  }
+{% endschema %}

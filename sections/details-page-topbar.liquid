@@ -1,0 +1,95 @@
+{% if section.settings.productId != blank or section.settings.btn-text-1 != blank or section.settings.btn-text-2 != blank %}
+<div class="details-topbar">
+  <div class="page-width">
+    {% if section.settings.productId != blank or section.settings.btn-text-1 != blank or section.settings.btn-text-2 != blank %}
+    <div class="flexbox">
+      {% if section.settings.productId != blank %}
+      <div class="col left-col">
+        <div class="col-wrap">
+          <h5 id="pageTitle">{{ all_products[section.settings.productId].title }}</h5>
+          <p class="price desktop-only" id = "pagePrice">{{ all_products[section.settings.productId].price | money }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if section.settings.btn-text-1 != blank or section.settings.btn-text-2 != blank %}
+      <div class="col right-col">
+        <div class="col-wrap">
+          <a href="{{ all_products[section.settings.productId].url }}" class="btn mobile-only">buy now</a>
+          {% if section.settings.btn-text-1 != blank %}<div class="product-link desktop-only"><a href="{{ all_products[section.settings.productId].url }}">{{ section.settings.btn-text-1 }}</a></div>{% endif %}
+          {% if section.settings.btn-text-2 != blank %}<div class="product-specs desktop-only"><a href="{{ section.settings.getSpecsLink }}" target="_blank" class="btn">{{ section.settings.btn-text-2 }}</a></div>{% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<script>
+//   const queryString = window.location.search;
+//   if(queryString){
+//     const urlParams = new URLSearchParams(queryString);
+//     const product_var = urlParams.get('handle');
+    
+//     $.ajax({
+//       type:'GET',
+//       url:'/products/'+ product_var +'',
+//       dataType:'json',
+//       success:function(response){
+//         console.log(response);       
+//         console.log(response.product.title);
+//         var price = response.product.variants[0].price;
+//         console.log("this is "+price.length+"");
+//         var price2 = '';
+//         for(var i = 0; i < price.length; i++){
+//           if(price.length < 8 && i == 0){
+//             price2 += `${price[i].toString()},`;
+//           }else if(price.length > 7 && i == 1){
+//           	price2 += `${price[i].toString()},`;
+//           }else{
+//           	price2 += price[i].toString();
+//           }
+//         }
+//         //console.log(price2);
+//         document.getElementById("pageTitle").innerHTML = response.product.title;
+// 		document.getElementById("pagePrice").innerHTML = `£ ${price2}`;
+//         document.getElementById("bannerPrice").innerHTML = `£ ${price2}`;
+//       }
+//     })
+    
+    
+//   }
+
+
+</script>
+
+{% schema %}
+  {
+    "name": "Top bar",
+	 "class": "detail_topbar",
+    "settings": [
+		{
+			"type":"product",
+			"id":"productId",
+			"label":"Product"
+     	},
+		{
+			"type":"text",
+			"id":"btn-text-1",
+			"label":"Button-1 Label"
+		},
+		{
+			"type":"text",
+			"id":"btn-text-2",
+			"label":"Button-2 Label"
+		},
+		{
+			"type":"url",
+			"id":"getSpecsLink",
+			"label":"Button-2 Link"
+		}
+		
+	]
+  }
+{% endschema %}

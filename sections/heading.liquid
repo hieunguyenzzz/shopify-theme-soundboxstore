@@ -1,0 +1,44 @@
+{% if section.settings.heading != blank %}
+<div class="heading-section">
+  <div class="heading-wrap">
+    {% if section.settings.heading != blank %}
+    <div class="heading-text-block">
+      <h3 class="title-font">{{ section.settings.heading }}</h3>
+    </div>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+    <div class="subheading-text">
+      <div class="subheading-wrap">
+        {{ section.settings.subheading }}
+      </div>
+    </div>
+    {% endif %}
+    
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Heading Section",
+    "settings": [
+					{
+						"type" : "text",
+						"id" : "heading",
+						"label" : "Heading"
+					},
+					{
+						"type" : "richtext",
+						"id" : "subheading",
+						"label" : "Sub Heading"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

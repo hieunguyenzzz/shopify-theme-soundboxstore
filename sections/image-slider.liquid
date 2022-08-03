@@ -1,0 +1,114 @@
+<div class="image-slider-section">
+  <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
+    <div class="image-slider {% if section.blocks.size > 1 %}active{% endif %} sectionid-{{- section.id -}}">
+      {%- for block in section.blocks -%}
+      {% if block.settings.image != blank %}
+      <div class="slide">
+        <div class="slide-wrap overlay">
+          <img src="{{ block.settings.image | img_url: '1920x'  }}" {% if block.settings.mobile_image != blank %}class="desktop-only"{% endif %} alt="{{ block.settings.image.alt }}">
+          {% if block.settings.mobile_image != blank %}<img src="{{ block.settings.mobile_image | img_url: '767x'  }}" class="mobile-only" alt="{{ block.settings.mobile_image.alt }}">{% endif %}
+        </div>
+        {% if block.settings.overlay %}
+        <style>
+          .image-slider-section .overlay{position:relative;overflow:hidden;}
+          .image-slider-section .overlay:after{content:"";position:absolute;top:0px;left:0px;width:100%;display:block;height:100%;background-color:{{- block.settings.overlay_color -}};opacity:0.{{- block.settings.overlay_range -}};}
+        </style>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.image-slider-section .image-slider.active.sectionid-{{- section.id -}}').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    adaptiveHeight: true,
+    dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
+    arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
+    fade: true,
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 860,
+        settings: {
+          arrows:false,
+        }
+      }
+    ]
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Image slider",
+	"class": "index-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "slide_dots",
+        "label": "Slide Dots"
+      },
+      {
+        "type": "checkbox",
+        "id": "slide_arrow",
+        "label": "Slide Arrow"
+      },
+      {
+        "type": "checkbox",
+        "id": "sectionwidth",
+        "label": "Full Width",
+        "default": false
+      }
+	],
+    "blocks": [
+      {
+        "type": "image_slide",
+        "name": "Image Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          },
+		  {
+            "type": "checkbox",
+            "id": "overlay",
+            "label": "Slide overlay"
+          },
+          {
+            "type": "range",
+            "id": "overlay_range",
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "%",
+            "label": "overlay Range",
+            "default": 10
+          },
+          {
+            "type": "color",
+            "id": "overlay_color",
+            "label": "Overlay Color",
+			"default": "#303a44"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image slider",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

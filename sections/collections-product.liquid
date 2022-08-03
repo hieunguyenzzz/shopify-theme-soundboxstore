@@ -1,0 +1,114 @@
+<section class="collections-product-list">
+  {% if section.settings.title != blank or section.settings.description != blank %}
+  <div class="page-width">
+    <div class="section-header">
+      {% if section.settings.title != blank %}
+      <div class="left-col">
+        <h2 class="title-font">{{ section.settings.title }}</h2>
+      </div>
+      {% endif %}
+      {% if section.settings.description != blank %}
+      <div class="right-col">
+        {{ section.settings.description }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  
+  {% unless section.settings.slider_active %}<div class="page-width product-list-pagewidth">{% endunless %}
+  <div class="product-list-group{% if section.settings.slider_active %} slider_active{% endif %}">
+    {% for i in (1..4) %}
+    {% capture productId %}product{{i}}{% endcapture %}
+    {% capture productImgId %}product{{i}}-img{{i}}{% endcapture %}
+    {% if section.settings[productId] != blank %}
+    {% assign product = all_products[section.settings[productId]]%}
+    <div class="col">
+      <div class="col-wrap">
+        <div class="col-image">
+          <a href="{{ all_products[section.settings[productId]].url }}">
+            <img src="{% if section.settings[productImgId] != blank %}{{ section.settings[productImgId] | img_url:'master' }}{% else %}{{ all_products[section.settings[productId]].featured_image | img_url:'master' }}{% endif %}" alt="Product Image">
+          </a>
+        </div>
+        <div class="product-details">
+          <h4><a href="{{ all_products[section.settings[productId]].url }}">{{ all_products[section.settings[productId]].title }}</a></h4>
+<!--           <p class="price"> Starting from {{ all_products[section.settings[productId]].price | money }}</p> -->
+          <p class="price"> <span class="price-title">Starting from </span>{%- if product.price_varies -%} {{ product.price_min | money }} {%- else -%} {{ product.price | money }} {%- endif -%}</p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}    
+  </div>
+  {% unless section.settings.slider_active %}</div>{% endunless %}
+</section>
+
+{% schema %}
+{
+  "name": "Collections Product List",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type":"product",
+      "id":"product1",
+      "label":"Assign Product 1"
+    },
+	{
+	  "type":"image_picker",
+	  "id":"product1-img1",
+	  "label":"Image 1"
+	},
+	{
+      "type":"product",
+      "id":"product2",
+      "label":"Assign Product 2"
+    },
+	{
+	  "type":"image_picker",
+	  "id":"product2-img2",
+	  "label":"Image 2"
+	},
+	{
+      "type":"product",
+      "id":"product3",
+      "label":"Assign Product 3"
+    },
+	{
+	  "type":"image_picker",
+	  "id":"product3-img3",
+	  "label":"Image 3"
+	},
+	{
+      "type":"product",
+      "id":"product4",
+      "label":"Assign Product 4"
+    },
+	{
+	  "type":"image_picker",
+	  "id":"product4-img4",
+	  "label":"Image 4"
+	},
+    {
+      "type":"checkbox",
+      "id":"slider_active",
+      "label":"Show Product Slider"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections Product List",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

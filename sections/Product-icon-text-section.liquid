@@ -1,0 +1,61 @@
+<section class="product-icon-text-section">
+  <div class="page-width">
+    <div class="flexbox">
+      
+      
+      {% for block in section.blocks %}
+      <div class="col">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            {% if block.settings.iconimage != blank %}
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img src="{{ block.settings.iconimage | img_url: 'master'}}" alt="{{ block.settings.iconimage.alt }}">
+              </div>
+            </div>
+            {% endif %}
+
+
+            {% if  block.settings.text != blank %}
+            <div class="text-block">{{ block.settings.text }}</div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Icon Text Section",
+    "settings": [],
+	"max_blocks": 4,
+	"blocks": [
+		{
+				"name" : "Icon Text Block",
+				"type" : "icon-text-block",
+				"settings" : [
+					{
+						"type" : "image_picker",
+						"id" : "iconimage",
+						"label" : "Icon Image"
+					},
+					{
+						"type" : "richtext",
+						"id" : "text",
+						"label" : "Text"
+					}
+				]
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

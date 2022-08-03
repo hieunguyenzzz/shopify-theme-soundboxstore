@@ -1,0 +1,85 @@
+<section class="icon-text-section">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+    <div class="section-title">
+      <h2 class="title-font">{{ section.settings.title }}</h2>
+    </div>
+    {% endif %}
+    <div class="flexbox">
+      {%- for block in section.blocks -%}
+      <div class="col">
+        <div class="col-wrap">
+          {% if block.settings.icon != blank %}
+          <div class="col-icon">
+            <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.icon.alt }}">
+          </div>
+          {% endif %}
+          <div class="col-dec">
+            {% if block.settings.title != blank %}
+            <h4>{{ block.settings.title }}</h4>
+            {% endif %}
+            {{ block.settings.description }}
+          </div>
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+    <div class="section-btn">
+      <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Icon text",
+	"class": "index-section",
+    "settings": [
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+		{
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+		{
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+	],
+    "blocks": [
+      {
+        "type": "icon_box",
+        "name": "Iconbox",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }
+		]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icon text",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

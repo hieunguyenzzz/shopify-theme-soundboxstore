@@ -1,0 +1,107 @@
+{% if section.settings.text != blank %}
+<section class="text-section sectionid-{{ section.id }} text-{{ section.settings.text_alignment }} {{ section.settings.section_class }}{% if section.settings.show_border   %} show-border{% endif %}">
+  <div class="section-wrap page-width">
+    {{ section.settings.text }}
+  </div>
+</section>
+{% endif %}
+
+<style>
+  {% if section.settings.text_color != blank %}.text-section p{color:{{ section.settings.text_color }}}{% endif %}
+  {% if section.settings.ipad_font_size != blank %}
+  @media only screen and (min-width:768px){.sectionid-{{ section.id }} p{font-size:{{- section.settings.ipad_font_size -}}px}}
+  {% endif %}
+  {% if section.settings.desktop_font_size != blank %}
+  @media only screen and (min-width:1200px){.sectionid-{{ section.id }} p{font-size:{{- section.settings.desktop_font_size -}}px}}
+  {% endif %}
+
+  {% if section.settings.mobile_font_size != blank %}
+  @media only screen and (max-width:767px){.sectionid-{{ section.id }} p{font-size:{{- section.settings.mobile_font_size -}}px}}
+  {% endif %}
+</style>
+
+
+{% schema %}
+{
+    "name": "Text Section",
+	"class": "index-section",
+    "settings":[
+	  {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color"
+      },
+	  {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+      },
+	  {
+        "type": "range",
+        "id": "desktop_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Desktop Font size",
+        "default": 16
+      },
+	  {
+        "type": "range",
+        "id": "ipad_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Ipad Font size",
+        "default": 16
+      },
+	  {
+        "type": "range",
+        "id": "mobile_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "mobile Font size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_border",
+        "label": "Show border"
+      },
+	  {
+        "type": "text",
+        "id": "section_class",
+        "label": "Section Class"
+      }
+	],
+    "presets": [
+      {
+        "name": "Text Section",
+        "blocks": []
+      }
+    ]
+}
+{% endschema %}

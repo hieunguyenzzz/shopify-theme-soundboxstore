@@ -1,0 +1,44 @@
+
+{% if product.handle == all_products[section.settings.product_img].handle %}
+<div class="image-block">
+  <div class="section-wrap">
+    <div class="flexbox">
+      {%- for block in section.blocks -%}
+      {% if block.settings.image != blank %}
+      <div class="col">
+        <div class="col-wrap">
+          <img src="{{ block.settings.image | img_url: '480x'}}" alt="{{ block.settings.image.alt }}">
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name": "Image block",
+	"class": "index-section",
+    "settings": [
+		{
+			"type":"product",
+			"id":"product_img",
+			"label":"Product"
+     	}
+	],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image block",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+		]
+      }
+    ]
+  }
+{% endschema %}

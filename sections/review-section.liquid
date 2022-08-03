@@ -1,0 +1,32 @@
+{% if section.settings.productId != blank %}
+<div>
+  {% assign product = all_products[section.settings.productId] %}
+<!--   <h1 style="text-align:center;">{{ product.title}}</h1> -->
+  <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+</div>
+{% endif %}
+{% schema %}
+  {
+    "name":"Home Page Reviews",
+	"class": "index-section",
+    "settings": [
+		{
+			"type":"product",
+			"id":"productId",
+			"label":"Assign Product"
+		}
+	],
+	"presets":[
+		{
+			"name":"Home Page Reviews"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,23 @@
+{% if block.type == 'footer_contact' %}
+<div class="footer-contact">
+  <div class="footer-contact-wrap">
+    {% if block.settings.contact-heading != blank %}<div class="footer__title">{{ block.settings.contact-heading }}</div>{% endif %}
+    <div class="contact-dec-wrap">
+      {% if block.settings.contact-sub-headiing != blank %}
+      <div class="footer-contact-dec">
+        {{ block.settings.contact-sub-headiing }}
+      </div>
+      {% endif %}
+      {% if block.settings.address-heading1 != blank or block.settings.address1 != blank or block.settings.address-heading2 != blank or block.settings.address2 != blank or block.settings.email != blank %}
+      <div class="footer-address-list">
+        <ul>
+         {% if block.settings.address-heading1 != blank or block.settings.address1 != blank %}<li class="location">{% if block.settings.address-heading1 != blank %}<strong>{{ block.settings.address-heading1 }}</strong>{% endif %} {{ block.settings.address1 }}</li>{% endif %}
+         {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}<li class="location">{% if block.settings.address-heading2 != blank %}<strong>{{ block.settings.address-heading2 }}</strong>{% endif %} {{ block.settings.address2 }}</li>{% endif %}
+         {% if block.settings.email != blank %}<li class="email"><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></li>{% endif %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

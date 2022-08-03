@@ -1,0 +1,71 @@
+<section class="image-loop">
+  <div class="section-wrap">
+    {%- for block in section.blocks -%}
+    {% if block.settings.image != blank %}
+    <div class="image-text-row">
+      <div class="flexbox">
+        <div class="col left-col">
+          <div class="col-wrap">
+            <img src="{{ block.settings.image |img_url: '1920x' }}" alt="{{ block.settings.image.alt }}">
+          </div>
+        </div>
+        <div class="col right-col">
+          <div class="col-wrap">
+            {% if block.settings.title != blank %}
+            <h2 class="title-font">{{ block.settings.title }}</h2>
+            {% endif %}
+            {% if block.settings.description != blank %}{{ block.settings.description }}{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% if section.settings.bg_color != blank %}
+<style>
+  .image-loop .image-text-row{background-color:{{ section.settings.bg_color }}}
+</style>
+{% endif %}
+{% schema %}
+  {
+    "name": "Image loop Section",
+    "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color"
+        }
+	],
+    "blocks": [
+      {
+        "type": "image_section",
+        "name": "Image section",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }
+		]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image loop Section",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}
