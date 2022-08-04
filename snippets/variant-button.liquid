@@ -1,19 +1,30 @@
 {%- assign swatch_file_extension = 'png' -%}
-<div class="variant-wrapper js  {{ option.name | downcase }}-variant" data-type="button">
-  <label class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
-    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+<div
+  class="variant-wrapper js  {{ option.name | downcase }}-variant isColor_{{is_color}}"
+  data-type="button"
+>
+  <label
+    class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
+    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
+  >
     {{ option.name }}
     {% comment %}
-    {%- if is_color -%}
-      <span class="variant__label-info">
-        &mdash;
-        <span data-variant-color-label data-index="{{ forloop.index0 }}" data-option-index="{{ color_option_index }}">{{ option.selected_value }}</span>
-      </span>
-    {%- endif -%}
+      {%- if is_color -%}
+        <span class="variant__label-info">
+          &mdash;
+          <span data-variant-color-label data-index="{{ forloop.index0 }}" data-option-index="{{ color_option_index }}">{{ option.selected_value }}</span>
+        </span>
+      {%- endif -%}
     {% endcomment %}
   </label>
   {%- assign option_index = forloop.index -%}
-  <div class="variant-input-wrap" name="{{ option.name }}" data-index="option{{ option_index }}" data-handle="{{ option.name | handleize }}" id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}">
+  <div
+    class="variant-input-wrap"
+    name="{{ option.name }}"
+    data-index="option{{ option_index }}"
+    data-handle="{{ option.name | handleize }}"
+    id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
+  >
     {% comment %}<legend class="hide">{{ option.name }}</legend>{% endcomment %}
     {%- for value in option.values -%}
       {%- liquid
@@ -22,8 +33,30 @@
           assign product_available = product.variants[forloop.index0].available
         endif
       -%}
-      <div class="variant-input" data-index="option{{ option_index }}" data-value="{{ value | escape }}">
-        <input type="radio" form="{{ form_id }}" {% if option.selected_value == value %} checked="checked"{% endif %} value="{{ value | escape }}" data-index="option{{ option_index }}" name="{{ option.name }}" data-variant-input class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}" {% if is_color %} data-color-name="{{ value | escape }}"{% endif %} {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %} id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
+      <div
+        class="variant-input"
+        data-index="option{{ option_index }}"
+        data-value="{{ value | escape }}"
+      >
+        <input
+          type="radio"
+          form="{{ form_id }}"
+          {% if option.selected_value == value %}
+            checked="checked"
+          {% endif %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          data-variant-input
+          class="{% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
+          {% if is_color %}
+            data-color-name="{{ value | escape }}"
+          {% endif %}
+          {% if is_color %}
+            data-color-index="{{ color_option_index }}"
+          {% endif %}
+          id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+        >
         {%- if is_color -%}
           {%- liquid
             assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
@@ -40,9 +73,27 @@
         {%- else -%}
           <label
             for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
-                 class="variant__button-label{% unless product_available %} disabled{% endunless %}">{{ value | escape }}{% if value == 'No Furniture' and product.metafields.my_fields.standard_suite != blank %} <span>{{ product.metafields.my_fields.standard_suite }}</span>{% endif %}{% if value == 'With Furniture' and product.metafields.my_fields.dulux_suite != blank %} <span>{{ product.metafields.my_fields.dulux_suite }}</span>{% endif %}{% if value == 'Furniture Set 1' and product.metafields.my_fields.furniture_set_1 != blank %}<span>{{ product.metafields.my_fields.furniture_set_1 }}</span>{% endif %}{% if value == 'Furniture Set 2' and product.metafields.my_fields.furniture_set_2 != blank %} <span>{{ product.metafields.my_fields.furniture_set_2 }}</span>{% endif %}{% if value == 'Furniture Set 3' and product.metafields.my_fields.furniture_set_3 != blank %} <span>{{ product.metafields.my_fields.furniture_set_3 }}</span>{% endif %}</label>
+            class="variant__button-label{% unless product_available %} disabled{% endunless %}"
+          >
+            {{- value | escape -}}
+            {%- if value == 'No Furniture' and product.metafields.my_fields.standard_suite != blank %}
+              <span>{{ product.metafields.my_fields.standard_suite }}</span>
+            {%- endif -%}
+            {%- if value == 'With Furniture' and product.metafields.my_fields.dulux_suite != blank %}
+              <span>{{ product.metafields.my_fields.dulux_suite }}</span>
+            {%- endif -%}
+            {%- if value == 'Furniture Set 1' and product.metafields.my_fields.furniture_set_1 != blank -%}
+              <span>{{ product.metafields.my_fields.furniture_set_1 }}</span>
+            {%- endif -%}
+            {%- if value == 'Furniture Set 2' and product.metafields.my_fields.furniture_set_2 != blank %}
+              <span>{{ product.metafields.my_fields.furniture_set_2 }}</span>
+            {%- endif -%}
+            {%- if value == 'Furniture Set 3' and product.metafields.my_fields.furniture_set_3 != blank %}
+              <span>{{ product.metafields.my_fields.furniture_set_3 }}</span>
+            {%- endif -%}
+          </label>
         {%- endif -%}
       </div>
     {%- endfor -%}
-  </div>  
+  </div>
 </div>
