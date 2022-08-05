@@ -157,7 +157,7 @@
     node.addEventListener("click", (e)=>{
         console.log(node.dataset.target)
    const targetE=document.querySelector("#"+node.dataset.target)    ; 
-targetE.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         targetE.classList.remove('ping');
         setTimeout(()=>{
 targetE.classList.add('ping');
