@@ -156,7 +156,8 @@
   document.querySelectorAll(".hotspot-icon").forEach(node=>{
     node.addEventListener("click", (e)=>{
         console.log(node.dataset.target)
-   const targetE=document.querySelector("#"+node.dataset.target)    ; targetE.scrollIntoView();
+   const targetE=document.querySelector("#"+node.dataset.target)    ; 
+targetE.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         targetE.classList.remove('ping');
         setTimeout(()=>{
 targetE.classList.add('ping');
