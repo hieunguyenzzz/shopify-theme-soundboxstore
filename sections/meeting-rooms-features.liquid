@@ -129,8 +129,36 @@
         {% endif %}
     {% endif %}
   {% endfor %}
+  .ping {
+	 position: relative;
+}
+.ping::before{
+  position: absolute;
+  top:-0.5em;
+  bottom: -0.5em  ;
+  left: -0.5em;
+  right:-0.5em;
+  content: '';
+  animation:ping 2s cubic-bezier(0, 0, 0.2, 1) 3 forwards;
+  border: 2px solid lightblue;
+}
+ @keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
 </style>
-
+<script>
+  document.querySelectorAll(".hotspot-icon").forEach(node=>{
+    node.addEventListener("click", (e)=>{
+        console.log(node.dataset.target)
+   const targetE=document.querySelector("#"+node.dataset.target)    ; targetE.scrollIntoView();
+        targetE.classList.remove('ping');
+        targetE.classList.add('ping');
+    })
+})
+</script>
 
 {% schema %}
   {
