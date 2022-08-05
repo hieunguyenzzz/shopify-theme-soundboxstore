@@ -158,7 +158,10 @@
         console.log(node.dataset.target)
    const targetE=document.querySelector("#"+node.dataset.target)    ; targetE.scrollIntoView();
         targetE.classList.remove('ping');
-        targetE.classList.add('ping');
+        setTimeout(()=>{
+targetE.classList.add('ping');
+})
+        
     })
 })
 </script>
