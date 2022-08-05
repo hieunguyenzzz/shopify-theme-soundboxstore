@@ -584,9 +584,11 @@ var clicked_feature = $(this).attr("data-type");
 });
   
     $(".variant-input-wrap[name='Furniture']").each(function () {
+      let lessString ="{{'strings.others.view_less' | t}}";
+      let moreString ="{{'strings.others.view_more' | t}}";
   var $mainDiv = $(this),
       $childrens = $mainDiv.children(),
-      $a = $("<a href='javascript:void(0)'>View Less</a>")
+      $a = $(`<a href='javascript:void(0)'>${lessString}</a>`)
   if ($childrens.length > 2) {
     $mainDiv.after($a);
     $a.click(function () {
@@ -603,9 +605,9 @@ var clicked_feature = $(this).attr("data-type");
 //           }
 //       }
       
-      $a.html($a.html() === "View More" ? "View Less" : "View More")
-      $a.addClass($a.html() === "View More" ? "view_more_options" : "view_less_options");
-      $a.removeClass($a.html() === "View More" ? "view_less_options" : "view_more_options");
+      $a.html($a.html() === moreString ? lessString : moreString)
+      $a.addClass($a.html() === moreString ?  "view_more_options" : "view_less_options");
+      $a.removeClass($a.html() === moreString ? "view_less_options" : "view_more_options");
     }).click();
   }
 });

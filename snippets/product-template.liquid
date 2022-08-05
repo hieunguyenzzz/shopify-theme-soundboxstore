@@ -25,8 +25,17 @@
   endcase
 -%}
 
-<div id="ProductSection-{{ section_id }}-{{ product.id }}" class="product-section" data-section-id="{{ section_id }}" data-section-type="product" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-history="{{ enableHistory }}" data-modal="{{ isModal }}">
-
+<div
+  id="ProductSection-{{ section_id }}-{{ product.id }}"
+  class="product-section"
+  data-section-id="{{ section_id }}"
+  data-section-type="product"
+  data-product-id="{{ product.id }}"
+  data-product-handle="{{ product.handle }}"
+  data-product-title="{{ product.title | escape }}"
+  data-history="{{ enableHistory }}"
+  data-modal="{{ isModal }}"
+>
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
 
   {%- capture product_header -%}
@@ -64,7 +73,10 @@
         {%- endif -%}
 
         {%- if sku_enable -%}
-          <span data-sku class="product-single__sku{% if current_variant.sku == blank %} hide{% endif %}">
+          <span
+            data-sku
+            class="product-single__sku{% if current_variant.sku == blank %} hide{% endif %}"
+          >
             SKU: <span data-sku-id>{{ current_variant.sku }}</span>
           </span>
         {%- endif -%}
@@ -74,37 +86,42 @@
 
   <div class="page-content page-content--product">
     <div class="page-width">
-
-      <div class="product-single__header--mobile medium-up--hide small--hide">{{ product_header }}</div>
+      <div class="product-single__header--mobile medium-up--hide small--hide">
+        {{ product_header }}
+      </div>
 
       <div class="product-grid__container grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}{% if mobile_layout == 'partial' %} grid--product-images--partial{% endif %}">
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky product-left-col">
             <div class="product-left-col-wrap">
-            {%- render 'product-images',
-              section_id: section_id,
-              product: product,
-              isModal: isModal,
-              image_position: image_position,
-              image_size: image_size,
-              product_zoom_enable: product_zoom_enable,
-              product_zoom_size: product_zoom_size,
-              thumbnail_arrows: thumbnail_arrows,
-              thumbnail_position: thumbnail_position,
-              video_looping: video_looping,
-              video_style: video_style
-            -%}
-              </div>
+              {%-
+                render 'product-images',
+                section_id: section_id,
+                product: product,
+                isModal: isModal,
+                image_position: image_position,
+                image_size: image_size,
+                product_zoom_enable: product_zoom_enable,
+                product_zoom_size: product_zoom_size,
+                thumbnail_arrows: thumbnail_arrows,
+                thumbnail_position: thumbnail_position,
+                video_looping: video_looping,
+                video_style: video_style
+              -%}
+            </div>
           </div>
         {%- endif -%}
 
         <div class="product-grid__content product-right-col product-single__sticky grid__item {{ product_description_width }}">
-
           <div class="product-single__meta">
-            <div class="product-block product-block--header product-single__header">{{ product_header }}</div>
+            <div class="product-block product-block--header product-single__header">
+              {{ product_header }}
+            </div>
 
             <div class="product-blocks-wrap" data-product-blocks>
-              {%- capture form_id -%}AddToCartForm-{{ section_id }}-{{ product.id }}{%- endcapture -%}
+              {%- capture form_id -%}
+                AddToCartForm-{{ section_id }}-{{ product.id }}
+              {%- endcapture -%}
               {%- for block in blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
@@ -116,7 +133,10 @@
                       {{ block.settings.text }}
                     </div>
                   {%- when 'tab' -%}
-                    <div class="product-block product-block--tab" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block product-block--tab"
+                      {{ block.shopify_attributes }}
+                    >
                       {% assign tab_id = block.id | append: product.id %}
                       {% capture tab_content %}
                         {{ block.settings.content }}
@@ -125,18 +145,25 @@
                       {%- render 'tab', id: tab_id, title: block.settings.title, content: tab_content -%}
                     </div>
                   {%- when 'contact' -%}
-                    <div class="product-block product-block--tab" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block product-block--tab"
+                      {{ block.shopify_attributes }}
+                    >
                       {%- render 'tab-contact', block: block -%}
                     </div>
                   {%- when 'description' -%}
-                    <div class="product-block{% if block.settings.is_tab %} product-block--tab{% endif %}" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block{% if block.settings.is_tab %} product-block--tab{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
                       {%- render 'product-description', id: block.id, product: product, is_tab: block.settings.is_tab -%}
                     </div>
                   {%- when 'price' -%}
-            
-                    <div class="product-block product-block--price" {{ block.shopify_attributes }}>
-                      
-                      {% comment %} 
+                    <div
+                      class="product-block product-block--price"
+                      {{ block.shopify_attributes }}
+                    >
+                      {% comment %}
                         {% if product.metafields.my_fields.keypad_variant_id != blank %}
                           <div class="addon_keypad">
                               <input type="checkbox" id="addon1" name="addon1" value="{{ product.metafields.my_fields.keypad_variant_id }}">
@@ -144,7 +171,7 @@
                           </div>
                         {% endif %}
                       {% endcomment %}
-                      
+
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
 
                       {%- assign hide_sale_price = true -%}
@@ -152,22 +179,42 @@
                         {%- if current_variant.compare_at_price > current_variant.price -%}
                           {%- assign hide_sale_price = false -%}
                         {%- endif -%}
-                        <span data-a11y-price class="visually-hidden" aria-hidden="{{ hide_sale_price }}">
-                            {{ 'products.general.regular_price' | t }}
+                        <span
+                          data-a11y-price
+                          class="visually-hidden"
+                          aria-hidden="{{ hide_sale_price }}"
+                        >
+                          {{ 'products.general.regular_price' | t }}
                         </span>
-                        <span data-product-price-wrap class="{% if hide_sale_price %} hide{% endif %}">
-                          <span data-compare-price class="product__price product__price--compare">
+                        <span
+                          data-product-price-wrap
+                          class="{% if hide_sale_price %} hide{% endif %}"
+                        >
+                          <span
+                            data-compare-price
+                            class="product__price product__price--compare"
+                          >
                             {%- if current_variant.compare_at_price > current_variant.price -%}
                               {%- render 'price' with current_variant.compare_at_price -%}
                             {%- endif -%}
                           </span>
                         </span>
-                        <span data-compare-price-a11y class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                        <span data-compare-price-a11y class="visually-hidden">
+                          {{- 'products.general.sale_price' | t -}}
+                        </span>
                       {%- else -%}
-                        <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                        <span
+                          id="PriceA11y-{{ section_id }}"
+                          class="visually-hidden"
+                        >
+                          {{- 'products.general.regular_price' | t -}}
+                        </span>
                       {%- endif -%}
 
-                      <span data-product-price class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}">
+                      <span
+                        data-product-price
+                        class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
+                      >
                         {%- unless product.empty? -%}
                           {%- render 'price' with current_variant.price -%}
                         {%- else -%}
@@ -178,18 +225,29 @@
 
                       {%- if settings.product_save_amount -%}
                         {%- if settings.product_save_type == 'dollar' -%}
-                          {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}{%- endcapture -%}
+                          {%- capture saved_amount -%}
+                            {{ current_variant.compare_at_price | minus: current_variant.price | money_without_trailing_zeros }}
+                          {%- endcapture -%}
                         {%- else -%}
-                          {%- capture saved_amount -%}{{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round }}%{%- endcapture -%}
+                          {%- capture saved_amount -%}
+                            {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round -}}
+                            %
+                          {%- endcapture -%}
                         {%- endif -%}
-                        <span data-save-price class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                        <span
+                          data-save-price
+                          class="product__price-savings{% if hide_sale_price %} hide{% endif %}"
+                        >
                           {%- unless hide_sale_price -%}
                             {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
                           {%- endunless -%}
                         </span>
                       {%- endif -%}
 
-                      <div data-unit-price-wrapper class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}">
+                      <div
+                        data-unit-price-wrapper
+                        class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}"
+                      >
                         {%- capture unit_price_base_unit -%}
                           <span data-unit-base>
                             {%- if current_variant.unit_price_measurement -%}
@@ -202,31 +260,76 @@
                         {%- endcapture -%}
 
                         <span data-unit-price>
-                          {%- render 'price' with current_variant.unit_price -%}
-                        </span>/{{ unit_price_base_unit }}
+                          {%- render 'price' with current_variant.unit_price -%}</span
+                        >/{{ unit_price_base_unit }}
                       </div>
                     </div>
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div class="product__quantity">
-                        <label for="Quantity-{{ section_id }}-{{ product.id }}">{{ 'products.product.quantity' | t }}</label>
+                        <label for="Quantity-{{ section_id }}-{{ product.id }}">
+                          {{- 'products.product.quantity' | t -}}
+                        </label>
                         <div class="js-qty__wrapper">
-                          <input type="text" id="Quantity-{{ section_id }}-{{ product.id }}" class="js-qty__num" value="1" min="1" aria-label="quantity" pattern="[0-9]*" form="{{ form_id }}" name="quantity">
-                          <button type="button" class="js-qty__adjust js-qty__adjust--minus" aria-label="{{ 'cart.general.reduce_quantity' | t }}">
-                              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-minus" viewBox="0 0 64 64"><path class="cls-1" d="M55 32H9"/></svg>
-                              <span class="icon__fallback-text" aria-hidden="true">&minus;</span>
+                          <input
+                            type="text"
+                            id="Quantity-{{ section_id }}-{{ product.id }}"
+                            class="js-qty__num"
+                            value="1"
+                            min="1"
+                            aria-label="quantity"
+                            pattern="[0-9]*"
+                            form="{{ form_id }}"
+                            name="quantity"
+                          >
+                          <button
+                            type="button"
+                            class="js-qty__adjust js-qty__adjust--minus"
+                            aria-label="{{ 'cart.general.reduce_quantity' | t }}"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              role="presentation"
+                              class="icon icon-minus"
+                              viewBox="0 0 64 64"
+                            >
+                              <path class="cls-1" d="M55 32H9"/>
+                            </svg>
+                            <span
+                              class="icon__fallback-text"
+                              aria-hidden="true"
+                              >&minus;</span
+                            >
                           </button>
-                          <button type="button" class="js-qty__adjust js-qty__adjust--plus" aria-label="{{ 'cart.general.increase_quantity' | t }}">
-                              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-plus" viewBox="0 0 64 64"><path class="cls-1" d="M32 9v46m23-23H9"/></svg>
-                              <span class="icon__fallback-text" aria-hidden="true">+</span>
+                          <button
+                            type="button"
+                            class="js-qty__adjust js-qty__adjust--plus"
+                            aria-label="{{ 'cart.general.increase_quantity' | t }}"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              role="presentation"
+                              class="icon icon-plus"
+                              viewBox="0 0 64 64"
+                            >
+                              <path class="cls-1" d="M32 9v46m23-23H9"/>
+                            </svg>
+                            <span
+                              class="icon__fallback-text"
+                              aria-hidden="true"
+                              >+</span
+                            >
                           </button>
                         </div>
                       </div>
                     </div>
-              
-             
                   {%- when 'variant_picker' -%}
-                    <div class="product-block variant_picker" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block variant_picker"
+                      {{ block.shopify_attributes }}
+                    >
                       {%- unless product.has_only_default_variant -%}
                         {%- for option in product.options_with_values -%}
                           {%- liquid
@@ -236,7 +339,7 @@
                               assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
                               assign color_option_index = forloop.index0
                               assign downcased_option = option.name | downcase
-                              
+
                               if downcased_option contains swatch_trigger
                                 assign is_color = true
                               elsif swatch_trigger == 'color' and downcased_option contains 'colour'
@@ -244,10 +347,10 @@
                               endif
                             endif
                           -%}
-                      
 
                           {%- if block.settings.picker_type == 'button' -%}
-                            {%- render 'variant-button',
+                            {%-
+                              render 'variant-button',
                               product: product,
                               form_id: form_id,
                               section_id: section_id,
@@ -257,9 +360,9 @@
                               is_color: is_color,
                               color_option_index: color_option_index
                             -%}
-                      
                           {%- else -%}
-                            {%- render 'variant-dropdown',
+                            {%-
+                              render 'variant-dropdown',
                               product: product,
                               form_id: form_id,
                               section_id: section_id,
@@ -269,20 +372,23 @@
                             -%}
                           {%- endif -%}
                         {%- endfor -%}
-                      
                       {%- endunless -%}
                     </div>
-              	  {%- when 'tagline' -%}
-                  {% if block.settings.product_tagline != blank %}
-                  <div class="product-tagline">
-                    {{ block.settings.product_tagline }}
-                  </div>
-                  {% endif %}
+                  {%- when 'tagline' -%}
+                    {% if block.settings.product_tagline != blank %}
+                      <div class="product-tagline">
+                        {{ block.settings.product_tagline }}
+                      </div>
+                    {% endif %}
                   {%- when 'buy_buttons' -%}
-                    <div class="product-block buy_buttons" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block buy_buttons"
+                      {{ block.shopify_attributes }}
+                    >
                       {%- unless product.empty? -%}
                         <div class="product-block">
-                          {%- render 'product-form',
+                          {%-
+                            render 'product-form',
                             form_id: form_id,
                             product: product,
                             show_dynamic_checkout: block.settings.show_dynamic_checkout,
@@ -292,43 +398,124 @@
                       {%- endunless -%}
 
                       {%- if block.settings.surface_pickup_enable -%}
-                        <div data-store-availability-holder data-product-name="{{ product.title | escape }}" data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
+                        <div
+                          data-store-availability-holder
+                          data-product-name="{{ product.title | escape }}"
+                          data-base-url="{{ shop.url }}{{ routes.root_url }}"
+                        ></div>
                       {%- endif -%}
                     </div>
-                     {%- when 'product_icon' -%}
-                     <div class="product-icon-wrap">
-                       {% if block.settings.icon1 != blank and block.settings.text1 != blank  %}
-                       <div class="col">
-                         <div class="pro-icon"><img src="{{ block.settings.icon1 | img_url: '50x' }}" alt="{{ block.settings.icon1.alt }}"></div>
-                         <div class="text"><p>{{ block.settings.text1 }}</p></div>
-                       </div>
-                       {% endif %}
-                        {% if block.settings.icon2 != blank and block.settings.text2 != blank  %}
-                       <div class="col">
-                         <div class="pro-icon"><img src="{{ block.settings.icon2 | img_url: '50x' }}" alt="{{ block.settings.icon2.alt}}"></div>
-                         <div class="text"><p>{{ block.settings.text2 }}</p></div>
-                       </div>
-                       {% endif %}
-                       {% if block.settings.icon3 != blank and block.settings.text3 != blank  %}
-                       <div class="col">
-                         <div class="pro-icon"><img src="{{ block.settings.icon3 | img_url: '50x' }}" alt="{{ block.settings.icon3.alt }}"></div>
-                         <div class="text"><p>{{ block.settings.text3 }}</p></div>
-                       </div>
-                       {% endif %}
-                     </div>
-              
+                  {%- when 'product_icon' -%}
+                    <div class="product-icon-wrap">
+                      {% if block.settings.icon1 != blank and block.settings.text1 != blank %}
+                        <div class="col">
+                          <div class="pro-icon">
+                            <img
+                              src="{{ block.settings.icon1 | img_url: '50x' }}"
+                              alt="{{ block.settings.icon1.alt }}"
+                            >
+                          </div>
+                          <div class="text">
+                            <p>{{ block.settings.text1 }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.icon2 != blank and block.settings.text2 != blank %}
+                        <div class="col">
+                          <div class="pro-icon">
+                            <img
+                              src="{{ block.settings.icon2 | img_url: '50x' }}"
+                              alt="{{ block.settings.icon2.alt}}"
+                            >
+                          </div>
+                          <div class="text">
+                            <p>{{ block.settings.text2 }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.icon3 != blank and block.settings.text3 != blank %}
+                        <div class="col">
+                          <div class="pro-icon">
+                            <img
+                              src="{{ block.settings.icon3 | img_url: '50x' }}"
+                              alt="{{ block.settings.icon3.alt }}"
+                            >
+                          </div>
+                          <div class="text">
+                            <p>{{ block.settings.text3 }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
                   {%- when 'sales_point' -%}
-                    <div class="product-block product-block--sales-point" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block product-block--sales-point"
+                      {{ block.shopify_attributes }}
+                    >
                       <ul class="sales-points">
                         <li class="sales-point">
                           <span class="icon-and-text">
                             {% case block.settings.icon %}
-                              {% when 'checkmark' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-circle-checkmark" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="cls-1" d="M52.68 24.48A22 22 0 1 1 47 15.93M21 32l8.5 8.5L57 13"/></svg>
-                              {% when 'globe' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-globe" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><circle class="cls-1" cx="33" cy="32" r="22"/><path class="cls-1" d="M14 21h38M11 32h44M14 43h38M33 10c-12 8-12 37 0 44M33 10c12 8 12 37 0 44"/></svg>
-                              {% when 'leaf' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-leaf" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M51 12L13 50M35 13v15h16"/><path class="cls-1" d="M52 11c6 24-16.72 47.29-33 32C7 22 29 10 52 11z"/></svg>
-                              {% when 'package' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-package" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="cls-1" d="M32 56L9.05 42.88V22.12L32 9l22.95 13.12v20.76L32 56z"/><path class="cls-1" d="M32 56V35.23l22.95-13.11M32 35.23L9.05 22.12M42.13 14.79L20.52 28.67v8.75"/></svg>
-                              {% when 'lock' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-lock" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path id="svg_2" data-name="svg 2" class="cls-1" d="M20.48 24v-3c0-6.6 5.52-11 11.76-11C39 10 44 15.13 44 21v3"/><path id="svg_4" data-name="svg 4" class="cls-1" d="M11.62 24h41.25v29.77H11.62z"/><path class="cls-1" d="M32.24 37v7"/><circle class="cls-1" cx="32.24" cy="35.5" r="1.5"/></svg>
-                              {% when 'truck' %} <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-truck" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M17 47.72H7.38V21h33.14v26.72H24.44M45.92 47.72h-5.4V34.9h17.1v12.82h-4.23M57.62 34.9l-6.41-8.56H40.52"/><circle class="cls-1" cx="20.74" cy="48.26" r="3.74"/><path class="cls-1" d="M45.92 47.73a3.82 3.82 0 1 1 0 .37v-.37"/></svg>
+                              {% when 'checkmark' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-circle-checkmark"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="cls-1" d="M52.68 24.48A22 22 0 1 1 47 15.93M21 32l8.5 8.5L57 13"/>
+                                </svg>
+                              {% when 'globe' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-globe"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><circle class="cls-1" cx="33" cy="32" r="22"/><path class="cls-1" d="M14 21h38M11 32h44M14 43h38M33 10c-12 8-12 37 0 44M33 10c12 8 12 37 0 44"/>
+                                </svg>
+                              {% when 'leaf' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-leaf"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M51 12L13 50M35 13v15h16"/><path class="cls-1" d="M52 11c6 24-16.72 47.29-33 32C7 22 29 10 52 11z"/>
+                                </svg>
+                              {% when 'package' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-package"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="cls-1" d="M32 56L9.05 42.88V22.12L32 9l22.95 13.12v20.76L32 56z"/><path class="cls-1" d="M32 56V35.23l22.95-13.11M32 35.23L9.05 22.12M42.13 14.79L20.52 28.67v8.75"/>
+                                </svg>
+                              {% when 'lock' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-lock"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path id="svg_2" data-name="svg 2" class="cls-1" d="M20.48 24v-3c0-6.6 5.52-11 11.76-11C39 10 44 15.13 44 21v3"/><path id="svg_4" data-name="svg 4" class="cls-1" d="M11.62 24h41.25v29.77H11.62z"/><path class="cls-1" d="M32.24 37v7"/><circle class="cls-1" cx="32.24" cy="35.5" r="1.5"/>
+                                </svg>
+                              {% when 'truck' %}
+                                <svg
+                                  aria-hidden="true"
+                                  focusable="false"
+                                  role="presentation"
+                                  class="icon icon-truck"
+                                  viewBox="0 0 64 64"
+                                >
+                                  <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M17 47.72H7.38V21h33.14v26.72H24.44M45.92 47.72h-5.4V34.9h17.1v12.82h-4.23M57.62 34.9l-6.41-8.56H40.52"/><circle class="cls-1" cx="20.74" cy="48.26" r="3.74"/><path class="cls-1" d="M45.92 47.73a3.82 3.82 0 1 1 0 .37v-.37"/>
+                                </svg>
                             {% endcase %}
                             <span>{{ block.settings.text }}</span>
                           </span>
@@ -336,7 +523,10 @@
                       </ul>
                     </div>
                   {%- when 'inventory_status' -%}
-                    <div class="product-block product-block--sales-point" {{ block.shopify_attributes }}>
+                    <div
+                      class="product-block product-block--sales-point"
+                      {{ block.shopify_attributes }}
+                    >
                       {%- render 'product-inventory', product: product, current_variant: current_variant, block: block -%}
                     </div>
                   {%- when 'share' -%}
@@ -346,28 +536,50 @@
                   {%- when 'trust_badge' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div style="max-width: {{ block.settings.trust_image.width }}px; margin: 0 auto;">
-                        <div class="image-wrap " style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.trust_image.aspect_ratio }}%;">
+                        <div
+                          class="image-wrap "
+                          style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.trust_image.aspect_ratio }}%;"
+                        >
                           {%- assign img_url = block.settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                          <img class="lazyload" data-src="{{ img_url }}" data-widths="[360, 540, 700, 1024]" data-aspectratio="{{ block.settings.trust_image.aspect_ratio }}" data-sizes="auto" alt="{{ block.settings.trust_image.alt }}">
+                          <img
+                            class="lazyload"
+                            data-src="{{ img_url }}"
+                            data-widths="[360, 540, 700, 1024]"
+                            data-aspectratio="{{ block.settings.trust_image.aspect_ratio }}"
+                            data-sizes="auto"
+                            alt="{{ block.settings.trust_image.alt }}"
+                          >
                           <noscript>
-                            <img class="lazyloaded" src="{{ block.settings.trust_image | img_url: '540x' }}" alt="{{ block.settings.trust_image.alt }}">
+                            <img
+                              class="lazyloaded"
+                              src="{{ block.settings.trust_image | img_url: '540x' }}"
+                              alt="{{ block.settings.trust_image.alt }}"
+                            >
                           </noscript>
                         </div>
                       </div>
                     </div>
                 {%- endcase -%}
               {%- else -%}
-                <div data-blocks-holder data-url="{{ product.url | within: collection }}" data-template="{{ product.template_suffix }}">
-                  <div class="placeholder-content" style="min-height: 86px;"></div>
+                <div
+                  data-blocks-holder
+                  data-url="{{ product.url | within: collection }}"
+                  data-template="{{ product.template_suffix }}"
+                >
+                  <div
+                    class="placeholder-content"
+                    style="min-height: 86px;"
+                  ></div>
                 </div>
               {%- endfor -%}
             </div>
           </div>
         </div>
-		
+
         {%- unless image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky">
-            {%- render 'product-images',
+            {%-
+              render 'product-images',
               section_id: section_id,
               product: product,
               isModal: isModal,
@@ -385,19 +597,24 @@
     </div>
   </div>
 </div>
- <!-- Lightbox -->
+<!-- Lightbox -->
 <div id="lightbox">
   <div class="navigation-icons">
-    <div class="prev"><svg viewBox="0 0 38 69" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.927623 32.2814L32.5944 0.918614C33.8308 -0.306239 35.836 -0.30624 37.0727 0.918823C38.3091 2.14368 38.3091 4.12941 37.0725 5.35426L7.64498 34.4994L37.0727 63.646C38.3091 64.8709 38.3091 66.8566 37.0725 68.0815C36.4543 68.6939 35.6439 69 34.8334 69C34.0229 69 33.2125 68.6939 32.5941 68.0813L0.927623 36.7168C0.333555 36.1287 -8.89937e-07 35.331 -8.89937e-07 34.4992C-8.89937e-07 33.6674 0.333555 32.8696 0.927623 32.2814Z" fill="black"/>
-</svg>
-</div>
-    <div class="close"><svg viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.7371 0L0.0873544 2.65638L14.8502 17.4562L0 32.3728L2.62063 35L17.5 20.1126L32.3503 35L35 32.3436L20.1497 17.4562L34.9126 2.65638L32.2629 0L17.5 14.7998L2.7371 0Z" fill="black"/>
-</svg></div>
-	<div class="next"><svg viewBox="0 0 38 69" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M37.0724 32.2814L5.40564 0.918614C4.16916 -0.306239 2.16403 -0.30624 0.927334 0.918823C-0.309146 2.14368 -0.309146 4.12941 0.927545 5.35426L30.355 34.4994L0.927334 63.646C-0.309146 64.8709 -0.309146 66.8566 0.927545 68.0815C1.54568 68.6939 2.35614 69 3.16659 69C3.97705 69 4.78751 68.6939 5.40586 68.0813L37.0724 36.7168C37.6664 36.1287 38 35.331 38 34.4992C38 33.6674 37.6664 32.8696 37.0724 32.2814Z" fill="black"/>
-</svg></div>
+    <div class="prev">
+      <svg viewBox="0 0 38 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.927623 32.2814L32.5944 0.918614C33.8308 -0.306239 35.836 -0.30624 37.0727 0.918823C38.3091 2.14368 38.3091 4.12941 37.0725 5.35426L7.64498 34.4994L37.0727 63.646C38.3091 64.8709 38.3091 66.8566 37.0725 68.0815C36.4543 68.6939 35.6439 69 34.8334 69C34.0229 69 33.2125 68.6939 32.5941 68.0813L0.927623 36.7168C0.333555 36.1287 -8.89937e-07 35.331 -8.89937e-07 34.4992C-8.89937e-07 33.6674 0.333555 32.8696 0.927623 32.2814Z" fill="black"/>
+      </svg>
     </div>
-	<img src="#">
+    <div class="close">
+      <svg viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.7371 0L0.0873544 2.65638L14.8502 17.4562L0 32.3728L2.62063 35L17.5 20.1126L32.3503 35L35 32.3436L20.1497 17.4562L34.9126 2.65638L32.2629 0L17.5 14.7998L2.7371 0Z" fill="black"/>
+      </svg>
+    </div>
+    <div class="next">
+      <svg viewBox="0 0 38 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M37.0724 32.2814L5.40564 0.918614C4.16916 -0.306239 2.16403 -0.30624 0.927334 0.918823C-0.309146 2.14368 -0.309146 4.12941 0.927545 5.35426L30.355 34.4994L0.927334 63.646C-0.309146 64.8709 -0.309146 66.8566 0.927545 68.0815C1.54568 68.6939 2.35614 69 3.16659 69C3.97705 69 4.78751 68.6939 5.40586 68.0813L37.0724 36.7168C37.6664 36.1287 38 35.331 38 34.4992C38 33.6674 37.6664 32.8696 37.0724 32.2814Z" fill="black"/>
+      </svg>
+    </div>
+  </div>
+  <img src="#">
 </div>
