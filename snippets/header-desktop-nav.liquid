@@ -70,7 +70,7 @@
                       {% if childlink.url == product.url %}
                       <div class="menu-col-image">
                         <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                          <img src={{ product.featured_image | img_url }} />
+                          <img src={{ product.featured_image | img_url :'compact' }} />
                         </a>
                       </div>
                        <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
@@ -82,7 +82,7 @@
                       {% if childlink.url == collection.url %}
                       <div class="menu-col-image">
                         <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                          <img src={{ collection.featured_image | img_url }} />
+                          <img src={{ collection.featured_image | img_url:'compact' }} />
                         </a>
                       </div>
                        <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
