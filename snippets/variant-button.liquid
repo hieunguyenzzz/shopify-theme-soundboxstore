@@ -38,6 +38,7 @@
         class="variant-input"
         data-index="option{{ option_index }}"
         data-value="{{ value | escape }}"
+        data-trvalue="{{tranValue | escape}}"
       >
         <input
           type="radio"
@@ -67,7 +68,6 @@
           {%- assign optionValueHandlized = value | handleize -%}
           {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized  | t -%}
           <label
-            title="{{tranValue}}"
             for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
             class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
             style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
