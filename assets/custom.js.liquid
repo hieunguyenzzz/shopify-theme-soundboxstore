@@ -584,8 +584,8 @@ var clicked_feature = $(this).attr("data-type");
 });
   
     $(".variant-input-wrap[name='Furniture']").each(function () {
-      let lessString ="{{'strings.others.view_less' | t}}";
-      let moreString ="{{'strings.others.view_more' | t}}";
+      let lessString =theme.strings.viewLess;
+      let moreString =theme.strings.viewMore;
   var $mainDiv = $(this),
       $childrens = $mainDiv.children(),
       $a = $(`<a href='javascript:void(0)'>${lessString}</a>`)
