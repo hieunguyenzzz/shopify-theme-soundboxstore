@@ -58,7 +58,7 @@
       {%- else -%}
       {% assign inventory_quantity = current_variant.inventory_quantity %}
     {%- endif -%}
-    <div>{{ 'strings.others.leading_time' | t: inventory_quantity:inventory_quantity }}</div>
+    <div style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.leading_time' | t: inventory_quantity:inventory_quantity }}</div>
   {%- endif -%}
     
   <div class="shopify-payment-terms product__policies">{{ form | payment_terms }}</div>
