@@ -18,17 +18,28 @@
   Main navigation is copied here with JS for mobile users
 {% endcomment %}
 {%- if section.settings.footer_main_menu -%}
-  <div id="FooterMobileNavWrap" class="footer__section footer__section--border medium-up--hide hide">
+  <div
+    id="FooterMobileNavWrap"
+    class="footer__section footer__section--border medium-up--hide hide"
+  >
     <div id="FooterMobileNav" class="page-width"></div>
   </div>
 {%- endif -%}
 
-<footer class="site-footer" data-section-id="{{ section.id }}" data-section-type="footer-section">
+<footer
+  class="site-footer"
+  data-section-id="{{ section.id }}"
+  data-section-type="footer-section"
+>
   <div id="FooterMenus" class="footer__section footer__section--menus">
     <div class="page-width">
       <div class="footer__blocks">
         {%- for block in section.blocks -%}
-          <div {{ block.shopify_attributes }} class="footer__block {{ block.type }}" data-type="{{ block.type }}">
+          <div
+            {{ block.shopify_attributes }}
+            class="footer__block {{ block.type }}"
+            data-type="{{ block.type }}"
+          >
             {%- liquid
               case block.type
                 when 'menu'
@@ -43,6 +54,42 @@
             -%}
           </div>
         {%- endfor -%}
+        <style>
+          .ISO-images{
+            width:100%;display:flex;justify-content: flex-end;gap:10px;
+          }
+          .ISO-images > *{
+            flex:1; max-width: 140px;
+          }
+          @media only screen and (max-width: 860px){
+            .ISO-images{
+              padding-top: 30px;
+              justify-content: center
+            }
+          }
+        </style>
+        <div class="ISO-images">
+          {%- if section.settings.ISO_img_1 -%}
+            <a href="{{section.settings.ISO_url_1}}">
+              <img src="{{section.settings.ISO_img_1 | img_url: '150x'}}">
+            </a>
+          {%- endif -%}
+          {%- if section.settings.ISO_img_2 -%}
+            <a href="{{section.settings.ISO_url_2}}">
+              <img src="{{section.settings.ISO_img_2 | img_url: '150x'}}">
+            </a>
+          {%- endif -%}
+          {%- if section.settings.ISO_img_3 -%}
+            <a href="{{section.settings.ISO_url_3}}">
+              <img src="{{section.settings.ISO_img_3 | img_url: '150x'}}">
+            </a>
+          {%- endif -%}
+          {%- if section.settings.ISO_img_4 -%}
+            <a href="{{section.settings.ISO_url_4}}">
+              <img src="{{section.settings.ISO_img_4 | img_url: '150x'}}">
+            </a>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
@@ -51,11 +98,13 @@
     <div class="page-width">
       <div class="flexbox">
         {%- if section.settings.show_copyright -%}
-        <div class="col left-col">
-          {%- if section.settings.copyright_text != blank -%}
-          <p class="copyright-text">{{ section.settings.copyright_text }}</p>
-          {%- endif -%}
-        </div>
+          <div class="col left-col">
+            {%- if section.settings.copyright_text != blank -%}
+              <p class="copyright-text">
+                {{ section.settings.copyright_text }}
+              </p>
+            {%- endif -%}
+          </div>
         {%- endif -%}
         <div class="col right-col footer-social-icon">
           <div class="icon-wrap">
@@ -68,190 +117,234 @@
 </footer>
 
 {% schema %}
-  {
-    "name": "Footer",
-    "max_blocks": 12,
-    "settings": [
-      {
-        "type": "header",
-        "content": "Newsletter"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_newsletter",
-        "label": "Show newsletter signup",
-        "info": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1).",
-        "default": true
-      },
-      {
-        "type": "richtext",
-        "id": "newsletter_richtext",
-        "label": "Text",
-        "default": "<p>Subscribe today to hear first about our sales</p>"
-      },
-      {
-        "type": "header",
-        "content": "Additional footer content"
-      },
-      {
-        "type": "checkbox",
-        "id": "footer_main_menu",
-        "label": "Repeat main menu on mobile",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_copyright",
-        "label": "Show copyright"
-      },
-      {
-        "type": "text",
-        "id": "copyright_text",
-        "label": "Copyright text"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "payment",
-        "name": "Payments and localization",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "show_payment_icons",
-            "label": "Show payment icons",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_locale_selector",
-            "label": "Show language selector",
-            "info": "To add a language, go to your [language settings.](/admin/settings/languages)",
-            "default": true
-          },
-          {
-            "type": "checkbox",
-            "id": "show_currency_selector",
-            "label": "Show currency selector",
-            "info": "To add a currency, go to your [currency settings.](/admin/settings/payments)",
-            "default": true
-          }
-        ]
-      },
-      {
-        "type": "menu",
-        "name": "Navigation",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "info": "Defaults to menu title"
-          },
-          {
-            "type": "link_list",
-            "id": "menu",
-            "label": "Choose a menu",
-            "default": "footer",
-            "info": "This menu will only show top-level links"
-          },
-          {
-            "type": "checkbox",
-            "id": "enable_account_link",
-            "label": "Add 'My account' link if customer accounts enabled"
-          }
-        ]
-      },
-	  {
-        "type": "footer_contact",
-        "name": "Footer Contact",
-        "settings": [
-          {
-            "type": "text",
-            "id": "contact-heading",
-			"label":"Title"
-          },
-		  {
-			 "type":"richtext",
-			"id":"contact-sub-headiing",
-			"label":"Sub-Title"
-			},
-			{
-				"type":"text",
-				"id":"address-heading1",
-				"label":"Address Heading 1"
-			},
-			{
-				"type":"text",
-				"id":"address1",
-				"label":"Address 1"
-			},
-			{
-				"type":"text",
-				"id":"address-heading2",
-				"label":"Address Heading 2"
-			},
-			{
-				"type":"text",
-				"id":"address2",
-				"label":"Address 2"
-			},
-			{
-				"type":"text",
-				"id":"email",
-				"label":"Email"
-			}
-        ]
-      },
-	  {
-        "type": "footer_hours",
-        "name": "Footer Opening Hours",
-        "settings": [
-          {
-            "type":"text",
-			"id":"opening-hour-heading",
-			"label":"Title"
-          },
-			{
-				"type":"text",
-				"id":"text1",
-				"label":"Text 1"
-			},
-			{
-				"type":"text",
-				"id":"text2",
-				"label":"Text 2"
-			},
-			{
-				"type":"text",
-				"id":"text3",
-				"label":"Text 3"
-			},
-			{
-				"type":"text",
-				"id":"text4",
-				"label":"Text 4"
-			},
-			{
-				"type":"text",
-				"id":"text5",
-				"label":"Text 5"
-			}
-        ]
-      }
-    ],
-    "default": {
-      "settings": {},
-      "blocks": [
+{
+  "name": "Footer",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show newsletter signup",
+      "info": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1).",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_richtext",
+      "label": "Text",
+      "default": "<p>Subscribe today to hear first about our sales</p>"
+    },
+    {
+      "type": "header",
+      "content": "Additional footer content"
+    },
+    {
+      "type": "checkbox",
+      "id": "footer_main_menu",
+      "label": "Repeat main menu on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show copyright"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    },
+    {
+      "type": "header",
+      "content": "ISO Certificates"
+    },
+    {
+      "type": "image_picker",
+      "id": "ISO_img_1",
+      "label": "ISO image 1"
+    },
+    {
+      "type": "url",
+      "id": "ISO_url_1",
+      "label": "ISO url 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "ISO_img_2",
+      "label": "ISO image 2"
+    },
+    {
+      "type": "url",
+      "id": "ISO_url_2",
+      "label": "ISO url 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "ISO_img_3",
+      "label": "ISO image 3"
+    },
+    {
+      "type": "url",
+      "id": "ISO_url_3",
+      "label": "ISO url 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "ISO_img_4",
+      "label": "ISO image 4"
+    },
+    {
+      "type": "url",
+      "id": "ISO_url_4",
+      "label": "ISO url 4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "payment",
+      "name": "Payments and localization",
+      "limit": 1,
+      "settings": [
         {
-          "type": "menu",
-          "settings": {}
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "label": "Show payment icons",
+          "default": true
         },
         {
-          "type": "payment",
-          "settings": {}
+          "type": "checkbox",
+          "id": "show_locale_selector",
+          "label": "Show language selector",
+          "info": "To add a language, go to your [language settings.](/admin/settings/languages)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_currency_selector",
+          "label": "Show currency selector",
+          "info": "To add a currency, go to your [currency settings.](/admin/settings/payments)",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Navigation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Defaults to menu title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Choose a menu",
+          "default": "footer",
+          "info": "This menu will only show top-level links"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_account_link",
+          "label": "Add 'My account' link if customer accounts enabled"
+        }
+      ]
+    },
+    {
+      "type": "footer_contact",
+      "name": "Footer Contact",
+      "settings": [
+        {
+          "type": "text",
+          "id": "contact-heading",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "contact-sub-headiing",
+          "label": "Sub-Title"
+        },
+        {
+          "type": "text",
+          "id": "address-heading1",
+          "label": "Address Heading 1"
+        },
+        {
+          "type": "text",
+          "id": "address1",
+          "label": "Address 1"
+        },
+        {
+          "type": "text",
+          "id": "address-heading2",
+          "label": "Address Heading 2"
+        },
+        {
+          "type": "text",
+          "id": "address2",
+          "label": "Address 2"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        }
+      ]
+    },
+    {
+      "type": "footer_hours",
+      "name": "Footer Opening Hours",
+      "settings": [
+        {
+          "type": "text",
+          "id": "opening-hour-heading",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Text 1"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text 2"
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Text 3"
+        },
+        {
+          "type": "text",
+          "id": "text4",
+          "label": "Text 4"
+        },
+        {
+          "type": "text",
+          "id": "text5",
+          "label": "Text 5"
         }
       ]
     }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "menu",
+        "settings": {}
+      },
+      {
+        "type": "payment",
+        "settings": {}
+      }
+    ]
   }
+}
 {% endschema %}
