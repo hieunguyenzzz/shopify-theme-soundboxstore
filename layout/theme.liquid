@@ -136,7 +136,9 @@
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer">
       </script>
     {%- endif -%}
-  </head>
+  
+                        {% include 'otRegion' %}            
+                        </head>
 
   <body
     class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
