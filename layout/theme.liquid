@@ -114,26 +114,7 @@
         themeVersion: "2.0.0"
       };
     </script>
-{% comment %}
- Custom Masonry Blog
-{% endcomment %}
-{{ 'masonry.pkgd.min.js' | asset_url | script_tag }}
-{{ 'imagesloaded.pkgd.min.js' | asset_url | script_tag }}
-   
-<script type="text/javascript">
-    // init Masonry after all images have loaded
-    var $grid = $('.mason').imagesLoaded( function() {
-  	$grid.masonry({
-            // Masonry options here
-    	    itemSelector: '.article',
-    	    fitWidth: true,
-    	    columnWidth: '.article'
-  	}); 
-    });
-</script>  
-{% comment %}
-End Custom Masonry Blog
-{% endcomment %}
+
     {{ content_for_header }}
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script src="{{ 'slick.js' | asset_url }}"></script>
