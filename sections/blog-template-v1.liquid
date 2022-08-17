@@ -28,8 +28,6 @@
 
 </script>
 
-{%- paginate blog.articles by 9 -%}
-
 <div data-section-id="{{ section.id }}" data-section-type="blog">
   <header class="section-header{% if section.settings.blog_show_tag_filter and blog.tags.size > 0 %} section-header--with-link{% endif %}">
     <h1 class="section-header__title">
@@ -76,7 +74,6 @@
 
           </div>
 
-{%- endpaginate -%}
 
 {% schema %}
   {
