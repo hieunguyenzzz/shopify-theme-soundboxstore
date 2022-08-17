@@ -1,3 +1,32 @@
+<script type="text/javascript">
+        jQuery(document).ready( function( $ ) {
+            
+            /*
+            * Handle Blog Masonry
+            */
+            function doMasonry() {
+
+                var $grid = $( ".mason" ).imagesLoaded(function () {
+                    $grid.masonry({
+                        itemSelector: '.article',
+                        columnWidth: '.article',
+                        fitWidth: true,
+                    });
+                });
+                              
+            }
+
+            /**
+            * Call Masonry on window resize and load
+            */
+            $( window ).resize( function() {
+                doMasonry();
+            });
+            doMasonry();
+                        
+        });
+
+</script>
 {%- paginate blog.articles by 9 -%}
 
 <div data-section-id="{{ section.id }}" data-section-type="blog">
