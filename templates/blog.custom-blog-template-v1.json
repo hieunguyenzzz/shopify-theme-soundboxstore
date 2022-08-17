@@ -3,7 +3,7 @@
     "1660550488b75fdc46": {
       "type": "image-text-section",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Blog-Banner.png",
+        "image": "shopify:\/\/shop_images\/Blog_Page.png",
         "mobile_image": "shopify:\/\/shop_images\/Soundbox_Commercial_3D_Render_4.png",
         "overlay": true,
         "overlay_range": 50,
@@ -24,12 +24,11 @@
         "blog_show_date": true,
         "blog_show_comments": true,
         "blog_show_author": true,
-        "blog_image_size": "natural"
+        "blog_image_size": "square"
       }
     },
     "sidebar": {
       "type": "blog-sidebar",
-      "disabled": true,
       "blocks": {
         "tags": {
           "type": "tags",
@@ -45,6 +44,7 @@
     },
     "166055265396cf84f0": {
       "type": "cart-upsell-collection",
+      "disabled": true,
       "settings": {
         "title": "Check our latest product",
         "home_featured_products": "",
@@ -53,13 +53,27 @@
         "view_all": true,
         "divider": false
       }
+    },
+    "16606985741e258c87": {
+      "type": "blog-posts",
+      "settings": {
+        "title": "From the blog",
+        "blog": "news",
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": false,
+        "blog_show_author": false,
+        "blog_image_size": "wide",
+        "divider": false
+      }
     }
   },
   "order": [
     "1660550488b75fdc46",
     "main",
     "sidebar",
-    "166055265396cf84f0"
+    "166055265396cf84f0",
+    "16606985741e258c87"
   ],
   "wrapper": "div.page-width.page-content.blog-layout"
 }
