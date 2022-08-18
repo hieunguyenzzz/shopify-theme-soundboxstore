@@ -165,7 +165,8 @@
   <div class="slider-wrap">
     <div class="image-gallery-main">
       {%- for image in product.images -%}
-           {%- if image.alt == current_variant.sku -%}
+            {%- assign alt = image.alt | strip -%}
+           {%- if alt == vaSku -%}
             <div class="image-gallery-block">
               <div class="gallery-wrap">
               <img src="{{ image | img_url:'master' }}" alt="{{ image.alt | escape }}" class="photoswipe__image lazyload">
@@ -179,7 +180,8 @@
       <div class="thumbnail-slider">
         <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
         {%- for image in product.images -%}
-          {%- if image.alt == current_variant.sku -%}
+          {%- assign alt = image.alt | strip -%}
+           {%- if alt == vaSku -%}
             <div class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
               <img src="{{ image | img_url:'master' }}" alt="{{ image.alt | escape }}">
