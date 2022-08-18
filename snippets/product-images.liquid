@@ -153,9 +153,11 @@
 {%- endunless -%}
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
  {% for image in product.images %}
-     {% if image.alt == current_variant.sku %}
+     {%- assign alt = image.alt | strip -%}
+     {% if alt == vaSku %}
 		{%- assign slide_count = slide_count | plus:1 -%}
       {% endif %}
   {% endfor %}
