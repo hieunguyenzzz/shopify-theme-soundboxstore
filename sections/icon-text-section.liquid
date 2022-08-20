@@ -12,6 +12,13 @@
           {% if block.settings.icon != blank %}
           <div class="col-icon">
             <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.icon.alt }}">
+            .icon-text-section .col .col-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    align-content: flex-start;
+    justify-content: center;
+}
           </div>
           {% endif %}
           <div class="col-dec">
