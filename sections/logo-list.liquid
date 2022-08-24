@@ -30,7 +30,7 @@
               {%- endif -%}
               {% endcomment %}
               <div class="image-wrap">
-                <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}">
+                <img src="{{ block.settings.image | img_url: '240x' }}" alt="{{ block.settings.image.alt }}">
               </div>
               {%- if block.settings.link != blank -%}
             </a>
