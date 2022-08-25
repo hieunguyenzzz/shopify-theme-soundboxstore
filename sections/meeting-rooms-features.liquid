@@ -153,22 +153,23 @@
   }
 </style>
     {% assign scrollWhenClick = false %}
-    {% if scrollWhenClick %}
+    
       <script>
   document.querySelectorAll(".hotspot-icon").forEach(node=>{
     node.addEventListener("click", (e)=>{
         console.log(node.dataset.target)
-   const targetE=document.querySelector("#"+node.dataset.target)    ; 
+   const targetE=document.querySelector("#"+node.dataset.target)    ;
+{% if scrollWhenClick %} 
 targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         targetE.classList.remove('ping');
         setTimeout(()=>{
 targetE.classList.add('ping');
 })
-        
+      {%  endif %}  
     })
 })
 </script>
-      {%  endif %}
+      
 
 
 {% schema %}
