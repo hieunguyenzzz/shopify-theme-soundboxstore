@@ -161,11 +161,12 @@
    const targetE=document.querySelector("#"+node.dataset.target)    ;
 {% if scrollWhenClick %} 
 targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-        targetE.classList.remove('ping');
+      
+      {%  endif %}  
+  targetE.classList.remove('ping');
         setTimeout(()=>{
 targetE.classList.add('ping');
 })
-      {%  endif %}  
     })
 })
 </script>
