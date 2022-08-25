@@ -152,7 +152,9 @@
     scroll-margin-top:160px
   }
 </style>
-<script>
+    {% assign scrollWhenClick = false %}
+    {% if scrollWhenClick %}
+      <script>
   document.querySelectorAll(".hotspot-icon").forEach(node=>{
     node.addEventListener("click", (e)=>{
         console.log(node.dataset.target)
@@ -166,6 +168,8 @@ targetE.classList.add('ping');
     })
 })
 </script>
+      {%  endif %}
+
 
 {% schema %}
   {
