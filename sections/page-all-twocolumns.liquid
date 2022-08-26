@@ -98,13 +98,15 @@
         </div>
       </a>
       <h3>{{ section.settings.left_content }}</h3>
-      <button
+      <a
         id="{{section.settings.left_button_id}}"
         type="button"
+        target="_blank"
+        href="{{section.settings.left_button_file}}"
         class="btn btn--secondary specBtn dsd"
       >
         {{ section.settings.left_button }}
-      </button>
+      </a>
     </div>
 
     {%- assign product  = section.settings.right_product -%}
@@ -208,6 +210,7 @@
       <button
         d="{{section.settings.right_button_id}}"
         type="button"
+        href="{{section.settings.right_button_file}}"
         class="btn btn--secondary specBtn"
       >
         {{ section.settings.right_button }}
@@ -248,6 +251,12 @@
       "default": "left_button"
     },
     {
+      "type": "text",
+      "id": "left_button_file",
+      "label": "File url",
+      "default": "/"
+    },
+    {
       "type": "header",
       "content": "Right"
     },
@@ -273,6 +282,12 @@
       "id": "right_button_id",
       "label": "Button id",
       "default": "right_button"
+    },
+    {
+      "type": "text",
+      "id": "right_button_file",
+      "label": "File url",
+      "default": "/"
     }
   ]
 }
