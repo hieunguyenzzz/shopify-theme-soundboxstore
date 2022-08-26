@@ -98,15 +98,25 @@
         </div>
       </a>
       <h3>{{ section.settings.left_content }}</h3>
-      <a
-        id="{{section.settings.left_button_id}}"
-        type="button"
-        target="_blank"
-        href="{{section.settings.left_button_file}}"
-        class="btn btn--secondary specBtn dsd"
-      >
-        {{ section.settings.left_button }}
-      </a>
+      {%- if section.settings.left_button_file != blank -%}
+        <a
+          id="{{section.settings.left_button_id}}"
+          type="button"
+          target="_blank"
+          href="{{section.settings.left_button_file}}"
+          class="btn btn--secondary specBtn dsd"
+        >
+          {{ section.settings.left_button }}
+        </a>
+      {%- else -%}
+        <button
+          id="{{section.settings.left_button_id}}"
+          type="button"
+          class="btn btn--secondary specBtn dsd"
+        >
+          {{ section.settings.left_button }}
+        </button>
+      {%- endif -%}
     </div>
 
     {%- assign product  = section.settings.right_product -%}
@@ -207,15 +217,25 @@
         </div>
       </a>
       <h3>{{ section.settings.right_content }}</h3>
-      <a
-        d="{{section.settings.right_button_id}}"
-        type="button"
-        href="{{section.settings.right_button_file}}"
-        class="btn btn--secondary specBtn"
-        target="_blank"
-      >
-        {{ section.settings.right_button }}
-      </a>
+      {%- if section.settings.right_button_file != blank -%}
+        <a
+          d="{{section.settings.right_button_id}}"
+          type="button"
+          href="{{section.settings.right_button_file}}"
+          class="btn btn--secondary specBtn"
+          target="_blank"
+        >
+          {{ section.settings.right_button }}
+        </a>
+      {%- else -%}
+        <button
+          id="{{section.settings.right_button_id}}"
+          type="button"
+          class="btn btn--secondary specBtn dsd"
+        >
+          {{ section.settings.right_button }}
+        </button>
+      {%- endif -%}
     </div>
   </div>
 </div>
