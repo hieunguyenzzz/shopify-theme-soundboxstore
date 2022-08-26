@@ -98,7 +98,11 @@
         </div>
       </a>
       <h3>{{ section.settings.left_content }}</h3>
-      <button type="button" class="btn btn--secondary specBtn dsd">
+      <button
+        id="{{section.settings.left_button_id}}"
+        type="button"
+        class="btn btn--secondary specBtn dsd"
+      >
         {{ section.settings.left_button }}
       </button>
     </div>
@@ -201,7 +205,11 @@
         </div>
       </a>
       <h3>{{ section.settings.right_content }}</h3>
-      <button type="button" class="btn btn--secondary specBtn">
+      <button
+        d="{{section.settings.right_button_id}}"
+        type="button"
+        class="btn btn--secondary specBtn"
+      >
         {{ section.settings.right_button }}
       </button>
     </div>
@@ -234,6 +242,12 @@
       "default": "Download here"
     },
     {
+      "type": "text",
+      "id": "left_button_id",
+      "label": "Button id",
+      "default": "left_button"
+    },
+    {
       "type": "header",
       "content": "Right"
     },
@@ -253,6 +267,12 @@
       "id": "right_button",
       "label": "Button text",
       "default": "Download here"
+    },
+    {
+      "type": "text",
+      "id": "right_button_id",
+      "label": "Button id",
+      "default": "right_button"
     }
   ]
 }
