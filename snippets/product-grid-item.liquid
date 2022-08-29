@@ -118,6 +118,9 @@
           if forloop.index == 1
               assign preview_image = myimage 
           endif 
+         if forloop.index == 2
+             assign second_image = myimage
+          endif 
          endfor 
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
@@ -176,8 +179,7 @@
           {%- endif -%}
 
           {%- if settings.product_hover_image and product.media.size > 1 -%}
-            {% if product.metafields.my_fields.product_features_images != blank %}
-              {%- assign second_image = product.metafields.my_fields.product_features_images -%}
+            {% if second_image %}
               <div class="grid-product__secondary-image small--hide">
                 {%- assign img_url = second_image -%}
                 <img
