@@ -1,7 +1,19 @@
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Featured product",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product"
+      },
+      {
+        "type": "image_picker",
+        "id": "featured_product_image",
+        "label": "Product image 1"
+      }
+    ]
   }
 {% endschema %}
 
