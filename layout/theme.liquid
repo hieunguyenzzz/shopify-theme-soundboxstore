@@ -137,8 +137,9 @@
       </script>
     {%- endif -%}
   
-                        {% include 'otRegion' %}            
-                        </head>
+                        {% include 'otRegion' %}
+  <meta name="google-site-verification" content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" />
+  </head>
 
   <body
     class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
