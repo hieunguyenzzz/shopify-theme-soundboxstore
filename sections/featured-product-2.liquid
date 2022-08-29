@@ -1,4 +1,5 @@
 {%- liquid
+  assign product = section.settings.featured_product
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
