@@ -114,7 +114,7 @@
         assign fixed_aspect_ratio = true
       endunless
 
-      assign preview_image = product.featured_media.preview_image
+      assign preview_image = product.metafields.my_fields.product_features_image_1.value | default: product.featured_media.preview_image
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
     <div class="product-image-wrap">
