@@ -114,12 +114,15 @@
         assign fixed_aspect_ratio = true
       endunless
       assign preview_image = product.featured_media.preview_image
+        for myimage in product.metafields.my_fields.featured_images.value
+          if forloop.index0 
+              assign preview_image = myimage 
+          endif 
+         endfor 
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
       <div style="display:none">{{ product.metafields.my_fields.featured_images.value.last | file_url  }}
-      {% for c in product.metafields.my_fields.featured_imagess.value -%}
-        {{ image }}
-      {%- endfor %}
+     
       </div>
     <div class="product-image-wrap">
       <a href="{{ product.url | within: collection }}" class="grid-item__link">
