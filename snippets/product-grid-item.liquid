@@ -115,7 +115,7 @@
       endunless
       assign preview_image = product.featured_media.preview_image
         for myimage in product.metafields.my_fields.featured_images.value
-          if forloop.index0 
+          if forloop.index == 1
               assign preview_image = myimage 
           endif 
          endfor 
