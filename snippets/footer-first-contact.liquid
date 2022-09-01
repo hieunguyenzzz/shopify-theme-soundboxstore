@@ -15,6 +15,7 @@
          {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}<li class="location">{% if block.settings.address-heading2 != blank %}<strong>{{ block.settings.address-heading2 }}</strong>{% endif %} {{ block.settings.address2 }}</li>{% endif %}
          {% if block.settings.email != blank %}<li class="email"><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></li>{% endif %}
          {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %}
+         <li><img src="https://files.soundboxstore.com/payment-icons_3.png" /></li>
         </ul>
       </div>
       {% endif %}
