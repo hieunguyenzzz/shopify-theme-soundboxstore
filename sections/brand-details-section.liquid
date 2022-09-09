@@ -13,16 +13,16 @@
                 <div class="col-wrap">
                   {% if block.settings.logo_image != blank %}
                   <span class="title-font">#</span>
-                  <img src="{{ block.settings.logo_image | img_url: 'master' }}" alt="{{ block.settings.logo_image.alt }}">
+                  <img loading="lazy" src="{{ block.settings.logo_image | img_url: 'master' }}" alt="{{ block.settings.logo_image.alt }}">
                   {% endif %}
                 </div>
               </div>
               <div class="col right-col">
                 <div class="col-wrap">
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap"><img src="{{ block.settings.slide_image1 | img_url: 'master' }}" alt="{{ block.settings.slide_image1.alt }}"></div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap"><img src="{{ block.settings.slide_image2 | img_url: 'master' }}" alt="{{ block.settings.slide_image2.alt }}"></div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap"><img src="{{ block.settings.slide_image3 | img_url: 'master' }}" alt="{{ block.settings.slide_image3.alt }}"></div></div>{% endif %}
+                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image1 | img_url: 'master' }}" alt="{{ block.settings.slide_image1.alt }}"></div></div>{% endif %}
+                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image2 | img_url: 'master' }}" alt="{{ block.settings.slide_image2.alt }}"></div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image3 | img_url: 'master' }}" alt="{{ block.settings.slide_image3.alt }}"></div></div>{% endif %}
                   </div>
                 </div>
               </div>
