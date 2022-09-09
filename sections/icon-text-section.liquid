@@ -11,7 +11,7 @@
         <div class="col-wrap">
           {% if block.settings.icon != blank %}
           <div class="col-icon">
-            <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.icon.alt }}">
+            <img loading="lazy" src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.icon.alt }}">
           </div>
           {% endif %}
           <div class="col-dec">
