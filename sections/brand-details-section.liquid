@@ -22,7 +22,14 @@
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
                     {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image1 | img_url: '700x' }}" alt="{{ block.settings.slide_image1.alt }}"></div></div>{% endif %}
                     {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image2 | img_url: '700x' }}" alt="{{ block.settings.slide_image2.alt }}"></div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image3 | img_url: '700x' }}" alt="{{ block.settings.slide_image3.alt }}"></div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">
+                      {{ block.settings.slide_image3 | image_url: width: 700 | image_tag:
+        loading: lazy,
+        sizes: sizes,
+        widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+        alt:  block.settings.slide_image3.alt | escape
+      }}
+                    </div></div>{% endif %}
                   </div>
                 </div>
               </div>
