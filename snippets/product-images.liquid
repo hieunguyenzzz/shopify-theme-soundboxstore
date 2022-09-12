@@ -169,7 +169,7 @@
            {%- if alt == vaSku -%}
             <div class="image-gallery-block">
               <div class="gallery-wrap">
-              <img src="{{ image | img_url:'master' }}" alt="{{ image.alt | escape }}" class="photoswipe__image lazyload">
+              <img loading="lazy" src="{{ image | img_url:'600x' }}" alt="{{ image.alt | escape }}" class="photoswipe__image lazyload">
               </div>
             </div>
       	 {%- endif -%}
@@ -184,7 +184,7 @@
            {%- if alt == vaSku -%}
             <div class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
-              <img src="{{ image | img_url:'master' }}" alt="{{ image.alt | escape }}">
+              <img loading="lazy" src="{{ image | img_url:'150x' }}" alt="{{ image.alt | escape }}">
               </div>
             </div>
             {%- endif -%}
