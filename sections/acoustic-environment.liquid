@@ -1,90 +1,93 @@
 {% if section.settings.image != blank %}
-<section class="acoustic-environment-section" style="background-color:{{ section.settings.bgcolor }}">
-  <div class="page-width">
-    <div class="flexbox">
-      <div class="col col-left">
-        <div class="col-wrap">
-          {% if section.settings.heading != blank or section.settings.subheading != blank %}
-          <div class="title-block">
-            {% if section.settings.heading != blank %}<h3 class="title-font">{{ section.settings.heading }}</h3>{% endif %}
-            {% if section.settings.subheading != blank %}<h5 class="sub-title">{{ section.settings.subheading }}</h5>{% endif %}
+  <section class="acoustic-environment-section" style="background-color:{{ section.settings.bgcolor }}">
+    <div class="page-width">
+      <div class="flexbox">
+        <div class="col col-left">
+          <div class="col-wrap">
+            {% if section.settings.heading != blank or section.settings.subheading != blank %}
+              <div class="title-block">
+                {% if section.settings.heading != blank %}
+                  <h3 class="title-font">{{ section.settings.heading }}</h3>
+                {% endif %}
+                {% if section.settings.subheading != blank %}
+                  <h5 class="sub-title">{{ section.settings.subheading }}</h5>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              <div class="description-block">{{ section.settings.description }}</div>
+            {% endif %}
           </div>
-          {% endif %}
-          {% if section.settings.description != blank %}<div class="description-block">{{ section.settings.description }}</div>{% endif %}
         </div>
-      </div>
-      <div class="col col-right">
-        <div class="col-wrap">
-          {% if section.settings.image != blank %}
-          <div class="image-block">
-            <div class="image-wrapper">
-              <img src="{{ section.settings.image | img_url:'1920X'}}" alt="{{ section.settings.image.alt }}" {% if section.settings.mobile_image != blank %}class="desktop-only"{% endif %}>
-              
-              {% if section.settings.mobile_image != blank %}<img src="{{ section.settings.mobile_image | img_url:'master'}}" alt="{{ section.settings.mobile_image.alt }}" class="mobile-only">{% endif %}
-            </div>
+        <div class="col col-right">
+          <div class="col-wrap">
+            {% if section.settings.image != blank %}
+              <div class="image-block">ß
+                <div class="image-wrapper">
+                  <img loading="lazy" src="{{ section.settings.image | img_url:'800x'}}" alt="{{ section.settings.image.alt }}" {% if section.settings.mobile_image != blank %} class="desktop-only" {% endif %}>
+
+                  {% if section.settings.mobile_image != blank %}<img loading="lazy" src="{{ section.settings.mobile_image | img_url:'master'}}" alt="{{ section.settings.mobile_image.alt }}" class="mobile-only">
+                  {% endif %}
+                </div>
+              </div>
+              <div class="graph-parameters">
+                <ul>
+                  {{ section.settings.perameter_text }}
+                </ul>
+              </div>
+            {% endif %}
+            {% if section.settings.graphtitle != blank %}
+              <div class="graph-title">{{ section.settings.graphtitle}}</div>
+            {% endif %}
           </div>
-          <div class="graph-parameters">
-            <ul>
-              {{ section.settings.perameter_text }}
-            </ul>
-          </div>
-          {% endif %}
-          {% if section.settings.graphtitle != blank %}<div class="graph-title">{{ section.settings.graphtitle}}</div>{% endif %}
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endif %}
 
 
 {% schema %}
-  {
-    "name": "Acoustic Environment",
-	"class": "index-section acoustic-section",
-    "settings":[
-        {
-          "type" : "color",
-          "id" : "bgcolor",
-          "label" : "Background Color"
-        },
-        {
-          "type" : "text",
-          "id" : "heading",
-          "label" : "Heading"
-        },
-        {
-          "type" : "text",
-          "id" : "subheading",
-          "label" : "Sub Heading"
-        },
-        {
-          "type" : "richtext",
-          "id" : "description",
-          "label" : "Description Text"
-        },
-        {
-          "type" : "image_picker",
-          "id" : "image",
-          "label" : "Desktop Image"
-        },
-		{
-          "type" : "image_picker",
-          "id" : "mobile_image",
-          "label" : "Mobile Image"
-        },
-		{
-          "type" : "html",
-          "id" : "perameter_text",
-          "label" : "Graph Perameter Text",
-          "info": "ex: <li> your text here </li>"
-        },
-        {
-          "type" : "richtext",
-          "id" : "graphtitle",
-          "label" : "Graph Title"
-		}
-	]
-  }
-{% endschema %}
 
+{
+  "name": "Acoustic Environment",
+  "class": "index-section acoustic-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color"
+    }, {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }, {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading"
+    }, {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description Text"
+    }, {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    }, {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    }, {
+      "type": "html",
+      "id": "perameter_text",
+      "label": "Graph Perameter Text",
+      "info": "ex: <li> your text here </li>"
+    }, {
+      "type": "richtext",
+      "id": "graphtitle",
+      "label": "Graph Title"
+    }
+  ]
+}
+
+{% endschema %}
