@@ -169,7 +169,19 @@
            {%- if alt == vaSku -%}
             <div class="image-gallery-block">
               <div class="gallery-wrap">
-              <img loading="lazy" src="{{ image | img_url:'800x' }}" alt="{{ image.alt | escape }}" class="photoswipe__image lazyload">
+                <img class="photoswipe__image lazyloaded"
+                srcset="{% if image.width >= 288 %}{{ image | image_url: width: 288 }} 288w,{% endif %}
+                        {% if image.width >= 576 %}{{ image | image_url: width: 576 }} 576w,{% endif %}
+                        {% if image.width >= 550 %}{{ image | image_url: width: 550 }} 550w,{% endif %}
+                        {% if image.width >= 1100 %}{{ image | image_url: width: 1100 }} 1100w,{% endif %}
+                        {{ image | image_url }} {{ image.width }}w"
+                src="{{ image | image_url: width: 550, height: 550 }}"
+                sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                width="576"
+                height="{{ 600 | divided_by: image.aspect_ratio }}"
+                alt="{{ image.alt | escape }}"
+              >
+              
               </div>
             </div>
       	 {%- endif -%}
