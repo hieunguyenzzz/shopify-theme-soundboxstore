@@ -4,7 +4,7 @@
       {% if section.settings.image != blank %}
       <div class="col right-col">
         <div class="col-wrap">
-          <img loading="lazy" sßrc="{{ section.settings.image | img_url:"750x" }}" {% if section.settings.mobile_image != blank %}class="desktop-only"{% endif %} alt="{{ section.settings.image.alt }}"> 
+          <img loading="lazy" src="{{ section.settings.image | img_url:"750x" }}" {% if section.settings.mobile_image != blank %}class="desktop-only"{% endif %} alt="{{ section.settings.image.alt }}"> 
           {% if section.settings.mobile_image != blank %}
           <img loading="lazy" src="{{ section.settings.mobile_image | img_url:"520x" }}" class="mobile-only" alt="{{ section.settings.mobile_image.alt }}"> 
           {% endif %}
