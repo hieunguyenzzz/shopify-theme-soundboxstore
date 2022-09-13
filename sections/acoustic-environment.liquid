@@ -24,9 +24,9 @@
             {% if section.settings.image != blank %}
               <div class="image-block">
                 <div class="image-wrapper">
-                  <img loading="lazy" src="{{ section.settings.image | img_url:'800x'}}" alt="{{ section.settings.image.alt }}" {% if section.settings.mobile_image != blank %} class="desktop-only" {% endif %}>
+                  <img loading="lazy" src="{{ section.settings.image | img_url:'600x'}}" alt="{{ section.settings.image.alt }}" {% if section.settings.mobile_image != blank %} class="desktop-only" {% endif %}>
 
-                  {% if section.settings.mobile_image != blank %}<img loading="lazy" src="{{ section.settings.mobile_image | img_url:'master'}}" alt="{{ section.settings.mobile_image.alt }}" class="mobile-only">
+                  {% if section.settings.mobile_image != blank %}<img loading="lazy" src="{{ section.settings.mobile_image | img_url:'600x'}}" alt="{{ section.settings.mobile_image.alt }}" class="mobile-only">
                   {% endif %}
                 </div>
               </div>
