@@ -7,12 +7,7 @@
 
 {%- unless product.empty? -%}
 
-{%- for image in product.media -%}
-  <link rel="preload" as="image" href="{{ image | image_url: width: 288 }}">
-  <link rel="preload" as="image" href="{{ image | image_url: width: 576 }}">
-  <link rel="preload" as="image" href="{{ image | image_url: width: 900 }}">
- 
-{%- endfor -%}
+
   <div
     data-product-images
     data-zoom="{{ product_zoom_enable }}"
