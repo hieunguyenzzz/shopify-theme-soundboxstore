@@ -238,18 +238,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 
     {{ content_for_header }}
-    <script src="{{ 'jquery.min.js' | asset_url }}" ></script>
-    <script src="{{ 'slick.js' | asset_url }}" ></script>
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script src="{{ 'slick.js' | asset_url }}"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-    <script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4" type="text/javascript" defer="defer"></script>
+    <script async defer="defer" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4" type="text/javascript"></script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
-
+    {%- if product.media -%}
+      {%- for image in product.media -%}
+        <link rel="preload" as="image" href="{{ image | image_url: width: 900 | replace_first: '//cdn', 'https://cdn' }}" imagesrcset="{{ image | image_url: width: 288 | replace_first: '//cdn', 'https://cdn'}} 288w, {{ image | image_url: width: 576 | replace_first: '//cdn', 'https://cdn' }} 576w, {{ image | image_url: width: 900  | replace_first: '//cdn', 'https://cdn'}} " imagesizes="(min-width: 1200px) calc((1200px - 10rem)), (min-width: 750px) calc((100vw - 11.5rem)), calc(100vw - 4rem)">
+      {%- endfor -%}
+    {%- endif -%}
     {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
 
     {% include 'otRegion' %}
+
   </head>
 
   <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}" data-transitions="{{ settings.animate_page_transitions }}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
@@ -298,8 +303,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
       </script>
     -->
-    
-        <!--Start of Tawk.to Script-->
+        
+            <!--Start of Tawk.to Script-->
     <script type="text/javascript">
       var Tawk_API = Tawk_API || {},
         Tawk_LoadStart = new Date();
