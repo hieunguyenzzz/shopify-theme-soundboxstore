@@ -1027,7 +1027,7 @@ lazySizesConfig.expFactor = 4;
                 var alt = images[i].alt,
                   url = images[i].url;
 
-                var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap'><img class="photoswipe__image lazyloaded" srcset="${url}&width=288 288w,
+                var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img class="photoswipe__image lazyloaded" srcset="${url}&width=288 288w,
                       ${url}&width=576 576w,
                       ${url}&width=900 " src="${url}&crop=center&amp;height=550&amp;v=1660096592&amp;width=550" sizes="(min-width: 1200px) calc((1200px - 10rem) ), (min-width: 750px) calc((100vw - 11.5rem) ), calc(100vw - 4rem)" width="576" height="600.0" alt="${alt}"></div></div>`;
                 var thumbSlide =

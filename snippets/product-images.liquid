@@ -175,29 +175,33 @@
 <div class="product-main-slider">
   <div class="slider-wrap">
     <div class="image-gallery-main">
-      {%- for image in product.images -%}
+      {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+      {%- for image in imgs -%}
             {%- assign alt = image.alt | strip -%}
-           {%- if alt == vaSku -%}
             <div class="image-gallery-block">
               <div class="gallery-wrap" style="display:none ;">
-                <img class="photoswipe__image "
-                srcset="{% if image.width >= 400 %}{{ image | image_url: width: 400 }} 400w,{% endif %}
-                        {% if image.width >= 576 %}{{ image | image_url: width: 576 }} 576w,{% endif %}
-                        {% if image.width >= 847 %}{{ image | image_url: width: 847 }} 847w,{% endif %}
-                        {{ image | image_url: width: 900 }}"
-                src="{{ image | image_url: width: 550, height: 550 }}"
+                <img class="photoswipe__image lazyloaded"
+                srcset="{%- if image.width >= 550 -%}{{ image | image_url: width: 550 }} 550w,{%- endif -%}
+                {%- if image.width >= 1100 -%}{{ image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                {%- if image.width >= 1445 -%}{{ image | image_url: width: 1445 }} 1445w,{%- endif -%}
+                {%- if image.width >= 1680 -%}{{ image | image_url: width: 1680 }} 1680w,{%- endif -%}
+                {%- if image.width >= 2048 -%}{{ image | image_url: width: 2048 }} 2048w,{%- endif -%}
+                {%- if image.width >= 2200 -%}{{ image | image_url: width: 2200 }} 2200w,{%- endif -%}
+                {%- if image.width >= 2890 -%}{{ image | image_url: width: 2890 }} 2890w,{%- endif -%}
+                {%- if image.width >= 4096 -%}{{ image | image_url: width: 4096 }} 4096w,{%- endif -%}
+                {{ image | image_url }} {{ image.width }}w"
+                src="{{ image | image_url: width: 1445 }}"
                 {%- unless forloop.first -%}
                   loading="lazy"
                 {%- endunless -%}
-                sizes="(min-width: 1560px) calc((1560px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                width="576"
-                height="{{ 600 | divided_by: image.aspect_ratio }}"
+                sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+                width="1100"
+                height="{{ 1100 | divided_by: image.aspect_ratio | ceil }}"
                 alt="{{ image.alt | escape }}"
               >
               
               </div>
             </div>
-      	 {%- endif -%}
       {%- endfor -%}
     </div>
     
