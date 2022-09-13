@@ -3,7 +3,16 @@
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 -%}
 
+<style>
+  .slick-initialized .slick-slide .gallery-wrap{
+  display: none;
 
+}
+.slick-initialized .slick-slide.slick-current .gallery-wrap{
+  display: block!important;
+
+}
+</style>
 
 {%- unless product.empty? -%}
 
@@ -170,14 +179,17 @@
             {%- assign alt = image.alt | strip -%}
            {%- if alt == vaSku -%}
             <div class="image-gallery-block">
-              <div class="gallery-wrap">
-                <img class="photoswipe__image lazyloaded"
-                srcset="{% if image.width >= 288 %}{{ image | image_url: width: 288 }} 288w,{% endif %}
+              <div class="gallery-wrap" style="display:none ;">
+                <img class="photoswipe__image "
+                srcset="{% if image.width >= 400 %}{{ image | image_url: width: 400 }} 400w,{% endif %}
                         {% if image.width >= 576 %}{{ image | image_url: width: 576 }} 576w,{% endif %}
-                        {% if image.width >= 900 %}{{ image | image_url: width: 900 }} 900w,{% endif %}
-                        {{ image | image_url: width: 900  }} "
+                        {% if image.width >= 847 %}{{ image | image_url: width: 847 }} 847w,{% endif %}
+                        {{ image | image_url: width: 900 }}"
                 src="{{ image | image_url: width: 550, height: 550 }}"
-                sizes="(min-width: 1200px) calc((1200px - 10rem) ), (min-width: 750px) calc((100vw - 11.5rem) ), calc(100vw - 4rem)"
+                {%- unless forloop.first -%}
+                  loading="lazy"
+                {%- endunless -%}
+                sizes="(min-width: 1560px) calc((1560px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
                 width="576"
                 height="{{ 600 | divided_by: image.aspect_ratio }}"
                 alt="{{ image.alt | escape }}"
@@ -197,7 +209,7 @@
            {%- if alt == vaSku -%}
             <div class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
-              <img class="lazyloaded" src="{{ image | img_url:'100x' }}" width="100" height="100" alt="{{ image.alt | escape }}">
+              <img  src="{{ image | img_url:'100x' }}" width="100" height="100" alt="{{ image.alt | escape }}">
               </div>
             </div>
             {%- endif -%}
