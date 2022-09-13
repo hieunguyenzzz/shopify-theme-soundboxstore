@@ -179,7 +179,6 @@
       {%- for image in imgs -%}
             {%- assign alt = image.alt | strip -%}
             <div class="image-gallery-block">
-              {%- assign lazy = false -%}
               {%- unless forloop.first -%}
                 {%- assign lazy = 'lazy' -%}
               {%- endunless -%}
