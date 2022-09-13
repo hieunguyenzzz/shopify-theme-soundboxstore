@@ -995,104 +995,109 @@ lazySizesConfig.expFactor = 4;
         var images = [];
 
         var productHandle = document.getElementById("productHandle").value;
+        console.log("productHandle", window.product);
         var imgSet = variant.sku;
-
-        $.ajax({
-          type: "GET",
-          url: "/products/" + productHandle + "",
-          dataType: "json",
-          success: function (response) {
-            response.product.images.forEach(function (image) {
-              if (image.alt == imgSet) {
-                images.push({ url: image.src, alt: image.alt });
-              }
-            });
-
-            if (typeof images !== "undefined" && images.length > 0) {
-              // the array is defined and has at least one element
-              console.log(images);
-              $(".meeting-rooms-features .center-col img").attr(
-                "src",
-                images[1].url
-              );
-              mainImage.empty();
-              thumbImage.empty();
-
-              $(thumbImage).removeClass("slick-initialized slick-slider");
-              $(mainImage).removeClass("slick-initialized slick-slider");
-
-              var arr = [];
-
-              var addImagefirst = $.each(images, function (i, image) {
-                var alt = images[i].alt,
-                  url = images[i].url;
-
-                var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img class="photoswipe__image lazyloaded" srcset="${url}&width=288 288w,
-                      ${url}&width=576 576w,
-                      ${url}&width=900 " src="${url}&crop=center&amp;height=550&amp;v=1660096592&amp;width=550" sizes="(min-width: 1200px) calc((1200px - 10rem) ), (min-width: 750px) calc((100vw - 11.5rem) ), calc(100vw - 4rem)" width="576" height="600.0" alt="${alt}"></div></div>`;
-                var thumbSlide =
-                  "<div class='thumnail-gallery-block'><div class='thumbnail-wrap'><img class='lazyloaded' src='" +
-                  url +
-                  "&width=100" +
-                  "' alt='" +
-                  alt +
-                  "'></div></div>";
-
-                mainImage.append(MainSlide);
-                thumbImage.append(thumbSlide);
-              });
-              arr.push(addImagefirst);
-
-              $.when.apply($, arr).done(function () {
-                if (images.length > 4) {
-                  $(thumbImage).addClass("arrows_in_slider");
-                } else {
-                  $(thumbImage).removeClass("arrows_in_slider");
-                }
-
-                $(".product-main-slider .image-gallery-main").slick({
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  arrows: false,
-                  adaptiveHeight: true,
-                  fade: true,
-                  asNavFor:
-                    ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
-                });
-                $(
-                  ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
-                ).slick({
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                  asNavFor: ".product-main-slider .image-gallery-main",
-                  dots: false,
-                  infinite: true,
-                  adaptiveHeight: true,
-                  vertical: true,
-                  focusOnSelect: true,
-                  arrows: true,
-                  responsive: [
-                    {
-                      breakpoint: 861,
-                      settings: {
-                        vertical: false,
-                        infinite: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                      },
-                    },
-                  ],
-                });
-                console.log("current_slide_index => " + current_slide_index);
-                $(".product-main-slider .image-gallery-main").slick(
-                  "slickGoTo",
-                  current_slide_index
-                );
-              });
-              //                 window.dispatchEvent(new Event('resize'));
+        function handleUpdateGallery(media) {
+          media.forEach(function (image) {
+            if (image.alt == imgSet) {
+              images.push({ url: image.src, alt: image.alt });
             }
-          },
-        });
+          });
+
+          if (typeof images !== "undefined" && images.length > 0) {
+            // the array is defined and has at least one element
+            console.log(images);
+            $(".meeting-rooms-features .center-col img").attr(
+              "src",
+              images[1].url
+            );
+            mainImage.empty();
+            thumbImage.empty();
+
+            $(thumbImage).removeClass("slick-initialized slick-slider");
+            $(mainImage).removeClass("slick-initialized slick-slider");
+
+            var arr = [];
+
+            var addImagefirst = $.each(images, function (i, image) {
+              var alt = images[i].alt,
+                url = images[i].url;
+
+              var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img src="${url}&width=1946" alt="${alt}" srcset="${url}&width=246 246w, ${url}&width=493 493w, ${url}&width=600 600w, ${url}&width=713 713w, ${url}&width=823 823w, ${url}&width=990 990w, ${url}&width=1100 1100w, ${url}&width=1206 1206w, ${url}&width=1346 1346w, ${url}&width=1426 1426w, ${url}&width=1646 1646w, ${url}&width=1946 1946w" width="1946" height="1946" class="photoswipe__image" sizes="(min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)">
+                    </div></div>`;
+              var thumbSlide =
+                "<div class='thumnail-gallery-block'><div class='thumbnail-wrap'><img class='lazyloaded' src='" +
+                url +
+                "&width=100" +
+                "' alt='" +
+                alt +
+                "'></div></div>";
+
+              mainImage.append(MainSlide);
+              thumbImage.append(thumbSlide);
+            });
+            arr.push(addImagefirst);
+
+            $.when.apply($, arr).done(function () {
+              if (images.length > 4) {
+                $(thumbImage).addClass("arrows_in_slider");
+              } else {
+                $(thumbImage).removeClass("arrows_in_slider");
+              }
+
+              $(".product-main-slider .image-gallery-main").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                adaptiveHeight: true,
+                fade: true,
+                asNavFor:
+                  ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
+              });
+              $(
+                ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
+              ).slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: ".product-main-slider .image-gallery-main",
+                dots: false,
+                infinite: true,
+                adaptiveHeight: true,
+                vertical: true,
+                focusOnSelect: true,
+                arrows: true,
+                responsive: [
+                  {
+                    breakpoint: 861,
+                    settings: {
+                      vertical: false,
+                      infinite: true,
+                      slidesToShow: 4,
+                      slidesToScroll: 1,
+                    },
+                  },
+                ],
+              });
+              console.log("current_slide_index => " + current_slide_index);
+              $(".product-main-slider .image-gallery-main").slick(
+                "slickGoTo",
+                current_slide_index
+              );
+            });
+          }
+        }
+        if (window.product) {
+          handleUpdateGallery(window.product.media);
+        } else {
+          $.ajax({
+            type: "GET",
+            url: "/products/" + productHandle + "",
+            dataType: "json",
+            success: function (response) {
+              handleUpdateGallery(response.product.images);
+            },
+          });
+        }
       },
       _updateImages: function (variant) {
         var variantImage = variant.featured_image || {};

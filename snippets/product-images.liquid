@@ -2,7 +2,9 @@
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 -%}
-
+{%- capture sizes -%}
+  (min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)
+{%- endcapture -%}
 <style>
   .slick-initialized .slick-slide .gallery-wrap{
   display: none;
@@ -185,9 +187,7 @@
               <div class="gallery-wrap" {%- if lazy -%}
                 style="display:none ;"
               {%- endif -%}>
-              {%- capture sizes -%}
-                (min-width: 1640px) {{ 1640 | divided_by: 2 | round }}px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)
-              {%- endcapture -%}
+
     
               {{ image | image_url: width: 1946 | image_tag:
                 loading: lazy,
@@ -218,29 +218,8 @@
       </div>
     </div>
   </div>
-  
- 
 </div>
-
-
-
-
-
-
 <script>
-
-//   function thumbToFeatured(e,event){
-//     event.preventDefault();
-//   	var src = $(e).find("img").attr("data-srcset");
-//     console.log(src);
-//     $(".product-image-main").find(".appendSrc").attr("srcset",src);
-//     $(".product-image-main").find(".appendSrc").attr("data-photoswipe-src",src);
-    
-//   }
-  
-//   document.addEventListener('variant:change', function(evt) {
-//   console.log("custom event changed");
-// });
-
+  window.product={{ product | json }}
 </script>
 

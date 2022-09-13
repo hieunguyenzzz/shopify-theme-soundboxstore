@@ -40,12 +40,11 @@
       
       <div class="col center-col">
           <div class="col-wrap">
-            <img 
+            <img  style="width:100%"
                 srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
                         {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
                         {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
-                        {% if prod_img.width >= 1100 %}{{ prod_img | image_url: width: 1100 }} 1100w,{% endif %}
-                        {{ prod_img | image_url }} {{ prod_img.width }}w"
+                        {{ prod_img | image_url:  width: 700 }} "
                 src="{{ prod_img | image_url: width: 550, height: 550 }}"
                 sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
                 alt="{{ prod_img.alt | escape }}"
