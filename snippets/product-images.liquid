@@ -179,13 +179,17 @@
       {%- for image in imgs -%}
             {%- assign alt = image.alt | strip -%}
             <div class="image-gallery-block">
-              <div class="gallery-wrap" style="display:none ;">
+              {%- assign lazy = false -%}
+              {%- unless forloop.first -%}
+                {%- assign lazy = 'lazy' -%}
+              {%- endunless -%}
+              <div class="gallery-wrap" {%- if lazy -%}
+                style="display:none ;"
+              {%- endif -%}>
               {%- capture sizes -%}
                 (min-width: 1640px) {{ 1640 | divided_by: 2 | round }}px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)
               {%- endcapture -%}
-              {%- unless forloop.first -%}
-                {%- assign lazy = true -%}
-              {%- endunless -%}
+    
               {{ image | image_url: width: 1946 | image_tag:
                 loading: lazy,
                 class: 'photoswipe__image',
