@@ -1023,7 +1023,7 @@ lazySizesConfig.expFactor = 4;
               var alt = images[i].alt,
                 url = images[i].url;
 
-              var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img src="${url}&width=1946" alt="${alt}" srcset="${url}&width=246 246w, ${url}&width=493 493w, ${url}&width=600 600w, ${url}&width=713 713w, ${url}&width=823 823w, ${url}&width=990 990w, ${url}&width=1100 1100w, ${url}&width=1206 1206w, ${url}&width=1346 1346w, ${url}&width=1426 1426w, ${url}&width=1646 1646w, ${url}&width=1946 1946w" width="1946" height="1946" class="photoswipe__image" sizes="(min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)">
+              var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img src="${url}&width=1946" alt="${alt}" srcset="${url}&width=246 246w, ${url}&width=493 493w, ${url}&width=600 600w, ${url}&width=713 713w, ${url}&width=823 823w, ${url}&width=990 " width="1946" height="1946" class="photoswipe__image" sizes="(min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)">
                     </div></div>`;
               var thumbSlide =
                 "<div class='thumnail-gallery-block'><div class='thumbnail-wrap'><img class='lazyloaded' src='" +
