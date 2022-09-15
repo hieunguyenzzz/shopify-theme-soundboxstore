@@ -214,8 +214,10 @@ calc(100vw - 4rem)
   {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {% assign objectFit = 'cover' %}
   {%- unless imgs -%}
   {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+  {% assign objectFit = 'contain' %}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
   <div class="slider-wrap">
@@ -230,6 +232,7 @@ calc(100vw - 4rem)
           {{ image | image_url: width: 1946 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
+          object-fit: objectFit,
           sizes: sizes,
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
