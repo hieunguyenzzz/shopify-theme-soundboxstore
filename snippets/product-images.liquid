@@ -166,10 +166,12 @@ calc(100vw - 4rem)
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
-{%- assign imgs = current_variant.metafields.global.images.value -%}
-{%- unless imgs -%}
-{%- assign imgs = product.images | where: 'alt' , vaSku -%}
-{%- endunless -%}
+  {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {% assign style = 'object-fit:cover' %}
+  {%- unless imgs -%}
+    {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+    {% assign style = 'object-fit:contain' %}
+  {%- endunless -%}
 {%- assign slide_count = imgs.size -%}
 <div class="product-main-slider">
   <div class="slider-wrap">
@@ -181,10 +183,11 @@ calc(100vw - 4rem)
         {%- assign lazy = 'lazy' -%}
         {%- endunless -%}
         <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-          {{ image | image_url: width: 1946 | image_tag:
+          {{ image | image_url: width: 990 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
           sizes: sizes,
+          style: style,
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
