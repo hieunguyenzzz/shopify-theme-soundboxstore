@@ -28,17 +28,27 @@
       	{%- capture images_for_currentVar -%}
           {%- for image in product.images -%}
            {%- if image.alt == current_variant.sku -%}
-            {{ image | img_url:'master' }}
-            {%- if forloop.last == false -%}::{%- endif -%}
+            {%- if prod_img -%}
+            {%- assign prod_img = image -%}
+            {% break %}
+            {%- else -%}
+              {%- assign prod_img = image -%}
+            {%- endif -%}
       		{%- endif -%}
           {%- endfor -%}
         {%- endcapture -%}
       
-      {% assign prod_img_array = images_for_currentVar | split: '::'%}
       <div class="col center-col">
           <div class="col-wrap">
-            <img src="{{prod_img_array[1] }}" alt="product_features_image"/>
-            
+            <img  style="width:100%"
+                srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
+                        {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
+                        {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
+                        {{ prod_img | image_url:  width: 700 }} "
+                src="{{ prod_img | image_url: width: 550, height: 550 }}"
+                sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                alt="{{ prod_img.alt | escape }}"
+              >
             
            {% for block in section.blocks %}
             {% if block.type == "hotspot_point" %}

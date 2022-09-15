@@ -19,8 +19,8 @@
                {% comment %}
               {%- if block.settings.image != blank -%}
               {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              <img class="logo-bar__image lazyload"
-                   data-src="{{ img_url }}"
+              <img loading="lazy" class="logo-bar__image lazyload"
+                   data-src="{{ img_url | img_url: '240x' }}"
                    data-widths="[360, 540, 720, 1020]"
                    data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                    data-sizes="auto"
@@ -30,7 +30,7 @@
               {%- endif -%}
               {% endcomment %}
               <div class="image-wrap">
-                <img src="{{ block.settings.image | img_url: '240x' }}" alt="{{ block.settings.image.alt }}">
+                <img loading="lazy" src="{{ block.settings.image | img_url: '240x' }}" alt="{{ block.settings.image.alt }}">
               </div>
               {%- if block.settings.link != blank -%}
             </a>
