@@ -167,10 +167,8 @@ calc(100vw - 4rem)
 {%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
-  {% assign style = 'object-fit:cover' %}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
-    {% assign style = 'object-fit:contain' %}
   {%- endunless -%}
 {%- assign slide_count = imgs.size -%}
 <div class="product-main-slider">
@@ -183,6 +181,7 @@ calc(100vw - 4rem)
         {%- assign lazy = 'lazy' -%}
         {%- endunless -%}
         <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+        {% if current_variant.metafields.global.images.value %}
           {{ image | image_url: width: 713, height:830 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
@@ -191,6 +190,15 @@ calc(100vw - 4rem)
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
+          {% else %}
+          {{ image | image_url: width: 713 | image_tag:
+          loading: lazy,
+          class: 'photoswipe__image',
+          sizes: sizes,
+          widths: '246, 493, 600, 713, 823, 990',
+          alt: image.alt | escape
+          }}
+        {% endif %}
         </div>
       </div>
       {%- endfor -%}
@@ -217,10 +225,8 @@ calc(100vw - 4rem)
   {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
-  {% assign style = 'object-fit:cover' %}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
-    {% assign style = 'object-fit:contain' %}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
   <div class="slider-wrap">
@@ -232,14 +238,24 @@ calc(100vw - 4rem)
         {%- assign lazy = 'lazy' -%}
         {%- endunless -%}
         <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+          {% if current_variant.metafields.global.images.value %}
+          {{ image | image_url: width: 713, height:830 | image_tag:
+          loading: lazy,
+          class: 'photoswipe__image',
+          sizes: sizes,
+          crop:'center',
+          widths: '246, 493, 600, 713, 823, 990',
+          alt: image.alt | escape
+          }}
+          {% else %}
           {{ image | image_url: width: 713 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
-          style: style,
           sizes: sizes,
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
+        {% endif %}
         </div>
       </div>
       {%- endfor -%}
