@@ -216,8 +216,8 @@ calc(100vw - 4rem)
   {%- assign imgs = current_variant.metafields.global.images.value -%}
   {% assign style = 'object-fit:cover' %}
   {%- unless imgs -%}
-  {%- assign imgs = product.images | where: 'alt' , vaSku -%}
-  {% assign style = 'object-fit:contain' %}
+    {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+    {% assign style = 'object-fit:contain' %}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
   <div class="slider-wrap">
