@@ -14,12 +14,7 @@ calc(100vw - 4rem)
   .slick-initialized .slick-slide.slick-current .gallery-wrap {
     display: block !important;
   }
-  .image-gallery-block .gallery-wrap:after{
-    padding-bottom:100%
-  }
-  .image-gallery-block .gallery-wrap img{
-    object-fit:cover
-  }
+
 </style>
 
 {%- unless product.empty? -%}
@@ -187,16 +182,7 @@ calc(100vw - 4rem)
         {%- assign lazy = 'lazy' -%}
         {%- endunless -%}
         <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-        {% if current_variant.metafields.global.images.value %}
-          {{ image | image_url: width: 713, height:830 | image_tag:
-          loading: lazy,
-          class: 'photoswipe__image',
-          sizes: sizes,
-          crop:'center',
-          widths: '246, 493, 600, 713, 823, 990',
-          alt: image.alt | escape
-          }}
-          {% else %}
+
           {{ image | image_url: width: 713 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
@@ -204,7 +190,6 @@ calc(100vw - 4rem)
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
-        {% endif %}
         </div>
       </div>
       {%- endfor -%}
@@ -244,16 +229,6 @@ calc(100vw - 4rem)
         {%- assign lazy = 'lazy' -%}
         {%- endunless -%}
         <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-          {% if current_variant.metafields.global.images.value %}
-          {{ image | image_url: width: 713, height:830 | image_tag:
-          loading: lazy,
-          class: 'photoswipe__image',
-          sizes: sizes,
-          crop:'center',
-          widths: '246, 493, 600, 713, 823, 990',
-          alt: image.alt | escape
-          }}
-          {% else %}
           {{ image | image_url: width: 713 | image_tag:
           loading: lazy,
           class: 'photoswipe__image',
@@ -261,7 +236,6 @@ calc(100vw - 4rem)
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
-        {% endif %}
         </div>
       </div>
       {%- endfor -%}
