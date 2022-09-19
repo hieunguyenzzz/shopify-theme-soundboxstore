@@ -26,10 +26,17 @@
  
       {%- assign current_variant = product.selected_or_first_available_variant -%}
       	{%- assign imgs = current_variant.metafields.global.images.value -%}
-  {%- unless imgs -%}
-    {%- assign imgs = product.images | where: 'alt' , vaSku -%}
-  {%- endunless -%}
-        {% assign prod_img = imgs[1] %}
+        {%- unless imgs -%}
+          {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+        {%- endunless -%}
+        {%- for image in imgs -%}
+            {%- if prod_img -%}
+            {%- assign prod_img = image -%}
+            {% break %}
+            {%- else -%}
+              {%- assign prod_img = image -%}
+            {%- endif -%}
+          {%- endfor -%}
       <div class="col center-col">
           <div class="col-wrap">
             <img  style="width:100%"
