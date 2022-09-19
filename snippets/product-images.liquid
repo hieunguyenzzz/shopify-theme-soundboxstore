@@ -6,6 +6,12 @@ assign first_3d_model = product.media | where: 'media_type', 'model' | first
 (min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2),
 calc(100vw - 4rem)
 {%- endcapture -%}
+{%- capture new_label -%}
+{% for c in product.collections %}
+{% if c.handle == "news" %}
+  <img loading="lazy" width="150" height="150" src={{ c.featured_image | img_url :'compact' }} style="position: absolute;top:0;left:0;width: 33%;max-width: 150px;height: unset;"/>
+{% endif %}
+{% endfor %}{%- endcapture -%}
 <style>
   .slick-initialized .slick-slide .gallery-wrap {
     display: none;
@@ -190,9 +196,11 @@ calc(100vw - 4rem)
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
+          {{new_label}}
         </div>
       </div>
       {%- endfor -%}
+   
     </div>
 
     <div class="thumbnail-gallery">
@@ -210,6 +218,7 @@ calc(100vw - 4rem)
     </div>
   </div>
 </div>
+
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
@@ -236,11 +245,14 @@ calc(100vw - 4rem)
           widths: '246, 493, 600, 713, 823, 990',
           alt: image.alt | escape
           }}
+          {{new_label}}
         </div>
+    
       </div>
       {%- endfor -%}
+    
     </div>
-
+ 
     <div class="thumbnail-gallery">
       <div class="thumbnail-slider">
         <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
