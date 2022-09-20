@@ -8,8 +8,16 @@ calc(100vw - 4rem)
 {%- endcapture -%}
 {%- capture new_label -%}
 {% for c in product.collections %}
-{% if c.handle == "news" %}
-  <img loading="lazy" width="150" height="150" src={{ c.featured_image | img_url :'compact' }} style="position: absolute;top:0;left:0;width: 33%;max-width: 150px;height: unset;"/>
+{% if c.handle == "new" %}
+<div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
+  <g>
+    <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
+    <text fill="#fff" stroke-width="1px" font-size="60px" x="100" y="100" text-anchor="middle" dominant-baseline="middle">
+      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">NEW</textPath>
+    </text>
+  </g>
+</svg></div>
 {% endif %}
 {% endfor %}{%- endcapture -%}
 <style>
