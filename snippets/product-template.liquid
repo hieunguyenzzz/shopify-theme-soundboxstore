@@ -347,7 +347,9 @@
                               endif
                             endif
                           -%}
-
+                            {%- if forloop.first -%}
+                              {%- assign assign is_color = true  -%}
+                            {%- endif -%}
                           {%- if block.settings.picker_type == 'button' -%}
                             {%-
                               render 'variant-button',
