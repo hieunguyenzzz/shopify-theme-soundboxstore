@@ -16,7 +16,7 @@
         {% if section.settings.productid != blank %}
         <div class="price-wrap">
           {% if section.settings.startingAt != blank %}<h5>{{ section.settings.startingAt }}</h5>{% endif %}
-          <p class="price title-font" id = "bannerPrice">{{ all_products[section.settings.productid].price | money }}</p>
+          <p class="price title-font" id = "bannerPrice">{{ all_products[section.settings.productid].price | money_without_trailing_zeros}}</p>
         </div>
         {% endif %}
         {% if section.settings.btn-txt != blank %}
