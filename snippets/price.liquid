@@ -10,4 +10,4 @@
 {%- endunless -%}
 
 <span aria-hidden="true" class="price-text"><span class="text-total hide">Total</span><span>{{ formatted_price }}</span></span>
-<span class="visually-hidden">{{ price | money }}</span>
+<span class="visually-hidden">{{ price | money_without_trailing_zeros }}</span>

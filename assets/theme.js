@@ -1910,6 +1910,8 @@ lazySizesConfig.expFactor = 4;
         return {
           items: doc.querySelector(".cart__items"),
           discounts: doc.querySelector(".cart__discounts"),
+          subtotal: doc.querySelector("[data-subtotal]"),
+          subtotalNew: doc.querySelector("[data-subtotal-new]"),
         };
       },
 
@@ -1921,10 +1923,9 @@ lazySizesConfig.expFactor = 4;
         var markup = this._parseProductHTML(html);
         var items = markup.items;
         var count = parseInt(items.dataset.count);
-        var subtotal = items.dataset.cartSubtotal;
-        var subtotalNew = items.dataset.cartSubtotal;
+        var subtotal = markup.subtotal;
+        var subtotalNew = markup.subtotalNew;
         var savings = items.dataset.cartSavings;
-
         this.updateCartDiscounts(markup.discounts);
         this.updateSavings(savings);
 
@@ -1941,15 +1942,11 @@ lazySizesConfig.expFactor = 4;
         this.products.append(items);
 
         // Update subtotal
-        this.subtotal.innerHTML = theme.Currency.formatMoney(
-          subtotal,
-          theme.settings.moneyFormat
-        );
+        this.subtotal.innerHTML = "";
+        this.subtotal.append(subtotal);
         if ($("body").hasClass("template-cart")) {
-          this.subtotalNew.innerHTML = theme.Currency.formatMoney(
-            subtotalNew,
-            theme.settings.moneyFormat
-          );
+          this.subtotalNew.innerHTML = "";
+          this.subtotalNew.append(subtotalNew);
         }
         this.reInit();
 
