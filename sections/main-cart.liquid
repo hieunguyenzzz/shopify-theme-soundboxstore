@@ -80,7 +80,7 @@
             <div class="subtotal-text">
               <span>{{ 'cart.general.subtotal' | t }}</span>
               <span data-subtotal-new>
-                {{- cart.original_total_price | money -}}
+                {{- cart.original_total_price | money_without_trailing_zeros -}}
               </span>
             </div>
 
@@ -102,7 +102,7 @@
 
             <div class="data-subtotal-block data-total">
               <span>Total</span>
-              <span data-subtotal>{{ cart.total_price | money }}</span>
+              <span data-subtotal>{{ cart.total_price | money_without_trailing_zeros }}</span>
             </div>
           </div>
 
@@ -111,7 +111,7 @@
               <div class="cart__discounts text-right">
                 <div>
                   {% for cart_discount in cart.cart_level_discount_applications %}
-                    {%- assign savings = cart_discount.total_allocated_amount | money -%}
+                    {%- assign savings = cart_discount.total_allocated_amount | money_without_trailing_zeros -%}
                     <div class="cart__discount">
                       {{ 'cart.general.savings_html' | t: saved_amount: savings }}
                       ({{ cart_discount.title }})
