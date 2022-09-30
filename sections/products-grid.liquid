@@ -147,8 +147,19 @@
 {% endschema %}
 
 {% stylesheet %}
-  .product-grid{
-  display:grid
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  justify-content: center;
+}
+.product-grid .product-grid-item{
+  text-align: center;
+}
+.product-grid .product-grid-item h3{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
 }
 {% endstylesheet %}
 
