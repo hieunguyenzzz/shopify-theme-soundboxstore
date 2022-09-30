@@ -99,10 +99,11 @@
         </div>
       </a>
       <h3>{{ product.title }}</h3>
+          {% assign url = "/pages/" | append: product.handle %}
       <a
           type="button"
           target="_blank"
-          href="{{block.settings.button_url}}"
+          href="{{block.settings.button_url |default:url}}"
           class="btn btn--secondary left_button"
         >
           {{ block.settings.button_text }}
