@@ -8,8 +8,16 @@ calc(100vw - 4rem)
 {%- endcapture -%}
 {%- capture new_label -%}
 {% for c in product.collections %}
-{% if c.handle == "news" %}
-  <img loading="lazy" width="150" height="150" src={{ c.featured_image | img_url :'compact' }} style="position: absolute;top:0;left:0;width: 33%;max-width: 150px;height: unset;"/>
+{% if c.handle == "new" %}
+<div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
+  <g>
+    <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
+    <text fill="#fff" stroke-width="1px" font-size="60px" x="100" y="100" text-anchor="middle" dominant-baseline="middle">
+      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">NEW</textPath>
+    </text>
+  </g>
+</svg></div>
 {% endif %}
 {% endfor %}{%- endcapture -%}
 <style>
@@ -216,9 +224,40 @@ calc(100vw - 4rem)
         </div>
       </div>
     </div>
+     
   </div>
+ 
 </div>
-
+ {% assign url = "/pages/" | append: product.handle %}
+     <style>
+      .btn-360{
+  padding: 0.4em 1.4em;
+  display: flex;white-space: nowrap;
+  font-size: min(1.2vw,1rem);
+  border: 1px solid #545454;
+  gap: 0.4em;
+  border-radius: 99em;
+      transform: translateX(calc(-50% + 40px));
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    max-width: unset;
+        
+}
+.btn-360 img{
+  width: 2em;
+  max-width: unset;
+}
+     </style>
+      <a
+          type="button"
+          target="_blank"
+          href="{{url}}"
+          class="btn-360"
+        >
+          Step Inside
+            <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
+        </a>
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
