@@ -1,4 +1,4 @@
-{%- assign formatted_price = price | money -%}
+{%- assign formatted_price = price | money_without_trailing_zeros -%}
 {%- unless shop.money_format contains 'money' or shop.money_format contains '.' -%}
   {%- if settings.superscript_decimals -%}
     {%- if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}' -%}
@@ -10,4 +10,4 @@
 {%- endunless -%}
 
 <span aria-hidden="true" class="price-text"><span class="text-total hide">Total</span><span>{{ formatted_price }}</span></span>
-<span class="visually-hidden">{{ price | money }}</span>
+<span class="visually-hidden">{{ price | money_without_trailing_zeros }}</span>

@@ -153,7 +153,7 @@
             </span>
           {%- endcapture -%}
           <span class="product__unit-price">
-            {{- product.unit_price | money }}/{{ unit_price_base_unit -}}
+            {{- product.unit_price | money_without_trailing_zeros }}/{{ unit_price_base_unit -}}
           </span>
         {%- endif -%}
 
@@ -161,7 +161,7 @@
           {%- for discount_allocation in product.line_level_discount_allocations -%}
             <small class="cart__discount">
               {{- discount_allocation.discount_application.title }} (-
-              {{- discount_allocation.amount | money -}}
+              {{- discount_allocation.amount | money_without_trailing_zeros -}}
               )</small
             >
           {%- endfor -%}

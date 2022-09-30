@@ -7,7 +7,7 @@
       <div class="col left-col">
         <div class="col-wrap">
           <h5 id="pageTitle">{{ all_products[section.settings.productId].title }}</h5>
-          <p class="price desktop-only" id = "pagePrice">{{ all_products[section.settings.productId].price | money }}</p>
+          <p class="price desktop-only" id = "pagePrice">{{ all_products[section.settings.productId].price | money_without_trailing_zeros}}</p>
         </div>
       </div>
       {% endif %}

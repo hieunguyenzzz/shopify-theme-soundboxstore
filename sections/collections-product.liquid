@@ -32,8 +32,8 @@
         </div>
         <div class="product-details">
           <h4><a href="{{ all_products[section.settings[productId]].url }}">{{ all_products[section.settings[productId]].title }}</a></h4>
-<!--           <p class="price"> {{ 'strings.others.starting_from'|t }} {{ all_products[section.settings[productId]].price | money }}</p> -->
-          <p class="price"> <span class="price-title">{{ 'strings.others.starting_from'|t }} </span>{%- if product.price_varies -%} {{ product.price_min | money }} {%- else -%} {{ product.price | money }} {%- endif -%}</p>
+<!--           <p class="price"> {{ 'strings.others.starting_from'|t }} {{ all_products[section.settings[productId]].price | money_without_trailing_zeros}}</p> -->
+          <p class="price"> <span class="price-title">{{ 'strings.others.starting_from'|t }} </span>{%- if product.price_varies -%} {{ product.price_min | money_without_trailing_zeros}} {%- else -%} {{ product.price | money_without_trailing_zeros}} {%- endif -%}</p>
         </div>
       </div>
     </div>
