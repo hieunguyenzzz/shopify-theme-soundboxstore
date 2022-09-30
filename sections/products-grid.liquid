@@ -1,5 +1,5 @@
 <div class="product-grid">
-{% for block in section.blocks %}
+{% for block in block.blocks %}
     <div class="product-grid-item">
       {%- assign product  = block.settings.product -%}
       {%- liquid
@@ -98,26 +98,15 @@
           {%- endif -%}
         </div>
       </a>
-      <h3>{{ section.settings.left_content }}</h3>
-      {%- if section.settings.left_button_file != blank -%}
-        <a
-          id="{{section.settings.left_button_id}}"
+      <h3>{{ product.title }}</h3>
+      <a
           type="button"
           target="_blank"
-          href="{{section.settings.left_button_file}}"
+          href="{{block.settings.url}}"
           class="btn btn--secondary left_button"
         >
-          {{ section.settings.left_button }}
+          {{ block.settings.button_text }}
         </a>
-      {%- else -%}
-        <button
-          id="{{section.settings.left_button_id}}"
-          type="button"
-          class="btn btn--secondary left_button"
-        >
-          {{ section.settings.left_button }}
-        </button>
-      {%- endif -%}
     </div>
     </div>
 {% endfor %}
@@ -137,6 +126,11 @@
            "label": "Product"
          },
          {
+           "type": "text",
+           "id": "button_text",
+           "label": "Button text"
+         },
+         {
            "type": "url",
            "id": "url",
            "label": "360 url"
@@ -152,7 +146,7 @@
   }
 {% endschema %}
 .product-grid{
-display:grid
+  display:grid
 }
 {% stylesheet %}
   
