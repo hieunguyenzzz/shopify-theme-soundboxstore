@@ -226,17 +226,23 @@ calc(100vw - 4rem)
     </div>
      {% assign url = "/pages/" | append: product.handle %}
      <style>
-       .btn-360{
-        padding: 0.4em 1.4em;
-        display: flex;white-space: nowrap;
-        font-size: min(2vw,1rem);
-        border: 1px solid #545454;
-        gap: 0.4em;
-        border-radius: 99em;
-      }
-      .btn-360 img{
-        width: 2em;
-      }
+      .btn-360{
+  padding: 0.4em 1.4em;
+  display: flex;white-space: nowrap;
+  font-size: min(1.2vw,1rem);
+  border: 1px solid #545454;
+  gap: 0.4em;
+  border-radius: 99em;
+      transform: translateX(calc(-50% + 40px));
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    max-width: unset;
+}
+.btn-360 img{
+  width: 2em;
+  max-width: unset;
+}
      </style>
       <a
           type="button"
