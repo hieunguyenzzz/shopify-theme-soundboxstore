@@ -1,5 +1,5 @@
 <style>
-.product-grid{
+.product-grid-{{ section.id }}{
   display: grid;
   grid-template-columns: repeat(auto-fill, 350px);
   justify-content: center;
@@ -23,7 +23,7 @@
     width:30px
   }
 </style>
-<div class="product-grid">
+<div class="product-grid-{{ section.id }}">
 {% for block in section.blocks %}
     <div class="product-grid-item">
       {%- assign product  = block.settings.product -%}
