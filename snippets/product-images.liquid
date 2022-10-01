@@ -1,4 +1,4 @@
-{{ product.metafields.custom.page360.value.url }}
+
 {%- liquid
 assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
 assign first_3d_model = product.media | where: 'media_type', 'model' | first
@@ -229,7 +229,7 @@ calc(100vw - 4rem)
   </div>
  
 </div>
-<!--  {% assign url = "/pages/" | append: product.handle %}
+{% assign url = product.metafields.custom.page360.value.url %}
      <style>
       .btn-360{
   padding: 0.4em 1.4em;
@@ -258,7 +258,7 @@ calc(100vw - 4rem)
         >
           Step Inside
             <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
-        </a> -->
+      </a>
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
