@@ -308,7 +308,7 @@ calc(100vw - 4rem)
   </div>
 </template>
 {%- endfor -%}
-   {{ product.metafields.custom.page360.value }}
+   {{ product.metafields.custom.page360.value.url }}
 <script>
   window.product = {{ product | json }}
 </script>
