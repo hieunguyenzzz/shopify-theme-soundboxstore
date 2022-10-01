@@ -228,8 +228,7 @@ calc(100vw - 4rem)
   </div>
  
 </div>
-{% assign url = product.metafields.custom.360page.value.url %}
-<!-- {% if url %}
+<!--  {% assign url = "/pages/" | append: product.handle %}
      <style>
       .btn-360{
   padding: 0.4em 1.4em;
@@ -258,8 +257,7 @@ calc(100vw - 4rem)
         >
           Step Inside
             <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
-        </a>
-  {% endif %} -->
+        </a> -->
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
