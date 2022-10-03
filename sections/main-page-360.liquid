@@ -153,6 +153,7 @@
   top: 0;
   bottom: 0;
   flex-direction: column;
+  backdrop-filter: blur(10px);
 }
 .see-all-wrap>div{
 
@@ -318,8 +319,7 @@
 </div>
 <input type="checkbox" id="open-see-all" hidden />
 <div class="see-all-wrap">
-  <label for="open-see-all" style="    flex: 1;
-    backdrop-filter: blur(8px);"></label>
+  <label for="open-see-all" style="    flex: 1;"></label>
   <div style="background-color: ;white">
     <div class="seel-all-header">
       <div></div>
@@ -329,12 +329,12 @@
    <div class="seel-all-details">
     <div class="seel-all-details-grid">
       {% for product in collections['all'].products %}
-        {%- if product.metafields.custom.embed360url.value -%}
+        {%- if product.metafields.custom.page360.value.url -%}
           <div class="col">
             <div class="col-wrap">
               <div class="col-image">
                 <a
-                  href="{{product.metafields.custom.embed360url.value}}"
+                  href="{{product.metafields.custom.page360.value.url}}"
                   class="btnScroll"
                   data-id=""
                   {{ product.id }}
@@ -345,7 +345,7 @@
               </div>
               <h6>
                 <a
-                  href="{{product.metafields.custom.embed360url.value}}"
+                  href="{{product.metafields.custom.page360.value.url}}"
                   class="btnScroll"
                   data-id=""
                   {{ product.id }}
