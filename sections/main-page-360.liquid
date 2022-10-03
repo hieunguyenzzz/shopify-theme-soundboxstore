@@ -1,0 +1,372 @@
+{% for product in collections['all'].products %}
+  {%- if product.metafields.custom.page360.value.url contains page.handle -%}
+    {%- assign mainProduct = product -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign embed360Url = mainProduct.metafields.custom.embed360url.value -%}
+
+<style>
+  .widget-visible iframe {
+    bottom: 100px !important;
+  }
+  .wrap {
+    background: white;
+    display: flex;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2000000001;
+    flex-direction: column;
+  }
+  .iframe-wrap {
+    flex: 1;
+    position: relative;
+  }
+  .iframe-wrap iframe {
+    border: none;
+    min-height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+  }
+  .close-btn {font-size: 24px;
+    left: 32px;
+    left: min(2vw,32px);  padding: 0;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top:min(2vw,32px);
+    border-radius: 99em;
+    background: white;
+    border: 1px solid #cecece;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  #uvj3f2e70rcg1664779754946.widget-visible{
+    visibility: hidden!important;
+    z-index: -1!important;
+  }
+
+  
+.bottomBar {
+  background: white;
+  z-index: 1;
+   border-top:1px solid #cecece;
+   max-height: 100vh ;
+   overflow: auto;
+ }
+ .bottomBar-header{
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-align-items: center;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 22px min(2vw,32px);
+ }
+ .open-btn{font-size: 24px;
+   width:40px;height:40px;
+   padding: 0;
+   display:flex;justify-content:center;
+   border-radius:99em;background:white;border:1px solid #cecece;
+   display:flex;justify-content:center;align-items:center;cursor:pointer;
+ }
+ .more-btn{ 
+   min-width:133px;height:40px;
+   display:flex;justify-content:center;
+   border-radius:99em;background:white;border:1px solid #cecece;
+   display:flex;justify-content:center;align-items:center;cursor:pointer;
+ }
+ .btn:hover{
+    opacity:0.7
+ }
+ #open-details:checked ~ .wrap .open-btn{
+  transform: rotate(180deg);
+ }
+ .bottomBar-details{
+  display: none;
+  overflow: hidden;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-align-items: center;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 22px min(2vw,32px);
+ }
+ #open-details:checked ~ .wrap .bottomBar-details{
+  display: flex;
+ }
+.bottomBar-details-center{
+  display: flex ;
+  flex-wrap:wrap ;
+  gap:1em;
+  max-width: 600px;
+  font-size: min(0.9em,4.4vw);
+}
+.grid-product__price--current{
+  font-size:1.8em ;
+}
+.see-all-wrap{
+  display: none;
+  z-index: 2000000002;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 100vh ;
+  overflow: auto;
+  min-height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  flex-direction: column;
+}
+.see-all-wrap>div{
+
+}
+.seel-all-header{
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-align-items: center;
+  align-items: center;
+  border-bottom: 1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 22px min(2vw,32px);
+  position: sticky  ;top:0;
+  background: white;
+ }
+ .seel-all-details{
+  background-color: white;
+  padding: 22px min(2vw,32px);
+ }
+ #open-see-all:checked ~ .see-all-wrap{
+  display: flex;
+ }
+ .seel-all-details-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 140px);
+  justify-content: center;
+  gap: min(3vw,2em) min(5vw,4em);
+  text-align: center;
+  font-weight: bold;
+ }
+ label{
+  margin: 0;
+ }
+ .page-360-{{section.id}} *{
+  transition: all ;
+ }
+</style>
+<div id="page-360-{{section.id}}">
+<input type="checkbox" id="open-details" hidden />
+
+<div class="wrap">
+  <div class="iframe-wrap">
+    <iframe allowfullscreen="true" width="100%" height="500px" src="{{embed360Url}}"></iframe>
+  </div>
+  <div class="bottomBar" >
+    <div class="bottomBar-header">
+      <label for="open-details" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
+      <div class="bottomBar-header-center" style="margin: 0;" class="h3">{{mainProduct.title}}</div>
+      <label for="open-see-all" class="more-btn btn btn--secondary" >See All</label>
+    </div>
+    <div class="bottomBar-details">
+      <div></div>
+      <div class="bottomBar-details-center">
+       {%- assign product = mainProduct -%}
+       {%- liquid
+        assign on_sale = false
+        if product.compare_at_price > product.price
+          assign on_sale = true
+        endif
+      
+       
+      -%}
+        {{ mainProduct.featured_image | image_url: width: 180 | image_tag:
+          loading: 'lazy',
+          alt: mainProduct.featured_image.alt | escape
+          }}
+          <div style="flex:1;min-width: ;300px">
+          <div >{{mainProduct.description}}</div>
+          <div class="grid-product__price" style="margin-top: 1em;">
+            <div class="price-title" style="font-size: 0.8em;">{{ 'strings.others.starting_from'|t }}</div>
+            {%- if product.price_varies -%}
+              <span class="grid-product__price--current">
+                {%- render 'price-varies', price: product.price_min -%}
+              </span>
+            {%- else -%}
+              {%- if on_sale -%}
+                <span class="visually-hidden">
+                  {{- 'products.general.sale_price' | t -}}
+                </span>
+              {%- endif -%}
+              <span class="grid-product__price--current">
+                {%- render 'price' with product.price -%}
+              </span>
+            {%- endif -%}
+            {%- if on_sale -%}
+              <span class="visually-hidden">
+                {{- 'products.general.regular_price' | t -}}
+              </span>
+              <span class="grid-product__price--original">
+                {%- render 'price' with product.compare_at_price -%}
+              </span>
+
+              {%- if settings.product_save_amount -%}
+                {%- if settings.product_save_type == 'dollar' -%}
+                  {%- capture saved_amount -%}
+                    {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
+                  {%- endcapture -%}
+                {%- else -%}
+                  {%- capture saved_amount -%}
+                    {{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -}}
+                    %
+                  {%- endcapture -%}
+                {%- endif -%}
+                <span class="grid-product__price--savings">
+                  {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                </span>
+              {%- endif -%}
+            {%- endif -%}
+
+            {%- assign product_variant = product.selected_or_first_available_variant -%}
+            {%- if product_variant.unit_price_measurement -%}
+              <div class="product__unit-price">
+                {%- capture unit_price_base_unit -%}
+                  {%- if product_variant.unit_price_measurement -%}
+                    {%- if product_variant.unit_price_measurement.reference_value != 1 -%}
+                      {{ product_variant.unit_price_measurement.reference_value }}
+                    {%- endif -%}
+                    {{ product_variant.unit_price_measurement.reference_unit }}
+                  {%- endif -%}
+                {%- endcapture -%}
+
+                {{ product_variant.unit_price | money_without_trailing_zeros}}/
+                {{- unit_price_base_unit }}
+              </div>
+            {%- endif -%}
+            <span class="vat_text">(Ex. VAT)</span>
+          </div>
+          <div style="margin-top:1em;display:flex;gap:1em" class="collection-btn-group">
+            <a style="flex:1" href="{{ product.url }}" class="btn buy-btn ">
+              {{- 'strings.others.explore_now' | t -}}
+            </a>
+            <button style="flex:1" type="button" class="btn btn--secondary specBtn">
+              {{ 'strings.others.get_specs_sheet' | t }}
+            </button>
+            {% comment %}
+              <a href="{% if product.metafields.my_fields.explore_page_url != blank %}{{ product.metafields.my_fields.explore_page_url }}{% else %}#{% endif %}" class="btn btn--secondary exp-btn">Explore Now</a>
+            {% endcomment %}
+          </div>
+        </div>
+          
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <button onclick="history.back()" class="close-btn btn btn--secondary btn--circle">
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg">
+      <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+    </svg>
+  </button>
+</div>
+<input type="checkbox" id="open-see-all" hidden />
+<div class="see-all-wrap">
+  <label for="open-see-all" style="    flex: 1;
+    backdrop-filter: blur(8px);"></label>
+  <div style="background-color: ;white">
+    <div class="seel-all-header">
+      <div></div>
+       <div class="seel-all-header-center" style="margin: 0;" class="h3">Select a product</div>
+       <label for="open-see-all" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
+   </div>
+   <div class="seel-all-details">
+    <div class="seel-all-details-grid">
+      {% for product in collections['all'].products %}
+        {%- if product.metafields.custom.embed360url.value -%}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="col-image">
+                <a
+                  href="{{product.metafields.custom.embed360url.value}}"
+                  class="btnScroll"
+                  data-id=""
+                  {{ product.id }}
+                  ><img
+                    src="{{ product.featured_image | img_url:'400x' }}"
+                    alt="phone booths"
+                ></a>
+              </div>
+              <h6>
+                <a
+                  href="{{product.metafields.custom.embed360url.value}}"
+                  class="btnScroll"
+                  data-id=""
+                  {{ product.id }}
+                >
+                  {{- product.title -}}
+                </a>
+              </h6>
+            </div>
+          </div>
+        {%- endif -%}
+      
+      {% endfor %}
+    </div>
+   </div>  
+  </div>
+  
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Page 360",
+    "tag": "section"
+  }
+{% endschema %}
