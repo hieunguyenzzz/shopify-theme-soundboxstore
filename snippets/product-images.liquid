@@ -229,36 +229,43 @@ calc(100vw - 4rem)
   </div>
  
 </div>
-<!-- {% assign url = product.metafields.custom.page360.value.url %}
-     <style>
-      .btn-360{
-  padding: 0.4em 1.4em;
-  display: flex;white-space: nowrap;
-  font-size: min(1.2vw,1rem);
-  border: 1px solid #545454;
-  gap: 0.4em;
-  border-radius: 99em;
-      transform: translateX(calc(-50% + 40px));
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    max-width: unset;
-        
+{% assign page360url = product.metafields.custom.page360.value.url %}
+{%- if page360url -%}
+  <style>
+    .btn-360{
+padding: 0.4em 1.4em;
+display: flex;white-space: nowrap;
+font-size: min(1.2vw,1rem);
+border: 1px solid #545454;
+gap: 0.4em;
+border-radius: 99em;
+    transform: translateX(calc(-50% + 40px));
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  max-width: unset;
+      
+}
+.btn-360:hover{
+opacity: 0.7;
+
 }
 .btn-360 img{
-  width: 2em;
-  max-width: unset;
+width: 2em;
+max-width: unset;
 }
-     </style>
-      <a
-          type="button"
-          target="_blank"
-          href="{{url}}"
-          class="btn-360"
-        >
-          Step Inside
-            <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
-      </a> -->
+   </style>
+    <a
+        type="button"
+        href="{{page360url}}"
+        class="btn-360"
+      >
+        Step Inside
+          <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
+    </a> 
+  
+{%- endif -%}
+    
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
