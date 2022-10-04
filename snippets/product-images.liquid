@@ -233,10 +233,6 @@ calc(100vw - 4rem)
 {%- if page360url -%}
   <style>
     .btn-360{
-padding: 0.4em 1.4em;
-display: flex;white-space: nowrap;
-font-size:1rem;
-border: 1px solid #545454;
 gap: 0.4em;
 border-radius: 99em;
     transform: translateX(calc(-50% + 40px));
@@ -254,11 +250,17 @@ opacity: 0.7;
 width: 2em;
 max-width: unset;
 }
+@media only screen and (max-width: 860px){
+  .btn-360{
+    transform: translateX(-50%);
+    bottom: 22.5%;
+  }
+}
    </style>
     <a
         type="button"
         href="{{page360url}}"
-        class="btn-360"
+        class="btn-360 btn btn--secondary"
       >
         Step Inside
           <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
