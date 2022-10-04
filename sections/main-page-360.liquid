@@ -225,12 +225,12 @@
     <iframe allowfullscreen="true" width="100%" height="500px" src="{{embed360Url}}"></iframe>
   </div>
   <div class="bottomBar" >
-    <div class="bottomBar-header">
+    <div class="bottomBar-header page-width">
       <label for="open-details" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
-      <div class="bottomBar-header-center" style="margin: 0;font-weight:bold" class="h3">{{mainProduct.title}}</div>
+      <div class="bottomBar-header-center" class="h3"><h3 style="margin: 0;font-weight:600" >{{mainProduct.title}}</h3></div>
       <label for="open-see-all" class="more-btn btn btn--secondary" >See All</label>
     </div>
-    <div class="bottomBar-details">
+    <div class="bottomBar-details page-width">
       <div></div>
       <div class="bottomBar-details-center">
        {%- assign product = mainProduct -%}
@@ -333,8 +333,8 @@
 
 <div class="see-all-wrap">
   <label for="open-see-all" style="    flex: 1;"></label>
-  <div style="background-color: ;white;box">
-    <div class="seel-all-header">
+  <div style="background-color: white;box-shadow:13px -2px 15px 0px #00000075">
+    <div class="seel-all-header page-width">
       <div style="flex:1"></div>
        <div class="seel-all-header-center" style="margin: 0;" class="h3">Select a product</div>
        <div style="flex:1;display:flex;justify-content:flex-end">
@@ -342,7 +342,7 @@
        </div>
        
    </div>
-   <div class="seel-all-details">
+   <div class="seel-all-details page-width">
     <div class="seel-all-details-grid">
       {% for product in collections['all'].products %}
         {%- if product.metafields.custom.page360.value.url -%}
