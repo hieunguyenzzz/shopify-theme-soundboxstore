@@ -265,6 +265,14 @@
   .bottomBar-header-center .seel-all-details-grid .col{
     min-width: 120px;
   }
+  .bottomBar-header-center .seel-all-details-grid .col h6{
+    min-width: 120px;
+    margin: 0;
+              font-weight: 500;
+              font-family: Banana Grotesk;
+              font-size: 12px;max-width:120px;
+              line-height: 1.05;
+  }
  }
 </style>
 <div id="page-360-{{section.id}}">
@@ -294,12 +302,9 @@
                   alt="phone booths"
               ></div>
             </div>
-            <h6 style="margin: 0;
-              font-weight: 500;
-              font-family: Banana Grotesk;
-              font-size: 12px;
-              line-height: 1.05;">
-                {{- product.title -}}
+            <h6 >
+              <a>{{- product.title -}}</a>
+                
             </h6>
           </a>
         </div>
