@@ -14,7 +14,7 @@ calc(100vw - 4rem)
   <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
   <g>
     <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
-    <text fill="#fff" stroke-width="1px" font-size="60px" x="100" y="100" text-anchor="middle" dominant-baseline="middle">
+    <text fill="#fff" stroke-width="1px" font-size="66px" x="100" y="100" dy="25px" text-anchor="middle">
       <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">NEW</textPath>
     </text>
   </g>
@@ -182,7 +182,7 @@ calc(100vw - 4rem)
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
-{%- assign imgs = current_variant.metafields.global.images.value -%}
+<!-- {%- assign imgs = current_variant.metafields.global.images.value -%} -->
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}
@@ -229,42 +229,55 @@ calc(100vw - 4rem)
   </div>
  
 </div>
-<!-- {% assign url = product.metafields.custom.page360.value.url %}
-     <style>
-      .btn-360{
-  padding: 0.4em 1.4em;
-  display: flex;white-space: nowrap;
-  font-size: min(1.2vw,1rem);
-  border: 1px solid #545454;
-  gap: 0.4em;
-  border-radius: 99em;
-      transform: translateX(calc(-50% + 40px));
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    max-width: unset;
-        
+{% assign page360url = product.metafields.custom.page360.value.url %}
+{%- if page360url -%}
+  <style>
+    .btn-360{
+gap: 0.4em;
+border-radius: 99em;
+    transform: translateX(calc(-50% + 40px));
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  max-width: unset;
+      
+}
+.btn-360:hover{
+opacity: 0.7;
+
 }
 .btn-360 img{
-  width: 2em;
-  max-width: unset;
+    width: 2em;
+    max-width: unset;
+    margin-left: 0.3em;
+  vertical-align: text-top;
 }
-     </style>
-      <a
-          type="button"
-          target="_blank"
-          href="{{url}}"
-          class="btn-360"
-        >
-          Step Inside
-            <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
-      </a> -->
+@media only screen and (max-width: 860px){
+  .btn-360{
+    transform: translateX(-50%);
+    bottom: 22.5%;
+    font-size: 10px;
+    padding: 0.5em 1em;
+  }
+}
+   </style>
+    <a
+        type="button"
+        href="{{page360url}}"
+        class="btn-360 btn btn--secondary"
+      >
+        Step Inside
+          <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
+    </a> 
+  
+{%- endif -%}
+    
 {%- for current_variant in product.variants -%}
 <template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
-  {%- assign imgs = current_variant.metafields.global.images.value -%}
+<!--   {%- assign imgs = current_variant.metafields.global.images.value -%} -->
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}

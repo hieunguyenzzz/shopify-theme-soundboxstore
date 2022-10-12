@@ -12,7 +12,6 @@
   .wrap {
     background: white;
     display: flex;
-    min-height: 100vh;
     position: fixed;
     left: 0;
     right: 0;
@@ -50,6 +49,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
   }
   #uvj3f2e70rcg1664779754946.widget-visible{
     visibility: hidden!important;
@@ -61,9 +62,9 @@
   background: white;
   z-index: 1;
    border-top:1px solid #cecece;
-   max-height: 100vh ;
-   overflow: auto;
- }
+   max-height: 80vh ;
+   overflow-y: auto;
+   overflow-x: hidden }
  .bottomBar-header{
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -83,7 +84,8 @@
   flex-direction: row;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  padding: 22px min(2vw,32px);
+  padding: 12px min(2vw,32px);
+  gap: 1em;
  }
  .open-btn{font-size: 24px;
    width:40px;height:40px;
@@ -122,7 +124,8 @@
   flex-direction: row;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  padding: 22px min(2vw,32px);
+  padding: 12px min(2vw,32px);
+  padding-bottom: 100px;
  }
  #open-details:checked ~ .wrap .bottomBar-details{
   display: flex;
@@ -131,8 +134,8 @@
   display: flex ;
   flex-wrap:wrap ;
   gap:1em;
-  max-width: 600px;
-  font-size: min(0.9em,4.4vw);
+  max-width: 800px;
+  font-size: min(0.9em,3.4vw);
 }
 .grid-product__price--current{
   font-size:1.8em ;
@@ -141,7 +144,6 @@
   display: none;
   z-index: 2000000002;
   position: fixed;
-  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
@@ -153,7 +155,7 @@
   top: 0;
   bottom: 0;
   flex-direction: column;
-  backdrop-filter: blur(10px);
+ 
 }
 .see-all-wrap>div{
 
@@ -178,24 +180,31 @@
   flex-direction: row;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  padding: 22px min(2vw,32px);
+  padding: 12px min(2vw,32px);
   position: sticky  ;top:0;
   background: white;
  }
  .seel-all-details{
   background-color: white;
-  padding: 22px min(2vw,32px);
+  padding: 12px min(2vw,32px);
  }
  #open-see-all:checked ~ .see-all-wrap{
   display: flex;
  }
+ #open-see-all:checked ~ .wrap{
+  filter: blur(12px) grayscale(0.7);
+ }
  .seel-all-details-grid{
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, 140px);
   justify-content: center;
-  gap: min(3vw,2em) min(5vw,4em);
   text-align: center;
   font-weight: bold;
+  max-width: 1000px;
+  margin: auto;
+ }
+ .seel-all-details-grid .col{
+  
  }
  label{
   margin: 0;
@@ -203,21 +212,117 @@
  .page-360-{{section.id}} *{
   transition: all ;
  }
+ #page-360-{{section.id}}{
+  transition:all 0.3s linear;
+ }
+ #page-360-{{section.id}} label{
+  flex-shrink: 0;
+  
+ }
+
+ .bottomBar-header-mobile{
+  display:none
+}
+ .seel-all-details-grid .col{
+  transition: transform 0.3s;
+  padding: 0.5em;
+  border: 1px solid transparent;
+  border-radius: 0.2em;
+  flex-shrink: 0;
+ }
+ .seel-all-details-grid .col.current{
+  border: 1px solid #545454;
+ }
+ .seel-all-details-grid .col:hover{
+  border: 1px solid #000;
+ }
+ .bottomBar-header-center .seel-all-details-grid::after{
+    content: '';
+    flex-shrink: 0;
+    width: 40px;
+  }
+ @media only screen and (max-width:800px){
+  .bottomBar-header{
+    padding-top:0;
+    padding-bottom:0
+  }
+  .bottomBar-header-center{
+    padding-top:12px ;
+    padding-bottom:12px ;
+    padding-right:100px ;
+    flex: 1;
+    overflow-x: auto;
+  }
+  .bottomBar-header-center .seel-all-details-grid{
+    display: flex;
+    justify-content:flex-start;
+    gap:0
+  }
+  .bottomBar-header-center .seel-all-details-grid::after{
+    content: '';
+    flex-shrink: 0;
+    width: 80px;
+  }
+  .bottomBar-header-center .seel-all-details-grid .col{
+    min-width: 120px;
+  }
+  .bottomBar-header-center h6{
+   
+  }
+ }
 </style>
 <div id="page-360-{{section.id}}">
 <input type="checkbox" id="open-details" hidden />
-
+<input type="checkbox" id="open-see-all" hidden />
 <div class="wrap">
   <div class="iframe-wrap">
-    <iframe allowfullscreen="true" width="100%" height="500px" src="{{embed360Url}}"></iframe>
+    <iframe allowfullscreen="true" width="100%" height="100%" src="{{embed360Url}}"></iframe>
   </div>
   <div class="bottomBar" >
-    <div class="bottomBar-header">
+    <div class="bottomBar-header bottomBar-header-desktop page-width">
       <label for="open-details" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
-      <div class="bottomBar-header-center" style="margin: 0;" class="h3">{{mainProduct.title}}</div>
+      <div class="bottomBar-header-center">
+        <div class="seel-all-details-grid">
+      {% for product in collections['all'].products %}
+       {%- if product.metafields.custom.page360.value.url -%}
+        <div class="col  {% if product.handle contains mainProduct.handle %}
+          current
+        {% endif %}">
+          <a  href="{{product.metafields.custom.page360.value.url}}" class="col-wrap">
+            <div class="col-image">
+              <div
+                data-id=""
+                {{ product.id }}
+                ><img loading="lazy" width="50px" height="50px"
+                  src="{{ product.featured_image | img_url:'50x' }}"
+                  alt="phone booths"
+              ></div>
+            </div>
+            <h6 style=" min-width: 120px;
+              margin: 0;
+                        font-weight: 500;
+                        font-family: Banana Grotesk;
+                        font-size: 12px;max-width:120px;
+                        line-height: 1.05;">
+              {{- product.title -}}
+            </h6>
+          </a>
+        </div>
+        
+       {%- endif -%}
+          
+      
+      {% endfor %}
+    </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="bottomBar-header bottomBar-header-mobile page-width">
+      <label for="open-details" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
+      <div class="bottomBar-header-center" class="h3"><h3 style="margin: 0;font-weight:600" >{{mainProduct.title}}</h3></div>
       <label for="open-see-all" class="more-btn btn btn--secondary" >See All</label>
     </div>
-    <div class="bottomBar-details">
+    <div class="bottomBar-details page-width">
       <div></div>
       <div class="bottomBar-details-center">
        {%- assign product = mainProduct -%}
@@ -233,7 +338,8 @@
           loading: 'lazy',
           alt: mainProduct.featured_image.alt | escape
           }}
-          <div style="flex:1;min-width: ;300px">
+          <div style="flex:1;min-width: 300px">
+          <h1 >{{mainProduct.title}}</h1>
           <div >{{mainProduct.description}}</div>
           <div class="grid-product__price" style="margin-top: 1em;">
             <div class="price-title" style="font-size: 0.8em;">{{ 'strings.others.starting_from'|t }}</div>
@@ -311,22 +417,25 @@
       <div></div>
     </div>
   </div>
-  <button onclick="history.back()" class="close-btn btn btn--secondary btn--circle">
+  <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg">
       <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
     </svg>
-  </button>
+  </a>
 </div>
-<input type="checkbox" id="open-see-all" hidden />
+
 <div class="see-all-wrap">
   <label for="open-see-all" style="    flex: 1;"></label>
-  <div style="background-color: ;white">
-    <div class="seel-all-header">
-      <div></div>
+  <div style="background-color: white;box-shadow:13px -2px 15px 0px #00000075">
+    <div class="seel-all-header page-width">
+      <div style="flex:1"></div>
        <div class="seel-all-header-center" style="margin: 0;" class="h3">Select a product</div>
-       <label for="open-see-all" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
+       <div style="flex:1;display:flex;justify-content:flex-end">
+        <label style="transform: rotate(180deg);"  for="open-see-all" class="open-btn btn btn--secondary btn--circle"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"></path></svg></label>
+       </div>
+       
    </div>
-   <div class="seel-all-details">
+   <div class="seel-all-details page-width">
     <div class="seel-all-details-grid">
       {% for product in collections['all'].products %}
         {%- if product.metafields.custom.page360.value.url -%}
@@ -346,7 +455,7 @@
               <h6>
                 <a
                   href="{{product.metafields.custom.page360.value.url}}"
-                  class="btnScroll"
+                  class="btnScroll h6"
                   data-id=""
                   {{ product.id }}
                 >

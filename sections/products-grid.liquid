@@ -22,6 +22,19 @@
   .product-grid .product-grid-item .btn img{
     width:30px
   }
+  .product-image-wrap{
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+  }
+  .product-image-wrap .btn img{
+    height: 16px;
+
+  }
+  .product-image-wrap .btn{
+    display: flex; gap: 0.4em;align-items: baseline;
+    text-transform: capitalize;
+  }
 </style>
 <div class="product-grid-{{ section.id }}">
 {% for block in section.blocks %}
