@@ -14,15 +14,15 @@
         </div>
       </div>
       <div class="section-content page-width text-{{ section.settings.text_alignment }}">
-        <div class="content-wrap " {%- if section.settings.description_width -%}
+        <div class="content-wrap " {% if section.settings.description_width %}
           style="max-width: {{ section.settings.description_width }};"
-          {%- else -%}
-          {%- endif -%}>
+          {% else %}
+          {% endif %}>
           {% if section.settings.title != blank %}
-            <h2 {%- if section.settings.title_width -%}
+            <h2 {% if section.settings.title_width %}
               style="max-width: {{ section.settings.title_width }};"
-              {%- else -%}
-              {%- endif -%}
+              {% else %}
+              {% endif %}
               class="title-font">{{ section.settings.title }}
             </h2>
           {% endif %}
