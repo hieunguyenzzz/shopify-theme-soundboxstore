@@ -19,7 +19,14 @@
         </ul>
       </div>
       {% endif %}
-      <div><img src="https://files.soundboxstore.com/payment-icons_3.png" /></div>
+      <div><img src="{{ block.settings.payment_logo_image | image_url | default: https://files.soundboxstore.com/payment-icons_3.png}}" /></div>
+      <ul style="display: hidden;">
+        {%- for type in shop.enabled_payment_types -%}
+      <li>
+        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+      </li>
+    {%- endfor -%}
+      </ul>
     </div>
   </div>
 </div>
