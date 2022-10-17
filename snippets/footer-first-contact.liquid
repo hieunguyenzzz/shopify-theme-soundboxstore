@@ -19,13 +19,16 @@
         </ul>
       </div>
       {% endif %}
-      <div><img src="https://files.soundboxstore.com/payment-icons_3.png" /></div>
-      <ul style="display: none;">
-        {%- for type in shop.enabled_payment_types -%}
-      <li>
-        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-      </li>
-    {%- endfor -%}
+      {%- if block.settings.payment_logo_image -%}
+        <div><img src="{{block.settings.payment_logo_image | image_url:'400x'}}" /></div>
+      {%- else -%}
+        <ul class="payment_icons" style="display: none;">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>
+              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+            </li>
+          {%- endfor -%}
+      {%- endif -%}
       </ul>
     </div>
   </div>
