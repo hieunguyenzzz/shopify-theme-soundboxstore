@@ -148,19 +148,18 @@
     },
     "1657348293dc4e4fd8": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "165734829349367447-0": {
           "type": "heading",
           "settings": {
-            "title": "Folio Task Booth"
+            "title": "{{ product.title }}"
           }
         },
         "165734829349367447-1": {
           "type": "text",
           "settings": {
             "enlarge_text": true,
-            "text": "<p>Busy environments can be chaotic, interruptive and frustrating, with less focus resulting in poor productivity and creativity. Within our Folio Phone Booth, we offer retreat, comfort and well-being within an ergonomic cocoon of tranquillity. The occupant focuses on the task at hand, delivering the required results with minimum interruption. Phone Booths from Soundbox Store are built to the highest standards and finished to perfection, delivered flat-packed and can be assembled in an hour.<\/p>"
+            "text": "<p>{{ product.metafields.custom.description | metafield_tag }}<\/p>"
           }
         }
       },
