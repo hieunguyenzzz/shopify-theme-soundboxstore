@@ -2206,6 +2206,80 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6.h6 {
 }
 
 
+.template-product  .variant-input-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.template-product  .variant-input-wrap .variant-input {
+  max-width: 50%;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+}
+
+/* .template-product  .variant-input-wrap .variant-input:not(:first-child){margin-left:-2px;} */
+.template-product  .variant-input-wrap .variant-input .variant__button-label {
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  margin: 0px;
+  box-shadow: none;
+  border: 2px solid #303A44;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #454545;
+  font-family: 'Helvetica Neue';
+  min-height: 63px
+}
+
+.template-product  .variant-input-wrap .variant-input .variant__button-label span {
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 100%;
+  padding: 4px 0px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 1px;
+  color: #454545;
+}
+
+.template-product  .variant-input-wrap .variant-input .variant__button-label:after {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+  background-image:url({{ 'furniture-variant-icon.png' | file_url }});
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 12px;
+  right: 9px;
+  transform: unset;
+  left: unset;
+  border: none;
+  box-shadow: none;
+  bottom: unset;
+}
+
+.template-product  .variant-input-wrap .variant-input input[type="radio"]:checked+label {
+  background-color: #303A44;
+  color: #fff;
+}
+
+.template-product  .variant-input-wrap .variant-input input[type="radio"]:checked+label span {
+  color: #B8B8B8;
+}
+
+.template-product  .variant-input-wrap .variant-input input[type="radio"]:checked+label:after {
+  background-image:url({{ 'furniture-check-variant-icon.png' | file_url }})
+}
+
 .detail_topbar {
   position: sticky;
   position: -webkit-sticky;
