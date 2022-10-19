@@ -216,7 +216,7 @@ calc(100vw - 4rem)
           {%- assign lazy = 'lazy' -%}    
           {%- assign image = current_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image | image_url: width: 900 | image_tag:
+            {{ image | image_url: crop: 'center'  | image_tag:
             loading: lazy,
             class: 'photoswipe__image',
             sizes: sizes,
