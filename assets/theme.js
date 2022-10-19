@@ -1055,7 +1055,8 @@ lazySizesConfig.expFactor = 4;
               ),
             ][1];
             console.log({ featuresImage });
-            $(".meeting-rooms-features .center-col img").attr(
+              if (featuresImage) {
+ $(".meeting-rooms-features .center-col img").attr(
               "src",
               featuresImage.src
             );
@@ -1063,6 +1064,8 @@ lazySizesConfig.expFactor = 4;
               "srcset",
               featuresImage.srcset
             );
+              }
+           
           }
         }
         handleUpdateGallery2();
