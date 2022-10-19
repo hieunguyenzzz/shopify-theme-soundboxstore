@@ -310,7 +310,7 @@ opacity: 0.7;
           {%- assign lazy = 'lazy' -%}
           {%- endunless -%}
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image |  image_tag:
+            {{ image | image_url: width: 900 | image_tag:
             loading: lazy,
             class: 'photoswipe__image',
             sizes: sizes,
@@ -327,7 +327,7 @@ opacity: 0.7;
           {%- assign lazy = 'lazy' -%}    
           {%- assign image = current_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image | image_tag:
+            {{ image | image_url: width: 900 | image_tag:
             loading: lazy,
             data-orgin-url:image.url,
             class: 'photoswipe__image',
