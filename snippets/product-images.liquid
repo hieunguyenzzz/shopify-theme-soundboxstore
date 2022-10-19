@@ -190,26 +190,42 @@ calc(100vw - 4rem)
 <div class="product-main-slider">
   <div class="slider-wrap">
     <div class="image-gallery-main">
-      {%- for image in imgs -%}
-      {%- assign alt = image.alt | strip -%}
-      <div class="image-gallery-block">
-        {%- unless forloop.first -%}
-        {%- assign lazy = 'lazy' -%}
-        {%- endunless -%}
-        <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-
-          {{ image | image_url: width: 713 | image_tag:
-          loading: lazy,
-          class: 'photoswipe__image',
-          sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990',
-          alt: image.alt | escape
-          }}
-          {{new_label}}
-        </div>
-      </div>
+       {%- assign had_images = false -%}
+        {%- for image in imgs -%}
+          {%- assign had_images = true -%}
+          {%- assign alt = image.alt | strip -%}
+          <div class="image-gallery-block">
+            {%- unless forloop.first -%}
+            {%- assign lazy = 'lazy' -%}
+            {%- endunless -%}
+            <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+    
+              {{ image | image_url: width: 713 | image_tag:
+              loading: lazy,
+              class: 'photoswipe__image',
+              sizes: sizes,
+              widths: '246, 493, 600, 713, 823, 990',
+              alt: image.alt | escape
+              }}
+              {{new_label}}
+            </div>
+          </div>
       {%- endfor -%}
-   
+    {%- unless had_images -%}
+      <div class="image-gallery-block">
+          {%- assign lazy = 'lazy' -%}    
+          {%- assign image = fcurrent_variant.image -%}    
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ image | image_url: width: 713 | image_tag:
+            loading: lazy,
+            class: 'photoswipe__image',
+            sizes: sizes,
+            widths: '246, 493, 600, 713, 823, 990',
+            alt: image.alt | escape
+            }}
+            {{new_label}}
+        </div>
+    {%- endunless -%}
     </div>
 
     <div class="thumbnail-gallery">
@@ -308,7 +324,7 @@ opacity: 0.7;
     {%- unless had_images -%}
       <div class="image-gallery-block">
           {%- assign lazy = 'lazy' -%}    
-          {%- assign image = fcurrent_variant.featured_image -%}    
+          {%- assign image = fcurrent_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
             {{ image | image_url: width: 713 | image_tag:
             loading: lazy,
