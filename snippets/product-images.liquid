@@ -200,7 +200,7 @@ calc(100vw - 4rem)
             {%- endunless -%}
             <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
     
-              {{ image | image_url | image_tag:
+              {{ image | image_url: width: 713 | image_tag:
               loading: lazy,
               class: 'photoswipe__image',
               sizes: sizes,
@@ -214,9 +214,9 @@ calc(100vw - 4rem)
     {%- unless had_images -%}
       <div class="image-gallery-block">
           {%- assign lazy = 'lazy' -%}    
-          {%- assign image = current_variant.image -%}    
+          {%- assign image = fcurrent_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image | image_url | image_tag:
+            {{ image | image_url: width: 713 | image_tag:
             loading: lazy,
             class: 'photoswipe__image',
             sizes: sizes,
@@ -225,7 +225,6 @@ calc(100vw - 4rem)
             }}
             {{new_label}}
         </div>
-         </div>
     {%- endunless -%}
     </div>
 
@@ -310,7 +309,7 @@ opacity: 0.7;
           {%- assign lazy = 'lazy' -%}
           {%- endunless -%}
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image | image_url | image_tag:
+            {{ image | image_url: width: 713 | image_tag:
             loading: lazy,
             class: 'photoswipe__image',
             sizes: sizes,
@@ -327,7 +326,7 @@ opacity: 0.7;
           {%- assign lazy = 'lazy' -%}    
           {%- assign image = current_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-            {{ image | image_url | image_tag:
+            {{ image | image_url: width: 713 | image_tag:
             loading: lazy,
             class: 'photoswipe__image',
             sizes: sizes,
@@ -336,7 +335,6 @@ opacity: 0.7;
             }}
             {{new_label}}
         </div>
-       </div>
     {%- endunless -%}
     </div>
  
