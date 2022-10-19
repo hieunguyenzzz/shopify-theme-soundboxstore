@@ -214,7 +214,7 @@ calc(100vw - 4rem)
     {%- unless had_images -%}
       <div class="image-gallery-block">
           {%- assign lazy = 'lazy' -%}    
-          {%- assign image = fcurrent_variant.image -%}    
+          {%- assign image = current_variant.image -%}    
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
             {{ image | image_url: width: 713 | image_tag:
             loading: lazy,
