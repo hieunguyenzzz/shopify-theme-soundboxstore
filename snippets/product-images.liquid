@@ -329,6 +329,7 @@ opacity: 0.7;
           <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
             {{ image | image_url: width: 900 | image_tag:
             loading: lazy,
+            data-orgin-url:image.url,
             class: 'photoswipe__image',
             sizes: sizes,
             widths: '246, 493, 600, 713, 823, 990',
