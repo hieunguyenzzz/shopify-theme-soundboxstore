@@ -256,7 +256,7 @@ text-align: left;
     width: 5vw;
   }
 </style>
-    {% assign scrollWhenClick = false %}
+    {% assign scrollWhenClick = true %}
     
       <script>
   document.querySelectorAll(".hotspot-icon").forEach(node=>{
@@ -265,8 +265,9 @@ text-align: left;
    const targetE=document.querySelector("#"+node.dataset.target)    ;
    const targetInput=document.querySelector("#"+node.dataset.target.replace('feature-','input-'))    ;
 {% if scrollWhenClick %} 
+if(window.innerWidth<991){
 targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-      
+}
       {%  endif %}  
   targetE.classList.remove('ping');
         setTimeout(()=>{
