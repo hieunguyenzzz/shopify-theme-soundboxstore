@@ -1,3 +1,75 @@
+<style>
+  
+@media only screen and (max-width: 991px){
+.features-list-row{
+  
+  padding: 0.5em;
+
+}
+.features-list-row-wrap>div{
+  max-height: 0;
+  opacity: 0;
+  height: 0;
+  transition: all 0.3s linear;
+  overflow: hidden;
+ padding-bottom: 0;
+  margin-bottom: 10px;
+}
+.features-list-row-wrap>label{
+  margin: 0;
+  height: 40px;
+  line-height: 30px;
+  padding: 0.2em 0.5em;
+  background-color: #f1f1f1;
+  position: relative;
+}
+.features-list-row-wrap>label::after{
+     transition: all .3s ease-in-out;
+    display: block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border: 2px solid currentColor;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(-135deg);
+    position: absolute;
+    right: 14px;
+    top: 14px;
+}
+.features-list-row input:checked+.features-list-row-wrap>label::after{
+  transform: rotate(45deg);
+  top: 14px;
+}
+.meeting-rooms-features .features-list .features-list-row{
+  padding: 0;
+}
+.features-list-row-wrap>div>div{
+    transform: translateY(-100%);
+  transition: all 0.3s linear;
+  padding: 0.2em 0.5em;
+}
+.features-list-row input:checked+.features-list-row-wrap>div{
+  display: block;
+  max-height: 9999px;
+   opacity: 1;
+   height: auto;
+   transform: scale(1);
+    padding-bottom: 10px;
+     background-color: #f1f1f1;
+}
+.features-list-row input:checked+.features-list-row-wrap>div>div{
+  transform: translateY(0);
+}
+.meeting-rooms-features .flexbox .col.right-col{
+text-align: left;
+}
+.meeting-rooms-features .hotspot-icon:before{
+  opacity: 1;
+    visibility: visible;
+}
+}
+</style>
 <section class="meeting-rooms-features">
   
   <div class="page-width">
@@ -10,12 +82,17 @@
            {% if block.type == "features_list_left" %}
            
             {% if block.settings.title != blank %}
-            <div class="features-list-row" data-type="{{ block.settings.title }}">
+              <div class="features-list-row" data-type="{{ block.settings.title }}">
+                <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}"/>
                 <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                <h5>{{ block.settings.title }}</h5>
-                {{ block.settings.description }}
+                  <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }}</label>
+                  <div>
+                    <div>
+                      {{ block.settings.description }}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
             {% endif %}
            
            {% endif %}
@@ -112,12 +189,17 @@
             {% for block in section.blocks %}
             {% if block.type == "features_list_right" %}
             {% if block.settings.title != blank %}
-            <div class="features-list-row" data-type="{{ block.settings.title }}">
-              <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                <h5>{{ block.settings.title }}</h5>
-                {{ block.settings.description }}
+              <div class="features-list-row" data-type="{{ block.settings.title }}">
+                <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}"/>
+                <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
+                  <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }}</label>
+                  <div>
+                    <div>
+                      {{ block.settings.description }}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
             {% endif %}
             {% endif %}
             {% endfor %}
@@ -135,6 +217,10 @@
      {% if block.type == "hotspot_point" %}
         {% if block.settings.point_x != blank or block.settings.point_y != blank  %}
               .meeting-rooms-features .hotspot-icon.unique-{{- block.id -}}{left:{{- block.settings.point_x -}}% ; top:{{- block.settings.point_y -}}% }
+             {%- if block.settings.point_x < 40 -%}
+              .meeting-rooms-features .hotspot-icon.unique-{{- block.id -}}::before{left:unset ; right: 0; }
+           
+             {%- endif -%}
         {% endif %}
     {% endif %}
   {% endfor %}
@@ -160,6 +246,9 @@
   .features-list-row-wrap{
     scroll-margin-top:160px
   }
+  .meeting-rooms-features .hotspot-icon{
+    width: 5vw;
+  }
 </style>
     {% assign scrollWhenClick = false %}
     
@@ -168,6 +257,7 @@
     node.addEventListener("click", (e)=>{
         console.log(node.dataset.target)
    const targetE=document.querySelector("#"+node.dataset.target)    ;
+   const targetInput=document.querySelector("#"+node.dataset.target.replace('feature-','input-'))    ;
 {% if scrollWhenClick %} 
 targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
       
@@ -175,6 +265,10 @@ targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
   targetE.classList.remove('ping');
         setTimeout(()=>{
 targetE.classList.add('ping');
+if(targetInput){
+  targetInput.checked=true
+}
+
 })
     })
 })
