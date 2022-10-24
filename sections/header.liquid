@@ -173,6 +173,34 @@
             <div class="site-header__drawer-animate">
               {%- render 'header-mobile-nav', main_menu: main_menu, block: block -%}
               {%- if section.settings.header_footer_menu -%}
+                <style>
+                  .site-header .footer__section{
+                    font-size: calc(var(--typeBaseSize) - 1px);
+                      background-color: #303a44;
+                      background-color: var(--colorFooter);
+                      color: #ffffff;
+                      color: var(--colorFooterText);
+
+                  }
+                  .site-header .footer__section  a{
+                    color: white;
+                    color:var(--colorFooterText);
+                  }
+
+                  .site-header .footer__section .footer__title{
+                    text-transform: uppercase;
+                  
+                  }
+                  .site-header .footer__blocks{
+                    gap: 2em;
+                  }
+                  #MobileNavFooter{
+                    padding: 0 15px;
+                  }
+                  .slide-nav__wrapper{
+                    flex-shrink: 0;
+                  }
+                </style>
                 <div id="MobileNavFooter"></div>
               {%- endif -%}
             </div>
