@@ -73,21 +73,18 @@
                               </a>
                               {% assign current_variant =  product.selected_or_first_available_variant %}
                               {% if current_variant.price < current_variant.compare_at_price %}
-                                  {% capture discount %}
-                                      {{ current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0' }}%
-                                  {% endcapture %}
-                              {% endif %}
-                             {% if discount %}
+                                  
                                    <div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
                                   <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
                                   <g>
                                     <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
                                     <text fill="#fff" stroke-width="1px" font-size="66px" x="100" y="100" dy="25px" text-anchor="middle">
-                                      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">{{ discount }}</textPath>
+                                      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">{{ {{ current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0' }}% }}</textPath>
                                     </text>
                                   </g>
                                 </svg></div>
-                                   {% else %}
+                                 
+                                  {% else %}
                                {% for c in product.collections %}
                                 {% if c.handle == "new" %}
                                 <div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
@@ -102,6 +99,7 @@
                                 {% endif %}
                               {% endfor %}
                               {% endif %}
+                             
                               
                               
                             </div>
