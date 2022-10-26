@@ -2,8 +2,10 @@
                               {% assign discount = nil %}
                               {% if current_variant.price < current_variant.compare_at_price %}
                                   {% capture discount %}
-                                      {{ current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0' }}%
+                                      {{ }}%
                                   {% endcapture %}
+                                {% assign discount =  current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0'  %}
+                               
                               {% endif %}
                              {% if discount %}
                                    <div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
