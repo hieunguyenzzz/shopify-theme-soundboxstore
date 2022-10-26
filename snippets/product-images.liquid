@@ -8,19 +8,7 @@ assign first_3d_model = product.media | where: 'media_type', 'model' | first
 calc(100vw - 4rem)
 {%- endcapture -%}
 {%- capture new_label -%}
-{% for c in product.collections %}
-{% if c.handle == "new" %}
-<div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
-  <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
-  <g>
-    <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
-    <text fill="#fff" stroke-width="1px" font-size="66px" x="100" y="100" dy="25px" text-anchor="middle">
-      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">NEW</textPath>
-    </text>
-  </g>
-</svg></div>
-{% endif %}
-{% endfor %}{%- endcapture -%}
+ {% render '[product-label]' product:product  %}{%- endcapture -%}
 <style>
   .slick-initialized .slick-slide .gallery-wrap {
     display: none;
