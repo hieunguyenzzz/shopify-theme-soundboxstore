@@ -1,3 +1,23 @@
+<style>
+  .product-block--price{
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
+  }
+  .product-block--price .product__price{
+    width: auto!important;
+  }
+  .product-block--price .product__price--compare{
+    font-size: 1em;
+    opacity: 0.7;
+  }
+  .product-block--price .product__price--compare>span:first-child{
+    font-size:1em;
+  }
+  .product-block--price .product__price  .vat_text{
+    display: none;
+  }
+</style>
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
 
@@ -173,7 +193,17 @@
                       {% endcomment %}
 
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
-
+                      <span
+                        data-product-price
+                        class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
+                      >
+                        {%- unless product.empty? -%}
+                          {%- render 'price' with current_variant.price -%}
+                        {%- else -%}
+                          {%- render 'price' with 1999 -%}
+                        {%- endunless -%}
+                        <span class="vat_text">(Ex. VAT)</span>
+                      </span>
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
                         {%- if current_variant.compare_at_price > current_variant.price -%}
@@ -210,19 +240,7 @@
                           {{- 'products.general.regular_price' | t -}}
                         </span>
                       {%- endif -%}
-
-                      <span
-                        data-product-price
-                        class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
-                      >
-                        {%- unless product.empty? -%}
-                          {%- render 'price' with current_variant.price -%}
-                        {%- else -%}
-                          {%- render 'price' with 1999 -%}
-                        {%- endunless -%}
-                        <span class="vat_text">(Ex. VAT)</span>
-                      </span>
-
+                      <span class="vat_text">(Ex. VAT)</span>
                       {%- if settings.product_save_amount -%}
                         {%- if settings.product_save_type == 'dollar' -%}
                           {%- capture saved_amount -%}
