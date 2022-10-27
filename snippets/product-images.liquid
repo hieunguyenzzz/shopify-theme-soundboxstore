@@ -12,12 +12,14 @@ calc(100vw - 4rem)
 <style>
   .slick-initialized .slick-slide .gallery-wrap {
     display: none;
-  }
+}
 
   .slick-initialized .slick-slide.slick-current .gallery-wrap {
     display: block !important;
   }
-
+.thumbnail-slider-inner .slick-current{
+  border: 1px solid #00000061!important
+}
 </style>
 
 {%- unless product.empty? -%}
