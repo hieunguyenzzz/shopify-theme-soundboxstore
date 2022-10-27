@@ -1028,15 +1028,20 @@ lazySizesConfig.expFactor = 4;
               asNavFor: ".product-main-slider .image-gallery-main",
               dots: false,
               infinite: true,
-              adaptiveHeight: true,
               vertical: true,
+              adaptiveHeight: true,
+              verticalSwiping: true,
               focusOnSelect: true,
               arrows: true,
+              swipe: true,
+              centerMode: true,
+              swipeToSlide: true,
               responsive: [
                 {
                   breakpoint: 861,
                   settings: {
                     vertical: false,
+                    mobileFirst: true,
                     infinite: true,
                     slidesToShow: 4,
                     slidesToScroll: 1,
@@ -1055,8 +1060,7 @@ lazySizesConfig.expFactor = 4;
               ),
             ][1];
             console.log({ featuresImage });
-              if (featuresImage) {
- $(".meeting-rooms-features .center-col img").attr(
+            $(".meeting-rooms-features .center-col img").attr(
               "src",
               featuresImage.src
             );
@@ -1064,8 +1068,6 @@ lazySizesConfig.expFactor = 4;
               "srcset",
               featuresImage.srcset
             );
-              }
-           
           }
         }
         handleUpdateGallery2();
