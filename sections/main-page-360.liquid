@@ -290,7 +290,7 @@
         <div class="seel-all-details-grid">
       {% for product in collections['all'].products %}
        {%- if product.metafields.custom.page360.value.url -%}
-        <div class="col  {% if product.handle contains mainProduct.handle %}
+        <div class="col  {% if product.metafields.custom.page360.value.url contains page.handle %}
           current
         {% endif %}">
           <a  href="{{product.metafields.custom.page360.value.url}}" class="col-wrap">
