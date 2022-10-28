@@ -17,6 +17,11 @@
   .product-block--price .product__price  .vat_text{
     display: none!important;
   }
+  @media only screen and (max-width: 540px){
+    .product-block--price{
+      justify-content: center!important;
+    }
+  }
 </style>
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
