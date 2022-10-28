@@ -98,24 +98,24 @@
           {%- endif -%}
         </div>
       </a>
-      <h3>{{ section.settings.left_content }}</h3>
-      {%- if section.settings.left_button_file != blank -%}
+      <h3>{{ block.settings.left_content }}</h3>
+      {%- if block.settings.left_button_file != blank -%}
         <a
-          id="{{section.settings.left_button_id}}"
+          id="{{block.settings.left_button_id}}"
           type="button"
           target="_blank"
-          href="{{section.settings.left_button_file}}"
+          href="{{block.settings.left_button_file}}"
           class="btn btn--secondary left_button"
         >
-          {{ section.settings.left_button }}
+          {{ block.settings.left_button }}
         </a>
       {%- else -%}
         <button
-          id="{{section.settings.left_button_id}}"
+          id="{{block.settings.left_button_id}}"
           type="button"
           class="btn btn--secondary left_button"
         >
-          {{ section.settings.left_button }}
+          {{ block.settings.left_button }}
         </button>
       {%- endif -%}
     </div>
