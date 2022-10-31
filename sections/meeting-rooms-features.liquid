@@ -76,7 +76,11 @@
     }
   }
 </style>
-<section class="meeting-rooms-features">
+<section class="meeting-rooms-features {%- if section.settings.show_videos -%}
+  meeting-room-features-video
+{%- else -%}
+  
+{%- endif -%}">
 
   <div class="page-width">
     <div class="flexbox">
