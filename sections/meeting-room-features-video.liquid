@@ -99,8 +99,8 @@
             <div class="video-wrapper">
               
               
-                  <video playsinline  src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
-              <video playsinline  src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
+              <video playsinline muted src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
+              <video playsinline muted src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
               
             </div>
           </div>
