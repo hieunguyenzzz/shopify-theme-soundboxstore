@@ -1,8 +1,9 @@
 $(document).ready(function(){
   
   $(".play-button").on("click", function() {
-     $('#vid1').get(0).muted = false;
-    $('#vid2').get(0).muted = false;
+     $('#vid1').get(0).removeAttribute("muted") 
+     $('#vid2').get(0).removeAttribute("muted") 
+
   });
 
   $(".videobtn.firstvideo").on("click", function() {
