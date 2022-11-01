@@ -1,6 +1,6 @@
 {%- assign swatch_file_extension = 'png' -%}
 <div
-  class="variant-wrapper js  {{ option.name | downcase }}-variant"
+  class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
   data-type="button"
 >
   <label
@@ -75,8 +75,8 @@
           >
             {{ tranValue | escape }}
           </label>
-        {%- else -%}
-          <label
+        {% elsif option.name contains 'Furniture' %}
+         <label
             for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
             class="variant__button-label{% unless product_available %} disabled{% endunless %}"
           >
@@ -97,6 +97,13 @@
             {%- if value == 'Furniture Set 3' and product.metafields.my_fields.furniture_set_3 != blank %}
               <span>{{ product.metafields.my_fields.furniture_set_3 }}</span>
             {%- endif -%}
+          </label>
+        {%- else -%}
+          <label
+            for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label{% unless product_available %} disabled{% endunless %}"
+          >
+            <span>{{ value }}</span>
           </label>
         {%- endif -%}
       </div>

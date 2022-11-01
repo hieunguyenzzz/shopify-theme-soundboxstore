@@ -15,7 +15,7 @@
         "1663561932ddfd5e61-1": {
           "type": "html",
           "settings": {
-            "code": "<style>\nlabel.variant__button-label.color-swatch.color-swatch--folio-blush {\n  background-color: #ccb7c9;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-pebble-grey {\n  background-color: #ccccca!important;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dusty-teal{\n  background-color: #a3b6b6!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dark-grey{\nbackground-color:#8b8d8f!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-beige{\nbackground-color:#c9c4b4!important;\n}\n\n<\/style>",
+            "code": "<style>\nlabel.variant__button-label.color-swatch.color-swatch--folio-blush {\n  background-color: #ccb7c9;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-pebble-grey {\n  background-color: #ccccca!important;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dusty-teal{\n  background-color: #a3b6b6!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dark-grey{\nbackground-color:#8b8d8f!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-beige{\nbackground-color:#c9c4b4!important;\n}\n.template-product .furniture-variant .variant-input-wrap .variant-input{\ndisplay:flex!important\n}\n.furniture-variant .view_more_options{\ndisplay:none!important\n}\n<\/style>",
             "width": "50%",
             "alignment": "center"
           }
@@ -105,8 +105,19 @@
         "product_video_style": "muted"
       }
     },
+    "7facd5d7-4a65-4707-942e-26e874779499": {
+      "type": "Divider",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "height": 1,
+        "color": "#e8e8e8",
+        "full_width": false
+      }
+    },
     "product-icon-text-section": {
       "type": "Product-icon-text-section",
+      "disabled": true,
       "blocks": {
         "873c2214-06d5-4a5c-9edf-d70f57ff9a02": {
           "type": "icon-text-block",
@@ -152,14 +163,14 @@
         "165734829349367447-0": {
           "type": "heading",
           "settings": {
-            "title": "Folio Task Booth"
+            "title": "{{ product.title }}"
           }
         },
         "165734829349367447-1": {
           "type": "text",
           "settings": {
             "enlarge_text": true,
-            "text": "<p>Busy environments can be chaotic, interruptive and frustrating, with less focus resulting in poor productivity and creativity. Within our Folio Phone Booth, we offer retreat, comfort and well-being within an ergonomic cocoon of tranquillity. The occupant focuses on the task at hand, delivering the required results with minimum interruption. Phone Booths from Soundbox Store are built to the highest standards and finished to perfection, delivered flat-packed and can be assembled in an hour.<\/p>"
+            "text": "<p>{{ product.metafields.custom.description | metafield_tag }}<\/p>"
           }
         }
       },
@@ -198,6 +209,7 @@
     },
     "meeting-rooms-features": {
       "type": "meeting-rooms-features",
+      "disabled": true,
       "blocks": {
         "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
           "type": "features_list_left",
@@ -382,30 +394,33 @@
     },
     "16554719626663b231": {
       "type": "image-text-column",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Folio-Phone-Booth.png",
         "image_position": "left",
         "mobile_image_position": "top",
         "title": "Modern Applications",
-        "detection": "<p>Lights, Power, Action! Within the Folio Task Booth sits a mini sofa\/chair, cushioned for comfort but primarily for support, complimented by an organically curved task desk.<br\/>Equipped with a directional lighting bar and singular UL\/CE 220-240v power socket (UK or EU) with 2 * USB and 1 * USB-C will power the devices required.<br\/>The PIR sensor will help save on power, automatically turning after 5mins of not being occupied.<\/p>",
+        "detection": "<p>Lights, Power, Action! Within the Folio Task Booth sits a mini sofa\/chair, cushioned slightly for comfort but primarily for support. An organically curved task desk compliments it.<br\/>A directional lighting bar and singular 220-240v power socket with 2 * USB and 1 * USB-C will power the devices required.<br\/>The PIR sensor will help save on power, automatically turning off the power after 5mins of not being occupied.<\/p>",
         "button_text": "",
         "button_link": ""
       }
     },
     "1655472025349426d8": {
       "type": "image-text-column",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Lighting-Folio-Task-Pod.png",
         "image_position": "right",
         "mobile_image_position": "top",
         "title": "Passive Lighting",
-        "detection": "<p>The Folio Task booth also has non-directional main *4000k (150Lx) Daylight LED lighting diffused by a lowered ceiling section, offering a comfortable, airy work environment. <\/p><p><\/p>",
+        "detection": "<p>Incorporating passive lighting, our Folio Task booth has non-directional *4000k (150Lx) Daylight LED lighting, offering a comfortable mindful work environment. In addition, the PIR sensor will help save on power, automatically turning off the power after 5mins of not being occupied.<\/p>",
         "button_text": "",
         "button_link": ""
       }
     },
     "16634102988a9c9e05": {
       "type": "image-text-column",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Folio-Phone-Leveling-Movable.png",
         "image_position": "left",
@@ -418,6 +433,7 @@
     },
     "16634104451e452603": {
       "type": "image-text-column",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Folio-Phone-Booth-Air-Flow.png",
         "image_position": "right",
@@ -430,6 +446,7 @@
     },
     "16634828078a75c3a3": {
       "type": "image-text-column",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Folio-Phone-Power-In.png",
         "image_position": "left",
@@ -528,8 +545,8 @@
       ],
       "settings": {
         "bg_image": "shopify:\/\/shop_images\/acoustic-environment-main-bg_5ae9d929-8f94-4b80-ac0a-bfa0e9594710.jpg",
-        "heading": "Acoustic control in working environments",
-        "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.<\/p>",
+        "heading": "Acoustic Environment especially important in office space",
+        "subheading": "<p>By creating a workplace with a good acoustics environment, you can develop an office that workers will enjoy working within.<\/p>",
         "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”<\/p>"
       }
     },
@@ -700,8 +717,8 @@
     "165414989285a6b146": {
       "type": "image-text-section",
       "settings": {
-        "image": "shopify:\/\/shop_images\/folio-grey-product-Page.png",
-        "mobile_image": "shopify:\/\/shop_images\/folio-grey-product-Page-mob.png",
+        "image": "shopify:\/\/shop_images\/Meeting-Pod-Solo-White.png",
+        "mobile_image": "shopify:\/\/shop_images\/Meeting-Pod-Solo-White-SQ-2.png",
         "overlay": true,
         "overlay_range": 40,
         "title": "Movable Silence Booth",
@@ -730,7 +747,6 @@
       "blocks": {
         "2b19c121-0ea7-4de4-ad9c-06737fe27b53": {
           "type": "shopify:\/\/apps\/product-reviews\/blocks\/reviews\/bae150af-8da8-48b2-9867-398188115e5f",
-          "disabled": true,
           "settings": {
           }
         }
@@ -811,6 +827,7 @@
   "order": [
     "16635619322291a846",
     "main",
+    "7facd5d7-4a65-4707-942e-26e874779499",
     "product-icon-text-section",
     "1657348293dc4e4fd8",
     "16574369665414d0d0",

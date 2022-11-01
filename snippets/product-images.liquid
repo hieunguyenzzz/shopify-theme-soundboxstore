@@ -8,28 +8,18 @@ assign first_3d_model = product.media | where: 'media_type', 'model' | first
 calc(100vw - 4rem)
 {%- endcapture -%}
 {%- capture new_label -%}
-{% for c in product.collections %}
-{% if c.handle == "new" %}
-<div class="new-label"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 200 200">
-  <circle cx="100" cy="100" r="100" fill="#00000091" id="background"></circle>
-  <g>
-    <path id="svg-text" d="M 0 100 H 200" fill="transparent" stroke="transparent"></path>
-    <text fill="#fff" stroke-width="1px" font-size="66px" x="100" y="100" dy="25px" text-anchor="middle">
-      <textPath xlink:href="#svg-text" method="stretch" lengthAdjust="spacingAndGlyphs">NEW</textPath>
-    </text>
-  </g>
-</svg></div>
-{% endif %}
-{% endfor %}{%- endcapture -%}
+ {% render '[product-label]' product:product  %}{%- endcapture -%}
 <style>
   .slick-initialized .slick-slide .gallery-wrap {
     display: none;
-  }
+}
 
   .slick-initialized .slick-slide.slick-current .gallery-wrap {
     display: block !important;
   }
-
+.thumbnail-slider-inner .slick-current img{
+  border: 1px solid #00000061!important
+}
 </style>
 
 {%- unless product.empty? -%}
@@ -182,7 +172,7 @@ calc(100vw - 4rem)
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
-<!-- {%- assign imgs = current_variant.metafields.global.images.value -%} -->
+  {%- assign imgs = current_variant.metafields.global.images.value -%}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}
@@ -190,26 +180,43 @@ calc(100vw - 4rem)
 <div class="product-main-slider">
   <div class="slider-wrap">
     <div class="image-gallery-main">
-      {%- for image in imgs -%}
-      {%- assign alt = image.alt | strip -%}
-      <div class="image-gallery-block">
-        {%- unless forloop.first -%}
-        {%- assign lazy = 'lazy' -%}
-        {%- endunless -%}
-        <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-
-          {{ image | image_url: width: 713 | image_tag:
-          loading: lazy,
-          class: 'photoswipe__image',
-          sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990',
-          alt: image.alt | escape
-          }}
-          {{new_label}}
-        </div>
-      </div>
+       {%- assign had_images = false -%}
+        {%- for image in imgs -%}
+          {%- assign had_images = true -%}
+          {%- assign alt = image.alt | strip -%}
+          <div class="image-gallery-block">
+            {%- unless forloop.first -%}
+            {%- assign lazy = 'lazy' -%}
+            {%- endunless -%}
+            <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+    
+              {{ image | image_url: width: 1900 | image_tag:
+              loading: lazy,
+              class: 'photoswipe__image',
+              sizes: sizes,
+              widths: '246, 493, 600, 713, 823, 990',
+              alt: image.alt | escape
+              }}
+              {{new_label}}
+            </div>
+          </div>
       {%- endfor -%}
-   
+    {%- unless had_images -%}
+      <div class="image-gallery-block">
+          {%- assign lazy = 'lazy' -%}    
+          {%- assign image = current_variant.image -%}    
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ image | image_url: width: 1900 | image_tag:
+            loading: lazy,
+            class: 'photoswipe__image',
+            sizes: sizes,
+            widths: '246, 493, 600, 713, 823, 990',
+            alt: image.alt | escape
+            }}
+            {{new_label}}
+        </div>
+        </div>
+    {%- endunless -%}
     </div>
 
     <div class="thumbnail-gallery">
@@ -277,33 +284,51 @@ opacity: 0.7;
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
-<!--   {%- assign imgs = current_variant.metafields.global.images.value -%} -->
+  {%- assign imgs = current_variant.metafields.global.images.value -%}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
   <div class="slider-wrap">
     <div class="image-gallery-main">
+      {%- assign had_images = false -%}
       {%- for image in imgs -%}
-      {%- assign alt = image.alt | strip -%}
-      <div class="image-gallery-block">
-        {%- unless forloop.first -%}
-        {%- assign lazy = 'lazy' -%}
-        {%- endunless -%}
-        <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
-          {{ image | image_url: width: 713 | image_tag:
-          loading: lazy,
-          class: 'photoswipe__image',
-          sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990',
-          alt: image.alt | escape
-          }}
-          {{new_label}}
+        {%- assign had_images = true -%}
+        {%- assign alt = image.alt | strip -%}
+        <div class="image-gallery-block">
+          {%- unless forloop.first -%}
+          {%- assign lazy = 'lazy' -%}
+          {%- endunless -%}
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ image | image_url: width: 1900 | image_tag:
+            loading: lazy,
+            class: 'photoswipe__image',
+            sizes: sizes,
+            widths: '246, 493, 600, 713, 823, 990',
+            alt: image.alt | escape
+            }}
+            {{new_label}}
+          </div>
+      
         </div>
-    
-      </div>
       {%- endfor -%}
-    
+    {%- unless had_images -%}
+      <div class="image-gallery-block">
+          {%- assign lazy = 'lazy' -%}    
+          {%- assign image = current_variant.image -%}    
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ image | image_url: width: 1900 | image_tag:
+            loading: lazy,
+            data-orgin-url:image.url,
+            class: 'photoswipe__image',
+            sizes: sizes,
+            widths: '246, 493, 600, 713, 823, 990',
+            alt: image.alt | escape
+            }}
+            {{new_label}}
+        </div>
+        </div>
+    {%- endunless -%}
     </div>
  
     <div class="thumbnail-gallery">

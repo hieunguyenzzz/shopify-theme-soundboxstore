@@ -1,0 +1,286 @@
+<style>
+  <style>
+.grid-item__link{
+max-width:460px;
+}
+.new-coll-header{
+margin-top:39px;
+border-top: 1px solid;
+    border-top-color: hsl(210deg 17% 23% / 15%);
+}
+#shopify-section-template--16403957186785__166150578844f08c5b .custom__item:not(:last-child){
+margin:0!important
+}
+.header-wrap{
+    max-width: 1640px;
+    margin: 0 auto;
+}
+
+ .flexbox{
+  gap:5%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-right: var(--pageWidthPadding);
+}
+.flexbox .col{
+    max-width: 300px;
+    width: unset;
+    flex:1;
+    text-align: center;
+    margin:0
+}
+ .flexbox .col .col-image a{
+  padding-top: 100%;
+}
+.collection-header{
+  position: static;
+}
+
+.grid-item-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0px -15px;
+}
+
+.grid-item-wrap .product-image-wrap {
+  width: 100%;
+  max-width: 33%;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+.grid-item-wrap .grid-item-meta {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  max-width: 50%;
+  padding: 0px 15px;
+}
+.product-image-wrap:hover .grid-product__secondary-image{
+    transition-duration: .2s;
+    opacity: 1;
+ }
+ .specBtn {
+   margin-bottom: 20px;
+       border: 2px solid #303A44;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    padding: 22px 15px;
+    line-height: 1;
+ }
+ .product-image-wrap h3{
+   text-align: center;
+   font-size: 20px;
+      margin: 20px;
+      height: 3.2em;
+    display: flex;
+    align-items: end;
+ }
+.new-coll-header .flexbox .col h6 a{
+  font-size: 1rem;
+}
+@media only screen and ( max-width: 767px) {
+  .product-image-wrap h3{
+   font-size: 20px!important;
+ }
+ .product-image-wrap .btn{
+       max-width: 150px;
+    padding: 14px 10px; }
+.new-coll-header{
+display:block!important
+}
+.new-coll-header .flexbox .col h6 a {
+    font-size: 0.7rem !important;
+}
+.grid-item-wrap{
+flex-direction: column;
+}
+.grid-item-wrap .product-image-wrap{
+max-width:100%
+}
+ }
+</style>
+</style>
+<div class="page-width">
+  <div class="grid-item-wrap">
+      {% for block in section.blocks %}
+    {%- assign product  = block.settings.left_product -%}
+    {%- liquid
+      assign fixed_aspect_ratio = false
+      unless settings.product_grid_image_size == 'natural'
+        assign fixed_aspect_ratio = true
+      endunless
+
+      assign preview_image = product.featured_media.preview_image
+      assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+    -%}
+    <div class="product-image-wrap">
+      <a
+        href="#"
+        class="grid-item__link"
+      >
+        <div class="grid-product__image-wrap">
+          {%- if fixed_aspect_ratio -%}
+            <div
+              class="grid__image-ratio grid__image-ratio--square grid__image-ratio_hide"
+              data-count=""
+              {{ product.images.size }}
+            >
+              <img
+                class="lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[160, 200, 280, 360, 540, 720, 900]"
+                data-aspectratio="1.0"
+                data-sizes="auto"
+                alt="{{ preview_image.alt | escape }}"
+              >
+              <noscript>
+                <img
+                  class="grid-product__image lazyloaded"
+                  src="{{ preview_image | img_url: '400x' }}"
+                  alt="{{ preview_image.alt | escape }}"
+                >
+              </noscript>
+            </div>
+          {%- else -%}
+            {%- liquid
+              assign ratio = 1
+              if preview_image != blank
+                assign ratio = preview_image.aspect_ratio
+              endif
+            -%}
+            <div style="height: 0; padding-bottom: {{ 100 | divided_by: ratio }}%;">
+              <img
+                class="grid-product__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080]"
+                data-aspectratio="{{ preview_image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ preview_image.alt | escape }}"
+              >
+              <noscript>
+                <img
+                  class="grid-product__image lazyloaded"
+                  src="{{ preview_image | img_url: '400x' }}"
+                  alt="{{ preview_image.alt | escape }}"
+                >
+              </noscript>
+            </div>
+          {%- endif -%}
+
+          {%- if product.media.size > 1 -%}
+            {% if product.metafields.my_fields.product_features_images != blank %}
+              {%- assign second_image = product.metafields.my_fields.product_features_images -%}
+              <div class="grid-product__secondary-image small--hide">
+                {%- assign img_url = second_image -%}
+                <img
+                  class="lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 1000]"
+                  data-aspectratio="{{ second_image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ second_image.alt }}"
+                >
+              </div>
+            {% else %}
+              {%- for media in product.media offset: 1 limit: 1 -%}
+                {%- assign second_image = media.preview_image -%}
+              {%- endfor -%}
+              <div class="grid-product__secondary-image small--hide">
+                {%- assign img_url = second_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 1000]"
+                  data-aspectratio="{{ second_image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ second_image.alt }}"
+                >
+              </div>
+            {% endif %}
+          {%- endif -%}
+        </div>
+      </a>
+      <h3>{{ block.settings.left_content }}</h3>
+      {%- if block.settings.left_button_file != blank -%}
+        <a
+          id="{{block.settings.left_button_id}}"
+          type="button"
+          target="_blank"
+          href="{{block.settings.left_button_file}}"
+          class="btn btn--secondary left_button"
+        >
+          {{ block.settings.left_button }}
+        </a>
+      {%- else -%}
+        <button
+          id="{{block.settings.left_button_id}}"
+          type="button"
+          class="btn btn--secondary left_button"
+        >
+          {{ block.settings.left_button }}
+        </button>
+      {%- endif -%}
+    </div>
+        {{ block.settings.custom_html }}
+  {% endfor %}
+    
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page all grid",
+  "blocks":[
+    {
+      "type":"item",
+      "name":"items",
+      "settings":[
+        {
+      "type": "product",
+      "id": "left_product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "left_content",
+      "label": "Content",
+      "default": "Download assembly instructions for solo pod"
+    },
+    {
+      "type": "text",
+      "id": "left_button",
+      "label": "Button text",
+      "default": "Download here"
+    },
+    {
+      "type": "text",
+      "id": "left_button_id",
+      "label": "Button id",
+      "default": "left_button"
+    },
+    {
+      "type": "text",
+      "id": "left_button_file",
+      "label": "File url",
+      "default": "/"
+    },
+      {
+      "type": "html",
+      "id": "custom_html",
+      "label": "Custom html"
+    }
+      ]
+    }
+  ],
+  "settings": [
+    
+  
+  ]
+}
+{% endschema %}

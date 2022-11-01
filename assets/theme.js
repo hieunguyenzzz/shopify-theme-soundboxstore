@@ -1027,7 +1027,6 @@ lazySizesConfig.expFactor = 4;
               slidesToScroll: 1,
               asNavFor: ".product-main-slider .image-gallery-main",
               dots: false,
-              infinite: true,
               adaptiveHeight: true,
               vertical: true,
               focusOnSelect: true,

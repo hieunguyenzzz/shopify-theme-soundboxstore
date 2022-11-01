@@ -99,8 +99,8 @@
             <div class="video-wrapper">
               
               
-              <video playsinline  src="https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4" class="video video-primary" id="vid1"></video>
-              <video playsinline  src="https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4" poster="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/poster-video.png?v=1657195108" class="video video-secondary" id="vid2"></video>
+                  <video playsinline muted  src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
+              <video playsinline muted src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
               
             </div>
           </div>
@@ -201,6 +201,29 @@
   {
     "name": "Meeting Rooms Video",
     "settings": [
+      {
+            "type": "text",
+            "id": "image_open_url",
+            "label": "Open Image Url"
+          },
+        {
+            "type": "text",
+            "id": "video_open_url",
+            "label": "Open video Url",
+            "default":"https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4"
+          },
+          {
+            "type": "text",
+            "id": "video_close_url",
+            "label": "Close video Url",
+            "default": "https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4"
+          },
+      {
+            "type": "text",
+            "id": "image_close_url",
+            "label": "Close Image Url",
+            "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/poster-video.png?v=1657195108"
+          }
 	],
     "blocks": [
       {

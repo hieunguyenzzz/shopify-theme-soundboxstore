@@ -1,25 +1,27 @@
 $(document).ready(function(){
-
-
+  
   $(".play-button").on("click", function() {
+    $('#vid1').get(0).currentTime = 0;
+    $('#vid2').get(0).currentTime = 0;
     $('#vid1').get(0).play();
     $('#vid2').get(0).play();
-    $(".video-player-controls").addClass("active");
     $(".video-player-controls").removeClass("end");
     $('#vid2').removeAttr("poster");
 
   });
 
   $(".videobtn.firstvideo").on("click", function() {
-
+    $('#vid1').get(0).pause();
+    $('#vid1').get(0).currentTime = 0;
+    $('#vid2').get(0).pause();
+    $('#vid2').get(0).currentTime = 0;
     $(".control").addClass("active");
     $(".video-player").addClass("active");
-    $("#vid2").prop('muted',true);
-	    $("#vid1").prop('muted', false);
+
 
 
     $('#vid2').removeAttr("poster");
-
+    $('#vid1').get(0).play();
   });
 
 
@@ -32,11 +34,13 @@ $(document).ready(function(){
   });
   
   $(".videobtn.secondvideo").on("click", function() {
-     
+    $('#vid1').get(0).pause();
+    $('#vid1').get(0).currentTime = 0;
+    $('#vid2').get(0).pause();
+    $('#vid2').get(0).currentTime = 0;
     $(".control").removeClass("active");
     $(".video-player").removeClass("active");
-    $("#vid1").prop('muted',true);
-      $("#vid2").prop('muted', false);
+    $('#vid2').get(0).play();
   });
   
 //   var vid = document.getElementById("vid2");
@@ -316,7 +320,6 @@ $(document).ready(function(){
     slidesToScroll: 1,
     asNavFor: '.product-main-slider .image-gallery-main',
     dots: false,
-    infinite:true,
      adaptiveHeight: true,
      vertical:true,
     focusOnSelect: true,
@@ -413,14 +416,16 @@ $(window).on('load', function() {
           breakpoint: 1081,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToScroll: 2,
+            adaptiveHeight: true
           }
         },
         {
           breakpoint: 861,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            adaptiveHeight: true
           }
         }
       ]

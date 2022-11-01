@@ -1,125 +1,263 @@
-<section class="meeting-rooms-features">
+<style>
+  @media only screen and (max-width: 540px) {
+    .meeting-rooms-features .flexbox .col:not(:last-child) {
+      max-width: 100%;
+    }
+    .meeting-rooms-features .flexbox .col.right-col {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .features-list-row {
+      padding: 0.5em;
+    }
+    .features-list-row-wrap > div {
+      max-height: 0;
+      opacity: 0;
+      height: 0;
+      transition: all 0.3s linear;
+      overflow: hidden;
+      padding-bottom: 0;
+      margin-bottom: 10px;
+    }
+    .features-list-row-wrap > label {
+      margin: 0;
+      height: 40px;
+      line-height: 30px;
+      padding: 0.2em 0.5em;
+      background-color: #f1f1f1;
+      position: relative;
+    }
+    .features-list-row-wrap > label::after {
+      transition: all 0.3s ease-in-out;
+      display: block;
+      content: "";
+      width: 8px;
+      height: 8px;
+      border: 2px solid currentColor;
+      border-right: none;
+      border-bottom: none;
+      transform: rotate(-135deg);
+      position: absolute;
+      right: 14px;
+      top: 14px;
+    }
+    .features-list-row input:checked + .features-list-row-wrap > label::after {
+      transform: rotate(45deg);
+      top: 14px;
+    }
+    .meeting-rooms-features .features-list .features-list-row {
+      padding: 0;
+    }
+    .features-list-row-wrap > div > div {
+      transform: translateY(-100%);
+      transition: all 0.3s linear;
+      padding: 0.2em 0.5em;
+    }
+    .features-list-row input:checked + .features-list-row-wrap > div {
+      display: block;
+      max-height: 9999px;
+      opacity: 1;
+      height: auto;
+      transform: scale(1);
+      padding-bottom: 10px;
+      background-color: #f1f1f1;
+    }
+    .features-list-row input:checked + .features-list-row-wrap > div > div {
+      transform: translateY(0);
+    }
+    .meeting-rooms-features .flexbox .col.right-col {
+      text-align: left;
+    }
+    .meeting-rooms-features .hotspot-icon:before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>
+<section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
+  meeting-room-features-video
+{%- else -%}
   
+{%- endif -%}">
+
   <div class="page-width">
     <div class="flexbox">
-      
+
       <div class="col left-col">
         <div class="col-wrap">
-         <div class="features-list">
+          <div class="features-list">
             {% for block in section.blocks %}
-           {% if block.type == "features_list_left" %}
-           
-            {% if block.settings.title != blank %}
-            <div class="features-list-row" data-type="{{ block.settings.title }}">
-                <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                <h5>{{ block.settings.title }}</h5>
-                {{ block.settings.description }}
-              </div>
-            </div>
-            {% endif %}
-           
-           {% endif %}
+              {% if block.type == "features_list_left" %}
+
+                {% if block.settings.title != blank %}
+                  <div class="features-list-row" data-type="{{ block.settings.title }}">
+                    <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}"/>
+                    <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
+                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }}
+                      </label>
+                      <div>
+                        <div>
+                          {{ block.settings.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+
+              {% endif %}
             {% endfor %}
           </div>
         </div>
       </div>
- 
+
       {%- assign current_variant = product.selected_or_first_available_variant -%}
-      	{%- assign imgs = current_variant.metafields.global.images.value -%}
-        {%- unless imgs -%}
-          {%- assign imgs = product.images | where: 'alt' , vaSku -%}
-        {%- endunless -%}
-        {%- for image in imgs -%}
-            {%- if prod_img -%}
-            {%- assign prod_img = image -%}
-            {% break %}
-            {%- else -%}
-              {%- assign prod_img = image -%}
-            {%- endif -%}
-          {%- endfor -%}
+      {%- assign imgs = current_variant.metafields.global.images.value -%}
+      {%- unless imgs -%}
+        {%- assign imgs = product.images | where: 'alt' , vaSku -%}
+      {%- endunless -%}
+      {%- for image in imgs -%}
+        {%- if prod_img -%}
+          {%- assign prod_img = image -%}
+          {% break %}
+        {%- else -%}
+          {%- assign prod_img = image -%}
+        {%- endif -%}
+      {%- endfor -%}
       <div class="col center-col">
+        {%- if section.settings.show_videos -%}
           <div class="col-wrap">
-            <img  style="width:100%"
-                srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
-                        {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
-                        {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
-                        {{ prod_img | image_url:  width: 700 }} "
-                src="{{ prod_img | image_url: width: 550, height: 550 }}"
-                sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-                alt="{{ prod_img.alt | escape }}"
-              >
-            
-           {% for block in section.blocks %}
-            {% if block.type == "hotspot_point" %}
-            
-              <span class="hotspot-icon unique-{{- block.id -}}" data-tooltip="{{ block.settings.hotspot_title }}" data-target="feature-{{  block.settings.hotspot_title | handleize }}">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="395.71px" height="395.71px" viewBox="0 0 395.71 395.71" style="enable-background:new 0 0 395.71 395.71;" xml:space="preserve">
-<g>
-	<path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
-            </span>
-            
-            {% endif %}
-          {% endfor %}
-            
-            
-            
+            <div class="video-player">
+              <div class="video-wrapper">
+
+
+                <video playsinline muted src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
+                <video playsinline muted src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
+
+              </div>
+            </div>
+
+
+            <div class="video-player-controls">
+
+
+              <button class="play-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                  <circle cx="30" cy="30" r="29" stroke="#2D795E" stroke-width="2"/>
+                  <path d="M41 28.2679C42.3333 29.0377 42.3333 30.9623 41 31.7321L26 40.3923C24.6667 41.1621 23 40.1999 23 38.6603L23 21.3397C23 19.8001 24.6667 18.8379 26 19.6077L41 28.2679Z" fill="#2D795E"/>
+                </svg>
+              </button>
+              <button class="stop-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                  <circle cx="30" cy="30" r="29" stroke="#2D795E" stroke-width="2"/>
+                  <rect x="22" y="18" width="4" height="24" rx="2" fill="#2D795E"/>
+                  <rect x="34" y="18" width="4" height="24" rx="2" fill="#2D795E"/>
+                </svg>
+
+              </button>
+
+
+              <div class="control">
+                <button class="videobtn firstvideo"></button>
+                <button class="videobtn secondvideo"></button>
+                <div class="label label-outside">Open Door</div>
+                <div class="switch"></div>
+                <div class="label label-inside">Close Door</div>
+              </div>
+            </div>
+
           </div>
+          <script>
+          $('#vid1').get(0).addEventListener('play', (event) => {
+            $(".video-player-controls").addClass("active");
+            });
+            $('#vid1').get(0).addEventListener('pause', (event) => {
+              $(".video-player-controls").removeClass("active");
+            });
+            $('#vid1').get(0).addEventListener('ended', (event) => {
+              $(".video-player-controls").removeClass("active");
+            });
+            $('#vid2').get(0).addEventListener('play', (event) => {
+              $(".video-player-controls").addClass("active");
+            });
+            $('#vid2').get(0).addEventListener('pause', (event) => {
+              $(".video-player-controls").removeClass("active");
+            });
+            $('#vid2').get(0).addEventListener('ended', (event) => {
+              $(".video-player-controls").removeClass("active");
+            });
+          </script>
+        {%- else -%}
+          <div class="col-wrap">
+            <img style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
+                                      {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
+                                      {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
+                                      {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
+
+            {% for block in section.blocks %}
+              {% if block.type == "hotspot_point" %}
+
+                <span class="hotspot-icon unique-{{- block.id -}}" data-tooltip="{{ block.settings.hotspot_title }}" data-target="feature-{{  block.settings.hotspot_title | handleize }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="395.71px" height="395.71px" viewBox="0 0 395.71 395.71" style="enable-background:new 0 0 395.71 395.71;" xml:space="preserve">
+                    <g>
+                      <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
+                    </g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                    <g></g>
+                  </svg>
+                </span>
+
+              {% endif %}
+            {% endfor %}
+
+
+          </div>
+        {%- endif -%}
+
       </div>
-      
+
       <div class="col right-col">
         <div class="col-wrap">
-          
+
           {% comment %}
-          {% if section.settings.title != blank %}
-          <h2 class="title-font">{{ section.settings.title }}</h2>
-          {% endif %}
+            {% if section.settings.title != blank %}
+            <h2 class="title-font">{{ section.settings.title }}</h2>
+            {% endif %}
           {% endcomment %}
-          
+
 
           <div class="features-list">
             {% for block in section.blocks %}
-            {% if block.type == "features_list_right" %}
-            {% if block.settings.title != blank %}
-            <div class="features-list-row" data-type="{{ block.settings.title }}">
-              <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                <h5>{{ block.settings.title }}</h5>
-                {{ block.settings.description }}
-              </div>
-            </div>
-            {% endif %}
-            {% endif %}
+              {% if block.type == "features_list_right" %}
+                {% if block.settings.title != blank %}
+                  <div class="features-list-row" data-type="{{ block.settings.title }}">
+                    <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}"/>
+                    <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
+                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }}
+                      </label>
+                      <div>
+                        <div>
+                          {{ block.settings.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
             {% endfor %}
           </div>
 
@@ -132,61 +270,107 @@
 
 <style>
   {% for block in section.blocks %}
-     {% if block.type == "hotspot_point" %}
-        {% if block.settings.point_x != blank or block.settings.point_y != blank  %}
-              .meeting-rooms-features .hotspot-icon.unique-{{- block.id -}}{left:{{- block.settings.point_x -}}% ; top:{{- block.settings.point_y -}}% }
-        {% endif %}
+    {% if block.type == "hotspot_point" %}
+      {% if block.settings.point_x != blank or block.settings.point_y != blank %}
+        .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
+          left: {{ block.settings.point_x }}%;
+          top: {{ block.settings.point_y }}%
+        }
+        {%- if block.settings.point_x < 40 -%}
+          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before {
+            left: unset;
+            right: 0;
+          }
+
+        {%- endif - %}
+      {% endif %}
     {% endif %}
   {% endfor %}
   .ping {
-	 position: relative;
-}
-.ping::before{
-  position: absolute;
-  top:-0.5em;
-  bottom: -0.5em  ;
-  left: -0.5em;
-  right:-0.5em;
-  content: '';
-  animation:ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
-  border: 2px solid lightblue;
-}
- @keyframes ping {
-  75%, 100% {
-    transform: scale(1.1);
-    opacity: 0;
+    position: relative;
   }
-}
-  .features-list-row-wrap{
-    scroll-margin-top:160px
+  .ping::before {
+    position: absolute;
+    top: -0.5em;
+    bottom: -0.5em;
+    left: -0.5em;
+    right: -0.5em;
+    content: '';
+    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
+    border: 2px solid lightblue;
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+  .features-list-row-wrap {
+    scroll-margin-top: 160px
+  }
+  .meeting-rooms-features .hotspot-icon {
+    width: 5vw;
   }
 </style>
-    {% assign scrollWhenClick = false %}
-    
-      <script>
-  document.querySelectorAll(".hotspot-icon").forEach(node=>{
-    node.addEventListener("click", (e)=>{
-        console.log(node.dataset.target)
-   const targetE=document.querySelector("#"+node.dataset.target)    ;
-{% if scrollWhenClick %} 
-targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-      
-      {%  endif %}  
-  targetE.classList.remove('ping');
-        setTimeout(()=>{
-targetE.classList.add('ping');
-})
+{% assign scrollWhenClick = true %}
+
+<script>
+  document.querySelectorAll(".hotspot-icon").forEach(node => {
+    node.addEventListener("click", (e) => {
+      console.log(node.dataset.target)
+      const targetE = document.querySelector("#" + node.dataset.target);
+      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
+      {% if scrollWhenClick %}
+        if (window.innerWidth < 991) {
+          targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        }
+      {%  endif %}targetE.classList.remove('ping');
+      setTimeout(() => {
+        targetE.classList.add('ping');
+        if (targetInput) {
+          targetInput.checked = true
+        }
+
+      })
     })
-})
+  })
 </script>
-      
 
 
 {% schema %}
   {
     "name": "Meeting Rooms Features",
-    "settings": [
-	],
+    "settings" : [
+        {
+          "type": "checkbox",
+          "id": "show_videos",
+          "label": "Show videos",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "image_open_url",
+          "label": "Open Image Url"
+        },
+        {
+          "type": "text",
+          "id": "video_open_url",
+          "label": "Open video Url",
+          "default": "https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4"
+        },
+        {
+          "type": "text",
+          "id": "video_close_url",
+          "label": "Close video Url",
+          "default": "https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4"
+        }, {
+          "type": "text",
+          "id": "image_close_url",
+          "label": "Close Image Url",
+          "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/poster-video.png?v=1657195108"
+        }
+    ],
     "blocks": [
       {
         "type": "features_list_left",
@@ -196,15 +380,13 @@ targetE.classList.add('ping');
             "type": "text",
             "id": "title",
             "label": "Title"
-          },
-          {
+          }, {
             "type": "richtext",
             "id": "description",
             "label": "Description"
           }
-		]
-      },
-		{
+        ]
+      }, {
         "type": "feature_middle_image",
         "name": "Features Middle Image",
         "settings": [
@@ -213,10 +395,9 @@ targetE.classList.add('ping');
             "id": "middle-img",
             "label": "Features Middle Image"
           }
-         
-		]
-      },
-	{
+
+        ]
+      }, {
         "type": "features_list_right",
         "name": "Features List Right",
         "settings": [
@@ -224,51 +405,47 @@ targetE.classList.add('ping');
             "type": "text",
             "id": "title",
             "label": "Title"
-          },
-          {
+          }, {
             "type": "richtext",
             "id": "description",
             "label": "Description"
           }
-		]
-      },
-		{
-			"type" : "hotspot_point",
-			"name" : "Hotspot Points",
-			"settings": [
-				{
+        ]
+      }, {
+        "type": "hotspot_point",
+        "name": "Hotspot Points",
+        "settings": [
+          {
 
-				"type": "range",
-				"id": "point_x",
-				"label": "Left Position",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "%",
-                "default": 0
+            "type": "range",
+            "id": "point_x",
+            "label": "Left Position",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "default": 0
 
-				},
-				{
+          }, {
 
-				"type": "range",
-				"id": "point_y",
-				"label": "Top Position",
-                "min": 0,
-                "max": 100,
-                "step": 1,
-                "unit": "%",
-                "default": 0
+            "type": "range",
+            "id": "point_y",
+            "label": "Top Position",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "default": 0
 
-				},
-				{
-				"type" : "text",
-				"id" : "hotspot_title",
-				"label" : "Enter Feature Title"
-		
-				}
-			]
-		
-		}
+          }, {
+            "type": "text",
+            "id": "hotspot_title",
+            "label": "Enter Feature Title"
+
+          }
+        ]
+
+      }
     ]
   }
 {% endschema %}

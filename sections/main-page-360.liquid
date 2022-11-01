@@ -34,23 +34,30 @@
     bottom: 0
   }
   .close-btn {font-size: 24px;
+   font-size: 24px;
     left: 32px;
-    left: min(2vw,32px);  padding: 0;
-    width: 42px;
-    height: 42px;
+    left: min(2vw,32px);
+    padding: 0;
+    width: 36px;
+    height: 36px;
     position: absolute;
     display: flex;
     justify-content: center;
-    top:min(2vw,32px);
+    top: min(2vw,32px);
     border-radius: 99em;
     background: white;
-    border: 1px solid #cecece;
+    border: 1.5px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 5px;
+    top: 5px;
+    left: auto;
+    background: #34495e;
+    color: white;
+    top: 50%;
+    transform: translateY(-70px);
   }
   #uvj3f2e70rcg1664779754946.widget-visible{
     visibility: hidden!important;
@@ -277,6 +284,11 @@
 <div class="wrap">
   <div class="iframe-wrap">
     <iframe allowfullscreen="true" width="100%" height="100%" src="{{embed360Url}}"></iframe>
+     <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg">
+      <path fill="none" stroke="currentColor" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+    </svg>
+  </a>
   </div>
   <div class="bottomBar" >
     <div class="bottomBar-header bottomBar-header-desktop page-width">
@@ -285,7 +297,7 @@
         <div class="seel-all-details-grid">
       {% for product in collections['all'].products %}
        {%- if product.metafields.custom.page360.value.url -%}
-        <div class="col  {% if product.handle contains mainProduct.handle %}
+        <div class="col  {% if product.metafields.custom.page360.value.url contains page.handle %}
           current
         {% endif %}">
           <a  href="{{product.metafields.custom.page360.value.url}}" class="col-wrap">
@@ -417,11 +429,7 @@
       <div></div>
     </div>
   </div>
-  <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg">
-      <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
-    </svg>
-  </a>
+ 
 </div>
 
 <div class="see-all-wrap">
