@@ -1,22 +1,5 @@
 $(document).ready(function(){
-  $('#vid1').get(0).addEventListener('play', (event) => {
-    $(".video-player-controls").addClass("active");
-  });
-  $('#vid1').get(0).addEventListener('pause', (event) => {
-    $(".video-player-controls").removeClass("active");
-  });
-  $('#vid1').get(0).addEventListener('ended', (event) => {
-    $(".video-player-controls").removeClass("active");
-  });
-  $('#vid2').get(0).addEventListener('play', (event) => {
-    $(".video-player-controls").addClass("active");
-  });
-  $('#vid2').get(0).addEventListener('pause', (event) => {
-    $(".video-player-controls").removeClass("active");
-  });
-  $('#vid2').get(0).addEventListener('ended', (event) => {
-    $(".video-player-controls").removeClass("active");
-  });
+  
   $(".play-button").on("click", function() {
     $('#vid1').get(0).currentTime = 0;
     $('#vid2').get(0).currentTime = 0;
