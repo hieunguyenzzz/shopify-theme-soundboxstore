@@ -1,8 +1,8 @@
 $(document).ready(function(){
   
   $(".play-button").on("click", function() {
-     $('#vid1').get(0).removeAttribute("muted") 
-     $('#vid2').get(0).removeAttribute("muted") 
+      $('#vid1').get(0).muted = true;
+    $('#vid2').get(0).muted = true;
 
   });
 
@@ -22,9 +22,9 @@ $(document).ready(function(){
 
 
   $(".stop-button").on("click", function() {
-     $('#vid1').get(0).muted = true;
-    $('#vid2').get(0).muted = true;
-   
+ 
+      $('#vid1').get(0).removeAttribute("muted") 
+     $('#vid2').get(0).removeAttribute("muted") 
     
     $(".video-player-controls").removeClass("active");
   });
