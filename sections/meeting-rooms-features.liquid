@@ -168,26 +168,7 @@
   </div>
 </div>
           </div>
-          <script>
-          $('#vid1').get(0).addEventListener('play', (event) => {
-            $(".video-player-controls").addClass("active");
-            });
-            $('#vid1').get(0).addEventListener('pause', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid1').get(0).addEventListener('ended', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid2').get(0).addEventListener('play', (event) => {
-              $(".video-player-controls").addClass("active");
-            });
-            $('#vid2').get(0).addEventListener('pause', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid2').get(0).addEventListener('ended', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-          </script>
+          
         {%- else -%}
           <div class="col-wrap">
             <img loading="lazy" style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
