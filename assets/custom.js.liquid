@@ -1,10 +1,8 @@
 $(document).ready(function(){
   
   $(".play-button").on("click", function() {
-    $('#vid1').get(0).currentTime = 0;
-    $('#vid2').get(0).currentTime = 0;
-    $('#vid1').get(0).play();
-    $('#vid2').get(0).play();
+     $('#vid1').get(0).muted = false;
+    $('#vid2').get(0).muted = false;
     $(".video-player-controls").removeClass("end");
     $('#vid2').removeAttr("poster");
 
@@ -26,8 +24,8 @@ $(document).ready(function(){
 
 
   $(".stop-button").on("click", function() {
-     $('#vid1').get(0).pause();
-    $('#vid2').get(0).pause();
+     $('#vid1').get(0).muted = true;
+    $('#vid2').get(0).muted = true;
    
     
     $(".video-player-controls").removeClass("active");
