@@ -1,3 +1,40 @@
+<style>
+  .product-recommendations {
+  margin-top: 40px;
+}
+
+.product-recommendations .grid-product__colors {
+  display: none;
+}
+
+.product-recommendations .grid-product__title {
+  font-size: 18px;
+}
+
+.product-recommendations .price-text {
+  font-size: 16px;
+}
+
+.product-recommendations .slick-dots {
+  font-size: 0;
+  list-style: none;
+  margin: 10px 0 0;
+  justify-content: center;
+}
+
+.product-recommendations .slick-dots li button {
+  font-size: 0;
+  height: 12px;
+  width: 12px;
+  background: rgb(0, 0, 0, 0.5);
+  margin: 0 5px;
+  border-radius: 50px;
+}
+
+.product-recommendations .slick-dots li.slick-active button {
+  background: red;
+}
+</style>
 <div class="page-width product-recommendations"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
   {% assign collection = section.settings.collection %}
 {%- if collection != blank -%}
@@ -7,10 +44,6 @@
       {%- liquid
         for product in collection.products limit: 4
           render 'cart-product-grid-item', product: product
-
-          if settings.quick_shop_enable
-            render 'quick-shop-modal', product: product
-          endif
         endfor
       -%}
     </div>
@@ -22,10 +55,6 @@
       {%- liquid
         for product in recommendations.products limit: 4
           render 'cart-product-grid-item', product: product
-
-          if settings.quick_shop_enable
-            render 'quick-shop-modal', product: product
-          endif
         endfor
       -%}
     </div>
