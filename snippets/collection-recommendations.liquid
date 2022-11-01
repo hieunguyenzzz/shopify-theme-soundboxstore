@@ -1,5 +1,5 @@
 {%- unless collection -%}
-  {%- assign collection = product.metafields.custom.upsell_collection -%}
+  {%- assign collection = mainproduct.metafields.custom.upsell_collection -%}
 {%- endunless -%}
 
 {%- if collection != blank -%}
