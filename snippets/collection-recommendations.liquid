@@ -1,0 +1,20 @@
+{%- unless collection -%}
+  {%- assign collection = product.metafields.custom.upsell_collection -%}
+{%- endunless -%}
+
+{%- if collection != blank -%}
+  <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+    <div class="h3 h3--mobile cart__recommended-title">{{ title }}</div>
+    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
+      {%- liquid
+        for product in collection.products limit: 4
+          render 'cart-product-grid-item', product: product
+
+          if settings.quick_shop_enable
+            render 'quick-shop-modal', product: product
+          endif
+        endfor
+      -%}
+    </div>
+  </div>
+{%- endif -%}

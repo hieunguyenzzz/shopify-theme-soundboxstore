@@ -1,0 +1,34 @@
+
+ {%- render 'collection-recommendations', product: product, collection: section.settings.collection, location: 'drawer' -%}
+
+{% schema %}
+{
+  "name": "Upsell Collection",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upsell Collection",
+      "settings": {
+        
+      }
+    }
+  ]
+}
+{% endschema %}
