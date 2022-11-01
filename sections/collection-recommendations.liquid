@@ -4,7 +4,7 @@
 {{ recommendations.products.size }}
 {%- if collection != blank -%}
   <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
-    <div class="h3 h3--mobile cart__recommended-title">{{ title }}</div>
+    <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
     <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
       {%- liquid
         for product in collection.products limit: 4
@@ -19,7 +19,7 @@
   </div>
     {% else %}
    <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
-    <div class="h3 h3--mobile cart__recommended-title">{{ title }}</div>
+    <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
     <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
       {%- liquid
         for product in recommendations.products limit: 4
