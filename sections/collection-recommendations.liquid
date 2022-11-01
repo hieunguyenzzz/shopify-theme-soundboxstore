@@ -90,6 +90,39 @@
   const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
 
   observer.observe(productRecommendationsSection);
+$('.product-recommendations .new-grid').slick({
+    infinite: true,
+    slidesToShow: 4,
+    arrows:false,
+    slidesToScroll: 4,
+    responsive: [
+    {
+      breakpoint: 1640,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots:true
+      }
+    },
+      {
+      breakpoint: 1440,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        dots:true
+      }
+    },
+      
+      {
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots:true
+      }
+    }
+  ]
+  });
 {% endjavascript %}
 
 {% schema %}
