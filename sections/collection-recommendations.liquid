@@ -1,5 +1,39 @@
 <div class="page-width product-recommendations"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
- {%- render 'collection-recommendations', mainproduct: product, title:section.settings.title,  collection: section.settings.collection, location: 'drawer' -%}
+{%- unless collection -%}
+{%- endunless -%}
+{{ recommendations.products.size }}
+{%- if collection != blank -%}
+  <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+    <div class="h3 h3--mobile cart__recommended-title">{{ title }}</div>
+    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
+      {%- liquid
+        for product in collection.products limit: 4
+          render 'cart-product-grid-item', product: product
+
+          if settings.quick_shop_enable
+            render 'quick-shop-modal', product: product
+          endif
+        endfor
+      -%}
+    </div>
+  </div>
+    {% else %}
+   <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+    <div class="h3 h3--mobile cart__recommended-title">{{ title }}</div>
+    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
+      {%- liquid
+        for product in recommendations.products limit: 4
+          render 'cart-product-grid-item', product: product
+
+          if settings.quick_shop_enable
+            render 'quick-shop-modal', product: product
+          endif
+        endfor
+      -%}
+    </div>
+  </div>
+ 
+{%- endif -%}
 </div>
 
 {% javascript %}
