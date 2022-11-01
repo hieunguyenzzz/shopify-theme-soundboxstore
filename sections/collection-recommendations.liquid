@@ -1,6 +1,5 @@
 <div class="page-width product-recommendations"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
-{%- unless collection -%}
-{%- endunless -%}
+  {% assign collection = section.settings.collection %}
 {%- if collection != blank -%}
   <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
     <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
