@@ -23,8 +23,8 @@ $(document).ready(function(){
 
   $(".stop-button").on("click", function() {
  
-      $('#vid1').get(0).removeAttribute("muted") 
-     $('#vid2').get(0).removeAttribute("muted") 
+    $('#vid1').get(0).muted = false;
+    $('#vid2').get(0).muted = false;
     
     $(".video-player-controls").removeClass("active");
   });
