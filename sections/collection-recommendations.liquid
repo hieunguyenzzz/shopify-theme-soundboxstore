@@ -80,17 +80,7 @@
         if (recommendations && recommendations.innerHTML.trim().length) {
           productRecommendationsSection.innerHTML = recommendations.innerHTML;
         }
-      })
-      .catch(e => {
-        console.error(e);
-      });
-  };
-
-  const productRecommendationsSection = document.querySelector('.product-recommendations');
-  const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
-
-  observer.observe(productRecommendationsSection);
-$('.product-recommendations .new-grid').slick({
+        $('.product-recommendations .new-grid').slick({
     infinite: true,
     slidesToShow: 4,
     arrows:false,
@@ -123,6 +113,17 @@ $('.product-recommendations .new-grid').slick({
     }
   ]
   });
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+
+  const productRecommendationsSection = document.querySelector('.product-recommendations');
+  const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
+
+  observer.observe(productRecommendationsSection);
+
 {% endjavascript %}
 
 {% schema %}
