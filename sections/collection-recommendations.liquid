@@ -1,0 +1,150 @@
+<style>
+
+.product-recommendations .grid-product__price {
+  display: flex;
+  align-items: flex-end;
+  font-size: 13px
+}
+
+.product-recommendations .grid-product__price p {
+  margin: 0
+}
+
+
+.product-recommendations .grid-product__price .grid-product__price--current {
+  margin-left: 10px
+}
+.product-recommendations .slick-dots {
+  font-size: 0;
+  list-style: none;
+  margin: 10px 0 0;
+  justify-content: center;
+  display:flex;
+}
+
+.product-recommendations .slick-dots li button {
+  font-size: 0;
+  height: 12px;
+  width: 12px;
+  background: rgb(0, 0, 0, 0.5);
+  margin: 0 5px;
+  border-radius: 50px;
+}
+
+.product-recommendations .slick-dots li.slick-active button {
+  background: red;
+}
+</style>
+
+{%- assign recommendationsproducts = section.settings.collection.products -%}
+{%- unless recommendationsproducts -%}
+  {%- assign recommendationsproducts = product.metafields.custom.upsell_list.value -%}
+{%- endunless -%}
+{%- unless recommendationsproducts -%}
+  {%- assign recommendationsproducts = recommendations.products -%}
+{%- endunless -%}
+<div class="page-width product-recommendations"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
+  <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+    <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
+    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
+      {%- liquid
+        for product in recommendationsproducts 
+          render 'cart-product-grid-item', product: product
+        endfor
+      -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  const handleIntersection = (entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+
+    observer.unobserve(productRecommendationsSection);
+
+    const url = productRecommendationsSection.dataset.url;
+
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('.product-recommendations');
+
+        if (recommendations && recommendations.innerHTML.trim().length) {
+          productRecommendationsSection.innerHTML = recommendations.innerHTML;
+           $('.product-recommendations .new-grid').slick({
+            infinite: true,
+            slidesToShow: 4,
+            arrows:false,
+            slidesToScroll: 4,
+            responsive: [
+            {
+              breakpoint: 1640,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                dots:true
+              }
+            },
+              {
+              breakpoint: 1440,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots:true
+              }
+            },
+              
+              {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots:true
+              }
+            }
+          ]
+          });
+        }
+     
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+
+  const productRecommendationsSection = document.querySelector('.product-recommendations');
+  const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
+
+  observer.observe(productRecommendationsSection);
+
+</script>
+
+{% schema %}
+{
+  "name": "Upsell Collection",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Goes great with"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Upsell Collection",
+      "settings": {
+        
+      }
+    }
+  ]
+}
+{% endschema %}
