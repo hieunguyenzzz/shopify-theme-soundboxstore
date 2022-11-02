@@ -99,11 +99,9 @@
             {%- if block.type == 'countdown' -%}
               <div
                 id="AnnouncementSlide-{{ block.id }}"
-                class="slideshow__slide announcement-slider__slide"
                 data-index="{{ slide_index }}"
                 {{ block.shopify_attributes }}
               >
-                <div class="announcement-slider__content">
                   {% unless id %}
     {%- assign id = 'countDownDate' -%}
 {% endunless %}
@@ -165,7 +163,6 @@
         // }
     }, 1000);
 </script>
-                </div>
               </div>
               {%- assign slide_index = slide_index | plus: 1 -%}
             {%- endif -%}
