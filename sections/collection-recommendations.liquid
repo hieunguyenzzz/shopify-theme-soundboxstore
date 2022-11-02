@@ -35,32 +35,25 @@
   background: red;
 }
 </style>
+
+{%- assign recommendationsproducts = section.settings.collection.products -%}
+{%- unless recommendationsproducts -%}
+  {%- assign recommendationsproducts = product.metafields.custom.upsell_list.value -%}
+{%- endunless -%}
+{%- unless recommendationsproducts -%}
+  {%- assign recommendationsproducts = recommendations.products -%}
+{%- endunless -%}
 <div class="page-width product-recommendations"  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
-  {% assign collection = section.settings.collection %}
-{%- if collection != blank -%}
   <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
     <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
     <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
       {%- liquid
-        for product in collection.products limit: 4
+        for product in recommendationsproducts 
           render 'cart-product-grid-item', product: product
         endfor
       -%}
     </div>
   </div>
-    {% else %}
-   <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
-    <div class="h3 h3--mobile cart__recommended-title">{{ section.settings.title }}</div>
-    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
-      {%- liquid
-        for product in recommendations.products limit: 4
-          render 'cart-product-grid-item', product: product
-        endfor
-      -%}
-    </div>
-  </div>
- 
-{%- endif -%}
 </div>
 
 <script>
