@@ -208,15 +208,22 @@
               {%- assign slide_index = slide_index | plus: 1 -%}
               
             {%- endif -%}
-             {%- if block.type == 'countdown' -%}
+            {%- if block.type == 'countdown' -%}
               <div
                 id="AnnouncementSlide-{{ block.id }}"
-                class="slideshow__slide announcement-slider__slide"
+                style="
+                  flex:1;{%- if forloop.first  -%}
+                    text-align:left;
+                  {%- endif -%}
+                  {%- if forloop.last  -%}
+                    text-align:right;
+                  {%- endif -%}
+                "
                 data-index="{{ slide_index }}"
                 {{ block.shopify_attributes }}
               >
-                <div class="announcement-slider__content">
-                  {% unless id %}
+                <div>
+                   {% unless id %}
     {%- assign id = 'countDownDate' -%}
 {% endunless %}
 <div id="{{id}}-wrap" style="display: none;" class="tw-w-full  tw-leading-[32px] tw-text-sm tw-uppercase tw-font-mono tw-font-semibold tw-bg-black tw-text-center tw-text-white">
