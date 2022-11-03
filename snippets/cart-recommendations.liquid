@@ -25,7 +25,20 @@
         
       {% endfor %}
     {% endfor %}
-    
+    {%- if exitred == blank -%}
+      {%- if cart_collection != blank -%}
+            {%- liquid
+              for product in cart_collection.products limit: 4
+                render 'cart-product-grid-item', product: product
+      
+                if settings.quick_shop_enable
+                  render 'quick-shop-modal', product: product
+                endif
+              endfor
+            -%}
+      {%- endif -%}
+      
+    {%- endif -%}
   </div>
 </div>
 
