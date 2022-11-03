@@ -5,20 +5,27 @@
     assign mobileScrollOnly = false
   endif
 -%}
-
-{%- if cart_collection != blank -%}
-  <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
-    <div class="h3 h3--mobile cart__recommended-title">{{ 'cart.general.recommended_title' | t }}</div>
-    <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
-      {%- liquid
-        for product in cart_collection.products limit: 4
-          render 'cart-product-grid-item', product: product
-
-          if settings.quick_shop_enable
-            render 'quick-shop-modal', product: product
-          endif
-        endfor
-      -%}
-    </div>
+{%- assign exitred = '' -%}
+<div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+  <div class="h3 h3--mobile cart__recommended-title">{{ 'cart.general.recommended_title' | t }}</div>
+  <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
+    {% for item in cart.items %}
+      {% for product in item.product.metafields.custom.upsell_list.value %}
+        {%- assign handle = product.handle | append: ',' -%}
+        {%- unless exitred contains handle -%}
+          {%- liquid
+            render 'cart-product-grid-item', product: product
+    
+            if settings.quick_shop_enable
+              render 'quick-shop-modal', product: product
+            endif
+        -%}
+        {%- assign exitred = exitred | append: handle -%}
+        {%- endunless -%}
+        
+      {% endfor %}
+    {% endfor %}
+    
   </div>
-{%- endif -%}
+</div>
+
