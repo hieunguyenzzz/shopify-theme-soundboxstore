@@ -168,7 +168,7 @@
               </div>
             </div>
             <audio id="audio-bg" loop autoplay  >
-              <source src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109" type="audio/mpeg">
+                <source src="{{ section.settings.audio_bg_url }}" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -398,7 +398,8 @@
        {
         "type": "text",
         "id": "audio_bg_url",
-        "label": "Background Audio Url"
+        "label": "Background Audio Url",
+        "default":"https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109"
       },
       {
         "type": "text",
