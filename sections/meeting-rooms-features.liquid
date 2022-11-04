@@ -186,9 +186,9 @@
             };
             let observer = new IntersectionObserver(callback, options);
             let target = document.querySelector('#vid2');
-            $('#vid1').get(0).onended = function() {
+             $('#vid1').get(0).addEventListener("ended", function() {
                 alert("The audio has ended");
-            };
+              })
             observer.observe(target);
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
