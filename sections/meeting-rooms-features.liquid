@@ -143,8 +143,7 @@
             <div class="video-player">
               <div class="video-wrapper">
                 <audio controls autoplay hidden style="visual-hidden">
-                  <source src="horse.ogg" type="audio/ogg">
-                  <source src="horse.mp3" type="audio/mpeg">
+                  <source src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109" type="audio/mpeg">
                   Your browser does not support the audio element.
                 </audio>
                 <video {% if section.settings.loop %} loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
