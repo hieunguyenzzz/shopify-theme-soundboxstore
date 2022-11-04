@@ -75,26 +75,25 @@
       visibility: visible;
     }
   }
-  .meeting-room-features-video .video-player-controls>button{
-  
+  .meeting-room-features-video .video-player-controls > button {
+
     border-radius: 99em;
     width: 60px;
     height: 60px;
   }
-  .meeting-room-features-video .video-player-controls>button svg{
-    height: 100%;width:100%
+  .meeting-room-features-video .video-player-controls > button svg {
+    height: 100%;
+    width: 100%
   }
-  .meeting-room-features-video .center-col .control{
+  .meeting-room-features-video .center-col .control {
     flex-direction: row-reverse;
   }
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
-  meeting-room-features-video
-{%- else -%}
-  
-{%- endif -%}">
-
-  <div class="page-width">
+      meeting-room-features-video
+    {%- else -%}
+    
+    {%- endif -%}"><div class="page-width">
     <div class="flexbox">
 
       <div class="col left-col">
@@ -142,16 +141,16 @@
           <div class="col-wrap">
             <div class="video-player">
               <div class="video-wrapper">
-                
-                <video {% if section.settings.loop %} loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
-                <video {% if section.settings.loop %} loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
+
+                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
+                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
             <div class="video-player-controls">
               <button class="play-button">
-                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 250 250">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 250 250">
                   <image width="250" height="250" xlink:href="data:img/png;base64,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"/>
-                  </svg>
+                </svg>
               </button>
               <button class="stop-button">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 250 250">
@@ -160,27 +159,27 @@
               </button>
 
 
-<div class="control">
-   <button class="videobtn firstvideo"></button>
-   <button class="videobtn secondvideo"></button>
-   <div class="label label-inside">Open Door</div>
-   <div class="switch"></div>
-   <div class="label label-outside">Close Door</div>
-  </div>
-</div>
-          <audio  autoplay hidden style="visual-hidden">
-                  <source src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
+              <div class="control">
+                <button class="videobtn firstvideo"></button>
+                <button class="videobtn secondvideo"></button>
+                <div class="label label-inside">Open Door</div>
+                <div class="switch"></div>
+                <div class="label label-outside">Close Door</div>
+              </div>
+            </div>
+            <audio autoplay hidden style="visual-hidden">
+              <source src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
           </div>
           <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
               $(".play-button").on("click", function() {
-                  $('#vid1').get(0).muted = true;
-                  $('#vid2').get(0).muted = true;
-                  $(".video-player-controls").addClass("active");
+                $('#vid1').get(0).muted = true;
+                $('#vid2').get(0).muted = true;
+                $(".video-player-controls").addClass("active");
               });
-            
+
               $(".videobtn.firstvideo").on("click", function() {
                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
@@ -210,9 +209,9 @@
         {%- else -%}
           <div class="col-wrap">
             <img loading="lazy" style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
-                                      {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
-                                      {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
-                                      {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
+                                                    {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
+                                                    {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
+                                                    {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
 
             {% for block in section.blocks %}
               {% if block.type == "hotspot_point" %}
@@ -296,7 +295,7 @@
           top: {{ block.settings.point_y }}%
         }
         {%- if block.settings.point_x < 40 -%}
-          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before {
+          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
             left: unset;
             right: 0;
           }
@@ -339,8 +338,7 @@
     node.addEventListener("click", (e) => {
       console.log(node.dataset.target)
       const targetE = document.querySelector("#" + node.dataset.target);
-      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
-      {% if scrollWhenClick %}
+      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));{% if scrollWhenClick %}
         if (window.innerWidth < 991) {
           targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         }
@@ -360,46 +358,44 @@
 {% schema %}
   {
     "name": "Meeting Rooms Features",
-    "settings" : [
-        {
-          "type": "checkbox",
-          "id": "show_videos",
-          "label": "Show videos",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "no_sound",
-          "label": "No sound",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "loop",
-          "label": "Loop",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "image_open_url",
-          "label": "Open Image Url"
-        },
-        {
-          "type": "text",
-          "id": "video_open_url",
-          "label": "Open video Url",
-          "default": "https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4"
-        },
-        {
-          "type": "text",
-          "id": "video_close_url",
-          "label": "Close video Url",
-          "default": "https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4"
-        }, {
-          "type": "text",
-          "id": "image_close_url",
-          "label": "Close Image Url"
-        }
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_videos",
+        "label": "Show videos",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "no_sound",
+        "label": "No sound",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "image_open_url",
+        "label": "Open Image Url"
+      }, {
+        "type": "text",
+        "id": "video_open_url",
+        "label": "Open video Url",
+        "default": "https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4"
+      }, {
+        "type": "text",
+        "id": "video_close_url",
+        "label": "Close video Url",
+        "default": "https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4"
+      }, {
+        "type": "text",
+        "id": "image_close_url",
+        "label": "Close Image Url"
+      }
     ],
     "blocks": [
       {
