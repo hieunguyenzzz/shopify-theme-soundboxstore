@@ -173,7 +173,40 @@
                   Your browser does not support the audio element.
                 </audio>
           </div>
-          
+          <script>
+            $(document).ready(function(){
+              $(".play-button").on("click", function() {
+                  $('#vid1').get(0).muted = true;
+                  $('#vid2').get(0).muted = true;
+                  $(".video-player-controls").addClass("active");
+              });
+            
+              $(".videobtn.firstvideo").on("click", function() {
+                $('#vid1').get(0).pause();
+                $('#vid1').get(0).currentTime = 0;
+                $('#vid2').get(0).pause();
+                $('#vid2').get(0).currentTime = 0;
+                $(".control").addClass("active");
+                $(".video-player").addClass("active");
+                $('#vid2').removeAttr("poster");
+                $('#vid1').get(0).play();
+              });
+              $(".stop-button").on("click", function() {
+                $('#vid1').get(0).muted = false;
+                $('#vid2').get(0).muted = false;
+                $(".video-player-controls").removeClass("active");
+              });
+              $(".videobtn.secondvideo").on("click", function() {
+                $('#vid1').get(0).pause();
+                $('#vid1').get(0).currentTime = 0;
+                $('#vid2').get(0).pause();
+                $('#vid2').get(0).currentTime = 0;
+                $(".control").removeClass("active");
+                $(".video-player").removeClass("active");
+                $('#vid2').get(0).play();
+              });
+            });
+          </script>
         {%- else -%}
           <div class="col-wrap">
             <img loading="lazy" style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
