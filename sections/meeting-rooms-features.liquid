@@ -181,7 +181,7 @@
             }
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
-                  $('#audio-bg').get(0).play() ;
+          console.log({entry})
               });
             };
             let observer = new IntersectionObserver(callback, options);
