@@ -167,19 +167,26 @@
                 <div class="label label-outside">Close Door</div>
               </div>
             </div>
-            <audio autoplay hidden style="visual-hidden">
+            <audio id="audio-bg" autoplay hidden >
               <source src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Close-Noise-BG-Default.mp3?v=1667539109" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
           <script>
             $(document).ready(function() {
+              $('#audio-bg').get(0).play() ;
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
+                $('#audio-bg').get(0).play() ;
                 $(".video-player-controls").addClass("active");
               });
-
+               $(".stop-button").on("click", function() {
+                $('#vid1').get(0).muted = false;
+                $('#vid2').get(0).muted = false;
+                 $('#audio-bg').get(0).pause() ;
+                $(".video-player-controls").removeClass("active");
+              });
               $(".videobtn.firstvideo").on("click", function() {
                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
@@ -190,11 +197,7 @@
                 $('#vid2').removeAttr("poster");
                 $('#vid1').get(0).play();
               });
-              $(".stop-button").on("click", function() {
-                $('#vid1').get(0).muted = false;
-                $('#vid2').get(0).muted = false;
-                $(".video-player-controls").removeClass("active");
-              });
+             
               $(".videobtn.secondvideo").on("click", function() {
                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
