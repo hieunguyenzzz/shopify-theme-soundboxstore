@@ -174,8 +174,9 @@
           </div>
           <script>
             $(document).ready(function() {
-              $('#audio-bg').get(0).muted = true;
-             $('#audio-bg').get(0).play() ;
+              setTimeout(()=>{
+                           $('#audio-bg').get(0).play() ;
+              })
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
