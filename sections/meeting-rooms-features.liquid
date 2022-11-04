@@ -187,7 +187,7 @@
             let observer = new IntersectionObserver(callback, options);
             let target = document.querySelector('#vid2');
              $('#vid1').get(0).addEventListener("ended", function() {
-                alert("The audio has ended");
+                $(".videobtn.secondvideo").click()
               })
             observer.observe(target);
               $(".play-button").on("click", function() {
