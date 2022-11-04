@@ -85,7 +85,9 @@
     height: 100%;
     width: 100%
   }
- 
+  .meeting-room-features-video .center-col .control {
+    flex-direction: row-reverse;
+  }
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
       meeting-room-features-video
@@ -160,9 +162,9 @@
               <div class="control">
                 <button class="videobtn firstvideo"></button>
                 <button class="videobtn secondvideo"></button>
-                <div class="label label-inside">Open Door</div>
-                <div class="switch"></div>
                 <div class="label label-outside">Close Door</div>
+                <div class="switch"></div>
+                <div class="label label-inside">Open Door</div>
               </div>
             </div>
             <audio id="audio-bg" loop autoplay  >
