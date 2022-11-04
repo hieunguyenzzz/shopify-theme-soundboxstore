@@ -190,13 +190,13 @@
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
-                $('#audio-bg').get(0).play() ;
+                $('#audio-bg').get(0).muted = true;
                 $(".video-player-controls").addClass("active");
               });
                $(".stop-button").on("click", function() {
                 $('#vid1').get(0).muted = false;
                 $('#vid2').get(0).muted = false;
-                 $('#audio-bg').get(0).pause() ;
+                 $('#audio-bg').get(0).muted = false;
                 $(".video-player-controls").removeClass("active");
               });
               $(".videobtn.firstvideo").on("click", function() {
