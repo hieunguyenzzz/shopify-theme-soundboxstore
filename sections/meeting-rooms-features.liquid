@@ -196,10 +196,10 @@
             
             observer.observe(target);
                 $('#vid1').get(0).addEventListener("ended", function() {
-                $(".videobtn.secondvideo").addClass("ended");
+                $(".play-button").addClass("ended");
               })
               $('#vid2').get(0).addEventListener("ended", function() {
-                $(".videobtn.firstvideo").addClass("ended");
+                $(".stop-button").addClass("ended");
               })
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
@@ -207,6 +207,7 @@
                 $('#audio-close').get(0).muted = true;
                 $('#audio-open').get(0).muted = true;
                 $(".video-player-controls").addClass("active");
+                 $(".stop-button").removeClass("ended");
               });
                $(".stop-button").on("click", function() {
                 $('#vid1').get(0).muted = false;
@@ -214,6 +215,7 @@
                  $('#audio-close').get(0).muted = false;
                  $('#audio-open').get(0).muted = false;
                 $(".video-player-controls").removeClass("active");
+               $(".play-button").removeClass("ended");
               });
               $(".videobtn.firstvideo").on("click", function() {
                 $('#vid1').get(0).pause();
@@ -226,7 +228,7 @@
                 $('#vid1').get(0).play();
                 $('#audio-close').get(0).pause() ;
                 $('#audio-open').get(0).play() ;
-                $(".videobtn.secondvideo").removeClass("ended");
+             
               });
              
               $(".videobtn.secondvideo").on("click", function() {
@@ -240,7 +242,7 @@
     
                 $('#audio-close').get(0).play() ;
                 $('#audio-open').get(0).pause() ;
-                 $(".videobtn.firstvideo").removeClass("ended");
+            
               });
             });
           </script>
