@@ -147,7 +147,7 @@
                 <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
-            <div class="video-player-controls">
+            <div class="video-player-controls ended">
               <button class="play-button">
              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                 <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
@@ -190,8 +190,8 @@
             }
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
-                  $('#audio-close').get(0).play() ;
-                  $('#vid2').get(0).play();
+                  // $('#audio-close').get(0).play() ;
+                  // $('#vid2').get(0).play();
               });
             };
             let observer = new IntersectionObserver(callback, options);
