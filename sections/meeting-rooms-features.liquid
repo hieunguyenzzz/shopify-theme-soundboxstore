@@ -90,6 +90,49 @@
     color:#979797;
     opacity: .3;
   }
+  .tw-toggle {
+  --chkbg: hsla(var(--bc) / .2);
+  --focus-shadow: 0 0 0;
+  --handleoffset: 1.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  --tw-bg-opacity: 0.2;
+  background-color: hsla(var(--bc) / var(--tw-bg-opacity, 1));
+  --tw-border-opacity: 0.2;
+  border-color: hsla(var(--bc) / var(--tw-border-opacity, 1));
+  border-width: 1px;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 3rem;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .3s;
+  border-radius: var(--rounded-badge, 1.9rem);
+  transition: background,box-shadow var(--animation-input, .2s) ease-in-out;
+  box-shadow: calc(var(--handleoffset)*-1) 0 0 2px hsl(var(--b1)) inset, 0 0 0 2px hsl(var(--b1)) inset, var(--focus-shadow);
+}
+
+.tw-toggle:focus-visible {
+  --focus-shadow: 0 0 0 2px hsl(var(--b1)), 0 0 0 4px hsl(var(--bc));
+}
+
+.tw-toggle:checked,.tw-toggle[checked=true] {
+  --chkbg: hsl(var(--bc));
+  --tw-bg-opacity: 1;
+  --tw-border-opacity: 1;
+  box-shadow: var(--handleoffset) 0 0 2px hsl(var(--b1)) inset, 0 0 0 2px hsl(var(--b1)) inset, var(--focus-shadow);
+}
+
+[dir=rtl] .tw-toggle:checked,[dir=rtl] .tw-toggle[checked=true] {
+  box-shadow: calc(var(--handleoffset)*1) 0 0 2px hsl(var(--b1)) inset, 0 0 0 2px hsl(var(--b1)) inset, var(--focus-shadow);
+}
+
+.tw-toggle:disabled {
+  --tw-bg-opacity: 0.2;
+  background-color: hsla(var(--bc) / var(--tw-bg-opacity, 1));
+  border-color: transparent;
+  cursor: not-allowed;
+}
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
       meeting-room-features-video
@@ -144,8 +187,8 @@
             <div class="video-player">
               <div class="video-wrapper">
 
-                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.open_video }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.open_thumb }}" {% endif %} class="video video-primary" id="vid1"></video>
-                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
+                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.open_video }}" {% if section.settings.open_thumb != blank %} poster="{{ section.settings.open_thumb }}" {% endif %} class="video video-primary" id="vid1"></video>
+                <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.close_thumb != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
             <div class="video-player-controls  ended">
