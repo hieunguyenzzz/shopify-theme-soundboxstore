@@ -207,7 +207,7 @@
               $('#vid2').get(0).addEventListener("ended", function() {
                 $(".video-player-controls").addClass("ended");
               })
-              $(".play-button").on("click", function() {
+              $(".stop-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
                 $('#audio-close').get(0).muted = true;
@@ -216,7 +216,7 @@
                 $('#audio-close').get(0).play() ;
 
               });
-               $(".stop-button").on("click", function() {
+               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = false;
                 $('#vid2').get(0).muted = false;
                  $('#audio-close').get(0).muted = false;
