@@ -208,21 +208,16 @@
                 $(".video-player-controls").addClass("ended");
               })
               $(".play-button").on("click", function() {
-                $('#vid1').get(0).muted = true;
-                $('#vid2').get(0).muted = true;
-                $('#audio-close').get(0).muted = false;
-                $('#audio-open').get(0).muted = false;
+               
                 $(".video-player-controls").addClass("active");
-                $('#audio-close').get(0).play() ;
-
+                $('#audio-close').get(0).play();
+                $('#audio-open').get(0).play();
               });
                $(".stop-button").on("click", function() {
-                $('#vid1').get(0).muted = false;
-                $('#vid2').get(0).muted = false;
-                 $('#audio-close').get(0).muted = true;
-                 $('#audio-open').get(0).muted = true;
+           
                 $(".video-player-controls").removeClass("active");
-    
+                $('#audio-close').get(0).pause();
+                $('#audio-open').get(0).pause();
               });
               $(".videobtn.firstvideo").on("click", function() {
                 $('#vid1').get(0).pause();
@@ -233,8 +228,8 @@
                 $(".video-player").addClass("active");
                 $('#vid2').removeAttr("poster");
                 $('#vid1').get(0).play();
-                $('#audio-close').get(0).pause() ;
-                $('#audio-open').get(0).play() ;
+                $('#audio-close').get(0).muted = true ;
+                $('#audio-open').get(0).muted = false ;
              $(".video-player-controls").removeClass("ended");
               });
              
@@ -247,8 +242,8 @@
                 $(".video-player").removeClass("active");
                 $('#vid2').get(0).play();
     
-                $('#audio-close').get(0).play() ;
-                $('#audio-open').get(0).pause() ;
+                $('#audio-close').get(0).muted = false ;
+                $('#audio-open').get(0).muted = true ;
             $(".video-player-controls").removeClass("ended");
               });
             });
