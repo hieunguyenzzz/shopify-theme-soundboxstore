@@ -147,7 +147,7 @@
                 <video {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
-            <div class="video-player-controls active ended">
+            <div class="video-player-controls  ended">
               <button class="play-button">
              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                 <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
@@ -207,21 +207,21 @@
               $('#vid2').get(0).addEventListener("ended", function() {
                 $(".video-player-controls").addClass("ended");
               })
-              $(".stop-button").on("click", function() {
+              $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
                 $('#audio-close').get(0).muted = true;
                 $('#audio-open').get(0).muted = true;
-                $(".video-player-controls").removeClass("active");
+                $(".video-player-controls").addClass("active");
                 $('#audio-close').get(0).play() ;
 
               });
-               $(".play-button").on("click", function() {
+               $(".stop-button").on("click", function() {
                 $('#vid1').get(0).muted = false;
                 $('#vid2').get(0).muted = false;
                  $('#audio-close').get(0).muted = false;
                  $('#audio-open').get(0).muted = false;
-                $(".video-player-controls").addClass("active");
+                $(".video-player-controls").removeClass("active");
     
               });
               $(".videobtn.firstvideo").on("click", function() {
