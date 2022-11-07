@@ -3670,7 +3670,8 @@ h6.h6 {
   width: 24px;
   height: 24px;
   top: 0;
-  left: 24px;
+  left: 0;
+
   background: #fff;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
@@ -3680,18 +3681,19 @@ h6.h6 {
 
 .meeting-room-features-video .center-col .control .label {
   text-transform: uppercase;
-  color: #979797;
+
   margin: 0 13px;
-  opacity: .3;
   will-change: opacity;
   transition: opacity 0.3s ease-out;
   cursor: pointer;
   font-size: min(3vw, calc(var(--typeBaseSize) + 1px));
+  opacity: 1;
+  color: #303a44;
 }
 
 .meeting-room-features-video .center-col .control .label:last-of-type {
-  opacity: 1;
-  color: #303a44;
+  opacity: .3;
+  color: #979797;
 }
 
 .meeting-room-features-video .center-col video.video.video-primary {
@@ -3699,17 +3701,18 @@ h6.h6 {
 }
 
 .meeting-room-features-video .center-col .control.active .label {
-  opacity: 1;
-  color: #303a44;
-}
-
-.meeting-room-features-video .center-col .control.active .label:last-of-type {
   opacity: .3;
   color: #979797;
 }
 
+.meeting-room-features-video .center-col .control.active .label:last-of-type {
+
+  opacity: 1;
+  color: #303a44;
+}
+
 .meeting-room-features-video .center-col .control.active .switch:after {
-  left: 0;
+  left: 24px;
 }
 
 .meeting-room-features-video .video-player.active .video.video-secondary {
