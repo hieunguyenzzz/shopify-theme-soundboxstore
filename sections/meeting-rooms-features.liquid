@@ -195,6 +195,12 @@
             let target = document.querySelector('#vid2');
             
             observer.observe(target);
+                $('#vid1').get(0).addEventListener("ended", function() {
+                $(".videobtn.secondvideo").addClass("ended");
+              })
+              $('#vid2').get(0).addEventListener("ended", function() {
+                $(".videobtn.firstvideo").addClass("ended");
+              })
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
@@ -220,7 +226,7 @@
                 $('#vid1').get(0).play();
                 $('#audio-close').get(0).pause() ;
                 $('#audio-open').get(0).play() ;
-                
+                $(".videobtn.secondvideo").removeClass("ended");
               });
              
               $(".videobtn.secondvideo").on("click", function() {
@@ -234,6 +240,7 @@
     
                 $('#audio-close').get(0).play() ;
                 $('#audio-open').get(0).pause() ;
+                 $(".videobtn.firstvideo").removeClass("ended");
               });
             });
           </script>
