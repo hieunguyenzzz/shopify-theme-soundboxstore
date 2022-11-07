@@ -84,8 +84,11 @@
   .meeting-room-features-video .video-player-controls > button svg {
     height: 100%;
     width: 100%
+    color:#f1f1f1;
   }
-  
+  .meeting-room-features-video .video-player-controls.ended > button svg {
+    color:#3A434D;
+  }
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
       meeting-room-features-video
