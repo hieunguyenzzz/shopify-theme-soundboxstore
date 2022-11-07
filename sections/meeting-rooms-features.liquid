@@ -191,10 +191,9 @@
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
              
-                  $('#audio-close').get(0).muted = true;
+                  $('#audio-close').get(0).muted = false;
                   $('#audio-open').get(0).muted = true;
-                  $('#audio-close').get(0).play() ;
-                  $('#audio-open').get(0).play() ;
+    
               });
             };
             let observer = new IntersectionObserver(callback, options);
