@@ -190,8 +190,10 @@
             }
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
-                  // $('#audio-close').get(0).play() ;
-                  // $('#vid2').get(0).play();
+                  $('#audio-close').get(0).play() ;
+                  $('#audio-open').get(0).play() ;
+                  $('#audio-close').get(0).muted = true;
+                  $('#audio-open').get(0).muted = true;
               });
             };
             let observer = new IntersectionObserver(callback, options);
@@ -210,6 +212,7 @@
                 $('#audio-close').get(0).muted = true;
                 $('#audio-open').get(0).muted = true;
                 $(".video-player-controls").addClass("active");
+                $('#audio-close').get(0).play() ;
 
               });
                $(".stop-button").on("click", function() {
