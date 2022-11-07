@@ -210,8 +210,8 @@
               $(".play-button").on("click", function() {
                 $('#vid1').get(0).muted = true;
                 $('#vid2').get(0).muted = true;
-                $('#audio-close').get(0).muted = true;
-                $('#audio-open').get(0).muted = true;
+                $('#audio-close').get(0).muted = false;
+                $('#audio-open').get(0).muted = false;
                 $(".video-player-controls").addClass("active");
                 $('#audio-close').get(0).play() ;
 
@@ -219,8 +219,8 @@
                $(".stop-button").on("click", function() {
                 $('#vid1').get(0).muted = false;
                 $('#vid2').get(0).muted = false;
-                 $('#audio-close').get(0).muted = false;
-                 $('#audio-open').get(0).muted = false;
+                 $('#audio-close').get(0).muted = true;
+                 $('#audio-open').get(0).muted = true;
                 $(".video-player-controls").removeClass("active");
     
               });
