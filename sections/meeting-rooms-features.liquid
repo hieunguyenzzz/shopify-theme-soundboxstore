@@ -260,7 +260,7 @@
                 $('#audio-close').get(0).pause();
                 $('#audio-open').get(0).pause();
               });
-              $(".label-outside").on("click", function() {
+              $(".label-inside").on("click", function() {
                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
                 $('#vid2').get(0).pause();
@@ -274,7 +274,7 @@
              $(".video-player-controls").removeClass("ended");
               });
              
-              $(".label-inside").on("click", function() {
+              $(".label-outside").on("click", function() {
                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
                 $('#vid2').get(0).pause();
