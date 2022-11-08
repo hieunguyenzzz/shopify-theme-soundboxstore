@@ -242,12 +242,6 @@
             let target = document.querySelector('#vid2');
             
             observer.observe(target);
-                $('#vid1').get(0).addEventListener("ended", function() {
-                $(".video-player-controls").addClass("ended");
-              })
-              $('#vid2').get(0).addEventListener("ended", function() {
-                $(".video-player-controls").addClass("ended");
-              })
               $(".play-button").on("click", function() {
                
                 $(".video-player-controls").addClass("active");
