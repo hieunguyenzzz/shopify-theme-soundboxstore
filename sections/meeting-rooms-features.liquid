@@ -214,12 +214,10 @@
                   $(".video-player-controls").addClass("active");
                  if(isClosed){
                     $('#audio-close').get(0).muted=false;
-                    $('#audio-open').get(0).muted=true;
                     if(!isPlaying){
                       $('#audio-close').get(0).play()
                     }
                  }else{
-                     $('#audio-close').get(0).muted=true;
                     $('#audio-open').get(0).muted=false;
                    if(!isPlaying){
                       $('#audio-open').get(0).play()
