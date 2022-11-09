@@ -234,6 +234,7 @@
 
               });
               $(".label-inside").on("click", function() {
+                isClosed=false
                 $(".control").addClass("active");
                 $(".video-player").addClass("active");
                 $('#vid2').removeAttr("poster");
@@ -242,10 +243,7 @@
               });
              
               $(".label-outside").on("click", function() {
-                $('#vid1').get(0).pause();
-                $('#vid1').get(0).currentTime = 0;
-                $('#vid2').get(0).pause();
-                $('#vid2').get(0).currentTime = 0;
+                 isClosed=true
                 $(".control").removeClass("active");
                 $(".video-player").removeClass("active");
                 $('#vid2').get(0).play();
