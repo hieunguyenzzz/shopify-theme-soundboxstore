@@ -227,7 +227,10 @@
                 $(".video-player-controls").removeClass("active");
                 $('#audio-close').get(0).pause();
                 $('#audio-open').get(0).pause();
-
+   $('#vid1').get(0).pause();
+                $('#vid1').get(0).currentTime = 0;
+                $('#vid2').get(0).pause();
+                $('#vid2').get(0).currentTime = 0;
 
               });
               $(".label-inside").on("click", function() {
