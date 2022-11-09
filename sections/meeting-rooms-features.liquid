@@ -205,16 +205,23 @@
             let observer = new IntersectionObserver(callback, options);
             let target = document.querySelector('#vid2');
             let isClosed = true
+            let isPlaying = false
             $('#vid2').get(0).addEventListener("ended", ()=>{
-                $('#audio-close').get(0).currentTime = 0;
-                $('#audio-close').get(0).play();
+                if(isClosed){
+                  $('#audio-close').get(0).currentTime = 0;
+                  $('#audio-close').get(0).play();
+                }
+       
             })
            $('#vid1').get(0).addEventListener("ended", ()=>{
+             if(!isClosed){
                 $('#audio-open').get(0).currentTime = 0;
                 $('#audio-open').get(0).play();
+             }
             })
             observer.observe(target);
               $(".play-button").on("click", function() {
+                isPlaying=true
                 $('#audio-open').get(0).currentTime = 0;
                   $(".video-player-controls").addClass("active");
                  if(isClosed){
@@ -230,6 +237,7 @@
                 
               });
                $(".stop-button").on("click", function() {
+                 isPlaying=false
                 $(".video-player-controls").removeClass("active");
                 $('#audio-close').get(0).muted=true;
                 $('#audio-open').get(0).muted=true;
