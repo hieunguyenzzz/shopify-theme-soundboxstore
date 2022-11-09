@@ -231,12 +231,10 @@
               });
                $(".stop-button").on("click", function() {
                 $(".video-player-controls").removeClass("active");
-                $('#audio-close').get(0).pause();
-                $('#audio-open').get(0).pause();
-                 $('#vid1').get(0).pause();
-                $('#vid1').get(0).currentTime = 0;
-                $('#vid2').get(0).pause();
-                $('#vid2').get(0).currentTime = 0;
+                $('#audio-close').get(0).muted=true;
+                $('#audio-open').get(0).muted=true;
+                $('#vid1').get(0).muted=true;
+                $('#vid2').get(0).muted=true;
 
               });
               $(".label-inside").on("click", function() {
