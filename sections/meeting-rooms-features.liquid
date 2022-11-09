@@ -253,16 +253,20 @@
               $(".label-inside").on("click", function() {
                 isClosed=false
                 isPlaying=true
+                $('#audio-close').get(0).pause()
+                $('#audio-close').get(0).pause()
                 $(".control").addClass("active");
                 $(".video-player").addClass("active");
                 $('#vid2').removeAttr("poster");
                 $('#vid1').get(0).play();
-              
+                
               });
              
               $(".label-outside").on("click", function() {
                  isClosed=true
                   isPlaying=true
+                $('#audio-close').get(0).pause()
+                $('#audio-close').get(0).pause()
                  $(".control").removeClass("active");
                  $(".video-player").removeClass("active");
                  $('#vid2').get(0).play();
