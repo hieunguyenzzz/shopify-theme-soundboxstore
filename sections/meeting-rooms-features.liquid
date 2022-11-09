@@ -196,7 +196,7 @@
               entries.forEach((entry) => {
                    if(!did){
                      $('#audio-close').get(0).muted = false;
-                    $('#audio-open').get(0).muted = true;
+                    $('#audio-open').get(0).muted = false;
                     did= true
                    }
                  
@@ -204,13 +204,18 @@
             };
             let observer = new IntersectionObserver(callback, options);
             let target = document.querySelector('#vid2');
-            
+            let isClosed = true
             observer.observe(target);
               $(".play-button").on("click", function() {
-               
-                $(".video-player-controls").addClass("active");
-                $('#audio-close').get(0).play();
-                $('#audio-open').get(0).play();
+                  $(".video-player-controls").addClass("active");
+                 if(isClosed){
+                  $('#audio-open').get(0).pause();
+                  $('#audio-close').get(0).play();
+                 }else{
+                   $('#audio-open').get(0).play();
+                    $('#audio-close').get(0).pause();
+                 }
+                
               });
                $(".stop-button").on("click", function() {
            
