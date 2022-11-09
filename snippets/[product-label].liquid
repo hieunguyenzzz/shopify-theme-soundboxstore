@@ -4,7 +4,7 @@
                                   {% capture discount %}
                                       {{ }}%
                                   {% endcapture %}
-                                {% assign discount =  current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0'  %}
+                                {% assign discount =  current_variant.compare_at_price | minus:current_variant.price | times:100.000 | divided_by:current_variant.compare_at_price | round | append: '00'  %}
                                
                               {% endif %}
                              {% if discount %}
