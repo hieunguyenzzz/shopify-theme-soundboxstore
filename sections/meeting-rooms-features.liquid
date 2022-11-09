@@ -195,8 +195,8 @@
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
                    if(!did){
-                     $('#audio-close').get(0).muted = false;
-                    $('#audio-open').get(0).muted = false;
+                     $('#audio-close').get(0).muted = true;
+                    $('#audio-open').get(0).muted = true;
                     did= true
                    }
                  
@@ -215,22 +215,17 @@
             })
             observer.observe(target);
               $(".play-button").on("click", function() {
-                           $('#vid1').get(0).pause();
-                $('#vid1').get(0).currentTime = 0;
-                $('#vid2').get(0).pause();
-                $('#vid2').get(0).currentTime = 0;
-                          $('#audio-close').get(0).pause();
-                $('#audio-open').get(0).pause();
-                          $('#audio-close').get(0).currentTime = 0;
                 $('#audio-open').get(0).currentTime = 0;
                   $(".video-player-controls").addClass("active");
                  if(isClosed){
-        
-                  $('#vid2').get(0).play();
+                    $('#audio-close').get(0).muted=false;
+                    $('#audio-open').get(0).muted=true;
+                    
                   
                  }else{
-  
-           $('#vid1').get(0).play();
+                     $('#audio-close').get(0).muted=true;
+                    $('#audio-open').get(0).muted=false;
+                   $('#vid1').get(0).play();
                  }
                 
               });
@@ -238,7 +233,7 @@
                 $(".video-player-controls").removeClass("active");
                 $('#audio-close').get(0).pause();
                 $('#audio-open').get(0).pause();
-   $('#vid1').get(0).pause();
+                 $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
                 $('#vid2').get(0).pause();
                 $('#vid2').get(0).currentTime = 0;
@@ -249,16 +244,15 @@
                 $(".control").addClass("active");
                 $(".video-player").addClass("active");
                 $('#vid2').removeAttr("poster");
-                $(".play-button").click()
+                $('#vid1').get(0).play();
               
               });
              
               $(".label-outside").on("click", function() {
                  isClosed=true
-                $(".control").removeClass("active");
-                $(".video-player").removeClass("active");
-                $('#vid2').get(0).play();
-                $(".play-button").click()
+                 $(".control").removeClass("active");
+                 $(".video-player").removeClass("active");
+                 $('#vid2').get(0).play();
               });
             });
           </script>
