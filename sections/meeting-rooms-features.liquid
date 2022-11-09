@@ -191,22 +191,11 @@
               rootMargin: '0px',
               threshold: 1.0
             }
-            let did = false
-            let callback = (entries, observer) => {
-              entries.forEach((entry) => {
-                   if(!did){
-                     
-                    did= true
-                   }
-                 
-              });
-            };
+  
               $('#audio-close').get(0).muted = true;
                     $('#audio-open').get(0).muted = true;
                     $('#vid1').get(0).muted=true;
                     $('#vid2').get(0).muted=true;
-            let observer = new IntersectionObserver(callback, options);
-            let target = document.querySelector('#vid2');
             let isClosed = true
             let isPlaying = false
             $('#vid2').get(0).addEventListener("ended", ()=>{
@@ -224,7 +213,6 @@
                 isPlaying=false
              }
             })
-            observer.observe(target);
               $(".play-button").on("click", function() {
                 $('#audio-open').get(0).currentTime = 0;
                   $(".video-player-controls").addClass("active");
