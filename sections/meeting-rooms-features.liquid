@@ -195,13 +195,16 @@
             let callback = (entries, observer) => {
               entries.forEach((entry) => {
                    if(!did){
-                     $('#audio-close').get(0).muted = true;
-                    $('#audio-open').get(0).muted = true;
+                     
                     did= true
                    }
                  
               });
             };
+              $('#audio-close').get(0).muted = true;
+                    $('#audio-open').get(0).muted = true;
+                    $('#vid1').get(0).muted=true;
+                    $('#vid2').get(0).muted=true;
             let observer = new IntersectionObserver(callback, options);
             let target = document.querySelector('#vid2');
             let isClosed = true
