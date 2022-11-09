@@ -210,6 +210,7 @@
                 if(isClosed){
                   $('#audio-close').get(0).currentTime = 0;
                   $('#audio-close').get(0).play();
+                  isPlaying=false
                 }
        
             })
@@ -217,11 +218,11 @@
              if(!isClosed){
                 $('#audio-open').get(0).currentTime = 0;
                 $('#audio-open').get(0).play();
+                isPlaying=false
              }
             })
             observer.observe(target);
               $(".play-button").on("click", function() {
-                isPlaying=true
                 $('#audio-open').get(0).currentTime = 0;
                   $(".video-player-controls").addClass("active");
                  if(isClosed){
@@ -236,7 +237,6 @@
                 
               });
                $(".stop-button").on("click", function() {
-                 isPlaying=false
                 $(".video-player-controls").removeClass("active");
                 $('#audio-close').get(0).muted=true;
                 $('#audio-open').get(0).muted=true;
@@ -246,6 +246,7 @@
               });
               $(".label-inside").on("click", function() {
                 isClosed=false
+                isPlaying=true
                 $(".control").addClass("active");
                 $(".video-player").addClass("active");
                 $('#vid2').removeAttr("poster");
@@ -255,6 +256,7 @@
              
               $(".label-outside").on("click", function() {
                  isClosed=true
+                  isPlaying=true
                  $(".control").removeClass("active");
                  $(".video-player").removeClass("active");
                  $('#vid2').get(0).play();
