@@ -192,9 +192,13 @@
                     $('#vid2').get(0).muted=true;
             let isClosed = true
             let isPlaying = false
+            let ismuted =true
             $('#vid2').get(0).addEventListener("ended", ()=>{
                 if(isClosed){
                   console.log('#vid2')
+                  if(!ismuted){
+                     $('#audio-close').get(0).muted = false;
+                  }
                   $('#audio-close').get(0).currentTime = 0;
                   $('#audio-close').get(0).play();
                   isPlaying=false
@@ -204,12 +208,16 @@
            $('#vid1').get(0).addEventListener("ended", ()=>{
              if(!isClosed){
                console.log('#vid1')
+                if(!ismuted){
+                     $('#audio-open').get(0).muted = false;
+                  }
                 $('#audio-open').get(0).currentTime = 0;
                 $('#audio-open').get(0).play();
                 isPlaying=false
              }
             })
               $(".play-button").on("click", function() {
+                ismuted=false
                 $('#audio-open').get(0).currentTime = 0;
                   $(".video-player-controls").addClass("active");
                  if(isClosed){
@@ -228,6 +236,7 @@
                 
               });
                $(".stop-button").on("click", function() {
+                ismuted=true
                 $(".video-player-controls").removeClass("active");
                 $('#audio-close').get(0).muted=true;
                 $('#audio-open').get(0).muted=true;
