@@ -186,12 +186,6 @@
           </div>
           <script>
             $(document).ready(function() {
-             let options = {
-              root:window.document,
-              rootMargin: '0px',
-              threshold: 1.0
-            }
-  
               $('#audio-close').get(0).muted = true;
                     $('#audio-open').get(0).muted = true;
                     $('#vid1').get(0).muted=true;
@@ -200,6 +194,7 @@
             let isPlaying = false
             $('#vid2').get(0).addEventListener("ended", ()=>{
                 if(isClosed){
+                  console.log('#vid2')
                   $('#audio-close').get(0).currentTime = 0;
                   $('#audio-close').get(0).play();
                   isPlaying=false
@@ -208,6 +203,7 @@
             })
            $('#vid1').get(0).addEventListener("ended", ()=>{
              if(!isClosed){
+               console.log('#vid1')
                 $('#audio-open').get(0).currentTime = 0;
                 $('#audio-open').get(0).play();
                 isPlaying=false
