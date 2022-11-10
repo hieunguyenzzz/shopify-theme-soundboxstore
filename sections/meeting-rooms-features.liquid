@@ -254,6 +254,7 @@
                 $('#vid2').removeAttr("poster");
                 $('#vid2').get(0).pause();
                 $('#vid2').get(0).currentTime = 0;
+           $('#vid1').get(0).currentTime = 0;
                 $('#vid1').get(0).play();
                 
               });
@@ -267,6 +268,7 @@
                  $(".video-player").removeClass("active");
                  $('#vid1').get(0).pause();
                 $('#vid1').get(0).currentTime = 0;
+                $('#vid2').get(0).currentTime = 0;
                  $('#vid2').get(0).play();
               });
             });
