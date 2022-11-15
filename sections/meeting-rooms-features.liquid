@@ -94,6 +94,12 @@
   .meeting-room-features-video .center-col .control .switch:after{
     border-radius:99em;
   }
+  .meeting-room-features-video video{
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-appearance: none
+  }
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
       meeting-room-features-video
