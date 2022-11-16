@@ -276,6 +276,13 @@
                 $('#vid2').get(0).currentTime = 0;
                  $('#vid2').get(0).play();
               });
+           $(".switch").on("click", function() {
+                if( $(".control").hasClass("active")){
+                    $(".label-outside").click()
+                }else{
+                    $(".label-inside").click()
+                }
+              });
             });
           </script>
         {%- else -%}
