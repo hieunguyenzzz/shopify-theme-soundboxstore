@@ -34,7 +34,7 @@
             {% endfor %}
           </div>
 
-          {%- render 'cart-recommendations', location: 'page' -%}
+          {%- render 'cart-recommendations', cart: cart, location: 'page' -%}
         </div>
         <div class="cart__page-col">
           <h1 class="cart-col-title">{{ 'cart.general.order_summary'|t }}</h1>
