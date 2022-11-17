@@ -30,7 +30,8 @@
         },
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -111,7 +112,8 @@
         "2f4ce18f-fc46-4d16-ab85-52111f71d6a9",
         "aff0d8c6-1f4e-4905-8c02-2071a65a5787"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "1657348293dc4e4fd8": {
       "type": "rich-text",
@@ -690,13 +692,15 @@
       "blocks": {
         "2b19c121-0ea7-4de4-ad9c-06737fe27b53": {
           "type": "shopify:\/\/apps\/product-reviews\/blocks\/reviews\/bae150af-8da8-48b2-9867-398188115e5f",
-          "settings": {}
+          "settings": {
+          }
         }
       },
       "block_order": [
         "2b19c121-0ea7-4de4-ad9c-06737fe27b53"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "1651508688dadacecf": {
       "type": "apps",
@@ -713,7 +717,8 @@
       "block_order": [
         "48c52e75-eab5-4c4d-9962-5612d7ab3824"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "16574290364e705c32": {
       "type": "Divider",
@@ -752,6 +757,26 @@
         "title": "Goes great with",
         "collection": ""
       }
+    },
+    "14a6974b-1625-4e9c-a26d-61c5cc08ca77": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--16659852460257__14a6974b-1625-4e9c-a26d-61c5cc08ca77-166866158150bbe1e2-1": {
+          "type": "html",
+          "settings": {
+            "code": "<button class=\"klaviyo_form_trigger\">Click here<\/button>\n<script type=\"text\/javascript\">\n\tdocument.querySelector('.klaviyo_form_trigger').addEventListener('click', function (){\n\t\twindow._klOnsite = window._klOnsite || []; \n\t\twindow._klOnsite.push(['openForm', 'XiDvEG']);\n\t});\n<\/script>",
+            "width": "50%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--16659852460257__14a6974b-1625-4e9c-a26d-61c5cc08ca77-166866158150bbe1e2-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
     }
   },
   "order": [
@@ -776,6 +801,7 @@
     "1651508688dadacecf",
     "16574290364e705c32",
     "16613277917527439f",
-    "aefd3c97-7dc0-4dfc-bae2-2679a5d2f57a"
+    "aefd3c97-7dc0-4dfc-bae2-2679a5d2f57a",
+    "14a6974b-1625-4e9c-a26d-61c5cc08ca77"
   ]
 }
