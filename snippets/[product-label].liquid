@@ -1,3 +1,4 @@
+{% if settings.discout %}
 {% assign current_variant =  product.selected_or_first_available_variant %}
                               {% assign discount = nil %}
                               {% if current_variant.price < current_variant.compare_at_price %}
@@ -32,3 +33,4 @@
                                 {% endif %}
                               {% endfor %}
                               {% endif %}
+  {% endif %}
