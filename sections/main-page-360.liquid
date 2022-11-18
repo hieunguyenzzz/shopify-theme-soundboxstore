@@ -365,6 +365,7 @@
           <div style="flex:1;min-width: 300px">
           <h1 >{{mainProduct.title}}</h1>
           <div >{{mainProduct.description}}</div>
+          {% if show_price %}
           <div class="grid-product__price grfq-price" style="margin-top: 1em;">
             <div class="price-title" style="font-size: 0.8em;">{{ 'strings.others.starting_from'|t }}</div>
             {%- if product.price_varies -%}
@@ -424,6 +425,7 @@
             {%- endif -%}
             <span class="vat_text">(Ex. VAT)</span>
           </div>
+            {% endif %}
           <div style="margin-top:1em;display:flex;gap:1em" class="collection-btn-group">
             <a style="flex:1" href="{{ product.url }}" class="btn buy-btn ">
               {{- 'strings.others.explore_now' | t -}}
