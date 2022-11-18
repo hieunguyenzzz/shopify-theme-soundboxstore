@@ -158,7 +158,7 @@
                 <video width="1000" height="1000" {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.close_thumb != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
-            <div class="video-player-controls  ended">
+            <div class="video-player-controls  ended "  style="margin-bottom:2em">
               <button class="play-button">
              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                 <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
@@ -175,7 +175,7 @@
             </button>
 
 
-              <div class="control" style="margin-bottom:2em">
+              <div class="control">
                 <div class="label label-outside">Close Door</div>
                 <div class="switch"></div>
                 <div class="label label-inside">Open Door</div>
