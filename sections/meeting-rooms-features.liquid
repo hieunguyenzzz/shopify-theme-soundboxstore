@@ -149,8 +149,9 @@
         {%- endif -%}
       {%- endfor -%}
       <div class="col center-col">
-        {%- if section.settings.show_videos -%}
           <div class="col-wrap">
+        {%- if section.settings.show_videos -%}
+          <div >
             <div class="video-player active">
               <div class="video-wrapper">
 
@@ -286,13 +287,16 @@
             });
           </script>
         {%- else -%}
-          <div class="col-wrap">
             <img loading="lazy" style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
                                                     {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
                                                     {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
                                                     {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
 
-            {% for block in section.blocks %}
+            
+
+
+        {%- endif -%}
+{% for block in section.blocks %}
               {% if block.type == "hotspot_point" %}
 
                 <span class="hotspot-icon unique-{{- block.id -}}" data-tooltip="{{ block.settings.hotspot_title }}" data-target="feature-{{  block.settings.hotspot_title | handleize }}">
@@ -320,11 +324,7 @@
 
               {% endif %}
             {% endfor %}
-
-
-          </div>
-        {%- endif -%}
-
+                      </div>
       </div>
 
       <div class="col right-col">
