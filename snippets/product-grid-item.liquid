@@ -22,7 +22,7 @@
 -%}
 
 <div
-  class="grid-item grid-product {{ classes }} scroll-{{ product.id }}"
+  class="grid-item grid-item__content grid-product {{ classes }} scroll-{{ product.id }}"
   data-product-handle="{{ product.handle }}"
   data-product-id="{{ product.id }}"
 >
@@ -337,7 +337,7 @@
         </div>
 
         <div class="grid-item__meta-secondary">
-          <div class="grid-product__price">
+          <div class="grid-product__price ">
             <p class="price-title">{{ 'strings.others.starting_from'|t }}</p>
             {%- if product.price_varies -%}
               <span class="grid-product__price--current">

@@ -76,6 +76,92 @@
         >
           {%- assign slide_index = 0 -%}
           {%- for block in section.blocks -%}
+            {%- if block.type == 'countdown' -%}
+              <div
+                id="AnnouncementSlide-{{ block.id }}"
+                class="slideshow__slide announcement-slider__slide"
+                data-index="{{ slide_index }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="announcement-slider__content">
+                  <style>
+                    .mobile-countdown{
+                      display: flex;
+                      justify-content: center;
+                    }
+                    .mobile-countdown-inner,.mobile-countdown-date{
+                       display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      gap:0.4em
+                    }
+                    .mobile-countdown-date-inner svg{
+                      font-size: 1.2em;
+                         display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+             
+                  </style>
+                  {% unless id %}
+                    {%- assign id = 'countDownDate-mobile' -%}
+                  {% endunless %}
+                  <div style="display: none;" id="{{id}}-wrap"  class="mobile-countdown">
+                    <div class="mobile-countdown-inner">
+                        <span>{{ block.settings.title }}</span>
+                    <div class="mobile-countdown-date">
+                      <div class="mobile-countdown-date-inner"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"></path></svg></div> <span id="{{id}}">00:00:00</span></div>
+                    </div>
+                  </div>
+                  
+<script>
+  // Set the date we're counting down to
+    function addHours(date,h) {
+date.setTime(date.getTime() + (h*60*60*1000));
+return date;
+}
+// Set the date we're counting down to
+var date = new Date("{{settings.countdown_date  | default: shop.metafields.global.countdown_timer}}")
+var countDownDate = addHours(date,7).getTime();
+  // Update the count down every 1 second
+  var x = setInterval(function () { // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+      if (distance > 0) {
+          document
+              .querySelector("#{{ id }}-wrap")
+              .style
+              .display = "block"
+      }
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      let countdownstring = ""
+      if (days === 0) {} else if (days === 1) {
+          countdownstring = countdownstring + days + " {{'strings.general.day' | t}}, "
+      } else {
+          countdownstring = countdownstring + days + " {{'strings.general.days' | t}}, "
+      }
+      countdownstring = countdownstring + hours + ":" + minutes + ":" + seconds + "";
+      document.getElementById("{{ id }}").innerHTML = countdownstring;
+
+      // If the count down is finished, write some text
+      // if (distance < 0) {
+      //     clearInterval(x);
+      //     document.getElementById("demo").innerHTML = "EXPIRED";
+      // }
+  }, 1000);
+</script>
+                </div>
+              </div>
+              {%- assign slide_index = slide_index | plus: 1 -%}
+            {%- endif -%}
             {%- if block.type == 'announcement' -%}
               <div
                 id="AnnouncementSlide-{{ block.id }}"
@@ -107,6 +193,97 @@
         >
           {%- assign slide_index = 0 -%}
           {%- for block in section.blocks -%}
+            {%- if block.type == 'countdown' -%}
+              <div
+                id="AnnouncementSlide-{{ block.id }}"
+                style="
+                  flex:1;{%- if forloop.first  -%}
+                    text-align:left;
+                  {%- endif -%}
+                  {%- if forloop.last  -%}
+                    text-align:right;
+                  {%- endif -%}
+                "
+                data-index="{{ slide_index }}"
+                {{ block.shopify_attributes }}
+              >
+                <div>
+                  <style>
+                    .countdown{
+                      display: flex;
+                      justify-content: center;
+                    }
+                    .countdown-inner,.countdown-date{
+                       display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      gap:0.4em
+                    }
+                    .countdown-date-inner svg{
+                      font-size: 1.2em;
+                         display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+           
+                  </style>
+                    {%- assign id = 'countDownDate' -%}
+                  <div style="display: none;" id="{{id}}-wrap"  class="countdown">
+                    <div class="countdown-inner">
+                        <span>{{ block.settings.title }}</span>
+                    <div class="countdown-date">
+                      <div class="countdown-date-inner"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"></path></svg></div> <span id="{{id}}">00:00:00</span></div>
+                    </div>
+                  </div>
+                  
+<script>
+  // Set the date we're counting down to
+    function addHours(date,h) {
+date.setTime(date.getTime() + (h*60*60*1000));
+return date;
+}
+// Set the date we're counting down to
+var date = new Date("{{settings.countdown_date  | default: shop.metafields.global.countdown_timer}}")
+var countDownDate = addHours(date,7).getTime();
+  // Update the count down every 1 second
+  var x = setInterval(function () { // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+      if (distance > 0) {
+          document
+              .querySelector("#{{ id }}-wrap")
+              .style
+              .display = "block"
+      }
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      let countdownstring = ""
+      if (days === 0) {} else if (days === 1) {
+          countdownstring = countdownstring + days + " {{'strings.general.day' | t}}, "
+      } else {
+          countdownstring = countdownstring + days + " {{'strings.general.days' | t}}, "
+      }
+      countdownstring = countdownstring + hours + ":" + minutes + ":" + seconds + "";
+      document.getElementById("{{ id }}").innerHTML = countdownstring;
+
+      // If the count down is finished, write some text
+      // if (distance < 0) {
+      //     clearInterval(x);
+      //     document.getElementById("demo").innerHTML = "EXPIRED";
+      // }
+  }, 1000);
+</script>
+                </div>
+              </div>
+              {%- assign slide_index = slide_index | plus: 1 -%}
+            {%- endif -%}
             {%- if block.type == 'announcement' -%}
               <div
                 id="AnnouncementSlide-{{ block.id }}"

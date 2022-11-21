@@ -1,10 +1,11 @@
+{% if settings.discout %}
 {% assign current_variant =  product.selected_or_first_available_variant %}
                               {% assign discount = nil %}
                               {% if current_variant.price < current_variant.compare_at_price %}
                                   {% capture discount %}
                                       {{ }}%
                                   {% endcapture %}
-                                {% assign discount =  current_variant.compare_at_price | minus:current_variant.price | times:10.000 | divided_by:current_variant.compare_at_price | round | append: '0'  %}
+                                {% assign discount =  current_variant.compare_at_price | minus:current_variant.price | times:100.000 | divided_by:current_variant.compare_at_price | round   %}
                                
                               {% endif %}
                              {% if discount %}
@@ -32,3 +33,4 @@
                                 {% endif %}
                               {% endfor %}
                               {% endif %}
+  {% endif %}

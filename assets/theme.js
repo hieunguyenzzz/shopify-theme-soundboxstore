@@ -1023,7 +1023,7 @@ lazySizesConfig.expFactor = 4;
             $(
               ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
             ).slick({
-              slidesToShow: 4,
+              slidesToShow: 6,
               slidesToScroll: 1,
               asNavFor: ".product-main-slider .image-gallery-main",
               dots: false,
@@ -1037,7 +1037,7 @@ lazySizesConfig.expFactor = 4;
                   settings: {
                     vertical: false,
                     infinite: true,
-                    slidesToShow: 4,
+                    slidesToShow: 6,
                     slidesToScroll: 1,
                   },
                 },
