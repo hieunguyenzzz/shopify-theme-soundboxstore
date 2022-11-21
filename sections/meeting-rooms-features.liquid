@@ -296,12 +296,12 @@
 
 
         {%- endif -%}
-        <div style="    transform: scale(1);
+        <div {% if section.settings.show_videos  %}style="    transform: scale(1);
     position: absolute;
     width: 100%;
     top: 10%;
     left: 0;
-    padding-bottom: 90%;">
+    padding-bottom: 90%;"{% endif %}>
 {% for block in section.blocks %}
               {% if block.type == "hotspot_point" %}
 
