@@ -148,7 +148,7 @@
           {%- assign prod_img = image -%}
         {%- endif -%}
       {%- endfor -%}
-      <div class="col center-col">
+      <div class="col center-col" {%- if section.settings.show_videos -%}style="lign-self: start;"{% endif %}>
           <div class="col-wrap">
         {%- if section.settings.show_videos -%}
           <div >
