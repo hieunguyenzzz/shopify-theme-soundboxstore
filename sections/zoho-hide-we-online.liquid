@@ -3,7 +3,10 @@ $zoho.salesiq.ready=function()
 {
    $zoho.salesiq.floatbutton.click(function()
    {
-      $zoho.salesiq.floatbutton.coin.hidetooltip();
+     if(window.window.innerWidth<768){
+        $zoho.salesiq.floatbutton.coin.hidetooltip();
+     }
+     
    });
 }
 </script>
