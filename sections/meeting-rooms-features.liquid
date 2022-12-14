@@ -148,7 +148,7 @@
           {%- assign prod_img = image -%}
         {%- endif -%}
       {%- endfor -%}
-      <div class="col center-col" {%- if section.settings.show_videos -%}style="align-self: start;margin-top:-30px"{% endif %}>
+      <div class="col center-col">
           <div class="col-wrap">
         {%- if section.settings.show_videos -%}
           <div >
@@ -177,9 +177,9 @@
 
 
               <div class="control">
-                <div class="label label-outside">{{ section.settings.close_label }}</div>
+                <div class="label label-outside">Close Door</div>
                 <div class="switch"></div>
-                <div class="label label-inside">{{  section.settings.open_label }}</div>
+                <div class="label label-inside">Open Door</div>
               </div>
             </div>
             <audio id="audio-close"  loop >
@@ -296,12 +296,6 @@
 
 
         {%- endif -%}
-        <div {% if section.settings.show_videos  %}style="transform: scale(1);
-    position: absolute;
-    width: 100%;
-    top: 10%;
-    left: 0;
-    padding-bottom: 90%;"{% endif %}>
 {% for block in section.blocks %}
               {% if block.type == "hotspot_point" %}
 
@@ -330,7 +324,6 @@
 
               {% endif %}
             {% endfor %}
-            </div>
                       </div>
       </div>
 
@@ -469,12 +462,6 @@
       },
       {
         "type": "text",
-        "id": "close_label",
-        "label": "Close door",
-        "default":"Close door"
-      },
-      {
-        "type": "text",
         "id": "close_audio",
         "label": "Audio Url",
         "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Closing_Audio_MP3.mp3?v=1667799734"
@@ -493,12 +480,6 @@
       {
         "type":"header",
         "content":"Open"
-      },
-      {
-        "type": "text",
-        "id": "open_label",
-        "label": "Open door",
-        "default": "Open door"
       },
       {
         "type": "text",
