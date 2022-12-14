@@ -12,7 +12,11 @@ BE nl /nl-be show,
 BE fr /fr-be show,
 AT de /de-at,
 CH de /de-ch,
-ES es /es-es' %}
+ES es /es-es,
+FI fi /fi-fi,
+PL pl /pl-pl,
+IT it /it-it' 
+%}
 {% assign path = request.path %}
 {% if request.locale.root_url and request.locale.root_url != "/" %}
     {% assign path = request.path | replace_first: request.locale.root_url, '/' %}
