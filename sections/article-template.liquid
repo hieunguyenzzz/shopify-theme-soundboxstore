@@ -1,3 +1,9 @@
+<style>
+  .template-article .main-content {
+    max-width: 72ch;
+    margin: auto;
+  }
+</style>
 {%- liquid
   assign number_of_comments = article.comments_count
   if comment.status == 'pending'
