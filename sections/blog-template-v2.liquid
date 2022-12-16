@@ -259,13 +259,15 @@
     flex-direction: column;
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1080px) {
     .blog-wrap>div {
       margin-bottom: 40px;
     }
-  
+    .blog-layout{
+      flex-direction: column;
+    }
     .grid-article-first {
-      margin-bottom: 40px;
+      display: block;
     }
   
     .blog-wrap .grid-article-first .image-wrap {
@@ -318,7 +320,7 @@
   }
 
 </style>
-
+{{tag}}
 {% assign article = section.settings.banner_article |default:  blog.articles.first %}
 {% assign img = section.settings.banner_image |default:  article.iamge %}
 {% assign variable = value %}
