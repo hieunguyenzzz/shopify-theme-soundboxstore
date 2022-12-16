@@ -2,13 +2,16 @@
   "sections": {
     "1660550488b75fdc46": {
       "type": "image-text-section",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Blog-Banner.png",
         "mobile_image": "shopify:\/\/shop_images\/Soundbox_Commercial_3D_Render_4.png",
         "overlay": true,
         "overlay_range": 50,
         "title": "Blog",
+        "title_width": "",
         "description": "",
+        "description_width": "",
         "button_text": "",
         "button_link": "",
         "button_text_2": "",
@@ -17,14 +20,66 @@
       }
     },
     "main": {
-      "type": "blog-template",
+      "type": "blog-template-v2",
+      "blocks": {
+        "837d3109-2acf-4743-9825-a0bf4512d65b": {
+          "type": "article",
+          "settings": {
+            "article": "news\/10-tips-for-successful-meetings"
+          }
+        },
+        "4e601aba-9e96-45f0-9ea8-35abc52ae8b5": {
+          "type": "article",
+          "settings": {
+            "article": "news\/the-benefits-of-acoustic-office-pods"
+          }
+        }
+      },
+      "block_order": [
+        "837d3109-2acf-4743-9825-a0bf4512d65b",
+        "4e601aba-9e96-45f0-9ea8-35abc52ae8b5"
+      ],
       "settings": {
+        "banner_image": "shopify:\/\/shop_images\/medium-black-1.png",
+        "banner_article": "news\/the-benefits-of-acoustic-office-pods",
         "blog_show_rss": false,
         "blog_show_tags": true,
         "blog_show_date": true,
         "blog_show_comments": true,
         "blog_show_author": true,
-        "blog_image_size": "natural"
+        "blog_image_size": "portrait"
+      }
+    },
+    "736a1c48-0a7e-4819-9946-e14fa92c084d": {
+      "type": "blog-template-v3",
+      "settings": {
+        "tag": "Acoustic Office Pods",
+        "banner_image": "shopify:\/\/shop_images\/Lrg-Product-Page-1.png",
+        "title": "Acoustic Office Pods",
+        "subtitle": "TOPIC",
+        "content": "Designed for focus-driven working environments, our 3 to 4-person meeting pods have a highly effective new upgraded industry-leading airflow dual silent ventilation system with minimum internal\/external acoustic influence.",
+        "blog_show_rss": false,
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "blog_image_size": "wide"
+      }
+    },
+    "3beda00a-88b3-4f6b-8c2e-4b82b17aeeed": {
+      "type": "blog-template-v3",
+      "settings": {
+        "tag": "office meeting pods",
+        "banner_image": "shopify:\/\/shop_images\/MEDIUM_ORANGE_DARKGREYINTERIOR_NONE_06.png",
+        "title": "Office meeting pods",
+        "subtitle": "TOPIC",
+        "content": "<p>If the open office dies, as its critics predict, what will be the new norm? We take a look at how the workplace is evolving and what's next.<\/p>",
+        "blog_show_rss": false,
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "blog_image_size": "wide"
       }
     },
     "sidebar": {
@@ -47,7 +102,7 @@
       "type": "cart-upsell-collection",
       "settings": {
         "title": "Check our latest product",
-        "home_featured_products": "",
+        "home_featured_products": "all",
         "count": 5,
         "mobile_scrollable": true,
         "view_all": true,
@@ -58,6 +113,8 @@
   "order": [
     "1660550488b75fdc46",
     "main",
+    "736a1c48-0a7e-4819-9946-e14fa92c084d",
+    "3beda00a-88b3-4f6b-8c2e-4b82b17aeeed",
     "sidebar",
     "166055265396cf84f0"
   ],
