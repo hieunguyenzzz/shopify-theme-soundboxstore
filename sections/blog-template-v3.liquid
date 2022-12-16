@@ -191,7 +191,7 @@
 {% assign show_comments = section.settings.blog_show_comments %}
 {% assign show_author = section.settings.blog_show_author %}
 
-<div class="blog-wrap blog-feature">
+<div id="{{section.settings.tag | handle}}" class="blog-wrap blog-feature">
   <div class="page-width blog-group">
     <div>
       <div class="grid-item">
@@ -360,7 +360,7 @@
                             {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
                           {% continue %}{% endif %}
                       {% endif %}
-                      <a class="blog-article-tag" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                      <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                     {%- endfor -%}
                   </div>
 
@@ -382,6 +382,12 @@
     "name": "Blog Feature",
     "class": "blog-layout__main",
     "settings": [
+      {
+        "type": "text",
+        "id": "tag",
+        "label": "Tag",
+        "default": "Title"
+      },
       {
         "type": "header",
         "content": "Banner"

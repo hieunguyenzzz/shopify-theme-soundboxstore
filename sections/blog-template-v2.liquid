@@ -320,7 +320,15 @@
   }
 
 </style>
-{{tag}}
+{% comment %} {%- for tag in blog.tags -%}
+  {% if tag contains "_" %}
+    {%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}
+      {% if tag_count %}
+        {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
+      {% continue %}{% endif %}
+  {% endif %}
+  <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
+{%- endfor -%} {% endcomment %}
 {% assign article = section.settings.banner_article |default:  blog.articles.first %}
 {% assign img = section.settings.banner_image |default:  article.iamge %}
 {% assign variable = value %}
@@ -432,7 +440,7 @@
                         {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
                       {% continue %}{% endif %}
                   {% endif %}
-                  <a class="blog-article-tag" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                  <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                 {%- endfor -%}
               </div>
 
@@ -546,7 +554,7 @@
                           {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
                         {% continue %}{% endif %}
                     {% endif %}
-                    <a class="blog-article-tag" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                    <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                   {%- endfor -%}
                 </div>
   
