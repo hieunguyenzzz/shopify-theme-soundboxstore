@@ -29,125 +29,7 @@
   </div>
 {%- endpaginate -%} {% endcomment %}
 <style>
-  .page-width.blog-layout {
-    padding: 0;
-    font-family: Banana Grotesk, sans-serif;
-  }
-  .blog-wrap > div {
-    margin-bottom: 110px;
-  }
-  .grid-article-first {
-    border-bottom: 1px solid #efefef;
-    margin-bottom: 110px;
-  }
-  .blog-wrap .blog-grid-item {
-    padding: 0;
-  }
-  .blog-wrap .image-wrap {
-    position: relative;
-    padding-bottom: 65%;
-  }
-  .blog-wrap .image-wrap img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  .blog-wrap .grid-article-first .image-wrap {
-    height: 50vw;
-    max-height: 900px;
-    position: relative;
-    overflow: unset;
-
-  }
-  .grid-article__image {
-    margin: 0;
-  }
-  .blog-wrap .grid-article-first .image-wrap img {
-    position: absolute;
-    top: 0;
-    left: 30%;
-    width: 70vw;
-    height: 100%;
-    object-fit: cover;
-  }
-  .blog-wrap .grid-article-first {
-    position: relative;
-  }
-  .blog-wrap .grid-article-first a {
-    color: black;
-  }
-  .blog-wrap .grid-article-first h2 a {
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    font-family: Banana Grotesk, sans-serif;
-    color: black;
-    font-size: 60px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 110%;
-    display: block;
-  }
-  .grid-article-first .blog-grid-article__meta {
-    position: absolute;
-    bottom: 10vw;
-    width: 100%;
-    max-width: 900px;
-  }
-  .grid-article-first .blog-grid-article__meta > div {
-    max-width: 653px;
-    margin: auto;
-    position: relative;
-    isolation: isolate;
-  }
-  .grid-article-first .blog-article__sub-meta-date {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .grid-article-first .blog-article__sub-meta {
-    font-size: 16px;
-  }
-  .grid-article-first .blog-article__sub-meta .blog-article-tag {
-    font-weight: bold;
-  }
-  .grid-article-first .blog-article__sub-meta-bg {
-    isolation: isolate;
-    z-index: -1;
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    bottom: -20px;
-    right: -20px;
-    opacity: 0.2;
-  }
-
-  .blog-grid {
-
-    display: grid;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto;
-    grid-gap: 28px;
-  }
-  .blog-grid .blog-grid-item {
-    grid-column-start: 0;
-    display: flex;
-    flex-direction: column;
-    grid-column-end: span 6;
-  }
-  .blog-grid .blog-grid-item {
-    font-size: 12px;
-  }
-  .blog-grid .blog-grid-item a {
-    font-weight: bold;
-  }
-  .blog-grid .blog-grid-item .blog-article__sub-meta-bg {
-    margin-top: 1.4em;
-  }
-  .blog-grid .blog-grid-item h3 {
-    font-size: 36px;
-    margin: 0.2em 0;
-  }
+ 
   .blog-group {
     display: flex;
     gap: 28px;
@@ -237,6 +119,67 @@
   }
   .blog-group > div:first-child .blog-article-content {
     font-size: 28px;
+  }
+  .blog-group .grid-item{
+    padding: 0;
+  }
+  @media screen and (max-width: 768px) {
+    
+    .blog-group {
+      display: flex;
+      gap: 1.6em;
+      flex-direction: column;
+    }
+  
+    .blog-group>div:first-child {
+      position: relative;
+      top: unset;
+    }
+  
+    .blog-group>div:first-child .image-wrap {
+      height:
+        calc(100vh - 100px);
+      max-height: 500px;
+      position: relative;
+      overflow: unset;
+    }
+  
+    .blog-group>div:first-child h2 a {
+      font-size: 32px;
+      font-size: calc(min(32px, 5vw));
+    }
+  
+    .blog-group>div:first-child .blog-grid-article__meta {
+      top: 6vw;
+      padding: 2em;
+    }
+    .blog-group>div:first-child{
+      width: 100%;
+     
+    }
+    .blog-group > div:first-child .image-wrap img{
+      width: 100%;
+    }
+    .blog-group>div:first-child .blog-article__sub-meta-date {
+      font-size: 12px;
+      font-size: calc(min(12px, 3vw));
+    }
+  
+    .blog-group>div:first-child .blog-article-content {
+      font-size: 16px;
+      font-size: calc(min(16px, 4vw));
+    }
+  
+    .blog-group>div:first-child .blog-article__sub-meta .blog-article-tag {
+      font-weight: bold;
+    }
+  
+    .blog-grid.blog-col {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
   }
 </style>
 
