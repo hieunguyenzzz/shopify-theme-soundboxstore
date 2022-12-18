@@ -943,10 +943,11 @@ lazySizesConfig.expFactor = 4;
         this._updateUnitPrice(variant);
         this._updateSKU(variant);
         this.currentVariant = variant;
+          this._updateLeadingTime(variant);
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-        this._updateLeadingTime(variant);
+      
        
       },
       _updateLeadingTime: function (variant) {
