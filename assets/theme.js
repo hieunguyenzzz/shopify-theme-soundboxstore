@@ -946,38 +946,11 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-          console.log({variant})
-        //         var productHandle = document.getElementById("productHandle").value;
-        //         var currentAlt = this.currentVariant.featured_image.alt;
-        //         $.ajax({
-
-        //               type:'GET',
-        //               url:'/products/'+ productHandle +'',
-        //               dataType:'json',
-        //           	  success:function(response){
-        //                	var imageAlt = [];
-        //                 response.product.images.forEach(function(image){
-        //                   if(image.alt == currentAlt){
-        //                     imageAlt.push({
-        //                       src:image.src,
-        //                       alt:image.alt
-        //                     })
-        //                   }
-        //                   document.getElementById("appendThumb").innerHTML = "";
-        //                   var append = "";
-        //                   imageAlt.forEach(function(image,index){
-        //                     if(index == 0){
-        //                     $(".product-image-main").find(".appendSrc").attr("srcset",image.src);
-        //                     }
-        //                   	append += '<div class="product__thumb-item"><a href="'+ image.src +'" data-product-thumb class="product__thumb js-no-transition" data-index="'+ index +'"><div class="image-wrap" style="height:0;"><img class="lazyload" data-srcset="'+ image.src +'" data-widths="[120, 360, 540, 720]" data-aspectratio="{{ media.preview_image.aspect_ratio }}" data-sizes="auto" alt="'+image.alt+'"></div></a></div>';
-        //                   })
-
-        //                   document.getElementById("appendThumb").innerHTML = append;
-        //                   console.log(imageAlt);
-        //                 })
-
-        //               }
-        //         })
+        console.log({variant})
+        let leadingTimeE = document.querySelector("[data-quantity-variant]")
+           if(leadingTimeE){
+             leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
+           }
       },
       _updateImagesCustom: function (variant) {
         console.log("Custom Event");
