@@ -69,7 +69,7 @@
       display:none
     }
   {% for variant in product.variants  %}
-      [data-quantity-variant={{ variant.id }}]> [data-quantity-variant={{ variant.id }}]{
+      [data-quantity-variant="{{ variant.id }}"]> [data-quantity-variant="{{ variant.id }}"]{
       display:block
     } 
         {% endfor %}
