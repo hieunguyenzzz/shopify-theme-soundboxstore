@@ -64,7 +64,7 @@
   {%- if enable_dynamic_buttons -%}
     </div>
   {%- endif -%}
-  <!-- {%- if current_variant.inventory_quantity > 0 -%}
+   {%- if current_variant.inventory_quantity > 0 -%}
     {%- if current_variant.inventory_quantity > 10 -%}
       {% assign inventory_quantity = '10+' %}
       {%- else -%}
@@ -73,7 +73,7 @@
     <div style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.leading_time' | t: inventory_quantity:inventory_quantity }}</div>
     {%- else -%}
     <div style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.no_leading_time' | t }}</div>
-  {%- endif -%} -->
+  {%- endif -%} 
     
   <div class="shopify-payment-terms product__policies">{{ form | payment_terms }}</div>
 
