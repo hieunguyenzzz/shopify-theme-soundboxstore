@@ -68,6 +68,11 @@
     [data-quantity-variant]>div{
       display:none
     }
+  {% for variant in product.variants  %}
+      [data-quantity-variant={{ variant.id }}]> [data-quantity-variant={{ variant.id }}]{
+      display:block
+    } 
+        {% endfor %}
   </style>
   <div data-quantity-variant="{{ current_variant.id }}">
      {% for current_variant in product.variants  %}
@@ -77,7 +82,7 @@
       {%- else -%}
       {% assign inventory_quantity = current_variant.inventory_quantity %}
     {%- endif -%}
-    <div style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.leading_time' | t: inventory_quantity:inventory_quantity }}</div>
+    <div data-quantity-variant="{{ current_variant.id }}"  style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.leading_time' | t: inventory_quantity:inventory_quantity }}</div>
     {%- else -%}
 <!--     <div style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.no_leading_time' | t }}</div> -->
   {%- endif -%} 
