@@ -946,12 +946,15 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-        console.log({variant})
-        let leadingTimeE = document.querySelector("[data-quantity-variant]")
+        this._updateLeadingTime(variant);
+       
+      },
+      _updateLeadingTime: function (variant) {
+         let leadingTimeE = document.querySelector("[data-quantity-variant]")
            if(leadingTimeE){
              leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
-           }
-      },
+        }
+      }
       _updateImagesCustom: function (variant) {
         console.log("Custom Event");
         // var current_slide_index = $(
