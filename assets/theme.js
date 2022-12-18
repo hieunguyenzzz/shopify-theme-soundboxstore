@@ -946,6 +946,7 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
+          console.log({variant})
         //         var productHandle = document.getElementById("productHandle").value;
         //         var currentAlt = this.currentVariant.featured_image.alt;
         //         $.ajax({
