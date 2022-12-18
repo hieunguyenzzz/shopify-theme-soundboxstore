@@ -947,15 +947,15 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-      
+       let leadingTimeE = document.querySelector("[data-quantity-variant]")
+           if(leadingTimeE){
+             leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
+        }
        
       },
       _updateLeadingTime: function (variant) {
           console.log({variant})
-         let leadingTimeE = document.querySelector("[data-quantity-variant]")
-           if(leadingTimeE){
-             leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
-        }
+        
       }
       _updateImagesCustom: function (variant) {
         console.log("Custom Event");
