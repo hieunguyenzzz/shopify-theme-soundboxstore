@@ -348,6 +348,13 @@
                         </div>
                       </div>
                     </div>
+                  <style>
+                    {% for variant in product.variants %}
+                        {% assign opclass = variant.options | map :'value' | join: " and " | handlize  %}
+                      {{opclass}}
+                      {% endfor %}
+                  
+                  </style>
                   {%- when 'variant_picker' -%}
                     <div
                       class="product-block variant_picker"
