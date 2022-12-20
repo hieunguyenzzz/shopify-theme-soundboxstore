@@ -1,47 +1,5 @@
 $(document).ready(function(){
   
-  $(".play-button").on("click", function() {
-    $('#vid1').get(0).currentTime = 0;
-    $('#vid2').get(0).currentTime = 0;
-    $('#vid1').get(0).play();
-    $('#vid2').get(0).play();
-    $(".video-player-controls").removeClass("end");
-    $('#vid2').removeAttr("poster");
-
-  });
-
-  $(".videobtn.firstvideo").on("click", function() {
-    $('#vid1').get(0).pause();
-    $('#vid1').get(0).currentTime = 0;
-    $('#vid2').get(0).pause();
-    $('#vid2').get(0).currentTime = 0;
-    $(".control").addClass("active");
-    $(".video-player").addClass("active");
-
-
-
-    $('#vid2').removeAttr("poster");
-    $('#vid1').get(0).play();
-  });
-
-
-  $(".stop-button").on("click", function() {
-     $('#vid1').get(0).pause();
-    $('#vid2').get(0).pause();
-   
-    
-    $(".video-player-controls").removeClass("active");
-  });
-  
-  $(".videobtn.secondvideo").on("click", function() {
-    $('#vid1').get(0).pause();
-    $('#vid1').get(0).currentTime = 0;
-    $('#vid2').get(0).pause();
-    $('#vid2').get(0).currentTime = 0;
-    $(".control").removeClass("active");
-    $(".video-player").removeClass("active");
-    $('#vid2').get(0).play();
-  });
   
 //   var vid = document.getElementById("vid2");
 // vid.onended = function() {

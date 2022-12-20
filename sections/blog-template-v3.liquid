@@ -1,0 +1,606 @@
+{% comment %} {%- paginate blog.articles by 20 -%}
+
+  <div data-section-id="{{ section.id }}" data-section-type="blog">
+  <div class="new-grid">
+  {%- for article in blog.articles -%}
+  {%- liquid
+  assign style = 'medium'
+  if forloop.first
+  assign style = 'large'
+  endif
+  -%}
+  {%- render 'article-grid-item',
+  blog: blog,
+  article: article,
+  style: style,
+  show_tags: section.settings.blog_show_tags,
+  show_date: section.settings.blog_show_date,
+  show_comments: section.settings.blog_show_comments,
+  show_author: section.settings.blog_show_author,
+  image_size: section.settings.blog_image_size -%}
+  {%- endfor -%}
+  </div>
+
+  {%- liquid
+  if paginate.pages > 1
+  render 'pagination', paginate: paginate
+  endif
+  -%}
+  </div>
+{%- endpaginate -%} {% endcomment %}
+<style>
+ 
+  .blog-group {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .blog-group > div:first-child {
+    width: 70%;
+    position: sticky;
+    flex-shrink: 0;
+    top: 100px;
+  }
+  .blog-group > div:first-child .image-wrap {
+    height: calc(100vh - 100px);
+
+    position: relative;
+    overflow: unset;
+  }
+
+  .blog-group > div:first-child .image-wrap img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    max-width: unset;
+    height: 100%;
+    object-fit: cover;
+  }
+  .blog-group > div:first-child h2 a {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+
+    color: black;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 110%;
+    display: block;
+  }
+  .blog-group > div:first-child .blog-grid-article__meta {
+    position: absolute;
+    top: 10vw;
+    width: 100%;
+    max-width: 900px;
+  }
+  .blog-group > div:first-child .blog-grid-article__meta > div {
+    max-width: 653px;
+    margin: auto;
+    position: relative;
+    isolation: isolate;
+  }
+  .blog-group > div:first-child .blog-article__sub-meta-date {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .blog-group > div:first-child .blog-article__sub-meta {
+    font-size: 16px;
+  }
+  .blog-group > div:first-child .blog-article__sub-meta .blog-article-tag {
+    font-weight: bold;
+  }
+  .blog-group > div:first-child .blog-article__sub-meta-bg {
+    isolation: isolate;
+    z-index: -1;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    bottom: -20px;
+    right: -20px;
+    opacity: 0.2;
+  }
+  .blog-grid.blog-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-article-dashes {
+    display: inline-block;
+    position: relative;
+    top: -3px;
+    width: 16px;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-top: 1px solid;
+
+  }
+  .blog-group > div:first-child .blog-article__sub-meta-date {
+    font-size: 12px;
+  }
+  .blog-group > div:first-child .blog-article-content {
+    font-size: 28px;
+  }
+  .blog-group .grid-item{
+    padding: 0;
+  }
+  @media screen and (max-width: 1080px) {
+    
+    .blog-group {
+      display: flex;
+      gap: 1.6em;
+      flex-direction: column;
+    }
+  
+    .blog-group>div:first-child {
+      position: relative;
+      top: unset;
+    }
+  
+    .blog-group>div:first-child .image-wrap {
+      height:
+        calc(100vh - 100px);
+      max-height: 500px;
+      position: relative;
+      overflow: unset;
+    }
+  
+    .blog-group>div:first-child h2 a {
+      font-size: 32px;
+      font-size: calc(min(32px, 5vw));
+    }
+  
+    .blog-group>div:first-child .blog-grid-article__meta {
+      top: 6vw;
+      padding: 2em;
+    }
+    .blog-group>div:first-child{
+      width: 100%;
+     
+    }
+    .blog-group > div:first-child .image-wrap img{
+      width: 100%;
+    }
+    .blog-group>div:first-child .blog-article__sub-meta-date {
+      font-size: 12px;
+      font-size: calc(min(12px, 3vw));
+    }
+  
+    .blog-group>div:first-child .blog-article-content {
+      font-size: 16px;
+      font-size: calc(min(16px, 4vw));
+    }
+  
+    .blog-group>div:first-child .blog-article__sub-meta .blog-article-tag {
+      font-weight: bold;
+    }
+  
+    .blog-grid.blog-col {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+  }
+</style>
+
+{% assign article = section.settings.banner_article | default: blog.articles.first %}
+{% assign img = section.settings.banner_image | default: article.image %}
+{% assign variable = value %}
+{% assign show_tags = section.settings.blog_show_tags %}
+{% assign show_date = section.settings.blog_show_date %}
+{% assign show_comments = section.settings.blog_show_comments %}
+{% assign show_author = section.settings.blog_show_author %}
+
+<div id="{{section.settings.tag | handle}}" class="blog-wrap blog-feature">
+  <div class="page-width blog-group">
+    <div>
+      <div class="grid-item">
+        <div class="grid-article__image">
+          {%- if article.empty? -%}
+            <div class="image-wrap">
+              <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--no-padding' }}
+              </div>
+            </div>
+          {%- else -%}
+            {%- if img -%}
+              {%- if fixed_aspect_ratio -%}
+                <div class="image-wrap">
+                  <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                    {% assign img_url = img | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img
+                      class="lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080]"
+                      data-aspectratio="{{ article.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ img.alt | escape }}">
+                  </div>
+                  <noscript>
+                    <img
+                      class="lazyloaded"
+                      src="{{ img | img_url: '400x' }}"
+                      alt="{{ article.title | escape }}">
+                  </noscript>
+                </div>
+              {%- else -%}
+                <div class="image-wrap">
+                  {%- assign img_url = img | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080]"
+                    data-aspectratio="{{ article.image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ img.alt | escape }}">
+                  <noscript>
+                    <img
+                      class="lazyloaded"
+                      src="{{ img | img_url: '400x' }}"
+                      alt="{{ article.title | escape }}">
+                  </noscript>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+
+
+        </div>
+        <div class="blog-grid-article__meta ">
+          <div>
+            <span class="blog-article-dashes"></span>
+            <span class="blog-article__sub-meta-date">{{ section.settings.subtitle }}</span>
+            <h2>
+              <a href="{{ article.url }}" class="blog-article__title">{{ section.settings.title }}</a>
+            </h2>
+            <div class="blog-article-content">{{ section.settings.content }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-grid blog-col">
+      {% if section.settings.tag %}
+        {% for article in blog.articles %}
+          {% if article.tags contains section.settings.tag %}
+            <div class="blog-grid-item ">
+              <div class="blog-grid-article__image">
+                {%- if article.empty? -%}
+                  <div class="image-wrap">
+                    <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                      {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--no-padding' }}
+                    </div>
+                  </div>
+                {%- else -%}
+                  {%- if article.image -%}
+                    {%- if fixed_aspect_ratio -%}
+                      <div class="image-wrap">
+                        <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                          {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                          <img
+                            class="lazyload"
+                            data-src="{{ img_url }}"
+                            data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
+                            data-aspectratio="{{ article.image.aspect_ratio }}"
+                            data-sizes="auto"
+                            alt="{{ article.image.alt | escape }}">
+                        </div>
+                        <noscript>
+                          <img
+                            class="lazyloaded"
+                            src="{{ article.image | img_url: '400x' }}"
+                            alt="{{ article.title | escape }}">
+                        </noscript>
+                      </div>
+                    {%- else -%}
+                      <div class="image-wrap">
+                        {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        <img
+                          class="lazyload"
+                          data-src="{{ img_url }}"
+                          data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
+                          data-aspectratio="{{ article.image.aspect_ratio }}"
+                          data-sizes="auto"
+                          alt="{{ article.image.alt | escape }}">
+                        <noscript>
+                          <img
+                            class="lazyloaded"
+                            src="{{ article.image | img_url: '400x' }}"
+                            alt="{{ article.title | escape }}">
+                        </noscript>
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endif -%}
+    
+    
+              </div>
+    
+              <div class="blog-grid-article__meta ">
+                <div>
+                  <div class="blog-article__sub-meta-bg"></div>
+                  {%- if article.empty? -%}
+                    <a href="{{ article.url }}" class="blog-article__title">Example blog post</a>
+                    <div class="blog-article__sub-meta">
+                      {%- if show_comments -%}
+                        <span>
+                          <a href="#">
+                            {{ 'blogs.comments.with_count' | t: count: 0 }}
+                          </a>
+                        </span>
+                      {%- endif -%}
+                      {%- if show_date -%}
+                        <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: "%Y" }}</span>
+                      {%- endif -%}
+                      {%- if show_author -%}
+                        <span>by Archetype Themes</span>
+                      {%- endif -%}
+                    </div>
+                  {%- else -%}
+                    {%- if show_date -%}
+                      <span class="blog-article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                    {%- endif -%}
+                    <h3>
+                      <a href="{{ article.url }}" class="blog-article__title">{{ article.title }}</a>
+                    </h3>
+                    <div class="blog-article__sub-meta">
+                      {%- if show_comments and article.comments_count > 0 -%}
+                        <span>
+                          <a href="{{ article.url }}#comments">
+                            {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                          </a>
+                        </span>
+                      {%- endif -%}
+                      <div>
+                        <span>{{ article.author }}</span>
+                        in
+                        {%- for tag in article.tags -%}
+                          {% if tag contains "_" %}
+                            {%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}
+                              {% if tag_count %}
+                                {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
+                              {% continue %}{% endif %}
+                          {% endif %}
+                          <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
+                        {%- endfor -%}
+                      </div>
+    
+                    </div>
+                  {%- endif -%}
+                </div>
+    
+              </div>
+            </div>
+          {% endif %}
+          
+        {% endfor %}
+      {% endif %}
+      {% for block in section.blocks %}
+        {% assign article = block.settings.article | default: blog.articles.first %}
+        <div class="blog-grid-item ">
+          <div class="blog-grid-article__image">
+            {%- if article.empty? -%}
+              <div class="image-wrap">
+                <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--no-padding' }}
+                </div>
+              </div>
+            {%- else -%}
+              {%- if article.image -%}
+                {%- if fixed_aspect_ratio -%}
+                  <div class="image-wrap">
+                    <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                      {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                      <img
+                        class="lazyload"
+                        data-src="{{ img_url }}"
+                        data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
+                        data-aspectratio="{{ article.image.aspect_ratio }}"
+                        data-sizes="auto"
+                        alt="{{ article.image.alt | escape }}">
+                    </div>
+                    <noscript>
+                      <img
+                        class="lazyloaded"
+                        src="{{ article.image | img_url: '400x' }}"
+                        alt="{{ article.title | escape }}">
+                    </noscript>
+                  </div>
+                {%- else -%}
+                  <div class="image-wrap">
+                    {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img
+                      class="lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
+                      data-aspectratio="{{ article.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ article.image.alt | escape }}">
+                    <noscript>
+                      <img
+                        class="lazyloaded"
+                        src="{{ article.image | img_url: '400x' }}"
+                        alt="{{ article.title | escape }}">
+                    </noscript>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
+
+
+          </div>
+
+          <div class="blog-grid-article__meta ">
+            <div>
+              <div class="blog-article__sub-meta-bg"></div>
+              {%- if article.empty? -%}
+                <a href="{{ article.url }}" class="blog-article__title">Example blog post</a>
+                <div class="blog-article__sub-meta">
+                  {%- if show_comments -%}
+                    <span>
+                      <a href="#">
+                        {{ 'blogs.comments.with_count' | t: count: 0 }}
+                      </a>
+                    </span>
+                  {%- endif -%}
+                  {%- if show_date -%}
+                    <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: "%Y" }}</span>
+                  {%- endif -%}
+                  {%- if show_author -%}
+                    <span>by Archetype Themes</span>
+                  {%- endif -%}
+                </div>
+              {%- else -%}
+                {%- if show_date -%}
+                  <span class="blog-article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                {%- endif -%}
+                <h3>
+                  <a href="{{ article.url }}" class="blog-article__title">{{ article.title }}</a>
+                </h3>
+                <div class="blog-article__sub-meta">
+                  {%- if show_comments and article.comments_count > 0 -%}
+                    <span>
+                      <a href="{{ article.url }}#comments">
+                        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                      </a>
+                    </span>
+                  {%- endif -%}
+                  <div>
+                    <span>{{ article.author }}</span>
+                    in
+                    {%- for tag in article.tags -%}
+                      {% if tag contains "_" %}
+                        {%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}
+                          {% if tag_count %}
+                            {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
+                          {% continue %}{% endif %}
+                      {% endif %}
+                      <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
+                    {%- endfor -%}
+                  </div>
+
+                </div>
+              {%- endif -%}
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog Feature",
+    "class": "blog-layout__main",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tag",
+        "label": "Tag",
+        "default": "Title"
+      },
+      {
+        "type": "header",
+        "content": "Banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "TOPIC"
+      }, {
+        "type": "textarea",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>If the open office dies, as its critics predict, what will be the new norm? We take a look at how the workplace is evolving and what's next.</p>"
+      }, {
+        "type": "header",
+        "content": "Article"
+      }, {
+        "type": "checkbox",
+        "id": "blog_show_rss",
+        "label": "Show RSS link"
+      }, {
+        "type": "checkbox",
+        "id": "blog_show_tags",
+        "label": "Show tags",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "blog_show_comments",
+        "label": "Show comment count",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author"
+      }, {
+        "type": "select",
+        "id": "blog_image_size",
+        "label": "Force image size",
+        "default": "wide",
+        "options": [
+          {
+            "value": "natural",
+            "label": "Natural"
+          },
+          {
+            "value": "square",
+            "label": "Square (1:1)"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape (4:3)"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait (2:3)"
+          }, {
+            "value": "wide",
+            "label": "Wide (16:9)"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article",
+        "name": "Article",
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog feature",
+        "settings": {},
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

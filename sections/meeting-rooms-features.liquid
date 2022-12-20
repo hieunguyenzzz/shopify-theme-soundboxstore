@@ -75,14 +75,37 @@
       visibility: visible;
     }
   }
+  .meeting-room-features-video .video-player-controls > button {
+    padding:0;
+    border-radius: 99em;
+    width: 60px;
+    height: 60px;
+  }
+  .meeting-room-features-video .video-player-controls > button svg {
+    height: 100%;
+    width: 100%;
+    color:#3A434D;
+  }
+  .meeting-room-features-video .video-player-controls.active .stop-button svg{
+    color:#979797;
+    opacity: .3;
+  }
+  .meeting-room-features-video .center-col .control .switch,
+  .meeting-room-features-video .center-col .control .switch:after{
+    border-radius:99em;
+  }
+  .meeting-room-features-video video{
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-appearance: none
+  }
 </style>
 <section class="meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
-  meeting-room-features-video
-{%- else -%}
-  
-{%- endif -%}">
-
-  <div class="page-width">
+      meeting-room-features-video
+    {%- else -%}
+    
+    {%- endif -%}"><div class="page-width">
     <div class="flexbox">
 
       <div class="col left-col">
@@ -125,67 +148,161 @@
           {%- assign prod_img = image -%}
         {%- endif -%}
       {%- endfor -%}
-      <div class="col center-col">
-        {%- if section.settings.show_videos -%}
+      <div class="col center-col" {%- if section.settings.show_videos -%}style="align-self: start;margin-top:-30px"{% endif %}>
           <div class="col-wrap">
-            <div class="video-player">
+        {%- if section.settings.show_videos -%}
+          <div >
+            <div class="video-player active">
               <div class="video-wrapper">
 
-
-                <video playsinline muted src="{{ section.settings.video_open_url }}" {% if section.settings.image_open_url != blank %} poster="{{ section.settings.image_open_url }}" {% endif %} class="video video-primary" id="vid1"></video>
-                <video playsinline muted src="{{ section.settings.video_close_url }}" {% if section.settings.image_close_url != blank %} poster="{{ section.settings.image_close_url }}" {% endif %} class="video video-secondary" id="vid2"></video>
-
+                <video width="1000" height="1000" {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.open_video }}" {% if section.settings.open_thumb != blank %} poster="{{ section.settings.open_thumb }}" {% endif %} class="video video-primary" id="vid1"></video>
+                <video width="1000" height="1000" {% if section.settings.loop %}loop {% endif %} playsinline {% if section.settings.no_sound %} muted {% endif %} src="{{ section.settings.close_video }}" {% if section.settings.close_thumb != blank %} poster="{{ section.settings.close_thumb }}" {% endif %} class="video video-secondary" id="vid2"></video>
               </div>
             </div>
-
-
-            <div class="video-player-controls">
-
-
+            <div class="video-player-controls  ended "  style="margin-bottom:2em">
               <button class="play-button">
-                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm13.517 4.134l-1.416-1.416A8.978 8.978 0 0 0 21 12a8.982 8.982 0 0 0-3.304-6.968l1.42-1.42A10.976 10.976 0 0 1 23 12c0 3.223-1.386 6.122-3.594 8.134zm-3.543-3.543l-1.422-1.422A3.993 3.993 0 0 0 16 12c0-1.43-.75-2.685-1.88-3.392l1.439-1.439A5.991 5.991 0 0 1 18 12c0 1.842-.83 3.49-2.137 4.591z"></path></g></svg>
-              </button>
-              <button class="stop-button">
-                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm14.525-4l3.536 3.536-1.414 1.414L19 13.414l-3.536 3.536-1.414-1.414L17.586 12 14.05 8.464l1.414-1.414L19 10.586l3.536-3.536 1.414 1.414L20.414 12z"></path></g></svg>
-              </button>
+             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
+                <path d="M41 28.2679C42.3333 29.0377 42.3333 30.9623 41 31.7321L26 40.3923C24.6667 41.1621 23 40.1999 23 38.6603L23 21.3397C23 19.8001 24.6667 18.8379 26 19.6077L41 28.2679Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button class="stop-button">
+               <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
+                <rect x="22" y="18" width="4" height="24" rx="2" fill="currentColor"/>
+                <rect x="34" y="18" width="4" height="24" rx="2" fill="currentColor"/>
+              </svg>
+              
+            </button>
 
-<div class="control">
-   <button class="videobtn firstvideo"></button>
-   <button class="videobtn secondvideo"></button>
-   <div class="label label-inside">Close Door</div>
-   <div class="switch"></div>
-   <div class="label label-outside">Open Door</div>
-  </div>
-</div>
+
+              <div class="control">
+                <div class="label label-outside">{{ section.settings.close_label }}</div>
+                <div class="switch"></div>
+                <div class="label label-inside">{{  section.settings.open_label }}</div>
+              </div>
+            </div>
+            <audio id="audio-close"  loop >
+                <source src="{{ section.settings.close_audio }}" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            <audio id="audio-open"  loop >
+              <source src="{{ section.settings.open_audio }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
           </div>
           <script>
-          $('#vid1').get(0).addEventListener('play', (event) => {
-            $(".video-player-controls").addClass("active");
-            });
-            $('#vid1').get(0).addEventListener('pause', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid1').get(0).addEventListener('ended', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid2').get(0).addEventListener('play', (event) => {
-              $(".video-player-controls").addClass("active");
-            });
-            $('#vid2').get(0).addEventListener('pause', (event) => {
-              $(".video-player-controls").removeClass("active");
-            });
-            $('#vid2').get(0).addEventListener('ended', (event) => {
-              $(".video-player-controls").removeClass("active");
+            $(document).ready(function() {
+              $('#audio-close').get(0).muted = true;
+                    $('#audio-open').get(0).muted = true;
+                    $('#vid1').get(0).muted=true;
+                    $('#vid2').get(0).muted=true;
+            let isClosed = true
+            let isPlaying = false
+            let ismuted =true
+            $('#vid2').get(0).addEventListener("ended", ()=>{
+                if(isClosed){
+                  console.log('#vid2')
+                  if(!ismuted){
+                     $('#audio-close').get(0).muted = false;
+                  }
+                  $('#audio-close').get(0).currentTime = 0;
+                  $('#audio-close').get(0).play();
+                  isPlaying=false
+                }
+       
+            })
+           $('#vid1').get(0).addEventListener("ended", ()=>{
+             if(!isClosed){
+               console.log('#vid1')
+                if(!ismuted){
+                     $('#audio-open').get(0).muted = false;
+                  }
+                $('#audio-open').get(0).currentTime = 0;
+                $('#audio-open').get(0).play();
+                isPlaying=false
+             }
+            })
+              $(".play-button").on("click", function() {
+                ismuted=false
+                $('#audio-open').get(0).currentTime = 0;
+                  $(".video-player-controls").addClass("active");
+                 if(isClosed){
+                    $('#audio-close').get(0).muted=false;
+                    if(!isPlaying){
+                      $('#audio-close').get(0).play()
+                    }
+                 }else{
+                    $('#audio-open').get(0).muted=false;
+                   if(!isPlaying){
+                      $('#audio-open').get(0).play()
+                    }
+                 }
+                $('#vid1').get(0).muted=false;
+                $('#vid2').get(0).muted=false;
+                
+              });
+               $(".stop-button").on("click", function() {
+                ismuted=true
+                $(".video-player-controls").removeClass("active");
+                $('#audio-close').get(0).muted=true;
+                $('#audio-open').get(0).muted=true;
+                $('#vid1').get(0).muted=true;
+                $('#vid2').get(0).muted=true;
+
+              });
+              $(".label-inside").on("click", function() {
+                isClosed=false
+                isPlaying=true
+                $('#audio-close').get(0).pause()
+                $('#audio-open').get(0).pause()
+                $(".control").addClass("active");
+                $(".video-player").addClass("active");
+                $('#vid2').get(0).pause();
+                $('#vid2').get(0).currentTime = 0;
+           $('#vid1').get(0).currentTime = 0;
+                $('#vid1').get(0).play();
+                
+              });
+             
+              $(".label-outside").on("click", function() {
+                 isClosed=true
+                  isPlaying=true
+                $('#audio-close').get(0).pause()
+                $('#audio-open').get(0).pause()
+                 $(".control").removeClass("active");
+                 $(".video-player").removeClass("active");
+                 $('#vid1').get(0).pause();
+                $('#vid1').get(0).currentTime = 0;
+                $('#vid2').get(0).currentTime = 0;
+                 $('#vid2').get(0).play();
+              });
+           $(".switch").on("click", function() {
+                if( $(".control").hasClass("active")){
+                    $(".label-outside").click()
+                }else{
+                    $(".label-inside").click()
+                }
+              });
             });
           </script>
         {%- else -%}
-          <div class="col-wrap">
-            <img style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
-                                      {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
-                                      {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
-                                      {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
+            <img loading="lazy" style="width:100%" srcset="{% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
+                                                    {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
+                                                    {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
+                                                    {{ prod_img | image_url:  width: 700 }} " src="{{ prod_img | image_url: width: 550, height: 550 }}" sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)" alt="{{ prod_img.alt | escape }}">
 
-            {% for block in section.blocks %}
+            
+
+
+        {%- endif -%}
+        <div {% if section.settings.show_videos  %}style="transform: scale(1);
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    left: 0;
+    padding-bottom: 90%;"{% endif %}>
+{% for block in section.blocks %}
               {% if block.type == "hotspot_point" %}
 
                 <span class="hotspot-icon unique-{{- block.id -}}" data-tooltip="{{ block.settings.hotspot_title }}" data-target="feature-{{  block.settings.hotspot_title | handleize }}">
@@ -213,11 +330,8 @@
 
               {% endif %}
             {% endfor %}
-
-
-          </div>
-        {%- endif -%}
-
+            </div>
+                      </div>
       </div>
 
       <div class="col right-col">
@@ -267,7 +381,7 @@
           top: {{ block.settings.point_y }}%
         }
         {%- if block.settings.point_x < 40 -%}
-          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before {
+          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
             left: unset;
             right: 0;
           }
@@ -310,8 +424,7 @@
     node.addEventListener("click", (e) => {
       console.log(node.dataset.target)
       const targetE = document.querySelector("#" + node.dataset.target);
-      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
-      {% if scrollWhenClick %}
+      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));{% if scrollWhenClick %}
         if (window.innerWidth < 991) {
           targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         }
@@ -331,35 +444,79 @@
 {% schema %}
   {
     "name": "Meeting Rooms Features",
-    "settings" : [
-        {
-          "type": "checkbox",
-          "id": "show_videos",
-          "label": "Show videos",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "image_open_url",
-          "label": "Open Image Url"
-        },
-        {
-          "type": "text",
-          "id": "video_open_url",
-          "label": "Open video Url",
-          "default": "https://cdn.shopify.com/videos/c/o/v/87eecdc51a2e4298909010e2a609ec3a.mp4"
-        },
-        {
-          "type": "text",
-          "id": "video_close_url",
-          "label": "Close video Url",
-          "default": "https://cdn.shopify.com/videos/c/o/v/7e386947d9d44236a3a86b9cd54bfc8a.mp4"
-        }, {
-          "type": "text",
-          "id": "image_close_url",
-          "label": "Close Image Url",
-          "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/poster-video.png?v=1657195108"
-        }
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_videos",
+        "label": "Show videos",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "no_sound",
+        "label": "No sound",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop",
+        "default": true
+      },
+      {
+        "type":"header",
+        "content":"Close"
+      },
+      {
+        "type": "text",
+        "id": "close_label",
+        "label": "Close door",
+        "default":"Close door"
+      },
+      {
+        "type": "text",
+        "id": "close_audio",
+        "label": "Audio Url",
+        "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Closing_Audio_MP3.mp3?v=1667799734"
+      },
+      {
+        "type": "text",
+        "id": "close_video",
+        "label": "Video Url",
+        "default":"https://cdn.shopify.com/videos/c/o/v/fecf113d20434e068abd32a1bc8c3ed6.mp4"
+      },
+      {
+        "type": "text",
+        "id": "close_thumb",
+        "label": "Thumb Url"
+      },
+      {
+        "type":"header",
+        "content":"Open"
+      },
+      {
+        "type": "text",
+        "id": "open_label",
+        "label": "Open door",
+        "default": "Open door"
+      },
+      {
+        "type": "text",
+        "id": "open_audio",
+        "label": "Audio Url",
+        "default":"https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Opening_Audio_MP3.mp3?v=1667799734"
+      },
+      {
+        "type": "text",
+        "id": "open_video",
+        "label": "Video Url",
+        "default" :"https://cdn.shopify.com/videos/c/o/v/f9efd8f6c5794c16b07d5dccc0e32b37.mp4"
+      },
+      {
+        "type": "text",
+        "id": "open_thumb",
+        "label": "Thumb Url"
+      }
     ],
     "blocks": [
       {
