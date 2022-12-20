@@ -353,22 +353,6 @@
                     </div>
 
                   {%- when 'variant_picker' -%}
-                    <style>
-                                            123
-                                              {%- for variant in product.variants -%}
-                                                  {%- assign opclass = variant.options | map :'value' | join: " and " | handlize  -%}
-                                                {{opclass}}
-                                                {%- endfor -%}
-                                        {% for variant in product.variants -%}
-                        {%- capture options -%}
-                          {% for option in variant.options -%}
-                            {{ option }}{%- unless forloop.last -%}/{%- endunless -%}
-                          {%- endfor %}
-                        {%- endcapture -%}
-
-                        {{ variant.id }}: {{ options }}
-                      {%- endfor %}
-                    </style>
                     <div
                       class="product-block variant_picker"
                       {{ block.shopify_attributes }}
