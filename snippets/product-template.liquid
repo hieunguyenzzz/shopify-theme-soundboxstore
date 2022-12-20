@@ -351,6 +351,8 @@
                         </div>
                       </div>
                     </div>
+
+                  {%- when 'variant_picker' -%}
                     <style>
                       123
                         {% for variant in product.variants %}
@@ -358,7 +360,6 @@
                           {{opclass}}
                           {% endfor %}
                     </style>
-                  {%- when 'variant_picker' -%}
                     <div
                       class="product-block variant_picker"
                       {{ block.shopify_attributes }}
