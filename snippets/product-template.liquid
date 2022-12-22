@@ -248,7 +248,10 @@
                           {{- 'products.general.regular_price' | t -}}
                         </span>
                       {%- endif -%}
+                      {%- if shop.taxes_included -%}
                       <span class="vat_text">(Ex. VAT)</span>
+                    {%- endif -%}
+                     
                       {%- if settings.product_save_amount -%}
                         {%- if settings.product_save_type == 'dollar' -%}
                           {%- capture saved_amount -%}
