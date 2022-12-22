@@ -207,7 +207,10 @@
                         {%- else -%}
                           {%- render 'price' with 1999 -%}
                         {%- endunless -%}
+                        {%- if shop.taxes_included -%}
                         <span class="vat_text">(Ex. VAT)</span>
+                      {%- endif -%}
+                       
                       </span>
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
