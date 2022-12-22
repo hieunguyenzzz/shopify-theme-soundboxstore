@@ -5452,12 +5452,12 @@ body .grfq__popupForm__modal_state:checked + .grfq__popupForm__modal .grfq__popu
     font-size:20px;
   }
  }
- {% unless shop.locale == "en" %}
  .vat_text{
   display: none;
 }
- {% endunless %}
-
+[lang="en"]  .vat_text{
+  display: inline-block;
+}
 .btn.cart__checkout+.rfq-btn{
   display: none;
 }
