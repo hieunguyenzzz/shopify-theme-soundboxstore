@@ -172,6 +172,7 @@
                     {% endif %}
                     src="{{ section.settings.open_video }}"
                     {% if section.settings.open_thumb != blank %}
+                      poster="{{ section.settings.open_thumb }}"
                     {% endif %}
                     class="video video-primary"
                     id="vid1"
@@ -188,6 +189,7 @@
                     {% endif %}
                     src="{{ section.settings.close_video }}"
                     {% if section.settings.close_thumb != blank %}
+                      poster="{{ section.settings.close_thumb }}"
                     {% endif %}
                     class="video video-secondary"
                     id="vid2"
