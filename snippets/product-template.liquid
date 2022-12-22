@@ -208,7 +208,7 @@
                           {%- render 'price' with 1999 -%}
                         {%- endunless -%}
                         {%- if shop.taxes_included -%}
-                        <span class="vat_text">(Ex. VAT)</span>
+                        <span class="vat_text">(INC VAT)</span>
                       {%- endif -%}
                        
                       </span>
@@ -249,7 +249,7 @@
                         </span>
                       {%- endif -%}
                       {%- if shop.taxes_included -%}
-                      <span class="vat_text">(Ex. VAT)</span>
+                      <span class="vat_text">(INC VAT)</span>
                     {%- endif -%}
                      
                       {%- if settings.product_save_amount -%}
