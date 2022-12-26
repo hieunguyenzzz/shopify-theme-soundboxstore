@@ -6,7 +6,7 @@
       <div class="flexbox">
         <div class="col left-col">
           <div class="col-wrap">
-            {{ block.settings.image | image_url: width: 900 | image_tag: widths: '400, 600, 800' }}
+            {{ block.settings.image | image_url: width: 900 | image_tag: widths: '400, 600, 800' , loading: 'lazy' }}
           </div>
         </div>
         <div class="col right-col">
