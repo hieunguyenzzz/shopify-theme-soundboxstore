@@ -3247,9 +3247,9 @@ lazySizesConfig.expFactor = 4;
     var defaults = {
       adaptiveHeight: false,
       autoPlay: false,
-      avoidReflow: false, // custom by Archetype
-      childNav: null, // element. Custom by Archetype instead of asNavFor
-      childNavScroller: null, // element
+      avoidReflow: false,
+      childNav: null, 
+      childNavScroller: null, 
       childVertical: false,
       fade: false,
       initialIndex: 0,
