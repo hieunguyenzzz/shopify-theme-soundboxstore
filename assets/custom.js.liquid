@@ -19,8 +19,8 @@ $(document).ready(function(){
     });
   }
 
-
-  $('.testimonials-slider').slick({
+if($('.testimonials-slider'))?.slick{
+   $('.testimonials-slider').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -33,6 +33,8 @@ $(document).ready(function(){
       }
     ]
   });
+}
+ 
   
   $('.template-product .logo-list .new-grid').slick({
     infinite: true,
