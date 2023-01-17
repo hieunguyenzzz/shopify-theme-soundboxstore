@@ -366,7 +366,8 @@ $(function() {
 
 $(window).on('load', function() { 
   setTimeout(function() {
-    $('#shopify-product-reviews .spr-reviews').slick({
+    if(document.querySelector('#shopify-product-reviews .spr-reviews')){
+      $('#shopify-product-reviews .spr-reviews').slick({
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 3,
@@ -390,6 +391,8 @@ $(window).on('load', function() {
         }
       ]
     });  
+    }
+    
 
   }, 2500);
   
