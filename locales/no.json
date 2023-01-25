@@ -1633,12 +1633,12 @@
         "in_review_title": "Bestillingen din blir gjennomgått",
         "no_tracking_number": "Det er ikke noe sporingsnummer for denne forsendelsen.",
         "on_its_way_label": "På vei",
-        "on_its_way_title": "Forsendelsen din er på vei",
-        "out_for_delivery_label": "Ut for levering",
-        "out_for_delivery_title": "Forsendelsen din er ute for levering",
+        "on_its_way_title": "Sendingen er på vei",
+        "out_for_delivery_label": "Ute for levering",
+        "out_for_delivery_title": "Din levering er utgått",
         "resume_tracking": "Fortsett sporing",
         "submitted_label": "Sendt",
-        "track_shipment": "Sporforsendelse",
+        "track_shipment": "Spor forsendelsen",
         "attempted_delivery_label": "Forsøk på levering",
         "attempted_delivery_description": "Leveringsforsøket var mislykket.",
         "confirmed_description": "Vi har mottatt bestillingen din.",
@@ -1651,33 +1651,41 @@
         "picked_up_label": "Løft",
         "picked_up_description": "Disse elementene har blitt plukket opp.",
         "last_updated": "Sist oppdatert {{date}}",
-        "multiple_shipments_label": "Flere forsendelser"
+        "multiple_shipments_label": "Flere forsendelser",
+        "submitted_description": "Se gjennom ordre-og betalingsinformasjon.",
+        "request_return": "Be om tilbakelevering",
+        "view_order_for_details": "Se ordre for detaljer"
       },
-      "status_mark_as_delivered": "Merke som levert",
-      "status_title": "Ordre status"
+      "status_mark_as_delivered": "Merk som levert",
+      "status_title": "Ordrestatus",
+      "buy_again": "Kjøp på nytt",
+      "buy_again_accessibility_label": "Kjøp igjen for bestilling {{orderId}}",
+      "manage": "Administrere",
+      "manage_accessiblity_label": "Administrer bestilling {{orderId}}",
+      "group_title_label": "Del av: {{groupTitle}}"
     },
     "order_details": {
       "addresses_section_title": "Fakturering og frakt",
-      "billing_address": "Fakturaadresse",
-      "card_ending_with": "slutter med {{lastDigits}}",
-      "contact": "Ta kontakt med",
-      "fully_refunded_label": "Refundert",
+      "billing_address": "Faktureringsadresse",
+      "card_ending_with": "massasje med happy ending {{lastDigits}}",
+      "contact": "Kontakt",
+      "fully_refunded_label": "REFUNDERE",
       "discount": "Rabatt",
-      "hide_items": "Skjul gjenstander",
+      "hide_items": "Skjul elementer",
       "loading": "Laster inn bestillingsdetaljer",
       "loading_finished_accessibility_message": "Bestillingsdetaljer er lastet inn",
-      "location": "plassering",
-      "no_data": "Ingen",
-      "not_applicable": "N\/a",
-      "partially_refunded_label": "Delvis refundert",
+      "location": "Plassering",
+      "no_data": "Ingenting",
+      "not_applicable": "N \/ A",
+      "partially_refunded_label": "DELVIS TILBAKEBETALT",
       "payment": {
         "status_in_review": "Betaling forfaller etter gjennomgang",
-        "status_unpaid": "Betaling forfaller {{date}}",
-        "title": "innbetaling"
+        "status_unpaid": "Betaling på grunn av {{date}}",
+        "title": "Betaling"
       },
-      "refunded_amount": "Refundert",
+      "refunded_amount": "Refundere",
       "shipping": {
-        "address": "Sendingsadresse",
+        "address": "Leveringsadresse",
         "address_map_marker": "Sendingsadresse",
         "method": "Forsendelsesmetode",
         "summary": "Shipping"
@@ -1691,7 +1699,28 @@
       "taxes": "Skatter",
       "title": "Rekkefølge {{name}}",
       "total": "Total",
-      "unit_price": "({{price}}\/ea)"
+      "unit_price": "({{price}}\/ea)",
+      "shipment_timeline": {
+        "expand_events_label": "Vis detaljer",
+        "expand_events_accessibility_label": "Vis bestillingsforsendelsesdetaljer",
+        "hide_events_label": "Skjul detaljer",
+        "hide_events_accessibility_label": "Skjul bestillingsforsendelsesdetaljer"
+      },
+      "mobile_summary_toggle_button": {
+        "open": "Vis ordresammendrag",
+        "closed": "Skjul bestillingssammendrag"
+      },
+      "request_return_failed": "Det oppstod et problem under behandlingen av forespørselen din. Vennligst prøv igjen.",
+      "returns": {
+        "expand_events_label": "Vis detaljer",
+        "hide_events_label": "Skjul detaljer",
+        "ineligible_return_with_policy_message": "Ingen varer i denne bestillingen er kvalifisert for retur. Gjennomgå vår {{returnAndRefundPolicyLinkText}} for å lære mer.",
+        "ineligible_return_without_policy_message": "Ingen varer i denne bestillingen er kvalifisert for retur.",
+        "print_shipping_label": "Skriv ut fraktetikett",
+        "return_and_refund_link_text": "retur og refusjon",
+        "return_and_refund_modal_header": "Retur og refusjon",
+        "tracking_number": "Sporingsnummer:"
+      }
     },
     "addresses": {
       "add_button": "Legg til adresse",
