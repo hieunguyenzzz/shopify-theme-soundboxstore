@@ -442,7 +442,32 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "delivery_date_range": "%{min_time}–%{max_time}"
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "title": "Frakt",
+        "shipping_method_title": "Leveransmetod",
+        "shipping_method_one_time_purchase_group_title": "Engångsköp",
+        "shipping_method_subscription_group_title": "Prenumeration",
+        "subscription_shipping": "Prenumeration frakt",
+        "subscription_local_delivery": "Prenumeration lokal leverans",
+        "subscription_pickup": "Prenumeration pickup",
+        "waiting_on_rate_notice": "Få tillgängliga fraktpriser…",
+        "waiting_on_pickup_location_notice": "Få tillgängliga hämtningsplatser…",
+        "no_rates_for_cart_or_destination_notice": "Det finns inga leveransmetoder tillgängliga för din varukorg eller adress",
+        "no_pickup_location_notice": "Minst en av dina produkter är inte tillgänglig för hämtning",
+        "no_rates_for_country_notice": "Inga fraktpriser hittades för denna adress.",
+        "no_rates_contact_notice": "Kontakta oss för mer information",
+        "free_rate_label": "Frigöra",
+        "cheapest_rate_label": "Billigaste",
+        "please_enter_your_shipping_information_notice": "Ange din leveransinformation.",
+        "estimated_delivery_date": {
+          "one": "%{count} arbetsdag",
+          "other": "%{count} arbetsdag"
+        },
+        "estimated_delivery_date_range": "%{minimum} att %{maximum} arbetsdag",
+        "estimated_delivery_time": "Beräknad leverans %{time}",
+        "estimated_delivery_time_range": "Beräknad leverans %{min_time}–%{max_time}",
+        "delivery_today": "Leverans samma dag %{time}",
+        "delivery_tomorrow": "Leverans nästa dag %{time}"
       },
       "general": {
         "page_title": "Kassa",
@@ -665,7 +690,38 @@
         "expand_order_summary": "Visa orderöversikt",
         "collapse_order_summary": "Dölj ordningsöversikt",
         "original_price": "Ursprungliga priset",
-        "sale_price": "Försäljningspris"
+        "sale_price": "Försäljningspris",
+        "total_updated_label": "Uppdaterat totalpris:",
+        "order_total_updated_label": "Uppdaterad total",
+        "total_already_paid_label": "Redan betald",
+        "unit_price": {
+          "accessible_separator": "i",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}"
+        },
+        "gift_card_ending": "Presentkort som slutar med %{last_characters}",
+        "estimated_tax_label": "Beräknad skatt",
+        "multiple_shipping_lines_label": "Frakt totalt",
+        "recurring_subtotal_label": "Återkommande delsumma",
+        "recurring_total_label": "Återkommande totalt",
+        "recurring_total_tooltip": "Inkluderar inte frakt, skatt, tullar eller några tillämpliga rabatter.",
+        "confirmation_number_label": "Bekräftelse #%{confirmation_number}",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> kunde inte användas med dina befintliga rabatter. Du har redan en bättre kombination.",
+        "percent_off_shipping": "%{percent}% rabatt på frakt",
+        "amount_off_shipping": "%{amount} off shipping",
+        "deferred_payment_info": {
+          "title": "Betalning av %{amount_due} beror på %{due_at}",
+          "description_html": "För frågor om din beställning, %{contact_us}.",
+          "paid_today": "Totalt betalt idag",
+          "due_on_fulfillment_title": "Betalning av %{amount_due} beror på uppfyllelse"
+        },
+        "payment_terms_totals": {
+          "due_today": "Totalt förfaller idag",
+          "due_later": "Totalt förfallna %{due_at}",
+          "due_on_fulfillment": "Totalt förfallna vid uppfyllande",
+          "due_later_checkout_to_draft": "Totalt förfallit senare"
+        },
+        "maximum_discount_code_limit_reached": "Du har nått det maximala antalet rabattkoder. Ta bort en befintlig kod som ska användas <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> fungerar inte just nu. Kontakta oss för hjälp."
       }
     },
     "sentence": {
