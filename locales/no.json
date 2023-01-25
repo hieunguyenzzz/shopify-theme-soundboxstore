@@ -1546,36 +1546,36 @@
           "load_more_accessibility_label": "Last inn flere ordre"
         },
         "sort_by": "Sorter etter: {{option}}",
-        "sort_hide_options_accessibility_label": "Skjul sorteringsalternativer for bekreftede ordrer",
-        "sort_show_options_accessibility_label": "Vis sorteringsalternativer for bekreftede ordrer",
-        "sort_title": "Sortere",
+        "sort_hide_options_accessibility_label": "Skjul sorteringsalternativer for bekreftede bestillinger.",
+        "sort_show_options_accessibility_label": "Vis sorteringsalternativer for bekreftede bestillinger.",
+        "sort_title": "Slags",
         "sort": {
           "date": {
-            "newest": "Nyeste ordre",
+            "newest": "Nyest til eldst",
             "newest_accessibility_label": "Sorter etter nyeste ordre",
-            "oldest": "Eldste orden",
+            "oldest": "Eldste til nyeste",
             "oldest_accessibility_label": "Sorter etter eldste orden"
           },
           "location": {
-            "ascending": "Sted (A-Z)",
+            "ascending": "Lokasjon (A-Å)",
             "ascending_accessibility_label": "Sorter etter plassering (A-Z)",
-            "descending": "Sted (Z-A)",
+            "descending": "Beliggenhet (Z-A)",
             "descending_accessibility_label": "Sorter etter sted (Z-A)"
           },
           "order_number": {
-            "ascending": "Bestillingsnummer (lavt til høy)",
+            "ascending": "Ordrenummer (lav til høy)",
             "ascending_accessibility_label": "Sorter etter ordrenummer (lavt til høy)",
-            "descending": "Bestillingsnummer (høyt til lavt)",
+            "descending": "Bestillingsnummer (høy til lav)",
             "descending_accessibility_label": "Sorter etter ordrenummer (høyt til lavt)"
           },
           "order_total": {
-            "ascending": "Bestill totalt (lav til høy)",
+            "ascending": "Ordre totalt (lav til høy)",
             "ascending_accessibility_label": "Sorter etter ordre totalt (lav til høy)",
-            "descending": "Bestill totalt (høy til lav)",
+            "descending": "Ordre totalt (høy til lav)",
             "descending_accessibility_label": "Sorter etter ordre totalt (høy til lav)"
           }
         },
-        "table_view": "Vis tabellvisning",
+        "table_view": "Vis tabell vis",
         "estimated_shortform": "Est. {{date}}",
         "payment_status": {
           "list_view": {
@@ -1589,9 +1589,13 @@
           },
           "table_view": {
             "overdue": "Forfalt",
-            "due": "Forfaller {{date}}",
+            "due": "Tilbørlig {{date}}",
             "due_today": "Forfaller i dag",
-            "paid": "Betalt"
+            "paid": "Betalt",
+            "due_without_date": "Tilbørlig",
+            "due_on_fulfillment": "Forfaller på oppfyllelse",
+            "pay_to_confirm": "Betal for å bekrefte",
+            "payment_not_due": "Ennå ikke forfalt"
           }
         },
         "empty_state_title_for_pending_orders": "Ingen ventende bestillinger",
@@ -1608,22 +1612,24 @@
           "view_order_details": "Vis ordredetaljer",
           "previous": "Forrige",
           "next": "Neste"
-        }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Foreløpig sortert etter: {{option}}",
+        "show_order_actions_accessibility_label": "Vis ordre handlinger for ordre {{name}}"
       },
       "order_status": {
-        "canceled_description": "Bestillingen din ble kansellert på {{date}}.",
-        "canceled_label": "Kansellert",
+        "canceled_description": "Bestillingen din ble kansellert den {{date}}.",
+        "canceled_label": "Avbryte",
         "canceled_title": "Bestillingen din er kansellert",
-        "come_back": "Kom tilbake til denne siden for oppdateringer om forsendelsesstatusen.",
+        "come_back": "Kom tilbake til denne siden for oppdateringer om forsendelsesstatusen din.",
         "company_tracking_number": "{{company}} sporingsnummer:",
         "confirmed_label": "Bekreftet",
         "confirmed_title": "Bestillingen din er bekreftet",
-        "delivered_description": "Forsendelsen din ble levert på {{date}}.",
+        "delivered_description": "Denne forsendelsen er levert.",
         "delivered_label": "Levert",
-        "delivered_title": "Forsendelsen din er levert",
-        "estimated_delivery": "Forventet levering {{date}}",
+        "delivered_title": "Sendingen er nå levert",
+        "estimated_delivery": "Estimert levering {{date}}",
         "in_review_description": "Vi gir deg beskjed hvis vi trenger mer informasjon eller når bestillingen din er bekreftet.",
-        "in_review_label": "I anmeldelse",
+        "in_review_label": "I gjennomgang",
         "in_review_title": "Bestillingen din blir gjennomgått",
         "no_tracking_number": "Det er ikke noe sporingsnummer for denne forsendelsen.",
         "on_its_way_label": "På vei",
@@ -1632,7 +1638,20 @@
         "out_for_delivery_title": "Forsendelsen din er ute for levering",
         "resume_tracking": "Fortsett sporing",
         "submitted_label": "Sendt",
-        "track_shipment": "Sporforsendelse"
+        "track_shipment": "Sporforsendelse",
+        "attempted_delivery_label": "Forsøk på levering",
+        "attempted_delivery_description": "Leveringsforsøket var mislykket.",
+        "confirmed_description": "Vi har mottatt bestillingen din.",
+        "on_its_way_description": "Denne forsendelsen er på vei.",
+        "out_for_delivery_description": "Denne sendingen er ute for levering.",
+        "preparing_for_shipping_label": "Forbereder seg på frakt",
+        "preparing_for_shipping_description": "Disse varene forberedes for frakt.",
+        "ready_for_pickup_label": "Klar for henting",
+        "ready_for_pickup_description": "Disse varene er klare for henting.",
+        "picked_up_label": "Løft",
+        "picked_up_description": "Disse elementene har blitt plukket opp.",
+        "last_updated": "Sist oppdatert {{date}}",
+        "multiple_shipments_label": "Flere forsendelser"
       },
       "status_mark_as_delivered": "Merke som levert",
       "status_title": "Ordre status"
