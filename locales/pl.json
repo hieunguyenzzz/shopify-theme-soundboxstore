@@ -1701,8 +1701,98 @@
         "opt_out": {
           "opted_out_html": "<b>Zrezygnowałeś z śledzenia otwartych wiadomości e-mail.<\/b>",
           "visibility": "Nie zobaczymy, czy otworzyłeś nasze e-maile.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> aby wysłać e-mailem otwarte śledzenie."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> aby wysłać e-mailem otwarte śledzenie.",
+          "preview_bar": "Wyświetlasz podgląd tego, co klienci zobaczą, gdy zrezygnują z śledzenia otwartych wiadomości e-mail."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Nie śledzimy już żadnych otwartych wiadomości e-mail.<\/b>",
+          "privacy_policy": "Po wysłaniu tego e-maila zaktualizowaliśmy naszą Politykę Prywatności i nie śledzimy już otwiera."
+        },
+        "track": {
+          "status_html": "<b>Zgłaszane jest śledzenie otwartych wiadomości e-mail.<\/b>",
+          "visibility": "Zobaczymy tylko, czy otworzyłeś wiadomość e-mail, jako część całkowitego wskaźnika otwarcia wiadomości e-mail."
+        },
+        "updated_policy": {
+          "status_html": "<b>Zgłaszane jest śledzenie otwartych wiadomości e-mail.<\/b>",
+          "visibility": "Zaktualizowaliśmy naszą Politykę, a teraz otwiera się śledzenie wiadomości e-mail. Stawki otwarcia wiadomości e-mail będą zgłaszane anonimowo. Zobaczymy tylko, czy otworzyłeś wiadomość e-mail w ramach całkowitego wskaźnika otwarcia wiadomości e-mail.",
+          "opt_out_html": "Jeśli nie chcesz udostępniać tych informacji, możesz <a style='text-decoration:underline;' href='%{link}'>wypisz się.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Dostępność",
+        "value": {
+          "in_stock": "W magazynie",
+          "out_of_stock": "Brak w magazynie"
+        }
+      },
+      "vendor": {
+        "label": "Marka"
+      },
+      "price": {
+        "label": "Cena"
+      },
+      "product_type": {
+        "label": "Rodzaj produktu"
+      },
+      "boolean": {
+        "true_label": "Tak.",
+        "false_label": "Nie."
+      },
+      "tags": {
+        "label": "Więcej filtrów"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Trafność",
+        "price_ascending": "Cena od niskiej do wysokiej",
+        "price_descending": "Cena, od wysokiej do niskiej"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Błąd - %{title}",
+      "products": "Produkty",
+      "shopping_cart": "Twój Koszyk",
+      "account": "Konto",
+      "create_account": "Utwórz Konto",
+      "reset_account": "Zresetuj Konto",
+      "addresses": "Adresy",
+      "order": "Zamówienie %{name}",
+      "search": "Szukaj",
+      "search_results": {
+        "one": "Szukaj: %{count} result found for \"%{terms}\"",
+        "other": "Szukaj: %{count} wyniki znalezione dla \"%{terms}\""
+      },
+      "collections": "Kolekcje",
+      "not_found": "404 Nie Znaleziono",
+      "challenge": "Wyzwanie",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} zastosowano rabaty"
+    },
+    "challenge": {
+      "message": "Aby kontynuować, daj nam znać, że nie jesteś robotem.",
+      "error": "Twoja odpowiedź nie była poprawna, spróbuj ponownie.",
+      "submit_button_text": "Submit"
+    },
+    "checkpoint": {
+      "message": "Rozwiąż Captcha, aby kontynuować",
+      "error": "Walidacja Captcha nie powiodła się",
+      "submit_button_text": "Submit"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Zwykle gotowy w 1 godzinę",
+        "two_hours": "Zwykle gotowy w 2 godziny",
+        "four_hours": "Zwykle gotowy w 4 godziny",
+        "twenty_four_hours": "Zwykle gotowy w ciągu 24 godzin",
+        "two_to_four_days": "Zwykle gotowy w ciągu 2-4 dni",
+        "five_or_more_days": "Zwykle gotowy w 5 + dni",
+        "zero_to_two_hours": "Zwykle gotowy w 2 godziny",
+        "two_to_four_hours": "Zwykle gotowy w 4 godziny"
       }
     }
   }

@@ -1702,8 +1702,98 @@
         "opt_out": {
           "opted_out_html": "<b>Du har fravalgt e-mail åben sporing.<\/b>",
           "visibility": "Vi vil ikke se, om du har åbnet vores e-mails.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Tilmeld dig<\/a> for at e-maile åben sporing."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Tilmeld dig<\/a> for at e-maile åben sporing.",
+          "preview_bar": "Du forhåndsviser, hvad kunderne vil se, når de fravælger åben sporing af e-mail."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Vi sporer ikke længere nogen e-mail åbner.<\/b>",
+          "privacy_policy": "Efter at denne e-mail blev sendt, opdaterede vi vores Privatlivspolitik, og vi sporer ikke længere åbner."
+        },
+        "track": {
+          "status_html": "<b>E-mail åben sporing rapporteres.<\/b>",
+          "visibility": "Vi vil kun se, om du har åbnet e-mailen, som en del af den samlede e-mail-åbningsrate."
+        },
+        "updated_policy": {
+          "status_html": "<b>E-mail åben sporing rapporteres.<\/b>",
+          "visibility": "Vi har opdateret vores Politik, og nu spore e-mails åbnes. E-mail åbne satser vil blive rapporteret anonymt. Vi ser kun, om du har åbnet en e-mail som en del af den samlede åbne e-mail-Sats.",
+          "opt_out_html": "Hvis du ikke ønsker at dele disse oplysninger, kan du <a style='text-decoration:underline;' href='%{link}'>Afmeld.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Tilgængelighed",
+        "value": {
+          "in_stock": "På lager",
+          "out_of_stock": "Udsolgt"
+        }
+      },
+      "vendor": {
+        "label": "Mærke"
+      },
+      "price": {
+        "label": "Pris"
+      },
+      "product_type": {
+        "label": "Varetype"
+      },
+      "boolean": {
+        "true_label": "Ja",
+        "false_label": "Ingen"
+      },
+      "tags": {
+        "label": "Flere filtre"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevans",
+        "price_ascending": "Pris, lav til høj",
+        "price_descending": "Pris, høj til lav"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Fejl - %{title}",
+      "products": "Produkt",
+      "shopping_cart": "Din Indkøbskurv",
+      "account": "Konto",
+      "create_account": "Opret Konto",
+      "reset_account": "Nulstil Konto",
+      "addresses": "Adresse",
+      "order": "Ordre %{name}",
+      "search": "Søge",
+      "search_results": {
+        "one": "Søge: %{count} resultat fundet for \"%{terms}\"",
+        "other": "Søge: %{count} resultater fundet for \"%{terms}\""
+      },
+      "collections": "Samlinger",
+      "not_found": "404 Ikke Fundet",
+      "challenge": "Udfordring",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} rabatter er blevet anvendt"
+    },
+    "challenge": {
+      "message": "For at fortsætte, lad os vide, at du ikke er en robot.",
+      "error": "Dit svar var ikke korrekt, prøv igen.",
+      "submit_button_text": "Indsende"
+    },
+    "checkpoint": {
+      "message": "Løs Captcha for at fortsætte",
+      "error": "Validering af Captcha mislykkedes",
+      "submit_button_text": "Indsende"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Normalt klar i 1 time",
+        "two_hours": "Normalt klar i 2 timer",
+        "four_hours": "Normalt klar i 4 timer",
+        "twenty_four_hours": "Normalt klar i 24 timer",
+        "two_to_four_days": "Normalt klar i 2-4 dage",
+        "five_or_more_days": "Normalt klar i 5 + dage",
+        "zero_to_two_hours": "Normalt klar i 2 timer",
+        "two_to_four_hours": "Normalt klar i 4 timer"
       }
     }
   }

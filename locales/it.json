@@ -1701,8 +1701,98 @@
         "opt_out": {
           "opted_out_html": "<b>Hai optato per il tracciamento aperto delle e-mail.<\/b>",
           "visibility": "Non vedremo se hai aperto le nostre email.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> per e - mail open tracking."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> per e - mail open tracking.",
+          "preview_bar": "Stai visualizzando in anteprima ciò che i clienti vedranno quando disattendono il monitoraggio aperto delle e-mail."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Non monitoriamo più alcuna email aperta.<\/b>",
+          "privacy_policy": "Dopo l'invio di questa e-mail, abbiamo aggiornato la nostra politica sulla privacy e non abbiamo più traccia si apre."
+        },
+        "track": {
+          "status_html": "<b>Email open tracking è segnalato.<\/b>",
+          "visibility": "Vedremo solo se hai aperto l'e-mail, come parte del tasso di apertura totale delle e-mail."
+        },
+        "updated_policy": {
+          "status_html": "<b>Email open tracking è segnalato.<\/b>",
+          "visibility": "Abbiamo aggiornato la nostra politica, e ora tenere traccia delle e-mail si apre. I tassi di apertura delle e-mail verranno segnalati in modo anonimo. Vedremo solo se hai aperto un'e-mail come parte del tasso di apertura totale delle e-mail.",
+          "opt_out_html": "Se non si desidera condividere queste informazioni, è possibile <a style='text-decoration:underline;' href='%{link}'>cancellarsi.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Disponibilità",
+        "value": {
+          "in_stock": "In magazzino",
+          "out_of_stock": "Esaurito"
+        }
+      },
+      "vendor": {
+        "label": "Marchio"
+      },
+      "price": {
+        "label": "Prezzo"
+      },
+      "product_type": {
+        "label": "Tipo di prodotto"
+      },
+      "boolean": {
+        "true_label": "Sì",
+        "false_label": "No"
+      },
+      "tags": {
+        "label": "Altri filtri"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Rilevanza",
+        "price_ascending": "Prezzo, dal più basso al più alto",
+        "price_descending": "Prezzo, decrescente"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Errore - %{title}",
+      "products": "Prodotto",
+      "shopping_cart": "Il tuo carrello",
+      "account": "Conto",
+      "create_account": "Crea account",
+      "reset_account": "Reimposta account",
+      "addresses": "Indirizzo",
+      "order": "Ordine %{name}",
+      "search": "Ricerca",
+      "search_results": {
+        "one": "Ricerca: %{count} risultato trovato per \"%{terms}\"",
+        "other": "Ricerca: %{count} risultati trovati per \"%{terms}\""
+      },
+      "collections": "Raccolta",
+      "not_found": "404 Non trovato",
+      "challenge": "Sfida",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} sono stati applicati sconti"
+    },
+    "challenge": {
+      "message": "Per continuare, facci sapere che non sei un robot.",
+      "error": "La tua risposta non è corretta, riprova.",
+      "submit_button_text": "Presentare"
+    },
+    "checkpoint": {
+      "message": "Risolvere Captcha per continuare",
+      "error": "Convalida Captcha non riuscita",
+      "submit_button_text": "Presentare"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Di solito pronto in 1 ora",
+        "two_hours": "Di solito pronto in 2 ore",
+        "four_hours": "Di solito pronto in 4 ore",
+        "twenty_four_hours": "Di solito pronto in 24 ore",
+        "two_to_four_days": "Di solito pronto in 2-4 giorni",
+        "five_or_more_days": "Di solito pronto in 5 + giorni",
+        "zero_to_two_hours": "Di solito pronto in 2 ore",
+        "two_to_four_hours": "Di solito pronto in 4 ore"
       }
     }
   }

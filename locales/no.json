@@ -1346,20 +1346,20 @@
           "opted_out_html": "<b>Du har valgt bort sporing av åpen e-post.<\/b>",
           "visibility": "Vi vil ikke se om du har åpnet e-postene våre.",
           "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Meld deg på<\/a> for å åpne sporing via e-post.",
-          "preview_bar": "Du forhåndsvisning av hva kundene vil se når de velger bort åpen sporing av e -post."
+          "preview_bar": "Du forhåndsviser hva kundene vil se når de velger bort sporing av åpen e-post."
         },
         "no_longer_track": {
-          "status_html": "<b>Vi sporer ikke lenger noen e -post.<\/b>",
-          "privacy_policy": "Etter at denne e -posten ble sendt, oppdaterte vi personvernreglene våre, og vi ikke lenger sporer."
+          "status_html": "<b>Vi sporer ikke lenger noen e-poståpninger.<\/b>",
+          "privacy_policy": "Etter at denne e-posten ble sendt, vi oppdaterte personvernreglene våre, og vi sporer ikke lenger åpninger."
         },
         "track": {
-          "status_html": "<b>Det rapporteres om åpen sporing.<\/b>",
-          "visibility": "Vi vil bare se om du har åpnet e -posten, som en del av den totale åpningsrenten for e -post."
+          "status_html": "<b>E-post åpen sporing er rapportert.<\/b>",
+          "visibility": "Vi ser bare om du har åpnet e-posten, som en del av den totale e-postfrekvensen."
         },
         "updated_policy": {
-          "status_html": "<b>Det rapporteres om åpen sporing.<\/b>",
-          "visibility": "Vi har oppdatert policyen vår, og nå åpner vi e -post. Åpne priser på e -post vil bli rapportert anonymt. Vi vil bare se om du har åpnet en e -post som en del av den totale åpningssatsen for e -post.",
-          "opt_out_html": "Hvis du ikke vil dele denne informasjonen, kan du <a style='text-decoration:underline;' href='%{link}'>Avslutte abonnementet.<\/a>"
+          "status_html": "<b>E-post åpen sporing er rapportert.<\/b>",
+          "visibility": "Vi har oppdatert retningslinjene våre, og nå åpnes spor e-post. E-post åpne priser vil bli rapportert anonymt. Vi ser bare om du har åpnet en e-post som en del av den totale e-postfrekvensen.",
+          "opt_out_html": "Hvis du ikke ønsker å dele denne informasjonen, kan du <a style='text-decoration:underline;' href='%{link}'>melde.<\/a>"
         }
       }
     },
@@ -1367,12 +1367,12 @@
       "availability": {
         "label": "Tilgjengelighet",
         "value": {
-          "in_stock": "På lager",
+          "in_stock": "Lager på lager",
           "out_of_stock": "Utsolgt"
         }
       },
       "vendor": {
-        "label": "Merke"
+        "label": "Merkenavn"
       },
       "price": {
         "label": "Pris"
@@ -1382,7 +1382,10 @@
       },
       "boolean": {
         "true_label": "Ja",
-        "false_label": "Nei"
+        "false_label": "Ingen"
+      },
+      "tags": {
+        "label": "Flere filtre"
       }
     },
     "search": {
@@ -1394,45 +1397,45 @@
     },
     "page_titles": {
       "blog_or_article_with_error": "Feil - %{title}",
-      "products": "Produkter",
-      "shopping_cart": "din handlevogn",
-      "account": "Regnskap",
-      "create_account": "Opprett konto",
-      "reset_account": "Tilbakestill konto",
+      "products": "Produkt",
+      "shopping_cart": "Din Handlevogn",
+      "account": "Konto",
+      "create_account": "Opprett Konto",
+      "reset_account": "Tilbakestill Konto",
       "addresses": "Adresser",
       "order": "Rekkefølge %{name}",
       "search": "Søk",
       "search_results": {
         "one": "Søk: %{count} resultat funnet for \"%{terms}\"",
-        "other": "Søk: %{count} Resultater funnet for \"%{terms}\""
+        "other": "Søk: %{count} resultater funnet for \"%{terms}\""
       },
-      "collections": "Samlinger",
-      "not_found": "404 ikke funnet",
+      "collections": "Samling",
+      "not_found": "404 Ikke Funnet",
       "challenge": "Utfordring",
-      "checkpoint": "Kontrollpunkt"
+      "checkpoint": "Checkpoint"
     },
     "cart": {
-      "discounts_with_count": "%{count} Det er brukt rabatter"
+      "discounts_with_count": "%{count} rabatter er brukt"
     },
     "challenge": {
       "message": "For å fortsette, gi oss beskjed om at du ikke er en robot.",
-      "error": "Svaret ditt var ikke riktig, prøv igjen.",
-      "submit_button_text": "Sende inn"
+      "error": "Ditt svar var ikke riktig, vennligst prøv igjen.",
+      "submit_button_text": "Sende"
     },
     "checkpoint": {
-      "message": "Løs CAPTCHA for å fortsette",
-      "error": "Captcha -validering mislyktes",
-      "submit_button_text": "Sende inn"
+      "message": "Løs Captcha for å fortsette",
+      "error": "Captcha-validering mislyktes",
+      "submit_button_text": "Sende"
     },
     "store_availability": {
       "pick_up_time": {
         "one_hour": "Vanligvis klar på 1 time",
-        "two_hours": "Vanligvis klar på 2 timer",
+        "two_hours": "Vanligvis klar om 2 timer",
         "four_hours": "Vanligvis klar på 4 timer",
-        "twenty_four_hours": "Vanligvis klar på 24 timer",
+        "twenty_four_hours": "Vanligvis klar om 24 timer",
         "two_to_four_days": "Vanligvis klar om 2-4 dager",
         "five_or_more_days": "Vanligvis klar om 5+ dager",
-        "zero_to_two_hours": "Vanligvis klar på 2 timer",
+        "zero_to_two_hours": "Vanligvis klar om 2 timer",
         "two_to_four_hours": "Vanligvis klar på 4 timer",
         "immediately": "Klar for henting nå",
         "next_day": "Klar for henting neste dag"

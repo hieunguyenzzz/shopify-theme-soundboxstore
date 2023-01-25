@@ -1702,8 +1702,98 @@
         "opt_out": {
           "opted_out_html": "<b>Du har valt bort spårning via e-post.<\/b>",
           "visibility": "Vi kommer inte att se om du har öppnat våra e-postmeddelanden.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> till e-post öppen spårning."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> till e-post öppen spårning.",
+          "preview_bar": "Du förhandsgranskar vad kunderna kommer att se när de väljer bort spårning via e-post."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Vi spårar inte längre någon e-post öppnas.<\/b>",
+          "privacy_policy": "Efter det här e-postmeddelandet skickades uppdaterade vi vår Sekretesspolicy och vi spårar inte längre."
+        },
+        "track": {
+          "status_html": "<b>E-post öppen spårning rapporteras.<\/b>",
+          "visibility": "Vi ser bara om du har öppnat e-postmeddelandet som en del av den totala e-postöppningsfrekvensen."
+        },
+        "updated_policy": {
+          "status_html": "<b>E-post öppen spårning rapporteras.<\/b>",
+          "visibility": "Vi har uppdaterat vår policy, och nu spåra e-postmeddelanden öppnas. E - post öppna priser kommer att rapporteras anonymt. Vi ser bara om du har öppnat ett e-postmeddelande som en del av den totala e-postöppningsfrekvensen.",
+          "opt_out_html": "Om du inte vill dela denna information kan du <a style='text-decoration:underline;' href='%{link}'>avsluta prenumerationen.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Tillgänglighet",
+        "value": {
+          "in_stock": "Finns i lager",
+          "out_of_stock": "Slut i lager"
+        }
+      },
+      "vendor": {
+        "label": "Varumärke"
+      },
+      "price": {
+        "label": "Pris"
+      },
+      "product_type": {
+        "label": "Produkttyp"
+      },
+      "boolean": {
+        "true_label": "Ja",
+        "false_label": "Nej"
+      },
+      "tags": {
+        "label": "Fler filter"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevans",
+        "price_ascending": "Pris, lågt till högt",
+        "price_descending": "Pris, högt till lågt"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Fel - %{title}",
+      "products": "Produkt",
+      "shopping_cart": "Din Varukorg",
+      "account": "Konto",
+      "create_account": "Skapa Konto",
+      "reset_account": "Återställ Konto",
+      "addresses": "Adress",
+      "order": "Ordning %{name}",
+      "search": "Söka",
+      "search_results": {
+        "one": "Söka: %{count} resultat hittades för \"%{terms}\"",
+        "other": "Söka: %{count} resultat hittades för \"%{terms}\""
+      },
+      "collections": "Samling",
+      "not_found": "404 Hittades Inte",
+      "challenge": "Utmaning",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} rabatter har tillämpats"
+    },
+    "challenge": {
+      "message": "För att fortsätta, låt oss veta att du inte är en robot.",
+      "error": "Ditt svar var inte korrekt, försök igen.",
+      "submit_button_text": "Lämna"
+    },
+    "checkpoint": {
+      "message": "Lös Captcha för att fortsätta",
+      "error": "Captcha-validering misslyckades",
+      "submit_button_text": "Lämna"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Vanligtvis klar på 1 timme",
+        "two_hours": "Vanligtvis klar om 2 timmar",
+        "four_hours": "Vanligtvis klar på 4 timmar",
+        "twenty_four_hours": "Vanligtvis klar på 24 timmar",
+        "two_to_four_days": "Vanligtvis klar på 2-4 dagar",
+        "five_or_more_days": "Vanligtvis klar i 5 + dagar",
+        "zero_to_two_hours": "Vanligtvis klar om 2 timmar",
+        "two_to_four_hours": "Vanligtvis klar på 4 timmar"
       }
     }
   }

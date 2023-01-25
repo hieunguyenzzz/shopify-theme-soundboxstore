@@ -1704,8 +1704,98 @@
         "opt_out": {
           "opted_out_html": "<b>Sie haben sich von der E-Mail-Öffnungsverfolgung abgemeldet.<\/b>",
           "visibility": "Wir werden nicht sehen, ob Sie unsere E-Mails geöffnet haben.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Anmelden<\/a> um eine E-Mail zu senden, öffnen Sie das Tracking."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Anmelden<\/a> um eine E-Mail zu senden, öffnen Sie das Tracking.",
+          "preview_bar": "Sie sehen in der Vorschau, was Kunden sehen, wenn sie sich von der E-Mail-Öffnungsverfolgung abmelden."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Wir verfolgen keine geöffneten E-Mails mehr.<\/b>",
+          "privacy_policy": "Nachdem diese E-Mail gesendet wurde, haben wir unsere Datenschutzrichtlinie aktualisiert und verfolgen keine Öffnungen mehr."
+        },
+        "track": {
+          "status_html": "<b>E-Mail-Öffnungsverfolgung wird gemeldet.<\/b>",
+          "visibility": "Wir werden nur sehen, ob Sie die E-Mail geöffnet haben, als Teil der gesamten E-Mail-Öffnungsrate."
+        },
+        "updated_policy": {
+          "status_html": "<b>E-Mail-Öffnungsverfolgung wird gemeldet.<\/b>",
+          "visibility": "Wir haben unsere Richtlinie aktualisiert und verfolgen jetzt das Öffnen von E-Mails. E-Mail-Öffnungsraten werden anonym gemeldet. Wir werden nur sehen, ob Sie eine E-Mail als Teil der gesamten E-Mail-Öffnungsrate geöffnet haben.",
+          "opt_out_html": "Wenn Sie diese Informationen nicht teilen möchten, können Sie <a style='text-decoration:underline;' href='%{link}'>abmelden.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Verfügbarkeit",
+        "value": {
+          "in_stock": "Bootsbestand",
+          "out_of_stock": "Nicht auf Lager"
+        }
+      },
+      "vendor": {
+        "label": "Brand"
+      },
+      "price": {
+        "label": "Preis"
+      },
+      "product_type": {
+        "label": "Produktart"
+      },
+      "boolean": {
+        "true_label": "Ja",
+        "false_label": "Nein"
+      },
+      "tags": {
+        "label": "Weitere Filter"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevanz",
+        "price_ascending": "Preis, niedrig bis hoch",
+        "price_descending": "Preis, absteigend"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Fehlermeldung - %{title}",
+      "products": "Produkte",
+      "shopping_cart": "Ihr Warenkorb",
+      "account": "Konto",
+      "create_account": "Konto erstellen",
+      "reset_account": "Konto zurücksetzen",
+      "addresses": "Emailadressen",
+      "order": "Bestellen %{name}",
+      "search": "Suche",
+      "search_results": {
+        "one": "Suche: %{count} ergebnis gefunden für \"%{terms}\"",
+        "other": "Suche: %{count} ergebnisse gefunden für \"%{terms}\""
+      },
+      "collections": "Sammlung",
+      "not_found": "404 Nicht gefunden",
+      "challenge": "Herausforderung",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} rabatte wurden angewendet"
+    },
+    "challenge": {
+      "message": "Um fortzufahren, lassen Sie uns wissen, dass Sie kein Roboter sind.",
+      "error": "Ihre Antwort war nicht korrekt, bitte versuchen Sie es erneut.",
+      "submit_button_text": "Abgeben"
+    },
+    "checkpoint": {
+      "message": "Lösen Sie das Captcha, um fortzufahren",
+      "error": "Captcha-Validierung fehlgeschlagen",
+      "submit_button_text": "Abgeben"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Normalerweise in 1 Stunde fertig",
+        "two_hours": "Normalerweise in 2 Stunden fertig",
+        "four_hours": "Normalerweise in 4 Stunden fertig",
+        "twenty_four_hours": "Normalerweise in 24 Stunden fertig",
+        "two_to_four_days": "Normalerweise in 2-4 Tagen fertig",
+        "five_or_more_days": "Normalerweise in 5+ Tagen fertig",
+        "zero_to_two_hours": "Normalerweise in 2 Stunden fertig",
+        "two_to_four_hours": "Normalerweise in 4 Stunden fertig"
       }
     }
   }
