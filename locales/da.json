@@ -1632,7 +1632,77 @@
         },
         "transaction_status": {
           "success": "Vellykket",
-          "pending": "Ventende"
+          "pending": "Ventende",
+          "failure": "Fejl",
+          "error": "Fejl"
+        },
+        "cancel_reason": {
+          "declined": "Betaling afvist",
+          "inventory": "Varer ikke tilgængelige",
+          "fraud": "Svigagtig ordre",
+          "customer": "Kunden ændrede \/ annullerede ordre",
+          "other": "Andre"
+        },
+        "cash_on_delivery": "Kontant ved levering (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Du kan kun tilføje %{count} %{name} til vognen.",
+        "too_many_items_in_cart": "Du kan ikke tilføje flere %{name} til vognen.",
+        "less_than_minimum": "Denne vare har et minimum af %{min}.",
+        "more_than_maximum": "Denne vare har maksimalt %{max}.",
+        "not_respect_step": "Du kan kun tilføje dette element i multipla af %{step}.",
+        "all_items_in_cart": "Alle %{count} %{name} er i din indkøbskurv.",
+        "empty_update": "kan ikke opdatere tom vogn",
+        "missing_parameters": "intet gyldigt id eller linjeparameter",
+        "generic_error": "Indkøbskurv Fejl",
+        "product_not_available": "Produktet er ikke tilgængeligt",
+        "too_many_line_items_error": "Din indkøbskurv kan ikke indeholde mere end %{max} element.",
+        "link_expired": "Link udløbet",
+        "link_no_longer_exists": "Link eksisterer ikke længere.",
+        "stock_problems_html": "En eller flere varer er ikke længere tilgængelige. Vi har givet en <a href='%{link}'>opdateret indkøbskurv<\/a>.",
+        "changed": "Vogn ændret",
+        "items_changed": "Et eller flere elementer er ændret.",
+        "product_sold_out": "Produkt '%{name}'er allerede udsolgt.",
+        "variant_not_found": "Kan ikke finde variant",
+        "variant_requires_selling_plan": "Variant kan kun købes med en salgsplan.",
+        "selling_plan_not_available_for_company_locations": "Kun engangskøb er tilgængeligt for B2B-ordrer",
+        "digital_product_not_available_for_company_locations": "Denne vare kan ikke føjes til en B2B-ordre",
+        "selling_plan_not_applicable": "Kan ikke anvende salgsplan til variant",
+        "shipping_address_not_required": "Denne vogn kræver ikke forsendelse",
+        "shipping_address_invalid": "Der opstod et problem med at beregne dine forsendelsespriser. Fortsæt til kassen for at vælge en forsendelsespris, før du gennemfører din ordre."
+      },
+      "storefront": {
+        "invalid_password": "Adgangskode forkert, prøv igen."
+      },
+      "tags": {
+        "add_articles": "Smal søgning til artikler, der også har tag %{tag}",
+        "add_products": "Snævert udvalg til produkter, der matcher tag %{tag}",
+        "remove_articles": "Udvid søgning til artikler, der ikke er tagget %{tag}",
+        "remove_products": "Fjern tag %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Tak fordi du abonnerer på vores mailingliste.",
+        "disclaimer": "Du kan til enhver tid afmelde dig.",
+        "unsubscribe": "Afmeld"
+      },
+      "unsubscribed": {
+        "confirmation": "Du har afmeldt dig vores mailingliste.",
+        "disclaimer": "Du modtager ikke flere marketingopdateringer fra os. Du kan til enhver tid abonnere igen.",
+        "preview": "Du forhåndsviser, hvad kunderne vil se, når de afmelder sig."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Du har valgt at e-maile åben sporing.<\/b>",
+          "visibility": "E-mail åbne satser vil blive rapporteret anonymt. Vi vil kun se, om du har åbnet en e-mail som en del af en samlet e-mail-åbningsrate.",
+          "opt_out_html": "Du kan <a style='text-decoration:underline;' href='%{link}'>framelde<\/a> af e-mail åben sporing, hvis du ikke ønsker at dele disse oplysninger.",
+          "preview_bar": "Du får vist en forhåndsvisning af, hvad kunderne vil se, når de tilmelder sig åben sporing via e-mail."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Du har fravalgt e-mail åben sporing.<\/b>",
+          "visibility": "Vi vil ikke se, om du har åbnet vores e-mails.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Tilmeld dig<\/a> for at e-maile åben sporing."
         }
       }
     }
