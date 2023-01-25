@@ -2172,7 +2172,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Nessun indirizzo",
         "list_loading_accessibility_message": "Lista di caricamento delle posizioni",
         "list_loading_address_accessibility_message": "Indirizzo di caricamento per {{locationName}}",
-        "list_loading_finished_accessibility_message": "Elenco delle posizioni ha caricato"
+        "list_loading_finished_accessibility_message": "Elenco delle posizioni ha caricato",
+        "loading_store_accessibility_message": "Andare al negozio",
+        "no_location_title": "Solo ordini personali",
+        "no_location_description": "Non hai più il permesso di effettuare ordini per {{company}}. È ancora possibile effettuare ordini personali.",
+        "no_locations_found": "Nessuna località trovata",
+        "search": "Ricerca di una posizione",
+        "selection_cancel_button": "Annullare",
+        "selection_confirmation_button": "Scegli posizione",
+        "title": "Per quale location stai acquistando?",
+        "clear_search": "Cancella ricerca",
+        "try_new_search": "Prova una nuova ricerca"
+      },
+      "addresses": {
+        "add_billing_address_button": "Aggiungi indirizzo di fatturazione",
+        "add_billing_address_section_accessibility_label": "Aggiungi indirizzo di fatturazione",
+        "add_shipping_address_button": "Aggiungi indirizzo di spedizione",
+        "add_shipping_address_section_accessibility_label": "Aggiungi indirizzo di spedizione",
+        "billing_address_card_title": "Indirizzo di fatturazione",
+        "cancel_adding_billing_address_accessibility_label": "Annullare l'aggiunta di indirizzo di fatturazione",
+        "cancel_adding_shipping_address_accessibility_label": "Annullare l'aggiunta di indirizzo di spedizione",
+        "save_new_billing_address_accessibility_label": "Salva indirizzo di fatturazione",
+        "save_new_shipping_address_accessibility_label": "Salva indirizzo di spedizione",
+        "shipping_address_card_title": "Indirizzo di spedizione"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Nascondi tutto",
+          "show_all": "Mostra tutto",
+          "hide_all_accessibility_label": "Nascondi tutti gli ordini in revisione",
+          "show_all_accessibility_label": "Mostra tutti gli ordini in review",
+          "show_all_orders_in_review": "Mostra tutti gli ordini in review",
+          "show_less_orders_in_review": "Mostra meno ordini in revisione",
+          "title": "Attesa",
+          "pagination": {
+            "nav_accessibility_label": "Pulsanti di navigazione Ordini in revisione"
+          }
+        },
+        "order_list_column_headers_location": "Posizione",
+        "order_list_column_headers_contact": "Contatto"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Confermare {{date}} dall'ordine {{draftOrderName}}",
+        "loading": "Caricamento dettagli ordine",
+        "loading_finished_accessibility_message": "I dettagli dell'ordine sono stati caricati",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Il tuo pagamento è {{count}} giorno di ritardo",
+              "other": "Il tuo pagamento è {{count}} giorni di ritardo"
+            },
+            "banner_due": {
+              "one": "Il pagamento è dovuto in {{count}} giorno",
+              "other": "Il pagamento è dovuto in {{count}} giorno"
+            },
+            "banner_due_today": "Il pagamento è dovuto oggi",
+            "title": "Pagamento dovuto",
+            "title_with_date": "Pagamento dovuto {{date}}",
+            "title_due_on_receipt": "Pagamento non ancora dovuto",
+            "title_due_on_fulfillment": "Pagamento dovuto all'adempimento",
+            "description_overdue": "Il pagamento è in ritardo.",
+            "description_partially_paid": "Questo ordine è stato parzialmente pagato. Hai un saldo residuo.",
+            "description_authorized": "Il tuo metodo di pagamento verrà addebitato alla data di scadenza, oppure puoi pagare ora.",
+            "description_due_on_receipt": "Riceverai una fattura quando il pagamento è dovuto.",
+            "description_due_on_fulfillment": "Il pagamento è dovuto una volta che tutti gli articoli in questo ordine sono evasi."
+          },
+          "draft": {
+            "description": "I dettagli di pagamento vengono decisi al momento della conferma dell'ordine.",
+            "title": "Pagamento non ancora dovuto",
+            "in_review": {
+              "description": "I dettagli di pagamento vengono decisi al momento della conferma dell'ordine."
+            }
+          }
+        }
       }
     }
   }

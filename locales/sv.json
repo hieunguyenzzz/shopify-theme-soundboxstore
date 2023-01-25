@@ -2173,7 +2173,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Ingen adress",
         "list_loading_accessibility_message": "Laddar lista över platser",
         "list_loading_address_accessibility_message": "Laddar adress för {{locationName}}",
-        "list_loading_finished_accessibility_message": "Lista över platser har laddats"
+        "list_loading_finished_accessibility_message": "Lista över platser har laddats",
+        "loading_store_accessibility_message": "Kommer att lagra",
+        "no_location_title": "Endast personliga beställningar",
+        "no_location_description": "Du har inte längre tillåtelse att göra beställningar för {{company}}. Du kan fortfarande göra personliga beställningar.",
+        "no_locations_found": "Inga platser hittades",
+        "search": "Sök efter en plats",
+        "selection_cancel_button": "Avbryta",
+        "selection_confirmation_button": "Välj plats",
+        "title": "Vilken plats köper du för?",
+        "clear_search": "Rensa sökning",
+        "try_new_search": "Prova en ny sökning"
+      },
+      "addresses": {
+        "add_billing_address_button": "Lägg till faktureringsadress",
+        "add_billing_address_section_accessibility_label": "Lägg till faktureringsadress",
+        "add_shipping_address_button": "Lägg till leveransadress",
+        "add_shipping_address_section_accessibility_label": "Lägg till leveransadress",
+        "billing_address_card_title": "Faktureringsadress",
+        "cancel_adding_billing_address_accessibility_label": "Avbryt lägga till faktureringsadress",
+        "cancel_adding_shipping_address_accessibility_label": "Avbryt lägga till leveransadress",
+        "save_new_billing_address_accessibility_label": "Spara faktureringsadress",
+        "save_new_shipping_address_accessibility_label": "Spara leveransadress",
+        "shipping_address_card_title": "Leveransadress"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Dölj alla",
+          "show_all": "Visa alla",
+          "hide_all_accessibility_label": "Dölj alla beställningar i recension",
+          "show_all_accessibility_label": "Visa alla beställningar i recension",
+          "show_all_orders_in_review": "Visa alla beställningar i recension",
+          "show_less_orders_in_review": "Visa färre beställningar i recension",
+          "title": "Väntande",
+          "pagination": {
+            "nav_accessibility_label": "Beställningar i granskning navigeringsknappar"
+          }
+        },
+        "order_list_column_headers_location": "Läge",
+        "order_list_column_headers_contact": "Kontakt"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Bekräftelse {{date}} från order {{draftOrderName}}",
+        "loading": "Laddar beställningsinformation",
+        "loading_finished_accessibility_message": "Beställningsdetaljer har laddats",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Din betalning är {{count}} dag försenad",
+              "other": "Din betalning är {{count}} dagar försenade"
+            },
+            "banner_due": {
+              "one": "Din betalning sker i {{count}} dag",
+              "other": "Din betalning sker i {{count}} dag"
+            },
+            "banner_due_today": "Din betalning förfaller idag",
+            "title": "Betalning",
+            "title_with_date": "Betalning {{date}}",
+            "title_due_on_receipt": "Betalning ej förfallen ännu",
+            "title_due_on_fulfillment": "Betalning på grund av uppfyllande",
+            "description_overdue": "Din betalning är sen.",
+            "description_partially_paid": "Denna order betalades delvis. Du har en återstående balans.",
+            "description_authorized": "Din betalningsmetod debiteras på förfallodagen, eller så kan du betala nu.",
+            "description_due_on_receipt": "Du får en faktura när betalningen förfaller.",
+            "description_due_on_fulfillment": "Betalning sker när alla artiklar i denna order är uppfyllda."
+          },
+          "draft": {
+            "description": "Betalningsuppgifter bestäms när beställningen bekräftas.",
+            "title": "Betalning ännu inte förfallen",
+            "in_review": {
+              "description": "Betalningsuppgifter bestäms när beställningen bekräftas."
+            }
+          }
+        }
       }
     }
   }

@@ -2172,7 +2172,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Brak adresu",
         "list_loading_accessibility_message": "Ładowanie listy lokalizacji",
         "list_loading_address_accessibility_message": "Ładowanie adresu dla {{locationName}}",
-        "list_loading_finished_accessibility_message": "Załadowano listę lokalizacji"
+        "list_loading_finished_accessibility_message": "Załadowano listę lokalizacji",
+        "loading_store_accessibility_message": "Idę Do sklepu",
+        "no_location_title": "Tylko zamówienia osobiste",
+        "no_location_description": "Nie masz już uprawnień do składania zamówień na {{company}}. Nadal możesz składać osobiste zamówienia.",
+        "no_locations_found": "Nie znaleziono lokalizacji",
+        "search": "Wyszukaj lokalizację",
+        "selection_cancel_button": "Anuluj",
+        "selection_confirmation_button": "Wybierz lokalizację",
+        "title": "Dla której lokalizacji kupujesz?",
+        "clear_search": "Wyczyść wyszukiwanie",
+        "try_new_search": "Wypróbuj nowe wyszukiwanie"
+      },
+      "addresses": {
+        "add_billing_address_button": "Dodaj adres rozliczeniowy",
+        "add_billing_address_section_accessibility_label": "Dodaj adres rozliczeniowy",
+        "add_shipping_address_button": "Dodaj adres wysyłki",
+        "add_shipping_address_section_accessibility_label": "Dodaj adres wysyłki",
+        "billing_address_card_title": "Adres rozliczeniowy",
+        "cancel_adding_billing_address_accessibility_label": "Anuluj Dodawanie adresu rozliczeniowego",
+        "cancel_adding_shipping_address_accessibility_label": "Anuluj Dodawanie adresu wysyłki",
+        "save_new_billing_address_accessibility_label": "Zapisz adres rozliczeniowy",
+        "save_new_shipping_address_accessibility_label": "Zapisz adres wysyłki",
+        "shipping_address_card_title": "Adres wysyłki"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Ukryj wszystko",
+          "show_all": "Pokaż wszystkie",
+          "hide_all_accessibility_label": "Ukryj wszystkie zamówienia w recenzji",
+          "show_all_accessibility_label": "Pokaż wszystkie zamówienia w recenzji",
+          "show_all_orders_in_review": "Pokaż wszystkie zamówienia w recenzji",
+          "show_less_orders_in_review": "Pokaż mniej zamówień w recenzji",
+          "title": "W toku",
+          "pagination": {
+            "nav_accessibility_label": "Zamówienia w przegląd przyciski nawigacyjne"
+          }
+        },
+        "order_list_column_headers_location": "Lokalizacja",
+        "order_list_column_headers_contact": "Kontakt"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Potwierdzone {{date}} z zamówienia {{draftOrderName}}",
+        "loading": "Ładowanie szczegółów zamówienia",
+        "loading_finished_accessibility_message": "Szczegóły zamówienia zostały załadowane",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Twoja płatność jest {{count}} dzień spóźniony",
+              "other": "Twoja płatność jest {{count}} dni zaległe"
+            },
+            "banner_due": {
+              "one": "Twoja płatność jest należna w {{count}} dzień",
+              "other": "Twoja płatność jest należna w {{count}} dni"
+            },
+            "banner_due_today": "Twoja płatność jest należna dzisiaj",
+            "title": "Należna płatność",
+            "title_with_date": "Należna płatność {{date}}",
+            "title_due_on_receipt": "Płatność jeszcze nie należna",
+            "title_due_on_fulfillment": "Płatność należna przy realizacji",
+            "description_overdue": "Twoja płatność jest spóźniona.",
+            "description_partially_paid": "To zamówienie zostało częściowo opłacone. Masz pozostałą równowagę.",
+            "description_authorized": "Twoja metoda płatności zostanie obciążona w terminie płatności lub możesz zapłacić teraz.",
+            "description_due_on_receipt": "Otrzymasz fakturę, gdy płatność jest należna.",
+            "description_due_on_fulfillment": "Płatność jest należna po spełnieniu wszystkich pozycji w tym zamówieniu."
+          },
+          "draft": {
+            "description": "Szczegóły płatności są ustalane po potwierdzeniu zamówienia.",
+            "title": "Płatność nie jest jeszcze należna",
+            "in_review": {
+              "description": "Szczegóły płatności są ustalane po potwierdzeniu zamówienia."
+            }
+          }
+        }
       }
     }
   }

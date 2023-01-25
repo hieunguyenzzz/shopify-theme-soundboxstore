@@ -2173,7 +2173,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Ingen adresse",
         "list_loading_accessibility_message": "Indlæser liste over placeringer",
         "list_loading_address_accessibility_message": "Indlæser adresse til {{locationName}}",
-        "list_loading_finished_accessibility_message": "Liste over placeringer er indlæst"
+        "list_loading_finished_accessibility_message": "Liste over placeringer er indlæst",
+        "loading_store_accessibility_message": "Gå til butik",
+        "no_location_title": "Kun personlige ordrer",
+        "no_location_description": "Du har ikke længere tilladelse til at afgive ordrer til {{company}}. Du kan stadig placere personlige ordrer.",
+        "no_locations_found": "Ingen steder fundet",
+        "search": "Søg efter en placering",
+        "selection_cancel_button": "Annullere",
+        "selection_confirmation_button": "Vælg placering",
+        "title": "Hvilken placering køber du til?",
+        "clear_search": "Ryd søgning",
+        "try_new_search": "Prøv en ny søgning"
+      },
+      "addresses": {
+        "add_billing_address_button": "Tilføj faktureringsadresse",
+        "add_billing_address_section_accessibility_label": "Tilføj faktureringsadresse",
+        "add_shipping_address_button": "Tilføj leveringsadresse",
+        "add_shipping_address_section_accessibility_label": "Tilføj leveringsadresse",
+        "billing_address_card_title": "Faktureringsadresse",
+        "cancel_adding_billing_address_accessibility_label": "Annuller tilføjelse af faktureringsadresse",
+        "cancel_adding_shipping_address_accessibility_label": "Annuller tilføjelse af leveringsadresse",
+        "save_new_billing_address_accessibility_label": "Gem faktureringsadresse",
+        "save_new_shipping_address_accessibility_label": "Gem leveringsadresse",
+        "shipping_address_card_title": "Leveringsadresse"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Skjul alle",
+          "show_all": "Vis alle",
+          "hide_all_accessibility_label": "Skjul alle ordrer i anmeldelse",
+          "show_all_accessibility_label": "Vis alle ordrer i anmeldelse",
+          "show_all_orders_in_review": "Vis alle ordrer i anmeldelse",
+          "show_less_orders_in_review": "Vis færre ordrer i anmeldelse",
+          "title": "Ventende",
+          "pagination": {
+            "nav_accessibility_label": "Ordrer i gennemgang navigationsknapper"
+          }
+        },
+        "order_list_column_headers_location": "Beliggenhed",
+        "order_list_column_headers_contact": "Kontakt"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Bekræftet {{date}} fra ordre {{draftOrderName}}",
+        "loading": "Indlæser ordredetaljer",
+        "loading_finished_accessibility_message": "Ordreoplysninger er indlæst",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Din betaling er {{count}} dag forsinket",
+              "other": "Din betaling er {{count}} dage forsinket"
+            },
+            "banner_due": {
+              "one": "Din betaling forfalder i {{count}} dag",
+              "other": "Din betaling forfalder i {{count}} dag"
+            },
+            "banner_due_today": "Din betaling forfalder i dag",
+            "title": "Forfaldne betalinger",
+            "title_with_date": "Forfaldne betalinger {{date}}",
+            "title_due_on_receipt": "Betaling ikke forfalden endnu",
+            "title_due_on_fulfillment": "Betaling forfalder ved opfyldelse",
+            "description_overdue": "Din betaling er forsinket.",
+            "description_partially_paid": "Denne ordre blev delvist betalt. Du har en resterende balance.",
+            "description_authorized": "Din betalingsmetode vil blive opkrævet på forfaldsdatoen, eller du kan betale nu.",
+            "description_due_on_receipt": "Du modtager en faktura, når betalingen forfalder.",
+            "description_due_on_fulfillment": "Betaling forfalder, når alle varer i denne ordre er opfyldt."
+          },
+          "draft": {
+            "description": "Betalingsoplysninger afgøres, når ordren er bekræftet.",
+            "title": "Betaling endnu ikke forfalden",
+            "in_review": {
+              "description": "Betalingsoplysninger afgøres, når ordren er bekræftet."
+            }
+          }
+        }
       }
     }
   }
