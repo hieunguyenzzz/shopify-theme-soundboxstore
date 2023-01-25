@@ -469,7 +469,70 @@
         "estimated_delivery_time": "Entrega estimada %{time}",
         "estimated_delivery_time_range": "Entrega estimada %{min_time}–%{max_time}",
         "delivery_today": "Entrega el mismo día %{time}",
-        "delivery_tomorrow": "Entrega al día siguiente %{time}"
+        "delivery_tomorrow": "Entrega al día siguiente %{time}",
+        "two_day_delivery": "entrega en 2 días %{time}",
+        "delivery": "Entrega %{time}",
+        "arrives_time": "Llegar %{time}",
+        "arrives_time_range": "Llegar %{min_time}–%{max_time}",
+        "estimated_time": "Estimar %{time}",
+        "estimated_time_range": "Estimar %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Número de teléfono móvil (requerido)",
+        "shipping_line_phone": "Su servicio de mensajería puede utilizar este número para ponerse en contacto con usted.",
+        "shipping_line_delivery_phone_label": "Número de teléfono móvil",
+        "shipping_line_delivery_phone": "Es posible que nos comuniquemos con usted para informarle sobre su entrega.",
+        "optional_shipping_line_delivery_instructions_label": "Instrucciones de entrega (opcional)",
+        "shipping_line_delivery_instructions": "Ingrese la información necesaria, como códigos de puerta o instrucciones de entrega.",
+        "other_method": {
+          "zero": "No hay otros métodos disponibles",
+          "one": "%{count} otro método disponible en ",
+          "other": "%{count} otros métodos disponibles a partir de "
+        },
+        "shipping_rate_discounted_amount": "Ser: %{original_amount}. Ahora: %{amount}",
+        "local_delivery": "Entrega local",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "para %{count} entrega",
+            "other": "para %{count} entrega"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "todos los días",
+              "other": "cada %{count} jornadas"
+            },
+            "week": {
+              "one": "cada semana",
+              "other": "cada %{count} semana"
+            },
+            "month": {
+              "one": "mensualmente",
+              "other": "cada %{count} mes"
+            },
+            "year": {
+              "one": "cada año",
+              "other": "cada %{count} año"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} por entrega",
+          "prepaid_shipping_price_label": "%{shipping_price} por entrega x %{delivery_interval_count}",
+          "initial_order_discounted": "Primer costo de envío %{discounted_shipping_cost}, entonces %{frequency_description}",
+          "prepaid_initial_order_discounted": "Primer costo de envío %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Primer costo de envío %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Primer costo de envío %{discounted_shipping_price} %{prepaid_delivery_frequency}, entonces %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Primer costo de envío %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), entonces %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Incluir",
+          "recurring_order_shipping_price": "seguido de %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Primer orden incluido, seguido de %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} por entrega), seguido de %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Primer pedido gratis",
+            "other": "Primero %{count} pedidos gratis"
+          },
+          "free_for_first_n_order": {
+            "one": "Para el primer orden",
+            "other": "Para los primeros %{count} pedidos"
+          }
+        },
+        "one_time_purchase_shipping": "Envío de una sola vez"
       },
       "general": {
         "page_title": "Checkout",
@@ -724,6 +787,19 @@
         },
         "maximum_discount_code_limit_reached": "Has alcanzado el número máximo de códigos de descuento. Eliminar un código existente para usarlo <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> no está funcionando en este momento. Póngase en contacto con nosotros para obtener ayuda."
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Información adicional"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Pago de Amazon",
+        "amazon_payments_login_hint": "Se le pedirá que inicie sesión con Amazon.",
+        "amazon_payments_logout": "Cerrar sesión en Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "No se pudo utilizar el método de pago seleccionado. Seleccione un método diferente o póngase en contacto con su banco o emisor de tarjeta.",
+        "amazon_payments_abandoned_mfa_challenge": "No se pudo completar el pago. Prueba con un método de pago diferente o ponte en contacto con tu banco o emisor de tarjeta.",
+        "amazon_payments_could_not_enqueue_authorize": "Hubo un problema al procesar su pago. Inténtalo de nuevo o utiliza un método de pago diferente."
       }
     },
     "sentence": {
