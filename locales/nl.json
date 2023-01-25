@@ -1019,7 +1019,79 @@
       },
       "payment_errors": {
         "generic_error": "Er was een probleem met het verwerken van uw betaling. Probeer het opnieuw of gebruik een andere betaalmethode.",
-        "rejected_transaction": "Uw betaling is geweigerd. Probeer het opnieuw of gebruik een andere betaalmethode."
+        "rejected_transaction": "Uw betaling is geweigerd. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "credit_card_processing": "Uw betaling kan om technische redenen niet worden verwerkt. Probeer het over een paar minuten opnieuw of gebruik een andere betaalmethode.",
+        "checkout_amount_changed": "Uw betaling kon niet worden verwerkt omdat het verschuldigde bedrag bij het afrekenen is gewijzigd. Controleer uw bestelling en probeer het opnieuw.",
+        "deferred_payment_not_allowed": "Uitgestelde betalingen zijn niet toegestaan. Controleer uw bestelling en probeer het opnieuw.",
+        "deferred_payment_required": "Deze bestelling vereist een uitgestelde betaling. Controleer uw bestelling en probeer het opnieuw.",
+        "deferred_amount_changed": "Uw betaling kon niet worden verwerkt omdat het uitgestelde betalingsbedrag is gewijzigd. Controleer uw bestelling en probeer het opnieuw.",
+        "deferred_date_changed": "Uw betaling kon niet worden verwerkt omdat de uitgestelde betalingsdatum is gewijzigd. Controleer uw bestelling en probeer het opnieuw.",
+        "order_total_changed": "Uw betaling kon niet worden verwerkt omdat het totaal van uw bestelling is gewijzigd. Controleer het totaal van uw bestelling en probeer het opnieuw.",
+        "payment_processing": "Uw betaling kan om technische redenen niet worden verwerkt. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "payment_processing_no_retry": "Uw betaling kan om technische redenen niet worden verwerkt. Probeer een andere betaalmethode.",
+        "paypal_zero_amount": "U kunt PayPal niet gebruiken voor %{amount} bestelling. Controleer of uw bestelling correct is en check out zonder PayPal.",
+        "paypal_invalid_token": "PayPal was niet beschikbaar. Probeer het opnieuw of gebruik een andere afrekenoptie.",
+        "pay_later_failed": "Er is een fout opgetreden bij het verwerken van uw betaling met Pay later. Kies een andere betaalmethode en probeer het opnieuw.",
+        "three_d_secure_failed": "Uw betaling kon niet worden geverifieerd. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "three_d_secure_failed_duplicate": "De 3D Secure-verificatie van de creditcard is mislukt omdat een andere al aan de gang is.",
+        "three_d_secure_throttled": "Te veel pogingen; wacht voordat u het opnieuw probeert",
+        "subscription_agreement_blank": "Om een abonnement te kopen, moeten uw betalingsgegevens worden opgeslagen. Om verder te gaan, bevestigt u dat u akkoord gaat of verwijdert u abonnementsartikelen van uw bestelling.",
+        "insufficient_funds": "Uw betaling is geweigerd wegens onvoldoende saldo. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "multiple_deferred_payment_not_allowed": "Slechts één uitgestelde betaling toegestaan per aanvraag. Controleer uw aanvraag en probeer het opnieuw.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Deze transactie is geweigerd",
+          "address_mismatch": "Adres en Postcode komen niet overeen.",
+          "cannot_process": "Deze transactie kan niet worden verwerkt.",
+          "no_match": "Geen Overeenkomst",
+          "card_declined": "Uw kaart is geweigerd"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Uw winkelwagen is bijgewerkt en het vorige verzendtarief is niet geldig. Selecteer een nieuw tarief.",
+        "shipping_method_not_available": "Uw winkelwagen is bijgewerkt en de artikelen die u hebt toegevoegd kunnen niet naar uw adres worden verzonden. Verwijder de items om uw bestelling te voltooien.",
+        "shipping_method_not_available_generic": {
+          "one": "Deze bestelling kan niet worden verzonden naar het door u opgegeven adres. Controleer uw adres om ervoor te zorgen dat alle velden correct zijn ingevoerd en probeer het opnieuw.",
+          "other": "Sommige artikelen in uw winkelwagen kunnen niet worden verzonden naar het adres dat u hebt ingevoerd. Controleer uw adres om ervoor te zorgen dat alle velden correct zijn ingevoerd en probeer het opnieuw."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "Het item dat u hebt toegevoegd, wordt niet naar uw locatie verzonden. Verwijder het om uit te checken of neem contact op met de winkel.",
+          "other": "Een of meer items die u hebt toegevoegd, worden niet naar uw locatie verzonden. Verwijder ze om uit te checken of neem contact op met de winkel."
+        },
+        "payment_method_not_supported": "U kunt deze betaalmethode niet gebruiken voor %{country}. Gebruik een andere betaalmethode om naar dit land te verzenden."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Express checkout",
+        "or": "OF"
+      },
+      "alternative_payment_method": {
+        "button_html": "Afrekenen met: %{method}",
+        "button_label": "Afrekenen met: %{method}"
+      },
+      "paypal": {
+        "button_html": "Afrekenen met %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Kopen met %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Post-aankoop",
+        "title": "Post-aankoop",
+        "escape_confirmation": "Je hebt betaald voor je bestelling.",
+        "escape_action": "Bekijk orderbevestiging \"",
+        "components": {
+          "close": "Sluiten",
+          "expand": "Bekijk meer",
+          "processing": "Verwerking…",
+          "submit": "Indienen"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Omgeleid…",
+        "redirecting_title": "Omgeleid…",
+        "redirecting_notice": "Wacht tot we je doorverwijzen.",
+        "complete_your_purchase_title": "Voltooi uw aankoop",
+        "continue_to_payment_gateway_notice": "Ga verder met betalen om uw betalingsgegevens toe te voegen.",
+        "continue_to_payment_gateway_button_label": "Doorgaan naar betaling"
       }
     },
     "sentence": {

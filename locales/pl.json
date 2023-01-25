@@ -1023,7 +1023,79 @@
       },
       "payment_errors": {
         "generic_error": "Wystąpił problem z przetwarzaniem płatności. Spróbuj ponownie lub użyj innej metody płatności.",
-        "rejected_transaction": "Twoja płatność została odrzucona. Spróbuj ponownie lub użyj innej metody płatności."
+        "rejected_transaction": "Twoja płatność została odrzucona. Spróbuj ponownie lub użyj innej metody płatności.",
+        "credit_card_processing": "Twoja płatność nie może zostać przetworzona z przyczyn technicznych. Spróbuj ponownie za kilka minut lub użyj innej metody płatności.",
+        "checkout_amount_changed": "Twoja płatność nie mogła zostać przetworzona, ponieważ zmieniła się kwota należna przy kasie. Sprawdź swoje zamówienie i spróbuj ponownie.",
+        "deferred_payment_not_allowed": "Odroczone płatności nie są dozwolone. Sprawdź swoje zamówienie i spróbuj ponownie.",
+        "deferred_payment_required": "To zamówienie wymaga odroczonej płatności. Sprawdź swoje zamówienie i spróbuj ponownie.",
+        "deferred_amount_changed": "Twoja płatność nie mogła zostać przetworzona, ponieważ odroczona kwota płatności uległa zmianie. Sprawdź swoje zamówienie i spróbuj ponownie.",
+        "deferred_date_changed": "Twoja płatność nie mogła zostać przetworzona, ponieważ zmieniła się odroczona data płatności. Sprawdź swoje zamówienie i spróbuj ponownie.",
+        "order_total_changed": "Twoja płatność nie mogła zostać przetworzona, ponieważ suma zamówienia uległa zmianie. Sprawdź sumę zamówienia i spróbuj ponownie.",
+        "payment_processing": "Twoja płatność nie może zostać przetworzona z przyczyn technicznych. Spróbuj ponownie lub użyj innej metody płatności.",
+        "payment_processing_no_retry": "Twoja płatność nie może zostać przetworzona z przyczyn technicznych. Wypróbuj inną metodę płatności.",
+        "paypal_zero_amount": "Nie możesz używać PayPal do %{amount} rozkazy. Potwierdź, że Twoje zamówienie jest poprawne i sprawdź bez PayPal.",
+        "paypal_invalid_token": "PayPal nie był dostępny. Spróbuj ponownie lub użyj innej opcji płatności.",
+        "pay_later_failed": "Wystąpił błąd podczas przetwarzania płatności za pomocą Pay later. Wybierz inną metodę płatności i spróbuj ponownie.",
+        "three_d_secure_failed": "Twoja płatność nie mogła zostać zweryfikowana. Spróbuj ponownie lub użyj innej metody płatności.",
+        "three_d_secure_failed_duplicate": "Uwierzytelnianie 3D Secure karty kredytowej nie powiodło się, ponieważ inna jest już w toku.",
+        "three_d_secure_throttled": "Zbyt wiele prób; poczekaj, zanim spróbujesz ponownie",
+        "subscription_agreement_blank": "Aby wykupić subskrypcję, należy zapisać szczegóły płatności. Aby kontynuować, potwierdź, że zgadzasz się lub usuń elementy subskrypcji z zamówienia.",
+        "insufficient_funds": "Twoja płatność została odrzucona z powodu niewystarczających środków. Spróbuj ponownie lub użyj innej metody płatności.",
+        "multiple_deferred_payment_not_allowed": "Dozwolona jest tylko jedna odroczona płatność na żądanie. Sprawdź swoją prośbę i spróbuj ponownie.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Ta transakcja została odrzucona",
+          "address_mismatch": "Adres i Kod pocztowy nie pasują do siebie.",
+          "cannot_process": "Ta transakcja nie może być przetworzona.",
+          "no_match": "Nie Pasuje",
+          "card_declined": "Twoja karta została odrzucona"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Twój koszyk został zaktualizowany, a poprzednia stawka wysyłki nie jest ważna. Wybierz nową stawkę.",
+        "shipping_method_not_available": "Twój koszyk został zaktualizowany, a dodane produkty nie mogą zostać wysłane na twój adres. Usuń elementy, aby sfinalizować zamówienie.",
+        "shipping_method_not_available_generic": {
+          "one": "To zamówienie nie może zostać wysłane na podany adres. Sprawdź swój adres, aby upewnić się, że wszystkie pola zostały wprowadzone poprawnie i spróbuj ponownie.",
+          "other": "Niektóre produkty w koszyku nie mogą zostać wysłane na podany adres. Sprawdź swój adres, aby upewnić się, że wszystkie pola zostały wprowadzone poprawnie i spróbuj ponownie."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "Dodany przedmiot nie jest wysyłany do Twojej lokalizacji. Usuń go, aby sprawdzić, lub skontaktuj się ze sklepem.",
+          "other": "Jeden lub więcej dodanych przedmiotów nie jest wysyłanych do Twojej lokalizacji. Usuń je, aby sprawdzić, lub skontaktuj się ze sklepem."
+        },
+        "payment_method_not_supported": "Nie możesz użyć tej metody płatności dla %{country}. Użyj innej metody płatności, aby wysłać do tego kraju."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Express checkout",
+        "or": "Lub"
+      },
+      "alternative_payment_method": {
+        "button_html": "Zamówienie z: %{method}",
+        "button_label": "Zamówienie z: %{method}"
+      },
+      "paypal": {
+        "button_html": "Zamówienie z %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Kup z %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Po zakupie",
+        "title": "Po zakupie",
+        "escape_confirmation": "Zapłaciłeś za zamówienie.",
+        "escape_action": "Zobacz potwierdzenie zamówienia \"",
+        "components": {
+          "close": "Zamknij",
+          "expand": "Zobacz więcej",
+          "processing": "Przetwarzanie…",
+          "submit": "Submit"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Przekierowanie…",
+        "redirecting_title": "Przekierowanie…",
+        "redirecting_notice": "Poczekaj, aż cię przekierujemy.",
+        "complete_your_purchase_title": "Sfinalizuj zakup",
+        "continue_to_payment_gateway_notice": "Kontynuuj płatność, aby dodać informacje o płatności.",
+        "continue_to_payment_gateway_button_label": "Kontynuuj płatność"
       }
     }
   }

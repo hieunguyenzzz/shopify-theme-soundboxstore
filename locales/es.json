@@ -1021,7 +1021,79 @@
       },
       "payment_errors": {
         "generic_error": "Hubo un problema al procesar su pago. Inténtalo de nuevo o utiliza un método de pago diferente.",
-        "rejected_transaction": "Su pago ha sido rechazado. Inténtalo de nuevo o utiliza un método de pago diferente."
+        "rejected_transaction": "Su pago ha sido rechazado. Inténtalo de nuevo o utiliza un método de pago diferente.",
+        "credit_card_processing": "Su pago no se puede procesar por razones técnicas. Inténtalo de nuevo en unos minutos o utiliza un método de pago diferente.",
+        "checkout_amount_changed": "Su pago no se pudo procesar porque el monto adeudado al finalizar la compra ha cambiado. Por favor, compruebe su pedido y vuelva a intentarlo.",
+        "deferred_payment_not_allowed": "No se permiten pagos diferidos. Por favor, compruebe su pedido y vuelva a intentarlo.",
+        "deferred_payment_required": "Este pedido requiere un pago diferido. Por favor, compruebe su pedido y vuelva a intentarlo.",
+        "deferred_amount_changed": "Su pago no se pudo procesar porque el monto del pago diferido ha cambiado. Por favor, compruebe su pedido y vuelva a intentarlo.",
+        "deferred_date_changed": "Su pago no se pudo procesar porque la fecha de pago diferido ha cambiado. Por favor, compruebe su pedido y vuelva a intentarlo.",
+        "order_total_changed": "Su pago no se pudo procesar porque el total de su pedido ha cambiado. Comprueba el total de tu pedido e inténtalo de nuevo.",
+        "payment_processing": "Su pago no se puede procesar por razones técnicas. Inténtalo de nuevo o utiliza un método de pago diferente.",
+        "payment_processing_no_retry": "Su pago no se puede procesar por razones técnicas. Prueba con un método de pago diferente.",
+        "paypal_zero_amount": "No puedes usar PayPal para %{amount} pedidos. Confirme que su pedido es correcto y realice el pago sin PayPal.",
+        "paypal_invalid_token": "PayPal no estaba disponible. Inténtalo de nuevo o utiliza una opción de pago diferente.",
+        "pay_later_failed": "Se ha producido un error al procesar el pago con Pay later. Elige otro método de pago e inténtalo de nuevo.",
+        "three_d_secure_failed": "No se pudo verificar su pago. Inténtalo de nuevo o utiliza un método de pago diferente.",
+        "three_d_secure_failed_duplicate": "La autenticación 3D Secure de la tarjeta de crédito falló porque ya está en curso otra.",
+        "three_d_secure_throttled": "Demasiados intentos; por favor, espere antes de volver a intentarlo",
+        "subscription_agreement_blank": "Para comprar una suscripción, es necesario guardar los datos de pago. Para continuar, confirme que está de acuerdo o elimine los artículos de suscripción de su pedido.",
+        "insufficient_funds": "Su pago fue rechazado debido a fondos insuficientes. Inténtalo de nuevo o utiliza un método de pago diferente.",
+        "multiple_deferred_payment_not_allowed": "Solo se permite un pago diferido por solicitud. Por favor, revise su solicitud y vuelva a intentarlo.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Esta transacción ha sido rechazada",
+          "address_mismatch": "La dirección y el código postal no coinciden.",
+          "cannot_process": "Esta transacción no se puede procesar.",
+          "no_match": "Sin Coincidencia",
+          "card_declined": "Su tarjeta ha sido rechazada"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Su carrito ha sido actualizado y la tarifa de envío anterior no es válida. Seleccione una nueva tarifa.",
+        "shipping_method_not_available": "Su carrito se ha actualizado y los artículos que agregó no se pueden enviar a su dirección. Retire los artículos para completar su pedido.",
+        "shipping_method_not_available_generic": {
+          "one": "Este pedido no se puede enviar a la dirección que ingresó. Revise su dirección para asegurarse de que todos los campos se hayan ingresado correctamente e inténtelo de nuevo.",
+          "other": "Algunos artículos de su carrito no se pueden enviar a la dirección que ingresó. Revise su dirección para asegurarse de que todos los campos se hayan ingresado correctamente e inténtelo de nuevo."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "El artículo que agregaste no se envía a tu ubicación. Quítatelo para pagar o comunícate con la tienda.",
+          "other": "Uno o más artículos que agregaste no se envían a tu ubicación. Quítelos para pagar o comuníquese con la tienda."
+        },
+        "payment_method_not_supported": "No puedes usar este método de pago para %{country}. Utilice un método de pago diferente para enviar a este país."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Pago exprés",
+        "or": "O"
+      },
+      "alternative_payment_method": {
+        "button_html": "Pago con: %{method}",
+        "button_label": "Pago con: %{method}"
+      },
+      "paypal": {
+        "button_html": "Pago con %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Comprar con %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Post-compra",
+        "title": "Post-compra",
+        "escape_confirmation": "Has pagado tu pedido.",
+        "escape_action": "Ver confirmación de pedido \"",
+        "components": {
+          "close": "Cerca",
+          "expand": "Ver más",
+          "processing": "Procesamiento…",
+          "submit": "Presentar"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Redirigir…",
+        "redirecting_title": "Redirigir…",
+        "redirecting_notice": "Espere mientras le redirigimos.",
+        "complete_your_purchase_title": "Completa tu compra",
+        "continue_to_payment_gateway_notice": "Continúe con pago para agregar su información de pago.",
+        "continue_to_payment_gateway_button_label": "Continuar con el pago"
       }
     },
     "sentence": {

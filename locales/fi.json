@@ -1023,7 +1023,79 @@
       },
       "payment_errors": {
         "generic_error": "Maksusi käsittelyssä oli ongelmia. Yritä uudelleen tai käytä toista maksutapaa.",
-        "rejected_transaction": "Maksusi hylättiin. Yritä uudelleen tai käytä toista maksutapaa."
+        "rejected_transaction": "Maksusi hylättiin. Yritä uudelleen tai käytä toista maksutapaa.",
+        "credit_card_processing": "Maksua ei voida käsitellä teknisistä syistä. Yritä uudelleen muutaman minuutin kuluttua tai käytä eri maksutapaa.",
+        "checkout_amount_changed": "Maksua ei voitu käsitellä, koska kassalla maksettava summa on muuttunut. Tarkista tilauksesi ja yritä uudelleen.",
+        "deferred_payment_not_allowed": "Laskennalliset maksut eivät ole sallittuja. Tarkista tilauksesi ja yritä uudelleen.",
+        "deferred_payment_required": "Tämä tilaus edellyttää maksun lykkäämistä. Tarkista tilauksesi ja yritä uudelleen.",
+        "deferred_amount_changed": "Maksua ei voitu käsitellä, koska maksun lykkäys on muuttunut. Tarkista tilauksesi ja yritä uudelleen.",
+        "deferred_date_changed": "Maksua ei voitu käsitellä, koska maksupäivä on muuttunut. Tarkista tilauksesi ja yritä uudelleen.",
+        "order_total_changed": "Maksua ei voitu käsitellä, koska tilauksesi summa on muuttunut. Tarkista tilauksen kokonaismäärä ja yritä uudelleen.",
+        "payment_processing": "Maksua ei voida käsitellä teknisistä syistä. Yritä uudelleen tai käytä toista maksutapaa.",
+        "payment_processing_no_retry": "Maksua ei voida käsitellä teknisistä syistä. Kokeile toista maksutapaa.",
+        "paypal_zero_amount": "Et voi käyttää PayPalia %{amount} tilaukset. Vahvista tilauksesi on oikea ja tarkista ilman PayPalia.",
+        "paypal_invalid_token": "PayPal ei ollut käytettävissä. Yritä uudelleen tai käytä toista kassavaihtoehtoa.",
+        "pay_later_failed": "Maksusi käsittelyssä tapahtui virhe Pay laterin kanssa. Valitse toinen maksutapa ja yritä uudelleen.",
+        "three_d_secure_failed": "Maksuasi ei voitu vahvistaa. Yritä uudelleen tai käytä toista maksutapaa.",
+        "three_d_secure_failed_duplicate": "Luottokortin 3D-suojattu tunnistautuminen epäonnistui, koska toinen on jo käynnissä.",
+        "three_d_secure_throttled": "Liian monta yritystä; odota ennen kuin yrität uudelleen",
+        "subscription_agreement_blank": "Jotta voit ostaa tilauksen, maksutietosi on tallennettava. Jos haluat jatkaa, vahvista, että hyväksyt tai poista tilauskohteet tilauksestasi.",
+        "insufficient_funds": "Maksusi hylättiin varojen riittämättömyyden vuoksi. Yritä uudelleen tai käytä toista maksutapaa.",
+        "multiple_deferred_payment_not_allowed": "Vain yksi lykätty maksu sallitaan pyyntöä kohti. Tarkista pyyntösi ja yritä uudelleen.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Tämä kauppa on hylätty",
+          "address_mismatch": "Katuosoite ja Postinumero eivät täsmää.",
+          "cannot_process": "Tätä tapahtumaa ei voi käsitellä.",
+          "no_match": "Ei Osumaa",
+          "card_declined": "Korttisi hylättiin"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Ostoskorisi on päivitetty ja edellinen toimitushinta ei ole voimassa. Valitse uusi korko.",
+        "shipping_method_not_available": "Ostoskorisi on päivitetty ja lisäämiäsi tuotteita ei voi lähettää osoitteeseesi. Poista kohteet tilauksen loppuun.",
+        "shipping_method_not_available_generic": {
+          "one": "Tätä tilausta ei voi lähettää antamaasi osoitteeseen. Tarkista osoitteesi varmistaaksesi, että kaikki kentät on syötetty oikein ja yritä uudelleen.",
+          "other": "Joitakin ostoskorissasi olevia tuotteita ei voi lähettää antamaasi osoitteeseen. Tarkista osoitteesi varmistaaksesi, että kaikki kentät on syötetty oikein ja yritä uudelleen."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "Lisäämäsi kohde ei lähetä sijaintisi. Poista se tarkistaa, tai ota yhteyttä kauppaan.",
+          "other": "Yksi tai useampi lisäämäsi kohde ei lähetä sijaintisi. Poista ne tarkistaa, tai ota yhteyttä kauppaan."
+        },
+        "payment_method_not_supported": "Et voi käyttää tätä maksutapaa %{country}. Käytä eri maksutapaa lähettääksesi tähän maahan."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Express checkout",
+        "or": "TAI"
+      },
+      "alternative_payment_method": {
+        "button_html": "Kassalla: %{method}",
+        "button_label": "Kassalla: %{method}"
+      },
+      "paypal": {
+        "button_html": "Kassalla %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Osta kanssa %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Oston jälkeen",
+        "title": "Oston jälkeen",
+        "escape_confirmation": "Olet maksanut tilauksesi.",
+        "escape_action": "Näytä tilausvahvistus \"",
+        "components": {
+          "close": "Sulje",
+          "expand": "Katso lisää",
+          "processing": "Käsittely…",
+          "submit": "Lähettää"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Suuntaamalla…",
+        "redirecting_title": "Suuntaamalla…",
+        "redirecting_notice": "Odota, kun ohjaamme sinut.",
+        "complete_your_purchase_title": "Täytä ostoksesi",
+        "continue_to_payment_gateway_notice": "Jatka maksuun lisätäksesi maksutietosi.",
+        "continue_to_payment_gateway_button_label": "Jatka maksamista"
       }
     }
   }

@@ -1023,7 +1023,79 @@
       },
       "payment_errors": {
         "generic_error": "Si è verificato un problema nell'elaborazione del pagamento. Riprova o utilizza un metodo di pagamento diverso.",
-        "rejected_transaction": "Il pagamento è stato rifiutato. Riprova o utilizza un metodo di pagamento diverso."
+        "rejected_transaction": "Il pagamento è stato rifiutato. Riprova o utilizza un metodo di pagamento diverso.",
+        "credit_card_processing": "Il pagamento non può essere elaborato per motivi tecnici. Riprova in pochi minuti o utilizza un metodo di pagamento diverso.",
+        "checkout_amount_changed": "Non è stato possibile elaborare il pagamento perché l'importo dovuto al checkout è cambiato. Controlla il tuo ordine e riprova.",
+        "deferred_payment_not_allowed": "Non sono ammessi pagamenti differiti. Controlla il tuo ordine e riprova.",
+        "deferred_payment_required": "Questo ordine richiede un pagamento differito. Controlla il tuo ordine e riprova.",
+        "deferred_amount_changed": "Non è stato possibile elaborare il pagamento perché l'importo del pagamento differito è cambiato. Controlla il tuo ordine e riprova.",
+        "deferred_date_changed": "Non è stato possibile elaborare il pagamento perché la data di pagamento differito è cambiata. Controlla il tuo ordine e riprova.",
+        "order_total_changed": "Non è stato possibile elaborare il pagamento perché il totale dell'ordine è cambiato. Controlla il totale dell'ordine e riprova.",
+        "payment_processing": "Il pagamento non può essere elaborato per motivi tecnici. Riprova o utilizza un metodo di pagamento diverso.",
+        "payment_processing_no_retry": "Il pagamento non può essere elaborato per motivi tecnici. Si prega di provare un metodo di pagamento diverso.",
+        "paypal_zero_amount": "Non puoi usare PayPal per %{amount} ordine. Conferma che il tuo ordine è corretto e il check-out senza PayPal.",
+        "paypal_invalid_token": "PayPal non era disponibile. Riprova o usa un'altra opzione di pagamento.",
+        "pay_later_failed": "Si è verificato un errore nell'elaborazione del pagamento con Pay later. Scegli un altro metodo di pagamento e riprova.",
+        "three_d_secure_failed": "Il pagamento non può essere verificato. Riprova o utilizza un metodo di pagamento diverso.",
+        "three_d_secure_failed_duplicate": "L'autenticazione 3D Secure della carta di credito non è riuscita perché un'altra è già in corso.",
+        "three_d_secure_throttled": "Troppi tentativi; si prega di attendere prima di riprovare",
+        "subscription_agreement_blank": "Per acquistare un abbonamento è necessario salvare i dati di pagamento. Per continuare, conferma che accetti o rimuovi gli articoli dell'abbonamento dal tuo ordine.",
+        "insufficient_funds": "Il pagamento è stato rifiutato a causa di fondi insufficienti. Riprova o utilizza un metodo di pagamento diverso.",
+        "multiple_deferred_payment_not_allowed": "È consentito un solo pagamento differito per richiesta. Controlla la tua richiesta e riprova.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Questa transazione è stata rifiutata",
+          "address_mismatch": "Indirizzo e codice postale non corrispondono.",
+          "cannot_process": "Questa transazione non può essere elaborata.",
+          "no_match": "Nessuna corrispondenza",
+          "card_declined": "La tua carta è stata rifiutata"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Il tuo carrello è stato aggiornato e la tariffa di spedizione precedente non è valida. Seleziona una nuova tariffa.",
+        "shipping_method_not_available": "Il tuo carrello è stato aggiornato e gli articoli che hai aggiunto non possono essere spediti al tuo indirizzo. Rimuovi gli articoli per completare il tuo ordine.",
+        "shipping_method_not_available_generic": {
+          "one": "Questo ordine non può essere spedito all'indirizzo che hai inserito. Controlla il tuo indirizzo per assicurarti che tutti i campi siano stati inseriti correttamente e riprova.",
+          "other": "Alcuni articoli nel carrello non possono essere spediti all'indirizzo che hai inserito. Controlla il tuo indirizzo per assicurarti che tutti i campi siano stati inseriti correttamente e riprova."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "L'articolo che hai aggiunto non viene spedito nella tua posizione. Rimuoverlo per controllare, o contattare il negozio.",
+          "other": "Uno o più articoli che hai aggiunto non vengono spediti nella tua posizione. Rimuoverli per controllare, o contattare il negozio."
+        },
+        "payment_method_not_supported": "Non è possibile utilizzare questo metodo di pagamento per %{country}. Si prega di utilizzare un metodo di pagamento diverso per spedire in questo paese."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Express checkout",
+        "or": "O"
+      },
+      "alternative_payment_method": {
+        "button_html": "Checkout con: %{method}",
+        "button_label": "Checkout con: %{method}"
+      },
+      "paypal": {
+        "button_html": "Checkout con %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Acquista con %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Post-acquisto",
+        "title": "Post-acquisto",
+        "escape_confirmation": "Hai pagato il tuo ordine.",
+        "escape_action": "Visualizza conferma ordine \"",
+        "components": {
+          "close": "Vicino",
+          "expand": "Vedi di più",
+          "processing": "Elaborazione…",
+          "submit": "Presentare"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Reindirizzare…",
+        "redirecting_title": "Reindirizzare…",
+        "redirecting_notice": "Aspetta che ti reindirizziamo.",
+        "complete_your_purchase_title": "Completa il tuo acquisto",
+        "continue_to_payment_gateway_notice": "Continuare a pagamento per aggiungere le informazioni di pagamento.",
+        "continue_to_payment_gateway_button_label": "Continua al pagamento"
       }
     }
   }

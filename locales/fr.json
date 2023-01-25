@@ -1026,7 +1026,79 @@
       },
       "payment_errors": {
         "generic_error": "Un problème est survenu lors du traitement de votre paiement. Réessayez ou utilisez un autre mode de paiement.",
-        "rejected_transaction": "Votre paiement a été refusé. Réessayez ou utilisez un autre mode de paiement."
+        "rejected_transaction": "Votre paiement a été refusé. Réessayez ou utilisez un autre mode de paiement.",
+        "credit_card_processing": "Votre paiement ne peut pas être traité pour des raisons techniques. Réessayez dans quelques minutes ou utilisez un autre mode de paiement.",
+        "checkout_amount_changed": "Votre paiement n'a pas pu être traité car le montant dû à la caisse a changé. Veuillez vérifier votre commande et réessayer.",
+        "deferred_payment_not_allowed": "Les paiements différés ne sont pas autorisés. Veuillez vérifier votre commande et réessayer.",
+        "deferred_payment_required": "Cette commande nécessite un paiement différé. Veuillez vérifier votre commande et réessayer.",
+        "deferred_amount_changed": "Votre paiement n'a pas pu être traité car le montant du paiement différé a changé. Veuillez vérifier votre commande et réessayer.",
+        "deferred_date_changed": "Votre paiement n'a pas pu être traité car la date de paiement différé a changé. Veuillez vérifier votre commande et réessayer.",
+        "order_total_changed": "Votre paiement n'a pas pu être traité car le total de votre commande a changé. Vérifiez le total de votre commande et réessayez.",
+        "payment_processing": "Votre paiement ne peut pas être traité pour des raisons techniques. Réessayez ou utilisez un autre mode de paiement.",
+        "payment_processing_no_retry": "Votre paiement ne peut pas être traité pour des raisons techniques. Veuillez essayer un autre mode de paiement.",
+        "paypal_zero_amount": "Vous ne pouvez pas utiliser PayPal pour %{amount} ordre. Confirmez que votre commande est correcte et passez à la caisse sans PayPal.",
+        "paypal_invalid_token": "PayPal n'était pas disponible. Réessayez ou utilisez une autre option de paiement.",
+        "pay_later_failed": "Une erreur s'est produite lors du traitement de votre paiement avec Pay later. Choisissez un autre mode de paiement et réessayez.",
+        "three_d_secure_failed": "Votre paiement n'a pas pu être vérifié. Réessayez ou utilisez un autre mode de paiement.",
+        "three_d_secure_failed_duplicate": "L'authentification 3D Secure de la carte de crédit a échoué car une autre est déjà en cours.",
+        "three_d_secure_throttled": "Trop de tentatives, veuillez patienter avant de réessayer",
+        "subscription_agreement_blank": "Pour acheter un abonnement, vos informations de paiement doivent être enregistrées. Pour continuer, confirmez que vous acceptez ou supprimez les articles d'abonnement de votre commande.",
+        "insufficient_funds": "Votre paiement a été refusé en raison de fonds insuffisants. Réessayez ou utilisez un autre mode de paiement.",
+        "multiple_deferred_payment_not_allowed": "Un seul paiement différé autorisé par demande. Veuillez vérifier votre demande et réessayer.",
+        "fraud_payment_errors": {
+          "transaction_declined": "Cette transaction a été refusée",
+          "address_mismatch": "L'adresse postale et le code postal ne correspondent pas.",
+          "cannot_process": "Cette transaction ne peut pas être traitée.",
+          "no_match": "Aucun Match",
+          "card_declined": "Votre carte a été refusée"
+        }
+      },
+      "shipping_errors": {
+        "shipping_method": "Votre panier a été mis à jour et le tarif d'expédition précédent n'est pas valide. Sélectionnez un nouveau tarif.",
+        "shipping_method_not_available": "Votre panier a été mis à jour et les articles que vous avez ajoutés ne peuvent pas être expédiés à votre adresse. Retirez les articles pour terminer votre commande.",
+        "shipping_method_not_available_generic": {
+          "one": "Cette commande ne peut pas être expédiée à l'adresse que vous avez indiquée. Vérifiez votre adresse pour vous assurer que tous les champs ont été saisis correctement et réessayez.",
+          "other": "Certains articles de votre panier ne peuvent pas être expédiés à l'adresse que vous avez indiquée. Vérifiez votre adresse pour vous assurer que tous les champs ont été saisis correctement et réessayez."
+        },
+        "shipping_method_not_available_updated": {
+          "one": "L'article que vous avez ajouté n'est pas expédié à votre emplacement. Retirez-le pour passer à la caisse ou contactez le magasin.",
+          "other": "Un ou plusieurs articles que vous avez ajoutés ne sont pas expédiés à votre emplacement. Retirez-les pour passer à la caisse ou contactez le magasin."
+        },
+        "payment_method_not_supported": "Vous ne pouvez pas utiliser ce mode de paiement pour %{country}. Veuillez utiliser une méthode de paiement différente pour expédier vers ce pays."
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Paiement express",
+        "or": "OU"
+      },
+      "alternative_payment_method": {
+        "button_html": "Commander avec: %{method}",
+        "button_label": "Commander avec: %{method}"
+      },
+      "paypal": {
+        "button_html": "Commander avec %{logo}"
+      },
+      "apple_pay": {
+        "button_html": "Acheter avec %{logo}"
+      },
+      "post_purchase": {
+        "page_title": "Après l'achat",
+        "title": "Après l'achat",
+        "escape_confirmation": "Vous avez payé votre commande.",
+        "escape_action": "Voir la confirmation de commande ›",
+        "components": {
+          "close": "Proche",
+          "expand": "Voir plus",
+          "processing": "Traitement…",
+          "submit": "Soumettre"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Rediriger…",
+        "redirecting_title": "Rediriger…",
+        "redirecting_notice": "Attendez que nous vous redirigions.",
+        "complete_your_purchase_title": "Complétez votre achat",
+        "continue_to_payment_gateway_notice": "Passez à paiement pour ajouter vos informations de paiement.",
+        "continue_to_payment_gateway_button_label": "Continuer au paiement"
       }
     }
   }
