@@ -1570,7 +1570,71 @@
       "gift_card_expired": "Gavekort er udløbet",
       "invalid": "er ugyldig",
       "bad_domain": "indeholder et ugyldigt domænenavn",
-      "taken": "er allerede taget"
+      "taken": "er allerede taget",
+      "contains_html_tags": "kan ikke indeholde HTML-tags",
+      "too_short": "er for kort (minimum er %{count} tegn)",
+      "too_long": "er for lang (maksimum er %{count} tegn)",
+      "password_mismatch": "skal matche den angivne adgangskode",
+      "contains_spaces": "starter eller slutter med mellemrum.",
+      "email_domain_invalid": "udbyderen understøttes ikke",
+      "invalid_for_country": "er ikke gyldig for %{country}",
+      "invalid_for_country_and_province": "er ikke gyldig for %{province} og %{country}",
+      "invalid_province_in_country": "er ikke en gyldig provins i %{country}",
+      "invalid_state_in_country": "er ikke en gyldig stat i %{country}",
+      "invalid_region_in_country": "er ikke en gyldig region i %{country}",
+      "less_than_or_equal_to": "skal være mindre end eller lig med %{count}",
+      "not_supported": "understøttes ikke",
+      "full_name_required": "Indtast fornavn og efternavn",
+      "invalid_for_card_type": "er ikke gyldig",
+      "invalid_type": "beklager, vi accepterer ikke kort af denne type",
+      "invalid_format": "formatet er ikke gyldigt",
+      "expired": "er udløbet",
+      "invalid_start_date_or_issue_number_for_debit": "en gyldig startdato eller udstedelsesnummer er påkrævet",
+      "invalid_expiry_year": "er ikke et gyldigt udløbsår",
+      "reset_password_html": "Denne e-mail-adresse er allerede knyttet til en konto. Hvis denne konto er din, kan du <a href=\"\/account\/login#recover\">Nulstil din adgangskode<\/a>",
+      "verify_email": "Vi har sendt en e-mail til %{customer_email}, klik på det medfølgende link for at bekræfte din e-mail-adresse.",
+      "product_not_available": "produktet offentliggøres ikke for denne kunde."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Fejl ved nulstilling af adgangskode",
+        "no_account_found": "Ingen konto fundet med den e-mail.",
+        "invalid_credentials": "Forkert e-mail eller adgangskode.",
+        "denylisted_reset_password": "Din konto kunne ikke åbnes, fordi den aktuelle adgangskode ikke er sikker. Du modtager en e-mail for at opdatere din adgangskode."
+      },
+      "address": {
+        "updated": "Opdateret adresse.",
+        "error_updating": "Fejl ved opdatering af adresse",
+        "created": "Korrekt oprettet adresse",
+        "error_creating": "Fejl ved oprettelse af adresse.",
+        "deleted": "Succesfuld slettet adresse",
+        "error_deleting": "Fejl ved sletning af adresse."
+      },
+      "order": {
+        "not_available": "Denne ordre er ikke tilgængelig",
+        "financial_status": {
+          "authorized": "Autoriseret",
+          "pending": "Ventende",
+          "paid": "Betalt",
+          "unpaid": "Ulønnet",
+          "voided": "Annullere",
+          "partially_paid": "Delvist betalt",
+          "partially_refunded": "Delvist refunderet",
+          "refunded": "Refundere",
+          "expired": "Udløbe"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Opfylde",
+          "complete": "Fuldføre",
+          "partial": "Delvis",
+          "unfulfilled": "Uopfyldt",
+          "restocked": "Genpåfyldning"
+        },
+        "transaction_status": {
+          "success": "Vellykket",
+          "pending": "Ventende"
+        }
+      }
     }
   }
 }

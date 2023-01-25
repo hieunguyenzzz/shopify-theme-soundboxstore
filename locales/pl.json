@@ -1569,7 +1569,71 @@
       "gift_card_expired": "Karta podarunkowa wygasła",
       "invalid": "jest nieważny",
       "bad_domain": "zawiera nieprawidłową nazwę domeny",
-      "taken": "zostało już zrobione"
+      "taken": "zostało już zrobione",
+      "contains_html_tags": "nie może zawierać znaczników HTML",
+      "too_short": "jest za Krótki (minimum to %{count} znaków)",
+      "too_long": "jest za długi (maksimum to %{count} znaków)",
+      "password_mismatch": "musi pasować do podanego hasła",
+      "contains_spaces": "zaczyna się lub kończy spacjami.",
+      "email_domain_invalid": "dostawca nie jest obsługiwany",
+      "invalid_for_country": "nie jest ważny dla %{country}",
+      "invalid_for_country_and_province": "nie jest ważny dla %{province} oraz %{country}",
+      "invalid_province_in_country": "nie jest ważną prowincją w %{country}",
+      "invalid_state_in_country": "nie jest ważnym stanem w %{country}",
+      "invalid_region_in_country": "nie jest ważnym regionem w %{country}",
+      "less_than_or_equal_to": "musi być mniejsza lub równa %{count}",
+      "not_supported": "nie jest obsługiwany",
+      "full_name_required": "Wpisz imię i nazwisko",
+      "invalid_for_card_type": "nie jest ważny",
+      "invalid_type": "przepraszamy, nie akceptujemy kart tego typu",
+      "invalid_format": "format jest nieprawidłowy",
+      "expired": "wygasł",
+      "invalid_start_date_or_issue_number_for_debit": "wymagana jest ważna data rozpoczęcia Lub Numer wydania",
+      "invalid_expiry_year": "nie jest ważnym rokiem wygaśnięcia",
+      "reset_password_html": "Ten adres e-mail jest już powiązany z kontem. Jeśli to konto jest twoje, możesz <a href=\"\/account\/login#recover\">zresetuj hasło<\/a>",
+      "verify_email": "Wysłaliśmy e-mail do %{customer_email}, kliknij dołączony link, aby zweryfikować swój adres e-mail.",
+      "product_not_available": "produkt nie jest publikowany dla tego klienta."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Błąd resetowania hasła",
+        "no_account_found": "Nie znaleziono konta z tym e-mailem.",
+        "invalid_credentials": "Nieprawidłowy adres e-mail lub hasło.",
+        "denylisted_reset_password": "Nie można uzyskać dostępu do Twojego konta, ponieważ aktualne hasło nie jest bezpieczne. Otrzymasz wiadomość e-mail z aktualizacją hasła."
+      },
+      "address": {
+        "updated": "Pomyślnie zaktualizowany adres.",
+        "error_updating": "Błąd aktualizacji adresu",
+        "created": "Pomyślnie utworzony adres",
+        "error_creating": "Błąd tworzenia adresu.",
+        "deleted": "Pomyślnie usunięty adres",
+        "error_deleting": "Błąd usuwania adresu."
+      },
+      "order": {
+        "not_available": "To zamówienie nie jest dostępne",
+        "financial_status": {
+          "authorized": "Autoryzowany",
+          "pending": "W toku",
+          "paid": "Płatne",
+          "unpaid": "Niezapłacone",
+          "voided": "Unieważnione",
+          "partially_paid": "Częściowo opłacone",
+          "partially_refunded": "Częściowo refundowane",
+          "refunded": "Refundowane",
+          "expired": "Wygasł"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Spełnione",
+          "complete": "Kompletny",
+          "partial": "Częściowe",
+          "unfulfilled": "Niespełnione",
+          "restocked": "Uzupełniony"
+        },
+        "transaction_status": {
+          "success": "Sukcesy",
+          "pending": "W toku"
+        }
+      }
     }
   }
 }

@@ -1569,7 +1569,71 @@
       "gift_card_expired": "La gift card è scaduta",
       "invalid": "non è valido",
       "bad_domain": "contiene un nome di dominio non valido",
-      "taken": "è già stato preso"
+      "taken": "è già stato preso",
+      "contains_html_tags": "non può contenere tag HTML",
+      "too_short": "è troppo breve (il minimo è %{count} carattere)",
+      "too_long": "è troppo lungo (il massimo è %{count} carattere)",
+      "password_mismatch": "deve corrispondere alla password fornita",
+      "contains_spaces": "inizia o termina con spazi.",
+      "email_domain_invalid": "il provider non è supportato",
+      "invalid_for_country": "non è valido per %{country}",
+      "invalid_for_country_and_province": "non è valido per %{province} e %{country}",
+      "invalid_province_in_country": "non è una provincia valida in %{country}",
+      "invalid_state_in_country": "non è uno stato valido in %{country}",
+      "invalid_region_in_country": "non è una regione valida in %{country}",
+      "less_than_or_equal_to": "deve essere inferiore o uguale a %{count}",
+      "not_supported": "non è supportato",
+      "full_name_required": "Inserisci nome e cognome",
+      "invalid_for_card_type": "non è valido",
+      "invalid_type": "siamo spiacenti, non accettiamo carte di questo tipo",
+      "invalid_format": "il formato non è valido",
+      "expired": "è scaduto",
+      "invalid_start_date_or_issue_number_for_debit": "è richiesta una data di inizio o un numero di emissione validi",
+      "invalid_expiry_year": "non è un anno di scadenza valido",
+      "reset_password_html": "Questo indirizzo email è già associato a un account. Se questo account è tuo, puoi <a href=\"\/account\/login#recover\">reimposta la tua password<\/a>",
+      "verify_email": "Abbiamo inviato una mail a %{customer_email}, si prega di fare clic sul link incluso per verificare il tuo indirizzo e-mail.",
+      "product_not_available": "il prodotto non è pubblicato per questo cliente."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Errore di reimpostazione password",
+        "no_account_found": "Nessun account trovato con quell'email.",
+        "invalid_credentials": "Email o password errate.",
+        "denylisted_reset_password": "Impossibile accedere al tuo account perché la password corrente non è sicura. Riceverai un'email per aggiornare la tua password."
+      },
+      "address": {
+        "updated": "Indirizzo aggiornato con successo.",
+        "error_updating": "Errore nell'aggiornare l'indirizzo",
+        "created": "Indirizzo creato con successo",
+        "error_creating": "Errore nella creazione dell'indirizzo.",
+        "deleted": "Indirizzo eliminato con successo",
+        "error_deleting": "Errore nell'eliminare l'indirizzo."
+      },
+      "order": {
+        "not_available": "Questo ordine non è disponibile",
+        "financial_status": {
+          "authorized": "Autorizzato",
+          "pending": "Attesa",
+          "paid": "Pagare",
+          "unpaid": "Pagati",
+          "voided": "Void",
+          "partially_paid": "Parzialmente pagato",
+          "partially_refunded": "Parzialmente rimborsato",
+          "refunded": "Rimborsare",
+          "expired": "Scadere"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Compiuto",
+          "complete": "Completo",
+          "partial": "Parziale",
+          "unfulfilled": "Insoddisfatto",
+          "restocked": "Rifornire"
+        },
+        "transaction_status": {
+          "success": "Successo",
+          "pending": "Attesa"
+        }
+      }
     }
   }
 }
