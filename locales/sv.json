@@ -2333,7 +2333,67 @@
       "generic_card": "Kort",
       "payment_details": {
         "title": "Betalningsmetod detaljer",
-        "credit_card_details_accessibility_label": "slutar i {{lastDigits}}"
+        "credit_card_details_accessibility_label": "slutar i {{lastDigits}}",
+        "billing_title": "Faktureringsadress",
+        "card_info_title": "Kortinformation",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Löper ut på {{expiryDate}}",
+        "preauthorized_payments": "Förutbetalda betalningar",
+        "close_payment_modal": "Stänga",
+        "close_payment_modal_accessibility_label": "Stäng betalningsmetod detaljer modal",
+        "payment_method_not_found_error": "Kunde inte hitta betalningsmetod",
+        "payment_details_loading": "Laddar betalningsmetod detaljer",
+        "pre_authorized_payments": "Förauktoriserade betalningar",
+        "total_amount_of_subscription_line_items_left": "och {{total}} mer",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} objekt totalt, visar {{totalItemsToDisplay}} objekt.",
+        "next_payment_due": "Nästa betalning {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Redigera",
+        "edit_payment_method_button_accessibility_label": "Redigera betalningsmetod som slutar i {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Redigera betalningsmetod",
+        "save_payment_method_button": "Spara",
+        "cancel_edit_payment_method_button": "Avbryta",
+        "payment_method_updated_toast": "Betalningsmetod uppdaterad",
+        "billing_address": "Faktureringsadress",
+        "billing_address_add_new": "Lägg till nytt",
+        "billing_address_choose_from_list": "Välj från listan",
+        "future_purchases_notice": "Denna betalningsmetod sparas för framtida köp."
+      },
+      "card_fields": {
+        "card_number_label": "Kortnummer",
+        "card_number_placeholder": "Kortnummer",
+        "name_on_card_label": "Namn på kort",
+        "name_on_card_placeholder": "Namn på kort",
+        "card_expiry_label": "Utgångsdatum (MM \/ åå)",
+        "card_expiry_placeholder": "Utgångsdatum (MM \/ åå)",
+        "card_verification_value_label": "Säkerhetskod",
+        "card_verification_value_placeholder": "Säkerhetskod",
+        "card_start_label": "Utgivningsdatum (MM \/ åå)",
+        "card_start_placeholder": "Utgivningsdatum (MM \/ åå)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Mer information",
+          "card_verification_value_explanation_amex": "4-siffrig säkerhetskod på framsidan av ditt kort",
+          "card_verification_value_explanation_other": "3-siffrig säkerhetskod på baksidan av ditt kort",
+          "card_verification_value_explanation": "3-siffrig säkerhetskod som vanligtvis finns på baksidan av ditt kort. American Express-kort har en 4-siffrig kod på framsidan.",
+          "card_security_notice": "Alla transaktioner är säkra och krypterade."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Ange ditt namn exakt som det står skrivet på ditt kort",
+          "credit_card_number_invalid": "Ange ett giltigt kortnummer",
+          "credit_card_expiry_invalid": "Ange ett giltigt kort utgångsdatum",
+          "credit_card_verification_value_blank": "Ange CVV-eller säkerhetskoden på ditt kort"
+        }
+      },
+      "payment_delete": {
+        "title": "Ta bort betalningsmetod",
+        "description_without_replacement": "Denna betalningsmetod kommer inte längre att vara tillgänglig för framtida köp.",
+        "description_with_replacement": "Att ta bort denna betalningsmetod påverkar förhandsauktoriserade betalningar. Du kan eventuellt ersätta den med en annan betalningsmetod för att fortsätta ta emot kommande beställningar.",
+        "payment_method_selector_placeholder": "Välj en ersättningsbetalningsmetod (valfritt)",
+        "payment_method_selector_no_alternative_payment": "Ingen ersättningsmetod",
+        "replace_method_with_new_method_description": "Din {{currentPaymentMethodName}} kommer att raderas och ersättas med din {{newPaymentMethodName}}.",
+        "error_when_deleting": "Vi ber om ursäkt men något gick fel och vi kunde inte ta bort denna betalningsmetod. Försök igen senare eller uppdatera sidan.",
+        "delete_and_replace_button": "Ta bort och ersätt"
       }
     }
   }

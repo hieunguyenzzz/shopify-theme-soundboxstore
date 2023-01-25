@@ -2333,7 +2333,67 @@
       "generic_card": "Kort",
       "payment_details": {
         "title": "Betalingsmetode detaljer",
-        "credit_card_details_accessibility_label": "slutter i {{lastDigits}}"
+        "credit_card_details_accessibility_label": "slutter i {{lastDigits}}",
+        "billing_title": "Faktureringsadresse",
+        "card_info_title": "Kortoplysninger",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Udløber den {{expiryDate}}",
+        "preauthorized_payments": "Forhåndsgodkendte betalinger",
+        "close_payment_modal": "Lukke",
+        "close_payment_modal_accessibility_label": "Luk betalingsmetode detaljer modal",
+        "payment_method_not_found_error": "Kan ikke finde betalingsmetode",
+        "payment_details_loading": "Indlæser betalingsmetode detaljer",
+        "pre_authorized_payments": "Forhåndsgodkendte betalinger",
+        "total_amount_of_subscription_line_items_left": "og {{total}} mere",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} varer i alt, viser {{totalItemsToDisplay}} element.",
+        "next_payment_due": "Næste forfaldne betaling {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Redigere",
+        "edit_payment_method_button_accessibility_label": "Rediger betalingsmetode, der slutter på {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Rediger betalingsmetode",
+        "save_payment_method_button": "Spare",
+        "cancel_edit_payment_method_button": "Annullere",
+        "payment_method_updated_toast": "Betalingsmetode opdateret",
+        "billing_address": "Faktureringsadresse",
+        "billing_address_add_new": "Tilføj nyt",
+        "billing_address_choose_from_list": "Vælg fra listen",
+        "future_purchases_notice": "Denne betalingsmetode gemmes til fremtidige køb."
+      },
+      "card_fields": {
+        "card_number_label": "Kortnummer",
+        "card_number_placeholder": "Kortnummer",
+        "name_on_card_label": "Navn på kortet",
+        "name_on_card_placeholder": "Navn på kortet",
+        "card_expiry_label": "Udløbsdato (MM \/ ÅÅÅ)",
+        "card_expiry_placeholder": "Udløbsdato (MM \/ ÅÅÅ)",
+        "card_verification_value_label": "Sikkerhedskode",
+        "card_verification_value_placeholder": "Sikkerhedskode",
+        "card_start_label": "Udstedelsesdato (MM \/ ÅÅ)",
+        "card_start_placeholder": "Udstedelsesdato (MM \/ ÅÅ)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Flere oplysninger",
+          "card_verification_value_explanation_amex": "4-cifret sikkerhedskode på forsiden af dit kort",
+          "card_verification_value_explanation_other": "3-cifret sikkerhedskode på bagsiden af dit kort",
+          "card_verification_value_explanation": "3-cifret sikkerhedskode findes normalt på bagsiden af dit kort. Amerikanske Ekspresskort har en 4-cifret kode placeret på forsiden.",
+          "card_security_notice": "Alle transaktioner er sikre og krypterede."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Indtast dit navn nøjagtigt som det er skrevet på dit kort",
+          "credit_card_number_invalid": "Indtast et gyldigt kortnummer",
+          "credit_card_expiry_invalid": "Indtast et gyldigt kort udløbsdato",
+          "credit_card_verification_value_blank": "Indtast CVV eller sikkerhedskode på dit kort"
+        }
+      },
+      "payment_delete": {
+        "title": "Slet betalingsmetode",
+        "description_without_replacement": "Denne betalingsmetode vil ikke længere være tilgængelig for fremtidige køb.",
+        "description_with_replacement": "Sletning af denne betalingsmetode vil påvirke forhåndsgodkendte betalinger. Du kan eventuelt erstatte det med en anden betalingsmetode for at fortsætte med at modtage kommende ordrer.",
+        "payment_method_selector_placeholder": "Vælg en erstatningsbetalingsmetode (valgfrit)",
+        "payment_method_selector_no_alternative_payment": "Ingen udskiftningsmetode",
+        "replace_method_with_new_method_description": "Din {{currentPaymentMethodName}} vil blive slettet og erstattet med din {{newPaymentMethodName}}.",
+        "error_when_deleting": "Vi undskylder, men noget gik galt, og vi kunne ikke slette denne betalingsmetode. Prøv igen senere, eller opdater siden.",
+        "delete_and_replace_button": "Slet og erstat"
       }
     }
   }

@@ -2332,7 +2332,67 @@
       "generic_card": "Karta",
       "payment_details": {
         "title": "Szczegóły metody płatności",
-        "credit_card_details_accessibility_label": "kończąc na {{lastDigits}}"
+        "credit_card_details_accessibility_label": "kończąc na {{lastDigits}}",
+        "billing_title": "Adres rozliczeniowy",
+        "card_info_title": "Informacje o karcie",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Wygasa na {{expiryDate}}",
+        "preauthorized_payments": "Preautoryzowane płatności",
+        "close_payment_modal": "Zamknij",
+        "close_payment_modal_accessibility_label": "Zamknij szczegóły metody płatności modal",
+        "payment_method_not_found_error": "Nie można znaleźć metody płatności",
+        "payment_details_loading": "Ładowanie szczegółów metody płatności",
+        "pre_authorized_payments": "Preautoryzowane płatności",
+        "total_amount_of_subscription_line_items_left": "oraz {{total}} więcej",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} pozycje ogółem, wyświetlanie {{totalItemsToDisplay}} przedmiotów.",
+        "next_payment_due": "Następna należna płatność {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Edytuj",
+        "edit_payment_method_button_accessibility_label": "Edytuj metodę płatności kończącą się na {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Edytuj metodę płatności",
+        "save_payment_method_button": "Zapisz",
+        "cancel_edit_payment_method_button": "Anuluj",
+        "payment_method_updated_toast": "Aktualizacja metody płatności",
+        "billing_address": "Adres rozliczeniowy",
+        "billing_address_add_new": "Dodaj nowy",
+        "billing_address_choose_from_list": "Wybierz z listy",
+        "future_purchases_notice": "Ta metoda płatności zostanie zapisana na przyszłe zakupy."
+      },
+      "card_fields": {
+        "card_number_label": "Numer karty",
+        "card_number_placeholder": "Numer karty",
+        "name_on_card_label": "Imię i nazwisko na karcie",
+        "name_on_card_placeholder": "Imię i nazwisko na karcie",
+        "card_expiry_label": "Data ważności (MM \/ RR)",
+        "card_expiry_placeholder": "Data ważności (MM \/ RR)",
+        "card_verification_value_label": "Kod bezpieczeństwa",
+        "card_verification_value_placeholder": "Kod bezpieczeństwa",
+        "card_start_label": "Data Wydania (MM \/ RR)",
+        "card_start_placeholder": "Data Wydania (MM \/ RR)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Więcej informacji",
+          "card_verification_value_explanation_amex": "4-cyfrowy kod zabezpieczający z przodu karty",
+          "card_verification_value_explanation_other": "3-cyfrowy kod bezpieczeństwa na odwrocie karty",
+          "card_verification_value_explanation": "3-cyfrowy kod bezpieczeństwa zwykle znajduje się na odwrocie karty. Karty American Express mają 4-cyfrowy kod umieszczony z przodu.",
+          "card_security_notice": "Wszystkie transakcje są bezpieczne i szyfrowane."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Wpisz swoje imię i nazwisko dokładnie tak, jak jest napisane na twojej karcie",
+          "credit_card_number_invalid": "Wprowadź prawidłowy numer karty",
+          "credit_card_expiry_invalid": "Wprowadź ważną datę ważności karty",
+          "credit_card_verification_value_blank": "Wprowadź kod CVV lub kod zabezpieczający na karcie"
+        }
+      },
+      "payment_delete": {
+        "title": "Usuń metodę płatności",
+        "description_without_replacement": "Ta metoda płatności nie będzie już dostępna dla przyszłych zakupów.",
+        "description_with_replacement": "Usunięcie tej metody płatności wpłynie na wstępnie autoryzowane płatności. Możesz opcjonalnie zastąpić go inną metodą płatności, aby nadal otrzymywać nadchodzące zamówienia.",
+        "payment_method_selector_placeholder": "Wybierz zastępczą metodę płatności (opcjonalnie)",
+        "payment_method_selector_no_alternative_payment": "Brak metody wymiany",
+        "replace_method_with_new_method_description": "Twój {{currentPaymentMethodName}} zostanie usunięty i zastąpiony Twoim {{newPaymentMethodName}}.",
+        "error_when_deleting": "Przepraszamy, ale coś poszło nie tak i nie mogliśmy usunąć tej metody płatności. Spróbuj ponownie później lub odśwież stronę.",
+        "delete_and_replace_button": "Usuń i zamień"
       }
     }
   }

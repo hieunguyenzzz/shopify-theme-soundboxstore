@@ -2333,7 +2333,67 @@
       "generic_card": "Kaart",
       "payment_details": {
         "title": "Betalingswijze details",
-        "credit_card_details_accessibility_label": "eindigend op {{lastDigits}}"
+        "credit_card_details_accessibility_label": "eindigend op {{lastDigits}}",
+        "billing_title": "Factuuradres",
+        "card_info_title": "Kaart informatie",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Expiring on {{expiryDate}}",
+        "preauthorized_payments": "Vooraf geautoriseerde betalingen",
+        "close_payment_modal": "Sluiten",
+        "close_payment_modal_accessibility_label": "Sluiten betalingsmethode details modal",
+        "payment_method_not_found_error": "Kan de betaalmethode niet vinden",
+        "payment_details_loading": "Laden van betalingsmethode details",
+        "pre_authorized_payments": "Vooraf geautoriseerde betalingen",
+        "total_amount_of_subscription_line_items_left": "en {{total}} meer",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} items totaal, weergeven {{totalItemsToDisplay}} item.",
+        "next_payment_due": "Volgende verschuldigde betaling {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Bewerken",
+        "edit_payment_method_button_accessibility_label": "Bewerk betaalmethode eindigend op {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Betaalwijze bewerken",
+        "save_payment_method_button": "Opslaan",
+        "cancel_edit_payment_method_button": "Annuleren",
+        "payment_method_updated_toast": "Betaalmethode bijgewerkt",
+        "billing_address": "Factuuradres",
+        "billing_address_add_new": "Nieuw toevoegen",
+        "billing_address_choose_from_list": "Kies uit lijst",
+        "future_purchases_notice": "Deze betaalmethode wordt opgeslagen voor toekomstige aankopen."
+      },
+      "card_fields": {
+        "card_number_label": "Kaartnummer",
+        "card_number_placeholder": "Kaartnummer",
+        "name_on_card_label": "Naam op kaart",
+        "name_on_card_placeholder": "Naam op kaart",
+        "card_expiry_label": "Vervaldatum (MM \/ JJ)",
+        "card_expiry_placeholder": "Vervaldatum (MM \/ JJ)",
+        "card_verification_value_label": "Beveiligingscode",
+        "card_verification_value_placeholder": "Beveiligingscode",
+        "card_start_label": "Uitgiftedatum (MM \/ JJ)",
+        "card_start_placeholder": "Uitgiftedatum (MM \/ JJ)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Meer informatie",
+          "card_verification_value_explanation_amex": "4-cijferige beveiligingscode op de voorkant van uw kaart",
+          "card_verification_value_explanation_other": "3-cijferige beveiligingscode op de achterkant van uw kaart",
+          "card_verification_value_explanation": "3-cijferige beveiligingscode meestal te vinden op de achterkant van uw kaart. American Express-kaarten hebben een 4-cijferige code op de voorkant.",
+          "card_security_notice": "Alle transacties zijn veilig en versleuteld."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Voer uw naam precies in zoals deze op uw kaart staat",
+          "credit_card_number_invalid": "Voer een geldig kaartnummer in",
+          "credit_card_expiry_invalid": "Voer een geldige vervaldatum van de kaart in",
+          "credit_card_verification_value_blank": "Voer de CVV of beveiligingscode in op uw kaart"
+        }
+      },
+      "payment_delete": {
+        "title": "Betaalmethode verwijderen",
+        "description_without_replacement": "Deze betaalmethode is niet langer beschikbaar voor toekomstige aankopen.",
+        "description_with_replacement": "Het verwijderen van deze betaalmethode heeft invloed op vooraf geautoriseerde betalingen. U kunt deze optioneel vervangen door een andere betaalmethode om toekomstige bestellingen te blijven ontvangen.",
+        "payment_method_selector_placeholder": "Selecteer een vervangende betaalmethode (optioneel)",
+        "payment_method_selector_no_alternative_payment": "Geen vervangende methode",
+        "replace_method_with_new_method_description": "Uw {{currentPaymentMethodName}} zal worden verwijderd en vervangen door uw {{newPaymentMethodName}}.",
+        "error_when_deleting": "Onze excuses, maar er ging iets mis en we konden deze betaalmethode niet verwijderen. Probeer het later opnieuw of vernieuw de pagina.",
+        "delete_and_replace_button": "Verwijderen en vervangen"
       }
     }
   }

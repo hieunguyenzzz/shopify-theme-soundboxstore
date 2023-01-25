@@ -2332,7 +2332,67 @@
       "generic_card": "Kortti",
       "payment_details": {
         "title": "Maksutavan tiedot",
-        "credit_card_details_accessibility_label": "päättyen {{lastDigits}}"
+        "credit_card_details_accessibility_label": "päättyen {{lastDigits}}",
+        "billing_title": "Laskutusosoite",
+        "card_info_title": "Kortin tiedot",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Voimassaolo päättyy {{expiryDate}}",
+        "preauthorized_payments": "Valtuutetut maksut",
+        "close_payment_modal": "Sulje",
+        "close_payment_modal_accessibility_label": "Sulje maksutavan tiedot modaali",
+        "payment_method_not_found_error": "Maksutapaa ei löytynyt",
+        "payment_details_loading": "Ladataan maksutavan tietoja",
+        "pre_authorized_payments": "Ennakkomaksut",
+        "total_amount_of_subscription_line_items_left": "ja {{total}} enemmän",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} tuotteet yhteensä, näyttäminen {{totalItemsToDisplay}} erä.",
+        "next_payment_due": "Seuraava erääntyvä maksu {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Muokkaa",
+        "edit_payment_method_button_accessibility_label": "Muokkaa maksutapaa, joka päättyy {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Muokkaa maksutapaa",
+        "save_payment_method_button": "Tallentaa",
+        "cancel_edit_payment_method_button": "Peruuttaa",
+        "payment_method_updated_toast": "Maksutapa päivitetty",
+        "billing_address": "Laskutusosoite",
+        "billing_address_add_new": "Lisää uusi",
+        "billing_address_choose_from_list": "Valitse luettelosta",
+        "future_purchases_notice": "Tämä maksutapa tallennetaan tulevia ostoksia varten."
+      },
+      "card_fields": {
+        "card_number_label": "Kortin numero",
+        "card_number_placeholder": "Kortin numero",
+        "name_on_card_label": "Nimi kortissa",
+        "name_on_card_placeholder": "Nimi kortissa",
+        "card_expiry_label": "Viimeinen käyttöpäivä (KK \/ VV)",
+        "card_expiry_placeholder": "Viimeinen käyttöpäivä (KK \/ VV)",
+        "card_verification_value_label": "Suojakoodi",
+        "card_verification_value_placeholder": "Suojakoodi",
+        "card_start_label": "Liikkeeseenlaskupäivä (KK \/ VV)",
+        "card_start_placeholder": "Liikkeeseenlaskupäivä (KK \/ VV)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Lisätietoja",
+          "card_verification_value_explanation_amex": "4-numeroinen turvakoodi kortin etupuolella",
+          "card_verification_value_explanation_other": "3-numeroinen turvakoodi kortin takana",
+          "card_verification_value_explanation": "3-numeroinen turvakoodi löytyy yleensä kortin takaa. American Express-korteissa on 4-numeroinen koodi, joka sijaitsee etupuolella.",
+          "card_security_notice": "Kaikki tapahtumat ovat turvallisia ja salattuja."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Kirjoita nimesi täsmälleen niin kuin se on kirjoitettu korttiin",
+          "credit_card_number_invalid": "Anna voimassa olevan kortin numero",
+          "credit_card_expiry_invalid": "Syötä kortin voimassaoloajan Päättymispäivä",
+          "credit_card_verification_value_blank": "Syötä CVV tai turvakoodi kortillesi"
+        }
+      },
+      "payment_delete": {
+        "title": "Poista Maksutapa",
+        "description_without_replacement": "Tämä maksutapa ei ole enää käytettävissä tulevissa ostoksissa.",
+        "description_with_replacement": "Tämän maksutavan poistaminen vaikuttaa etukäteen hyväksyttyihin maksuihin. Voit vaihtoehtoisesti korvata sen toisella maksutavalla jatkaaksesi tulevien tilausten vastaanottamista.",
+        "payment_method_selector_placeholder": "Valitse korvaava Maksutapa (valinnainen)",
+        "payment_method_selector_no_alternative_payment": "Ei korvaavaa menetelmää",
+        "replace_method_with_new_method_description": "Teidän {{currentPaymentMethodName}} poistetaan ja korvataan sinun {{newPaymentMethodName}}.",
+        "error_when_deleting": "Pahoittelemme, mutta jotain meni pieleen ja emme voineet poistaa tätä maksutapaa. Yritä myöhemmin uudelleen tai päivitä sivu.",
+        "delete_and_replace_button": "Poista ja korvaa"
       }
     }
   }

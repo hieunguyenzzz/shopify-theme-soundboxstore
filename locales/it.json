@@ -2332,7 +2332,67 @@
       "generic_card": "Carta",
       "payment_details": {
         "title": "Dettagli del metodo di pagamento",
-        "credit_card_details_accessibility_label": "terminando in {{lastDigits}}"
+        "credit_card_details_accessibility_label": "terminando in {{lastDigits}}",
+        "billing_title": "Indirizzo di fatturazione",
+        "card_info_title": "Informazioni sulla carta",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "Scadenza su {{expiryDate}}",
+        "preauthorized_payments": "Pagamenti preautorizzati",
+        "close_payment_modal": "Vicino",
+        "close_payment_modal_accessibility_label": "Dettagli del metodo di pagamento modal",
+        "payment_method_not_found_error": "Impossibile trovare il metodo di pagamento",
+        "payment_details_loading": "Caricamento dei dettagli del metodo di pagamento",
+        "pre_authorized_payments": "Pagamenti pre-autorizzati",
+        "total_amount_of_subscription_line_items_left": "e {{total}} piu",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} totale articoli, visualizzazione {{totalItemsToDisplay}} elemento.",
+        "next_payment_due": "Prossimo pagamento dovuto {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "Modificare",
+        "edit_payment_method_button_accessibility_label": "Modifica metodo di pagamento che termina in {{lastDigits}}"
+      },
+      "edit_payment_method": {
+        "title": "Modifica metodo di pagamento",
+        "save_payment_method_button": "Salvare",
+        "cancel_edit_payment_method_button": "Annullare",
+        "payment_method_updated_toast": "Metodo di pagamento aggiornato",
+        "billing_address": "Indirizzo di fatturazione",
+        "billing_address_add_new": "Aggiungi nuovo",
+        "billing_address_choose_from_list": "Scegli dalla lista",
+        "future_purchases_notice": "Questo metodo di pagamento verrà salvato per acquisti futuri."
+      },
+      "card_fields": {
+        "card_number_label": "Numero della carta",
+        "card_number_placeholder": "Numero della carta",
+        "name_on_card_label": "Nome sulla carta",
+        "name_on_card_placeholder": "Nome sulla carta",
+        "card_expiry_label": "Data di scadenza (MM \/ AA)",
+        "card_expiry_placeholder": "Data di scadenza (MM \/ AA)",
+        "card_verification_value_label": "Codice di sicurezza",
+        "card_verification_value_placeholder": "Codice di sicurezza",
+        "card_start_label": "Data di emissione (MM \/ AA)",
+        "card_start_placeholder": "Data di emissione (MM \/ AA)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Maggiori informazioni",
+          "card_verification_value_explanation_amex": "codice di sicurezza a 4 cifre sulla parte anteriore della carta",
+          "card_verification_value_explanation_other": "codice di sicurezza a 3 cifre sul retro della carta",
+          "card_verification_value_explanation": "codice di sicurezza a 3 cifre che di solito si trova sul retro della carta. Le carte American Express hanno un codice a 4 cifre situato sulla parte anteriore.",
+          "card_security_notice": "Tutte le transazioni sono sicure e criptate."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Inserisci il tuo nome esattamente come è scritto sulla tua carta",
+          "credit_card_number_invalid": "Inserire un numero di carta valido",
+          "credit_card_expiry_invalid": "Inserire una data di scadenza della carta valida",
+          "credit_card_verification_value_blank": "Inserisci il CVV o il codice di sicurezza sulla tua carta"
+        }
+      },
+      "payment_delete": {
+        "title": "Elimina metodo di pagamento",
+        "description_without_replacement": "Questo metodo di pagamento non sarà più disponibile per acquisti futuri.",
+        "description_with_replacement": "L'eliminazione di questo metodo di pagamento influirà sui pagamenti preautorizzati. Puoi opzionalmente sostituirlo con un altro metodo di pagamento per continuare a ricevere gli ordini imminenti.",
+        "payment_method_selector_placeholder": "Seleziona un metodo di pagamento sostitutivo (opzionale)",
+        "payment_method_selector_no_alternative_payment": "Nessun metodo di sostituzione",
+        "replace_method_with_new_method_description": "Vostro {{currentPaymentMethodName}} sarà cancellato e sostituito con il tuo {{newPaymentMethodName}}.",
+        "error_when_deleting": "Ci scusiamo ma qualcosa è andato storto e non siamo riusciti a cancellare questo metodo di pagamento. Riprova più tardi o aggiorna la pagina.",
+        "delete_and_replace_button": "Elimina e sostituisci"
       }
     }
   }
