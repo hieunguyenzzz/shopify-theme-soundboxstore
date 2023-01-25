@@ -1415,9 +1415,97 @@
           "added": {
             "one": "Dodano",
             "other": "%{count} dodano"
+          },
+          "removed": "Usunięto",
+          "subtracted": "%{count} usunięto"
+        },
+        "additional_payment_requested": "Płatność %{total_outstanding} jest potrzebny",
+        "checkout_review_and_pay": "Twoje zamówienie %{order_name} został zaktualizowany. Przejrzyj te zmiany, a następnie zapłać, aby potwierdzić zamówienie.",
+        "order_updated_on": "Twoje zamówienie zostało zaktualizowane w dniu %{last_edited_at}.",
+        "order_review_and_pay": "Twoje zamówienie zostało zaktualizowane. Przejrzyj i zapłać, aby potwierdzić zamówienie.",
+        "pay_now": "Zapłać Teraz"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Twoja karta kredytowa zostanie obciążona %{amount}",
+        "payment_total_label": "Suma płatności",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Zmień na %{currency_name}",
+        "card_provider_fx_charges_warning": "Twój dostawca karty może pobierać opłaty za %{currency_code} transakcje.",
+        "currency_not_supported_by_shop": "Wybrana waluta nie jest już dostępna. Wszystkie ceny są teraz w %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Twój koszyk został zaktualizowany w zależności od kraju wysyłki."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Twój kraj\/region został zaktualizowany. Wprowadź swój adres wysyłki, aby kontynuować kasę."
+      },
+      "tips": {
+        "title": "Dodaj wskazówkę",
+        "description": "Pokaż swoje wsparcie dla zespołu na %{shop_name}",
+        "presets_description": "Wybierz procent napiwków",
+        "custom_label": "Niestandardowa wskazówka",
+        "add_tip": "Dodaj wskazówkę",
+        "update_tip": "Wskazówka dotycząca aktualizacji",
+        "message": "Dziękuję, doceniamy to",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Brak"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Zakup %{product_name}",
+          "one": "Zakup %{product_name} oraz %{count} inny przedmiot",
+          "other": "Zakup %{product_name} oraz %{count} inne przedmioty"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "dzień",
+            "other": "%{count} dni"
+          },
+          "week": {
+            "one": "tydzień",
+            "other": "%{count} tygodnie"
+          },
+          "month": {
+            "one": "miesiąc",
+            "other": "%{count} miesiące"
+          },
+          "year": {
+            "one": "rok",
+            "other": "%{count} lata"
+          }
+        },
+        "recurring_totals": "%{total_price} każdy %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Pierwsza płatność %{total_price_with_discount}, następnie %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Pierwsza płatność %{total_price}",
+            "other": "Pierwszy %{count} płatności %{total_price} każdy"
+          },
+          "following_cycles": ", następnie %{total_price} każdy %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", następnie %{count} płatność na %{total_price}",
+            "other": ", następnie %{count} płatności na %{total_price} każdy"
           }
         }
+      },
+      "customer_payment_methods": {
+        "page_title": "Metody płatności",
+        "title": "Metody płatności",
+        "update_card_button_label": "Aktualizacja karty",
+        "delete_customer_mandate": {
+          "generic_error": "Wystąpił problem z przetwarzaniem TWOJEJ prośby.",
+          "success_message": "Twoja metoda płatności została pomyślnie usunięta"
+        }
       }
+    },
+    "pagination": {
+      "previous": "Poprzedni",
+      "next": "Następny"
     }
   }
 }
