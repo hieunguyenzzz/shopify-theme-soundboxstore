@@ -2241,10 +2241,98 @@
             "description": "Szczegóły płatności są ustalane po potwierdzeniu zamówienia.",
             "title": "Płatność nie jest jeszcze należna",
             "in_review": {
-              "description": "Szczegóły płatności są ustalane po potwierdzeniu zamówienia."
+              "description": "Szczegóły płatności są ustalane po potwierdzeniu zamówienia.",
+              "title": "Płatność nie jest jeszcze należna"
+            },
+            "submitted": {
+              "description": "Prześlij płatność, aby potwierdzić to zamówienie.",
+              "title": "Zapłać, aby potwierdzić"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Płatne",
+            "title_with_date": "Płatne {{date}}",
+            "description": "Twoje zamówienie jest w pełni opłacone."
+          },
+          "refund": {
+            "title": "Refundowane",
+            "title_with_date": "Refundowane {{date}}",
+            "description_full_refund": "Otrzymałeś pełny zwrot pieniędzy za to zamówienie.",
+            "description_single_refund": "Otrzymałeś częściowy zwrot pieniędzy za to zamówienie.",
+            "description_multiple_refunds": "Otrzymałeś częściowe zwroty za to zamówienie."
+          },
+          "canceled": {
+            "title": "Płatność anulowana",
+            "description": "Nie zostaniesz oskarżony."
+          },
+          "pay_now": "Zapłać Teraz",
+          "pay_now_accessibility_label": "Zapłać Teraz za zamówienie {{orderName}}",
+          "title": "Status płatności"
+        },
+        "order_timeline": {
+          "expand_events_label": "Pokaż szczegóły",
+          "expand_events_accessibility_label": "Pokaż szczegóły projektu zamówienia",
+          "hide_events_label": "Ukryj szczegóły",
+          "hide_events_accessibility_label": "Ukryj szczegóły zamówienia projektu"
+        },
+        "subtitle": "Przedłożone {{date}}",
+        "title": "Zamówienie {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Wystąpił problem z usunięciem tego adresu. Spróbuj ponownie lub odśwież stronę."
+      },
+      "addresses_loading_issue": {
+        "description": "Błąd połączenia. Sprawdź połączenie internetowe i spróbuj ponownie."
+      },
+      "banner_title": {
+        "one": "Jest {{count}} błąd",
+        "other": "Są {{count}} błędy"
+      },
+      "failed_address_creation": {
+        "description": "Wystąpił problem z utworzeniem adresu. Spróbuj odświeżyć tę stronę lub sprawdź połączenie internetowe."
+      },
+      "failed_address_update": {
+        "description": "Wystąpił problem z aktualizacją adresu. Spróbuj odświeżyć tę stronę lub sprawdź połączenie internetowe."
+      },
+      "load_orders_error": {
+        "title": "Nie można załadować zamówień",
+        "description": "Spróbuj ponownie lub wróć później.",
+        "retry_button": "Spróbuj ponownie"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Zaloguj się na inne konto",
+        "description": "Nie jesteś zarejestrowany jako klient B2B z {{shopName}}",
+        "title": "Brak dostępu"
+      },
+      "no_access_to_locations": {
+        "description": "Nie masz dostępu do żadnych lokalizacji"
+      },
+      "not_found": {
+        "description": "Sprawdź adres URL lub spróbuj ponownie za kilka minut.",
+        "title": "Wystąpił problem z ładowaniem tej strony"
+      },
+      "order_not_found": {
+        "description": "Ta kolejność nie istnieje lub nie masz uprawnień do jej przeglądania.",
+        "title": "Nie znaleziono zamówienia"
+      },
+      "profile_update_error": {
+        "description": "Wystąpił problem z aktualizacją Twojego profilu. Spróbuj odświeżyć tę stronę lub sprawdź połączenie internetowe."
+      },
+      "retry_action_label": "Spróbuj ponownie"
+    },
+    "payment_methods": {
+      "title": "Metody płatności",
+      "add_payment_method_button": "Dodaj metodę płatności",
+      "delete_payment_method_button": "Usunąć",
+      "delete_payment_method_button_accessibility_label": "Usunąć {{paymentMethodName}}",
+      "back_button": "Wstecz",
+      "back_button_accessibility_label": "Powrót do {{paymentMethodStepTitle}}",
+      "generic_card": "Karta",
+      "payment_details": {
+        "title": "Szczegóły metody płatności",
+        "credit_card_details_accessibility_label": "kończąc na {{lastDigits}}"
       }
     }
   }

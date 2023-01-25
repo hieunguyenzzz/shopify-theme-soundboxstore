@@ -2244,10 +2244,98 @@
             "description": "Los detalles de pago se deciden cuando se confirma el pedido.",
             "title": "Pago aún no vencido",
             "in_review": {
-              "description": "Los detalles de pago se deciden cuando se confirma el pedido."
+              "description": "Los detalles de pago se deciden cuando se confirma el pedido.",
+              "title": "Pago aún no vencido"
+            },
+            "submitted": {
+              "description": "Envíe el pago para confirmar este pedido.",
+              "title": "Pagar para confirmar"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Pagado",
+            "title_with_date": "Pagado {{date}}",
+            "description": "Su pedido está totalmente pagado."
+          },
+          "refund": {
+            "title": "Reembolsar",
+            "title_with_date": "Reembolsar {{date}}",
+            "description_full_refund": "Recibió un reembolso completo por este pedido.",
+            "description_single_refund": "Recibió un reembolso parcial por este pedido.",
+            "description_multiple_refunds": "Ha recibido reembolsos parciales por este pedido."
+          },
+          "canceled": {
+            "title": "Pago cancelado",
+            "description": "No se le cobrará."
+          },
+          "pay_now": "Paga ahora",
+          "pay_now_accessibility_label": "Pague ahora por el pedido {{orderName}}",
+          "title": "Estado de pago"
+        },
+        "order_timeline": {
+          "expand_events_label": "Mostrar detalles",
+          "expand_events_accessibility_label": "Mostrar detalles de la orden preliminar",
+          "hide_events_label": "Ocultar detalles",
+          "hide_events_accessibility_label": "Ocultar detalles de la orden preliminar"
+        },
+        "subtitle": "Presentar {{date}}",
+        "title": "Orden {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Ha habido un problema al eliminar esta dirección. Inténtalo de nuevo o actualiza la página."
+      },
+      "addresses_loading_issue": {
+        "description": "Error de conexión. Comprueba tu conexión a Internet e inténtalo de nuevo."
+      },
+      "banner_title": {
+        "one": "Hay {{count}} error",
+        "other": "Hay {{count}} error"
+      },
+      "failed_address_creation": {
+        "description": "Ha habido un problema al crear tu dirección. Intente actualizar esta página o compruebe su conexión a Internet."
+      },
+      "failed_address_update": {
+        "description": "Ha habido un problema al actualizar su dirección. Intente actualizar esta página o compruebe su conexión a Internet."
+      },
+      "load_orders_error": {
+        "title": "No se pueden cargar pedidos",
+        "description": "Vuelva a intentarlo o vuelva más tarde.",
+        "retry_button": "Reintento"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Inicie sesión en una cuenta diferente",
+        "description": "No está registrado como cliente B2B con {{shopName}}",
+        "title": "Sin acceso"
+      },
+      "no_access_to_locations": {
+        "description": "No tienes acceso a ninguna ubicación"
+      },
+      "not_found": {
+        "description": "Compruebe la URL o inténtelo de nuevo en unos minutos.",
+        "title": "Hay un problema al cargar esta página"
+      },
+      "order_not_found": {
+        "description": "Este pedido no existe o no tiene permiso para verlo.",
+        "title": "Pedido no encontrado"
+      },
+      "profile_update_error": {
+        "description": "Ha habido un problema al actualizar su perfil. Intente actualizar esta página o compruebe su conexión a Internet."
+      },
+      "retry_action_label": "Reintento"
+    },
+    "payment_methods": {
+      "title": "Métodos de pago",
+      "add_payment_method_button": "Añadir método de pago",
+      "delete_payment_method_button": "Eliminar",
+      "delete_payment_method_button_accessibility_label": "Eliminar {{paymentMethodName}}",
+      "back_button": "Volver",
+      "back_button_accessibility_label": "Volver a {{paymentMethodStepTitle}}",
+      "generic_card": "Tarjeta",
+      "payment_details": {
+        "title": "Detalles del método de pago",
+        "credit_card_details_accessibility_label": "que termina en {{lastDigits}}"
       }
     }
   }

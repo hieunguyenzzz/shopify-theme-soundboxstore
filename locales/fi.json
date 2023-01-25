@@ -2172,7 +2172,167 @@
         "list_item_without_address_accessibility_label": "{{name}}: Ei osoitetta",
         "list_loading_accessibility_message": "Tavaraluettelo",
         "list_loading_address_accessibility_message": "Latausosoite {{locationName}}",
-        "list_loading_finished_accessibility_message": "Luettelo paikoista on ladattu"
+        "list_loading_finished_accessibility_message": "Luettelo paikoista on ladattu",
+        "loading_store_accessibility_message": "Menossa varastoon",
+        "no_location_title": "Vain henkilökohtaiset tilaukset",
+        "no_location_description": "Sinulla ei ole enää lupaa tehdä tilauksia {{company}}. Voit yhä tehdä henkilökohtaisia tilauksia.",
+        "no_locations_found": "Sijaintia ei löytynyt",
+        "search": "Etsi sijaintia",
+        "selection_cancel_button": "Peruuttaa",
+        "selection_confirmation_button": "Valitse sijainti",
+        "title": "Mihin paikkaan olet ostamassa?",
+        "clear_search": "Tyhjennä haku",
+        "try_new_search": "Kokeile uutta hakua"
+      },
+      "addresses": {
+        "add_billing_address_button": "Lisää laskutusosoite",
+        "add_billing_address_section_accessibility_label": "Lisää laskutusosoite",
+        "add_shipping_address_button": "Lisää toimitusosoite",
+        "add_shipping_address_section_accessibility_label": "Lisää toimitusosoite",
+        "billing_address_card_title": "Laskutusosoite",
+        "cancel_adding_billing_address_accessibility_label": "Peruuta laskutusosoitteen lisääminen",
+        "cancel_adding_shipping_address_accessibility_label": "Peruuta toimitusosoitteen lisääminen",
+        "save_new_billing_address_accessibility_label": "Tallenna laskutusosoite",
+        "save_new_shipping_address_accessibility_label": "Tallenna toimitusosoite",
+        "shipping_address_card_title": "Toimitusosoite"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Piilota kaikki",
+          "show_all": "Näytä kaikki",
+          "hide_all_accessibility_label": "Piilota kaikki tilaukset arvostelussa",
+          "show_all_accessibility_label": "Näytä kaikki tilaukset arvostelussa",
+          "show_all_orders_in_review": "Näytä kaikki tilaukset arvostelussa",
+          "show_less_orders_in_review": "Näytä vähemmän tilauksia arvostelussa",
+          "title": "Vireillä",
+          "pagination": {
+            "nav_accessibility_label": "Tilaukset tarkastelussa navigointipainikkeet"
+          }
+        },
+        "order_list_column_headers_location": "Sijainti",
+        "order_list_column_headers_contact": "Yhteystiedot"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Vahvistanut {{date}} tilauksesta {{draftOrderName}}",
+        "loading": "Lastausjärjestyksen tiedot",
+        "loading_finished_accessibility_message": "Tilauksen tiedot on ladattu",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Maksusi on {{count}} päivä myöhässä",
+              "other": "Maksusi on {{count}} päiviä myöhässä"
+            },
+            "banner_due": {
+              "one": "Maksusi on erääntynyt {{count}} päivä",
+              "other": "Maksusi on erääntynyt {{count}} päivä"
+            },
+            "banner_due_today": "Maksusi erääntyy tänään.",
+            "title": "Erääntynyt maksu",
+            "title_with_date": "Erääntynyt maksu {{date}}",
+            "title_due_on_receipt": "Maksu ei ole vielä erääntynyt",
+            "title_due_on_fulfillment": "Maksu suoritettaessa",
+            "description_overdue": "Maksusi on myöhässä.",
+            "description_partially_paid": "Tämä tilaus oli osittain maksettu. Sinulla on jäljellä oleva saldo.",
+            "description_authorized": "Maksutapasi veloitetaan eräpäivänä tai voit maksaa nyt.",
+            "description_due_on_receipt": "Saat laskun, kun maksu erääntyy.",
+            "description_due_on_fulfillment": "Maksu erääntyy, kun kaikki tässä järjestyksessä olevat erät on täytetty."
+          },
+          "draft": {
+            "description": "Maksutiedot päätetään, kun tilaus on vahvistettu.",
+            "title": "Maksu ei vielä erääntynyt",
+            "in_review": {
+              "description": "Maksutiedot päätetään, kun tilaus on vahvistettu.",
+              "title": "Maksu ei vielä erääntynyt"
+            },
+            "submitted": {
+              "description": "Lähetä maksu vahvistaaksesi tämän tilauksen.",
+              "title": "Maksa vahvistaaksesi"
+            }
+          },
+          "paid": {
+            "title": "Maksettu",
+            "title_with_date": "Maksettu {{date}}",
+            "description": "Tilauksesi on täysin maksettu."
+          },
+          "refund": {
+            "title": "Palautettu",
+            "title_with_date": "Palautettu {{date}}",
+            "description_full_refund": "Sait täyden hyvityksen tästä tilauksesta.",
+            "description_single_refund": "Sait osittaisen hyvityksen tästä tilauksesta.",
+            "description_multiple_refunds": "Sait osittaiset hyvitykset tästä tilauksesta."
+          },
+          "canceled": {
+            "title": "Maksu peruttu",
+            "description": "Sinua ei syytetä."
+          },
+          "pay_now": "Maksa nyt",
+          "pay_now_accessibility_label": "Maksa nyt tilauksesta {{orderName}}",
+          "title": "Maksutilanne"
+        },
+        "order_timeline": {
+          "expand_events_label": "Näytä yksityiskohdat",
+          "expand_events_accessibility_label": "Näytä tilausluonnoksen tiedot",
+          "hide_events_label": "Piilota yksityiskohdat",
+          "hide_events_accessibility_label": "Piilota tilausluonnoksen tiedot"
+        },
+        "subtitle": "Lähettää {{date}}",
+        "title": "Tilaus {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Tämän osoitteen poistamisessa oli ongelmia. Yritä uudelleen tai päivitä sivu."
+      },
+      "addresses_loading_issue": {
+        "description": "Yhteysvirhe. Tarkista internet-yhteytesi ja yritä uudelleen."
+      },
+      "banner_title": {
+        "one": "On {{count}} virhe",
+        "other": "On olemassa {{count}} virhe"
+      },
+      "failed_address_creation": {
+        "description": "Osoitteesi luomisessa oli ongelmia. Kokeile virkistää tätä sivua tai tarkista internet-yhteytesi."
+      },
+      "failed_address_update": {
+        "description": "Osoitteesi päivittämisessä oli ongelmia. Kokeile virkistää tätä sivua tai tarkista internet-yhteytesi."
+      },
+      "load_orders_error": {
+        "title": "Tilauksia ei voitu ladata",
+        "description": "Yritä uudelleen tai tule myöhemmin.",
+        "retry_button": "Yrittää"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Kirjaudu toiselle tilille",
+        "description": "Et ole rekisteröitynyt B2B-asiakkaaksi {{shopName}}",
+        "title": "Ei pääsyä"
+      },
+      "no_access_to_locations": {
+        "description": "Sinulla ei ole pääsyä mihinkään paikkoihin"
+      },
+      "not_found": {
+        "description": "Tarkista URL tai yritä uudelleen muutaman minuutin kuluttua.",
+        "title": "Tämän sivun lataamisessa on ongelma"
+      },
+      "order_not_found": {
+        "description": "Tätä tilausta ei ole olemassa tai sinulla ei ole lupaa katsoa sitä.",
+        "title": "Tilausta ei löytynyt"
+      },
+      "profile_update_error": {
+        "description": "Profiilisi päivityksessä oli ongelmia. Kokeile virkistää tätä sivua tai tarkista internet-yhteytesi."
+      },
+      "retry_action_label": "Yrittää"
+    },
+    "payment_methods": {
+      "title": "Maksutapa",
+      "add_payment_method_button": "Lisää maksutapa",
+      "delete_payment_method_button": "Poistaa",
+      "delete_payment_method_button_accessibility_label": "Poistaa {{paymentMethodName}}",
+      "back_button": "Takaisin",
+      "back_button_accessibility_label": "Takaisin {{paymentMethodStepTitle}}",
+      "generic_card": "Kortti",
+      "payment_details": {
+        "title": "Maksutavan tiedot",
+        "credit_card_details_accessibility_label": "päättyen {{lastDigits}}"
       }
     }
   }

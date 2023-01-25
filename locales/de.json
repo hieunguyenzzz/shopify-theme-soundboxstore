@@ -2244,10 +2244,98 @@
             "description": "Zahlungsdetails werden bei Bestätigung der Bestellung festgelegt.",
             "title": "Zahlung noch nicht fällig",
             "in_review": {
-              "description": "Zahlungsdetails werden bei Bestätigung der Bestellung festgelegt."
+              "description": "Zahlungsdetails werden bei Bestätigung der Bestellung festgelegt.",
+              "title": "Zahlung noch nicht fällig"
+            },
+            "submitted": {
+              "description": "Senden Sie die Zahlung, um diese Bestellung zu bestätigen.",
+              "title": "Bezahlen, um zu bestätigen"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Bezahlen",
+            "title_with_date": "Bezahlen {{date}}",
+            "description": "Ihre Bestellung ist vollständig bezahlt."
+          },
+          "refund": {
+            "title": "Erstatten",
+            "title_with_date": "Erstatten {{date}}",
+            "description_full_refund": "Sie haben eine volle Rückerstattung für diese Bestellung erhalten.",
+            "description_single_refund": "Sie haben eine teilweise Rückerstattung für diese Bestellung erhalten.",
+            "description_multiple_refunds": "Sie haben teilweise Rückerstattungen für diese Bestellung erhalten."
+          },
+          "canceled": {
+            "title": "Zahlung storniert",
+            "description": "Sie werden nicht belastet."
+          },
+          "pay_now": "Jetzt bezahlen",
+          "pay_now_accessibility_label": "Jetzt für Bestellung bezahlen {{orderName}}",
+          "title": "Zahlstatus"
+        },
+        "order_timeline": {
+          "expand_events_label": "Details anzeigen",
+          "expand_events_accessibility_label": "Bestellentwurf anzeigen",
+          "hide_events_label": "Details ausblenden",
+          "hide_events_accessibility_label": "Bestellentwurfsdetails ausblenden"
+        },
+        "subtitle": "Hochgeladen {{date}}",
+        "title": "Bestellen {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Beim Löschen dieser Adresse ist ein Problem aufgetreten. Versuchen Sie es erneut oder aktualisieren Sie die Seite."
+      },
+      "addresses_loading_issue": {
+        "description": "Verbindungsfehler. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut."
+      },
+      "banner_title": {
+        "one": "Es gibt {{count}} Fehlermeldung",
+        "other": "Es gibt {{count}} Fehlermeldung"
+      },
+      "failed_address_creation": {
+        "description": "Beim Erstellen Ihrer Adresse ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+      },
+      "failed_address_update": {
+        "description": "Beim Aktualisieren Ihrer Adresse ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+      },
+      "load_orders_error": {
+        "title": "Bestellungen können nicht geladen werden",
+        "description": "Versuchen Sie es erneut oder kommen Sie später wieder.",
+        "retry_button": "Retry"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Melden Sie sich bei einem anderen Konto an",
+        "description": "Sie sind nicht als B2B-Kunde registriert bei {{shopName}}",
+        "title": "Kein Zugang"
+      },
+      "no_access_to_locations": {
+        "description": "Sie haben keinen Zugriff auf Standorte"
+      },
+      "not_found": {
+        "description": "Überprüfen Sie die URL oder versuchen Sie es in wenigen Minuten erneut.",
+        "title": "Beim Laden dieser Seite ist ein Problem aufgetreten"
+      },
+      "order_not_found": {
+        "description": "Diese Bestellung existiert nicht oder Sie haben keine Berechtigung, sie anzuzeigen.",
+        "title": "Bestellung nicht gefunden"
+      },
+      "profile_update_error": {
+        "description": "Beim Aktualisieren Ihres Profils ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+      },
+      "retry_action_label": "Retry"
+    },
+    "payment_methods": {
+      "title": "Zahlungsmethoden",
+      "add_payment_method_button": "Zahlungsmethode hinzufügen",
+      "delete_payment_method_button": "Löschen",
+      "delete_payment_method_button_accessibility_label": "Löschen {{paymentMethodName}}",
+      "back_button": "Zurück",
+      "back_button_accessibility_label": "Zurück zu {{paymentMethodStepTitle}}",
+      "generic_card": "Karte",
+      "payment_details": {
+        "title": "Details zur Zahlungsmethode",
+        "credit_card_details_accessibility_label": "endet in {{lastDigits}}"
       }
     }
   }

@@ -2242,10 +2242,98 @@
             "description": "Betalingsoplysninger afgøres, når ordren er bekræftet.",
             "title": "Betaling endnu ikke forfalden",
             "in_review": {
-              "description": "Betalingsoplysninger afgøres, når ordren er bekræftet."
+              "description": "Betalingsoplysninger afgøres, når ordren er bekræftet.",
+              "title": "Betaling endnu ikke forfalden"
+            },
+            "submitted": {
+              "description": "Indsend betaling for at bekræfte denne ordre.",
+              "title": "Betal for at bekræfte"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Betalt",
+            "title_with_date": "Betalt {{date}}",
+            "description": "Din ordre er fuldt betalt."
+          },
+          "refund": {
+            "title": "Refundere",
+            "title_with_date": "Refundere {{date}}",
+            "description_full_refund": "Du har modtaget en fuld refusion for denne ordre.",
+            "description_single_refund": "Du har modtaget en delvis refusion for denne ordre.",
+            "description_multiple_refunds": "Du har modtaget delvis refusion for denne ordre."
+          },
+          "canceled": {
+            "title": "Betaling annulleret",
+            "description": "Du vil ikke blive opkrævet."
+          },
+          "pay_now": "Betal nu",
+          "pay_now_accessibility_label": "Betal nu for ordre {{orderName}}",
+          "title": "Betalingsstatus"
+        },
+        "order_timeline": {
+          "expand_events_label": "Vis detaljer",
+          "expand_events_accessibility_label": "Vis udkast til ordredetaljer",
+          "hide_events_label": "Skjul detaljer",
+          "hide_events_accessibility_label": "Skjul udkast til ordredetaljer"
+        },
+        "subtitle": "Indsende {{date}}",
+        "title": "Ordre {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Der opstod et problem med at slette denne adresse. Prøv igen, eller opdater siden."
+      },
+      "addresses_loading_issue": {
+        "description": "Forbindelsesfejl. Tjek din internetforbindelse og prøv igen."
+      },
+      "banner_title": {
+        "one": "Der er {{count}} fejl",
+        "other": "Der er {{count}} fejl"
+      },
+      "failed_address_creation": {
+        "description": "Der opstod et problem med at oprette din adresse. Prøv at opdatere denne side, eller tjek din internetforbindelse."
+      },
+      "failed_address_update": {
+        "description": "Der opstod et problem med at opdatere din adresse. Prøv at opdatere denne side, eller tjek din internetforbindelse."
+      },
+      "load_orders_error": {
+        "title": "Kan ikke indlæse ordrer",
+        "description": "Prøv igen eller kom tilbage senere.",
+        "retry_button": "Prøve"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Log ind på en anden konto",
+        "description": "Du er ikke registreret som B2B-kunde hos {{shopName}}",
+        "title": "Ingen adgang"
+      },
+      "no_access_to_locations": {
+        "description": "Du har ikke adgang til nogen steder"
+      },
+      "not_found": {
+        "description": "Tjek URL ' en, eller prøv igen om et par minutter.",
+        "title": "Der er et problem med at indlæse denne side"
+      },
+      "order_not_found": {
+        "description": "Denne ordre findes ikke, eller du har ikke tilladelse til at se den.",
+        "title": "Siden blev ikke fundet"
+      },
+      "profile_update_error": {
+        "description": "Der opstod et problem med at opdatere din profil. Prøv at opdatere denne side, eller tjek din internetforbindelse."
+      },
+      "retry_action_label": "Prøve"
+    },
+    "payment_methods": {
+      "title": "Betalingsmetode",
+      "add_payment_method_button": "Tilføj betalingsmetode",
+      "delete_payment_method_button": "Slette",
+      "delete_payment_method_button_accessibility_label": "Slette {{paymentMethodName}}",
+      "back_button": "Tilbage",
+      "back_button_accessibility_label": "Tilbage {{paymentMethodStepTitle}}",
+      "generic_card": "Kort",
+      "payment_details": {
+        "title": "Betalingsmetode detaljer",
+        "credit_card_details_accessibility_label": "slutter i {{lastDigits}}"
       }
     }
   }

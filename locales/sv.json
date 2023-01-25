@@ -2242,10 +2242,98 @@
             "description": "Betalningsuppgifter bestäms när beställningen bekräftas.",
             "title": "Betalning ännu inte förfallen",
             "in_review": {
-              "description": "Betalningsuppgifter bestäms när beställningen bekräftas."
+              "description": "Betalningsuppgifter bestäms när beställningen bekräftas.",
+              "title": "Betalning ännu inte förfallen"
+            },
+            "submitted": {
+              "description": "Skicka in betalning för att bekräfta denna order.",
+              "title": "Betala för att bekräfta"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Betalas",
+            "title_with_date": "Betalas {{date}}",
+            "description": "Din beställning är fullt betald."
+          },
+          "refund": {
+            "title": "Återbetala",
+            "title_with_date": "Återbetala {{date}}",
+            "description_full_refund": "Du fick full återbetalning för denna beställning.",
+            "description_single_refund": "Du fick en delvis återbetalning för denna beställning.",
+            "description_multiple_refunds": "Du fick delvis återbetalning för denna beställning."
+          },
+          "canceled": {
+            "title": "Betalning avbruten",
+            "description": "Du kommer inte att debiteras."
+          },
+          "pay_now": "Betala nu",
+          "pay_now_accessibility_label": "Betala nu för beställning {{orderName}}",
+          "title": "Betalningsstatus"
+        },
+        "order_timeline": {
+          "expand_events_label": "Visa detaljer",
+          "expand_events_accessibility_label": "Visa utkast till orderinformation",
+          "hide_events_label": "Dölj detaljer",
+          "hide_events_accessibility_label": "Dölj utkast till orderinformation"
+        },
+        "subtitle": "Lämna {{date}}",
+        "title": "Ordning {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Det var ett problem att ta bort den här adressen. Försök igen eller uppdatera sidan."
+      },
+      "addresses_loading_issue": {
+        "description": "Anslutningsfel. Kontrollera din internetanslutning och försök igen."
+      },
+      "banner_title": {
+        "one": "Det finns {{count}} fel",
+        "other": "Det finns {{count}} fel"
+      },
+      "failed_address_creation": {
+        "description": "Det var ett problem att skapa din adress. Prova att uppdatera den här sidan eller kontrollera din internetanslutning."
+      },
+      "failed_address_update": {
+        "description": "Det var ett problem att uppdatera din adress. Prova att uppdatera den här sidan eller kontrollera din internetanslutning."
+      },
+      "load_orders_error": {
+        "title": "Kan inte ladda beställningar",
+        "description": "Försök igen eller kom tillbaka senare.",
+        "retry_button": "Försök"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Logga in på ett annat konto",
+        "description": "Du är inte registrerad som b2b-kund hos {{shopName}}",
+        "title": "Ingen åtkomst"
+      },
+      "no_access_to_locations": {
+        "description": "Du har inte tillgång till några platser"
+      },
+      "not_found": {
+        "description": "Kontrollera webbadressen eller försök igen om några minuter.",
+        "title": "Det finns ett problem att ladda den här sidan"
+      },
+      "order_not_found": {
+        "description": "Den här ordern finns inte eller du har inte behörighet att se den.",
+        "title": "Beställningen hittades inte"
+      },
+      "profile_update_error": {
+        "description": "Det var ett problem att uppdatera din profil. Prova att uppdatera den här sidan eller kontrollera din internetanslutning."
+      },
+      "retry_action_label": "Försök"
+    },
+    "payment_methods": {
+      "title": "Betalningsmetod",
+      "add_payment_method_button": "Lägg till betalningsmetod",
+      "delete_payment_method_button": "Bort",
+      "delete_payment_method_button_accessibility_label": "Bort {{paymentMethodName}}",
+      "back_button": "Tillbaka",
+      "back_button_accessibility_label": "Tillbaka {{paymentMethodStepTitle}}",
+      "generic_card": "Kort",
+      "payment_details": {
+        "title": "Betalningsmetod detaljer",
+        "credit_card_details_accessibility_label": "slutar i {{lastDigits}}"
       }
     }
   }

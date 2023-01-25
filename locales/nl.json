@@ -2242,10 +2242,98 @@
             "description": "Betalingsgegevens worden bepaald wanneer de bestelling wordt bevestigd.",
             "title": "Betaling nog niet verschuldigd",
             "in_review": {
-              "description": "Betalingsgegevens worden bepaald wanneer de bestelling wordt bevestigd."
+              "description": "Betalingsgegevens worden bepaald wanneer de bestelling wordt bevestigd.",
+              "title": "Betaling nog niet verschuldigd"
+            },
+            "submitted": {
+              "description": "Dien betaling in om deze bestelling te bevestigen.",
+              "title": "Betalen om te bevestigen"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Betaald",
+            "title_with_date": "Betaald {{date}}",
+            "description": "Uw bestelling is volledig betaald."
+          },
+          "refund": {
+            "title": "Terugbetalen",
+            "title_with_date": "Terugbetalen {{date}}",
+            "description_full_refund": "U heeft een volledige terugbetaling ontvangen voor deze bestelling.",
+            "description_single_refund": "U heeft een gedeeltelijke terugbetaling ontvangen voor deze bestelling.",
+            "description_multiple_refunds": "U hebt gedeeltelijke restituties ontvangen voor deze bestelling."
+          },
+          "canceled": {
+            "title": "Betaling geannuleerd",
+            "description": "Je wordt niet aangeklaagd."
+          },
+          "pay_now": "Betaal nu",
+          "pay_now_accessibility_label": "Betaal nu voor bestelling {{orderName}}",
+          "title": "Betalingsstatus"
+        },
+        "order_timeline": {
+          "expand_events_label": "Toon details",
+          "expand_events_accessibility_label": "Toon concept order details",
+          "hide_events_label": "Details verbergen",
+          "hide_events_accessibility_label": "Details van conceptbestellingen verbergen"
+        },
+        "subtitle": "Ingediend {{date}}",
+        "title": "Bestelling {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Er is een probleem opgetreden bij het verwijderen van dit adres. Probeer het opnieuw of vernieuw de pagina."
+      },
+      "addresses_loading_issue": {
+        "description": "Verbindingsfout. Controleer uw internetverbinding en probeer het opnieuw."
+      },
+      "banner_title": {
+        "one": "Er is {{count}} fout",
+        "other": "Er zijn {{count}} fout"
+      },
+      "failed_address_creation": {
+        "description": "Er was een probleem met het aanmaken van uw adres. Probeer deze pagina te vernieuwen of controleer uw internetverbinding."
+      },
+      "failed_address_update": {
+        "description": "Er was een probleem met het bijwerken van uw adres. Probeer deze pagina te vernieuwen of controleer uw internetverbinding."
+      },
+      "load_orders_error": {
+        "title": "Kan bestellingen niet laden",
+        "description": "Probeer het opnieuw of kom later terug.",
+        "retry_button": "Opnieuw"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Inloggen op een ander account",
+        "description": "Je bent niet geregistreerd als B2B klant bij {{shopName}}",
+        "title": "Geen toegang"
+      },
+      "no_access_to_locations": {
+        "description": "Je hebt geen toegang tot locaties"
+      },
+      "not_found": {
+        "description": "Controleer de URL of probeer het over een paar minuten opnieuw.",
+        "title": "Er is een probleem met het laden van deze pagina"
+      },
+      "order_not_found": {
+        "description": "Deze bestelling bestaat niet of u hebt geen toestemming om deze te bekijken.",
+        "title": "Bestelling niet gevonden"
+      },
+      "profile_update_error": {
+        "description": "Er is een probleem opgetreden bij het bijwerken van uw profiel. Probeer deze pagina te vernieuwen of controleer uw internetverbinding."
+      },
+      "retry_action_label": "Opnieuw"
+    },
+    "payment_methods": {
+      "title": "Betaalmethode",
+      "add_payment_method_button": "Betaalmethode toevoegen",
+      "delete_payment_method_button": "Verwijderen",
+      "delete_payment_method_button_accessibility_label": "Verwijderen {{paymentMethodName}}",
+      "back_button": "Terug",
+      "back_button_accessibility_label": "Terug naar {{paymentMethodStepTitle}}",
+      "generic_card": "Kaart",
+      "payment_details": {
+        "title": "Betalingswijze details",
+        "credit_card_details_accessibility_label": "eindigend op {{lastDigits}}"
       }
     }
   }
