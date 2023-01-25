@@ -1686,20 +1686,20 @@
       "refunded_amount": "Refundere",
       "shipping": {
         "address": "Leveringsadresse",
-        "address_map_marker": "Sendingsadresse",
-        "method": "Forsendelsesmetode",
+        "address_map_marker": "Leveringsadresse",
+        "method": "Leveringsmåte",
         "summary": "Shipping"
       },
-      "show_items": "Vis gjenstander",
+      "show_items": "Vis elementer",
       "subtitle": "Bekreftet {{date}}",
-      "subtotal": "Subtotal",
+      "subtotal": "Delsum",
       "summary_list_title_accessibility_label": "Bestill varer",
-      "summary_title": "Bestillingssammendrag",
+      "summary_title": "Ordresammendrag",
       "summary_totals_title_accessibility_label": "Bestill totaler",
-      "taxes": "Skatter",
+      "taxes": "Skatt",
       "title": "Rekkefølge {{name}}",
       "total": "Total",
-      "unit_price": "({{price}}\/ea)",
+      "unit_price": "({{price}}(ea)",
       "shipment_timeline": {
         "expand_events_label": "Vis detaljer",
         "expand_events_accessibility_label": "Vis bestillingsforsendelsesdetaljer",
@@ -1720,47 +1720,55 @@
         "return_and_refund_link_text": "retur og refusjon",
         "return_and_refund_modal_header": "Retur og refusjon",
         "tracking_number": "Sporingsnummer:"
+      },
+      "show_order_summary": "Vis ordresammendrag",
+      "hide_order_summary": "Skjul bestillingssammendrag",
+      "pagination": {
+        "load_more": "Last inn flere",
+        "load_more_accessibility_label": "Last inn flere varer",
+        "loading_accessibility_label": "Laste inn varer"
       }
     },
     "addresses": {
       "add_button": "Legg til adresse",
       "address_deleted_notification": "Adresse slettet",
-      "cancel_adding_address_accessibility_label": "Avbryt legg til adresse",
-      "cancel_deletion_button": "Avbryt",
+      "cancel_adding_address_accessibility_label": "Avbryt å legge til adresse",
+      "cancel_deletion_button": "Avbryte",
       "cancel_deletion_button_accessibility_label": "Avbryt sletting {{address}}",
       "default_address": {
         "title": "Standard adresse",
         "title_accessibility_label": "Standard adresse: {{address}}"
       },
-      "delete_button": "Slett",
-      "delete_button_accessibility_label": "Slett {{address}}",
+      "delete_button": "Slette",
+      "delete_button_accessibility_label": "Slette {{address}}",
       "delete_confirmation_button": "Slett adresse",
-      "delete_confirmation_button_accessibility_label": "Slett {{address}}",
-      "delete_confirmation_message": "Slette adresse? Eksisterende ordrer påvirkes ikke.",
+      "delete_confirmation_button_accessibility_label": "Slette {{address}}",
+      "delete_confirmation_message": "Slett adresse? Eksisterende bestillinger påvirkes ikke.",
       "edit_button": "Redigere",
       "edit_button_accessibility_label": "Redigere {{address}}",
       "edit_section_accessibility_label": "Redigere {{address}}",
       "loading_accessibility_message": "Laster adresse",
       "loading_addresses_accessibility_message": "Laster adresser",
-      "loading_billing_accessibility_message": "Laster faktureringsadresse",
-      "loading_finished_accessibility_message": "Ny side med adresser har lastet",
-      "loading_shipping_accessibility_message": "Laster inn fraktadresse",
+      "loading_billing_accessibility_message": "Laster inn fakturaadresse",
+      "loading_finished_accessibility_message": "Ny side med adresser er lastet inn",
+      "loading_shipping_accessibility_message": "Laster leveringsadresse",
       "pagination": {
         "nav_accessibility_label": "Adresserer paginering",
         "next": "Gå til neste side med adresser",
         "previous": "Gå til forrige side av adresser",
-        "load_more": "Last mer",
+        "load_more": "Last inn flere",
         "load_more_accessibility_label": "Last inn flere adresser"
       },
       "save_new_address_accessibility_label": "Lagre adresse",
       "title": "Adresser",
-      "delete_confirmation_title": "Slette adresse?",
-      "delete_confirmation_description": "Eksisterende ordrer påvirkes ikke.",
+      "delete_confirmation_title": "Slett adresse?",
+      "delete_confirmation_description": "Eksisterende bestillinger påvirkes ikke.",
       "edit_modal_title": {
         "default": "Rediger adresse",
         "billing": "Rediger faktureringsadresse",
-        "shipping": "Rediger fraktadresse"
-      }
+        "shipping": "Rediger leveringsadresse"
+      },
+      "add_address_banner": "Legg til adresser som skal brukes i kassen"
     },
     "address_form": {
       "auto_complete_close_accessibility_label": "Nære forslag",
@@ -1778,7 +1786,9 @@
       "save": "Lagre",
       "save_accessibility_label": "Lagre adresse {{address}}",
       "section_title_accessibility_label": "Legg til adresse",
-      "update_success_notification": "Adresse oppdatert"
+      "update_success_notification": "Adresse oppdatert",
+      "attention": "Oppmerksomhet",
+      "attention_help_text": "Navnet på en person eller avdeling"
     },
     "B2B": {
       "account_information": {
