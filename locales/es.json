@@ -2175,7 +2175,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Sin dirección",
         "list_loading_accessibility_message": "Cargando lista de ubicaciones",
         "list_loading_address_accessibility_message": "Dirección de carga para {{locationName}}",
-        "list_loading_finished_accessibility_message": "La lista de ubicaciones se ha cargado"
+        "list_loading_finished_accessibility_message": "La lista de ubicaciones se ha cargado",
+        "loading_store_accessibility_message": "Ir a la tienda",
+        "no_location_title": "Solo pedidos personales",
+        "no_location_description": "Ya no tiene permiso para realizar pedidos de {{company}}. Aún puede hacer pedidos personales.",
+        "no_locations_found": "No se han encontrado ubicaciones",
+        "search": "Buscar una ubicación",
+        "selection_cancel_button": "Cancelar",
+        "selection_confirmation_button": "Elige la ubicación",
+        "title": "¿Para qué ubicación está comprando?",
+        "clear_search": "Borrar búsqueda",
+        "try_new_search": "Prueba una nueva búsqueda"
+      },
+      "addresses": {
+        "add_billing_address_button": "Agregar dirección de facturación",
+        "add_billing_address_section_accessibility_label": "Agregar dirección de facturación",
+        "add_shipping_address_button": "Añadir dirección de envío",
+        "add_shipping_address_section_accessibility_label": "Añadir dirección de envío",
+        "billing_address_card_title": "Dirección de facturación",
+        "cancel_adding_billing_address_accessibility_label": "Cancelar agregar dirección de facturación",
+        "cancel_adding_shipping_address_accessibility_label": "Cancelar agregar dirección de envío",
+        "save_new_billing_address_accessibility_label": "Guardar dirección de facturación",
+        "save_new_shipping_address_accessibility_label": "Guardar dirección de envío",
+        "shipping_address_card_title": "Dirección de envío"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Ocultar todo",
+          "show_all": "Mostrar todo",
+          "hide_all_accessibility_label": "Ocultar todos los pedidos en revisión",
+          "show_all_accessibility_label": "Mostrar todos los pedidos en revisión",
+          "show_all_orders_in_review": "Mostrar todos los pedidos en revisión",
+          "show_less_orders_in_review": "Mostrar menos pedidos en revisión",
+          "title": "Pendiente",
+          "pagination": {
+            "nav_accessibility_label": "Botones de navegación Pedidos en revisión"
+          }
+        },
+        "order_list_column_headers_location": "Ubicación",
+        "order_list_column_headers_contact": "Contacto"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Confirmar {{date}} de la orden {{draftOrderName}}",
+        "loading": "Cargando detalles del pedido",
+        "loading_finished_accessibility_message": "Los detalles del pedido se han cargado",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Su pago es {{count}} día atrasado",
+              "other": "Su pago es {{count}} días atrasados"
+            },
+            "banner_due": {
+              "one": "Su pago vence en {{count}} dia",
+              "other": "Su pago vence en {{count}} jornadas"
+            },
+            "banner_due_today": "Su pago vence hoy",
+            "title": "Pago pendiente",
+            "title_with_date": "Pago pendiente {{date}}",
+            "title_due_on_receipt": "Pago aún no vencido",
+            "title_due_on_fulfillment": "Pago adeudado en cumplimiento",
+            "description_overdue": "Su pago se retrasa.",
+            "description_partially_paid": "Este pedido se pagó parcialmente. Tienes un saldo restante.",
+            "description_authorized": "Su método de pago se cargará en la fecha de vencimiento, o puede pagar ahora.",
+            "description_due_on_receipt": "Recibirá una factura cuando venza el pago.",
+            "description_due_on_fulfillment": "El pago se debe realizar una vez que se hayan completado todos los artículos de este pedido."
+          },
+          "draft": {
+            "description": "Los detalles de pago se deciden cuando se confirma el pedido.",
+            "title": "Pago aún no vencido",
+            "in_review": {
+              "description": "Los detalles de pago se deciden cuando se confirma el pedido."
+            }
+          }
+        }
       }
     }
   }

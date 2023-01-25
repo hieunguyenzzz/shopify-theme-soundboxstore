@@ -2173,7 +2173,79 @@
         "list_item_without_address_accessibility_label": "{{name}}: Geen adres",
         "list_loading_accessibility_message": "Loading lijst van locaties",
         "list_loading_address_accessibility_message": "Laadadres voor {{locationName}}",
-        "list_loading_finished_accessibility_message": "Lijst met locaties is geladen"
+        "list_loading_finished_accessibility_message": "Lijst met locaties is geladen",
+        "loading_store_accessibility_message": "Ga naar winkel",
+        "no_location_title": "Alleen persoonlijke bestellingen",
+        "no_location_description": "U hebt geen toestemming meer om bestellingen te plaatsen voor {{company}}. U kunt nog steeds persoonlijke bestellingen plaatsen.",
+        "no_locations_found": "Geen locaties gevonden",
+        "search": "Zoek een locatie",
+        "selection_cancel_button": "Annuleren",
+        "selection_confirmation_button": "Kies locatie",
+        "title": "Voor welke locatie koop je?",
+        "clear_search": "Zoekopdracht wissen",
+        "try_new_search": "Probeer een nieuwe zoekopdracht"
+      },
+      "addresses": {
+        "add_billing_address_button": "Factuuradres toevoegen",
+        "add_billing_address_section_accessibility_label": "Factuuradres toevoegen",
+        "add_shipping_address_button": "Verzendadres toevoegen",
+        "add_shipping_address_section_accessibility_label": "Verzendadres toevoegen",
+        "billing_address_card_title": "Factuuradres",
+        "cancel_adding_billing_address_accessibility_label": "Annuleren toevoegen factuuradres",
+        "cancel_adding_shipping_address_accessibility_label": "Annuleren verzendadres toevoegen",
+        "save_new_billing_address_accessibility_label": "Bewaar factuuradres",
+        "save_new_shipping_address_accessibility_label": "Verzendadres opslaan",
+        "shipping_address_card_title": "Verzendadres"
+      },
+      "orders": {
+        "draft_order_list": {
+          "hide_all": "Alles verbergen",
+          "show_all": "Toon alles",
+          "hide_all_accessibility_label": "Verberg alle bestellingen in beoordeling",
+          "show_all_accessibility_label": "Toon alle bestellingen in review",
+          "show_all_orders_in_review": "Toon alle bestellingen in review",
+          "show_less_orders_in_review": "Toon minder bestellingen in review",
+          "title": "Afwachting",
+          "pagination": {
+            "nav_accessibility_label": "Bestellingen in review navigatieknoppen"
+          }
+        },
+        "order_list_column_headers_location": "Locatie",
+        "order_list_column_headers_contact": "Contact"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "Bevestigd {{date}} vanaf bestelling {{draftOrderName}}",
+        "loading": "Loading order details",
+        "loading_finished_accessibility_message": "Bestelgegevens zijn geladen",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "Uw betaling is {{count}} dag te laat",
+              "other": "Uw betaling is {{count}} dagen te laat"
+            },
+            "banner_due": {
+              "one": "Uw betaling is verschuldigd in {{count}} dag",
+              "other": "Uw betaling is verschuldigd in {{count}} dag"
+            },
+            "banner_due_today": "Uw betaling is vandaag verschuldigd",
+            "title": "Verschuldigde betaling",
+            "title_with_date": "Verschuldigde betaling {{date}}",
+            "title_due_on_receipt": "Betaling nog niet verschuldigd",
+            "title_due_on_fulfillment": "Betaling verschuldigd bij nakoming",
+            "description_overdue": "Uw betaling is te laat.",
+            "description_partially_paid": "Deze order is gedeeltelijk betaald. Je hebt een resterende balans.",
+            "description_authorized": "Uw betaalmethode wordt op de vervaldatum in rekening gebracht, of u kunt nu betalen.",
+            "description_due_on_receipt": "U ontvangt een factuur wanneer de betaling verschuldigd is.",
+            "description_due_on_fulfillment": "Betaling is verschuldigd zodra alle items in deze bestelling zijn voldaan."
+          },
+          "draft": {
+            "description": "Betalingsgegevens worden bepaald wanneer de bestelling wordt bevestigd.",
+            "title": "Betaling nog niet verschuldigd",
+            "in_review": {
+              "description": "Betalingsgegevens worden bepaald wanneer de bestelling wordt bevestigd."
+            }
+          }
+        }
       }
     }
   }

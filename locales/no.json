@@ -1833,65 +1833,78 @@
         "list_loading_accessibility_message": "Laster liste over steder",
         "list_loading_address_accessibility_message": "Laster inn adresse for {{locationName}}",
         "list_loading_finished_accessibility_message": "Liste over steder har lastet",
-        "loading_store_accessibility_message": "Skal lagre",
-        "no_location_title": "Bare personlige ordrer",
-        "no_location_description": "Du har ikke lenger tillatelse til å legge inn bestillinger på {{company}}. Du kan fremdeles legge inn personlige bestillinger.",
-        "selection_cancel_button": "Avbryt",
+        "loading_store_accessibility_message": "Kommer til å lagre",
+        "no_location_title": "Kun personlige bestillinger",
+        "no_location_description": "Du har ikke lenger tillatelse til å legge inn bestillinger for {{company}}. Du kan fortsatt legge inn personlige bestillinger.",
+        "selection_cancel_button": "Avbryte",
         "selection_confirmation_button": "Velg sted",
-        "title": "Hvilket sted kjøper du til?"
+        "title": "Hvilket sted kjøper du for?",
+        "no_locations_found": "Ingen steder funnet",
+        "search": "Søk på sted",
+        "clear_search": "Slett søk",
+        "try_new_search": "Prøv et nytt søk"
       },
       "addresses": {
         "add_billing_address_button": "Legg til faktureringsadresse",
         "add_billing_address_section_accessibility_label": "Legg til faktureringsadresse",
-        "add_shipping_address_button": "Legg til fraktadresse",
-        "add_shipping_address_section_accessibility_label": "Legg til fraktadresse",
-        "billing_address_card_title": "Fakturaadresse",
-        "cancel_adding_billing_address_accessibility_label": "Avbryt å legge til faktureringsadresse",
-        "cancel_adding_shipping_address_accessibility_label": "Avbryt å legge til fraktadresse",
+        "add_shipping_address_button": "Legg til leveringsadresse",
+        "add_shipping_address_section_accessibility_label": "Legg til leveringsadresse",
+        "billing_address_card_title": "Faktureringsadresse",
+        "cancel_adding_billing_address_accessibility_label": "Avbryt legge til faktureringsadresse",
+        "cancel_adding_shipping_address_accessibility_label": "Legge til leveringsadresse",
         "save_new_billing_address_accessibility_label": "Lagre faktureringsadresse",
-        "save_new_shipping_address_accessibility_label": "Lagre fraktadresse",
-        "shipping_address_card_title": "Sendingsadresse"
+        "save_new_shipping_address_accessibility_label": "Lagre leveringsadresse",
+        "shipping_address_card_title": "Leveringsadresse"
       },
       "orders": {
         "draft_order_list": {
-          "hide_all": "Gjem alle",
-          "show_all": "Vis alt",
+          "hide_all": "Skjul alle",
+          "show_all": "Vis alle søkeresultater",
           "hide_all_accessibility_label": "Skjul alle bestillinger i gjennomgang",
-          "show_all_accessibility_label": "Vis alle bestillinger i gjennomgang",
+          "show_all_accessibility_label": "Vis alle ordrer i gjennomgang",
           "show_less": "Vis mindre",
           "show_more": "Vis mer",
-          "title": "I anmeldelse",
+          "title": "Ventende",
           "pagination": {
-            "nav_accessibility_label": "Bestillinger i gjennomgangsnavigasjonsknapper"
-          }
+            "nav_accessibility_label": "Bestillinger i gjennomgang navigasjonsknapper"
+          },
+          "show_all_orders_in_review": "Vis alle ordrer i gjennomgang",
+          "show_less_orders_in_review": "Vis færre bestillinger i gjennomgang"
         },
-        "order_list_column_headers_location": "plassering",
-        "order_list_column_headers_contact": "Ta kontakt med"
+        "order_list_column_headers_location": "Plassering",
+        "order_list_column_headers_contact": "Kontakt"
       },
       "draft_order_details": {
-        "draft_order_subtitle": "Bekreftet {{date}} fra ordre {{draftOrderName}}",
+        "draft_order_subtitle": "Bekreftet {{date}} fra bestilling {{draftOrderName}}",
         "loading": "Laster inn bestillingsdetaljer",
         "loading_finished_accessibility_message": "Bestillingsdetaljer er lastet inn",
         "payment_status": {
           "pending": {
             "banner_overdue": {
-              "one": "Betalingen din er {{count}} Dag forfalt",
-              "other": "Betalingen din er {{count}} dager forfalte"
+              "one": "Din betaling er {{count}} dagen forfalt",
+              "other": "Din betaling er {{count}} dager forfalt"
             },
             "banner_due": {
-              "one": "Betalingen din forfaller i {{count}} dag",
-              "other": "Betalingen din forfaller i {{count}} dager"
+              "one": "Din betaling forfaller til betaling {{count}} dag",
+              "other": "Din betaling forfaller til betaling {{count}} dager"
             },
-            "banner_due_today": "Betalingen din forfaller i dag",
-            "title": "Betalings forfall",
-            "title_with_date": "Betalings forfall {{date}}",
-            "description_overdue": "Betalingen din er sen.",
-            "description_partially_paid": "Denne ordren ble delvis betalt. Du har en gjenværende balanse.",
-            "description_authorized": "Betalingsmetoden din belastes på forfallsdato, eller du kan betale nå."
+            "banner_due_today": "Din betaling forfaller i dag",
+            "title": "Forfaller til betaling",
+            "title_with_date": "Forfaller til betaling {{date}}",
+            "description_overdue": "Betalingen din er forsinket.",
+            "description_partially_paid": "Denne bestillingen ble delvis betalt. Du har en gjenværende saldo.",
+            "description_authorized": "Betalingsmåten din blir belastet på forfallsdatoen, eller du kan betale nå.",
+            "title_due_on_receipt": "Betaling ikke forfalt ennå",
+            "title_due_on_fulfillment": "Betaling på grunn av oppfyllelse",
+            "description_due_on_receipt": "Du vil motta en faktura når betalingen forfaller.",
+            "description_due_on_fulfillment": "Betaling forfaller når alle varene i denne bestillingen er oppfylt."
           },
           "draft": {
-            "description": "Betalingsdetaljer avgjøres når ordren er bekreftet.",
-            "title": "Betaling ennå ikke forfaller"
+            "description": "Betalingsdetaljer avgjøres når bestillingen er bekreftet.",
+            "title": "Betaling ennå ikke forfalt",
+            "in_review": {
+              "description": "Betalingsdetaljer avgjøres når bestillingen er bekreftet."
+            }
           },
           "paid": {
             "title": "Betalt",
