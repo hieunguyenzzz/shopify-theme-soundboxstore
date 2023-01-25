@@ -1413,7 +1413,91 @@
           "added": {
             "one": "Añadir",
             "other": "%{count} añadir"
+          },
+          "removed": "Quitar",
+          "subtracted": "%{count} quitar"
+        },
+        "additional_payment_requested": "Pago de %{total_outstanding} es necesario",
+        "checkout_review_and_pay": "Su pedido %{order_name} se actualizó. Revise estos cambios y, a continuación, pague para confirmar su pedido.",
+        "order_updated_on": "Su pedido se actualizó el %{last_edited_at}.",
+        "order_review_and_pay": "Su pedido ha sido actualizado. Revise y pague para confirmar su pedido.",
+        "pay_now": "Paga ahora"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Se cargará a su tarjeta de crédito %{amount}",
+        "payment_total_label": "Total del pago",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Cambiar a %{currency_name}",
+        "card_provider_fx_charges_warning": "El proveedor de su tarjeta puede cobrar tarifas a %{currency_code} transacciones.",
+        "currency_not_supported_by_shop": "La moneda que seleccionó ya no está disponible. Todos los precios están ahora en %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Su carrito se ha actualizado en función de su país de envío."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Su país\/región ha sido actualizado. Ingrese su dirección de envío para continuar con el pago."
+      },
+      "tips": {
+        "title": "Añadir propina",
+        "description": "Muestre su apoyo al equipo en %{shop_name}",
+        "presets_description": "Seleccione un porcentaje de propina",
+        "custom_label": "Punta personalizada",
+        "add_tip": "Añadir propina",
+        "update_tip": "Consejo de actualización",
+        "message": "Gracias, se lo agradecemos",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Ninguno"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Compra %{product_name}",
+          "one": "Compra %{product_name} y %{count} otro artículo",
+          "other": "Compra %{product_name} y %{count} otros artículos"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "dia",
+            "other": "%{count} jornadas"
+          },
+          "week": {
+            "one": "semana",
+            "other": "%{count} semana"
+          },
+          "month": {
+            "one": "mes",
+            "other": "%{count} mes"
+          },
+          "year": {
+            "one": "año",
+            "other": "%{count} año"
           }
+        },
+        "recurring_totals": "%{total_price} cada %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Primer pago %{total_price_with_discount}, entonces %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Primer pago %{total_price}",
+            "other": "Primero %{count} pago %{total_price} cada"
+          },
+          "following_cycles": ", entonces %{total_price} cada %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", entonces %{count} pago en %{total_price}",
+            "other": ", entonces %{count} pagos en %{total_price} cada"
+          }
+        }
+      },
+      "customer_payment_methods": {
+        "page_title": "Métodos de pago",
+        "title": "Métodos de pago",
+        "update_card_button_label": "Tarjeta de actualización",
+        "delete_customer_mandate": {
+          "generic_error": "Ha habido un problema al procesar su solicitud.",
+          "success_message": "Su método de pago se ha eliminado correctamente"
         }
       }
     },
@@ -1421,6 +1505,10 @@
       "words_connector": ", ",
       "two_words_connector": " y ",
       "last_word_connector": ", y "
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
     }
   }
 }
