@@ -1570,7 +1570,71 @@
       "gift_card_expired": "Gift card is verlopen",
       "invalid": "is ongeldig",
       "bad_domain": "bevat een ongeldige domeinnaam",
-      "taken": "is al genomen"
+      "taken": "is al genomen",
+      "contains_html_tags": "kan geen HTML-tags bevatten",
+      "too_short": "te kort (het minimum is %{count} tekens)",
+      "too_long": "is te lang (maximum is %{count} tekens)",
+      "password_mismatch": "moet overeenkomen met het opgegeven wachtwoord",
+      "contains_spaces": "het begint of eindigt met spaties.",
+      "email_domain_invalid": "provider wordt niet ondersteund",
+      "invalid_for_country": "is niet geldig voor %{country}",
+      "invalid_for_country_and_province": "is niet geldig voor %{province} en %{country}",
+      "invalid_province_in_country": "is geen geldige provincie in %{country}",
+      "invalid_state_in_country": "is geen geldige staat in %{country}",
+      "invalid_region_in_country": "is geen geldige regio in %{country}",
+      "less_than_or_equal_to": "moet kleiner zijn dan of gelijk aan %{count}",
+      "not_supported": "wordt niet ondersteund",
+      "full_name_required": "Voer een voornaam en achternaam in",
+      "invalid_for_card_type": "is niet geldig",
+      "invalid_type": "sorry, Wij accepteren geen kaarten van dit type",
+      "invalid_format": "formaat is niet geldig",
+      "expired": "is verlopen",
+      "invalid_start_date_or_issue_number_for_debit": "een geldige startdatum of uitgiftenummer is vereist",
+      "invalid_expiry_year": "is geen geldig expiratiejaar",
+      "reset_password_html": "Dit e-mailadres is al gekoppeld aan een account. Als dit account van u is, kunt u <a href=\"\/account\/login#recover\">uw wachtwoord opnieuw instellen<\/a>",
+      "verify_email": "We hebben een e-mail gestuurd naar %{customer_email}klik op de link om uw e-mailadres te verifiëren.",
+      "product_not_available": "product is niet gepubliceerd voor deze klant."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Wachtwoord reset fout",
+        "no_account_found": "Geen account gevonden met die e-mail.",
+        "invalid_credentials": "Onjuist e-mailadres of wachtwoord.",
+        "denylisted_reset_password": "Uw account kon niet worden geopend omdat het huidige wachtwoord niet veilig is. U ontvangt een e-mail om uw wachtwoord bij te werken."
+      },
+      "address": {
+        "updated": "Succesvol bijgewerkt adres.",
+        "error_updating": "Fout bij het bijwerken van adres",
+        "created": "Succesvol aangemaakt adres",
+        "error_creating": "Fout bij aanmaken adres.",
+        "deleted": "Succesvol verwijderd adres",
+        "error_deleting": "Fout bij verwijderen adres."
+      },
+      "order": {
+        "not_available": "Deze bestelling is niet beschikbaar",
+        "financial_status": {
+          "authorized": "Geautoriseerd",
+          "pending": "Afwachting",
+          "paid": "Betaald",
+          "unpaid": "Onbetaald",
+          "voided": "Vervallen",
+          "partially_paid": "Gedeeltelijk betaald",
+          "partially_refunded": "Gedeeltelijk terugbetaald",
+          "refunded": "Terugbetalen",
+          "expired": "Expired"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Voldoen",
+          "complete": "Volledige",
+          "partial": "Gedeeltelijk",
+          "unfulfilled": "Onvervuld",
+          "restocked": "Restocked"
+        },
+        "transaction_status": {
+          "success": "Succesvol",
+          "pending": "Afwachting"
+        }
+      }
     }
   }
 }

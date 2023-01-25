@@ -1572,7 +1572,71 @@
       "gift_card_expired": "Geschenkkarte ist abgelaufen",
       "invalid": "ist ungültig",
       "bad_domain": "enthält einen ungültigen Domainnamen",
-      "taken": "wurde bereits vergeben"
+      "taken": "wurde bereits vergeben",
+      "contains_html_tags": "darf keine HTML-Tags enthalten",
+      "too_short": "ist zu kurz (Minimum ist %{count} Zeichen)",
+      "too_long": "ist zu lang (Maximum ist %{count} Zeichen)",
+      "password_mismatch": "muss mit dem angegebenen Passwort übereinstimmen",
+      "contains_spaces": "beginnt oder endet mit Leerzeichen.",
+      "email_domain_invalid": "anbieter wird nicht unterstützt",
+      "invalid_for_country": "ist nicht gültig für %{country}",
+      "invalid_for_country_and_province": "ist nicht gültig für %{province} und %{country}",
+      "invalid_province_in_country": "ist keine gültige Provinz in %{country}",
+      "invalid_state_in_country": "ist kein gültiger Zustand in %{country}",
+      "invalid_region_in_country": "ist keine gültige Region in %{country}",
+      "less_than_or_equal_to": "muss kleiner oder gleich sein %{count}",
+      "not_supported": "wird nicht unterstützt",
+      "full_name_required": "Geben Sie einen Vor- und Nachnamen ein",
+      "invalid_for_card_type": "ist nicht gültig",
+      "invalid_type": "entschuldigung, wir akzeptieren keine Karten dieses Typs",
+      "invalid_format": "format ist ungültig",
+      "expired": "ist abgelaufen",
+      "invalid_start_date_or_issue_number_for_debit": "ein gültiges Startdatum oder eine gültige Ausgabenummer ist erforderlich",
+      "invalid_expiry_year": "ist kein gültiges Ablaufjahr",
+      "reset_password_html": "Diese E-Mail-Adresse ist bereits mit einem Konto verknüpft. Wenn dieses Konto Ihnen gehört, können Sie <a href=\"\/account\/login#recover\">setze dein Passwort zurück<\/a>",
+      "verify_email": "Wir haben eine E-Mail an gesendet %{customer_email}, bitte klicken Sie auf den enthaltenen Link, um Ihre E-Mail-Adresse zu bestätigen.",
+      "product_not_available": "produkt ist für diesen Kunden nicht veröffentlicht."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Fehler beim Zurücksetzen des Passworts",
+        "no_account_found": "Mit dieser E-Mail wurde kein Konto gefunden.",
+        "invalid_credentials": "Falsche E-Mail-Adresse oder falsches Passwort.",
+        "denylisted_reset_password": "Auf Ihr Konto konnte nicht zugegriffen werden, da das aktuelle Passwort nicht sicher ist. Sie erhalten eine E-Mail, um Ihr Passwort zu aktualisieren."
+      },
+      "address": {
+        "updated": "Adresse erfolgreich aktualisiert.",
+        "error_updating": "Fehler beim Aktualisieren der Adresse",
+        "created": "Erfolgreich erstellte Adresse",
+        "error_creating": "Fehler beim Erstellen der Adresse.",
+        "deleted": "Adresse erfolgreich gelöscht",
+        "error_deleting": "Fehler beim Löschen der Adresse."
+      },
+      "order": {
+        "not_available": "Diese Bestellung ist nicht verfügbar",
+        "financial_status": {
+          "authorized": "Repräsentanten",
+          "pending": "Anhängig",
+          "paid": "Bezahlen",
+          "unpaid": "Unbezahlt",
+          "voided": "Leer",
+          "partially_paid": "Teilweise bezahlt",
+          "partially_refunded": "Teilweise zurückerstattet",
+          "refunded": "Erstatten",
+          "expired": "Abgelaufen"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Erfüllen",
+          "complete": "Komplett",
+          "partial": "Teilweise",
+          "unfulfilled": "Unerfüllt",
+          "restocked": "Auffüllen"
+        },
+        "transaction_status": {
+          "success": "Erfolg",
+          "pending": "Anhängig"
+        }
+      }
     }
   }
 }

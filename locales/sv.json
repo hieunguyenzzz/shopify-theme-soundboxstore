@@ -1570,7 +1570,71 @@
       "gift_card_expired": "Presentkortet har gått ut",
       "invalid": "är ogiltig",
       "bad_domain": "innehåller ett ogiltigt domännamn",
-      "taken": "har redan tagits"
+      "taken": "har redan tagits",
+      "contains_html_tags": "kan inte innehålla HTML-taggar",
+      "too_short": "är för kort (minimum är %{count} tecken)",
+      "too_long": "är för lång (Max är %{count} tecken)",
+      "password_mismatch": "måste matcha det angivna lösenordet",
+      "contains_spaces": "börjar eller slutar med mellanslag.",
+      "email_domain_invalid": "leverantören stöds inte",
+      "invalid_for_country": "är inte giltigt för %{country}",
+      "invalid_for_country_and_province": "är inte giltigt för %{province} och %{country}",
+      "invalid_province_in_country": "är inte en giltig provins i %{country}",
+      "invalid_state_in_country": "är inte ett giltigt tillstånd i %{country}",
+      "invalid_region_in_country": "är inte en giltig region i %{country}",
+      "less_than_or_equal_to": "måste vara mindre än eller lika med %{count}",
+      "not_supported": "stöds inte",
+      "full_name_required": "Ange ett förnamn och efternamn",
+      "invalid_for_card_type": "är inte giltigt",
+      "invalid_type": "tyvärr accepterar vi inte kort av denna typ",
+      "invalid_format": "formatet är inte giltigt",
+      "expired": "har gått ut",
+      "invalid_start_date_or_issue_number_for_debit": "ett giltigt startdatum eller utgivningsnummer krävs",
+      "invalid_expiry_year": "är inte ett giltigt utgångsår",
+      "reset_password_html": "Den här e-postadressen är redan kopplad till ett konto. Om det här kontot är ditt kan du <a href=\"\/account\/login#recover\">Återställ ditt lösenord<\/a>",
+      "verify_email": "Vi har skickat ett mail till %{customer_email}, klicka på länken som ingår för att verifiera din e-postadress.",
+      "product_not_available": "produkten publiceras inte för denna kund."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Fel vid återställning av lösenord",
+        "no_account_found": "Inget konto hittades med det e-postmeddelandet.",
+        "invalid_credentials": "Felaktig e-postadress eller lösenord.",
+        "denylisted_reset_password": "Ditt konto kunde inte nås eftersom det aktuella lösenordet inte är säkert. Du kommer att få ett e-postmeddelande för att uppdatera ditt lösenord."
+      },
+      "address": {
+        "updated": "Uppdaterad adress.",
+        "error_updating": "Fel vid uppdatering av adress",
+        "created": "Framgångsrikt skapad adress",
+        "error_creating": "Fel att skapa adress.",
+        "deleted": "Framgångsrikt borttagen adress",
+        "error_deleting": "Fel vid radering av adress."
+      },
+      "order": {
+        "not_available": "Denna beställning är inte tillgänglig",
+        "financial_status": {
+          "authorized": "Auktoriserad",
+          "pending": "Väntande",
+          "paid": "Betalas",
+          "unpaid": "Obetald",
+          "voided": "Annullera",
+          "partially_paid": "Delvis betald",
+          "partially_refunded": "Delvis återbetalad",
+          "refunded": "Återbetala",
+          "expired": "Löpa"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Uppfylla",
+          "complete": "Slutföra",
+          "partial": "Partiell",
+          "unfulfilled": "Ouppfyllda",
+          "restocked": "Påfyllning"
+        },
+        "transaction_status": {
+          "success": "Framgång",
+          "pending": "Väntande"
+        }
+      }
     }
   }
 }

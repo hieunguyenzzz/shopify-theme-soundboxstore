@@ -1569,7 +1569,71 @@
       "gift_card_expired": "Lahjakortti on vanhentunut",
       "invalid": "on virheellinen",
       "bad_domain": "sisältää virheellisen verkkotunnuksen",
-      "taken": "on jo otettu"
+      "taken": "on jo otettu",
+      "contains_html_tags": "ei voi sisältää HTML-tageja",
+      "too_short": "on liian lyhyt (minimi on %{count} merkki)",
+      "too_long": "on liian pitkä (maksimi on %{count} merkki)",
+      "password_mismatch": "täytyy täsmätä annettuun salasanaan",
+      "contains_spaces": "alkaa tai päättyy välilyönteihin.",
+      "email_domain_invalid": "palveluntarjoajaa ei tueta",
+      "invalid_for_country": "ei ole voimassa %{country}",
+      "invalid_for_country_and_province": "ei ole voimassa %{province} ja %{country}",
+      "invalid_province_in_country": "ei ole pätevä maakunta %{country}",
+      "invalid_state_in_country": "ei ole kelvollinen tila %{country}",
+      "invalid_region_in_country": "ei ole kelvollinen alue %{country}",
+      "less_than_or_equal_to": "on oltava pienempi tai yhtä suuri kuin %{count}",
+      "not_supported": "ei tueta",
+      "full_name_required": "Syötä etu - ja sukunimi",
+      "invalid_for_card_type": "ei kelpaa",
+      "invalid_type": "valitettavasti emme hyväksy tämän tyyppisiä kortteja",
+      "invalid_format": "muoto ei ole kelvollinen",
+      "expired": "on vanhentunut",
+      "invalid_start_date_or_issue_number_for_debit": "voimassa oleva aloituspäivä tai liikkeeseenlaskun numero vaaditaan",
+      "invalid_expiry_year": "ei ole voimassa oleva vanhenemisvuosi",
+      "reset_password_html": "Tämä sähköpostiosoite on jo liitetty tiliin. Jos tämä tili on sinun, Voit <a href=\"\/account\/login#recover\">Palauta salasana<\/a>",
+      "verify_email": "Olemme lähettäneet sähköpostia osoitteeseen %{customer_email}, klikkaa mukana olevaa linkkiä vahvistaaksesi sähköpostiosoitteesi.",
+      "product_not_available": "tuotetta ei ole julkaistu tälle asiakkaalle."
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Salasanan nollausvirhe",
+        "no_account_found": "Tiliä ei löytynyt.",
+        "invalid_credentials": "Virheellinen sähköposti tai salasana.",
+        "denylisted_reset_password": "Tiliäsi ei voitu käyttää, koska nykyinen salasana ei ole turvallinen. Saat sähköpostiviestin, jossa voit päivittää salasanasi."
+      },
+      "address": {
+        "updated": "Päivitetty osoite onnistuneesti.",
+        "error_updating": "Virhe osoitteen päivityksessä",
+        "created": "Onnistuneesti luotu osoite",
+        "error_creating": "Virhe luotaessa osoitetta.",
+        "deleted": "Poistettu osoite onnistuneesti",
+        "error_deleting": "Virhe poistettaessa osoitetta."
+      },
+      "order": {
+        "not_available": "Tämä tilaus ei ole saatavilla",
+        "financial_status": {
+          "authorized": "Valtuutettu",
+          "pending": "Vireillä",
+          "paid": "Maksettu",
+          "unpaid": "Palkaton",
+          "voided": "Kumota",
+          "partially_paid": "Osittain maksettu",
+          "partially_refunded": "Osittain palautettu",
+          "refunded": "Palautettu",
+          "expired": "Vanhentunut"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Täyttää",
+          "complete": "Täydellinen",
+          "partial": "Osittainen",
+          "unfulfilled": "Täyttämättä",
+          "restocked": "Täydennetty"
+        },
+        "transaction_status": {
+          "success": "Menestys",
+          "pending": "Vireillä"
+        }
+      }
     }
   }
 }
