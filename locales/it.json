@@ -907,7 +907,71 @@
         "purchase_options_agreement_label_html": "Capisco che uno o più articoli nel mio carrello è un acquisto differito o ricorrente. Continuando, accetto il\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">politica di cancellazione<\/a>\ne ti autorizzo ad addebitare il mio metodo di pagamento ai prezzi, alla frequenza e alle date elencate in questa pagina fino al mio\nl'ordine è evaso o annullamento, se consentito.\n",
         "change_currency_section_description": "Seleziona un'opzione di valuta",
         "no_real_orders_dev_store": "Questo negozio non può accettare ordini reali o pagamenti reali.",
-        "waiting_on_payment_methods": "Ottenere metodi di pagamento disponibili..."
+        "waiting_on_payment_methods": "Ottenere metodi di pagamento disponibili...",
+        "apple_pay_payment_error": "Il pagamento non può essere completato. Riprova o utilizza un metodo di pagamento diverso.",
+        "taxes_not_included": "Tasse non incluse",
+        "no_taxes_banner_content": "Le tasse non saranno addebitate su questo ordine. Una volta riscosso il pagamento, le tasse non possono più essere aggiunte.",
+        "paypal": {
+          "connect": "Fai clic per collegare il tuo account PayPal"
+        },
+        "apple": {
+          "connect": "Fai clic per collegare il tuo account Apple Pay",
+          "not_available": "Apple Pay non è disponibile in questo browser. Per collegare il tuo account Apple Pay dovrai utilizzare Safari su un dispositivo Apple."
+        },
+        "google": {
+          "connect": "Fai clic per connetterti con il tuo account Google Pay",
+          "error_authorizing": "Errore nell'autorizzare il pagamento"
+        },
+        "account_connected": "Account collegato.",
+        "mor_disclaimer_html": "Cliccando qui sotto e completando il tuo ordine, accetti di acquistare i tuoi articoli da Global-e come commerciante di record\nper questa transazione, su Global-e <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Termini e Condizioni<\/a>\ne <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">privacy<\/a>. Global-e è internazionale\nfornitore di servizi di logistica a %{shop_name}\n",
+        "pending_payment": {
+          "due_notice": "Il tuo pagamento di %{amount_due} è dovuto il %{due_date}.",
+          "multibanco": {
+            "instruction_html": "Effettua il pagamento su Multibanco o online utilizzando i dettagli riportati di seguito. Per domande o per aggiornare i dettagli di pagamento, %{contact_us}.",
+            "entity": "Entità",
+            "reference": "Riferimento",
+            "amount": "Quantità",
+            "find_nearest_atm": "Trova il bancomat più vicino"
+          }
+        },
+        "update_payment_method": "Aggiorna il metodo di pagamento"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Saldo corrente %{amount}",
+        "credit_card_expires_on_notice": "Scade il %{month}\/%{year}",
+        "express_payment_gateway_label": "Express",
+        "manual_payment_gateway_label": "Manuale",
+        "billing_address_title": "Indirizzo di fatturazione",
+        "free_label": "Libero"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Inserisci un numero di telefono valido",
+        "handle_email_invalid": "Inserisci un'email valida",
+        "email_invalid": "Inserisci un'email valida",
+        "email_or_phone_blank": "Inserisci un'email o un numero di cellulare",
+        "email_or_phone_invalid": "Inserisci un'email valida o un numero di cellulare",
+        "address_first_name_blank": "Inserisci un nome",
+        "address_first_name_too_long": "Il nome è troppo lungo (massimo 255 caratteri)",
+        "address_first_name_contains_emojis": "Il nome non può contenere emoji",
+        "address_first_name_contains_html_tags": "Il nome non può contenere tag HTML.",
+        "address_first_name_contains_url": "Il nome non può contenere un URL",
+        "address_last_name_blank": "Inserisci un cognome",
+        "address_last_name_too_long": "Il cognome è troppo lungo (massimo 255 caratteri)",
+        "address_last_name_contains_emojis": "Il cognome non può contenere emoji",
+        "address_last_name_contains_html_tags": "Il cognome non può contenere tag HTML.",
+        "address_last_name_contains_url": "Il cognome non può contenere un URL",
+        "address_address1_blank": "Inserisci un indirizzo",
+        "address_address1_too_long": "La prima riga dell'indirizzo è troppo lunga (massimo 255 caratteri)",
+        "address_address1_contains_emojis": "Indirizzo1 non può contenere emoji",
+        "address_address1_contains_html_tags": "Address1 non può contenere tag HTML.",
+        "address_address2_blank": "Inserisci un appartamento, una suite, ecc.",
+        "address_address2_too_long": "La seconda riga dell'indirizzo è troppo lunga (massimo 255 caratteri)",
+        "address_address2_contains_emojis": "Indirizzo2 non può contenere emoji",
+        "address_address2_contains_html_tags": "Address2 non può contenere tag HTML.",
+        "address_city_blank": "Entra in una città",
+        "address_city_too_long": "La città è troppo lunga (massimo 255 caratteri)",
+        "address_city_contains_emojis": "La città non può contenere emoji",
+        "address_city_contains_html_tags": "City non può contenere tag HTML."
       }
     }
   }

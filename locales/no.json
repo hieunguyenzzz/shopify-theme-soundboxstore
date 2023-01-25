@@ -528,23 +528,23 @@
         "change_currency_section_description": "Velg valuta nå",
         "no_real_orders_dev_store": "Denne butikken kan ikke godta ekte bestillinger eller ekte betalinger.",
         "waiting_on_payment_methods": "Få tilgjengelige betalingsmåter...",
-        "apple_pay_payment_error": "Betalingen din kunne ikke fullføres. Prøv igjen eller bruk en annen betalingsmetode.",
+        "apple_pay_payment_error": "Betalingen din kunne ikke fullføres. Prøv igjen eller bruk en annen betalingsmåte.",
         "taxes_not_included": "Skatter ikke inkludert",
-        "no_taxes_banner_content": "Skatter vil ikke bli belastet etter denne ordren. Når du har samlet inn betaling, kan ikke skatter lenger legges til.",
+        "no_taxes_banner_content": "Skatter vil ikke bli belastet på denne bestillingen. Når du har samlet inn betaling, kan skatter ikke lenger legges til.",
         "paypal": {
-          "connect": "Klikk for å koble til PayPal -kontoen din"
+          "connect": "Klikk for å koble Til PayPal-kontoen Din"
         },
         "apple": {
-          "connect": "Klikk for å koble til Apple Pay -kontoen din",
-          "not_available": "Apple Pay er ikke tilgjengelig i denne nettleseren. For å koble Apple -lønnskontoen din, må du bruke Safari på en Apple -enhet."
+          "connect": "Klikk for å koble Til Apple Pay-kontoen Din",
+          "not_available": "Apple Pay Er ikke tilgjengelig i denne nettleseren. For å koble Til Apple Pay-kontoen din må Du bruke Safari på En Apple-enhet."
         },
         "google": {
-          "connect": "Klikk for å koble til med Google Pay -kontoen din",
-          "error_authorizing": "Feil autorisere betaling"
+          "connect": "Klikk for å koble Til Google Pay-kontoen Din",
+          "error_authorizing": "Feil ved godkjenning av betaling"
         },
-        "account_connected": "Konto tilkoblet",
+        "account_connected": "Konto tilkoblet.",
         "email_connected": "Konto tilkoblet: ",
-        "mor_disclaimer_html": "Ved å klikke nedenfor og fullføre bestillingen, samtykker du i å kjøpe varen (e) fra flow.io som selger av posten\nfor denne transaksjonen, på flow.io's <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Vilkår og betingelser<\/a>\nog <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Personvernregler<\/a>. Flow.io er en internasjonal\nOppfyllingstjenesteleverandør til %{shop_name}\n",
+        "mor_disclaimer_html": "Ved å klikke nedenfor og fullføre bestillingen, godtar du å kjøpe varen(e) fra Global-e som merchant of record\nfor denne transaksjonen, På Global-e <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Betingelser og vilkår<\/a>\nog <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">personvern<\/a>. Global-e er en internasjonal\nleverandør av oppfyllelsestjenester til %{shop_name}\n",
         "multibanco_label": "Multibanco",
         "receiver_payment_experience_hint": "Etter at du har lagt inn bestillingen, vil du motta betalingsdetaljer. Gjør betalingen På Multibanco eller online innen %{due_days} dager.",
         "paypal_modal": {
@@ -552,44 +552,55 @@
           "order_contains_fixed_selling_plans": "Totalt inkluderer kanskje ikke skatter, frakt, utsatte kostnader og noen rabatter. Fortsett til kassen for beløpet som skal betales i dag."
         },
         "purchase_options_agreement_label": "Jeg forstår at en eller flere varer i handlekurven min er et utsatt eller tilbakevendende kjøp. Ved å fortsette, jeg godtar %{cancellation_policy_label} og autorisere deg til å belaste betalingsmåten min til prisene, frekvensen og datoene som er oppført på denne siden til bestillingen min er oppfylt eller jeg kansellerer, hvis tillatt.",
-        "purchase_options_agreement_label_html": "Jeg forstår at en eller flere varer i handlekurven min er et utsatt eller tilbakevendende kjøp. Ved å fortsette, jeg godtar\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">avbestillingsregler<\/a>\nog autorisere deg til å belaste betalingsmåten min til prisene, frekvensen og datoene som er oppført på denne siden til min\nbestillingen er oppfylt eller jeg kansellerer, hvis tillatt.\n"
+        "purchase_options_agreement_label_html": "Jeg forstår at en eller flere varer i handlekurven min er et utsatt eller tilbakevendende kjøp. Ved å fortsette, jeg godtar\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">avbestillingsregler<\/a>\nog autorisere deg til å belaste betalingsmåten min til prisene, frekvensen og datoene som er oppført på denne siden til min\nbestillingen er oppfylt eller jeg kansellerer, hvis tillatt.\n",
+        "pending_payment": {
+          "due_notice": "Din betaling av %{amount_due} forfaller på %{due_date}.",
+          "multibanco": {
+            "instruction_html": "Gjør betalingen Din På Multibanco eller online ved å bruke detaljene nedenfor. For spørsmål eller for å oppdatere betalingsdetaljer, %{contact_us}.",
+            "entity": "Enhet",
+            "reference": "Referanse",
+            "amount": "Mengde",
+            "find_nearest_atm": "Finn Nærmeste MINIBANK"
+          }
+        },
+        "update_payment_method": "Oppdater betalingsmåte"
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "Nåværende saldo %{amount}",
-        "credit_card_expires_on_notice": "Går ut på dato den %{month}\/%{year}",
+        "credit_card_expires_on_notice": "Utløper den %{month}\/%{year}",
         "express_payment_gateway_label": "Uttrykke",
-        "manual_payment_gateway_label": "Håndbok",
-        "billing_address_title": "Fakturaadresse",
+        "manual_payment_gateway_label": "Manuell",
+        "billing_address_title": "Faktureringsadresse",
         "free_label": "Gratis"
       },
       "field_errors": {
         "handle_phone_invalid": "Skriv inn et gyldig telefonnummer",
-        "handle_email_invalid": "Skriv inn en gyldig e -post",
-        "email_invalid": "Skriv inn en gyldig e -post",
-        "email_or_phone_blank": "Skriv inn en e -post eller mobiltelefonnummer",
-        "email_or_phone_invalid": "Skriv inn en gyldig e -post eller et mobiltelefonnummer",
+        "handle_email_invalid": "Skriv inn en gyldig e-postadresse",
+        "email_invalid": "Skriv inn en gyldig e-postadresse",
+        "email_or_phone_blank": "Skriv inn e-post eller mobilnummer",
+        "email_or_phone_invalid": "Skriv inn en gyldig e-postadresse eller et mobilnummer",
         "address_first_name_blank": "Skriv inn et fornavn",
-        "address_first_name_too_long": "Fornavn er for langt (maksimum er 255 tegn)",
+        "address_first_name_too_long": "Fornavnet er for langt (maksimalt 255 tegn)",
         "address_first_name_contains_emojis": "Fornavn kan ikke inneholde emojis",
-        "address_first_name_contains_html_tags": "Fornavn kan ikke inneholde HTML -tagger.",
-        "address_first_name_contains_url": "Fornavn kan ikke inneholde en URL",
+        "address_first_name_contains_html_tags": "Fornavn kan ikke inneholde HTML-koder.",
+        "address_first_name_contains_url": "Fornavn kan ikke inneholde EN URL",
         "address_last_name_blank": "Skriv inn et etternavn",
-        "address_last_name_too_long": "Etternavn er for langt (maksimum er 255 tegn)",
+        "address_last_name_too_long": "Etternavn er for langt (maksimalt 255 tegn)",
         "address_last_name_contains_emojis": "Etternavn kan ikke inneholde emojis",
-        "address_last_name_contains_html_tags": "Etternavn kan ikke inneholde HTML -tagger.",
-        "address_last_name_contains_url": "Etternavn kan ikke inneholde en URL",
+        "address_last_name_contains_html_tags": "Etternavn kan ikke inneholde HTML-koder.",
+        "address_last_name_contains_url": "Etternavn kan ikke inneholde EN URL",
         "address_address1_blank": "Skriv inn en adresse",
-        "address_address1_too_long": "Den første adresselinjen er for lang (maksimum er 255 tegn)",
-        "address_address1_contains_emojis": "Adresse1 kan ikke inneholde emojier",
-        "address_address1_contains_html_tags": "Adresse1 kan ikke inneholde HTML -tagger.",
-        "address_address2_blank": "Gå inn i en leilighet, suite osv.",
-        "address_address2_too_long": "Den andre adresselinjen er for lang (maksimum er 255 tegn)",
-        "address_address2_contains_emojis": "Adresse2 kan ikke inneholde emojier",
-        "address_address2_contains_html_tags": "Adresse2 kan ikke inneholde HTML -tagger.",
-        "address_city_blank": "Gå inn i en by",
-        "address_city_too_long": "Byen er for lang (maksimum er 255 tegn)",
-        "address_city_contains_emojis": "By kan ikke inneholde emojier",
-        "address_city_contains_html_tags": "By kan ikke inneholde HTML -tagger.",
+        "address_address1_too_long": "Den første adresselinjen er for lang (maksimalt 255 tegn)",
+        "address_address1_contains_emojis": "Adresse1 kan ikke inneholde emoji",
+        "address_address1_contains_html_tags": "Adresse1 kan ikke inneholde HTML-koder.",
+        "address_address2_blank": "Skriv inn en leilighet, suite, etc.",
+        "address_address2_too_long": "Den andre adresselinjen er for lang (maksimalt 255 tegn)",
+        "address_address2_contains_emojis": "Adresse2 kan ikke inneholde emoji",
+        "address_address2_contains_html_tags": "Adresse2 kan ikke inneholde HTML-koder.",
+        "address_city_blank": "Skriv inn en by",
+        "address_city_too_long": "By er for lang (maksimalt 255 tegn)",
+        "address_city_contains_emojis": "By kan ikke inneholde emoji",
+        "address_city_contains_html_tags": "By kan ikke inneholde HTML-koder.",
         "address_country_blank": "Velg et land\/region",
         "address_country_not_supported": "Vi sender ikke til dette landet eller regionen. Skriv inn en ny fraktadresse og prøv igjen.",
         "address_province_blank": "Velg en stat \/ provins",
