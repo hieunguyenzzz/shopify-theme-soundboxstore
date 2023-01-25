@@ -907,7 +907,71 @@
         "purchase_options_agreement_label_html": "Ymmärrän, että yksi tai useampi kohde ostoskorissani on lykätty tai toistuva osto. Jatkamalla hyväksyn\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">peruutusehdot<\/a>\nja valtuuttaa sinut veloittamaan maksutapani hinnoilla, taajuudella ja päivämäärillä, jotka on lueteltu tällä sivulla, kunnes\ntilaus on täytetty tai peruutan, jos se on sallittua.\n",
         "change_currency_section_description": "Valitse valuutta vaihtoehto",
         "no_real_orders_dev_store": "Tämä kauppa ei voi ottaa vastaan oikeita tilauksia tai oikeita maksuja.",
-        "waiting_on_payment_methods": "Saatavilla olevien maksutapojen hakeminen..."
+        "waiting_on_payment_methods": "Saatavilla olevien maksutapojen hakeminen...",
+        "apple_pay_payment_error": "Maksua ei voitu suorittaa. Yritä uudelleen tai käytä toista maksutapaa.",
+        "taxes_not_included": "Verot eivät sisälly",
+        "no_taxes_banner_content": "Tilauksesta ei peritä veroja. Kun olet kerännyt maksun, veroja ei voi enää lisätä.",
+        "paypal": {
+          "connect": "Klikkaa liittääksesi PayPal-tilisi"
+        },
+        "apple": {
+          "connect": "Napsauta yhdistääksesi Apple Pay-tilisi",
+          "not_available": "Apple Pay ei ole käytettävissä tässä selaimessa. Jos haluat yhdistää Apple Pay-tilisi, sinun on käytettävä Safaria Apple-laitteessa."
+        },
+        "google": {
+          "connect": "Napsauta muodostaaksesi yhteyden Google Pay-tiliisi",
+          "error_authorizing": "Virhe maksun valtuuttamisessa"
+        },
+        "account_connected": "Tili yhdistetty.",
+        "mor_disclaimer_html": "Klikkaamalla alla ja täyttämällä tilauksen, sitoudut ostamaan kohteen (t) Global-e kuin merchant of record\ntätä tapahtumaa varten Global-e: n <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Säännöt ja ehdot<\/a>\nja <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">tietosuojakäytäntö<\/a>. Globaali-e on kansainvälinen\ntäyttäminen palveluntarjoaja %{shop_name}\n",
+        "pending_payment": {
+          "due_notice": "Maksusi %{amount_due} on %{due_date}.",
+          "multibanco": {
+            "instruction_html": "Tee maksu Multibancossa tai verkossa alla olevien tietojen avulla. Kysymyksiä tai maksutietojen päivittämistä varten, %{contact_us}.",
+            "entity": "Yhteisö",
+            "reference": "Viittaus",
+            "amount": "Määrä",
+            "find_nearest_atm": "Etsi lähin pankkiautomaatti"
+          }
+        },
+        "update_payment_method": "Päivitä Maksutapa"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Tämänhetkinen saldo %{amount}",
+        "credit_card_expires_on_notice": "Päättyy %{month}\/%{year}",
+        "express_payment_gateway_label": "Ilmaista",
+        "manual_payment_gateway_label": "Käyttöohje",
+        "billing_address_title": "Laskutusosoite",
+        "free_label": "Ilmainen"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Anna kelvollinen puhelinnumero",
+        "handle_email_invalid": "Syötä kelvollinen Sähköposti",
+        "email_invalid": "Syötä kelvollinen Sähköposti",
+        "email_or_phone_blank": "Syötä sähköposti tai matkapuhelinnumero",
+        "email_or_phone_invalid": "Anna kelvollinen sähköposti tai matkapuhelinnumero",
+        "address_first_name_blank": "Anna etunimi",
+        "address_first_name_too_long": "Etunimi on liian pitkä (maksimi on 255 merkkiä)",
+        "address_first_name_contains_emojis": "Etunimi ei voi sisältää emojeja",
+        "address_first_name_contains_html_tags": "Etunimi ei voi sisältää HTML-tageja.",
+        "address_first_name_contains_url": "Etunimi ei voi sisältää URL-osoitetta",
+        "address_last_name_blank": "Anna sukunimi",
+        "address_last_name_too_long": "Sukunimi on liian pitkä (maksimi on 255 merkkiä)",
+        "address_last_name_contains_emojis": "Sukunimi ei voi sisältää emojeja",
+        "address_last_name_contains_html_tags": "Sukunimi ei voi sisältää HTML-tageja.",
+        "address_last_name_contains_url": "Sukunimi ei voi sisältää URL-osoitetta",
+        "address_address1_blank": "Anna osoite",
+        "address_address1_too_long": "Ensimmäinen osoiterivi on liian pitkä (maksimi on 255 merkkiä)",
+        "address_address1_contains_emojis": "Osoite 1 ei voi sisältää emojeja",
+        "address_address1_contains_html_tags": "Osoite 1 ei voi sisältää HTML-tageja.",
+        "address_address2_blank": "Anna asunto, sviitti jne.",
+        "address_address2_too_long": "Toinen osoiterivi on liian pitkä (maksimi on 255 merkkiä)",
+        "address_address2_contains_emojis": "Osoite 2 ei voi sisältää emojeja",
+        "address_address2_contains_html_tags": "Address2 ei voi sisältää HTML-tageja.",
+        "address_city_blank": "Astu kaupunkiin",
+        "address_city_too_long": "Kaupunki on liian pitkä (maksimi on 255 merkkiä)",
+        "address_city_contains_emojis": "Kaupunki ei voi sisältää emojeja",
+        "address_city_contains_html_tags": "Kaupunki ei voi sisältää HTML-tageja."
       }
     }
   }

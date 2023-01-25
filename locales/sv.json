@@ -903,7 +903,71 @@
         "purchase_options_agreement_label_html": "Jag förstår att en eller flera artiklar i min varukorg är ett uppskjutet eller återkommande köp. Genom att fortsätta godkänner jag\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">avbokningsregler<\/a>\noch tillåta dig att debitera min betalningsmetod till de priser, frekvens och datum som anges på denna sida tills min\nbeställningen är uppfylld eller jag avbryter, om det är tillåtet.\n",
         "change_currency_section_description": "Välj ett valutaalternativ",
         "no_real_orders_dev_store": "Denna butik kan inte acceptera riktiga beställningar eller riktiga betalningar.",
-        "waiting_on_payment_methods": "Få tillgängliga betalningsmetoder..."
+        "waiting_on_payment_methods": "Få tillgängliga betalningsmetoder...",
+        "apple_pay_payment_error": "Din betalning kunde inte slutföras. Försök igen eller använd en annan betalningsmetod.",
+        "taxes_not_included": "Skatter ingår ej",
+        "no_taxes_banner_content": "Skatter kommer inte att debiteras på denna order. När du har samlat in betalning kan skatter inte längre läggas till.",
+        "paypal": {
+          "connect": "Klicka för att ansluta ditt PayPal-konto"
+        },
+        "apple": {
+          "connect": "Klicka för att ansluta ditt Apple Pay-konto",
+          "not_available": "Apple Pay är inte tillgängligt i den här webbläsaren. För att ansluta ditt Apple Pay-konto måste du använda Safari på en Apple-enhet."
+        },
+        "google": {
+          "connect": "Klicka för att ansluta till ditt Google Pay-konto",
+          "error_authorizing": "Fel vid godkännande av betalning"
+        },
+        "account_connected": "Konto ansluten.",
+        "mor_disclaimer_html": "Genom att klicka nedan och slutföra din beställning, samtycker du till att köpa dina objekt från Global - E som merchant of record\nför denna transaktion, på Global-e: s <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Regler och Villkor<\/a>\noch <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">sekretesspolicy<\/a>. Global-E är en internationell\nleverantör av fullgörande tjänster till %{shop_name}\n",
+        "pending_payment": {
+          "due_notice": "Din betalning av %{amount_due} beror på %{due_date}.",
+          "multibanco": {
+            "instruction_html": "Gör din betalning på Multibanco eller online med hjälp av detaljerna nedan. För frågor eller för att uppdatera betalningsuppgifter, %{contact_us}.",
+            "entity": "Enhet",
+            "reference": "Hänvisning",
+            "amount": "Belopp",
+            "find_nearest_atm": "Hitta närmaste bankomat"
+          }
+        },
+        "update_payment_method": "Uppdatera betalningsmetod"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Nuvarande balans %{amount}",
+        "credit_card_expires_on_notice": "Löper ut på %{month}\/%{year}",
+        "express_payment_gateway_label": "Uttrycka",
+        "manual_payment_gateway_label": "Manuell",
+        "billing_address_title": "Faktureringsadress",
+        "free_label": "Frigöra"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Ange ett giltigt telefonnummer",
+        "handle_email_invalid": "Ange ett giltigt e-postmeddelande",
+        "email_invalid": "Ange ett giltigt e-postmeddelande",
+        "email_or_phone_blank": "Ange ett e-postmeddelande eller mobilnummer",
+        "email_or_phone_invalid": "Ange ett giltigt e-postmeddelande eller ett mobilnummer",
+        "address_first_name_blank": "Ange ett förnamn",
+        "address_first_name_too_long": "Förnamnet är för långt (högst 255 tecken)",
+        "address_first_name_contains_emojis": "Förnamn kan inte innehålla emojis",
+        "address_first_name_contains_html_tags": "Förnamn kan inte innehålla HTML-taggar.",
+        "address_first_name_contains_url": "Förnamn kan inte innehålla en URL",
+        "address_last_name_blank": "Ange ett efternamn",
+        "address_last_name_too_long": "Efternamnet är för långt (högst 255 tecken)",
+        "address_last_name_contains_emojis": "Efternamn Kan inte innehålla emojis",
+        "address_last_name_contains_html_tags": "Efternamn Kan inte innehålla HTML-taggar.",
+        "address_last_name_contains_url": "Efternamn Kan inte innehålla en URL",
+        "address_address1_blank": "Ange en adress",
+        "address_address1_too_long": "Den första adressraden är för lång (högst 255 tecken)",
+        "address_address1_contains_emojis": "Adress1 kan inte innehålla emojis",
+        "address_address1_contains_html_tags": "Adress1 kan inte innehålla HTML-taggar.",
+        "address_address2_blank": "Ange en lägenhet, svit etc.",
+        "address_address2_too_long": "Den andra adressraden är för lång (högst 255 tecken)",
+        "address_address2_contains_emojis": "Address2 kan inte innehålla emojis",
+        "address_address2_contains_html_tags": "Address2 kan inte innehålla HTML-taggar.",
+        "address_city_blank": "Ange en stad",
+        "address_city_too_long": "Staden är för lång (högst 255 tecken)",
+        "address_city_contains_emojis": "Staden kan inte innehålla emojis",
+        "address_city_contains_html_tags": "Staden kan inte innehålla HTML-taggar."
       }
     },
     "sentence": {
