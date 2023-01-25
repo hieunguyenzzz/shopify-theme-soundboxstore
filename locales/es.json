@@ -83,15 +83,15 @@
   },
   "sections": {
     "map": {
-      "get_directions": "Obtener las direcciones",
-      "address_error": "No se puede encontrar esa dirección",
-      "address_no_results": "No results for that address",
-      "address_query_limit_html": "Se ha excedido el límite de uso de la API de Google . Considere la posibilidad de actualizar a un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plan Premium<\/a>.",
-      "auth_error_html": "Hubo un problema de autenticación con su cuenta de Google Maps. Crear y habilitar la <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">API de JavaScript<\/a> y <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">API de geocodificación<\/a> permiso para su aplicación."
+      "get_directions": "Obtener direcciones",
+      "address_error": "Error al buscar esa dirección",
+      "address_no_results": "No hay resultados para esa dirección",
+      "address_query_limit_html": "Has superado el límite de uso de la API de Google. Considere la posibilidad de actualizar a un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plan Premium<\/a>.",
+      "auth_error_html": "Ha habido un problema al autenticar tu cuenta de Google Maps. Cree y habilite la <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">API DE JavaScript<\/a> y <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">API de Geocodificación<\/a> permisos de tu aplicación."
     },
     "slideshow": {
-      "play_slideshow": "Juego de diapositivas",
-      "pause_slideshow": "diapositivas pausa"
+      "play_slideshow": "Reproducir presentación de diapositivas",
+      "pause_slideshow": "Pausa la presentación de diapositivas"
     }
   },
   "blogs": {
@@ -387,29 +387,30 @@
   "strings": {
     "option_name": {
       "color": "Color",
-      "internal-panels-color": "Color de paneles internos",
-      "furniture": "Muebles",
-      "inside-color": "Color interior",
-      "interior-color": "color interior",
-      "size": "Tamaño"
+      "internal-panels-color": "Color de los Paneles Internos",
+      "furniture": "Mueble",
+      "inside-color": "Color Interior",
+      "interior-color": "Color Interior",
+      "size": "Tamaño",
+      "option": "Mueble"
     },
     "option_value": {
       "white": "Blanco",
       "black": "Negro",
       "wooden": "Estampado Negro \/ Madera",
-      "dark-green": "Verde oscuro",
+      "dark-green": "Verde Oscuro",
       "orange": "Naranja",
-      "light-grey": "Gris claro",
-      "dark-gray": "Gris oscuro",
-      "no-furniture": "Sin muebles",
-      "furniture-set-1": "Set de muebles 1",
-      "furniture-set-2": "Juego de muebles 2",
-      "furniture-set-3": "Juego de muebles 3",
+      "light-grey": "Gris Claro",
+      "dark-gray": "Gris Oscuro",
+      "no-furniture": "Sin Muebles",
+      "furniture-set-1": "Juego de Muebles 1",
+      "furniture-set-2": "Juego de Muebles 2",
+      "furniture-set-3": "Juego de Muebles 3",
       "with-furniture": "Con muebles",
       "furniture-set-1-standard": "Conjunto de muebles 1 estándar",
       "furniture-set-2-deluxe": "Juego de muebles 2 Deluxe",
       "furniture-set-2-delux": "Juego de muebles 2 Deluxe",
-      "dark-grey": "Gris oscuro",
+      "dark-grey": "Gris Oscuro",
       "mini-sofa-work-desk": "Mini Sofa Work Desk",
       "folio-dark-grey": "Folio gris oscuro",
       "folio-dusty-teal": "Folio polvoriento verde azulado",
@@ -417,12 +418,13 @@
       "folio-pebble-grey": "Folio Pebble Grey",
       "folio-blush": "Folio rubor",
       "mini-sofa-work-desk-inc": "Mini SOFA - Work Desk Inc.",
-      "delux": "Lujoso",
-      "small": "Pequeña",
+      "delux": "Delux",
+      "small": "Pequeño",
       "medium": "Medio",
-      "large": "Largo",
-      "x-large": "Extra grande",
-      "another": "Otro"
+      "large": "Grande",
+      "x-large": "Extra Grande",
+      "another": "Otro",
+      "furniture-set": "Conjunto de Muebles {{number}}"
     },
     "others": {
       "view_less": "Ver menos",
@@ -2395,8 +2397,28 @@
         "payment_method_selector_no_alternative_payment": "Sin método de reemplazo",
         "replace_method_with_new_method_description": "Su {{currentPaymentMethodName}} será eliminado y reemplazado por su {{newPaymentMethodName}}.",
         "error_when_deleting": "Nos disculpamos, pero algo salió mal y no pudimos eliminar este método de pago. Inténtelo de nuevo más tarde o actualice la página.",
-        "delete_and_replace_button": "Borrar y reemplazar"
+        "delete_and_replace_button": "Borrar y reemplazar",
+        "delete_and_replace_button_accessibility_label": "Eliminar {{currentPaymentMethodName}} y reemplazar con {{newPaymentMethodName}}.",
+        "deleted_successfully": "Método de pago eliminado correctamente.",
+        "loading_available_payment_methods_accessibility_label": "Cargando métodos de pago disponibles"
       }
+    },
+    "payment_method_brands": {
+      "visa": "Visa",
+      "mastercard": "Mastercard",
+      "shoppay": "Pago de Tienda",
+      "applepay": "Apple Pay (en inglés)",
+      "googlepay": "Google Pay",
+      "paypal": "PayPal"
+    },
+    "shop_policies": {
+      "legal_notice": "Aviso legal",
+      "privacy_policy": "Política de privacidad",
+      "refund_policy": "Política de reembolso",
+      "shipping_policy": "Política de envío",
+      "subscription_policy": "Política de suscripción",
+      "terms_of_sale": "Condiciones de venta",
+      "terms_of_service": "Términos de servicio"
     }
   }
 }

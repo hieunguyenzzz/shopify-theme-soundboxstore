@@ -83,15 +83,15 @@
   },
   "sections": {
     "map": {
-      "get_directions": "Obtenir des directions",
-      "address_error": "Vous ne trouvez pas cette adresse",
+      "get_directions": "Obtenir les directions",
+      "address_error": "Erreur lors de la recherche de cette adresse",
       "address_no_results": "Aucun résultat pour cette adresse",
-      "address_query_limit_html": "Vous avez dépassé la limite de Google utilisation de l'API. Envisager la mise à niveau à un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">régime spécial<\/a>.",
-      "auth_error_html": "Il y avait un problème authentifier votre compte Google Maps . Créer et activer <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">l'API JavaScript<\/a> et <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">l'API de géocodage<\/a> les autorisations de application."
+      "address_query_limit_html": "Vous avez dépassé la limite d'utilisation de l'API Google. Envisagez de passer à un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plan Premium<\/a>.",
+      "auth_error_html": "Un problème est survenu lors de l'authentification de votre compte Google Maps. Créez et activez le <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">API JavaScript<\/a> et <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">API de Géocodage<\/a> autorisations de votre application."
     },
     "slideshow": {
       "play_slideshow": "Lire le diaporama",
-      "pause_slideshow": "Diaporama Pause"
+      "pause_slideshow": "Pause du diaporama"
     }
   },
   "blogs": {
@@ -387,29 +387,30 @@
   "strings": {
     "option_name": {
       "color": "Couleur",
-      "internal-panels-color": "Couleur des panneaux internes",
-      "furniture": "Meubles",
-      "inside-color": "Couleur intérieure",
-      "interior-color": "Couleur intérieure",
-      "size": "Taille"
+      "internal-panels-color": "Couleur des Panneaux Internes",
+      "furniture": "Mobilier",
+      "inside-color": "Couleur Intérieure",
+      "interior-color": "Couleur Intérieure",
+      "size": "Taille",
+      "option": "Mobilier"
     },
     "option_value": {
       "white": "Blanc",
-      "black": "Le noir",
-      "wooden": "Impression Noir \/ Bois",
-      "dark-green": "Vert foncé",
+      "black": "Noir",
+      "wooden": "Imprimé Noir \/ Bois",
+      "dark-green": "Vert Foncé",
       "orange": "Orange",
-      "light-grey": "Gris clair",
-      "dark-gray": "Gris foncé",
-      "no-furniture": "Pas de meubles",
-      "furniture-set-1": "Ensemble de meubles 1",
-      "furniture-set-2": "Ensemble de meubles 2",
-      "furniture-set-3": "Ensemble de meubles 3",
+      "light-grey": "Gris Clair",
+      "dark-gray": "Gris Foncé",
+      "no-furniture": "Pas De Meubles",
+      "furniture-set-1": "Ensemble de Meubles 1",
+      "furniture-set-2": "Ensemble de Meubles 2",
+      "furniture-set-3": "Ensemble de Meubles 3",
       "with-furniture": "Avec des meubles",
       "furniture-set-1-standard": "Ensemble de meubles 1 Standard",
       "furniture-set-2-deluxe": "Ensemble de meubles 2 Deluxe",
       "furniture-set-2-delux": "Ensemble de meubles 2 Deluxe",
-      "dark-grey": "Gris foncé",
+      "dark-grey": "Gris Foncé",
       "mini-sofa-work-desk": "Mini Sofa Work Desk",
       "folio-dark-grey": "Folio gris foncé",
       "folio-dusty-teal": "Folio sarcelle poussiéreux",
@@ -418,11 +419,12 @@
       "folio-blush": "Folio rougir",
       "mini-sofa-work-desk-inc": "Mini Sofa - Work Desk Inc.",
       "delux": "Delux",
-      "small": "Petit",
+      "small": "Petite",
       "medium": "Moyen",
       "large": "Grand",
-      "x-large": "Extra large",
-      "another": "Un Autre"
+      "x-large": "Très Grand",
+      "another": "Un Autre",
+      "furniture-set": "Ensemble de Meubles {{number}}"
     },
     "others": {
       "view_less": "Voir moins",
@@ -2395,8 +2397,28 @@
         "payment_method_selector_no_alternative_payment": "Pas de méthode de remplacement",
         "replace_method_with_new_method_description": "Votre {{currentPaymentMethodName}} sera supprimé et remplacé par votre {{newPaymentMethodName}}.",
         "error_when_deleting": "Nous nous excusons mais quelque chose s'est mal passé et nous n'avons pas pu supprimer ce mode de paiement. Veuillez réessayer plus tard ou actualiser la page.",
-        "delete_and_replace_button": "Supprimer et remplacer"
+        "delete_and_replace_button": "Supprimer et remplacer",
+        "delete_and_replace_button_accessibility_label": "Supprimer {{currentPaymentMethodName}} et remplacer par {{newPaymentMethodName}}.",
+        "deleted_successfully": "Méthode de paiement supprimée avec succès.",
+        "loading_available_payment_methods_accessibility_label": "Chargement des modes de paiement disponibles"
       }
+    },
+    "payment_method_brands": {
+      "visa": "Visa",
+      "mastercard": "Mastercard",
+      "shoppay": "Paiement en Magasin",
+      "applepay": "Paiement Apple",
+      "googlepay": "Paiement Google",
+      "paypal": "Paypal"
+    },
+    "shop_policies": {
+      "legal_notice": "Mentions légales",
+      "privacy_policy": "Confidentialité",
+      "refund_policy": "Politique de remboursement",
+      "shipping_policy": "Politique d'expédition",
+      "subscription_policy": "Politique d'abonnement",
+      "terms_of_sale": "Conditions de vente",
+      "terms_of_service": "Conditions d'utilisation"
     }
   }
 }

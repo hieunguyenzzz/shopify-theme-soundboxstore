@@ -84,14 +84,14 @@
   "sections": {
     "map": {
       "get_directions": "Få vägbeskrivningar",
-      "address_error": "Fel som tittar upp den adressen",
+      "address_error": "Fel att leta upp den adressen",
       "address_no_results": "Inga resultat för den adressen",
-      "address_query_limit_html": "Du har överskridit Google API -användningsgränsen. Överväga att uppgradera till en <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premiumplan<\/a>.",
-      "auth_error_html": "Det var ett problem som autentiserade ditt Google Maps -konto. Skapa och aktivera <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> och <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geokodande API<\/a> Behörighet för din app."
+      "address_query_limit_html": "Du har överskridit användningsgränsen för Google API. Överväg att uppgradera till en <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
+      "auth_error_html": "Det var ett problem att autentisera ditt Google Maps-konto. Skapa och aktivera <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> och <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocoding API<\/a> behörigheter för din app."
     },
     "slideshow": {
       "play_slideshow": "Spela bildspel",
-      "pause_slideshow": "Paus bildspel"
+      "pause_slideshow": "Pausa bildspel"
     }
   },
   "blogs": {
@@ -385,11 +385,12 @@
   "strings": {
     "option_name": {
       "color": "Färg",
-      "internal-panels-color": "Inre paneler färg",
-      "furniture": "möbel",
-      "inside-color": "Inre färg",
-      "interior-color": "Inre färg",
-      "size": "Storlek"
+      "internal-panels-color": "Interna Paneler Färg",
+      "furniture": "Möbler",
+      "inside-color": "Inre Färg",
+      "interior-color": "Inredning Färg",
+      "size": "Storlek",
+      "option": "Möbler"
     },
     "option_value": {
       "white": "Vit",
@@ -399,10 +400,10 @@
       "orange": "Orange",
       "light-grey": "Ljusgrå",
       "dark-gray": "Mörkgrå",
-      "no-furniture": "Inga möbler",
-      "furniture-set-1": "Möbler set 1",
-      "furniture-set-2": "Möbler set 2",
-      "furniture-set-3": "Möbler set 3",
+      "no-furniture": "Inga Möbler",
+      "furniture-set-1": "Möbler Set 1",
+      "furniture-set-2": "Möbler Set 2",
+      "furniture-set-3": "Möbler Set 3",
       "with-furniture": "Med möbler",
       "furniture-set-1-standard": "Möbeluppsättning 1 Standard",
       "furniture-set-2-deluxe": "Möbler set 2 Deluxe",
@@ -416,11 +417,12 @@
       "folio-blush": "Folio rodnad",
       "mini-sofa-work-desk-inc": "Mini Sofa - Work Desk Inc.",
       "delux": "Delux",
-      "small": "Små",
+      "small": "Liten",
       "medium": "Medium",
       "large": "Stor",
-      "x-large": "Extra stor",
-      "another": "Ytterligare"
+      "x-large": "Extra Stor",
+      "another": "Ytterligare",
+      "furniture-set": "Möbler Set {{number}}"
     },
     "others": {
       "view_less": "Se mindre",
@@ -2393,8 +2395,28 @@
         "payment_method_selector_no_alternative_payment": "Ingen ersättningsmetod",
         "replace_method_with_new_method_description": "Din {{currentPaymentMethodName}} kommer att raderas och ersättas med din {{newPaymentMethodName}}.",
         "error_when_deleting": "Vi ber om ursäkt men något gick fel och vi kunde inte ta bort denna betalningsmetod. Försök igen senare eller uppdatera sidan.",
-        "delete_and_replace_button": "Ta bort och ersätt"
+        "delete_and_replace_button": "Ta bort och ersätt",
+        "delete_and_replace_button_accessibility_label": "Bort {{currentPaymentMethodName}} och ersätt med {{newPaymentMethodName}}.",
+        "deleted_successfully": "Betalningsmetod raderas framgångsrikt.",
+        "loading_available_payment_methods_accessibility_label": "Laddar tillgängliga betalningsmetoder"
       }
+    },
+    "payment_method_brands": {
+      "visa": "Visum",
+      "mastercard": "Mastercard",
+      "shoppay": "Handla Betala",
+      "applepay": "Apple Pay",
+      "googlepay": "Google Pay",
+      "paypal": "PayPal"
+    },
+    "shop_policies": {
+      "legal_notice": "Rättsligt meddelande",
+      "privacy_policy": "Sekretesspolicy",
+      "refund_policy": "Återbetalningspolicy",
+      "shipping_policy": "Fraktpolicy",
+      "subscription_policy": "Prenumerationspolicy",
+      "terms_of_sale": "Försäljningsvillkor",
+      "terms_of_service": "Användarvillkor"
     }
   }
 }

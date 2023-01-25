@@ -83,39 +83,40 @@
   },
   "sections": {
     "map": {
-      "get_directions": "Få vejledninger",
+      "get_directions": "Få rutevejledning",
       "address_error": "Fejl ved at slå den adresse op",
-      "address_no_results": "Ingen resultater for denne adresse",
-      "address_query_limit_html": "Du har overskredet Google API -brugsgrænsen. Overvej at opgradere til en <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
-      "auth_error_html": "Der var et problem, der godkendte din Google Maps -konto. Oprette og aktivere <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> og <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geokodning API<\/a> Tilladelser til din app."
+      "address_no_results": "Ingen resultater for den adresse",
+      "address_query_limit_html": "Du har overskredet grænsen for brug af Google API. Overvej at opgradere til en <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
+      "auth_error_html": "Der opstod et problem med at godkende din Google Maps-konto. Opret og aktiver <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> og <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocoding API<\/a> tilladelser til din app."
     },
     "slideshow": {
-      "play_slideshow": "Spil lysbilledshow",
-      "pause_slideshow": "Pause slideshow"
+      "play_slideshow": "Spille",
+      "pause_slideshow": "Pause"
     }
   },
   "strings": {
     "option_name": {
       "color": "Farve",
-      "internal-panels-color": "Interne paneler farve",
+      "internal-panels-color": "Interne Paneler Farve",
       "furniture": "Møbel",
-      "inside-color": "Inde i farve",
-      "interior-color": "Indvendig farve",
-      "size": "Størrelse"
+      "inside-color": "Indvendig Farve",
+      "interior-color": "Indvendig Farve",
+      "size": "Størrelse",
+      "option": "Møbel"
     },
     "option_value": {
-      "white": "hvid",
+      "white": "Hvid",
       "black": "Sort",
       "wooden": "Sort \/ Træ Print",
       "dark-green": "Mørkegrøn",
-      "orange": "orange",
-      "light-grey": "Lysegrå",
+      "orange": "Orange",
+      "light-grey": "Lys Grå",
       "dark-gray": "Mørkegrå",
       "dark-grey": "Mørkegrå",
-      "no-furniture": "Ingen møbler",
-      "furniture-set-1": "Møbler sæt 1",
-      "furniture-set-2": "Møbler sæt 2",
-      "furniture-set-3": "Møbler sæt 3",
+      "no-furniture": "Ingen Møbler",
+      "furniture-set-1": "Møbler Sæt 1",
+      "furniture-set-2": "Møbler Sæt 2",
+      "furniture-set-3": "Møbler Sæt 3",
       "with-furniture": "Med møbler",
       "furniture-set-1-standard": "Møbler sæt 1 Standard",
       "furniture-set-2-deluxe": "Møbler sæt 2 deluxe",
@@ -127,12 +128,13 @@
       "folio-pebble-grey": "Folio Pebble Gray",
       "folio-blush": "Folio rødme",
       "mini-sofa-work-desk-inc": "Mini Sofa - Work Desk Inc.",
-      "delux": "Delux",
-      "small": "Lille",
+      "delux": "Helly Hansen",
+      "small": "Små",
       "medium": "Medium",
       "large": "Stor",
-      "x-large": "Ekstra stor",
-      "another": "Endnu"
+      "x-large": "Ekstra Stor",
+      "another": "Endnu",
+      "furniture-set": "Møbler Sæt {{number}}"
     },
     "others": {
       "view_less": "Se mindre",
@@ -2393,8 +2395,28 @@
         "payment_method_selector_no_alternative_payment": "Ingen udskiftningsmetode",
         "replace_method_with_new_method_description": "Din {{currentPaymentMethodName}} vil blive slettet og erstattet med din {{newPaymentMethodName}}.",
         "error_when_deleting": "Vi undskylder, men noget gik galt, og vi kunne ikke slette denne betalingsmetode. Prøv igen senere, eller opdater siden.",
-        "delete_and_replace_button": "Slet og erstat"
+        "delete_and_replace_button": "Slet og erstat",
+        "delete_and_replace_button_accessibility_label": "Slette {{currentPaymentMethodName}} og erstatte med {{newPaymentMethodName}}.",
+        "deleted_successfully": "Betalingsmetode slettet med succes.",
+        "loading_available_payment_methods_accessibility_label": "Indlæser tilgængelige betalingsmetoder"
       }
+    },
+    "payment_method_brands": {
+      "visa": "Visa",
+      "mastercard": "Mastercard",
+      "shoppay": "Shop Pay",
+      "applepay": "Apple Pay",
+      "googlepay": "Google Pay",
+      "paypal": "PayPal"
+    },
+    "shop_policies": {
+      "legal_notice": "Juridisk meddelelse",
+      "privacy_policy": "Fortrolighedspolitik",
+      "refund_policy": "Refusionspolitik",
+      "shipping_policy": "Forsendelse Politik",
+      "subscription_policy": "Abonnementspolitik",
+      "terms_of_sale": "Salgsbetingelser",
+      "terms_of_service": "Servicevilkår"
     }
   }
 }

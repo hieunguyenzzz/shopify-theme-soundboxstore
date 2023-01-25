@@ -83,15 +83,15 @@
   },
   "sections": {
     "map": {
-      "get_directions": "De weg vragen",
-      "address_error": "Fout op zoek naar dat adres",
-      "address_no_results": "Geen resultaten voor dat adres",
-      "address_query_limit_html": "U hebt de Google API -gebruikslimiet overschreden. Overweeg om te upgraden naar een <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium plan<\/a>.",
-      "auth_error_html": "Er was een probleem met het verifiëren van uw Google Maps -account. Maak en schakel de <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> en <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocodering API<\/a> Machtigingen van uw app."
+      "get_directions": "Get directions",
+      "address_error": "Fout bij het opzoeken van dat adres",
+      "address_no_results": "Geen resultaten voor dit adres",
+      "address_query_limit_html": "U hebt de Google API-gebruikslimiet overschreden. Overweeg om te upgraden naar een <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
+      "auth_error_html": "Er is een probleem opgetreden bij het verifiëren van uw Google Maps-account. Maken en inschakelen van de <a href=\"https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key\">JavaScript API<\/a> en <a href=\"https:\/\/developers.google.com\/maps\/documentation\/geocoding\/get-api-key\">Geocoding API<\/a> machtigingen van uw app."
     },
     "slideshow": {
-      "play_slideshow": "Speel diavoorstelling",
-      "pause_slideshow": "Pauze diavoorstelling"
+      "play_slideshow": "Diavoorstelling afspelen",
+      "pause_slideshow": "Diavoorstelling pauzeren"
     }
   },
   "blogs": {
@@ -385,21 +385,22 @@
   "strings": {
     "option_name": {
       "color": "Kleur",
-      "internal-panels-color": "Interne panelen kleur",
-      "furniture": "Meubilair",
-      "inside-color": "Binnenkleur",
-      "interior-color": "Interieurkleur",
-      "size": "Maat"
+      "internal-panels-color": "Interne Panelen Kleur",
+      "furniture": "Meubel",
+      "inside-color": "Binnen Kleur",
+      "interior-color": "Interieur Kleur",
+      "size": "Grootte",
+      "option": "Meubel"
     },
     "option_value": {
       "white": "Wit",
       "black": "Zwart",
       "wooden": "Zwart \/ Hout Print",
       "dark-green": "Donkergroen",
-      "orange": "Oranje",
-      "light-grey": "Lichtgrijs",
+      "orange": "Sinaasappel",
+      "light-grey": "Licht Grijs",
       "dark-gray": "Donkergrijs",
-      "no-furniture": "Geen meubels",
+      "no-furniture": "Geen Meubels",
       "furniture-set-1": "Meubelset 1",
       "furniture-set-2": "Meubelset 2",
       "furniture-set-3": "Meubelset 3",
@@ -407,7 +408,7 @@
       "furniture-set-1-standard": "Meubelset 1 standaard",
       "furniture-set-2-deluxe": "Meubels set 2 deluxe",
       "furniture-set-2-delux": "Meubels set 2 deluxe",
-      "dark-grey": "Donker grijs",
+      "dark-grey": "Donker Grijs",
       "mini-sofa-work-desk": "Mini Sofa Work Desk",
       "folio-dark-grey": "Folio donkergrijs",
       "folio-dusty-teal": "Folio stoffig groenblauw",
@@ -415,12 +416,13 @@
       "folio-pebble-grey": "Folio Pebble Gray",
       "folio-blush": "Folio blozen",
       "mini-sofa-work-desk-inc": "Mini Sofa - Work Desk Inc.",
-      "delux": "Luxe",
+      "delux": "Delux",
       "small": "Klein",
       "medium": "Medium",
-      "large": "Groot",
-      "x-large": "Extra groot",
-      "another": "Ander"
+      "large": "Grote",
+      "x-large": "Extra Groot",
+      "another": "Ander",
+      "furniture-set": "Meubels Set {{number}}"
     },
     "others": {
       "view_less": "Bekijk minder",
@@ -2393,8 +2395,28 @@
         "payment_method_selector_no_alternative_payment": "Geen vervangende methode",
         "replace_method_with_new_method_description": "Uw {{currentPaymentMethodName}} zal worden verwijderd en vervangen door uw {{newPaymentMethodName}}.",
         "error_when_deleting": "Onze excuses, maar er ging iets mis en we konden deze betaalmethode niet verwijderen. Probeer het later opnieuw of vernieuw de pagina.",
-        "delete_and_replace_button": "Verwijderen en vervangen"
+        "delete_and_replace_button": "Verwijderen en vervangen",
+        "delete_and_replace_button_accessibility_label": "Verwijderen {{currentPaymentMethodName}} vervangen door {{newPaymentMethodName}}.",
+        "deleted_successfully": "Betaalmethode succesvol verwijderd.",
+        "loading_available_payment_methods_accessibility_label": "Laden van beschikbare betaalmethoden"
       }
+    },
+    "payment_method_brands": {
+      "visa": "Visum",
+      "mastercard": "Mastercard",
+      "shoppay": "Shop Pay",
+      "applepay": "Apple Pay",
+      "googlepay": "Google Pay",
+      "paypal": "PayPal"
+    },
+    "shop_policies": {
+      "legal_notice": "Juridische kennisgeving",
+      "privacy_policy": "Privacybeleid",
+      "refund_policy": "Teruggavebeleid",
+      "shipping_policy": "Verzendbeleid",
+      "subscription_policy": "Abonnementsbeleid",
+      "terms_of_sale": "Verkoopsvoorwaarden",
+      "terms_of_service": "Servicevoorwaarden"
     }
   }
 }
