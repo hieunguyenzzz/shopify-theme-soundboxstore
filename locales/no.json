@@ -1045,43 +1045,43 @@
             "one": "Lagt",
             "other": "%{count} lagt"
           },
-          "removed": "Fjernet",
-          "subtracted": "%{count} fjernet"
+          "removed": "Fjerne",
+          "subtracted": "%{count} fjerne"
         },
-        "additional_payment_requested": "Betaling av %{total_outstanding} trengs",
-        "checkout_review_and_pay": "Din bestilling %{order_name} ble oppdatert. Gjennomgå disse endringene, og betal for å bekrefte bestillingen din.",
-        "order_updated_on": "Bestillingen din ble oppdatert på %{last_edited_at}.",
-        "order_review_and_pay": "Bestillingen din ble oppdatert. Gjennomgå og betal for å bekrefte bestillingen din.",
+        "additional_payment_requested": "Betaling av %{total_outstanding} er nødvendig",
+        "checkout_review_and_pay": "Din forespørsel %{order_name} ble oppdatert. Gå gjennom disse endringene, og betal deretter for å bekrefte bestillingen.",
+        "order_updated_on": "Din handlekurv ble oppdatert %{last_edited_at}.",
+        "order_review_and_pay": "Din handlekurv ble oppdatert. Gå gjennom og betal for å bekrefte bestillingen.",
         "pay_now": "Betal nå"
       },
       "change_currency": {
         "currency_button_label": "%{currency} (%{currency_symbol})",
-        "credit_card_will_be_charged_html": "Kredittkortet ditt blir belastet %{amount}",
+        "credit_card_will_be_charged_html": "Kredittkortet ditt vil bli belastet %{amount}",
         "payment_total_label": "Betaling totalt",
         "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
         "change_currency_link": "Endre til %{currency_name}",
-        "card_provider_fx_charges_warning": "Kortleverandøren din kan kreve gebyrer på %{currency_code} Transaksjoner.",
-        "currency_not_supported_by_shop": "Valutaen du valgte er ikke lenger tilgjengelig. Alle prisene er nå i %{currency_code}."
+        "card_provider_fx_charges_warning": "Kortleverandøren din kan kreve gebyrer på %{currency_code} valutatransaksjoner.",
+        "currency_not_supported_by_shop": "Valutaen du valgte er ikke lenger tilgjengelig. Alle priser er nå i %{currency_code}."
       },
       "change_country": {
-        "cart_updated_based_on_country": "Vognen din er oppdatert basert på ditt rederi."
+        "cart_updated_based_on_country": "Handlekurven din er oppdatert basert på fraktlandet ditt."
       },
       "tips": {
         "title": "Legg til tips",
-        "description": "Vis din støtte til teamet på %{shop_name}",
-        "presets_description": "Velg en tips prosentandel",
+        "description": "Vis din støtte til laget på %{shop_name}",
+        "presets_description": "Velg en tipsprosent",
         "custom_label": "Tilpasset tips",
         "add_tip": "Legg til tips",
         "update_tip": "Oppdater tips",
         "message": "Takk, vi setter pris på det",
         "preset_label": "%{tip_percent}%",
-        "no_tip_label": "Ingen"
+        "no_tip_label": "Ingenting"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
           "zero": "Kjøp %{product_name}",
-          "one": "Kjøp %{product_name} og %{count} annet vare",
-          "other": "Kjøp %{product_name} og %{count} andre gjenstander"
+          "one": "Kjøp %{product_name} og %{count} annet element",
+          "other": "Kjøp %{product_name} og %{count} andre varer"
         }
       },
       "subscriptions": {
@@ -1108,24 +1108,24 @@
         "recurring_totals_with_policies": {
           "first_cycles": {
             "one": "Første betaling %{total_price}",
-            "other": "Først %{count} betalinger %{total_price} Hver"
+            "other": "Første %{count} betaling %{total_price} hver"
           },
           "following_cycles": ", deretter %{total_price} hver %{interval}"
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "one": ", deretter %{count} betaling kl %{total_price}",
-            "other": ", deretter %{count} betalinger på %{total_price} Hver"
+            "one": ", deretter %{count} betaling ved påmelding %{total_price}",
+            "other": ", deretter %{count} betaling ved påmelding %{total_price} hver"
           }
         }
       },
       "customer_payment_methods": {
-        "page_title": "Betalingsmetoder",
-        "title": "Betalingsmetoder",
-        "update_card_button_label": "Oppdateringskort",
+        "page_title": "Betalingsmetode",
+        "title": "Betalingsmetode",
+        "update_card_button_label": "Oppdater kort",
         "delete_customer_mandate": {
-          "generic_error": "Det var et problem som behandler forespørselen din.",
-          "success_message": "Betalingsmetoden din er slettet vellykket"
+          "generic_error": "Det oppstod et problem under behandlingen av forespørselen din.",
+          "success_message": "Betalingsmåten din har blitt slettet"
         }
       },
       "contextual_availability": {
@@ -1142,10 +1142,13 @@
           "other": "Disse produktene er ikke tilgjengelige i ditt land \/ område."
         },
         "unavailable_label": "Utilgjengelig"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Landet \/ regionen din har blitt oppdatert. Skriv inn leveringsadressen din for å fortsette kassen."
       }
     },
     "pagination": {
-      "previous": "Tidligere",
+      "previous": "Forrige",
       "next": "Neste"
     },
     "links": {

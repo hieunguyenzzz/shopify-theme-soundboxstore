@@ -1418,9 +1418,97 @@
           "added": {
             "one": "Ajouter",
             "other": "%{count} ajouter"
+          },
+          "removed": "Retiré",
+          "subtracted": "%{count} retiré"
+        },
+        "additional_payment_requested": "Paiement de %{total_outstanding} est nécessaire",
+        "checkout_review_and_pay": "Votre commande %{order_name} a été mis à jour. Passez en revue ces modifications, puis payez pour confirmer votre commande.",
+        "order_updated_on": "Votre commande a été mise à jour le %{last_edited_at}.",
+        "order_review_and_pay": "Votre commande a été mise à jour. Vérifiez et payez pour confirmer votre commande.",
+        "pay_now": "Payez maintenant"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Votre carte de crédit sera débitée %{amount}",
+        "payment_total_label": "Total des paiements",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Changer pour %{currency_name}",
+        "card_provider_fx_charges_warning": "Votre fournisseur de carte peut facturer des frais sur %{currency_code} transaction.",
+        "currency_not_supported_by_shop": "La devise que vous avez sélectionnée n'est plus disponible. Tous les prix sont maintenant en %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Votre panier a été mis à jour en fonction de votre pays de livraison."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Votre pays \/ région a été mis à jour. Entrez votre adresse de livraison pour continuer le paiement."
+      },
+      "tips": {
+        "title": "Ajouter un pourboire",
+        "description": "Montrez votre soutien à l'équipe à %{shop_name}",
+        "presets_description": "Sélectionnez un pourcentage de pourboire",
+        "custom_label": "Astuce personnalisée",
+        "add_tip": "Ajouter un pourboire",
+        "update_tip": "Astuce de mise à jour",
+        "message": "Merci, nous l'apprécions",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Aucun"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Achat %{product_name}",
+          "one": "Achat %{product_name} et %{count} autre article",
+          "other": "Achat %{product_name} et %{count} autres articles"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "jour",
+            "other": "%{count} jour"
+          },
+          "week": {
+            "one": "semaine",
+            "other": "%{count} semaine"
+          },
+          "month": {
+            "one": "mois",
+            "other": "%{count} mois"
+          },
+          "year": {
+            "one": "an",
+            "other": "%{count} an"
+          }
+        },
+        "recurring_totals": "%{total_price} chacun %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Premier paiement %{total_price_with_discount}, puis %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Premier paiement %{total_price}",
+            "other": "Premier %{count} paiement %{total_price} chacun"
+          },
+          "following_cycles": ", puis %{total_price} chacun %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", puis %{count} paiement à %{total_price}",
+            "other": ", puis %{count} paiements à %{total_price} chacun"
           }
         }
+      },
+      "customer_payment_methods": {
+        "page_title": "Modes de paiement",
+        "title": "Modes de paiement",
+        "update_card_button_label": "Carte de mise à jour",
+        "delete_customer_mandate": {
+          "generic_error": "Un problème est survenu lors du traitement de votre demande.",
+          "success_message": "Votre mode de paiement a été supprimé avec succès"
+        }
       }
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Prochain"
     }
   }
 }

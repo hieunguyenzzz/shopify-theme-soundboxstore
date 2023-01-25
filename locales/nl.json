@@ -1411,7 +1411,91 @@
           "added": {
             "one": "Toegevoegd",
             "other": "%{count} toegevoegd"
+          },
+          "removed": "Verwijderd",
+          "subtracted": "%{count} verwijderd"
+        },
+        "additional_payment_requested": "Betaling van %{total_outstanding} is nodig",
+        "checkout_review_and_pay": "Uw bestelling %{order_name} werd bijgewerkt. Controleer deze wijzigingen en betaal vervolgens om uw bestelling te bevestigen.",
+        "order_updated_on": "Uw bestelling is bijgewerkt op %{last_edited_at}.",
+        "order_review_and_pay": "Uw bestelling is bijgewerkt. Controleer en betaal om uw bestelling te bevestigen.",
+        "pay_now": "Betaal nu"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Uw creditcard wordt in rekening gebracht %{amount}",
+        "payment_total_label": "Totaal betaling",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Wijzigen naar %{currency_name}",
+        "card_provider_fx_charges_warning": "Uw kaartaanbieder kan kosten in rekening brengen op %{currency_code} transactie.",
+        "currency_not_supported_by_shop": "De door u geselecteerde valuta is niet meer beschikbaar. Alle prijzen zijn nu in %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Uw winkelwagen is bijgewerkt op basis van uw verzendland."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Uw land\/regio is bijgewerkt. Voer uw verzendadres in om verder te gaan met afrekenen."
+      },
+      "tips": {
+        "title": "Tip toevoegen",
+        "description": "Toon uw steun aan het team op %{shop_name}",
+        "presets_description": "Selecteer een fooi percentage",
+        "custom_label": "Aangepaste tip",
+        "add_tip": "Tip toevoegen",
+        "update_tip": "Update tip",
+        "message": "Bedankt, We waarderen het",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Niemand"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Aankoop %{product_name}",
+          "one": "Aankoop %{product_name} en %{count} ander punt",
+          "other": "Aankoop %{product_name} en %{count} andere items"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "dag",
+            "other": "%{count} dag"
+          },
+          "week": {
+            "one": "week",
+            "other": "%{count} week"
+          },
+          "month": {
+            "one": "maand",
+            "other": "%{count} maandenlang"
+          },
+          "year": {
+            "one": "jaar",
+            "other": "%{count} jarenlang"
           }
+        },
+        "recurring_totals": "%{total_price} elke %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Eerste betaling %{total_price_with_discount}, dan %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Eerste betaling %{total_price}",
+            "other": "Allereerst %{count} betaling %{total_price} elke"
+          },
+          "following_cycles": ", dan %{total_price} elke %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", dan %{count} betaling bij %{total_price}",
+            "other": ", dan %{count} betalingen bij %{total_price} elke"
+          }
+        }
+      },
+      "customer_payment_methods": {
+        "page_title": "Betaalmethode",
+        "title": "Betaalmethode",
+        "update_card_button_label": "Update kaart",
+        "delete_customer_mandate": {
+          "generic_error": "Er was een probleem met het verwerken van uw verzoek.",
+          "success_message": "Uw betaalmethode is succesvol verwijderd"
         }
       }
     },
@@ -1419,6 +1503,10 @@
       "words_connector": ", ",
       "two_words_connector": " en ",
       "last_word_connector": ", en "
+    },
+    "pagination": {
+      "previous": "Vorig",
+      "next": "Volgend"
     }
   }
 }

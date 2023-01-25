@@ -1413,7 +1413,91 @@
           "added": {
             "one": "Aktualisiert",
             "other": "%{count} aktualisiert"
+          },
+          "removed": "Entfernen",
+          "subtracted": "%{count} entfernen"
+        },
+        "additional_payment_requested": "Zahlung von %{total_outstanding} wird benötigt",
+        "checkout_review_and_pay": "Ihre Bestellung %{order_name} wurde aktualisiert. Überprüfen Sie diese Änderungen und zahlen Sie dann, um Ihre Bestellung zu bestätigen.",
+        "order_updated_on": "Ihre Bestellung wurde aktualisiert am %{last_edited_at}.",
+        "order_review_and_pay": "Ihre Bestellung wurde aktualisiert. Überprüfen und bezahlen Sie, um Ihre Bestellung zu bestätigen.",
+        "pay_now": "Jetzt bezahlen"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Ihre Kreditkarte wird belastet %{amount}",
+        "payment_total_label": "Zahlung gesamt",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Wechseln zu %{currency_name}",
+        "card_provider_fx_charges_warning": "Ihr Kartenanbieter erhebt möglicherweise Gebühren für %{currency_code} Transaktion.",
+        "currency_not_supported_by_shop": "Die von Ihnen ausgewählte Währung ist nicht mehr verfügbar. Alle Preise sind jetzt in %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Ihr Warenkorb wurde basierend auf Ihrem Lieferland aktualisiert."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Ihr Land\/Ihre Region wurde aktualisiert. Geben Sie Ihre Lieferadresse ein, um mit der Kaufabwicklung fortzufahren."
+      },
+      "tips": {
+        "title": "Tipp hinzufügen",
+        "description": "Zeigen Sie Ihre Unterstützung für das Team bei %{shop_name}",
+        "presets_description": "Wählen Sie einen Trinkgeldprozentsatz aus",
+        "custom_label": "Benutzerdefinierter Tipp",
+        "add_tip": "Tipp hinzufügen",
+        "update_tip": "Update-Tipp",
+        "message": "Danke, wir wissen es zu schätzen",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Kein"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Kauf %{product_name}",
+          "one": "Kauf %{product_name} und %{count} anderer Artikel",
+          "other": "Kauf %{product_name} und %{count} andere Gegenstände"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "Tag",
+            "other": "%{count} Days"
+          },
+          "week": {
+            "one": "Woche",
+            "other": "%{count} wochenlang"
+          },
+          "month": {
+            "one": "Monat",
+            "other": "%{count} Monat"
+          },
+          "year": {
+            "one": "Jahr",
+            "other": "%{count} jahrelang"
           }
+        },
+        "recurring_totals": "%{total_price} jeder %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Erste Zahlung %{total_price_with_discount}, dann %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Erste Zahlung %{total_price}",
+            "other": "Erst %{count} Direktzahlungen %{total_price} jeder"
+          },
+          "following_cycles": ", dann %{total_price} jeder %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", dann %{count} zahlung bei %{total_price}",
+            "other": ", dann %{count} zahlungen bei %{total_price} jeder"
+          }
+        }
+      },
+      "customer_payment_methods": {
+        "page_title": "Zahlungsmethoden",
+        "title": "Zahlungsmethoden",
+        "update_card_button_label": "Karte aktualisieren",
+        "delete_customer_mandate": {
+          "generic_error": "Bei der Bearbeitung Ihrer Anfrage ist ein Problem aufgetreten.",
+          "success_message": "Ihre Zahlungsmethode wurde erfolgreich gelöscht"
         }
       }
     },
@@ -1421,6 +1505,10 @@
       "words_connector": ", ",
       "two_words_connector": " und ",
       "last_word_connector": ", und "
+    },
+    "pagination": {
+      "previous": "Vorherigen",
+      "next": "Nächsten"
     }
   }
 }

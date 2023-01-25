@@ -1415,9 +1415,97 @@
           "added": {
             "one": "Lisätä",
             "other": "%{count} lisätä"
+          },
+          "removed": "Poistaa",
+          "subtracted": "%{count} poistaa"
+        },
+        "additional_payment_requested": "Maksaminen %{total_outstanding} tarvitaan",
+        "checkout_review_and_pay": "Tilauksesi %{order_name} päivitetty. Tarkista nämä muutokset ja maksa sitten vahvistaaksesi tilauksesi.",
+        "order_updated_on": "Tilauksesi on päivitetty %{last_edited_at}.",
+        "order_review_and_pay": "Tilauksesi on päivitetty. Tarkista ja maksa vahvistaaksesi tilauksesi.",
+        "pay_now": "Maksa nyt"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Luottokortiltasi veloitetaan %{amount}",
+        "payment_total_label": "Maksu yhteensä",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Muuta %{currency_name}",
+        "card_provider_fx_charges_warning": "Korttisi tarjoaja voi veloittaa maksuja %{currency_code} toimet.",
+        "currency_not_supported_by_shop": "Valitsemasi valuutta ei ole enää käytettävissä. Kaikki hinnat ovat nyt in %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Ostoskorisi on päivitetty toimitusmaasi perusteella."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Maasi \/ alueesi on päivitetty. Syötä toimitusosoitteesi jatkaaksesi kassalle."
+      },
+      "tips": {
+        "title": "Lisää vihje",
+        "description": "Näytä tukesi tiimille osoitteessa %{shop_name}",
+        "presets_description": "Valitse tippiprosentti",
+        "custom_label": "Oma vinkki",
+        "add_tip": "Lisää vihje",
+        "update_tip": "Päivitysvinkki",
+        "message": "Kiitos, arvostamme sitä.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Kukaan"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Ostaa %{product_name}",
+          "one": "Ostaa %{product_name} ja %{count} muut erät",
+          "other": "Ostaa %{product_name} ja %{count} muut erät"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "päivä",
+            "other": "%{count} päivä"
+          },
+          "week": {
+            "one": "viikko",
+            "other": "%{count} viikkoa"
+          },
+          "month": {
+            "one": "kuukausi",
+            "other": "%{count} kuukausi"
+          },
+          "year": {
+            "one": "vuosi",
+            "other": "%{count} vuotiaat"
+          }
+        },
+        "recurring_totals": "%{total_price} jokainen %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Ensimmäinen maksu %{total_price_with_discount}, sitten %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Ensimmäinen maksu %{total_price}",
+            "other": "Ensimmäinen %{count} maksu %{total_price} kunkin"
+          },
+          "following_cycles": ", sitten %{total_price} jokainen %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", sitten %{count} maksu %{total_price}",
+            "other": ", sitten %{count} maksut %{total_price} kunkin"
           }
         }
+      },
+      "customer_payment_methods": {
+        "page_title": "Maksutapa",
+        "title": "Maksutapa",
+        "update_card_button_label": "Päivityskortti",
+        "delete_customer_mandate": {
+          "generic_error": "Pyyntöäsi käsiteltiin.",
+          "success_message": "Maksutapasi on poistettu onnistuneesti"
+        }
       }
+    },
+    "pagination": {
+      "previous": "Edellinen",
+      "next": "Seuraava"
     }
   }
 }

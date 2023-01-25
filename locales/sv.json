@@ -1411,7 +1411,91 @@
           "added": {
             "one": "Lagt",
             "other": "%{count} lagt"
+          },
+          "removed": "Bort",
+          "subtracted": "%{count} bort"
+        },
+        "additional_payment_requested": "Betalning av %{total_outstanding} behövs",
+        "checkout_review_and_pay": "Din beställning %{order_name} uppdaterades. Granska dessa ändringar och betala sedan för att bekräfta din beställning.",
+        "order_updated_on": "Din beställning uppdaterades den %{last_edited_at}.",
+        "order_review_and_pay": "Din beställning uppdaterades. Granska och betala för att bekräfta din beställning.",
+        "pay_now": "Betala nu"
+      },
+      "change_currency": {
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "credit_card_will_be_charged_html": "Ditt kreditkort debiteras %{amount}",
+        "payment_total_label": "Betalning totalt",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Ändra till %{currency_name}",
+        "card_provider_fx_charges_warning": "Din kortleverantör kan ta ut avgifter på %{currency_code} transaktioner.",
+        "currency_not_supported_by_shop": "Valutan du valt är inte längre tillgänglig. Alla priser är nu i %{currency_code}."
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Din varukorg har uppdaterats baserat på ditt leveransland."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Ditt land \/ region har uppdaterats. Ange din leveransadress för att fortsätta kassan."
+      },
+      "tips": {
+        "title": "Lägg till tips",
+        "description": "Visa ditt stöd för teamet på %{shop_name}",
+        "presets_description": "Välj en tipsprocent",
+        "custom_label": "Anpassade tips",
+        "add_tip": "Lägg till tips",
+        "update_tip": "Uppdatera tips",
+        "message": "Tack, vi uppskattar det",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Ingen"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Köp %{product_name}",
+          "one": "Köp %{product_name} och %{count} annat föremål",
+          "other": "Köp %{product_name} och %{count} övriga artiklar"
+        }
+      },
+      "subscriptions": {
+        "recurring_total_intervals": {
+          "day": {
+            "one": "dag",
+            "other": "%{count} dag"
+          },
+          "week": {
+            "one": "vecka",
+            "other": "%{count} vecka"
+          },
+          "month": {
+            "one": "månad",
+            "other": "%{count} månad"
+          },
+          "year": {
+            "one": "år",
+            "other": "%{count} år"
           }
+        },
+        "recurring_totals": "%{total_price} varje %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Första betalningen %{total_price_with_discount}, sedan %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Första betalningen %{total_price}",
+            "other": "Första %{count} betalning %{total_price} varje"
+          },
+          "following_cycles": ", sedan %{total_price} varje %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", sedan %{count} betalning vid %{total_price}",
+            "other": ", sedan %{count} betalningar på %{total_price} varje"
+          }
+        }
+      },
+      "customer_payment_methods": {
+        "page_title": "Betalningsmetod",
+        "title": "Betalningsmetod",
+        "update_card_button_label": "Uppdatera kort",
+        "delete_customer_mandate": {
+          "generic_error": "Det var ett problem att behandla din begäran.",
+          "success_message": "Din betalningsmetod har tagits bort"
         }
       }
     },
@@ -1419,6 +1503,10 @@
       "words_connector": ", ",
       "two_words_connector": " och ",
       "last_word_connector": ", och "
+    },
+    "pagination": {
+      "previous": "Tidigare",
+      "next": "Nästa"
     }
   }
 }
