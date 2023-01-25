@@ -1516,32 +1516,34 @@
           "payment_status": "Betalingsstatus"
         },
         "delivered": "Levert {{date}}",
-        "empty_state_order_source_description": "Bare bestillinger plassert av {{email}} vil vises her.",
-        "empty_state_subtitle": "Gå til lagring for å legge inn en bestilling.",
+        "empty_state_order_source_description": "Kun ordre lagt inn av {{email}} vil vise her.",
+        "empty_state_subtitle": "Gå til butikken for å bestille.",
         "empty_state_title": "Ingen bestillinger ennå",
-        "estimated": "estimert {{date}}",
-        "estimated_delivery": "Forventet levering {{date}}",
+        "estimated": "Anslå {{date}}",
+        "estimated_delivery": "Estimert levering {{date}}",
         "one_images_accessibility_label": "Bestillingen inkluderer {{lineItemName1}}",
         "two_images_accessibility_label": "Bestillingen inkluderer {{lineItemName1}}, {{lineItemName2}}",
         "three_images_accessibility_label": "Bestillingen inkluderer {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
         "four_images_accessibility_label": "Bestillingen inkluderer {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
         "items": {
-          "one": "{{count}} punkt",
-          "other": "{{count}} gjenstander"
+          "one": "{{count}} element",
+          "other": "{{count}} element"
         },
-        "list_view": "Vis listevisning",
+        "list_view": "Vis i liste vis",
         "multiple_shipments": "Flere forsendelser",
-        "no_filtered_results_description": "Fjern eller juster filtre for å se ordrene dine",
+        "no_filtered_results_description": "Fjern eller juster filtre for å se bestillingene dine",
         "no_filtered_results_title": "Ingen filtrerte resultater",
-        "order_link": "Se bestilling {{name}}",
+        "order_link": "Vis ordre {{name}}",
         "order_number": "Rekkefølge {{name}}",
         "orders_title": "Bekreftet",
         "pagination": {
-          "nav_accessibility_label": "Bestiller navigasjonsknapper",
+          "nav_accessibility_label": "Bestillinger navigasjonsknapper",
           "next": "Neste",
-          "next_accessibility_label": "Neste bestillinger",
-          "previous": "Forrige",
-          "previous_accessibility_label": "Tidligere ordrer"
+          "next_accessibility_label": "Neste ordre",
+          "previous": "Forrige innlegg",
+          "previous_accessibility_label": "Tidligere ordre",
+          "load_more": "Last inn flere",
+          "load_more_accessibility_label": "Last inn flere ordre"
         },
         "sort_by": "Sorter etter: {{option}}",
         "sort_hide_options_accessibility_label": "Skjul sorteringsalternativer for bekreftede ordrer",
@@ -1578,8 +1580,12 @@
         "payment_status": {
           "list_view": {
             "overdue": "Betaling forfalt",
-            "due": "Betalings forfall {{date}}",
-            "due_today": "Betaling forfaller i dag"
+            "due": "Forfaller til betaling {{date}}",
+            "due_today": "Betaling forfaller i dag",
+            "due_without_date": "Forfaller til betaling",
+            "due_on_fulfillment": "Betaling på grunn av oppfyllelse",
+            "pay_to_confirm": "Betal for å bekrefte",
+            "payment_not_due": "Betaling ennå ikke forfalt"
           },
           "table_view": {
             "overdue": "Forfalt",
@@ -1587,6 +1593,21 @@
             "due_today": "Forfaller i dag",
             "paid": "Betalt"
           }
+        },
+        "empty_state_title_for_pending_orders": "Ingen ventende bestillinger",
+        "more_than_four_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, og {{numberOfAdditionalProducts}} flere produkter",
+        "plus_more_products": "+{{numberOfAdditionalProducts}} produkt",
+        "carousel": {
+          "one_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}, {{lineItemName3}} mengde {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}, {{lineItemName3}} mengde {{lineItemQuantity3}}, {{lineItemName4}} mengde {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}, {{lineItemName3}} mengde {{lineItemQuantity3}}, {{lineItemName4}} mengde {{lineItemQuantity4}}, {{lineItemName5}} mengde {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}, {{lineItemName3}} mengde {{lineItemQuantity3}}, {{lineItemName4}} mengde {{lineItemQuantity4}}, {{lineItemName5}} mengde {{lineItemQuantity5}}, {{lineItemName6}} mengde {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "Bestillingen inkluderer {{lineItemName1}} mengde {{lineItemQuantity1}}, {{lineItemName2}} mengde {{lineItemQuantity2}}, {{lineItemName3}} mengde {{lineItemQuantity3}}, {{lineItemName4}} mengde {{lineItemQuantity4}}, {{lineItemName5}} mengde {{lineItemQuantity5}}, {{lineItemName6}} mengde {{lineItemQuantity6}} og mer",
+          "view_order_details": "Vis ordredetaljer",
+          "previous": "Forrige",
+          "next": "Neste"
         }
       },
       "order_status": {
