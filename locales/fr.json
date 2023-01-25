@@ -1634,7 +1634,77 @@
         },
         "transaction_status": {
           "success": "Succès",
-          "pending": "Attente"
+          "pending": "Attente",
+          "failure": "Échec",
+          "error": "Erreur"
+        },
+        "cancel_reason": {
+          "declined": "Paiement refusé",
+          "inventory": "Articles indisponibles",
+          "fraud": "Commande frauduleuse",
+          "customer": "Commande modifiée\/annulée par le client",
+          "other": "Autre"
+        },
+        "cash_on_delivery": "Paiement à la livraison (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Vous ne pouvez qu'ajouter %{count} %{name} au panier.",
+        "too_many_items_in_cart": "Vous ne pouvez pas en ajouter plus %{name} au panier.",
+        "less_than_minimum": "Cet article a un minimum de %{min}.",
+        "more_than_maximum": "Cet article a un maximum de %{max}.",
+        "not_respect_step": "Vous ne pouvez ajouter cet article qu'en multiples de %{step}.",
+        "all_items_in_cart": "Tout %{count} %{name} sont dans votre panier.",
+        "empty_update": "impossible de mettre à jour le panier vide",
+        "missing_parameters": "aucun identifiant ou paramètre de ligne valide",
+        "generic_error": "Erreur de Panier",
+        "product_not_available": "Le produit n'est pas disponible",
+        "too_many_line_items_error": "Votre panier ne peut contenir plus de %{max} article.",
+        "link_expired": "Le lien a expiré",
+        "link_no_longer_exists": "Le lien n'existe plus.",
+        "stock_problems_html": "Un ou plusieurs articles ne sont plus disponibles. Nous avons fourni un <a href='%{link}'>panier mis à jour<\/a>.",
+        "changed": "Panier changé",
+        "items_changed": "Un ou plusieurs éléments ont changé.",
+        "product_sold_out": "Produit '%{name}'est déjà épuisé.",
+        "variant_not_found": "Impossible de trouver la variante",
+        "variant_requires_selling_plan": "La variante ne peut être achetée qu'avec un plan de vente.",
+        "selling_plan_not_available_for_company_locations": "Un seul achat unique est disponible pour les commandes B2B",
+        "digital_product_not_available_for_company_locations": "Cet article ne peut pas être ajouté à une commande B2B",
+        "selling_plan_not_applicable": "Impossible d'appliquer le plan de vente à la variante",
+        "shipping_address_not_required": "Ce panier ne nécessite pas d'expédition",
+        "shipping_address_invalid": "Il y a eu un problème de calcul de vos tarifs d'expédition. Continuez à passer à la caisse pour choisir un tarif d'expédition avant de terminer votre commande."
+      },
+      "storefront": {
+        "invalid_password": "Mot de passe incorrect, veuillez réessayer."
+      },
+      "tags": {
+        "add_articles": "Recherche étroite vers les articles ayant également une balise %{tag}",
+        "add_products": "Sélection étroite vers les produits tag correspondant %{tag}",
+        "remove_articles": "Élargir la recherche aux articles qui ne sont pas étiquetés %{tag}",
+        "remove_products": "Supprimer l'étiquette %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Merci de vous être inscrit à notre liste de diffusion.",
+        "disclaimer": "Vous pouvez vous désinscrire à tout moment.",
+        "unsubscribe": "Désabonner"
+      },
+      "unsubscribed": {
+        "confirmation": "Vous vous êtes désabonné de notre liste de diffusion.",
+        "disclaimer": "Vous ne recevrez plus de mises à jour marketing de notre part. Vous pouvez vous réabonner à tout moment.",
+        "preview": "Vous prévisualisez ce que les clients verront lorsqu'ils se désabonneront."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Vous avez opté pour le suivi des ouvertures par e-mail.<\/b>",
+          "visibility": "Les taux d'ouverture des e-mails seront signalés de manière anonyme. Nous ne verrons que si vous avez ouvert un e-mail dans le cadre d'un taux d'ouverture d'e-mail agrégé.",
+          "opt_out_html": "Tu peux <a style='text-decoration:underline;' href='%{link}'>se désinscrire<\/a> de suivi de l'ouverture des e-mails si vous ne souhaitez pas partager ces informations.",
+          "preview_bar": "Vous prévisualisez ce que les clients verront lorsqu'ils opteront pour le suivi des ouvertures par e-mail."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Vous avez désactivé le suivi de l'ouverture des e-mails.<\/b>",
+          "visibility": "Nous ne verrons pas si vous avez ouvert nos e-mails.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>S'inscrire<\/a> pour envoyer un suivi d'ouverture par e-mail."
         }
       }
     }

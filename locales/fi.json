@@ -1631,7 +1631,77 @@
         },
         "transaction_status": {
           "success": "Menestys",
-          "pending": "Vireillä"
+          "pending": "Vireillä",
+          "failure": "Vika",
+          "error": "Virhe"
+        },
+        "cancel_reason": {
+          "declined": "Maksu hylätty",
+          "inventory": "Kohteita ei saatavilla",
+          "fraud": "Petollinen tilaus",
+          "customer": "Asiakas muuttanut \/ peruuttanut tilauksen",
+          "other": "Muu"
+        },
+        "cash_on_delivery": "Käteinen toimitettaessa (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Voit vain lisätä %{count} %{name} kärryyn.",
+        "too_many_items_in_cart": "Et voi lisätä enempää %{name} kärryyn.",
+        "less_than_minimum": "Tämä kohde on vähintään %{min}.",
+        "more_than_maximum": "Tämä kohde on enintään %{max}.",
+        "not_respect_step": "Voit lisätä tämän kohteen vain kerrannaisina %{step}.",
+        "all_items_in_cart": "Kaikki %{count} %{name} ne ovat kärryssäsi.",
+        "empty_update": "tyhjää kärryä ei voi päivittää",
+        "missing_parameters": "ei voimassa olevaa id - tai linjaparametria",
+        "generic_error": "Kärryvirhe",
+        "product_not_available": "Tuotetta ei ole saatavilla",
+        "too_many_line_items_error": "Kärry ei voi sisältää enemmän kuin %{max} erä.",
+        "link_expired": "Linkki vanhentunut",
+        "link_no_longer_exists": "Linkkiä ei ole enää olemassa.",
+        "stock_problems_html": "Yhtä tai useampaa tuotetta ei ole enää saatavilla. Olemme toimittaneet <a href='%{link}'>päivitetty kori<\/a>.",
+        "changed": "Kärry muutettu",
+        "items_changed": "Yksi tai useampi kohde on muuttunut.",
+        "product_sold_out": "Tuote '%{name}\"on jo loppuunmyyty.",
+        "variant_not_found": "Varianttia ei löydy",
+        "variant_requires_selling_plan": "Variantin voi ostaa vain myyntisuunnitelmalla.",
+        "selling_plan_not_available_for_company_locations": "Vain kertaluonteinen osto on käytettävissä B2B tilauksia",
+        "digital_product_not_available_for_company_locations": "Tätä tuotetta ei voi lisätä B2B-tilaukseen",
+        "selling_plan_not_applicable": "Myyntisuunnitelmaa ei voida soveltaa Variantiin",
+        "shipping_address_not_required": "Tämä kärry ei vaadi toimitusta",
+        "shipping_address_invalid": "Kuljetushintojen laskemisessa oli ongelmia. Jatka kassalle valita toimitus hinta ennen kuin teet tilauksen."
+      },
+      "storefront": {
+        "invalid_password": "Salasana virheellinen, yritä uudelleen."
+      },
+      "tags": {
+        "add_articles": "Suppea haku artikkeleihin, joissa on myös tunniste %{tag}",
+        "add_products": "Kapea valinta tunnistetta vastaaviin tuotteisiin %{tag}",
+        "remove_articles": "Laajenna haku artikkeleihin, joita ei ole merkitty %{tag}",
+        "remove_products": "Poista tunniste %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Kiitos, että tilasit postituslistamme.",
+        "disclaimer": "Voit peruuttaa tilauksen milloin tahansa.",
+        "unsubscribe": "Peru tilaus"
+      },
+      "unsubscribed": {
+        "confirmation": "Poistit postituslistaltamme.",
+        "disclaimer": "Et saa enää markkinointipäivityksiä meiltä. Voit tilata uudelleen milloin tahansa.",
+        "preview": "Esikatselet, mitä asiakkaat näkevät, kun he lopettavat tilauksen."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Olet valinnut sähköpostin open tracking.<\/b>",
+          "visibility": "Sähköposti avoin hinnat ilmoitetaan nimettömänä. Näemme vain, jos olet avannut sähköpostin osana yhdistettyä sähköpostin avointa ratea.",
+          "opt_out_html": "Voit <a style='text-decoration:underline;' href='%{link}'>opt out<\/a> sähköpostin avoimen seurannan, jos et halua jakaa näitä tietoja.",
+          "preview_bar": "Esikatselet, mitä asiakkaat näkevät, kun he valitsevat sähköpostin open tracking."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Olet lopettanut sähköpostin avoimen seurannan.<\/b>",
+          "visibility": "Emme näe, oletko avannut sähköpostimme.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> sähköpostiin open tracking."
         }
       }
     }

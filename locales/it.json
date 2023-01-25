@@ -1631,7 +1631,77 @@
         },
         "transaction_status": {
           "success": "Successo",
-          "pending": "Attesa"
+          "pending": "Attesa",
+          "failure": "Fallimento",
+          "error": "Errore"
+        },
+        "cancel_reason": {
+          "declined": "Pagamento rifiutato",
+          "inventory": "Articoli non disponibili",
+          "fraud": "Ordine fraudolento",
+          "customer": "Cliente ha cambiato \/ annullato l'ordine",
+          "other": "Altri"
+        },
+        "cash_on_delivery": "Contrassegno (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Puoi solo aggiungere %{count} %{name} al carrello.",
+        "too_many_items_in_cart": "Non puoi aggiungere altro %{name} al carrello.",
+        "less_than_minimum": "Questo articolo ha un minimo di %{min}.",
+        "more_than_maximum": "Questo articolo ha un massimo di %{max}.",
+        "not_respect_step": "È possibile aggiungere questo elemento solo in multipli di %{step}.",
+        "all_items_in_cart": "Tutto %{count} %{name} sono nel tuo carrello.",
+        "empty_update": "impossibile aggiornare il carrello vuoto",
+        "missing_parameters": "nessun id valido o parametro di linea",
+        "generic_error": "Errore carrello",
+        "product_not_available": "Il prodotto non è disponibile",
+        "too_many_line_items_error": "Il tuo carrello non può contenere più di %{max} elemento.",
+        "link_expired": "Link scaduto",
+        "link_no_longer_exists": "Il link non esiste più.",
+        "stock_problems_html": "Uno o più articoli non sono più disponibili. Abbiamo fornito un <a href='%{link}'>carrello aggiornato<\/a>.",
+        "changed": "Carrello cambiato",
+        "items_changed": "Uno o più elementi sono stati modificati.",
+        "product_sold_out": "Prodotto '%{name}\"è già sold out.",
+        "variant_not_found": "Impossibile trovare la variante",
+        "variant_requires_selling_plan": "La variante può essere acquistata solo con un piano di vendita.",
+        "selling_plan_not_available_for_company_locations": "Solo l'acquisto una tantum è disponibile per gli ordini B2B",
+        "digital_product_not_available_for_company_locations": "Questo articolo non può essere aggiunto a un ordine B2B",
+        "selling_plan_not_applicable": "Impossibile applicare il piano di vendita alla variante",
+        "shipping_address_not_required": "Questo carrello non richiede la spedizione",
+        "shipping_address_invalid": "C'è stato un problema nel calcolo delle tariffe di spedizione. Continua a effettuare il checkout per scegliere una tariffa di spedizione prima di completare l'ordine."
+      },
+      "storefront": {
+        "invalid_password": "Password errata, riprova."
+      },
+      "tags": {
+        "add_articles": "Ricerca stretta agli articoli che hanno anche tag %{tag}",
+        "add_products": "Selezione ristretta ai prodotti corrispondenti tag %{tag}",
+        "remove_articles": "Allarga la ricerca agli articoli che non sono taggati %{tag}",
+        "remove_products": "Rimuovi tag %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Grazie per esserti iscritto alla nostra mailing list.",
+        "disclaimer": "Puoi annullare l'iscrizione in qualsiasi momento.",
+        "unsubscribe": "Cancellarsi"
+      },
+      "unsubscribed": {
+        "confirmation": "Hai annullato l'iscrizione alla nostra mailing list.",
+        "disclaimer": "Non riceverai più aggiornamenti di marketing da noi. È possibile iscriversi di nuovo in qualsiasi momento.",
+        "preview": "Stai visualizzando in anteprima ciò che i clienti vedranno quando cancellano l'iscrizione."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Hai optato per e-mail open tracking.<\/b>",
+          "visibility": "I tassi di apertura delle e-mail verranno segnalati in modo anonimo. Vedremo solo se hai aperto un'e-mail come parte di un tasso di apertura e-mail aggregato.",
+          "opt_out_html": "Puoi <a style='text-decoration:underline;' href='%{link}'>rinuncia<\/a> di email open tracking se non si desidera condividere queste informazioni.",
+          "preview_bar": "Stai visualizzando in anteprima ciò che i clienti vedranno quando optano per l'e-mail open tracking."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Hai optato per il tracciamento aperto delle e-mail.<\/b>",
+          "visibility": "Non vedremo se hai aperto le nostre email.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> per e - mail open tracking."
         }
       }
     }

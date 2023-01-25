@@ -1634,7 +1634,77 @@
         },
         "transaction_status": {
           "success": "Erfolg",
-          "pending": "Anhängig"
+          "pending": "Anhängig",
+          "failure": "Scheitern",
+          "error": "Fehlermeldung"
+        },
+        "cancel_reason": {
+          "declined": "Zahlung abgelehnt",
+          "inventory": "Artikel nicht verfügbar",
+          "fraud": "Betrügerische Bestellung",
+          "customer": "Kunde hat Bestellung geändert \/ storniert",
+          "other": "Andere"
+        },
+        "cash_on_delivery": "Nachnahme (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Sie können nur hinzufügen %{count} %{name} in den Wagen.",
+        "too_many_items_in_cart": "Sie können nicht mehr hinzufügen %{name} in den Wagen.",
+        "less_than_minimum": "Dieser Artikel hat ein Minimum von %{min}.",
+        "more_than_maximum": "Dieser Artikel hat maximal %{max}.",
+        "not_respect_step": "Sie können diesen Artikel nur in Vielfachen von hinzufügen %{step}.",
+        "all_items_in_cart": "Aller %{count} %{name} sind in Ihrem Warenkorb.",
+        "empty_update": "leerer Warenkorb kann nicht aktualisiert werden",
+        "missing_parameters": "keine gültige ID oder Zeilenparameter",
+        "generic_error": "Warenkorb Fehler",
+        "product_not_available": "Produkt ist nicht verfügbar",
+        "too_many_line_items_error": "Ihr Warenkorb darf nicht mehr enthalten als %{max} Gegenst.",
+        "link_expired": "Link abgelaufen",
+        "link_no_longer_exists": "Link existiert nicht mehr.",
+        "stock_problems_html": "Ein oder mehrere Artikel sind nicht mehr verfügbar. Wir haben eine zur Verfügung gestellt <a href='%{link}'>aktualisierter Warenkorb<\/a>.",
+        "changed": "Warenkorb geändert",
+        "items_changed": "Ein oder mehrere Elemente haben sich geändert.",
+        "product_sold_out": "Produkt '%{name}' ist bereits ausverkauft.",
+        "variant_not_found": "Variante kann nicht gefunden werden",
+        "variant_requires_selling_plan": "Variant kann nur mit einem Verkaufsplan erworben werden.",
+        "selling_plan_not_available_for_company_locations": "Für B2B-Bestellungen ist nur ein einmaliger Kauf möglich",
+        "digital_product_not_available_for_company_locations": "Dieser Artikel kann nicht zu einer B2B-Bestellung hinzugefügt werden",
+        "selling_plan_not_applicable": "Verkaufsplan kann nicht auf Variante angewendet werden",
+        "shipping_address_not_required": "Dieser Warenkorb erfordert keinen Versand",
+        "shipping_address_invalid": "Es gab ein Problem bei der Berechnung Ihrer Versandkosten. Fahren Sie mit der Kasse fort, um einen Versandtarif auszuwählen, bevor Sie Ihre Bestellung abschließen."
+      },
+      "storefront": {
+        "invalid_password": "Passwort falsch, bitte versuchen Sie es erneut."
+      },
+      "tags": {
+        "add_articles": "Suche auf Artikel eingrenzen, die auch Tags haben %{tag}",
+        "add_products": "Auswahl einschränken auf Produkte, die zum Tag passen %{tag}",
+        "remove_articles": "Erweitern Sie die Suche auf Artikel, die nicht markiert sind %{tag}",
+        "remove_products": "Markierung entfernen %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Vielen Dank, dass Sie sich für unsere Mailingliste angemeldet haben.",
+        "disclaimer": "Sie können sich jederzeit wieder abmelden.",
+        "unsubscribe": "Abmelden"
+      },
+      "unsubscribed": {
+        "confirmation": "Sie haben sich von unserer Mailingliste abgemeldet.",
+        "disclaimer": "Sie erhalten keine Marketing-Updates mehr von uns. Sie können sich jederzeit wieder anmelden.",
+        "preview": "Sie sehen in der Vorschau, was Kunden sehen, wenn sie sich abmelden."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Sie haben sich für das E-Mail-Open-Tracking entschieden.<\/b>",
+          "visibility": "E-Mail-Öffnungsraten werden anonym gemeldet. Wir werden nur sehen, ob Sie eine E-Mail als Teil einer aggregierten E-Mail-Öffnungsrate geöffnet haben.",
+          "opt_out_html": "Sie können <a style='text-decoration:underline;' href='%{link}'>abmelden<\/a> von E-Mail-Tracking öffnen, wenn Sie diese Informationen nicht teilen möchten.",
+          "preview_bar": "Sie sehen in der Vorschau, was Kunden sehen, wenn sie sich für die E-Mail-Öffnungsverfolgung entscheiden."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Sie haben sich von der E-Mail-Öffnungsverfolgung abgemeldet.<\/b>",
+          "visibility": "Wir werden nicht sehen, ob Sie unsere E-Mails geöffnet haben.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Anmelden<\/a> um eine E-Mail zu senden, öffnen Sie das Tracking."
         }
       }
     }

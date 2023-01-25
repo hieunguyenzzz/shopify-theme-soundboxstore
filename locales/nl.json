@@ -1632,7 +1632,77 @@
         },
         "transaction_status": {
           "success": "Succesvol",
-          "pending": "Afwachting"
+          "pending": "Afwachting",
+          "failure": "Mislukking",
+          "error": "Fout"
+        },
+        "cancel_reason": {
+          "declined": "Betaling geweigerd",
+          "inventory": "Items niet beschikbaar",
+          "fraud": "Frauduleuze bestelling",
+          "customer": "Klant gewijzigde \/ geannuleerde bestelling",
+          "other": "Ander"
+        },
+        "cash_on_delivery": "Rembours (onder rembours)"
+      },
+      "cart": {
+        "only_n_items_available": "U kunt alleen toevoegen %{count} %{name} naar de kar.",
+        "too_many_items_in_cart": "Je kunt niet meer toevoegen %{name} naar de kar.",
+        "less_than_minimum": "Dit item heeft een minimum van %{min}.",
+        "more_than_maximum": "Dit item heeft een maximum van %{max}.",
+        "not_respect_step": "U kunt dit item alleen toevoegen in veelvouden van %{step}.",
+        "all_items_in_cart": "Al %{count} %{name} zijn in uw kar.",
+        "empty_update": "kan lege winkelwagen niet bijwerken",
+        "missing_parameters": "geen geldige id of regelparameter",
+        "generic_error": "Winkelwagen Fout",
+        "product_not_available": "Product is niet beschikbaar",
+        "too_many_line_items_error": "Uw winkelwagen kan niet meer bevatten dan %{max} item.",
+        "link_expired": "Link verlopen",
+        "link_no_longer_exists": "De Link bestaat niet meer.",
+        "stock_problems_html": "Een of meerdere artikelen zijn niet meer beschikbaar. We hebben een <a href='%{link}'>winkelwagen bijgewerkt<\/a>.",
+        "changed": "Winkelwagen gewijzigd",
+        "items_changed": "Een of meer items zijn veranderd.",
+        "product_sold_out": "Product '%{name}'is al uitverkocht.",
+        "variant_not_found": "Kan variant niet vinden",
+        "variant_requires_selling_plan": "Variant kan alleen worden gekocht met een verkoopplan.",
+        "selling_plan_not_available_for_company_locations": "Alleen eenmalige aankoop is beschikbaar voor B2B-bestellingen",
+        "digital_product_not_available_for_company_locations": "Dit artikel kan niet worden toegevoegd aan een B2B-bestelling",
+        "selling_plan_not_applicable": "Kan verkoopplan niet toepassen op variant",
+        "shipping_address_not_required": "Deze winkelwagen vereist geen verzending",
+        "shipping_address_invalid": "Er was een probleem met het berekenen van uw verzendtarieven. Ga verder met afrekenen om een verzendtarief te kiezen voordat u uw bestelling voltooit."
+      },
+      "storefront": {
+        "invalid_password": "Wachtwoord onjuist, probeer het opnieuw."
+      },
+      "tags": {
+        "add_articles": "Zoek naar artikelen die ook een tag hebben %{tag}",
+        "add_products": "Smalle selectie naar producten die overeenkomen met de tag %{tag}",
+        "remove_articles": "Zoek naar artikelen die niet zijn gelabeld %{tag}",
+        "remove_products": "Tag verwijderen %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Bedankt voor uw inschrijving op onze mailinglijst.",
+        "disclaimer": "U kunt zich op elk moment afmelden.",
+        "unsubscribe": "Uitschrijven"
+      },
+      "unsubscribed": {
+        "confirmation": "U heeft zich afgemeld van onze mailinglijst.",
+        "disclaimer": "U ontvangt geen marketingupdates meer van ons. U kunt zich op elk moment opnieuw abonneren.",
+        "preview": "U bekijkt wat klanten zien wanneer ze zich afmelden."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>U hebt zich aangemeld voor het e-mailen van open tracking.<\/b>",
+          "visibility": "E-mail open rates worden anoniem gemeld. We zien alleen of u een e-mail hebt geopend als onderdeel van een geaggregeerde openratio voor e-mails.",
+          "opt_out_html": "U kunt <a style='text-decoration:underline;' href='%{link}'>afzien<\/a> van e-mail open tracking als u deze informatie niet wilt delen.",
+          "preview_bar": "U bekijkt een voorbeeld van wat klanten zien wanneer ze zich aanmelden voor open tracking via e-mail."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>U hebt zich afgemeld voor e-mail open tracking.<\/b>",
+          "visibility": "We zullen niet zien of u onze e-mails hebt geopend.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt-in<\/a> om open tracking te e-mailen."
         }
       }
     }

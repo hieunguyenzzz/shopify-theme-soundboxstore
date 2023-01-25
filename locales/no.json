@@ -1281,68 +1281,71 @@
         },
         "cancel_reason": {
           "declined": "Betaling avvist",
-          "inventory": "Gjenstander som ikke er tilgjengelige",
-          "fraud": "Uredelig orden",
-          "customer": "Kunden endret\/kansellert ordre",
-          "other": "Annen"
+          "inventory": "Varer som ikke er tilgjengelige",
+          "fraud": "Bedragerisk bestilling",
+          "customer": "Kunde endret \/ kansellert ordre",
+          "other": "Andre"
         },
-        "cash_on_delivery": "Kontanter ved levering (COD)"
+        "cash_on_delivery": "Kontant Ved Levering (COD)"
       },
       "cart": {
         "only_n_items_available": "Du kan bare legge til %{count} %{name} til handlekurven.",
-        "too_many_items_in_cart": "Du kan ikke legge til mer %{name} til handlekurven.",
+        "too_many_items_in_cart": "Du kan ikke legge til flere %{name} til handlekurven.",
         "all_items_in_cart": "Alle %{count} %{name} er i handlekurven din.",
-        "empty_update": "Kan ikke oppdatere tom vogn",
-        "missing_parameters": "Ingen gyldig ID- eller linjeparameter",
-        "generic_error": "CART -feil",
-        "too_many_line_items_error": "Vogna din kan ikke inneholde mer enn %{max} gjenstander.",
+        "empty_update": "kan ikke oppdatere tom handlevogn",
+        "missing_parameters": "ingen gyldig id eller linjeparameter",
+        "generic_error": "Handlevogn Feil",
+        "too_many_line_items_error": "Handlekurven din kan ikke inneholde mer enn %{max} element.",
         "link_expired": "Link utløpt",
         "link_no_longer_exists": "Link eksisterer ikke lenger.",
-        "stock_problems_html": "En eller flere varer er ikke lenger tilgjengelige. Vi har gitt en <a href='%{link}'>Oppdatert vogn<\/a>.",
+        "stock_problems_html": "En eller flere varer er ikke lenger tilgjengelige. Vi har gitt en <a href='%{link}'>oppdatert handlevogn<\/a>.",
         "changed": "Handlekurven endret",
-        "items_changed": "En eller flere elementer har endret seg.",
-        "product_sold_out": "Produktet '%{name}'Er allerede utsolgt.",
+        "items_changed": "Ett eller flere elementer er endret.",
+        "product_sold_out": "Produkt '%{name}'er allerede utsolgt.",
         "variant_not_found": "Finner ikke variant",
-        "variant_requires_selling_plan": "Variant kan bare kjøpes med en salgsplan.",
-        "selling_plan_not_available_for_company_locations": "Bare engangskjøp er tilgjengelig for B2B-bestillinger",
-        "digital_product_not_available_for_company_locations": "Denne varen kan ikke legges til en B2B -ordre",
-        "selling_plan_not_applicable": "Kan ikke bruke salgsplan til varianten",
+        "variant_requires_selling_plan": "Variant kan kun kjøpes med en salgsplan.",
+        "selling_plan_not_available_for_company_locations": "Bare engangskjøp er tilgjengelig FOR B2B-bestillinger",
+        "digital_product_not_available_for_company_locations": "Denne varen kan ikke legges til I EN B2B-ordre",
+        "selling_plan_not_applicable": "Kan ikke bruke salgsplan på variant",
         "shipping_address_not_required": "Denne handlekurven krever ikke frakt",
-        "shipping_address_invalid": "Det var et problem å beregne fraktprisene dine. Fortsett å sjekke ut for å velge en fraktpris før du fullfører bestillingen.",
-        "product_not_available": "Produktet er ikke tilgjengelig"
+        "shipping_address_invalid": "Det oppstod et problem med å beregne fraktprisene dine. Fortsett til kassen for å velge en fraktpris før du fullfører bestillingen.",
+        "product_not_available": "Produktet er ikke tilgjengelig",
+        "less_than_minimum": "Dette produktet har et minimum av %{min}.",
+        "more_than_maximum": "Dette elementet har maksimalt %{max}.",
+        "not_respect_step": "Du kan bare legge til dette elementet i multipler av %{step}."
       },
       "storefront": {
-        "invalid_password": "Passord feil, prøv igjen."
+        "invalid_password": "Passordet er feil, vennligst prøv igjen."
       },
       "tags": {
-        "add_articles": "Smalt søk til artikler som også har tag %{tag}",
-        "add_products": "Smalt utvalg til produkter matchende tag %{tag}",
-        "remove_articles": "Utvide søk til artikler som ikke er merket %{tag}",
-        "remove_products": "Fjern taggen %{tag}"
+        "add_articles": "Begrens søk til artikler som også har tag %{tag}",
+        "add_products": "Begrens utvalg til produkter som samsvarer med taggen %{tag}",
+        "remove_articles": "Utvide søk til artikler som ikke er tagget %{tag}",
+        "remove_products": "Fjern merket %{tag}"
       }
     },
     "email_marketing": {
       "subscribed": {
-        "confirmation": "Takk for at du abonnerer på adresselisten vår.",
-        "disclaimer": "Du kan avslutte abonnementet når som helst.",
-        "unsubscribe": "Avslutte abonnementet"
+        "confirmation": "Takk for at du abonnerer på vår mailingliste.",
+        "disclaimer": "Du kan når som helst avslutte abonnementet.",
+        "unsubscribe": "Melde"
       },
       "unsubscribed": {
-        "confirmation": "Du har avsluttet abonnementet fra adresselisten vår.",
+        "confirmation": "Du har meldt deg av vår mailingliste.",
         "disclaimer": "Du vil ikke motta flere markedsføringsoppdateringer fra oss. Du kan abonnere igjen når som helst.",
-        "preview": "Du forhåndsviser hva kundene vil se når de melder seg ut."
+        "preview": "Du forhåndsviser hva kundene vil se når de avslutter abonnementet."
       },
       "open_tracking": {
         "opt_in": {
-          "opted_in_html": "<b>Du har valgt å sende e -post til åpen sporing.<\/b>",
-          "visibility": "Åpne priser på e -post vil bli rapportert anonymt. Vi vil bare se om du har åpnet en e -post som en del av en samlet e -post åpen rate.",
-          "opt_out_html": "Du kan <a style='text-decoration:underline;' href='%{link}'>Velg bort<\/a> av e -post åpen sporing hvis du ikke vil dele denne informasjonen.",
-          "preview_bar": "Du forhåndsviser hva kundene vil se når de velger å sende e -post til åpen sporing."
+          "opted_in_html": "<b>Du har valgt å åpne sporing via e-post.<\/b>",
+          "visibility": "E-post åpne priser vil bli rapportert anonymt. Vi ser bare om du har åpnet en e-post som en del av en samlet e-postfrekvens.",
+          "opt_out_html": "Du kan <a style='text-decoration:underline;' href='%{link}'>avslå<\/a> av e-post åpen sporing hvis du ikke vil dele denne informasjonen.",
+          "preview_bar": "Du forhåndsviser hva kundene vil se når de velger å åpne sporing via e-post."
         },
         "opt_out": {
-          "opted_out_html": "<b>Du har valgt bort e -post åpen sporing.<\/b>",
-          "visibility": "Vi vil ikke se om du har åpnet e -postene våre.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Melde deg på<\/a> For å sende en e -post med åpen sporing.",
+          "opted_out_html": "<b>Du har valgt bort sporing av åpen e-post.<\/b>",
+          "visibility": "Vi vil ikke se om du har åpnet e-postene våre.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Meld deg på<\/a> for å åpne sporing via e-post.",
           "preview_bar": "Du forhåndsvisning av hva kundene vil se når de velger bort åpen sporing av e -post."
         },
         "no_longer_track": {

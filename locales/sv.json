@@ -1632,7 +1632,77 @@
         },
         "transaction_status": {
           "success": "Framgång",
-          "pending": "Väntande"
+          "pending": "Väntande",
+          "failure": "Misslyckande",
+          "error": "Fel"
+        },
+        "cancel_reason": {
+          "declined": "Betalningen minskade",
+          "inventory": "Objekt otillgängliga",
+          "fraud": "Bedräglig order",
+          "customer": "Kunden ändrade \/ annullerade order",
+          "other": "Andra"
+        },
+        "cash_on_delivery": "Postförskott (Cod)"
+      },
+      "cart": {
+        "only_n_items_available": "Du kan bara lägga till %{count} %{name} till vagnen.",
+        "too_many_items_in_cart": "Du kan inte lägga till mer %{name} till vagnen.",
+        "less_than_minimum": "Denna artikel har ett minimum av %{min}.",
+        "more_than_maximum": "Denna artikel har högst %{max}.",
+        "not_respect_step": "Du kan bara lägga till det här objektet i multiplar av %{step}.",
+        "all_items_in_cart": "Allt %{count} %{name} finns i din varukorg.",
+        "empty_update": "kan inte uppdatera Tom kundvagn",
+        "missing_parameters": "ingen giltig id eller radparameter",
+        "generic_error": "Kundvagn Fel",
+        "product_not_available": "Produkten är inte tillgänglig",
+        "too_many_line_items_error": "Din varukorg får inte innehålla mer än %{max} objekt.",
+        "link_expired": "Länken har gått ut",
+        "link_no_longer_exists": "Länken finns inte längre.",
+        "stock_problems_html": "En eller flera artiklar är inte längre tillgängliga. Vi har tillhandahållit en <a href='%{link}'>uppdaterad kundvagn<\/a>.",
+        "changed": "Varukorgen ändras",
+        "items_changed": "Ett eller flera objekt har ändrats.",
+        "product_sold_out": "Produkt '%{name}'är redan slutsåld.",
+        "variant_not_found": "Kan inte hitta variant",
+        "variant_requires_selling_plan": "Variant kan endast köpas med en försäljningsplan.",
+        "selling_plan_not_available_for_company_locations": "Endast engångsköp är tillgängligt för B2B-beställningar",
+        "digital_product_not_available_for_company_locations": "Det här objektet kan inte läggas till i en B2B-order",
+        "selling_plan_not_applicable": "Kan inte tillämpa försäljningsplan till variant",
+        "shipping_address_not_required": "Denna vagn kräver inte frakt",
+        "shipping_address_invalid": "Det var ett problem att beräkna dina fraktpriser. Fortsätt till kassan för att välja en fraktkostnad innan du slutför din beställning."
+      },
+      "storefront": {
+        "invalid_password": "Lösenord felaktigt, försök igen."
+      },
+      "tags": {
+        "add_articles": "Smal sökning till artiklar som också har tagg %{tag}",
+        "add_products": "Smalt urval till produkter som matchar taggen %{tag}",
+        "remove_articles": "Bredda sökningen till artiklar som inte är taggade %{tag}",
+        "remove_products": "Ta bort taggen %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Tack för att du prenumererar på vår e-postlista.",
+        "disclaimer": "Du kan avsluta prenumerationen när som helst.",
+        "unsubscribe": "Avsluta prenumerationen"
+      },
+      "unsubscribed": {
+        "confirmation": "Du har avregistrerat dig från vår e-postlista.",
+        "disclaimer": "Du kommer inte att få några fler marknadsföringsuppdateringar från oss. Du kan prenumerera igen när som helst.",
+        "preview": "Du förhandsgranskar vad kunderna kommer att se när de avslutar prenumerationen."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Du har valt att e-post öppna spårning.<\/b>",
+          "visibility": "E - post öppna priser kommer att rapporteras anonymt. Vi ser bara om du har öppnat ett e-postmeddelande som en del av en aggregerad e-postkurs.",
+          "opt_out_html": "Du kan <a style='text-decoration:underline;' href='%{link}'>avstå<\/a> av e-post öppen spårning om du inte vill dela denna information.",
+          "preview_bar": "Du förhandsgranskar vad kunderna kommer att se när de väljer att skicka öppen spårning via e-post."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Du har valt bort spårning via e-post.<\/b>",
+          "visibility": "Vi kommer inte att se om du har öppnat våra e-postmeddelanden.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> till e-post öppen spårning."
         }
       }
     }

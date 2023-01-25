@@ -1631,7 +1631,77 @@
         },
         "transaction_status": {
           "success": "Sukcesy",
-          "pending": "W toku"
+          "pending": "W toku",
+          "failure": "Porażka",
+          "error": "Błąd"
+        },
+        "cancel_reason": {
+          "declined": "Płatność odrzucona",
+          "inventory": "Przedmioty niedostępne",
+          "fraud": "Oszukańcze zamówienie",
+          "customer": "Klient zmienił \/ anulował zamówienie",
+          "other": "Inne"
+        },
+        "cash_on_delivery": "Płatność za pobraniem (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Możesz tylko dodać %{count} %{name} do koszyka.",
+        "too_many_items_in_cart": "Nie możesz dodać więcej %{name} do koszyka.",
+        "less_than_minimum": "Ta pozycja ma minimum %{min}.",
+        "more_than_maximum": "Ta pozycja ma maksymalnie %{max}.",
+        "not_respect_step": "Możesz dodać ten element tylko w wielokrotnościach %{step}.",
+        "all_items_in_cart": "Wszystkie %{count} %{name} są w Twoim koszyku.",
+        "empty_update": "nie można zaktualizować pustego koszyka",
+        "missing_parameters": "brak prawidłowego identyfikatora lub parametru linii",
+        "generic_error": "Błąd Koszyka",
+        "product_not_available": "Produkt nie jest dostępny",
+        "too_many_line_items_error": "Twój koszyk nie może zawierać więcej niż %{max} przedmiotów.",
+        "link_expired": "Link wygasł",
+        "link_no_longer_exists": "Link już nie istnieje.",
+        "stock_problems_html": "Jeden lub więcej przedmiotów nie jest już dostępnych. Dostarczyliśmy <a href='%{link}'>zaktualizowany koszyk<\/a>.",
+        "changed": "Koszyk zmieniony",
+        "items_changed": "Jeden lub więcej elementów uległo zmianie.",
+        "product_sold_out": "Produkt\"%{name}\"jest już wyprzedany.",
+        "variant_not_found": "Nie można znaleźć wariantu",
+        "variant_requires_selling_plan": "Wariant można kupić tylko z planem sprzedaży.",
+        "selling_plan_not_available_for_company_locations": "Tylko jednorazowy zakup jest dostępny dla zamówień B2B",
+        "digital_product_not_available_for_company_locations": "Tego elementu nie można dodać do zamówienia B2B",
+        "selling_plan_not_applicable": "Nie można zastosować planu sprzedaży do wariantu",
+        "shipping_address_not_required": "Ten koszyk nie wymaga wysyłki",
+        "shipping_address_invalid": "Wystąpił problem z obliczeniem stawek za wysyłkę. Przejdź do kasy, aby wybrać stawkę wysyłki przed sfinalizowaniem zamówienia."
+      },
+      "storefront": {
+        "invalid_password": "Hasło niepoprawne, spróbuj ponownie."
+      },
+      "tags": {
+        "add_articles": "Zawęź wyszukiwanie do artykułów mających również tag %{tag}",
+        "add_products": "Wąski wybór produktów pasujących do tagu %{tag}",
+        "remove_articles": "Poszerz wyszukiwanie do artykułów, które nie są oznaczone tagiem %{tag}",
+        "remove_products": "Usuń tag %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Dziękujemy za zapisanie się na naszą listę mailingową.",
+        "disclaimer": "Możesz zrezygnować z subskrypcji w dowolnym momencie.",
+        "unsubscribe": "Anuluj subskrypcję"
+      },
+      "unsubscribed": {
+        "confirmation": "Wypisałeś się z naszej listy mailingowej.",
+        "disclaimer": "Nie będziesz otrzymywać od nas żadnych aktualizacji marketingowych. Możesz zapisać się ponownie w dowolnym momencie.",
+        "preview": "Wyświetlasz podgląd tego, co klienci zobaczą, gdy zrezygnują z subskrypcji."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Zdecydowałeś się na e-mail open tracking.<\/b>",
+          "visibility": "Stawki otwarcia wiadomości e-mail będą zgłaszane anonimowo. Zobaczymy tylko, czy otworzyłeś wiadomość e-mail jako część zagregowanego współczynnika otwarcia wiadomości e-mail.",
+          "opt_out_html": "Możesz <a style='text-decoration:underline;' href='%{link}'>opt out<\/a> wiadomości e-mail otwórz śledzenie, jeśli nie chcesz udostępniać tych informacji.",
+          "preview_bar": "Wyświetlasz podgląd tego, co klienci zobaczą, gdy zdecydują się na e-mail open tracking."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Zrezygnowałeś z śledzenia otwartych wiadomości e-mail.<\/b>",
+          "visibility": "Nie zobaczymy, czy otworzyłeś nasze e-maile.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Opt in<\/a> aby wysłać e-mailem otwarte śledzenie."
         }
       }
     }
