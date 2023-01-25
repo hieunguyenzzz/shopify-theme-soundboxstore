@@ -1704,8 +1704,98 @@
         "opt_out": {
           "opted_out_html": "<b>Vous avez désactivé le suivi de l'ouverture des e-mails.<\/b>",
           "visibility": "Nous ne verrons pas si vous avez ouvert nos e-mails.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>S'inscrire<\/a> pour envoyer un suivi d'ouverture par e-mail."
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>S'inscrire<\/a> pour envoyer un suivi d'ouverture par e-mail.",
+          "preview_bar": "Vous prévisualisez ce que les clients verront lorsqu'ils se désinscriront du suivi de l'ouverture des e-mails."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Nous ne suivons plus les ouvertures d'e-mails.<\/b>",
+          "privacy_policy": "Après l'envoi de cet e-mail, nous avons mis à jour notre politique de confidentialité et nous ne suivons plus les ouvertures."
+        },
+        "track": {
+          "status_html": "<b>Le suivi de l'ouverture des e-mails est signalé.<\/b>",
+          "visibility": "Nous ne verrons que si vous avez ouvert l'e-mail, dans le cadre du taux d'ouverture total des e-mails."
+        },
+        "updated_policy": {
+          "status_html": "<b>Le suivi de l'ouverture des e-mails est signalé.<\/b>",
+          "visibility": "Nous avons mis à jour notre politique, et maintenant suivre les e-mails s'ouvre. Les taux d'ouverture des e-mails seront signalés de manière anonyme. Nous ne verrons que si vous avez ouvert un e-mail dans le cadre du taux d'ouverture total des e-mails.",
+          "opt_out_html": "Si vous ne souhaitez pas partager ces informations, vous pouvez <a style='text-decoration:underline;' href='%{link}'>désabonner.<\/a>"
         }
+      }
+    },
+    "filters": {
+      "availability": {
+        "label": "Disponibilité",
+        "value": {
+          "in_stock": "En stock",
+          "out_of_stock": "Rupture de stock"
+        }
+      },
+      "vendor": {
+        "label": "Marque"
+      },
+      "price": {
+        "label": "Prix"
+      },
+      "product_type": {
+        "label": "Type de produit"
+      },
+      "boolean": {
+        "true_label": "Oui",
+        "false_label": "Aucun"
+      },
+      "tags": {
+        "label": "Plus de filtres"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Pertinence",
+        "price_ascending": "Prix, de bas en haut",
+        "price_descending": "Prix, de haut en bas"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Erreur - %{title}",
+      "products": "Produit",
+      "shopping_cart": "Votre Panier",
+      "account": "Compte",
+      "create_account": "Créer Un Compte",
+      "reset_account": "Réinitialiser le Compte",
+      "addresses": "Adresse",
+      "order": "Ordre %{name}",
+      "search": "Rechercher",
+      "search_results": {
+        "one": "Rechercher: %{count} résultat trouvé pour \"%{terms}\"",
+        "other": "Rechercher: %{count} résultats trouvés pour \"%{terms}\""
+      },
+      "collections": "Collection",
+      "not_found": "Erreur 404 Non Trouvée",
+      "challenge": "Défi",
+      "checkpoint": "Checkpoint"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} des réductions ont été appliquées"
+    },
+    "challenge": {
+      "message": "Pour continuer, faites-nous savoir que vous n'êtes pas un robot.",
+      "error": "Votre réponse n'était pas correcte, veuillez réessayer.",
+      "submit_button_text": "Soumettre"
+    },
+    "checkpoint": {
+      "message": "Résolvez le Captcha pour continuer",
+      "error": "La validation du Captcha a échoué",
+      "submit_button_text": "Soumettre"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Généralement prêt en 1 heure",
+        "two_hours": "Généralement prêt en 2 heures",
+        "four_hours": "Généralement prêt en 4 heures",
+        "twenty_four_hours": "Généralement prêt en 24 heures",
+        "two_to_four_days": "Habituellement prêt en 2-4 jours",
+        "five_or_more_days": "Habituellement prêt en plus de 5 jours",
+        "zero_to_two_hours": "Généralement prêt en 2 heures",
+        "two_to_four_hours": "Généralement prêt en 4 heures"
       }
     }
   }
