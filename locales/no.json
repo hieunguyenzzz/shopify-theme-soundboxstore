@@ -295,7 +295,7 @@
         "original_price": "Opprinnelig pris",
         "sale_price": "Salgspris",
         "total_updated_label": "Oppdatert totalpris:",
-        "order_total_updated_label": "Oppdatert totalt",
+        "order_total_updated_label": "Oppdatert total",
         "total_already_paid_label": "Allerede betalt",
         "unit_price": {
           "accessible_separator": "per",
@@ -304,45 +304,51 @@
         "gift_card_ending": "Gavekort som slutter med %{last_characters}",
         "estimated_tax_label": "Estimert skatt",
         "multiple_shipping_lines_label": "Frakt totalt",
-        "recurring_total_label": "Gjentakende totalt",
+        "recurring_total_label": "Gjentakende total",
         "recurring_total_tooltip": "Inkluderer ikke frakt, skatt, avgifter eller gjeldende rabatter.",
         "confirmation_number_label": "Bekreftelse #%{confirmation_number}",
-        "higher_value_discount_applied": "Noen rabattkoder kunne ikke brukes sammen. Vi brukte den beste kombinasjonen.",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> kan ikke brukes med eksisterende rabatter. Du har allerede en bedre kombinasjon.",
         "percent_off_shipping": "%{percent}% av frakt",
         "amount_off_shipping": "%{amount} av frakt",
         "deferred_payment_info": {
-          "title": "Betaling av %{amount_due} skyldes %{due_at}",
-          "description_html": "For spørsmål om bestillingen din, %{contact_us}.",
-          "paid_today": "Totalt betalt i dag"
+          "title": "Betaling av %{amount_due} forfaller på %{due_at}",
+          "description_html": "For spørsmål om din ordre, %{contact_us}.",
+          "paid_today": "Totalt betalt i dag",
+          "due_on_fulfillment_title": "Betaling av %{amount_due} forfaller ved oppfyllelse"
         },
         "payment_terms_totals": {
-          "due_today": "Totalt forfaller i dag",
-          "due_later": "Totalt forfalt %{due_at}"
+          "due_today": "Totalt å betale i dag",
+          "due_later": "Totalt å betale %{due_at}",
+          "due_on_fulfillment": "Totalt forfall ved oppfyllelse",
+          "due_later_checkout_to_draft": "Totalt forfaller senere"
         },
-        "order_total_label": "Bestill Totalt"
+        "order_total_label": "Bestill Totalt",
+        "recurring_subtotal_label": "Gjentakende delsum",
+        "maximum_discount_code_limit_reached": "Du har nådd maksimalt antall rabattkoder. Fjern en eksisterende kode som skal brukes <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> fungerer ikke akkurat nå. Kontakt oss for hjelp."
       },
       "shipping": {
         "title": "Shipping",
-        "shipping_method_title": "Forsendelsesmetode",
+        "shipping_method_title": "Leveringsmåte",
         "shipping_method_one_time_purchase_group_title": "Engangskjøp",
         "shipping_method_subscription_group_title": "Abonnement",
-        "subscription_shipping": "Abonnementsfrakt",
-        "waiting_on_rate_notice": "Få tilgjengelige fraktpriser ...",
-        "waiting_on_pickup_location_notice": "Få tilgjengelige henting av lokasjoner ...",
+        "subscription_shipping": "Abonnement frakt",
+        "waiting_on_rate_notice": "Få tilgjengelige fraktpriser…",
+        "waiting_on_pickup_location_notice": "Få tilgjengelige hentesteder…",
         "no_rates_for_cart_or_destination_notice": "Det er ingen fraktmetoder tilgjengelig for handlekurven eller adressen din",
         "no_pickup_location_notice": "Minst ett av produktene dine er ikke tilgjengelig for henting",
         "no_rates_for_country_notice": "Ingen fraktpriser funnet for denne adressen.",
         "no_rates_contact_notice": "Kontakt oss for mer informasjon",
         "free_rate_label": "Gratis",
-        "cheapest_rate_label": "Billigste",
+        "cheapest_rate_label": "Billig",
         "please_enter_your_shipping_information_notice": "Vennligst skriv inn fraktinformasjonen din.",
         "estimated_delivery_date": {
           "one": "%{count} virkedag",
-          "other": "%{count} virkedager"
+          "other": "%{count} virkedag"
         },
-        "estimated_delivery_date_range": "%{minimum} til %{maximum} virkedager",
-        "estimated_delivery_time": "Forventet levering %{time}",
-        "estimated_delivery_time_range": "Forventet levering %{min_time}–%{max_time}",
+        "estimated_delivery_date_range": "%{minimum} å %{maximum} virkedag",
+        "estimated_delivery_time": "Estimert levering %{time}",
+        "estimated_delivery_time_range": "Estimert levering %{min_time}–%{max_time}",
         "arrives_time": "Ankommer %{time}",
         "arrives_time_range": "Ankommer %{min_time}–%{max_time}",
         "estimated_time": "estimert %{time}",
@@ -404,7 +410,11 @@
           }
         },
         "one_time_purchase_shipping": "Engangsfrakt",
-        "delivery_date_range": "%{min_time}–%{max_time}"
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Abonnement lokal levering",
+        "subscription_pickup": "Henting av abonnement",
+        "delivery_today": "Levering samme dag %{time}",
+        "delivery_tomorrow": "Levering neste dag %{time}"
       },
       "localized_fields": {
         "additional_information": {

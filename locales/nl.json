@@ -442,7 +442,32 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "delivery_date_range": "%{min_time}–%{max_time}"
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "title": "Verzending",
+        "shipping_method_title": "Verzendmethode",
+        "shipping_method_one_time_purchase_group_title": "Eenmalige aankoop",
+        "shipping_method_subscription_group_title": "Abonnement",
+        "subscription_shipping": "Abonnement verzending",
+        "subscription_local_delivery": "Abonnement lokale levering",
+        "subscription_pickup": "Abonnement ophalen",
+        "waiting_on_rate_notice": "Verkrijg beschikbare verzendtarieven…",
+        "waiting_on_pickup_location_notice": "Beschikbaarheid ophalen locaties…",
+        "no_rates_for_cart_or_destination_notice": "Er zijn geen verzendmethoden beschikbaar voor uw winkelwagen of adres",
+        "no_pickup_location_notice": "Ten minste één van uw producten kan niet worden opgehaald",
+        "no_rates_for_country_notice": "Geen verzendkosten gevonden voor dit adres.",
+        "no_rates_contact_notice": "Contacteer ons voor meer informatie",
+        "free_rate_label": "Gratis",
+        "cheapest_rate_label": "Goedkoopste",
+        "please_enter_your_shipping_information_notice": "Voer uw verzendgegevens in.",
+        "estimated_delivery_date": {
+          "one": "%{count} werkdag",
+          "other": "%{count} werkdag"
+        },
+        "estimated_delivery_date_range": "%{minimum} naar %{maximum} werkdag",
+        "estimated_delivery_time": "Geschatte levering %{time}",
+        "estimated_delivery_time_range": "Geschatte levering %{min_time}–%{max_time}",
+        "delivery_today": "Same-day delivery %{time}",
+        "delivery_tomorrow": "Levering de volgende dag %{time}"
       },
       "general": {
         "page_title": "Checkout",
@@ -665,7 +690,38 @@
         "expand_order_summary": "Toon besteloverzicht",
         "collapse_order_summary": "Overzicht van bestellingen verbergen",
         "original_price": "Originele prijs",
-        "sale_price": "Verkoopprijs"
+        "sale_price": "Verkoopprijs",
+        "total_updated_label": "Bijgewerkte totale prijs:",
+        "order_total_updated_label": "Totaal bijgewerkt",
+        "total_already_paid_label": "Reeds betaald",
+        "unit_price": {
+          "accessible_separator": "per",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}"
+        },
+        "gift_card_ending": "Gift card eindigt met %{last_characters}",
+        "estimated_tax_label": "Geschatte belasting",
+        "multiple_shipping_lines_label": "Verzending totaal",
+        "recurring_subtotal_label": "Terugkerend subtotaal",
+        "recurring_total_label": "Terugkerend totaal",
+        "recurring_total_tooltip": "Omvat Geen verzendkosten, belastingen, heffingen of toepasselijke kortingen.",
+        "confirmation_number_label": "Bevestiging #%{confirmation_number}",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> kan niet worden gebruikt met uw bestaande kortingen. Je hebt al een betere combinatie.",
+        "percent_off_shipping": "%{percent}% korting op verzending",
+        "amount_off_shipping": "%{amount} off shipping",
+        "deferred_payment_info": {
+          "title": "Betaling van %{amount_due} is verschuldigd op %{due_at}",
+          "description_html": "Voor vragen over uw bestelling, %{contact_us}.",
+          "paid_today": "Totaal vandaag betaald",
+          "due_on_fulfillment_title": "Betaling van %{amount_due} is verschuldigd op fulfillment"
+        },
+        "payment_terms_totals": {
+          "due_today": "Totaal te betalen",
+          "due_later": "Totaal verschuldigd %{due_at}",
+          "due_on_fulfillment": "Totaal verschuldigd bij fulfillment",
+          "due_later_checkout_to_draft": "Totaal later te betalen"
+        },
+        "maximum_discount_code_limit_reached": "Je hebt het maximum aantal kortingscodes bereikt. Een bestaande code verwijderen om te gebruiken <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> het werkt nu niet. Contacteer ons voor hulp."
       }
     },
     "sentence": {

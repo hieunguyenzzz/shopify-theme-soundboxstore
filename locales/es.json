@@ -444,7 +444,32 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "delivery_date_range": "%{min_time}–%{max_time}"
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "title": "Envio",
+        "shipping_method_title": "Método de envío",
+        "shipping_method_one_time_purchase_group_title": "Compra única",
+        "shipping_method_subscription_group_title": "Suscripción",
+        "subscription_shipping": "Envío de suscripción",
+        "subscription_local_delivery": "Suscripción entrega local",
+        "subscription_pickup": "Recogida de suscripción",
+        "waiting_on_rate_notice": "Obtener tarifas de envío disponibles…",
+        "waiting_on_pickup_location_notice": "Obtención de ubicaciones de recogida disponibles…",
+        "no_rates_for_cart_or_destination_notice": "No hay métodos de envío disponibles para su carrito o dirección",
+        "no_pickup_location_notice": "Al menos uno de sus productos no está disponible para su recogida",
+        "no_rates_for_country_notice": "No se han encontrado tarifas de envío para esta dirección.",
+        "no_rates_contact_notice": "Contáctenos para más información",
+        "free_rate_label": "Libre",
+        "cheapest_rate_label": "Abaratamiento",
+        "please_enter_your_shipping_information_notice": "Por favor, introduzca su información de envío.",
+        "estimated_delivery_date": {
+          "one": "%{count} día hábil",
+          "other": "%{count} días hábiles"
+        },
+        "estimated_delivery_date_range": "%{minimum} a %{maximum} días hábiles",
+        "estimated_delivery_time": "Entrega estimada %{time}",
+        "estimated_delivery_time_range": "Entrega estimada %{min_time}–%{max_time}",
+        "delivery_today": "Entrega el mismo día %{time}",
+        "delivery_tomorrow": "Entrega al día siguiente %{time}"
       },
       "general": {
         "page_title": "Checkout",
@@ -667,7 +692,38 @@
         "expand_order_summary": "Mostrar resumen de pedido",
         "collapse_order_summary": "Ocultar resumen de pedido",
         "original_price": "Precio original",
-        "sale_price": "Precio de venta"
+        "sale_price": "Precio de venta",
+        "total_updated_label": "Precio total actualizado:",
+        "order_total_updated_label": "Total actualizado",
+        "total_already_paid_label": "Ya pagado",
+        "unit_price": {
+          "accessible_separator": "por",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}"
+        },
+        "gift_card_ending": "Tarjeta de regalo que termina en %{last_characters}",
+        "estimated_tax_label": "Impuesto estimado",
+        "multiple_shipping_lines_label": "Total de envío",
+        "recurring_subtotal_label": "Subtotal recurrente",
+        "recurring_total_label": "Total recurrente",
+        "recurring_total_tooltip": "No incluye envío, impuestos, aranceles ni ningún descuento aplicable.",
+        "confirmation_number_label": "Confirmación #%{confirmation_number}",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> no se pudo usar con los descuentos existentes. Ya tienes una mejor combinación.",
+        "percent_off_shipping": "%{percent}% de descuento en el envío",
+        "amount_off_shipping": "%{amount} fuera del envío",
+        "deferred_payment_info": {
+          "title": "Pago de %{amount_due} vence el %{due_at}",
+          "description_html": "Para preguntas sobre su pedido, %{contact_us}.",
+          "paid_today": "Total pagado hoy",
+          "due_on_fulfillment_title": "Pago de %{amount_due} se debe en cumplimiento"
+        },
+        "payment_terms_totals": {
+          "due_today": "Total a pagar hoy",
+          "due_later": "Total adeudado %{due_at}",
+          "due_on_fulfillment": "Total adeudado en cumplimiento",
+          "due_later_checkout_to_draft": "Total a pagar más tarde"
+        },
+        "maximum_discount_code_limit_reached": "Has alcanzado el número máximo de códigos de descuento. Eliminar un código existente para usarlo <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> no está funcionando en este momento. Póngase en contacto con nosotros para obtener ayuda."
       }
     },
     "sentence": {

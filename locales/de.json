@@ -444,7 +444,32 @@
   "shopify": {
     "checkout": {
       "shipping": {
-        "delivery_date_range": "%{min_time}–%{max_time}"
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "title": "Versand",
+        "shipping_method_title": "Versandart",
+        "shipping_method_one_time_purchase_group_title": "Einmaliger Kauf",
+        "shipping_method_subscription_group_title": "Abonnement",
+        "subscription_shipping": "Abonnement-Versand",
+        "subscription_local_delivery": "Abonnement lokale Lieferung",
+        "subscription_pickup": "Abonnement-Abholung",
+        "waiting_on_rate_notice": "Verfügbare Versandkosten abrufen…",
+        "waiting_on_pickup_location_notice": "Verfügbare Abholorte erhalten…",
+        "no_rates_for_cart_or_destination_notice": "Für Ihren Warenkorb oder Ihre Adresse sind keine Versandmethoden verfügbar",
+        "no_pickup_location_notice": "Mindestens eines Ihrer Produkte ist nicht zur Abholung verfügbar",
+        "no_rates_for_country_notice": "Für diese Adresse wurden keine Versandkosten gefunden.",
+        "no_rates_contact_notice": "Kontaktieren Sie uns für weitere Informationen",
+        "free_rate_label": "Kostenlos",
+        "cheapest_rate_label": "Günstigstes",
+        "please_enter_your_shipping_information_notice": "Bitte geben Sie Ihre Versandinformationen ein.",
+        "estimated_delivery_date": {
+          "one": "%{count} Werktag",
+          "other": "%{count} Werktag"
+        },
+        "estimated_delivery_date_range": "%{minimum} zu %{maximum} Werktag",
+        "estimated_delivery_time": "Voraussichtliche Lieferung %{time}",
+        "estimated_delivery_time_range": "Voraussichtliche Lieferung %{min_time}–%{max_time}",
+        "delivery_today": "Lieferung am selben Tag %{time}",
+        "delivery_tomorrow": "Lieferung am nächsten Tag %{time}"
       },
       "general": {
         "page_title": "Kasse",
@@ -667,7 +692,38 @@
         "expand_order_summary": "Bestellübersicht anzeigen",
         "collapse_order_summary": "Bestellübersicht ausblenden",
         "original_price": "Neupreis",
-        "sale_price": "Verkaufspreis"
+        "sale_price": "Verkaufspreis",
+        "total_updated_label": "Aktualisierter Gesamtpreis:",
+        "order_total_updated_label": "Aktualisierte Gesamtsumme",
+        "total_already_paid_label": "Bereits bezahlt",
+        "unit_price": {
+          "accessible_separator": "je",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}"
+        },
+        "gift_card_ending": "Geschenkkarte endet mit %{last_characters}",
+        "estimated_tax_label": "Geschätzte Steuer",
+        "multiple_shipping_lines_label": "Versandkosten gesamt",
+        "recurring_subtotal_label": "Wiederkehrende Zwischensumme",
+        "recurring_total_label": "Wiederkehrende Summe",
+        "recurring_total_tooltip": "Beinhaltet nicht Versand, Steuern, Zölle oder anwendbare Rabatte.",
+        "confirmation_number_label": "Bestätigung #%{confirmation_number}",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> kann nicht mit Ihren bestehenden Rabatten verwendet werden. Sie haben bereits eine bessere Kombination.",
+        "percent_off_shipping": "%{percent}% Rabatt auf Versand",
+        "amount_off_shipping": "%{amount} aus Versand",
+        "deferred_payment_info": {
+          "title": "Zahlung von %{amount_due} ist fällig am %{due_at}",
+          "description_html": "Bei Fragen zu Ihrer Bestellung, %{contact_us}.",
+          "paid_today": "Heute gezahlter Gesamtbetrag",
+          "due_on_fulfillment_title": "Zahlung von %{amount_due} ist bei Erfüllung fällig"
+        },
+        "payment_terms_totals": {
+          "due_today": "Heute fälliger Gesamtbetrag",
+          "due_later": "Fälliger Gesamtbetrag %{due_at}",
+          "due_on_fulfillment": "Fälliger Gesamtbetrag bei Erfüllung",
+          "due_later_checkout_to_draft": "Später fälliger Gesamtbetrag"
+        },
+        "maximum_discount_code_limit_reached": "Sie haben die maximale Anzahl an Rabattcodes erreicht. Entfernen Sie einen vorhandenen Code zu verwenden <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> funktioniert gerade nicht. Kontaktieren sie uns für hilfe."
       }
     },
     "sentence": {
