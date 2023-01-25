@@ -725,7 +725,83 @@
         "estimated_delivery_time": "Arvioitu toimitus %{time}",
         "estimated_delivery_time_range": "Arvioitu toimitus %{min_time}–%{max_time}",
         "delivery_today": "Toimitus samana päivänä %{time}",
-        "delivery_tomorrow": "Seuraavan päivän toimitus %{time}"
+        "delivery_tomorrow": "Seuraavan päivän toimitus %{time}",
+        "two_day_delivery": "2 päivän toimitus %{time}",
+        "delivery": "Toimitus %{time}",
+        "arrives_time": "Saapua %{time}",
+        "arrives_time_range": "Saapua %{min_time}–%{max_time}",
+        "estimated_time": "Arvioida %{time}",
+        "estimated_time_range": "Arvioida %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Matkapuhelinnumero (pakollinen)",
+        "shipping_line_phone": "Kuriirisi voi käyttää tätä numeroa ottaakseen sinuun yhteyttä.",
+        "shipping_line_delivery_phone_label": "Matkapuhelinnumero",
+        "shipping_line_delivery_phone": "Sinuun saatetaan ottaa yhteyttä toimituksen päivitysten kanssa.",
+        "optional_shipping_line_delivery_instructions_label": "Toimitusohjeet (valinnainen)",
+        "shipping_line_delivery_instructions": "Anna tarvittavat tiedot, kuten ovikoodit tai pudotusohjeet.",
+        "other_method": {
+          "zero": "Muita menetelmiä ei saatavilla",
+          "one": "%{count} muu menetelmä saatavilla osoitteessa ",
+          "other": "%{count} muut käytettävissä olevat menetelmät alkaen "
+        },
+        "shipping_rate_discounted_amount": "On: %{original_amount}. Nyt: %{amount}",
+        "local_delivery": "Paikallinen toimitus",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "varten %{count} toimitus",
+            "other": "varten %{count} toimitus"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "päivä",
+              "other": "jokainen %{count} päivä"
+            },
+            "week": {
+              "one": "joka viikko",
+              "other": "jokainen %{count} viikkoa"
+            },
+            "month": {
+              "one": "kuukausittain",
+              "other": "jokainen %{count} kuukausi"
+            },
+            "year": {
+              "one": "vuosittain",
+              "other": "jokainen %{count} vuotiaat"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} toimitusta kohti",
+          "prepaid_shipping_price_label": "%{shipping_price} per toimitus x %{delivery_interval_count}",
+          "initial_order_discounted": "Ensimmäinen toimituskulut %{discounted_shipping_cost}, sitten %{frequency_description}",
+          "prepaid_initial_order_discounted": "Ensimmäinen toimituskulut %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Ensimmäinen toimituskulut %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Ensimmäinen toimituskulut %{discounted_shipping_price} %{prepaid_delivery_frequency}, sitten %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Ensimmäinen toimituskulut %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), sitten %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Mukana",
+          "recurring_order_shipping_price": "jota seuraa %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Ensimmäinen tilaus sisältyy, jota seuraa %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per toimitus), jonka jälkeen %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Ensimmäinen tilaus ilmainen",
+            "other": "Ensimmäinen %{count} tilaukset ilmaiseksi"
+          },
+          "free_for_first_n_order": {
+            "one": "Ensimmäinen tilaus",
+            "other": "For first %{count} tilaukset"
+          }
+        },
+        "one_time_purchase_shipping": "Kertaluonteinen toimitus"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Lisätiedot"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Sinua pyydetään kirjautumaan Amazon.",
+        "amazon_payments_logout": "Kirjaudu ulos Amazon Pay-palvelusta",
+        "amazon_payments_failed_mfa_challenge": "Valittua maksutapaa ei voitu käyttää. Valitse toinen tapa tai ota yhteyttä pankkiisi tai kortin myöntäjään.",
+        "amazon_payments_abandoned_mfa_challenge": "Maksua ei voitu suorittaa. Kokeile toista maksutapaa tai ota yhteyttä pankkiisi tai kortin myöntäjään.",
+        "amazon_payments_could_not_enqueue_authorize": "Maksusi käsittelyssä oli ongelmia. Yritä uudelleen tai käytä toista maksutapaa."
       }
     }
   }

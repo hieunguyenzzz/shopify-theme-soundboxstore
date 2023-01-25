@@ -725,7 +725,83 @@
         "estimated_delivery_time": "Consegna stimata %{time}",
         "estimated_delivery_time_range": "Consegna stimata %{min_time}–%{max_time}",
         "delivery_today": "Consegna in giornata %{time}",
-        "delivery_tomorrow": "Consegna il giorno successivo %{time}"
+        "delivery_tomorrow": "Consegna il giorno successivo %{time}",
+        "two_day_delivery": "consegna in 2 giorni %{time}",
+        "delivery": "Consegna %{time}",
+        "arrives_time": "Arrivare %{time}",
+        "arrives_time_range": "Arrivare %{min_time}–%{max_time}",
+        "estimated_time": "Stimare %{time}",
+        "estimated_time_range": "Stimare %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Numero di cellulare (richiesto)",
+        "shipping_line_phone": "Il tuo corriere può utilizzare questo numero per contattarti.",
+        "shipping_line_delivery_phone_label": "Numero di cellulare",
+        "shipping_line_delivery_phone": "Potresti essere contattato con aggiornamenti sulla tua consegna.",
+        "optional_shipping_line_delivery_instructions_label": "Istruzioni di consegna (opzionale)",
+        "shipping_line_delivery_instructions": "Inserire le informazioni necessarie come codici porta o istruzioni drop-off.",
+        "other_method": {
+          "zero": "Nessun altro metodo disponibile",
+          "one": "%{count} altro metodo disponibile a ",
+          "other": "%{count} altri metodi disponibili a partire da "
+        },
+        "shipping_rate_discounted_amount": "Essere: %{original_amount}. Ora: %{amount}",
+        "local_delivery": "Consegna locale",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "per %{count} consegna",
+            "other": "per %{count} consegna"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "quotidianamente",
+              "other": "ogni %{count} giorno"
+            },
+            "week": {
+              "one": "ogni settimana",
+              "other": "ogni %{count} settimana"
+            },
+            "month": {
+              "one": "ogni mese",
+              "other": "ogni %{count} mese"
+            },
+            "year": {
+              "one": "ogni anno",
+              "other": "ogni %{count} anno"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} per consegna",
+          "prepaid_shipping_price_label": "%{shipping_price} per consegna x %{delivery_interval_count}",
+          "initial_order_discounted": "Primo costo di trasporto %{discounted_shipping_cost}, poi %{frequency_description}",
+          "prepaid_initial_order_discounted": "Primo costo di trasporto %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Primo costo di trasporto %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Primo costo di trasporto %{discounted_shipping_price} %{prepaid_delivery_frequency}, poi %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Primo costo di trasporto %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), poi %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Includere",
+          "recurring_order_shipping_price": "seguito da %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Primo ordine incluso, seguito da %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per consegna), seguito da %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Primo ordine gratuito",
+            "other": "Prima %{count} ordini gratuiti"
+          },
+          "free_for_first_n_order": {
+            "one": "Per il primo ordine",
+            "other": "Per prima cosa %{count} ordine"
+          }
+        },
+        "one_time_purchase_shipping": "Spedizione una tantum"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Informazioni aggiuntive"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Ti verrà chiesto di effettuare il login con Amazon.",
+        "amazon_payments_logout": "Esci da Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Non è stato possibile utilizzare il metodo di pagamento selezionato. Seleziona un metodo diverso o contatta la tua banca o l'emittente della carta.",
+        "amazon_payments_abandoned_mfa_challenge": "Il pagamento non può essere completato. Prova un metodo di pagamento diverso o contatta la tua banca o l'emittente della carta.",
+        "amazon_payments_could_not_enqueue_authorize": "Si è verificato un problema nell'elaborazione del pagamento. Riprova o utilizza un metodo di pagamento diverso."
       }
     }
   }

@@ -726,7 +726,83 @@
         "estimated_delivery_time": "Anslået levering %{time}",
         "estimated_delivery_time_range": "Anslået levering %{min_time}–%{max_time}",
         "delivery_today": "Levering samme dag %{time}",
-        "delivery_tomorrow": "Levering næste dag %{time}"
+        "delivery_tomorrow": "Levering næste dag %{time}",
+        "two_day_delivery": "2-dages levering %{time}",
+        "delivery": "Levering %{time}",
+        "arrives_time": "Ankomme %{time}",
+        "arrives_time_range": "Ankomme %{min_time}–%{max_time}",
+        "estimated_time": "Anslå %{time}",
+        "estimated_time_range": "Anslå %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Mobilnummer (påkrævet)",
+        "shipping_line_phone": "Din kurer kan bruge dette nummer til at kontakte dig.",
+        "shipping_line_delivery_phone_label": "Mobilnummer",
+        "shipping_line_delivery_phone": "Du kan blive kontaktet med opdateringer om din levering.",
+        "optional_shipping_line_delivery_instructions_label": "Leveringsinstruktioner (valgfrit)",
+        "shipping_line_delivery_instructions": "Indtast nødvendige oplysninger som dørkoder eller drop-off instruktioner.",
+        "other_method": {
+          "zero": "Ingen andre tilgængelige metoder",
+          "one": "%{count} anden metode tilgængelig på ",
+          "other": "%{count} andre tilgængelige metoder starter ved "
+        },
+        "shipping_rate_discounted_amount": "Er: %{original_amount}. Nu: %{amount}",
+        "local_delivery": "Lokal levering",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "for %{count} levering",
+            "other": "for %{count} levering"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "daglig",
+              "other": "hver %{count} dag"
+            },
+            "week": {
+              "one": "hver uge",
+              "other": "hver %{count} uge"
+            },
+            "month": {
+              "one": "hver måned",
+              "other": "hver %{count} måned"
+            },
+            "year": {
+              "one": "årligt",
+              "other": "hver %{count} år"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} pr. levering",
+          "prepaid_shipping_price_label": "%{shipping_price} pr. levering %{delivery_interval_count}",
+          "initial_order_discounted": "Første forsendelsesomkostninger %{discounted_shipping_cost}, derefter %{frequency_description}",
+          "prepaid_initial_order_discounted": "Første forsendelsesomkostninger %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Første forsendelsesomkostninger %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Første forsendelsesomkostninger %{discounted_shipping_price} %{prepaid_delivery_frequency}, derefter %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Første forsendelsesomkostninger %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), derefter %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Følger",
+          "recurring_order_shipping_price": "efterfulgt af %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Første ordre inkluderet, efterfulgt af %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} levering), efterfulgt af %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Første ordre gratis",
+            "other": "Første %{count} ordrer gratis"
+          },
+          "free_for_first_n_order": {
+            "one": "For første ordre",
+            "other": "For første %{count} ordre"
+          }
+        },
+        "one_time_purchase_shipping": "Engangsforsendelse"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Yderligere oplysninger"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amason Løn",
+        "amazon_payments_login_hint": "Du bliver bedt om at logge ind med <url>.",
+        "amazon_payments_logout": "Log ud af <url>",
+        "amazon_payments_failed_mfa_challenge": "Den valgte betalingsmetode kunne ikke anvendes. Vælg en anden metode, eller kontakt din bank eller kortudsteder.",
+        "amazon_payments_abandoned_mfa_challenge": "Din betaling kunne ikke gennemføres. Prøv en anden betalingsmetode, eller kontakt din bank eller kortudsteder.",
+        "amazon_payments_could_not_enqueue_authorize": "Der opstod et problem med at behandle din betaling. Prøv igen, eller brug en anden betalingsmetode."
       }
     }
   }

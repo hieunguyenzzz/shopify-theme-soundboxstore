@@ -467,7 +467,70 @@
         "estimated_delivery_time": "Geschatte levering %{time}",
         "estimated_delivery_time_range": "Geschatte levering %{min_time}–%{max_time}",
         "delivery_today": "Same-day delivery %{time}",
-        "delivery_tomorrow": "Levering de volgende dag %{time}"
+        "delivery_tomorrow": "Levering de volgende dag %{time}",
+        "two_day_delivery": "2-daagse levering %{time}",
+        "delivery": "Levering %{time}",
+        "arrives_time": "Arriveren %{time}",
+        "arrives_time_range": "Arriveren %{min_time}–%{max_time}",
+        "estimated_time": "Geschat %{time}",
+        "estimated_time_range": "Geschat %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Mobiel telefoonnummer (verplicht)",
+        "shipping_line_phone": "Uw koerier kan dit nummer gebruiken om contact met u op te nemen.",
+        "shipping_line_delivery_phone_label": "Mobiel telefoonnummer",
+        "shipping_line_delivery_phone": "U kunt worden gecontacteerd met updates over uw levering.",
+        "optional_shipping_line_delivery_instructions_label": "Leveringsinstructies (optioneel)",
+        "shipping_line_delivery_instructions": "Voer de nodige informatie in, zoals deurcodes of afleverinstructies.",
+        "other_method": {
+          "zero": "Geen andere methoden beschikbaar",
+          "one": "%{count} andere methode beschikbaar op ",
+          "other": "%{count} andere methoden beschikbaar vanaf "
+        },
+        "shipping_rate_discounted_amount": "Is: %{original_amount}. Nu: %{amount}",
+        "local_delivery": "Lokale levering",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "voor %{count} levering",
+            "other": "voor %{count} levering"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "dagelijks",
+              "other": "elke %{count} dag"
+            },
+            "week": {
+              "one": "elke week",
+              "other": "elke %{count} week"
+            },
+            "month": {
+              "one": "maandelijks",
+              "other": "elke %{count} maandenlang"
+            },
+            "year": {
+              "one": "jaarlijks",
+              "other": "elke %{count} jarenlang"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} per levering",
+          "prepaid_shipping_price_label": "%{shipping_price} per levering x %{delivery_interval_count}",
+          "initial_order_discounted": "Eerste het verschepen kosten %{discounted_shipping_cost}, dan %{frequency_description}",
+          "prepaid_initial_order_discounted": "Eerste het verschepen kosten %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Eerste het verschepen kosten %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Eerste het verschepen kosten %{discounted_shipping_price} %{prepaid_delivery_frequency}, dan %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Eerste het verschepen kosten %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), dan %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Opgenomen",
+          "recurring_order_shipping_price": "gevolgd door %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Eerste bestelling inbegrepen, gevolgd door %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per levering), gevolgd door %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Eerste bestelling gratis",
+            "other": "Allereerst %{count} bestellingen gratis"
+          },
+          "free_for_first_n_order": {
+            "one": "Voor eerste bestelling",
+            "other": "Voor de eerste %{count} bestelling"
+          }
+        },
+        "one_time_purchase_shipping": "Eenmalige verzending"
       },
       "general": {
         "page_title": "Checkout",
@@ -722,6 +785,19 @@
         },
         "maximum_discount_code_limit_reached": "Je hebt het maximum aantal kortingscodes bereikt. Een bestaande code verwijderen om te gebruiken <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> het werkt nu niet. Contacteer ons voor hulp."
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Aanvullende informatie"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "U wordt gevraagd om in te loggen met Amazon.",
+        "amazon_payments_logout": "Uitloggen bij Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "De geselecteerde betaalmethode kon niet worden gebruikt. Selecteer een andere methode of neem contact op met uw bank of kaartuitgever.",
+        "amazon_payments_abandoned_mfa_challenge": "Uw betaling kon niet worden voltooid. Probeer een andere betaalmethode of neem contact op met uw bank of kaartuitgever.",
+        "amazon_payments_could_not_enqueue_authorize": "Er was een probleem met het verwerken van uw betaling. Probeer het opnieuw of gebruik een andere betaalmethode."
       }
     },
     "sentence": {

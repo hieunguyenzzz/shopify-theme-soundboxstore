@@ -467,7 +467,70 @@
         "estimated_delivery_time": "Beräknad leverans %{time}",
         "estimated_delivery_time_range": "Beräknad leverans %{min_time}–%{max_time}",
         "delivery_today": "Leverans samma dag %{time}",
-        "delivery_tomorrow": "Leverans nästa dag %{time}"
+        "delivery_tomorrow": "Leverans nästa dag %{time}",
+        "two_day_delivery": "2-dagars leverans %{time}",
+        "delivery": "Leverans %{time}",
+        "arrives_time": "Anlända %{time}",
+        "arrives_time_range": "Anlända %{min_time}–%{max_time}",
+        "estimated_time": "Beräknad %{time}",
+        "estimated_time_range": "Beräknad %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Mobilnummer (obligatoriskt)",
+        "shipping_line_phone": "Din kurir kan använda detta nummer för att kontakta dig.",
+        "shipping_line_delivery_phone_label": "Mobilnummer",
+        "shipping_line_delivery_phone": "Du kan kontaktas med uppdateringar om din leverans.",
+        "optional_shipping_line_delivery_instructions_label": "Leveransanvisningar (tillval)",
+        "shipping_line_delivery_instructions": "Ange nödvändig information som dörrkoder eller avlämningsinstruktioner.",
+        "other_method": {
+          "zero": "Inga andra metoder tillgängliga",
+          "one": "%{count} annan metod tillgänglig på ",
+          "other": "%{count} andra tillgängliga metoder som börjar vid "
+        },
+        "shipping_rate_discounted_amount": "Was: %{original_amount}. Nu: %{amount}",
+        "local_delivery": "Lokal leverans",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "för %{count} leverans",
+            "other": "för %{count} leverans"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "dagligen",
+              "other": "varje %{count} dag"
+            },
+            "week": {
+              "one": "varje vecka",
+              "other": "varje %{count} vecka"
+            },
+            "month": {
+              "one": "månadsvis",
+              "other": "varje %{count} månad"
+            },
+            "year": {
+              "one": "årligen",
+              "other": "varje %{count} år"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} per leverans",
+          "prepaid_shipping_price_label": "%{shipping_price} per leverans x %{delivery_interval_count}",
+          "initial_order_discounted": "Första fraktkostnaden %{discounted_shipping_cost}, sedan %{frequency_description}",
+          "prepaid_initial_order_discounted": "Första fraktkostnaden %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Första fraktkostnaden %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Första fraktkostnaden %{discounted_shipping_price} %{prepaid_delivery_frequency}, sedan %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Första fraktkostnaden %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), sedan %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Inkluderad",
+          "recurring_order_shipping_price": "följt av %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Första ordern inkluderad, följt av %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per leverans), följt av %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Första beställningen gratis",
+            "other": "Första %{count} beställningar gratis"
+          },
+          "free_for_first_n_order": {
+            "one": "För första beställning",
+            "other": "För första %{count} beställningar"
+          }
+        },
+        "one_time_purchase_shipping": "Engångsfrakt"
       },
       "general": {
         "page_title": "Kassa",
@@ -722,6 +785,19 @@
         },
         "maximum_discount_code_limit_reached": "Du har nått det maximala antalet rabattkoder. Ta bort en befintlig kod som ska användas <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> fungerar inte just nu. Kontakta oss för hjälp."
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Ytterligare information"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Du kommer att bli ombedd att logga in med Amazon.",
+        "amazon_payments_logout": "Logga ut från Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Den valda betalningsmetoden kunde inte användas. Välj en annan metod eller kontakta din bank eller kortutgivare.",
+        "amazon_payments_abandoned_mfa_challenge": "Din betalning kunde inte slutföras. Prova en annan betalningsmetod eller kontakta din bank eller kortutgivare.",
+        "amazon_payments_could_not_enqueue_authorize": "Det var ett problem att behandla din betalning. Försök igen eller använd en annan betalningsmetod."
       }
     },
     "sentence": {

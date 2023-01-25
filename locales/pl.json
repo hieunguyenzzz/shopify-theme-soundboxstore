@@ -725,7 +725,83 @@
         "estimated_delivery_time": "Szacowana dostawa %{time}",
         "estimated_delivery_time_range": "Szacowana dostawa %{min_time}–%{max_time}",
         "delivery_today": "Dostawa tego samego dnia %{time}",
-        "delivery_tomorrow": "Dostawa następnego dnia %{time}"
+        "delivery_tomorrow": "Dostawa następnego dnia %{time}",
+        "two_day_delivery": "Dostawa 2-dniowa %{time}",
+        "delivery": "Dostawa %{time}",
+        "arrives_time": "Przybywa %{time}",
+        "arrives_time_range": "Przybywa %{min_time}–%{max_time}",
+        "estimated_time": "Szacowany %{time}",
+        "estimated_time_range": "Szacowany %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Numer telefonu komórkowego (wymagane)",
+        "shipping_line_phone": "Twój kurier może użyć tego numeru do skontaktowania się z Tobą.",
+        "shipping_line_delivery_phone_label": "Numer telefonu komórkowego",
+        "shipping_line_delivery_phone": "Możesz skontaktować się z aktualizacjami dotyczącymi dostawy.",
+        "optional_shipping_line_delivery_instructions_label": "Instrukcje dostawy (opcjonalnie)",
+        "shipping_line_delivery_instructions": "Wprowadź niezbędne informacje, takie jak kody drzwi lub instrukcje wysiadania.",
+        "other_method": {
+          "zero": "Brak innych dostępnych metod",
+          "one": "%{count} inna metoda dostępna pod adresem ",
+          "other": "%{count} inne dostępne metody począwszy od "
+        },
+        "shipping_rate_discounted_amount": "Był: %{original_amount}. Teraz: %{amount}",
+        "local_delivery": "Dostawa lokalna",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "za %{count} dostawa",
+            "other": "za %{count} dostawy"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "codziennie",
+              "other": "każdy %{count} dni"
+            },
+            "week": {
+              "one": "co tydzień",
+              "other": "każdy %{count} tygodnie"
+            },
+            "month": {
+              "one": "co miesiąc",
+              "other": "każdy %{count} miesiące"
+            },
+            "year": {
+              "one": "każdego roku",
+              "other": "każdy %{count} lata"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} na dostawę",
+          "prepaid_shipping_price_label": "%{shipping_price} na dostawę x %{delivery_interval_count}",
+          "initial_order_discounted": "Pierwszy koszt wysyłki %{discounted_shipping_cost}, następnie %{frequency_description}",
+          "prepaid_initial_order_discounted": "Pierwszy koszt wysyłki %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Pierwszy koszt wysyłki %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Pierwszy koszt wysyłki %{discounted_shipping_price} %{prepaid_delivery_frequency}, następnie %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Pierwszy koszt wysyłki %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), następnie %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "W zestawie",
+          "recurring_order_shipping_price": "następnie %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Pierwsze zamówienie włączone, a następnie %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} na dostawę), a następnie %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "Pierwsze zamówienie za darmo",
+            "other": "Pierwszy %{count} zamówienia za darmo"
+          },
+          "free_for_first_n_order": {
+            "one": "Dla pierwszego zamówienia",
+            "other": "Po pierwsze %{count} zamówienia"
+          }
+        },
+        "one_time_purchase_shipping": "Jednorazowa wysyłka"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Dodatkowe informacje"
+        }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Zostaniesz poproszony o zalogowanie się do Amazon.",
+        "amazon_payments_logout": "Wyloguj się z Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Nie można użyć wybranej metody płatności. Wybierz inną metodę lub skontaktuj się z bankiem lub wystawcą karty.",
+        "amazon_payments_abandoned_mfa_challenge": "Twoja płatność nie mogła zostać zakończona. Wypróbuj inną metodę płatności lub skontaktuj się z bankiem lub wystawcą karty.",
+        "amazon_payments_could_not_enqueue_authorize": "Wystąpił problem z przetwarzaniem płatności. Spróbuj ponownie lub użyj innej metody płatności."
       }
     }
   }
