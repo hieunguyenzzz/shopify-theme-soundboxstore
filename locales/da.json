@@ -1925,9 +1925,133 @@
             "payment_not_due": "Betaling endnu ikke forfalden"
           },
           "table_view": {
-            "overdue": "Forfaldne"
+            "overdue": "Forfaldne",
+            "due": "Grund {{date}}",
+            "due_today": "Forfalder i dag",
+            "paid": "Betalt",
+            "due_without_date": "Grund",
+            "due_on_fulfillment": "På grund af opfyldelse",
+            "pay_to_confirm": "Betal for at bekræfte",
+            "payment_not_due": "Endnu ikke på grund"
           }
-        }
+        },
+        "sort_by": "Sorter efter: {{option}}",
+        "sort_hide_options_accessibility_label": "Skjul sorteringsindstillinger for bekræftede ordrer.",
+        "sort_show_options_accessibility_label": "Vis sorteringsindstillinger for bekræftede ordrer.",
+        "sort_currently_sorted_by_accessibility_label": "I øjeblikket sorteret efter: {{option}}",
+        "sort_title": "Slags",
+        "sort": {
+          "date": {
+            "newest": "Nyeste til ældste",
+            "oldest": "Ældste til nyeste"
+          },
+          "location": {
+            "ascending": "Placering (A-Å)",
+            "descending": "Placering (Å-A)"
+          },
+          "order_number": {
+            "ascending": "Ordrenummer (lav til høj)",
+            "descending": "Ordrenummer (høj til lav)"
+          },
+          "order_total": {
+            "ascending": "Ordre total (lav til høj)",
+            "descending": "Ordre total (høj til lav)"
+          }
+        },
+        "table_view": "Vis tabelvisning",
+        "show_order_actions_accessibility_label": "Vis ordre handlinger for ordre {{name}}"
+      },
+      "order_status": {
+        "attempted_delivery_label": "Forsøg på levering",
+        "attempted_delivery_description": "Leveringsforsøget mislykkedes.",
+        "confirmed_description": "Vi har modtaget din ordre.",
+        "on_its_way_description": "Denne forsendelse er på vej.",
+        "out_for_delivery_description": "Denne forsendelse er ude til levering.",
+        "preparing_for_shipping_label": "Forberedelse til forsendelse",
+        "preparing_for_shipping_description": "Disse varer forberedes til forsendelse.",
+        "ready_for_pickup_label": "Klar til afhentning",
+        "ready_for_pickup_description": "Disse varer er klar til afhentning.",
+        "picked_up_label": "Afhente",
+        "picked_up_description": "Disse varer er blevet afhentet.",
+        "canceled_description": "Din ordre blev annulleret den {{date}}.",
+        "canceled_label": "Annullere",
+        "canceled_title": "Din ordre er blevet annulleret",
+        "come_back": "Kom tilbage til denne side for opdateringer om din forsendelsesstatus.",
+        "company_tracking_number": "{{company}} sporingsnummer:",
+        "confirmed_label": "Bekræftet",
+        "confirmed_title": "Din ordre er bekræftet",
+        "delivered_description": "Denne forsendelse er blevet leveret.",
+        "delivered_label": "Leveret",
+        "delivered_title": "Din forsendelse er blevet leveret",
+        "estimated_delivery": "Anslået levering {{date}}",
+        "in_review_description": "Vi giver dig besked, hvis vi har brug for flere oplysninger, eller når din ordre er bekræftet.",
+        "in_review_label": "I gennemgang",
+        "in_review_title": "Din ordre bliver gennemgået",
+        "last_updated": "Sidst opdateret {{date}}",
+        "multiple_shipments_label": "Flere forsendelser",
+        "no_tracking_number": "Der er ikke noget sporingsnummer for denne forsendelse.",
+        "on_its_way_label": "På vej",
+        "on_its_way_title": "Din forsendelse er på vej",
+        "out_for_delivery_label": "Ud til levering",
+        "out_for_delivery_title": "Din forsendelse er ude til levering",
+        "resume_tracking": "Genoptag sporing",
+        "submitted_label": "Indsende",
+        "submitted_description": "Gennemgå ordre-og betalingsoplysninger.",
+        "track_shipment": "Spor forsendelse",
+        "request_return": "Anmod om returnering",
+        "view_order_for_details": "Se ordre for detaljer"
+      },
+      "status_mark_as_delivered": "Mark som leveret",
+      "status_title": "Ordrestatus",
+      "buy_again": "Køb igen",
+      "buy_again_accessibility_label": "Køb igen for bestilling {{orderId}}",
+      "manage": "Administrere",
+      "manage_accessiblity_label": "Administrer ordre {{orderId}}",
+      "group_title_label": "En del af: {{groupTitle}}"
+    },
+    "order_details": {
+      "shipment_timeline": {
+        "expand_events_label": "Vis detaljer",
+        "expand_events_accessibility_label": "Vis ordre forsendelse detaljer",
+        "hide_events_label": "Skjul detaljer",
+        "hide_events_accessibility_label": "Skjul ordre forsendelsesoplysninger"
+      },
+      "addresses_section_title": "Fakturering og forsendelse",
+      "billing_address": "Faktureringsadresse",
+      "card_ending_with": "slutter med {{lastDigits}}",
+      "contact": "Kontakt",
+      "fully_refunded_label": "REFUNDERE",
+      "discount": "Rabat",
+      "hide_items": "Skjul elementer",
+      "loading": "Indlæser ordredetaljer",
+      "loading_finished_accessibility_message": "Ordreoplysninger er indlæst",
+      "location": "Beliggenhed",
+      "mobile_summary_toggle_button": {
+        "open": "Vis Ordreoversigt",
+        "closed": "Skjul Ordreoversigt"
+      },
+      "no_data": "Ingen",
+      "not_applicable": "N \/ A",
+      "partially_refunded_label": "DELVIST REFUNDERET",
+      "payment": {
+        "status_in_review": "Betaling forfalder efter gennemgang",
+        "status_unpaid": "Betaling forfalder den {{date}}",
+        "title": "Betaling"
+      },
+      "refunded_amount": "Refundere",
+      "request_return_failed": "Der opstod et problem, der behandlede din anmodning. Prøv igen.",
+      "returns": {
+        "expand_events_label": "Vis detaljer",
+        "hide_events_label": "Skjul detaljer",
+        "ineligible_return_with_policy_message": "Ingen varer i denne ordre er berettiget til retur. Gennemgå vores {{returnAndRefundPolicyLinkText}} for at lære mere.",
+        "ineligible_return_without_policy_message": "Ingen varer i denne ordre er berettiget til retur.",
+        "print_shipping_label": "Udskriv forsendelsesetiket",
+        "return_and_refund_link_text": "retur-og Tilbagebetalingspolitik",
+        "return_and_refund_modal_header": "Retur-og Tilbagebetalingspolitik",
+        "tracking_number": "Sporingsnummer:"
+      },
+      "shipping": {
+        "address": "Leveringsadresse"
       }
     }
   }
