@@ -2241,10 +2241,98 @@
             "description": "I dettagli di pagamento vengono decisi al momento della conferma dell'ordine.",
             "title": "Pagamento non ancora dovuto",
             "in_review": {
-              "description": "I dettagli di pagamento vengono decisi al momento della conferma dell'ordine."
+              "description": "I dettagli di pagamento vengono decisi al momento della conferma dell'ordine.",
+              "title": "Pagamento non ancora dovuto"
+            },
+            "submitted": {
+              "description": "Invia il pagamento per confermare questo ordine.",
+              "title": "Paga per confermare"
             }
-          }
-        }
+          },
+          "paid": {
+            "title": "Pagare",
+            "title_with_date": "Pagare {{date}}",
+            "description": "Il tuo ordine è interamente pagato."
+          },
+          "refund": {
+            "title": "Rimborsare",
+            "title_with_date": "Rimborsare {{date}}",
+            "description_full_refund": "Hai ricevuto un rimborso completo per questo ordine.",
+            "description_single_refund": "Hai ricevuto un rimborso parziale per questo ordine.",
+            "description_multiple_refunds": "Hai ricevuto rimborsi parziali per questo ordine."
+          },
+          "canceled": {
+            "title": "Pagamento annullato",
+            "description": "Non ti verranno addebitati."
+          },
+          "pay_now": "Paga ora",
+          "pay_now_accessibility_label": "Paga ora per l'ordine {{orderName}}",
+          "title": "Stato del pagamento"
+        },
+        "order_timeline": {
+          "expand_events_label": "Mostra dettagli",
+          "expand_events_accessibility_label": "Mostra i dettagli dell'ordine bozza",
+          "hide_events_label": "Nascondi dettagli",
+          "hide_events_accessibility_label": "Nascondi i dettagli dell'ordine bozza"
+        },
+        "subtitle": "Presentare {{date}}",
+        "title": "Ordine {{name}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Si è verificato un problema nell'eliminazione di questo indirizzo. Riprova o aggiorna la pagina."
+      },
+      "addresses_loading_issue": {
+        "description": "Errore di connessione. Controlla la tua connessione internet e riprova."
+      },
+      "banner_title": {
+        "one": "C'è {{count}} errore",
+        "other": "Ci sono {{count}} errore"
+      },
+      "failed_address_creation": {
+        "description": "C'è stato un problema nel creare il tuo indirizzo. Prova ad aggiornare questa pagina o controlla la tua connessione internet."
+      },
+      "failed_address_update": {
+        "description": "Si è verificato un problema nell'aggiornamento del tuo indirizzo. Prova ad aggiornare questa pagina o controlla la tua connessione internet."
+      },
+      "load_orders_error": {
+        "title": "Impossibile caricare gli ordini",
+        "description": "Riprova o torna più tardi.",
+        "retry_button": "Ritentare"
+      },
+      "no_access": {
+        "back_to_authentication_link": "Accedi a un altro account",
+        "description": "Non sei registrato come cliente B2B con {{shopName}}",
+        "title": "Nessun accesso"
+      },
+      "no_access_to_locations": {
+        "description": "Non hai accesso a nessun luogo"
+      },
+      "not_found": {
+        "description": "Controlla l'URL o riprova tra qualche minuto.",
+        "title": "Si è verificato un problema nel caricamento di questa pagina"
+      },
+      "order_not_found": {
+        "description": "Questo ordine non esiste o non si dispone dei permessi per visualizzarlo.",
+        "title": "Ordine non trovato"
+      },
+      "profile_update_error": {
+        "description": "Si è verificato un problema nell'aggiornamento del tuo profilo. Prova ad aggiornare questa pagina o controlla la tua connessione internet."
+      },
+      "retry_action_label": "Ritentare"
+    },
+    "payment_methods": {
+      "title": "Metodi di pagamento",
+      "add_payment_method_button": "Aggiungi metodo di pagamento",
+      "delete_payment_method_button": "Eliminare",
+      "delete_payment_method_button_accessibility_label": "Eliminare {{paymentMethodName}}",
+      "back_button": "Indietro",
+      "back_button_accessibility_label": "Torna a {{paymentMethodStepTitle}}",
+      "generic_card": "Carta",
+      "payment_details": {
+        "title": "Dettagli del metodo di pagamento",
+        "credit_card_details_accessibility_label": "terminando in {{lastDigits}}"
       }
     }
   }
