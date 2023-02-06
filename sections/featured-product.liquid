@@ -423,3 +423,18 @@
     ]
   }
 {% endschema %}
+
+{% if product %}
+        <script class="rfq-featured-product">
+            window.GRFQFeaturedProduct = {{ product | json }} || null
+        </script>
+        {% for collection in product.collections %}
+        <script>
+        if(typeof GRFQFeaturedProduct["collection"] === "undefined"){
+            GRFQFeaturedProduct["collection"] = [];
+        }
+        GRFQFeaturedProduct["collection"].push("{{ collection.id }}");
+        </script>
+        {% endfor %}
+        {% endif %}
+        <!-- RFQ installed -->
