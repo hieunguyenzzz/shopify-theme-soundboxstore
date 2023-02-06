@@ -316,6 +316,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script>
    forceProductPriceSelector = '.grfq-price'
+  document.addEventListener("GRFQ:Popup_Form_rendered", function() {
+    console.log('12321321')
+  });
  </script>
 <style>
   .grid-item-meta .rfq-btn{
