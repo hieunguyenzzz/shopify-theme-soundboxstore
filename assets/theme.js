@@ -3247,9 +3247,9 @@ lazySizesConfig.expFactor = 4;
     var defaults = {
       adaptiveHeight: false,
       autoPlay: false,
-      avoidReflow: false, // custom by Archetype
-      childNav: null, // element. Custom by Archetype instead of asNavFor
-      childNavScroller: null, // element
+      avoidReflow: false,
+      childNav: null, 
+      childNavScroller: null, 
       childVertical: false,
       fade: false,
       initialIndex: 0,
@@ -8088,7 +8088,7 @@ lazySizesConfig.expFactor = 4;
               variant.price,
               theme.settings.moneyFormat
             ) +
-            "</span><span class='vat_text'> (Ex. VAT)</span>";
+            "</span><span class='vat_text'> (INC VAT)</span>";
 
           // Sale price, if necessary
           if (variant.compare_at_price > variant.price) {
@@ -8104,7 +8104,7 @@ lazySizesConfig.expFactor = 4;
                 variant.compare_at_price,
                 theme.settings.moneyFormat
               ) +
-              "</span><span class='vat_text'> (Ex. VAT)</span>";
+              "</span><span class='vat_text'> (INC VAT)</span>";
             this.cache.priceWrapper.classList.remove(classes.hidden);
             this.cache.price.classList.add(classes.onSale);
             if (this.cache.comparePriceA11y) {

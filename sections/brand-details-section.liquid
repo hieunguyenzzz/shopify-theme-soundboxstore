@@ -12,16 +12,16 @@
               <div class="col left-col">
                 <div class="col-wrap">
                   {% if block.settings.logo_image != blank %}
-                  <img loading="lazy" src="{{ block.settings.logo_image | img_url: 'master' }}" alt="{{ block.settings.logo_image.alt }}">
+                  {{ block.settings.logo_image | image_url: width: 200 | image_tag: style: "object-fit:contain;width:auto" , loading: 'lazy' }}
                   {% endif %}
                 </div>
               </div>
               <div class="col right-col">
                 <div class="col-wrap">
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image1 | img_url: '700x' }}" alt="{{ block.settings.slide_image1.alt }}"></div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image2 | img_url: '700x' }}" alt="{{ block.settings.slide_image2.alt }}"></div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap"><img loading="lazy" src="{{ block.settings.slide_image3 | img_url: '700x' }}" alt="{{ block.settings.slide_image3.alt }}"></div></div>{% endif %}
+                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 | image_tag:  widths: '400, 800' , sizes: '(max-width:600px) 400px, 800px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 500 | image_tag:  widths: '200, 500' ,  sizes: '(max-width:600px) 200px, 500px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 500 | image_tag:  widths: '200, 500'  , sizes: '(max-width:600px) 200px, 500px', loading: 'lazy' }}</div></div>{% endif %}
                     
                   </div>
                 </div>

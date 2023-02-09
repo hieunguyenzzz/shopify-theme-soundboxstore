@@ -771,7 +771,9 @@ h6.h6 {
   text-align: center;
   margin: 0 auto;
 }
-
+.logo-list .grid-item .logo-bar__item img {
+ height:auto;
+}
 .logo-list .new-grid.product-grid {
   max-width: 1200px;
   width: 100%;
@@ -2084,7 +2086,9 @@ h6.h6 {
   color: #303A44;
 }
 
-.template-product .buy_buttons .add-to-cart {
+
+.template-product .buy_buttons .add-to-cart,
+.template-product .buy_buttons .rfq-btn {
   background-color: #303A44;
   border-color: #303A44;
   font-weight: 600;
@@ -2093,7 +2097,7 @@ h6.h6 {
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: 'Banana Grotesk';
-  padding: 22px 15px;
+  padding: 22px 15px;  width:100%;
 }
 
 .template-product .product-icon-wrap {
@@ -3389,7 +3393,8 @@ h6.h6 {
   justify-content: center;
   align-items: center;
   color: #fff;
-  z-index: 99
+  z-index: 99;
+  background:white
 }
 
 /* #lightbox .close,#lightbox .prev,#lightbox .next {
@@ -3439,7 +3444,8 @@ h6.h6 {
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  margin: 10px
+  margin: 10px;    
+  box-shadow: 0px 0px 2px #cecece;
 }
 
 #lightbox .navigation-icons div svg {
@@ -4809,6 +4815,8 @@ h6.h6 {
 
   .logo-list .logo-bar__item img {
     max-width: 100%;
+    object-fit:contain;
+    height:auto
   }
 
   .logo-list .logo-bar__item {
@@ -5448,7 +5456,16 @@ body .grfq__popupForm__modal_state:checked + .grfq__popupForm__modal .grfq__popu
   height: 90%
 }
  @media only screen and (min-width:860px) {
-body .grfq-quote-widget-half-bottom{
-  font-size:20px;
-}
+  body .grfq-quote-widget-half-bottom{
+    font-size:20px;
+  }
  }
+ .vat_text{
+  display: none;
+}
+[country="GB"]  .vat_text{
+  display: inline-block;
+}
+.btn.cart__checkout+.rfq-btn{
+  display: none;
+}

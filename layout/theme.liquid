@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}" country="{{  localization.country.iso_code }}">
   <head>
     <!-- Google Tag Manager -->
     <script>
@@ -11,6 +11,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NGK2QSL');</script>
     <!-- End Google Tag Manager -->
+
+  {% include 'dataLayer-allPages' %}
+    
     <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification"/>
 
     <meta charset="utf-8">
@@ -258,8 +261,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     })(document);
     smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
 </script>
-
-  </head>
+<style>
+  label[for="_gcl_au"],label[for="_gcl_au"] + .grfq__popupForm__formLabelOptional, .grfq__popupForm__formInput input[name="_gcl_au"]{
+    display:none!important;
+  }
+</style>
+</head>
 
   <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}" data-transitions="{{ settings.animate_page_transitions }}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
     {% if settings.animate_page_transitions %}
@@ -312,13 +319,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script>
    forceProductPriceSelector = '.grfq-price'
+  document.addEventListener("GRFQ:Popup_Form_rendered", function() {
+    console.log('12321321')
+  });
  </script>
 <style>
   .grid-item-meta .rfq-btn{
     max-width:200px;
   }
+  .grfq__popupForm__formGroup:last-child{
+    display:none!important;
+  }
 </style>
     <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script> 
     {%- section 'zoho-hide-we-online' -%}
+    <script type="text/javascript" 
+src='https://crmplus.zoho.eu/crm/javascript/zcga.js'> </script>
+    <script>
+      function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+    console.log(getCookie("_gcl_au").substring(4))
+       document.addEventListener("GRFQ:Popup_Form_rendered", function() {
+        document.querySelector('input[name="_gcl_au"]').value = getCookie("_gcl_au").substring(4)
+         console.log(getCookie("_gcl_au").substring(4))
+  });
+    </script>
   </body>
 </html>
