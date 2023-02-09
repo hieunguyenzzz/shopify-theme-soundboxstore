@@ -30,9 +30,7 @@
       endif
     -%}
 
-    <li
-      class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}"
-      {% if has_dropdown %}aria-haspopup="true"{% endif %}>
+    <li class="site-nav__item site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}" {% if has_dropdown %}aria-haspopup="true"{% endif %}>
 
       <a href="{{ link.url }}" class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}">
         {{ link.title }}
@@ -43,58 +41,48 @@
           <div class="page-width">
             <div class="site-nav__dropdown-animate megamenu__wrapper">
               <div class="megamenu__cols">
-                
-                  {%- for childlink in link.links -%}
-                <div class="megamenu__col">
-                    {%- liquid
-                      assign create_new_column = false
 
-                      if childlink.levels > 0 and forloop.index != 1
-                        assign create_new_column = true
-                      endif
+                {%- for childlink in link.links -%}
+                 
 
-                      if childlink.levels == 0 and previous_column_type == 'full'
-                        assign create_new_column = true
-                      endif
-                    -%}
-
-                    {%- if create_new_column -%}
-                      </div><div class="megamenu__col">
-                    {%- endif -%}
-						
-                
-                    
-                     
-					{% if childlink.url contains '/products/' %}                      
-                      {% for product in collections[section.settings.collection_products].products %}                       
+                    {% if childlink.url contains '/products/' %}
+                      {% for product in collections[section.settings.collection_products].products %}
                         {% if childlink.url == product.url %}
+                        <div class="megamenu__col">
                           <div class="megamenu-col-wrap">
-                          <div class="menu-col-image">
-                            <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                              <img src={{ product.featured_image | img_url }} />
-                            </a>
+                            <div class="menu-col-image">
+                              <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                                <img src={{ product.featured_image | img_url }} />
+                              </a>
+                            </div>
+                            <h4>
+                              <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                            </h4>
                           </div>
-                           <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
                           </div>
                         {% endif %}
                       {% endfor %}
-                      
+
                     {% else if childlink.url contains '/collections/' %}
-                      {% for collection in collections %}                      
+                      {% for collection in collections %}
                         {% if childlink.url == collection.url %}
-                           <div class="megamenu-col-wrap">
-                          <div class="menu-col-image">
-                            <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                              <img src={{ collection.featured_image | img_url }} />
-                            </a>
+                        <div class="megamenu__col">
+                          <div class="megamenu-col-wrap">
+                            <div class="menu-col-image">
+                              <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                                <img src={{ collection.featured_image | img_url }} />
+                              </a>
+                            </div>
+                            <h4>
+                              <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                            </h4>
                           </div>
-                           <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
-                           </div>
+                          </div>
                         {% endif %}
                       {% endfor %}
                     {% endif %}
-              
-                	
+
+
                     {%- liquid
                       if childlink.levels > 0
                         assign previous_column_type = 'full'
@@ -103,36 +91,32 @@
                       endif
                     -%}
 
-                    {%- for grandchildlink in childlink.links -%}
-                      <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
-                        {{grandchildlink.title}}
-                        </a>
-                    {%- endfor -%}
-                 </div>
-                  {%- endfor -%}
+                   
+                  </div>
+                {%- endfor -%}
                 <div class="megamenu__col">
                   <div class="megamenu-col-wrap">
                     <a href="/collections/all">Shop all</a>
                   </div>
                 </div>
-                
-               
-              </div>
-              {%- if isCollection -%}
-              {% comment %}
-                <div class="megamenu__featured">
-                  <div class="product-grid">
-                    {%- liquid
-                      assign mega_product = collection_drop.products.first
-                      render 'product-grid-item', product: mega_product
 
-                      if settings.quick_shop_enable
-                        render 'quick-shop-modal', product: mega_product
-                      endif
-                    -%}
+
+              
+              {%- if isCollection -%}
+                {% comment %}
+                  <div class="megamenu__featured">
+                  <div class="product-grid">
+                  {%- liquid
+                  assign mega_product = collection_drop.products.first
+                  render 'product-grid-item', product: mega_product
+
+                  if settings.quick_shop_enable
+                  render 'quick-shop-modal', product: mega_product
+                  endif
+                  -%}
                   </div>
-                </div>
-              {% endcomment %}
+                  </div>
+                {% endcomment %}
               {%- endif -%}
             </div>
           </div>
@@ -150,10 +134,20 @@
 
               <li class="{% if has_sub_dropdown %} site-nav__deep-dropdown-trigger{% endif %}">
                 <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--second-level{% if has_sub_dropdown %} site-nav__dropdown-link--has-children{% endif %}">
-                  <img src="{{ childlink.featured_image | img_url }}"/>
+                  <img src="{{ childlink.featured_image | img_url }}" />
                   {{ childlink.title | escape }}
                   {%- if has_sub_dropdown -%}
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewBox="0 0 28 16"><path d="M1.57 1.59l12.76 12.77L27.1 1.59" stroke-width="2" stroke="#000" fill="none" fill-rule="evenodd"/></svg>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="icon icon--wide icon-chevron-down"
+                      viewBox="0 0 28 16"><path
+                        d="M1.57 1.59l12.76 12.77L27.1 1.59"
+                        stroke-width="2"
+                        stroke="#000"
+                        fill="none"
+                        fill-rule="evenodd" /></svg>
                   {%- endif -%}
                 </a>
                 {%- if has_sub_dropdown -%}
