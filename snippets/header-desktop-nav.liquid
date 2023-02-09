@@ -63,33 +63,35 @@
                     {%- endif -%}
 						
                 
-                    <div class="megamenu-col-wrap">
+                    
                      
 					{% if childlink.url contains '/products/' %}                      
                       {% for product in collections[section.settings.collection_products].products %}                       
-                      {% if childlink.url == product.url %}
-                      <div class="menu-col-image">
-                        <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                          <img src={{ product.featured_image | img_url }} />
-                        </a>
-                      </div>
-                       <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
-                      {% endif %}
+                        {% if childlink.url == product.url %}
+                          <div class="megamenu-col-wrap">
+                          <div class="menu-col-image">
+                            <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                              <img src={{ product.featured_image | img_url }} />
+                            </a>
+                          </div>
+                           <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
+                          </div>
+                        {% endif %}
                       {% endfor %}
                       
                     {% else if childlink.url contains '/collections/' %}
                       {% for collection in collections %}                      
-                      {% if childlink.url == collection.url %}
-                      <div class="menu-col-image">
-                        <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                          <img src={{ collection.featured_image | img_url }} />
-                        </a>
-                      </div>
-                       <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
-                      {% endif %}
+                        {% if childlink.url == collection.url %}
+                          <div class="menu-col-image">
+                            <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                              <img src={{ collection.featured_image | img_url }} />
+                            </a>
+                          </div>
+                           <h4><a href="{{ childlink.url }}">{{ childlink.title }}</a></h4>
+                        {% endif %}
                       {% endfor %}
                     {% endif %}
-                    </div>
+              
                 	
                     {%- liquid
                       if childlink.levels > 0
