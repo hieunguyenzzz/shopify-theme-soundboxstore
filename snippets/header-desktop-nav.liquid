@@ -43,8 +43,8 @@
               <div class="megamenu__cols">
 
                 {%- for childlink in link.links -%}
-                  <div class="megamenu__col">
-                    {%- liquid
+
+                  {%- liquid
                       assign create_new_column = false
 
                       if childlink.levels > 0 and forloop.index != 1
@@ -56,15 +56,16 @@
                       endif
                     -%}
 
-                    {%- if create_new_column -%}
-                    </div>
-                    <div class="megamenu__col">
-                    {%- endif -%}
+                  {%- if create_new_column -%}
+                  </div>
+                  <div class="megamenu__col">
+                  {%- endif -%}
 
 
-                    {% if childlink.url contains '/products/' %}
-                      {% for product in collections[section.settings.collection_products].products %}
-                        {% if childlink.url == product.url %}
+                  {% if childlink.url contains '/products/' %}
+                    {% for product in collections[section.settings.collection_products].products %}
+                      {% if childlink.url == product.url %}
+                        <div class="megamenu__col">
                           <div class="megamenu-col-wrap">
                             <div class="menu-col-image">
                               <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
@@ -75,12 +76,14 @@
                               <a href="{{ childlink.url }}">{{ childlink.title }}</a>
                             </h4>
                           </div>
-                        {% endif %}
-                      {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
 
-                    {% else if childlink.url contains '/collections/' %}
-                      {% for collection in collections %}
-                        {% if childlink.url == collection.url %}
+                  {% else if childlink.url contains '/collections/' %}
+                    {% for collection in collections %}
+                      {% if childlink.url == collection.url %}
+                        <div class="megamenu__col">
                           <div class="megamenu-col-wrap">
                             <div class="menu-col-image">
                               <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
@@ -91,12 +94,13 @@
                               <a href="{{ childlink.url }}">{{ childlink.title }}</a>
                             </h4>
                           </div>
-                        {% endif %}
-                      {% endfor %}
-                    {% endif %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
 
 
-                    {%- liquid
+                  {%- liquid
                       if childlink.levels > 0
                         assign previous_column_type = 'full'
                       else
@@ -104,12 +108,11 @@
                       endif
                     -%}
 
-                    {%- for grandchildlink in childlink.links -%}
-                      <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
-                        {{ grandchildlink.title }}
-                      </a>
-                    {%- endfor -%}
-                  </div>
+                  {%- for grandchildlink in childlink.links -%}
+                    <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
+                      {{ grandchildlink.title }}
+                    </a>
+                  {%- endfor -%}
                 {%- endfor -%}
                 <div class="megamenu__col">
                   <div class="megamenu-col-wrap">
