@@ -212,6 +212,7 @@
           },
           "367e61fe-1e5f-4e6d-8d90-f28ebeb8acc1": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "richtext": "<p>UK & EUROPEAN DELIVERY<\/p>",
               "richtext_mobile": "<p>UK & EURO DELIVERY<\/p>"
@@ -236,7 +237,7 @@
             "type": "announcement_liquid",
             "settings": {
               "richtext": "{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}\n{{phone}}",
-              "richtext_mobile": "{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}"
+              "richtext_mobile": "<div>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}<\/div>"
             }
           }
         },
