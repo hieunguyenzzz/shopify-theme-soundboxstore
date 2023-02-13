@@ -188,6 +188,13 @@
       "toolbar": {
         "type": "toolbar",
         "blocks": {
+          "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
+            "type": "announcement_liquid",
+            "settings": {
+              "richtext": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">CALL TODAY  {% render '[phone-number]' %}<\/a><\/p>",
+              "richtext_mobile": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">CALL TODAY  {% render '[phone-number]' %}<\/a><\/p>"
+            }
+          },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
             "type": "announcement",
             "disabled": true,
@@ -217,21 +224,14 @@
               "richtext": "<p><a href=\"\/pages\/showroom-london\" title=\"Showroom\">VISIT OUR SHOWROOM<\/a><\/p>",
               "richtext_mobile": ""
             }
-          },
-          "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
-            "type": "announcement_liquid",
-            "settings": {
-              "richtext": "<p><a href=\"tel:{{settings.phone_number_es}}\" target=\"_blank\" title=\"tel:{{settings.phone_number_es}}\">CALL TODAY {{settings.phone_number_es}}<\/a><\/p>",
-              "richtext_mobile": "<p><a href=\"tel:{{settings.phone_number_es}}\" target=\"_blank\" title=\"tel:{{settings.phone_number_es}}\">CALL TODAY {{settings.phone_number_es}}<\/a><\/p>"
-            }
           }
         },
         "block_order": [
+          "c606012e-52ee-46cd-9ada-a7bd73ac4bda",
           "1bb63430-805b-4467-9cb9-0a8b97fe3680",
           "367e61fe-1e5f-4e6d-8d90-f28ebeb8acc1",
           "2a6e7f4d-9f41-4712-a54e-bd7a562dbcf6",
-          "d832c431-794f-4f7b-9c71-0fa9275f9737",
-          "c606012e-52ee-46cd-9ada-a7bd73ac4bda"
+          "d832c431-794f-4f7b-9c71-0fa9275f9737"
         ],
         "settings": {
           "announcement_center": true,
