@@ -191,8 +191,8 @@
           "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "{%- capture phone -%}\n          {%- render '[phone-number]' -%}\n         {%- endcapture -%}<p><a href=\"tel: {{phone }}\" target=\"_blank\" title=\"tel: {{phone}} \">CALL TODAY {{phone }}<\/a><\/p>",
-              "richtext_mobile": "{%- capture phone -%}\n          {%- render '[phone-number]' -%}\n         {%- endcapture -%}<p><a href=\"tel: {{phone }}\" target=\"_blank\" title=\"tel: {{phone}} \">CALL TODAY {{phone }}<\/a><\/p>"
+              "richtext": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>",
+              "richtext_mobile": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>"
             }
           },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
