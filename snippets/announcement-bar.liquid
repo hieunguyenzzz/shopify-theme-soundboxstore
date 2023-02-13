@@ -192,6 +192,23 @@
               </div>
               {%- assign slide_index = slide_index | plus: 1 -%}
             {%- endif -%}
+            {%- if block.type == 'announcement_liquid' -%}
+            <div
+              id="AnnouncementSlide-{{ block.id }}"
+              class="slideshow__slide announcement-slider__slide"
+              data-index="{{ slide_index }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="announcement-slider__content">
+                {%- if block.settings.richtext_mobile != blank -%}
+                  {{ block.settings.richtext_mobile }}
+                {%- else -%}
+                  {{ block.settings.richtext }}
+                {%- endif -%}
+              </div>
+            </div>
+            {%- assign slide_index = slide_index | plus: 1 -%}
+          {%- endif -%}
           {%- endfor -%}
         </div>
         <div
