@@ -197,6 +197,7 @@
           },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "richtext": "<p><a href=\"tel:+44 (0) 20 4586 3800\" target=\"_blank\" title=\"tel:+44 (0) 20 4586 3800\">CALL TODAY +44 (0) 20 4586 3800<\/a><\/p>",
               "richtext_mobile": "<p><a href=\"tel:+44 (0) 20 4586 3800\" target=\"_blank\" title=\"tel:+44 (0) 20 4586 3800\">CALL TODAY +44 (0) 20 4586 3800<\/a><\/p>"
@@ -234,10 +235,9 @@
           },
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
             "type": "announcement_liquid",
-            "disabled": true,
             "settings": {
-              "richtext": "{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}\n{{phone}}",
-              "richtext_mobile": "<div>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}<\/div>"
+              "richtext": "<p>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}<\/p>",
+              "richtext_mobile": "<p>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}<\/p>"
             }
           }
         },
