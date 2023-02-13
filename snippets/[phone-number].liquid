@@ -1,0 +1,8 @@
+{% assign phone = settings.phone_number %}
+{% if shop_locale.iso_code === 'es' %}
+  {% assign phone = settings.phone_number_es %}
+{% endif %}
+{% if shop_locale.iso_code === 'us' %}
+  {% assign phone = settings.phone_number_us %}
+{% endif %}
+{{phone}}
