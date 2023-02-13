@@ -17,7 +17,7 @@
          {%- capture phone -%}
           {%- render '[phone-number]' -%}
          {%- endcapture -%}
-         <li class="phone"><a href="tel:{{ phone }}">{{ phone }}</a></li>{{ phone }}
+         <li class="phone"><a href="tel:{{ phone }}">{{ phone }}</a></li>
          {% comment %} {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %} {% endcomment %}
         
         </ul>
