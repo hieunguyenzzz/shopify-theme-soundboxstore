@@ -37,7 +37,7 @@
       {%- assign optionValueHandlized = value | handleize -%}
       {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized  | t -%}
       <div
-        class="variant-input"
+        class="variant-input {% unless product_available %} disabled{% endunless %}"
         data-index="option{{ option_index }}"
         data-value="{{ value | escape }}"
         data-trvalue="{{tranValue | escape}}"

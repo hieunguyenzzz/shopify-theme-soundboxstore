@@ -119,8 +119,7 @@
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky product-left-col">
             <div class="product-left-col-wrap">
-              {%-
-                render 'product-images',
+              {%- render 'product-images',
                 section_id: section_id,
                 product: product,
                 isModal: isModal,
@@ -181,7 +180,11 @@
                       class="product-block{% if block.settings.is_tab %} product-block--tab{% endif %}"
                       {{ block.shopify_attributes }}
                     >
-                      {%- render 'product-description', id: block.id, product: product, is_tab: block.settings.is_tab -%}
+                      {%- render 'product-description',
+                        id: block.id,
+                        product: product,
+                        is_tab: block.settings.is_tab
+                      -%}
                     </div>
                   {%- when 'price' -%}
                     <div
@@ -354,6 +357,7 @@
                         </div>
                       </div>
                     </div>
+
                   {%- when 'variant_picker' -%}
                     <div
                       class="product-block variant_picker"
@@ -376,10 +380,9 @@
                               endif
                             endif
                           -%}
-                 
+
                           {%- if block.settings.picker_type == 'button' -%}
-                            {%-
-                              render 'variant-button',
+                            {%- render 'variant-button',
                               product: product,
                               form_id: form_id,
                               section_id: section_id,
@@ -416,8 +419,7 @@
                     >
                       {%- unless product.empty? -%}
                         <div class="product-block">
-                          {%-
-                            render 'product-form',
+                          {%- render 'product-form',
                             form_id: form_id,
                             product: product,
                             show_dynamic_checkout: block.settings.show_dynamic_checkout,
@@ -556,11 +558,19 @@
                       class="product-block product-block--sales-point"
                       {{ block.shopify_attributes }}
                     >
-                      {%- render 'product-inventory', product: product, current_variant: current_variant, block: block -%}
+                      {%- render 'product-inventory',
+                        product: product,
+                        current_variant: current_variant,
+                        block: block
+                      -%}
                     </div>
                   {%- when 'share' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
-                      {%- render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product -%}
+                      {%- render 'social-sharing',
+                        share_title: product.title,
+                        share_permalink: product.url,
+                        share_image: product
+                      -%}
                     </div>
                   {%- when 'trust_badge' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
@@ -569,7 +579,10 @@
                           class="image-wrap "
                           style="height: 0; padding-bottom: {{ 100 | divided_by: block.settings.trust_image.aspect_ratio }}%;"
                         >
-                          {%- assign img_url = block.settings.trust_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                          {%- assign img_url = block.settings.trust_image
+                            | img_url: '1x1'
+                            | replace: '_1x1.', '_{width}x.'
+                          -%}
                           <img
                             class="lazyload"
                             data-src="{{ img_url }}"
@@ -607,8 +620,7 @@
 
         {%- unless image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky">
-            {%-
-              render 'product-images',
+            {%- render 'product-images',
               section_id: section_id,
               product: product,
               isModal: isModal,
