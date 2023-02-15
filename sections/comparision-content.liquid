@@ -261,13 +261,16 @@
   text-align: center;
 }
 </style>
-<div class="page-width">
+<div class="page-width" data-handle="{{page.handle}}">
   {% for block in section.blocks %} 
     {%- assign image = block.settings.image | default: block.settings.product.featured_image  -%}
   {%- assign title = block.settings.heading | default: block.settings.product.title  -%}
   {%- assign pre = forloop.index | minus: 1  -%}
   {%- assign next = forloop.index | plus: 1  -%}
-
+  {%- assign checked = false  -%}
+  {% if page.handle == block.settings.content.handle %} 
+    {%- assign checked = true -%}
+  {%  endif %}
     <input class="comparison-input"
     id="input-{{forloop.index}}"
     type="radio"
@@ -282,16 +285,14 @@
    {%  endif %}
   />
   
-  {% if page.handle == block.settings.page.handle %} 
-    {%- assign checked = true -%}
-  {%  endif %}
+
   {% if forloop.index == 1 %} 
     {%- assign pre = forloop.length -%}
   {%  endif %}
   {% if forloop.length == forloop.index %} 
   {%- assign next = 1  -%}
 {%  endif %}
-   <div id="comparison-{{forloop.index}}" class="comparison-table-wrap">
+   <div data-handle="{{block.settings.content.handle}}" id="comparison-{{forloop.index}}" class="comparison-table-wrap">
     <div class="comparison-table-heading">
       <img
         src="{{ image | image_url: width: 400 }}"
