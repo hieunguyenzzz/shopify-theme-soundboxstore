@@ -3,13 +3,13 @@
     <div class="section-wrap">
       <div class="section-image">
         <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
-          <img loading="lazy" width="1898" height="1081" src="{{ section.settings.image | img_url: "1920x" }}"
+          <img loading="lazy" width="1898" height="1081" src="{{ section.settings.image | image_url: width: 1920 }}"
             {% if section.settings.mobile_image != blank %}
             class="desktop-only"
             {% endif %}
             alt="{{ section.settings.image.alt }}">
           {% if section.settings.mobile_image != blank -%}
-            <img style="width: 100%;height:100%" width="767" height="767" src="{{ section.settings.mobile_image | img_url: "767x" }}" class="mobile-only" alt="{{ section.settings.image.alt }}">
+            <img loading="lazy" style="width: 100%;height:100%" width="767" height="767" src="{{ section.settings.mobile_image | image_url: width: 767 }}" class="mobile-only" alt="{{ section.settings.image.alt }}">
           {%- endif %}
         </div>
       </div>
@@ -107,12 +107,6 @@
         "label": "Get Specs Sheet Text"
       },
 
-      /*{
-      "type" : "checkbox",
-      "id" : "getsheetbtn",
-      "label" : "Enale Get Specs Sheet",
-      "default" : false
-      },*/
       {
         "type": "select",
         "id": "text_alignment",
