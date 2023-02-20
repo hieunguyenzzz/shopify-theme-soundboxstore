@@ -17,15 +17,25 @@ calc(100vw - 4rem)
   .slick-initialized .slick-slide.slick-current .gallery-wrap {
     display: block !important;
   }
-.thumbnail-slider-inner .slick-current img{
+.thumbnail-slider-inner  .slick-current img{
   border: 1px solid #00000061!important
+}
+.thumbnail-slider-inner{
+  display: none;
+
+} 
+.thumbnail-slider{
+  min-height: 54px;
+}
+.thumbnail-slider-inner.slick-initialized{
+  display: block;
 }
 </style>
 
 {%- unless product.empty? -%}
 
 
-<div data-product-images data-zoom="{{ product_zoom_enable }}"
+{% comment %} <div data-product-images data-zoom="{{ product_zoom_enable }}"
   data-has-slideshow="{% if product.media.size > 1 %}true{% else %}false{% endif %}" style="display:none;">
   <div
     class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}{% if product.media.size == 0 %} hide{% endif %}">
@@ -126,7 +136,7 @@ calc(100vw - 4rem)
                 alt="{{ media.alt | escape | split: '#' | first }}">
 
               <noscript>
-                <img class="lazyloaded" src="{{ media | img_url: '400x' }}" alt="{{ media.alt | escape }}">
+                <img class="lazyloaded" width="720" height="556" loading="lazy" src="{{ media | image_url: '400x' }}" alt="{{ media.alt | escape }}">
               </noscript>
             </div>
           </a>
@@ -148,7 +158,7 @@ calc(100vw - 4rem)
       {%- endif -%}
     </div>
   </div>
-</div>
+</div> {% endcomment %}
 
 <script type="application/json" id="ModelJson-{{ section_id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
@@ -225,7 +235,7 @@ calc(100vw - 4rem)
           {%- for image in imgs -%}
           <div class="thumnail-gallery-block">
             <div class="thumbnail-wrap">
-              <img src="{{ image | img_url:'100x' }}" width="100" height="100" alt="{{ image.alt | escape }}">
+              <img loading="lazy"  src="{{ image | image_url : width: 100 }}" width="100" height="100" alt="{{ image.alt | default: 'product thumb'  | escape }}">
             </div>
           </div>
           {%- endfor -%}
@@ -274,7 +284,7 @@ opacity: 0.7;
         class="btn-360 btn btn--secondary"
       >
         {{"strings.general.step-inside" | t }}
-          <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
+          <img class="" alt="step inside image" width="28" height="14" loading="lazy" src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
     </a> 
   
 {%- endif -%}
@@ -337,7 +347,7 @@ opacity: 0.7;
           {%- for image in imgs -%}
           <div class="thumnail-gallery-block">
             <div class="thumbnail-wrap">
-              <img src="{{ image | img_url:'100x' }}" width="100" height="100" alt="{{ image.alt | escape }}">
+              <img src="{{ image | image_url : width: 100 }}" loading="lazy" width="100" height="100" alt="{{ image.alt | default: 'product thumb' | escape }}">
             </div>
           </div>
           {%- endfor -%}
