@@ -946,27 +946,13 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-        console.log({variant})
         let leadingTimeE = document.querySelector("[data-quantity-variant]")
            if(leadingTimeE){
              leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
            }
       },
       _updateImagesCustom: function (variant) {
-        console.log("Custom Event");
-        // var current_slide_index = $(
-        //   ".template-product .product-main-slider .slick-current"
-        // ).attr("data-slick-index");
-        // var mainImage = $(
-        //   ".template-product .product-main-slider .image-gallery-main"
-        // );
-        // var thumbImage = $(
-        //   ".template-product .thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
-        // );
-        // var images = [];
-
-        // var productHandle = document.getElementById("productHandle").value;
-        // var imgSet = variant.sku;
+      
         function handleUpdateGallery2() {
           const template = document.querySelector(
             `template[data-id='${variant.id}']`
@@ -1017,7 +1003,6 @@ lazySizesConfig.expFactor = 4;
                 },
               ],
             });
-            console.log("current_slide_index => " + current_slide_index);
             $(".product-main-slider .image-gallery-main").slick(
               "slickGoTo",
               current_slide_index
@@ -1027,7 +1012,6 @@ lazySizesConfig.expFactor = 4;
                 ".product-main-slider .image-gallery-block.slick-slide img"
               ),
             ][1];
-            console.log({ featuresImage });
             $(".meeting-rooms-features .center-col img").attr(
               "src",
               featuresImage.src
@@ -1039,107 +1023,7 @@ lazySizesConfig.expFactor = 4;
           }
         }
         handleUpdateGallery2();
-        // function handleUpdateGallery(media) {
-        //   media.forEach(function (image) {
-        //     if (image.alt == imgSet) {
-        //       images.push({ url: image.src, alt: image.alt });
-        //     }
-        //   });
-
-        //   if (typeof images !== "undefined" && images.length > 0) {
-        //     // the array is defined and has at least one element
-        //     console.log(images);
-        //     $(".meeting-rooms-features .center-col img").attr(
-        //       "src",
-        //       images[1].url
-        //     );
-        //     mainImage.empty();
-        //     thumbImage.empty();
-
-        //     $(thumbImage).removeClass("slick-initialized slick-slider");
-        //     $(mainImage).removeClass("slick-initialized slick-slider");
-
-        //     var arr = [];
-
-        //     var addImagefirst = $.each(images, function (i, image) {
-        //       var alt = images[i].alt,
-        //         url = images[i].url;
-
-        //       var MainSlide = `<div class='image-gallery-block '><div class='gallery-wrap' style="display:none"><img src="${url}&width=1946" alt="${alt}" srcset="${url}&width=246 246w, ${url}&width=493 493w, ${url}&width=600 600w, ${url}&width=713 713w, ${url}&width=823 823w, ${url}&width=990 " width="1946" height="1946" class="photoswipe__image" sizes="(min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)">
-        //             </div></div>`;
-        //       var thumbSlide =
-        //         "<div class='thumnail-gallery-block'><div class='thumbnail-wrap'><img class='lazyloaded' src='" +
-        //         url +
-        //         "&width=100" +
-        //         "' alt='" +
-        //         alt +
-        //         "'></div></div>";
-
-        //       mainImage.append(MainSlide);
-        //       thumbImage.append(thumbSlide);
-        //     });
-        //     arr.push(addImagefirst);
-
-        //     $.when.apply($, arr).done(function () {
-        //       if (images.length > 4) {
-        //         $(thumbImage).addClass("arrows_in_slider");
-        //       } else {
-        //         $(thumbImage).removeClass("arrows_in_slider");
-        //       }
-
-        //       $(".product-main-slider .image-gallery-main").slick({
-        //         slidesToShow: 1,
-        //         slidesToScroll: 1,
-        //         arrows: false,
-        //         adaptiveHeight: true,
-        //         fade: true,
-        //         asNavFor:
-        //           ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
-        //       });
-        //       $(
-        //         ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
-        //       ).slick({
-        //         slidesToShow: 4,
-        //         slidesToScroll: 1,
-        //         asNavFor: ".product-main-slider .image-gallery-main",
-        //         dots: false,
-        //         infinite: true,
-        //         adaptiveHeight: true,
-        //         vertical: true,
-        //         focusOnSelect: true,
-        //         arrows: true,
-        //         responsive: [
-        //           {
-        //             breakpoint: 861,
-        //             settings: {
-        //               vertical: false,
-        //               infinite: true,
-        //               slidesToShow: 4,
-        //               slidesToScroll: 1,
-        //             },
-        //           },
-        //         ],
-        //       });
-        //       console.log("current_slide_index => " + current_slide_index);
-        //       $(".product-main-slider .image-gallery-main").slick(
-        //         "slickGoTo",
-        //         current_slide_index
-        //       );
-        //     });
-        //   }
-        // }
-        // if (window.product) {
-        //   handleUpdateGallery(window.product.media);
-        // } else {
-        //   $.ajax({
-        //     type: "GET",
-        //     url: "/products/" + productHandle + "",
-        //     dataType: "json",
-        //     success: function (response) {
-        //       handleUpdateGallery(response.product.images);
-        //     },
-        //   });
-        // }
+       
       },
       _updateImages: function (variant) {
         var variantImage = variant.featured_image || {};
@@ -7753,16 +7637,16 @@ lazySizesConfig.expFactor = 4;
 
       this.cacheElements();
 
-      this.firstProductImage = this.cache.mainSlider.querySelector("img");
+      // this.firstProductImage = this.cache.mainSlider.querySelector("img");
 
-      if (!this.firstProductImage) {
-        this.settings.hasImages = false;
-      }
+      // if (!this.firstProductImage) {
+      //   this.settings.hasImages = false;
+      // }
 
-      var dataSetEl = this.cache.mainSlider.querySelector("[data-set-name]");
-      if (dataSetEl) {
-        this.settings.imageSetName = dataSetEl.dataset.setName;
-      }
+      // var dataSetEl = this.cache.mainSlider.querySelector("[data-set-name]");
+      // if (dataSetEl) {
+      //   this.settings.imageSetName = dataSetEl.dataset.setName;
+      // }
 
       this.init();
     }
@@ -7784,8 +7668,6 @@ lazySizesConfig.expFactor = 4;
         if (!this.inModal) {
           this.formSetup();
           this.productSetup();
-          this.videoSetup();
-          this.initProductSlider();
           this.customMediaListners();
           this.addIdToRecentlyViewed();
         }
@@ -7848,8 +7730,8 @@ lazySizesConfig.expFactor = 4;
       },
 
       productSetup: function () {
-        this.setImageSizes();
-        this.initImageZoom();
+        // this.setImageSizes();
+        // this.initImageZoom();
         this.initModelViewerLibraries();
         this.initShopifyXrLaunch();
       },
@@ -7946,10 +7828,7 @@ lazySizesConfig.expFactor = 4;
           "variantChange" + this.settings.namespace,
           this.updateCartButton.bind(this)
         );
-        this.container.on(
-          "variantImageChange" + this.settings.namespace,
-          this.updateVariantImage.bind(this)
-        );
+ 
         this.container.on(
           "variantPriceChange" + this.settings.namespace,
           this.updatePrice.bind(this)
@@ -8566,29 +8445,7 @@ lazySizesConfig.expFactor = 4;
         return target.dataset.index;
       },
 
-      updateVariantImage: function (evt) {
-        var variant = evt.detail.variant;
-        console.log(variant.sku);
-        var sizedImgUrl = theme.Images.getSizedImageUrl(
-          variant.featured_media.preview_image.src,
-          this.settings.imageSize
-        );
 
-        var newImage = this.container.querySelector(
-          '.product__thumb[data-id="' + variant.featured_media.id + '"]'
-        );
-        var imageIndex = this.getThumbIndex(newImage);
-
-        // If there is no index, slider is not initalized
-        if (typeof imageIndex === "undefined") {
-          return;
-        }
-
-        // Go to that variant image's slide
-        if (this.flickity) {
-          this.flickity.goToSlide(imageIndex);
-        }
-      },
 
       initProductSlider: function (variant) {
         // Stop if only a single image, but add active class to first slide
@@ -8839,22 +8696,22 @@ lazySizesConfig.expFactor = 4;
           // Enable product slider in quick view
           // 1. with image sets enabled, make sure we have this.variants before initializing
           // 2. initialize normally, form data not required
-          if (this.settings.imageSetName) {
-            if (this.variants) {
-              this.initProductSlider();
-            } else {
-              document.addEventListener(
-                "quickview:loaded",
-                function (evt) {
-                  if (evt.detail.productId === this.sectionId) {
-                    this.initProductSlider();
-                  }
-                }.bind(this)
-              );
-            }
-          } else {
-            this.initProductSlider();
-          }
+          // if (this.settings.imageSetName) {
+          //   if (this.variants) {
+          //     this.initProductSlider();
+          //   } else {
+          //     document.addEventListener(
+          //       "quickview:loaded",
+          //       function (evt) {
+          //         if (evt.detail.productId === this.sectionId) {
+          //           this.initProductSlider();
+          //         }
+          //       }.bind(this)
+          //     );
+          //   }
+          // } else {
+          //   this.initProductSlider();
+          // }
           this.customMediaListners();
           this.addIdToRecentlyViewed();
           this.settings.modalInit = true;

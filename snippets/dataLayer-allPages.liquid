@@ -278,7 +278,7 @@ __DL__jQueryinterval = setInterval(function(){
                     {% for product in collection.products %}{
                         'item_id'        : {{'shopify_US_' | append:product.id |append:'_' |append:product.selected_or_first_available_variant.id | json}},                            
                         'item_name'      : {{product.title | json}},
-                        'price'           : {{product.price | money_without_currency}},
+                        'price'           : {{product.price | money_without_currency | json}},
                         'item_brand'      : {{product.vendor | downcase | json}},
                         'item_list_name'  : {{collection.title | json}},
 
@@ -300,7 +300,7 @@ __DL__jQueryinterval = setInterval(function(){
                 'items': [{
                     'item_id'         : {{'shopify_US_' | append:product.id |append:'_' |append:product.selected_or_first_available_variant.id | json}},  
                     'item_name'       : {{product.title | json}},
-                    'price'           : {{product.price | money_without_currency}},
+                    'price'           : {{product.price | money_without_currency | json}},
                     'item_brand'      : {{product.vendor | json}},
                     'item_category'   : {{product.type | json}},
                     'item_list_name'  : {{collection.title | json}}
@@ -352,7 +352,7 @@ dataLayer.push({
                     items :[{% for product in search.results %}{
                         'item_id'        : {{product.id | json}},                          
                         'item_name'      : {{product.title | json}},
-                        'price'           : {{product.price | money_without_currency}},
+                        'price'           : {{product.price | money_without_currency | json}},
                         'item_brand'      : {{product.vendor | json}},
                         'item_category'   : {{product.type | json}},
                         'item_list_name'  : {{product.collection.title | json}},
@@ -373,7 +373,7 @@ dataLayer.push({
                     'items':[{% for line_item in cart.items %}{
                         'item_id'        : {{'shopify_US_' | append:line_item.product.id |append:'_' | append:line_item.variant.id | json}},            
                         'item_name'      : {{line_item.product.title | json}},
-                        'price'           : {{line_item.variant.price | money_without_currency}},
+                        'price'           : {{line_item.variant.price | money_without_currency  | json}},
                         'item_brand'      : {{line_item.product.vendor | downcase | json}},
                         'item_list_name'  : {{line_item.collection.title | json}},
                         'quantity'        : {{line_item.quantity | json}},
