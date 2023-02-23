@@ -46,7 +46,9 @@
     {{ 'theme.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
-    {{ 'theme.min.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'dynamic.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
@@ -171,10 +173,22 @@
         font-display: swap;
       }
     </style>
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <link
+      href="{{'dynamic.css' | asset_url}}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+      async
+    >
+    <link
+      href="{{'custom.css' | asset_url}}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+      async
+    >
     {%- render 'css-variables' -%}
-    {{ 'theme.min.css' | asset_url | stylesheet_tag }}
-   
-
 
     {%- liquid
       assign enableSuperScript = false
@@ -253,6 +267,7 @@
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script
+    async
       type="text/javascript"
       src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
     ></script>
