@@ -46,7 +46,7 @@
     {{ 'theme.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
-    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'theme.min.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
@@ -172,7 +172,7 @@
       }
     </style>
     {%- render 'css-variables' -%}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.min.css' | asset_url | stylesheet_tag }}
    
 
 
