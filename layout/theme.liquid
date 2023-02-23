@@ -271,6 +271,8 @@
         display: none !important;
       }
     </style>
+
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
   </head>
 
   <body
@@ -310,7 +312,7 @@
     {%- section 'newsletter-popup' -%}
 
     {% include 'dataLayer-allPages' %}
-    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+
     <script src="{{ 'slick.js' | asset_url }}"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
