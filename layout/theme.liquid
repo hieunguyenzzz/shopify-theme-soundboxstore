@@ -41,27 +41,17 @@
     <link href="https://static.klaviyo.com" rel="preconnect">
     <link href="https://crmplus.zoho.eu" rel="preconnect">
 
-    <link
-      rel="preload"
-      as="script"
-      href="{{ 'jquery.min.js' | asset_url }}"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="{{ 'slick.js' | asset_url }}"
-    >
-    <link
-      rel="preload"
-      as="style"
-      href="{{ 'theme.css' | asset_url }}"
-    >
+
+    {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
+  
+ 
     <link
       rel="preload"
       as="script"
       href="{{ 'theme.js' | asset_url }}"
     >
-
     <link
       rel="preload"
       as="script"
