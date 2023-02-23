@@ -33,8 +33,8 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
     <link rel="canonical" href="{{ canonical_url }}">
-    
-      
+
+
     <link href="https://cdn.shopify.com" rel="preconnect">
 
     <link href="https://fonts.shopifycdn.com" rel="preconnect">
@@ -45,13 +45,13 @@
     <link href="https://crmplus.zoho.eu" rel="preconnect">
 
     <link
-    rel="preload"
-    as="script"
-    href="{{ 'jquery.min.js' | asset_url }}">
+      rel="preload"
+      as="script"
+      href="{{ 'jquery.min.js' | asset_url }}">
     <link
-    rel="preload"
-    as="script"
-    href="{{ 'slick.js' | asset_url }}">
+      rel="preload"
+      as="script"
+      href="{{ 'slick.js' | asset_url }}">
     <link
       rel="preload"
       as="style"
@@ -60,18 +60,17 @@
       rel="preload"
       as="script"
       href="{{ 'theme.js' | asset_url }}">
-   
-     
 
-      <link
+
+    <link
       rel="preload"
       as="script"
       href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4">
-      <link
+    <link
       rel="preload"
       as="script"
       href="https://crmplus.zoho.eu/crm/javascript/zcga.js">
-      <link
+    <link
       rel="preload"
       as="script"
       href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}">
@@ -244,10 +243,10 @@
       theme.settings = {
         dynamicVariantsEnable: true,
         cartType: {{ settings.cart_type | json }},
-        isCustomerTemplate:{% if request.page_type contains 'customers/' %}
-          true
+        isCustomerTemplate:{% if request.page_type contains 'customers/' %}true
         {% else %}
-          false{% endif %},
+          false
+        {% endif %},
         moneyFormat: {{ shop.money_format | json }},
         saveType: {{ settings.product_save_type | json }},
         productImageSize: {{ settings.product_grid_image_size | json }},
@@ -264,7 +263,7 @@
     </script>
 
     {{ content_for_header }}
-    
+
     <style>
       label[for="_gcl_au"],
       label[for="_gcl_au"] + .grfq__popupForm__formLabelOptional,
@@ -286,7 +285,7 @@
       <script type="text/javascript">
         window.setTimeout(function () {
         document.body.className += " loaded";
-                }, 25);
+                        }, 25);
       </script>
     {% endif %}
 
@@ -330,10 +329,10 @@
     <script type='text/javascript'>
       window.smartlook||(function(d) {
       var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-          var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-          c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-          })(document);
-          smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+                var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+                c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+                })(document);
+                smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
     </script>
     <script>
       forceProductPriceSelector = '.grfq-price'
@@ -349,7 +348,10 @@
         display: none !important;
       }
     </style>
-    <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script>
+    <script type="text/javascript" id="zsiqchat">
+      window.onload = function() {
+      var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
+      }</script>
     {%- section 'zoho-hide-we-online' -%}
     <script
       async
