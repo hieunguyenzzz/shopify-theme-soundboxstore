@@ -62,6 +62,7 @@
 {% endfor %}
 {% if section.settings.sliderenable %}
 <script>
+  $(document).ready(function(){
   $('.brand-details-section .brand-details-slider.active').slick({
     infinite: true,
     slidesToShow: 1,
@@ -80,6 +81,7 @@
       }
     ]
   });
+  }
 </script>
 {% endif %}
 
