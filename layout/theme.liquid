@@ -44,34 +44,19 @@
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
+    {{ ' vendor-scripts-v1.js'| asset_url | preload_tag: as: 'script' }}
+    {{ 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4' | preload_tag: as: 'script' }}
+    {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | preload_tag: as: 'script' }}
+    {{ 'https://salesiq.zoho.eu/widget' | preload_tag: as: 'script' }}
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
   
  
-    <link
-      rel="preload"
-      as="script"
-      href="{{ 'theme.js' | asset_url }}"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="https://salesiq.zoho.eu/widget"
-    >
+   
+   
+   
+   
+  
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
