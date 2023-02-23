@@ -61,7 +61,6 @@
       as="script"
       href="{{ 'theme.js' | asset_url }}"
     >
-    
 
     <link
       rel="preload"
@@ -78,7 +77,11 @@
       as="script"
       href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}"
     >
-   
+    <link
+      rel="preload"
+      as="script"
+      href="https://salesiq.zoho.eu/widget"
+    >
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
@@ -279,10 +282,6 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-   
-     <script src="{{ 'slick.js' | asset_url }}"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       type="text/javascript"
       src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
@@ -328,7 +327,9 @@
 
     {% include 'dataLayer-allPages' %}
 
-   
+    <script src="{{ 'slick.js' | asset_url }}"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
@@ -381,10 +382,10 @@
           values: {},
           ready: function () {
             $zoho.salesiq.floatbutton.click(function () {
-            if (window.window.innerWidth < 768) {
-              $zoho.salesiq.floatbutton.coin.hidetooltip();
-            }
-          });
+              if (window.window.innerWidth < 768) {
+                $zoho.salesiq.floatbutton.coin.hidetooltip();
+              }
+            });
           },
         };
         var d = document;
@@ -395,7 +396,7 @@
         s.src = 'https://salesiq.zoho.eu/widget';
         t = d.getElementsByTagName('script')[0];
         t.parentNode.insertBefore(s, t);
-        console.log('https://salesiq.zoho.eu/widget')
+        console.log('https://salesiq.zoho.eu/widget');
     </script>
 
     <script>
