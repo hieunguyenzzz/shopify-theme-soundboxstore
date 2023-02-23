@@ -43,7 +43,7 @@
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'theme.min.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
@@ -314,7 +314,7 @@
 
     <script src="{{ 'slick.js' | asset_url }}"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
-    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
@@ -403,7 +403,7 @@
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
         document.querySelector('input[name="_gcl_au"]').value = getCookie('_gcl_au').substring(4);
         document.querySelector('input[name="cookie2"]').value = getCookie('_gcl_aw');
-      
+
         console.log(getCookie('_gcl_aw'));
       });
     </script>
