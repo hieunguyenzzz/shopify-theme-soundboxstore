@@ -41,22 +41,29 @@
     <link href="https://static.klaviyo.com" rel="preconnect">
     <link href="https://crmplus.zoho.eu" rel="preconnect">
 
-
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
-    {{ ' vendor-scripts-v1.js'| asset_url | preload_tag: as: 'script' }}
-    {{ 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4' | preload_tag: as: 'script' }}
-    {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | preload_tag: as: 'script' }}
-    {{ 'https://salesiq.zoho.eu/widget' | preload_tag: as: 'script' }}
+    {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-  
- 
-   
-   
-   
-   
-  
+
+    <link
+      rel="preload"
+      as="script"
+      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
+    >
+    <link
+      rel="preload"
+      as="script"
+      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    >
+    <link
+      rel="preload"
+      as="script"
+      href="https://salesiq.zoho.eu/widget"
+    >
+
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
@@ -351,26 +358,26 @@
     </style>
 
     <script type="text/javascript" id="zsiqchat">
-        var $zoho = $zoho || {};
-        $zoho.salesiq = $zoho.salesiq || {
-          widgetcode: '00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0',
-          values: {},
-          ready: function () {
-            $zoho.salesiq.floatbutton.click(function () {
-              if (window.window.innerWidth < 768) {
-                $zoho.salesiq.floatbutton.coin.hidetooltip();
-              }
-            });
-          },
-        };
-        var d = document;
-        s = d.createElement('script');
-        s.type = 'text/javascript';
-        s.id = 'zsiqscript';
-        s.defer = true;
-        s.src = 'https://salesiq.zoho.eu/widget';
-        t = d.getElementsByTagName('script')[0];
-        t.parentNode.insertBefore(s, t);
+      var $zoho = $zoho || {};
+      $zoho.salesiq = $zoho.salesiq || {
+        widgetcode: '00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0',
+        values: {},
+        ready: function () {
+          $zoho.salesiq.floatbutton.click(function () {
+            if (window.window.innerWidth < 768) {
+              $zoho.salesiq.floatbutton.coin.hidetooltip();
+            }
+          });
+        },
+      };
+      var d = document;
+      s = d.createElement('script');
+      s.type = 'text/javascript';
+      s.id = 'zsiqscript';
+      s.defer = true;
+      s.src = 'https://salesiq.zoho.eu/widget';
+      t = d.getElementsByTagName('script')[0];
+      t.parentNode.insertBefore(s, t);
     </script>
 
     <script>
