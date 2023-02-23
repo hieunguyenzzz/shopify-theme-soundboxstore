@@ -61,11 +61,7 @@
       as="script"
       href="{{ 'theme.js' | asset_url }}"
     >
-    <link
-      rel="preload"
-      as="script"
-      href="https://salesiq.zoho.eu/widget"
-    >
+    
 
     <link
       rel="preload"
@@ -82,7 +78,11 @@
       as="script"
       href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}"
     >
-
+    <link
+      rel="preload"
+      as="script"
+      href="https://salesiq.zoho.eu/widget"
+    >
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
