@@ -33,20 +33,38 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
     <link rel="canonical" href="{{ canonical_url }}">
-    <link
-      rel="preload"
-      as="style"
-      href="{{ 'theme.css' | asset_url | append: '&enable_js_minification=1' }}">
-    <link
-      rel="preload"
-      as="script"
-      href="{{ 'theme.min.js' | asset_url | append: '&enable_js_minification=1' }}">
+    
+      
     <link href="https://cdn.shopify.com" rel="preconnect">
+
     <link href="https://fonts.shopifycdn.com" rel="preconnect">
     <link href="https://ajax.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.gstatic.com" rel="dns-prefetch">
+    <link href="https://static.klaviyo.com" rel="preconnect">
+    <link href="https://crmplus.zoho.eu" rel="preconnect">
 
+    <link
+      rel="preload"
+      as="style"
+      href="{{ 'theme.css' | asset_url }}">
+    <link
+      rel="preload"
+      as="script"
+      href="{{ 'theme.js' | asset_url }}">
+      <link
+      rel="preload"
+      as="script"
+      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4">
+      <link
+      rel="preload"
+      as="script"
+      href="https://crmplus.zoho.eu/crm/javascript/zcga.js">
+      <link
+      rel="preload"
+      as="script"
+      href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}">
+      
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
@@ -153,15 +171,15 @@
         font-display: swap;
       }
     </style>
-    {{ 'theme.css' | asset_url | append: '&enable_js_minification=1' | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
     <link
-      href="{{'dynamic.css' | asset_url | append: '&enable_js_minification=1'}}"
+      href="{{'dynamic.css' | asset_url}}"
       rel="stylesheet"
       type="text/css"
       media="all"
       async>
     <link
-      href="{{'custom.css' | asset_url | append: '&enable_js_minification=1'}}"
+      href="{{'custom.css' | asset_url}}"
       rel="stylesheet"
       type="text/css"
       media="all"
@@ -235,30 +253,7 @@
     </script>
 
     {{ content_for_header }}
-    <script src="{{ 'jquery.min.js' | asset_url | append: '&enable_js_minification=1' }}"></script>
-    <script src="{{ 'slick.js' | asset_url | append: '&enable_js_minification=1' }}"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url | append: '&enable_js_minification=1' | split: '?' | first }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url | append: '&enable_js_minification=1' }}" defer="defer"></script>
-    <script
-      async
-      defer="defer"
-      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-      type="text/javascript"></script>
-    <script src="{{ 'custom.js' | asset_url | append: '&enable_js_minification=1' }}" defer="defer"></script>
-
-    {%- if request.page_type contains 'customers/' -%}
-      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
-    {%- endif -%}
-
-    {% include 'otRegion' %}
-    <script type='text/javascript'>
-      window.smartlook||(function(d) {
-      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-          var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-          c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-          })(document);
-          smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
-    </script>
+    
     <style>
       label[for="_gcl_au"],
       label[for="_gcl_au"] + .grfq__popupForm__formLabelOptional,
@@ -305,6 +300,30 @@
     {%- section 'newsletter-popup' -%}
 
     {% include 'dataLayer-allPages' %}
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script src="{{ 'slick.js' | asset_url }}"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script
+      async
+      defer="defer"
+      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
+      type="text/javascript"></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% include 'otRegion' %}
+    <script type='text/javascript'>
+      window.smartlook||(function(d) {
+      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+          var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+          c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+          })(document);
+          smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+    </script>
     <script>
       forceProductPriceSelector = '.grfq-price'
       document.addEventListener("GRFQ:Popup_Form_rendered", function() {
