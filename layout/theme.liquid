@@ -45,6 +45,14 @@
     <link href="https://crmplus.zoho.eu" rel="preconnect">
 
     <link
+    rel="preload"
+    as="script"
+    href="{{ 'jquery.min.js' | asset_url }}">
+    <link
+    rel="preload"
+    as="script"
+    href="{{ 'slick.js' | asset_url }}">
+    <link
       rel="preload"
       as="style"
       href="{{ 'theme.css' | asset_url }}">
@@ -52,6 +60,9 @@
       rel="preload"
       as="script"
       href="{{ 'theme.js' | asset_url }}">
+   
+     
+
       <link
       rel="preload"
       as="script"
@@ -64,7 +75,7 @@
       rel="preload"
       as="script"
       href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}">
-      
+
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
