@@ -43,7 +43,7 @@
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
@@ -311,7 +311,7 @@
 
     <script src="{{ 'slick.js' | asset_url }}"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
