@@ -1,3 +1,20 @@
+<style>
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .desktop-only {
+      display: none;
+    }
+  }
+  .image-text-section .image-wrap .mobile-only{
+    display: none;
+  }
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .mobile-only {
+    display: block;
+    min-height: 337px;
+    object-fit: cover;
+  }
+    }
+</style>
 {% if section.settings.image != blank %}
   <section class="image-text-section {{ section.settings.section_class }} image-text-section--product">
     <div class="section-wrap">
