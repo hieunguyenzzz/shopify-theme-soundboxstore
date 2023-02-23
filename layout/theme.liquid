@@ -3,21 +3,20 @@
   class="no-js"
   lang="{{ request.locale.iso_code }}"
   dir="{{ settings.text_direction }}"
-  country="{{  localization.country.iso_code }}">
+  country="{{  localization.country.iso_code }}"
+>
   <head>
     <!-- Google Tag Manager -->
     <script>
       window.dataLayer = window.dataLayer || [];
     </script>
     <script>
-      (function(w, d, s, l, i) {
+      (function (w, d, s, l, i) {
         w[l] = w[l] || [];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),
-          dl = l != 'dataLayer'
-            ? '&l=' + l
-            : '';
+          dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
@@ -25,15 +24,13 @@
     </script>
     <!-- End Google Tag Manager -->
 
-
-    <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification" />
+    <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
     <link rel="canonical" href="{{ canonical_url }}">
-
 
     <link href="https://cdn.shopify.com" rel="preconnect">
 
@@ -47,42 +44,51 @@
     <link
       rel="preload"
       as="script"
-      href="{{ 'jquery.min.js' | asset_url }}">
+      href="{{ 'jquery.min.js' | asset_url }}"
+    >
     <link
       rel="preload"
       as="script"
-      href="{{ 'slick.js' | asset_url }}">
+      href="{{ 'slick.js' | asset_url }}"
+    >
     <link
       rel="preload"
       as="style"
-      href="{{ 'theme.css' | asset_url }}">
+      href="{{ 'theme.css' | asset_url }}"
+    >
     <link
       rel="preload"
       as="script"
-      href="{{ 'theme.js' | asset_url }}">
+      href="{{ 'theme.js' | asset_url }}"
+    >
     <link
       rel="preload"
       as="script"
-      href="https://salesiq.zoho.eu/widget">
+      href="https://salesiq.zoho.eu/widget"
+    >
 
     <link
       rel="preload"
       as="script"
-      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4">
+      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
+    >
     <link
       rel="preload"
       as="script"
-      href="https://crmplus.zoho.eu/crm/javascript/zcga.js">
+      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    >
     <link
       rel="preload"
       as="script"
-      href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}">
+      href="{{'vendor-scripts-v1.js' | asset_url | split: '?' | first}}"
+    >
 
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
         href="{{ settings.favicon | img_url: '32x32' }}"
-        type="image/png">
+        type="image/png"
+      >
     {%- endif -%}
 
     {%- render 'seo-title' -%}
@@ -190,13 +196,15 @@
       rel="stylesheet"
       type="text/css"
       media="all"
-      async>
+      async
+    >
     <link
       href="{{'custom.css' | asset_url}}"
       rel="stylesheet"
       type="text/css"
       media="all"
-      async>
+      async
+    >
     {%- render 'css-variables' -%}
 
     {%- liquid
@@ -211,7 +219,6 @@
         endif
       endunless
     -%}
-
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -268,9 +275,9 @@
     {{ content_for_header }}
 
     <style>
-      label[for="_gcl_au"],
-      label[for="_gcl_au"] + .grfq__popupForm__formLabelOptional,
-      .grfq__popupForm__formInput input[name="_gcl_au"] {
+      label[for='_gcl_au'],
+      label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
+      .grfq__popupForm__formInput input[name='_gcl_au'] {
         display: none !important;
       }
     </style>
@@ -279,7 +286,8 @@
     <script
       async
       type="text/javascript"
-      src='https://crmplus.zoho.eu/crm/javascript/zcga.js'></script>
+      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    ></script>
   </head>
 
   <body
@@ -289,12 +297,13 @@
     data-edges="{{ settings.roundness }}"
     data-type_header_capitalize="{{ settings.type_header_capitalize }}"
     data-swatch_style="{{ settings.swatch_style }}"
-    data-grid-style="{{ settings.product_grid_style }}">
+    data-grid-style="{{ settings.product_grid_style }}"
+  >
     {% if settings.animate_page_transitions %}
       <script type="text/javascript">
         window.setTimeout(function () {
-        document.body.className += " loaded";
-                                }, 25);
+          document.body.className += ' loaded';
+        }, 25);
       </script>
     {% endif %}
 
@@ -327,7 +336,8 @@
       async
       defer="defer"
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-      type="text/javascript"></script>
+      type="text/javascript"
+    ></script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
@@ -335,18 +345,27 @@
     {%- endif -%}
 
     {% include 'otRegion' %}
-    <script type='text/javascript'>
-      window.smartlook||(function(d) {
-      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-                      var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-                      c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-                      })(document);
-                      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName('head')[0];
+          var c = d.createElement('script');
+          o.api = new Array();
+          c.async = true;
+          c.type = 'text/javascript';
+          c.charset = 'utf-8';
+          c.src = 'https://web-sdk.smartlook.com/recorder.js';
+          h.appendChild(c);
+        })(document);
+      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
     </script>
     <script>
-      forceProductPriceSelector = '.grfq-price'
-      document.addEventListener("GRFQ:Popup_Form_rendered", function() {
-        console.log('12321321')
+      forceProductPriceSelector = '.grfq-price';
+      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+        console.log('12321321');
       });
     </script>
     <style>
@@ -359,26 +378,34 @@
     </style>
 
     <script type="text/javascript" id="zsiqchat">
-      window.onload = function() {
-      var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
-            $zoho.salesiq.ready = function() {
-            $zoho.salesiq.floatbutton.click(function() {
-              if (window.window.innerWidth < 768) {
-                $zoho
-                  .salesiq
-                  .floatbutton
-                  .coin
-                  .hidetooltip();
-              }
-      
-            });
-          }
-            }</script>
-    {%- section 'zoho-hide-we-online' -%}
+      window.onload = function () {
+        var $zoho = $zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+          widgetcode: '00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0',
+          values: {},
+          ready: function () {
+            $zoho.salesiq.floatbutton.click(function () {
+            if (window.window.innerWidth < 768) {
+              $zoho.salesiq.floatbutton.coin.hidetooltip();
+            }
+          });
+          },
+        };
+        var d = document;
+        s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.id = 'zsiqscript';
+        s.defer = true;
+        s.src = 'https://salesiq.zoho.eu/widget';
+        t = d.getElementsByTagName('script')[0];
+        t.parentNode.insertBefore(s, t);
+        console.log('https://salesiq.zoho.eu/widget')
+      };
+    </script>
 
     <script>
       function getCookie(cname) {
-        let name = cname + "=";
+        let name = cname + '=';
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
         for (let i = 0; i < ca.length; i++) {
@@ -390,12 +417,12 @@
             return c.substring(name.length, c.length);
           }
         }
-        return "";
+        return '';
       }
-      console.log(getCookie("_gcl_au").substring(4))
-      document.addEventListener("GRFQ:Popup_Form_rendered", function() {
-        document.querySelector('input[name="_gcl_au"]').value = getCookie("_gcl_au").substring(4)
-        console.log(getCookie("_gcl_au").substring(4))
+      console.log(getCookie('_gcl_au').substring(4));
+      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+        document.querySelector('input[name="_gcl_au"]').value = getCookie('_gcl_au').substring(4);
+        console.log(getCookie('_gcl_au').substring(4));
       });
     </script>
   </body>
