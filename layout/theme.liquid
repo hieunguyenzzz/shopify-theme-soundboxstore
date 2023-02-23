@@ -402,7 +402,9 @@
       console.log(getCookie('_gcl_au').substring(4));
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
         document.querySelector('input[name="_gcl_au"]').value = getCookie('_gcl_au').substring(4);
-        console.log(getCookie('_gcl_au').substring(4));
+        document.querySelector('input[name="cookie2"]').value = getCookie('_gcl_aw');
+      
+        console.log(getCookie('_gcl_aw'));
       });
     </script>
   </body>
