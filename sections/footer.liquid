@@ -104,11 +104,18 @@
       <div class="flexbox">
         {%- if section.settings.show_copyright -%}
           <div class="col left-col">
-            {%- if section.settings.copyright_text != blank -%}
+            {% if localization.country.iso_code == "gb" %}
+            <p class="copyright-text">
+              {{ section.settings.copyright_text_uk }}
+            </p>
+              {% else %}
+              {%- if section.settings.copyright_text != blank -%}
               <p class="copyright-text">
                 {{ section.settings.copyright_text }}
               </p>
             {%- endif -%}
+            {% endif %}
+          
           </div>
         {%- endif -%}
         <div class="col right-col footer-social-icon " style="padding:0 80px">
@@ -178,6 +185,12 @@
       "type": "checkbox",
       "id": "show_copyright",
       "label": "Show copyright"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text_UK",
+      "label": "Copyright text (UK)",
+      "default": "Copyright © 2008 – 2022 DWIR Limited. All rights reserved."
     },
     {
       "type": "text",
