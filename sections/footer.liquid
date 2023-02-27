@@ -103,7 +103,7 @@
     <div class="page-width">
       <div class="flexbox">
         {%- if section.settings.show_copyright -%}
-          <div class="col left-col">
+          <div class="col left-col" data-coutry="{{localization.country.iso_code}}">
             {% if localization.country.iso_code == "gb" %}
             <p class="copyright-text">
               {{ section.settings.copyright_text_uk }}
@@ -188,7 +188,7 @@
     },
     {
       "type": "text",
-      "id": "copyright_text_UK",
+      "id": "copyright_text_uk",
       "label": "Copyright text (UK)",
       "default": "Copyright © 2008 – 2022 DWIR Limited. All rights reserved."
     },
