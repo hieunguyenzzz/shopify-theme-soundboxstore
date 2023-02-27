@@ -103,8 +103,8 @@
     <div class="page-width">
       <div class="flexbox">
         {%- if section.settings.show_copyright -%}
-          <div class="col left-col" data-coutry="{{localization.country.iso_code}}">
-            {% if localization.country.iso_code == "gb" %}
+          <div class="col left-col" >
+            {% if localization.country.iso_code == "GB" %}
             <p class="copyright-text">
               {{ section.settings.copyright_text_uk }}
             </p>
