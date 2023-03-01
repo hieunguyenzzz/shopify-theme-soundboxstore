@@ -74,9 +74,9 @@
       </p>
     {%- else -%}
     <div class="h2 product-single__title">
-      <h1  class="h2 product-single__title">
+      <h1 style="    font-size: 1.1em;" class="h2 product-single__title">
         {%- unless product.empty? -%}
-          <span>{{ product.title }}</span>
+        {{ product.title }}
         {%- else -%}
           {{ 'home_page.onboarding.product_title' | t }}
         {%- endunless -%}
