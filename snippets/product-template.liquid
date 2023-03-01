@@ -73,17 +73,17 @@
         {{ product.title }}
       </p>
     {%- else -%}
-    <div>
-      <h1 class="h2 product-single__title">
+    <div class="h2 product-single__title">
+      <h1 style="    font-size: 0.9em;" class="h2 product-single__title">
         {%- unless product.empty? -%}
-          {{ product.title }}
+          <span>{{ product.title }}</span>
         {%- else -%}
           {{ 'home_page.onboarding.product_title' | t }}
         {%- endunless -%}
       </h1>
       {%- assign subtitle = product.metafields.custom.subtitle -%}
       {%- if subtitle -%}
-      <h2 class="h4 " style="margin-top: -0.2em;">
+      <h2 style="margin-top: -0.8em; font-size: 0.6em;">
         {{subtitle}}
       </h2>
       {%- endif -%}
