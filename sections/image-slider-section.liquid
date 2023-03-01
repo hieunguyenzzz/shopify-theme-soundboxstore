@@ -1,0 +1,209 @@
+<style>
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .desktop-only {
+      display: none;
+    }
+  }
+  .image-text-section .image-wrap .mobile-only {
+    display: none;
+  }
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .mobile-only {
+      display: block;
+      min-height: 337px;
+      object-fit: cover;
+    }
+  }
+</style>
+{% if section.settings.image != blank %}
+  <section class="image-text-section {{ section.settings.section_class }} image-text-section--product">
+    <div class="section-wrap">
+      <div class="section-image">
+        <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
+          <img
+          {% if section.settings.lazyload %}
+          loading="lazy"
+          {% endif %}
+           
+            width="1898"
+            height="1081"
+            data-src="{{ section.settings.image | image_url: width: 1920 }}"
+            {% if section.settings.mobile_image != blank %}
+            class="desktop-only lazyload"
+            {% endif %}
+            alt="{{ section.settings.image.alt }}">
+          {% if section.settings.mobile_image != blank -%}
+            <img
+            {% if section.settings.lazyload %}
+            loading="lazy"
+            {% endif %}
+              style="width: 100%;height:100%"
+              width="767"
+              height="767"
+              src="{{ section.settings.mobile_image | image_url: width: 767 }}"
+              class="mobile-only"
+              alt="{{ section.settings.image.alt }}">
+          {%- endif %}
+        </div>
+      </div>
+      <div class="section-content page-width text-{{ section.settings.text_alignment }}">
+        <div
+          class="content-wrap "
+          {% if section.settings.description_width %}
+          style="max-width: {{ section.settings.description_width }};"
+          {% else %}
+          {% endif %}>
+          {% if section.settings.title != blank %}
+            <h2
+              {% if section.settings.title_width %}
+              style="max-width: {{ section.settings.title_width }};"
+              {% else %}
+              {% endif %}
+              class="title-font">{{ section.settings.title }}
+            </h2>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            {{ section.settings.description }}
+          {% endif %}
+          {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+            <div class="section-btn">
+              <a href="{{ section.settings.button_link }}" class="btn">
+                {{- section.settings.button_text }}
+              </a>
+
+              {% if section.settings.button_text_2 != blank %}
+                <button type="button" class="btn btn--secondary specBtn">
+                  {{ section.settings.button_text_2 }}
+                </button>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Image Slider section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "lazyload",
+        "label": "Lazyload",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "overlay",
+        "label": "Overlay",
+        "default": true
+      }, {
+        "type": "range",
+        "id": "overlay_range",
+        "label": "Overlay range",
+        "min": 0,
+        "max": 100,
+        "unit": "%",
+        "step": 10,
+        "default": 60
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "text",
+        "id": "title_width",
+        "label": "Title width"
+      }, {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      }, {
+        "type": "text",
+        "id": "description_width",
+        "label": "description width"
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }, {
+        "type": "text",
+        "id": "button_text_2",
+        "label": "Get Specs Sheet Text"
+      }, {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "default": "center-left",
+        "options": [
+          {
+            "value": "top-left",
+            "label": "Top Left"
+          },
+          {
+            "value": "top-center",
+            "label": "Top center"
+          },
+          {
+            "value": "top-right",
+            "label": "Top right"
+          },
+          {
+            "value": "center-left",
+            "label": "Center left"
+          }, {
+            "value": "center-center",
+            "label": "Center center"
+          }, {
+            "value": "bottom-left",
+            "label": "Bottom left"
+          }, {
+            "value": "bottom-center",
+            "label": "Bottom center"
+          }, {
+            "value": "bottom-right",
+            "label": "Bottom right"
+          }
+        ]
+      }, {
+        "type": "text",
+        "id": "section_class",
+        "label": "Section class"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_block",
+        "name": "Image block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Slider section",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

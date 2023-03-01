@@ -10,7 +10,10 @@
     <script>
       window.dataLayer = window.dataLayer || [];
     </script>
-    {% comment %} <script>
+    {% if content_for_header contains "previewBarInjector.init();" %}
+    {% elsif content_for_header contains "Shopify.designMode" %}
+    {% else %}
+    <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -21,7 +24,9 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
-    </script> {% endcomment %}
+    </script>
+    {% endif %}
+    
     <!-- End Google Tag Manager -->
 
     <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
