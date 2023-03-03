@@ -6,7 +6,7 @@
   }
   .comparison-table-wrap table {
     width: 100%;
-    table-layout: auto;
+    table-layout: fixed;
     border: none;
     border-spacing: 0px;
     border-width: 0;
@@ -190,6 +190,9 @@
     display: block;
   }
   @media only screen and (max-width: 767px) {
+    .comparison-table-wrap table{
+table-layout: auto;
+    }
     .table-row-heading div {
       max-width: 140px;
       white-space: nowrap;
