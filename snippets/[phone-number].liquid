@@ -5,4 +5,7 @@
 {% if localization.country.iso_code == 'US' %}
   {% assign phone = settings.phone_number_us %}
 {% endif %}
-{{phone}}
+{% if localization.country.iso_code == 'SE' %}
+  {% assign phone = settings.phone_number_se %}
+{% endif %}
+{{ phone }}
