@@ -2,20 +2,27 @@
 {%- assign collapable = true -%}
 {%- if collapable -%}
 <style>
-  #{{section.id}} .page-width-checkbox{
+   .page-width-checkbox{
     display:none
   }
-  #{{section.id}}.index-section{
+  #{{section.id}}{
     position: relative;
     isolation: isolate;
-  }
-  #{{section.id}} .page-width{
     max-height:250px;
     height:250px;
     overflow:hidden;
     position:relative;
     transition: all 0.3s linear;
   }
+  #{{section.id}} .page-width{
+    padding-bottom:70px ;
+
+  }
+  #{{section.id}}{
+    --view-less:none;
+    --view-more:block;
+  }
+
   #{{section.id}} .page-width-overlay {
     pointer-events:none;
       position: absolute;
@@ -29,7 +36,7 @@
       align-items: flex-end;
       justify-content: center;
       padding: 12px;
-      transition: all 0.3s linear;
+      transition: all 0.7s ease-in-out;
       /* box-shadow: 0px -24px 40px 1px #4242427a; */
      
     
@@ -42,16 +49,18 @@
       width: 100%;
     height:100%;
      background: rgb(255,255,255);
-      background: linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,0.4458377100840336) 100%);
-      transition: all 0.3s linear;
+      background: linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgb(255 255 255 / 0%) 100%);
+      transition: all 0.7s ease-in-out;
         opacity: 1;
     z-index:-1;
   }
-  #{{section.id}} .page-width-checkbox:checked~.page-width{
-    max-height:9999px;
-    height:auto
+ .page-width-checkbox:checked~#{{section.id}}{
+    max-height:var(--innerHeight);
+    height:var(--innerHeight);
+    --view-less:block;
+    --view-more:none;
   }
-  #{{section.id}} .page-width-checkbox:checked~.page-width-overlay{
+  .page-width-checkbox:checked~#{{section.id}} .page-width-overlay::before{
         opacity: 0;
         visibility: hidden;
   }
@@ -63,16 +72,32 @@
     border-radius: 99em;
     font-size: 0.7em;
   }
+  @media only screen and (max-width: 540px){
+    #{{section.id}} .page-width{
+      padding-bottom:120px ;
+  
+    }
+  }
 </style>
 {%- endif -%}
-<div id="{{section.id}}" class="index-section color-scheme-{{ section.settings.color_scheme }} text-{{ section.settings.align_text }}">
+
+
+{%- if collapable -%}
+<input onchange="onCollapse(this.checked)" hidden type="checkbox" class="page-width-checkbox" name="page-width-checkbox" id="page-width-checkbox"/>
+{%- endif -%}
+<div  style="--innerHeight:720px" id="{{section.id}}" class="index-section color-scheme-{{ section.settings.color_scheme }} text-{{ section.settings.align_text }}">
+  {%- if collapable -%}
+  <div class="page-width-overlay">
+    <label style="text-transform: uppercase;display:var(--view-more)" for="page-width-checkbox">{{ 'strings.others.view_more' | t  }}</label>
+    <label style="text-transform: uppercase;display:var(--view-less)" for="page-width-checkbox">{{ 'strings.others.view_less' | t  }}</label>
+    </div>
+{%- endif -%}
+
+<div class="page-width-inner">
   {%- if section.settings.color_scheme != 'none' -%}
     {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
   {%- endif -%}
-{%- if collapable -%}
-<input hidden type="checkbox" class="page-width-checkbox" name="page-width-checkbox" id="page-width-checkbox"/>
-<div class="page-width-overlay"><label style="text-transform: uppercase;" for="page-width-checkbox">{{ 'general.search.view_more' | t }}</label></div>
-{%- endif -%}
+
   <div class="page-width{% if section.settings.narrow_column %} page-width--narrow{% endif %}">
     {%- for block in section.blocks -%}
       <div class="theme-block" {{ block.shopify_attributes }}>
@@ -108,9 +133,19 @@
     {%- endfor -%}
   </div>
 </div>
-
+</div>
 {%- if section.settings.divider -%}</div>{%- endif -%}
-
+<script>
+function onCollapse(isOpen){
+  const containerE =  document.querySelector("#{{section.id}}")
+  if(isOpen){
+    containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
+  }else{
+    containerE.style.setProperty("--innerHeight","250px")
+   
+  }
+}
+</script>
 {% schema %}
   {
     "name": "Rich text",
