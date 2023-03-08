@@ -119,7 +119,7 @@
               id="ContactFormPhone-{{ section.id }}"
               class="input-full"
               name="contact[phone]"
-              placeholder="Phone Number"
+              placeholder="{{ 'contact.form.phone' | t }}"
               pattern="[0-9\-]*"
               value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
           </div>
