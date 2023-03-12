@@ -21,7 +21,7 @@
                   {{ block.settings.address1 }}
                   {% ifblock.settings.phone1 != blank %}
                     <br>
-                  {{ 'customer.addresses.phone' | t }}: {{block.settings.phone1}}
+                  {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone1}}">{{block.settings.phone1}}</a>
                   {% endif %}
                  
                   </li>
@@ -33,7 +33,7 @@
                   {% endif %}
                   {{ block.settings.address2 }}{% if block.settings.phone2 != blank %}
                   <br>1
-                {{ 'customer.addresses.phone' | t }}: {{block.settings.phone2}}
+                {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone2}}">{{block.settings.phone2}}</a>
                 {% endif %}
               {% endif %}
               {% if block.settings.address-heading3 != blank or block.settings.address3 != blank %}
@@ -43,7 +43,7 @@
                   {% endif %}
                   {{ block.settings.address3 }}<br>{% ifblock.settings.phone3 != blank %}
                   <br>
-                {{ 'customer.addresses.phone' | t }}: {{block.settings.phone3}}
+                {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone3}}">{{block.settings.phone3}}</a>
                 {% endif %}
                   {{ 'customer.addresses.phone' | t }}: {{block.settings.phone3}}</li>
               {% endif %}
