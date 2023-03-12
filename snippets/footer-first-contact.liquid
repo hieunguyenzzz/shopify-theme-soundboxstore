@@ -14,7 +14,7 @@
           <div class="footer-address-list">
             <ul>
               {% if block.settings.address-heading1 != blank or block.settings.address1 != blank %}
-                <li style="white-space: pre-wrap;" class="location">
+                <li  class="location">
                   {% if block.settings.address-heading1 != blank %}
                     <strong>{{ block.settings.address-heading1 }}</strong>
                   {% endif %}
@@ -23,7 +23,7 @@
                   </li>
               {% endif %}
               {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}
-                <li  style="white-space: pre-wrap;" class="location">
+                <li   class="location">
                   {% if block.settings.address-heading2 != blank %}
                     <strong>{{ block.settings.address-heading2 }}</strong>
                   {% endif %}
@@ -31,7 +31,7 @@
                   {{ 'customer.addresses.phone' | t }}: {{block.settings.phone2}}</li>
               {% endif %}
               {% if block.settings.address-heading3 != blank or block.settings.address3 != blank %}
-                <li  style="white-space: pre-wrap;" class="location">
+                <li   class="location">
                   {% if block.settings.address-heading3 != blank %}
                     <strong>{{ block.settings.address-heading3 }}</strong>
                   {% endif %}
