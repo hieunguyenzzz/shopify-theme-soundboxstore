@@ -1,14 +1,14 @@
-{% assign phone = settings.phone_number %}
-{% if localization.country.iso_code == 'ES' %}
-  {% assign phone = settings.phone_number_es %}
-{% endif %}
-{% if localization.country.iso_code == 'US' %}
-  {% assign phone = settings.phone_number_us %}
-{% endif %}
-{% if localization.country.iso_code == 'SE' %}
-  {% assign phone = settings.phone_number_se %}
-{% endif %}
-{% if localization.country.iso_code == 'ES' %}
-  {% assign phone = settings.phone_number_es %}
-{% endif %}
+{%- assign phone = settings.phone_number -%}
+{%- if localization.country.iso_code == 'ES' -%}
+  {%- assign phone = settings.phone_number_es -%}
+{%- endif -%}
+{%- if localization.country.iso_code == 'US' -%}
+  {%- assign phone = settings.phone_number_us -%}
+{%- endif -%}
+{%- if localization.country.iso_code == 'SE' -%}
+  {%- assign phone = settings.phone_number_se -%}
+{%- endif -%}
+{%- if localization.country.iso_code == 'ES' -%}
+  {%- assign phone = settings.phone_number_es -%}
+{%- endif -%}
 {{ phone }}
