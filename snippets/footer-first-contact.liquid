@@ -18,8 +18,12 @@
                   {% if block.settings.address-heading1 != blank %}
                     <strong>{{ block.settings.address-heading1 }}</strong>
                   {% endif %}
-                  {{ block.settings.address1 }}<br>
+                  {{ block.settings.address1 }}
+                  {% ifblock.settings.phone1 != blank %}
+                    <br>
                   {{ 'customer.addresses.phone' | t }}: {{block.settings.phone1}}
+                  {% endif %}
+                 
                   </li>
               {% endif %}
               {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}
@@ -27,15 +31,20 @@
                   {% if block.settings.address-heading2 != blank %}
                     <strong>{{ block.settings.address-heading2 }}</strong>
                   {% endif %}
-                  {{ block.settings.address2 }}<br>
-                  {{ 'customer.addresses.phone' | t }}: {{block.settings.phone2}}</li>
+                  {{ block.settings.address2 }}{% if block.settings.phone2 != blank %}
+                  <br>1
+                {{ 'customer.addresses.phone' | t }}: {{block.settings.phone2}}
+                {% endif %}
               {% endif %}
               {% if block.settings.address-heading3 != blank or block.settings.address3 != blank %}
                 <li   class="location">
                   {% if block.settings.address-heading3 != blank %}
                     <strong>{{ block.settings.address-heading3 }}</strong>
                   {% endif %}
-                  {{ block.settings.address3 }}<br>
+                  {{ block.settings.address3 }}<br>{% ifblock.settings.phone3 != blank %}
+                  <br>
+                {{ 'customer.addresses.phone' | t }}: {{block.settings.phone3}}
+                {% endif %}
                   {{ 'customer.addresses.phone' | t }}: {{block.settings.phone3}}</li>
               {% endif %}
               {% if block.settings.email != blank %}
