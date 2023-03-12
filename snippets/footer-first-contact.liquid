@@ -19,7 +19,7 @@
                     <strong>{{ block.settings.address-heading1 }}</strong>
                   {% endif %}
                   {{ block.settings.address1 }}
-                  {% ifblock.settings.phone1 != blank %}
+                  {% if block.settings.phone1 != blank %}
                     <br>
                   {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone1}}">{{block.settings.phone1}}</a>
                   {% endif %}
@@ -40,7 +40,7 @@
                   {% if block.settings.address-heading3 != blank %}
                     <strong>{{ block.settings.address-heading3 }}</strong>
                   {% endif %}
-                  {{ block.settings.address3 }}<br>{% ifblock.settings.phone3 != blank %}
+                  {{ block.settings.address3 }}<br>{% if block.settings.phone3 != blank %}
                   <br>
                 {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone3}}">{{block.settings.phone3}}</a>
                 {% endif %}
