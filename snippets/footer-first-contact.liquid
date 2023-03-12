@@ -51,13 +51,13 @@
                   <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
                 </li>
               {% endif %}
-              {%- capture phone -%}
+              {% comment %} {%- capture phone -%}
                 {%- render '[phone-number]' -%}
               {%- endcapture -%}
               <li class="phone">
                 <a href="tel:{{ phone }}">{{ phone }}</a>
-              </li>
-              {% comment %} {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %} {% endcomment %}
+              </li> {% endcomment %}
+              {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %}
 
             </ul>
           </div>
