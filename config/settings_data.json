@@ -238,8 +238,8 @@
           "862f3b9c-eb17-4fc3-a0bf-9d27fa3e8e14": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "<p>{% if localization.country.iso_code != 'GB' %}\n  NO EXTRA TAXES OR DUTIES GUARANTEED\n{% endif %}<\/p>",
-              "richtext_mobile": "<p>{% if localization.country.iso_code != 'GB' %}\n  NO EXTRA TAXES OR DUTIES GUARANTEED\n{% endif %}<\/p>"
+              "richtext": "<p>{% if localization.country.iso_code != 'GB' %}\n  {{ 'strings.general.foreign_tax_message' | t }}\n{% endif %}<\/p>",
+              "richtext_mobile": "<p>{% if localization.country.iso_code != 'GB' %}\n  {{ 'strings.general.foreign_tax_message' | t }}\n{% endif %}<\/p>"
             }
           },
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
