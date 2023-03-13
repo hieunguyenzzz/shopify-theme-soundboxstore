@@ -18,7 +18,13 @@
                   {% if block.settings.address-heading1 != blank %}
                     <strong>{{ block.settings.address-heading1 }}</strong>
                   {% endif %}
-                  {{ block.settings.address1 }}
+                  
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_1 != blank %}
+                    href="{{ block.settings.address_url_1 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address1 }}"
+                  {% endif %} >{{ block.settings.address1 }}</a>
+                  
                   {% if block.settings.phone1 != blank %}
                     <br>
                   {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone1}}">{{block.settings.phone1}}</a>
@@ -30,7 +36,12 @@
                   {% if block.settings.address-heading2 != blank %}
                     <strong>{{ block.settings.address-heading2 }}</strong>
                   {% endif %}
-                  {{ block.settings.address2 }}{% if block.settings.phone2 != blank %}
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_2 != blank %}
+                    href="{{ block.settings.address_url_2 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address2 }}"
+                  {% endif %} >{{ block.settings.address2 }}</a>
+                {% if block.settings.phone2 != blank %}
                   <br>
                 {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone2}}">{{block.settings.phone2}}</a>
                 {% endif %}
@@ -40,7 +51,12 @@
                   {% if block.settings.address-heading3 != blank %}
                     <strong>{{ block.settings.address-heading3 }}</strong>
                   {% endif %}
-                  {{ block.settings.address3 }}<br>{% if block.settings.phone3 != blank %}
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_3 != blank %}
+                    href="{{ block.settings.address_url_3 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address3 }}"
+                  {% endif %} >{{ block.settings.address3 }}</a>
+                <br>{% if block.settings.phone3 != blank %}
                   <br>
                 {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone3}}">{{block.settings.phone3}}</a>
                 {% endif %}
