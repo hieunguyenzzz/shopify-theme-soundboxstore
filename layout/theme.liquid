@@ -406,7 +406,8 @@
       }
       
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-        document.querySelector('input[name="_gcl_aw"]').value = getCookie('_gcl_aw').substring(4);
+        const _gcl_awCookie = getCookie('_gcl_aw').split('.')
+        document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
       });
     </script>
   </body>
