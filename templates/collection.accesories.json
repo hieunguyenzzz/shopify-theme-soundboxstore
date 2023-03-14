@@ -2,6 +2,9 @@
   "sections": {
     "collection-header": {
       "type": "collection-header",
+      "custom_css": [
+
+      ],
       "settings": {
         "enable": false,
         "collection_image_enable": false,
@@ -106,6 +109,12 @@
         "0d4d64a6-f4b5-4b64-8035-03ac7859333e",
         "72512c75-8bb6-4776-b7d9-9be79443f65a"
       ],
+      "custom_css": [
+        ".image-wrap img:not([role=\"presentation\"]) {padding: 0;}",
+        ".collection-item__title {font-weight: 400; font-size: 12px;}",
+        ".image-wrap {background: transparent;}",
+        ".collection-image-wrap:after{background: transparent;}"
+      ],
       "settings": {
         "title": "",
         "divider": false
@@ -116,7 +125,8 @@
       "blocks": {
         "collection_description": {
           "type": "collection_description",
-          "settings": {}
+          "settings": {
+          }
         },
         "product_grid": {
           "type": "product_grid",
@@ -130,7 +140,7 @@
         "product_grid"
       ],
       "custom_css": [
-        ".grid-product__title {font-size:2rem; font-weight:bold}",
+        ".grid-product__title {font-size: 2rem; font-weight: bold;}",
         ".grid-product__title {}",
         ".price-title {font-size: 0.8rem; margin-bottom: 0px;}"
       ],
@@ -144,7 +154,36 @@
     "recently-viewed": {
       "type": "recently-viewed",
       "disabled": true,
-      "settings": {}
+      "settings": {
+      }
+    },
+    "99f3a516-90e9-428d-921f-0567f9c4a12e": {
+      "type": "rich-text",
+      "blocks": {
+        "template--16753900519649__99f3a516-90e9-428d-921f-0567f9c4a12e-16787899704c50bb5a-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text"
+          }
+        },
+        "template--16753900519649__99f3a516-90e9-428d-921f-0567f9c4a12e-16787899704c50bb5a-1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16753900519649__99f3a516-90e9-428d-921f-0567f9c4a12e-16787899704c50bb5a-0",
+        "template--16753900519649__99f3a516-90e9-428d-921f-0567f9c4a12e-16787899704c50bb5a-1"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "1",
+        "divider": false
+      }
     }
   },
   "order": [
@@ -152,6 +191,7 @@
     "promo-grid",
     "5afc1369-ebee-4b51-b2ec-3708e4d6ba0f",
     "main-collection",
-    "recently-viewed"
+    "recently-viewed",
+    "99f3a516-90e9-428d-921f-0567f9c4a12e"
   ]
 }
