@@ -57,10 +57,9 @@
                      href="https://www.google.com/search?q={{ block.settings.address3 }}"
                   {% endif %} >{{ block.settings.address3 }}</a>
                 <br>{% if block.settings.phone3 != blank %}
-                  <br>
                 {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone3}}">{{block.settings.phone3}}</a>
                 {% endif %}
-                  {{ 'customer.addresses.phone' | t }}: {{block.settings.phone3}}</li>
+                  </li>
               {% endif %}
               {% if block.settings.email != blank %}
                 <li class="email">
@@ -73,7 +72,8 @@
               <li class="phone">
                 <a href="tel:{{ phone }}">{{ phone }}</a>
               </li> {% endcomment %}
-              {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %}
+              {% if block.settings.phone != blank %}
+                <li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %}
 
             </ul>
           </div>
