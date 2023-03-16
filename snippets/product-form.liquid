@@ -86,7 +86,10 @@
         {%- if inventory_quantity > 10 -%}
           {% assign inventory_quantity = '10+' %}
         {%- endif -%}
+        {%- if inventory_quantity > 0 -%}
         <div data-quantity-variant="{{ current_variant.id }}" style="font-size: 14px;margin-top:0.5em">{{ 'strings.others.leading_time' | t: inventory_quantity: inventory_quantity }}</div>
+      {%- endif -%}
+        
     {%- else -%}
       {%- endif -%}
     {% endfor %}
