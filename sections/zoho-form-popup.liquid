@@ -1,0 +1,46 @@
+<style>
+  
+</style>
+{% for block in section.blocks %}
+  {{block.settings.content}}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Zoho form popup",
+  "class": "zoho-form-popup",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "UK"
+        },
+        {
+          "type": "liquid",
+          "id": "content",
+          "label": "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zoho form popup",
+      "blocks": [
+       
+      ],
+      "settings": {
+        
+      }
+    }
+  ]
+}
+{% endschema %}
