@@ -330,7 +330,7 @@
           <div class="grid-product__title">
             <h2 class="title-font">{{ product.title }}</h2>
           </div>
-          <div class="grid-product-dec">{{ product.description }}</div>
+          <div class="grid-product-dec">{{ product.description | strip_html | truncate: 500, ". . . "  }}</div>
           {%- if settings.vendor_enable -%}
             <div class="grid-product__vendor">{{ product.vendor }}</div>
           {%- endif -%}

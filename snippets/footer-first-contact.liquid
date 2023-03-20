@@ -1,58 +1,113 @@
 {% if block.type == 'footer_contact' %}
-<div class="footer-contact">
-  <div class="footer-contact-wrap">
-    {% if block.settings.contact-heading != blank %}<div class="footer__title">{{ block.settings.contact-heading }}</div>{% endif %}
-    <div class="contact-dec-wrap">
-      {% if block.settings.contact-sub-headiing != blank %}
-      <div class="footer-contact-dec">
-        {{ block.settings.contact-sub-headiing }}
-      </div>
+  <div class="footer-contact">
+    <div class="footer-contact-wrap">
+      {% if block.settings.contact-heading != blank %}
+        <div class="footer__title">{{ block.settings.contact-heading }}</div>
       {% endif %}
-      {% if block.settings.address-heading1 != blank or block.settings.address1 != blank or block.settings.address-heading2 != blank or block.settings.address2 != blank or block.settings.email != blank %}
-      <div class="footer-address-list">
-        <ul>
-         {% if block.settings.address-heading1 != blank or block.settings.address1 != blank %}<li class="location">{% if block.settings.address-heading1 != blank %}<strong>{{ block.settings.address-heading1 }}</strong>{% endif %} {{ block.settings.address1 }}</li>{% endif %}
-         {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}<li class="location">{% if block.settings.address-heading2 != blank %}<strong>{{ block.settings.address-heading2 }}</strong>{% endif %} {{ block.settings.address2 }}</li>{% endif %}
-         {% if block.settings.email != blank %}<li class="email"><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></li>{% endif %}
-         {%- capture phone -%}
-          {%- render '[phone-number]' -%}
-         {%- endcapture -%}
-         <li class="phone"><a href="tel:{{ phone }}">{{ phone }}</a></li>
-         {% comment %} {% if block.settings.phone != blank %}<li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %} {% endcomment %}
-        
+      <div class="contact-dec-wrap">
+        {% if block.settings.contact-sub-headiing != blank %}
+          <div class="footer-contact-dec">
+            {{ block.settings.contact-sub-headiing }}
+          </div>
+        {% endif %}
+        {% if block.settings.address-heading1 != blank or block.settings.address1 != blank or block.settings.address-heading2 != blank or block.settings.address2 != blank or block.settings.email != blank %}
+          <div class="footer-address-list">
+            <ul>
+              {% if block.settings.address-heading1 != blank or block.settings.address1 != blank %}
+                <li  class="location">
+                  {% if block.settings.address-heading1 != blank %}
+                    <strong>{{ block.settings.address-heading1 }}</strong>
+                  {% endif %}
+                  
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_1 != blank %}
+                    href="{{ block.settings.address_url_1 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address1 }}"
+                  {% endif %} >{{ block.settings.address1 }}</a>
+                  
+                  {% if block.settings.phone1 != blank %}
+                    <br>
+                  {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone1}}">{{block.settings.phone1}}</a>
+                  {% endif %}
+                  </li>
+              {% endif %}
+              {% if block.settings.address-heading2 != blank or block.settings.address2 != blank %}
+                <li   class="location">
+                  {% if block.settings.address-heading2 != blank %}
+                    <strong>{{ block.settings.address-heading2 }}</strong>
+                  {% endif %}
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_2 != blank %}
+                    href="{{ block.settings.address_url_2 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address2 }}"
+                  {% endif %} >{{ block.settings.address2 }}</a>
+                {% if block.settings.phone2 != blank %}
+                  <br>
+                {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone2}}">{{block.settings.phone2}}</a>
+                {% endif %}
+              {% endif %}
+              {% if block.settings.address-heading3 != blank or block.settings.address3 != blank %}
+                <li   class="location">
+                  {% if block.settings.address-heading3 != blank %}
+                    <strong>{{ block.settings.address-heading3 }}</strong>
+                  {% endif %}
+                  <a target="_blank" rel="noreferrer" {% if block.settings.address_url_3 != blank %}
+                    href="{{ block.settings.address_url_3 }}"
+                    {% else %}
+                     href="https://www.google.com/search?q={{ block.settings.address3 }}"
+                  {% endif %} >{{ block.settings.address3 }}</a>
+                <br>{% if block.settings.phone3 != blank %}
+                {{ 'customer.addresses.phone' | t }}: <a href="tel:{{block.settings.phone3}}">{{block.settings.phone3}}</a>
+                {% endif %}
+                  </li>
+              {% endif %}
+              {% if block.settings.email != blank %}
+                <li class="email">
+                  <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                </li>
+              {% endif %}
+              {% comment %} {%- capture phone -%}
+                {%- render '[phone-number]' -%}
+              {%- endcapture -%}
+              <li class="phone">
+                <a href="tel:{{ phone }}">{{ phone }}</a>
+              </li> {% endcomment %}
+              {% if block.settings.phone != blank %}
+                <li class="phone"><a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a></li>{% endif %}
+
+            </ul>
+          </div>
+        {% endif %}
+        {%- if block.settings.payment_logo_image -%}
+          <div><img src="{{block.settings.payment_logo_image | image_url:'400x'}}" /></div>
+        {%- else -%}
+          <style>
+            .payment_icons {
+              margin-top: 1em;
+              display: flex;
+              gap: 0.3rem;
+              flex-wrap: wrap;
+            }
+            .payment_icons li {
+              width: 50px;
+              height: unset;
+              list-style: none;
+            }
+            .payment_icons li svg {
+              width: 100%;
+              height: unset;
+              list-style: none;
+            }
+          </style>
+          <ul class="payment_icons">
+            {%- for type in shop.enabled_payment_types -%}
+              <li>
+                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+              </li>
+            {%- endfor -%}
+          {%- endif -%}
         </ul>
       </div>
-      {% endif %}
-      {%- if block.settings.payment_logo_image -%}
-        <div><img src="{{block.settings.payment_logo_image | image_url:'400x'}}" /></div>
-      {%- else -%}
-        <style>
-          .payment_icons{
-            margin-top: 1em;
-            display: flex;
-            gap: 0.3rem;
-            flex-wrap: wrap;
-          }
-           .payment_icons li{
-             width: 50px;
-             height: unset ;
-             list-style:none;
-           }
-           .payment_icons li svg{
-             width: 100%;
-             height: unset ;
-             list-style:none;
-           }
-        </style>
-        <ul class="payment_icons" >
-          {%- for type in shop.enabled_payment_types -%}
-            <li>
-              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-            </li>
-          {%- endfor -%}
-      {%- endif -%}
-      </ul>
     </div>
   </div>
-</div>
 {% endif %}

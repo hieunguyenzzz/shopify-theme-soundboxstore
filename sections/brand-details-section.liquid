@@ -62,24 +62,26 @@
 {% endfor %}
 {% if section.settings.sliderenable %}
 <script>
-  $('.brand-details-section .brand-details-slider.active').slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
-    arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
-    fade: true,
-    cssEase: 'linear',
-    responsive: [
-      {
-        breakpoint: 860,
-        settings: {
-          arrows:false,
+  $(document).ready(function(){
+    $('.brand-details-section .brand-details-slider.active').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+      dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
+      arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
+      fade: true,
+      cssEase: 'linear',
+      responsive: [
+        {
+          breakpoint: 860,
+          settings: {
+            arrows:false,
+          }
         }
-      }
-    ]
-  });
+      ]
+    });
+  })
 </script>
 {% endif %}
 

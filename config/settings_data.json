@@ -1,5 +1,6 @@
 {
   "current": {
+    "phone_number": "+44 (0) 20 4586 3800",
     "color_body_bg": "#ffffff",
     "color_body_text": "#454545",
     "color_price": "#1c1d1d",
@@ -67,8 +68,8 @@
     "cart_terms_conditions_enable": false,
     "cart_terms_conditions_link": "shopify:\/\/pages\/terms-of-service",
     "social_pinterest_link": "https:\/\/www.pinterest.co.uk\/soundboxstore\/",
-    "social_instagram_link": "https:\/\/www.instagram.com\/soundbox_store\/",
-    "social_linkedin_link": "https:\/\/www.linkedin.com\/in\/sound-box-store-236a6024a\/",
+    "social_instagram_link": "https:\/\/www.pinterest.co.uk\/soundboxstore\/?eq=sound%20box%20store&etslf=6367",
+    "social_linkedin_link": "https:\/\/www.linkedin.com\/company\/sound-box-store\/",
     "social_youtube_link": "https:\/\/www.youtube.com\/user\/shopify",
     "share_facebook": false,
     "share_twitter": false,
@@ -234,6 +235,13 @@
               "richtext_mobile": ""
             }
           },
+          "862f3b9c-eb17-4fc3-a0bf-9d27fa3e8e14": {
+            "type": "announcement_liquid",
+            "settings": {
+              "richtext": "<p>{% if localization.country.iso_code != 'GB' %}\n  {{ 'strings.general.foreign_tax_message' | t }}\n{% endif %}<\/p>",
+              "richtext_mobile": "<p>{% if localization.country.iso_code != 'GB' %}\n  {{ 'strings.general.foreign_tax_message' | t }}\n{% endif %}<\/p>"
+            }
+          },
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
             "type": "announcement_liquid",
             "settings": {
@@ -249,6 +257,7 @@
           "367e61fe-1e5f-4e6d-8d90-f28ebeb8acc1",
           "2a6e7f4d-9f41-4712-a54e-bd7a562dbcf6",
           "d832c431-794f-4f7b-9c71-0fa9275f9737",
+          "862f3b9c-eb17-4fc3-a0bf-9d27fa3e8e14",
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9"
         ],
         "settings": {
@@ -266,12 +275,20 @@
             "settings": {
               "contact-heading": "Contact Us",
               "contact-sub-headiing": "<p>Sound Box Store specialist offers the highest technological advancements in acoustic meeting rooms, zoom rooms and phone booths.<\/p>",
-              "address-heading1": "Head Office \/ Showroom:",
-              "address1": "1st Floor, 10 Penn Rd, Beaconsfield, Berkshire, HP9 2LH",
-              "address-heading2": "Showroom Spain",
-              "address2": "Cami vereda sur 46 Beniparrell Valencia 46469",
+              "address-heading1": "Showroom: NEW",
+              "address1": "73 Central Street, Clerkenwell, London, EC1V 8BU",
+              "address_url_1": "https:\/\/soundboxstore.com\/pages\/showroom-london",
+              "phone1": "+44 (0) 20 4586 3800",
+              "address-heading2": "Showroom:",
+              "address2": "1st Floor, 10 Penn Rd, Beaconsfield, Berkshire, HP9 2LH",
+              "address_url_2": "https:\/\/soundboxstore.com\/pages\/showroom-beaconsfield-uk",
+              "phone2": "+44 (0) 20 4586 3800",
+              "address-heading3": "Showroom Spain:",
+              "address3": "Cami vereda sur 46 Beniparrell Valencia 46469",
+              "address_url_3": "",
+              "phone3": "+34 965 02 81 99",
               "email": "hush@soundboxstore.com",
-              "phone": "+44 (0) 20 4586 3800"
+              "phone": ""
             }
           },
           "b398b101-d212-4f25-8212-c0b909e609a1": {
@@ -316,7 +333,7 @@
               "text3": "Sun: Closed",
               "text4": "National Holidays: Closed",
               "text5": "",
-              "richtext": "<p><strong>ISO9001:2015 <br\/><\/strong>Quality Management<\/p><p><strong>ISO14001:201<br\/><\/strong>Enviromental management<\/p><p><strong>ISO45001:2018<\/strong> <br\/>Occupational Health And Safety<\/p>"
+              "richtext": "<p><strong>ISO9001:2015 <br\/><\/strong>Quality Management<\/p><p><strong>ISO14001:201<br\/><\/strong>Enviromental management<\/p><p><strong>ISO45001:2018<\/strong> <br\/>Occupational Health And Safety<\/p><p><strong>ISO 23351-1 <br\/><\/strong>Acoustic Industry Accredited<\/p>"
             }
           }
         },
@@ -333,7 +350,8 @@
           "newsletter_richtext": "",
           "footer_main_menu": false,
           "show_copyright": true,
-          "copyright_text": "Copyright © 2008 – 2022 SBS GRP Limited. All rights reserved.",
+          "copyright_text_uk": "Copyright © 2008 – 2022 DWIR Limited. All rights reserved.",
+          "copyright_text": "Copyright © 2008 – 2022 SBS Group Limited. All rights reserved.",
           "ISO_url_1": "",
           "ISO_url_2": "",
           "ISO_url_3": "",

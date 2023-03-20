@@ -10,7 +10,7 @@
             {% if block.settings.iconimage != blank %}
             <div class="icon-block">
               <div class="icon-wrap">
-                <img src="{{ block.settings.iconimage | img_url: 'master'}}" alt="{{ block.settings.iconimage.alt }}">
+                <img loading="lazy" src="{{ block.settings.iconimage | image_url : width: 50 }}" width="50" height="50" alt="{{ block.settings.iconimage.alt }}">
               </div>
             </div>
             {% endif %}
@@ -29,29 +29,31 @@
 </section>
 
 {% schema %}
-  {
-    "name": "Product Icon Text Section",
-    "settings": [],
-	"max_blocks": 4,
-	"blocks": [
-		{
-				"name" : "Icon Text Block",
-				"type" : "icon-text-block",
-				"settings" : [
-					{
-						"type" : "image_picker",
-						"id" : "iconimage",
-						"label" : "Icon Image"
-					},
-					{
-						"type" : "richtext",
-						"id" : "text",
-						"label" : "Text"
-					}
-				]
-		}
-	]
-  }
+{
+  "name": "Product Icon Text Section",
+  "settings": [
+
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "name": "Icon Text Block",
+      "type": "icon-text-block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "iconimage",
+          "label": "Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}

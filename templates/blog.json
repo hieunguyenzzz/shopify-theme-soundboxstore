@@ -4,6 +4,7 @@
       "type": "image-text-section",
       "disabled": true,
       "settings": {
+        "lazyload": true,
         "image": "shopify:\/\/shop_images\/Blog-Banner.png",
         "mobile_image": "shopify:\/\/shop_images\/Soundbox_Commercial_3D_Render_4.png",
         "overlay": true,
@@ -22,6 +23,30 @@
     "main": {
       "type": "blog-template-v2",
       "blocks": {
+        "320888bd-8225-4f76-9d82-1bd37f8485f0": {
+          "type": "article",
+          "settings": {
+            "article": "acoustic-meeting-booths-positive-working-enviroments\/positive-effects-of-meeting-booths-in-the-working-environment"
+          }
+        },
+        "8f34d0c4-1a83-4e5e-b41d-9bc70e2e34e7": {
+          "type": "article",
+          "settings": {
+            "article": "news\/maximizing-productivity-from-zoom-rooms-and-phone-booths"
+          }
+        },
+        "8e30e149-daf5-42de-938b-22ba1b4e3401": {
+          "type": "article",
+          "settings": {
+            "article": "news\/home-office-design-take-advantage-of-the-folio-phone-booths-versatility"
+          }
+        },
+        "3cbf5bfd-76ec-40cc-9ccb-74a513a9ca5f": {
+          "type": "article",
+          "settings": {
+            "article": "news\/how-the-folio-phone-booth-revolutionizes-the-way-we-work-at-home"
+          }
+        },
         "837d3109-2acf-4743-9825-a0bf4512d65b": {
           "type": "article",
           "settings": {
@@ -30,14 +55,29 @@
         },
         "4e601aba-9e96-45f0-9ea8-35abc52ae8b5": {
           "type": "article",
+          "disabled": true,
           "settings": {
             "article": "news\/the-benefits-of-acoustic-office-pods"
+          }
+        },
+        "9397c9de-423d-41a7-b39b-b5366b71a320": {
+          "type": "article",
+          "settings": {
+            "article": "happy-motivated-teams-productivity-results-staff-retention\/happy-motivated-teams-productivity-results-staff-retention"
           }
         }
       },
       "block_order": [
+        "320888bd-8225-4f76-9d82-1bd37f8485f0",
+        "8f34d0c4-1a83-4e5e-b41d-9bc70e2e34e7",
+        "8e30e149-daf5-42de-938b-22ba1b4e3401",
+        "3cbf5bfd-76ec-40cc-9ccb-74a513a9ca5f",
         "837d3109-2acf-4743-9825-a0bf4512d65b",
-        "4e601aba-9e96-45f0-9ea8-35abc52ae8b5"
+        "4e601aba-9e96-45f0-9ea8-35abc52ae8b5",
+        "9397c9de-423d-41a7-b39b-b5366b71a320"
+      ],
+      "custom_css": [
+        ".blog-wrap .image-wrap img {object-fit: cover;}"
       ],
       "settings": {
         "banner_image": "shopify:\/\/shop_images\/MEDIUM_GREY_DARKGREYINTERIOR_SET3_06.png",
@@ -48,6 +88,22 @@
         "blog_show_comments": true,
         "blog_show_author": false,
         "blog_image_size": "natural"
+      }
+    },
+    "7f1dff64-2bd2-431a-a84b-b3beba2fbf64": {
+      "type": "blog-template-v3",
+      "disabled": true,
+      "settings": {
+        "tag": "phone booth",
+        "title": "Title",
+        "subtitle": "TOPIC",
+        "content": "<p>If the open office dies, as its critics predict, what will be the new norm? We take a look at how the workplace is evolving and what's next.<\/p>",
+        "blog_show_rss": false,
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "blog_image_size": "wide"
       }
     },
     "736a1c48-0a7e-4819-9946-e14fa92c084d": {
@@ -113,6 +169,7 @@
   "order": [
     "1660550488b75fdc46",
     "main",
+    "7f1dff64-2bd2-431a-a84b-b3beba2fbf64",
     "736a1c48-0a7e-4819-9946-e14fa92c084d",
     "3beda00a-88b3-4f6b-8c2e-4b82b17aeeed",
     "sidebar",

@@ -8,7 +8,11 @@
 
 <ul class="footer__menu">
   {%- for link in linklists[block.settings.menu].links -%}
-    <li><a href="{{ link.url }}" {% if link.title contains "Get Spec Sheet" %} class="specBtn" {% endif %}>{{ link.title }}</a></li>
+  {% if link.url contains "#get-spec" %} <li><a href="#" class="specBtn" >{{ link.title }}</a></li>
+    {% else %}
+    
+    <li><a href="{{ link.url }}" {% if link.url contains 'files.soundboxstore.com'  %}  target="_blank" type="application/octet-stream" download="booth-catalog.pdf" {% endif %} {% if link.url contains "#get-spec" %} class="specBtn" {% endif %}>{{ link.title }}</a></li>
+  {% endif %}
   {%- endfor -%}
   {%- if block.settings.enable_account_link -%}
     <li><a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a></li>
