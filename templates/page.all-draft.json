@@ -99,19 +99,43 @@
         "page-all-grid-2": {
           "type": "item",
           "settings": {
-            "left_product": "soundproof-meeting-booth-3-4-persons",
-            "left_content": "Assembly instructions for M, LRG and XL pods",
+            "left_product": "1-2-person-multi-use-booth",
+            "left_content": "Assembly instructions for medium pods",
             "left_button": "Download here",
             "left_button_id": "page-all-grid-2-btn",
             "left_button_file": "",
             "custom_html": "<script>\n  $(document).ready(function(){\n   $('#page-all-grid-2-btn').on('click', function(e){\n      if (window.location.href.indexOf(\"\/sv-se\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'Vc4Rm9']);\n      } else if (window.location.href.indexOf(\"\/de-de\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'V4e6Lw']);\n      } else if (window.location.href.indexOf(\"\/no-no\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'T5eGsy']);\n      } else if (window.location.href.indexOf(\"\/fr-fr\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'WuHcMg']);\n      } else if (window.location.href.indexOf(\"\/nl-nl\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'QTyMna']);\n      } else if (window.location.href.indexOf(\"\/nl-be\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'Vzc8VA']);\n      } else if (window.location.href.indexOf(\"\/fr-be\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'Uh93xP']);\n      } else if (window.location.href.indexOf(\"\/de-at\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'XDwMCL']);\n      } else if (window.location.href.indexOf(\"\/es-es\") > -1) {\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'T78WBB']);\n      }else{\n              window._klOnsite = window._klOnsite || [];\n              window._klOnsite.push(['openForm', 'Rxb639']);\n      }\n    });\n  })\n<\/script>"
+          }
+        },
+        "426cd5a6-7cf3-42b3-a41c-f0e039942ada": {
+          "type": "item",
+          "settings": {
+            "left_product": "soundproof-meeting-booth-3-4-persons",
+            "left_content": "Download assembly instructions for solo pod",
+            "left_button": "Download here",
+            "left_button_id": "left_button",
+            "left_button_file": "\/",
+            "custom_html": ""
+          }
+        },
+        "b6da1cec-c568-4323-860d-04c4e43020ca": {
+          "type": "item",
+          "settings": {
+            "left_product": "meeting-booth-4-6-persons",
+            "left_content": "Download assembly instructions for solo pod",
+            "left_button": "Download here",
+            "left_button_id": "left_button",
+            "left_button_file": "\/",
+            "custom_html": ""
           }
         }
       },
       "block_order": [
         "page-all-grid-0",
         "page-all-grid-1",
-        "page-all-grid-2"
+        "page-all-grid-2",
+        "426cd5a6-7cf3-42b3-a41c-f0e039942ada",
+        "b6da1cec-c568-4323-860d-04c4e43020ca"
       ],
       "settings": {
       }
@@ -164,6 +188,7 @@
     "image-text-section": {
       "type": "image-text-section",
       "settings": {
+        "lazyload": true,
         "image": "shopify:\/\/shop_images\/all-product-page.png",
         "mobile_image": "shopify:\/\/shop_images\/product-collection-mobile.png",
         "overlay": true,
