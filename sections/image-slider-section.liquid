@@ -25,6 +25,9 @@
   #{{section.id}}-slider .image-wrap img {
    min-height: 500px;
   }
+  #{{section.id}}-slider  img.desktop-only {
+    object-position: 70% 0;
+  }
   @media only screen and (max-width:767px) {
     .image-text-section .image-wrap img {
       display: block;
@@ -52,7 +55,7 @@
               {% if imageMb != blank %}
               class="desktop-only"
               {% endif %}
-              alt="{{ image.alt }}">
+              alt="{{ image.alt | default: 'background' }}">
             {% if imageMb != blank -%}
               <img
                 {% if section.settings.lazyload %}
@@ -63,7 +66,7 @@
                 height="767"
                 src="{{ imageMb | image_url: width: 767 }}"
                 class="mobile-only"
-                alt="{{ imageMb.alt }}">
+                alt="{{ imageMb.alt | default: 'background' }}">
             {%- endif %}
 
           </div>
