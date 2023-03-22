@@ -19,9 +19,9 @@
               <div class="col right-col">
                 <div class="col-wrap">
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 | image_tag:  widths: '300, 600' , sizes: '(min-width:600px) 600px, 300px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 500 | image_tag:  widths: '200, 500' ,  sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 500 | image_tag:  widths: '200, 500'  , sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 | image_tag:  widths: '300, 500' , sizes: '(min-width:600px) 600px, 300px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 500 | image_tag:  widths: '150, 300' ,  sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 500 | image_tag:  widths: '150, 300'  , sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
                     
                   </div>
                 </div>
