@@ -19,9 +19,9 @@
               <div class="col right-col">
                 <div class="col-wrap">
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 ,crop: 'center', height: 400 | image_tag:  widths: '200, 400, 800' , sizes: '(min-width:600px) 600px, 300px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 400 ,crop: 'center', height: 400| image_tag:  widths: '100, 150, 400' ,  sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 400 ,crop: 'center', height: 400| image_tag:  widths: '100, 150, 400'  , sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 ,crop: 'center', height: 400 | image_tag:  widths: ' 600, 800' , sizes: '(min-width:600px) 600px, 300px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 400 ,crop: 'center', height: 400| image_tag:  widths: '600, 800' ,  sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 400 ,crop: 'center', height: 400| image_tag:  widths: ' 600, 800'  , sizes: '(min-width:600px) 380px, 150px', loading: 'lazy' }}</div></div>{% endif %}
                     
                   </div>
                 </div>
