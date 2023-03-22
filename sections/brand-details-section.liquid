@@ -1,3 +1,14 @@
+<style>
+  .brand-details-slider .slide{
+    display: none;
+  }
+  .brand-details-slider .slide:first-child{
+    display: block;
+  }
+  .slick-initialized.brand-details-slider .slide{
+    display: block;
+  }
+</style>
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
