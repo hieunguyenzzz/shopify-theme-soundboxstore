@@ -2005,28 +2005,28 @@
       },
       "no_access": {
         "back_to_authentication_link": "Logg inn på en annen konto",
-        "description": "Du er ikke registrert SOM B2B-kunde hos oss {{shopName}}",
-        "title": "Ingen tilgang"
+        "description": "Du er ikke registrert som B2B -kunde med {{shopName}}",
+        "title": "Ingen adgang"
       },
       "no_access_to_locations": {
         "description": "Du har ikke tilgang til noen steder"
       },
       "not_found": {
-        "description": "Sjekk URL-ADRESSEN eller prøv igjen om noen minutter.",
-        "title": "Det er et problem å laste inn denne siden"
+        "description": "Sjekk nettadressen eller prøv igjen om noen minutter.",
+        "title": "Det er et problem med å laste denne siden"
       },
       "order_not_found": {
-        "description": "Denne siden eksisterer ikke, eller du har ikke tillatelse til å se den.",
-        "title": "Ordre ikke funnet"
+        "description": "Denne ordren eksisterer ikke, eller du har ikke tillatelse til å se den.",
+        "title": "Bestill ikke funnet"
       },
       "profile_update_error": {
-        "description": "Det oppstod et problem med å oppdatere profilen din. Prøv å oppdatere denne siden eller sjekk internett-tilkoblingen din."
+        "description": "Det var et problem med å oppdatere profilen din. Prøv å oppdatere denne siden eller sjekk internettforbindelsen din."
       },
-      "retry_action_label": "Prøve",
+      "retry_action_label": "Prøv på nytt",
       "load_orders_error": {
         "title": "Kan ikke laste inn bestillinger",
         "description": "Prøv eller kom tilbake senere.",
-        "retry_button": "Prøve"
+        "retry_button": "Prøv på nytt"
       },
       "load_paypal_error": {
         "description": "Det er et problem med å laste PayPal. Vær så snill, prøv på nytt."
@@ -2043,40 +2043,40 @@
     },
     "enable_javascript": "For å se kontoen din, aktiverer du JavaScript i nettleserinnstillingene eller logg inn med en annen nettleser.",
     "payment_methods": {
-      "title": "Betalingsmetode",
-      "add_payment_method_button": "Legg til betalingsmåte",
-      "delete_payment_method_button": "Slette",
-      "delete_payment_method_button_accessibility_label": "Slette {{paymentMethodName}}",
+      "title": "Betalingsmetoder",
+      "add_payment_method_button": "Legg til betalingsmetode",
+      "delete_payment_method_button": "Slett",
+      "delete_payment_method_button_accessibility_label": "Slett {{paymentMethodName}}",
       "back_button": "Tilbake",
       "back_button_accessibility_label": "Tilbake til {{paymentMethodStepTitle}}",
       "generic_card": "Kort",
       "payment_details": {
-        "title": "Betalingsmåte detaljer",
-        "credit_card_details_accessibility_label": "massasje med happy ending {{lastDigits}}",
+        "title": "Betalingsmetodedetaljer",
+        "credit_card_details_accessibility_label": "slutter om {{lastDigits}}",
         "billing_title": "Faktureringsadresse",
-        "card_info_title": "Kort informasjon",
+        "card_info_title": "Kortinformasjon",
         "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
-        "payment_method_expiring_on": "Utløper på {{expiryDate}}",
-        "preauthorized_payments": "Forhåndsgodkjente betalinger",
-        "close_payment_modal": "Lukke",
-        "close_payment_modal_accessibility_label": "Lukk betalingsmåte detaljer modal",
-        "payment_method_not_found_error": "Finner ikke betalingsmåte",
-        "payment_details_loading": "Laster inn detaljer om betalingsmåte",
-        "pre_authorized_payments": "Forhåndsgodkjente betalinger",
+        "payment_method_expiring_on": "Utløp på {{expiryDate}}",
+        "preauthorized_payments": "Preautoriserte betalinger",
+        "close_payment_modal": "Lukk",
+        "close_payment_modal_accessibility_label": "Lukk betalingsmetode Detaljer Modal",
+        "payment_method_not_found_error": "Kan ikke finne betalingsmetode",
+        "payment_details_loading": "Laster inn betalingsmetodedetaljer",
+        "pre_authorized_payments": "Forhåndsautoriserte betalinger",
         "total_amount_of_subscription_line_items_left": "og {{total}} mer",
-        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} varer totalt, viser {{totalItemsToDisplay}} element.",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} varer totalt, vises {{totalItemsToDisplay}} gjenstander.",
         "next_payment_due": "Neste betaling forfaller {{dueDateInMonthDayYear}}",
         "edit_payment_method_button": "Redigere",
-        "edit_payment_method_button_accessibility_label": "Rediger betalingsmåte som slutter på {{lastDigits}}",
+        "edit_payment_method_button_accessibility_label": "Rediger betalingsmetode som slutter {{lastDigits}}",
         "payment_method_expired_on": "Utløpt på {{expiryDate}}"
       },
       "edit_payment_method": {
-        "title": "Rediger betalingsmåte",
+        "title": "Rediger betalingsmetode",
         "save_payment_method_button": "Lagre",
-        "cancel_edit_payment_method_button": "Avbryte",
-        "payment_method_updated_toast": "Betalingsmåte oppdatert",
+        "cancel_edit_payment_method_button": "Avbryt",
+        "payment_method_updated_toast": "Betalingsmetode oppdatert",
         "billing_address": "Faktureringsadresse",
-        "billing_address_add_new": "Legg til nytt",
+        "billing_address_add_new": "Legg til ny",
         "billing_address_choose_from_list": "Velg fra liste",
         "future_purchases_notice": "Denne betalingsmåten vil bli lagret for fremtidige kjøp."
       },
@@ -2131,6 +2131,14 @@
           "choose_billing_address_from_list_button": "Velg mellom listen",
           "choose_billing_address_from_list_button_accessibility_label": "Velg en faktureringsadresse fra listen",
           "missing_billing_address_error_message": "Vennligst spesifiser en faktureringsadresse"
+        }
+      },
+      "digital_wallet_title": "Digital lommebok",
+      "credit_or_debit_card_title": "Kreditt- eller debetkort",
+      "google_pay": {
+        "errors": {
+          "generic": "Det var et problem med Google Pay. Prøv igjen eller bruk en annen betalingsmetode.",
+          "missing_billing_address": "Google Pay krever en faktureringsadresse. Legg til en i kontoen din."
         }
       }
     },
