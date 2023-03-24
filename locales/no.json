@@ -1651,16 +1651,16 @@
         "delivered_title": "Forsendelsen din er levert",
         "estimated_delivery": "Forventet levering {{date}}",
         "in_review_description": "Vi gir deg beskjed hvis vi trenger mer informasjon eller når bestillingen din er bekreftet.",
-        "in_review_label": "I gjennomgang",
+        "in_review_label": "I anmeldelse",
         "in_review_title": "Bestillingen din blir gjennomgått",
         "no_tracking_number": "Det er ikke noe sporingsnummer for denne forsendelsen.",
         "on_its_way_label": "På vei",
-        "on_its_way_title": "Sendingen er på vei",
-        "out_for_delivery_label": "Ute for levering",
-        "out_for_delivery_title": "Din levering er utgått",
+        "on_its_way_title": "Forsendelsen din er på vei",
+        "out_for_delivery_label": "Ut for levering",
+        "out_for_delivery_title": "Forsendelsen din er ute for levering",
         "resume_tracking": "Fortsett sporing",
         "submitted_label": "Sendt",
-        "track_shipment": "Spor forsendelsen",
+        "track_shipment": "Spor forsendelse",
         "attempted_delivery_label": "Forsøkt levering",
         "attempted_delivery_description": "Leveringsforsøket var mislykket.",
         "confirmed_description": "Vi har mottatt bestillingen din.",
@@ -1674,38 +1674,39 @@
         "picked_up_description": "Disse varene er hentet.",
         "last_updated": "Sist oppdatert {{date}}",
         "multiple_shipments_label": "Flere forsendelser",
-        "submitted_description": "Se gjennom ordre-og betalingsinformasjon.",
-        "request_return": "Be om tilbakelevering",
+        "submitted_description": "Gjennomgå ordre- og betalingsdetaljer.",
+        "request_return": "Be om retur",
         "view_order_for_details": "Se ordre for detaljer"
       },
-      "status_mark_as_delivered": "Merk som levert",
-      "status_title": "Ordrestatus",
-      "buy_again": "Kjøp på nytt",
+      "status_mark_as_delivered": "Mark som levert",
+      "status_title": "Ordre status",
+      "buy_again": "Kjøp igjen",
       "buy_again_accessibility_label": "Kjøp igjen for bestilling {{orderId}}",
-      "manage": "Administrere",
-      "manage_accessiblity_label": "Administrer bestilling {{orderId}}",
+      "manage": "Få til",
+      "manage_accessiblity_label": "Administrer ordre {{orderId}}",
       "group_title_label": "Del av: {{groupTitle}}"
     },
     "order_details": {
       "addresses_section_title": "Fakturering og frakt",
       "billing_address": "Faktureringsadresse",
-      "card_ending_with": "massasje med happy ending {{lastDigits}}",
+      "card_ending_with": "slutter med {{lastDigits}}",
       "contact": "Kontakt",
-      "fully_refunded_label": "REFUNDERE",
+      "fully_refunded_label": "Refundert",
       "discount": "Rabatt",
-      "hide_items": "Skjul elementer",
+      "hide_items": "Skjul gjenstander",
       "loading": "Laster inn bestillingsdetaljer",
       "loading_finished_accessibility_message": "Bestillingsdetaljer er lastet inn",
-      "location": "Plassering",
-      "no_data": "Ingenting",
-      "not_applicable": "N \/ A",
-      "partially_refunded_label": "DELVIS TILBAKEBETALT",
+      "location": "plassering",
+      "no_data": "Ingen",
+      "not_applicable": "N\/a",
+      "partially_refunded_label": "Delvis refundert",
       "payment": {
         "status_in_review": "Betaling forfaller etter gjennomgang",
-        "status_unpaid": "Betaling på grunn av {{date}}",
-        "title": "Betaling"
+        "status_unpaid": "Betaling forfaller {{date}}",
+        "title": "Betaling",
+        "card_payment_details": "•••• {{lastDigits}} - {{formattedTransactionAmount}}"
       },
-      "refunded_amount": "Refundere",
+      "refunded_amount": "Refundert",
       "shipping": {
         "address": "Leveringsadresse",
         "address_map_marker": "Leveringsadresse",
@@ -1724,15 +1725,15 @@
       "unit_price": "({{price}}(ea)",
       "shipment_timeline": {
         "expand_events_label": "Vis detaljer",
-        "expand_events_accessibility_label": "Vis bestillingsforsendelsesdetaljer",
+        "expand_events_accessibility_label": "Vis ordre forsendelsesdetaljer",
         "hide_events_label": "Skjul detaljer",
-        "hide_events_accessibility_label": "Skjul bestillingsforsendelsesdetaljer"
+        "hide_events_accessibility_label": "Skjul ordre forsendelsesdetaljer"
       },
       "mobile_summary_toggle_button": {
-        "open": "Vis ordresammendrag",
-        "closed": "Skjul bestillingssammendrag"
+        "open": "Vis bestillingsoversikt",
+        "closed": "Skjul ordreoppsummering"
       },
-      "request_return_failed": "Det oppstod et problem under behandlingen av forespørselen din. Vennligst prøv igjen.",
+      "request_return_failed": "Det var et problem som behandler forespørselen din. Vær så snill, prøv på nytt.",
       "returns": {
         "expand_events_label": "Vis detaljer",
         "hide_events_label": "Skjul detaljer",
@@ -1749,7 +1750,10 @@
         "load_more": "Last inn flere",
         "load_more_accessibility_label": "Last inn flere varer",
         "loading_accessibility_label": "Laste inn varer"
-      }
+      },
+      "company": "Selskap",
+      "no_data_provided": "-",
+      "no_data_provided_accessibility_label": "{{fieldName}} er tom"
     },
     "addresses": {
       "add_button": "Legg til adresse",
