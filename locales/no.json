@@ -1920,33 +1920,33 @@
         "payment_status": {
           "pending": {
             "banner_overdue": {
-              "one": "Din betaling er {{count}} dagen forfalt",
-              "other": "Din betaling er {{count}} dager forfalt"
+              "one": "Betalingen din er {{count}} Dag forfalt",
+              "other": "Betalingen din er {{count}} dager forfalte"
             },
             "banner_due": {
-              "one": "Din betaling forfaller til betaling {{count}} dag",
-              "other": "Din betaling forfaller til betaling {{count}} dager"
+              "one": "Betalingen din forfaller i {{count}} dag",
+              "other": "Betalingen din forfaller i {{count}} dager"
             },
-            "banner_due_today": "Din betaling forfaller i dag",
-            "title": "Forfaller til betaling",
-            "title_with_date": "Forfaller til betaling {{date}}",
-            "description_overdue": "Betalingen din er forsinket.",
-            "description_partially_paid": "Denne bestillingen ble delvis betalt. Du har en gjenværende saldo.",
-            "description_authorized": "Betalingsmåten din blir belastet på forfallsdatoen, eller du kan betale nå.",
-            "title_due_on_receipt": "Betaling ikke forfalt ennå",
+            "banner_due_today": "Betalingen din forfaller i dag",
+            "title": "Betalings forfall",
+            "title_with_date": "Betalings forfall {{date}}",
+            "description_overdue": "Betalingen din er sen.",
+            "description_partially_paid": "Denne ordren ble delvis betalt. Du har en gjenværende balanse.",
+            "description_authorized": "Betalingsmetoden din belastes på forfallsdato, eller du kan betale nå.",
+            "title_due_on_receipt": "Betaling ikke forfaller ennå",
             "title_due_on_fulfillment": "Betaling på grunn av oppfyllelse",
-            "description_due_on_receipt": "Du vil motta en faktura når betalingen forfaller.",
-            "description_due_on_fulfillment": "Betaling forfaller når alle varene i denne bestillingen er oppfylt."
+            "description_due_on_receipt": "Du vil motta en faktura når betaling forfaller.",
+            "description_due_on_fulfillment": "Betaling forfaller når alle varene i denne ordren er oppfylt."
           },
           "draft": {
-            "description": "Betalingsdetaljer avgjøres når bestillingen er bekreftet.",
-            "title": "Betaling ennå ikke forfalt",
+            "description": "Betalingsdetaljer avgjøres når ordren er bekreftet.",
+            "title": "Betaling ennå ikke forfaller",
             "in_review": {
-              "description": "Betalingsdetaljer avgjøres når bestillingen er bekreftet.",
-              "title": "Betaling ennå ikke forfalt"
+              "description": "Betalingsdetaljer avgjøres når ordren er bekreftet.",
+              "title": "Betaling ennå ikke forfaller"
             },
             "submitted": {
-              "description": "Send inn betaling for å bekrefte denne bestillingen.",
+              "description": "Send inn betaling for å bekrefte denne ordren.",
               "title": "Betal for å bekrefte"
             }
           },
@@ -1956,15 +1956,15 @@
             "description": "Bestillingen din er fullt betalt."
           },
           "refund": {
-            "title": "Refundere",
-            "title_with_date": "Refundere {{date}}",
+            "title": "Refundert",
+            "title_with_date": "Refundert {{date}}",
             "description_full_refund": "Du mottok full refusjon for denne bestillingen.",
-            "description_single_refund": "Du har mottatt en delvis refusjon for denne bestillingen.",
-            "description_multiple_refunds": "Du mottok delvis refusjon for denne bestillingen."
+            "description_single_refund": "Du mottok en delvis refusjon for denne bestillingen.",
+            "description_multiple_refunds": "Du fikk delvis refusjon for denne bestillingen."
           },
           "canceled": {
             "title": "Betaling kansellert",
-            "description": "Du blir ikke belastet."
+            "description": "Du vil ikke bli belastet."
           },
           "pay_now": "Betal nå",
           "title": "Betalingsstatus",
@@ -1974,9 +1974,9 @@
         "title": "Rekkefølge {{name}}",
         "order_timeline": {
           "expand_events_label": "Vis detaljer",
-          "expand_events_accessibility_label": "Vis bestillingsutkast detaljer",
+          "expand_events_accessibility_label": "Vis utkast til ordrede detaljer",
           "hide_events_label": "Skjul detaljer",
-          "hide_events_accessibility_label": "Skjul bestillingsutkast"
+          "hide_events_accessibility_label": "Skjul utkast til ordreinformasjon"
         }
       },
       "payment_methods": {
@@ -1988,20 +1988,20 @@
     },
     "errors": {
       "address_deletion_error": {
-        "description": "Det oppstod et problem med å slette denne adressen. Prøv igjen eller oppdater siden."
+        "description": "Det var et problem å slette denne adressen. Prøv igjen eller oppdater siden."
       },
       "addresses_loading_issue": {
-        "description": "Tilkoblingsfeil. Kontroller internett-tilkoblingen, og prøv på nytt."
+        "description": "Tilkoblingsfeil. Sjekk internettforbindelsen din og prøv igjen."
       },
       "banner_title": {
-        "one": "Det finnes {{count}} feil",
-        "other": "Det finnes {{count}} feil"
+        "one": "Det er {{count}} feil",
+        "other": "Det er {{count}} feil"
       },
       "failed_address_creation": {
-        "description": "Det oppstod et problem med å opprette adressen din. Prøv å oppdatere denne siden eller sjekk internett-tilkoblingen din."
+        "description": "Det var et problem med å lage adressen din. Prøv å oppdatere denne siden eller sjekk internettforbindelsen din."
       },
       "failed_address_update": {
-        "description": "Det oppstod et problem med å oppdatere adressen din. Prøv å oppdatere denne siden eller sjekk internett-tilkoblingen din."
+        "description": "Det var et problem med å oppdatere adressen din. Prøv å oppdatere denne siden eller sjekk internettforbindelsen din."
       },
       "no_access": {
         "back_to_authentication_link": "Logg inn på en annen konto",
@@ -2024,8 +2024,8 @@
       },
       "retry_action_label": "Prøve",
       "load_orders_error": {
-        "title": "Kan ikke laste bestillinger",
-        "description": "Prøv på nytt eller kom tilbake senere.",
+        "title": "Kan ikke laste inn bestillinger",
+        "description": "Prøv eller kom tilbake senere.",
         "retry_button": "Prøve"
       },
       "load_paypal_error": {
