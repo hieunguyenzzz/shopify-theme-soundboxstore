@@ -351,31 +351,31 @@
         "estimated_delivery_date_range": "%{minimum} til %{maximum} virkedager",
         "estimated_delivery_time": "Forventet levering %{time}",
         "estimated_delivery_time_range": "Forventet levering %{min_time}–%{max_time}",
-        "arrives_time": "Komme %{time}",
-        "arrives_time_range": "Komme %{min_time}–%{max_time}",
-        "estimated_time": "Anslå %{time}",
-        "estimated_time_range": "Anslå %{min_time}–%{max_time}",
-        "shipping_line_phone_label": "Mobilnummer (påkrevd)",
-        "shipping_line_phone": "Kureren din kan bruke dette nummeret til å kontakte deg.",
+        "arrives_time": "Ankommer %{time}",
+        "arrives_time_range": "Ankommer %{min_time}–%{max_time}",
+        "estimated_time": "Antatt %{time}",
+        "estimated_time_range": "Antatt %{min_time}–%{max_time}",
+        "shipping_line_phone_label": "Mobiltelefonnummer (påkrevd)",
+        "shipping_line_phone": "Kureren kan bruke dette nummeret til å kontakte deg.",
         "shipping_line_delivery_phone_label": "Mobiltelefonnummer",
         "shipping_line_delivery_phone": "Du kan bli kontaktet med oppdateringer om leveransen din.",
-        "optional_shipping_line_delivery_instructions_label": "Leveringsinstruksjoner (valgfritt)",
-        "shipping_line_delivery_instructions": "Skriv inn nødvendig informasjon som dørkoder eller leveringsinstruksjoner.",
+        "optional_shipping_line_delivery_instructions_label": "Leveringsanvisninger (valgfritt)",
+        "shipping_line_delivery_instructions": "Skriv inn nødvendig informasjon som dørkoder eller avgangsinstruksjoner.",
         "other_method": {
           "zero": "Ingen andre metoder tilgjengelig",
-          "one": "%{count} annen metode tilgjengelig på ",
-          "other": "%{count} andre metoder tilgjengelig fra kl "
+          "one": "%{count} annen metode tilgjengelig på",
+          "other": "%{count} Andre metoder tilgjengelig som begynner på"
         },
-        "shipping_rate_discounted_amount": "Er: %{original_amount}. Nå: %{amount}",
+        "shipping_rate_discounted_amount": "Var: %{original_amount}. Nå: %{amount}",
         "local_delivery": "Lokal levering",
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "one": "for %{count} levering",
-            "other": "for %{count} levering"
+            "one": "til %{count} leveranse",
+            "other": "til %{count} Leveranser"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "one": "daglig",
+              "one": "hver dag",
               "other": "hver %{count} dager"
             },
             "week": {
@@ -387,28 +387,28 @@
               "other": "hver %{count} måneder"
             },
             "year": {
-              "one": "årlig",
+              "one": "hvert år",
               "other": "hver %{count} år"
             }
           },
           "multiple_subscriptions_shipping_price_label": "%{shipping_price} per levering",
-          "prepaid_shipping_price_label": "%{shipping_price} per levering x %{delivery_interval_count}",
+          "prepaid_shipping_price_label": "%{shipping_price} per levering X. %{delivery_interval_count}",
           "initial_order_discounted": "Første fraktkostnad %{discounted_shipping_cost}, deretter %{frequency_description}",
           "prepaid_initial_order_discounted": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency}",
           "prepaid_initial_order_discounted_with_per_delivery_price": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
           "prepaid_initial_order_discounted_with_renewal": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency}, deretter %{shipping_price} %{billing_cycle}",
           "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), deretter %{shipping_price} %{billing_cycle}",
-          "shipping_price_included": "Fulgte",
+          "shipping_price_included": "Inkludert",
           "recurring_order_shipping_price": "etterfulgt av %{recurring_order_shipping_price}",
-          "first_order_shipping_price_included": "Første ordre inkludert, etterfulgt av %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Første bestilling inkludert, etterfulgt av %{recurring_order_shipping_price}",
           "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per levering), etterfulgt av %{recurring_order_shipping_price}",
           "first_n_order_free": {
-            "one": "Første bestilling gratis",
+            "one": "Første ordrefri",
             "other": "Første %{count} bestillinger gratis"
           },
           "free_for_first_n_order": {
             "one": "For første bestilling",
-            "other": "For første gang %{count} rekkefølge"
+            "other": "For første %{count} rekkefølge"
           }
         },
         "one_time_purchase_shipping": "Engangs frakt",
@@ -416,9 +416,9 @@
         "subscription_local_delivery": "Abonnement lokal levering",
         "subscription_pickup": "Abonnement Pickup",
         "delivery_today": "Levering samme dag %{time}",
-        "delivery_tomorrow": "Levering neste dag %{time}",
+        "delivery_tomorrow": "Neste dag levering %{time}",
         "two_day_delivery": "2-dagers levering %{time}",
-        "delivery": "Levering %{time}"
+        "delivery": "Leveranse %{time}"
       },
       "localized_fields": {
         "additional_information": {
@@ -427,8 +427,8 @@
       },
       "payment": {
         "amazon_payments_label": "Amazon Pay",
-        "amazon_payments_login_hint": "Du blir bedt om å logge inn Med Amazon.",
-        "amazon_payments_logout": "Logg ut Fra Amazon Pay",
+        "amazon_payments_login_hint": "Du vil bli bedt om å logge Inn Med Amazon.",
+        "amazon_payments_logout": "Logg Ut Fra Amazon Pay",
         "amazon_payments_failed_mfa_challenge": "Den valgte betalingsmåten kunne ikke brukes. Velg en annen metode eller kontakt banken eller kortutstederen.",
         "amazon_payments_abandoned_mfa_challenge": "Betalingen din kunne ikke fullføres. Prøv en annen betalingsmåte, eller kontakt banken eller kortutstederen.",
         "amazon_payments_could_not_enqueue_authorize": "Det oppstod et problem med behandlingen av betalingen. Prøv igjen eller bruk en annen betalingsmåte.",
