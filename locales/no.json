@@ -646,9 +646,9 @@
         "payment_gateway_incompatible_with_multi_currency": "For å fullføre denne kassen i din lokale valuta, må du betale med kredittkort.",
         "payment_gateway_unsupported_for_subscriptions": "Denne betalingsmåten er ikke tilgjengelig for abonnements bestillinger.",
         "subscription_agreement_blank": "For å fortsette med kjøpet, godta abonnementsvilkårene",
-        "physical_gift_card_invalid_quantity": "Fysiske gavekortlinjer må ha et antall som samsvarer med antall gavekortkoder.",
-        "physical_gift_card_duplicate_code": "Fysisk gavekortlinje inneholder duplikatkode.",
-        "physical_gift_card_invalid_code": "Fysisk gavekortkode er ugyldig.",
+        "physical_gift_card_invalid_quantity": "Fysiske gavekort linjeelementer må ha en mengde som samsvarer med antall gavekort koder.",
+        "physical_gift_card_duplicate_code": "Fysisk gavekort linje inneholder duplisert kode.",
+        "physical_gift_card_invalid_code": "Fysisk gavekort kode er ugyldig.",
         "address_zip_not_supported": "Denne plasseringen støttes ikke.",
         "delivery_line_detail_changed": "Noen leveringsdetaljer kan ha endret seg. Bekreft fraktmetoden din og prøv igjen.",
         "gift_card_buying_gift_card": "Du kan ikke bruke et gavekort for å kjøpe et annet gavekort",
@@ -658,57 +658,57 @@
         "purchase_options_agreement_blank": "For å fortsette med kjøpet, godta utsatt eller tilbakevendende kjøpsvilkår."
       },
       "payment_errors": {
-        "generic_error": "Det oppstod et problem med behandlingen av betalingen. Prøv igjen eller bruk en annen betalingsmåte.",
-        "rejected_transaction": "Betalingen din ble avvist. Prøv igjen eller bruk en annen betalingsmåte.",
-        "credit_card_processing": "Betalingen din kan ikke behandles av tekniske årsaker. Prøv igjen om noen minutter eller bruk en annen betalingsmåte.",
-        "checkout_amount_changed": "Betalingen din kunne ikke behandles fordi beløpet som skal betales i kassen har endret seg. Vennligst sjekk bestillingen din og prøv igjen.",
-        "deferred_payment_not_allowed": "Utsatt betaling er ikke tillatt. Vennligst sjekk bestillingen din og prøv igjen.",
-        "deferred_payment_required": "Denne bestillingen krever utsatt betaling. Vennligst sjekk bestillingen din og prøv igjen.",
-        "deferred_amount_changed": "Betalingen din kunne ikke behandles fordi beløpet for utsatt betaling er endret. Vennligst sjekk bestillingen din og prøv igjen.",
-        "deferred_date_changed": "Betalingen din kunne ikke behandles fordi utsatt betalingsdato er endret. Vennligst sjekk bestillingen din og prøv igjen.",
-        "order_total_changed": "Betalingen din kunne ikke behandles fordi bestillingssummen din er endret. Kontroller ordretotalen og prøv igjen.",
-        "payment_processing": "Betalingen din kan ikke behandles av tekniske årsaker. Prøv igjen eller bruk en annen betalingsmåte.",
-        "payment_processing_no_retry": "Betalingen din kan ikke behandles av tekniske årsaker. Prøv en annen betalingsmåte.",
-        "paypal_zero_amount": "Du kan ikke Bruke PayPal til %{amount} rekkefølge. Bekreft at bestillingen din er riktig og sjekk ut Uten PayPal.",
-        "paypal_invalid_token": "PayPal var ikke tilgjengelig. Prøv igjen eller bruk et annet betalingsalternativ.",
-        "pay_later_failed": "Det oppstod en feil under behandlingen av betalingen Din Med Betal senere. Velg en annen betalingsmåte og prøv igjen.",
-        "three_d_secure_failed": "Betalingen din kunne ikke bekreftes. Prøv igjen eller bruk en annen betalingsmåte.",
-        "three_d_secure_failed_duplicate": "Kredittkortets 3d Secure-godkjenning mislyktes fordi en annen allerede pågår.",
+        "generic_error": "Det oppstod et problem med å behandle betalingen din. Prøv på nytt eller bruk en annen betalingsmåte.",
+        "rejected_transaction": "Betalingen ble avvist. Prøv igjen eller bruke en annen betalingsmåte.",
+        "credit_card_processing": "Betalingen kan ikke behandles av tekniske årsaker. Prøv igjen om noen minutter eller bruke en annen betalingsmåte.",
+        "checkout_amount_changed": "Betalingen din kunne ikke behandles fordi det forfalte beløpet har endret seg. Vennligst sjekk bestillingen din og prøv igjen.",
+        "deferred_payment_not_allowed": "Utsatte betalinger er ikke tillatt. Vennligst sjekk bestillingen din og prøv igjen.",
+        "deferred_payment_required": "Denne ordren krever en utsatt betaling. Vennligst sjekk bestillingen din og prøv igjen.",
+        "deferred_amount_changed": "Betalingen din kunne ikke behandles fordi det utsatte betalingsbeløpet har endret seg. Vennligst sjekk bestillingen din og prøv igjen.",
+        "deferred_date_changed": "Betalingen din kunne ikke behandles fordi den utsatte betalingsdatoen har endret seg. Vennligst sjekk bestillingen din og prøv igjen.",
+        "order_total_changed": "Betalingen kan ikke behandles fordi bestillingen totalt har endret seg. Sjekk din bestilling totalt og prøv igjen.",
+        "payment_processing": "Betalingen kan ikke behandles av tekniske årsaker. Prøv igjen eller bruke en annen betalingsmåte.",
+        "payment_processing_no_retry": "Betalingen kan ikke behandles av tekniske årsaker. Vennligst prøv en annen betalingsmåte.",
+        "paypal_zero_amount": "Du kan ikke bruke PayPal for %{amount} bestillinger. Bekreft bestillingen er riktig og sjekke ut uten PayPal.",
+        "paypal_invalid_token": "PayPal var ikke tilgjengelig. Prøv igjen eller bruke et annet betalingsalternativ.",
+        "pay_later_failed": "Det oppstod en feil under betalingen med betal senere. Velg en annen betalingsmåte og prøv igjen.",
+        "three_d_secure_failed": "Betalingen kunne ikke bekreftes. Prøv igjen eller bruke en annen betalingsmåte.",
+        "three_d_secure_failed_duplicate": "Kredittkort 3D Secure godkjenning mislyktes fordi en annen er allerede i gang.",
         "three_d_secure_throttled": "For mange forsøk; vennligst vent før du prøver igjen",
-        "subscription_agreement_blank": "For å kjøpe et abonnement må betalingsinformasjonen din lagres. For å fortsette, bekreft at du godtar eller fjerner abonnementsartikler fra bestillingen.",
-        "insufficient_funds": "Betalingen din ble avvist på grunn av utilstrekkelige midler. Prøv igjen eller bruk en annen betalingsmåte.",
+        "subscription_agreement_blank": "Å kjøpe et abonnement din betalingsinformasjon trenger å bli frelst. For å fortsette, bekrefter at du er enig eller fjerner abonnements elementer fra du bestiller.",
+        "insufficient_funds": "Betalingen ble avvist på grunn av manglende dekning. Prøv igjen eller bruke en annen betalingsmåte.",
         "fraud_payment_errors": {
-          "transaction_declined": "Denne transaksjonen har blitt avvist",
-          "address_mismatch": "Gateadresse og postnummer stemmer ikke overens.",
+          "transaction_declined": "Denne overføringen har blitt avslått",
+          "address_mismatch": "Gateadresse og postnummer ikke overens.",
           "cannot_process": "Denne transaksjonen kan ikke behandles.",
-          "no_match": "No Match",
+          "no_match": "Ingen treff",
           "card_declined": "Kortet ditt ble avvist"
         },
         "multiple_deferred_payment_not_allowed": "Bare en utsatt betaling tillatt per forespørsel. Vennligst sjekk forespørselen din og prøv igjen."
       },
       "shipping_errors": {
-        "shipping_method": "Handlekurven din er oppdatert, og den forrige fraktprisen er ikke gyldig. Velg en ny sats.",
-        "shipping_method_not_available": "Handlekurven din er oppdatert, og varene du la til, kan ikke sendes til adressen din. Fjern elementene for å fullføre bestillingen.",
+        "shipping_method": "Handlekurven er oppdatert og den tidligere shipping rate er ikke gyldig. Velg en ny kurs.",
+        "shipping_method_not_available": "Handlekurven er oppdatert og varene du har lagt kan ikke sendes til din adresse. Fjerne elementer for å fullføre bestillingen.",
         "shipping_method_not_available_generic": {
-          "one": "Denne bestillingen kan ikke sendes til adressen du skrev inn. Se over adressen din for å forsikre deg om at alle felter er riktig utfylt og prøv igjen.",
-          "other": "Noen varer i handlekurven din kan ikke sendes til adressen du oppga. Se over adressen din for å forsikre deg om at alle felter er riktig utfylt og prøv igjen."
+          "one": "Denne rekkefølgen kan ikke sendes til adressen du har angitt. Gjennomgå adressen din for å sikre at alle feltene er skrevet inn riktig og prøv igjen.",
+          "other": "Noen elementer i handlekurven din kan ikke sendes til adressen du har angitt. Gjennomgå adressen din for å sikre at alle feltene er skrevet inn riktig og prøv igjen."
         },
         "shipping_method_not_available_updated": {
-          "one": "Varen du la til, sendes ikke til posisjonen din. Fjern den for å sjekke ut, eller kontakt butikken.",
-          "other": "Ett eller flere elementer du har lagt til, sendes ikke til posisjonen din. Fjern dem for å sjekke ut, eller kontakt butikken."
+          "one": "Elementet du la ikke leverer til din posisjon. Fjerne det å sjekke ut, eller ta kontakt med butikken.",
+          "other": "Ett eller flere elementer du har lagt sender ikke til din posisjon. Fjerne dem for å sjekke ut, eller ta kontakt med butikken."
         },
-        "payment_method_not_supported": "Du kan ikke bruke denne betalingsmetoden for %{country}. Bruk en annen betalingsmåte for å sende til dette landet."
+        "payment_method_not_supported": "Du kan ikke bruke denne betalingsmetoden for %{country}. Bruk en annen betalingsmetode for å sende til dette landet."
       },
       "alternative_payment_method_banner": {
-        "express_checkout": "Express checkout",
+        "express_checkout": "hurtigutsjekking",
         "or": "ELLER"
       },
       "alternative_payment_method": {
-        "button_html": "Sjekk ut med: %{method}",
-        "button_label": "Sjekk ut med: %{method}"
+        "button_html": "Kassa med: %{method}",
+        "button_label": "Kassa med: %{method}"
       },
       "paypal": {
-        "button_html": "Sjekk ut med %{logo}"
+        "button_html": "kassa med %{logo}"
       },
       "apple_pay": {
         "button_html": "Kjøp med %{logo}"
@@ -716,13 +716,13 @@
       "post_purchase": {
         "page_title": "Etter kjøp",
         "title": "Etter kjøp",
-        "escape_confirmation": "Du har betalt for bestillingen din.",
-        "escape_action": "Se ordrebekreftelse \"",
+        "escape_confirmation": "Du har betalt for bestillingen.",
+        "escape_action": "Vis ordrebekreftelse>",
         "components": {
-          "close": "Lukke",
-          "expand": "Vis mer",
+          "close": "Lukk",
+          "expand": "Se mer",
           "processing": "Behandling…",
-          "submit": "Sende"
+          "submit": "Sende inn"
         }
       },
       "processing": {
