@@ -29,8 +29,10 @@
     {% comment %}<legend class="hide">{{ option.name }}</legend>{% endcomment %}
     {%- for value in option.values -%}
       {% for variant in product.variants -%}
-         {% if variant.option1 == value %}
-          {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' %}
+         {% if variant.option1 == value %}  
+          {% if variant.metafields.custom.color_image %}
+            {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' %}
+          {% endif %}
          {% endif %}
       {%- endfor %}
       {%- liquid
