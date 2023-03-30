@@ -28,6 +28,11 @@
   >
     {% comment %}<legend class="hide">{{ option.name }}</legend>{% endcomment %}
     {%- for value in option.values -%}
+      {% for variant in product.variants -%}
+         {% if variant.option1 == value %}
+          {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' %}
+         {% endif %}
+      {%- endfor %}
       {%- liquid
         assign product_available = true
         if product.options.size == 1
@@ -62,16 +67,19 @@
           id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
         >
         {%- if is_color -%}
-          {%- liquid
-            assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
-            assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
-            assign color_swatch_fallback = value | split: ' ' | last | handle
-          -%}
+          {% unless color_image %}
+            {%- liquid
+              assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+              assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+              assign color_swatch_fallback = value | split: ' ' | last | handle
+            -%}
+          {% endunless %}
+          
 
           <label
             for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
             class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
-            style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+            style="background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
           >
             {{ tranValue | escape }}
           </label>
