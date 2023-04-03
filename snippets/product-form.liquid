@@ -78,6 +78,7 @@
 
     {% for current_variant in product.variants %}
 
+      {% assign inventory_quantity = current_variant.inventory_quantity %}
       {%- for item in current_variant.metafields.custom.bundle.value -%}
         {% if forloop.first %}
           {% assign inventory_quantity = item.inventory_quantity %}

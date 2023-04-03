@@ -25,6 +25,9 @@
   #{{section.id}}-slider .image-wrap img {
    min-height: 500px;
   }
+  #{{section.id}}-slider  img.desktop-only {
+    object-position: 70% 0;
+  }
   @media only screen and (max-width:767px) {
     .image-text-section .image-wrap img {
       display: block;
@@ -44,7 +47,9 @@
           <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
             <img
               {% if section.settings.lazyload %}
+              {% unless forloop.first %}
               loading="lazy"
+              {% endunless %}
               {% endif %}
               width="1898"
               height="1081"
@@ -52,7 +57,7 @@
               {% if imageMb != blank %}
               class="desktop-only"
               {% endif %}
-              alt="{{ image.alt }}">
+              alt="{{ image.alt | default: 'background' }}">
             {% if imageMb != blank -%}
               <img
                 {% if section.settings.lazyload %}
@@ -63,7 +68,7 @@
                 height="767"
                 src="{{ imageMb | image_url: width: 767 }}"
                 class="mobile-only"
-                alt="{{ imageMb.alt }}">
+                alt="{{ imageMb.alt | default: 'background' }}">
             {%- endif %}
 
           </div>

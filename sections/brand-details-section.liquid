@@ -1,3 +1,16 @@
+<style>
+  .brand-details-slider .slide{
+    display: none;
+  }
+
+  .brand-details-slider .slide:first-child{
+    display: block;
+  }
+  .slick-initialized.brand-details-slider .slide{
+    display: block;
+  }
+ 
+</style>
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
@@ -19,9 +32,9 @@
               <div class="col right-col">
                 <div class="col-wrap">
                   <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 | image_tag:  widths: '400, 800' , sizes: '(max-width:600px) 400px, 800px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 500 | image_tag:  widths: '200, 500' ,  sizes: '(max-width:600px) 200px, 500px', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 500 | image_tag:  widths: '200, 500'  , sizes: '(max-width:600px) 200px, 500px', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 ,crop: 'center' | image_tag:  widths: '150, 300,400, 800' , sizes: '(max-width: 425px) 320px,(max-width: 425px) 320px, 66.6vw', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 400 ,crop: 'center'| image_tag:  widths: '100, 160,200, 400' ,  sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw', loading: 'lazy' }}</div></div>{% endif %}
+                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 400 ,crop: 'center'| image_tag:  widths: '100, 160,200, 400'  , sizes: '(min-width: 768px) 20400px0px,(min-width: 425px) 150px, 30vw', loading: 'lazy' }}</div></div>{% endif %}
                     
                   </div>
                 </div>
