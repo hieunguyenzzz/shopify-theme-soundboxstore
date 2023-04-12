@@ -557,7 +557,7 @@
                 {%- endif -%}
                 <div>
                   <span>SoundBox Store</span>
-               
+                  in
                   {%- for tag in article.tags -%}
                     {% if tag contains '_' %}
                       {%- assign tag_starts_with = tag | slice: 0 -%}
@@ -568,7 +568,7 @@
                         {% continue -%}
                       {%- endif %}
                     {% endif %}
-                    in <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
+                    <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                   {%- endfor -%}
                 </div>
               </div>
