@@ -1,8 +1,6 @@
-<style>
-  
-</style>
+<style></style>
 {% for block in section.blocks %}
-  {{block.settings.content}}
+  {{ block.settings.content }}
 {% endfor %}
 
 {% schema %}
@@ -10,13 +8,19 @@
   "name": "Zoho form popup",
   "class": "zoho-form-popup",
   "settings": [
-    
+
   ],
   "blocks": [
     {
       "type": "item",
       "name": "Item",
       "settings": [
+         {
+          "type": "text",
+          "id": "coundtryCode",
+          "label": "coundtry Code",
+          "default": "GB"
+        },
         {
           "type": "text",
           "id": "heading",
@@ -35,10 +39,10 @@
     {
       "name": "Zoho form popup",
       "blocks": [
-       
+
       ],
       "settings": {
-        
+
       }
     }
   ]
