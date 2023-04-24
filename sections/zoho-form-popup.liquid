@@ -1,8 +1,9 @@
 <style></style>
 {% for block in section.blocks %}
-  {{ block.settings.content }}
+  {%- if localization.country.iso_code == block.settings.countryCode -%}
+    {{ block.settings.content }}
+  {%- endif -%}
 {% endfor %}
-
 {% schema %}
 {
   "name": "Zoho form popup",
@@ -17,7 +18,7 @@
       "settings": [
          {
           "type": "text",
-          "id": "coundtryCode",
+          "id": "countryCode",
           "label": "coundtry Code",
           "default": "GB"
         },
