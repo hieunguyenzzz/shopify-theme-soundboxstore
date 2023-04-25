@@ -1,7 +1,11 @@
 <style></style>
 {% for block in section.blocks %}
   {%- if localization.country.iso_code == block.settings.countryCode -%}
-    {{ block.settings.content }}
+    {%- if block.settings.countryCode -%}
+      {{ block.settings.content }}
+    {% else %}
+      {{ block.settings.content }}
+    {%- endif -%}
   {%- endif -%}
 {% endfor %}
 {% schema %}
@@ -24,8 +28,8 @@
         },
 {
           "type": "text",
-          "id": "locale",
-          "label": "Locale (Ex: 'nl-be','fr-fr','de-de',...)"
+          "id": "langCode",
+          "label": "Languages code"
         },
         {
           "type": "text",
