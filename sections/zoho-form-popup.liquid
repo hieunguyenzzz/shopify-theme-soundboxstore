@@ -4,7 +4,7 @@
     {% assign content = block.settings.content %}
   {% endif %}
   {%- if localization.country.iso_code == block.settings.countryCode -%}
-    {%- if block.settings.langCode -%}
+    {%- if block.settings.langCode != blank -%}
       {% if block.settings.langCode == localization.language.iso_code %}
         {% assign content = block.settings.content %}
       {% endif %}
