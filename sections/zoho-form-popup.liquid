@@ -1,8 +1,8 @@
 <style></style>
 {% for block in section.blocks %}
   {%- if localization.country.iso_code == block.settings.countryCode -%}
-    {%- if block.settings.countryCode -%}
-      {% if block.settings.countryCode == localization.language.iso_code %}
+    {%- if block.settings.langCode -%}
+      {% if block.settings.langCode == localization.language.iso_code %}
         {{ block.settings.content }}
       {% endif %}
     {% else %}
