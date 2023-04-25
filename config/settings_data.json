@@ -184,8 +184,7 @@
       },
       "recently-viewed": {
         "type": "recently-viewed",
-        "settings": {
-        }
+        "settings": {}
       },
       "toolbar": {
         "type": "toolbar",
@@ -388,8 +387,7 @@
       },
       "zoho-hide-we-online": {
         "type": "zoho-hide-we-online",
-        "settings": {
-        }
+        "settings": {}
       },
       "zoho-form-popup": {
         "type": "zoho-form-popup",
@@ -397,42 +395,187 @@
           "638badbb-1870-4d0a-bc0d-3f9dacfa88d5": {
             "type": "item",
             "settings": {
+              "countryCode": "GB",
+              "langCode": "",
               "heading": "UK",
-              "content": "<script\n  type=\"text\/javascript\"\n  id=\"ZC_Forms_Popup\"\n  src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\"\n><\/script>\n<script type=\"text\/javascript\">\n  window.onload = function () {\n      const loadZCPopupTimeKey ='loadZCPopupTime'\n    const cuurentTime = new Date().getTime()\n    function loadPopup(){\n      setTimeout(() => {\n        loadZCPopup(\n        \"3z2d7e6842da229d52b45da4699185bfab9806e17f67725abc7c163e63b964a499\",\n        \"ZCFORMVIEW\",\n        \"3z4c89b4bedf264a8c81b3621a342a4ab7\"\n      );\n      localStorage.setItem(loadZCPopupTimeKey,new Date().getTime())\n      }, 3000);\n    }\n    try {\n      const loadZCPopupTime=Number(localStorage.getItem(loadZCPopupTimeKey))\n      if((cuurentTime-loadZCPopupTime)>30*24*60*60*1000)\n      loadPopup()\n    } catch (error) {\n      console.log(error)\n      loadPopup()\n    }\n   \n    \n  };\n<\/script>\n<style>\n.zh_formcont >*{\nfont-family: inherit !important\n}\n<\/style>"
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z2d7e6842da229d52b45da4699185bfab9806e17f67725abc7c163e63b964a499','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "ba9e35e3-0c50-4bae-978c-61469e064aae": {
+            "type": "item",
+            "settings": {
+              "countryCode": "US",
+              "langCode": "",
+              "heading": "USA",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zf4f9b3fbf9f801a5ad61bef921bb17a63f4cd0c9f43d5f5f975a5e35299af3c7','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "fe764693-6b3b-4216-9d8d-a62879850f8c": {
+            "type": "item",
+            "settings": {
+              "countryCode": "DK",
+              "langCode": "",
+              "heading": "Denmark",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z9140515b9b69f4d17a092bdc2fcb1576e9ebd0889c97fb9a8ee8e8ac5cee4add','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "1cb3c18d-a9de-4476-bc5a-90c5430776c2": {
+            "type": "item",
+            "settings": {
+              "countryCode": "SE",
+              "langCode": "",
+              "heading": "Sweden",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zbbfaf6b9dd849c6436b4ef500b2c82d001c854ba163e5c3163d92c42928b1eee','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "1cd907f4-eb9c-42fe-ad10-b6579940c3c5": {
+            "type": "item",
+            "settings": {
+              "countryCode": "DE",
+              "langCode": "",
+              "heading": "Germany",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zb40772b42e09eba820fcd740e3ce7c3bedad62885abaffbfdab76ae3767978db','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "7cfd5f2c-4e5c-4a2c-a0cd-549d5b84743b": {
+            "type": "item",
+            "settings": {
+              "countryCode": "NO",
+              "langCode": "",
+              "heading": "Norway",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zff358ba5a317bcb15be5bbefd8502934f619d6b5c5dd728d6ec6a3315ceb62ca','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "5ebe1d27-0cf4-4d7b-b34e-f2abc17f3d77": {
+            "type": "item",
+            "settings": {
+              "countryCode": "FR",
+              "langCode": "",
+              "heading": "France",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z1061f15d4e5449aeb62751663a35e6c2a94d674a67a7be8b46f7210b3cee6577','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "33d03dcf-148d-4965-bed5-0271ace405f2": {
+            "type": "item",
+            "settings": {
+              "countryCode": "NL",
+              "langCode": "",
+              "heading": "Netherlands",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zd66934f1283da4241f53c250a7e8ee9601b5b9a9c94a52a6d8ed0804abad265a','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "0f536b48-c11e-41cd-9683-0c75acf227cd": {
+            "type": "item",
+            "settings": {
+              "countryCode": "BE",
+              "langCode": "nl",
+              "heading": "Belgium(NL)",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z7608826f46adbe62368ac205859473afed63c873084e3427403c6e1bdd2d51b4','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "8f8e4ea7-ee9b-4859-b411-bc8ea4865b6a": {
+            "type": "item",
+            "settings": {
+              "countryCode": "BE",
+              "langCode": "fr",
+              "heading": "Belgium(FR)",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3zc68a5fa356709851901a06d05eb9afdf189b642ae1c6c18f9e3e9a558ab65ea9','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "8cdbb4b9-65a9-474b-9040-edb0827624d7": {
+            "type": "item",
+            "settings": {
+              "countryCode": "AT",
+              "langCode": "",
+              "heading": "Austria",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z241fffdb532416db7a66f0773749d6d63fb700f51d03ac5233934389354d9f6f','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "1ab0dbe7-af5d-414d-b806-ff52d749838a": {
+            "type": "item",
+            "settings": {
+              "countryCode": "CH",
+              "langCode": "",
+              "heading": "Switzerland",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z2403f4ebc020cc2c210b00666730e2633b17e5818d856ac7b4ff52dddf7be06c','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "2c2e90d8-80c6-4ed0-841f-9f20193ca315": {
+            "type": "item",
+            "settings": {
+              "countryCode": "ES",
+              "langCode": "",
+              "heading": "Spain",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z0279da9fc6b9d5fd69687b0de1e3d81a76376339ea689affd01bb87fcf9c77fd','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "5b6f2477-40a8-40b4-9e93-568be75cecb7": {
+            "type": "item",
+            "settings": {
+              "countryCode": "FI",
+              "langCode": "",
+              "heading": "Finland",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z1604c0771ea0231f1716e37901003d1ea34ae150ccba3677b4a92a5426a824f5','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "7d9b3a6a-1499-4206-b010-6616653b3393": {
+            "type": "item",
+            "settings": {
+              "countryCode": "PL",
+              "langCode": "",
+              "heading": "Poland",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3ze94b7935fd40ac80d77b603341dc211384f3c9339e6e19ea1ef962147237d2be','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
+            }
+          },
+          "1443f456-4f15-4ca4-b231-4223d6085d76": {
+            "type": "item",
+            "settings": {
+              "countryCode": "IT",
+              "langCode": "",
+              "heading": "Italy",
+              "content": "<script type=\"text\/javascript\" id=\"ZC_Forms_Popup\" src=\"https:\/\/campaigns.zoho.eu\/js\/optin.min.js\" ><\/script> <script type=\"text\/javascript\">window.onload=function(){loadZCPopup('3z8b60890de387f08b3cc71a8f6b04cf524c6d6940cd0af545fc87656fac626121','ZCFORMVIEW','3z4c89b4bedf264a8c81b3621a342a4ab7')}<\/script>"
             }
           }
         },
         "block_order": [
-          "638badbb-1870-4d0a-bc0d-3f9dacfa88d5"
+          "638badbb-1870-4d0a-bc0d-3f9dacfa88d5",
+          "ba9e35e3-0c50-4bae-978c-61469e064aae",
+          "fe764693-6b3b-4216-9d8d-a62879850f8c",
+          "1cb3c18d-a9de-4476-bc5a-90c5430776c2",
+          "1cd907f4-eb9c-42fe-ad10-b6579940c3c5",
+          "7cfd5f2c-4e5c-4a2c-a0cd-549d5b84743b",
+          "5ebe1d27-0cf4-4d7b-b34e-f2abc17f3d77",
+          "33d03dcf-148d-4965-bed5-0271ace405f2",
+          "0f536b48-c11e-41cd-9683-0c75acf227cd",
+          "8f8e4ea7-ee9b-4859-b411-bc8ea4865b6a",
+          "8cdbb4b9-65a9-474b-9040-edb0827624d7",
+          "1ab0dbe7-af5d-414d-b806-ff52d749838a",
+          "2c2e90d8-80c6-4ed0-841f-9f20193ca315",
+          "5b6f2477-40a8-40b4-9e93-568be75cecb7",
+          "7d9b3a6a-1499-4206-b010-6616653b3393",
+          "1443f456-4f15-4ca4-b231-4223d6085d76"
         ],
-        "settings": {
-        }
+        "settings": {}
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "15323590465973626552": {
         "type": "shopify:\/\/apps\/translate-currency-langshop\/blocks\/langshop\/84899e01-2b29-42af-99d6-46d16daa2111",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "16212576608872179499": {
         "type": "shopify:\/\/apps\/g-request-a-quote-hide-price\/blocks\/app-embed-block\/56d84fcb-37c7-4592-bb51-641b7ec5eef0",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       }
     }
   },
-  "presets": {
-  }
+  "presets": {}
 }
