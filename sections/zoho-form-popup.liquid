@@ -2,7 +2,9 @@
 {% for block in section.blocks %}
   {%- if localization.country.iso_code == block.settings.countryCode -%}
     {%- if block.settings.countryCode -%}
-      {{ block.settings.content }}
+      {% if block.settings.countryCode == localization.language.iso_code %}
+        {{ block.settings.content }}
+      {% endif %}
     {% else %}
       {{ block.settings.content }}
     {%- endif -%}
