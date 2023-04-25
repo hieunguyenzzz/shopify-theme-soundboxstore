@@ -1,15 +1,19 @@
 <style></style>
 {% for block in section.blocks %}
+  {% if forloop.index == 1 %}
+    {% assign content = block.settings.content %}
+  {% endif %}
   {%- if localization.country.iso_code == block.settings.countryCode -%}
     {%- if block.settings.langCode -%}
       {% if block.settings.langCode == localization.language.iso_code %}
-        {{ block.settings.content }}
+        {% assign content = block.settings.content %}
       {% endif %}
     {% else %}
-      {{ block.settings.content }}
+      {% assign content = block.settings.content %}
     {%- endif -%}
   {%- endif -%}
 {% endfor %}
+{{ content }}
 {% schema %}
 {
   "name": "Zoho form popup",
