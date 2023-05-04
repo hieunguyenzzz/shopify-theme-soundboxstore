@@ -30,6 +30,14 @@ calc(100vw - 4rem)
 .thumbnail-slider-inner.slick-initialized{
   display: block;
 }
+.image-gallery-block .gallery-wrap video{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+}
 </style>
 
 {%- unless product.empty? -%}
@@ -183,11 +191,13 @@ calc(100vw - 4rem)
 {%- assign vaSku = current_variant.sku | strip -%}
 {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {%- assign videos = current_variant.metafields.global.videos.value -%}
+
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}
 {%- assign slide_count = imgs.size -%}
-<div class="product-main-slider">
+<div class="product-main-slider" >
   <div class="slider-wrap">
     <div class="image-gallery-main">
        {%- assign had_images = false -%}
@@ -210,6 +220,20 @@ calc(100vw - 4rem)
               {{new_label}}
             </div>
           </div>
+      {%- endfor -%}
+      {%- for video in videos -%}
+        {%- assign had_images = true -%}
+        {%- assign alt = image.alt | strip -%}
+        <div class="image-gallery-block">
+          {%- unless forloop.first -%}
+          {%- assign lazy = 'lazy' -%}
+          {%- endunless -%}
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ video | media_tag: class: 'photoswipe__image' , autoplay: true , loop: true , controls: false }}
+            {{new_label}}
+          </div>
+      
+        </div>
       {%- endfor -%}
     {%- unless had_images -%}
       <div class="image-gallery-block">
@@ -239,6 +263,13 @@ calc(100vw - 4rem)
             </div>
           </div>
           {%- endfor -%}
+          {%- for video in videos -%}
+            <div class="thumnail-gallery-block">
+              <div class="thumbnail-wrap">
+                <img src="{{ video | image_url : width: 100 }}" loading="lazy" width="100" height="100" alt="{{ image.alt | default: 'product thumb' | escape }}">
+              </div>
+            </div>
+            {%- endfor -%}
         </div>
       </div>
     </div>
@@ -277,6 +308,7 @@ opacity: 0.7;
     padding: 0.5em 1em;
   }
 }
+
    </style>
     <a
         type="button"
@@ -290,15 +322,17 @@ opacity: 0.7;
 {%- endif -%}
     
 {%- for current_variant in product.variants -%}
-<template data-id="{{ current_variant.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {%- assign videos = current_variant.metafields.global.videos.value -%}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt' , vaSku -%}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
+<template data-id="{{ current_variant.id }}" data-videos="{{videos | json}}">
+
   <div class="slider-wrap">
     <div class="image-gallery-main">
       {%- assign had_images = false -%}
@@ -317,6 +351,20 @@ opacity: 0.7;
             widths: '246, 493, 600, 713, 823, 990',
             alt: image.alt | escape
             }}
+            {{new_label}}
+          </div>
+      
+        </div>
+      {%- endfor -%}
+      {%- for video in videos -%}
+        {%- assign had_images = true -%}
+        {%- assign alt = image.alt | strip -%}
+        <div class="image-gallery-block">
+          {%- unless forloop.first -%}
+          {%- assign lazy = 'lazy' -%}
+          {%- endunless -%}
+          <div class="gallery-wrap" {%- if lazy -%} style="display:none ;" {%- endif -%}>
+            {{ video | media_tag: class: 'photoswipe__image' , autoplay: true , loop: true , controls: false }}
             {{new_label}}
           </div>
       
@@ -348,6 +396,13 @@ opacity: 0.7;
           <div class="thumnail-gallery-block">
             <div class="thumbnail-wrap">
               <img src="{{ image | image_url : width: 100 }}" loading="lazy" width="100" height="100" alt="{{ image.alt | default: 'product thumb' | escape }}">
+            </div>
+          </div>
+          {%- endfor -%}
+          {%- for video in videos -%}
+          <div class="thumnail-gallery-block">
+            <div class="thumbnail-wrap">
+              <img src="{{ video | image_url : width: 100 }}" loading="lazy" width="100" height="100" alt="{{ image.alt | default: 'product thumb' | escape }}">
             </div>
           </div>
           {%- endfor -%}
