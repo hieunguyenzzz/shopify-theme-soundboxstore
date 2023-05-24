@@ -68,8 +68,22 @@
 .images-btn {
   display: flex;
   width: auto;
-    margin:0
+    margin:0;
+    position:relative
 }
+    .images-btn div{
+        position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #00000061;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    }
     @media only screen and (max-width: 768px){
       .close-btn {
      top: -16px;
@@ -259,7 +273,7 @@
                         alt="{{ block.settings.image.alt | escape }}">
                 {% endfor %}
 
-                <div>Showroom images</div>
+                <div>View all</div>
           </label>
         {{ images_showroom }}
         <div class="map-block">
