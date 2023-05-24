@@ -106,16 +106,7 @@
             data-natural="true"
             data-autoplay="{{ section.settings.autoplay }}"
             data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
-            {% if section.settings.style == 'arrows' %}
-              data-arrows="true"
-            {% endif %}
-            {% if section.settings.style == 'dots' %}
-              data-dots="true"
-            {% endif %}
-            {% if section.settings.style == 'bars' %}
-              data-dots="true"
-              data-bars="true"
-            {% endif %}
+             data-arrows="true"
             data-slide-count="{{ section.blocks.size }}">
             {%- for block in section.blocks -%}
               <div
