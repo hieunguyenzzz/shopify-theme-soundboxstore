@@ -1,6 +1,21 @@
 {% capture images_showroom %}
   {% if  section.blocks.size > 0 %}
     <style>
+    .google-map-section .col {
+  padding: 0;
+}
+.google-map-section .col-right {
+  height: calc(100vh - 143px);
+  display: flex;
+  flex-direction: column;
+}
+.google-map-section .col-right iframe {
+  height: 100%;
+}
+.map-block {
+  flex: 1;
+  position: relative;
+}
     .slideshow-section {
       display: none;
     }
