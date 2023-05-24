@@ -1,52 +1,4 @@
-<style>
-  <!--
-  .google-map-section{
-    margin: 0;
-  }
-  .google-map-section .page-width{
-    width: 100%;
-    max-width: unset;
-    padding: 0;
-  }
-  .google-map-section .col-right{
-  padding: 0;
-  }
-  .google-map-section iframe{
-    height: calc(100vh - 143px);
-  }
-  -->
-</style>
-<div class="google-map-section">
-  <div class="page-width">
-    <div class="flexbox">
-      <div class="col col-left">
-        <div class="calendly-app-data">
-          <!-- Calendly inline widget begin -->
-          <div
-            class="calendly-inline-widget"
-            data-url="{{section.settings.calendar_url}}"
-            style="min-width: 320px; height: 630px;"
-          ></div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async=""></script>
-          <!-- Calendly inline widget end -->
-        </div>
-      </div>
-      <div class="col col-right">
-        <div class="map-block">
-          <iframe
-            width="100%"
-            src="{{section.settings.goolgemap_url}}"
-            height="450"
-            style="border: 0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{% capture images_showroom %}
   {% if  section.blocks.size > 0 %}
     <style>
     .slideshow-section {
@@ -235,6 +187,58 @@
   </div>
 
       {% endif %}
+    {% endcapture %}
+<style>
+  <!--
+  .google-map-section{
+    margin: 0;
+  }
+  .google-map-section .page-width{
+    width: 100%;
+    max-width: unset;
+    padding: 0;
+  }
+  .google-map-section .col-right{
+  padding: 0;
+  }
+  .google-map-section iframe{
+    height: calc(100vh - 143px);
+  }
+  -->
+</style>
+<div class="google-map-section">
+  <div class="page-width">
+    <div class="flexbox">
+      <div class="col col-left">
+        <div class="calendly-app-data">
+          <!-- Calendly inline widget begin -->
+          <div
+            class="calendly-inline-widget"
+            data-url="{{section.settings.calendar_url}}"
+            style="min-width: 320px; height: 630px;"
+          ></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async=""></script>
+          <!-- Calendly inline widget end -->
+        </div>
+      </div>
+      <div class="col col-right">
+        {{ images_showroom }}
+        <div class="map-block">
+          <iframe
+            width="100%"
+            src="{{section.settings.goolgemap_url}}"
+            height="450"
+            style="border: 0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
 {
   "name": "Show Room",
