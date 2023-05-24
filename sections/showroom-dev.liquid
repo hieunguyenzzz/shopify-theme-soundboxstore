@@ -48,9 +48,7 @@
   </div>
 </div>
   {% if  section.blocks.size > 0 %}
-{%- unless section.settings.full_width -%}
-  <div class="page-width hero--padded">
-{%- endunless -%}
+
   <div
     data-section-id="{{ section.id }}"
     data-section-type="slideshow-section"
@@ -189,9 +187,7 @@
       </div>
     {%- endif -%}
   </div>
-{%- unless section.settings.full_width -%}
-  </div>
-{%- endunless -%}
+
       {% endif %}
 {% schema %}
 {
