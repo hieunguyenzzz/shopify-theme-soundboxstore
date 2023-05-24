@@ -285,10 +285,8 @@
       <div class="col col-right">
           <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
             {%- for block in section.blocks -%}
-               {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                  <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
-                        src="{{ block.settings.image | img_url: '300x' }}"
-                        data-src="{{ img_url }}"
+                        src="{{ block.settings.image | img_url: '50px' }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
                         alt="{{ block.settings.image.alt | escape }}">
