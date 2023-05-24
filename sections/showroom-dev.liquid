@@ -60,6 +60,13 @@
     
     transform: scale(1.12);
     }
+    .images-btn .img {
+  flex: 1;
+}
+.images-btn {
+  display: flex;
+  width: auto;
+}
     @media only screen and (max-width: 768px){
       .close-btn {
      top: -16px;
@@ -241,7 +248,7 @@
           <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
             {%- for block in section.blocks -%}
                {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                 <img class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                 <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '300x' }}"
                         data-src="{{ img_url }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
