@@ -200,7 +200,8 @@
                       {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
                       <img class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
-                        src="{{ block.settings.image | img_url: '50px' }}"
+                        src="{{ block.settings.image | img_url: '300x' }}"
+                        data-src="{{ img_url }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
                         alt="{{ block.settings.image.alt | escape }}">
