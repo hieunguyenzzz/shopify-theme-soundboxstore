@@ -162,7 +162,7 @@
                   {%- when 'separator' -%}
                     <div class="product-block"><hr></div>
                   {%- when 'text' -%}
-                    <div class="product-block" {{ block.shopify_attributes }}>
+                    <div class="product-block product-block-text" {{ block.shopify_attributes }}>
                       {{ block.settings.text }}
                     </div>
                   {%- when 'tab' -%}
@@ -220,9 +220,8 @@
                           {%- render 'price' with 1999 -%}
                         {%- endunless -%}
                         {%- if shop.taxes_included -%}
-                        <span class="vat_text">(INC VAT)</span>
-                      {%- endif -%}
-                       
+                          <span class="vat_text">(INC VAT)</span>
+                        {%- endif -%}
                       </span>
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
@@ -261,9 +260,9 @@
                         </span>
                       {%- endif -%}
                       {%- if shop.taxes_included -%}
-                      <span class="vat_text">(INC VAT)</span>
-                    {%- endif -%}
-                     
+                        <span class="vat_text">(INC VAT)</span>
+                      {%- endif -%}
+
                       {%- if settings.product_save_amount -%}
                         {%- if settings.product_save_type == 'dollar' -%}
                           {%- capture saved_amount -%}
