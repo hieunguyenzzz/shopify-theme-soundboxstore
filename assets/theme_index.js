@@ -2872,12 +2872,6 @@ lazySizesConfig.expFactor = 4;
 
       accessibleDropdowns();
 
-      var navigation = siteHeader.querySelector(selectors.navigation);
-      if (navigation.querySelectorAll(".grid-product")) {
-        new theme.QuickAdd(navigation);
-        new theme.QuickShop(navigation);
-      }
-
       window.on("load" + config.namespace, resizeLogo);
       window.on(
         "resize" + config.namespace,
@@ -3946,8 +3940,7 @@ lazySizesConfig.expFactor = 4;
     HeaderCart.prototype = Object.assign({}, HeaderCart.prototype, {
       init: function () {
         this.cartForm = new theme.CartForm(this.form);
-        this.quickAdd = new theme.QuickAdd(this.wrapper);
-        this.quickShop = new theme.QuickShop(this.wrapper);
+
         this.cartForm.buildCart();
 
         this.trigger.on("click", this.open.bind(this));
@@ -4640,14 +4633,6 @@ lazySizesConfig.expFactor = 4;
       var cartPageForm = document.getElementById("CartPageForm");
       if (cartPageForm) {
         var cartForm = new theme.CartForm(cartPageForm);
-
-        var recommendations = document.querySelector(
-          '.cart-recommendations[data-location="page"]'
-        );
-        if (recommendations) {
-          new theme.QuickAdd(recommendations);
-          new theme.QuickShop(recommendations);
-        }
 
         var noteBtn = cartPageForm.querySelector(".add-note");
         if (noteBtn) {
