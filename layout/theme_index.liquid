@@ -85,7 +85,6 @@
 
     {%- render 'social-meta-tags' -%}
 
-    {%- render 'font-face' -%}
     <style>
       @font-face {
         font-family: 'Banana Grotesk';
@@ -176,7 +175,6 @@
         font-display: swap;
       }
     </style>
-    {%- render 'css-variables' -%}
     {{ 'theme_index.css' | asset_url | stylesheet_tag }}
 
     {%- liquid
