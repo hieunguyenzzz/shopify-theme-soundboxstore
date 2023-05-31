@@ -60,7 +60,7 @@
                   | replace: '_1x1.', '_{width}x.'
                 -%}
                 <img
-                  class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
+                  class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide desktop-only"
                   src="{{ block.settings.image_mobile | img_url: '300x' }}"
                   data-src="{{ img_url_mobile }}"
                   data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
@@ -70,7 +70,7 @@
               {%- endif -%}
               <noscript>
                 <img
-                  class="hero__image hero__image--{{ block.id }}"
+                  class="hero__image hero__image--{{ block.id }} mobile-only"
                   src="{{ block.settings.image | img_url: '1400x' }}"
                   alt="{{ block.settings.image.alt | escape }}"
                 >
