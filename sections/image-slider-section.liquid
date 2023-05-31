@@ -62,10 +62,9 @@
                 <img
                   class=" mobile-only"
                   src="{{ block.settings.image_mobile  }}"
-
-                  {% if forloop.index != 1 %}
+                  {% unless forloop.index != 1 %}
                     loading="lazy"
-                  {% endif %}
+                  {% endunless %}
                   alt="{{ block.settings.image_mobile.alt | escape }}"
                 >
               {%- endif -%}
