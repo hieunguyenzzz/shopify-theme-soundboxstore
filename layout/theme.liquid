@@ -178,6 +178,7 @@
         font-display: swap;
       }
     </style>
+    {%- render 'css-variables' -%}
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     <link
       href="{{'dynamic.css' | asset_url}}"
@@ -191,7 +192,6 @@
       type="text/css"
       media="all"
     >
-    {%- render 'css-variables' -%}
 
     {%- liquid
       assign enableSuperScript = false
