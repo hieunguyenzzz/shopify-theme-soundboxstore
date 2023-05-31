@@ -47,9 +47,7 @@
           <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
             <img
               {% if section.settings.lazyload %}
-                {% unless forloop.first %}
-                  loading="lazy"
-                {% endunless %}
+                loading="lazy"
               {% endif %}
               width="1898"
               height="1081"
