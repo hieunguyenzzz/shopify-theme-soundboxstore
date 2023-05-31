@@ -49,10 +49,9 @@
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme_index.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
-    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'dynamic.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
@@ -178,19 +177,7 @@
       }
     </style>
     {%- render 'css-variables' -%}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-    <link
-      href="{{'dynamic.css' | asset_url}}"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-    >
-    <link
-      href="{{'custom.css' | asset_url}}"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-    >
+    {{ 'theme_index.css' | asset_url | stylesheet_tag }}
 
     {%- liquid
       assign enableSuperScript = false
@@ -321,6 +308,7 @@
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
       type="text/javascript"
     ></script>
+    <script src="{{ 'theme_index.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
   {%- if request.page_type contains 'customers/' -%}
