@@ -43,33 +43,41 @@
           {%- assign image = block.settings.image -%}
           {%- assign imageMb = block.settings.image_mobile -%}
           <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
-            <img
-              {% if section.settings.lazyload %}
-                {% unless forloop.first %}
-                  loading="lazy"
-                {% endunless %}
-              {% endif %}
-              width="1898"
-              height="1081"
-              src="{{ image | image_url: width: 1920 }}"
-              {% if imageMb != blank %}
-                class="desktop-only"
-              {% endif %}
-              alt="{{ image.alt | default: 'background' }}"
-            >
-            {% if imageMb != blank -%}
+            {%- if block.settings.image != blank -%}
+              {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
               <img
-                {% if section.settings.lazyload %}
-                  loading="lazy"
-                {% endif %}
-                style="width: 100%;height:100%;"
-                width="767"
-                height="767"
-                src="{{ imageMb | image_url: width: 767 }}"
-                class="mobile-only"
-                alt="{{ imageMb.alt | default: 'background' }}"
+                class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                src="{{ block.settings.image | img_url: '300x' }}"
+                data-src="{{ img_url }}"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ block.settings.image.alt | escape }}"
               >
-            {%- endif %}
+              {%- if imageMb -%}
+                {%- assign img_url_mobile = block.settings.image_mobile
+                  | img_url: '1x1'
+                  | replace: '_1x1.', '_{width}x.'
+                -%}
+                <img
+                  class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
+                  src="{{ block.settings.image_mobile | img_url: '300x' }}"
+                  data-src="{{ img_url_mobile }}"
+                  data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ block.settings.image_mobile.alt | escape }}"
+                >
+              {%- endif -%}
+              <noscript>
+                <img
+                  class="hero__image hero__image--{{ block.id }}"
+                  src="{{ block.settings.image | img_url: '1400x' }}"
+                  alt="{{ block.settings.image.alt | escape }}"
+                >
+              </noscript>
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
           </div>
         {%- endfor -%}
       </div>
