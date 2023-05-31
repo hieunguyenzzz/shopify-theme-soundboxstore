@@ -65,6 +65,9 @@
                   data-src="{{ img_url_mobile }}"
                   data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
                   data-sizes="auto"
+                  {% if forloop.index != 1 %}
+                    loading="lazy"
+                  {% endif %}
                   alt="{{ block.settings.image_mobile.alt | escape }}"
                 >
               {%- endif -%}
