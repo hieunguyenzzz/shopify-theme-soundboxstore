@@ -47,7 +47,7 @@
               {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
               <img
-                class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %} desktop-only"
                 src="{{ block.settings.image | img_url: '300x' }}"
                 data-src="{{ img_url }}"
                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
@@ -60,7 +60,7 @@
                   | replace: '_1x1.', '_{width}x.'
                 -%}
                 <img
-                  class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide desktop-only"
+                  class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide mobile-only"
                   src="{{ block.settings.image_mobile | img_url: '300x' }}"
                   data-src="{{ img_url_mobile }}"
                   data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
@@ -70,7 +70,7 @@
               {%- endif -%}
               <noscript>
                 <img
-                  class="hero__image hero__image--{{ block.id }} mobile-only"
+                  class="hero__image hero__image--{{ block.id }} "
                   src="{{ block.settings.image | img_url: '1400x' }}"
                   alt="{{ block.settings.image.alt | escape }}"
                 >
