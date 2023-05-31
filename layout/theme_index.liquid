@@ -51,7 +51,6 @@
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme_index.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom.js' | asset_url | preload_tag: as: 'script' }}
-
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
 
@@ -179,7 +178,6 @@
       }
     </style>
     {%- render 'css-variables' -%}
-    {{ 'theme_index.css' | asset_url | stylesheet_tag }}
 
     {%- liquid
       assign enableSuperScript = false
