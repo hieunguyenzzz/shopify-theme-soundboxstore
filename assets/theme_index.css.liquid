@@ -2,14 +2,14 @@
 @charset "UTF-8";
 :root {
   --typeHeaderPrimary: 'Banana Grotesk';
-  --typeHeaderFallback: serif;
+  --typeHeaderFallback: s'Banana Grotesk'erif;
   --typeHeaderSize: {{ settings.type_header_base_size | default: '32' | append: 'px' }};
   --typeHeaderWeight: {{ settings.type_header_font_family.weight }};
   --typeHeaderLineHeight: {{ settings.type_header_line_height | default: 1.4 }};
   --typeHeaderSpacing: {{ settings.type_header_spacing | default: '25' | divided_by: 1000.00 | append: 'em' }};
 
   --typeBasePrimary:'Helvetica Neue';
-  --typeBaseFallback: sans-serif;
+  --typeBaseFallback:'Helvetica Neue';
   --typeBaseSize: {{ settings.type_base_size | default: 16 | append: 'px' }};
   --typeBaseWeight: {{ settings.type_base_font_family.weight }};
   --typeBaseSpacing: {{ settings.type_base_spacing | default: '50' | divided_by: 1000.00 | append: 'em' }};
