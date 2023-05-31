@@ -61,7 +61,7 @@
                 -%}
                 <img
                   class=" mobile-only"
-                  src="{{ block.settings.image_mobile  }}"
+                  src="{{ block.settings.image_mobile | img_url  }}"
                   {% unless forloop.index != 1 %}
                     loading="lazy"
                   {% endunless %}
