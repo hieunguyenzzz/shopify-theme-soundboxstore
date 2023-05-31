@@ -308,7 +308,8 @@
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
       type="text/javascript"
     ></script>
-    <script src="{{ 'theme_index.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
   {%- if request.page_type contains 'customers/' -%}
