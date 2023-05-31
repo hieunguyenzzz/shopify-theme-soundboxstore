@@ -3939,10 +3939,6 @@ lazySizesConfig.expFactor = 4;
 
     HeaderCart.prototype = Object.assign({}, HeaderCart.prototype, {
       init: function () {
-        this.cartForm = new theme.CartForm(this.form);
-
-        this.cartForm.buildCart();
-
         this.trigger.on("click", this.open.bind(this));
 
         document.querySelectorAll(selectors.closeBtn).forEach((btn) => {
