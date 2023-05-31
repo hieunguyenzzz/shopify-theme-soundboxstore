@@ -62,6 +62,9 @@
                 <img
                   class=" mobile-only"
                   src="{{ block.settings.image_mobile | img_url  }}"
+                  data-src="{{ img_url_mobile }}"
+                  data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
+                  data-sizes="auto"
                   {% unless forloop.index != 1 %}
                     loading="lazy"
                   {% endunless %}
