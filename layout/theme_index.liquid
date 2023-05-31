@@ -48,7 +48,6 @@
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
@@ -185,14 +184,12 @@
       rel="stylesheet"
       type="text/css"
       media="all"
-      async
     >
     <link
       href="{{'custom.css' | asset_url}}"
       rel="stylesheet"
       type="text/css"
       media="all"
-      async
     >
 
     {%- liquid
@@ -318,8 +315,6 @@
     {% include 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
@@ -328,7 +323,7 @@
     ></script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
-    {%- if request.page_type contains 'customers/' -%}
+  {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
 
