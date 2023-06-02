@@ -134,29 +134,36 @@
   </section>
 {% endif %}
 <script>
-  const handleScroll = ()=>{
-     let slider = $('#{{section.id}}-slider')
-    $('#{{section.id}}-slider').slick({
-      slidesToShow: 1,
-      infinite: true,
-      lazyLoad: true,
-      slidesToScroll: 1,
-      arrows: false,
-      adaptiveHeight: true,
-      autoplay: true,
-      fade: true,
-      speed: 1500,
-      autoplaySpeed: 3000,
-      cssEase: 'ease-in-out',
-      touchThreshold: 100
-    });
+    let hadload = false
+    const handleScroll = ()=>{
+      if(!hadload){
+          hadload=true
+         let slider = $('#{{section.id}}-slider')
+      $('#{{section.id}}-slider').slick({
+        slidesToShow: 1,
+        infinite: true,
+        lazyLoad: true,
+        slidesToScroll: 1,
+        arrows: false,
+        adaptiveHeight: true,
+        autoplay: true,
+        fade: true,
+        speed: 1500,
+        autoplaySpeed: 3000,
+        cssEase: 'ease-in-out',
+        touchThreshold: 100
+      });
 
-    $(window).on('resize', function() {
-      slider.slick('resize');
-    });
-    document.removeEventListener("scroll", handleScroll);
+      $(window).on('resize', function() {
+        slider.slick('resize');
+      });
+          document.removeEventListener("mouseover", handleScroll);
+      document.removeEventListener("scroll", handleScroll);
   }
-  document.addEventListener("scroll", handleScroll);
+
+    }
+    document.addEventListener("mouseover", handleScroll);
+    document.addEventListener("scroll", handleScroll);
 </script>
 {% schema %}
 {
