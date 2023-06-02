@@ -64,7 +64,7 @@
   flex: 1;
     min-width:unset;
     width:0;
-    object-fit:cover
+    object-fit:contain
 }
     .google-map-section .col-right{
     position:relative
@@ -293,7 +293,7 @@
         {% capture images %}
                 {%- for block in section.blocks -%}
                   {% assign show = true %}
-                 <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                 <img style="object-fit:contain" class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '50px' }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
