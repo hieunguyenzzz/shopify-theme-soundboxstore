@@ -1,15 +1,15 @@
 {%- capture content %}
 @charset "UTF-8";
 :root {
-  --typeHeaderPrimary: 'Banana Grotesk',Helvetica Neue ,system-ui;
-  --typeHeaderFallback: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  --typeHeaderPrimary: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
+  --typeHeaderFallback: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   --typeHeaderSize: {{ settings.type_header_base_size | default: '32' | append: 'px' }};
   --typeHeaderWeight: {{ settings.type_header_font_family.weight }};
   --typeHeaderLineHeight: {{ settings.type_header_line_height | default: 1.4 }};
   --typeHeaderSpacing: {{ settings.type_header_spacing | default: '25' | divided_by: 1000.00 | append: 'em' }};
 
-  --typeBasePrimary:Helvetica Neue;
-  --typeBaseFallback:Helvetica Neue;
+  --typeBasePrimary:var(--typeBasePrimary), var(--typeBaseFallback);
+  --typeBaseFallback:var(--typeBasePrimary), var(--typeBaseFallback);
   --typeBaseSize: {{ settings.type_base_size | default: 16 | append: 'px' }};
   --typeBaseWeight: {{ settings.type_base_font_family.weight }};
   --typeBaseSpacing: {{ settings.type_base_spacing | default: '50' | divided_by: 1000.00 | append: 'em' }};
@@ -12430,7 +12430,7 @@ display: none;
 
 
 body {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 20px;
   font-weight: 400;
 }
@@ -12446,7 +12446,7 @@ h4,
 h5,
 .h5,
 h6.h6 {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .row-reverse {
@@ -12454,7 +12454,7 @@ h6.h6 {
 }
 
 .btn {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
@@ -12520,7 +12520,7 @@ h6.h6 {
 }
 
 .site-header .header-layout[data-logo-align="left"] .site-nav>li.site-nav__item>a.site-nav__link {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 600;
   font-size: 14px;
   color: #303A44;
@@ -12569,7 +12569,7 @@ h6.h6 {
   line-height: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   color: #454545;
 }
 
@@ -12813,7 +12813,7 @@ h6.h6 {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .mobile-menu .slide-nav__wrapper:after {
@@ -13799,7 +13799,7 @@ h6.h6 {
 }
 
 .template-collection .product-tag-wrap .product-tag {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 600;
   font-size: 24px;
   line-height: 27px;
@@ -13817,7 +13817,7 @@ h6.h6 {
 
 .template-collection .grid-product__price .price-title {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 24px;
   line-height: 27px;
   letter-spacing: 1px;
@@ -13827,7 +13827,7 @@ h6.h6 {
 
 .template-collection .grid-product__price .grid-product__price--current span {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 48px;
   line-height: 54px;
   letter-spacing: 2px;
@@ -13938,7 +13938,7 @@ h6.h6 {
 
 .new-coll-header .flexbox .col h6 a {
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .new-coll-header .image-color-switch ul {
@@ -14357,7 +14357,7 @@ h6.h6 {
   line-height: 22px;
   letter-spacing: 1px;
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   margin-bottom: 15px;
 }
 
@@ -14418,7 +14418,7 @@ h6.h6 {
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   padding: 22px 15px;
   width: 100%;
 }
@@ -14487,7 +14487,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   min-height: 63px
 }
 
@@ -14562,7 +14562,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   min-height: 63px
 }
 
@@ -14641,7 +14641,7 @@ h6.h6 {
 
 .detail_topbar .col .price {
   margin: 0;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.143;
@@ -14651,7 +14651,7 @@ h6.h6 {
 
 .detail_topbar .col .product-link a {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 14px;
   line-height: 1.143;
   letter-spacing: 2px;
@@ -14734,7 +14734,7 @@ h6.h6 {
   font-size: 24px;
   line-height: 29px;
   color: #000000;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   width: 100%;
   display: block;
   order: 3;
@@ -14758,7 +14758,7 @@ h6.h6 {
 #shopify-product-reviews .spr-review-header-byline {
   width: 100%;
   max-width: 50%;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-style: normal;
   letter-spacing: normal;
   font-size: 0;
@@ -14768,7 +14768,7 @@ h6.h6 {
 #shopify-product-reviews .spr-review-header-byline strong {
   font-weight: 600;
   font-size: 14px;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
 }
 
 #shopify-product-reviews .spr-review-header-byline strong:last-child {
@@ -14780,7 +14780,7 @@ h6.h6 {
   font-size: 18px;
   line-height: 24px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
 }
 
 #shopify-product-reviews .spr-header .spr-header-title {
@@ -14916,7 +14916,7 @@ h6.h6 {
 
 .brand-details-section .slide-bottm-section h6 {
   font-weight: 100;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 20px;
   margin: 0;
 }
@@ -15090,14 +15090,14 @@ h6.h6 {
 }
 
 .refund-policy-table table th {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   border: none;
   text-align: center;
   padding: 15px 10px;
 }
 
 .refund-policy-table table td {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   border: none;
   text-align: center;
   padding: 15px 10px;
@@ -15135,7 +15135,7 @@ h6.h6 {
 .page-contact .grid__item input,
 .page-contact .grid__item textarea {
   border-color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -15146,7 +15146,7 @@ h6.h6 {
 
 .page-contact .grid__item input::-webkit-input-placeholder,
 .page-contact .grid__item textarea::-webkit-input-placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -15155,7 +15155,7 @@ h6.h6 {
 
 .page-contact .grid__item input:-ms-input-placeholder,
 .page-contact .grid__item textarea:-ms-input-placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -15164,7 +15164,7 @@ h6.h6 {
 
 .page-contact .grid__item input::placeholder,
 .page-contact .grid__item textarea::placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -15283,7 +15283,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   padding: 7px 15px;
 }
 
@@ -18401,7 +18401,7 @@ body .product-image-main[data-size="square"] .image-wrap {
 
 
 body {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 20px;
   font-weight: 400;
 }
@@ -18417,7 +18417,7 @@ h4,
 h5,
 .h5,
 h6.h6 {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .row-reverse {
@@ -18425,7 +18425,7 @@ h6.h6 {
 }
 
 .btn {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
@@ -18491,7 +18491,7 @@ h6.h6 {
 }
 
 .site-header .header-layout[data-logo-align="left"] .site-nav>li.site-nav__item>a.site-nav__link {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 600;
   font-size: 14px;
   color: #303A44;
@@ -18540,7 +18540,7 @@ h6.h6 {
   line-height: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   color: #454545;
 }
 
@@ -18784,7 +18784,7 @@ h6.h6 {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .mobile-menu .slide-nav__wrapper:after {
@@ -19770,7 +19770,7 @@ h6.h6 {
 }
 
 .template-collection .product-tag-wrap .product-tag {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 600;
   font-size: 24px;
   line-height: 27px;
@@ -19788,7 +19788,7 @@ h6.h6 {
 
 .template-collection .grid-product__price .price-title {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 24px;
   line-height: 27px;
   letter-spacing: 1px;
@@ -19798,7 +19798,7 @@ h6.h6 {
 
 .template-collection .grid-product__price .grid-product__price--current span {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 48px;
   line-height: 54px;
   letter-spacing: 2px;
@@ -19909,7 +19909,7 @@ h6.h6 {
 
 .new-coll-header .flexbox .col h6 a {
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
 }
 
 .new-coll-header .image-color-switch ul {
@@ -20328,7 +20328,7 @@ h6.h6 {
   line-height: 22px;
   letter-spacing: 1px;
   color: #454545;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   margin-bottom: 15px;
 }
 
@@ -20389,7 +20389,7 @@ h6.h6 {
   line-height: 1;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   padding: 22px 15px;
   width: 100%;
 }
@@ -20458,7 +20458,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   min-height: 63px
 }
 
@@ -20533,7 +20533,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   min-height: 63px
 }
 
@@ -20612,7 +20612,7 @@ h6.h6 {
 
 .detail_topbar .col .price {
   margin: 0;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.143;
@@ -20622,7 +20622,7 @@ h6.h6 {
 
 .detail_topbar .col .product-link a {
   font-weight: 600;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 14px;
   line-height: 1.143;
   letter-spacing: 2px;
@@ -20705,7 +20705,7 @@ h6.h6 {
   font-size: 24px;
   line-height: 29px;
   color: #000000;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   width: 100%;
   display: block;
   order: 3;
@@ -20729,7 +20729,7 @@ h6.h6 {
 #shopify-product-reviews .spr-review-header-byline {
   width: 100%;
   max-width: 50%;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-style: normal;
   letter-spacing: normal;
   font-size: 0;
@@ -20739,7 +20739,7 @@ h6.h6 {
 #shopify-product-reviews .spr-review-header-byline strong {
   font-weight: 600;
   font-size: 14px;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
 }
 
 #shopify-product-reviews .spr-review-header-byline strong:last-child {
@@ -20751,7 +20751,7 @@ h6.h6 {
   font-size: 18px;
   line-height: 24px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
 }
 
 #shopify-product-reviews .spr-header .spr-header-title {
@@ -20887,7 +20887,7 @@ h6.h6 {
 
 .brand-details-section .slide-bottm-section h6 {
   font-weight: 100;
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   font-size: 20px;
   margin: 0;
 }
@@ -21061,14 +21061,14 @@ h6.h6 {
 }
 
 .refund-policy-table table th {
-  font-family: 'Banana Grotesk',Helvetica Neue ,system-ui;
+  font-family: 'Banana Grotesk',var(--typeBasePrimary), var(--typeBaseFallback) ,system-ui;
   border: none;
   text-align: center;
   padding: 15px 10px;
 }
 
 .refund-policy-table table td {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   border: none;
   text-align: center;
   padding: 15px 10px;
@@ -21106,7 +21106,7 @@ h6.h6 {
 .page-contact .grid__item input,
 .page-contact .grid__item textarea {
   border-color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -21117,7 +21117,7 @@ h6.h6 {
 
 .page-contact .grid__item input::-webkit-input-placeholder,
 .page-contact .grid__item textarea::-webkit-input-placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -21126,7 +21126,7 @@ h6.h6 {
 
 .page-contact .grid__item input:-ms-input-placeholder,
 .page-contact .grid__item textarea:-ms-input-placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -21135,7 +21135,7 @@ h6.h6 {
 
 .page-contact .grid__item input::placeholder,
 .page-contact .grid__item textarea::placeholder {
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   font-size: 14px;
   line-height: 1;
   color: #303a44;
@@ -21254,7 +21254,7 @@ h6.h6 {
   font-weight: 500;
   line-height: 20px;
   color: #454545;
-  font-family: Helvetica Neue;
+  font-family: var(--typeBasePrimary), var(--typeBaseFallback);
   padding: 7px 15px;
 }
 
