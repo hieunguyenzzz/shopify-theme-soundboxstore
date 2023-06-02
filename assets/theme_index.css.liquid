@@ -17659,7 +17659,21 @@ body .grfq__popupForm__modal_state:checked+.grfq__popupForm__modal .grfq__popupF
 .brand-details-section .image-group:not(.not-two-col-show) .image-col:first-child .image-wrap:after {
     padding-bottom: 44%
 }
-
+@media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .desktop-only {
+      display: none;
+    }
+  }
+  .image-text-section .image-wrap .mobile-only {
+    display: none;
+  }
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .mobile-only {
+      display: block;
+      min-height: 337px;
+      object-fit: cover;
+    }
+  }
 {%- endcapture -%}
 
 {%- assign before =  content.size -%}
