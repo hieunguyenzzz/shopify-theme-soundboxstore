@@ -64,7 +64,7 @@
   flex: 1;
     min-width:unset;
     width:0;
-    object-fit:contain
+
 }
     .google-map-section .col-right{
     position:relative
@@ -206,7 +206,7 @@
                     {%- if block.settings.image != blank -%}
                       {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-                      <img class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                      <img style="object-fit:contain" class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '300x' }}"
                         data-src="{{ img_url }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
@@ -214,7 +214,7 @@
                         alt="{{ block.settings.image.alt | escape }}">
                       {%- if has_mobile_image -%}
                         {%- assign img_url_mobile = block.settings.image_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                        <img class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
+                        <img style="object-fit:contain" class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
                           src="{{ block.settings.image_mobile | img_url: '300x' }}"
                           data-src="{{ img_url_mobile }}"
                           data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
@@ -293,7 +293,7 @@
         {% capture images %}
                 {%- for block in section.blocks -%}
                   {% assign show = true %}
-                 <img style="object-fit:contain" class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                 <img  class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '50px' }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
