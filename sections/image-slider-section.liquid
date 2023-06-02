@@ -8,6 +8,7 @@
     display: none;
   }
 
+
   #{{section.id}}-slider.section-image {
     display: flex;
     overflow: hidden;
@@ -36,6 +37,21 @@
       max-height: 500px;
     }
   }
+    @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .desktop-only {
+      display: none;
+    }
+  }
+  .image-text-section .image-wrap .mobile-only {
+    display: none;
+  }
+  @media only screen and (max-width:767px) {
+    .image-text-section .image-wrap .mobile-only {
+      display: block;
+      min-height: 337px;
+      object-fit: cover;
+    }
+  }
 </style>
 {% if section.settings.image != blank %}
   <section class="image-text-section {{ section.settings.section_class }} image-text-section--product">
@@ -60,9 +76,9 @@
             {% if imageMb != blank -%}
               <img
                 {% if section.settings.lazyload %}
-                {% unless forloop.first %}
-                loading="lazy"
-              {% endunless %}
+                  {% unless forloop.first %}
+                    loading="lazy"
+                  {% endunless %}
                 {% endif %}
                 style="width: 100%;height:100%;"
                 width="767"
