@@ -290,21 +290,26 @@
         </div>
       </div>
       <div class="col col-right">
-          <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
-            {%- for block in section.blocks -%}
+        {% capture images %}
+                {%- for block in section.blocks -%}
+                  {% assign show = true %}
                  <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '50px' }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
                         alt="{{ block.settings.image.alt | escape }}">
                 {% endfor %}
+              {% endcapture %}
+        {% if show %}
+          <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
+            {{ images }}
 
-                <div>View all</div>
+            <div>View all</div>
           </label>
+        {% endif %}
+
         {{ images_showroom }}
         <div class="map-block">
-         
-          
           <iframe
             width="100%"
             src="{{section.settings.goolgemap_url}}"
