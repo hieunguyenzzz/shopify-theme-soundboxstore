@@ -21,7 +21,8 @@
         href="{{ block.settings.link.url }}"
       >
         <div>
-          {{ block.settings.link | json }}
+          {{ request.path }}
+          {{ block.settings.link }}
           {{ block.settings.heading }}
         </div>
         <div>{{ block.settings.subheading }}</div>
