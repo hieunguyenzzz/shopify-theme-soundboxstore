@@ -15,14 +15,12 @@
   {% for block in section.blocks %}
     <li>
       <a
-        {% if block.settings.link.current %}
+        {% if request.path == block.settings.link %}
           class="active"
         {% endif %}
         href="{{ block.settings.link.url }}"
       >
         <div>
-          {{ request.path }}
-          {{ block.settings.link }}
           {{ block.settings.heading }}
         </div>
         <div>{{ block.settings.subheading }}</div>
