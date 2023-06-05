@@ -11,9 +11,13 @@
 <ul class="showroom-bar">
   {% for block in section.blocks %}
     <li>
-      <a class="{{  }}" href="{{ block.settings.link.url }}">
+      <a
+        {% if block.settings.link.active %}
+          class="active"
+        {% endif %}
+        href="{{ block.settings.link.url }}"
+      >
         <div>
-          {{ block.settings.link.active }}
           {{ block.settings.heading }}
         </div>
         <div>{{ block.settings.subheading }}</div>
