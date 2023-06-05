@@ -1,12 +1,21 @@
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Showroom bar",
+"settings": [
+    {
+      "type": "text",
+      "id": "calendar_url",
+      "label": "Calendar url",
+      "default":"https://calendly.com/sound-box/beaconsfield?embed_domain=soundboxstore.com&embed_type=Inline"
+    },
+    {
+      "type": "text",
+      "id": "goolgemap_url",
+      "label": "Google map url",
+      "default":"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2477.594551146064!2d-0.6494887223883635!3d51.612317203032056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48766721d213ddd3%3A0xdd26ef6f7b7027b8!2sSound%20Box%20Store!5e0!3m2!1svi!2s!4v1678470266987!5m2!1svi!2"
+    }
+
+  ]
   }
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
