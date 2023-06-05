@@ -64,7 +64,7 @@
   flex: 1;
     min-width:unset;
     width:0;
-object-fit:cover
+    object-fit:cover
 }
     .google-map-section .col-right{
     position:relative
@@ -206,7 +206,7 @@ object-fit:cover
                     {%- if block.settings.image != blank -%}
                       {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-                      <img style="object-fit:contain" class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
+                      <img class="hero__image hero__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '300x' }}"
                         data-src="{{ img_url }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
@@ -214,7 +214,7 @@ object-fit:cover
                         alt="{{ block.settings.image.alt | escape }}">
                       {%- if has_mobile_image -%}
                         {%- assign img_url_mobile = block.settings.image_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                        <img style="object-fit:contain" class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
+                        <img class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
                           src="{{ block.settings.image_mobile | img_url: '300x' }}"
                           data-src="{{ img_url_mobile }}"
                           data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
@@ -290,26 +290,21 @@ object-fit:cover
         </div>
       </div>
       <div class="col col-right">
-        {% capture images %}
-                {%- for block in section.blocks -%}
-                  {% assign show = true %}
-                 <img  class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
+          <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
+            {%- for block in section.blocks -%}
+                 <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
                         src="{{ block.settings.image | img_url: '50px' }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
                         alt="{{ block.settings.image.alt | escape }}">
                 {% endfor %}
-              {% endcapture %}
-        {% if show %}
-          <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
-            {{ images }}
 
-            <div>View all</div>
+                <div>View all</div>
           </label>
-        {% endif %}
-
         {{ images_showroom }}
         <div class="map-block">
+         
+          
           <iframe
             width="100%"
             src="{{section.settings.goolgemap_url}}"
