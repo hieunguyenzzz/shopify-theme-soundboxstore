@@ -15,7 +15,7 @@
   {% for block in section.blocks %}
     <li>
       <a
-        {% if block.settings.link.active %}
+        {% if block.settings.link.current %}
           class="active"
         {% endif %}
         href="{{ block.settings.link.url }}"
