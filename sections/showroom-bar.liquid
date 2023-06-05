@@ -1,37 +1,41 @@
 <ul class="showroom-bar">
   {% for block in section.blocks %}
     <li>
-      <a href="{{ block.settings.url }}">{{ block.settings.heading }}</a>
-      <div>{{ block.settings.subheading }}</div>
+      <a href="{{ block.settings.url }}">
+        <div>
+          {{ block.settings.heading }}
+        </div>
+        <div>{{ block.settings.subheading }}</div>
+      </a>
     </li>
   {% endfor %}
 </ul>
 {% schema %}
- {
-   "name": "Showroom bar",
-"blocks": [
-     {
-       "type": "showroom",
-       "name": "showroom",
-       "settings": [
-            {
-           "type": "text",
-           "id": "heading",
-           "label": "Heading"
-         },
+{
+  "name": "Showroom bar",
+   "blocks": [
+    {
+      "type": "showroom",
+      "name": "showroom",
+      "settings": [
            {
-           "type": "text",
-           "id": "subheading",
-           "label": "Sub Heading"
-         },
-         {
-           "type": "url",
-           "id": "link",
-           "label": "Url"
-         }
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+          {
+          "type": "text",
+          "id": "subheading",
+          "label": "Sub Heading"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Url"
+        }
 
-       ]
-     }
-   ]
- }
+      ]
+    }
+  ]
+}
 {% endschema %}
