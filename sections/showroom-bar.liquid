@@ -1,3 +1,13 @@
+<style>
+    .showroom-bar{ list-style: none; font-size: 0.8em; display: flex; align-items: stretch; padding: 1em; gap: 2em;
+  text-align: center; border-bottom:1px solid #f1f1f1; margin: 0; overflow: auto; } .showroom-bar a { display: block;
+  padding: 1em; flex: 1; } .showroom-bar a:hover{ background :#f1f1f1; } .showroom-bar li{ flex: 1 ; display: flex; }
+  .showroom-bar div:first-child{ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; font-size:
+  1.4em; white-space: nowrap; } .showroom-bar li a.active { background-color: #303a44; color: white; }
+
+  @media (max-width: 768px) { .showroom-bar{ font-size: 0.6em; } }
+</style>
+
 <ul class="showroom-bar">
   {% for block in section.blocks %}
     <li>
@@ -39,12 +49,3 @@
   ]
 }
 {% endschema %}
-{% stylesheet %}
-  .showroom-bar{ list-style: none; font-size: 0.8em; display: flex; align-items: stretch; padding: 1em; gap: 2em;
-  text-align: center; border-bottom:1px solid #f1f1f1; margin: 0; overflow: auto; } .showroom-bar a { display: block;
-  padding: 1em; flex: 1; } .showroom-bar a:hover{ background :#f1f1f1; } .showroom-bar li{ flex: 1 ; display: flex; }
-  .showroom-bar div:first-child{ font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; font-size:
-  1.4em; white-space: nowrap; } .showroom-bar li a.active { background-color: #303a44; color: white; }
-
-  @media (max-width: 768px) { .showroom-bar{ font-size: 0.6em; } }
-{% endstylesheet %}
