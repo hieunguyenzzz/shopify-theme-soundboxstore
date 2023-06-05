@@ -11,9 +11,9 @@
 <ul class="showroom-bar">
   {% for block in section.blocks %}
     <li>
-      <a class="{{  }}" href="{{ block.settings.url.url }}">
+      <a class="{{  }}" href="{{ block.settings.link.url }}">
         <div>
-          {{ block.settings.url.active }}
+          {{ block.settings.link.active }}
           {{ block.settings.heading }}
         </div>
         <div>{{ block.settings.subheading }}</div>
