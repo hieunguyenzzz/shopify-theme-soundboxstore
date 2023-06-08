@@ -43,8 +43,7 @@
     <link href="https://ajax.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.gstatic.com" rel="dns-prefetch">
-    <link href="https://static.klaviyo.com" rel="preconnect">
-    <link href="https://crmplus.zoho.eu" rel="preconnect">
+    <link href="https://static.klaviyo.com" rel="preconnect">    
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
@@ -58,16 +57,7 @@
       as="script"
       href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
     >
-    <link
-      rel="preload"
-      as="script"
-      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="https://salesiq.zoho.eu/widget"
-    >
+   
 
     {%- if settings.favicon != blank -%}
       <link
