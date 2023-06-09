@@ -211,11 +211,13 @@
                         data-src="{{ img_url }}"
                         data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                         data-sizes="auto"
+                      style="object-fit: contain"
                         alt="{{ block.settings.image.alt | escape }}">
                       {%- if has_mobile_image -%}
                         {%- assign img_url_mobile = block.settings.image_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                         <img class="hero__image hero__image--{{ block.id }} lazyload medium-up--hide"
                           src="{{ block.settings.image_mobile | img_url: '300x' }}"
+                                    style="object-fit: contain"
                           data-src="{{ img_url_mobile }}"
                           data-aspectratio="{{ block.settings.image_mobile.aspect_ratio }}"
                           data-sizes="auto"
@@ -290,21 +292,21 @@
         </div>
       </div>
       <div class="col col-right">
-          <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
-            {%- for block in section.blocks -%}
-                 <img class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
-                        src="{{ block.settings.image | img_url: '50px' }}"
-                        data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                        data-sizes="auto"
-                        alt="{{ block.settings.image.alt | escape }}">
-                {% endfor %}
+        <label for="slideshow-input" class="images-btn" type="button" aria-label="Previous">
+          {%- for block in section.blocks -%}
+            <img
+              class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
+              src="{{ block.settings.image | img_url: '50px' }}"
+              data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+              data-sizes="auto"
+              alt="{{ block.settings.image.alt | escape }}"
+            >
+          {% endfor %}
 
-                <div>View all</div>
-          </label>
+          <div>View all</div>
+        </label>
         {{ images_showroom }}
         <div class="map-block">
-         
-          
           <iframe
             width="100%"
             src="{{section.settings.goolgemap_url}}"
