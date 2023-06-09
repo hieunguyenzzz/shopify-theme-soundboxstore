@@ -296,7 +296,7 @@
           {%- for block in section.blocks -%}
             <img
               class=" lazyload{% if has_mobile_image %} small--hide{% endif %}"
-              src="{{ block.settings.image | img_url: '50px' }}"
+              src="{{ block.settings.image | img_url: '100px' }}"
               data-aspectratio="{{ block.settings.image.aspect_ratio }}"
               data-sizes="auto"
               alt="{{ block.settings.image.alt | escape }}"
