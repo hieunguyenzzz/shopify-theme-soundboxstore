@@ -6,6 +6,8 @@
   country="{{  localization.country.iso_code }}"
 >
   <head>
+  {% render 'pre-header' %}
+  {% render 'yett' %}
     <!-- Google Tag Manager -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -270,6 +272,21 @@
       });
     </script>
     {% section 'zoho-form-popup' %}
+
+<script>
+  var isReplaced = false;       
+  function MeroxIO_Function(){
+    if(!isReplaced){
+      window.yett.unblock();
+      console.log("apps lazyloaded successfully");
+      isReplaced=true;
+    }
+  }    
+  document.addEventListener("click", MeroxIO_Function);
+  document.addEventListener("scroll", MeroxIO_Function);
+  document.addEventListener("touchstart", MeroxIO_Function);
+  document.addEventListener("mousemove", MeroxIO_Function);
+</script>
 
   </body>
 </html>

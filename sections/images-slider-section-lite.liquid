@@ -61,7 +61,19 @@
           {%- assign image = block.settings.image -%}
           {%- assign imageMb = block.settings.image_mobile -%}
           <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
+            {% if section.settings.lazy_img == true %}
+            {% if forloop.first == true %}
             <img
+              width="1898"
+              height="1081"
+              src="{{ image | img_url: '1800x' }}"
+              {% if imageMb != blank %}
+                class="desktop-only"
+              {% endif %}
+              alt="{{ image.alt | default: 'background' }}"
+            >
+            {% else %}
+                  <img
               {% if section.settings.lazyload %}
                 loading="lazy"
               {% endif %}
@@ -73,7 +85,33 @@
               {% endif %}
               alt="{{ image.alt | default: 'background' }}"
             >
+            {% endif %}
+            {% else %}
+                  <img
+              {% if section.settings.lazyload %}
+                loading="lazy"
+              {% endif %}
+              width="1898"
+              height="1081"
+              src="{{ image | image_url: width: 1920 }}"
+              {% if imageMb != blank %}
+                class="desktop-only"
+              {% endif %}
+              alt="{{ image.alt | default: 'background' }}"
+            >
+            {% endif %}
             {% if imageMb != blank -%}
+              {% if section.settings.lazy_img == true %}
+              {% if forloop.first == true %}
+              <img
+                style="width: 100%;height:100%;"
+                width="767"
+                height="767"
+                src="{{ imageMb | img_url: '800x' }}"
+                class="mobile-only"
+                alt="{{ imageMb.alt | default: 'background' }}"
+              >
+              {% else %}
               <img
                 {% if section.settings.lazyload %}
                   {% unless forloop.first %}
@@ -87,6 +125,22 @@
                 class="mobile-only"
                 alt="{{ imageMb.alt | default: 'background' }}"
               >
+              {% endif %}
+              {% else %}
+              <img
+                {% if section.settings.lazyload %}
+                  {% unless forloop.first %}
+                    loading="lazy"
+                  {% endunless %}
+                {% endif %}
+                style="width: 100%;height:100%;"
+                width="767"
+                height="767"
+                src="{{ imageMb | image_url: width: 767 }}"
+                class="mobile-only"
+                alt="{{ imageMb.alt | default: 'background' }}"
+              >
+              {% endif %} 
             {%- endif %}
           </div>
         {%- endfor -%}
@@ -149,7 +203,7 @@
         autoplay: true,
         fade: true,
         speed: 1500,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 10000,
         cssEase: 'ease-in-out',
         touchThreshold: 100
       });
@@ -169,6 +223,11 @@
 {
   "name": "Image Slider section",
   "settings": [
+     {
+       "type": "checkbox",
+      "id": "lazy_img",
+      "label": "Preload First Image"
+    },
     {
       "type": "checkbox",
       "id": "lazyload",
