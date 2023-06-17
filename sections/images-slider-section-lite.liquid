@@ -188,6 +188,7 @@
   </section>
 {% endif %}
 <script>
+  $( document ).ready(function() {
     let hadload = false
     const handleScroll = ()=>{
       if(!hadload){
@@ -218,6 +219,8 @@
     }
     document.addEventListener("mouseover", handleScroll);
     document.addEventListener("scroll", handleScroll);
+});
+    
 </script>
 {% schema %}
 {
