@@ -52,6 +52,26 @@
       "name": {{ product.title | json }},
       "width": 1024,
       "height": 1024
-    }
+    },
+    {${% if product.metafields.reviews.rating %}
+    "review": {
+      "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": {{ product.metafields.reviews.rating }},
+          "bestRating": 5
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Fred Benson"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ product.metafields.reviews.rating }},
+        "reviewCount": {{ product.metafields.reviews.rating_count }}
+      }
+    {% endif %}}
+   
   }
 </script>
