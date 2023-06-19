@@ -58,7 +58,7 @@
       "@type": "Review",
         "reviewRating": {
           "@type": "Rating",
-          "ratingValue": {{ product.metafields.reviews.rating }},
+          "ratingValue": {{ product.metafields.reviews.rating.value }},
           "bestRating": 5
         },
         "author": {
@@ -68,7 +68,7 @@
       },
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": {{ product.metafields.reviews.rating }},
+        "ratingValue": {{ product.metafields.reviews.rating.value }},
         "reviewCount": {{ product.metafields.reviews.rating_count }}
       }
     {% endif %}
