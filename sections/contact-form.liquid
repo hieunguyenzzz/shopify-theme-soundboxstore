@@ -31,7 +31,11 @@
           <h2 class="title-font">{{ section.settings.title }}</h2>
         {%- endif -%}
         {%- if section.settings.text != blank -%}
-          <div class="rte section-header__rte">{{ section.settings.text }}</div>
+            {%- capture phone -%}
+              {%- render '[phone-number]' -%}
+              {%- endcapture -%}
+          {%- assign content = section.settings.text |replace :'+44 (0) 20 4586 3800',phone  -%}
+          <div class="rte section-header__rte">{{ content }}</div>
         {%- endif -%}
       </div>
     {% endif %}
