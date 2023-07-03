@@ -75,7 +75,96 @@
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
+ <style>
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Semibold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Semibold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Semibold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Semibold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Semibold.svg#BananaGrotesk-Semibold' | file_url }}') format('svg');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
 
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Medium.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Medium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Medium.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Medium.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Medium.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Medium.svg#BananaGrotesk-Medium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Regular.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Regular.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Regular.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Regular.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Regular.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Regular.svg#BananaGrotesk-Regular' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Thin.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Thin.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Thin.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Thin.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Thin.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Thin.svg#BananaGrotesk-Thin' | file_url }}') format('svg');
+        font-weight: 100;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Light.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Light.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Light.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Light.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Light.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Light.svg#BananaGrotesk-Light' | file_url }}') format('svg');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Bold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Bold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Bold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Bold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Bold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Bold.svg#BananaGrotesk-Bold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extrabold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extrabold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extrabold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extrabold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extrabold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extrabold.svg#BananaGrotesk-Extrabold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extralight.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extralight.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extralight.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extralight.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extralight.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extralight.svg#BananaGrotesk-Extralight' | file_url }}') format('svg');
+        font-weight: 200;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica Neue';
+        src: url('{{ 'HelveticaNeue.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeue.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeue.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeue.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeue.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeue.svg#HelveticaNeue' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'HelveticaNeue';
+        src: url('{{ 'HelveticaNeueMedium.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeueMedium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeueMedium.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeueMedium.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeueMedium.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeueMedium.svg#HelveticaNeueMedium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
 
     {%- liquid
       assign enableSuperScript = false
