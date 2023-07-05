@@ -9,15 +9,22 @@
     display:flex
   }
   .{{ section.id }}-slider.product-list-group .slick-arrow{
-     background:transparent
+     background:transparent;
+
   }
   .{{ section.id }}-slider.product-list-group .slick-arrow.slick-prev{
     left:0;    top: calc(50% - 40px);
-   background-image:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-left.png?v=1688531622)
+   background-image:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-left.png?v=1688531622);
+        background-repeat: no-repeat;
+    background-position: right 17px center;
+    background-size: 40px;
   }
   .{{ section.id }}-slider.product-list-group .slick-arrow.slick-next{
     right:0;    top: calc(50% - 40px);
-    background-image:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-right.png?v=1688531621)
+    background-image:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-right.png?v=1688531621);
+        background-repeat: no-repeat;
+    background-position: right 17px center;
+    background-size: 40px;
   }
   .{{ section.id }}-slider.product-list-group .col-image img{
     height:382px;
