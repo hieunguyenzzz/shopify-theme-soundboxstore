@@ -9,188 +9,236 @@
   .slick-initialized.brand-details-slider .slide{
     display: block;
   }
- 
 </style>
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in section.blocks -%}
-      <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
-        <div class="slide-wrap">
-          {% if block.settings.title != blank %}
-          <h2 class="title-font">{{ block.settings.title }}</h2>
-          {% endif %}
-          <div class="slide-top-section">
-            <div class="flexbox">
-              <div class="col left-col">
-                <div class="col-wrap">
-                  {% if block.settings.logo_image != blank %}
-                  {{ block.settings.logo_image | image_url: width: 200 | image_tag: style: "object-fit:contain;width:auto" , loading: 'lazy' }}
-                  {% endif %}
+        <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
+          <div class="slide-wrap">
+            {% if block.settings.title != blank %}
+              <h2 class="title-font">{{ block.settings.title }}</h2>
+            {% endif %}
+            <div class="slide-top-section">
+              <div class="flexbox">
+                <div class="col left-col">
+                  <div class="col-wrap">
+                    {% if block.settings.logo_image != blank %}
+                      {{
+                        block.settings.logo_image
+                        | image_url: width: 200
+                        | image_tag: style: 'object-fit:contain;width:auto', loading: 'lazy'
+                      }}
+                    {% endif %}
+                  </div>
                 </div>
-              </div>
-              <div class="col right-col">
-                <div class="col-wrap">
-                  <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
-                    {% if block.settings.slide_image1 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image1 | image_url: width: 800 ,crop: 'center' | image_tag:  widths: '150, 300,400, 800' , sizes: '(max-width: 425px) 320px,(max-width: 425px) 320px, 66.6vw', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image2 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image2 | image_url: width: 400 ,crop: 'center'| image_tag:  widths: '100, 160,200, 400' ,  sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw', loading: 'lazy' }}</div></div>{% endif %}
-                    {% if block.settings.slide_image3 != blank %}<div class="image-col"><div class="image-wrap">{{ block.settings.slide_image3 | image_url: width: 400 ,crop: 'center'| image_tag:  widths: '100, 160,200, 400'  , sizes: '(min-width: 768px) 20400px0px,(min-width: 425px) 150px, 30vw', loading: 'lazy' }}</div></div>{% endif %}
-                    
+                <div class="col right-col">
+                  <div class="col-wrap">
+                    <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
+                      {% if block.settings.slide_image1 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image1
+                              | image_url: width: 800, crop: 'center'
+                              | image_tag:
+                                widths: '150, 300,400, 800',
+                                sizes: '(max-width: 425px) 320px,(max-width: 425px) 320px, 66.6vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image2 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image2
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image3 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image3
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 20400px0px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="slide-bottm-section">
-            <div class="flexbox">
-              <div class="col left-col">
-                <div class="col-wrap">
-                  {% if block.settings.bottom_title != blank %}
-                  <h4>{{ block.settings.bottom_title }}</h4>
-                  {% endif %}
-                  {% if block.settings.bottom_sub_title != blank %}
-                  <h6>{{ block.settings.bottom_sub_title }}</h6>
-                  {% endif %}
+            <div class="slide-bottm-section">
+              <div class="flexbox">
+                <div class="col left-col">
+                  <div class="col-wrap">
+                    {% if block.settings.bottom_title != blank %}
+                      <h4>{{ block.settings.bottom_title }}</h4>
+                    {% endif %}
+                    {% if block.settings.bottom_sub_title != blank %}
+                      <h6>{{ block.settings.bottom_sub_title }}</h6>
+                    {% endif %}
+                  </div>
                 </div>
+                {% if block.settings.bottm_right_text != blank %}
+                  <div class="col right-col">
+                    <div class="col-wrap">
+                      {{ block.settings.bottm_right_text }}
+                    </div>
+                  </div>
+                {% endif %}
               </div>
-              {% if block.settings.bottm_right_text != blank %}
-              <div class="col right-col">
-                <div class="col-wrap">
-                  {{ block.settings.bottm_right_text }}
-                </div>
-              </div>
-              {% endif %}
             </div>
           </div>
         </div>
-      </div>
       {% endfor %}
     </div>
   </div>
 </section>
 {%- for block in section.blocks -%}
-{% if block.settings.background_color != blank %}
-<style>.brand-details-section .slide-{{ block.id }} .slide-wrap{background-color:{{ block.settings.background_color }};}</style>
-{% endif %}
+  {% if block.settings.background_color != blank %}
+    <style>
+      .brand-details-section .slide-{{ block.id }} .slide-wrap{background-color:{{ block.settings.background_color }};}
+    </style>
+  {% endif %}
 {% endfor %}
 {% if section.settings.sliderenable %}
-<script>
-  $(document).ready(function(){
-    $('.brand-details-section .brand-details-slider.active').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      adaptiveHeight: true,
-      dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
-      arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
-      fade: true,
-      cssEase: 'linear',
-      responsive: [
-        {
-          breakpoint: 860,
-          settings: {
-            arrows:false,
+  <script>
+    $(document).ready(function(){
+      $('.brand-details-section .brand-details-slider.active').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
+        arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
+        fade: true,
+        cssEase: 'linear',
+        responsive: [
+          {
+            breakpoint: 860,
+            settings: {
+              arrows:false,
+            }
           }
-        }
-      ]
-    });
-  })
-</script>
+        ]
+      });
+    })
+  </script>
 {% endif %}
 
 {% schema %}
-  {
-    "name": "Brand Details",
-	"class": "index-section",
-    "settings": [
-		{
-          "type": "checkbox",
-          "id": "sliderenable",
-          "label": "Slide Enable",
-		  "default": true
-        },
-		{
-          "type": "checkbox",
-          "id": "slide_dots",
-          "label": "Slide Dots"
-        },
-        {
-          "type": "checkbox",
-          "id": "slide_arrow",
-          "label": "Slide Arrow"
-        },
-        {
-          "type": "checkbox",
-          "id": "sectionwidth",
-          "label": "Full Width",
-          "default": false
-        }
-	],
-    "blocks": [
+ {
+   "name": "Brand Details",
+"class": "index-section",
+   "settings": [
       {
-        "type": "brand_details",
-        "name": "Brand Details",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-			"default": "Corporaton"
-          },
-		  {
-            "type": "image_picker",
-            "id": "logo_image",
-            "label": "logo"
-          },
-		  {
-            "type": "image_picker",
-            "id": "slide_image1",
-            "label": "Slide Image 1"
-          },
-		  {
-            "type": "image_picker",
-            "id": "slide_image2",
-            "label": "Slide Image 2"
-          },
-		  {
-            "type": "image_picker",
-            "id": "slide_image3",
-            "label": "Slide Image 3"
-          },
-		  {
-            "type": "text",
-            "id": "bottom_title",
-            "label": "Bottom Title"
-          },
-          {
-            "type": "text",
-            "id": "bottom_sub_title",
-            "label": "Bottom Sub Title"
-          },
-          {
-            "type": "richtext",
-            "id": "bottm_right_text",
-            "label": "Bottom Right Text"
-          },
-          {
-            "type": "color",
-            "id": "background_color",
-            "label": "Background Color",
-			"default": "#e8e6e2"
-          },
-          {
-            "type": "text",
-            "id": "slide_class",
-            "label": "Slide Class"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Brand Details",
-        "blocks": []
-      }
-    ]
-  }
+           "type": "text",
+           "id": "title",
+           "label": "Title"
+         },
+	{
+         "type": "checkbox",
+         "id": "sliderenable",
+         "label": "Slide Enable",
+	  "default": true
+       },
+	{
+         "type": "checkbox",
+         "id": "slide_dots",
+         "label": "Slide Dots"
+       },
+       {
+         "type": "checkbox",
+         "id": "slide_arrow",
+         "label": "Slide Arrow"
+       },
+       {
+         "type": "checkbox",
+         "id": "sectionwidth",
+         "label": "Full Width",
+         "default": false
+       }
+],
+   "blocks": [
+     {
+       "type": "brand_details",
+       "name": "Brand Details",
+       "settings": [
+         {
+           "type": "text",
+           "id": "title",
+           "label": "Title",
+		"default": "Corporaton"
+         },
+	  {
+           "type": "image_picker",
+           "id": "logo_image",
+           "label": "logo"
+         },
+	  {
+           "type": "image_picker",
+           "id": "slide_image1",
+           "label": "Slide Image 1"
+         },
+	  {
+           "type": "image_picker",
+           "id": "slide_image2",
+           "label": "Slide Image 2"
+         },
+	  {
+           "type": "image_picker",
+           "id": "slide_image3",
+           "label": "Slide Image 3"
+         },
+	  {
+           "type": "text",
+           "id": "bottom_title",
+           "label": "Bottom Title"
+         },
+         {
+           "type": "text",
+           "id": "bottom_sub_title",
+           "label": "Bottom Sub Title"
+         },
+         {
+           "type": "richtext",
+           "id": "bottm_right_text",
+           "label": "Bottom Right Text"
+         },
+         {
+           "type": "color",
+           "id": "background_color",
+           "label": "Background Color",
+		"default": "#e8e6e2"
+         },
+         {
+           "type": "text",
+           "id": "slide_class",
+           "label": "Slide Class"
+         }
+       ]
+     }
+   ],
+   "presets": [
+     {
+       "name": "Brand Details",
+       "blocks": []
+     }
+   ]
+ }
 {% endschema %}
