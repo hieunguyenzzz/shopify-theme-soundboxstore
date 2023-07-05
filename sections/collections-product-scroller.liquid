@@ -2,6 +2,9 @@
   .{{ section.id }}-slider.product-list-group .slick-list{
     padding-left:var(--pageWidthPadding);
   }
+  .{{ section.id }}-slider.product-list-group .slick-arrow.slick-prev{
+    left:0;
+  }
 </style>
 <section class="{{ section.id }}-section collections-product-list">
   {% if section.settings.title != blank or section.settings.description != blank %}
