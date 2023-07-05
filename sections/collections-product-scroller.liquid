@@ -15,6 +15,10 @@
   .{{ section.id }}-slider.product-list-group .col-image img{
     height:382px
   }
+  .{{ section.id }}-slider.product-list-group .col{
+        width: calc((100vw - 2 * var(--pageWidthPadding)) /4 );
+    flex-shrink: 0;
+  }
 </style>
 <section class="{{ section.id }}-section collections-product-list">
   {% if section.settings.title != blank or section.settings.description != blank %}
