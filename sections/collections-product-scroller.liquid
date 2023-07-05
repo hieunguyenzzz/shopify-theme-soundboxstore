@@ -16,7 +16,7 @@
     </div>
   {% endif %}
 
-  <div class="product-list-group{% if section.settings.slider_active %} slider_active{% endif %}">
+  <div class="product-list-group slider_active">
     {% for block in section.blocks %}
       {% capture productId %}product{% endcapture %}
       {% capture productImgId %}image{% endcapture %}
