@@ -16,7 +16,7 @@
     </div>
   {% endif %}
 
-  <div class="product-list-group slider_active">
+  <div class="{{ section.id }}-slider slider_active">
     {% for block in section.blocks %}
       {% capture productId %}product{% endcapture %}
       {% capture productImgId %}image{% endcapture %}
@@ -56,7 +56,39 @@
     {% endfor %}
   </div>
 </section>
-
+<script>
+    $(document).ready(function() {
+        $('.{{ section.id }}-slider').slick({
+      infinite: false,
+      slidesToShow: 3.3,
+      arrows: true,
+      dots: true,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 860,
+          settings: {
+            slidesToShow: 2.3
+          }
+        }, {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2.3,
+            arrows: false,
+            dots: false
+          }
+        }, {
+          breakpoint: 540,
+          settings: {
+            slidesToShow: 1.3,
+            arrows: false,
+            dots: false
+          }
+        }
+      ]
+    });
+  });
+</script>
 {% schema %}
 {
   "name": "Collections Scroller",
