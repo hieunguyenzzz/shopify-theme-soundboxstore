@@ -16,7 +16,7 @@
     </div>
   {% endif %}
 
-  <div class="{{ section.id }}-slider slider_active">
+  <div class="{{ section.id }}-slider  product-list-group">
     {% for block in section.blocks %}
       {% capture productId %}product{% endcapture %}
       {% capture productImgId %}image{% endcapture %}
@@ -58,7 +58,7 @@
 </section>
 <script>
     $(document).ready(function() {
-        $('.{{ section.id }}-slider').slick({
+      $('.{{ section.id }}-slider').slick({
       infinite: false,
       slidesToShow: 3.3,
       arrows: true,
