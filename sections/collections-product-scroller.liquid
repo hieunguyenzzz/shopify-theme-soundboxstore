@@ -17,9 +17,9 @@
   {% endif %}
   
   <div class="product-list-group{% if section.settings.slider_active %} slider_active{% endif %}">
-    {% for i in (1..4) %}
-    {% capture productId %}product{{i}}{% endcapture %}
-    {% capture productImgId %}product{{i}}-img{{i}}{% endcapture %}
+    {% for block in section.blocks %}
+    {% capture productId %}product{% endcapture %}
+    {% capture productImgId %}image{% endcapture %}
     {% if section.settings[productId] != blank %}
     {% assign product = all_products[section.settings[productId]]%}
     <div class="col">
