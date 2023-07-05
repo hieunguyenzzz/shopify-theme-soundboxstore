@@ -17,7 +17,7 @@
   {% endif %}
 
   {% unless section.settings.slider_active %}<div class="page-width product-list-pagewidth">{% endunless %}
-  <div class="product-list-group slider_active">
+  <div class="product-list-group{% if section.settings.slider_active %} slider_active{% endif %}">
     {% for i in (1..4) %}
       {% capture productId %}product{{i}}{% endcapture %}
       {% capture productImgId %}product{{i}}-img{{i}}{% endcapture %}
