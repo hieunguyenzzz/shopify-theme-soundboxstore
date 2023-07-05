@@ -49,6 +49,13 @@
          .{{ section.id }}-slider.product-list-group .col .col-image a:after{
           padding-bottom:70%
         }
+  @media screen and (max-width 600px) {
+    .{{ section.id }}-slider.product-list-group {
+          display:flex;margin-top:80px;      padding:0 var(--pageWidthPadding);
+
+
+        }
+  }
 </style>
 <section class="{{ section.id }}-section collections-product-list">
   {% if section.settings.title != blank or section.settings.description != blank %}
