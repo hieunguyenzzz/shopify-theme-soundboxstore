@@ -12,6 +12,12 @@
 </style>
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
+    {% if section.settings.title %}
+      <div class="section-header text-center">
+        <h2 class="title-font">{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in section.blocks -%}
         <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
