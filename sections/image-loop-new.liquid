@@ -41,8 +41,18 @@
    }
     .image-loop .col.right-col .col-wrap h4{
       font-size:110%;
-      font-weight:500
+      font-weight:500;
+      display:block;
+      position:relative;
+      padding: 20% 0
    }
+  .image-loop .col.right-col .col-wrap h4:before{
+    position:absolute;
+    width:60px;
+    bottom:0;
+    left:0;
+    border-bottom:1px solid
+  }
 </style>
 <section class="image-loop">
   {% if section.settings.title %}
