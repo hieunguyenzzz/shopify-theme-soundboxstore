@@ -1,3 +1,33 @@
+<style>
+    section {
+    padding: 0;
+  }
+  .image-loop-description {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .image-loop-description h3 {
+    font-weight: 500;
+  }
+  .image-loop .image-text-row:nth-child(2n + 1) .flexbox {
+    flex-direction: row-reverse;
+  }
+  .image-loop .image-text-row:nth-child(2n) .flexbox {
+    flex-direction: row;
+  }
+  .image-loop .col.left-col .col-wrap:after {
+    padding-bottom: 100%;
+  }
+  .image-loop .image-text-row {
+    background: transparent;
+  }
+  .image-loop .image-text-row img {
+    object-position: left;
+  }
+  .image-loop .image-text-row:nth-child(2n) img {
+    object-position: right;
+  }
+</style>
 <section class="image-loop">
   {% if section.settings.title %}
     <h2>{{ section.settings.title }}</h2>
