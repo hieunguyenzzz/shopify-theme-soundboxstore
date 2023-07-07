@@ -1,128 +1,130 @@
 <style>
-     .image-loop-description {
-              padding: 0 var(--pageWidthPadding);
-       margin-bottom: 60px;
-     }
-     .image-loop-description h3 {
-       font-weight: 500;
-     }
-     .image-loop .image-text-row:nth-child(2n + 1) .flexbox {
-       flex-direction: row-reverse;
-     }
-     .image-loop .image-text-row:nth-child(2n) .flexbox {
-       flex-direction: row;
-     }
-     .image-loop .col.left-col .col-wrap:after {
-       padding-bottom: 100%;
-     }
-     .image-loop .image-text-row {
-       background: transparent;
-     }
-     .image-loop .image-text-row img {
-       object-position: left;
-     }
-     .image-loop .image-text-row:nth-child(2n) img {
-       object-position: right;
-     }
-     .section-wrap .image-text-row{
-       margin-bottom:60px
-     }
-     .image-loop .col.right-col .col-wrap{
-       padding: 0 var(--pageWidthPadding);
-       max-width:500px;
-       margin:auto;
-
-     }
-     .image-loop .image-text-row:nth-child(2n) .flexbox .col.right-col .col-wrap{
-          padding:  1em var(--pageWidthPadding)
-     }
-      .image-loop .col.right-col .col-wrap p{
-         font-size:80%;
-      }
-       .image-loop .col.right-col .col-wrap h4{
-         font-size:110%;
-         font-weight:500;
-         display:block;
-         position:relative;
-         padding: 0.6em 0
-      }
-     .image-loop .col.right-col .col-wrap h4:before{
-       content:'';
-       position:absolute;
-       width:60px;
-       bottom:0;
-       left:0;
-       border-bottom:2px solid
-     }
-  .image-loop .section-header {
-       display: flex;
-       flex-wrap: wrap;
-       margin-bottom: 40px
-   }
-
-   .image-loop .section-header .left-col {
-       width: 100%;
-       max-width: 40%
-   }
-
-   .image-loop .section-header .left-col h2,.new-coll-header .image-color-switch ul li {
-       margin: 0;
-     font-size:2rem;
-   }
-
-   .image-loop .section-header .right-col {
-       width: 100%;
-       max-width: 60%
-   }
-
-   .image-loop .section-header .right-col p {
-       margin: 0;
-       font-weight: 400;
-       font-size: 24px;
-       line-height: 1.667;
-       letter-spacing: 1px;
-       color: #454545;
-       max-width: 843px
-   }
-     @media only screen and (max-width: 767px){
-       .image-loop .image-text-row:first-child,.image-loop .image-text-row{
-         padding:0
+       .image-loop-description {
+                padding: 0 var(--pageWidthPadding);
+         margin-bottom: 60px;
        }
-         .image-loop .image-text-row:nth-child(2n) .flexbox .col.right-col .col-wrap{
-         padding:  0em var(--pageWidthPadding)
-     }
-         .section-wrap .image-text-row{
-       margin-bottom:1em
-     }
-         .image-loop-description {
-       text-align: center;
-              padding: 0 var(--pageWidthPadding);
-       margin-bottom: 1em;
-     }
-        .image-loop{
-       padding: 1em 0
-     }
-           .image-loop .section-header .left-col,.image-loop .section-header .right-col {
-         max-width: 100%;
-         text-align: center
+       .image-loop-description h3 {
+         font-weight: 500;
+       }
+       .image-loop .image-text-row:nth-child(2n + 1) .flexbox {
+         flex-direction: row-reverse;
+       }
+       .image-loop .image-text-row:nth-child(2n) .flexbox {
+         flex-direction: row;
+       }
+       .image-loop .col.left-col .col-wrap:after {
+         padding-bottom: 100%;
+       }
+       .image-loop .image-text-row {
+         background: transparent;
+       }
+       .image-loop .image-text-row img {
+         object-position: left;
+       }
+       .image-loop .image-text-row:nth-child(2n) img {
+         object-position: right;
+       }
+       .section-wrap .image-text-row{
+         margin-bottom:60px
+       }
+       .image-loop .col.right-col .col-wrap{
+         padding: 0 var(--pageWidthPadding);
+         max-width:500px;
+         margin:auto;
+
+       }
+       .image-loop .image-text-row:nth-child(2n) .flexbox .col.right-col .col-wrap{
+            padding:  1em var(--pageWidthPadding)
+       }
+        .image-loop .col.right-col .col-wrap p{
+           font-size:80%;
+        }
+         .image-loop .col.right-col .col-wrap h4{
+           font-size:110%;
+           font-weight:500;
+           display:block;
+           position:relative;
+           padding: 0.6em 0
+        }
+       .image-loop .col.right-col .col-wrap h4:before{
+         content:'';
+         position:absolute;
+         width:60px;
+         bottom:0;
+         left:0;
+         border-bottom:2px solid
+       }
+    .image-loop .section-header {
+         display: flex;
+         flex-wrap: wrap;
+         margin-bottom: 40px
      }
 
-     .image-loop .section-header .right-col p,.image-text-section .section-content p,.product-list-group .col .product-details .price,.testimonials-section .testimonials-slider__text .rte-setting p,.testimonials-section .user-name {
-         font-size: 16px;
-         line-height: 19px
+     .image-loop .section-header .left-col {
+         width: 100%;
+         max-width: 40%
      }
 
-     .image-loop .section-header .left-col h2 {
-         margin-bottom: 10px
+     .image-loop .section-header .left-col h2,.new-coll-header .image-color-switch ul li {
+         margin: 0;
+       font-size:2rem;
      }
 
-     .image-loop .section-header {
-         margin-bottom: 30px
+     .image-loop .section-header .right-col {
+         width: 100%;
+         max-width: 60%
      }
-          .image-loop .section-header .left-col h2,.new-coll-header .image-color-switch ul li {
-     font-size:1.3rem;
-   }
+
+     .image-loop .section-header .right-col p {
+         margin: 0;
+         font-weight: 400;
+         font-size: 24px;
+         line-height: 1.667;
+         letter-spacing: 1px;
+         color: #454545;
+         max-width: 843px
      }
+       @media only screen and (max-width: 767px){
+         .image-loop .image-text-row:first-child,.image-loop .image-text-row{
+           padding:0
+         }
+           .image-loop .image-text-row:nth-child(2n) .flexbox .col.right-col .col-wrap{
+           padding:  0em var(--pageWidthPadding)
+       }
+           .section-wrap .image-text-row{
+         margin-bottom:1em
+       }
+           .image-loop-description {
+         text-align: center;
+                padding: 0 var(--pageWidthPadding);
+         margin-bottom: 1em;
+       }
+          .image-loop{
+         padding: 1em 0
+       }
+             .image-loop .section-header .left-col,.image-loop .section-header .right-col {
+           max-width: 100%;
+           text-align: center
+       }
+
+       .image-loop .section-header .right-col p,.image-text-section .section-content p,.product-list-group .col .product-details .price,.testimonials-section .testimonials-slider__text .rte-setting p,.testimonials-section .user-name {
+           font-size: 16px;
+           line-height: 19px
+       }
+
+       .image-loop .section-header .left-col h2 {
+           margin-bottom: 10px
+       }
+
+       .image-loop .section-header {
+           margin-bottom: 30px
+       }
+            .image-loop .section-header .left-col h2,.new-coll-header .image-color-switch ul li {
+       font-size:1rem;
+              line-height:1.2;
+  padding: 0 var(--pageWidthPadding);
+     }
+       }
 </style>
 <section class="image-loop page-width">
   <div class="section-header">
