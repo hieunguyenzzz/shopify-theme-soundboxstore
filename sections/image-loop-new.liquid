@@ -77,13 +77,13 @@
   }
 </style>
 <section class="image-loop page-width">
-  <div>
-    {% if section.settings.title %}
-      <h2>{{ section.settings.title }}</h2>
-    {% endif %}
-    {% if section.settings.description %}
-      <div class="image-loop-description">{{ section.settings.description }}</div>
-    {% endif %}
+  <div class="section-header">
+    <div class="left-col">
+      <h2 class="title-font">{{ section.settings.title }}</h2>
+    </div>
+    <div class="right-col image-loop-description">
+      {{ section.settings.description }}
+    </div>
   </div>
 
   <div class="section-wrap">
