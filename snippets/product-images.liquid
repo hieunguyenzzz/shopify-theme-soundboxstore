@@ -225,11 +225,7 @@ calc(100vw - 4rem)
               {{
                 image
                 | image_url: width: 800
-                | image_tag:
-                  class: 'photoswipe__image',
-                  sizes: sizes,
-                  widths: '246, 493, 600, 713, 823, 990',
-                  alt: image.alt
+                | image_tag: class: 'photoswipe__image', sizes: sizes, widths: '246, 493, 600, 713, 823, 990'
                 | escape
               }}
             {% else %}
@@ -240,8 +236,7 @@ calc(100vw - 4rem)
                   loading: lazy,
                   class: 'photoswipe__image',
                   sizes: sizes,
-                  widths: '246, 493, 600, 713, 823, 990',
-                  alt: image.alt
+                  widths: '246, 493, 600, 713, 823, 990'
                 | escape
               }}
             {% endif %}
