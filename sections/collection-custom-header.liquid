@@ -1,87 +1,105 @@
-{% for product in collection.products %}	
-	{% if forloop.last == true %}
-	{% assign coma = null %}
-	{% else %}
-	{% assign coma = ',' %}
-	{% endif %}
-	{% assign prodHandle =prodHandle| append:product.handle | append:coma%}
+<h1 style="display:hidden">{{ collection.title }}</h1>
+{% for product in collection.products %}
+  {% if forloop.last == true %}
+    {% assign coma = null %}
+  {% else %}
+    {% assign coma = ',' %}
+  {% endif %}
+  {% assign prodHandle = prodHandle | append: product.handle | append: coma %}
 {% endfor %}
-{% assign prodHandle = prodHandle | split:',' %}
+{% assign prodHandle = prodHandle | split: ',' %}
 
-{% if section.settings.product-thumb != blank %}
-<div class="new-coll-header">
-  <div class="header-wrap">
-    <div class="flexbox">
-      
-      {% for block in section.blocks %}
-      {% if block.type == 'product' %}
-      	{% assign product = all_products[block.settings.product] %}
-          <div class="col">
-            <div class="col-wrap">
-              <div class="col-image">
-                 <a href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{% else %}{{ product.url }}{% endif %}" class="btnScroll" data-id = {{ product.id }}><img src="{{ product.featured_image | img_url:'130x' }}" alt="phone booths"></a>
+{% if section.settings['product-thumb'] != blank %}
+  <div class="new-coll-header">
+    <div class="header-wrap">
+      <div class="flexbox">
+        {% for block in section.blocks %}
+          {% if block.type == 'product' %}
+            {% assign product = all_products[block.settings.product] %}
+            <div class="col">
+              <div class="col-wrap">
+                <div class="col-image">
+                  <a
+                    href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{% else %}{{ product.url }}{% endif %}"
+                    class="btnScroll"
+                    data-id="{{ product.id }}"
+                    ><img src="{{ product.featured_image | img_url:'130x' }}" alt="phone booths"
+                  ></a>
+                </div>
+                <h6>
+                  <a
+                    href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{% else %}{{ product.url }}{% endif %}"
+                    class="btnScroll"
+                    data-id="{{ product.id }}"
+                  >
+                    {{- product.title -}}
+                  </a>
+                </h6>
               </div>
-              <h6><a href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{% else %}{{ product.url }}{% endif %}" class="btnScroll" data-id = {{ product.id }}>{{ product.title }}</a></h6>
             </div>
-          </div>
-      {% elsif block.type == 'collection' %}
-      {% assign collection = collections[block.settings.collection] %}
-      	 <div class="col">
-            <div class="col-wrap">
-              <div class="col-image">
-                 <a href="{{ collection.url }}" class="btnScroll" data-id="{{ collection.id }}"><img src="{{ collection.featured_image | img_url:'130x' }}" alt="{{ collection.title }}"></a>
+          {% elsif block.type == 'collection' %}
+            {% assign collection = collections[block.settings.collection] %}
+            <div class="col">
+              <div class="col-wrap">
+                <div class="col-image">
+                  <a href="{{ collection.url }}" class="btnScroll" data-id="{{ collection.id }}"
+                    ><img src="{{ collection.featured_image | img_url:'130x' }}" alt="{{ collection.title }}"
+                  ></a>
+                </div>
+                <h6>
+                  <a href="{{collection.url}}" class="btnScroll" data-id="{{ collection.id }}">
+                    {{- collection.title -}}
+                  </a>
+                </h6>
               </div>
-              <h6><a href="{{collection.url}}" class="btnScroll" data-id="{{ collection.id }}">{{ collection.title }}</a></h6>
             </div>
-          </div>
-      {% endif%}
-      {% endfor %}
-      
-    </div>
-    <div class="image-color-switch">
-      <ul>
-        <li class="switch-color white active" id ="primary_image"><span></span></li>
-        <li class="switch-color black" id="secondary_image"><span></span></li>
-      </ul>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="image-color-switch">
+        <ul>
+          <li class="switch-color white active" id="primary_image"><span></span></li>
+          <li class="switch-color black" id="secondary_image"><span></span></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 {% endif %}
 
 {% schema %}
-  {
-    "name": "Collection Header",
-	"class": "collection-header",
-    "settings": [
-		{
-          "type":"collection",
-          "id":"product-thumb",
-          "label":"Choose Collection"
-		}
-	],
-  	"blocks": [
-     {
-       "name": "Product",
-       "type": "product",
-       "settings": [
-         {
-           "type": "product",
-           "id": "product",
-           "label": "product"
-         }
-       ]
-     },
+ {
+   "name": "Collection Header",
+"class": "collection-header",
+   "settings": [
 	{
-       "name": "Collection",
-       "type": "collection",
-       "settings": [
-         {
-           "type": "collection",
-           "id": "collection",
-           "label": "collection"
-         }
-       ]
-     }
-   ]
-  }
+         "type":"collection",
+         "id":"product-thumb",
+         "label":"Choose Collection"
+	}
+],
+ 	"blocks": [
+    {
+      "name": "Product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        }
+      ]
+    },
+{
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "collection"
+        }
+      ]
+    }
+  ]
+ }
 {% endschema %}
