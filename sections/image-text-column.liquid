@@ -10,14 +10,14 @@
               {% if section.settings.mobile_image != blank %}
                 class="desktop-only"
               {% endif %}
-              alt="{{ section.settings.image.alt | default: product.title }}"
+              alt="{{ section.settings.image.alt | default:section.settings.title }}"
             >
             {% if section.settings.mobile_image != blank %}
               <img
                 loading="lazy"
                 src="{{ section.settings.mobile_image | img_url:"520x" }}"
                 class="mobile-only"
-                alt="{{ section.settings.mobile_image.alt  |  default: product.title}}"
+                alt="{{ section.settings.mobile_image.alt  |  default: section.settings.title}}"
               >
             {% endif %}
           </div>
