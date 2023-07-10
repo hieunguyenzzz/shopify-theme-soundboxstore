@@ -1,6 +1,10 @@
+{% if section.settings.title %}
+  <h1 style="display:none">{{ section.settings.title }}</h1>
+{% endif %}
 {% schema %}
 {
   "name": "Missing h1",
+  "class": "hidden",
   "settings": [{
          "type": "text",
          "id": "title",
