@@ -30,7 +30,7 @@ IT it /it-it' %}
       height="16"
       class="tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
       src="{{ iconPath | asset_url}}"
-      alt="{{ localization.country.iso_code }} flag"
+      alt="{{ localization.country.name }} flag"
     >
     {{
       localization.language.iso_code
@@ -85,7 +85,7 @@ IT it /it-it' %}
           height="16"
           class="!tw-pl-0 tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
           src="{{ iconPath | asset_url}}"
-          alt="{{ localization.country.iso_code }} flag"
+          alt="{{ country.name | capitalize }} flag"
         >
       </a>
     {%- endfor -%}
