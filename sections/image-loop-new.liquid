@@ -141,7 +141,7 @@
       {% if block.settings.image != blank %}
         <div class="image-text-row">
           <div class="flexbox">
-            <div class="col left-col">
+            <div class="col left-col" data-bg="{{ block.settings.image_bg | image_url: width: 900 | image_tag: widths: '400, 600, 800', loading: 'lazy' }}">
               <div class="col-wrap">
                 {{ block.settings.image | image_url: width: 900 | image_tag: widths: '400, 600, 800', loading: 'lazy' }}
               </div>
