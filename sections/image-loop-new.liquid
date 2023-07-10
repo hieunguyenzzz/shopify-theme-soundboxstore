@@ -226,6 +226,9 @@
       .image-loop .image-text-row:not(:first-child){
         margin-top:-25vw;
       }
+               .image-loop .image-text-row:nth-child(2n + 1) .flexbox, .image-loop .image-text-row:nth-child(2n) .flexbox{
+                   flex-direction: column-reverse;
+               }
 
              }
 {% endstylesheet %}
