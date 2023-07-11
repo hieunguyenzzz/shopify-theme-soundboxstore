@@ -79,35 +79,35 @@ $(document).ready(function() {
   });
 
 
-  $('.collections-product-list .product-list-group.slider_active').slick({
-    infinite: false,
-    slidesToShow: 3.3,
-    arrows: true,
-    dots: true,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 860,
-        settings: {
-          slidesToShow: 2.3
-        }
-      }, {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2.3,
-          arrows: false,
-          dots: false
-        }
-      }, {
-        breakpoint: 540,
-        settings: {
-          slidesToShow: 1.3,
-          arrows: false,
-          dots: false
-        }
-      }
-    ]
-  });
+  // $('.collections-product-list .product-list-group.slider_active').slick({
+  //   infinite: false,
+  //   slidesToShow: 3.3,
+  //   arrows: true,
+  //   dots: true,
+  //   slidesToScroll: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 860,
+  //       settings: {
+  //         slidesToShow: 2.3
+  //       }
+  //     }, {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 2.3,
+  //         arrows: false,
+  //         dots: false
+  //       }
+  //     }, {
+  //       breakpoint: 540,
+  //       settings: {
+  //         slidesToShow: 1.3,
+  //         arrows: false,
+  //         dots: false
+  //       }
+  //     }
+  //   ]
+  // });
 
 
   $(".slide-nav__item button.js-toggle-submenu").click(function() {
