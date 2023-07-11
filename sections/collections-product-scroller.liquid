@@ -86,13 +86,15 @@
           <div class="col-wrap">
             <div class="col-image">
               <a href="{{ all_products[block.settings[productId]].url }}">
-                <img
-                  loading="lazy"
-                  width="440"
-                  height="310"
-                  src="{% if block.settings[productImgId] != blank %}{{ block.settings[productImgId] | img_url:'700x' }}{% else %}{{ all_products[block.settings[productId]].featured_image | img_url:'master' }}{% endif %}"
-                  alt="Product Image"
-                >
+                {% assign featured_image = block.settings[productImgId]
+                  | default: all_products[block.settings[productId]].featured_image
+                %}
+
+                {{
+                  featured_image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
+                }}
               </a>
             </div>
             <div class="product-details">
