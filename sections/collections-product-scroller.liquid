@@ -88,6 +88,8 @@
               <a href="{{ all_products[block.settings[productId]].url }}">
                 <img
                   loading="lazy"
+                  width="440"
+                  height="310"
                   src="{% if block.settings[productImgId] != blank %}{{ block.settings[productImgId] | img_url:'700x' }}{% else %}{{ all_products[block.settings[productId]].featured_image | img_url:'master' }}{% endif %}"
                   alt="Product Image"
                 >
