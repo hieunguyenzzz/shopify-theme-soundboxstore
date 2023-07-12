@@ -72,29 +72,23 @@
 </style>
 <div class="page-width ">
   <div class="custom-content">
-    <div class="custom__item one-whole align--top-middle">
-      <div class="custom__item-inner custom__item-inner--html">
-        <div class="rte">
-          {% assign imgMobile = section.settings['mobile-bg_image'] | default: section.settings.bg_image %}
-          <img
-            loading="lazy"
-            src="{{ section.settings.bg_image | image_url }}"
-            width="1404"
-            height="687"
-            alt="background"
-            class="custom-background desktop-only"
-          >
-          <img
-            loading="lazy"
-            src="{{ imgMobile | image_url: width: 687, crop: "center" }}"
-            width="1404"
-            height="687"
-            alt="background"
-            class="custom-background mobile-only"
-          >
-        </div>
-      </div>
-    </div>
+    {% assign imgMobile = section.settings['mobile-bg_image'] | default: section.settings.bg_image %}
+    <img
+      loading="lazy"
+      src="{{ section.settings.bg_image | image_url }}"
+      width="1404"
+      height="687"
+      alt="background"
+      class="custom-background desktop-only"
+    >
+    <img
+      loading="lazy"
+      src="{{ imgMobile | image_url: width: 687, crop: "center" }}"
+      width="1404"
+      height="687"
+      alt="background"
+      class="custom-background mobile-only"
+    >
     <div class="custom__item small--one-whole ">
       <div class="custom__item-inner custom__item-inner--html">
         <div class="rte">
