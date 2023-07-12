@@ -1,4 +1,4 @@
-{% for product in all_products %}
+{% for product in collections.all.products %}
   {%- if product.metafields.custom.page360.value.url contains page.handle -%}
     {%- assign mainProduct = product -%}
   {%- endif -%}
