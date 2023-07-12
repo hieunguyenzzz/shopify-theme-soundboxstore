@@ -3,6 +3,9 @@
     {%- assign mainProduct = product -%}
   {%- endif -%}
 {%- endfor -%}
+{% unless product %}
+  {%- assign mainProduct = all_products[page.handle] -%}
+{% endunless %}
 {%- assign embed360Url = mainProduct.metafields.custom.embed360url.value -%}
 
 <style>
