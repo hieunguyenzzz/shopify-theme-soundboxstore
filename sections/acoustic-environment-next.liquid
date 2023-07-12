@@ -72,6 +72,7 @@
     <div class="custom__item one-whole align--top-middle">
       <div class="custom__item-inner custom__item-inner--html">
         <div class="rte">
+          {% assign imgMobile = section.settings['mobile-bg_image'] | default: section.settings.bg_image %}
           <img
             loading="lazy"
             src="{{ section.settings.bg_image | image_url }}"
@@ -82,7 +83,7 @@
           >
           <img
             loading="lazy"
-            src="{{ section.settings.bg_image | image_url: width: 687, crop: "center" }}"
+            src="{{ imgMobile | image_url: width: 687, crop: "center" }}"
             width="1404"
             height="687"
             alt="background"
