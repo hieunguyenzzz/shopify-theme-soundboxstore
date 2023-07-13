@@ -1,86 +1,89 @@
 <style>
-    .acoustic-environment {
-      position: relative;
-      font-size: min(3vw, 16px);
-      font-family: "Banana Grotesk";
-      isolation: isolate;
+      .acoustic-environment {
+        position: relative;
+        font-size: min(3vw, 16px);
+        font-family: "Banana Grotesk";
+        isolation: isolate;
 
-    }
-    .acoustic-environment .custom-content {
-      row-gap: 1.4em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 50%;
-    }
-    .acoustic-environment .index-section,
-    .acoustic-environment .page-width {
-      padding-top: 60px;
-      padding-bottom: 60px;
-        display:flex;
+      }
+      .acoustic-environment .custom-content {
+        row-gap: 1.4em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+      }
+      .acoustic-environment .index-section,
+      .acoustic-environment .page-width {
+        padding-top: 60px;
+        padding-bottom: 60px;
+          display:flex;
 
-    }
-    .acoustic-environment h2 {
-      font-size: 2.6em;
-      font-weight: 600;
-      margin-bottom: 0.8em
-    }
-    .acoustic-environment h2 + p {
-      font-size: 1.5em;
-    }
-    .acoustic-environment p {
-      font-size: 1.5em;
-    }
-    .acoustic-environment p + p, .acoustic-environment .custom__item-subheading p {
-      font-size: 1.1em;
-    }
-    .acoustic-environment h3 {
-      font-size: 2.6em;
-      font-weight: bold;
-      margin: 0;
-    }
-    .acoustic-environment .custom-background {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: -1;
-      height: 100%;
-      object-fit: cover;
-      width: 100%;
-      max-width: unset;
+      }
+      .acoustic-environment h2 {
+        font-size: 2.6em;
+        font-weight: 600;
+        margin-bottom: 0.8em
+      }
+      .acoustic-environment h2 + p {
+        font-size: 1.5em;
+      }
+      .acoustic-environment p {
+        font-size: 1.5em;
+      }
+      .acoustic-environment p + p, .acoustic-environment .custom__item-subheading p {
+        font-size: 1.1em;
+      }
+      .acoustic-environment h3 {
+        font-size: 2.6em;
+        font-weight: bold;
+        margin: 0;
+      }
+      .acoustic-environment .custom-background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        max-width: unset;
 
-    }
-    .acoustic-environment .custom__item-inner {
-      position: unset
-    }
-    .acoustic-environment .custom-content>div:first-child {
-      margin: 0
-    }
-     .acoustic-environment .custom-content .custom__item{
-         margin-bottom: 0.6em
-     }
-    .cutom-parent {
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
+      }
+      .acoustic-environment .custom__item-inner {
+        position: unset
+      }
+      .acoustic-environment .custom-content>div:first-child {
+        margin: 0
+      }
+       .acoustic-environment .custom-content .custom__item{
+           margin-bottom: 0.6em
+       }
+      .cutom-parent {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
 
-                  grid-column-gap: 1.5rem;
-                  grid-row-gap: 1.5rem;
-                  grid-auto-rows: min-content;
-                }
-  @media only screen and (max-width: 767px){
-        .acoustic-environment .custom-content {
+                    grid-column-gap: 1.5rem;
+                    grid-row-gap: 1.5rem;
+                    grid-auto-rows: min-content;
+                  }
+    @media only screen and (max-width: 767px){
+          .acoustic-environment .custom-content {
 
-      width: 100%;
-          font-size:2.3vw;
+        width: 100%;
+            font-size:2.3vw;
 
-    }
-   .acoustic-environment .page-width  {
-      padding-bottom: 90vw;
+      }
+     .acoustic-environment .page-width  {
+        padding-bottom: 80vw;
 
-    }
+      }
+      .acoustic-environment .custom-background {
+       object-position: bottom;
   }
+    }
 </style>
 <div class="page-width ">
   <div class="custom-content">
