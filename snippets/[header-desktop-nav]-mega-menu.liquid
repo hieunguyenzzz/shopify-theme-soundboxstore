@@ -12,15 +12,12 @@
           {%- for grandchildlink in menu.links -%}
             <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
               {{ grandchildlink.title }}
-              {{ grandchildlink.object.title }}
             </a>
           {%- endfor -%}
         </div>
         {%- for grandchildlink in menu.links -%}
           {% if grandchildlink.type == 'collection_link' %}
             {% assign collection = grandchildlink.object %}
-            {{ grandchildlink.handle }}
-            {{ collection }}
             <div class="megamenu__cols">
               {%- for product in collection.products -%}
                 <div class="megamenu__col">
