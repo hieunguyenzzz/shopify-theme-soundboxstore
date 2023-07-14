@@ -59,9 +59,9 @@
     }
   {%- endif -%}
   .new-label{
-    position: absolute; 
-    left: 0; 
-    width: 33.333333%; 
+    position: absolute;
+    left: 0;
+    width: 33.333333%;
     padding-bottom: 100%;
     top: 0;
     max-width: min(15vw,100px);
@@ -74,16 +74,28 @@
       id="SiteHeader"
       class="site-header{% if settings.type_navigation_style == 'heading' %} site-header--heading-style{% endif %}"
       data-sticky="{{ section.settings.header_sticky }}"
-      data-overlay="{{ overlay_header }}">
-
+      data-overlay="{{ overlay_header }}"
+    >
       <div class="site-header__element site-header__element--top">
         <div class="page-width">
-          <div class="header-layout" data-layout="{{ section.settings.main_menu_alignment }}" data-nav="{{ nav_position }}" data-logo-align="{{ logo_alignment }}">
-
+          <div
+            class="header-layout"
+            data-layout="{{ section.settings.main_menu_alignment }}"
+            data-nav="{{ nav_position }}"
+            data-logo-align="{{ logo_alignment }}"
+          >
             {%- if nav_position == 'below' and logo_alignment == 'left' -%}
               <div class="header-item header-item--compress-nav small--hide">
                 <button type="button" class="site-nav__link site-nav__link--icon site-nav__compress-menu">
-                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><path class="cls-1" d="M7 15h51">.</path><path class="cls-1" d="M7 32h43">.</path><path class="cls-1" d="M7 49h51">.</path></svg>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="icon icon-hamburger"
+                    viewBox="0 0 64 64"
+                  >
+                    <path class="cls-1" d="M7 15h51">.</path><path class="cls-1" d="M7 32h43">.</path><path class="cls-1" d="M7 49h51">.</path>
+                  </svg>
                   <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
                 </button>
               </div>
@@ -99,7 +111,15 @@
               <div class="header-item header-item--search small--hide">
                 {%- if logo_alignment == 'center' -%}
                   <button type="button" class="site-nav__link site-nav__link--icon site-nav__compress-menu">
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-hamburger" viewBox="0 0 64 64"><path class="cls-1" d="M7 15h51">.</path><path class="cls-1" d="M7 32h43">.</path><path class="cls-1" d="M7 49h51">.</path></svg>
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="icon icon-hamburger"
+                      viewBox="0 0 64 64"
+                    >
+                      <path class="cls-1" d="M7 15h51">.</path><path class="cls-1" d="M7 32h43">.</path><path class="cls-1" d="M7 49h51">.</path>
+                    </svg>
                     <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
                   </button>
                 {%- endif -%}
@@ -110,7 +130,12 @@
 
             {%- if nav_position == 'beside' -%}
               <div class="header-item header-item--navigation{% if section.settings.main_menu_alignment == 'left-center' %} text-center{% endif %}">
-                {%- render 'header-desktop-nav',section: section, main_menu: main_menu, nav_position: nav_position, show_mega_products: section.settings.mega_products -%}
+                {%- render 'header-desktop-nav',
+                  section: section,
+                  main_menu: main_menu,
+                  nav_position: nav_position,
+                  show_mega_products: section.settings.mega_products
+                -%}
               </div>
             {%- endif -%}
 
@@ -122,12 +147,18 @@
 
             <div class="header-item header-item--icons">
               {% for block in section.blocks %}
-              {% if block.settings.btn-text1 != blank or block.settings.btn-text2 != blank %}
-              <div class="header-button-group">
-                {% if block.settings.btn-text1 != blank %}<a href="{{ block.settings.btn-link1 }}" class="btn btn--secondary">{{ block.settings.btn-text1 }}</a>{% endif %}
-                {% if block.settings.btn-text2 != blank %}<a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings.btn-text2 }}</a>{% endif %}
-              </div>
-              {% endif %}
+                {% if block.settings['btn-text1'] != blank or block.settings['btn-text2'] != blank %}
+                  <div class="header-button-group">
+                    {% if block.settings['btn-text1'] != blank -%}
+                      <a href="{{ block.settings.btn-link1 }}" class="btn btn--secondary">
+                        {{- block.settings['btn-text1'] -}}
+                      </a>
+                    {%- endif %}
+                    {% if block.settings['btn-text2'] != blank -%}
+                      <a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings['btn-text2'] }}</a>
+                    {%- endif %}
+                  </div>
+                {% endif %}
               {% endfor %}
               {%- render 'header-icons', section: section, nav_position: nav_position -%}
             </div>
@@ -139,7 +170,17 @@
             <div class="site-header__search">
               {%- render 'header-search' -%}
               <button type="button" class="text-link site-header__search-btn site-header__search-btn--cancel">
-                <span class="medium-up--hide"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/></svg></span>
+                <span class="medium-up--hide">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="icon icon-close"
+                    viewBox="0 0 64 64"
+                  >
+                    <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/>
+                  </svg>
+                </span>
                 <span class="small--hide">{{ 'general.search.cancel' | t }}</span>
               </button>
             </div>
@@ -150,7 +191,11 @@
       {%- if nav_position == 'below' -%}
         <div class="site-header__element site-header__element--sub" data-type="nav">
           <div class="page-width{% if logo_alignment == 'center' %} text-center{% endif %}">
-            {%- render 'header-desktop-nav', main_menu: main_menu, nav_position: nav_position, show_mega_products: section.settings.mega_products -%}
+            {%- render 'header-desktop-nav',
+              main_menu: main_menu,
+              nav_position: nav_position,
+              show_mega_products: section.settings.mega_products
+            -%}
           </div>
         </div>
 
@@ -189,7 +234,7 @@
 
                   .site-header .footer__section .footer__title{
                     text-transform: uppercase;
-                  
+
                   }
                   .site-header .footer__blocks{
                     gap: 2em;
@@ -247,149 +292,160 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Header",
-    "class": "header-section",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "main_menu_link_list",
-        "label": "Navigation",
-        "default": "main-menu"
-      },
-	  {
-		"type":"collection",
-		"id":"collection_products",
-		"label":"Megamenu"
-	  },
-      {
-        "type": "select",
-        "id": "main_menu_alignment",
-        "label": "Layout",
-        "default": "below",
-        "options": [
-          {
-            "value": "below",
-            "label": "Logo left, menu below"
-          },
-          {
-            "value": "left",
-            "label": "Logo left, menu left"
-          },
-          {
-            "value": "left-center",
-            "label": "Logo left, menu center"
-          },
-          {
-            "value": "center",
-            "label": "Logo center, menu below"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "mega_products",
-        "label": "Show first product in mega menus",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "header_sticky",
-        "label": "Enable sticky header",
-        "default": true,
-        "info": "Recommended"
-      },
-      {
-        "type": "checkbox",
-        "id": "header_footer_menu",
-        "label": "Show footer content on mobile menu",
-        "default": true,
-        "info": "Recommended"
-      },
-      {
-        "type": "checkbox",
-        "id": "sticky_index",
-        "label": "Overlay header over home page",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "sticky_collection",
-        "label": "Overlay header over collection",
-        "info": "(if collection image is enabled)",
-        "default": false
-      }
-    ],
-    "blocks": [
-      {
-        "type": "logo",
-        "name": "Logo",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "logo",
-            "label": "Logo"
-          },
-          {
-            "type": "image_picker",
-            "id": "logo-inverted",
-            "label": "White logo",
-            "info": "Used when on top of an image"
-          },
-          {
-            "type": "range",
-            "id": "desktop_logo_width",
-            "label": "Desktop logo width",
-            "default": 200,
-            "min": 100,
-            "max": 400,
-            "step": 10,
-            "unit": "px"
-          },
-          {
-            "type": "range",
-            "id": "mobile_logo_width",
-            "label": "Mobile logo width",
-            "default": 140,
-            "min": 60,
-            "max": 200,
-            "step": 10,
-            "unit": "px",
-            "info": "Set as a max-width, may appear smaller"
-          }
-        ]
-      },
-	  {
-		"type":"header_buttons",
-		"name":"Buttons",
-		"limit":1,
-		"settings":[
-			{
-				"type":"text",
-				"id":"btn-text1",
-				"label":"Button-1 Label"
-			},
-			{
-				"type":"url",
-				"id":"btn-link1",
-				"label":"Button-1 Link"
-			},
-			{
-				"type":"text",
-				"id":"btn-text2",
-				"label":"Button-2 Label"
-			},
-			{
-				"type":"url",
-				"id":"btn-link2",
-				"label":"Button-2 Link"
-			}
-		]
-	  }
-    ],
-    "default": {
-      "settings": {}
+{
+  "name": "Header",
+  "class": "header-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu_link_list",
+      "label": "Navigation",
+      "default": "main-menu"
+    },
+ {
+"type":"collection",
+"id":"collection_products",
+"label":"Megamenu"
+ },
+    {
+      "type": "select",
+      "id": "main_menu_alignment",
+      "label": "Layout",
+      "default": "below",
+      "options": [
+        {
+          "value": "below",
+          "label": "Logo left, menu below"
+        },
+        {
+          "value": "left",
+          "label": "Logo left, menu left"
+        },
+        {
+          "value": "left-center",
+          "label": "Logo left, menu center"
+        },
+        {
+          "value": "center",
+          "label": "Logo center, menu below"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "mega_products",
+      "label": "Show first product in mega menus",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "header_sticky",
+      "label": "Enable sticky header",
+      "default": true,
+      "info": "Recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_footer_menu",
+      "label": "Show footer content on mobile menu",
+      "default": true,
+      "info": "Recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_index",
+      "label": "Overlay header over home page",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_collection",
+      "label": "Overlay header over collection",
+      "info": "(if collection image is enabled)",
+      "default": false
     }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo-inverted",
+          "label": "White logo",
+          "info": "Used when on top of an image"
+        },
+        {
+          "type": "range",
+          "id": "desktop_logo_width",
+          "label": "Desktop logo width",
+          "default": 200,
+          "min": 100,
+          "max": 400,
+          "step": 10,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "mobile_logo_width",
+          "label": "Mobile logo width",
+          "default": 140,
+          "min": 60,
+          "max": 200,
+          "step": 10,
+          "unit": "px",
+          "info": "Set as a max-width, may appear smaller"
+        }
+      ]
+    },
+ {
+"type":"header_buttons",
+"name":"Buttons",
+"limit":1,
+"settings":[
+	{
+		"type":"text",
+		"id":"btn-text1",
+		"label":"Button-1 Label"
+	},
+	{
+		"type":"url",
+		"id":"btn-link1",
+		"label":"Button-1 Link"
+	},
+	{
+		"type":"text",
+		"id":"btn-text2",
+		"label":"Button-2 Label"
+	},
+	{
+		"type":"url",
+		"id":"btn-link2",
+		"label":"Button-2 Link"
+	}
+]
+ },
+     {
+      "type": "menu-collection",
+      "name": "Collection menu",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+	"label":"Collection"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {}
   }
+}
 {% endschema %}
