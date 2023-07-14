@@ -135,7 +135,19 @@
       "x-large": "Ekstra Stor",
       "another": "Endnu",
       "furniture-set": "Møbler Sæt {{number}}",
-      "others": "Andre"
+      "others": "Andre",
+      "joy-stool-grey-white": "grå hvid",
+      "joy-stool-green-white": "grøn hvid",
+      "joy-stool-blue-yellow": "blå gul",
+      "billy-office-chair-black": "stol sort",
+      "billy-office-chair-red": "stol rød",
+      "furniture-set-4": "Møbler sæt 4",
+      "furniture-set-5": "Møbler sæt 5",
+      "furniture-set-6": "Møbler sæt 6",
+      "electric-adjustable-work-station-stool": "Elektrisk Højdejusterbar Arbejdsstation + Skammel",
+      "work-station-designer-office-chair": "Arbejdsstation + Designer Kontorstol",
+      "dual-zoom-room-device-shelf-2-barstools": "Dobbelt Zoomrum + Enhedshylde + 2 Barstole",
+      "meeting-room-table-corner-stool": "Mødelokale + Bord + Hjørneskammel"
     },
     "others": {
       "view_less": "Vis Mindre",
@@ -390,7 +402,6 @@
   },
   "products": {
     "general": {
-      "color_swatch_trigger": "Color",
       "save_html": "Spare {{ saved_amount }}",
       "collection_return": "Tilbage {{ collection }}",
       "next_product": "Næste: {{ title }}",
@@ -409,7 +420,7 @@
         "one": "Lavt lager - {{ count }} vare tilbage",
         "other": "Lavt lager - {{ count }} varer tilbage"
       },
-      "sold_out": "sælge",
+      "sold_out": "Udsolgt",
       "unavailable": "Utilgængelig",
       "quantity": "Mængde",
       "add_to_cart": "Tilføj til kurv",
@@ -1955,7 +1966,12 @@
           }
         },
         "table_view": "Vis tabelvisning",
-        "show_order_actions_accessibility_label": "Vis ordre handlinger for ordre {{name}}"
+        "show_order_actions_accessibility_label": "Vis ordre handlinger for ordre {{name}}",
+        "order_status_message": {
+          "list_view": {
+            "estimated_delivery": "Anslået levering {{date}}"
+          }
+        }
       },
       "order_status": {
         "attempted_delivery_label": "Forsøg på levering",
@@ -1983,7 +1999,7 @@
         "in_review_description": "Vi giver dig besked, hvis vi har brug for flere oplysninger, eller når din ordre er bekræftet.",
         "in_review_label": "I gennemgang",
         "in_review_title": "Din ordre bliver gennemgået",
-        "last_updated": "Sidst opdateret {{date}}",
+        "last_updated": "Sidst opdateret den {{date}}",
         "multiple_shipments_label": "Flere forsendelser",
         "no_tracking_number": "Der er ikke noget sporingsnummer for denne forsendelse.",
         "on_its_way_label": "På vej",
@@ -1995,7 +2011,7 @@
         "submitted_description": "Gennemgå ordre-og betalingsoplysninger.",
         "track_shipment": "Spor forsendelse",
         "request_return": "Anmod om returnering",
-        "view_order_for_details": "Se ordre for detaljer"
+        "view_order_for_details": "Se oplysninger på ordren"
       },
       "status_mark_as_delivered": "Mark som leveret",
       "status_title": "Ordrestatus",
@@ -2050,7 +2066,8 @@
         "address": "Leveringsadresse",
         "address_map_marker": "Leveringsadresse",
         "method": "Forsendelsesmetode",
-        "summary": "Forsendelse"
+        "summary": "Forsendelse",
+        "free": "Frit"
       },
       "show_items": "Vis emner",
       "show_order_summary": "Vis Ordreoversigt",
@@ -2068,6 +2085,15 @@
         "load_more": "Indlæs mere",
         "load_more_accessibility_label": "Indlæs flere varer",
         "loading_accessibility_label": "Indlæser varer"
+      },
+      "company": "Virksomhed",
+      "marketing_checkbox_label": "Email mig med nyheder og tilbud",
+      "marketing_checkmark_label": "Du abonnerer på at modtage e-mail nyheder og tilbud",
+      "shop_order_tracking": {
+        "real_time_delivery_updates": "Shop sender dig leveringsopdateringer i realtid, når din ordre er afsendt."
+      },
+      "shop_pay": {
+        "learn_more": "Læs mere"
       }
     },
     "addresses": {
@@ -2274,6 +2300,15 @@
         },
         "subtitle": "Indsende {{date}}",
         "title": "Ordre {{name}}"
+      },
+      "payment_methods": {
+        "payment_details": {
+          "order_label": "Ordre {{name}}"
+        }
+      },
+      "purchase_order_number": {
+        "cancel": "Annullere",
+        "save": "Spare"
       }
     },
     "errors": {
@@ -2393,6 +2428,12 @@
         "delete_and_replace_button_accessibility_label": "Slette {{currentPaymentMethodName}} og erstatte med {{newPaymentMethodName}}.",
         "deleted_successfully": "Betalingsmetode slettet med succes.",
         "loading_available_payment_methods_accessibility_label": "Indlæser tilgængelige betalingsmetoder"
+      },
+      "add_payment_method": {
+        "billing_address": {
+          "add_billing_address_button": "Tilføj nyt",
+          "choose_billing_address_from_list_button": "Vælg fra listen"
+        }
       }
     },
     "payment_method_brands": {

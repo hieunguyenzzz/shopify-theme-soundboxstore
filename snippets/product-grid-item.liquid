@@ -136,6 +136,17 @@
               data-count=""
               {{ product.images.size }}
             >
+              {% if collImgNotLazy %}
+              <img
+                class="{% unless settings.product_grid_image_fill %} grid__image-contain{% endunless %}"
+                src="{{ preview_image | img_url: '800x' }}"
+                data-widths="[160, 200, 280, 360, 540, 720, 900]"
+                data-aspectratio="{{ preview_image.aspect_ratio }}"
+                data-sizes="auto"
+                style="opacity:1"
+                alt="{{ preview_image.alt | escape }}"
+              >
+              {% else %}  
               <img
                 class="lazyload{% unless settings.product_grid_image_fill %} grid__image-contain{% endunless %}"
                 data-src="{{ img_url }}"
@@ -144,6 +155,7 @@
                 data-sizes="auto"
                 alt="{{ preview_image.alt | escape }}"
               >
+              {% endif %}  
               <noscript>
                 <img
                   class="grid-product__image lazyloaded"

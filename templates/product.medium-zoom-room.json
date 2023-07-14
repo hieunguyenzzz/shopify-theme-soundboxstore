@@ -30,6 +30,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
           }
         },
@@ -146,20 +147,6 @@
     "meeting-rooms-features": {
       "type": "meeting-rooms-features",
       "blocks": {
-        "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
-          "type": "features_list_left",
-          "settings": {
-            "title": "Dimensions",
-            "description": "<p><strong>Internal Size:<\/strong><br\/>Height: 214cm Width: 134cm Depth: 120cm<strong><br\/>External Size:<\/strong><br\/>Height: 230cm Width: 150cm Depth: 123.6cm<br\/><strong>Weight:<br\/><\/strong>Total: 425kg (Net Pod)<strong><br\/><\/strong>Total: 459kg (Pod+Furn. Set 1)<br\/>Total: 464kg (Pod+Furn. Set 2)<br\/>Total: 456kg (Pod+Furn.Set 3)<\/p>"
-          }
-        },
-        "453c3266-3dfc-413c-a2c1-d76c8e57c79d": {
-          "type": "features_list_left",
-          "settings": {
-            "title": "Ventilation",
-            "description": "<p>Highly efficient air flow at 160 m³\/h refreshing air every two minutes guaranteeing excellent oxygen rates. With low noise air system via multi channel air ducts allowing minimum noise distrubance inside and out.<\/p>"
-          }
-        },
         "d390db88-124b-4e53-b3e8-234749d7ec3a": {
           "type": "features_list_left",
           "settings": {
@@ -167,18 +154,32 @@
             "description": "<p><strong>Leading The Sound Pod Industry<\/strong><br\/>STC 30dB (±5dB) &<br\/>RT0.25s (±0.1s)<br\/>Daiki Verified<br\/>ISO 23351-1<br\/><\/p><p><\/p>"
           }
         },
-        "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a": {
-          "type": "features_list_right",
+        "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
+          "type": "features_list_left",
           "settings": {
-            "title": "Electrical \/ Lighting",
-            "description": "<p>*4000k  (150Lx) Daylight LED<br\/>*Multiple Power Outlets, 220- 24V + USB, USB-C<br\/>*Energy Saving Motion Sensor <br\/>*Blue Tooth Audi System<br\/>*Aux Lossless Port<\/p>"
+            "title": "Dimensions",
+            "description": "<p><strong>Internal Size:<\/strong><br\/>Height: 214cm Width: 134cm Depth: 120cm<strong><br\/>External Size:<\/strong><br\/>Height: 230cm Width: 150cm Depth: 123.6cm<br\/><strong>Weight:<br\/><\/strong>Total: 425kg (Net Pod)<strong><br\/><\/strong>Total: 459kg (Pod+Furn. Set 1)<br\/>Total: 464kg (Pod+Furn. Set 2)<br\/>Total: 456kg (Pod+Furn.Set 3)<\/p>"
           }
         },
         "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9": {
           "type": "features_list_left",
           "settings": {
             "title": "Materials",
-            "description": "<p><strong>External Shell<\/strong><br\/>Aviation Type Alloy<br\/>Nanometer PP Finish<strong><br\/>Internal Panels<br\/><\/strong>Carbon Composite <br\/>≤0.071kg CO2e<br\/><strong>Glass<br\/><\/strong>Similar To High Speed Trains<strong><br\/><\/strong>≤0.4MJ<br\/><strong>Damping Feet<br\/><\/strong>Vibration control<\/p>"
+            "description": "<p><strong>External Frame<\/strong><br\/>Aviation Type Alloy, Cast Aluminium Corners<br\/>Nanometer PP Finish<strong><br\/>External Panels<br\/><\/strong>Carbon Composite <br\/>≤0.071kg CO2e<br\/><strong>Glass<br\/><\/strong>10mm Tempered Glass Front & Back, Similar To High Speed Trains ≤0.4MJ<br\/><strong>Damping Feet<br\/><\/strong>Vibration control<br\/><strong>Internally<\/strong> <br\/>Acoustic PET board<\/p>"
+          }
+        },
+        "453c3266-3dfc-413c-a2c1-d76c8e57c79d": {
+          "type": "features_list_left",
+          "settings": {
+            "title": "Ventilation",
+            "description": "<p>Double Turbo Fan \/ Dual Inlet * Outlets, Highly efficient airflow change rate at 367m³\/h (max) refreshing air every minute, guaranteeing excellent oxygen rates. A low-noise air system via multi-channel air ducts allows minimum noise disturbance inside and out.<\/p>"
+          }
+        },
+        "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a": {
+          "type": "features_list_right",
+          "settings": {
+            "title": "Electrical \/ Lighting",
+            "description": "<p>*4000k  (150Lx) Daylight LED<br\/>*Multiple Power Outlets, 220- 24V + USB, USB-C<br\/>*Energy Saving Motion Sensor <br\/>*Blue Tooth Audi System<br\/>*Aux Lossless Port<\/p>"
           }
         },
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348": {
@@ -274,11 +275,11 @@
         }
       },
       "block_order": [
-        "82e4437d-c3ed-46e1-8f33-db6645f21ed8",
-        "453c3266-3dfc-413c-a2c1-d76c8e57c79d",
         "d390db88-124b-4e53-b3e8-234749d7ec3a",
-        "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a",
+        "82e4437d-c3ed-46e1-8f33-db6645f21ed8",
         "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9",
+        "453c3266-3dfc-413c-a2c1-d76c8e57c79d",
+        "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a",
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
         "19323c70-b1a6-44b1-b5b4-12733c55ae2e",
         "aade32d9-6806-430b-b9c3-07623b95803d",
@@ -411,6 +412,7 @@
     },
     "70ae5f46-98c1-473e-8dae-1fe9b07248d6": {
       "type": "acoustic-environment-2",
+      "disabled": true,
       "blocks": {
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0": {
           "type": "item",
@@ -470,20 +472,82 @@
         "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”<\/p>"
       }
     },
+    "acoustic-environment-next": {
+      "type": "acoustic-environment-next",
+      "blocks": {
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0": {
+          "type": "item",
+          "settings": {
+            "heading": "62%",
+            "subheading": "<p>Increase work motivation<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-1": {
+          "type": "item",
+          "settings": {
+            "heading": "44%",
+            "subheading": "<p>Increase the ability to focus<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-2": {
+          "type": "item",
+          "settings": {
+            "heading": "52%",
+            "subheading": "<p>Increase performance in tasks that require full concentration<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-3": {
+          "type": "item",
+          "settings": {
+            "heading": "29%",
+            "subheading": "<p>Reduced pressure level<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-4": {
+          "type": "item",
+          "settings": {
+            "heading": "55%",
+            "subheading": "<p>Reduced session interference<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-5": {
+          "type": "item",
+          "settings": {
+            "heading": "18%",
+            "subheading": "<p>Reduced error rate<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-1",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-2",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-3",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-4",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-5"
+      ],
+      "settings": {
+        "bg_image": "shopify:\/\/shop_images\/sbs-pp-acstc-env-desktop-bg.jpg",
+        "mobile-bg_image": "shopify:\/\/shop_images\/sbs-pp-acstc-env-mobile-bg.jpg",
+        "heading": "A Comfort Cocoon",
+        "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.<\/p>",
+        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”<\/p>"
+      }
+    },
     "logo-list": {
       "type": "logo-list",
       "blocks": {
         "eb5ccb84-f1f3-497c-b1f4-390de4137a01": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled-2.jpg",
+            "image": "shopify:\/\/shop_images\/Untitled-2.webp",
             "link": ""
           }
         },
         "2fa437b2-fed3-4284-8b40-9bb394126de1": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled-3.jpg",
+            "image": "shopify:\/\/shop_images\/Untitled-3.webp",
             "link": ""
           }
         },
@@ -749,6 +813,7 @@
     "acoustic-environment",
     "1651221880f746c680",
     "70ae5f46-98c1-473e-8dae-1fe9b07248d6",
+    "acoustic-environment-next",
     "logo-list",
     "165414989285a6b146",
     "165742898091486e55",

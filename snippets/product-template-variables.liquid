@@ -52,6 +52,22 @@
       "name": {{ product.title | json }},
       "width": 1024,
       "height": 1024
-    }
+    },
+    {% if product.metafields.reviews.rating %}
+    "review": {
+      "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": {{ product.metafields.reviews.rating.value }},
+          "bestRating": 5
+        },
+
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ product.metafields.reviews.rating.value }},
+        "reviewCount": {{ product.metafields.reviews.rating_count }}
+      }
+    {% endif %}
   }
 </script>

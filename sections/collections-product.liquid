@@ -1,46 +1,63 @@
 <section class="collections-product-list">
   {% if section.settings.title != blank or section.settings.description != blank %}
-  <div class="page-width">
-    <div class="section-header">
-      {% if section.settings.title != blank %}
-      <div class="left-col">
-        <h2 class="title-font">{{ section.settings.title }}</h2>
+    <div class="page-width">
+      <div class="section-header">
+        {% if section.settings.title != blank %}
+          <div class="left-col">
+            <h2 class="title-font">{{ section.settings.title }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="right-col">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
       </div>
-      {% endif %}
-      {% if section.settings.description != blank %}
-      <div class="right-col">
-        {{ section.settings.description }}
-      </div>
-      {% endif %}
     </div>
-  </div>
   {% endif %}
-  
+
   {% unless section.settings.slider_active %}<div class="page-width product-list-pagewidth">{% endunless %}
   <div class="product-list-group{% if section.settings.slider_active %} slider_active{% endif %}">
     {% for i in (1..4) %}
-    {% capture productId %}product{{i}}{% endcapture %}
-    {% capture productImgId %}product{{i}}-img{{i}}{% endcapture %}
-    {% if section.settings[productId] != blank %}
-    {% assign product = all_products[section.settings[productId]]%}
-    <div class="col">
-      <div class="col-wrap">
-        <div class="col-image">
-          <a href="{{ all_products[section.settings[productId]].url }}">
-            <img class="lazyload" loading="lazy" data-src="{% if section.settings[productImgId] != blank %}{{ section.settings[productImgId] | img_url:'700x' }}{% else %}{{ all_products[section.settings[productId]].featured_image | img_url:'master' }}{% endif %}" alt="Product Image">
-          </a>
+      {% capture productId %}product{{i}}{% endcapture %}
+      {% capture productImgId %}product{{i}}-img{{i}}{% endcapture %}
+      {% if section.settings[productId] != blank %}
+        {% assign product = all_products[section.settings[productId]] %}
+        <div class="col">
+          <div class="col-wrap">
+            <div class="col-image">
+              <a href="{{ all_products[section.settings[productId]].url }}">
+                <img
+                  loading="lazy"
+                  src="{% if section.settings[productImgId] != blank %}{{ section.settings[productImgId] | img_url:'700x' }}{% else %}{{ all_products[section.settings[productId]].featured_image | img_url:'master' }}{% endif %}"
+                  alt="Product Image"
+                >
+              </a>
+            </div>
+            <div class="product-details">
+              <h4>
+                <a href="{{ all_products[section.settings[productId]].url }}">
+                  {{- all_products[section.settings[productId]].title -}}
+                </a>
+              </h4>
+              {%- if section.settings.show_price -%}
+                <!--
+                  <p class="price"> {{ 'strings.others.starting_from'|t }} {{ all_products[section.settings[productId]].price | money_without_trailing_zeros}}</p>
+                -->
+                <p class="price">
+                  <span class="price-title">{{ 'strings.others.starting_from' | t }} </span>
+                  {%- if product.price_varies -%}
+                    {{ product.price_min | money_without_trailing_zeros }}
+                  {%- else -%}
+                    {{ product.price | money_without_trailing_zeros }}
+                  {%- endif -%}
+                </p>
+              {% endif %}
+            </div>
+          </div>
         </div>
-        <div class="product-details">
-          <h4><a href="{{ all_products[section.settings[productId]].url }}">{{ all_products[section.settings[productId]].title }}</a></h4>
-            {%- if section.settings.show_price -%}
-<!--           <p class="price"> {{ 'strings.others.starting_from'|t }} {{ all_products[section.settings[productId]].price | money_without_trailing_zeros}}</p> -->
-          <p class="price"> <span class="price-title">{{ 'strings.others.starting_from'|t }} </span>{%- if product.price_varies -%} {{ product.price_min | money_without_trailing_zeros}} {%- else -%} {{ product.price | money_without_trailing_zeros}} {%- endif -%}</p>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-    {% endfor %}    
+      {% endif %}
+    {% endfor %}
   </div>
   {% unless section.settings.slider_active %}</div>{% endunless %}
 </section>

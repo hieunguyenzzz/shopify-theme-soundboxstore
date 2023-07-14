@@ -69,7 +69,7 @@
                           <div class="megamenu-col-wrap">
                             <div class="menu-col-image">
                               <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                                <img loading="lazy" src={{ product.featured_image | img_url }} />
+                        {{ product.featured_image | image_url: width: 170 | image_tag: widths: '400, 600, 800', loading: 'lazy' }}
                               </a>
                             </div>
                             <h4>
@@ -87,7 +87,7 @@
                           <div class="megamenu-col-wrap">
                             <div class="menu-col-image">
                               <a href="{{ childlink.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                                <img loading="lazy" src={{ collection.featured_image | img_url }} />
+                             {{ collection.featured_image | image_url: width: 170 | image_tag: widths: '400, 600, 800', loading: 'lazy' }}
                               </a>
                             </div>
                             <h4>

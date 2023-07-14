@@ -1,0 +1,258 @@
+<!doctype html>
+<html
+  class="no-js"
+  lang="{{ request.locale.iso_code }}"
+  dir="{{ settings.text_direction }}"
+  country="{{  localization.country.iso_code }}"
+>
+  <head>
+    <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
+
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="theme-color" content="{{ settings.color_button }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <link href="https://cdn.shopify.com" rel="preconnect">
+
+    <link href="https://fonts.shopifycdn.com" rel="preconnect">
+    <link href="https://ajax.googleapis.com" rel="dns-prefetch">
+    <link href="https://maps.googleapis.com" rel="dns-prefetch">
+    <link href="https://maps.gstatic.com" rel="dns-prefetch">
+    <link href="https://static.klaviyo.com" rel="preconnect">
+    <link href="https://crmplus.zoho.eu" rel="preconnect">
+
+    {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
+    {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme_index.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+
+    <link
+      rel="preload"
+      as="script"
+      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    >
+    <link
+      rel="preload"
+      as="script"
+      href="https://salesiq.zoho.eu/widget"
+    >
+
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="shortcut icon"
+        href="{{ settings.favicon | img_url: '32x32' }}"
+        type="image/png"
+      >
+    {%- endif -%}
+
+    {%- render 'seo-title' -%}
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {%- render 'social-meta-tags' -%}
+    
+
+    {%- liquid
+      assign enableSuperScript = false
+      unless shop.money_format contains 'money' or shop.money_format contains '.'
+        if settings.superscript_decimals
+          if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'
+            assign enableSuperScript = true
+          elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'
+            assign enableSuperScript = true
+          endif
+        endif
+      endunless
+    -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+      window.theme = window.theme || {};
+      theme.routes = {
+        home: "{{ routes.root_url }}",
+        collections: "{{ routes.collections_url }}",
+        cart: "{{ routes.cart_url | append: '.js' }}",
+        cartPage: "{{ routes.cart_url }}",
+        cartAdd: "{{ routes.cart_add_url | append: '.js' }}",
+        cartChange: "{{ routes.cart_change_url | append: '.js' }}",
+        search: "{{ routes.search_url }}"
+      };
+      theme.strings = {
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+        willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+        waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+        savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+        cartEmpty: {{ 'cart.general.empty' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
+        searchCollections: {{ 'general.search.collections' | t | json }},
+        searchPages: {{ 'general.search.pages' | t | json }},
+        searchArticles: {{ 'general.search.articles' | t | json }},
+        viewLess: {{ 'strings.others.view_less' | t | json }},
+        viewMore: {{ 'strings.others.view_more' | t | json }}
+      };
+      theme.settings = {
+        dynamicVariantsEnable: true,
+        cartType: {{ settings.cart_type | json }},
+        isCustomerTemplate:{% if request.page_type contains 'customers/' %}true
+        {% else %}
+          false
+        {% endif %},
+        moneyFormat: {{ shop.money_format | json }},
+        saveType: {{ settings.product_save_type | json }},
+        productImageSize: {{ settings.product_grid_image_size | json }},
+        productImageCover: {{ settings.product_grid_image_fill }},
+        predictiveSearch: {{ settings.predictive_search_enabled }},
+        predictiveSearchType: {{ settings.search_type | json }},
+        superScriptSetting: {{ settings.superscript_decimals }},
+        superScriptPrice: {{ enableSuperScript }},
+        quickView: {{ settings.quick_shop_enable }},
+        quickAdd: {{ settings.quick_add_enable }},
+        themeName: 'Expanse',
+        themeVersion: "2.0.0"
+      };
+    </script>
+
+    {{ content_for_header }}
+
+    <style>
+      label[for='_gcl_au'],
+      label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
+      .grfq__popupForm__formInput input[name='_gcl_au'] {
+        display: none !important;
+      }
+    </style>
+
+    <script src="{{ 'jquery.min.js' | asset_url }}" deffee></script>
+    <script
+      async
+      type="text/javascript"
+      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    ></script>
+  </head>
+
+  <body
+    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
+  >
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+
+    <div class="page-container" id="PageContainer">
+      <div class="transition-body">
+        {%- section 'toolbar' -%}
+        {%- section 'header' -%}
+
+        <main class="main-content" id="MainContent">
+          {{ content_for_layout }}
+        </main>
+
+        {%- section 'footer-promotions' -%}
+        {%- section 'footer' -%}
+      </div>
+    </div>
+
+    {%- section 'newsletter-popup' -%}
+
+    {% include 'dataLayer-allPages' %}
+
+    <script src="{{ 'slick.js' | asset_url }}"></script>
+    {{ 'vendor-scripts-v1.js' | asset_url | script_tag }}
+    {{ 'theme_index.js' | asset_url | script_tag }}
+    {{ 'custom.js' | asset_url | script_tag }}
+
+
+  {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% include 'otRegion' %}
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName('head')[0];
+          var c = d.createElement('script');
+          o.api = new Array();
+          c.async = true;
+          c.type = 'text/javascript';
+          c.charset = 'utf-8';
+          c.src = 'https://web-sdk.smartlook.com/recorder.js';
+          h.appendChild(c);
+        })(document);
+      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+    </script>
+    <script>
+      forceProductPriceSelector = '.grfq-price';
+      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+        console.log('12321321');
+      });
+    </script>
+    <style>
+      .grid-item-meta .rfq-btn {
+        max-width: 200px;
+      }
+      .grfq__popupForm__formGroup:last-child {
+        display: none !important;
+      }
+    </style>
+
+   
+
+    <script>
+      function getCookie(cname) {
+        let name = cname + '=';
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      }
+      
+      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+        const _gcl_awCookie = getCookie('_gcl_aw').split('.')
+        document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
+      });
+    </script>
+  <!-- Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    {% if content_for_header contains "previewBarInjector.init();" %}
+    {% elsif content_for_header contains "Shopify.designMode" %}
+    {% else %}
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
+    </script>
+    {% endif %}
+    
+    <!-- End Google Tag Manager -->
+  </body>
+</html>

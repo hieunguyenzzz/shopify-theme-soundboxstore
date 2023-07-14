@@ -1,0 +1,25 @@
+{% if template contains 'index' %}
+{% if settings.Desk_img != blank %}  
+<link rel="preload" as="image" href="{{ settings.Desk_img }}">
+{% endif %}  
+{% if settings.mob_img != blank %}
+<link rel="preload" as="image" href="{{ settings.mob_img }}">
+{% endif %}
+{% endif %}
+
+{% if template contains 'product' %}
+<link rel="preload" as="image" href="{{ product.featured_image | img_url: '800x' }}">
+{% endif %}
+
+{% if template contains 'collection' %}
+  	<link rel="preload" as="image" href="{{ collection.products.first.featured_image | img_url: '800x' }}">
+{% endif %}
+
+<link rel="preconnect" href="//fonts.shopifycdn.com/" crossorigin>
+<link rel="preconnect" href="//cdn.shopify.com/" crossorigin>
+<link rel="preconnect" href="//v.shopify.com/" crossorigin>
+<link rel="dns-prefetch" href="//{{shop.domain}}" crossorigin>
+<link rel="dns-prefetch" href="//{{shop.permanent_domain}}" crossorigin>
+<link rel="dns-prefetch" href="//cdn.shopify.com" crossorigin>
+<link rel="dns-prefetch" href="//v.shopify.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.shopifycdn.com" crossorigin>

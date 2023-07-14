@@ -30,6 +30,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
           }
         },
@@ -146,6 +147,20 @@
     "meeting-rooms-features": {
       "type": "meeting-rooms-features",
       "blocks": {
+        "d390db88-124b-4e53-b3e8-234749d7ec3a": {
+          "type": "features_list_left",
+          "settings": {
+            "title": "Sound \/ Acoustics",
+            "description": "<p><strong>Leading The Sound Pod Industry<\/strong><br\/>STC 30dB (±5dB) &<br\/>RT0.25s (±0.1s)<br\/>Daiki Verified<br\/>ISO 23351-1<\/p>"
+          }
+        },
+        "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9": {
+          "type": "features_list_left",
+          "settings": {
+            "title": "Materials",
+            "description": "<p><strong>External Frame<\/strong><br\/>Aviation Type Alloy, Cast Aluminium Corners<br\/>Nanometer PP Finish<strong><br\/>External Panels<br\/><\/strong>Carbon Composite <br\/>≤0.071kg CO2e<br\/><strong>Glass<br\/><\/strong>10mm Tempered Glass Front & Back, Similar To High Speed Trains ≤0.4MJ<br\/><strong>Damping Feet<br\/><\/strong>Vibration control<br\/><strong>Internally<\/strong> <br\/>Acoustic PET board<\/p>"
+          }
+        },
         "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
           "type": "features_list_left",
           "settings": {
@@ -157,14 +172,7 @@
           "type": "features_list_left",
           "settings": {
             "title": "Ventilation",
-            "description": "<p>Highly efficient airflow at 30m³\/h refreshing air every two minutes, guaranteeing excellent oxygen rates. A 3 fan, 2 in 1 out , low-noise air system via multi-channel air ducts allows minimum noise disturbance inside and out.<\/p>"
-          }
-        },
-        "d390db88-124b-4e53-b3e8-234749d7ec3a": {
-          "type": "features_list_left",
-          "settings": {
-            "title": "Sound \/ Acoustics",
-            "description": "<p><strong>Leading The Sound Pod Industry<\/strong><br\/>STC 30dB (±5dB) &<br\/>RT0.25s (±0.1s)<br\/>Daiki Verified<br\/>ISO 23351-1<\/p>"
+            "description": "<p>Double Turbo Fan \/ 4 Inlet + 2 Outlets, Highly efficient airflow change rate at 551 m³\/h (max) refreshing air every minute, guaranteeing excellent oxygen rates. A low-noise air system via multi-channel air ducts allows minimum noise disturbance inside and out.<\/p>"
           }
         },
         "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a": {
@@ -172,13 +180,6 @@
           "settings": {
             "title": "Electrical \/ Lighting",
             "description": "<p>LED<br\/>*Sqaure 4000k, 50Lx, Daylight <br\/>*Side Strips 4000k, 50Lx, Daylight <br\/>*Multiple Power Outlets, 220- 24V USB, USB-C<br\/>*Energy Saving Motion Sensor<br\/>*Ethernet (Cat 6) Connector <br\/>*Blue Tooth Audi System<br\/>*Aux Lossless Port<\/p>"
-          }
-        },
-        "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9": {
-          "type": "features_list_left",
-          "settings": {
-            "title": "Materials",
-            "description": "<p><strong>External Shell<\/strong><br\/>Aviation Type Alloy<br\/>Nanometer PP Finish<strong><br\/>Internal Panels<br\/><\/strong>Carbon Composite <br\/>≤0.071kg CO2e<br\/><strong>Glass<br\/><\/strong>Similar To High Speed Trains<strong><br\/><\/strong>≤0.4MJ<br\/><strong>Damping Feet<br\/><\/strong>Vibration control<\/p>"
           }
         },
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348": {
@@ -274,11 +275,11 @@
         }
       },
       "block_order": [
+        "d390db88-124b-4e53-b3e8-234749d7ec3a",
+        "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9",
         "82e4437d-c3ed-46e1-8f33-db6645f21ed8",
         "453c3266-3dfc-413c-a2c1-d76c8e57c79d",
-        "d390db88-124b-4e53-b3e8-234749d7ec3a",
         "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a",
-        "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9",
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
         "19323c70-b1a6-44b1-b5b4-12733c55ae2e",
         "aade32d9-6806-430b-b9c3-07623b95803d",
@@ -501,6 +502,7 @@
     },
     "c1e4b146-dea2-41ea-aeeb-bb55aab66987": {
       "type": "acoustic-environment-2",
+      "disabled": true,
       "blocks": {
         "template--16306515476705__c1e4b146-dea2-41ea-aeeb-bb55aab66987-166556555505073875-0": {
           "type": "item",
@@ -560,20 +562,82 @@
         "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”<\/p>"
       }
     },
+    "acoustic-environment-next": {
+      "type": "acoustic-environment-next",
+      "blocks": {
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0": {
+          "type": "item",
+          "settings": {
+            "heading": "62%",
+            "subheading": "<p>Increase work motivation<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-1": {
+          "type": "item",
+          "settings": {
+            "heading": "44%",
+            "subheading": "<p>Increase the ability to focus<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-2": {
+          "type": "item",
+          "settings": {
+            "heading": "52%",
+            "subheading": "<p>Increase performance in tasks that require full concentration<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-3": {
+          "type": "item",
+          "settings": {
+            "heading": "29%",
+            "subheading": "<p>Reduced pressure level<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-4": {
+          "type": "item",
+          "settings": {
+            "heading": "55%",
+            "subheading": "<p>Reduced session interference<\/p>"
+          }
+        },
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-5": {
+          "type": "item",
+          "settings": {
+            "heading": "18%",
+            "subheading": "<p>Reduced error rate<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-1",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-2",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-3",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-4",
+        "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-5"
+      ],
+      "settings": {
+        "bg_image": "shopify:\/\/shop_images\/sbs-pp-pod-XL-desktop-bg.jpg",
+        "mobile-bg_image": "shopify:\/\/shop_images\/sbs-pp-pod-XL-mobile-bg.jpg",
+        "heading": "A Comfort Cocoon",
+        "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.<\/p>",
+        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”<\/p>"
+      }
+    },
     "logo-list": {
       "type": "logo-list",
       "blocks": {
         "eb5ccb84-f1f3-497c-b1f4-390de4137a01": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled-2.jpg",
+            "image": "shopify:\/\/shop_images\/Untitled-2.webp",
             "link": ""
           }
         },
         "2fa437b2-fed3-4284-8b40-9bb394126de1": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled-3.jpg",
+            "image": "shopify:\/\/shop_images\/Untitled-3.webp",
             "link": ""
           }
         },
@@ -819,6 +883,7 @@
     "acoustic-environment",
     "1651221880f746c680",
     "c1e4b146-dea2-41ea-aeeb-bb55aab66987",
+    "acoustic-environment-next",
     "logo-list",
     "165414989285a6b146",
     "16574284781ea1b0a6",

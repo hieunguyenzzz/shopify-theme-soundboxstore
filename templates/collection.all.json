@@ -1,5 +1,11 @@
 {
   "sections": {
+    "ea079584-101c-4dc6-b9f9-bb5267775677": {
+      "type": "missing-h1",
+      "settings": {
+        "title": "{{ collection.title }}"
+      }
+    },
     "collection-header": {
       "type": "collection-custom-header",
       "blocks": {
@@ -7,6 +13,13 @@
           "type": "product",
           "settings": {
             "product": "soundproof-phone-booth"
+          }
+        },
+        "f8ccd9a9-e913-4dae-9d1f-bc7acb4b1e6b": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "acoustic-phone-booth"
           }
         },
         "67497433-35bd-495f-814a-ffbf4ff1979e": {
@@ -36,6 +49,7 @@
       },
       "block_order": [
         "621ddf22-a203-4dcd-bd96-fc536c797b42",
+        "f8ccd9a9-e913-4dae-9d1f-bc7acb4b1e6b",
         "67497433-35bd-495f-814a-ffbf4ff1979e",
         "17f97964-e2b5-40e8-a050-1e920f62906e",
         "57901777-6fce-4f49-9136-35a59b321005",
@@ -68,12 +82,15 @@
     "image-text-section": {
       "type": "image-text-section",
       "settings": {
+        "lazyload": true,
         "image": "shopify:\/\/shop_images\/all-product-page.png",
         "mobile_image": "shopify:\/\/shop_images\/product-collection-mobile.png",
         "overlay": true,
         "overlay_range": 60,
         "title": "Step inside a booth",
+        "title_width": "",
         "description": "<p>We'd love for you to see a Soundbox. Visit our factory showroom or schedule a virtual visit to see the booths for yourself.<\/p>",
+        "description_width": "",
         "button_text": "Schedule Now",
         "button_link": "shopify:\/\/pages\/showroom-london",
         "button_text_2": "",
@@ -160,6 +177,7 @@
     }
   },
   "order": [
+    "ea079584-101c-4dc6-b9f9-bb5267775677",
     "collection-header",
     "main-collection",
     "image-text-section",

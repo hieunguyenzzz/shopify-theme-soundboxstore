@@ -14,33 +14,38 @@
       id="CollectionHeaderSection"
       data-section-id="{{ section.id }}"
       data-section-type="collection-header"
-      {% if section.settings.parallax %}data-parallax="true"{% endif %}>
-
+      {% if section.settings.parallax %}
+        data-parallax="true"
+      {% endif %}
+    >
       {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
       <div class="collection-hero loading">
-
         {%- if section.settings.parallax -%}
           <div class="parallax-container">
-            <div class="parallax-image">
+          <div class="parallax-image">
         {%- endif -%}
 
-          <img class="collection-hero__image image-fit lazyload"
-            src=""
-            data-src="{{ img_url }}"
-            data-aspectratio="{{ collection.image.aspect_ratio }}"
-            data-widths="[420, 620, 720, 900, 1080, 1800, 2400]"
-            data-sizes="auto"
-            alt="{{ collection.image.alt | escape }}">
+        <img
+          class="collection-hero__image image-fit lazyload"
+          src=""
+          data-src="{{ img_url }}"
+          data-aspectratio="{{ collection.image.aspect_ratio }}"
+          data-widths="[420, 620, 720, 900, 1080, 1800, 2400]"
+          data-sizes="auto"
+          alt="{{ collection.image.alt | escape }}"
+        >
 
-          <noscript>
-            <img class="collection-hero__image image-fit"
-              src="{{ collection.image | img_url: '1400x' }}"
-              alt="{{ collection.image.alt | escape }}">
-          </noscript>
+        <noscript>
+          <img
+            class="collection-hero__image image-fit"
+            src="{{ collection.image | img_url: '1400x' }}"
+            alt="{{ collection.image.alt | escape }}"
+          >
+        </noscript>
 
         {%- if section.settings.parallax -%}
-            </div>
+          </div>
           </div>
         {%- endif -%}
 
@@ -69,7 +74,9 @@
         <h1 class="section-header__title">
           {{ collection.title }}
         </h1>
-        <p class="medium-up--hide">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</p>
+        <p class="medium-up--hide">
+          {{ 'collections.general.items_with_count' | t: count: collection.products_count }}
+        </p>
       </header>
     </div>
   {%- endif -%}
@@ -84,31 +91,31 @@
   <div
     id="CollectionHeaderSection"
     data-section-id="{{ section.id }}"
-    data-section-type="collection-header">
-  </div>
+    data-section-type="collection-header"
+  ></div>
 {%- endif -%}
 
 {% schema %}
-  {
-    "name": "Collection header",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable",
-        "label": "Enable header",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "collection_image_enable",
-        "label": "Show collection image",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "parallax",
-        "label": "Parallax image"
-      }
-    ]
-  }
+{
+  "name": "Collection header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Enable header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_image_enable",
+      "label": "Show collection image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "Parallax image"
+    }
+  ]
+}
 {% endschema %}

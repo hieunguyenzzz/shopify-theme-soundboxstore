@@ -8,5 +8,7 @@
 {%- if localization.country.iso_code == 'SE' -%}
   {%- assign phone = settings.phone_number_se -%}
 {%- endif -%}
-
+{%- if localization.country.iso_code == 'NL' -%}
+  {%- assign phone = settings.phone_number_nl -%}
+{%- endif -%}
 {{ phone }}
