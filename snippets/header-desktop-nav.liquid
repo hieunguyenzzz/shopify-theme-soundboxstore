@@ -188,8 +188,7 @@
   {%- endfor -%}
 
   {%- for block in section.blocks -%}
-        {{ block.type }}
-    {% if block.type ==  'menu-collection' %}
+    {% if block.type ==  'collection' %}
     <li class="site-nav__item site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu" aria-haspopup="true">
       <a href="{{ block.settings.collection.url }}" class="site-nav__link site-nav__link--underline site-nav__link--has-dropdown ">
         {{ block.settings.collection.title }}
