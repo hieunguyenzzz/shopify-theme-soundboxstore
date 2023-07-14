@@ -4372,15 +4372,12 @@ form+.footer__social {
     visibility: hidden;
     position: absolute;
     left: 0;
-    opacity: 0;
     z-index: 6;
     background-color: #fff;
     background-color: var(--colorBody);
     min-width: 100%;
     padding: 10px 0 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,.09);
-    transition: all 0.3s ease-in-out;
-                         
 }
 
 .is-focused>.site-nav__dropdown,.site-nav--has-dropdown:hover .site-nav__dropdown {
@@ -4413,6 +4410,7 @@ form+.footer__social {
     visibility: hidden;
     opacity: 0;
     z-index: 6;
+    transform: translate3d(-12px,0,0)
 }
 
 .is-focused+.site-nav__deep-dropdown,.site-nav__deep-dropdown-trigger:hover .site-nav__deep-dropdown {
