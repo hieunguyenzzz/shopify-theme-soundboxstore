@@ -186,6 +186,7 @@
       {%- endif -%}
     </li>
   {%- endfor -%}
+  {{ section.blocks.size }}
   {%- for block in section.blocks -%}
     {% if block.type ==  'menu-collection' %}
     <li class="site-nav__item site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu" aria-haspopup="true">
