@@ -11,13 +11,13 @@
         <div>
           {%- for grandchildlink in menu.links -%}
             <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
-              {{ grandchildlink.title }} + {{ grandchildlink.type }} + {{ collections[grandchildlink.handle] }}
+              {{ grandchildlink.title }}
             </a>
           {%- endfor -%}
         </div>
         {%- for grandchildlink in menu.links -%}
           {% if grandchildlink == 'collection_link' %}
-            {% assign collection = collections[grandchildlink.handle] %}
+            {% assign collection = grandchildlink.object %}
             {{ grandchildlink.handle }}
             {{ collection }}
             <div class="megamenu__cols">
