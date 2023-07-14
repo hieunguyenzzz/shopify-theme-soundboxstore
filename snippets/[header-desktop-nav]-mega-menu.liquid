@@ -15,22 +15,24 @@
             </a>
           {%- endfor -%}
         </div>
-        <div class="megamenu__cols">
-          {%- for product in block.settings.collection.products -%}
-            <div class="megamenu__col">
-              <div class="megamenu-col-wrap">
-                <div class="menu-col-image">
-                  <a href="{{ product.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                    <img loading="lazy" src="{{ product.featured_image | img_url }}">
-                  </a>
+        {%- for grandchildlink in menu.links -%}
+          <div class="megamenu__cols">
+            {%- for product in block.settings.collection.products -%}
+              <div class="megamenu__col">
+                <div class="megamenu-col-wrap">
+                  <div class="menu-col-image">
+                    <a href="{{ product.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                      <img loading="lazy" src="{{ product.featured_image | img_url }}">
+                    </a>
+                  </div>
+                  <h4>
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h4>
                 </div>
-                <h4>
-                  <a href="{{ product.url }}">{{ product.title }}</a>
-                </h4>
               </div>
-            </div>
-          {%- endfor -%}
-        </div>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
       </div>
     </div>
   </div>
