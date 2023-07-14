@@ -250,7 +250,7 @@
     </li>
                         {% endif %}
      {% if block.type ==  'mega-menu' %}
-       {% render '[header-desktop-nav]-mega-menu' %}
+       {% render '[header-desktop-nav]-mega-menu' menu: block.menu %}
        {% endif %}
   {%- endfor -%}
 </ul>
