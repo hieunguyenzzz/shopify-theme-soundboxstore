@@ -8,6 +8,13 @@
   <div class="site-nav__dropdown megamenu text-left">
     <div class="page-width">
       <div class="site-nav__dropdown-animate megamenu__wrapper">
+        <div>
+          {%- for grandchildlink in menu.links -%}
+            <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
+              {{ grandchildlink.title }}
+            </a>
+          {%- endfor -%}
+        </div>
         <div class="megamenu__cols">
           {%- for product in block.settings.collection.products -%}
             <div class="megamenu__col">
@@ -23,11 +30,6 @@
               </div>
             </div>
           {%- endfor -%}
-          <div class="megamenu__col">
-            <div class="megamenu-col-wrap">
-              <a href="{{ block.settings.collection.url }}">Shop all</a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
