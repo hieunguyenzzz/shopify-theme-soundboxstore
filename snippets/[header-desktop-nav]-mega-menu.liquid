@@ -12,6 +12,7 @@
           {%- for grandchildlink in menu.links -%}
             <a href="{{ grandchildlink.url }}" class="site-nav__dropdown-link">
               {{ grandchildlink.title }}
+              {{ grandchildlink.object.title }}
             </a>
           {%- endfor -%}
         </div>
