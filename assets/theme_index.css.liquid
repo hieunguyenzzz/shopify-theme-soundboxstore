@@ -4372,16 +4372,20 @@ form+.footer__social {
     visibility: hidden;
     position: absolute;
     left: 0;
+    opacity: 0;
     z-index: 6;
     background-color: #fff;
     background-color: var(--colorBody);
     min-width: 100%;
     padding: 10px 0 5px;
-    box-shadow: 0 10px 20px rgba(0,0,0,.09)
+    box-shadow: 0 10px 20px rgba(0,0,0,.09);
+    transition: all 0.3s ease-in-out;
+                         
 }
 
 .is-focused>.site-nav__dropdown,.site-nav--has-dropdown:hover .site-nav__dropdown {
-    visibility: visible
+    visibility: visible;
+    opacity: 1;
 }
 
 .site-nav__dropdown-list {
@@ -13285,7 +13289,7 @@ body .product-image-main[data-size=square] .image-wrap {
 
 .site-header .site-nav__dropdown {
     min-height: 300px;
-    overflow: auto
+    overflow: auto;
 }
 
 .header-button-group {
