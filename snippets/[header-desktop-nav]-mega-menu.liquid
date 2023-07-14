@@ -17,7 +17,7 @@
           {%- endfor -%}
         </div>
         {%- for grandchildlink in menu.links -%}
-          {% if grandchildlink == 'collection_link' %}
+          {% if grandchildlink.type == 'collection_link' %}
             {% assign collection = grandchildlink.object %}
             {{ grandchildlink.handle }}
             {{ collection }}
