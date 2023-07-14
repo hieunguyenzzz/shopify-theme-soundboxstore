@@ -15,21 +15,26 @@
             </a>
             {% if grandchildlink.type == 'collection_link' %}
               {% assign collection = grandchildlink.object %}
-              <div class="megamenu__cols">
-                {%- for product in collection.products -%}
-                  <div class="megamenu__col">
-                    <div class="megamenu-col-wrap">
-                      <div class="menu-col-image">
-                        <a href="{{ product.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
-                          <img loading="lazy" src="{{ product.featured_image | img_url }}">
-                        </a>
+              <div>
+                <div class="">
+                  {%- for product in collection.products -%}
+                    <div class="megamenu__col">
+                      <div class="megamenu-col-wrap">
+                        <div class="menu-col-image">
+                          <a
+                            href="{{ product.url }}"
+                            class="site-nav__dropdown-link site-nav__dropdown-link--top-level"
+                          >
+                            <img loading="lazy" src="{{ product.featured_image | img_url }}">
+                          </a>
+                        </div>
+                        <h4>
+                          <a href="{{ product.url }}">{{ product.title }}</a>
+                        </h4>
                       </div>
-                      <h4>
-                        <a href="{{ product.url }}">{{ product.title }}</a>
-                      </h4>
                     </div>
-                  </div>
-                {%- endfor -%}
+                  {%- endfor -%}
+                </div>
               </div>
             {% endif %}
           {%- endfor -%}
