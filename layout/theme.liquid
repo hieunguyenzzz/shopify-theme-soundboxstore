@@ -6,6 +6,8 @@
   country="{{  localization.country.iso_code }}"
 >
   <head>
+  {% render 'pre-header' %}
+  {% render 'yett' %}
     <!-- Google Tag Manager -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -51,26 +53,13 @@
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
-    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'dynamic.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
       as="script"
       href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
     >
-    <link
-      rel="preload"
-      as="script"
-      href="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    >
-    <link
-      rel="preload"
-      as="script"
-      href="https://salesiq.zoho.eu/widget"
-    >
-
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
@@ -86,9 +75,7 @@
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
-
-    {%- render 'font-face' -%}
-    <style>
+     <style>
       @font-face {
         font-family: 'Banana Grotesk';
         src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
@@ -178,22 +165,6 @@
         font-display: swap;
       }
     </style>
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-    <link
-      href="{{'dynamic.css' | asset_url}}"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      async
-    >
-    <link
-      href="{{'custom.css' | asset_url}}"
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      async
-    >
-    {%- render 'css-variables' -%}
 
     {%- liquid
       assign enableSuperScript = false
@@ -365,28 +336,7 @@
       }
     </style>
 
-    <script type="text/javascript" id="zsiqchat">
-      var $zoho = $zoho || {};
-      $zoho.salesiq = $zoho.salesiq || {
-        widgetcode: '00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0',
-        values: {},
-        ready: function () {
-          $zoho.salesiq.floatbutton.click(function () {
-            if (window.window.innerWidth < 768) {
-              $zoho.salesiq.floatbutton.coin.hidetooltip();
-            }
-          });
-        },
-      };
-      var d = document;
-      s = d.createElement('script');
-      s.type = 'text/javascript';
-      s.id = 'zsiqscript';
-      s.defer = true;
-      s.src = 'https://salesiq.zoho.eu/widget';
-      t = d.getElementsByTagName('script')[0];
-      t.parentNode.insertBefore(s, t);
-    </script>
+    
 
     <script>
       function getCookie(cname) {
@@ -412,5 +362,22 @@
     </script>
     {% section 'zoho-form-popup' %}
 
+<script>
+  var isReplaced = false;       
+  function MeroxIO_Function(){
+    if(!isReplaced){
+      window.yett.unblock();
+      console.log("apps lazyloaded successfully");
+      isReplaced=true;
+    }
+  }    
+  document.addEventListener("click", MeroxIO_Function);
+  document.addEventListener("scroll", MeroxIO_Function);
+  document.addEventListener("touchstart", MeroxIO_Function);
+  document.addEventListener("mousemove", MeroxIO_Function);
+</script>
+
+<script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
+</script>
   </body>
 </html>
