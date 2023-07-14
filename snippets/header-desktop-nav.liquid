@@ -186,4 +186,67 @@
       {%- endif -%}
     </li>
   {%- endfor -%}
+  {%- for block in section.blocks -%}
+    {% if block.type ==  'menu-collection' %}
+    <li class="site-nav__item site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu" aria-haspopup="true">
+      <a href="{{ block.settings.collection.url }}" class="site-nav__link site-nav__link--underline site-nav__link--has-dropdown ">
+        {{ block.settings.collection.title }}
+      </a>
+      {%- assign previous_column_type = '' -%}
+        <div class="site-nav__dropdown megamenu text-left">
+          <div class="page-width">
+            <div class="site-nav__dropdown-animate megamenu__wrapper">
+              <div class="megamenu__cols">
+
+                {%- for product in block.settings.collection.products -%}
+
+                  {%- liquid
+                      assign create_new_column = false
+
+                      if childlink.levels > 0 and forloop.index != 1
+                        assign create_new_column = true
+                      endif
+
+                      if childlink.levels == 0 and previous_column_type == 'full'
+                        assign create_new_column = true
+                      endif
+                    -%}
+
+                  {%- if create_new_column -%}
+                  </div>
+                  <div class="megamenu__col">
+                  {%- endif -%}
+
+
+                  <div class="megamenu__col">
+                          <div class="megamenu-col-wrap">
+                            <div class="menu-col-image">
+                              <a href="{{ product.url }}" class="site-nav__dropdown-link site-nav__dropdown-link--top-level">
+                                <img loading="lazy" src={{ product.featured_image | img_url }} />
+                              </a>
+                            </div>
+                            <h4>
+                              <a href="{{ product.url }}">{{ product.title }}</a>
+                            </h4>
+                          </div>
+                        </div>
+
+
+                 
+                {%- endfor -%}
+                <div class="megamenu__col">
+                  <div class="megamenu-col-wrap">
+                    <a href="{{ block.settings.collection.url }}">Shop all</a>
+                  </div>
+                </div>
+
+
+              </div>
+            
+            </div>
+          </div>
+        </div>
+    </li>
+                        {% endif %}
+  {%- endfor -%}
 </ul>
