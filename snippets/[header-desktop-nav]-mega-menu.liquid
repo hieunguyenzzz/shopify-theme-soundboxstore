@@ -18,6 +18,9 @@
     flex-shrink: 0;
     margin-bottom: 0.5em;
   }
+  .site-nav-level--one{
+    display:flex;
+  }
 </style>
 {%- liquid
   unless limit
@@ -66,7 +69,7 @@
       <div class="site-nav__dropdown megamenu text-left">
         <div class="page-width">
           <div class="site-nav__dropdown-animate megamenu__wrapper">
-            <div>
+            <div class="site-nav-level--one">
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}">{{ childlink.title }}</a>
               {% endfor %}
