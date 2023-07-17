@@ -84,7 +84,12 @@
                   {{ childlink.type -}}
                 </a>
                 {% if childlink.type == 'product_link' %}
-                  {{- childlink.object.options | json }}
+                  {% assign product = childlink.object %}
+                  {% if product.options.size > 0 -%}
+                    {% for option in product.options -%}
+                      - {{ option }}
+                    {%- endfor %}
+                  {%- endif %}
                 {% endif %}
               {% endfor %}
             </div>
