@@ -83,6 +83,9 @@
                   {{- childlink.title }}
                   {{ childlink.type -}}
                 </a>
+                {% if childlink.type == 'product_link' %}
+                  {{- childlink.object | json }}
+                {% endif %}
               {% endfor %}
             </div>
           </div>
