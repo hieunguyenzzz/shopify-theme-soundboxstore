@@ -1,9 +1,12 @@
 {% assign mainProduct = section.settings.product %}
-{% for product in collections.all.products %}
-  {%- if product.metafields.custom.page360.value.url contains page.handle -%}
-    {%- assign mainProduct = product -%}
-  {%- endif -%}
-{%- endfor -%}
+{% unless mainProduct %}
+  {% for product in collections.all.products %}
+    {%- if product.metafields.custom.page360.value.url contains page.handle -%}
+      {%- assign mainProduct = product -%}
+    {%- endif -%}
+  {%- endfor -%}
+{% endunless %}
+
 {% unless mainProduct %}
   {%- assign mainProduct = all_products[page.handle] -%}
 {% endunless %}
