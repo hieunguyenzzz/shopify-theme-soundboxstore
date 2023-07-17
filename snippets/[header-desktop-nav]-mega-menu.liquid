@@ -81,7 +81,7 @@
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}">
                   {{- childlink.title }}
-                  {{ childlink.object.type -}}
+                  {{ childlink.type -}}
                 </a>
               {% endfor %}
             </div>
