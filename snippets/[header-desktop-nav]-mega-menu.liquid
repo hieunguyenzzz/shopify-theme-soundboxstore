@@ -85,9 +85,9 @@
                 </a>
                 {% if childlink.type == 'product_link' %}
                   {% assign product = childlink.object %}
-                  {% if product.options.size > 0 -%}
-                    {% for option in product.options -%}
-                      - {{ option }}
+                  {% if product.options_with_values.size > 0 -%}
+                    {% for option in product.options_with_values -%}
+                      {{ option | json }}
                     {%- endfor %}
                   {%- endif %}
                 {% endif %}
