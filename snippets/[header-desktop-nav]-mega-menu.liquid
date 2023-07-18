@@ -69,8 +69,11 @@
    }
    {%- for link in menu.links limit: limit offset: offset -%}
           {% assign idFirst = forloop.index %}
+       [data-current^="{{idFirst}}"] [data-id^="{{idFirst}}"] {
+                                        display:block
+                   }
               {%- for childlink in link.links -%}
-                   [data-current^="{{idFirst}}"] [data-id^="{{idFirst}}-{{forloop.index}}"] {
+                   [data-current^="{{idFirst}}"] [data-id^="{{idFirst}}"] {
                                         display:block
                    }
               {% endfor %}
