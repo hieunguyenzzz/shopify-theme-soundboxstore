@@ -131,11 +131,12 @@
                   href="{{ childlink.url }}"
                   data-id="{{ oneId }}-{{ forloop.index }}"
                   data-type="{{ childlink.type }}"
-                  data-object="{{ childlink.object.preview_image | json }}"
+                  data-object=""
                   {% if childlink.type == 'product_link' %}
                   {% endif %}
                 >
                   {{ childlink.title }}
+                  {{ childlink.object | json }}
                 </a>
               {% endfor %}
             </div>
