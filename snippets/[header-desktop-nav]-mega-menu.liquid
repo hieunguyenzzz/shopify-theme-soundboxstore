@@ -38,42 +38,40 @@
     assign offset = 0
   endunless
 -%}
-{%- for link in menu.links limit: limit offset: offset -%}
-  {%- liquid
-    assign has_dropdown = false
-    assign is_megamenu = false
-    if link.levels > 0
-      assign has_dropdown = true
-      if link.levels > 0
-        assign is_megamenu = true
-      endif
-    endif
-
-    assign isCollection = false
-    if show_mega_products
-      if is_megamenu and link.url contains '/collections/'
-        assign lang_code_string = request.locale.iso_code | prepend: '/' | downcase
-        assign collection_handle = link.url | remove: '/collections/' | remove: lang_code_string
-        assign collection_drop = collections[collection_handle]
-        assign isCollection = true
-      endif
-    endif
-  -%}
-
-  <li
-    class="site-nav__item site-nav__item-verticle site-nav__expanded-item{% if has_dropdown %} site-nav--has-dropdown{% endif %}{% if is_megamenu %} site-nav--is-megamenu{% endif %}"
-    {% if has_dropdown %}
-      aria-haspopup="true"
-    {% endif %}
+<li
+  class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+  aria-haspopup="true"
+>
+  <a
+    href="{{ collections['all'].url }}"
+    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown "
   >
-    <a
-      href="{{ link.url }}"
-      class="site-nav__link site-nav__link--underline{% if has_dropdown %} site-nav__link--has-dropdown{% endif %}"
+    {{ menu.title }}
+  </a>
+  {%- for link in menu.links limit: limit offset: offset -%}
+    {%- liquid
+      assign has_dropdown = false
+      assign is_megamenu = false
+      if link.levels > 0
+        assign has_dropdown = true
+        if link.levels > 0
+          assign is_megamenu = true
+        endif
+      endif
+    -%}
+
+    <li
+      class="site-nav__item-1"
+      {% if has_dropdown %}
+        aria-haspopup="true"
+      {% endif %}
     >
-      {{ link.title }}
-    </a>
-    {%- if is_megamenu -%}
-      {%- assign previous_column_type = '' -%}
+      <a
+        href="{{ link.url }}"
+        class="site-nav__link-1"
+      >
+        {{ link.title }}
+      </a>
       <div class="site-nav__dropdown megamenu text-left">
         <div class="page-width">
           <div class="site-nav__dropdown-animate megamenu__wrapper">
@@ -100,6 +98,6 @@
           </div>
         </div>
       </div>
-    {%- endif -%}
-  </li>
-{%- endfor -%}
+    </li>
+  {%- endfor -%}
+</li>
