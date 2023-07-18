@@ -69,11 +69,11 @@
    }
    {%- for link in menu.links limit: limit offset: offset -%}
           {% assign idFirst = forloop.index %}
-     [data-id={{idFirst}}*] . col-two-item-{{idFirst}}{
+     [data-id={{idFirst}}*] .col-two-item-{{idFirst}}{
                                         display:block
                    }
               {%- for childlink in link.links -%}
-                   [data-id={{idFirst}}-{{forloop.index}}] . col-two-item-{{idFirst}}{
+                   [data-id={{idFirst}}-{{forloop.index}}] .col-two-item-{{idFirst}}{
                                         display:block
                    }
               {% endfor %}
@@ -119,7 +119,6 @@
             <div
               class="col-two-item col-two-item-{{ oneId }}"
               data-id="{{ oneId }}"
-              style="display:--display-{{ oneId }}"
             >
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}" data-id="{{ oneId }}-{{ forloop.index }}">
