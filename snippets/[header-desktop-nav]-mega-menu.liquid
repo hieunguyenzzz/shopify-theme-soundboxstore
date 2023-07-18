@@ -82,7 +82,7 @@
                                         display:block
                    }
               {%- for childlink in link.links -%}
-   .site-header [data-current^="{{idFirst}}"]  .col-three [data-id^="{{idFirst}}-{{ forloop.index }}"] {
+   .site-header [data-current^="{{idFirst}}-{{ forloop.index }}"]  .col-three [data-id^="{{idFirst}}-{{ forloop.index }}"] {
                                         display:block
                    }
               {% endfor %}
