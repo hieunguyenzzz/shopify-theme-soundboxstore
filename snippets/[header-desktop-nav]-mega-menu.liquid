@@ -56,9 +56,9 @@
      position:absotute;
      left:30%
    }
-  .site-header .site-nav__link-1:hover+.col-one-children,
-  .site-header .site-nav__link-1:focus+.col-one-children,
-  .site-header .col-one-children:focus-within
+  .site-header .col-one-item:hover .col-one-children,
+  .site-header .col-one-item:focus .col-one-children,
+  .site-header .col-one-item:focus-within .col-one-children
   {
      display:block;
    }
@@ -86,7 +86,7 @@
       <div class="site-nav__dropdown-animate megamenu__wrapper cols-wraper">
         <div class="col-one">
           {%- for link in menu.links limit: limit offset: offset -%}
-            <div>
+            <div class="col-one-item">
               <a
                 href="{{ link.url }}"
                 class="site-nav__link-1"
