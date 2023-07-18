@@ -46,7 +46,7 @@
     href="{{ collections['all'].url }}"
     class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown "
   >
-    {{ menu.title }}
+    {{ tilte | default: menu.title }}
   </a>
   {%- for link in menu.links limit: limit offset: offset -%}
     <li
