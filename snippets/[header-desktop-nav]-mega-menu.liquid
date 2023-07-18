@@ -131,7 +131,15 @@
   </div>
 </li>
 <script>
-  document.querySelector(".cols-wraper").addEventListener("mouseover",(e)=>{
+  (()=>{
+    let wraper =  document.querySelector(".cols-wraper")
+     wraper.addEventListener("mouseover",(e)=>{
      console.log(e.target.dataset)
+       let currentId = e.target.dataset.id
+       if(currentId){
+             wraper.dataset.id=currentId
+       }
+
    })
+  })()
 </script>
