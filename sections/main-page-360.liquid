@@ -1,6 +1,7 @@
+{% assign mainProduct = section.settings.product %}
 {% unless mainProduct %}
   {% for product in collections.all.products %}
-    {%- if product.metafields.custom.page360.value.url contains page.url -%}
+    {%- if product.metafields.custom.page360.value.url contains page.handle -%}
       {%- assign mainProduct = product -%}
     {%- endif -%}
   {%- endfor -%}
@@ -556,7 +557,11 @@
   "name": "Page 360",
   "tag": "section",
   "settings":[
-
+    {
+      "type":"product",
+      "id":"product",
+      "label":"Product"
+    }
   ]
 }
 {% endschema %}
