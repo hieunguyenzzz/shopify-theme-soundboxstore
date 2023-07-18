@@ -107,7 +107,7 @@
           {%- for link in menu.links limit: limit offset: offset -%}
             <div class="col-two-item col-two-item-{{forloop.index }}">
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}" data-handle="{{ link.handle }}">
+                <a href="{{ childlink.url }}" data-handle="{{ childlink.handle }}">
                   {{ childlink.title }}
                 </a>
               {% endfor %}
