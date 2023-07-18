@@ -29,6 +29,22 @@
     flex-direction: column;
 
   }
+  .site-header .cols-wraper{
+    display:flex;
+    gap:1em;
+  }
+   .site-header .col-one{
+    width:30%;
+  }
+    .site-header .col-two{
+    flex:1
+  }
+  .site-header .col-three{
+    position:relative;
+    padding-bottom:100%;
+    width:40vw;
+    max-width:500px;
+  }
 </style>
 {%- liquid
   unless limit
@@ -48,10 +64,9 @@
   >
     {{ tilte | default: menu.title }}
   </a>
-  123
   <div class="site-nav__dropdown megamenu text-left">
     <div class="page-width">
-      <div class="site-nav__dropdown-animate megamenu__wrapper">
+      <div class="site-nav__dropdown-animate megamenu__wrapper cols-wraper">
         <div class="col-one">
           {%- for link in menu.links limit: limit offset: offset -%}
             <a
