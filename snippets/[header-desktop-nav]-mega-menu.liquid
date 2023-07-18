@@ -69,7 +69,7 @@
    }
    {%- for link in menu.links limit: limit offset: offset -%}
           {% assign idFirst = forloop.index %}
-     [data-id="{{idFirst}}*"] .col-two-item-{{idFirst}}{
+     [data-id="{{idFirst}}*"]{
                                         display:block
                    }
               {%- for childlink in link.links -%}
