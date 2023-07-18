@@ -49,22 +49,8 @@
     {{ menu.title }}
   </a>
   {%- for link in menu.links limit: limit offset: offset -%}
-    {%- liquid
-      assign has_dropdown = false
-      assign is_megamenu = false
-      if link.levels > 0
-        assign has_dropdown = true
-        if link.levels > 0
-          assign is_megamenu = true
-        endif
-      endif
-    -%}
-
     <li
       class="site-nav__item-1"
-      {% if has_dropdown %}
-        aria-haspopup="true"
-      {% endif %}
     >
       <a
         href="{{ link.url }}"
