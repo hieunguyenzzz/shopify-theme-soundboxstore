@@ -95,7 +95,7 @@
             <div class="col-one-item">
               <a
                 href="{{ link.url }}"
-                data-id="{{ link.id }}"
+                data-handle="{{forloop.index }}"
                 class="site-nav__link-1"
               >
                 {{ link.title }}
@@ -105,9 +105,9 @@
         </div>
         <div class="col-two">
           {%- for link in menu.links limit: limit offset: offset -%}
-            <div class="col-two-item col-two-item-{{ link.handle }}">
+            <div class="col-two-item col-two-item-{{forloop.index }}">
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}" data-id="{{ link | json }}">
+                <a href="{{ childlink.url }}" data-handle="{{ link.handle }}">
                   {{ childlink.title }}
                 </a>
               {% endfor %}
