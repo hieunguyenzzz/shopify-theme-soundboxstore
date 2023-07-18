@@ -142,21 +142,16 @@
           {%- endfor -%}
         </div>
         <div class="col-three">
-          <img
-            id="mega-img"
-            src="//soundboxstore.com/cdn/shop/files/sbs-001-Folio-Phone-Booth.png?v=1688528132&amp;width=700"
-            alt="Folio Phone Booth"
-            width="800"
-            height="800"
-            loading="lazy"
-            class="js-lazy-image"
-          >
           {%- for link in menu.links limit: limit offset: offset -%}
             {% assign idFirst = forloop.index %}
 
             {%- for childlink in link.links -%}
               {% if childlink.object.featured_image %}
-                {{ childlink.object.featured_image | image_url }}
+                {{
+                  childlink.object.featured_image
+                  | image_url: width: 900
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy'
+                }}
               {% endif %}
             {% endfor %}
           {%- endfor -%}
