@@ -65,7 +65,16 @@
   .site-header .col-two-item
   {
      display:none;
+
    }
+   {%- for link in menu.links limit: limit offset: offset -%}
+          {% assign idFirst = forloop.index %}
+              {%- for childlink in link.links -%}
+                   [data-id={{idFirst}}-{{forloop.index}}] [data-id={{idFirst}}-{{forloop.index}}]{
+                                        display:block
+                   }
+              {% endfor %}
+          {%- endfor -%}
 </style>
 {%- liquid
   unless limit
@@ -104,7 +113,11 @@
         <div class="col-two">
           {%- for link in menu.links limit: limit offset: offset -%}
             {% assign oneId = forloop.index %}
-            <div class="col-two-item col-two-item-{{ oneId }}">
+            <div
+              class="col-two-item col-two-item-{{ oneId }}"
+              data-id="{{ oneId }}"
+              style="display:--display-{{ oneId }}"
+            >
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}" data-id="{{ oneId }}-{{ forloop.index }}">
                   {{ childlink.title }}
