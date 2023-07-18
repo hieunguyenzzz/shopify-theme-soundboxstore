@@ -86,18 +86,20 @@
       <div class="site-nav__dropdown-animate megamenu__wrapper cols-wraper">
         <div class="col-one">
           {%- for link in menu.links limit: limit offset: offset -%}
-            <a
-              href="{{ link.url }}"
-              class="site-nav__link-1"
-            >
-              {{ link.title }}
-            </a>
-            <div class="col-one-children">
-              {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}">
-                  {{ childlink.title }}
-                </a>
-              {% endfor %}
+            <div>
+              <a
+                href="{{ link.url }}"
+                class="site-nav__link-1"
+              >
+                {{ link.title }}
+              </a>
+              <div class="col-one-children">
+                {%- for childlink in link.links -%}
+                  <a href="{{ childlink.url }}">
+                    {{ childlink.title }}
+                  </a>
+                {% endfor %}
+              </div>
             </div>
           {%- endfor -%}
         </div>
