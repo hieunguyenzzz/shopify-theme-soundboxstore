@@ -131,6 +131,9 @@
                   href="{{ childlink.url }}"
                   data-id="{{ oneId }}-{{ forloop.index }}"
                   data-type="{{ childlink.type }}"
+                  data-object="{{ childlink.object | json }}"
+                  {% if childlink.type == 'product_link' %}
+                  {% endif %}
                 >
                   {{ childlink.title }}
                 </a>
