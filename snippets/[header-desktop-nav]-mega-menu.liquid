@@ -64,6 +64,7 @@
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}">
                   {{ childlink.title }}
+                  {{ childlink.type }}
                 </a>
                 {% if childlink.type == 'product_link' %}
                   {% assign product = childlink.object %}
