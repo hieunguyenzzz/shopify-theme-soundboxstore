@@ -95,7 +95,7 @@
             <div class="col-one-item">
               <a
                 href="{{ link.url }}"
-                data-handle="{{ link.handle }}"
+                data-id="{{ link.id }}"
                 class="site-nav__link-1"
               >
                 {{ link.title }}
@@ -107,7 +107,7 @@
           {%- for link in menu.links limit: limit offset: offset -%}
             <div class="col-two-item col-two-item-{{ link.handle }}">
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}">
+                <a href="{{ childlink.url }}" data-id="{{ link.id }}">
                   {{ childlink.title }}
                 </a>
               {% endfor %}
