@@ -147,11 +147,13 @@
 
             {%- for childlink in link.links -%}
               {% if childlink.object.featured_image %}
-                {{
-                  childlink.object.featured_image
-                  | image_url: width: 900
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy'
-                }}
+                <div data-id="{{ idFirst }}-{{ forloop.index }}">
+                  {{
+                    childlink.object.featured_image
+                    | image_url: width: 900
+                    | image_tag: widths: '400, 600, 800', loading: 'lazy'
+                  }}
+                </div>
               {% endif %}
             {% endfor %}
           {%- endfor -%}
