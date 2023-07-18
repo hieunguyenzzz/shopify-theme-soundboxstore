@@ -52,37 +52,32 @@
   <div class="site-nav__dropdown megamenu text-left">
     <div class="page-width">
       <div class="site-nav__dropdown-animate megamenu__wrapper">
-        123
         {%- for link in menu.links limit: limit offset: offset -%}
-          <li
-            class="site-nav__item-1"
+          <a
+            href="{{ link.url }}"
+            class="site-nav__link-1"
           >
-            <a
-              href="{{ link.url }}"
-              class="site-nav__link-1"
-            >
-              {{ link.title }}
-            </a>
-            <div class="site-nav-level--one">
-              {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}">
-                  {{ childlink.title }}
-                </a>
-                {% if childlink.type == 'product_link' %}
-                  {% assign product = childlink.object %}
-                  {% if product.options_with_values.size > 0 -%}
-                    {% for option in product.options_with_values -%}
-                      {% if option.name == 'Furniture' %}
-                        {% for value in option.values -%}
-                          {{ value | json }}
-                        {%- endfor %}
-                      {%- endif %}
-                    {%- endfor %}
-                  {%- endif %}
-                {% endif %}
-              {% endfor %}
-            </div>
-          </li>
+            {{ link.title }}
+          </a>
+          <div class="site-nav-level--one">
+            {%- for childlink in link.links -%}
+              <a href="{{ childlink.url }}">
+                {{ childlink.title }}
+              </a>
+              {% if childlink.type == 'product_link' %}
+                {% assign product = childlink.object %}
+                {% if product.options_with_values.size > 0 -%}
+                  {% for option in product.options_with_values -%}
+                    {% if option.name == 'Furniture' %}
+                      {% for value in option.values -%}
+                        {{ value | json }}
+                      {%- endfor %}
+                    {%- endif %}
+                  {%- endfor %}
+                {%- endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
         {%- endfor -%}
       </div>
     </div>
