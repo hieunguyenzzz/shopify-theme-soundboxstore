@@ -69,12 +69,8 @@
    }
    {%- for link in menu.links limit: limit offset: offset -%}
           {% assign idFirst = forloop.index %}
-     [data-id^="{{idFirst}}"]{
-                                        display:block
-                   }
-
               {%- for childlink in link.links -%}
-                   [data-id^="{{idFirst}}-{{forloop.index}}"] {
+                   [data-current^="{{idFirst}}"] [data-id^="{{idFirst}}-{{forloop.index}}"] {
                                         display:block
                    }
               {% endfor %}
@@ -151,7 +147,7 @@
      console.log(e.target.dataset)
        let currentId = e.target.dataset.id
        if(currentId){
-             wraper.dataset.id=currentId
+             wraper.dataset.current=currentId
        }
 
    })
