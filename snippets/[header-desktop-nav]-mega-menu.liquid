@@ -48,19 +48,19 @@
   >
     {{ tilte | default: menu.title }}
   </a>
-  {%- for link in menu.links limit: limit offset: offset -%}
-    <li
-      class="site-nav__item-1"
-    >
-      <a
-        href="{{ link.url }}"
-        class="site-nav__link-1"
-      >
-        {{ link.title }}
-      </a>
-      <div class="site-nav__dropdown megamenu text-left">
-        <div class="page-width">
-          <div class="site-nav__dropdown-animate megamenu__wrapper">
+  <div class="site-nav__dropdown megamenu text-left">
+    <div class="page-width">
+      <div class="site-nav__dropdown-animate megamenu__wrapper">
+        {%- for link in menu.links limit: limit offset: offset -%}
+          <li
+            class="site-nav__item-1"
+          >
+            <a
+              href="{{ link.url }}"
+              class="site-nav__link-1"
+            >
+              {{ link.title }}
+            </a>
             <div class="site-nav-level--one">
               {%- for childlink in link.links -%}
                 <a href="{{ childlink.url }}">
@@ -81,9 +81,9 @@
                 {% endif %}
               {% endfor %}
             </div>
-          </div>
-        </div>
+          </li>
+        {%- endfor -%}
       </div>
-    </li>
-  {%- endfor -%}
+    </div>
+  </div>
 </li>
