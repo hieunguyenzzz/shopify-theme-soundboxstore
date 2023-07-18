@@ -131,7 +131,7 @@
                   href="{{ childlink.url }}"
                   data-id="{{ oneId }}-{{ forloop.index }}"
                   data-type="{{ childlink.type }}"
-                  data-object="{{ childlink.object.preview_image.src | json }}"
+                  data-object="{{ childlink.object.preview_image | json }}"
                   {% if childlink.type == 'product_link' %}
                   {% endif %}
                 >
