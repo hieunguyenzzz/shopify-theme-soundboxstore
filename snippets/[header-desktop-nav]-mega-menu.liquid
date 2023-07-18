@@ -108,7 +108,7 @@
             {% assign oneId = forloop.index %}
             <div class="col-two-item col-two-item-{{ oneId }}">
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}" data-handle="{{ oneId }}-{{ forloop.index }}">
+                <a href="{{ childlink.url }}" data-id="{{ oneId }}-{{ forloop.index }}">
                   {{ childlink.title }}
                 </a>
               {% endfor %}
@@ -132,6 +132,6 @@
 </li>
 <script>
   document.querySelector(".cols-wraper").addEventListener("mouseover",(e)=>{
-     console.log(e.target.dataset?.handle)
+     console.log(e.target.dataset)
    })
 </script>
