@@ -95,7 +95,7 @@
             <div class="col-one-item">
               <a
                 href="{{ link.url }}"
-                data-handle="{{forloop.index }}"
+                data-id="{{ forloop.index }}"
                 class="site-nav__link-1"
               >
                 {{ link.title }}
@@ -105,9 +105,10 @@
         </div>
         <div class="col-two">
           {%- for link in menu.links limit: limit offset: offset -%}
-            <div class="col-two-item col-two-item-{{forloop.index }}">
+            {% assign oneId = forloop.index %}
+            <div class="col-two-item col-two-item-{{ oneId }}">
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}" data-handle="{{ childlink.handle }}">
+                <a href="{{ childlink.url }}" data-handle="{{ oneId }}-{{ forloop.index }}">
                   {{ childlink.title }}
                 </a>
               {% endfor %}
@@ -129,3 +130,8 @@
     </div>
   </div>
 </li>
+<script>
+  document.querySelector(".cols-wraper").addEventListener("mouseover",(e)=>{
+     console.log(e.target.dataset)
+   })
+</script>
