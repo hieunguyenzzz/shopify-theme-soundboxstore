@@ -78,11 +78,13 @@
    }
    {%- for link in menu.links limit: limit offset: offset -%}
           {% assign idFirst = forloop.index %}
-       .site-header [data-current^="{{idFirst}}"] [data-id^="{{idFirst}}"] {
+       .site-header [data-current^="{{idFirst}}"]  .col-two [data-id^="{{idFirst}}"] {
                                         display:block
                    }
               {%- for childlink in link.links -%}
-
+   .site-header [data-current^="{{idFirst}}"]  .col-three [data-id^="{{idFirst}}-{{ forloop.index }}"] {
+                                        display:block
+                   }
               {% endfor %}
           {%- endfor -%}
 </style>
