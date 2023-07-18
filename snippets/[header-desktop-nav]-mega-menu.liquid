@@ -127,7 +127,11 @@
               data-id="{{ oneId }}"
             >
               {%- for childlink in link.links -%}
-                <a href="{{ childlink.url }}" data-id="{{ oneId }}-{{ forloop.index }}">
+                <a
+                  href="{{ childlink.url }}"
+                  data-id="{{ oneId }}-{{ forloop.index }}"
+                  data-type="{{ childlink.type }}"
+                >
                   {{ childlink.title }}
                 </a>
               {% endfor %}
