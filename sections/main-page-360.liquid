@@ -1,6 +1,6 @@
 {% unless mainProduct %}
   {% for product in collections.all.products %}
-    {%- if product.metafields.custom.page360.value.url contains page.handle -%}
+    {%- if product.metafields.custom.page360.value.url contains page.url -%}
       {%- assign mainProduct = product -%}
     {%- endif -%}
   {%- endfor -%}
