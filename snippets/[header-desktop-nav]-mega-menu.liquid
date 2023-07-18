@@ -32,6 +32,7 @@
   .site-header .cols-wraper{
     display:flex;
     gap:1em;
+        position:relative;
   }
    .site-header .col-one{
     width:30%;
@@ -50,6 +51,17 @@
         width:100%;
          padding-bottom:100%;
     }
+   .site-header .col-one .col-one-children{
+     display:none;
+     position:absotute;
+     left:30%
+   }
+  .site-header .col-one:hover .col-one-children,
+  .site-header .col-one:focus .col-one-children,
+  .site-header .col-one:focus-within .col-one-children
+  {
+     display:block;
+   }
 </style>
 {%- liquid
   unless limit
