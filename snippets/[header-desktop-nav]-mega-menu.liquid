@@ -41,10 +41,15 @@
   }
   .site-header .col-three{
     position:relative;
-    padding-bottom:100%;
+
     width:40vw;
     max-width:500px;
   }
+    .site-header .col-three:after{
+      content:'',
+        width:100%;
+         padding-bottom:100%;
+    }
 </style>
 {%- liquid
   unless limit
