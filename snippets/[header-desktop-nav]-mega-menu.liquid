@@ -109,7 +109,17 @@
             </div>
           {%- endfor -%}
         </div>
-        <div class="col-two"></div>
+        <div class="col-two">
+          {%- for link in menu.links limit: limit offset: offset -%}
+            <div class="col-two-item col-two-item-{{ link.handle }}">
+              {%- for childlink in link.links -%}
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              {% endfor %}
+            </div>
+          {%- endfor -%}
+        </div>
         <div class="col-three">
           <img
             src="//soundboxstore.com/cdn/shop/files/sbs-001-Folio-Phone-Booth.png?v=1688528132&amp;width=700"
