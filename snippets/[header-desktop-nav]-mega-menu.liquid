@@ -151,6 +151,13 @@
             loading="lazy"
             class="js-lazy-image"
           >
+          {%- for link in menu.links limit: limit offset: offset -%}
+            {% assign idFirst = forloop.index %}
+
+            {%- for childlink in link.links -%}
+              {{ childlink.object.featured_image | image_url }}
+            {% endfor %}
+          {%- endfor -%}
         </div>
       </div>
     </div>
