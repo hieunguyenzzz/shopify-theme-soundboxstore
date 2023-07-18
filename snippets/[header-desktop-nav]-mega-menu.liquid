@@ -131,7 +131,7 @@
                   href="{{ childlink.url }}"
                   data-id="{{ oneId }}-{{ forloop.index }}"
                   data-type="{{ childlink.type }}"
-                  data-object="{{ childlink.object.featured_image  }}"
+                  data-img="{{ childlink.object.featured_image  }}"
                   {% if childlink.type == 'product_link' %}
                   {% endif %}
                 >
@@ -143,6 +143,7 @@
         </div>
         <div class="col-three">
           <img
+            id="mega-img"
             src="//soundboxstore.com/cdn/shop/files/sbs-001-Folio-Phone-Booth.png?v=1688528132&amp;width=700"
             alt="Folio Phone Booth"
             srcset="//soundboxstore.com/cdn/shop/files/sbs-001-Folio-Phone-Booth.png?v=1688528132&amp;width=400 400w, //soundboxstore.com/cdn/shop/files/sbs-001-Folio-Phone-Booth.png?v=1688528132&amp;width=600 600w"
@@ -162,8 +163,12 @@
      wraper.addEventListener("mouseover",(e)=>{
      console.log(e.target.dataset)
        let currentId = e.target.dataset.id
+       let img = e.target.dataset.img
        if(currentId){
              wraper.dataset.current=currentId
+       }
+        if(img){
+            document.querySelector("#mega-img").src=img
        }
 
    })
