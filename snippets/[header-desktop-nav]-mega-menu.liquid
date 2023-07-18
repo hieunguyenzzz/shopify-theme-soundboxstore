@@ -155,7 +155,9 @@
             {% assign idFirst = forloop.index %}
 
             {%- for childlink in link.links -%}
-              {{ childlink.object.featured_image | image_url }}
+              {% if childlink.object.featured_image %}
+                {{ childlink.object.featured_image | image_url }}
+              {% endif %}
             {% endfor %}
           {%- endfor -%}
         </div>
