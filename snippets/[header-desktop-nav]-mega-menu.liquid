@@ -40,14 +40,14 @@
             display:flex;
                 position:relative;      gap:2em
           }
-          .site-header .cols-wraper a{
+          .site-header .cols-wraper .col-item-link{
          display: inline-block;
             line-height: 1;
             padding: 0.2em 0;
             position:relative;
     margin-bottom:0.4em;
         }
-      .site-header .cols-wraper a:after {
+      .site-header .cols-wraper .col-item-link:after {
         content: "";
         position: absolute;
         right: 0;
@@ -57,7 +57,7 @@
         border-bottom: 0.12em solid currentColor;
         transition: width 0.3s, color 0.3s;
     }
-      .site-header .cols-wraper a:hover:after{
+      .site-header .cols-wraper .col-item-link:hover:after{
   color: currentColor;
       width: 100%;
       left: 0;
@@ -177,7 +177,7 @@
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
-                class="site-nav__link-1 col-{{ block.settings.id  }}"
+                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }}"
               >
                 {{ block.settings.title }}
               </a>
@@ -192,7 +192,7 @@
               data-id="{{ oneId }}"
             >
       {%-if block.settings.link -%}
-             <a
+             <a class="col-item-link"
                   href="{{  block.settings.link }}"
                   data-id="{{ block.settings.id }}"
                   data-type="{{ block.settings.link.type }}"
