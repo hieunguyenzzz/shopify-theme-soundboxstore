@@ -194,21 +194,7 @@
           {{ twoCol }}
         </div>
         <div class="col-three">
-          {%- for link in menu.links limit: limit offset: offset -%}
-            {% assign idFirst = forloop.index %}
-
-            {%- for childlink in link.links -%}
-              {% if childlink.object.featured_image %}
-                <div data-id="{{ idFirst }}-{{ forloop.index }}">
-                  {{
-                    childlink.object.featured_image
-                    | image_url: width: 900
-                    | image_tag: widths: '400, 600, 800', loading: 'lazy'
-                  }}
-                </div>
-              {% endif %}
-            {% endfor %}
-          {%- endfor -%}
+          {{ threeCol }}
         </div>
       </div>
     </div>
