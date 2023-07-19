@@ -100,9 +100,9 @@
   {% assign title = 'Our Products' %}
 {% endunless %}
 {%- for block in blocks -%}
-  {% assign isLvlOne = false %}
-  {% assign oneCol = '' %}
   {% assign ids = block.settings.id | split: '-' %}
+  {% assign isLvlOne = false %}
+  {% assign oneCol = ids.size %}
   {% if ids.size == 1 %}
     {% assign isLvlOne = true %}
   {% endif %}
