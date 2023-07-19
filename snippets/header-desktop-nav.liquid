@@ -259,8 +259,6 @@
         </div>
       </li>
     {% endif %}
-    {% if block.type == 'mega-menu' %}
-      {% render '[header-desktop-nav]-mega-menu', menu: block.settings.menu, title: block.settings.title %}
-    {% endif %}
   {%- endfor -%}
+  {% render '[header-desktop-nav]-mega-menu', blocks: section.blocks, title: main_menu.title %}
 </ul>
