@@ -72,7 +72,7 @@
          left:0;top:0;
          width:100%;height:100%
         }
-       .site-header .col-three div{
+       .site-header .col-three a{
            visibility: hidden;
   opacity: 0;
   transition:visibility 0s ease-in-out 1000ms, opacity 1000ms
@@ -132,13 +132,13 @@
   {%- if img -%}
     {%- capture threeCol -%}
               {{ threeCol }}
-                <div  data-id="{{ block.settings.id }}">
+                <a href="{{ block.settings.link  }}" data-id="{{ block.settings.id }}">
                   {{
                    img
                     | image_url: width: 900
                     | image_tag: widths: '400, 600, 800', loading: 'lazy' 
                   }}
-                </div>
+                </a>
               {%- endcapture -%}
   {%- endif -%}
   {%- if ids.size == 1 -%}
