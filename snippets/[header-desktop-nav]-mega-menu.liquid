@@ -125,13 +125,13 @@
     {% assign oneId = ids.first %}
     {% capture twoCol %}
               {{ twoCol }}
-              {% if ids[2] == '0' %}
+              {% unless block.settings.title %}
                   <div
               class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
             >
             </div>
-                {% endif %}
+                  {% endunless %}
                <div
               class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
