@@ -82,6 +82,11 @@
        display:none;
 
      }
+  .col-two-item-header{
+    font-size:0.9em;
+    opacity:0.6;
+    font-weight:600;
+  }
      {%- for block in blocks -%}
          {% assign ids = block.settings.id | split: '-' %}
     {% if ids.size == 1 %}
