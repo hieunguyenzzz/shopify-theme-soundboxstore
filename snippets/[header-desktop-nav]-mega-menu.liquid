@@ -76,11 +76,14 @@
      display:none;
 
    }
-   {%- for link in menu.links limit: limit offset: offset -%}
-          {% assign idFirst = forloop.index %}
-       .site-header [data-current^="{{idFirst}}"]  .col-two [data-id^="{{idFirst}}"] {
+   {%- for block in blocks -%}
+       {% assign ids = block.settings.id | split: '-' %}
+  {% if ids.size == 1 %}
+   .site-header [data-current^="{{block.settings.id}}"]  .col-two [data-id^="{{block.settings.id}}"] {
                                         display:block
                    }
+  {% endif %}
+
               {%- for childlink in link.links -%}
    .site-header [data-current^="{{idFirst}}-{{ forloop.index }}"]  .col-three [data-id^="{{idFirst}}-{{ forloop.index }}"] {
                                         display:block
