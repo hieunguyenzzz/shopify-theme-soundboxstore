@@ -67,7 +67,8 @@
        width:100%;height:100%
       }
      .site-header .col-three div{
-          display:none
+         visibility: hidden;
+
       }
      .site-header .col-one .col-one-children{
        display:none;
@@ -91,7 +92,8 @@
          {%-assign img = block.settings.image -%}
        {%-if img -%}
     .site-header [data-img="{{ block.settings.id }}"]  .col-three [data-id="{{ block.settings.id }}"] {
-                                          display:block
+
+          visibility: visible;
                      }
   {%-endif -%}
          {%-assign ids = block.settings.id | split: '-' -%}
