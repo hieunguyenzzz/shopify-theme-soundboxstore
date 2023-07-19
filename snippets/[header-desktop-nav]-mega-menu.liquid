@@ -154,7 +154,6 @@
                   href="{{  block.settings.link }}"
                   data-id="{{ block.settings.id }}"
                   data-type="{{ block.settings.link.type }}"
-                  data-img="{{  block.settings.image.src  }}"
                 >
                   {{ block.settings.title }}
                 </a>
@@ -209,11 +208,8 @@
        let img = e.target.dataset.img
        if(currentId){
              wraper.dataset.current=currentId
+             wraper.dataset.img=currentId
        }
-        if(img){
-          console.log({img})
-       }
-
    })
   })()
 </script>
