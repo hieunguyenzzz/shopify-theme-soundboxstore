@@ -107,7 +107,7 @@
 
   {% if isLvlOne %}
     {% capture oneCol %}
-              {{ oneCol }}
+              {{ oneCol }} {{ ids.size }}
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
