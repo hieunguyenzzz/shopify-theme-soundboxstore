@@ -101,14 +101,10 @@
 {% endunless %}
 {%- for block in blocks -%}
   {% assign ids = block.settings.id | split: '-' %}
-  {% assign isLvlOne = false %}
-  {% if ids.size == 1 %}
-    {% assign isLvlOne = true %}
-  {% endif %}
 
-  {% if isLvlOne %}
+  {% if ids.size == 1 %}
     {% capture oneCol %}
-              {{ oneCol }} {{ ids.size }}
+              {{ oneCol }}
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
@@ -116,6 +112,25 @@
               >
                 {{ block.settings.title }}
               </a>
+              {% endcapture %}
+  {% endif %}
+  {% if ids.size == 2 %}
+    {% assign oneId = ids.first %}
+    {% capture twoCol %}
+              {{ twoCol }}
+               <div
+              class="col-two-item col-two-item-{{ oneId }}"
+              data-id="{{ oneId }}"
+            >
+             <a
+                  href="{{  block.settings.link }}"
+                  data-id="{{ block.settings.id }}"
+                  data-type="{{ block.settings.link.type }}"
+                  data-img="{{  block.settings.link.image  }}"
+                >
+                  {{ block.settings.title }}
+                </a>
+            </div>
               {% endcapture %}
   {% endif %}
 {%- endfor -%}
@@ -136,26 +151,7 @@
           {{ oneCol }}
         </div>
         <div class="col-two">
-          {%- for link in menu.links limit: limit offset: offset -%}
-            {% assign oneId = forloop.index %}
-            <div
-              class="col-two-item col-two-item-{{ oneId }}"
-              data-id="{{ oneId }}"
-            >
-              {%- for childlink in link.links -%}
-                <a
-                  href="{{ childlink.url }}"
-                  data-id="{{ oneId }}-{{ forloop.index }}"
-                  data-type="{{ childlink.type }}"
-                  data-img="{{ childlink.object.featured_image  }}"
-                  {% if childlink.type == 'product_link' %}
-                  {% endif %}
-                >
-                  {{ childlink.title }}
-                </a>
-              {% endfor %}
-            </div>
-          {%- endfor -%}
+          {{ twoCol }}
         </div>
         <div class="col-three">
           {%- for link in menu.links limit: limit offset: offset -%}
