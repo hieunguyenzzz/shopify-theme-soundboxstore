@@ -115,7 +115,7 @@
 {% endunless %}
 {%- for block in blocks -%}
   {% assign ids = block.settings.id | split: '-' %}
-
+  {% assign img = block.settings.image %}
   {% if ids.size == 1 %}
     {% capture oneCol %}
               {{ oneCol }}
@@ -142,7 +142,7 @@
                   href="{{  block.settings.link }}"
                   data-id="{{ block.settings.id }}"
                   data-type="{{ block.settings.link.type }}"
-                  data-img="{{  block.settings.link.image  }}"
+                  data-img="{{  block.settings.image  }}"
                 >
                   {{ block.settings.title }}
                 </a>
