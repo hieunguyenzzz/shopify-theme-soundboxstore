@@ -46,6 +46,9 @@
       .site-header .col-two{
       flex:1;    font-size: 0.9em;
     }
+  .col-two-item-space{
+    margin-bottom:1em
+  }
     .site-header .col-three{
       position:relative;
 
@@ -126,7 +129,7 @@
               {{ twoCol }}
               {% unless block.settings.title %}
                   <div
-              class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
+              class="col-two-item col-two-item-space col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
             >
             </div>
