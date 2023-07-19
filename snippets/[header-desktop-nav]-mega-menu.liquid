@@ -111,7 +111,7 @@
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
-                class="site-nav__link-1"
+                class="site-nav__link-1 col-{{ block.settings.id  }}"
               >
                 {{ block.settings.title }}
               </a>
@@ -122,7 +122,7 @@
     {% capture twoCol %}
               {{ twoCol }}
                <div
-              class="col-two-item col-two-item-{{ oneId }}"
+              class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
             >
              <a
