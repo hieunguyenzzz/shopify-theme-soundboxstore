@@ -75,7 +75,7 @@
        .site-header .col-three div{
            visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms;
+  transition:visibility 0s ease-in-out 1000ms, opacity 1000ms
         }
        .site-header .col-one .col-one-children{
          display:none;
@@ -101,7 +101,7 @@
       .site-header [data-img="{{ block.settings.id }}"]  .col-three [data-id="{{ block.settings.id }}"] {
 
             visibility: visible; opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+  transition: visibility 0s ease-in-out 0s, opacity 1000ms
                        }
     {%-endif -%}
            {%-assign ids = block.settings.id | split: '-' -%}
