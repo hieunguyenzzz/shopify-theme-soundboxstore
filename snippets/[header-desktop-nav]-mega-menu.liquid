@@ -96,6 +96,9 @@
     assign offset = 0
   endunless
 -%}
+{% unless title %}
+  {% assign title = 'Our Products' %}
+{% endunless %}
 <li
   class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
   aria-haspopup="true"
