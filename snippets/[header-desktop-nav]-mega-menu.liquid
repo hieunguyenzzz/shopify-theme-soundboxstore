@@ -99,6 +99,25 @@
 {% unless title %}
   {% assign title = 'Our Products' %}
 {% endunless %}
+{%- for block in blocks -%}
+  {% assign ids = block.settings.id | split: '-' %}
+  {% if ids.size == 1 %}
+    {% assign isLvlOne = true %}
+  {% endif %}
+
+  {% if isLvlOne %}
+    {% capture oneCol %}
+              {{ isLvlOne }}
+               <a
+                href="{{ block.settings.link }}"
+                data-id="{{block.settings.id }}"
+                class="site-nav__link-1"
+              >
+                {{ block.settings.title }}
+              </a>
+              {% endcapture %}
+  {% endif %}
+{%- endfor -%}
 <li
   class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
   aria-haspopup="true"
@@ -113,17 +132,7 @@
     <div class="page-width">
       <div class="site-nav__dropdown-animate megamenu__wrapper cols-wraper" data-current="1">
         <div class="col-one">
-          {%- for link in menu.links limit: limit offset: offset -%}
-            <div class="col-one-item">
-              <a
-                href="{{ link.url }}"
-                data-id="{{ forloop.index }}"
-                class="site-nav__link-1"
-              >
-                {{ link.title }}
-              </a>
-            </div>
-          {%- endfor -%}
+          {{ oneCol }}
         </div>
         <div class="col-two">
           {%- for link in menu.links limit: limit offset: offset -%}
