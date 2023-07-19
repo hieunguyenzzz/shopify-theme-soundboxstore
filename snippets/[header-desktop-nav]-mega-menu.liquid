@@ -96,7 +96,7 @@
   {%-endif -%}
          {%-assign ids = block.settings.id | split: '-' -%}
     {%-if ids.size == 1 -%}
-     .site-header [data-current="{{block.settings.id}}"]  .col-two [data-id="{{block.settings.id}}"] {
+     .site-header [data-current^="{{block.settings.id}}"]  .col-two [data-id^="{{block.settings.id}}"] {
                                           display:block
                      }
     {%-endif -%}
