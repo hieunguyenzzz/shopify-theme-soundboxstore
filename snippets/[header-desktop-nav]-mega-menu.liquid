@@ -102,7 +102,6 @@
 {%- for block in blocks -%}
   {% assign ids = block.settings.id | split: '-' %}
   {% assign isLvlOne = false %}
-  {% assign oneCol = block.settings.id %}
   {% if ids.size == 1 %}
     {% assign isLvlOne = true %}
   {% endif %}
