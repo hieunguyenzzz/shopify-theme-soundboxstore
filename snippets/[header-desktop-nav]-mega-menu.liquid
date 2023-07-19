@@ -135,6 +135,7 @@
               class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
             >
+      {% if block.settings.link %}
              <a
                   href="{{  block.settings.link }}"
                   data-id="{{ block.settings.id }}"
@@ -143,6 +144,13 @@
                 >
                   {{ block.settings.title }}
                 </a>
+                 {% else %}
+        <div class="col-two-item-header"
+                 
+                >
+                  {{ block.settings.title }}
+                </div>
+        {% endif %}
             </div>
               {% endcapture %}
   {% endif %}
