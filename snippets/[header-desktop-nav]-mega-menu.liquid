@@ -74,7 +74,8 @@
         }
        .site-header .col-three div{
            visibility: hidden;
-
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
         }
        .site-header .col-one .col-one-children{
          display:none;
@@ -99,7 +100,8 @@
          {%-if img -%}
       .site-header [data-img="{{ block.settings.id }}"]  .col-three [data-id="{{ block.settings.id }}"] {
 
-            visibility: visible;
+            visibility: visible; opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
                        }
     {%-endif -%}
            {%-assign ids = block.settings.id | split: '-' -%}
@@ -111,24 +113,6 @@
 
 
               {%- endfor -%}
-
-    .img-fade {
-      width:200px;
-      height: 200px;
-      background: red;
-      -webkit-animation: fadeinout 1s linear forwards;
-      animation: fadeinout 1s linear forwards;
-  }
-
-  @-webkit-keyframes fadeinout {
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes fadeinout {
-    0%,100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
 </style>
 {%- liquid
   unless limit
@@ -148,11 +132,11 @@
   {%- if img -%}
     {%- capture threeCol -%}
               {{ threeCol }}
-                <div class="img-fade" data-id="{{ block.settings.id }}">
+                <div  data-id="{{ block.settings.id }}">
                   {{
                    img
                     | image_url: width: 900
-                    | image_tag: widths: '400, 600, 800', loading: 'lazy' ,class:'img-fade'
+                    | image_tag: widths: '400, 600, 800', loading: 'lazy' 
                   }}
                 </div>
               {%- endcapture -%}
