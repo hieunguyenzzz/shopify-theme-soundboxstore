@@ -125,6 +125,21 @@
     {% assign oneId = ids.first %}
     {% capture twoCol %}
               {{ twoCol }}
+              {% if ids[2] == '0' %}
+                  <div
+              class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
+              data-id="{{ oneId }}"
+            >
+             <a
+                  href="{{  block.settings.link }}"
+                  data-id="{{ block.settings.id }}"
+                  data-type="{{ block.settings.link.type }}"
+                  data-img="{{  block.settings.link.image  }}"
+                >
+                  {{ block.settings.title }}
+                </a>
+            </div>
+                {% endif %}
                <div
               class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
               data-id="{{ oneId }}"
