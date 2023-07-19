@@ -148,11 +148,11 @@
   {%- if img -%}
     {%- capture threeCol -%}
               {{ threeCol }}
-                <div data-id="{{ block.settings.id }}">
+                <div class="img-fade" data-id="{{ block.settings.id }}">
                   {{
                    img
                     | image_url: width: 900
-                    | image_tag: widths: '400, 600, 800', loading: 'lazy' ,class:'img-fad'
+                    | image_tag: widths: '400, 600, 800', loading: 'lazy' ,class:'img-fade'
                   }}
                 </div>
               {%- endcapture -%}
