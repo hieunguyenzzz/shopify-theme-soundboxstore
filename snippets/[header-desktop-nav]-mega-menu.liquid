@@ -142,9 +142,7 @@
                   {{ block.settings.title }}
                 </a>
                  {% else %}
-        <div class="col-two-item-header"
-                 
-                >
+        <div class="col-two-item-header">
                   {{ block.settings.title }}
                 </div>
         {% endif %}
@@ -199,20 +197,3 @@
     </div>
   </div>
 </li>
-<script>
-  (()=>{
-    let wraper =  document.querySelector(".cols-wraper")
-     wraper.addEventListener("mouseover",(e)=>{
-     console.log(e.target.dataset)
-       let currentId = e.target.dataset.id
-       let img = e.target.dataset.img
-       if(currentId){
-             wraper.dataset.current=currentId
-       }
-        if(img){
-          console.log({img})
-       }
-
-   })
-  })()
-</script>
