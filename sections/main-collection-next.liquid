@@ -18,7 +18,7 @@
           {%- for product in collection.products -%}
             {% assign image = product.featured_image %}
             {% assign title = product.title %}
-            {% assign content = product.description | slice: 0, 100 %}
+            {% assign content = product.description | slice: 0, 150 | append: '...' %}
             {% assign url = product.url %}
             <div class="collection-template-grid-item">
               <a class="image" href="{{ url }}">
