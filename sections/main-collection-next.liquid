@@ -1,18 +1,24 @@
 <style>
-  .main-collection-next .collection-template-grid{
-    display:grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1em;
-  }
-  .collection-template-grid-item{
-    display:flex;
-    gap:1em;
+    .main-collection-next .collection-template-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1em;
+    }
+    .collection-template-grid-item{
+      display:flex;
+      gap:1em;
 
+    }
+    .collection-template-grid-item .image{
+      width:50%;
+      flex-shrink:0;
+    }
+     .collection-template-grid-item .image img{
+          max-width: 100%;
+      object-fit: contain;
+      height: auto;
   }
-  .collection-template-grid-item .image{
-    widht:50%;
-    flex-shrink:0;
-  }
+    }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div
