@@ -334,7 +334,7 @@
                 {{ 'products.product.sold_out' | t }}
               </div>
             {%- endunless -%}
-            {%- if on_sale and product.available -%}
+            {%- if showPrice and on_sale and product.available -%}
               <div class="product-tag product-tag-sale">
                 {{ 'products.general.sale' | t }}
               </div>
