@@ -1,193 +1,188 @@
 <style>
-.product-grid-{{ section.id }}{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
-  justify-content: center;
-  gap: min(3vw,2em) min(5vw,4em)
-}
-.product-grid .product-grid-item{
-  text-align: center;
-}
-.product-grid .product-grid-item h3{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  margin-top:0.5em;
-  align-items:center;
-}
-  .product-grid .product-grid-item .btn{display: inline-flex;max-width:unset;
-    align-items: center;    white-space: nowrap;padding-left:1.4em;padding-right:1.4em;
-    gap: 1em;}
-  .product-grid .product-grid-item .btn img{
-    width:30px
+  .product-grid-{{ section.id }}{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 350px);
+    justify-content: center;
+    gap: min(3vw,2em) min(5vw,4em)
   }
-  .product-image-wrap{
-    display: flex ;
-    flex-direction: column ;
-    align-items: center ;
+  .product-grid .product-grid-item{
+    text-align: center;
   }
-  .product-image-wrap .btn img{
-    height: 16px;
+  .product-grid .product-grid-item h3{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-top:0.5em;
+    align-items:center;
+  }
+    .product-grid .product-grid-item .btn{display: inline-flex;max-width:unset;
+      align-items: center;    white-space: nowrap;padding-left:1.4em;padding-right:1.4em;
+      gap: 1em;}
+    .product-grid .product-grid-item .btn img{
+      width:30px
+    }
+    .product-image-wrap{
+      display: flex ;
+      flex-direction: column ;
+      align-items: center ;
+    }
+    .product-image-wrap .btn img{
+      height: 16px;
 
-  }
-  .product-image-wrap .btn{
-    display: flex; gap: 0.4em;align-items: baseline;
-    text-transform: capitalize;
-  }
+    }
+    .product-image-wrap .btn{
+      display: flex; gap: 0.4em;align-items: baseline;
+      text-transform: capitalize;
+    }
 </style>
 <div class="product-grid-{{ section.id }}">
-{% for block in section.blocks %}
+  {% for block in section.blocks %}
     <div class="product-grid-item">
-      {%- assign product  = block.settings.product -%}
+      {%- assign product = block.settings.product -%}
       {%- liquid
-      assign fixed_aspect_ratio = false
-      unless settings.product_grid_image_size == 'natural'
-        assign fixed_aspect_ratio = true
-      endunless
+        assign fixed_aspect_ratio = false
+        unless settings.product_grid_image_size == 'natural'
+          assign fixed_aspect_ratio = true
+        endunless
 
-      assign preview_image = product.featured_media.preview_image
-      assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
-    -%}
-    <div class="product-image-wrap">
-      <a
-        href="#"
-        class="grid-item__link"
-      >
-        <div class="grid-product__image-wrap">
-          {%- if fixed_aspect_ratio -%}
-            <div
-              class="grid__image-ratio grid__image-ratio--square grid__image-ratio_hide"
-              data-count=""
-              {{ product.images.size }}
-            >
-              <img
-                class="lazyload"
-                data-src="{{ img_url }}"
-                data-widths="[160, 200, 280, 360, 540, 720, 900]"
-                data-aspectratio="1.0"
-                data-sizes="auto"
-                alt="{{ preview_image.alt | escape }}"
+        assign preview_image = product.featured_media.preview_image
+        assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
+      -%}
+      <div class="product-image-wrap">
+        <a
+          href="#"
+          class="grid-item__link"
+        >
+          <div class="grid-product__image-wrap">
+            {%- if fixed_aspect_ratio -%}
+              <div
+                class="grid__image-ratio grid__image-ratio--square grid__image-ratio_hide"
+                data-count=""
+                {{ product.images.size }}
               >
-              <noscript>
-                <img
-                  class="grid-product__image lazyloaded"
-                  src="{{ preview_image | img_url: '400x' }}"
-                  alt="{{ preview_image.alt | escape }}"
-                >
-              </noscript>
-            </div>
-          {%- else -%}
-            {%- liquid
-              assign ratio = 1
-              if preview_image != blank
-                assign ratio = preview_image.aspect_ratio
-              endif
-            -%}
-            <div style="height: 0; padding-bottom: {{ 100 | divided_by: ratio }}%;">
-              <img
-                class="grid-product__image lazyload"
-                data-src="{{ img_url }}"
-                data-widths="[360, 540, 720, 900, 1080]"
-                data-aspectratio="{{ preview_image.aspect_ratio }}"
-                data-sizes="auto"
-                alt="{{ preview_image.alt | escape }}"
-              >
-              <noscript>
-                <img
-                  class="grid-product__image lazyloaded"
-                  src="{{ preview_image | img_url: '400x' }}"
-                  alt="{{ preview_image.alt | escape }}"
-                >
-              </noscript>
-            </div>
-          {%- endif -%}
-
-          {%- if product.media.size > 1 -%}
-            {% if product.metafields.my_fields.product_features_images != blank %}
-              {%- assign second_image = product.metafields.my_fields.product_features_images -%}
-              <div class="grid-product__secondary-image small--hide">
-                {%- assign img_url = second_image -%}
                 <img
                   class="lazyload"
                   data-src="{{ img_url }}"
-                  data-widths="[360, 540, 720, 1000]"
-                  data-aspectratio="{{ second_image.aspect_ratio }}"
+                  data-widths="[160, 200, 280, 360, 540, 720, 900]"
+                  data-aspectratio="1.0"
                   data-sizes="auto"
-                  alt="{{ second_image.alt }}"
+                  alt="{{ preview_image.alt | escape }}"
                 >
+                <noscript>
+                  <img
+                    class="grid-product__image lazyloaded"
+                    src="{{ preview_image | img_url: '400x' }}"
+                    alt="{{ preview_image.alt | escape }}"
+                  >
+                </noscript>
               </div>
-            {% else %}
-              {%- for media in product.media offset: 1 limit: 1 -%}
-                {%- assign second_image = media.preview_image -%}
-              {%- endfor -%}
-              <div class="grid-product__secondary-image small--hide">
-                {%- assign img_url = second_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {%- else -%}
+              {%- liquid
+                assign ratio = 1
+                if preview_image != blank
+                  assign ratio = preview_image.aspect_ratio
+                endif
+              -%}
+              <div style="height: 0; padding-bottom: {{ 100 | divided_by: ratio }}%;">
                 <img
-                  class="lazyload"
+                  class="grid-product__image lazyload"
                   data-src="{{ img_url }}"
-                  data-widths="[360, 540, 720, 1000]"
-                  data-aspectratio="{{ second_image.aspect_ratio }}"
+                  data-widths="[360, 540, 720, 900, 1080]"
+                  data-aspectratio="{{ preview_image.aspect_ratio }}"
                   data-sizes="auto"
-                  alt="{{ second_image.alt }}"
+                  alt="{{ preview_image.alt | escape }}"
                 >
+                <noscript>
+                  <img
+                    class="grid-product__image lazyloaded"
+                    src="{{ preview_image | img_url: '400x' }}"
+                    alt="{{ preview_image.alt | escape }}"
+                  >
+                </noscript>
               </div>
-            {% endif %}
-          {%- endif -%}
-        </div>
-      </a>
-      <h3>{{ product.title }}</h3>
-          {% assign url = "/pages/" | append: product.handle %}
-      <a
+            {%- endif -%}
+
+            {%- if product.media.size > 1 -%}
+              {% if product.metafields.my_fields.product_features_images != blank %}
+                {%- assign second_image = product.metafields.my_fields.product_features_images -%}
+                <div class="grid-product__secondary-image small--hide">
+                  {%- assign img_url = second_image -%}
+                  <img
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540, 720, 1000]"
+                    data-aspectratio="{{ second_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ second_image.alt }}"
+                  >
+                </div>
+              {% else %}
+                {%- for media in product.media offset: 1 limit: 1 -%}
+                  {%- assign second_image = media.preview_image -%}
+                {%- endfor -%}
+                <div class="grid-product__secondary-image small--hide">
+                  {%- assign img_url = second_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540, 720, 1000]"
+                    data-aspectratio="{{ second_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ second_image.alt }}"
+                  >
+                </div>
+              {% endif %}
+            {%- endif -%}
+          </div>
+        </a>
+        <h3>{{ product.title }}</h3>
+        {% assign url = '/pages/' | append: product.handle %}
+        <a
           type="button"
           target="_blank"
           href="{{block.settings.button_url |default:url}}"
           class="btn btn--secondary left_button"
         >
           {{ block.settings.button_text }}
-            <img class=""src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
+          <img class="" src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487">
         </a>
+      </div>
     </div>
-    </div>
-{% endfor %}
+  {% endfor %}
 </div>
 {% schema %}
-  {
-    "name": "Product Grid",
-    "settings": [],
-    "blocks":[
-      {
-       "name": "Product",
-       "type": "product",
-       "settings": [
-         {
-           "type": "product",
-           "id": "product",
-           "label": "Product"
-         },
-         {
-           "type": "text",
-           "id": "button_text",
-           "label": "Button text",
-           "default":"Step Inside"
-         },
-         {
-           "type": "url",
-           "id": "button_url",
-           "label": "360 url"
-         }
-       ]
-     }
-    ],
-    "presets": [
-      {
-      "name": "Products Grid"
-      }
-    ]
-  }
+{
+  "name": "Product Grid",
+  "settings": [],
+  "blocks":[
+    {
+     "name": "Product",
+     "type": "product",
+     "settings": [
+       {
+         "type": "product",
+         "id": "product",
+         "label": "Product"
+       },
+       {
+         "type": "text",
+         "id": "button_text",
+         "label": "Button text",
+         "default":"Step Inside"
+       },
+       {
+         "type": "url",
+         "id": "button_url",
+         "label": "360 url"
+       }
+     ]
+   }
+  ],
+  "presets": [
+    {
+    "name": "Products Grid"
+    }
+  ]
+}
 {% endschema %}
-
-
-
-{% javascript %}
-{% endjavascript %}
