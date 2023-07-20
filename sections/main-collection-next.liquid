@@ -68,7 +68,7 @@
           {%- endfor -%}
         {% endif %}
         {% if block.type == 'product' %}
-          {% assign image = block.settings.image | default: product.featured_image %}
+          {% assign image = block.settings.image %}
           {% assign title = block.settings.title | default: product.title %}
           {% assign content = block.settings.content | default: product.description %}
           {% assign url = block.settings.url | default: product.url %}
@@ -163,6 +163,10 @@
             "type": "image_picker",
           "id": "image",
           "label" :"Image"
+        },{
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
         },{
             "type": "text",
           "id": "title",
