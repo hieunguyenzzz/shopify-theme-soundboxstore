@@ -1,4 +1,4 @@
-{% assign collection = collections.all %}
+{% assign collection = section.settings.collection | default: collections.all %}
 <div
   id="CollectionAjaxResult"
   class="collection-content"
