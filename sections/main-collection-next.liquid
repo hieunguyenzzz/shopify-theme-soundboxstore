@@ -1,30 +1,33 @@
 <style>
-  .main-collection-next{
-    padding: 1em 0
-  }
-    .main-collection-next .collection-template-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1em;
+   .main-collection-next{
+     padding: 1em 0
+   }
+     .main-collection-next .collection-template-grid{
+       display:grid;
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+       gap: 1em;
 
-    }
-    .collection-template-grid-item{
-      display:flex;
-      gap:1em;
-      background:#f2f2f2;
-      border-radius:0.4em;
+     }
+     .collection-template-grid-item{
+       display:flex;
+       gap:1em;
+       background:#f2f2f2;
+       border-radius:0.4em;
 
-    }
-    .collection-template-grid-item .image{
-      width:50%;
-      flex-shrink:0;
-    }
-     .collection-template-grid-item .image img{
-          max-width: 100%;
-      object-fit: contain;
-      height: auto;
+     }
+     .collection-template-grid-item .image{
+       width:50%;
+       flex-shrink:0;
+     }
+      .collection-template-grid-item .image img{
+       max-width: 100%;
+       object-fit: contain;
+       height: auto;
+   }
+  .collection-template-grid-item .content{
+    padding:1em;
   }
-    }
+     }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div
