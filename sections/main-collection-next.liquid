@@ -11,7 +11,6 @@
      .collection-template-grid-item{
        display:flex;
        gap:1em;
-       background:#f2f2f2;
        border-radius:0.8em;
 
      }
@@ -32,6 +31,15 @@
   }
     .collection-template-grid-item .collection-btn-group{
     margin-top:1em;
+  }
+  .collection-template-grid-item .image_bg{
+       position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index:-1;
   }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
@@ -81,7 +89,12 @@
               {{
                 image_bg
                 | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
               }}
             {% endif %}
             <a class="image" href="{{ url }}">
