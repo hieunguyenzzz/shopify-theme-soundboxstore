@@ -417,12 +417,6 @@
             <a href="{{ product.url }}" class="btn buy-btn">
               {{- 'strings.others.explore_now' | t -}}
             </a>
-            <button type="button" class="btn btn--secondary specBtn">
-              {{ 'strings.others.get_specs_sheet' | t }}
-            </button>
-            {% comment %}
-              <a href="{% if product.metafields.my_fields.explore_page_url != blank %}{{ product.metafields.my_fields.explore_page_url }}{% else %}#{% endif %}" class="btn btn--secondary exp-btn">Explore Now</a>
-            {% endcomment %}
           </div>
         </div>
       </div>
