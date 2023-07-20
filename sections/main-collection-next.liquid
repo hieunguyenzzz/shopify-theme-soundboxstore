@@ -15,15 +15,30 @@
     <div class="page-width collection-template-grid">
       {% for block in section.blocks %}
         {% if block.type == 'product_grid' %}
-          {%- liquid
-            for product in collection.products
-              if forloop.first == true
-                render 'product-grid-item', product: product, collImgNotLazy: true
-              else
-                render 'product-grid-item', product: product
-              endif
-            endfor
-          -%}
+          {%- for product in collection.products -%}
+            {% assign image = product.featured_image %}
+            {% assign title = product.title %}
+            {% assign content = product.description %}
+            {% assign url = product.url %}
+            <div class="collection-template-grid-item">
+              <a class="image" href="{{ url }}">
+                {{
+                  image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                }}
+              </a>
+              <div class="content">
+                <h3>{{ title }}</h3>
+                <h3>{{ content }}</h3>
+                <div class="collection-btn-group">
+                  <a href="{{ product.url }}" class="btn buy-btn">
+                    {{- 'strings.others.explore_now' | t -}}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
         {% endif %}
         {% if block.type == 'product' %}
           {% assign image = block.settings.image | default: product.featured_image %}
