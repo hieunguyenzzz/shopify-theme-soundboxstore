@@ -69,10 +69,18 @@
         {% endif %}
         {% if block.type == 'product' %}
           {% assign image = block.settings.image %}
+          {% assign image_bg = block.settings.image_bg %}
           {% assign title = block.settings.title | default: product.title %}
           {% assign content = block.settings.content | default: product.description %}
           {% assign url = block.settings.url | default: product.url %}
           <div class="collection-template-grid-item">
+            {% if image_bg %}
+              {{
+                image_bg
+                | image_url: width: 700
+                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+              }}
+            {% endif %}
             <a class="image" href="{{ url }}">
               {{
                 image
