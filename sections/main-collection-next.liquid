@@ -7,7 +7,21 @@
   data-collection-template="true"
 >
   <div id="CollectionAjaxContent">
-    <div class="page-width"></div>
+    <div class="page-width">
+      {% for block in section.blocks %}
+        {% if block.type == 'product_grid' %}
+          {%- liquid
+            for product in collection.products
+              if forloop.first == true
+                render 'product-grid-item', product: product, collImgNotLazy: true
+              else
+                render 'product-grid-item', product: product
+              endif
+            endfor
+          -%}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
