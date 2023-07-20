@@ -82,11 +82,13 @@
               }}
             {% endif %}
             <a class="image" href="{{ url }}">
-              {{
-                image
-                | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
-              }}
+              {% if image %}
+                {{
+                  image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                }}
+              {% endif %}
             </a>
             <div class="content">
               <h3>{{ title }}</h3>
