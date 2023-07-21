@@ -186,24 +186,26 @@
           </div>
         {% endif %}
         {% if block.type == 'instagram' %}
-          <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}">
-            {% if block.settings.image_bg %}
-              {{
-                block.settings.image_bg
-                | image_url: width: 700
-                | image_tag:
-                  widths: '400, 600, 800',
-                  loading: 'lazy',
-                  class: 'js-lazy-image',
-                  alt: title,
-                  class: 'image_bg'
-              }}
-            {% endif %}
-            <div class="page-width page-width--narrow text-center">
-              <p class="h2">{{ block.settings.title | escape }}</p>
-              <div class="rte" {{ block.shopify_attributes }}>
-                <div class="enlarge-text">
-                  {{ block.settings.text }}
+          <div>
+            <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}">
+              {% if block.settings.image_bg %}
+                {{
+                  block.settings.image_bg
+                  | image_url: width: 700
+                  | image_tag:
+                    widths: '400, 600, 800',
+                    loading: 'lazy',
+                    class: 'js-lazy-image',
+                    alt: title,
+                    class: 'image_bg'
+                }}
+              {% endif %}
+              <div class="page-width page-width--narrow text-center">
+                <p class="h2">{{ block.settings.title | escape }}</p>
+                <div class="rte" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ block.settings.text }}
+                  </div>
                 </div>
               </div>
             </div>
