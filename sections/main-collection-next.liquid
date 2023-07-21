@@ -186,7 +186,12 @@
           </div>
         {% endif %}
         {% if block.type == 'instagram' %}
-          <div style="position:relative">
+          <div
+            style="
+              position: relative;
+              isolation: isolate;
+            "
+          >
             {% if block.settings.image_bg %}
               {{
                 block.settings.image_bg
