@@ -152,6 +152,9 @@
             </div>
           </div>
         {% endif %}
+        {% if block.type == '@app' %}
+          {% render block %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>
