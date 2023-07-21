@@ -1,0 +1,56 @@
+{%- liquid
+  assign paginate_by = 40
+
+  assign current_filter_size = 0
+  for filter in collection.filters
+    assign current_filter_size = current_filter_size | plus: filter.active_values.size
+  endfor
+-%}
+
+{%- paginate collection.products by paginate_by -%}
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'collection_description' -%}
+        {%- if collection.description != blank and current_filter_size == 0 -%}
+          <div class="rte rte--collection-desc" {{ block.shopify_attributes }}>
+            <div class="enlarge-text">
+              {{ collection.description }}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- when 'subcollections' -%}
+        {%- if paginate.current_page == 1 and current_filter_size == 0 -%}
+          <div {{ block.shopify_attributes }}>
+            {%- render 'subcollections' -%}
+          </div>
+        {%- endif -%}
+      {%- when 'product_grid' -%}
+        <div class="collections-page-grid " {{ block.shopify_attributes }}>
+          {%- if collection.products == blank -%}
+            <div class="index-section">{{ 'collections.general.no_matches' | t }}</div>
+          {%- endif -%}
+
+          <div
+            class="new-grid product-grid collection-grid"
+            data-view="{{ productGridView }}"
+            data-scroll-to
+          >
+            {%- liquid
+              for product in collection.products
+                if forloop.first == true
+                  render 'product-grid-item', product: product, collImgNotLazy: true
+                else
+                  render 'product-grid-item', product: product
+                endif
+              endfor
+            -%}
+          </div>
+          {%- liquid
+            if paginate.pages > 1
+              render 'pagination', paginate: paginate
+            endif
+          -%}
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+{%- endpaginate -%}

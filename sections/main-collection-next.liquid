@@ -1,0 +1,433 @@
+<style>
+      .main-collection-next{
+        padding: 1em 0
+      }
+        .main-collection-next .collection-template-grid{
+          display:grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 1em;
+              padding: 0 var(--pageWidthPadding);
+
+        }
+        .collection-template-grid-item{
+        display: flex;
+       border-radius: 0.8em;
+       position: relative;
+       isolation: isolate;
+        }
+  .collection-template-grid-item h3{
+       font-size:110%;
+        }
+        .collection-template-grid-item .image{
+          width:50%;
+          flex-shrink:0;
+          display: flex;
+        }
+         .collection-template-grid-item .image img{
+          max-width: 100%;
+          object-fit: contain;
+          height: auto;
+      }
+     .collection-template-grid-item .content{
+       padding:4em 1em;
+     }
+      .collection-template-grid-item .description{
+       font-size:0.8em;
+     }
+       .collection-template-grid-item .collection-btn-group{
+       margin-top:1em;
+     }
+     .main-collection-next .image_bg{
+          position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       z-index:-1;
+     }
+  .collection-template-grid-item .image_bg{
+          position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 0.8em;
+       z-index:-1;
+           border-top-right-radius: 5em;
+     }
+    @media only screen and (max-width: 678px) {
+            .main-collection-next .collection-template-grid{
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+
+        }
+
+      .collection-template-grid-item .content {
+      padding: 1em;
+  }
+              .collection-template-grid-item{
+       gap: 0;
+        flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 1em 0;
+                         font-size:0.9em;
+        }
+      .collection-template-grid-item .content {
+      padding: 1em;
+  }
+      .collection-template-grid-item .image{
+        width:100%
+      }
+     }
+</style>
+{% assign collection = section.settings.collection | default: collections.all %}
+<div
+  id="CollectionAjaxResult"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template"
+  data-collection-template="true"
+>
+  {% if block.settings.image_bg %}
+    {{
+      block.settings.image_bg
+      | image_url: width: 700
+      | image_tag:
+        widths: '400, 600, 800 ,1440, 1668',
+        loading: 'lazy',
+        class: 'js-lazy-image',
+        alt: title,
+        class: 'image_bg'
+    }}
+  {% endif %}
+  <div>
+    <div class="collection-template-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'product_grid' %}
+          {%- for product in collection.products -%}
+            {% assign image = product.featured_image %}
+            {% assign title = product.title %}
+            {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
+            {% assign url = product.url %}
+            <div class="collection-template-grid-item">
+              <a class="image" href="{{ url }}">
+                {{
+                  image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                }}
+              </a>
+              <div class="content">
+                <h3>{{ title }}</h3>
+                <div class="description">{{ content }}</div>
+                <div class="collection-btn-group">
+                  <a href="{{ product.url }}" class="btn buy-btn">
+                    {{- 'strings.others.explore_now' | t -}}
+                  </a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        {% endif %}
+        {% if block.type == 'product' %}
+          {% assign image = block.settings.image %}
+          {% assign image_bg = block.settings.image_bg %}
+          {% assign title = block.settings.title | default: product.title %}
+          {% assign content = block.settings.content | default: product.description %}
+          {% assign url = block.settings.url | default: product.url %}
+          <div class="collection-template-grid-item">
+            {% if image_bg %}
+              {{
+                image_bg
+                | image_url: width: 700
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
+              }}
+            {% endif %}
+            <a class="image" href="{{ url }}">
+              {% if image %}
+                {{
+                  image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                }}
+              {% endif %}
+            </a>
+            <div class="content">
+              <h3>{{ title }}</h3>
+              <div class="description">{{ content }}</div>
+              <div class="collection-btn-group">
+                <a href="{{ url }}" class="btn buy-btn">
+                  {{- 'strings.others.explore_now' | t -}}
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.type == 'email' %}
+          <div
+            style="
+                  position: relative;
+                  isolation: isolate;
+              display:flex;
+              align-items:center
+            "
+          >
+            {% if block.settings.image_bg %}
+              {{
+                block.settings.image_bg
+                | image_url: width: 700
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
+              }}
+            {% endif %}
+            <div
+              style="margin:auto"
+              class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+            >
+              {%- if section.settings.color_scheme != 'none' -%}
+                {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
+              {%- endif -%}
+              <div class="page-width page-width--narrow text-center">
+                <p class="h2">{{ block.settings.title | escape }}</p>
+                <div class="rte" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+                {%- render 'newsletter-form', section_id: section.id, snippet_context: 'section' -%}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.type == 'instagram' %}
+          <div
+            style="
+              position: relative;
+              isolation: isolate;
+            "
+          >
+            {% if block.settings.image_bg %}
+              {{
+                block.settings.image_bg
+                | image_url: width: 700
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
+              }}
+            {% endif %}
+            <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}">
+              <div class="page-width page-width--narrow text-center">
+                <p class="h2">{{ block.settings.title | escape }}</p>
+                <div class="rte" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="feed-24765"
+              class="instafeed-shopify"
+              style="    margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
+            ></div>
+          </div>
+        {% endif %}
+        {% if block.type == '@app' %}
+          {% render block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "CollectionPage",
+    {% if collection.description != blank %}
+      "description": {{ collection.description | strip_html | json }},
+    {% endif %}
+    {% if page_image %}
+      {% assign image_size = page_image.width | append: 'x' %}
+      "image": {
+        "@type": "ImageObject",
+        "height": {{ page_image.height | json }},
+        "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+        "width": {{ page_image.width | json }}
+      },
+    {% endif %}
+    "name": {{ collection.title | json }}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product grid next",
+  "class": "main-collection-next",
+  "settings": [
+  {
+    "type":"collection",
+    "id":"collection",
+    "label":"Collection"
+  }
+  ],
+  "blocks": [
+    {
+        "type": "@app"
+      },
+    {
+      "type": "product_grid",
+      "name": "Products",
+      "settings": [
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        },
+        {
+          "type": "select",
+          "id": "grid_style",
+          "label": "Default product layout",
+          "default": "small",
+          "options": [
+            {
+              "value": "large",
+              "label": "Large grid"
+            },
+            {
+              "value": "small",
+              "label": "Small grid"
+            }
+          ]
+        }
+      ],
+      "limit": 1
+    },
+     {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label" :"Product"
+        },{
+            "type": "image_picker",
+          "id": "image",
+          "label" :"Image"
+        },{
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        },{
+            "type": "text",
+          "id": "title",
+          "label" :"Title"
+        },
+        {
+            "type": "richtext",
+          "id": "content",
+          "label" :"Content"
+        },
+        {
+            "type": "url",
+          "id": "url",
+          "label" :"Url"
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Sign Up",
+      "settings":[
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Sign up and save"
+          },
+         {
+            "type": "richtext",
+            "id": "text",
+            "label": "Subheading",
+            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          },
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        }
+      ]
+    },
+    {
+      "type": "instagram",
+      "name": "In stagram",
+      "settings":[
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Follow Us"
+          },
+         {
+            "type": "richtext",
+            "id": "text",
+            "label": "Subheading",
+            "default": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>"
+          },
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+      {
+        "name": "Collection next",
+        "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "product": "soundproof-phone-booth",
+            "image": "shopify:\/\/shop_images\/Folio_Teal_1.webp",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
+            "url": "shopify:\/\/products\/soundproof-phone-booth"
+          }
+        },
+       {
+          "type": "product",
+          "settings": {
+            "product": "soundproof-phone-booth",
+            "image": "shopify:\/\/shop_images\/Folio_Bar_Fly_Blush_01.png",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
+            "url": ""
+          }
+        }
+        ],
+
+      "settings": {
+        "collection": ""
+      }
+      }
+    ]
+}
+{% endschema %}

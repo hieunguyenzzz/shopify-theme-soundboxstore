@@ -431,18 +431,72 @@
 		"label":"Button-2 Link"
 	}
 ]
- },  {
-      "type": "collection",
-      "name": "collection",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Collection"
-        }
-      ]
+ }, {
+"type":"collection",
+"name":"menu-collection",
+
+"settings":[
+  {
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+
+	},
+	{
+		"type":"collection",
+		"id":"collection",
+		"label":"collection"
+	}
+
+]
+ },
+     {
+"type":"mega-menu",
+"name":"Mega menu",
+
+"settings":[
+  {
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	 {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
     }
+
+]
+ },
+     {
+"type":"mega-menu-item",
+"name":"Mega menu item",
+
+"settings":[
+  {
+		"type":"text",
+		"id":"id",
+		"label":"Id(Ex: 1, 2, 3, 1-1, 1-2....)"
+	},
+  {
+		"type":"text",
+		"id":"title",
+		"label":"Title"
+	},
+	 {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+   {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+
+]
+ }
   ],
   "default": {
     "settings": {}
