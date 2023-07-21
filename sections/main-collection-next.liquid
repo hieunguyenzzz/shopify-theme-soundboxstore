@@ -68,6 +68,18 @@
   data-section-type="collection-template"
   data-collection-template="true"
 >
+  {% if block.settings.image_bg %}
+    {{
+      block.settings.image_bg
+      | image_url: width: 700
+      | image_tag:
+        widths: '400, 600, 800 ,1440, 1668',
+        loading: 'lazy',
+        class: 'js-lazy-image',
+        alt: title,
+        class: 'image_bg'
+    }}
+  {% endif %}
   <div>
     <div class="collection-template-grid">
       {% for block in section.blocks %}
