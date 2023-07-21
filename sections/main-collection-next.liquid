@@ -6,12 +6,17 @@
           display:grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 1em;
+              padding: 0 var(--pageWidthPadding);
 
         }
         .collection-template-grid-item{
         display: flex;
+       border-radius: 0.8em;
        position: relative;
        isolation: isolate;
+        }
+  .collection-template-grid-item h3{
+       font-size:110%;
         }
         .collection-template-grid-item .image{
           width:50%;
@@ -32,7 +37,16 @@
        .collection-template-grid-item .collection-btn-group{
        margin-top:1em;
      }
-     .collection-template-grid-item .image_bg{
+     .main-collection-next .image_bg{
+          position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       z-index:-1;
+     }
+  .collection-template-grid-item .image_bg{
           position: absolute;
        top: 0;
        left: 0;
@@ -40,20 +54,25 @@
        height: 100%;
        object-fit: cover;
        border-radius: 0.8em;
-       border-top-right-radius: 5em;
        z-index:-1;
+           border-top-right-radius: 5em;
      }
     @media only screen and (max-width: 678px) {
             .main-collection-next .collection-template-grid{
           grid-template-columns: repeat(1, minmax(0, 1fr));
 
         }
-        .collection-template-grid-item{
+
+      .collection-template-grid-item .content {
+      padding: 1em;
+  }
+              .collection-template-grid-item{
        gap: 0;
         flex-direction: column;
     text-align: center;
     align-items: center;
     padding: 1em 0;
+                         font-size:0.9em;
         }
       .collection-template-grid-item .content {
       padding: 1em;
@@ -70,8 +89,20 @@
   data-section-type="collection-template"
   data-collection-template="true"
 >
+  {% if block.settings.image_bg %}
+    {{
+      block.settings.image_bg
+      | image_url: width: 700
+      | image_tag:
+        widths: '400, 600, 800 ,1440, 1668',
+        loading: 'lazy',
+        class: 'js-lazy-image',
+        alt: title,
+        class: 'image_bg'
+    }}
+  {% endif %}
   <div>
-    <div class="page-width collection-template-grid">
+    <div class="collection-template-grid">
       {% for block in section.blocks %}
         {% if block.type == 'product_grid' %}
           {%- for product in collection.products -%}
@@ -138,6 +169,81 @@
             </div>
           </div>
         {% endif %}
+        {% if block.type == 'email' %}
+          <div
+            style="
+                  position: relative;
+                  isolation: isolate;
+              display:flex;
+              align-items:center
+            "
+          >
+            {% if block.settings.image_bg %}
+              {{
+                block.settings.image_bg
+                | image_url: width: 700
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
+              }}
+            {% endif %}
+            <div
+              style="margin:auto"
+              class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+            >
+              {%- if section.settings.color_scheme != 'none' -%}
+                {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
+              {%- endif -%}
+              <div class="page-width page-width--narrow text-center">
+                <p class="h2">{{ block.settings.title | escape }}</p>
+                <div class="rte" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+                {%- render 'newsletter-form', section_id: section.id, snippet_context: 'section' -%}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% if block.type == 'instagram' %}
+          <div
+            style="
+              position: relative;
+              isolation: isolate;
+            "
+          >
+            {% if block.settings.image_bg %}
+              {{
+                block.settings.image_bg
+                | image_url: width: 700
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: title,
+                  class: 'image_bg'
+              }}
+            {% endif %}
+            <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}">
+              <div class="page-width page-width--narrow text-center">
+                <p class="h2">{{ block.settings.title | escape }}</p>
+                <div class="rte" {{ block.shopify_attributes }}>
+                  <div class="enlarge-text">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="feed-24765" class="instafeed-shopify" style="    margin: 0 0 0 0!important;"></div>
+          </div>
+        {% endif %}
+        {% if block.type == '@app' %}
+          {% render block %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -176,9 +282,17 @@
   ],
   "blocks": [
     {
+        "type": "@app"
+      },
+    {
       "type": "product_grid",
       "name": "Products",
       "settings": [
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        },
         {
           "type": "select",
           "id": "grid_style",
@@ -230,7 +344,86 @@
           "label" :"Url"
         }
       ]
+    },
+    {
+      "type": "email",
+      "name": "Sign Up",
+      "settings":[
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Sign up and save"
+          },
+         {
+            "type": "richtext",
+            "id": "text",
+            "label": "Subheading",
+            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          },
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        }
+      ]
+    },
+    {
+      "type": "instagram",
+      "name": "In stagram",
+      "settings":[
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Follow Us"
+          },
+         {
+            "type": "richtext",
+            "id": "text",
+            "label": "Subheading",
+            "default": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>"
+          },
+        {
+            "type": "image_picker",
+          "id": "image_bg",
+          "label" :"background Image"
+        }
+      ]
     }
-  ]
+  ],
+  "presets": [
+      {
+        "name": "Collection next",
+        "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "product": "soundproof-phone-booth",
+            "image": "shopify:\/\/shop_images\/Folio_Teal_1.webp",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
+            "url": "shopify:\/\/products\/soundproof-phone-booth"
+          }
+        },
+       {
+          "type": "product",
+          "settings": {
+            "product": "soundproof-phone-booth",
+            "image": "shopify:\/\/shop_images\/Folio_Bar_Fly_Blush_01.png",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
+            "url": ""
+          }
+        }
+        ],
+
+      "settings": {
+        "collection": ""
+      }
+      }
+    ]
 }
 {% endschema %}
