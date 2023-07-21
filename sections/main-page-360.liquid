@@ -1,9 +1,11 @@
-{% for product in collections.all.products %}
-  {%- if product.metafields.custom.page360.value.url contains page.handle -%}
-    {%- assign mainProduct = product -%}
-  {%- endif -%}
-{%- endfor -%}
-{% unless product %}
+{% unless mainProduct %}
+  {% for product in collections.all.products %}
+    {%- if product.metafields.custom.page360.value.handle == page.handle -%}
+      {%- assign mainProduct = product -%}
+    {%- endif -%}
+  {%- endfor -%}
+{% endunless %}
+{% unless mainProduct %}
   {%- assign mainProduct = all_products[page.handle] -%}
 {% endunless %}
 {%- assign embed360Url = mainProduct.metafields.custom.embed360url.value -%}
@@ -552,6 +554,13 @@
 {% schema %}
 {
   "name": "Page 360",
-  "tag": "section"
+  "tag": "section",
+  "settings":[
+    {
+      "type":"product",
+      "id":"product",
+      "label":"Product"
+    }
+  ]
 }
 {% endschema %}

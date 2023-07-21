@@ -1,21 +1,23 @@
-<style>
-    .brand-details-slider .slide{
+{% if section.settings.sliderenable %}
+  <style>
+      .brand-details-slider .slide{
+        display: none;
+      }
+    .brand-details-slider  .slick-slide .image-group img{
       display: none;
     }
-  .brand-details-slider  .slick-slide .image-group img{
-    display: none;
-  }
-    .brand-details-slider  .slick-slide.slick-current .image-group img{
-    display: block;
-  }
-    .brand-details-slider .slide:first-child{
+      .brand-details-slider  .slick-slide.slick-current .image-group img{
       display: block;
     }
-    .slick-initialized.brand-details-slider .slide{
-      display: block;
-    }
-    slick-slide
-</style>
+      .brand-details-slider .slide:first-child{
+        display: block;
+      }
+      .slick-initialized.brand-details-slider .slide{
+        display: block;
+      }
+      slick-slide
+  </style>
+{% endif %}
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
     {% if section.settings.title %}

@@ -34,13 +34,12 @@
                   {%- endif -%}
                 {% endcomment %}
                 <div class="image-wrap">
-                  <img
-                    loading="lazy"
-                    src="{{ block.settings.image | img_url: '240x' }}"
-                    width="180"
-                    height="61"
-                    alt="{{ block.settings.image.alt  | default:'logo'  }}"
-                  >
+                  {{
+                    block.settings.image
+                    | image_url: width: 180, height: 61
+                    | image_tag: style: 'object-fit:contain', loading: 'lazy', alt: block.settings.image.alt
+                    | default: 'logo'
+                  }}
                 </div>
                 {%- if block.settings.link != blank -%}
                   </a>
