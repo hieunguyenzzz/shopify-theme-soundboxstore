@@ -136,6 +136,8 @@
             </div>
           </div>
         {% endif %}
+        {% if block.type == 'email' %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -231,6 +233,11 @@
           "label" :"Url"
         }
       ]
+    },
+    {
+      "type": "email",
+      "name": "Sign Up",
+      "settings":[]
     }
   ]
 }
