@@ -1,11 +1,12 @@
 <style>
       .main-collection-next{
-
+        padding: 1em 0
       }
         .main-collection-next .collection-template-grid{
           display:grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-
+          gap: 1em;
+              padding: 0 var(--pageWidthPadding);
 
         }
         .collection-template-grid-item{
@@ -13,7 +14,6 @@
        border-radius: 0.8em;
        position: relative;
        isolation: isolate;
-         margin: var(--pageWidthPadding);
         }
   .collection-template-grid-item h3{
        font-size:110%;
