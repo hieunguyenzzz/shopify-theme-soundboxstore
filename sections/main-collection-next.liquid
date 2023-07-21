@@ -49,6 +49,9 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
 
       }
+      .collection-template-grid-item{
+     gap: 0;
+      }
    }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
