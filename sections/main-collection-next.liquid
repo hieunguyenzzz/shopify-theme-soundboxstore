@@ -135,10 +135,10 @@
         {% if block.type == 'product' %}
           {% assign image = block.settings.image %}
           {% assign image_bg = block.settings.image_bg %}
-          {% assign title = block.settings.title | default: product.title %}
-          {% assign content = block.settings.content | default: product.description %}
-          {% assign url = block.settings.url | default: product.url %}
-          <div id="{{ product.handle }}" class="collection-template-grid-item">
+          {% assign title = block.settings.title | default: block.settings.product.title %}
+          {% assign content = block.settings.content | default: block.settings.product.description %}
+          {% assign url = block.settings.url | default: block.settings.product.url %}
+          <div id="{{ block.settings.product.handle }}" class="collection-template-grid-item">
             {% if image_bg %}
               {{
                 image_bg
