@@ -112,7 +112,7 @@
             {% assign title = product.title %}
             {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
             {% assign url = product.url %}
-            <div class="collection-template-grid-item">
+            <div id="{{ product.handle }}" class="collection-template-grid-item">
               <a class="image" href="{{ url }}">
                 {{
                   image
@@ -138,7 +138,7 @@
           {% assign title = block.settings.title | default: product.title %}
           {% assign content = block.settings.content | default: product.description %}
           {% assign url = block.settings.url | default: product.url %}
-          <div class="collection-template-grid-item">
+          <div id="{{ product.handle }}" class="collection-template-grid-item">
             {% if image_bg %}
               {{
                 image_bg
