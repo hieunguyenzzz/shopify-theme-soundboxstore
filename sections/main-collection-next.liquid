@@ -1,89 +1,92 @@
 <style>
-      .main-collection-next{
-        padding: 1em 0
-      }
-        .main-collection-next .collection-template-grid{
-          display:grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 1em;
-              padding: 0 var(--pageWidthPadding);
+    html {
+    scroll-behavior: smooth;
+  }
+        .main-collection-next{
+          padding: 1em 0
+        }
+          .main-collection-next .collection-template-grid{
+            display:grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1em;
+                padding: 0 var(--pageWidthPadding);
 
-        }
-        .collection-template-grid-item{
-        display: flex;
-       border-radius: 0.8em;
-       position: relative;
-       isolation: isolate;
-          scroll-margin-top: calc(100px + 1em);
-        }
-  .collection-template-grid-item h3{
-       font-size:110%;
-        }
-        .collection-template-grid-item .image{
-          width:50%;
-          flex-shrink:0;
+          }
+          .collection-template-grid-item{
           display: flex;
+         border-radius: 0.8em;
+         position: relative;
+         isolation: isolate;
+            scroll-margin-top: calc(100px + 1em);
+          }
+    .collection-template-grid-item h3{
+         font-size:110%;
+          }
+          .collection-template-grid-item .image{
+            width:50%;
+            flex-shrink:0;
+            display: flex;
+          }
+           .collection-template-grid-item .image img{
+            max-width: 100%;
+            object-fit: contain;
+            height: auto;
         }
-         .collection-template-grid-item .image img{
-          max-width: 100%;
-          object-fit: contain;
-          height: auto;
-      }
-     .collection-template-grid-item .content{
-       padding:4em 4em 1em 0;
-       max-width:calc(340px + 4em);
-       margin:auto
-     }
-      .collection-template-grid-item .description{
-       font-size:0.8em;
-     }
-       .collection-template-grid-item .collection-btn-group{
-       margin-top:1em;
-     }
-     .main-collection-next .image_bg{
-          position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       z-index:-1;
-     }
-  .collection-template-grid-item .image_bg{
-          position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       border-radius: 0.8em;
-       z-index:-1;
-           border-top-right-radius: 5em;
-     }
-    @media only screen and (max-width: 678px) {
-            .main-collection-next .collection-template-grid{
-          grid-template-columns: repeat(1, minmax(0, 1fr));
+       .collection-template-grid-item .content{
+         padding:4em 4em 1em 0;
+         max-width:calc(340px + 4em);
+         margin:auto
+       }
+        .collection-template-grid-item .description{
+         font-size:0.8em;
+       }
+         .collection-template-grid-item .collection-btn-group{
+         margin-top:1em;
+       }
+       .main-collection-next .image_bg{
+            position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         z-index:-1;
+       }
+    .collection-template-grid-item .image_bg{
+            position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         border-radius: 0.8em;
+         z-index:-1;
+             border-top-right-radius: 5em;
+       }
+      @media only screen and (max-width: 678px) {
+              .main-collection-next .collection-template-grid{
+            grid-template-columns: repeat(1, minmax(0, 1fr));
 
-        }
+          }
 
-      .collection-template-grid-item .content {
-      padding: 1em;
-  }
-              .collection-template-grid-item{
-       gap: 0;
-        flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 1em 0;
-                         font-size:0.9em;
+        .collection-template-grid-item .content {
+        padding: 1em;
+    }
+                .collection-template-grid-item{
+         gap: 0;
+          flex-direction: column;
+      text-align: center;
+      align-items: center;
+      padding: 1em 0;
+                           font-size:0.9em;
+          }
+        .collection-template-grid-item .content {
+        padding: 1em;
+    }
+        .collection-template-grid-item .image{
+          width:100%
         }
-      .collection-template-grid-item .content {
-      padding: 1em;
-  }
-      .collection-template-grid-item .image{
-        width:100%
-      }
-     }
+       }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div
