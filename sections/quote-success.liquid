@@ -1,5 +1,58 @@
 {% assign id = section.id %}
 {% assign img = section.settings.image %}
+<style>
+
+  .{{id}}-wrap{
+    position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: calc(100vh - 100px);
+  align-items: center;
+  isolation: isolate;
+  }
+  .{{id}}-left,.{{id}}-right{
+    flex:1
+  }
+
+  .{{id}}-left{
+    width: 700px;
+    margin: auto;
+    max-width: 70%;
+    box-shadow: 0px 2px 10px 2px #0000004f
+  }
+  .{{id}}-left img{
+    object-fit: cover;
+  }
+  .{{id}}-right{
+  width: 700px;
+    margin: auto;
+    max-width: 70%;
+  }
+  .{{id}}-right p{
+    color:#aeaeae
+  }
+  .{{id}}-right .section-btn a{
+    width: 100%;
+    line-height:2.4;
+    font-size:0.9em ;
+    margin-top: 20px;
+  }
+  .{{id}}-right .h2,.{{id}}-right h2{
+      font-size: calc(var(--typeHeaderSize)*1);
+      margin-bottom: 40px;
+  }
+  .{{id}}-wrap::before{
+  content:'';
+  position: absolute;
+  left: 0 ;
+  top: 0;
+  bottom: 0;
+  width: 50%  ;
+  background: #f5f5f5;
+  z-index: -1;
+  }
+</style>
+
 <div class="{{ id }}-wrap">
   <div class="{{ id }}-left">
     {{
