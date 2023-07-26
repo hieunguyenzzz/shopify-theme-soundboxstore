@@ -2,11 +2,15 @@
 {% assign img = section.settings.image %}
 <div class="{{ id }}-wrap">
   <div class="{{ id }}-left">
-    {{ img | image_url: width: 800 | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: block.settings.content }}
+    {{
+      img
+      | image_url: width: 800
+      | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: section.settings.content
+    }}
   </div>
   <div class="{{ id }}-right">
     <div class="{{ id }}-content">
-      {{ block.settings.content }}
+      {{ section.settings.content }}
       <div class="section-btn">
         <a href="{{ section.settings.button_link }}" class="btn">Explore Products </a>
       </div>
