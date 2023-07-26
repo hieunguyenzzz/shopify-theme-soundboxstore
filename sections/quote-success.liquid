@@ -59,16 +59,20 @@
       | image_url: width: 800
       | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: section.settings.content
     }}
-    <div class="{{ id }}-left-bootom">
-      <div>
+    <div class="{{ id }}-left-bootom" style="dislay:flex">
+      <div style="flex:1">
         <div>Phone Booths</div>
         <div>Spec Sheet</div>
       </div>
-      {{
-        'sound-icon.png'
-        | image_url: width: 800
-        | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: section.settings.content
-      }}
+      <div style="width:80px;height:80px;position:relative">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/sound-icon.png?v=1650886739"
+          loading="lazy"
+          width="80"
+          height="80"
+          alt="soundboxstore icon"
+        >
+      </div>
     </div>
   </div>
   <div class="{{ id }}-right">
