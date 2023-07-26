@@ -1,93 +1,93 @@
 {% assign id = section.id %}
 {% assign img = section.settings.image %}
 <style>
-    .{{id}}-wrap{
-      position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    height: calc(100vh - 100px);
-    align-items: center;
-    isolation: isolate;
-    }
-    .{{id}}-left,.{{id}}-right{
-      flex:1
-    }
+      .{{id}}-wrap{
+        position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      height: calc(100vh - 100px);
+      align-items: center;
+      isolation: isolate;
+      }
+      .{{id}}-left,.{{id}}-right{
+        flex:1
+      }
 
+      .{{id}}-left{
+        width: 700px;
+        margin: auto;
+        max-width: 70%;
+        box-shadow: 0px 2px 16px 2px #00000021;
+      }
+      .{{id}}-left img{
+        object-fit: cover;
+      }
+      .{{id}}-right{
+      width: 600px;
+        margin: auto;
+        max-width: 70%;
+      }
+      .{{id}}-right p{
+        color:#aeaeae
+      }
+      .{{id}}-right .section-btn a{
+        width: 100%;
+        line-height:2.4;
+        font-size:0.9em ;
+        margin-top: 20px;
+      }
+      .{{id}}-right .h2,.{{id}}-right h2{
+          font-size: calc(var(--typeHeaderSize)*1);
+          margin-bottom: 40px;
+      }
+      .{{id}}-wrap::before{
+      content:'';
+      position: absolute;
+      right: 50% ;
+      top: 0;
+      bottom: 0;
+      width:100vw  ;
+      background: #f5f5f5;
+      z-index: -1;
+      }
+      @media screen and  (max-width: 900px) {
+      .{{id}}-wrap{
+      display: flex;
+      text-align: center;
+    }
     .{{id}}-left{
-      width: 700px;
-      margin: auto;
-      max-width: 70%;
-      box-shadow: 0px 2px 16px 2px #00000021;
+     position: absolute;
+  left:0;
+     width: 100%    ;
+     height: 100%;
+     max-width: unset;
+    }
+    .{{id}}-left *:nth-child(2){
+      display: none!important;
     }
     .{{id}}-left img{
-      object-fit: cover;
+     position: absolute;
+     left: 0;
+     width: 100%    ;
+     height: 100%;
+     max-width: unset;
+     z-index: -1;
     }
-    .{{id}}-right{
-    width: 600px;
-      margin: auto;
-      max-width: 70%;
-    }
-    .{{id}}-right p{
-      color:#aeaeae
-    }
-    .{{id}}-right .section-btn a{
-      width: 100%;
-      line-height:2.4;
-      font-size:0.9em ;
-      margin-top: 20px;
-    }
-    .{{id}}-right .h2,.{{id}}-right h2{
-        font-size: calc(var(--typeHeaderSize)*1);
-        margin-bottom: 40px;
+    .{{id}}-right {
+     max-width: 90%;
+        z-index: 1 !important;
+        padding: 3em 2em !important;
+        background: #ffffff96 !important;
+        backdrop-filter: blur(4px);
+
     }
     .{{id}}-wrap::before{
-    content:'';
-    position: absolute;
-    right: 50% ;
-    top: 0;
-    bottom: 0;
-    width:100vw  ;
-    background: #f5f5f5;
-    z-index: -1;
+      display: none;
     }
-    @media screen and  (max-width: 900px) {
-    .{{id}}-wrap{
-    display: flex;
-    text-align: center;
-  }
-  .{{id}}-left{
-   position: absolute;
-
-   width: 100%    ;
-   height: 100%;
-   max-width: unset;
-  }
-  .{{id}}-left *:nth-child(2){
-    display: none!important;
-  }
-  .{{id}}-left img{
-   position: absolute;
-   left: 0;
-   width: 100%    ;
-   height: 100%;
-   max-width: unset;
-   z-index: -1;
-  }
-  .{{id}}-right {
-   max-width: 90%;
-      z-index: 1 !important;
-      padding: 3em 2em !important;
-      background: #ffffff96 !important;
-      backdrop-filter: blur(4px);
-
-  }
-  .{{id}}-wrap::before{
-    display: none;
-  }
-  .{{id}}-right p{
-    color: #696969;
-  }
-  }
+    .{{id}}-right p{
+      color: #696969;
+    }
+    }
 </style>
 
 <div class="{{ id }}-wrap page-width">
