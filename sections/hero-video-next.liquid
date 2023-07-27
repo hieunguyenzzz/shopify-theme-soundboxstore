@@ -67,42 +67,6 @@
       {% if section.settings.video %}
         {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
       {% endif %}
-      <!--
-        {%- if section.settings.video_url contains 'youtu.be/' -%}
-          {%- assign video_id = section.settings.video_url | split: '.be/' -%}
-          {%- assign video_id = video_id[1] | split: '&' | first -%}
-          <div
-            id="YouTubeVideo-{{ section.id }}"
-            class="video-div"
-            data-type="youtube"
-            data-video-id="{{ video_id }}"
-          ></div>
-        {%- endif -%}
-
-        {%- if section.settings.video_url contains 'vimeo.com' -%}
-          {%- assign video_id = section.settings.video_url | split: '.com/' -%}
-          {%- assign video_id = video_id[1] | split: '/' | first -%}
-          <div
-            id="Vimeo-{{ section.id }}"
-            class="video-div"
-            data-type="vimeo"
-            data-video-id="{{ video_id }}"
-          ></div>
-        {%- endif -%}
-      -->
-
-      {%- if section.settings.video_url contains '.mp4' or section.settings.video_url contains '.MP4' -%}
-        <video
-          id="Mp4Video-{{ section.id }}"
-          class="video-div"
-          data-type="mp4"
-          src="{{ section.settings.video_url }}"
-          loop
-          muted
-          playsinline
-          autoplay
-        ></video>
-      {%- endif -%}
     </div>
   </div>
 
