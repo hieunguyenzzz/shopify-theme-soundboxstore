@@ -54,14 +54,25 @@
 >
   <div class="hero__media hero__media--{{ section.id }}">
     <div class="hero__media-container">
-      <video
-        playsinline="playsinline"
-        autoplay="autoplay"
-        loop="loop"
-        muted="muted"
-        preload="metadata"
-        poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
-      ></video>
+      {%- if section.settings.video_url contains 'youtube.com/watch' -%}
+        {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+        {%- assign video_id = video_id[1] | split: '&' | first -%}
+        <div
+          id="YouTubeVideo-{{ section.id }}"
+          class="video-div"
+          data-type="youtube"
+          data-video-id="{{ video_id }}"
+        ></div>
+      {% else %}
+        <video
+          playsinline="playsinline"
+          autoplay="autoplay"
+          loop="loop"
+          muted="muted"
+          preload="metadata"
+          poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
+        ></video>
+      {% endif %}
     </div>
 
     <template>
