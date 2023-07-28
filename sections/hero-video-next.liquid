@@ -54,7 +54,7 @@
 >
   <div class="hero__media hero__media--{{ section.id }}">
     <div class="hero__media-container"></div>
-    <tempplate>
+    <template>
       <div class="hero__media-container">
         {%- if section.settings.video_url contains 'youtube.com/watch' -%}
           {%- assign video_id = section.settings.video_url | split: 'v=' -%}
@@ -97,7 +97,7 @@
           {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
         {% endif %}
       </div>
-    </tempplate>
+    </template>
   </div>
   <script></script>
   <div class="hero__text-wrap">
