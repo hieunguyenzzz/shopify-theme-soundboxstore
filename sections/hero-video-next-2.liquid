@@ -57,12 +57,20 @@
       {%- if section.settings.video_url contains 'youtube.com/watch' -%}
         {%- assign video_id = section.settings.video_url | split: 'v=' -%}
         {%- assign video_id = video_id[1] | split: '&' | first -%}
-        <div
-          id="YouTubeVideo-{{ section.id }}"
+        <iframe
+          id="YouTubeVideo-template--16793515491553__caeb4e31-7b8d-4ce9-b58a-e2b6bc92d8a7"
           class="video-div"
           data-type="youtube"
-          data-video-id="{{ video_id }}"
-        ></div>
+          data-video-id="oyozZK1O_NI"
+          frameborder="0"
+          allowfullscreen="1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          title="video"
+          width="1280"
+          height="720"
+          src="https://www.youtube.com/embed/oyozZK1O_NI?autohide=0&amp;cc_load_policy=0&amp;controls=0&amp;fs=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fthankyou-485.myshopify.com&amp;widgetid=3"
+          tabindex="-1"
+        ></iframe>
       {% else %}
 
       {% endif %}
