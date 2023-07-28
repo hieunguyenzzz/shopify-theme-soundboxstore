@@ -54,15 +54,8 @@
 >
   <div class="hero__media hero__media--{{ section.id }}">
     <div class="hero__media-container">
-      {%- if section.settings.video_url contains 'youtube.com/watch' -%}
-        {%- assign video_id = section.settings.video_url | split: 'v=' -%}
-        {%- assign video_id = video_id[1] | split: '&' | first -%}
-        <div
-          id="YouTubeVideo-{{ section.id }}"
-          class="video-div"
-          data-type="youtube"
-          data-video-id="{{ video_id }}"
-        ></div>
+      {%- if section.settings.video_url -%}
+        {{ section.settings.video_url }}
       {% else %}
 
       {% endif %}
