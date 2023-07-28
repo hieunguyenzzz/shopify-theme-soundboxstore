@@ -55,7 +55,15 @@
   <div class="hero__media hero__media--{{ section.id }}">
     <div class="hero__media-container">
       {%- if section.settings.video_url -%}
-        {{ section.settings.video_url }}
+        <iframe
+          id="ytplayer"
+          type="text/html"
+          width="2024"
+          height="1138.5"
+          src="https://www.youtube.com/embed/oyozZK1O_NI?autoplay=1&disablekb=1&loop=1&playsinline=1"
+          frameborder="0"
+          allowfullscreen
+        >
       {% else %}
 
       {% endif %}
