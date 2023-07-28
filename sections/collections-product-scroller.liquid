@@ -89,12 +89,24 @@
                 {% assign featured_image = block.settings[productImgId]
                   | default: all_products[block.settings[productId]].featured_image
                 %}
-
-                {{
-                  featured_image
-                  | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
-                }}
+                {% if forloop.index == 1 %}
+                  {{
+                    featured_image
+                    | image_url: width: 700
+                    | image_tag:
+                      preload: true,
+                      widths: '400, 600, 800',
+                      loading: 'lazy',
+                      class: 'js-lazy-image',
+                      alt: product.title
+                  }}
+                {% else %}
+                  {{
+                    featured_image
+                    | image_url: width: 700
+                    | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
+                  }}
+                {% endif %}
               </a>
             </div>
             <div class="product-details">
