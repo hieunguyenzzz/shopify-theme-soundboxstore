@@ -86,7 +86,7 @@
            {{ video_source.url }}
              {{ video.preview_image }}
               <source media="(max-width:768px)"
-          src="{{ video_source.url }}"
+          src="{{ video_source.url  }}"
           type="{{ video_source.mime_type }}"
         >
          {% endfor %}
@@ -95,6 +95,7 @@
            {{ video_source.url }}
              {{ video.preview_image }}
               <source 
+             media="(min-width:769px)"
           src="{{ video_source.url }}"
           type="{{ video_source.mime_type }}"
         >
