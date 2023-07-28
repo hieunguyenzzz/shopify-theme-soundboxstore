@@ -57,20 +57,12 @@
       {%- if section.settings.video_url contains 'youtube.com/watch' -%}
         {%- assign video_id = section.settings.video_url | split: 'v=' -%}
         {%- assign video_id = video_id[1] | split: '&' | first -%}
-        <iframe
-          id="YouTubeVideo-template--16793515491553__caeb4e31-7b8d-4ce9-b58a-e2b6bc92d8a7"
+        <div
+          id="YouTubeVideo-{{ section.id }}"
           class="video-div"
           data-type="youtube"
-          data-video-id="oyozZK1O_NI"
-          frameborder="0"
-          allowfullscreen="1"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          title="video"
-          width="1280"
-          height="720"
-          src="https://www.youtube.com/embed/oyozZK1O_NI?autohide=0&amp;cc_load_policy=0&amp;controls=0&amp;fs=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fthankyou-485.myshopify.com&amp;widgetid=3"
-          tabindex="-1"
-        ></iframe>
+          data-video-id="{{ video_id }}"
+        ></div>
       {% else %}
 
       {% endif %}
@@ -88,29 +80,31 @@
         ></div>
       {% else %}
         {% if section.settings.video_m %}
-          <picture class="absolute inset-0 flex min-h-full object-center aspect-[3/4] [@media(min-width:481px)]:aspect-video -z-20 content-visibility: visible">
-            <source
-              media="(max-width: 480px) and (orientation: portrait) and (prefers-reduced-motion: no-preference)"
-              type="video/mp4; codecs=hvc1"
-              srcset="https://cdn.shopify.com/b/shopify-brochure2-assets/488d6fb493040e46e45a1dcb7e899e79.mp4">
-            <source
-              media="(min-width: 481px) and (-webkit-min-device-pixel-ratio: 1) and (prefers-reduced-motion: no-preference)"
-              type="video/mp4; codecs=hvc1"
-              srcset="https://cdn.shopify.com/b/shopify-brochure2-assets/033212561ae4fd44e663bcf0c28aa6fb.mp4">
-            <source
-              media="(max-width: 480px) and (prefers-reduced-motion: no-preference)"
-              type="image/avif"
-              srcset="https://cdn.shopify.com/b/shopify-brochure2-assets/82e5b0282bfbefccfd6579c35ee212f3.avif">
-            <source
-              media="(min-width: 481px) and (prefers-reduced-motion: no-preference)"
-              type="image/avif"
-              srcset="https://cdn.shopify.com/b/shopify-brochure2-assets/288aa2d76b4e7aaff082af1eb4279091.avif">
-            <img
-              src="https://cdn.shopify.com/b/shopify-brochure2-assets/339113bc828c2c7ab760a434e1703b93.webp?originalWidth=3840&amp;originalHeight=2160&amp;width=1920&amp;height=1080"
-              alt=""
-              class="w-full object-cover"
-              loading="lazy"
-          ></picture>
+          <video
+            playsinline="playsinline"
+            autoplay="autoplay"
+            loop="loop"
+            muted="muted"
+            preload="metadata"
+            poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
+          >
+            {% for video_source in section.settings.video_m.sources %}
+              <source
+                media="(max-width:768px)"
+                src="{{ video_source.url }}"
+                type="{{ video_source.mime_type }}"
+              >
+            {% endfor %}
+            {% for video_source in section.settings.video.sources %}
+              <source
+                media="(min-width:769px)"
+                src="{{ video_source.url }}"
+                type="{{ video_source.mime_type }}"
+              >
+            {% endfor %}
+
+            <img src="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598">
+          </video>
         {% else %}
           {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
         {% endif %}
