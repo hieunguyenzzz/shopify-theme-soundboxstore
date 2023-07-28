@@ -110,10 +110,14 @@
     </template>
   </div>
   <script>
-    function onviedoHover (){
-      let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-      let t = document.querySelector(".hero--{{ section.id }} template")
-    }
+        function onviedoHover (){
+          let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
+          let t = document.querySelector(".hero--{{ section.id }} template")
+          e.innerHTML=""
+              e.append(t.content.cloneNode(true))
+    document.removeEventListener("mouseover",onviedoHover)
+        }
+    document.addEventListener("mouseover",onviedoHover)
   </script>
   <div class="hero__text-wrap">
     <div class="page-width">
