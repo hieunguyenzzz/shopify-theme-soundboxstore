@@ -74,18 +74,22 @@
           poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
         >
           {% for video_source in section.settings.video_m.sources %}
-            <source
-              media="(max-width:768px)"
-              src="{{ video_source.url }}"
-              type="{{ video_source.mime_type }}"
-            >
+            {% if forloop.index == 1 %}
+              <source
+                media="(max-width:768px)"
+                src="{{ video_source.url }}"
+                type="{{ video_source.mime_type }}"
+              >
+            {% endif %}
           {% endfor %}
           {% for video_source in section.settings.video.sources %}
-            <source
-              media="(min-width:769px)"
-              src="{{ video_source.url }}"
-              type="{{ video_source.mime_type }}"
-            >
+            {% if forloop.index == 1 %}
+              <source
+                media="(min-width:769px)"
+                src="{{ video_source.url }}"
+                type="{{ video_source.mime_type }}"
+              >
+            {% endif %}
           {% endfor %}
 
           <img src="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598">
