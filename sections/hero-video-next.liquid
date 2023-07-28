@@ -67,7 +67,7 @@
       
       <div style="display:none">
        {% for video_source in section.settings.video.sources %}
-           {{ video_source.url }}
+           {{ video_source | json }}
          {% endfor %}
       </div>
       <video
