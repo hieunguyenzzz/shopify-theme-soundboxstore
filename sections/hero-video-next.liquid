@@ -140,15 +140,7 @@
       </div>
     </template>
   </div>
-  <script>
-        let handleBannerhover = ()=>{
-      let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-          let t = document.querySelector(".hero--{{ section.id }} template")
-        e.append(t.content.cloneNode(true))
-       document.removeEventListener("mouseover",handleBannerhover)
-    }
-        document.addEventListener("mouseover",handleBannerhover)
-  </script>
+
   <div class="hero__text-wrap">
     <div class="page-width">
       <div class="hero__text-content {{ section.settings.text_align }}">
