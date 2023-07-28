@@ -82,9 +82,6 @@
             >
           {% endfor %}
           {% for video_source in section.settings.video.sources %}
-            {{ video_source.mime_type }}
-            {{ video_source.url }}
-            {{ video.preview_image }}
             <source
               media="(min-width:769px)"
               src="{{ video_source.url }}"
