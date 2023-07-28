@@ -110,14 +110,18 @@
     </template>
   </div>
   <script>
+    let played = false
         function onviedoHover (){
+          if(played) return
           let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
           let t = document.querySelector(".hero--{{ section.id }} template")
           e.innerHTML=""
               e.append(t.content.cloneNode(true))
+          played=true
     document.removeEventListener("mouseover",onviedoHover)
         }
     document.addEventListener("mouseover",onviedoHover)
+    setTimeout(onviedoHover,3000)
   </script>
   <div class="hero__text-wrap">
     <div class="page-width">
