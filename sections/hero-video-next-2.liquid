@@ -53,7 +53,18 @@
   class="video-parent-section hero hero--{{ section.id }}"
 >
   <div class="hero__media hero__media--{{ section.id }}">
-    <div class="hero__media-container"></div>
+    <div class="hero__media-container">
+      <video
+        playsinline="playsinline"
+        autoplay="autoplay"
+        loop="loop"
+        muted="muted"
+        preload="metadata"
+        poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
+      >
+        <img src="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598">
+      </video>
+    </div>
 
     <template>
       <div class="hero__media-container">
@@ -101,13 +112,10 @@
     </template>
   </div>
   <script>
-        let handleBannerhover = ()=>{
+    function onviedoHover (){
       let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-          let t = document.querySelector(".hero--{{ section.id }} template")
-        e.append(t.content.cloneNode(true))
-       document.removeEventListener("mouseover",handleBannerhover)
+      let t = document.querySelector(".hero--{{ section.id }} template")
     }
-        document.addEventListener("mouseover",handleBannerhover)
   </script>
   <div class="hero__text-wrap">
     <div class="page-width">
