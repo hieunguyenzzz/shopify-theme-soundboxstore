@@ -95,50 +95,6 @@
         {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
       {% endif %}
     </div>
-    <template>
-      <div class="hero__media-container">
-        {%- if section.settings.video_url contains 'youtube.com/watch' -%}
-          {%- assign video_id = section.settings.video_url | split: 'v=' -%}
-          {%- assign video_id = video_id[1] | split: '&' | first -%}
-          <div
-            id="YouTubeVideo-{{ section.id }}"
-            class="video-div"
-            data-type="youtube"
-            data-video-id="{{ video_id }}"
-          ></div>
-        {%- endif -%}
-
-        {% if section.settings.video_m %}
-          <video
-            playsinline="playsinline"
-            autoplay="autoplay"
-            loop="loop"
-            muted="muted"
-            preload="metadata"
-            poster="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598"
-          >
-            {% for video_source in section.settings.video_m.sources %}
-              <source
-                media="(max-width:768px)"
-                src="{{ video_source.url }}"
-                type="{{ video_source.mime_type }}"
-              >
-            {% endfor %}
-            {% for video_source in section.settings.video.sources %}
-              <source
-                media="(min-width:769px)"
-                src="{{ video_source.url }}"
-                type="{{ video_source.mime_type }}"
-              >
-            {% endfor %}
-
-            <img src="//cdn.shopify.com/s/files/1/0631/9892/0929/files/preview_images/90ac189772fc4f47913bb054d3580888.thumbnail.0000000000_small.jpg?v=1690433598">
-          </video>
-        {% else %}
-          {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
-        {% endif %}
-      </div>
-    </template>
   </div>
 
   <div class="hero__text-wrap">
