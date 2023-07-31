@@ -14,9 +14,11 @@
 {% endfor %}
 <template id="{{ section.id }}">{{ content }}</template>
 <script>
-    document.addEventListener("mouseover", () => {
-    console.log("function called");
-  }, { once: true });
+      document.addEventListener("mouseover", () => {
+      document.querySelector("#{{section.id }}").content.cloneNode(true).childNodes.forEach(e=>{
+      document.body.append(e)
+  })
+    }, { once: true });
 </script>
 {% schema %}
 {
