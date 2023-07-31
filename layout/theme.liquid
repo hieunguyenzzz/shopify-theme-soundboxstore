@@ -231,8 +231,8 @@
       };
     </script>
 
-    {{ content_for_header }}
-
+{% comment %}{{ content_for_header }}{% endcomment %}
+{{ content_for_header | remove: '<link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">' }}
     <style>
       label[for='_gcl_au'],
       label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
