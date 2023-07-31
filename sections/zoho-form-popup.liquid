@@ -12,14 +12,17 @@
     {%- endif -%}
   {%- endif -%}
 {% endfor %}
-<template id="{{ section.id }}">{{ content }}</template>
-<script>
-      document.addEventListener("mouseover", () => {
-      document.querySelector("#{{section.id }}").content.cloneNode(true).childNodes.forEach(e=>{
-      document.body.append(e)
-  })
-    }, { once: true });
-</script>
+{{ content }}
+<!-- <template id="{{ section.id }}">{{ content }}</template> -->
+<!--
+  <script>
+        document.addEventListener("mouseover", () => {
+        document.querySelector("#{{section.id }}").content.cloneNode(true).childNodes.forEach(e=>{
+        document.body.append(e)
+    })
+      }, { once: true });
+  </script>
+-->
 {% schema %}
 {
   "name": "Zoho form popup",
