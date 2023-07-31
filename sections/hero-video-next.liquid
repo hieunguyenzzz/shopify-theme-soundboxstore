@@ -9,6 +9,9 @@
   .hero--{{ section.id }} .hero__title {
     font-size: {{ section.settings.title_size | times: 0.5 }}px;
   }
+  .hero--{{ section.id }} video {
+    object-fit:cover;
+  }
   @media only screen and (min-width: 769px) {
     .hero--{{ section.id }} {
       height: {{ section.settings.height }}px;
