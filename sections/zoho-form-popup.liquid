@@ -1,4 +1,3 @@
-<style></style>
 {% for block in section.blocks %}
   {% if forloop.index == 1 %}
     {% assign content = block.settings.content %}
@@ -14,27 +13,19 @@
   {%- endif -%}
 {% endfor %}
 {{ content }}
+<script>
+  let content= "{{content | json}}"
+</script>
 {% schema %}
 {
   "name": "Zoho form popup",
   "class": "zoho-form-popup",
- "settings": [],
+  "settings": [],
   "blocks": [
     {
       "type": "item",
       "name": "Item",
       "settings": [
-         {
-          "type": "text",
-          "id": "countryCode",
-          "label": "Coundtry Code",
-          "default": "GB"
-        },
-{
-          "type": "text",
-          "id": "langCode",
-          "label": "Languages code"
-        },
         {
           "type": "text",
           "id": "countryCode",
