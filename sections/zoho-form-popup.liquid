@@ -14,7 +14,9 @@
 {% endfor %}
 {{ content }}
 <script>
-  let content= {{content | json}}
+  
+  let content= `{{ content }}`
+
 </script>
 {% schema %}
 {
