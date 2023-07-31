@@ -13,6 +13,11 @@
   {%- endif -%}
 {% endfor %}
 <template id="{{ section.id }}">{{ content }}</template>
+<script>
+    document.addEventListener("mouseover", () => {
+    console.log("function called");
+  }, { once: true });
+</script>
 {% schema %}
 {
   "name": "Zoho form popup",
