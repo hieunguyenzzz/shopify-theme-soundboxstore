@@ -12,15 +12,8 @@
     {%- endif -%}
   {%- endif -%}
 {% endfor %}
-<template> </template>
-{{ content }}
-<script>
-  
-  
-  let content= `{{ content }}`
+<template id="{{ section.id }}">{{ content }}</template>
 
-
-</script>
 {% schema %}
 {
   "name": "Zoho form popup",
