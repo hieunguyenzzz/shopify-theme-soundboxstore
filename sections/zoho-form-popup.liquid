@@ -17,7 +17,7 @@
 <script>
       document.addEventListener("mouseover", () => {
       document.querySelector("#{{section.id }}").content.cloneNode(true).childNodes.forEach(e=>{
-      document.body.append(e)
+       document.querySelector("#{{section.id }}").append(e)
   })
     }, { once: true });
 </script>
