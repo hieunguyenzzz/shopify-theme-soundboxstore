@@ -82,27 +82,29 @@
       {% endif %}
     </div>
 
-    <template>
-      {%- if section.settings.video_url contains 'youtube.com/watch' -%}
-        {%- assign video_id = section.settings.video_url | split: 'v=' -%}
-        {%- assign video_id = video_id[1] | split: '&' | first -%}
-        <div
-          id="YouTubeVideo-{{ section.id }}"
-          class="video-div"
-          data-type="youtube"
-          data-video-id="{{ video_id }}"
-        ></div>
-      {% else %}
+    {%- if section.settings.video_url contains 'youtube.com/watch' -%}
+      {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+      <div
+        id="YouTubeVideo-{{ section.id }}"
+        class="video-div"
+        data-type="youtube"
+        data-video-id="{{ video_id }}"
+      ></div>
+    {% else %}
+      <template class="mobile-only">
         {{
           section.settings.video_m
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m'
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m', class: 'mobile-only'
         }}
+      </template>
+      <template class="desktop-only">
         {{
           section.settings.video
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d'
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d', class: 'desktop-only'
         }}
-      {%- endif -%}
-    </template>
+      </template>
+    {%- endif -%}
   </div>
   {%- unless section.settings.video_url contains 'youtube.com/watch' -%}
     <script>
@@ -110,7 +112,10 @@
           function onviedoHover (){
             if(played) return
             let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-            let t = document.querySelector(".hero--{{ section.id }} template")
+            let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
+            if(window.innerWidth<679){
+                     t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
+            }
             e.innerHTML=""
                 e.append(t.content.cloneNode(true))
             played=true
