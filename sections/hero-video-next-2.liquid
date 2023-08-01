@@ -112,6 +112,8 @@
          let played = false
           function onviedoHover (){
             if(played) return
+            played=true
+
             let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
             let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
             if(window.innerWidth<679){
@@ -119,7 +121,6 @@
             }
             e.innerHTML=""
                 e.append(t.content.cloneNode(true))
-            played=true
           }
       document.addEventListener("mouseover",onviedoHover,{ once: true })
         windown.addEventListener("scroll", ,onviedoHover,{ once: true })
