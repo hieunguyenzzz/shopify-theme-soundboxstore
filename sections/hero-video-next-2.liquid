@@ -119,27 +119,33 @@
   {%- unless section.settings.video_url contains 'youtube.com/watch' -%}
     {% assign id = section.id | append: '_v' %}
     <script>
-            (()=>{
-               let played = false
-                function onviedoHover (){
-                  if(played) return
-                  played=true
-      localStorage.setItem("{{ id }}",true)
-                  let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-                  let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
-                  if(window.innerWidth<679){
-                           t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
-                  }
-                      e.append(t.content.cloneNode(true))
-                }
-              if(localStorage.getItem("{{ id }}")){
-                onviedoHover()
-              }else{
-                 document.addEventListener("mouseover",onviedoHover,{ once: true })
-              window.addEventListener("scroll", onviedoHover,{ once: true })
-              }
+                  (()=>{
+                     let played = false
+                      function onviedoHover (){
+                        if(played) return
+                        played=true
+            localStorage.setItem("{{ id }}",true)
+                        let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
+                        let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
+                        if(window.innerWidth<679){
+                                 t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
+                        }
+                            e.append(t.content.cloneNode(true))
+                        setTimeout(()=>{
+       let e= document.querySelector(".hero--{{ section.id }} .hero__media-container video")
+                          if(e.currentTime===0){
+                            e.play()
+      }
+      },300)
+                      }
+                    if(localStorage.getItem("{{ id }}")){
+                      onviedoHover()
+                    }else{
+                       document.addEventListener("mouseover",onviedoHover,{ once: true })
+                        window.addEventListener("scroll", onviedoHover,{ once: true })
+                    }
 
-            })()
+                  })()
     </script>
   {% endunless %}
 
