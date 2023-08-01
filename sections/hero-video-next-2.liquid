@@ -45,6 +45,10 @@
       opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
     }
   {% endif %}
+  .hero--{{ section.id }} img{
+    position:absolute;
+    width:100%;height:100%;object-fit:cover
+  }
 {%- endstyle -%}
 
 <div
@@ -74,6 +78,7 @@
         ></iframe>
       {% else %}
         {{ section.settings.video.preview_image | image_url: width: 100 | image_tag }}
+        {{ section.settings.video_m.preview_image | image_url: width: 100 | image_tag }}
       {% endif %}
     </div>
 
