@@ -77,9 +77,9 @@
           tabindex="-1"
         ></iframe>
       {% else %}
-        {{ section.settings.video.preview_image | image_url: width: 100 | image_tag }}
+        {{ section.settings.video.preview_image | image_url: width: 100 | image_tag: class: 'desktop-only' }}
         {% if section.settings.video_m %}
-          {{ section.settings.video_m.preview_image | image_url: width: 100 | image_tag }}
+          {{ section.settings.video_m.preview_image | image_url: width: 100 | image_tag: class: 'mobile-only' }}
         {% endif %}
       {% endif %}
     </div>
