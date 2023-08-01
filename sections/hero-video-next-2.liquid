@@ -78,7 +78,9 @@
         ></iframe>
       {% else %}
         {{ section.settings.video.preview_image | image_url: width: 100 | image_tag }}
-        {{ section.settings.video_m.preview_image | image_url: width: 100 | image_tag }}
+        {% if section.settings.video_m %}
+          {{ section.settings.video_m.preview_image | image_url: width: 100 | image_tag }}
+        {% endif %}
       {% endif %}
     </div>
 
