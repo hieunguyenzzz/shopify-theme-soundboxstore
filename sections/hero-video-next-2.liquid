@@ -73,7 +73,7 @@
           tabindex="-1"
         ></iframe>
       {% else %}
-        {{ video.preview_image.src }}
+        {{ video.preview_image | image_url }}
       {% endif %}
     </div>
 
