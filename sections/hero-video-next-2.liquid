@@ -108,7 +108,8 @@
   </div>
   {%- unless section.settings.video_url contains 'youtube.com/watch' -%}
     <script>
-      let played = false
+      (()=>{
+         let played = false
           function onviedoHover (){
             if(played) return
             let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
@@ -119,9 +120,10 @@
             e.innerHTML=""
                 e.append(t.content.cloneNode(true))
             played=true
-      document.removeEventListener("mouseover",onviedoHover)
           }
-      document.addEventListener("mouseover",onviedoHover)
+      document.addEventListener("mouseover",onviedoHover,{ once: true })
+        windown.addEventListener("scroll", ,onviedoHover,{ once: true })
+      })()
     </script>
   {% endunless %}
 
