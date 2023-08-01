@@ -73,7 +73,7 @@
           tabindex="-1"
         ></iframe>
       {% else %}
-        {{ section.settings.video.preview_image | json }}
+        <img src="{{ section.settings.video.preview_image }}">
       {% endif %}
     </div>
 
