@@ -3,51 +3,59 @@
 {%- endunless -%}
 
 {%- style -%}
-  .hero--{{ section.id }} {
-    height: {{ section.settings.height_mobile }}px;
-  }
-  .hero--{{ section.id }} .hero__title {
-    font-size: {{ section.settings.title_size | times: 0.5 }}px;
-  }
-  @media only screen and (min-width: 769px) {
     .hero--{{ section.id }} {
-      height: {{ section.settings.height }}px;
+      height: {{ section.settings.height_mobile }}px;
     }
     .hero--{{ section.id }} .hero__title {
-      font-size: {{ section.settings.title_size }}px;
+      font-size: {{ section.settings.title_size | times: 0.5 }}px;
     }
+    @media only screen and (min-width: 769px) {
+      .hero--{{ section.id }} {
+        height: {{ section.settings.height }}px;
+      }
+      .hero--{{ section.id }} .hero__title {
+        font-size: {{ section.settings.title_size }}px;
+      }
+    }
+
+    {%- assign button_alpha = section.settings.color_accent | color_extract: 'alpha' -%}
+    {% unless button_alpha == 0.0 %}
+      .hero--{{ section.id }} .btn {
+        background: {{ section.settings.color_accent }} !important;
+        border-color: {{ section.settings.color_accent }} !important;
+
+        {%- assign accent_brightness = section.settings.color_accent | color_extract: 'lightness' -%}
+
+        {% if accent_brightness > 40 %}
+          color: #000 !important;
+        {% endif %}
+      }
+    {% endunless %}
+
+    {% if section.settings.overlay_opacity > 0 %}
+      .hero--{{ section.id }} .hero__text-wrap:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+        background-color: #000;
+        opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+      }
+    {% endif %}
+    .hero--{{ section.id }} img{
+      position:absolute;
+      width:100%;height:100%;object-fit:cover
+    }
+   .hero--{{ section.id }} video{
+    opacity: 0;
+      transition: opacity 0.7s ease-out;
+      opacity: 1;
   }
-
-  {%- assign button_alpha = section.settings.color_accent | color_extract: 'alpha' -%}
-  {% unless button_alpha == 0.0 %}
-    .hero--{{ section.id }} .btn {
-      background: {{ section.settings.color_accent }} !important;
-      border-color: {{ section.settings.color_accent }} !important;
-
-      {%- assign accent_brightness = section.settings.color_accent | color_extract: 'lightness' -%}
-
-      {% if accent_brightness > 40 %}
-        color: #000 !important;
-      {% endif %}
-    }
-  {% endunless %}
-
-  {% if section.settings.overlay_opacity > 0 %}
-    .hero--{{ section.id }} .hero__text-wrap:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      z-index: 3;
-      background-color: #000;
-      opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
-    }
-  {% endif %}
-  .hero--{{ section.id }} img{
-    position:absolute;
-    width:100%;height:100%;object-fit:cover
+     .hero--{{ section.id }} video.playing{
+      opacity: 1;
   }
 {%- endstyle -%}
 
@@ -119,40 +127,38 @@
   {%- unless section.settings.video_url contains 'youtube.com/watch' -%}
     {% assign id = section.id | append: '_v' %}
     <script>
-                        (()=>{
-                           let played = false
-                            function onviedoHover (){
-                              if(played) return
-                              played=true
-                  localStorage.setItem("{{ id }}",true)
-                              let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
-                              let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
-                              if(window.innerWidth<679){
-                                       t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
-                              }
-                                  e.append(t.content.cloneNode(true))
-                              setTimeout(()=>{
-             let e= document.querySelector(".hero--{{ section.id }} .hero__media-container video")
-          if(e){
-            e.addEventListener("play", (event) => {
-        console.log(
-          "The Boolean paused property is now 'false'. Either the play() method was called or the autoplay attribute was toggled.",
-        );
-      });
-          }
-                                if(e.currentTime===0){
-                                  e.play()
-            }
-            },300)
-                            }
-                          if(localStorage.getItem("{{ id }}")){
-                            onviedoHover()
-                          }else{
-                             document.addEventListener("mouseover",onviedoHover,{ once: true })
-                              window.addEventListener("scroll", onviedoHover,{ once: true })
-                          }
+                              (()=>{
+                                 let played = false
+                                  function onviedoHover (){
+                                    if(played) return
+                                    played=true
+                        localStorage.setItem("{{ id }}",true)
+                                    let e= document.querySelector(".hero--{{ section.id }} .hero__media-container")
+                                    let t = document.querySelector(".hero--{{ section.id }} template.desktop-only")
+                                    if(window.innerWidth<679){
+                                             t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
+                                    }
+                                        e.append(t.content.cloneNode(true))
+                                    setTimeout(()=>{
+                   let e= document.querySelector(".hero--{{ section.id }} .hero__media-container video")
+                if(e){
+                  e.addEventListener("play", (event) => {
+      e.classList.add("playing")
+            });
+                }
+                                      if(e.currentTime===0){
+                                        e.play()
+                  }
+                  },300)
+                                  }
+                                if(localStorage.getItem("{{ id }}")){
+                                  onviedoHover()
+                                }else{
+                                   document.addEventListener("mouseover",onviedoHover,{ once: true })
+                                    window.addEventListener("scroll", onviedoHover,{ once: true })
+                                }
 
-                        })()
+                              })()
     </script>
   {% endunless %}
 
