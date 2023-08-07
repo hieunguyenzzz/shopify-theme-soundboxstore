@@ -138,13 +138,15 @@
                                              t = document.querySelector(".hero--{{ section.id }} template.mobile-only")
                                     }
                                         e.append(t.content.cloneNode(true))
-                                    setTimeout(()=>{
-                   let e= document.querySelector(".hero--{{ section.id }} .hero__media-container video")
-                if(e){
-                  e.addEventListener("play", (event) => {
-      e.classList.add("playing")
+
+                                        let v= document.querySelector(".hero--{{ section.id }} .hero__media-container video")
+                if(v){
+                  v.addEventListener("play", (event) => {
+      v.classList.add("playing")
             });
                 }
+                                    setTimeout(()=>{
+
                                       if(e.currentTime===0){
                                         e.play()
                   }
