@@ -220,7 +220,14 @@
     </div>
   </div>
 </div>
-
+<script>
+    (()=>{
+      document.querySelector('a[download="booth-catalog.pdf"]').addEventListener('click',(e)=>{
+       e.preventDefault();
+      document.querySelector("#{{ section.id }}#slideshow-input").checked=true
+  })
+    })()
+</script>
 {% schema %}
 {
   "name": "Flipbook",
@@ -228,7 +235,7 @@
     {
       "type": "html",
       "id": "content",
-      "label": "Google map url"
+      "label": "Ccntent tent"
     }
 
   ],
