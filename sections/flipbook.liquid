@@ -1,196 +1,235 @@
-{% capture images_showroom %}
-    <style>
-
-    .slideshow-section {
+<style>
+      .slideshow-section {
+        display: none;
+      }
+      .slideshow-input {
       display: none;
-    }
-    .slideshow-input {
-    display: none;
-    }
-    .slideshow-input:checked + .slideshow-section {
-      display: block;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      display: flex;
-      z-index: 999;
-      align-items: center;
-      background: #ffffffcf;
-    }
-    .slideshow-wrapper {
-      width: 100%;
-      max-height: 80%;
-    }
-    .close-btn {
-      position: absolute;
-      top: -20px;
-      right: 0;
-      z-index: 999;
-      width: 40px;
-      height: 40px;
-      right: 40px;
-        color: var(--shopify-editor-setting-color_body_text);
-    color: var(--colorTextBody);
-    background-color: var(--shopify-editor-setting-color_body_bg);
-    background-color: var(--colorBody);
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+      }
+      .slideshow-input:checked + .slideshow-section {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
         display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #f1f1f1;
-    }
-    .close-btn:hover{
-    
-    transform: scale(1.12);
-    }
-    .images-btn img {
-  flex: 1;
-    min-width:unset;
-    width:0;
-    object-fit:cover
-}
-    .google-map-section .col-right{
-    position:relative
-    }
-.images-btn {
-  display: flex;
-  width: auto;
-    margin:0;
-        position: absolute;
-    width: 40%;
-    right: 12px;
-    top: 12px;
-    padding: 4px;
-    z-index: 1;
-    height: 90px;
-    background: white;
-    background-color: white;
-    /* margin: 10px; */
-    /* padding: 1px; */
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    border-radius: 2px;
-}
-    .images-btn div{
-        position: absolute;
-    top: 4px ;
-    left: 4px;
-    bottom: 4px;
-    right: 4px;
-    background: #00000061;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    @media only screen and (max-width: 768px){
+        z-index: 999;
+        align-items: center;
+        background: #ffffffcf;
+      }
+      .slideshow-wrapper {
+        width: 100%;
+        max-height: 80%;
+      }
       .close-btn {
-     top: -16px;
-    width: 33px;
-    height: 33px;
-    right:20px
+        position: absolute;
+        top: -20px;
+        right: 0;
+        z-index: 999;
+        width: 40px;
+        height: 40px;
+        right: 40px;
+          color: var(--shopify-editor-setting-color_body_text);
+      color: var(--colorTextBody);
+      background-color: var(--shopify-editor-setting-color_body_bg);
+      background-color: var(--colorBody);
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+          display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #f1f1f1;
       }
-    .google-map-section .col-right {
-    height:auto;
-    }
-      .google-map-section .col-right iframe{
-        height:350px
+      .close-btn:hover{
+
+      transform: scale(1.12);
       }
-    .images-btn{
-    height: 150px;
-    position: relative;
-    width: 100%;
-    right: 0;
-    top: 0;
-    }
-    }
-    </style>
-  <input type="checkbox" name="slideshow-input" class="slideshow-input"  id="slideshow-input"/> 
-  <div class="slideshow-section"
-    data-section-id="{{ section.id }}"
-    data-section-type="slideshow-section"
-    {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+      .images-btn img {
+    flex: 1;
+      min-width:unset;
+      width:0;
+      object-fit:cover
+  }
+      .google-map-section .col-right{
+      position:relative
+      }
+  .images-btn {
+    display: flex;
+    width: auto;
+      margin:0;
+          position: absolute;
+      width: 40%;
+      right: 12px;
+      top: 12px;
+      padding: 4px;
+      z-index: 1;
+      height: 90px;
+      background: white;
+      background-color: white;
+      /* margin: 10px; */
+      /* padding: 1px; */
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+      border-radius: 2px;
+  }
+      .images-btn div{
+          position: absolute;
+      top: 4px ;
+      left: 4px;
+      bottom: 4px;
+      right: 4px;
+      background: #00000061;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      @media only screen and (max-width: 768px){
+        .close-btn {
+       top: -16px;
+      width: 33px;
+      height: 33px;
+      right:20px
+        }
+      .google-map-section .col-right {
+      height:auto;
+      }
+        .google-map-section .col-right iframe{
+          height:350px
+        }
+      .images-btn{
+      height: 150px;
+      position: relative;
+      width: 100%;
+      right: 0;
+      top: 0;
+      }
+      }
+</style>
+<input type="checkbox" name="slideshow-input" class="slideshow-input" id="slideshow-input">
+<div
+  class="slideshow-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow-section"
+  {% if section.settings.parallax %}
+    data-parallax="true"
+  {% endif %}
+>
+  {%- if section.blocks.size > 0 -%}
+    <div class="slideshow-wrapper">
+      <label for="slideshow-input" class="close-btn  flickity-button" type="button" aria-label="Previous">
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+        </svg>
+      </label>
 
-    {%- if section.blocks.size > 0 -%}
-      <div class="slideshow-wrapper">
-      <label for="slideshow-input" class="close-btn  flickity-button" type="button" aria-label="Previous"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path></svg></label>
-      
-        {%- if section.settings.autoplay and section.settings.style == 'bars' and section.blocks.size > 1 -%}
-          {%- style -%}
-            [data-bars][data-autoplay="true"] .flickity-page-dots .dot:after {
-              animation-duration: {{ section.settings.autoplay_speed | times: 1000 }}ms;
-            }
-          {%- endstyle -%}
-
-          <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
-            <span class="slideshow__pause-stop">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pause" viewBox="0 0 10 13"><g fill="#000" fill-rule="evenodd"><path d="M0 0h3v13H0zM7 0h3v13H7z"/></g></svg>
-              <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
-            </span>
-            <span class="slideshow__pause-play">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/></svg>
-              <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
-            </span>
-          </button>
-        {%- endif -%}
-
-        {%- assign natural_height_ratio = '60%' -%}
-        {%- assign natural_height_ratio_mobile = '100%' -%}
-        {%- for block in section.blocks limit: 1 -%}
-          {%- if block.settings.image != blank -%}
-            {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{% endcapture %}
-            {%- assign natural_height_ratio_mobile = natural_height_ratio -%}
-          {%- endif -%}
-          {%- if block.settings.image_mobile != blank -%}
-            {%- capture natural_height_ratio_mobile -%}{{ 100 | divided_by: block.settings.image_mobile.aspect_ratio }}%{% endcapture %}
-          {%- endif -%}
-        {%- endfor -%}
-
+      {%- if section.settings.autoplay and section.settings.style == 'bars' and section.blocks.size > 1 -%}
         {%- style -%}
-          .hero-natural--{{ section.id }} {
-            height: 0;
-            padding-bottom: {{ natural_height_ratio }};
-          }
-
-          @media screen and (max-width: 768px) {
-            .hero-natural--{{ section.id }} {
-              padding-bottom: {{ natural_height_ratio_mobile }};
-            }
+          [data-bars][data-autoplay="true"] .flickity-page-dots .dot:after {
+            animation-duration: {{ section.settings.autoplay_speed | times: 1000 }}ms;
           }
         {%- endstyle -%}
 
-        <div class="hero-natural--{{ section.id }}">
-          <div id="Slideshow-{{ section.id }}"
-            class="hero hero--{{ section.id }} loading loading--delayed"
-            data-natural="true"
-            data-autoplay="{{ section.settings.autoplay }}"
-            data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
-             data-arrows="true"
-            data-slide-count="{{ section.blocks.size }}">
-            {%- for block in section.blocks -%}
-              <div
-                {{ block.shopify_attributes }}
-                class="slideshow__slide slideshow__slide--{{ block.id }}"
-                data-index="{{ forloop.index0 }}"
-                data-id="{{ block.id }}">
-               <a href="https://online.flippingbook.com/view/540110593/" class="fbo-embed" data-fbo-id="6bca3e33d8" data-fbo-ratio="3:2" data-fbo-lightbox="yes" data-fbo-width="100%" data-fbo-height="auto" data-fbo-version="1" style="max-width: 100%">Brochure-Digital-Format-Digita-Size</a><script async defer src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=540110593"></script>
+        <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+          <span class="slideshow__pause-stop">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pause" viewBox="0 0 10 13">
+              <g fill="#000" fill-rule="evenodd"><path d="M0 0h3v13H0zM7 0h3v13H7z"/></g>
+            </svg>
+            <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+          </span>
+          <span class="slideshow__pause-play">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-play"
+              viewBox="18.24 17.35 24.52 28.3"
+            >
+              <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+            </svg>
+            <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+          </span>
+        </button>
+      {%- endif -%}
 
-              </div>
-            {%- endfor -%}
-          </div>
+      {%- assign natural_height_ratio = '60%' -%}
+      {%- assign natural_height_ratio_mobile = '100%' -%}
+      {%- for block in section.blocks limit: 1 -%}
+        {%- if block.settings.image != blank -%}
+          {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{% endcapture %}
+          {%- assign natural_height_ratio_mobile = natural_height_ratio -%}
+        {%- endif -%}
+        {%- if block.settings.image_mobile != blank -%}
+          {%- capture natural_height_ratio_mobile -%}{{ 100 | divided_by: block.settings.image_mobile.aspect_ratio }}%{% endcapture %}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- style -%}
+        .hero-natural--{{ section.id }} {
+          height: 0;
+          padding-bottom: {{ natural_height_ratio }};
+        }
+
+        @media screen and (max-width: 768px) {
+          .hero-natural--{{ section.id }} {
+            padding-bottom: {{ natural_height_ratio_mobile }};
+          }
+        }
+      {%- endstyle -%}
+
+      <div class="hero-natural--{{ section.id }}">
+        <div
+          id="Slideshow-{{ section.id }}"
+          class="hero hero--{{ section.id }} loading loading--delayed"
+          data-natural="true"
+          data-autoplay="{{ section.settings.autoplay }}"
+          data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+          data-arrows="true"
+          data-slide-count="{{ section.blocks.size }}"
+        >
+          {%- for block in section.blocks -%}
+            <div
+              {{ block.shopify_attributes }}
+              class="slideshow__slide slideshow__slide--{{ block.id }}"
+              data-index="{{ forloop.index0 }}"
+              data-id="{{ block.id }}"
+            >
+              <a
+                href="https://online.flippingbook.com/view/540110593/"
+                class="fbo-embed"
+                data-fbo-id="6bca3e33d8"
+                data-fbo-ratio="3:2"
+                data-fbo-lightbox="yes"
+                data-fbo-width="100%"
+                data-fbo-height="auto"
+                data-fbo-version="1"
+                style="max-width: 100%"
+                >Brochure-Digital-Format-Digita-Size</a
+              >
+              <script
+                async
+                defer
+                src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=540110593"
+              ></script>
+            </div>
+          {%- endfor -%}
         </div>
       </div>
-    {%- endif -%}
+    </div>
+  {%- endif -%}
 
-    {%- if section.blocks.size == 0 -%}
-      <div class="placeholder-noblocks">
-        {{ 'home_page.onboarding.no_content' | t }}
-      </div>
-    {%- endif -%}
-  </div>
-
-    {% endcapture %}
+  {%- if section.blocks.size == 0 -%}
+    <div class="placeholder-noblocks">
+      {{ 'home_page.onboarding.no_content' | t }}
+    </div>
+  {%- endif -%}
+</div>
 
 {% schema %}
 {
