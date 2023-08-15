@@ -104,7 +104,7 @@
       }
       }
 </style>
-<input type="checkbox" name="slideshow-input" checked class="slideshow-input" id="slideshow-input">
+<input type="checkbox" name="slideshow-input" class="slideshow-input" id="{{ section.id }}-input">
 <div
   class="slideshow-section"
   data-section-id="{{ section.id }}"
@@ -114,7 +114,7 @@
   {% endif %}
 >
   <div class="slideshow-wrapper">
-    <label for="slideshow-input" class="close-btn  flickity-button" type="button" aria-label="Previous">
+    <label for="{{ section.id }}-input" class="close-btn  flickity-button" type="button" aria-label="Previous">
       <svg
         stroke="currentColor"
         fill="currentColor"
@@ -225,7 +225,7 @@
           (()=>{
       document.querySelector('a[download="booth-catalog.pdf"]').addEventListener('click',(e)=>{
        e.preventDefault();
-      document.querySelector("#{{ section.id }} #slideshow-input").checked=true
+      document.querySelector("#{{ section.id }}-input").checked=true
   })
     })()
     });
