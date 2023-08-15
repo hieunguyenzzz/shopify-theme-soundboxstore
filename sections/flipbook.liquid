@@ -225,14 +225,16 @@
   </div>
 </div>
 <script>
-  window.addEventListener('DOMContentLoaded', function() {
-          (()=>{
-      document.querySelector('a[download="booth-catalog.pdf"]').addEventListener('click',(e)=>{
-       e.preventDefault();
-      document.querySelector("#{{ section.id }}-input").checked=true
-  })
-    })()
-    });
+    window.addEventListener('DOMContentLoaded', function() {
+            (()=>{
+  document.querySelectorAll('a[download="booth-catalog.pdf"]').forEach(e=>{
+       e.addEventListener('click',(e)=>{
+         e.preventDefault();
+        document.querySelector("#{{ section.id }}-input").checked=true
+    })
+   })
+      })()
+      });
 </script>
 {% schema %}
 {
