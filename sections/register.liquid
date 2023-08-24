@@ -1,4 +1,50 @@
-<div class="page-width page-width--tiny page-content">
+{% comment %} 
+**CUSTOMER DETAILS
+Company name:
+Address:
+Address:
+Postcode:
+Type of company: Limited Company | Sole Trader | Partnership
+Registration number:
+Registered Office Address (if
+different from above)
+Telephone:
+Fax:
+Email:
+Purchasing contact:
+Accounts contact:
+
+**TRADE REFERENCES
+Company 1:
+Contact name:
+Address:
+Postcode:
+Telephone:
+Email:
+Company 2:
+Contact name:
+Address:
+Postcode:
+Telephone:
+Email:
+
+**BANK DETAILS
+Bank Name:
+Branch:
+Account number:
+Sort code:
+
+I hereby authorise DWIR Limited to obtain references from the above, as and when
+appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
+which include that all invoices are due to be paid within 30 days from the date of
+invoice, and that a Purchase Order must be given for services rendered.
+
+Signed:
+Printed name:
+Position:
+Date:
+{% endcomment %}
+<div class="page-width page-width--tiny page-content"> 
   <header class="section-header">
     <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
   </header>
@@ -23,7 +69,10 @@
       <p>
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
       </p>
-
+ <div class="birthday">
+    <label for="birthday">Birthday</label>
+    <input id="birthday" type="date" name="customer[note][Birthday]" />
+  </div>
     {%- endform -%}
   </div>
 </div>
