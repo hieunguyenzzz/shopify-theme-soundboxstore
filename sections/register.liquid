@@ -99,7 +99,7 @@
         class="input-full{% if form.errors contains 'password' %} error{% endif %}"
       >
       <h2>CUSTOMER DETAILS</h2>
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
       <input
         type="text"
         name="customer[note][Company name]"
@@ -108,7 +108,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Address]">{{ 'customer.register.address' | t }}</label>
       <input
         type="text"
         name="customer[note][Address]"
@@ -117,7 +117,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Address]">{{ 'customer.register.address' | t }}</label>
       <input
         type="text"
         name="customer[note][Address]"
@@ -126,7 +126,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Postcode]">{{ 'customer.register.postcode' | t }}</label>
       <input
         type="text"
         name="customer[note][Postcode]"
@@ -135,7 +135,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Type of company]">{{ 'customer.register.type-of-company' | t }}</label>
       <input
         type="text"
         name="customer[note][Type of company]"
@@ -144,7 +144,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Registration number]">{{ 'customer.register.registration-number' | t }}</label>
       <input
         type="text"
         name="customer[note][Registration number]"
@@ -153,7 +153,9 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Registered Office Address]">
+        {{- 'customer.register.registered-office-address' | t -}}
+      </label>
       <input
         type="text"
         name="customer[note][Registered Office Address]"
@@ -162,7 +164,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Telephone]">{{ 'customer.register.telephone' | t }}</label>
       <input
         type="text"
         name="customer[note][Telephone]"
@@ -171,11 +173,11 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Fax]">{{ 'customer.register.fax' | t }}</label>
       <input type="text" name="customer[note][Fax]" id="fax" class="input-full" autocapitalize="words" autofocus>
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Email]">{{ 'customer.register.email' | t }}</label>
       <input type="text" name="customer[note][Email]" id="email" class="input-full" autocapitalize="words" autofocus>
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Purchasing contact]">{{ 'customer.register.purchasing-contact' | t }}</label>
       <input
         type="text"
         name="customer[note][Purchasing contact]"
@@ -184,7 +186,7 @@
         autocapitalize="words"
         autofocus
       >
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <label for="customer[note][Accounts contact]">{{ 'customer.register.accounts-contact' | t }}</label>
       <input
         type="text"
         name="customer[note][Accounts contact]"
