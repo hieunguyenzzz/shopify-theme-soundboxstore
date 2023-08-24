@@ -1,93 +1,216 @@
-{% comment %} 
-**CUSTOMER DETAILS
-Company name:
-Address:
-Address:
-Postcode:
-Type of company: Limited Company | Sole Trader | Partnership
-Registration number:
-Registered Office Address (if
-different from above)
-Telephone:
-Fax:
-Email:
-Purchasing contact:
-Accounts contact:
+{% comment %}
+  **CUSTOMER DETAILS
+  Company name:
+  Address:
+  Address:
+  Postcode:
+  Type of company: Limited Company | Sole Trader | Partnership
+  Registration number:
+  Registered Office Address (if
+  different from above)
+  Telephone:
+  Fax:
+  Email:
+  Purchasing contact:
+  Accounts contact:
 
-**TRADE REFERENCES
-Company 1:
-Contact name:
-Address:
-Postcode:
-Telephone:
-Email:
-Company 2:
-Contact name:
-Address:
-Postcode:
-Telephone:
-Email:
+  **TRADE REFERENCES
+  Company 1:
+  Contact name:
+  Address:
+  Postcode:
+  Telephone:
+  Email:
+  Company 2:
+  Contact name:
+  Address:
+  Postcode:
+  Telephone:
+  Email:
 
-**BANK DETAILS
-Bank Name:
-Branch:
-Account number:
-Sort code:
+  **BANK DETAILS
+  Bank Name:
+  Branch:
+  Account number:
+  Sort code:
 
-I hereby authorise DWIR Limited to obtain references from the above, as and when
-appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
-which include that all invoices are due to be paid within 30 days from the date of
-invoice, and that a Purchase Order must be given for services rendered.
+  I hereby authorise DWIR Limited to obtain references from the above, as and when
+  appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
+  which include that all invoices are due to be paid within 30 days from the date of
+  invoice, and that a Purchase Order must be given for services rendered.
 
-Signed:
-Printed name:
-Position:
-Date:
+  Signed:
+  Printed name:
+  Position:
+  Date:
 {% endcomment %}
-<div class="page-width page-width--tiny page-content"> 
+<div class="page-width page-width--tiny page-content">
   <header class="section-header">
     <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
   </header>
 
   <div class="form-vertical">
     {%- form 'create_customer' -%}
-
       {{ form.errors | default_errors }}
 
       <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
-      <input type="text" name="customer[first_name]" id="FirstName" class="input-full"{% if form.first_name %} value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+      <input
+        type="text"
+        name="customer[first_name]"
+        id="FirstName"
+        class="input-full"
+        {% if form.first_name %}
+          value="{{ form.first_name }}"
+        {% endif %}
+        autocapitalize="words"
+        autofocus
+      >
 
       <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
-      <input type="text" name="customer[last_name]" id="LastName" class="input-full"{% if form.last_name %} value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+      <input
+        type="text"
+        name="customer[last_name]"
+        id="LastName"
+        class="input-full"
+        {% if form.last_name %}
+          value="{{ form.last_name }}"
+        {% endif %}
+        autocapitalize="words"
+      >
 
       <label for="Email">{{ 'customer.register.email' | t }}</label>
-      <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}"{% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+      <input
+        type="email"
+        name="customer[email]"
+        id="Email"
+        class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+        {% if form.email %}
+          value="{{ form.email }}"
+        {% endif %}
+        autocorrect="off"
+        autocapitalize="off"
+      >
 
       <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
-      <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
-
+      <input
+        type="password"
+        name="customer[password]"
+        id="CreatePassword"
+        class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+      >
+      <h2>CUSTOMER DETAILS</h2>
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Company name]"
+        id="company-name"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Address]"
+        id="address"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Address]"
+        id="address"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Postcode]"
+        id="postcode"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Type of company]"
+        id="type-of-company"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Registration number]"
+        id="registration-number"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Registered Office Address]"
+        id="registered-office-address"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Telephone]"
+        id="telephone"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" name="customer[note][Fax]" id="fax" class="input-full" autocapitalize="words" autofocus>
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" name="customer[note][Email]" id="email" class="input-full" autocapitalize="words" autofocus>
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Purchasing contact]"
+        id="purchasing-contact"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
+      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+      <input
+        type="text"
+        name="customer[note][Accounts contact]"
+        id="accounts-contact"
+        class="input-full"
+        autocapitalize="words"
+        autofocus
+      >
       <p>
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
       </p>
- <div class="birthday">
-    <label for="birthday">Birthday</label>
-    <input id="birthday" type="date" name="customer[note][Birthday]" />
-  </div>
     {%- endform -%}
   </div>
 </div>
 
 {% schema %}
+{
+  "name": "Section Register",
+  "settings": [],
+   "presets": [
   {
     "name": "Section Register",
-    "settings": [],
-     "presets": [
-    {
-      "name": "Section Register",
-      "blocks": []
-    }
-  ]
+    "blocks": []
   }
+]
+}
 {% endschema %}
 
 {% stylesheet %}
