@@ -99,61 +99,80 @@
         class="input-full{% if form.errors contains 'password' %} error{% endif %}"
       >
       <h3>Customer Details</h3>
-      <label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
+      <div class="form-group"><label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
       <input
         type="text"
         name="customer[note][Company name]"
         id="company-name"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Address]">{{ 'customer.register.address' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Address]">{{ 'customer.register.address' | t }}</label>
       <input
         type="text"
         name="customer[note][Address]"
         id="address"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Address2]">{{ 'customer.register.address2' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Address2]">{{ 'customer.register.address2' | t }}</label>
       <input
         type="text"
         name="customer[note][Address2]"
         id="address2"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Postcode]">{{ 'customer.register.postcode' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Postcode]">{{ 'customer.register.postcode' | t }}</label>
       <input
         type="text"
         name="customer[note][Postcode]"
         id="postcode"
         class="input-full"
         autocapitalize="words"
-        autofocus
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Type of company]">{{ 'customer.register.type-of-company' | t }}</label>
+            <div>
+                  <input
+        type="radio"
+        name="customer[note][Type of company]"
+        id="type-of-company"
+        class="input-full"
+        autocapitalize="words"
+        value="Limited Company"
       >
-      <label for="customer[note][Type of company]">{{ 'customer.register.type-of-company' | t }}</label>
       <input
         type="radio"
         name="customer[note][Type of company]"
         id="type-of-company"
         class="input-full"
         autocapitalize="words"
-        autofocus
+        value="Sole Trader"
       >
-      <label for="customer[note][Registration number]">{{ 'customer.register.registration-number' | t }}</label>
+      <input
+        type="radio"
+        name="customer[note][Type of company]"
+        id="type-of-company"
+        class="input-full"
+        autocapitalize="words"
+        value="Partnership"
+      >
+            </div>
+      </div>
+      <div class="form-group"><label for="customer[note][Registration number]">{{ 'customer.register.registration-number' | t }}</label>
       <input
         type="text"
         name="customer[note][Registration number]"
         id="registration-number"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Registered Office Address]">
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Registered Office Address]">
         {{- 'customer.register.registered-office-address' | t -}}
       </label>
       <input
@@ -162,39 +181,39 @@
         id="registered-office-address"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Telephone]">{{ 'customer.register.telephone' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Telephone]">{{ 'customer.register.telephone' | t }}</label>
       <input
         type="text"
         name="customer[note][Telephone]"
         id="telephone"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Fax]">{{ 'customer.register.fax' | t }}</label>
-      <input type="text" name="customer[note][Fax]" id="fax" class="input-full" autocapitalize="words" autofocus>
-      <label for="customer[note][Email]">{{ 'customer.register.email' | t }}</label>
-      <input type="text" name="customer[note][Email]" id="email" class="input-full" autocapitalize="words" autofocus>
-      <label for="customer[note][Purchasing contact]">{{ 'customer.register.purchasing-contact' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Fax]">{{ 'customer.register.fax' | t }}</label>
+      <input type="text" name="customer[note][Fax]" id="fax" class="input-full" autocapitalize="words" >
+      <div class="form-group"><label for="customer[note][Email]">{{ 'customer.register.email' | t }}</label>
+      <input type="text" name="customer[note][Email]" id="email" class="input-full" autocapitalize="words" >
+      <div class="form-group"><label for="customer[note][Purchasing contact]">{{ 'customer.register.purchasing-contact' | t }}</label>
       <input
         type="text"
         name="customer[note][Purchasing contact]"
         id="purchasing-contact"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
-      <label for="customer[note][Accounts contact]">{{ 'customer.register.accounts-contact' | t }}</label>
+        
+      ></div>
+      <div class="form-group"><label for="customer[note][Accounts contact]">{{ 'customer.register.accounts-contact' | t }}</label>
       <input
         type="text"
         name="customer[note][Accounts contact]"
         id="accounts-contact"
         class="input-full"
         autocapitalize="words"
-        autofocus
-      >
+        
+      ></div>
       <p>
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
       </p>
