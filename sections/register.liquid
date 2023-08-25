@@ -132,6 +132,14 @@
             autocorrect="off"
             autocapitalize="off"
           >
+
+          <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+          <input
+            type="password"
+            name="customer[password]"
+            id="CreatePassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
         </div>
       </div>
       <div class="form-section">
@@ -515,7 +523,7 @@
   <div class="form-vertical">
     <form
       method="POST"
-      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application"
+      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append:'/pages/quote-thank-you' }}"
     >
       {{ content }}
     </form>
