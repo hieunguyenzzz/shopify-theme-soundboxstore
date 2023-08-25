@@ -515,14 +515,7 @@
         </div>
       </div>
     {% endcapture %}
-  <!--
-    <div class="form-vertical">
-      {%- form 'create_customer' -%}
-        {{ form.errors | default_errors }}
-        {{ content }}
-      {%- endform -%}
-    </div>
-  -->
+
   <div class="form-vertical">
     <form method="POST" action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application">
       {{ content }}
