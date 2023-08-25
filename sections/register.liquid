@@ -44,6 +44,47 @@
   Position:
   Date:
 {% endcomment %}
+<style>
+   .form-section{
+    display: grid;
+    gap:2em;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .form-vertical .form-section{
+
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgb(17 24 39 / 0.1);
+  }
+  .form-section:not(:first-child){
+    margin-top: 3em;
+  }
+
+  .form-section .section-header{
+    margin:0;
+  }
+  .form-radio>div{
+    display: flex;
+    align-items: flex-start;
+  }
+  .form-radio input{
+    margin-top: 0.6em;
+  }
+  .form-radio{
+    margin-bottom: 30px;
+  }
+  .form-section h4{
+    line-height: 30.24px;
+  }
+  @media (min-width: 768px){
+    .form-section{
+      display: grid;
+        grid-template-columns: repeat(3,  minmax(0, 1fr));
+  }
+  .form-section h3{
+  text-align: right;
+  }
+  }
+</style>
 <div class="page-width page-content">
   <div class="form-section">
     <div></div>
@@ -486,45 +527,6 @@
 {% endschema %}
 
 {% stylesheet %}
-  .form-section{
-    display: grid;
-    gap:2em;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .form-vertical .form-section{
-
-        padding-bottom: 3rem;
-        border-bottom: 1px solid rgb(17 24 39 / 0.1);
-  }
-  .form-section:not(:first-child){
-    margin-top: 3em;
-  }
-
-  .form-section .section-header{
-    margin:0;
-  }
-  .form-radio>div{
-    display: flex;
-    align-items: flex-start;
-  }
-  .form-radio input{
-    margin-top: 0.6em;
-  }
-  .form-radio{
-    margin-bottom: 30px;
-  }
-  .form-section h4{
-    line-height: 30.24px;
-  }
-  @media (min-width: 768px){
-    .form-section{
-      display: grid;
-        grid-template-columns: repeat(3,  minmax(0, 1fr));
-  }
-  .form-section h3{
-  text-align: right;
-  }
-  }
 {% endstylesheet %}
 
 {% javascript %}
