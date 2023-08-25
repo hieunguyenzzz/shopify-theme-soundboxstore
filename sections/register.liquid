@@ -521,7 +521,10 @@
     {% endcapture %}
 
   <div class="form-vertical">
-    <form method="POST" action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application">
+    <form
+      method="POST"
+      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl={{ request.host | append: request.path }}"
+    >
       {{ content }}
     </form>
   </div>
