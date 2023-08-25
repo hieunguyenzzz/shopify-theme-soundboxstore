@@ -98,7 +98,9 @@
         id="CreatePassword"
         class="input-full{% if form.errors contains 'password' %} error{% endif %}"
       >
+    <div class="form-section">
       <h3>Customer Details</h3>
+      <div>
       <div class="form-group"><label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
       <input
         type="text"
@@ -214,6 +216,8 @@
         autocapitalize="words"
         
       ></div>
+      </div>
+      </div>
       <p>
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
       </p>
