@@ -92,11 +92,7 @@
       <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
     </header>
   </div>
-
-  <div class="form-vertical">
-    {%- form 'create_customer' -%}
-      {{ form.errors | default_errors }}
-      <div class="form-section">
+  {% capture content %}<div class="form-section">
         <div></div>
         <div>
           <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
@@ -518,6 +514,11 @@
           </p>
         </div>
       </div>
+    {% endcapture %}
+  <div class="form-vertical">
+    {%- form 'create_customer' -%}
+      {{ form.errors | default_errors }}
+      {{ content }}
     {%- endform -%}
   </div>
 </div>
