@@ -523,7 +523,7 @@
   <div class="form-vertical">
     <form
       method="POST"
-      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append: request.path }}"
+      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append: request.path }}?posted=true"
     >
       {{ content }}
     </form>
