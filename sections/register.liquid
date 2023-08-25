@@ -44,179 +44,385 @@
   Position:
   Date:
 {% endcomment %}
-<div class="page-width">
-  <header class="section-header">
-    <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
-  </header>
+<div class="page-width page-content">
+  <div class="form-section">
+    <div></div>
+    <header class="section-header">
+      <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+    </header>
+  </div>
 
   <div class="form-vertical">
     {%- form 'create_customer' -%}
       {{ form.errors | default_errors }}
+      <div class="form-section">
+        <div></div>
+        <div>
+          <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[first_name]"
+            id="FirstName"
+            class="input-full"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            autocapitalize="words"
+            autofocus
+          >
 
-      <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
-      <input
-        type="text"
-        name="customer[first_name]"
-        id="FirstName"
-        class="input-full"
-        {% if form.first_name %}
-          value="{{ form.first_name }}"
-        {% endif %}
-        autocapitalize="words"
-        autofocus
-      >
+          <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[last_name]"
+            id="LastName"
+            class="input-full"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocapitalize="words"
+          >
 
-      <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
-      <input
-        type="text"
-        name="customer[last_name]"
-        id="LastName"
-        class="input-full"
-        {% if form.last_name %}
-          value="{{ form.last_name }}"
-        {% endif %}
-        autocapitalize="words"
-      >
+          <label for="Email">{{ 'customer.register.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="Email"
+            class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
 
-      <label for="Email">{{ 'customer.register.email' | t }}</label>
-      <input
-        type="email"
-        name="customer[email]"
-        id="Email"
-        class="input-full{% if form.errors contains 'email' %} error{% endif %}"
-        {% if form.email %}
-          value="{{ form.email }}"
-        {% endif %}
-        autocorrect="off"
-        autocapitalize="off"
-      >
-
-      <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
-      <input
-        type="password"
-        name="customer[password]"
-        id="CreatePassword"
-        class="input-full{% if form.errors contains 'password' %} error{% endif %}"
-      >
-    <div class="form-section">
-      <h3>Customer Details</h3>
-      <div>
-      <div class="form-group"><label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Company name]"
-        id="company-name"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Address]">{{ 'customer.register.address' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Address]"
-        id="address"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Address2]">{{ 'customer.register.address2' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Address2]"
-        id="address2"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Postcode]">{{ 'customer.register.postcode' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Postcode]"
-        id="postcode"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Type of company]">{{ 'customer.register.type-of-company' | t }}</label>
-            <div>
-                  <input
-        type="radio"
-        name="customer[note][Type of company]"
-        id="type-of-company"
-        class="input-full"
-        autocapitalize="words"
-        value="Limited Company"
-      >
-      <input
-        type="radio"
-        name="customer[note][Type of company]"
-        id="type-of-company"
-        class="input-full"
-        autocapitalize="words"
-        value="Sole Trader"
-      >
-      <input
-        type="radio"
-        name="customer[note][Type of company]"
-        id="type-of-company"
-        class="input-full"
-        autocapitalize="words"
-        value="Partnership"
-      >
-            </div>
+          <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+          <input
+            type="password"
+            name="customer[password]"
+            id="CreatePassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+        </div>
       </div>
-      <div class="form-group"><label for="customer[note][Registration number]">{{ 'customer.register.registration-number' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Registration number]"
-        id="registration-number"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Registered Office Address]">
-        {{- 'customer.register.registered-office-address' | t -}}
-      </label>
-      <input
-        type="text"
-        name="customer[note][Registered Office Address]"
-        id="registered-office-address"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Telephone]">{{ 'customer.register.telephone' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Telephone]"
-        id="telephone"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Fax]">{{ 'customer.register.fax' | t }}</label>
-      <input type="text" name="customer[note][Fax]" id="fax" class="input-full" autocapitalize="words" >
-      <div class="form-group"><label for="customer[note][Email]">{{ 'customer.register.email' | t }}</label>
-      <input type="text" name="customer[note][Email]" id="email" class="input-full" autocapitalize="words" >
-      <div class="form-group"><label for="customer[note][Purchasing contact]">{{ 'customer.register.purchasing-contact' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Purchasing contact]"
-        id="purchasing-contact"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
-      <div class="form-group"><label for="customer[note][Accounts contact]">{{ 'customer.register.accounts-contact' | t }}</label>
-      <input
-        type="text"
-        name="customer[note][Accounts contact]"
-        id="accounts-contact"
-        class="input-full"
-        autocapitalize="words"
-        
-      ></div>
+      <div class="form-section">
+        <div>
+          <h3>Customer Details</h3>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="details-company-name">{{ 'customer.register.details-company-name' | t }}</label>
+            <input
+              type="text"
+              name="details-company-name"
+              id="details-company-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="details-address">{{ 'customer.register.details-address' | t }}</label>
+            <input
+              type="text"
+              name="details-address"
+              id="details-address"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-address-2">{{ 'customer.register.details-address-2' | t }}</label>
+            <input
+              type="text"
+              name="details-address-2"
+              id="details-address-2"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-postcode">{{ 'customer.register.details-postcode' | t }}</label>
+            <input
+              type="text"
+              name="details-postcode"
+              id="details-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-type-of-company">{{ 'customer.register.details-type-of-company' | t }}</label>
+            <input
+              type="text"
+              name="details-type-of-company"
+              id="details-type-of-company"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-registration-number">{{ 'customer.register.details-registration-number' | t }}</label>
+            <input
+              type="text"
+              name="details-registration-number"
+              id="details-registration-number"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-telephone">{{ 'customer.register.details-telephone' | t }}</label>
+            <input
+              type="text"
+              name="details-telephone"
+              id="details-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-fax">{{ 'customer.register.details-fax' | t }}</label>
+            <input
+              type="text"
+              name="details-fax"
+              id="details-faxe"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-email">{{ 'customer.register.details-email' | t }}</label>
+            <input
+              type="text"
+              name="details-email"
+              id="details-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-purchasing-contact">{{ 'customer.register.details-purchasing-contact' | t }}</label>
+            <input
+              type="text"
+              name="details-purchasing-contact"
+              id="details-purchasing-contact"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-accounts-contact">{{ 'customer.register.details-accounts-contact' | t }}</label>
+            <input
+              type="text"
+              name="details-accounts-contact"
+              id="details-accounts-contact"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="customer[note][Company name]">{{ 'customer.register.company-name' | t }}</label>
+            <input
+              type="text"
+              name="customer[note][Company name]"
+              id="company-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+        </div>
       </div>
+      <div class="form-section">
+        <div>
+          <h3>Trade References</h3>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="references-company">{{ 'customer.register.references-company' | t }}</label>
+            <input
+              type="text"
+              name="references-company"
+              id="references-company"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-contact-name">{{ 'customer.register.references-contact-name' | t }}</label>
+            <input
+              type="text"
+              name="references-contact-name"
+              id="references-contact-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-addres">{{ 'customer.register.references-addres' | t }}</label>
+            <input
+              type="text"
+              name="references-addres"
+              id="references-addres"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-postcode">{{ 'customer.register.references-postcode' | t }}</label>
+            <input
+              type="text"
+              name="references-postcode"
+              id="references-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-telephone">{{ 'customer.register.references-telephone' | t }}</label>
+            <input
+              type="text"
+              name="references-telephone"
+              id="references-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-email">{{ 'customer.register.references-email' | t }}</label>
+            <input
+              type="text"
+              name="references-email"
+              id="references-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-company-2">{{ 'customer.register.references-company-2' | t }}</label>
+            <input
+              type="text"
+              name="references-company-2"
+              id="references-company"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-contact-name-2">{{ 'customer.register.references-contact-name-2' | t }}</label>
+            <input
+              type="text"
+              name="references-contact-name-2"
+              id="references-contact-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-addres-2">{{ 'customer.register.references-addres-2' | t }}</label>
+            <input
+              type="text"
+              name="references-addres-2"
+              id="references-addres"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-postcode-2">{{ 'customer.register.references-postcode-2' | t }}</label>
+            <input
+              type="text"
+              name="references-postcode-2"
+              id="references-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-telephone-2">{{ 'customer.register.references-telephone-2' | t }}</label>
+            <input
+              type="text"
+              name="references-telephone-2"
+              id="references-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-email-2">{{ 'customer.register.references-email-2' | t }}</label>
+            <input
+              type="text"
+              name="references-email-2"
+              id="references-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div>
+          <h3>Bank Details</h3>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="bank-name">{{ 'customer.register.bank-name' | t }}</label>
+            <input
+              type="text"
+              name="bank-name"
+              id="bank-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="bank-branch">{{ 'customer.register.bank-branch' | t }}</label>
+            <input
+              type="text"
+              name="cubank-branch"
+              id="bank-branch"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="bank-account-number">{{ 'customer.register.bank-account-number' | t }}</label>
+            <input
+              type="text"
+              name="customer[nbank-account-number"
+              id="bank-account-number"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="bank-sort-code">{{ 'customer.register.bank-sort-code' | t }}</label>
+            <input
+              type="text"
+              name="custobank-sort-code"
+              id="bank-sort-code"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+        </div>
       </div>
       <p>
         <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
