@@ -103,10 +103,12 @@
             class="input-full hidden"
  hidden
             autocapitalize="words"
-            value="{{ customer.id }}"
+              value="{{ customer.id }}"
             autofocus
           >
+            
             {% endif %}
+    {{ customer.id }}
           <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
             type="text"
