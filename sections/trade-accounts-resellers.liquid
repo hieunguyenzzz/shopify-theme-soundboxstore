@@ -84,12 +84,17 @@
         {% endfor %}
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
-        <a
-          class="btn"
-          href="/form/{{shop.name}}_Credit_Application"
-          id="click-me"
-          >Apply for a Credit Account</a
-        >
+        {% if block.type == 'btn' %}
+          {% if block.settings.index == index %}
+            <a
+              class="btn"
+              href="{{ block.settings.link }}"
+              id="click-me"
+            >
+              {{- block.settings.title -}}
+            </a>
+          {% endif %}
+        {% endif %}
       </div>
     </div>
     {% assign block = section.blocks[1] %}
