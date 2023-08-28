@@ -106,6 +106,19 @@
               value="{{ customer.id }}"
             autofocus
           >
+          <label for="Email">{{ 'customer.register.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="Email"
+            disabled
+            class="disabled input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
             {% else %}
               <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
