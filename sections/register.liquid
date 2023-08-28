@@ -113,8 +113,8 @@
             id="Email"
             disabled
             class="disabled input-full{% if form.errors contains 'email' %} error{% endif %}"
-            {% if form.email %}
-              value="{{ form.email }}"
+            {% if customer.email %}
+              value="{{ customer.email }}"
             {% endif %}
             autocorrect="off"
             autocapitalize="off"
