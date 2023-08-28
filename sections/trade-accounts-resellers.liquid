@@ -84,17 +84,19 @@
         {% endfor %}
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
-        {% if block.type == 'btn' %}
+        {% for block in section.blocks %}
           {% if block.settings.index == index %}
-            <a
-              class="btn"
-              href="{{ block.settings.link }}"
-              id="click-me"
-            >
-              {{- block.settings.title -}}
-            </a>
+            {% if block.type == 'btn' %}
+              <a
+                class="btn"
+                href="{{ block.settings.link }}"
+                id="click-me"
+              >
+                {{- block.settings.title -}}
+              </a>
+            {% endif %}
           {% endif %}
-        {% endif %}
+        {% endfor %}
       </div>
     </div>
     {% assign block = section.blocks[1] %}
@@ -131,12 +133,19 @@
         {% endfor %}
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
-        <a
-          class="btn"
-          href="/form/Soundbox Store-reseller"
-          id="click-me"
-          >Apply to be a Reseller</a
-        >
+        {% for block in section.blocks %}
+          {% if block.settings.index == index %}
+            {% if block.type == 'btn' %}
+              <a
+                class="btn"
+                href="{{ block.settings.link }}"
+                id="click-me"
+              >
+                {{- block.settings.title -}}
+              </a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   </div>
