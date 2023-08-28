@@ -562,9 +562,9 @@
     <header class="section-header">
       <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
     </header>
-
+    {% assign reUrl = request.host | append: '/pages/register' %}
     <div class="form-vertical">
-      {%- form 'create_customer' -%}
+      {%- form 'create_customer', return_to: reUrl -%}
         {{ form.errors | default_errors }}
 
         <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
