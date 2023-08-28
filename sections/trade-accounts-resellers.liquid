@@ -90,7 +90,7 @@
             {% if block.type == 'btn' %}
               <a
                 class="btn"
-                href="{{ block.settings.link }}"
+                href="{{ block.settings.link.url }}"
                 id="click-me"
               >
                 {{- block.settings.title -}}
@@ -139,7 +139,7 @@
             {% if block.type == 'btn' %}
               <a
                 class="btn"
-                href="{{ block.settings.link }}"
+                href="{{ block.settings.link.url }}"
                 id="click-me"
               >
                 {{- block.settings.title -}}
