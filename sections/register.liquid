@@ -101,14 +101,13 @@
             name="customer[id]"
             id="FirstName"
             class="input-full hidden"
- hidden
+             style="display:none"
             autocapitalize="words"
               value="{{ customer.id }}"
             autofocus
           >
             
             {% endif %}
-    {{ customer.id }}
           <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
             type="text"
