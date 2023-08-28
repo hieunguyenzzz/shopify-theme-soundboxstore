@@ -58,7 +58,7 @@
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
         {% for block in section.blocks %}
-          {% if block.settings.index == '0' %}
+          {% if block.settings.index == index %}
             <li {{ block.shopify_attributes }}>
               <h3>
                 <img
@@ -74,103 +74,6 @@
             </li>
           {% endif %}
         {% endfor %}
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Dedicated_Account_Manager.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-                alt=""
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Dedicated_Account_Manager.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Dedicated Account Manager
-          </h3>
-          With a direct port of call you can save a lot of time by not having to ring or email around trying to find the
-          right person for your query.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Competitive_Pricing_.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Competitive_Pricing_.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Competitive Pricing
-          </h3>
-          Understanding your needs better means we'll be able to provide you with the best prices and discounts where
-          available.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Wider_Product_Range.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Wider_Product_Range.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Easy Product Sourcing
-          </h3>
-          A large majority of our products are already on the site, however sometimes we are able to offer alternatives
-          or different options by going straight to the source for you.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Faster_Delivery.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Faster_Delivery.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Save Time, Save Money
-          </h3>
-          We will save your business money by reducing sourcing and procurement admin time. You can place orders from
-          multiple world class manufacturers, with only one invoice and payment required.
-        </li>
-        <li>&nbsp;</li>
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
         <a
@@ -181,6 +84,8 @@
       </div>
     </div>
     {% assign block = section.blocks[1] %}
+    {% assign index = 1 %}
+
     <div class="{{section.id}}-col-md-5 pull-right" {{ block.shopify_attributes }}>
       <h3>{{ block.settings.title | default: 'Become a Reseller' }}</h3>
       <div>
@@ -191,102 +96,23 @@
       </div>
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Quality_Products.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Quality_Products.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Quality Products
-          </h3>
-          As a Reseller you'd have direct access to all of our own brand products, all manufactured to be the best
-          quality.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/New_Launches.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/New_Launches.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            New Launches
-          </h3>
-          Be amongst the first to know about any new launches/ranges we have coming up and have plenty of time to
-          prepare for orders to come flying in.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Contract2.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Contract2.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Contract Manager
-          </h3>
-          With a direct contact here you'll save a lot of time not having to ring around or email trying to find the
-          correct person. It also means they'll be able to get in touch if we have any big announcements/launches.
-        </li>
-        <li>&nbsp;</li>
-        <li>
-          <h3>
-            <picture class="{{section.id}}-mfwebp">
-              <source
-                srcset="https://d3byzxukrlmlhs.cloudfront.net/mf_webp/png/media/wysiwyg/Trade/Marketing_Thing.svg.webp"
-                type="image/webp"
-                height="40"
-                width="40"
-              >
-              <img
-                height="40"
-                width="40"
-                alt=""
-                src="https://d3byzxukrlmlhs.cloudfront.net/wysiwyg/Trade/Marketing_Thing.svg.png"
-                data-sanitized-data-webpconverted="1"
-                data-webpconverted="1"
-              >
-            </picture>
-            Marketing Materials
-          </h3>
-          Once everything is arranged we'll be able to work with you to supply any {{ shop.name }} related marketing you
-          may need, including a lot of our own High-Res renders.
-        </li>
-        <li>&nbsp;</li>
+        {% for block in section.blocks %}
+          {% if block.settings.index == index %}
+            <li {{ block.shopify_attributes }}>
+              <h3>
+                <img
+                  loading="eager"
+                  width="50"
+                  height="50"
+                  src="{{ block.settings.image | img_url: '50px'}}"
+                  alt="{{ block.settings.image.alt | default : block.settings.title }}"
+                >
+                {{ block.settings.title }}
+              </h3>
+              <div>{{ block.settings.content }}</div>
+            </li>
+          {% endif %}
+        {% endfor %}
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
         <a
@@ -307,6 +133,26 @@
          "type": "block",
       "name": "block",
       "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+         {
+          "type": "richtext",
+          "id": "content",
+          "label": "Title"
+        }
+      ]
+      },{
+         "type": "child",
+      "name": "child",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
         {
           "type": "text",
           "id": "title",
