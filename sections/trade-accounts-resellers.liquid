@@ -64,20 +64,22 @@
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
         {% for block in section.blocks %}
-          {% if block.settings.index == index %}
-            <li {{ block.shopify_attributes }}>
-              <div>
-                <img
-                  loading="eager"
-                  width="50"
-                  height="50"
-                  src="{{ block.settings.image | img_url: '50px'}}"
-                  alt="{{ block.settings.image.alt | default : block.settings.title }}"
-                >
-                {{ block.settings.title }}
-              </div>
-              <div>{{ block.settings.content }}</div>
-            </li>
+          {% if block.type == 'child' %}
+            {% if block.settings.index == index %}
+              <li {{ block.shopify_attributes }}>
+                <div>
+                  <img
+                    loading="eager"
+                    width="50"
+                    height="50"
+                    src="{{ block.settings.image | img_url: '50px'}}"
+                    alt="{{ block.settings.image.alt | default : block.settings.title }}"
+                  >
+                  {{ block.settings.title }}
+                </div>
+                <div>{{ block.settings.content }}</div>
+              </li>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </ul>
@@ -104,20 +106,22 @@
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
         {% for block in section.blocks %}
-          {% if block.settings.index == index %}
-            <li {{ block.shopify_attributes }}>
-              <div>
-                <img
-                  loading="eager"
-                  width="50"
-                  height="50"
-                  src="{{ block.settings.image | img_url: '50px'}}"
-                  alt="{{ block.settings.image.alt | default : block.settings.title }}"
-                >
-                {{ block.settings.title }}
-              </div>
-              <div>{{ block.settings.content }}</div>
-            </li>
+          {% if block.type == 'child' %}
+            {% if block.settings.index == index %}
+              <li {{ block.shopify_attributes }}>
+                <div>
+                  <img
+                    loading="eager"
+                    width="50"
+                    height="50"
+                    src="{{ block.settings.image | img_url: '50px'}}"
+                    alt="{{ block.settings.image.alt | default : block.settings.title }}"
+                  >
+                  {{ block.settings.title }}
+                </div>
+                <div>{{ block.settings.content }}</div>
+              </li>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </ul>
