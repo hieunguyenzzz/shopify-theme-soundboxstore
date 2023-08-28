@@ -163,12 +163,11 @@
       </div>
     </div>
     <div class="{{section.id}}-col-md-5 pull-right">
-      <h3><span style="font-size: 1.5em; color: #fc1263;">Become a Reseller</span></h3>
-      <h3>
-        Whether you're an individual agent or e-commerce store looking to expand your offering, the
-        {{ shop.name }} own-brand range is available for resellers. Apply below to find out more about opportunities to
-        partner with {{ shop.name }}!
-      </h3>
+      {% assign block = section.blocks[0] %}
+      <h3>{{ block.settings.title }}</h3>
+      <div>
+        {{ block.settings.content }}
+      </div>
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
         <li>
