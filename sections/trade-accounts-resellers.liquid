@@ -48,8 +48,8 @@
 
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">
+    {% assign block = section.blocks[0] %}
     <div class="{{section.id}}-col-md-5" {{ block.shopify_attributes }}>
-      {% assign block = section.blocks[0] %}
       <h3>{{ block.settings.title }}</h3>
       <div>
         {{ block.settings.content }}
@@ -162,8 +162,8 @@
         >
       </div>
     </div>
-    <div class="{{section.id}}-col-md-5 pull-right">
-      {% assign block = section.blocks[1] %}
+    {% assign block = section.blocks[1] %}
+    <div class="{{section.id}}-col-md-5 pull-right" {{ block.shopify_attributes }}>
       <h3>{{ block.settings.title | default: 'Become a Reseller' }}</h3>
       <div>
         {{
