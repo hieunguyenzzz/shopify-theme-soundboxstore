@@ -1,98 +1,99 @@
-{% comment %}
-  **CUSTOMER DETAILS
-  Company name:
-  Address:
-  Address:
-  Postcode:
-  Type of company: Limited Company | Sole Trader | Partnership
-  Registration number:
-  Registered Office Address (if
-  different from above)
-  Telephone:
-  Fax:
-  Email:
-  Purchasing contact:
-  Accounts contact:
+{% if customer %}
+  {% comment %}
+    **CUSTOMER DETAILS
+    Company name:
+    Address:
+    Address:
+    Postcode:
+    Type of company: Limited Company | Sole Trader | Partnership
+    Registration number:
+    Registered Office Address (if
+    different from above)
+    Telephone:
+    Fax:
+    Email:
+    Purchasing contact:
+    Accounts contact:
 
-  **TRADE REFERENCES
-  Company 1:
-  Contact name:
-  Address:
-  Postcode:
-  Telephone:
-  Email:
-  Company 2:
-  Contact name:
-  Address:
-  Postcode:
-  Telephone:
-  Email:
+    **TRADE REFERENCES
+    Company 1:
+    Contact name:
+    Address:
+    Postcode:
+    Telephone:
+    Email:
+    Company 2:
+    Contact name:
+    Address:
+    Postcode:
+    Telephone:
+    Email:
 
-  **BANK DETAILS
-  Bank Name:
-  Branch:
-  Account number:
-  Sort code:
+    **BANK DETAILS
+    Bank Name:
+    Branch:
+    Account number:
+    Sort code:
 
-  I hereby authorise DWIR Limited to obtain references from the above, as and when
-  appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
-  which include that all invoices are due to be paid within 30 days from the date of
-  invoice, and that a Purchase Order must be given for services rendered.
+    I hereby authorise DWIR Limited to obtain references from the above, as and when
+    appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
+    which include that all invoices are due to be paid within 30 days from the date of
+    invoice, and that a Purchase Order must be given for services rendered.
 
-  Signed:
-  Printed name:
-  Position:
-  Date:
-{% endcomment %}
-<style>
-   .form-section{
-    display: grid;
-    gap:2em;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .form-vertical .form-section{
-
-        padding-bottom: 3rem;
-        border-bottom: 1px solid rgb(17 24 39 / 0.1);
-  }
-  .form-section:not(:first-child){
-    margin-top: 3em;
-  }
-
-  .form-section .section-header{
-    margin:0;
-  }
-  .form-radio>div{
-    display: flex;
-    align-items: flex-start;
-  }
-  .form-radio input{
-    margin-top: 0.6em;
-  }
-  .form-radio{
-    margin-bottom: 30px;
-  }
-  .form-section h4{
-    line-height: 30.24px;
-  }
-  @media (min-width: 768px){
-    .form-section{
+    Signed:
+    Printed name:
+    Position:
+    Date:
+  {% endcomment %}
+  <style>
+     .form-section{
       display: grid;
-        grid-template-columns: repeat(3,  minmax(0, 1fr));
-  }
-  .form-section h3{
-  text-align: right;
-  }
-  }
-</style>
-<div class="page-width page-content">
-  <div class="form-section">
-    <div></div>
-    <header class="section-header" style="margin-bottom:2em">
-      <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
-    </header>
-  </div>
-  {% capture content %}<div class="form-section">
+      gap:2em;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .form-vertical .form-section{
+
+          padding-bottom: 3rem;
+          border-bottom: 1px solid rgb(17 24 39 / 0.1);
+    }
+    .form-section:not(:first-child){
+      margin-top: 3em;
+    }
+
+    .form-section .section-header{
+      margin:0;
+    }
+    .form-radio>div{
+      display: flex;
+      align-items: flex-start;
+    }
+    .form-radio input{
+      margin-top: 0.6em;
+    }
+    .form-radio{
+      margin-bottom: 30px;
+    }
+    .form-section h4{
+      line-height: 30.24px;
+    }
+    @media (min-width: 768px){
+      .form-section{
+        display: grid;
+          grid-template-columns: repeat(3,  minmax(0, 1fr));
+    }
+    .form-section h3{
+    text-align: right;
+    }
+    }
+  </style>
+  <div class="page-width page-content">
+    <div class="form-section">
+      <div></div>
+      <header class="section-header" style="margin-bottom:2em">
+        <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+      </header>
+    </div>
+    {% capture content %}<div class="form-section">
         <div></div>
         <div>
           {% if customer.id %}
@@ -547,16 +548,78 @@
       </div>
     {% endcapture %}
 
-  <div class="form-vertical">
-    <form
-      method="POST"
-      action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append:'/pages/quote-thank-you' }}"
-    >
-      {{ content }}
-    </form>
+    <div class="form-vertical">
+      <form
+        method="POST"
+        action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append:'/pages/quote-thank-you' }}"
+      >
+        {{ content }}
+      </form>
+    </div>
   </div>
-</div>
+{% else %}
+  <div class="page-width page-width--tiny page-content">
+    <header class="section-header">
+      <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+    </header>
 
+    <div class="form-vertical">
+      {%- form 'create_customer' -%}
+        {{ form.errors | default_errors }}
+
+        <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="FirstName"
+          class="input-full"
+          {% if form.first_name %}
+            value="{{ form.first_name }}"
+          {% endif %}
+          autocapitalize="words"
+          autofocus
+        >
+
+        <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[last_name]"
+          id="LastName"
+          class="input-full"
+          {% if form.last_name %}
+            value="{{ form.last_name }}"
+          {% endif %}
+          autocapitalize="words"
+        >
+
+        <label for="Email">{{ 'customer.register.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="Email"
+          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+          {% if form.email %}
+            value="{{ form.email }}"
+          {% endif %}
+          autocorrect="off"
+          autocapitalize="off"
+        >
+
+        <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="CreatePassword"
+          class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+        >
+
+        <p>
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+        </p>
+      {%- endform -%}
+    </div>
+  </div>
+{% endif %}
 {% schema %}
 {
   "name": "Section Register",
