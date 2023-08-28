@@ -60,7 +60,7 @@
         {% for block in section.blocks %}
           {% if block.settings.index == index %}
             <li {{ block.shopify_attributes }}>
-              <h3>
+              <div>
                 <img
                   loading="eager"
                   width="50"
@@ -69,7 +69,7 @@
                   alt="{{ block.settings.image.alt | default : block.settings.title }}"
                 >
                 {{ block.settings.title }}
-              </h3>
+              </div>
               <div>{{ block.settings.content }}</div>
             </li>
           {% endif %}
@@ -99,7 +99,7 @@
         {% for block in section.blocks %}
           {% if block.settings.index == index %}
             <li {{ block.shopify_attributes }}>
-              <h3>
+              <div>
                 <img
                   loading="eager"
                   width="50"
@@ -108,7 +108,7 @@
                   alt="{{ block.settings.image.alt | default : block.settings.title }}"
                 >
                 {{ block.settings.title }}
-              </h3>
+              </div>
               <div>{{ block.settings.content }}</div>
             </li>
           {% endif %}
