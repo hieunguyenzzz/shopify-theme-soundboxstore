@@ -163,10 +163,13 @@
       </div>
     </div>
     <div class="{{section.id}}-col-md-5 pull-right">
-      {% assign block = section.blocks[0] %}
-      <h3>{{ block.settings.title }}</h3>
+      {% assign block = section.blocks[1] %}
+      <h3>{{ block.settings.title | default: 'Become a Reseller' }}</h3>
       <div>
-        {{ block.settings.content }}
+        {{
+          block.settings.content
+          | default: 'Whether you\"re an individual agent or e-commerce store looking to expand your offering, the Soundbox Store own-brand range is available for resellers. Apply below to find out more about opportunities to partner with Soundbox Store!'
+        }}
       </div>
       <h3 style="text-align: left;"><span style="color: #fc1263; font-size: 1.75em;">—</span></h3>
       <ul>
@@ -269,7 +272,7 @@
       </ul>
       <div style="text-align: center;" class="{{section.id}}-need-help">
         <a
-          href="/form/muffle-reseller"
+          href="/form/Soundbox Store-reseller"
           id="click-me"
           >Apply to be a Reseller</a
         >
