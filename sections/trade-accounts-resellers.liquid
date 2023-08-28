@@ -1,54 +1,3 @@
-<style>
-    .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-row {
-      display: flex;
-      gap: min(4vw ,6rem);
-      flex-wrap: wrap;
-  }
-
-  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 {
-      flex: 1;
-      min-width: 300px;
-  }
-
-  ul {}
-
-  ::marker {}
-
-  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 ul {
-      list-style: none;
-      margin: 0;
-  }
-
-  picture.template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-mfwebp {
-      vertical-align: middle;
-  }
-
-  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-page-width.page-width {
-      font-size: 16px;
-    padding-bottom:60px;
-  }
-
-  .page-width.page-width--narrow.page-content {
-  }
-
-
-  h1.section-header__title {
-      text-align: center;
-      padding: var(--sectionHeaderBottom);
-  }
-
-
-  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 h3 {
-      font-size: 1rem;
-      /* margin: 0; */
-      font-weight: bold;
-  }
-
-  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 h3 ~ h3 {
-      font-size: 0.9em;
-      font-weight: 600;
-  }
-</style>
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">
     <div class="{{section.id}}-col-md-5">
@@ -286,8 +235,8 @@
   "settings": [],
     "blocks":[
       {
-         "type": "blockblock",
-      "name": "blockblock",
+         "type": "block",
+      "name": "block",
       "settings": [
         {
           "type": "text",
@@ -311,8 +260,54 @@
 }
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
+<style>
+    .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-row {
+      display: flex;
+      gap: min(4vw ,6rem);
+      flex-wrap: wrap;
+  }
 
-{% javascript %}
-{% endjavascript %}
+  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 {
+      flex: 1;
+      min-width: 300px;
+  }
+
+  ul {}
+
+  ::marker {}
+
+  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 ul {
+      list-style: none;
+      margin: 0;
+  }
+
+  picture.template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-mfwebp {
+      vertical-align: middle;
+  }
+
+  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-page-width.page-width {
+      font-size: 16px;
+    padding-bottom:60px;
+  }
+
+  .page-width.page-width--narrow.page-content {
+  }
+
+
+  h1.section-header__title {
+      text-align: center;
+      padding: var(--sectionHeaderBottom);
+  }
+
+
+  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 h3 {
+      font-size: 1rem;
+      /* margin: 0; */
+      font-weight: bold;
+  }
+
+  .template--16834086928609__8dbcf68c-a3f7-4dc9-835a-f6faed804774-col-md-5 h3 ~ h3 {
+      font-size: 0.9em;
+      font-weight: 600;
+  }
+</style>
