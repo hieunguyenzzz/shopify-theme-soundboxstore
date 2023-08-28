@@ -95,6 +95,18 @@
   {% capture content %}<div class="form-section">
         <div></div>
         <div>
+          {% if customer.id %}
+             <input
+            type="text"
+            name="customer[id]"
+            id="FirstName"
+            class="input-full hidden"
+ hidden
+            autocapitalize="words"
+            value="{{ customer.id }}"
+            autofocus
+          >
+            {% endif %}
           <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
             type="text"
