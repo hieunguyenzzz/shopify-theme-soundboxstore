@@ -128,7 +128,7 @@
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky product-left-col">
             <div class="product-left-col-wrap">
-              {%- render 'product-images',
+              {%- render 'product-images-model',
                 section_id: section_id,
                 product: product,
                 isModal: isModal,
@@ -629,7 +629,7 @@
 
         {%- unless image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }} product-single__sticky">
-            {%- render 'product-images',
+            {%- render 'product-images-model',
               section_id: section_id,
               product: product,
               isModal: isModal,
