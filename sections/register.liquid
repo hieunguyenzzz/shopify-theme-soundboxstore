@@ -569,7 +569,7 @@
       display:none
     }
   </style>
-  {% assign reUrl = routes.root_url | append: '/pages/register' %}
+  {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <input type="checkbox" hidden class="hidden" name="input-login" id="input-login">
   <div id="form-register" class="page-width page-width--tiny page-content">
     <header class="section-header">
