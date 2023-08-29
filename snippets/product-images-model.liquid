@@ -2,7 +2,7 @@
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 -%}
-{% if first %}
+{% if first_3d_model %}
   <style>
         .product__xr-button {
           background: rgba(var(--color-foreground), 0.08);
@@ -310,6 +310,16 @@ calc(100vw - 4rem)
   <div class="slider-wrap">
     <div class="image-gallery-main">
       {%- assign had_images = false -%}
+      {% if first_3d_model %}
+        <product-model
+          class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+          style="padding-top: min(calc(100vh - 12rem), 100%)"
+        >
+          <template>
+            {{ first_3d_model | media_tag: image_size: '2048x', toggleable: true }}
+          </template>
+        </product-model>
+      {% endif %}
       {%- for image in imgs -%}
         {%- assign had_images = true -%}
         {%- assign alt = image.alt | strip -%}
@@ -369,6 +379,7 @@ calc(100vw - 4rem)
           </div>
         </div>
       {%- endfor -%}
+
       {%- unless had_images -%}
         <div class="image-gallery-block">
           {%- assign lazy = 'lazy' -%}
