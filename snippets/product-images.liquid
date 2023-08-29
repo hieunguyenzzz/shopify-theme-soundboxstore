@@ -1,7 +1,56 @@
+
 {%- liquid
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
 -%}
+{% if first %}
+  <style>
+    .product__xr-button {
+  background: rgba(var(--color-foreground), 0.08);
+  color: rgb(var(--color-foreground));
+  margin: 1rem auto;
+  box-shadow: none;
+  display: flex;
+}
+
+.button.product__xr-button:hover {
+  box-shadow: none;
+}
+
+.product__xr-button[data-shopify-xr-hidden] {
+  visibility: hidden;
+}
+
+.shopify-design-mode .product__xr-button[data-shopify-xr-hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  slider-component .product__xr-button {
+    display: none;
+  }
+
+  .active .product__xr-button:not([data-shopify-xr-hidden]) {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  slider-component + .button.product__xr-button {
+    display: none;
+  }
+
+  .product__xr-button[data-shopify-xr-hidden] {
+    display: none;
+  }
+}
+
+.product__xr-button .icon {
+  width: 1.4rem;
+  margin-right: 1rem;
+}
+  </style
+{% endif %}
 {%- capture sizes -%}
 (min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2),
 calc(100vw - 4rem)
