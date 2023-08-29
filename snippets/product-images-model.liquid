@@ -311,12 +311,14 @@ calc(100vw - 4rem)
     <div class="image-gallery-main">
       {%- assign had_images = false -%}
       {% if first_3d_model %}
-        <product-model
-          class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
-          style="padding-top: min(calc(100vh - 12rem), 100%)"
-        >
-          {{ first_3d_model | media_tag: image_size: '2048x', toggleable: true }}
-        </product-model>
+        <div class="image-gallery-block">
+          <product-model
+            class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+            style="padding-top: min(calc(100vh - 12rem), 100%)"
+          >
+            {{ first_3d_model | media_tag: image_size: '2048x', toggleable: true }}
+          </product-model>
+        </div>
       {% endif %}
       {%- for image in imgs -%}
         {%- assign had_images = true -%}
