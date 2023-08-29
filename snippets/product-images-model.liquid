@@ -1,0 +1,630 @@
+{%- liquid
+  assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+  assign first_3d_model = product.media | where: 'media_type', 'model' | first
+-%}
+{% if first %}
+  <style>
+        .product__xr-button {
+          background: rgba(var(--color-foreground), 0.08);
+          color: rgb(var(--color-foreground));
+          margin: 1rem auto;
+          box-shadow: none;
+          display: flex;
+        }
+
+        .button.product__xr-button:hover {
+          box-shadow: none;
+        }
+
+        .product__xr-button[data-shopify-xr-hidden] {
+          visibility: hidden;
+        }
+
+        .shopify-design-mode .product__xr-button[data-shopify-xr-hidden] {
+          display: none;
+        }
+
+        @media screen and (max-width: 749px) {
+          slider-component .product__xr-button {
+            display: none;
+          }
+
+          .active .product__xr-button:not([data-shopify-xr-hidden]) {
+            display: block;
+          }
+        }
+
+        @media screen and (min-width: 750px) {
+          slider-component + .button.product__xr-button {
+            display: none;
+          }
+
+          .product__xr-button[data-shopify-xr-hidden] {
+            display: none;
+          }
+        }
+
+        .product__xr-button .icon {
+          width: 1.4rem;
+          margin-right: 1rem;
+        }
+      .shopify-model-viewer-ui .shopify-model-viewer-ui__controls-area {
+      background: rgb(var(--color-background));
+      border-color: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button {
+      color: rgba(var(--color-foreground), 0.75);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:hover {
+      color: rgba(var(--color-foreground), 0.55);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:active,
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control.focus-visible:focus {
+      color: rgba(var(--color-foreground), 0.55);
+      background: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:not(:last-child):after {
+      border-color: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster {
+      border-radius: 50%;
+      color: rgb(var(--color-foreground));
+      background: rgb(var(--color-background));
+      border-color: rgba(var(--color-foreground), 0.1);
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__poster-control-icon {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover,
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  </style>
+  <link
+    id="ModelViewerStyle"
+    rel="stylesheet"
+    href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+    media="print"
+    onload="this.media='all'"
+  >
+
+  <script type="application/json" id="ProductJSON-{{ product.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+  <script src="{{ 'product-model.js' | asset_url }}" defer></script>
+{% endif %}
+{%- capture sizes -%}
+(min-width: 1640px) 820px, (min-width: 990px) calc(50vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2),
+calc(100vw - 4rem)
+{%- endcapture -%}
+{%- capture new_label -%}
+ {% render '[product-label]' product:product  %}{%- endcapture -%}
+<style>
+    .slick-initialized .slick-slide .gallery-wrap {
+      display: none;
+  }
+
+    .slick-initialized .slick-slide.slick-current .gallery-wrap {
+      display: block !important;
+    }
+  .thumbnail-slider-inner  .slick-current img{
+    border: 1px solid #00000061!important
+  }
+  .thumbnail-slider-inner{
+    display: none;
+
+  }
+  .thumbnail-slider{
+    min-height: 54px;
+  }
+  .thumbnail-slider-inner.slick-initialized{
+    display: block;
+  }
+  .image-gallery-block .gallery-wrap video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+  }
+  .product-main-slider .thumbnail-gallery .thumbnail-wrap svg{
+    position: absolute;
+      width: 40%;
+      height: 40%;
+      left: 30%;
+      opacity: 0.7;
+      top: 30%;
+  }
+</style>
+
+{%- unless product.empty? -%}
+  {% comment %}
+    <div data-product-images data-zoom="{{ product_zoom_enable }}"
+      data-has-slideshow="{% if product.media.size > 1 %}true{% else %}false{% endif %}" style="display:none;">
+      <div
+        class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}{% if product.media.size == 0 %} hide{% endif %}">
+        <input type="hidden" value="{{ product.handle }}" id="productHandle" />
+        <div class="product__main-photos" data-product-single-media-group>
+          <div data-product-photos class="product-slideshow">
+            {%- for media in product.media -%}
+            {%- render 'product-media',
+            section_id: section_id,
+            media: media,
+            featured_media: featured_media,
+            loopIndex0: forloop.index0,
+            loopIndex: forloop.index,
+            product_zoom_enable: product_zoom_enable,
+            product_zoom_size: product_zoom_size,
+            image_size: image_size,
+            isModal: isModal,
+            video_looping: video_looping,
+            video_style: video_style
+            -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if first_3d_model -%}
+          <button aria-label="{{ 'products.product.view_in_space_label' | t }}" class="product-single__view-in-space"
+            data-shopify-xr data-shopify-model3d-id="{{ first_3d_model.id }}" data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden>
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d"
+              viewBox="18.24 17.35 24.52 28.3">
+              <path fill="#3A3A3A"
+                d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z" />
+            </svg>
+            <span class='product-single__view-in-space-text'>
+              {{ 'products.product.view_in_space' | t }}
+            </span>
+          </button>
+          {%- endif -%}
+        </div>
+
+        <div data-product-thumbs
+          class="product__thumbs product__thumbs--{{ thumbnail_position }} product__thumbs-placement--{{ image_position }}{% if product.media.size == 1 %} medium-up--hide{% endif %}"
+          data-position="{{ thumbnail_position }}" data-arrows="{{ thumbnail_arrows }}">
+          {%- if thumbnail_arrows -%}
+          <button type="button" class="product__thumb-arrow product__thumb-arrow--prev hide"
+            aria-label="{{ 'general.pagination.previous' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left"
+              viewBox="0 0 284.49 498.98">
+              <path
+                d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z" />
+            </svg>
+          </button>
+          {%- endif -%}
+
+          <div class="product__thumbs--scroller" id="appendThumb">
+            {%- if product.media.size > 1 -%}
+            {%- for media in product.media -%}
+            {%- liquid
+            assign image_set = false
+            assign image_set_group = ''
+            if media.alt contains '#'
+            assign image_set_full = media.alt | split: '#' | last
+            if image_set_full contains '_'
+            assign image_set = true
+            assign image_set_group = image_set_full | split: '_' | first
+            endif
+            endif
+            -%}
+
+            <div class="product__thumb-item" data-index="{{ forloop.index0 }}" {% if image_set %}
+              data-set-name="{{image_set_group}}" data-group="{{image_set_full}}" {% endif %}>
+              <a href="{{ media.preview_image | img_url: product_zoom_size }}" data-product-thumb
+                class="product__thumb js-no-transition" data-index="{{ forloop.index0 }}" data-id="{{ media.id }}">
+                <div class="image-wrap"
+                  style="height: 0; padding-bottom: {{ 100 | divided_by: media.preview_image.aspect_ratio }}%;">
+
+                  {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="product__thumb-icon">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play"
+                      viewBox="18.24 17.35 24.52 28.3">
+                      <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z" />
+                    </svg>
+                  </span>
+                  {%- endif -%}
+                  {%- if media.media_type == 'model' -%}
+                  <span class="product__thumb-icon">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-3d"
+                      viewBox="18.24 17.35 24.52 28.3">
+                      <path fill="#3A3A3A"
+                        d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z" />
+                    </svg>
+                  </span>
+                  {%- endif -%}
+
+                  {%- assign img_url = media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+                  <img class="lazyload" data-src="{{ img_url }}" data-widths="[120, 360, 540, 720]"
+                    data-aspectratio="{{ media.preview_image.aspect_ratio }}" data-sizes="auto"
+                    alt="{{ media.alt | escape | split: '#' | first }}">
+
+                  <noscript>
+                    <img class="lazyloaded" width="720" height="556" loading="lazy" src="{{ media | image_url: '400x' }}" alt="{{ media.alt | escape }}">
+                  </noscript>
+                </div>
+              </a>
+            </div>
+
+            {%- endfor -%}
+            {%- endif -%}
+          </div>
+
+          {%- if thumbnail_arrows -%}
+          <button type="button" class="product__thumb-arrow product__thumb-arrow--next"
+            aria-label="{{ 'general.pagination.next' | t }}">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right"
+              viewBox="0 0 284.49 498.98">
+              <path
+                d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z" />
+            </svg>
+          </button>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {% endcomment %}
+
+  <script type="application/json" id="ModelJson-{{ section_id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+{%- else -%}
+  <div data-product-images data-zoom="false" data-has-slideshow="false">
+    <div class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}">
+      <div class="product__main-photos" style="width: 100%">
+        <div data-product-photos class="product-slideshow">
+          <div class="product-main-slide" data-index="{{ forloop.index0 }}">
+            <a href="#">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endunless -%}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign vaSku = current_variant.sku | strip -%}
+{%- assign slide_count = 0 -%}
+{%- assign imgs = current_variant.metafields.global.images.value -%}
+{%- assign videos = current_variant.metafields.global.videos.value -%}
+
+{%- unless imgs -%}
+  {%- assign imgs = product.images | where: 'alt', vaSku -%}
+{%- endunless -%}
+{%- assign slide_count = imgs.size -%}
+<div class="product-main-slider">
+  <div class="slider-wrap">
+    <div class="image-gallery-main">
+      {%- assign had_images = false -%}
+      {%- for image in imgs -%}
+        {%- assign had_images = true -%}
+        {%- assign alt = image.alt | strip -%}
+        <div class="image-gallery-block">
+          {%- unless forloop.first -%}
+            {%- assign lazy = 'lazy' -%}
+          {%- endunless -%}
+          <div
+            class="gallery-wrap"
+            {%- if lazy -%}
+              style="display:none ;"
+            {%- endif -%}
+          >
+            {% if forloop.first == true %}
+              {{
+                image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'photoswipe__image',
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990',
+                  alt: product.title
+                | escape
+              }}
+            {% else %}
+              {{
+                image
+                | image_url: width: 1900
+                | image_tag:
+                  loading: lazy,
+                  class: 'photoswipe__image',
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990',
+                  alt: product.title
+                | escape
+              }}
+            {% endif %}
+            {{ new_label }}
+          </div>
+        </div>
+      {%- endfor -%}
+      {%- for video in videos -%}
+        {%- assign had_images = true -%}
+        {%- assign alt = image.alt | strip -%}
+        <div class="image-gallery-block">
+          {%- unless forloop.first -%}
+            {%- assign lazy = 'lazy' -%}
+          {%- endunless -%}
+          <div
+            class="gallery-wrap"
+            {%- if lazy -%}
+              style="display:none ;"
+            {%- endif -%}
+          >
+            {{ video | media_tag: class: 'photoswipe__image', autoplay: true, loop: true, controls: false }}
+            {{ new_label }}
+          </div>
+        </div>
+      {%- endfor -%}
+      {%- unless had_images -%}
+        <div class="image-gallery-block">
+          {%- assign lazy = 'lazy' -%}
+          {%- assign image = current_variant.image -%}
+          <div
+            class="gallery-wrap"
+            {%- if lazy -%}
+              style="display:none ;"
+            {%- endif -%}
+          >
+            {{
+              image
+              | image_url: width: 1900
+              | image_tag:
+                loading: lazy,
+                class: 'photoswipe__image',
+                sizes: sizes,
+                widths: '246, 493, 600, 713, 823, 990',
+                alt: product.title
+              | escape
+            }}
+            {{ new_label }}
+          </div>
+        </div>
+      {%- endunless -%}
+    </div>
+
+    <div class="thumbnail-gallery">
+      <div class="thumbnail-slider">
+        <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
+          {%- for image in imgs -%}
+            <div class="thumnail-gallery-block">
+              <div class="thumbnail-wrap">
+                <img
+                  loading="lazy"
+                  src="{{ image | image_url : width: 100 }}"
+                  width="100"
+                  height="100"
+                  alt="{{ image.alt | default: 'product thumb'  | escape }}"
+                >
+              </div>
+            </div>
+          {%- endfor -%}
+          {%- for video in videos -%}
+            <div class="thumnail-gallery-block">
+              <div class="thumbnail-wrap">
+                <img
+                  src="{{ video | image_url : width: 100 }}"
+                  loading="lazy"
+                  width="100"
+                  height="100"
+                  alt="{{ image.alt | default: 'product thumb' | escape }}"
+                >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z"></path>
+                </svg>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% assign page360url = product.metafields.custom.page360.value.url %}
+{%- if page360url -%}
+  <style>
+        .btn-360{
+    gap: 0.4em;
+    border-radius: 99em;
+        transform: translateX(calc(-50% + 40px));
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      max-width: unset;
+
+    }
+    .btn-360:hover{
+    opacity: 0.7;
+
+    }
+    .btn-360 img{
+        width: 2em;
+        max-width: unset;
+        margin-left: 0.3em;
+      vertical-align: text-top;
+    }
+    @media only screen and (max-width: 860px){
+      .btn-360{
+        transform: translateX(-50%);
+        bottom: 22.5%;
+        font-size: 10px;
+        padding: 0.5em 1em;
+      }
+    }
+  </style>
+  <a
+    type="button"
+    href="{{page360url}}"
+    class="btn-360 btn btn--secondary"
+  >
+    {{ 'strings.general.step-inside' | t }}
+    <img
+      class=""
+      alt="step inside image"
+      width="28"
+      height="14"
+      loading="lazy"
+      src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487"
+    >
+  </a>
+{%- endif -%}
+
+{%- for current_variant in product.variants -%}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign vaSku = current_variant.sku | strip -%}
+  {%- assign slide_count = 0 -%}
+  {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {%- assign videos = current_variant.metafields.global.videos.value -%}
+  {%- unless imgs -%}
+    {%- assign imgs = product.images | where: 'alt', vaSku -%}
+  {%- endunless -%}
+  {%- assign slide_count = imgs.size -%}
+  <template data-id="{{ current_variant.id }}" data-videos="{{videos | json}}">
+    <div class="slider-wrap">
+      <div class="image-gallery-main">
+        {%- assign had_images = false -%}
+        {%- for image in imgs -%}
+          {%- assign had_images = true -%}
+          {%- assign alt = image.alt | strip -%}
+          <div class="image-gallery-block">
+            {%- unless forloop.first -%}
+              {%- assign lazy = 'lazy' -%}
+            {%- endunless -%}
+            <div
+              class="gallery-wrap"
+              {%- if lazy -%}
+                style="display:none ;"
+              {%- endif -%}
+            >
+              {{
+                image
+                | image_url: width: 1900
+                | image_tag:
+                  loading: lazy,
+                  class: 'photoswipe__image',
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990',
+                  alt: image.alt
+                | escape
+              }}
+              {{ new_label }}
+            </div>
+          </div>
+        {%- endfor -%}
+        {%- for video in videos -%}
+          {%- assign had_images = true -%}
+          {%- assign alt = image.alt | strip -%}
+          <div class="image-gallery-block">
+            {%- unless forloop.first -%}
+              {%- assign lazy = 'lazy' -%}
+            {%- endunless -%}
+            <div
+              class="gallery-wrap"
+              {%- if lazy -%}
+                style="display:none ;"
+              {%- endif -%}
+            >
+              {{ video | media_tag: class: 'photoswipe__image', autoplay: true, loop: true, controls: false }}
+              {{ new_label }}
+            </div>
+          </div>
+        {%- endfor -%}
+        {%- unless had_images -%}
+          <div class="image-gallery-block">
+            {%- assign lazy = 'lazy' -%}
+            {%- assign image = current_variant.image -%}
+            <div
+              class="gallery-wrap"
+              {%- if lazy -%}
+                style="display:none ;"
+              {%- endif -%}
+            >
+              {{
+                image
+                | image_url: width: 1900
+                | image_tag:
+                  loading: lazy,
+                  data-orgin-url: image.url,
+                  class: 'photoswipe__image',
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990',
+                  alt: image.alt
+                | escape
+              }}
+              {{ new_label }}
+            </div>
+          </div>
+        {%- endunless -%}
+      </div>
+
+      <div class="thumbnail-gallery">
+        <div class="thumbnail-slider">
+          <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
+            {%- for image in imgs -%}
+              <div class="thumnail-gallery-block">
+                <div class="thumbnail-wrap">
+                  <img
+                    src="{{ image | image_url : width: 100 }}"
+                    loading="lazy"
+                    width="100"
+                    height="100"
+                    alt="{{ image.alt | default: 'product thumb' | escape }}"
+                  >
+                </div>
+              </div>
+            {%- endfor -%}
+            {%- for video in videos -%}
+              <div class="thumnail-gallery-block">
+                <div class="thumbnail-wrap">
+                  <img
+                    src="{{ video | image_url : width: 100 }}"
+                    loading="lazy"
+                    width="100"
+                    height="100"
+                    alt="{{ image.alt | default: 'product thumb' | escape }}"
+                  >
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 1024 1024"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm144.1 454.9L437.7 677.8a8.02 8.02 0 0 1-12.7-6.5V353.7a8 8 0 0 1 12.7-6.5L656.1 506a7.9 7.9 0 0 1 0 12.9z"></path>
+                  </svg>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+{%- endfor -%}
+
+<script>
+  window.product = {{ product | json }}
+</script>
