@@ -1,6 +1,3 @@
-<header class="section-header" style="margin-bottom:2em">
-  <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
-</header>
 {% if customer %}
   {% comment %}
     **CUSTOMER DETAILS
@@ -92,6 +89,9 @@
   <div class="page-width page-content">
     <div class="form-section">
       <div></div>
+      <header class="section-header" style="margin-bottom:2em">
+        <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+      </header>
     </div>
     {% capture content %}<div class="form-section">
         <div></div>
