@@ -538,7 +538,7 @@
     </div>
   </div>
       </div>
-      <div class="form-section" style="margin:0;padding:0;border:none">
+      <div  class="form-section form-section-register" style="margin:0;padding:0;border:none">
         <div></div>
         <div>
           <p>
@@ -558,7 +558,19 @@
     </div>
   </div>
 {% else %}
-  <div class="page-width page-width--tiny page-content">
+  <style>
+    #form-login{
+       display:none
+    }
+    #input-login:checked~#form-login{
+      display:block
+    }
+    #input-login:checked~#form-register{
+      display:none
+    }
+  </style>
+  <input type="checkbox" name="input-login" id="input-login">
+  <div id="form-register" class="page-width page-width--tiny page-content">
     <header class="section-header">
       <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
     </header>
@@ -615,6 +627,66 @@
 
         <p>
           <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+        </p>
+        <p>
+          <label for="input-login">{{ 'layout.customer.log_in' | t }}</label>
+        </p>
+      {%- endform -%}
+    </div>
+  </div>
+  <div id="form-login" class="page-width page-width--tiny page-content">
+    <header class="section-header">
+      <h1 class="section-header__title">{{ 'customer.login.title' | t }}</h1>
+    </header>
+
+    <div class="note note--success hide" id="ResetSuccess">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+
+    <div id="CustomerLoginForm" class="form-vertical">
+      {%- form 'customer_login' -%}
+        {{ form.errors | default_errors }}
+
+        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+          autocorrect="off"
+          autocapitalize="off"
+          autofocus
+        >
+
+        {%- if form.password_needed -%}
+          <div class="grid">
+            <div class="grid__item one-half">
+              <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+            </div>
+            <div class="grid__item one-half text-right">
+              <small class="label-info">
+                <a href="#recover" id="RecoverPassword">
+                  {{ 'customer.login.forgot_password' | t }}
+                </a>
+              </small>
+            </div>
+          </div>
+          <input
+            type="password"
+            value=""
+            name="customer[password]"
+            id="CustomerPassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+        {%- endif -%}
+
+        <p>
+          <button type="submit" class="btn btn--full">
+            {{ 'customer.login.sign_in' | t }}
+          </button>
+        </p>
+        <p>
+          <label for="input-login">{{ 'layout.customer.create_account' | t }}</label>
         </p>
       {%- endform -%}
     </div>
