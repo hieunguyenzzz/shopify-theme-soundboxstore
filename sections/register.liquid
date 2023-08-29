@@ -159,7 +159,7 @@
             autocapitalize="off"
           >
 
-          <label for="CreatePassword">{{ 'customer.application.password' | t }}</label>
+          <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
           <input
             type="password"
             name="customer[password]"
@@ -569,12 +569,13 @@
       display:none
     }
   </style>
+  {% assign reUrl = routes.root_url | append: '/pages/register' %}
   <input type="checkbox" hidden class="hidden" name="input-login" id="input-login">
   <div id="form-register" class="page-width page-width--tiny page-content">
     <header class="section-header">
       <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
     </header>
-    {% assign reUrl = routes.root_url | append: '/pages/register' %}
+
     <div class="form-vertical">
       {%- form 'create_customer', return_to: reUrl -%}
         {{ form.errors | default_errors }}
@@ -642,7 +643,7 @@
     </div>
 
     <div id="CustomerLoginForm" class="form-vertical">
-      {%- form 'customer_login' -%}
+      {%- form 'customer_login', return_to: reUrl -%}
         {{ form.errors | default_errors }}
 
         <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
