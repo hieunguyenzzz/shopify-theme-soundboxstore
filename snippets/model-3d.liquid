@@ -1,0 +1,340 @@
+<style>
+      .slideshow-section {
+        display: none;
+      }
+      .slideshow-input {
+      display: none;
+      }
+      .slideshow-input:checked + .slideshow-section {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        z-index: 999;
+        align-items: center;
+        background: #ffffffcf;
+      }
+      .slideshow-wrapper {
+        width: 100%;
+        max-height: 80%;
+      }
+      .close-btn {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        z-index: 999;
+        width: 40px;
+        height: 40px;
+        right: 40px;
+          color: var(--shopify-editor-setting-color_body_text);
+      color: var(--colorTextBody);
+      background-color: var(--shopify-editor-setting-color_body_bg);
+      background-color: var(--colorBody);
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+          display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #f1f1f1;
+      }
+      .close-btn:hover{
+
+      transform: scale(1.12);
+      }
+      .images-btn img {
+    flex: 1;
+      min-width:unset;
+      width:0;
+      object-fit:cover
+  }
+      .google-map-section .col-right{
+      position:relative
+      }
+  .images-btn {
+    display: flex;
+    width: auto;
+      margin:0;
+          position: absolute;
+      width: 40%;
+      right: 12px;
+      top: 12px;
+      padding: 4px;
+      z-index: 1;
+      height: 90px;
+      background: white;
+      background-color: white;
+      /* margin: 10px; */
+      /* padding: 1px; */
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+      border-radius: 2px;
+  }
+      .images-btn div{
+          position: absolute;
+      top: 4px ;
+      left: 4px;
+      bottom: 4px;
+      right: 4px;
+      background: #00000061;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      @media only screen and (max-width: 768px){
+        .close-btn {
+       top: -16px;
+      width: 33px;
+      height: 33px;
+      right:20px
+        }
+      .google-map-section .col-right {
+      height:auto;
+      }
+        .google-map-section .col-right iframe{
+          height:350px
+        }
+      .images-btn{
+      height: 150px;
+      position: relative;
+      width: 100%;
+      right: 0;
+      top: 0;
+      }
+      }
+</style>
+<style>
+      .product__xr-button {
+        background: rgba(var(--color-foreground), 0.08);
+        color: rgb(var(--color-foreground));
+        margin: 1rem auto;
+        box-shadow: none;
+        display: flex;
+      }
+
+      .button.product__xr-button:hover {
+        box-shadow: none;
+      }
+
+      .product__xr-button[data-shopify-xr-hidden] {
+        visibility: hidden;
+      }
+
+      .shopify-design-mode .product__xr-button[data-shopify-xr-hidden] {
+        display: none;
+      }
+
+      @media screen and (max-width: 749px) {
+        slider-component .product__xr-button {
+          display: none;
+        }
+
+        .active .product__xr-button:not([data-shopify-xr-hidden]) {
+          display: block;
+        }
+      }
+
+      @media screen and (min-width: 750px) {
+        slider-component + .button.product__xr-button {
+          display: none;
+        }
+
+        .product__xr-button[data-shopify-xr-hidden] {
+          display: none;
+        }
+      }
+
+      .product__xr-button .icon {
+        width: 1.4rem;
+        margin-right: 1rem;
+      }
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__controls-area {
+    background: rgb(var(--color-background));
+    border-color: rgba(var(--color-foreground), 0.04);
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button {
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:hover {
+    color: rgba(var(--color-foreground), 0.55);
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:active,
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control.focus-visible:focus {
+    color: rgba(var(--color-foreground), 0.55);
+    background: rgba(var(--color-foreground), 0.04);
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:not(:last-child):after {
+    border-color: rgba(var(--color-foreground), 0.04);
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster {
+    border-radius: 50%;
+    color: rgb(var(--color-foreground));
+    background: rgb(var(--color-background));
+    border-color: rgba(var(--color-foreground), 0.1);
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__poster-control-icon {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin-top: 0.3rem;
+  }
+
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover,
+  .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+</style>
+<link
+  id="ModelViewerStyle"
+  rel="stylesheet"
+  href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+  media="print"
+  onload="this.media='all'"
+>
+
+<script type="application/json" id="ProductJSON-{{ product.id }}">
+  {{ product.media | where: 'media_type', 'model' | json }}
+</script>
+<script src="{{ 'product-model.js' | asset_url }}" defer></script>
+<input type="checkbox" name="slideshow-input" class="slideshow-input" id="{{ section.id }}-input">
+<div
+  class="slideshow-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow-section"
+  {% if section.settings.parallax %}
+    data-parallax="true"
+  {% endif %}
+>
+  <div class="slideshow-wrapper">
+    <label for="{{ section.id }}-input" class="close-btn  flickity-button" type="button" aria-label="Previous">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+      </svg>
+    </label>
+
+    {%- if section.settings.autoplay and section.settings.style == 'bars' and section.blocks.size > 1 -%}
+      {%- style -%}
+        [data-bars][data-autoplay="true"] .flickity-page-dots .dot:after {
+          animation-duration: {{ section.settings.autoplay_speed | times: 1000 }}ms;
+        }
+      {%- endstyle -%}
+
+      <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+        <span class="slideshow__pause-stop">
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pause" viewBox="0 0 10 13">
+            <g fill="#000" fill-rule="evenodd"><path d="M0 0h3v13H0zM7 0h3v13H7z"/></g>
+          </svg>
+          <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+        </span>
+        <span class="slideshow__pause-play">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+            class="icon icon-play"
+            viewBox="18.24 17.35 24.52 28.3"
+          >
+            <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+          </svg>
+          <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+        </span>
+      </button>
+    {%- endif -%}
+
+    {%- assign natural_height_ratio = '60%' -%}
+    {%- assign natural_height_ratio_mobile = '100%' -%}
+    {%- for block in section.blocks limit: 1 -%}
+      {%- if block.settings.image != blank -%}
+        {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{% endcapture %}
+        {%- assign natural_height_ratio_mobile = natural_height_ratio -%}
+      {%- endif -%}
+      {%- if block.settings.image_mobile != blank -%}
+        {%- capture natural_height_ratio_mobile -%}{{ 100 | divided_by: block.settings.image_mobile.aspect_ratio }}%{% endcapture %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- style -%}
+      .hero-natural--{{ section.id }} {
+        height: 0;
+        padding-bottom: {{ natural_height_ratio }};
+      }
+
+      @media screen and (max-width: 768px) {
+        .hero-natural--{{ section.id }} {
+          padding-bottom: {{ natural_height_ratio_mobile }};
+        }
+      }
+    {%- endstyle -%}
+
+    <div class="hero-natural--{{ section.id }}">
+      <div
+        id="Slideshow-{{ section.id }}"
+        class="hero hero--{{ section.id }} loading loading--delayed"
+        data-natural="true"
+        data-autoplay="{{ section.settings.autoplay }}"
+        data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+        data-arrows="true"
+        data-slide-count="{{ section.blocks.size }}"
+      >
+        <div
+          {{ block.shopify_attributes }}
+          class="slideshow__slide slideshow__slide--{{ block.id }}"
+          data-index="{{ forloop.index0 }}"
+          data-id="{{ block.id }}"
+        >
+          <product-model
+            class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+            style="display: block;padding-top: 100%;"
+          >
+            {{
+              first_3d_model
+              | media_tag:
+                image_size: '2048x',
+                toggleable: true,
+                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
+            }}
+          </product-model>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  aria-label="{{ 'products.product.view_in_space_label' | t }}"
+  class="product-single__view-in-space"
+  data-shopify-xr
+  data-shopify-model3d-id="{{ first_3d_model.id }}"
+  data-shopify-title="{{ product.title }}"
+  data-shopify-xr-hidden
+>
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    class="icon icon-3d"
+    viewBox="18.24 17.35 24.52 28.3"
+  >
+    <path fill="#3A3A3A"
+      d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z" />
+  </svg>
+  <span class="product-single__view-in-space-text">
+    {{ 'products.product.view_in_space' | t }}
+  </span>
+</button>
