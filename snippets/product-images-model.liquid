@@ -314,9 +314,15 @@ calc(100vw - 4rem)
         <div class="image-gallery-block">
           <product-model
             class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
-            style="padding-top: min(calc(100vh - 12rem), 100%)"
+            style="display: block;padding-top: 100%;"
           >
-            {{ first_3d_model | media_tag: image_size: '2048x', toggleable: true }}
+            {{
+              first_3d_model
+              | media_tag:
+                image_size: '2048x',
+                toggleable: true,
+                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
+            }}
           </product-model>
         </div>
       {% endif %}
