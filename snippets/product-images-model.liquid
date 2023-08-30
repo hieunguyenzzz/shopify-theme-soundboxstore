@@ -378,11 +378,10 @@ calc(100vw - 4rem)
       src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/360degree.svg?v=1664532487"
     >
   </a>
-  {%- if first_3d_model -%}
-    {% render 'model-3d', first_3d_model: first_3d_model %}
-  {%- endif -%}
 {%- endif -%}
-
+{%- if first_3d_model -%}
+  {% render 'model-3d', first_3d_model: first_3d_model %}
+{%- endif -%}
 {%- for current_variant in product.variants -%}
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign vaSku = current_variant.sku | strip -%}
