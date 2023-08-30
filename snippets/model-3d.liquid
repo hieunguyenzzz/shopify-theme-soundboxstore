@@ -1,5 +1,5 @@
 <style>
-        .slideshow-section {
+        .slideshow-section.{{ section.id }}-slideshow-section {
           display: none;
           overscroll-behavior: contain;
         }
@@ -210,7 +210,7 @@
 <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 <input type="checkbox" name="slideshow-input" class="slideshow-input" id="{{ section.id }}-input">
 <div
-  class="slideshow-section"
+  class="slideshow-section {{ section.id }}-slideshow-section"
   data-section-id="{{ section.id }}"
   data-section-type="slideshow-section"
   {% if section.settings.parallax %}
