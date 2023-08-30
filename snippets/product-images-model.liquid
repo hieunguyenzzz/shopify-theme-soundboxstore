@@ -383,24 +383,13 @@ calc(100vw - 4rem)
       {%- unless had_images -%}
         <div class="image-gallery-block">
           {%- assign lazy = 'lazy' -%}
-          {%- assign image = current_variant.image -%}
           <div
             class="gallery-wrap"
             {%- if lazy -%}
               style="display:none ;"
             {%- endif -%}
           >
-            {{
-              image
-              | image_url: width: 1900
-              | image_tag:
-                loading: lazy,
-                class: 'photoswipe__image',
-                sizes: sizes,
-                widths: '246, 493, 600, 713, 823, 990',
-                alt: product.title
-              | escape
-            }}
+            {{ 'product-1' | placeholder_svg_tag }}
             {{ new_label }}
           </div>
         </div>
