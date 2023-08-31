@@ -140,18 +140,18 @@
                     {%- endfor -%}
                      {% unless request.design_mode %}
   {% assign isResserllerOrTradeAccount = false %}
-  {% if customer %}
-    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-      {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
-        {% assign isResserllerOrTradeAccount = true %}
+    {% if customer %}
+      {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+        {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+          {% assign isResserllerOrTradeAccount = true %}
+        {% endif %}
       {% endif %}
     {% endif %}
-  {% endif %}
-  {% unless isResserllerOrTradeAccount %}
-    [data-id="7"]{
-      display:none
-    }
-  {% endunless %}
+    {% unless isResserllerOrTradeAccount %}
+      [data-id="#"]{
+        display:none
+      }
+    {% endunless %}
   {% endunless %}
 </style>
 {%- liquid
