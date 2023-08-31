@@ -10,9 +10,7 @@
   {% endif %}
   {% unless isResserllerOrTradeAccount %}
     <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
-        {{customer.metafields['custom-register'].trade_account_type | metafield_text}}
-      {{customer.metafields['custom-register'].trade_account_status | json}}
-      {{ reseller_product | json }}
+      window.location.href="/404"
     </script>
   {% endunless %}
 {% endif %}
