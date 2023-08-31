@@ -10,6 +10,8 @@
   {% endif %}
   {% unless isResserllerOrTradeAccount %}
     <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
+      {{customer.metafields['custom-register'].trade_account_type | json}}
+      {{customer.metafields['custom-register'].trade_account_status | json}}
       {{ reseller_product | json }}
     </script>
   {% endunless %}
