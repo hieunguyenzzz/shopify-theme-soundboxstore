@@ -1,4 +1,19 @@
 <style>
+  {% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+    {% if customer %}
+      {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+        {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+          {% assign isResserllerOrTradeAccount = true %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% unless isResserllerOrTradeAccount %}
+      [data-id="#"]{
+        display:none
+      }
+    {% endunless %}
+  {% endunless %}
             .site-header  .site-nav__item-verticle .megamenu{
                   padding: 40px 0 40px;
             }
@@ -138,21 +153,6 @@
     text-decoration-color: #ff263f; text-decoration-thickness: 2px;
         }
                     {%- endfor -%}
-                     {% unless request.design_mode %}
-  {% assign isResserllerOrTradeAccount = false %}
-    {% if customer %}
-      {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-        {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
-          {% assign isResserllerOrTradeAccount = true %}
-        {% endif %}
-      {% endif %}
-    {% endif %}
-    {% unless isResserllerOrTradeAccount %}
-      [data-id="#"]{
-        display:none
-      }
-    {% endunless %}
-  {% endunless %}
 </style>
 {%- liquid
   unless limit
