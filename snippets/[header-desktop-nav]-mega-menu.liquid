@@ -139,6 +139,21 @@
     text-decoration-color: #ff263f; text-decoration-thickness: 2px;
         }
                     {%- endfor -%}
+                     {% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% unless isResserllerOrTradeAccount %}
+    [data-id="7"]{
+      display:none
+    }
+  {% endunless %}
+  {% endunless %}
 </style>
 {%- liquid
   unless limit
@@ -173,7 +188,7 @@
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
-                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }}"
+                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
               >
                 {{ block.settings.title }}
               </a>
