@@ -1,4 +1,4 @@
-{% assign reseller_product = collections[reseller-only] | where: 'handle', product.handle %}
+{% assign reseller_product = collections['reseller-only'] | where: 'handle', product.handle %}
 {% if reseller_product %}
   <script id="reseller_product-{{ reseller_product.handle }}"></script>
 {% endif %}
