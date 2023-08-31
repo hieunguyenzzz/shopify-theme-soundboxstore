@@ -1,6 +1,6 @@
 {% assign reseller_product = collections['reseller-only'] | where: 'handle', product.handle %}
 {% if reseller_product %}
-  <script id="reseller_product-{{ reseller_product.handle }}"></script>
+  <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}"></script>
 {% endif %}
 {%- liquid
   assign isModal = false
