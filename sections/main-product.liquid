@@ -1,8 +1,18 @@
 {% assign reseller_product = collections['reseller-only'].products | where: 'handle', product.handle %}
 {% if reseller_product.size > 0 %}
-  <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
-    {{ reseller_product | json }}
-  </script>
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'reseller' %}
+      {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+        {% assign isResserllerOrTradeAccount = false %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% unless isResserllerOrTradeAccount %}
+    <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
+      {{ reseller_product | json }}
+    </script>
+  {% endunless %}
 {% endif %}
 {%- liquid
   assign isModal = false
