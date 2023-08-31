@@ -1,5 +1,5 @@
 {% assign reseller_product = collections['reseller-only'].products | where: 'handle', product.handle %}
-{% if reseller_product %}
+{% if reseller_product.size > 0 %}
   <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
     {{ reseller_product | json }}
   </script>
