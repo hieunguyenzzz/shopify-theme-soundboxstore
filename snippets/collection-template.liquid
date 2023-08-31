@@ -96,24 +96,6 @@
             data-view="{{ productGridView }}"
             data-scroll-to
           >
-            {% assign reseller_product = collections['reseller-only'].products | where: 'handle', product.handle %}
-            {% if reseller_product.size > 0 %}
-              {% unless request.design_mode %}
-                {% assign isResserllerOrTradeAccount = false %}
-                {% if customer %}
-                  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-                    {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
-                      {% assign isResserllerOrTradeAccount = true %}
-                    {% endif %}
-                  {% endif %}
-                {% endif %}
-                {% unless isResserllerOrTradeAccount %}
-                  <script id="reseller_only">
-                    window.location.href="{{ routes.account_login_url }}"
-                  </script>
-                {% endunless %}
-              {% endunless %}
-            {% endif %}
             {%- liquid
               for product in collection.products
                 if forloop.first == true
