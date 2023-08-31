@@ -1,12 +1,26 @@
+{% assign isResserllerOrTradeAccount = false %}
+{% if customer %}
+  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+    {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+      {% assign isResserllerOrTradeAccount = true %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% unless isResserllerOrTradeAccount %}
+  <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
+    window.location.href="{{ routes.account_login_url }}"
+  </script>
+{% endunless %}
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Reseller Only",
+   "presets": [
+    {
+      "name": "Reseller Only",
+      "blocks": [
+
+      ]
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
