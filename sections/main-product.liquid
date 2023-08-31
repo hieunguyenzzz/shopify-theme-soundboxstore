@@ -10,7 +10,7 @@
   {% endif %}
   {% unless isResserllerOrTradeAccount %}
     <script id="reseller_product-{{ collections['reseller-only'].handle }}-{{ reseller_product.handle }}">
-      window.location.href="/404"
+      window.location.href="{{ routes.collections_url}}"
     </script>
   {% endunless %}
 {% endif %}
