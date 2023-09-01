@@ -1,0 +1,704 @@
+{% if customer %}
+  {% comment %}
+    **CUSTOMER DETAILS
+    Company name:
+    Address:
+    Address:
+    Postcode:
+    Type of company: Limited Company | Sole Trader | Partnership
+    Registration number:
+    Registered Office Address (if
+    different from above)
+    Telephone:
+    Fax:
+    Email:
+    Purchasing contact:
+    Accounts contact:
+
+    **TRADE REFERENCES
+    Company 1:
+    Contact name:
+    Address:
+    Postcode:
+    Telephone:
+    Email:
+    Company 2:
+    Contact name:
+    Address:
+    Postcode:
+    Telephone:
+    Email:
+
+    **BANK DETAILS
+    Bank Name:
+    Branch:
+    Account number:
+    Sort code:
+
+    I hereby authorise DWIR Limited to obtain references from the above, as and when
+    appropriate. I agree to abide by the Terms and Condition as set out by DWIR Limited
+    which include that all invoices are due to be paid within 30 days from the date of
+    invoice, and that a Purchase Order must be given for services rendered.
+
+    Signed:
+    Printed name:
+    Position:
+    Date:
+  {% endcomment %}
+  <style>
+         .form-section{
+          display: grid;
+          gap:2em;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .form-vertical .form-section{
+
+              padding-bottom: 3rem;
+              border-bottom: 1px solid rgb(17 24 39 / 0.1);
+        }
+        .form-section:not(:first-child){
+          margin-top: 3em;
+        }
+
+        .form-section .section-header{
+          margin:0;
+        }
+        .form-radio>div{
+          display: flex;
+          align-items: flex-start;
+        }
+        .form-radio input{
+          margin-top: 0.6em;
+        }
+        .form-radio{
+          margin-bottom: 30px;
+        }
+        .form-section h4{
+          line-height: 30.24px;
+        }
+        @media (min-width: 768px){
+          .form-section{
+            display: grid;
+              grid-template-columns: repeat(3,  minmax(0, 1fr));
+        }
+        .form-section h3{
+        text-align: right;
+        }
+     .form-section>div:nth-child(2) {
+        grid-column: span 2 / 4;
+        max-width: 500px;
+    }
+        }
+  </style>
+  <div class="page-width page-content">
+    <div class="form-section">
+      <div></div>
+      <header class="section-header" style="margin-bottom:2em">
+        <h1 class="section-header__title">{{ 'customer.application.title' | t }}</h1>
+      </header>
+    </div>
+    {% capture content %}<div class="form-section">
+        <div></div>
+        <div>
+          {% if customer.id %}
+             <input
+            type="text"
+            name="customer[id]"
+            id="FirstName"
+            class="input-full hidden"
+             style="display:none"
+            autocapitalize="words"
+              value="{{ customer.id }}"
+            autofocus
+          >
+          <label for="Email">{{ 'customer.register.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="Email"
+            disabled
+            class="disabled input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if customer.email %}
+              value="{{ customer.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
+            {% else %}
+              <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[first_name]"
+            id="FirstName"
+            class="input-full"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            autocapitalize="words"
+            autofocus
+          >
+
+          <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[last_name]"
+            id="LastName"
+            class="input-full"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocapitalize="words"
+          >
+
+          <label for="Email">{{ 'customer.register.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="Email"
+            class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
+
+          <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+          <input
+            type="password"
+            name="customer[password]"
+            id="CreatePassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+            {% endif %}
+        
+        </div>
+      </div>
+      <div class="form-section">
+        <div>
+          <h3>{{ 'customer.application.details-heading' | t }}</h3>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="details-company-name">{{ 'customer.application.details-company-name' | t }}</label>
+            <input
+              type="text"
+              name="details-company-name"
+              id="details-company-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="details-address">{{ 'customer.application.details-address' | t }}</label>
+            <input
+              type="text"
+              name="details-address"
+              id="details-address"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-address-2">{{ 'customer.application.details-address-2' | t }}</label>
+            <input
+              type="text"
+              name="details-address-2"
+              id="details-address-2"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-postcode">{{ 'customer.application.details-postcode' | t }}</label>
+            <input
+              type="text"
+              name="details-postcode"
+              id="details-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <div class="label label-info">{{ 'customer.application.details-type-of-company' | t }}</div>
+            <div class="form-radio">
+              <div>
+                <input
+                  type="radio"
+                  name="details-type-of-company"
+                  id="details-type-of-company-limited"
+                  class="input-full"
+                  value="limited-company"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-type-of-company-limited">
+                  {{- 'customer.application.details-type-of-company-limited' | t -}}
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="details-type-of-company"
+                  id="details-type-of-company-sole-trader"
+                  class="input-full"
+                  value="sole-trader"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-type-of-company-sole-trader">
+                  {{- 'customer.application.details-type-of-company-sole-trader' | t -}}
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="details-type-of-company"
+                  id="details-type-of-company-partnership"
+                  class="input-full"
+                  value="partnership"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-type-of-company-partnership">
+                  {{- 'customer.application.details-type-of-company-partnership' | t -}}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="details-registration-number">{{ 'customer.application.details-registration-number' | t }}</label>
+            <input
+              type="text"
+              name="details-registration-number"
+              id="details-registration-number"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="registered-office-address">{{ 'customer.application.registered-office-address' | t }}</label>
+            <input
+              type="text"
+              name="registered-office-address"
+              id="registered-office-address"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="details-telephone">{{ 'customer.application.details-telephone' | t }}</label>
+            <input
+              type="text"
+              name="details-telephone"
+              id="details-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-fax">{{ 'customer.application.details-fax' | t }}</label>
+            <input
+              type="text"
+              name="details-fax"
+              id="details-faxe"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-email">{{ 'customer.application.details-email' | t }}</label>
+            <input
+              type="text"
+              name="details-email"
+              id="details-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-purchasing-contact">{{ 'customer.application.details-purchasing-contact' | t }}</label>
+            <input
+              type="text"
+              name="details-purchasing-contact"
+              id="details-purchasing-contact"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="details-accounts-contact">{{ 'customer.application.details-accounts-contact' | t }}</label>
+            <input
+              type="text"
+              name="details-accounts-contact"
+              id="details-accounts-contact"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+        
+        </div>
+      </div>
+      <div class="form-section" >
+        <div>
+          <h3>{{ 'customer.application.references-heading' | t }}</h3>
+        </div>
+        <div>
+          <h4>References 1</h4>
+          <div class="form-group">
+            <label for="references-company">{{ 'customer.application.references-company' | t }}</label>
+            <input
+              type="text"
+              name="references-company"
+              id="references-company"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-contact-name">{{ 'customer.application.references-contact-name' | t }}</label>
+            <input
+              type="text"
+              name="references-contact-name"
+              id="references-contact-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-address">{{ 'customer.application.references-address' | t }}</label>
+            <input
+              type="text"
+              name="references-address"
+              id="references-address"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-postcode">{{ 'customer.application.references-postcode' | t }}</label>
+            <input
+              type="text"
+              name="references-postcode"
+              id="references-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-telephone">{{ 'customer.application.references-telephone' | t }}</label>
+            <input
+              type="text"
+              name="references-telephone"
+              id="references-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="references-email">{{ 'customer.application.references-email' | t }}</label>
+            <input
+              type="text"
+              name="references-email"
+              id="references-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <h4>References 2</h4>
+          <div class="form-group">
+            <label for="references-company-2">{{ 'customer.application.references-company-2' | t }}</label>
+            <input
+              type="text"
+              name="references-company-2"
+              id="references-company"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-contact-name-2">{{ 'customer.application.references-contact-name-2' | t }}</label>
+            <input
+              type="text"
+              name="references-contact-name-2"
+              id="references-contact-name"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-address-2">{{ 'customer.application.references-address-2' | t }}</label>
+            <input
+              type="text"
+              name="references-address-2"
+              id="references-address"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-postcode-2">{{ 'customer.application.references-postcode-2' | t }}</label>
+            <input
+              type="text"
+              name="references-postcode-2"
+              id="references-postcode"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-telephone-2">{{ 'customer.application.references-telephone-2' | t }}</label>
+            <input
+              type="text"
+              name="references-telephone-2"
+              id="references-telephone"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+          <div class="form-group">
+            <label for="references-email-2">{{ 'customer.application.references-email-2' | t }}</label>
+            <input
+              type="text"
+              name="references-email-2"
+              id="references-email"
+              class="input-full"
+              autocapitalize="words"
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-section" style="border:none">
+        <div>
+          <h3>{{ 'customer.application.bank-heading' | t }}</h3>
+        </div>
+         <div>
+    <div class="form-group">
+      <label for="bank-name">{{ 'customer.application.bank-name' | t }}</label>
+      <input
+        type="text"
+        name="bank-name"
+        id="bank-name"
+        class="input-full"
+        autocapitalize="words"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="bank-branch">{{ 'customer.application.bank-branch' | t }}</label>
+      <input
+        type="text"
+        name="bank-branch"
+        id="bank-branch"
+        class="input-full"
+        autocapitalize="words"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="bank-account-number"
+        >{{ 'customer.application.bank-account-number' | t }}</label
+      >
+      <input
+        type="text"
+        name="bank-account-number"
+        id="bank-account-number"
+        class="input-full"
+        autocapitalize="words"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="bank-sort-code"
+        >{{ 'customer.application.bank-sort-code' | t }}</label
+      >
+      <input
+        type="text"
+        name="bank-sort-code"
+        id="bank-sort-code"
+        class="input-full"
+        autocapitalize="words"
+      />
+    </div>
+  </div>
+      </div>
+      <div  class="form-section form-section-register" style="margin:0;padding:0;border:none">
+        <div></div>
+        <div>
+          <p>
+            <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+          </p>
+        </div>
+      </div>
+    {% endcapture %}
+
+    <div class="form-vertical">
+      <form
+        method="POST"
+        action="https://mobelaris.ngohoanglongptit8635.workers.dev/api/application?redirectUrl=https://{{ request.host | append:'/pages/quote-thank-you' }}"
+      >
+        {{ content }}
+      </form>
+    </div>
+  </div>
+{% else %}
+  <style>
+    #form-login{
+       display:none
+    }
+    #input-login:checked~#form-login{
+      display:block
+    }
+    #input-login:checked~#form-register{
+      display:none
+    }
+  </style>
+  {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
+  <input type="checkbox" hidden class="hidden" name="input-login" id="input-login">
+  <div id="form-register" class="page-width page-width--tiny page-content">
+    <header class="section-header">
+      <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+    </header>
+
+    <div class="form-vertical">
+      {%- form 'create_customer', return_to: reUrl -%}
+        {{ form.errors | default_errors }}
+
+        <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="FirstName"
+          class="input-full"
+          {% if form.first_name %}
+            value="{{ form.first_name }}"
+          {% endif %}
+          autocapitalize="words"
+          autofocus
+        >
+
+        <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+        <input
+          type="text"
+          name="customer[last_name]"
+          id="LastName"
+          class="input-full"
+          {% if form.last_name %}
+            value="{{ form.last_name }}"
+          {% endif %}
+          autocapitalize="words"
+        >
+
+        <label for="Email">{{ 'customer.register.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="Email"
+          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+          {% if form.email %}
+            value="{{ form.email }}"
+          {% endif %}
+          autocorrect="off"
+          autocapitalize="off"
+        >
+
+        <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="CreatePassword"
+          class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+        >
+
+        <p>
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+          <label for="input-login">{{ 'layout.customer.log_in' | t }}</label>
+        </p>
+      {%- endform -%}
+    </div>
+  </div>
+  <div id="form-login" class="page-width page-width--tiny page-content">
+    <header class="section-header">
+      <h1 class="section-header__title">{{ 'customer.login.title' | t }}</h1>
+    </header>
+
+    <div class="note note--success hide" id="ResetSuccess">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+
+    <div id="CustomerLoginForm" class="form-vertical">
+      {%- form 'customer_login', return_to: reUrl -%}
+        {{ form.errors | default_errors }}
+
+        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+          autocorrect="off"
+          autocapitalize="off"
+          autofocus
+        >
+
+        {%- if form.password_needed -%}
+          <div class="grid">
+            <div class="grid__item one-half">
+              <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+            </div>
+            <div class="grid__item one-half text-right">
+              <small class="label-info">
+                <a href="#recover" id="RecoverPassword">
+                  {{ 'customer.login.forgot_password' | t }}
+                </a>
+              </small>
+            </div>
+          </div>
+          <input
+            type="password"
+            value=""
+            name="customer[password]"
+            id="CustomerPassword"
+            class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+          >
+        {%- endif -%}
+
+        <p>
+          <button type="submit" class="btn btn--full">
+            {{ 'customer.login.sign_in' | t }}
+          </button>
+          <label for="input-login">{{ 'layout.customer.create_account' | t }}</label>
+        </p>
+      {%- endform -%}
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Section Register",
+  "settings": [],
+   "presets": [
+  {
+    "name": "Section Register",
+    "blocks": []
+  }
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

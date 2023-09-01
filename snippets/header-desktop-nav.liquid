@@ -8,5 +8,7 @@
 -%}
 
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
-  {% render '[header-desktop-nav]-mega-menu', blocks: section.blocks %}
+  {%- for menu in main_menu.links -%}
+    {% render '[header-desktop-nav]-mega-menu', blocks: section.blocks, title: menu.title %}
+  {% endfor %}
 </ul>

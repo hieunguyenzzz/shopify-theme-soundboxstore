@@ -1,4 +1,19 @@
 <style>
+  {% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+    {% if customer %}
+      {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+        {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+          {% assign isResserllerOrTradeAccount = true %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% unless isResserllerOrTradeAccount %}
+      [data-id="#"]{
+        display:none!important
+      }
+    {% endunless %}
+  {% endunless %}
             .site-header  .site-nav__item-verticle .megamenu{
                   padding: 40px 0 40px;
             }
@@ -132,7 +147,6 @@
              .site-header [data-current^="{{block.settings.id}}"]  .col-two [data-id^="{{block.settings.id}}"] {
                                                   display:block
                              }
-
             {%-endif -%}
   .site-header [data-current="{{block.settings.id}}"]  .col-item-link[data-id="{{block.settings.id}}"]{
         text-decoration: underline;
@@ -173,7 +187,7 @@
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
-                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }}"
+                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
               >
                 {{ block.settings.title }}
               </a>

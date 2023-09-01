@@ -51,7 +51,7 @@
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
-    {{ ' vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
@@ -230,9 +230,7 @@
         themeVersion: "2.0.0"
       };
     </script>
-
-    {{ content_for_header }}
-
+{{ content_for_header }}
     <style>
       label[for='_gcl_au'],
       label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
@@ -289,7 +287,7 @@
     {% include 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async

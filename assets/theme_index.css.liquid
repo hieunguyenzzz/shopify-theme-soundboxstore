@@ -2443,7 +2443,7 @@ iframe,img {
 
 .image-fit {
     position: relative;
-    font-family: "object-fit: cover";
+    
     z-index: 1
 }
 
@@ -9400,7 +9400,6 @@ iframe.zoid-component-frame {
 
 @media only screen and (min-width:769px) {
     .product-single__sticky {
-        position: sticky;
         top: 20px
     }
 
@@ -12344,7 +12343,9 @@ body {
     }
 
     .brand-details-section .slide-top-section .left-col .col-wrap img {
-        max-height: 30px
+        max-height: 30px;
+    object-fit: scale-down;
+    object-position: left;
     }
 
     .template-product .furniture-variant .variant-input-wrap .variant-input .variant__button-label span {
@@ -14646,7 +14647,8 @@ width: 100%;
 .template-product .product-left-col-wrap {
     max-width: 100%;
     width: 100%;
-    margin: 0 auto
+    margin: 0 auto;
+    position:relative
 }
 
 .template-product .product-right-col .product-single__title {

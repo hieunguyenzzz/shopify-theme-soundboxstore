@@ -3,7 +3,7 @@
       .brand-details-slider .slide{
         display: none;
       }
-    .brand-details-slider  .slick-slide .image-group img{
+    .brand-details-slider  .slick-slide .image-group  img{
       display: none;
     }
       .brand-details-slider  .slick-slide.slick-current .image-group img{
@@ -38,11 +38,7 @@
                 <div class="col left-col">
                   <div class="col-wrap">
                     {% if block.settings.logo_image != blank %}
-                      {{
-                        block.settings.logo_image
-                        | image_url: width: 200
-                        | image_tag: style: 'object-fit:contain', loading: 'lazy'
-                      }}
+                      {{ block.settings.logo_image | image_url: width: 200 | image_tag: loading: 'lazy' }}
                     {% endif %}
                   </div>
                 </div>
@@ -85,7 +81,7 @@
                               | image_url: width: 400, crop: 'center'
                               | image_tag:
                                 widths: '100, 160,200, 400',
-                                sizes: '(min-width: 768px) 20400px0px,(min-width: 425px) 150px, 30vw',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
                           </div>

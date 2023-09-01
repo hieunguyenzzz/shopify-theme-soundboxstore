@@ -1,0 +1,386 @@
+<style>
+        .slideshow-section.{{ section.id }}-slideshow-section {
+          display: none;
+          overscroll-behavior: contain;
+        }
+        .slideshow-input {
+        display: none;
+        }
+        .slideshow-input:checked + .slideshow-section {
+          display: block;
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          display: flex;
+          z-index: 999;
+          align-items: center;
+          background: #fff;
+        }
+        .{{ section.id }}-slideshow-section .slideshow-wrapper {
+          width: 100%;
+         height: calc(100vh - 160px);
+        }
+        .close-btn {
+          position: absolute;
+          top: -20px;
+          right: 0;
+          z-index: 999;
+          width: 40px;
+          height: 40px;
+          right: 40px;
+            color: var(--shopify-editor-setting-color_body_text);
+        color: var(--colorTextBody);
+        background-color: var(--shopify-editor-setting-color_body_bg);
+        background-color: var(--colorBody);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #f1f1f1;
+        }
+        .close-btn:hover{
+
+        transform: scale(1.12);
+        }
+        .images-btn img {
+      flex: 1;
+        min-width:unset;
+        width:0;
+        object-fit:cover
+    }
+        .google-map-section .col-right{
+        position:relative
+        }
+    .images-btn {
+      display: flex;
+      width: auto;
+        margin:0;
+            position: absolute;
+        width: 40%;
+        right: 12px;
+        top: 12px;
+        padding: 4px;
+        z-index: 1;
+        height: 90px;
+        background: white;
+        background-color: white;
+        /* margin: 10px; */
+        /* padding: 1px; */
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+        border-radius: 2px;
+    }
+        .images-btn div{
+            position: absolute;
+        top: 4px ;
+        left: 4px;
+        bottom: 4px;
+        right: 4px;
+        background: #00000061;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        @media only screen and (max-width: 768px){
+          .close-btn {
+         top: -16px;
+        width: 33px;
+        height: 33px;
+        right:20px
+          }
+        .google-map-section .col-right {
+        height:auto;
+        }
+          .google-map-section .col-right iframe{
+            height:350px
+          }
+        .images-btn{
+        height: 150px;
+        position: relative;
+        width: 100%;
+        right: 0;
+        top: 0;
+        }
+        }
+        product-model{
+    overscroll-behavior: contain;
+  touch-action: none;
+  -ms-touch-action: none;
+        }
+        .product__xr-button {
+          background: rgba(var(--color-foreground), 0.08);
+          color: rgb(var(--color-foreground));
+          margin: 1rem auto;
+          box-shadow: none;
+          display: flex;
+        }
+
+        .button.product__xr-button:hover {
+          box-shadow: none;
+        }
+
+        .product__xr-button[data-shopify-xr-hidden] {
+          visibility: hidden;
+        }
+
+        .shopify-design-mode .product__xr-button[data-shopify-xr-hidden] {
+          display: none;
+        }
+
+        @media screen and (max-width: 749px) {
+          slider-component .product__xr-button {
+            display: none;
+          }
+
+          .active .product__xr-button:not([data-shopify-xr-hidden]) {
+            display: block;
+          }
+        }
+
+        @media screen and (min-width: 750px) {
+          slider-component + .button.product__xr-button {
+            display: none;
+          }
+
+          .product__xr-button[data-shopify-xr-hidden] {
+            display: none;
+          }
+        }
+
+        .product__xr-button .icon {
+          width: 1.4rem;
+          margin-right: 1rem;
+        }
+      .shopify-model-viewer-ui .shopify-model-viewer-ui__controls-area {
+      background: rgb(var(--color-background));
+      border-color: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button {
+      color: rgba(var(--color-foreground), 0.75);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:hover {
+      color: rgba(var(--color-foreground), 0.55);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:active,
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control.focus-visible:focus {
+      color: rgba(var(--color-foreground), 0.55);
+      background: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:not(:last-child):after {
+      border-color: rgba(var(--color-foreground), 0.04);
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster {
+      border-radius: 50%;
+      color: rgb(var(--color-foreground));
+      background: rgb(var(--color-background));
+      border-color: rgba(var(--color-foreground), 0.1);
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__poster-control-icon {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover,
+    .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+</style>
+<link
+  id="ModelViewerStyle"
+  rel="stylesheet"
+  href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css"
+  media="print"
+  onload="this.media='all'"
+>
+
+<script type="application/json" id="ProductJSON-{{ product.id }}">
+  {{ product.media | where: 'media_type', 'model' | json }}
+</script>
+<script src="{{ 'product-model.js' | asset_url }}" defer></script>
+<input type="checkbox" name="slideshow-input" class="slideshow-input" id="{{ section.id }}-input">
+<div
+  class="slideshow-section {{ section.id }}-slideshow-section"
+  data-section-id="{{ section.id }}"
+  data-section-type="slideshow-section"
+  {% if section.settings.parallax %}
+    data-parallax="true"
+  {% endif %}
+>
+  <div class="slideshow-wrapper">
+    <label for="{{ section.id }}-input" class="close-btn  flickity-button" type="button" aria-label="Previous">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+      </svg>
+    </label>
+
+    {%- if section.settings.autoplay and section.settings.style == 'bars' and section.blocks.size > 1 -%}
+      {%- style -%}
+        [data-bars][data-autoplay="true"] .flickity-page-dots .dot:after {
+          animation-duration: {{ section.settings.autoplay_speed | times: 1000 }}ms;
+        }
+      {%- endstyle -%}
+
+      <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+        <span class="slideshow__pause-stop">
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pause" viewBox="0 0 10 13">
+            <g fill="#000" fill-rule="evenodd"><path d="M0 0h3v13H0zM7 0h3v13H7z"/></g>
+          </svg>
+          <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+        </span>
+        <span class="slideshow__pause-play">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+            class="icon icon-play"
+            viewBox="18.24 17.35 24.52 28.3"
+          >
+            <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+          </svg>
+          <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+        </span>
+      </button>
+    {%- endif -%}
+
+    {%- assign natural_height_ratio = '60%' -%}
+    {%- assign natural_height_ratio_mobile = '100%' -%}
+    {%- for block in section.blocks limit: 1 -%}
+      {%- if block.settings.image != blank -%}
+        {%- capture natural_height_ratio -%}{{ 100 | divided_by: block.settings.image.aspect_ratio }}%{% endcapture %}
+        {%- assign natural_height_ratio_mobile = natural_height_ratio -%}
+      {%- endif -%}
+      {%- if block.settings.image_mobile != blank -%}
+        {%- capture natural_height_ratio_mobile -%}{{ 100 | divided_by: block.settings.image_mobile.aspect_ratio }}%{% endcapture %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- style -%}
+      .hero-natural--{{ section.id }} {
+        height: 0;
+        padding-bottom: {{ natural_height_ratio }};
+      }
+
+      @media screen and (max-width: 768px) {
+        .hero-natural--{{ section.id }} {
+          padding-bottom: {{ natural_height_ratio_mobile }};
+        }
+      }
+    {%- endstyle -%}
+    <div class="hero-natural--{{ section.id }}">
+      <div
+        id="Slideshow-{{ section.id }}"
+        class="hero hero--{{ section.id }} loading loading--delayed"
+        data-natural="true"
+        data-autoplay="{{ section.settings.autoplay }}"
+        data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+        data-arrows="true"
+        data-slide-count="{{ section.blocks.size }}"
+      >
+        <div
+          {{ block.shopify_attributes }}
+          class="slideshow__slide slideshow__slide--{{ block.id }}"
+          data-index="{{ forloop.index0 }}"
+          data-id="{{ block.id }}"
+        >
+          <product-model
+            class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+            style="display: block;padding-top: 100%;"
+          >
+            {{
+              first_3d_model
+              | media_tag:
+                image_size: '2048x',
+                toggleable: true,
+                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
+            }}
+          </product-model>
+          <button
+            style="
+              position: absolute;
+              bottom: 0;
+              width: auto;
+              left: 0;
+              margin: 0;
+              right: 50%;
+              transform: translateX(50%);
+            "
+            aria-label="{{ 'products.product.view_in_space_label' | t }}"
+            class="product-single__view-in-space"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-3d"
+              viewBox="18.24 17.35 24.52 28.3"
+            >
+              <path fill="#3A3A3A"
+                d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z" />
+            </svg>
+            <span class="product-single__view-in-space-text">
+              {{ 'products.product.view_in_space' | t }}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<label
+  for="{{ section.id }}-input"
+  class="btn-360 btn btn--secondary"
+  style="
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    /* top: 0; */
+    /* bottom: auto; */
+    left: auto;
+    max-width: none;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: auto;
+    background: #ffffffbd;
+    border: 1px solid
+  "
+>
+  <span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+      class="icon icon-3d-model"
+      fill="none"
+      viewBox="0 0 18 21"
+    >
+      <path d="M7.67998 20.629L1.28002 16.723C0.886205 16.4784 0.561675 16.1368 0.337572 15.731C0.113468 15.3251 -0.00274623 14.8686 -1.39464e-05 14.405V6.59497C-0.00238367 6.13167 0.113819 5.6755 0.33751 5.26978C0.561202 4.86405 0.884959 4.52227 1.278 4.27698L7.67796 0.377014C8.07524 0.131403 8.53292 0.000877102 8.99999 9.73346e-08C9.46678 -0.000129605 9.92446 0.129369 10.322 0.374024V0.374024L16.722 4.27399C17.1163 4.51985 17.4409 4.86287 17.6647 5.27014C17.8885 5.67742 18.0039 6.13529 18 6.59998V14.409C18.0026 14.8725 17.8864 15.3289 17.6625 15.7347C17.4386 16.1405 17.1145 16.4821 16.721 16.727L10.321 20.633C9.92264 20.8742 9.46565 21.0012 8.99999 21C8.53428 20.9998 8.07761 20.8714 7.67998 20.629V20.629ZM8.72398 2.078L2.32396 5.97803C2.22303 6.04453 2.14066 6.13551 2.08452 6.24255C2.02838 6.34959 2.00031 6.46919 2.00298 6.59003V14.4C2.00026 14.5205 2.02818 14.6396 2.08415 14.7463C2.14013 14.853 2.22233 14.9438 2.32298 15.01L7.99999 18.48V10.919C8.00113 10.5997 8.08851 10.2867 8.25292 10.0129C8.41732 9.73922 8.65267 9.51501 8.93401 9.36401L15.446 5.841L9.28001 2.08002C9.19614 2.02738 9.09901 1.99962 8.99999 2C8.90251 1.99972 8.8069 2.02674 8.72398 2.078V2.078Z" fill="currentColor"/>
+    </svg>
+  </span>
+</label>

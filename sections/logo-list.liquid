@@ -36,8 +36,8 @@
                 <div class="image-wrap">
                   {{
                     block.settings.image
-                    | image_url: width: 180, height: 61
-                    | image_tag: style: 'object-fit:contain', loading: 'lazy', alt: block.settings.image.alt
+                    | image_url: width: '180px', height: '61px'
+                    | image_tag: loading: 'lazy', alt: block.settings.image.alt
                     | default: 'logo'
                   }}
                 </div>

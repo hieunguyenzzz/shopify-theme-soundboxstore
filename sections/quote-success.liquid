@@ -1,0 +1,177 @@
+{% assign id = section.id %}
+{% assign img = section.settings.image %}
+<style>
+      .{{id}}-wrap{
+        position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      height: calc(100vh - 100px);
+      align-items: center;
+      isolation: isolate;
+      }
+      .{{id}}-left,.{{id}}-right{
+        flex:1
+      }
+
+      .{{id}}-left{
+        width: 700px;
+        margin: auto;
+        max-width: 70%;
+        box-shadow: 0px 2px 16px 2px #00000021;
+      }
+      .{{id}}-left img{
+        object-fit: cover;
+      }
+      .{{id}}-right{
+      width: 600px;
+        margin: auto;
+        max-width: 70%;
+      }
+      .{{id}}-right p{
+        color:#aeaeae
+      }
+      .{{id}}-right .section-btn a{
+        width: 100%;
+        line-height:2.4;
+        font-size:0.9em ;
+        margin-top: 20px;
+      }
+      .{{id}}-right .h2,.{{id}}-right h2{
+          font-size: calc(var(--typeHeaderSize)*1);
+          margin-bottom: 40px;
+      }
+      .{{id}}-wrap::before{
+      content:'';
+      position: absolute;
+      right: 50% ;
+      top: 0;
+      bottom: 0;
+      width:100vw  ;
+      background: #f5f5f5;
+      z-index: -1;
+      }
+      @media screen and  (max-width: 900px) {
+      .{{id}}-wrap{
+      display: flex;
+      text-align: center;
+    }
+    .{{id}}-left{
+     position: absolute;
+  left:0;
+     width: 100%    ;
+     height: 100%;
+     max-width: unset;
+    }
+    .{{id}}-left *:nth-child(2){
+      display: none!important;
+    }
+    .{{id}}-left img{
+     position: absolute;
+     left: 0;
+     width: 100%    ;
+     height: 100%;
+     max-width: unset;
+     z-index: -1;
+    }
+    .{{id}}-right {
+     max-width: 90%;
+        z-index: 1 !important;
+        padding: 3em 2em !important;
+        background: #ffffff96 !important;
+        backdrop-filter: blur(4px);
+
+    }
+    .{{id}}-wrap::before{
+      display: none;
+    }
+    .{{id}}-right p{
+      color: #696969;
+    }
+    }
+</style>
+
+<div class="{{ id }}-wrap page-width">
+  <div class="{{ id }}-left">
+    {{
+      img
+      | image_url: width: 800
+      | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: section.settings.content
+    }}
+    <div style="display: flex;padding: 0.8em 1em;">
+      <div style="flex:1">
+        <div
+          style="
+            font-weight: bold;
+            font-size: 1.2em;
+          "
+        >
+          Phone Booth
+        </div>
+        <div
+          style="
+            font-size: 0.9em;
+            color: #aeaeae;
+          "
+        >
+          Spec Sheet
+        </div>
+      </div>
+      <div style="width: 70px;height: 70px;position:relative">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/sound-icon.png?v=1650886739"
+          loading="lazy"
+          width="80"
+          height="80"
+          alt="soundboxstore icon"
+          style="
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+          "
+        >
+      </div>
+    </div>
+  </div>
+  <div class="{{ id }}-right">
+    <div class="{{ id }}-content">
+      {{ section.settings.content }}
+      <div class="section-btn">
+        <a href="{{ section.settings.button_link }}" class="btn">Explore Products </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+ {
+   "name": "Image Text Column",
+   "settings": [
+	{
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image"
+       },
+	{
+         "type": "image_picker",
+         "id": "mobile_image",
+         "label": "Mobile Image"
+       },
+	{
+         "type": "richtext",
+         "id": "content",
+         "label": "Content"
+       },
+	{
+         "type": "url",
+         "id": "button_link",
+         "label": "Button Link"
+       }
+],
+   "presets": [
+     {
+       "name": "Quote success",
+       "blocks": []
+     }
+   ]
+ }
+{% endschema %}
