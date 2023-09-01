@@ -131,7 +131,10 @@
             {%- if nav_position == 'beside' -%}
               <div class="header-item header-item--navigation{% if section.settings.main_menu_alignment == 'left-center' %} text-center{% endif %}">
                 <style>
-                  #site-header__search-container:checked+.site-header__search-container{
+                               .site-header__search-container{
+                                 visible:hidden
+                               }
+                  .site-header__search-container:focus-within {
                     display:block
                   }
                 </style>
