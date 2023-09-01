@@ -3,7 +3,7 @@
   {% assign isResserllerOrTradeAccount = false %}
     {% if customer %}
       {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-        {% if customer.metafields['custom-register'].trade_account_status == 'true' %}
+        {% if customer.metafields['custom-register'].trade_account_status == '1' %}
           {% assign isResserllerOrTradeAccount = true %}
         {% endif %}
       {% endif %}
