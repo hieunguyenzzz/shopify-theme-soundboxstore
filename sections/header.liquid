@@ -131,12 +131,16 @@
             {%- if nav_position == 'beside' -%}
               <div class="header-item header-item--navigation{% if section.settings.main_menu_alignment == 'left-center' %} text-center{% endif %}">
                 <style>
-                               .site-header__search-container{
-                                 visible:hidden
-                               }
-                  .site-header__search-container:focus-within {
-                    display:block
-                  }
+                                         .site-header__search-container{
+                                            visibility: hidden;
+                  display: block;
+                                         }
+                                          .site-header__search-container:focus {
+                             visibility: visible;
+                            }
+                            .site-header__search-container:focus-within {
+                              visibility: visible;
+                            }
                 </style>
                 {%- render 'header-desktop-nav',
                   section: section,
