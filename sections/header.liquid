@@ -137,7 +137,6 @@
                   nav_position: nav_position,
                   show_mega_products: section.settings.mega_products
                 -%}
-                {%- render 'header-search' -%}
               </div>
             {%- endif -%}
 
@@ -166,7 +165,15 @@
             </div>
           </div>
         </div>
-        <input id="site-header__search-container" type="checkbox" hidden class="hidden">
+        {%- if nav_position == 'beside' -%}
+          <input id="site-header__search-container" type="checkbox" hidden class="hidden">
+          <style>
+            #site-header__search-container:checked+site-header__search-container{
+              display:block
+            }
+          </style>
+        {% endif %}
+
         <div class="site-header__search-container">
           <div class="page-width">
             <div class="site-header__search">
