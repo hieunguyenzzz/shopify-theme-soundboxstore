@@ -24,50 +24,50 @@
 -%}
 
 <style>
-  .site-nav__link {
-    font-size: {{ settings.type_navigation_size }}px;
-  }
-  {% if settings.type_navigation_capitalize %}
-    .site-nav__link {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-  {% endif %}
+   .site-nav__link {
+     font-size: {{ settings.type_navigation_size }}px;
+   }
+   {% if settings.type_navigation_capitalize %}
+     .site-nav__link {
+       text-transform: uppercase;
+       letter-spacing: 0.2em;
+     }
+   {% endif %}
 
-  {% if mainmenu.length > 6 %}
-    .site-nav__link {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  {% endif %}
+   {% if mainmenu.length > 6 %}
+     .site-nav__link {
+       padding-left: 10px;
+       padding-right: 10px;
+     }
+   {% endif %}
 
-  {%- if settings.color_header == settings.color_body_bg or settings.color_body_bg contains settings.color_header -%}
-    .site-header,
-    .site-header__element--sub {
-      box-shadow: 0 0 25px rgb(0 0 0 / 10%);
-    }
+   {%- if settings.color_header == settings.color_body_bg or settings.color_body_bg contains settings.color_header -%}
+     .site-header,
+     .site-header__element--sub {
+       box-shadow: 0 0 25px rgb(0 0 0 / 10%);
+     }
 
-    .is-light .site-header,
-    .is-light .site-header__element--sub {
-      box-shadow: none;
-    }
-  {%- endif -%}
+     .is-light .site-header,
+     .is-light .site-header__element--sub {
+       box-shadow: none;
+     }
+   {%- endif -%}
 
-  {%- if settings.color_header == settings.color_header_search -%}
-    .site-header__search-form {
-      border: 1px solid {{ settings.color_borders }}
-    }
-  {%- endif -%}
-  .new-label{
-    position: absolute;
-    left: 0;
-    width: 33.333333%;
-    padding-bottom: 100%;
-    top: 0;
-    max-width: min(15vw,100px);
-  }
+   {%- if settings.color_header == settings.color_header_search -%}
+     .site-header__search-form {
+       border: 1px solid {{ settings.color_borders }}
+     }
+   {%- endif -%}
+   .new-label{
+     position: absolute;
+     left: 0;
+     width: 33.333333%;
+     padding-bottom: 100%;
+     top: 0;
+     max-width: min(15vw,100px);
+   }
+  #shopify-section-header .grid-product__title {font-size: 1.1em; margin: 0; line-height: 1.3; text-align: center;} #shopify-section-header .title-font {font-size: 1.1em; margin: 0; line-height: 1.3;} #shopify-section-header .grid-product-dec {display: none;} #shopify-section-header .grid-product {font-size: 0.8rem; text-align: center;} #shopify-section-header .price-title {font-size: 0.8em; margin: 0;} #shopify-section-header .grid-product:after {background: none;} #shopify-section-header .grid-product__colors {justify-content: center;} #shopify-section-header .collection-btn-group .btn {position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;} #shopify-section-header .color-swatch--small {width: min(4vw, 25px); height: min(4vw, 25px);}
 </style>
-
 <div data-section-id="{{ section.id }}" data-section-type="header">
   <div id="HeaderWrapper" class="header-wrapper{% if overlay_header %} header-wrapper--overlay is-light{% endif %}">
     <header
