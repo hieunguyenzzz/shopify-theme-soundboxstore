@@ -153,7 +153,7 @@
      function onCollapse(e){
        console.log(e)
     const containerE =  document.querySelector("#{{section.id}}")
-    if(e.checked){
+    if(e.target.checked){
       console.log("checked")
       containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
     }else{
