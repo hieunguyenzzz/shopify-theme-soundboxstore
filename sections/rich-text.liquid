@@ -83,7 +83,6 @@
 {% assign iputRef = section.id | append: 'page-width-checkbox' %}
 {%- if collapable -%}
   <input
-    onchange="onCollapse{{ section.id }}(this.checked)"
     hidden
     type="checkbox"
     class="page-width-checkbox"
@@ -150,7 +149,6 @@
 </div>
 {%- if section.settings.divider -%}</div>{%- endif -%}
 <script>
-
   (function(){
      function onCollapse(e){
     const containerE =  document.querySelector("#{{section.id}}")
