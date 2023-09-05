@@ -150,15 +150,20 @@
 </div>
 {%- if section.settings.divider -%}</div>{%- endif -%}
 <script>
-  function onCollapse{{ section.id }}(isOpen){
+
+  (function(){
+     function onCollapse(e){
     const containerE =  document.querySelector("#{{section.id}}")
-    if(isOpen){
+    if(e.checked){
+      console.log("checked")
       containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
     }else{
       containerE.style.setProperty("--innerHeight","250px")
 
     }
   }
+    document.querySelector("#{{section.id}}").addEventListener("change", onCollapse);
+  })()
 </script>
 {% schema %}
  {
