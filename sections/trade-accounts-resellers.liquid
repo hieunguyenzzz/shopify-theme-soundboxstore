@@ -52,24 +52,22 @@
         font-weight: 600;
     }
 </style>
-{% if section.settings.heading != blank %}
-  <div class="page-width page-width--narrow page-content">
-    <header class="section-header">
-      <h1 class="section-header__title">
-        {{ section.settings.heading }}
-      </h1>
-      {% if section.settings.link.url != blank %}
-        <a
-          class="btn"
-          href="{{ section.settings.link.url }}"
-          id="click-me"
-        >
-          {{- section.settings.url_text -}}
-        </a>
-      {% endif %}
-    </header>
-  </div>
-{% endif %}
+<div class="page-width page-width--narrow page-content">
+  <header class="section-header">
+    <h1 class="section-header__title">
+      {{ section.settings.heading }}
+    </h1>
+    {% if section.settings.link.url != blank %}
+      <a
+        class="btn"
+        href="{{ section.settings.link.url }}"
+        id="click-me"
+      >
+        {{- section.settings.url_text -}}
+      </a>
+    {% endif %}
+  </header>
+</div>
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">
     {% assign block = section.blocks[0] %}
