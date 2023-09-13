@@ -173,6 +173,22 @@
     </div>
   </div>
 </div>
+<div class="page-width page-width--narrow page-content">
+  <header
+    class="section-header"
+    style="    text-align: center;"
+  >
+    {% if section.settings.link.url != blank %}
+      <a
+        class="btn"
+        href="{{ section.settings.link.url }}"
+        id="click-me"
+      >
+        {{- section.settings.url_text -}}
+      </a>
+    {% endif %}
+  </header>
+</div>
 {% schema %}
 {
   "name": "trade-accounts-resellers",
