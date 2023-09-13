@@ -58,11 +58,13 @@
     {% assign block = section.blocks[0] %}
     {% assign index = '0' %}
     <div class="{{section.id}}-col-md-5" {{ block.shopify_attributes }}>
-      <h3>{{ block.settings.title }}</h3>
-      <div>
-        {{ block.settings.content }}
-      </div>
-      <h3 style="text-align: left;"><span style="color:#ff1a34; font-size: 1.75em;">—</span></h3>
+      {% if block.type == 'block' %}
+        <h3>{{ block.settings.title }}</h3>
+        <div>
+          {{ block.settings.content }}
+        </div>
+        <h3 style="text-align: left;"><span style="color:#ff1a34; font-size: 1.75em;">—</span></h3>
+      {% endif %}
       <ul>
         {% for block in section.blocks %}
           {% if block.type == 'child' %}
@@ -104,14 +106,16 @@
     {% assign index = '1' %}
 
     <div class="{{section.id}}-col-md-5 pull-right" {{ block.shopify_attributes }}>
-      <h3>{{ block.settings.title | default: 'Become a Reseller' }}</h3>
-      <div>
-        {{
-          block.settings.content
-          | default: 'Whether you\"re an individual agent or e-commerce store looking to expand your offering, the Soundbox Store own-brand range is available for resellers. Apply below to find out more about opportunities to partner with Soundbox Store!'
-        }}
-      </div>
-      <h3 style="text-align: left;"><span style="color:#ff1a34; font-size: 1.75em;">—</span></h3>
+      {% if block.type == 'block' %}
+        <h3>{{ block.settings.title | default: 'Become a Reseller' }}</h3>
+        <div>
+          {{
+            block.settings.content
+            | default: 'Whether you\"re an individual agent or e-commerce store looking to expand your offering, the Soundbox Store own-brand range is available for resellers. Apply below to find out more about opportunities to partner with Soundbox Store!'
+          }}
+        </div>
+        <h3 style="text-align: left;"><span style="color:#ff1a34; font-size: 1.75em;">—</span></h3>
+      {% endif %}
       <ul>
         {% for block in section.blocks %}
           {% if block.type == 'child' %}
