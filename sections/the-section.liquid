@@ -1,3 +1,5 @@
+{% assign id = section.id %}
+<style></style>
 <section class="image-text-column">
   <div class="section-wrap page-width">
     <div class="flexbox {% if section.settings.image_position == "right" %}row-reverse{% endif %} {% if section.settings.mobile_image_position  == "bottom"%}mobile-column-reverse{% endif %}">
@@ -23,7 +25,7 @@
           </div>
         </div>
       {% endif %}
-      <div class="col left-col">
+      <div class="col left-col col-content">
         <div class="col-wrap">
           {% if section.settings.title != blank %}
             <h2 class="title-font">
