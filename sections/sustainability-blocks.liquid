@@ -19,7 +19,7 @@
   {% assign isLeft = forloop.index | modulo: 2 %}
   {% assign heading = block.settings.heading | default: '' %}
   {% assign content = block.settings.content | default: '' %}
-  {% if isLeft %}
+  {% if isLeft == 1 %}
     {{ isLeft }}
     <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}">
       <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
