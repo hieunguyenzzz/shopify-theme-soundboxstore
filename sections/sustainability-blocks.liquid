@@ -10,7 +10,7 @@
   <ul class="flex max-w-xs flex-wrap gap-2 md:w-[540px] text-base">
     {% for block in section.blocks %}
       <li class="rounded border border-gray-300 px-1 py-2 leading-none hover:border-gray-500">
-        <a href="#{{ forloop.index }}">{{ block.settings.heading }}</a>
+        <a href="#{{ section.id }}-{{ forloop.index }}">{{ block.settings.heading }}</a>
       </li>
     {% endfor %}
   </ul>
@@ -18,7 +18,7 @@
 {% for block in section.blocks %}
   {% assign isLeft = forloop.index | modulo: 2 %}
   {% if isLeft %}
-    <section class="relative z-10 my-12">
+    <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}">
       <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
         <div
           alt=""
