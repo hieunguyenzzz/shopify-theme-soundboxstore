@@ -22,7 +22,7 @@
     {% assign content = block.settings.content | default: '' %}
     {% if isLeft == 1 %}
       <section
-        class="relative z-10 my-12"
+        class="relative isolate my-12"
         id="section-{{ section.id }}-{{ forloop.index }}"
         {{ block.shopify_attributes }}
       >
@@ -55,7 +55,7 @@
     {% else %}
       <section
         id="section-{{ section.id }}-{{ forloop.index }}"
-        class="relative z-10 my-12"
+        class="relative isolate my-12"
         {{ block.shopify_attributes }}
       >
         <div class="md:px relative w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
