@@ -9,12 +9,16 @@
 ></div>
 <section class="relative z-10">
   <div class="w-full md:flex md:min-h-[600px] md:items-center md:py-12">
-    <img
-      src="https://hunts.imgix.net/https%3A%2F%2Fwww.huntsoffice.co.uk%2Fmedia%2Fimagery%2FBrand-Hero-Services%2FHunts-Office-Services-Design-And-Space-Planning.jpg%3Fv%3D1539768426%2C0.4886%2C0.5254?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.4886&fp-y=0.5254&h=1080&q=85&w=1920&s=f4d72cbb01449113906bd16b466bb361"
-      alt=""
-      class="inset-0 -z-10 h-full w-full object-cover md:absolute"
-      width="1308"
-    >
+    {% if section.settings.image %}
+      {{
+        section.settings.image
+        | image_url: width: 1440
+        | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute'
+      }}
+    {% else %}
+      <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
+    {% endif %}
+
     <div class="p-4 md:w-1/2 md:bg-white md:p-12">
       <h1 class="text-4xl font-semibold md:text-5xl">Embracing Sustainability</h1>
       <p class="my-4 md:my-8 md:text-2xl">
@@ -25,11 +29,24 @@
     </div>
   </div>
 </section>
-<script src="https://cdn.tailwindcss.com"></script>
 {% schema %}
 {
   "name": "sustainability-hero",
-  "settings": [],
+  "settings":[{
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+  }],
   "presets": [
     {
       "name": "sustainability-hero",
