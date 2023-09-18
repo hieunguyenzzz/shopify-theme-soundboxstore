@@ -1,4 +1,4 @@
-<section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row">
+<section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width">
   <div class="block max-w-sm flex-1  md:max-w-[52rem] ">
     <h3 class="block max-w-sm flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl">
       {{ section.settings.heading }}
@@ -15,68 +15,78 @@
     {% endfor %}
   </ul>
 </section>
-{% for block in section.blocks %}
-  {% assign isLeft = forloop.index | modulo: 2 %}
-  {% assign heading = block.settings.heading | default: '' %}
-  {% assign content = block.settings.content | default: '' %}
-  {% if isLeft == 1 %}
-    <section
-      class="relative z-10 my-12"
-      id="section-{{ section.id }}-{{ forloop.index }}"
-      {{ block.shopify_attributes }}
-    >
-      <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
-        <div
-          alt=""
-          class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[{{ block.settings.color | default:"#f7f7f7" }}] md:left-auto md:right-0 md:h-full md:w-[70%]"
-          width="1308"
-        ></div>
-        {% if block.settings.image %}
-          {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2' }}
-        {% else %}
-          <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
-        {% endif %}
+<div class="page-width">
+  {% for block in section.blocks %}
+    {% assign isLeft = forloop.index | modulo: 2 %}
+    {% assign heading = block.settings.heading | default: '' %}
+    {% assign content = block.settings.content | default: '' %}
+    {% if isLeft == 1 %}
+      <section
+        class="relative z-10 my-12"
+        id="section-{{ section.id }}-{{ forloop.index }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
+          <div
+            alt=""
+            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[{{ block.settings.color | default:"#f7f7f7" }}] md:left-auto md:right-0 md:h-full md:w-[70%]"
+            width="1308"
+          ></div>
+          {% if block.settings.image %}
+            {{
+              block.settings.image
+              | image_url: width: 880
+              | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2'
+            }}
+          {% else %}
+            <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
+          {% endif %}
 
-        <div class="flex-1">
-          <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-            <h3 class="text-lg font-semibold  md:text-3xl">{{ heading }}</h3>
-            <div class="my-4 lg:my-8 text-base">
-              {{ content }}
+          <div class="flex-1">
+            <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+              <h3 class="text-lg font-semibold  md:text-3xl">{{ heading }}</h3>
+              <div class="my-4 lg:my-8 text-base">
+                {{ content }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  {% else %}
-    <section
-      id="section-{{ section.id }}-{{ forloop.index }}"
-      class="relative z-10 my-12"
-      {{ block.shopify_attributes }}
-    >
-      <div class="md:px relative w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
-        <div
-          alt=""
-          class="absolute bottom-0 left-0 -z-20 h-[70%] w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
-          width="1308"
-        ></div>
-        {% if block.settings.image %}
-          {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2' }}
-        {% else %}
-          <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
-        {% endif %}
+      </section>
+    {% else %}
+      <section
+        id="section-{{ section.id }}-{{ forloop.index }}"
+        class="relative z-10 my-12"
+        {{ block.shopify_attributes }}
+      >
+        <div class="md:px relative w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
+          <div
+            alt=""
+            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
+            width="1308"
+          ></div>
+          {% if block.settings.image %}
+            {{
+              block.settings.image
+              | image_url: width: 880
+              | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2'
+            }}
+          {% else %}
+            <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
+          {% endif %}
 
-        <div class="flex-1">
-          <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-            <h3 class="text-lg font-semibold md:text-3xl">{{ heading }}</h3>
-            <div class="my-4 lg:my-8 text-base">
-              {{ content }}
+          <div class="flex-1">
+            <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+              <h3 class="text-lg font-semibold md:text-3xl">{{ heading }}</h3>
+              <div class="my-4 lg:my-8 text-base">
+                {{ content }}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  {% endif %}
-{% endfor %}
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>
 
 {% schema %}
 {
