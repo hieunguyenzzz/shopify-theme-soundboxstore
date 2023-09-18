@@ -21,12 +21,10 @@
     {% endif %}
 
     <div class="p-4 md:w-1/2 md:bg-white md:p-12">
-      <h1 class="text-4xl font-semibold md:text-5xl">Embracing Sustainability</h1>
-      <p class="my-4 md:my-8 md:text-2xl">
-        As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride
-        in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward a
-        greener future, one sustainable product at a time.
-      </p>
+      <h1 class="text-4xl font-semibold md:text-5xl">{{ section.settings.heading }}</h1>
+      <div class="my-4 md:my-8 md:text-2xl">
+        {{ section.settings.content }}
+      </div>
     </div>
   </div>
 </section>
