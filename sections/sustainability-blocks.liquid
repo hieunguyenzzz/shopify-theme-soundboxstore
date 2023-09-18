@@ -10,7 +10,7 @@
   <ul class="flex max-w-xs flex-wrap gap-2 md:w-[540px] text-base">
     {% for block in section.blocks %}
       <li class="rounded border border-gray-300 px-1 py-2 leading-none hover:border-gray-500">
-        <a href="#{{ section.id }}-{{ forloop.index }}">{{ block.settings.heading }}</a>
+        <a href="#section-{{ section.id }}-{{ forloop.index }}">{{ block.settings.heading }}</a>
       </li>
     {% endfor %}
   </ul>
@@ -20,8 +20,11 @@
   {% assign heading = block.settings.heading | default: '' %}
   {% assign content = block.settings.content | default: '' %}
   {% if isLeft == 1 %}
-    {{ isLeft }}
-    <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
+    <section
+      class="relative z-10 my-12"
+      id="section-{{ section.id }}-{{ forloop.index }}"
+      {{ block.shopify_attributes }}
+    >
       <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
         <div
           alt=""
@@ -45,7 +48,11 @@
       </div>
     </section>
   {% else %}
-    <section class="relative z-10 my-12" {{ block.shopify_attributes }}>
+    <section
+      id="section-{{ section.id }}-{{ forloop.index }}"
+      class="relative z-10 my-12"
+      {{ block.shopify_attributes }}
+    >
       <div class="md:px relative w-full items-center md:flex-row-reverse lg:flex md:px-[var(--pageWidthPadding)] md:py-24">
         <div
           alt=""
