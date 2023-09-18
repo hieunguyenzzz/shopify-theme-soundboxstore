@@ -1,7 +1,12 @@
 <section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row">
-  <h3 class="block max-w-sm flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl">
-    {{ section.settings.heading }}
-  </h3>
+  <div class="block max-w-sm flex-1  md:max-w-[52rem] ">
+    <h3 class="block max-w-sm flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl">
+      {{ section.settings.heading }}
+    </h3>
+    <div class="my-4 md:my-8 prose prose-a:underline">
+      {{ section.settings.content }}
+    </div>
+  </div>
   <ul class="flex max-w-xs flex-wrap gap-2 md:w-[540px]">
     {% for block in section.blocks %}
       <li class="rounded border border-gray-300 px-1 py-2 leading-none hover:border-gray-500">
