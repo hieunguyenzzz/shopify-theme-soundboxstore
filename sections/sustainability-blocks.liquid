@@ -21,7 +21,7 @@
   {% assign content = block.settings.content | default: '' %}
   {% if isLeft == 1 %}
     {{ isLeft }}
-    <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}">
+    <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
       <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
         <div
           alt=""
@@ -45,7 +45,7 @@
       </div>
     </section>
   {% else %}
-    <section class="relative z-10 my-12">
+    <section class="relative z-10 my-12" {{ block.shopify_attributes }}>
       <div class="md:px relative w-full items-center md:flex-row-reverse lg:flex md:px-[var(--pageWidthPadding)] md:py-24">
         <div
           alt=""
