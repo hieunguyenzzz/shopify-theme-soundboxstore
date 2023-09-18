@@ -34,7 +34,7 @@
           ></div>
           <div class="w-[calc(100%-2rem)] md:w-1/2">
             {% if block.settings.image %}
-              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[640px]' }}
+              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[640px]  w-full' }}
             {% else %}
               <div class="mx-auto max-w-[640px]"></div>
             {% endif %}
@@ -64,7 +64,7 @@
           ></div>
           <div class="w-[calc(100%-2rem)] md:w-1/2">
             {% if block.settings.image %}
-              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[640px]' }}
+              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[640px] w-full' }}
             {% else %}
               <div class="mx-auto max-w-[640px]"></div>
             {% endif %}
