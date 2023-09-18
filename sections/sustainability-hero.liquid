@@ -10,21 +10,22 @@
   }
 </style>
 <section class="relative isolate">
-  <div class="page-width"></div>
-  <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
-    {% if section.settings.image %}
-      {{
-        section.settings.image
-        | image_url: width: 1440
-        | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute'
-      }}
-    {% else %}
-      <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
-    {% endif %}
-    <div class="p-4 md:w-1/2 md:bg-white md:p-12  max-w-[72ch] lg:min-h-[70%] lg:flex flex flex-col justifyy-center">
-      <h1 class="my-4 md:my-8 text-4xl font-semibold md:text-5xl">{{ section.settings.heading }}</h1>
-      <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
-        {{ section.settings.content }}
+  <div class="page-width">
+    <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
+      {% if section.settings.image %}
+        {{
+          section.settings.image
+          | image_url: width: 1440
+          | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute'
+        }}
+      {% else %}
+        <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
+      {% endif %}
+      <div class="p-4 md:w-1/2 md:bg-white md:p-12  max-w-[72ch] lg:min-h-[70%] lg:flex flex flex-col justifyy-center">
+        <h1 class="my-4 md:my-8 text-4xl font-semibold md:text-5xl">{{ section.settings.heading }}</h1>
+        <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
+          {{ section.settings.content }}
+        </div>
       </div>
     </div>
   </div>
