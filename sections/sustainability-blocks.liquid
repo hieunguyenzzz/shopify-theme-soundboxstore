@@ -9,7 +9,7 @@
   </div>
   <ul class="flex max-w-xs flex-wrap gap-2 md:w-[640px] lg:text-base text-xs">
     {% for block in section.blocks %}
-      <li class="rounded border border-gray-300 px-1 py-2 leading-none hover:border-gray-500">
+      <li class="rounded border border-gray-300 py-1 px-2 leading-none hover:border-gray-500">
         <a href="#section-{{ section.id }}-{{ forloop.index }}">{{ block.settings.heading }}</a>
       </li>
     {% endfor %}
