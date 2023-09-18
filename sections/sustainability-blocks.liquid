@@ -17,6 +17,8 @@
 </section>
 {% for block in section.blocks %}
   {% assign isLeft = forloop.index | modulo: 2 %}
+  {% assign heading = block.settings.heading | default: '' %}
+  {% assign content = block.settings.content | default: '' %}
   {% if isLeft %}
     <section class="relative z-10 my-12" id="{{ section.id }}-{{ forloop.index }}">
       <div class="md:px relative w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
@@ -33,77 +35,39 @@
 
         <div class="flex-1">
           <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-            <h3 class="text-lg font-semibold  md:text-3xl">Furniture Provision & Procurement</h3>
-            <p class="my-4 lg:my-8">
-              Knock-knock: we visit every office furniture manufacturer on our books. How else can we be sure of
-              quality, environmental impact and operational processes? We take the same care over delivery, using smart
-              logistics to our warehouse and hubs, with in-house and regional logistics in the UK.
-            </p>
-            <a
-              href=""
-              class="flex w-full items-center justify-between gap-6 rounded border border-gray-600 p-2 px-4 transition-[padding] duration-500 ease-in-out hover:px-2"
-            >
-              <p class="">Contact our team</p>
-              <span class="flex">
-                <svg
-                  width="11"
-                  height="18"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-                  <defs><path id="a" d="M5.562 17.985l8.674-8.673v-.637L5.562 0 5.184 0 4.5.683v.379l7.933 7.931L4.5 16.924l-.001.38.684.683.378-.002" fill="#000"></path></defs>
-                  <g transform="translate(-4)" fill="none" fill-rule="evenodd" class="">
-                    <g mask="url(#a)" fill="#000"><path d="M5.562 17.985l8.674-8.673v-.637L5.562 0 5.184 0 4.5.683v.379l7.933 7.931L4.5 16.924l-.001.38.684.683.378-.002"></path></g>
-                  </g>
-                </svg>
-              </span>
-            </a>
+            <h3 class="text-lg font-semibold  md:text-3xl">{{ heading }}</h3>
+            <div class="my-4 lg:my-8">
+              {{ content }}
+            </div>
           </div>
         </div>
       </div>
     </section>
   {% else %}
+    <section class="relative z-10 my-12">
+      <div class="md:px relative w-full items-center md:flex-row-reverse lg:flex md:px-[var(--pageWidthPadding)] md:py-24">
+        <div
+          alt=""
+          class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[#fce3df]  md:h-full md:w-[70%]"
+          width="1308"
+        ></div>
+        {% if block.settings.image %}
+          {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2' }}
+        {% else %}
+          <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
+        {% endif %}
 
-  {% endif %}
-  <section class="relative z-10 my-12">
-    <div class="md:px relative w-full items-center md:flex-row-reverse lg:flex md:px-[var(--pageWidthPadding)] md:py-24">
-      <div
-        alt=""
-        class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[#fce3df]  md:h-full md:w-[70%]"
-        width="1308"
-      ></div>
-      {% if block.settings.image %}
-        {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto w-[calc(100%-2rem)] md:w-1/2' }}
-      {% else %}
-        <div class="mx-auto w-[calc(100%-2rem)] md:w-1/2"></div>
-      {% endif %}
-
-      <div class="flex-1">
-        <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-          <h3 class="text-lg font-semibold md:text-3xl">Furniture Provision & Procurement</h3>
-          <p class="my-4 lg:my-8">
-            Knock-knock: we visit every office furniture manufacturer on our books. How else can we be sure of quality,
-            environmental impact and operational processes? We take the same care over delivery, using smart logistics
-            to our warehouse and hubs, with in-house and regional logistics in the UK.
-          </p>
-          <a
-            href=""
-            class="flex w-full items-center justify-between gap-6 rounded border border-gray-600 p-2 px-4 transition-[padding] duration-500 ease-in-out hover:px-2"
-          >
-            <p class="">Contact our team</p>
-            <span class="flex">
-              <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs><path id="a" d="M5.562 17.985l8.674-8.673v-.637L5.562 0 5.184 0 4.5.683v.379l7.933 7.931L4.5 16.924l-.001.38.684.683.378-.002" fill="#000"></path></defs>
-                <g transform="translate(-4)" fill="none" fill-rule="evenodd" class="">
-                  <g mask="url(#a)" fill="#000"><path d="M5.562 17.985l8.674-8.673v-.637L5.562 0 5.184 0 4.5.683v.379l7.933 7.931L4.5 16.924l-.001.38.684.683.378-.002"></path></g>
-                </g>
-              </svg>
-            </span>
-          </a>
+        <div class="flex-1">
+          <div class="mx-auto max-w-lg p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+            <h3 class="text-lg font-semibold md:text-3xl">Furniture Provision & Procurement</h3>
+            <div class="my-4 lg:my-8">
+              {{ content }}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
 {% endfor %}
 
 {% schema %}
