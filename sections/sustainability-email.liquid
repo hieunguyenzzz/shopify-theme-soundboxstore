@@ -3,11 +3,11 @@
     <h3 class="block max-w-sm flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl 2xl:text-5xl">
       {{ section.settings.heading }}
     </h3>
-  </div>
-  <div class="flex flex-col flex-1 flex-wrap gap-2  items-start">
     <div class=" prose prose-a:underline">
       {{ section.settings.content }}
     </div>
+  </div>
+  <div class="flex flex-col flex-1 flex-wrap gap-2  items-start">
     {%- assign form_id = 'contact-' | append: section.id -%}
     <style>
       #{{form_id}}{
@@ -35,21 +35,6 @@
         {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
       {%- endif -%}
       <div class="page-width{% if section.settings.narrow_column %} page-width--narrow{% endif %}">
-        {%- if section.settings.title != blank or section.settings.text != blank -%}
-          <div class="section-header text-center">
-            {%- if section.settings.title != blank -%}
-              <h2 class="title-font">{{ section.settings.title }}</h2>
-            {%- endif -%}
-            {%- if section.settings.text != blank -%}
-              {%- capture phone -%}
-              {%- render '[phone-number]' -%}
-              {%- endcapture -%}
-              {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
-              <div class="rte section-header__rte">{{ content }}</div>
-            {%- endif -%}
-          </div>
-        {% endif %}
-
         <div class="form-vertical">
           {%- form 'contact', id: form_id -%}
             {%- if form.posted_successfully? -%}
