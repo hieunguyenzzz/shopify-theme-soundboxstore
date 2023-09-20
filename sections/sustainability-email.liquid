@@ -8,7 +8,7 @@
     <div class=" prose prose-a:underline">
       {{ section.settings.content }}
     </div>
-    <a href="mailto:james.low@soundboxstore.com" class="btn my-4 md:my-8">Contact us</a>
+    <a href="{{ section.settings.url }}" class="btn my-4 md:my-8">Contact us</a>
   </div>
 </section>
 {% schema %}
@@ -30,6 +30,10 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+  },{
+          "type": "url",
+          "id": "url",
+          "label": "Url"
   }],
   "presets": [
     {
