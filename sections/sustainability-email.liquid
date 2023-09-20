@@ -27,7 +27,13 @@
         flex-direction: column-reverse;
       }
     </style>
-    <div class="form-vertical">
+    <div
+      class="form-vertical"
+      style="
+        width: 100%;
+        max-width: 500px;
+      "
+    >
       {%- form 'contact', id: form_id -%}
         {%- if form.posted_successfully? -%}
           <p class="note note--success">
