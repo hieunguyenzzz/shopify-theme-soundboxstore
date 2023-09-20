@@ -8,6 +8,223 @@
     <div class=" prose prose-a:underline">
       {{ section.settings.content }}
     </div>
+    {%- assign form_id = 'contact-' | append: section.id -%}
+    <style>
+      #{{form_id}}{
+        --color-error:red
+      }
+      #{{form_id}} .input.blured:invalid{
+        border-color: var(--color-error);
+      }
+      #{{form_id}} .input.blured:invalid+label{
+        color: var(--color-error);
+      }
+      #{{form_id}} .input:not([required])+label::after{
+        content: ' (Optional)';
+      }
+      #{{form_id}} .grid__item{
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    </style>
+    <div
+      id="{{section.id}}"
+      class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+    >
+      {%- if section.settings.color_scheme != 'none' -%}
+        {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
+      {%- endif -%}
+      <div class="page-width{% if section.settings.narrow_column %} page-width--narrow{% endif %}">
+        {%- if section.settings.title != blank or section.settings.text != blank -%}
+          <div class="section-header text-center">
+            {%- if section.settings.title != blank -%}
+              <h2 class="title-font">{{ section.settings.title }}</h2>
+            {%- endif -%}
+            {%- if section.settings.text != blank -%}
+              {%- capture phone -%}
+              {%- render '[phone-number]' -%}
+              {%- endcapture -%}
+              {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
+              <div class="rte section-header__rte">{{ content }}</div>
+            {%- endif -%}
+          </div>
+        {% endif %}
+
+        <div class="form-vertical">
+          {%- form 'contact', id: form_id -%}
+            {%- if form.posted_successfully? -%}
+              <p class="note note--success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {%- endif -%}
+
+            {{ form.errors | default_errors }}
+
+            <div class="grid grid--small">
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  {% comment %} oninvalid="this.setCustomValidity('Enter First Name Here')" {% endcomment %}
+                  id="ContactFormName-{{ section.id }}"
+                  placeholder="{{ 'contact.form.fname' | t }}"
+                  class="input-full input"
+                  name="contact[fname]"
+                  autocapitalize="words"
+                  value="{% if form.fname %}{{ form.fname }}{% elsif customer %}{{ customer.fname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.fname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  id="ContactFormName-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.lname' | t }}"
+                  name="contact[lname]"
+                  autocapitalize="words"
+                  value="{% if form.lname %}{{ form.lname }}{% elsif customer %}{{ customer.lname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.lname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  id="ContactFormName-{{ section.id }}"
+                  class="input-full input"
+                  required
+                  placeholder="{{ 'contact.form.subject' | t }}"
+                  name="contact[subject]"
+                  autocapitalize="words"
+                  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.subject' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  id="ContactFormName-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.company' | t }}"
+                  name="contact[company]"
+                  autocapitalize="words"
+                  value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.company' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  id="ContactFormName-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.address' | t }}"
+                  name="contact[address]"
+                  autocapitalize="words"
+                  value="{% if form.address %}{{ form.address }}{% elsif customer %}{{ customer.address }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.address' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  id="ContactFormName-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.website-url' | t }}"
+                  name="contact[website-url]"
+                  autocapitalize="words"
+                  value="{% if form.website-url %}{{ form.website-url }}{% elsif customer %}{{ customer.website-url }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.website-url' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  class="input-full input"
+                  autocomplete="email"
+                  type="email"
+                  required
+                  id="ContactForm-email"
+                  class="field__input"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"aria-describedby="ContactForm-email-error"
+                  {% endif -%}
+                  placeholder="{{ 'contact.form.email' | t }}"
+                >
+                <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="tel"
+                  required
+                  id="ContactFormPhone-{{ section.id }}"
+                  class="input-full input"
+                  name="contact[phone]"
+                  placeholder="{{ 'contact.form.phone' | t }}"
+                  pattern="[0-9\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+                <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <textarea
+                  rows="5"
+                  required
+                  id="ContactFormMessage-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.message' | t }}"
+                  name="contact[body]"
+                  value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+                ></textarea>
+                <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+              </div>
+              <div class="submit-btn-wrap">
+                <button type="submit" class="btn btn--full">
+                  {{ 'contact.form.send' | t }}
+                </button>
+              </div>
+              {% comment %}
+                Remove the following three lines of code to remove the note
+                about being protected by Google's reCAPTCHA service.
+                By removing it, the small reCAPTCHA widget will appear in the
+                bottom right corner of the page.
+                {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+              {% endcomment %}
+            </div>
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+    <script>
+      function logSubmit(event) {
+        console.log(event);
+      }
+      const form = document.getElementById('{{form_id}}');
+      form.querySelectorAll('input').forEach((e) => {
+        form.addEventListener(
+          'focus',
+          (event) => {
+            event.target.classList.add('focused');
+          },
+          true
+        );
+
+        form.addEventListener(
+          'blur',
+          (event) => {
+            event.target.classList.add('blured');
+          },
+          true
+        );
+      });
+    </script>
     <a href="{{ section.settings.url }}" class="btn my-4 md:my-8">Contact us</a>
   </div>
 </section>
