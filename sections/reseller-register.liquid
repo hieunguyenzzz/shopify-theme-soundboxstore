@@ -165,7 +165,7 @@
         </header>
 
         <div class="form-vertical">
-          {%- form 'create_customer', return_to: reUrl -%}
+          {%- form 'create_customer' -%}
             {{ form.errors | default_errors }}
 
             <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
