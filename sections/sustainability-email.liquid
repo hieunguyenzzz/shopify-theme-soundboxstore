@@ -110,28 +110,30 @@
             <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
           </div>
           <div class="grid__item">
-            <input
-              type="tel"
-              required
-              id="ContactFormPhone-{{ section.id }}"
-              class="input-full input"
-              name="contact[phone]"
-              placeholder="{{ 'contact.form.phone' | t }}"
-              pattern="[0-9\-]*"
-              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-            >
-            <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
-          </div>
-          <div class="grid__item">
-            <textarea
-              rows="3"
-              id="ContactFormMessage-{{ section.id }}"
-              class="input-full input"
-              placeholder="{{ 'contact.form.message' | t }}"
-              name="contact[body]"
-              value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
-            ></textarea>
-            <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+            <div class="grid__item">
+              <input
+                type="tel"
+                required
+                id="ContactFormPhone-{{ section.id }}"
+                class="input-full input"
+                name="contact[phone]"
+                placeholder="{{ 'contact.form.phone' | t }}"
+                pattern="[0-9\-]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              >
+              <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+            </div>
+            <div class="grid__item">
+              <textarea
+                rows="3"
+                id="ContactFormMessage-{{ section.id }}"
+                class="input-full input"
+                placeholder="{{ 'contact.form.message' | t }}"
+                name="contact[body]"
+                value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+              ></textarea>
+              <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+            </div>
           </div>
           <div class="submit-btn-wrap grid__item">
             <button type="submit" class="btn btn--full bg-[var(--colorBtnPrimary)]">
