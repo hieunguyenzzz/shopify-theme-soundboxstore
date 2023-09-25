@@ -554,15 +554,18 @@
   </div>
 {% else %}
   <style>
-    #form-login{
-       display:none
+    #form-login,#form-register{
+    background:white
     }
-    #input-login:checked~#form-login{
-      display:block
-    }
-    #input-login:checked~#form-register{
-      display:none
-    }
+      #form-login{
+         display:none
+      }
+      #input-login:checked~#form-login{
+        display:block
+      }
+      #input-login:checked~#form-register{
+        display:none
+      }
   </style>
   {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <div style="position:relative">
