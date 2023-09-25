@@ -565,122 +565,124 @@
     }
   </style>
   {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
-  <input type="checkbox" hidden class="hidden" name="input-login" id="input-login" checked>
-  <div id="form-register" class="page-width page-width--tiny page-content">
-    <header class="section-header">
-      <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
-    </header>
+  <div>
+    <input type="checkbox" hidden class="hidden" name="input-login" id="input-login" checked>
+    <div id="form-register" class="page-width page-width--tiny page-content">
+      <header class="section-header">
+        <h1 class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+      </header>
 
-    <div class="form-vertical">
-      {%- form 'create_customer', return_to: reUrl -%}
-        {{ form.errors | default_errors }}
+      <div class="form-vertical">
+        {%- form 'create_customer', return_to: reUrl -%}
+          {{ form.errors | default_errors }}
 
-        <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
-        <input
-          type="text"
-          name="customer[first_name]"
-          id="FirstName"
-          class="input-full"
-          {% if form.first_name %}
-            value="{{ form.first_name }}"
-          {% endif %}
-          autocapitalize="words"
-          autofocus
-        >
+          <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[first_name]"
+            id="FirstName"
+            class="input-full"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            autocapitalize="words"
+            autofocus
+          >
 
-        <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
-        <input
-          type="text"
-          name="customer[last_name]"
-          id="LastName"
-          class="input-full"
-          {% if form.last_name %}
-            value="{{ form.last_name }}"
-          {% endif %}
-          autocapitalize="words"
-        >
+          <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+          <input
+            type="text"
+            name="customer[last_name]"
+            id="LastName"
+            class="input-full"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocapitalize="words"
+          >
 
-        <label for="Email">{{ 'customer.register.email' | t }}</label>
-        <input
-          type="email"
-          name="customer[email]"
-          id="Email"
-          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
-          {% if form.email %}
-            value="{{ form.email }}"
-          {% endif %}
-          autocorrect="off"
-          autocapitalize="off"
-        >
+          <label for="Email">{{ 'customer.register.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="Email"
+            class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            autocorrect="off"
+            autocapitalize="off"
+          >
 
-        <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
-        <input
-          type="password"
-          name="customer[password]"
-          id="CreatePassword"
-          class="input-full{% if form.errors contains 'password' %} error{% endif %}"
-        >
-
-        <p>
-          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
-          <label for="input-login">{{ 'layout.customer.log_in' | t }}</label>
-        </p>
-      {%- endform -%}
-    </div>
-  </div>
-  <div id="form-login" class="page-width page-width--tiny page-content">
-    <header class="section-header">
-      <h1 class="section-header__title">{{ 'customer.login.title' | t }}</h1>
-    </header>
-
-    <div class="note note--success hide" id="ResetSuccess">
-      {{ 'customer.recover_password.success' | t }}
-    </div>
-
-    <div id="CustomerLoginForm" class="form-vertical">
-      {%- form 'customer_login', return_to: reUrl -%}
-        {{ form.errors | default_errors }}
-
-        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-        <input
-          type="email"
-          name="customer[email]"
-          id="CustomerEmail"
-          class="input-full{% if form.errors contains 'email' %} error{% endif %}"
-          autocorrect="off"
-          autocapitalize="off"
-          autofocus
-        >
-
-        {%- if form.password_needed -%}
-          <div class="grid">
-            <div class="grid__item one-half">
-              <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
-            </div>
-            <div class="grid__item one-half text-right">
-              <small class="label-info">
-                <a href="#recover" id="RecoverPassword">
-                  {{ 'customer.login.forgot_password' | t }}
-                </a>
-              </small>
-            </div>
-          </div>
+          <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
           <input
             type="password"
-            value=""
             name="customer[password]"
-            id="CustomerPassword"
+            id="CreatePassword"
             class="input-full{% if form.errors contains 'password' %} error{% endif %}"
           >
-        {%- endif -%}
 
-        <p>
-          <button type="submit" class="btn btn--full">
-            {{ 'customer.login.sign_in' | t }}
-          </button>
-          <label for="input-login">{{ 'layout.customer.create_account' | t }}</label>
-        </p>
-      {%- endform -%}
+          <p>
+            <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+            <label for="input-login">{{ 'layout.customer.log_in' | t }}</label>
+          </p>
+        {%- endform -%}
+      </div>
+    </div>
+    <div id="form-login" class="page-width page-width--tiny page-content">
+      <header class="section-header">
+        <h1 class="section-header__title">{{ 'customer.login.title' | t }}</h1>
+      </header>
+
+      <div class="note note--success hide" id="ResetSuccess">
+        {{ 'customer.recover_password.success' | t }}
+      </div>
+
+      <div id="CustomerLoginForm" class="form-vertical">
+        {%- form 'customer_login', return_to: reUrl -%}
+          {{ form.errors | default_errors }}
+
+          <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+          <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+            autocorrect="off"
+            autocapitalize="off"
+            autofocus
+          >
+
+          {%- if form.password_needed -%}
+            <div class="grid">
+              <div class="grid__item one-half">
+                <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+              </div>
+              <div class="grid__item one-half text-right">
+                <small class="label-info">
+                  <a href="#recover" id="RecoverPassword">
+                    {{ 'customer.login.forgot_password' | t }}
+                  </a>
+                </small>
+              </div>
+            </div>
+            <input
+              type="password"
+              value=""
+              name="customer[password]"
+              id="CustomerPassword"
+              class="input-full{% if form.errors contains 'password' %} error{% endif %}"
+            >
+          {%- endif -%}
+
+          <p>
+            <button type="submit" class="btn btn--full">
+              {{ 'customer.login.sign_in' | t }}
+            </button>
+            <label for="input-login">{{ 'layout.customer.create_account' | t }}</label>
+          </p>
+        {%- endform -%}
+      </div>
     </div>
   </div>
 {% endif %}
