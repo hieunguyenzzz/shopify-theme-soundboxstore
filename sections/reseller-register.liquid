@@ -566,7 +566,7 @@
   </style>
   {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <div>
-    {{ section.settings.image | image_url | image_tag: style: '' }}
+    {{ section.settings.image | image_url: width: 1440 | image_tag: style: '' }}
     <input type="checkbox" hidden class="hidden" name="input-login" id="input-login" checked>
     <div id="form-register" class="page-width page-width--tiny page-content">
       <header class="section-header">
