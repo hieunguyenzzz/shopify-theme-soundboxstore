@@ -89,27 +89,27 @@
             >
             <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.website-url' | t }}</label>
           </div>
-          <div class="grid__item">
-            <input
-              class="input-full input"
-              autocomplete="email"
-              type="email"
-              required
-              id="ContactForm-email"
-              class="field__input"
-              name="contact[email]"
-              spellcheck="false"
-              autocapitalize="off"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-              aria-required="true"
-              {% if form.errors contains 'email' %}
-                aria-invalid="true"aria-describedby="ContactForm-email-error"
-              {% endif -%}
-              placeholder="{{ 'contact.form.email' | t }}"
-            >
-            <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
-          </div>
-          <div class="grid__item">
+          <div style="display:flex;">
+            <div class="grid__item">
+              <input
+                class="input-full input"
+                autocomplete="email"
+                type="email"
+                required
+                id="ContactForm-email"
+                class="field__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"aria-describedby="ContactForm-email-error"
+                {% endif -%}
+                placeholder="{{ 'contact.form.email' | t }}"
+              >
+              <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+            </div>
             <div class="grid__item">
               <input
                 type="tel"
@@ -123,17 +123,17 @@
               >
               <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
             </div>
-            <div class="grid__item">
-              <textarea
-                rows="3"
-                id="ContactFormMessage-{{ section.id }}"
-                class="input-full input"
-                placeholder="{{ 'contact.form.message' | t }}"
-                name="contact[body]"
-                value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
-              ></textarea>
-              <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
-            </div>
+          </div>
+          <div class="grid__item">
+            <textarea
+              rows="3"
+              id="ContactFormMessage-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.message' | t }}"
+              name="contact[body]"
+              value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+            ></textarea>
+            <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
           </div>
           <div class="submit-btn-wrap grid__item">
             <button type="submit" class="btn btn--full bg-[var(--colorBtnPrimary)]">
