@@ -623,6 +623,9 @@
 
         <p>
           <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">
+          <a href="{{ routes.root_url | append: '/pages/reseller-login' | replace: '//pages/', '/pages/' }}">
+            {{- 'layout.customer.log_in' | t -}}
+          </a>
         </p>
       {%- endform -%}
     </div>
