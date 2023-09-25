@@ -110,7 +110,19 @@
         </header>
         <div>
           <div style="margin-bottom:3em">Email : {{ customer.email }}</div>
-          <a type="submit" href="{{ reUrl }}" class="btn btn--full"> NOT A RESELLER APPLY HERE </a>
+          {% unless request.design_mode %}
+            {% assign isResserllerOrTradeAccount = false %}
+            {% if customer %}
+              {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+                {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+                  {% assign isResserllerOrTradeAccount = true %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% unless isResserllerOrTradeAccount %}
+              <a type="submit" href="{{ reUrl }}" class="btn btn--full"> NOT A RESELLER APPLY HERE </a>
+            {% endunless %}
+          {% endunless %}
         </div>
       </div>
     </div>
