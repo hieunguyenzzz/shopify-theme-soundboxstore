@@ -230,7 +230,7 @@
         </div>
 
         <div id="CustomerLoginForm" class="form-vertical">
-          {%- form 'customer_login', return_to: reUrl -%}
+          {%- form 'customer_login' -%}
             {{ form.errors | default_errors }}
 
             <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
