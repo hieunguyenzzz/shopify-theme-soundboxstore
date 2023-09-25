@@ -90,16 +90,29 @@
     }
         }
   </style>
-  <div class="page-width page-content">
-    <div class="form-section">
-      <div></div>
-      <header class="section-header" style="margin-bottom:2em">
-        <h1 class="section-header__title">WEllCOME</h1>
-      </header>
+  {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
+  <div
+    style="
+      position:relative;isolation: isolate;
+      padding: 6em 0;
+    "
+  >
+    {{
+      section.settings.image
+      | image_url: width: 1440
+      | image_tag: style: 'position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;object-fit:cover'
+    }}
+
+    <div class="page-width">
+      <div class="page-width page-width--tiny page-content" style="background:white">
+        <header class="section-header">
+          <h1 style="text-align:center" class="section-header__title">{{ 'customer.register.title' | t }}</h1>
+        </header>
+        <div>
+          <a type="submit" href="{{ reUrl }}" class="btn btn--full"> NOT A RESELLER APPLY HERE </a>
+        </div>
+      </div>
     </div>
-    {% capture content %}
-       
-    {% endcapture %}
   </div>
 {% else %}
   <style>
