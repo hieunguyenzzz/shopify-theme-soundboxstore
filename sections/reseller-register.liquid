@@ -120,7 +120,9 @@
               {% endif %}
             {% endif %}
             {% unless isResserllerOrTradeAccount %}
-              <a type="submit" href="{{ reUrl }}" class="btn btn--full"> NOT A RESELLER APPLY HERE </a>
+              <a type="submit" href="{{ reUrl }}" class="btn btn--full">NOT A RESELLER APPLY HERE </a>
+            {% else %}
+              <a type="submit" href="{{ routes.root_url }}" class="btn btn--full">RETURN HOME</a>
             {% endunless %}
           {% endunless %}
         </div>
