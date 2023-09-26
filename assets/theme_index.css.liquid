@@ -17680,19 +17680,19 @@ body .grfq__popupForm__modal_state:checked+.grfq__popupForm__modal .grfq__popupF
       object-fit: cover;
     }
   }
-.shopify-policy__title {
+.shopify-policy__container .shopify-policy__title {
     text-align:left
 }
-ol {
+.shopify-policy__container ol {
   list-style: none!important;
   position: relative;
   padding-left: 3em;
   margin: 0;
 }
-ol {
+.shopify-policy__container ol {
   counter-reset: level0 0;
 }
-ol li::before {
+.shopify-policy__container ol li::before {
   content: counter(level0, decimal) ".";
   counter-increment: level0;
   position: absolute;
@@ -17700,10 +17700,10 @@ ol li::before {
   margin-right: 0.625em;
   text-align: right;
 }
-ol ol {
+.shopify-policy__container ol ol {
   counter-reset: level1;
 }
-ol ol li::before {
+.shopify-policy__container ol ol li::before {
   content: counter(level0, decimal) "." counter(level1, decimal) " ";
   counter-increment: level1;
   position: absolute;
@@ -17711,10 +17711,10 @@ ol ol li::before {
   margin-right: 0.625em;
   text-align: right;
 }
-ol ol ol {
+.shopify-policy__container ol ol ol {
   counter-reset: level2;
 }
-ol ol ol li::before {
+.shopify-policy__container ol ol ol li::before {
   content: "(" counter(level2, lower-latin) ")";
   counter-increment: level2;
   position: absolute;
@@ -17723,7 +17723,7 @@ ol ol ol li::before {
   text-align: right;
 }
 
-li {
+.shopify-policy__container li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   position: relative;
