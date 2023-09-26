@@ -1,12 +1,209 @@
+<section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)]">
+  <div class="block max-w-sm flex-1  md:max-w-[52rem] ">
+    <h3 class="block max-w-sm flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl 2xl:text-5xl">
+      {{ section.settings.heading }}
+    </h3>
+    <div class=" prose prose-a:underline">
+      {{ section.settings.content }}
+    </div>
+  </div>
+  <div class="flex flex-col flex-1 flex-wrap gap-2  items-start">
+    {%- assign form_id = 'contact-' | append: section.id -%}
+    <style>
+      #{{form_id}}{
+        --color-error:red
+      }
+      #{{form_id}} .input.blured:invalid{
+        border-color: var(--color-error);
+      }
+      #{{form_id}} .input.blured:invalid+label{
+        color: var(--color-error);
+      }
+      #{{form_id}} .input:not([required])+label::after{
+        content: ' (Optional)';
+      }
+      #{{form_id}} .grid__item{
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      .form-vertical #{{form_id}} label{
+        font-weight: 700;
+        font-size: calc(var(--typeBaseSize) - 10%);
+        margin-bottom: 0.2em;
+      }
+      .form-vertical #{{form_id}} input{
+            margin-bottom: 4%;
+      }
+    </style>
+    <div
+      class="form-vertical"
+      style="
+        width: 100%;
+        max-width: 500px;
+      "
+    >
+      {%- form 'contact', id: form_id -%}
+        {%- if form.posted_successfully? -%}
+          <p class="note note--success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {%- endif -%}
+
+        {{ form.errors | default_errors }}
+        <div class="grid grid--small">
+          <div class="grid__item">
+            <input
+              type="text"
+              required
+              id="ContactFormName-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.company' | t }}"
+              name="contact[company]"
+              autocapitalize="words"
+              value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
+            >
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.company' | t }}</label>
+          </div>
+          <div class="grid__item">
+            <input
+              type="text"
+              required
+              id="ContactFormName-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.address' | t }}"
+              name="contact[address]"
+              autocapitalize="words"
+              value="{% if form.address %}{{ form.address }}{% elsif customer %}{{ customer.address }}{% endif %}"
+            >
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.address' | t }}</label>
+          </div>
+          <div class="grid__item">
+            <input
+              type="text"
+              id="ContactFormName-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.website-url' | t }}"
+              name="contact[website-url]"
+              autocapitalize="words"
+              value="{% if form.website-url %}{{ form.website-url }}{% elsif customer %}{{ customer.website-url }}{% endif %}"
+            >
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.website-url' | t }}</label>
+          </div>
+          <div style="display:flex;">
+            <div class="grid__item">
+              <input
+                class="input-full input"
+                autocomplete="email"
+                type="email"
+                required
+                id="ContactForm-email"
+                class="field__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"aria-describedby="ContactForm-email-error"
+                {% endif -%}
+                placeholder="{{ 'contact.form.email' | t }}"
+              >
+              <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+            </div>
+            <div class="grid__item">
+              <input
+                type="tel"
+                required
+                id="ContactFormPhone-{{ section.id }}"
+                class="input-full input"
+                name="contact[phone]"
+                placeholder="{{ 'contact.form.phone' | t }}"
+                pattern="[0-9\-]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              >
+              <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+            </div>
+          </div>
+          <div class="grid__item">
+            <textarea
+              rows="3"
+              id="ContactFormMessage-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.message' | t }}"
+              name="contact[body]"
+              value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+            ></textarea>
+            <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+          </div>
+          <div class="submit-btn-wrap grid__item">
+            <button type="submit" class="btn btn--full bg-[var(--colorBtnPrimary)]">
+              {{ 'contact.form.send' | t }}
+            </button>
+          </div>
+          {% comment %}
+            Remove the following three lines of code to remove the note
+            about being protected by Google's reCAPTCHA service.
+            By removing it, the small reCAPTCHA widget will appear in the
+            bottom right corner of the page.
+            {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
+          {% endcomment %}
+        </div>
+      {%- endform -%}
+    </div>
+    <script>
+      function logSubmit(event) {
+        console.log(event);
+      }
+      const form = document.getElementById('{{form_id}}');
+      form.querySelectorAll('input').forEach((e) => {
+        form.addEventListener(
+          'focus',
+          (event) => {
+            event.target.classList.add('focused');
+          },
+          true
+        );
+
+        form.addEventListener(
+          'blur',
+          (event) => {
+            event.target.classList.add('blured');
+          },
+          true
+        );
+      });
+    </script>
+  </div>
+</section>
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "consultancy-calendly",
+  "settings":[{
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+    "default":"Embracing Sustainability"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+            "default":"<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+        },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+  },{
+          "type": "url",
+          "id": "url",
+          "label": "Url"
+  }],
+  "presets": [
+    {
+      "name": "consultancy-calendly",
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
