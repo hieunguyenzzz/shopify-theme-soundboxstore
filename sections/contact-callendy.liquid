@@ -42,6 +42,13 @@
       <div class=" prose prose-a:underline">
         {{ section.settings.content }}
       </div>
+      <!-- Calendly badge widget begin -->
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+      <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+      <script type="text/javascript">
+        window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/no-noo-nooo-yes/30min?hide_gdpr_banner=1', text: 'Schedule time with me', color: '#313652', textColor: '#ffffff', branding: true }); }
+      </script>
+      <!-- Calendly badge widget end -->
     </div>
     <script>
       function logSubmit(event) {
