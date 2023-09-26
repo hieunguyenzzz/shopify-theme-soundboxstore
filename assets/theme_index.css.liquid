@@ -17680,6 +17680,54 @@ body .grfq__popupForm__modal_state:checked+.grfq__popupForm__modal .grfq__popupF
       object-fit: cover;
     }
   }
+.shopify-policy__title {
+    text-align:left
+}
+ol {
+  list-style: none!important;
+  position: relative;
+  padding-left: 3em;
+  margin: 0;
+}
+ol {
+  counter-reset: level0 0;
+}
+ol li::before {
+  content: counter(level0, decimal) ".";
+  counter-increment: level0;
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625em;
+  text-align: right;
+}
+ol ol {
+  counter-reset: level1;
+}
+ol ol li::before {
+  content: counter(level0, decimal) "." counter(level1, decimal) " ";
+  counter-increment: level1;
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625em;
+  text-align: right;
+}
+ol ol ol {
+  counter-reset: level2;
+}
+ol ol ol li::before {
+  content: "(" counter(level2, lower-latin) ")";
+  counter-increment: level2;
+  position: absolute;
+  right: 100%;
+  margin-right: 0.625em;
+  text-align: right;
+}
+
+li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  position: relative;
+}
 {%- endcapture -%}
 
 {%- assign before =  content.size -%}
