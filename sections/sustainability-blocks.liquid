@@ -45,6 +45,13 @@
               <div class="my-4 lg:my-8">
                 {{ content }}
               </div>
+              <a
+                class="btn btn--full bg-[var(--colorBtnPrimary)] mt-6"
+                href=""
+                onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/d/2v8-tdk-bb5/customer-training-support-call' }}?hide_gdpr_banner=1'});return false;"
+              >
+                {{- section.settings.btn_text | default: 'Schedule time with me' -}}
+              </a>
             </div>
           </div>
         </div>
@@ -74,6 +81,13 @@
               <div class="my-4 lg:my-8">
                 {{ content }}
               </div>
+              <a
+                class="btn btn--full bg-[var(--colorBtnPrimary)] mt-6"
+                href=""
+                onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/d/2v8-tdk-bb5/customer-training-support-call' }}?hide_gdpr_banner=1'});return false;"
+              >
+                {{- section.settings.btn_text | default: 'Schedule time with me' -}}
+              </a>
             </div>
           </div>
         </div>
