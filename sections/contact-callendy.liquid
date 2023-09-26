@@ -48,9 +48,10 @@
       <a
         class="btn btn--full bg-[var(--colorBtnPrimary)] mt-6"
         href=""
-        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/d/2v8-tdk-bb5/customer-training-support-call?hide_gdpr_banner=1'});return false;"
-        >Schedule time with me</a
+        onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/d/2v8-tdk-bb5/customer-training-support-call' }}?hide_gdpr_banner=1'});return false;"
       >
+        {{- section.settings.btn_text | default: 'Schedule time with me' -}}
+      </a>
       <!-- Calendly link widget end -->
     </div>
   </div>
@@ -77,7 +78,12 @@
   },{
           "type": "url",
           "id": "url",
-          "label": "Url"
+          "label": "Calendly Url"
+  },
+  {
+          "type": "url",
+          "id": "btn_text",
+          "label": "btn text"
   }],
   "presets": [
     {
