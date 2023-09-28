@@ -519,21 +519,25 @@
   </div>
 </div>
 <script>
-  (()=>{
-      function formSubmit(e){
-    if (e.preventDefault) e.preventDefault();
+    (()=>{
+        function formSubmit(e){
+      if (e.preventDefault) e.preventDefault();
 
-    /* do what you want with the form */
-
-    // You must return false to prevent the default form behavior
-    return false;
+  fetch("https://soundboxstore-shopify-plugin-trade-customer-manager.x67nf4.easypanel.host/api/createResellerHandle", {
+      method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
   }
-     document.getElementById('form-{{ section.id }}').addEventListener("submit", function(e) {
-    e.preventDefault(); // before the code
+      return false;
+    }
+       document.getElementById('form-{{ section.id }}').addEventListener("submit", function(e) {
+      e.preventDefault(); // before the code
 
-    console.log(e);
-  })
-  })()
+      console.log(e);
+    })
+    })()
 </script>
 {% schema %}
 {
