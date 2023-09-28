@@ -525,7 +525,7 @@
 
   fetch("https://soundboxstore-shopify-plugin-trade-customer-manager.x67nf4.easypanel.host/api/createResellerHandle", {
       method: "POST", // or 'PUT'
-     body:new URLSearchParams(Object.fromEntries(new FormData(e.target))).toString() new FormData(e.target),
+     body:new URLSearchParams(Object.fromEntries(new FormData(e.target))).toString(),
     headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         // "Content-Type": "multipart/form-data",
