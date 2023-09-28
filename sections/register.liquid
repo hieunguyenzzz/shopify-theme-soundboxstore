@@ -529,7 +529,7 @@
           "Content-Type": "application/json",
         },
         body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
-  }
+  })
       return false;
     }
        document.getElementById('form-{{ section.id }}').addEventListener("submit", function(e) {
