@@ -532,11 +532,7 @@
   })
       return false;
     }
-       document.getElementById('form-{{ section.id }}').addEventListener("submit", function(e) {
-      e.preventDefault(); // before the code
-
-      console.log(e);
-    })
+       document.getElementById('form-{{ section.id }}').addEventListener("submit", formSubmit)
     })()
 </script>
 {% schema %}
