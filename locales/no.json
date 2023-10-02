@@ -1096,7 +1096,21 @@
         "cash_on_delivery_label": "Postoppkrav (COD)",
         "money_order_label": "money Order",
         "debit_card_label": "Debetkort",
-        "deferred_payment_label": "Velg betalingsmåte senere"
+        "deferred_payment_label": "Velg betalingsmåte senere",
+        "generic_payment_terms": "Du er på {{translatedName}} vilkår. Betalingen din forfaller den {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} til en konto med tilgang til denne plasseringen for å legge til eller bruke lagrede betalingsmåter.",
+            "link": "Logg Inn"
+          }
+        },
+        "direct_payment_terms": "Du er på {{translatedName}} vilkår. Kortet ditt belastes pr {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Betalingen din forfaller når bestillingen er utført.",
+        "order_due_on_fulfillment_payment": "Kortet ditt vil bli belastet når bestillingen er fullført.",
+        "draft_order_payment_due_later_no_terms": "Betalingen din forfaller når bestillingen din er bekreftet.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Kortet ditt vil bli belastet når bestillingen din er bekreftet.",
+        "draft_order_payment_due_later_terms": "Du er på {{translatedName}} vilkår når bestillingen din er bekreftet.",
+        "draft_order_payment_due_on_fulfillment": "Betalingen din forfaller når bestillingen din er bekreftet og oppfylt."
       },
       "thank_you": {
         "title": "Takk for kjøpet!",
@@ -1299,7 +1313,8 @@
               "delayed": "Levert %{date}, opprinnelig forventet av %{original_delivery_date}"
             }
           }
-        }
+        },
+        "purchase_order_number_title": "Postnummer #%{purchase_order_number}"
       },
       "review": {
         "title": "Anmeldelse",
