@@ -991,7 +991,27 @@
           "no_match": "Ingen treff",
           "card_declined": "Kortet ditt ble avvist"
         },
-        "multiple_deferred_payment_not_allowed": "Bare en utsatt betaling tillatt per forespørsel. Vennligst sjekk forespørselen din og prøv igjen."
+        "multiple_deferred_payment_not_allowed": "Bare en utsatt betaling tillatt per forespørsel. Vennligst sjekk forespørselen din og prøv igjen.",
+        "method_not_available": "Den forespurte betalingsmåten er ikke tilgjengelig.",
+        "shipping_must_match_billing": "Faktureringsadressen må samsvare med leveringsadressen. Vennligst bruk en annen betalingsmetode.",
+        "decision_rule_block": "Det oppsto et problem under behandlingen av betalingen din. Ta kontakt med butikkeieren.",
+        "pick_up_card": "Kortet ditt ble avvist. Prøv på nytt eller bruk en annen betalingsmåte.",
+        "cannot_verify": "Betalingsopplysningene dine kunne ikke bekreftes. Sjekk kortdetaljene dine og prøv igjen.",
+        "invalid_number": "Skriv inn et gyldig kortnummer",
+        "invalid_expiry_date": "Angi en gyldig utløpsdato",
+        "invalid_cvc": "Skriv inn en gyldig sikkerhetskode",
+        "expired_card": "Kortet ditt er utløpt. Bruk en annen betalingsmetode.",
+        "card_declined": "Kortet ditt ble avvist. Prøv på nytt eller bruk en annen betalingsmåte.",
+        "processing_error": "Det oppsto et problem under behandlingen av betalingen din. Prøv på nytt eller bruk en annen betalingsmåte.",
+        "call_issuer": "Kortet ditt ble avvist. Bruk en annen betalingsmåte eller kontakt banken din for mer informasjon.",
+        "test_mode_live_card": "Denne butikken kan ikke akseptere ekte bestillinger eller ekte betalinger.",
+        "transient_error": "Det oppsto et problem med å behandle betalingen din. Prøv å oppdatere denne siden eller sjekk internettforbindelsen din.",
+        "missing_shipping_address": "Betalingen din kunne ikke behandles fordi leveringsadressen din mangler. Legg til en leveringsadresse og prøv på nytt.",
+        "invalid_shipping_address": "Betalingen din kunne ikke behandles fordi vi ikke fant leveringsadressen din. Sjekk leveringsadressen din og prøv igjen.",
+        "successful_offsite_with_gift_card_error": "Det oppsto et problem med å behandle gavekortbetalingen din. Prøv på nytt eller bruk en annen betalingsmåte.",
+        "development_store_order_limit_reached": "Du har nådd grensen for utviklingsbutikkbestillinger med denne betalingsbehandleren. For å legge inn en annen bestilling, må du bruke en testbetalingsgateway. Lære mer om %{development_store_order_testing_docs_link}.",
+        "development_store_with_order_limit": "For å legge inn en testbestilling, må du bruke en testbetalingsgateway. Lære mer om %{development_store_order_testing_docs_link}.",
+        "development_store_order_testing_docs_link": "testing av bestillinger i utviklingsbutikker"
       },
       "shipping_errors": {
         "shipping_method": "Handlekurven er oppdatert og den tidligere shipping rate er ikke gyldig. Velg en ny kurs.",
@@ -1491,6 +1511,17 @@
       },
       "store_credit_errors": {
         "generic_error": "Det oppsto et problem med butikkkreditten din. Prøv på nytt eller last inn siden på nytt."
+      },
+      "redeemable_errors": {
+        "gift_card": {
+          "duplicate": "Gavekortet er allerede brukt på bestillingen din",
+          "insufficient_funds": "Dette gavekortet har ingen midler igjen",
+          "expired": "Dette gavekortet er utløpt",
+          "not_available": "Dette gavekortet er ikke lenger tilgjengelig",
+          "invalid": "Skriv inn et gyldig gavekort",
+          "currency_mismatch": "Kun gavekort inn %{shop_currency} er akseptert",
+          "generic": "Gavekortet kunne ikke legges til i kassen"
+        }
       }
     },
     "pagination": {
