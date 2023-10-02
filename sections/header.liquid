@@ -155,6 +155,13 @@
                         {{- block.settings['btn-text1'] -}}
                       </a>
                     {%- endif %}
+                    {% if request.design_mode %}
+                      {% if block.settings['reseller-text'] != blank -%}
+                        <a href="{{ block.settings.reseller-link }}" class="btn">
+                          {{- block.settings['reseller-text'] -}}
+                        </a>
+                      {%- endif %}
+                    {% endif %}
                     {% if block.settings['btn-text2'] != blank -%}
                       <a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings['btn-text2'] }}</a>
                     {%- endif %}
@@ -430,6 +437,16 @@
 		"type":"url",
 		"id":"btn-link2",
 		"label":"Button-2 Link"
+	},
+  {
+		"type":"text",
+		"id":"reseller-text",
+		"label":"Reseller Button Label"
+	},
+	{
+		"type":"url",
+		"id":"reseller-link",
+		"label":"Reseller Button Link"
 	}
 ]
  }, {
