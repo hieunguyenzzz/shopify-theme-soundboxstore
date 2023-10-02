@@ -803,8 +803,65 @@
           "title": "Rediger kort",
           "done": "Ferdig",
           "cancel": "Avbryt",
-          "description": "Du kan bare endre faktureringsadressen til kortet ditt."
-        }
+          "description": "Du kan bare endre faktureringsadressen til kortet ditt.",
+          "fields": {
+            "default": "Satt som standard",
+            "card_number": "Kortnummer",
+            "expiry": "Utløpsdato",
+            "security_code": "Sikkerhetskode",
+            "name": "Navn på kort",
+            "billing": "Regning til"
+          }
+        },
+        "expired_cards_info": {
+          "one": "Det er %{count} utløpt kort, som du kan se og redigere på kontoen din.",
+          "other": "Det er %{count} utløpte kort, som du kan se og redigere på kontoen din."
+        },
+        "local_payment_method_receiver_notice": "Etter at du har lagt inn bestillingen din, vil du motta betalingsinformasjon. Foreta betalingen i en minibank eller online innen {{dueDays}} dager.",
+        "order_edit_banner_title": "Betaling av {{amount_owed}} trengs",
+        "order_edit_banner_subtitle": "Din bestilling {{order_number}} ble oppdatert. Se gjennom disse endringene, og betal deretter for å bekrefte bestillingen din.",
+        "order_edit_banner_items_added": {
+          "one": "La til",
+          "other": "%{count} la til"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Fjernet",
+          "with_quantities": "{{delta}} av {{quantity}} fjernet"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Returnert",
+          "with_quantities": "{{delta}} av {{quantity}} returnert"
+        },
+        "order_edit_banner_single_item_added": "La til",
+        "order_edit_banner_multiple_items_added": "{{amount}} la til",
+        "order_edit_banner_single_item_removed": "Fjernet",
+        "order_edit_banner_multiple_items_removed": "{{amount}} fjernet",
+        "order_edit_banner_single_item_returned": "Returnert",
+        "order_edit_banner_multiple_items_returned": "{{amount}} returnert",
+        "gift_card_wrapper": {
+          "heading": "Gavekort",
+          "apply_gift_card_label": "Bruk et gavekort",
+          "apply_another_gift_card_label": "Bruk et annet gavekort",
+          "gift_card_label": "Gavekort %{identifier}",
+          "payment_tag": "Gavekort"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Tilpasset betalingsbekreftelse på stedet"
+        },
+        "markets_pro_disclaimer_label": "Ved å klikke nedenfor og fullføre bestillingen, godtar du å kjøpe varene dine fra Global-e som registrert forhandler for denne transaksjonen, på Global-e's %{markets_pro_terms} og %{privacy_policy}. Global-e er en internasjonal oppfyllelsestjenesteleverandør til %{shop_name}",
+        "markets_pro_disclaimer_terms_and_conditions": "Vilkår og betingelser",
+        "markets_pro_disclaimer_privacy_policy": "Personvernerklæring",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Forhandlerens vilkår og betingelser",
+        "markets_pro_disclaimer_privacy_policy_title": "Personvernerklæring for selgere",
+        "purchase_order_number": {
+          "title": "Postnummer",
+          "label": "PO-nummer (valgfritt)"
+        },
+        "alternative_payment_currency_total_notice": "Merk: du vil bli belastet %{amount_due}.",
+        "waiting_on_taxes_message": "Hvis skatten din ikke beregnes innen de neste sekundene, oppdater siden.",
+        "waiting_on_taxes_notice": "Beregning av skatter",
+        "payment_method": "Betalingsmetode",
+        "expired_payment_method": "Valgt betalingsmåte er utløpt"
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "Nåværende saldo %{amount}",
@@ -1402,6 +1459,17 @@
           },
           "label": "Ingen levering"
         }
+      },
+      "billing": {
+        "billing_address_title": "Regning til",
+        "same_as_shipping": "samme som leveringsadressen",
+        "add_address": "Bruk en annen adresse",
+        "edit": "Redigere",
+        "delete": "Slett",
+        "address_more": "Flere handlinger for denne adressen",
+        "address_edit": "Rediger adresse",
+        "address_delete": "Slett adresse",
+        "address_confirm": "Er du sikker på at du vil slette denne adressen fra kontoen din?"
       }
     },
     "pagination": {
