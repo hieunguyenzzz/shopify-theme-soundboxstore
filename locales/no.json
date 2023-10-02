@@ -260,7 +260,47 @@
         "reduced_with_quantity_label": "Kun %{quantity_available} venstre",
         "remove_from_cart_button_label": "Fjern fra handlekurven",
         "continue_shopping_button_label": "Fortsette",
-        "go_back_to_cart_button_label": "Gå tilbake til handlekurven min"
+        "go_back_to_cart_button_label": "Gå tilbake til handlekurven min",
+        "remove": "Fjerne",
+        "return_to_store_label": "Gå tilbake til butikken",
+        "item_label": {
+          "one": "{{count}} punkt",
+          "other": "{{count}} gjenstander"
+        },
+        "empty_cart_label": "Vognen din er tom",
+        "quantity_update": {
+          "page_title": "Oppdatering av antall",
+          "title": "Oppdatering av antall",
+          "description": "Tilgjengelige kvanta for disse varene er endret og er oppdatert i handlekurven din."
+        },
+        "unpurchasable_product": {
+          "title": "Ukjøpbart produkt",
+          "header": "Noen varer ble fjernet fra handlekurven din",
+          "message": "Disse varene er ikke tilgjengelige for B2B-bestillinger.",
+          "status_column_header": "Ikke tilgjengelig"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Ukjøpbart produkt",
+          "header": "Noen varer ble fjernet fra handlekurven din",
+          "message": "Disse elementene er ikke tilgjengelige.",
+          "status_column_header": "Ikke tilgjengelig"
+        },
+        "unshippable_product": {
+          "title": "Ingen levering tilgjengelig",
+          "header": {
+            "one": "Ingen levering tilgjengelig for %{count} punkt",
+            "other": "Ingen levering tilgjengelig for %{count} gjenstander"
+          },
+          "message": {
+            "one": "Denne varen vil bli fjernet fra handlekurven din fordi det ikke er noen leveringsmetoder tilgjengelig for adressen din.",
+            "other": "Disse varene vil bli fjernet fra handlekurven din fordi det ikke er noen leveringsmetoder tilgjengelig for adressen din."
+          },
+          "status_column_header": "Ingen levering"
+        },
+        "price_update": {
+          "title": "Prisoppdatering",
+          "description": "Prisene for disse varene er endret og er oppdatert i handlekurven din."
+        }
       },
       "order_summary": {
         "title": "Bestillingssammendrag",
@@ -360,7 +400,11 @@
         "order_total_label": "Bestill totalt",
         "recurring_subtotal_label": "Gjentakende subtotal",
         "maximum_discount_code_limit_reached": "Du har nådd det maksimale antall rabattkoder. Fjern en eksisterende kode som skal brukes <strong style=\"text-transform:uppercase\">%{code}<\/strong>.",
-        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> Fungerer ikke akkurat nå. Kontakt oss for å få hjelp."
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}<\/strong> Fungerer ikke akkurat nå. Kontakt oss for å få hjelp.",
+        "group_title_label": "Del av \"%{group_title}\"",
+        "discount_title_stacking": {
+          "one": "Rabatt"
+        }
       },
       "shipping": {
         "title": "Shipping",
@@ -1185,6 +1229,19 @@
       },
       "change_cart_localization": {
         "verify_shipping_address": "Landet\/regionen din er oppdatert. Skriv inn leveringsadressen din for å fortsette kassen."
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "one": "Ingen levering tilgjengelig for %{count} punkt",
+            "other": "Ingen levering tilgjengelig for %{count} gjenstander"
+          },
+          "message": {
+            "one": "Denne varen vil bli fjernet fra handlekurven din fordi det ikke er noen leveringsmetoder tilgjengelig for adressen din.",
+            "other": "Disse varene vil bli fjernet fra handlekurven din fordi det ikke er noen leveringsmetoder tilgjengelig for adressen din."
+          },
+          "label": "Ingen levering"
+        }
       }
     },
     "pagination": {
