@@ -2958,7 +2958,12 @@
         "next_payment_due": "Neste betaling forfaller {{dueDateInMonthDayYear}}",
         "edit_payment_method_button": "Redigere",
         "edit_payment_method_button_accessibility_label": "Rediger betalingsmetode som slutter {{lastDigits}}",
-        "payment_method_expired_on": "Utløpt på {{expiryDate}}"
+        "payment_method_expired_on": "Utløpt på {{expiryDate}}",
+        "loading_shop_pay": "Laster Shop Pay",
+        "invalid_payment_method": "Ugyldig betalingsmåte",
+        "invalid_payment_method_message": "Bruk et nytt kredittkort for å fortsette å motta kommende bestillinger.",
+        "replace_payment_method": "Bytt ut betalingsmåten",
+        "checkout_card_banner": "Denne betalingsmåten kan kun brukes for forhåndsautoriserte betalinger. Det vil ikke vises i kassen hvis du er logget inn i denne butikken."
       },
       "edit_payment_method": {
         "title": "Rediger betalingsmetode",
@@ -3006,7 +3011,16 @@
         "delete_and_replace_button": "Slett og erstatt",
         "delete_and_replace_button_accessibility_label": "Slett {{currentPaymentMethodName}} og erstatt med {{newPaymentMethodName}}.",
         "deleted_successfully": "Betalingsmetode slettet vellykket.",
-        "loading_available_payment_methods_accessibility_label": "Laster tilgjengelige betalingsmetoder"
+        "loading_available_payment_methods_accessibility_label": "Laster tilgjengelige betalingsmetoder",
+        "warning_message_with_replacement": {
+          "with_pending_orders_and_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Med mindre du velger en alternativ betalingsmetode, vil denne betalingsmetoden fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger. Ved å velge en alternativ betalingsmetode kan du motta kommende abonnementsbestillinger uten avbrudd.",
+          "with_pending_orders": "Hvis du sletter denne betalingsmåten, fjernes den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Med mindre du velger en alternativ betalingsmetode, vil den fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger.",
+          "with_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Erstatt den med en alternativ betalingsmetode for å fortsette å motta kommende bestillinger."
+        },
+        "warning_message_without_replacement": {
+          "with_pending_orders_and_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Denne betalingsmåten vil fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger, men du vil ikke motta kommende abonnementsbestillinger. Legg til en alternativ betalingsmåte for å fortsette å motta abonnementsbestillinger.",
+          "with_pending_orders": "Hvis du sletter denne betalingsmåten, fjernes den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Det vil fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger."
+        }
       },
       "expires_soon": "Dette kortet utløper snart",
       "expired": "Dette kortet er utløpt",
