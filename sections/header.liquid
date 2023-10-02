@@ -155,7 +155,6 @@
                         {{- block.settings['btn-text1'] -}}
                       </a>
                     {%- endif %}
-                    <!-- {% if request.design_mode %} -->
                     {% unless customer %}
                       {% if block.settings['reseller-text'] != blank -%}
                         <a href="{{ block.settings.reseller-link }}" class="btn btn--secondary">
@@ -163,7 +162,6 @@
                         </a>
                       {%- endif %}
                     {% endunless %}
-                    <!-- {% endif %} -->
                     {% if block.settings['btn-text2'] != blank -%}
                       <a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings['btn-text2'] }}</a>
                     {%- endif %}
