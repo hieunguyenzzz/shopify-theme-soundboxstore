@@ -1356,6 +1356,10 @@
         "gift_card_resent_confirmation": {
           "one": "Gavekortet ble sendt på nytt.",
           "other": "Gavekort ble sendt på nytt."
+        },
+        "gift_card_resend_failure": {
+          "one": "Det oppsto et problem med å sende gavekortet ditt på nytt. Prøv igjen eller kontakt oss.",
+          "other": "Det oppsto et problem med å sende gavekortene dine på nytt. Prøv igjen eller kontakt oss."
         }
       },
       "review": {
@@ -1374,8 +1378,16 @@
           "change_shipping_address_link_label": "Endre leveringsadresse",
           "change_shipping_method_link_label": "Endre fraktmetode",
           "change_payment_method_link_label": "Endre betalingsmetode",
-          "pick_up_in_store_shipping_method_html": "Plukke opp i butikk · %{location_name}"
-        }
+          "pick_up_in_store_shipping_method_html": "Plukke opp i butikk · %{location_name}",
+          "purchase_order_number_title": "Postnummer",
+          "change_purchase_order_number_label": "Endre PO-nummer",
+          "change_delivery_method_link_label": "Endre leveringsmåte",
+          "no_address": "(Ingen adresse)",
+          "no_purchase_order_number": "(Ingen PO-nummer)",
+          "due_after_order_reviewed_html": "Forfaller etter at bestillingen er gjennomgått",
+          "review_title_free_order": "Se gjennom og fullfør bestillingen din"
+        },
+        "block_title": "gjennomgå informasjonen din"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Send meg en e-post med nyheter og tilbud",
@@ -1388,12 +1400,15 @@
             "terms_of_service": "Vilkår for bruk",
             "description_html": "Ved å registrere deg via tekst, godtar du å motta tilbakevendende automatiserte markedsføringsmeldinger, inkludert handlekurvpåminnelser, på telefonnummeret som er oppgitt. Samtykke er ikke en betingelse for kjøp. Svar STOP for å avslutte abonnementet. Svar HJELP for hjelp. Meldingsfrekvensen varierer. Meldings- og datatakster kan gjelde. Se våre %{privacy_policy_link} og %{terms_of_service_link}.",
             "description_transactional_html": "Du kan motta tekstmeldinger relatert til ordrebekreftelse og fraktoppdateringer. Svar stopp for å avslutte abonnementet. Svar hjelp for hjelp. Meldingsfrekvensen varierer. MSG- og datahastigheter kan gjelde. Se vår %{privacy_policy_modal_link} og %{terms_of_service_modal_link}."
-          }
+          },
+          "mobile_phone_number": "Mobiltelefonnummer",
+          "get_offers_by_text": "Få tilbud på sms"
         },
         "unsubscribe": {
           "title": "Du har avsluttet abonnementet",
           "description": "Du vil ikke motta mer cart påminnelser fra oss."
-        }
+        },
+        "accept_shop_pay_marketing_checkbox_label": "Registrer meg for nyheter og tilbud fra denne butikken"
       },
       "shop_policies": {
         "refund_policy": "Angrerett",
@@ -1404,7 +1419,8 @@
         "terms_of_sale": "Salgsbetingelser",
         "subscription_policy": "Innkjøpsalternativer Avbestillingspolicy",
         "purchase_options_policy": "Innkjøpsalternativer",
-        "contact_information": "Kontaktinformasjon"
+        "contact_information": "Kontaktinformasjon",
+        "purchase_options_cancellation_policy": "Avbestillingsregler"
       },
       "mor_policies": {
         "terms_and_conditions": "Kjøpmann av rekordvilkår og betingelser",
