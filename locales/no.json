@@ -951,7 +951,18 @@
         "payment_gateway_unsupported_for_deferred_purchase_options": "Denne betalingsmetoden er ikke tilgjengelig for utsatt kjøpsalternativer.",
         "purchase_options_agreement_blank": "For å fortsette med kjøpet, godta utsatt eller tilbakevendende kjøpsvilkår.",
         "address_zip_too_long": "Postnummeret er for langt (maksimalt 255 tegn)",
-        "address_zip_invalid_for_province": "Skriv inn et gyldig postnummer for %{province}"
+        "address_zip_invalid_for_province": "Skriv inn et gyldig postnummer for %{province}",
+        "delivery_zone_not_found": "Den angitte sonen ble ikke funnet i det angitte landet.",
+        "payment_gateway_unsupported_for_development_store_html": "For å legge inn en testbestilling, må du bruke en testbetalingsgateway. Lære mer om <a href=\"%{docs_link}\">testing av bestillinger i utviklingsbutikker<\/a>.",
+        "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Du har nådd grensen for utviklingsbutikkbestillinger med denne betalingsbehandleren. For å legge inn en annen bestilling, må du bruke en testbetalingsgateway. Lære mer om <a href=\"%{docs_link}\">testing av bestillinger i utviklingsbutikker<\/a>.",
+        "email_blank": "Skriv inn en e-post",
+        "phone_blank": "Skriv inn et telefonnummer",
+        "address_country_invalid": "Velg et land\/region fra listen",
+        "address_zip_invalid": "Skriv inn et gyldig postnummer",
+        "gift_card_invalid": "Gavekort \"••••%{last_four_characters}\" er ikke lenger gyldig",
+        "vaulting_agreement_blank": "For å fortsette må du lagre det nye kredittkortet ditt fordi betaling for denne bestillingen vil skje på et senere tidspunkt.",
+        "sms_marketing_phone_invalid": "Skriv inn et gyldig telefonnummer",
+        "address_suggestion_did_you_mean_html": "Mente du %{html}?"
       },
       "payment_errors": {
         "generic_error": "Det oppstod et problem med å behandle betalingen din. Prøv på nytt eller bruk en annen betalingsmåte.",
@@ -1477,6 +1488,9 @@
           "save": "Lagre",
           "cancel": "Avbryt"
         }
+      },
+      "store_credit_errors": {
+        "generic_error": "Det oppsto et problem med butikkkreditten din. Prøv på nytt eller last inn siden på nytt."
       }
     },
     "pagination": {
