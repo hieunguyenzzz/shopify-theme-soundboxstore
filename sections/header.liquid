@@ -156,11 +156,13 @@
                       </a>
                     {%- endif %}
                     {% if request.design_mode %}
-                      {% if block.settings['reseller-text'] != blank -%}
-                        <a href="{{ block.settings.reseller-link }}" class="btn btn--secondary">
-                          {{- block.settings['reseller-text'] -}}
-                        </a>
-                      {%- endif %}
+                      {% unless customer %}
+                        {% if block.settings['reseller-text'] != blank -%}
+                          <a href="{{ block.settings.reseller-link }}" class="btn btn--secondary">
+                            {{- block.settings['reseller-text'] -}}
+                          </a>
+                        {%- endif %}
+                      {% endunless %}
                     {% endif %}
                     {% if block.settings['btn-text2'] != blank -%}
                       <a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings['btn-text2'] }}</a>
