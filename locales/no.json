@@ -1675,7 +1675,92 @@
         "no_pickup_points_found": "Ingen hentepunkter funnet",
         "paginator": {
           "next_accessibility_label": "Neste side",
-          "previous_accessibility_label": "Forrige side"
+          "previous_accessibility_label": "Forrige side",
+          "header": {
+            "one": "Viser %{first} - %{last} av %{count} punkt",
+            "other": "Viser %{first} - %{last} av %{count} poeng"
+          },
+          "selected_pickup_point_label": {
+            "one": "%{pickup_point_index} av %{count} punkt",
+            "other": "%{pickup_point_index} av %{count} poeng"
+          },
+          "selected_page": {
+            "one": "%{first} - %{last} av %{count} punkt",
+            "other": "%{first} - %{last} av %{count} poeng"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "one": "%{count} hentepunkt i nærheten av din plassering",
+          "other": "%{count} hentepunkter i nærheten av din plassering"
+        },
+        "change": "Endring",
+        "waiting_on_pickup_point_location_notice": "Søker etter hentepunkter...",
+        "geolocation": {
+          "shared_location_button": "Bruk posisjonen min",
+          "errors": {
+            "unsuported_by_browser": "Å få geolokalisering støttes ikke av nettleseren din. Prøv på nytt eller bruk en annen nettleser.",
+            "permission_not_allowed": "Tillat deling av posisjonen din.",
+            "permission_denied": "Kunne ikke finne posisjonen din. Prøv igjen."
+          }
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Det var et problem med kassen vår",
+          "message": "Oppdater denne siden eller prøv igjen om noen minutter",
+          "action": {
+            "cta": "Oppdater side"
+          },
+          "request_id": "Forespørsels-ID: {{requestId}}"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Gå tilbake til handlekurven",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} for å oppdatere mengdene",
+        "subscription_changed": "Ett av abonnementene dine er endret.",
+        "company_location_changed": "Handlekurven din har blitt oppdatert. Se gjennom bestillingen din før du sender den.",
+        "company_location_changed_product_removed": "Handlekurven din har blitt oppdatert fordi noen produkter ikke er tilgjengelige på dette stedet. Se gjennom bestillingen din før du sender den.",
+        "violations_title": "{{violation}} mangler eller er ugyldig",
+        "individual_violations_title": {
+          "DeliveryViolations": "Sendingsadresse",
+          "PaymentViolations": "Fakturaadresse",
+          "OtherViolations": "BESTILLINGSINFORMASJON"
+        },
+        "all_violations_content": "Ring eller {{emailLink}} oss for å oppdatere denne informasjonen og fullføre bestillingen din:",
+        "all_violations_email_link": "e-post",
+        "editable_shipping_address_violations_message_title": "Legg til denne informasjonen for å fullføre bestillingen:",
+        "editable_shipping_address_violations_message_footer": "For å permanent oppdatere adressen for denne plasseringen, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "kontakt oss",
+        "shipping_address_incomplete_title": "Leveringsadressen er ufullstendig"
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Anmeldelse",
+          "link_label": "{{partnerDisplayName}} Vilkår og betingelser"
+        }
+      },
+      "online_store_chat": {
+        "title": "Spørsmål? snakk med oss"
+      },
+      "local_pickup": {
+        "location_information": {
+          "one": "Det er %{count} butikk med lager i nærheten av %{address}",
+          "other": "Det er %{count} butikker med lager i nærheten av %{address}"
+        },
+        "toggle_location": "Endre posisjonen min",
+        "or": "ELLER",
+        "cancel": "Avbryt",
+        "your_location": "posisjonen din",
+        "search_button": "Finn butikker",
+        "no_stores_found": "Ingen butikker funnet",
+        "could_not_resolve_address": "Kunne ikke finne adressen din. Prøv på nytt eller bruk en annen adresse",
+        "paginator": {
+          "accessibility_label": "Lokal henting paginering",
+          "previous": "Forrige side",
+          "next": "Neste side",
+          "label": {
+            "one": "%{first} - %{last} av %{count} butikk"
+          }
         }
       }
     },
