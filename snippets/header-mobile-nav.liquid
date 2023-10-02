@@ -26,17 +26,21 @@
 
       <li class="slide-nav__item">
         {%- if link.levels > 0 -%}
-          <button type="button"
+          <button
+            type="button"
             class="slide-nav__button js-toggle-submenu"
             data-target="{{ child_list_handle }}"
-            {% if link.active or link.child_active %}data-active="true"{% endif %}>
+            {% if link.active or link.child_active %}
+              data-active="true"
+            {% endif %}
+          >
             <span class="slide-nav__link">
               {%- if have_image -%}
                 {{ collection_image }}
               {%- endif -%}
               <span>{{ link.title }}</span>
               {% comment %}
-              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
               {% endcomment %}
               <span class="icon__fallback-text">{{ 'general.drawers.expand_submenu' | t }}</span>
             </span>
@@ -44,10 +48,20 @@
 
           <ul class="slide-nav__dropdown" data-parent="{{ child_list_handle }}" data-level="2">
             <li class="slide-nav__item">
-              <button type="button"
-                class="slide-nav__button js-toggle-submenu">
+              <button
+                type="button"
+                class="slide-nav__button js-toggle-submenu"
+              >
                 <span class="slide-nav__link slide-nav__link--back">
-                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="icon icon-chevron-left"
+                    viewBox="0 0 284.49 498.98"
+                  >
+                    <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/>
+                  </svg>
                   <span>{{ link.title }}</span>
                 </span>
               </button>
@@ -61,8 +75,8 @@
                 <a href="{{ link.url }}" class="slide-nav__link">
                   <span>{{ 'collections.general.all_of_collection' | t }}</span>
                   {% comment %}
-                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
-                {% endcomment %}
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                  {% endcomment %}
                 </a>
               </li>
             {%- endif -%}
@@ -75,42 +89,56 @@
 
               <li class="slide-nav__item">
                 {%- if childlink.levels > 0 -%}
-                  <button type="button"
+                  <button
+                    type="button"
                     class="slide-nav__button js-toggle-submenu"
                     data-target="{{ grand_child_link_id }}"
-                    {% if link.active or link.child_active %}data-active="true"{% endif %}>
+                    {% if link.active or link.child_active %}
+                      data-active="true"
+                    {% endif %}
+                  >
                     <span class="slide-nav__link slide-nav__sublist-link">
                       <span>{{ childlink.title }}</span>
                       {% comment %}
-                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
-                     {% endcomment %}
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                      {% endcomment %}
                       <span class="icon__fallback-text">{{ 'general.drawers.expand_submenu' | t }}</span>
                     </span>
                   </button>
                   <ul class="slide-nav__dropdown" data-parent="{{ grand_child_link_id }}" data-level="3">
                     <li class="slide-nav__item">
-                      <button type="button"
+                      <button
+                        type="button"
                         class="slide-nav__button js-toggle-submenu"
-                        data-target="{{ child_list_handle }}">
+                        data-target="{{ child_list_handle }}"
+                      >
                         <span class="slide-nav__link slide-nav__link--back">
-                          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            role="presentation"
+                            class="icon icon-chevron-left"
+                            viewBox="0 0 284.49 498.98"
+                          >
+                            <path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/>
+                          </svg>
                           <span>{{ childlink.title }}</span>
                         </span>
                       </button>
                     </li>
 
                     {% comment %}
-                    If a collection, automatically add 'view all' link
+                      If a collection, automatically add 'view all' link
                     {% endcomment %}
                     {%- if childlink.url contains '/collections/' -%}
-                    <li class="slide-nav__item">
-                      <a href="{{ childlink.url }}" class="slide-nav__link">
-                        <span>{{ 'collections.general.all_of_collection' | t }}</span>
-                        {% comment %}
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
-                        {% endcomment %}
-                      </a>
-                    </li>
+                      <li class="slide-nav__item">
+                        <a href="{{ childlink.url }}" class="slide-nav__link">
+                          <span>{{ 'collections.general.all_of_collection' | t }}</span>
+                          {% comment %}
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                          {% endcomment %}
+                        </a>
+                      </li>
                     {%- endif -%}
 
                     {%- for grandchildlink in childlink.links -%}
@@ -118,19 +146,19 @@
                         <a href="{{ grandchildlink.url }}" class="slide-nav__link">
                           <span>{{ grandchildlink.title | escape }}</span>
                           {% comment %}
-                          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
                           {% endcomment %}
                         </a>
-                    </li>
+                      </li>
                     {%- endfor -%}
                   </ul>
                 {%- else -%}
                   <a href="{{ childlink.url }}" class="slide-nav__link">
                     <span>{{ childlink.title | escape }}</span>
                     {% comment %}
-                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
-                {% endcomment %} 
-                </a>
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+                    {% endcomment %}
+                  </a>
                 {%- endif -%}
               </li>
             {%- endfor -%}
@@ -143,29 +171,47 @@
 
             <span>{{ link.title | escape }}</span>
             {% comment %}
-            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
-            {% endcomment %}  
-        </a>
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+            {% endcomment %}
+          </a>
         {%- endif -%}
-    </li>
+      </li>
     {%- endfor -%}
     <li class="slide-nav__item mobile-cart">
-      <a href="/cart" class="slide-nav__link"><span class="link-text">Cart</span> <span class="mobile-cart-icon"><svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.477339 0.000135738C0.213607 0.000135738 0 0.212852 0 0.475096C0 0.737514 0.213781 0.950057 0.477339 0.950057H3.02093C4.24102 3.95195 5.43814 6.95969 6.64609 9.96748L5.52722 12.6394C5.40468 12.927 5.65326 13.3004 5.96727 13.2999H17.9018C18.154 13.3035 18.386 13.0759 18.386 12.8249C18.386 12.5739 18.154 12.3463 17.9018 12.35H6.68334L7.48883 10.4203L19.1327 9.49252C19.3318 9.47612 19.5116 9.32221 19.5579 9.12888L20.9901 2.95384C21.0522 2.67817 20.8117 2.37697 20.5276 2.37502H4.61758L3.78208 0.296877C3.71165 0.123424 3.53 0.000992417 3.34204 0L0.477339 0.000135738ZM4.99754 3.32507H19.9306L18.7074 8.57979L7.474 9.47042L4.99754 3.32507ZM8.35413 14.7251C7.17334 14.7251 6.206 15.6878 6.206 16.8626C6.206 18.0375 7.17351 19 8.35413 19C9.53493 19 10.5023 18.0373 10.5023 16.8626C10.5023 15.6877 9.53475 14.7251 8.35413 14.7251ZM15.5149 14.7251C14.3341 14.7251 13.3667 15.6878 13.3667 16.8626C13.3667 18.0375 14.3342 19 15.5149 19C16.6956 19 17.663 18.0373 17.663 16.8626C17.663 15.6877 16.6955 14.7251 15.5149 14.7251ZM8.35413 15.6751C9.01897 15.6751 9.54758 16.201 9.54758 16.8626C9.54758 17.5241 9.01897 18.0501 8.35413 18.0501C7.68929 18.0501 7.16068 17.5241 7.16068 16.8626C7.16068 16.201 7.68929 15.6751 8.35413 15.6751ZM15.5149 15.6751C16.1797 15.6751 16.7083 16.201 16.7083 16.8626C16.7083 17.5241 16.1797 18.0501 15.5149 18.0501C14.85 18.0501 14.3214 17.5241 14.3214 16.8626C14.3214 16.201 14.85 15.6751 15.5149 15.6751Z" fill="#454545"/></svg></span></a>
+      <a href="/cart" class="slide-nav__link"
+        ><span class="link-text">Cart</span>
+        <span class="mobile-cart-icon">
+          <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.477339 0.000135738C0.213607 0.000135738 0 0.212852 0 0.475096C0 0.737514 0.213781 0.950057 0.477339 0.950057H3.02093C4.24102 3.95195 5.43814 6.95969 6.64609 9.96748L5.52722 12.6394C5.40468 12.927 5.65326 13.3004 5.96727 13.2999H17.9018C18.154 13.3035 18.386 13.0759 18.386 12.8249C18.386 12.5739 18.154 12.3463 17.9018 12.35H6.68334L7.48883 10.4203L19.1327 9.49252C19.3318 9.47612 19.5116 9.32221 19.5579 9.12888L20.9901 2.95384C21.0522 2.67817 20.8117 2.37697 20.5276 2.37502H4.61758L3.78208 0.296877C3.71165 0.123424 3.53 0.000992417 3.34204 0L0.477339 0.000135738ZM4.99754 3.32507H19.9306L18.7074 8.57979L7.474 9.47042L4.99754 3.32507ZM8.35413 14.7251C7.17334 14.7251 6.206 15.6878 6.206 16.8626C6.206 18.0375 7.17351 19 8.35413 19C9.53493 19 10.5023 18.0373 10.5023 16.8626C10.5023 15.6877 9.53475 14.7251 8.35413 14.7251ZM15.5149 14.7251C14.3341 14.7251 13.3667 15.6878 13.3667 16.8626C13.3667 18.0375 14.3342 19 15.5149 19C16.6956 19 17.663 18.0373 17.663 16.8626C17.663 15.6877 16.6955 14.7251 15.5149 14.7251ZM8.35413 15.6751C9.01897 15.6751 9.54758 16.201 9.54758 16.8626C9.54758 17.5241 9.01897 18.0501 8.35413 18.0501C7.68929 18.0501 7.16068 17.5241 7.16068 16.8626C7.16068 16.201 7.68929 15.6751 8.35413 15.6751ZM15.5149 15.6751C16.1797 15.6751 16.7083 16.201 16.7083 16.8626C16.7083 17.5241 16.1797 18.0501 15.5149 18.0501C14.85 18.0501 14.3214 17.5241 14.3214 16.8626C14.3214 16.201 14.85 15.6751 15.5149 15.6751Z" fill="#454545"/>
+          </svg></span
+      ></a>
     </li>
   </ul>
 </div>
 {% for block in section.blocks %}
-{% if block.settings.btn-text1 != blank or block.settings.btn-text2 != blank %}
-<div class="mobile-footer-menu">
-  <div class="top-menu-wrap">
-    <div class="header-button-group">
-     {% if block.settings.btn-text1 != blank %}<a href="{{ block.settings.btn-link1 }}" class="btn btn--secondary">{{ block.settings.btn-text1 }}</a>{% endif %}
-      {% if block.settings.btn-text2 != blank %}<a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings.btn-text2 }}</a>{% endif %}
+  {% if block.settings['btn-text1'] != blank or block.settings['btn-text2'] != blank %}
+    <div class="mobile-footer-menu">
+      <div class="top-menu-wrap">
+        <div class="header-button-group">
+          {% if block.settings['btn-text1'] != blank -%}
+            <a href="{{ block.settings.btn-link1 }}" class="btn btn--secondary">{{ block.settings['btn-text1'] }}</a>
+          {%- endif %}
+          {% unless customer %}
+            {% if block.settings['reseller-text'] != blank -%}
+              <a href="{{ block.settings.reseller-link }}" class="btn btn--secondary">
+                {{- block.settings['reseller-text'] -}}
+              </a>
+            {%- endif %}
+          {% endunless %}
+          {% if block.settings['btn-text2'] != blank -%}
+            <a href="{{ block.settings.btn-link2 }}" class="btn">{{ block.settings['btn-text2'] }}</a>
+          {%- endif %}
+        </div>
+      </div>
+
+      <div class="tw-h-full tw-inline-flex tw-align-middle tw-items-center language-drpodown">
+        {% render '[location]-dropdown', class: '' %}
+      </div>
     </div>
-  </div>
-  
-  <div class="tw-h-full tw-inline-flex tw-align-middle tw-items-center language-drpodown">{% render '[location]-dropdown'  class: '' %}</div>
-  
-</div>
-{% endif %}
+  {% endif %}
 {% endfor %}
