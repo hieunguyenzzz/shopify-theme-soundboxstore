@@ -1,4 +1,9 @@
 {% assign isResserllerOrTradeAccount = false %}
+{% if request.design_mode %}
+  {% if section.settings.reseller_mode %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% endif %}
 {% if customer %}
   {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
     {% if customer.metafields['custom-register'].trade_account_status == '1' %}
@@ -19,6 +24,12 @@
   "name": "Video hero",
   "class": "index-section--hero",
   "settings": [
+     {
+      "type": "checkbox",
+      "id": "reseller_mode",
+      "label": "reseller_mode",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "full_width",
