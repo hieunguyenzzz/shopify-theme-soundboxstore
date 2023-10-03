@@ -363,6 +363,139 @@
       "unit": "px"
     }
   ],
+  "blocks":[
+    {
+      "type":"Reseller",
+"name":"reseller",
+        "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full page width",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "Bring your\nbrand to life."
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Heading text size",
+      "default": 70,
+      "min": 40,
+      "max": 100,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Seamless hero videos"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Button text",
+      "default": "Optional button"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link",
+      "info": "Links to YouTube videos will be opened in a video player"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Buttons",
+      "default": "#fff"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "vertical-center horizontal-center",
+      "options": [
+        {
+          "value": "vertical-center horizontal-left",
+          "label": "Center left"
+        },
+        {
+          "value": "vertical-center horizontal-center",
+          "label": "Center"
+        },
+        {
+          "value": "vertical-center horizontal-right",
+          "label": "Center right"
+        },
+        {
+          "value": "vertical-bottom horizontal-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "vertical-bottom horizontal-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "vertical-bottom horizontal-right",
+          "label": "Bottom right"
+        }
+      ]
+    },
+     {
+      "type": "video",
+      "id": "video",
+      "label": "Background video"
+    },
+         {
+      "type": "video",
+      "id": "video_m",
+      "label": "Background video (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Background video link",
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "info": "Supports YouTube, .MP4 and Vimeo. Not all features supported by Vimeo. "
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Text protection",
+      "info": "Darkens your video to ensure your text is readable",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Height",
+      "default": 650,
+      "min": 450,
+      "max": 750,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "label": "Mobile height",
+      "default": 300,
+      "min": 250,
+      "max": 500,
+      "step": 10,
+      "unit": "px"
+    }
+  ]
+    }
+  ],
   "presets": [{
     "name": "Video hero"
   }]
