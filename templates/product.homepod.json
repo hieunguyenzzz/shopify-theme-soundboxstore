@@ -33,6 +33,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "dfa5b3d5-ad9f-4f24-8d73-8124a4b33a66": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p>{{ product.metafields.custom.description | metafield_tag }}<\/p>"
+          }
+        },
         "80d88b2f-fa19-4538-ad26-bbbc66103e15": {
           "type": "tagline",
           "disabled": true,
@@ -91,6 +97,7 @@
         }
       },
       "block_order": [
+        "dfa5b3d5-ad9f-4f24-8d73-8124a4b33a66",
         "80d88b2f-fa19-4538-ad26-bbbc66103e15",
         "a57c3e13-5e6a-49ff-b769-0ead6e48ef7e",
         "variant_picker",
