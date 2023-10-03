@@ -190,14 +190,7 @@
 
 
 <div>
-  <style>
-    [name="details-company-industry-other"][
-      display:none
-    ]
-    [name="details-company-industry"] ~ [name="details-company-industry-other"]{
-      display:block
-    }
-  </style>
+
                 <input
                   type="radio"
                   name="details-company-industry"
@@ -209,13 +202,7 @@
                 <label class="text-label" for="details-company-industry-commercial_out_fitter">
                   {{- 'customer.application.details-company-industry-options.commercial_out_fitter' | t -}}
                 </label>
-                <input
-                      type="text"
-                      name="details-company-industry-other"
-                      id="details-company-industry-other"
-                      class="input-full"
-                      autocapitalize="words"
-                    >
+               
               </div>
 
 <div>
@@ -233,6 +220,14 @@
               </div>
 
 <div>
+    <style>
+    [name="details-company-industry-other"][
+      display:none
+    ]
+    [name="details-company-industry"] ~ [name="details-company-industry-other"]{
+      display:block
+    }
+  </style>
                 <input
                   type="radio"
                   name="details-company-industry"
@@ -244,6 +239,13 @@
                 <label class="text-label" for="details-company-industry-other">
                   {{- 'customer.application.details-company-industry-options.other' | t -}}
                 </label>
+   <input
+                      type="text"
+                      name="details-company-industry-other"
+                      id="details-company-industry-other"
+                      class="input-full"
+                      autocapitalize="words"
+                    >
               </div>
 
 
