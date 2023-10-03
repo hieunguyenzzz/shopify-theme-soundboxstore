@@ -1,4 +1,19 @@
-{% render 'hero-video', block: section %}
+{% assign isResserllerOrTradeAccount = false %}
+{% if customer %}
+  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+    {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+      {% assign isResserllerOrTradeAccount = true %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% unless isResserllerOrTradeAccount %}
+  {% render 'hero-video', block: section %}
+{% else %}
+  {% for block in section.blocks %}
+    {% render 'hero-video', block: block %}
+  {% endfor %}
+{% endunless %}
+
 {% schema %}
 {
   "name": "Video hero",
