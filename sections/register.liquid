@@ -222,9 +222,9 @@
 <div>
     <style>
     [name="details-company-industry-other"]{
-    display:none  
+      display:none  
     }
-    [name="details-company-industry"] ~ [name="details-company-industry-other"]{
+    [name="details-company-industry"]:checked ~ [name="details-company-industry-other"]{
       display:block
     }
   </style>
@@ -238,19 +238,17 @@
                 >
                 <label class="text-label" for="details-company-industry-other">
                   {{- 'customer.application.details-company-industry-options.other' | t -}}
-                </label>
-   <input
+            <input
                       type="text"
                       name="details-company-industry-other"
                       id="details-company-industry-other"
                       class="input-full"
                       autocapitalize="words"
                     >
+                </label>
+   
               </div>
-
-
             </div>
-           
           </div>
             {% endif %}
          
