@@ -157,13 +157,83 @@
           {% if request.design_mode %}
             <div class="form-group">
             <label for="details-company-industry">{{ 'customer.application.details-company-industry' | t }}</label>
-            <select class="input-full" id="details-company-industry" name="details-company-industry">
-              <option value="Architects">{{ 'customer.application.details-company-industry-options.architects' | t }}</option>
-              <option value="Design And Build">{{ 'customer.application.details-company-industry-options.design_and_build' | t }}</option>
-              <option value="Commercial Out Fitter">{{ 'customer.application.details-company-industry-options.commercial_out_fitter' | t }}</option>
-              <option value="Furniture Dealer">{{ 'customer.application.details-company-industry-options.furniture_dealer' | t }}</option>
-              <option value="Other">{{ 'customer.application.details-company-industry-options.other' | t }}</option>
-            </select>
+            <div class="form-radio">
+             
+
+<div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-architects"
+                  class="input-full"
+                  value="architects"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-architects">
+                  {{- 'customer.application.details-company-industry-options.architects' | t -}}
+                </label>
+              </div>
+
+<div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-design_and_build"
+                  class="input-full"
+                  value="design_and_build"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-design_and_build">
+                  {{- 'customer.application.details-company-industry-options.design_and_build' | t -}}
+                </label>
+              </div>
+
+
+<div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-commercial_out_fitte"
+                  class="input-full"
+                  value="commercial_out_fitte"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-commercial_out_fitte">
+                  {{- 'customer.application.details-company-industry-options.commercial_out_fitte' | t -}}
+                </label>
+              </div>
+
+<div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-furniture_dealer"
+                  class="input-full"
+                  value="furniture_dealer"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-furniture_dealer">
+                  {{- 'customer.application.details-company-industry-options.furniture_dealer' | t -}}
+                </label>
+              </div>
+
+<div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-other"
+                  class="input-full"
+                  value="other"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-other">
+                  {{- 'customer.application.details-company-industry-options.other' | t -}}
+                </label>
+              </div>
+
+
+            </div>
+           
           </div>
             {% endif %}
          
