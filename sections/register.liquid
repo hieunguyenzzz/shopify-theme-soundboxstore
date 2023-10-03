@@ -157,12 +157,12 @@
           {% if request.design_mode %}
             <div class="form-group">
             <label for="details-company-industry">{{ 'customer.application.details-company-industry' | t }}</label>
-            <select id="details-company-industry" name="details-company-industry">
-              <option value="Architects">Volvo XC90</option>
-              <option value="Design And Build">Saab 95</option>
-              <option value="Commercial Out Fitter">Mercedes SLK</option>
-              <option value="Furniture Dealer">Audi TT</option>
-              <option value="Other">Audi TT</option>
+            <select class="input-full" id="details-company-industry" name="details-company-industry">
+              <option value="Architects">{{ 'customer.application.details-company-industry-options.architects' | t }}</option>
+              <option value="Design And Build">{{ 'customer.application.details-company-industry-options.design_and_build' | t }}</option>
+              <option value="Commercial Out Fitter">{{ 'customer.application.details-company-industry-options.commercial_out_fitter' | t }}</option>
+              <option value="Furniture Dealer">{{ 'customer.application.details-company-industry-options.furniture_dealer' | t }}</option>
+              <option value="Other">{{ 'customer.application.details-company-industry-options.other' | t }}</option>
             </select>
           </div>
             {% endif %}
