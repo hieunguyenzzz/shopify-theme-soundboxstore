@@ -154,6 +154,19 @@
               autocapitalize="words"
             >
           </div>
+          {% if request.design_mode %}
+            <div class="form-group">
+            <label for="details-company-industry">{{ 'customer.application.details-company-industry' | t }}</label>
+            <select id="details-company-industry" name="details-company-industry">
+              <option value="Architects">Volvo XC90</option>
+              <option value="Design And Build">Saab 95</option>
+              <option value="Commercial Out Fitter">Mercedes SLK</option>
+              <option value="Furniture Dealer">Audi TT</option>
+              <option value="Other">Audi TT</option>
+            </select>
+          </div>
+            {% endif %}
+         
           <div class="form-group">
             <label for="details-address">{{ 'customer.application.details-address' | t }}</label>
             <input
