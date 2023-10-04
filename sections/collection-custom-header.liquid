@@ -20,14 +20,12 @@
                 <div class="col-image">
                   <a
                     href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{{ product.handle  }}{% else %}{{ product.url }}{% endif %}"
-                    class="btnScroll"
                     ><img src="{{ product.featured_image | img_url:'130x' }}" alt="phone booths"
                   ></a>
                 </div>
                 <h6>
                   <a
                     href="{% if template contains 'collection.all' or prodHandle contains product.handle %}#{{ product.handle  }}{% else %}{{ product.url }}{% endif %}"
-                    class="btnScroll"
                     data-id="{{ product.id }}"
                   >
                     {{- product.title -}}
