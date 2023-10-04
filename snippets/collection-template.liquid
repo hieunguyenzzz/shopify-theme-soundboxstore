@@ -96,19 +96,18 @@
             data-view="{{ productGridView }}"
             data-scroll-to
           >
-            {%- liquid
-              for product in collection.products
-                if forloop.first == true
-                  render 'product-grid-item', product: product, collImgNotLazy: true
-                else
-                  render 'product-grid-item', product: product
-                endif
-
-                if settings.quick_shop_enable
-                  render 'quick-shop-modal', product: product
-                endif
-              endfor
-            -%}
+            {% for product in collection.products %}
+              <div>
+                {% if forloop.first == true %}
+                  {% render 'product-grid-item', product: product, collImgNotLazy: true %}
+                {% else %}
+                  {% render 'product-grid-item', product: product %}
+                {% endif %}
+                {% if settings.quick_shop_enable %}
+                  {% render 'quick-shop-modal', product: product %}
+                {% endif %}
+              </div>
+            {% endfor %}
           </div>
 
           {%- liquid
