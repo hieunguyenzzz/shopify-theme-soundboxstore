@@ -97,7 +97,7 @@
             data-scroll-to
           >
             {% for product in collection.products %}
-              <div id="{{ product.handle }}" class="grid-item">
+              <div id="{{ product.handle }}" class="grid-item" style="scroll-margin-top: 180px">
                 {% if forloop.first == true %}
                   {% render 'product-grid-item', product: product, collImgNotLazy: true %}
                 {% else %}
