@@ -98,8 +98,14 @@
   </div>
   {% capture content %}<div class="form-section">
 <div></div>
+       
+      </div>
+      <div class="form-section">
         <div>
-                  <div class="form-group">
+          <h3>{{ 'customer.application.details-heading' | t }}</h3>
+        </div>
+        <div>
+          <div class="form-group">
             <label for="details-company-name">{{ 'customer.application.details-company-name' | t }}</label>
             <input
               type="text"
@@ -109,6 +115,8 @@
               autocapitalize="words"
             >
           </div>
+           <div>
+                 
          <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
             type="text"
@@ -148,22 +156,6 @@
           >
         
         </div>
-      </div>
-      <div class="form-section">
-        <div>
-          <h3>{{ 'customer.application.details-heading' | t }}</h3>
-        </div>
-        <div>
-          <div class="form-group">
-            <label for="details-company-name">{{ 'customer.application.details-company-name' | t }}</label>
-            <input
-              type="text"
-              name="details-company-name"
-              id="details-company-name"
-              class="input-full"
-              autocapitalize="words"
-            >
-          </div>
             <div class="form-group">
             <label for="details-company-industry">{{ 'customer.application.details-company-industry' | t }}</label>
             <div class="form-radio">
