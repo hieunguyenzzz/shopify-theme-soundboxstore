@@ -4,7 +4,7 @@
   {% else %}
     {% assign coma = ',' %}
   {% endif %}
-  {% assign prodHandle = prodHandle | append: product.handle | append: coma %}
+  {% assign prodHandle = prodHandle | append: product.handle %}
 {% endfor %}
 {% assign prodHandle = prodHandle | split: ',' %}
 
