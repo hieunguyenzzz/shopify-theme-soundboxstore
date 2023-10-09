@@ -54,7 +54,7 @@
     {% endif %}
     name="add"
     data-add-to-cart
-    class="btn btn--full add-to-cart{% if enable_dynamic_buttons and product.selling_plan_groups == empty %} btn--secondary{% endif %}"
+    class="btn btn--full rfq-hidden add-to-cart{% if enable_dynamic_buttons and product.selling_plan_groups == empty %} btn--secondary{% endif %}"
     {% unless current_variant.available %}
       disabled="disabled"
     {% endunless %}
