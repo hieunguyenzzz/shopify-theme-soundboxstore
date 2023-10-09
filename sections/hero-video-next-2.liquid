@@ -16,7 +16,11 @@
 {% else %}
   {% for block in section.blocks %}
     {% render 'hero-video', block: block %}
+    {% assign hadVideo = true %}
   {% endfor %}
+  {% unless hadVideo %}
+    {% render 'hero-video', block: section %}
+  {% endunless %}
 {% endunless %}
 
 {% schema %}
