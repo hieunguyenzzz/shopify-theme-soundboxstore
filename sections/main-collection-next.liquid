@@ -86,22 +86,12 @@
      }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
-<div
-  id="CollectionAjaxResult"
-  data-section-id="{{ section.id }}"
-  data-section-type="collection-template"
-  data-collection-template="true"
->
+<div>
   {% if block.settings.image_bg %}
     {{
       block.settings.image_bg
       | image_url: width: 700
-      | image_tag:
-        widths: '400, 600, 800 ,1440, 1668',
-        loading: 'lazy',
-        class: 'js-lazy-image',
-        alt: title,
-        class: 'image_bg'
+      | image_tag: widths: '400, 600, 800 ', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
     }}
   {% endif %}
   <div>
@@ -144,12 +134,7 @@
               {{
                 image_bg
                 | image_url: width: 700
-                | image_tag:
-                  widths: '400, 600, 800',
-                  loading: 'lazy',
-                  class: 'js-lazy-image',
-                  alt: title,
-                  class: 'image_bg'
+                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
               }}
             {% endif %}
             <a class="image" href="{{ url }}">
@@ -223,12 +208,7 @@
               {{
                 block.settings.image_bg
                 | image_url: width: 700
-                | image_tag:
-                  widths: '400, 600, 800',
-                  loading: 'lazy',
-                  class: 'js-lazy-image',
-                  alt: title,
-                  class: 'image_bg'
+                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
               }}
             {% endif %}
             <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}">
