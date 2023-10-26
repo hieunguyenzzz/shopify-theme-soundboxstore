@@ -3,7 +3,7 @@
     <div class="flexbox {% if section.settings.image_position == "right" %}row-reverse{% endif %} {% if section.settings.mobile_image_position  == "bottom"%}mobile-column-reverse{% endif %}">
         {% if section.settings.video %}
            <div class="col right-col" >
-          <div class="col-wrap" style="width:100%">
+          <div class="col-wrap" style="width:100%;max-width:528px">
                {{ section.settings.video | video_tag: image_size: '600x', controls: true ,style:'width:100%'}}
           </div>
         </div>
