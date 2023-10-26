@@ -4,7 +4,7 @@
         {% if section.settings.video %}
            <div class="col right-col" >
           <div class="col-wrap" style="width:100%">
-               {{ section.settings.video | video_tag: controls: true ,style:'width:100%'}}
+               {{ section.settings.video | video_tag: image_size: '600x', controls: true ,style:'width:100%'}}
           </div>
         </div>
           {% endif %}
