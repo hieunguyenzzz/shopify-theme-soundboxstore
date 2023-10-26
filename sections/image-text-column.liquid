@@ -1,12 +1,18 @@
 <section class="image-text-column">
   <div class="section-wrap page-width">
     <div class="flexbox {% if section.settings.image_position == "right" %}row-reverse{% endif %} {% if section.settings.mobile_image_position  == "bottom"%}mobile-column-reverse{% endif %}">
+        {% if section.settings.video %}
+           <div class="col right-col">
+          <div class="col-wrap">
+               {{ section.settings.video | video_tag: controls: true }}
+          </div>
+        </div>
+          {% endif %}
       {% if section.settings.image != blank %}
         <div class="col right-col">
           <div class="col-wrap">
-            {% if section.settings.video %}
-                {{ section.settings.video | video_tag }}
-              {% else %}
+          
+            
             <img
               loading="lazy"
               src="{{ section.settings.image | img_url:"750x" }}"
@@ -23,7 +29,6 @@
                 alt="{{ section.settings.mobile_image.alt  |  default: section.settings.title}}"
               >
             {% endif %}
-              {% endif %}
           </div>
         </div>
       {% endif %}
