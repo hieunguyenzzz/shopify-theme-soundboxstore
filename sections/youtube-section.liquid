@@ -7,7 +7,7 @@
     {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
     {%- assign video_id = video_id[1] | split: '&' | first -%}
   {%- endif -%}
-  <div style="width:100%;position:relative;padding-bottom:56%">
+  <div id="youtube-wrap-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56%">
     <iframe
       id="youtube-{{ video_id }}"
       style="position:absolute;top:0;left:0;width:100%;height:100%"
@@ -26,6 +26,7 @@
     }}
   </div>
 </div>
+<script></script>
 {% schema %}
   {
     "name": "Youtube section",
