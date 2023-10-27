@@ -75,7 +75,12 @@
       {%- if section.settings.video_url contains 'youtu.be/' -%}
         {%- assign video_id = section.settings.video_url | split: '.be/' -%}
         {%- assign video_id = video_id[1] | split: '&' | first -%}
-        {{ section.settings.video_url | external_video_url: color: 'white' | external_video_tag }}
+        <div
+          id="YouTubeVideo-{{ section.id }}"
+          class="video-div"
+          data-type="youtube"
+          data-video-id="{{ video_id }}"
+        ></div>
       {%- endif -%}
 
       {%- if section.settings.video_url contains 'vimeo.com' -%}
