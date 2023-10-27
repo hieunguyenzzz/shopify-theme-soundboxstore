@@ -6,6 +6,14 @@
   {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
   {%- assign video_id = video_id[1] | split: '&' | first -%}
 {%- endif -%}
+
+<div
+  id="YouTubeVideo-{{ section.id }}"
+  class="video-div"
+  data-type="youtube"
+  data-video-id="{{ video_id }}"
+></div>
+
 <style>
    #youtube-wrap-{{ video_id }} img{
          transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
