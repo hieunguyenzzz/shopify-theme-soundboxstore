@@ -49,9 +49,9 @@
      player = new YT.Player('ytplayer', {
        height: '360',
        width: '640',
-       controls:false,
-       enablejsapi:1,
-       loop:true,
+       controls:"0",
+       enablejsapi:"1",
+       loop:"1",
        videoId: '{{video_id}}',
         playerVars: {
              'playsinline': 1
@@ -69,7 +69,6 @@
      document.querySelector("#youtube-wrap-{{ video_id }} img").addEventListener('click',()=>{
           wrapper.classList.add("played");
         console.log('onPlayerReady click',player)
-
   event.target.playVideo()
 
      })
