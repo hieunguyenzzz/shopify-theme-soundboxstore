@@ -59,7 +59,7 @@
   }
 </style>
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
-  <div style="width:100%;position:relative;padding-bottom:56.25%">
+  <label for="youtube-modal-input-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56.25%">
     {% if section.settings.image %}
       {{
         section.settings.image
@@ -72,7 +72,7 @@
         </svg>
       </div>
     {% endif %}
-  </div>
+  </label>
 </div>
 <input type="checkbox" name="slideshow-input" class="slideshow-input" id="youtube-modal-input-{{ video_id }}">
 <div id="youtube-modal-{{ video_id }}" class=""><div id="ytplayer"></div></div>
@@ -88,8 +88,8 @@
   var player;
   function onYouTubePlayerAPIReady() {
     player = new YT.Player('ytplayer', {
-      height: '720',
-      width: '1280',
+      height: '969',
+      width: '1723',
       videoId: '{{video_id}}',
        playerVars: {
             'playsinline': 1,'autoplay': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
