@@ -74,7 +74,9 @@
   </label>
 </div>
 <input type="checkbox" name="slideshow-input" class="slideshow-input" id="youtube-modal-input-{{ video_id }}">
-<div id="youtube-modal-{{ video_id }}" class=""><div id="ytplayer"></div></div>
+<label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}" class="">
+  <div id="ytplayer"></div>
+</label>
 <script>
   // Load the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
