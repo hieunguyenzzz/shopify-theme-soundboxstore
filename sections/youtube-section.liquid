@@ -7,43 +7,47 @@
   {%- assign video_id = video_id[1] | split: '&' | first -%}
 {%- endif -%}
 
+<div
+  id="YouTubeVideo-{{ section.id }}"
+  class="video-div"
+  data-type="youtube"
+  data-video-id="{{ video_id }}"
+></div>
+
 <style>
-       #youtube-wrap-{{ video_id }} img{
-             transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
-            pointer-events: none;
-       }
-      #youtube-wrap-{{ video_id }} .text-wrap{
-         position:absolute;top:0;left:0;width:100%;height:100%;
-             transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
-          pointer-events: none;    display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        color: #0006;
-    }
-     #youtube-wrap-{{ video_id }} .text-wrap svg{
-          backdrop-filter: blur(5px);
-      padding: 6px;
-    }
-        #youtube-wrap-{{ video_id }} iframe{
-             position:absolute;top:0;left:0;width:100%;height:100%;
-       }
-      #youtube-wrap-{{ video_id }}.played img{
-        opacity:0;
-        filter:blur(20px);
-        pointer-events: none;
-      }
-        #youtube-wrap-{{ video_id }}.played .text-wrap{
-           opacity:0;
-        filter:blur(20px);
-        pointer-events: none;
-        }
-    #youtube-wrap-{{ video_id }}.hero--padded{
-        max-width: calc(1370px + var(--pageWidthPadding) * 2);
+     #youtube-wrap-{{ video_id }} img{
+           transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
+          pointer-events: none;
+     }
+    #youtube-wrap-{{ video_id }} .text-wrap{
+       position:absolute;top:0;left:0;width:100%;height:100%;
+           transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
+        pointer-events: none;    display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #0006;
   }
+   #youtube-wrap-{{ video_id }} .text-wrap svg{
+        backdrop-filter: blur(5px);
+    padding: 6px;
+  }
+      #youtube-wrap-{{ video_id }} iframe{
+           position:absolute;top:0;left:0;width:100%;height:100%;
+     }
+    #youtube-wrap-{{ video_id }}.played img{
+      opacity:0;
+      filter:blur(20px);
+      pointer-events: none;
+    }
+      #youtube-wrap-{{ video_id }}.played .text-wrap{
+         opacity:0;
+      filter:blur(20px);
+      pointer-events: none;
+      }
 </style>
-<div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
-  <div style="width:100%;position:relative;padding-bottom:56.25%">
+<div class="page-width hero--padded">
+  <div id="youtube-wrap-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56.25%">
     <div id="ytplayer"></div>
     {% if section.settings.image %}
       {{
@@ -76,7 +80,7 @@
       width: '1280',
       videoId: '{{video_id}}',
        playerVars: {
-            'playsinline': 1,'autoplay': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
+            'playsinline': 1,'autoplay': 1, 'controls': 0 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
       enablejsapi:"1",
       loop:"1",
           },
@@ -110,9 +114,9 @@
     "name": "Youtube section",
     "settings": [
        {
-  "type": "checkbox",
-  "id": "popup",
-  "label": "Popuo"
+  "type": "image_picker",
+  "id": "image",
+  "label": "Youtube image"
 
 },
      {
