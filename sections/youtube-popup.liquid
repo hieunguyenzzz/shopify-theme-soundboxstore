@@ -45,7 +45,6 @@
       display:none;
     }
      #youtube-modal-input-{{ video_id }}:checked +  #youtube-modal-{{ video_id }} {
-      display: block;
       position: fixed;
       width: 100%;
       height: 100%;
@@ -55,6 +54,8 @@
       z-index: 999;
       align-items: center;
       background: #ffffffcf;
+          display: flex;
+    justify-content: center;
   }
 </style>
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
