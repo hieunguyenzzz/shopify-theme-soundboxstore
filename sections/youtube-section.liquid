@@ -9,6 +9,7 @@
   {%- endif -%}
   <div style="width:100%;position:relative;padding-bottom:56%">
     <iframe
+      id="youtube-{{ video_id }}"
       style="position:absolute;top:0;left:0;width:100%;height:100%"
       width="560"
       height="315"
@@ -18,12 +19,19 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
     ></iframe>
+    {{ section.settings.image | image_url: width: 1024 | image_tag: style:'position:absolute;top:0;left:0;width:100%;height:100%' , 'custom-class', loading: 'lazy' }}
   </div>
 </div>
 {% schema %}
   {
     "name": "Youtube section",
     "settings": [
+       {
+  "type": "image_picker",
+  "id": "image",
+  "label": "Youtube image"
+
+},
      {
   "type": "video_url",
   "id": "external_video_url",
