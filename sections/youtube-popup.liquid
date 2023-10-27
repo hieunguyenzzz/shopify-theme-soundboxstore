@@ -54,7 +54,7 @@
     justify-content: center;
       opacity:0;
       visibility:hidden;
-       transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
+       transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
     }
      #youtube-modal-input-{{ video_id }}:checked +  #youtube-modal-{{ video_id }} {
           opacity:1;
@@ -86,49 +86,56 @@
   <div id="ytplayer"></div>
 </label>
 <script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '1006',
-      width: '1788',
-      videoId: '{{video_id}}',
-       playerVars: {
-            'playsinline': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
-      enablejsapi:"1",
-      loop:"1",
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '1006',
+        width: '1788',
+        videoId: '{{video_id}}',
+         playerVars: {
+              'playsinline': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
+        enablejsapi:"1",
+        loop:"1",
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+      });
+    }
+     const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
+    function onPlayerReady(event) {
+        // event.target.playVideo()
+         console.log('onPlayerReady',player)
+      document.querySelector("#youtube-modal-input-{{ video_id }}").addEventListener("input", (e) => {
+        if(e.target.checked){
+         player.playVideo()
+        }else{
+           player.stopVideo()
+        }
+  });
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        function onPlayerStateChange(event) {
+          console.log(event)
+          if (event.data == YT.PlayerState.PLAYING) {
+            console.log('YT.PlayerState.PLAYING ')
+                  // wrapper.classList.add("played");
           }
-    });
-  }
-   const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
-  function onPlayerReady(event) {
-      // event.target.playVideo()
-       console.log('onPlayerReady',player)
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      function onPlayerStateChange(event) {
-        console.log(event)
-        if (event.data == YT.PlayerState.PLAYING) {
-          console.log('YT.PlayerState.PLAYING ')
-                // wrapper.classList.add("played");
+          if (event.data == YT.PlayerState.ENDED) {
+          }
         }
-        if (event.data == YT.PlayerState.ENDED) {
-        }
-      }
 </script>
 {% schema %}
   {
