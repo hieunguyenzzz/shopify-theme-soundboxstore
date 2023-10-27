@@ -1,10 +1,10 @@
 <div class="page-width hero--padded">
-  {%- if section.settings.video_url contains 'youtube.com/watch' -%}
-    {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+  {%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
+    {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
     {%- assign video_id = video_id[1] | split: '&' | first -%}
   {%- endif -%}
-  {%- if section.settings.video_url contains 'youtu.be/' -%}
-    {%- assign video_id = section.settings.video_url | split: '.be/' -%}
+  {%- if section.settings.external_video_url contains 'youtu.be/' -%}
+    {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
     {%- assign video_id = video_id[1] | split: '&' | first -%}
   {%- endif -%}
   <iframe
