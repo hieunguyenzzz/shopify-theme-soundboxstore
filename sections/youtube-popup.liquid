@@ -101,7 +101,7 @@
       width: '1788',
       videoId: '{{video_id}}',
        playerVars: {
-            'playsinline': 1,'autoplay': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
+            'playsinline': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
       enablejsapi:"1",
       loop:"1",
           },
@@ -113,7 +113,7 @@
   }
    const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
   function onPlayerReady(event) {
-      event.target.playVideo()
+      // event.target.playVideo()
        console.log('onPlayerReady',player)
       }
 
@@ -124,7 +124,7 @@
         console.log(event)
         if (event.data == YT.PlayerState.PLAYING) {
           console.log('YT.PlayerState.PLAYING ')
-                wrapper.classList.add("played");
+                // wrapper.classList.add("played");
         }
         if (event.data == YT.PlayerState.ENDED) {
         }
