@@ -1,3 +1,11 @@
+{%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
+  {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
+  {%- assign video_id = video_id[1] | split: '&' | first -%}
+{%- endif -%}
+{%- if section.settings.external_video_url contains 'youtu.be/' -%}
+  {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
+  {%- assign video_id = video_id[1] | split: '&' | first -%}
+{%- endif -%}
 <style>
    #youtube-wrap-{{ video_id }} img{
          transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
@@ -9,14 +17,6 @@
   }
 </style>
 <div class="page-width hero--padded">
-  {%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
-    {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
-    {%- assign video_id = video_id[1] | split: '&' | first -%}
-  {%- endif -%}
-  {%- if section.settings.external_video_url contains 'youtu.be/' -%}
-    {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
-    {%- assign video_id = video_id[1] | split: '&' | first -%}
-  {%- endif -%}
   <div id="youtube-wrap-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56%">
     <iframe
       id="youtube-{{ video_id }}"
