@@ -92,6 +92,7 @@
       //    The function indicates that when playing a video (state=1),
       //    the player should play for six seconds and then stop.
       function onPlayerStateChange(event) {
+        console.log(event)
         if (event.data == YT.PlayerState.PLAYING && !done) {
           console.log(Date.now())
         }
