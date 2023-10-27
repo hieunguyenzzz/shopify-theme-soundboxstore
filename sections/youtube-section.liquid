@@ -65,9 +65,29 @@
       controls:0,
       enablejsapi:1,
       loop:1,
-      videoId: '{{video_id}}'
+      videoId: '{{video_id}}',
+       playerVars: {
+            'playsinline': 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
     });
   }
+  function onPlayerReady(event) {
+        event.target.playVideo();
+       console.log('onPlayerReady')
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          console.log(Date.now())
+        }
+      }
 </script>
 {% schema %}
   {
