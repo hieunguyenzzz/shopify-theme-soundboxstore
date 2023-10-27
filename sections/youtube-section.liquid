@@ -89,9 +89,7 @@
        const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
       document.querySelector("#youtube-wrap-{{ video_id }} img").addEventListener('click',()=>{
   player.playVideo()
-          wrapper.classList.add("played");
-          let iframeE =wrapper.querySelector("iframe") ;
-          iframeE.src=iframeE.src+"&autoplay=1";
+
       })
         }
 
