@@ -80,8 +80,8 @@
        //    the player should play for six seconds and then stop.
        function onPlayerStateChange(event) {
          console.log(event)
-         if (event.data == YT.PlayerState.PLAYING && !done) {
-           console.log(Date.now())
+         if (event.data == YT.PlayerState.PLAYING) {
+           console.log('YT.PlayerState.PLAYING ')
          }
        }
 </script>
