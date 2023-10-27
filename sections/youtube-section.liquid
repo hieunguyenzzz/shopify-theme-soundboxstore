@@ -1,12 +1,22 @@
 <div class="page-width hero--padded">
-        {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
-        {%- assign video_id = video_id[1] | split: '&' | first -%}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video_id }}?si=s8rGyn53M-jBXKxy" 
-  title="YouTube video player" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  allowfullscreen></iframe>
-  </div>
+  {%- if section.settings.video_url contains 'youtube.com/watch' -%}
+    {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+    {%- assign video_id = video_id[1] | split: '&' | first -%}
+  {%- endif -%}
+  {%- if section.settings.video_url contains 'youtu.be/' -%}
+    {%- assign video_id = section.settings.video_url | split: '.be/' -%}
+    {%- assign video_id = video_id[1] | split: '&' | first -%}
+  {%- endif -%}
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/{{ video_id }}?si=s8rGyn53M-jBXKxy"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
 {% schema %}
   {
     "name": "Youtube section",
