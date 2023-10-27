@@ -57,46 +57,53 @@
 <div id="ytplayer"></div>
 
 <script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '360',
-      width: '640',
-      controls:false,
-      enablejsapi:1,
-      loop:true,
-      videoId: '{{video_id}}',
-       playerVars: {
-            'playsinline': 1
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-    });
-  }
-  function onPlayerReady(event) {
-        event.target.playVideo();
-       console.log('onPlayerReady')
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      function onPlayerStateChange(event) {
-        console.log(event)
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          console.log(Date.now())
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '360',
+        width: '640',
+        controls:false,
+        enablejsapi:1,
+        loop:true,
+        videoId: '{{video_id}}',
+         playerVars: {
+              'playsinline': 1
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+      });
+    }
+    function onPlayerReady(event) {
+          event.target.playVideo();
+         console.log('onPlayerReady')
+       const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
+      document.querySelector("#youtube-wrap-{{ video_id }} img").addEventListener('click',()=>{
+  player.play()
+          wrapper.classList.add("played");
+          let iframeE =wrapper.querySelector("iframe") ;
+          iframeE.src=iframeE.src+"&autoplay=1";
+      })
         }
-      }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        function onPlayerStateChange(event) {
+          console.log(event)
+          if (event.data == YT.PlayerState.PLAYING && !done) {
+            console.log(Date.now())
+          }
+        }
 </script>
 {% schema %}
   {
