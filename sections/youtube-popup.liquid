@@ -56,6 +56,9 @@
           display: flex;
     justify-content: center;
   }
+  #youtube-modal-{{ video_id }} iframe{
+    max-width:1440px
+  }
 </style>
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
   <label for="youtube-modal-input-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56.25%">
@@ -74,7 +77,7 @@
   </label>
 </div>
 <input type="checkbox" name="slideshow-input" class="slideshow-input" id="youtube-modal-input-{{ video_id }}">
-<label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}" class="">
+<label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
   <div id="ytplayer"></div>
 </label>
 <script>
