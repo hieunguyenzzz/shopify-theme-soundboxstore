@@ -116,6 +116,7 @@
         // event.target.playVideo()
          console.log('onPlayerReady',player)
       document.querySelector("#youtube-modal-input-{{ video_id }}").addEventListener("input", (e) => {
+        console.log('e.target.checked',e.target.checked)
         if(e.target.checked){
          player.playVideo()
         }else{
