@@ -66,6 +66,7 @@
    }
    function onPlayerReady(event) {
        event.target.playVideo()
+          wrapper.classList.add("played");
         console.log('onPlayerReady',player)
       const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
      document.querySelector("#youtube-wrap-{{ video_id }} img").addEventListener('click',()=>{
