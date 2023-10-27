@@ -92,6 +92,9 @@
            console.log('YT.PlayerState.PLAYING ')
                  wrapper.classList.add("played");
          }
+         if (event.data == YT.PlayerState.ENDED) {
+                 wrapper.classList.remove("played");
+         }
        }
 </script>
 {% schema %}
