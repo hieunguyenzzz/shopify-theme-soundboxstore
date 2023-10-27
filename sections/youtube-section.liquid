@@ -18,6 +18,9 @@
    #youtube-wrap-{{ video_id }} img{
          transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
    }
+    #youtube-wrap-{{ video_id }} iframe{
+         position:absolute;top:0;left:0;width:100%;height:100%;
+   }
   #youtube-wrap-{{ video_id }}.played img{
     opacity:0;
     filter:blur(20px);
@@ -49,13 +52,9 @@
      player = new YT.Player('ytplayer', {
        height: '360',
        width: '640',
-       controls:"0",
-       enablejsapi:"1",
-       loop:"1",
        videoId: '{{video_id}}',
         playerVars: {
-             'playsinline': 1,
-                 controls:"0",
+             'playsinline': 1,'autoplay': 1, 'controls': 0 ,'cc_load_policy':0,
        enablejsapi:"1",
        loop:"1",
            },
