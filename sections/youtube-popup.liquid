@@ -77,6 +77,16 @@
     font-size: 1.6em;
     border-radius: 99em;
   }
+   #youtube-modal-input-{{ video_id }}:checked + label img{
+      opacity:0;
+      filter:blur(20px);
+      pointer-events: none;
+    }
+      #youtube-modal-input-{{ video_id }}:checked + label .text-wrap{
+         opacity:0;
+      filter:blur(20px);
+      pointer-events: none;
+      }
 </style>
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
   <input
