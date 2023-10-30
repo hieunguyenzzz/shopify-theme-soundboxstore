@@ -172,7 +172,8 @@
           console.log(event)
           if (event.data == YT.PlayerState.PLAYING) {
             console.log('YT.PlayerState.PLAYING ')
-                  // wrapper.classList.add("played");
+                  wrapper.classList.add("played");
+              document.querySelector("#youtube-modal-input-{{ video_id }}").checked=true
           }
           if (event.data == YT.PlayerState.ENDED) {
           }
