@@ -97,7 +97,13 @@
     {% endif %}
   </label>
 </div>
-<input type="checkbox" name="slideshow-input" class="slideshow-input" id="youtube-modal-input-{{ video_id }}">
+<input
+  type="checkbox"
+  name="slideshow-input"
+  class="slideshow-input hidden"
+  hidden
+  id="youtube-modal-input-{{ video_id }}"
+>
 <label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
   <div style="width:100%;position:relative;padding-bottom:56.25%">
     <div id="ytplayer"></div>
