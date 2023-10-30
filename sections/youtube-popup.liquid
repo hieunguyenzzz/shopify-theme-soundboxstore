@@ -56,7 +56,7 @@
        transition: all 0.3s cubic-bezier(0.4, 0, 1, 1);
 
     }
-     #youtube-modal-input-{{ video_id }}:checked ~ #youtube-modal-{{ video_id }} {
+     #youtube-modal-input-{{ video_id }}:checked + #youtube-modal-{{ video_id }} {
           opacity:1;
        position: fixed;
             display:flex;
@@ -82,7 +82,7 @@
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
   <input
     type="checkbox"
-    name="slideshow-input"
+    name="youtube-modal-input-{{ video_id }}"
     class="slideshow-input hidden"
     hidden
     id="youtube-modal-input-{{ video_id }}"
