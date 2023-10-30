@@ -108,7 +108,10 @@
       </svg>
     </div>
   </label>
-  <label for="youtube-modal-input-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56.25%">
+  <label
+    for="youtube-modal-input-{{ video_id }}"
+    style="width:100%;position:relative;padding-bottom:56.25%;  pointer-events: none;"
+  >
     {% if section.settings.image %}
       {{
         section.settings.image
