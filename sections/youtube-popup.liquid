@@ -82,6 +82,32 @@
   }
 </style>
 <div id="youtube-wrap-{{ video_id }}" class="page-width hero--padded">
+  <input
+    type="checkbox"
+    name="slideshow-input"
+    class="slideshow-input hidden"
+    hidden
+    id="youtube-modal-input-{{ video_id }}"
+  >
+  <label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
+    <div style="width:100%;position:relative;padding-bottom:56.25%">
+      <div id="ytplayer"></div>
+    </div>
+
+    <button id="youtube-modal-close-{{ video_id }}">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+      </svg>
+    </button>
+  </label>
   <label for="youtube-modal-input-{{ video_id }}" style="width:100%;position:relative;padding-bottom:56.25%">
     {% if section.settings.image %}
       {{
@@ -97,32 +123,7 @@
     {% endif %}
   </label>
 </div>
-<input
-  type="checkbox"
-  name="slideshow-input"
-  class="slideshow-input hidden"
-  hidden
-  id="youtube-modal-input-{{ video_id }}"
->
-<label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
-  <div style="width:100%;position:relative;padding-bottom:56.25%">
-    <div id="ytplayer"></div>
-  </div>
 
-  <button id="youtube-modal-close-{{ video_id }}">
-    <svg
-      stroke="currentColor"
-      fill="currentColor"
-      stroke-width="0"
-      viewBox="0 0 24 24"
-      height="1em"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
-    </svg>
-  </button>
-</label>
 <script>
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
