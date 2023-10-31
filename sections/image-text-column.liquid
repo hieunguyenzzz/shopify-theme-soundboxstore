@@ -1,33 +1,45 @@
+{% capture mediaitem %}
+  {% for block in section.blocks %}
+    {% if block.type == 'youtube-popup' %}
+      <div style="width:100%;max-width:528px">
+      {% render 'youtube-popup' ,block :block %}
+      {% assign hadmedia = true %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
 <section class="image-text-column">
   <div class="section-wrap page-width">
     <div class="flexbox {% if section.settings.image_position == "right" %}row-reverse{% endif %} {% if section.settings.mobile_image_position  == "bottom"%}mobile-column-reverse{% endif %}">
-        {% if section.settings.video %}
-           <div class="col right-col" >
+      {% if section.settings.video %}
+        <div class="col right-col">
           <div class="col-wrap" style="width:100%;max-width:528px">
-               {{ section.settings.video | video_tag: image_size: '600x', controls: true ,style:'width:100%'}}
+            {{ section.settings.video | video_tag: image_size: '600x', controls: true, style: 'width:100%' }}
           </div>
         </div>
-          {% endif %}
+      {% endif %}
       {% if section.settings.image != blank %}
         <div class="col right-col">
-          <div class="col-wrap">
-          
-            
-            <img
-              loading="lazy"
-              src="{{ section.settings.image | img_url:"750x" }}"
-              {% if section.settings.mobile_image != blank %}
-                class="desktop-only"
-              {% endif %}
-              alt="{{ section.settings.image.alt | default:section.settings.title }}"
-            >
-            {% if section.settings.mobile_image != blank %}
+          <div class="col-wrap" style="width:100%; display: flex; justify-content: center;">
+            {% if hadmedia %}
+              {{ mediaitem }}
+            {% else %}
               <img
                 loading="lazy"
-                src="{{ section.settings.mobile_image | img_url:"520x" }}"
-                class="mobile-only"
-                alt="{{ section.settings.mobile_image.alt  |  default: section.settings.title}}"
+                src="{{ section.settings.image | img_url:"750x" }}"
+                {% if section.settings.mobile_image != blank %}
+                  class="desktop-only"
+                {% endif %}
+                alt="{{ section.settings.image.alt | default:section.settings.title }}"
               >
+              {% if section.settings.mobile_image != blank %}
+                <img
+                  loading="lazy"
+                  src="{{ section.settings.mobile_image | img_url:"520x" }}"
+                  class="mobile-only"
+                  alt="{{ section.settings.mobile_image.alt  |  default: section.settings.title}}"
+                >
+              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -64,88 +76,107 @@
 </section>
 
 {% schema %}
- {
-   "name": "Image Text Column",
-"class": "index-section",
-   "settings": [
-     {
-         "type": "video",
-         "id": "video",
-         "label": "video"
-       },
-	{
-         "type": "image_picker",
-         "id": "image",
-         "label": "Image"
-       },
-	{
-         "type": "image_picker",
-         "id": "mobile_image",
-         "label": "Mobile Image"
-       },
-       {
-         "type": "select",
-         "id": "image_position",
-         "label": "Image Position",
-         "default": "left",
-         "options": [
-           {
-             "value": "left",
-             "label": "Left"
-           },
-           {
-             "value": "right",
-             "label": "Right"
-           }
-         ]
-       },
-       {
-         "type": "select",
-         "id": "mobile_image_position",
-         "label": "Mobile Image Position",
-         "default": "top",
-         "options": [
-           {
-             "value": "top",
-             "label": "Top"
-           },
-           {
-             "value": "bottom",
-             "label": "Bottom"
-           }
-         ]
-       },
-	{
-         "type": "text",
-         "id": "title",
-         "label": "Title"
-       },
-	{
-         "type": "image_picker",
-         "id": "title_icon",
-         "label": "Title Icon"
-       },
-	{
-         "type": "richtext",
-         "id": "detection",
-         "label": "Detection"
-       },
-	{
-         "type": "text",
-         "id": "button_text",
-         "label": "Button Text"
-       },
-	{
-         "type": "url",
-         "id": "button_link",
-         "label": "Button Link"
-       }
-],
-   "presets": [
-     {
-       "name": "Image Text Column",
-       "blocks": []
-     }
-   ]
- }
+{
+  "name": "Image Text Column",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_position",
+      "label": "Mobile Image Position",
+      "default": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "title_icon",
+      "label": "Title Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "detection",
+      "label": "Detection"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "youtube-popup",
+      "name": "youtube-popup",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Youtube image"
+        },
+        {
+          "type": "video_url",
+          "id": "external_video_url",
+          "label": "Youtube video",
+          "accept": ["youtube"]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Text Column",
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}

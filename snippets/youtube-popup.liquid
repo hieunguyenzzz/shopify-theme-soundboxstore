@@ -1,0 +1,180 @@
+{%- if block.settings.external_video_url contains 'youtube.com/watch' -%}
+  {%- assign video_id = block.settings.external_video_url | split: 'v=' -%}
+  {%- assign video_id = video_id[1] | split: '&' | first -%}
+{%- endif -%}
+{%- if block.settings.external_video_url contains 'youtu.be/' -%}
+  {%- assign video_id = block.settings.external_video_url | split: '.be/' -%}
+  {%- assign video_id = video_id[1] | split: '&' | first -%}
+{%- endif -%}
+
+<style>
+         #youtube-wrap-{{ video_id }} img{
+               transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
+               border-radius: 8px;
+         }
+        #youtube-wrap-{{ video_id }} .text-wrap{
+           position:absolute;top:0;left:0;width:100%;height:100%;
+               transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          color: #0006;
+      }
+       #youtube-wrap-{{ video_id }} .text-wrap svg{
+            backdrop-filter: blur(5px);
+        padding: 6px;
+      }
+          #youtube-modal-{{ video_id }} iframe{
+               position:absolute;top:0;left:0;width:100%;height:100%;
+         }
+        #youtube-wrap-{{ video_id }}.played img{
+          opacity:0;
+          filter:blur(20px);
+          pointer-events: none;
+        }
+          #youtube-wrap-{{ video_id }}.played .text-wrap{
+             opacity:0;
+          filter:blur(20px);
+          pointer-events: none;
+          }
+ 
+    #youtube-modal-{{ video_id }}{
+            position: absolute;      padding: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      z-index: 999;
+      align-items: center;
+      background:#000000cf;
+          display: flex;
+    justify-content: center;
+      opacity:0;
+       /* transition: all 0.3s cubic-bezier(0.4, 0, 1, 1); */
+
+    }
+     #youtube-modal-input-{{ video_id }}:checked + #youtube-modal-{{ video_id }} {
+          opacity:1;
+       position: fixed;
+            display:flex;
+       padding:60px min(60px,4vw);z-index:99999999;
+  }
+  #youtube-modal-{{ video_id }} iframe{
+    /* max-width:1440px */
+  }
+  #youtube-modal-close-{{ video_id }}{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    font-size: 1.6em;
+    border-radius: 99em;
+  }
+</style>
+<div id="youtube-wrap-{{ video_id }}" style="position:relative;">
+  <input
+    type="checkbox"
+    name="youtube-modal-input-{{ video_id }}"
+    class="slideshow-input hidden"
+    hidden
+    id="youtube-modal-input-{{ video_id }}"
+  >
+  <label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
+    <div style="width:100%;position:relative;padding-bottom:56.25%">
+      <div id="ytplayer"></div>
+    </div>
+
+    <div id="youtube-modal-close-{{ video_id }}">
+      <svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+      </svg>
+    </div>
+  </label>
+  <label
+    for="youtube-modal-input-{{ video_id }}"
+    style="width:100%;position:relative;padding-bottom:67%;  pointer-events: none;"
+  >
+    {% if block.settings.image %}
+      {{
+        block.settings.image
+        | image_url: width: 1024
+        | image_tag: style: 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;', loading: 'lazy'
+      }}
+      <div class="text-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
+          <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
+        </svg>
+      </div>
+    {% endif %}
+  </label>
+</div>
+
+<script>
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '1006',
+        width: '1788',
+        videoId: '{{video_id}}',
+         playerVars: {
+              'playsinline': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
+        enablejsapi:"1",
+        loop:"1",
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+      });
+    }
+     const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
+    function onPlayerReady(event) {
+        // event.target.playVideo()
+         console.log('onPlayerReady',player)
+      document.querySelector("#youtube-modal-input-{{ video_id }}").addEventListener("input", (e) => {
+        console.log('e.target.checked',e.target.checked)
+        if(e.target.checked){
+         player.playVideo()
+        }else{
+           player.stopVideo()
+        }
+  });
+        }
+
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        function onPlayerStateChange(event) {
+          console.log(event)
+          if (event.data == YT.PlayerState.PLAYING) {
+            console.log('YT.PlayerState.PLAYING ')
+              document.querySelector("#youtube-modal-input-{{ video_id }}").checked=true
+          }
+          if (event.data == YT.PlayerState.ENDED) {
+          }
+        }
+</script>
+
