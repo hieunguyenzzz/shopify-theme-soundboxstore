@@ -25,7 +25,7 @@
             backdrop-filter: blur(5px);
         padding: 6px;
       }
-        
+
         #youtube-wrap-{{ video_id }}.played img{
           opacity:0;
           filter:blur(20px);
@@ -36,7 +36,7 @@
           filter:blur(20px);
           pointer-events: none;
           }
- 
+
     #youtube-modal-{{ video_id }}{
             position: absolute;      padding: 0;
       width: 100%;
@@ -44,7 +44,6 @@
       top: 0;
       left: 0;
       display: flex;
-      z-index: 999;
       align-items: center;
       background:#000000cf;
           display: flex;
@@ -77,6 +76,10 @@
     font-size: 1.6em;
     border-radius: 99em;
   }
+  [data--player-state] label{
+        pointer-events: auto!important;
+        cursor: pointer;
+}
 </style>
 <div id="youtube-wrap-{{ video_id }}" style="position:relative;">
   <input
@@ -87,15 +90,16 @@
     id="youtube-modal-input-{{ video_id }}"
   >
   <label for="youtube-modal-input-{{ video_id }}" id="youtube-modal-{{ video_id }}">
-    <div style="
-    width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-">
-        <div id="ytplayer"></div>
+    <div
+      style="
+        width: 100%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <div id="ytplayer"></div>
     </div>
-   
 
     <div id="youtube-modal-close-{{ video_id }}">
       <svg
@@ -119,7 +123,9 @@
       {{
         block.settings.image
         | image_url: width: 1024
-        | image_tag: style: 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;', loading: 'lazy'
+        | image_tag:
+          style: 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;',
+          loading: 'lazy'
       }}
       <div class="text-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
@@ -131,56 +137,63 @@
 </div>
 
 <script>
-    // Load the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/player_api';
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // Replace the 'ytplayer' element with an <iframe> and
-    // YouTube player after the API code downloads.
-    var player;
-    function onYouTubePlayerAPIReady() {
-      player = new YT.Player('ytplayer', {
-        height: '1006',
-        width: '1788',
-        videoId: '{{video_id}}',
-         playerVars: {
-              'playsinline': 1, 'controls': 1 ,'cc_load_policy':0,'iv_load_policy':3,loop:1,rel:0,
-        enablejsapi:"1",
-        loop:"1",
-            },
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-      });
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '1006',
+      width: '1788',
+      videoId: '{{video_id}}',
+      playerVars: {
+        playsinline: 1,
+        controls: 1,
+        cc_load_policy: 0,
+        iv_load_policy: 3,
+        loop: 1,
+        rel: 0,
+        enablejsapi: '1',
+        loop: '1',
+      },
+      events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  }
+  const wrapper = document.querySelector('#youtube-wrap-{{ video_id }}');
+  function onPlayerReady(event) {
+    // event.target.playVideo()
+    // console.log('onPlayerReady', player);
+    document.querySelector('#youtube-modal-input-{{ video_id }}').addEventListener('input', (e) => {
+      console.log('e.target.checked',e.target.checked)
+      if (e.target.checked) {
+        player.playVideo();
+      } else {
+        player.pauseVideo();
+      }
+    });
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  function onPlayerStateChange(event) {
+    console.log('event.data',event.data,YT.PlayerState)
+    wrapper.dataset['PlayerState']=event.data
+    if (event.data == YT.PlayerState.BUFFERING) {
+      document.querySelector('#youtube-modal-input-{{ video_id }}').checked = true;
     }
-     const wrapper = document.querySelector("#youtube-wrap-{{ video_id }}")
-    function onPlayerReady(event) {
-        // event.target.playVideo()
-         console.log('onPlayerReady',player)
-      document.querySelector("#youtube-modal-input-{{ video_id }}").addEventListener("input", (e) => {
-        console.log('e.target.checked',e.target.checked)
-        if(e.target.checked){
-         player.playVideo()
-        }else{
-           player.stopVideo()
-        }
-  });
-        }
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        function onPlayerStateChange(event) {
-          console.log(event)
-          if (event.data == YT.PlayerState.PLAYING) {
-            console.log('YT.PlayerState.PLAYING ')
-              document.querySelector("#youtube-modal-input-{{ video_id }}").checked=true
-          }
-          if (event.data == YT.PlayerState.ENDED) {
-          }
-        }
+    if (event.data == YT.PlayerState.UNSTARTED) {
+      document.querySelector('#youtube-modal-input-{{ video_id }}').checked = true;
+    }
+    if (event.data == YT.PlayerState.ENDED) {
+    }
+  }
 </script>
-
