@@ -88,6 +88,50 @@ calc(100vw - 4rem)
   {%- assign imgs = product.images | where: 'alt', vaSku -%}
 {%- endunless -%}
 {%- assign slide_count = imgs.size -%}
+
+{% capture youtubeopener %}
+  {% if youtubeId %}
+    <div class="image-gallery-block">
+      <div
+        class="gallery-wrap"
+        {%- if lazy -%}
+          style="display:none ;"
+        {%- endif -%}
+      >
+      <label
+      for="youtube-modal-input-{{ youtubeId }}"
+      style="width:100%;position:absolute;height:100%; pointer-events: auto;    display: flex; justify-content: center; align-items: center;">
+      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"   
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events: none;",
+      loading="lazy"/>
+            <svg style="overflow: visible;z-index: 1;" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
+              <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
+            </svg>
+      </label>
+        {{ new_label }}
+      </div>
+    </div>
+  {% endif %}
+{% endcapture %}
+{% capture youtubeopenerthumb %}
+  {% if youtubeId %}
+    <div style="order:3"  class="thumnail-gallery-block"      style="pointer-events: none;">
+      <div class="thumbnail-wrap">
+        <label
+        for="youtube-modal-input-{{ youtubeId }}"
+        style="width:100%;position:absolute;height:100%; pointer-events: auto;"
+      >
+      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/1.jpg"   
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;",
+      loading="lazy"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
+              <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
+            </svg>
+      </label>
+      </div>
+    </div>
+  {% endif %}
+{% endcapture %}
 <div class="product-main-slider">
   <div class="slider-wrap">
     <div class="image-gallery-main">
@@ -133,6 +177,12 @@ calc(100vw - 4rem)
             {{ new_label }}
           </div>
         </div>
+        {% if forloop.index == 2 %}
+          {{ youtubeopener }}
+        {% endif %}
+        {% if forloop.index < 2 and forloop.last %}
+          {{ youtubeopener }}
+        {% endif %}
       {%- endfor -%}
       {%- for video in videos -%}
         {%- assign had_images = true -%}
@@ -173,7 +223,7 @@ calc(100vw - 4rem)
       <div class="thumbnail-slider">
         <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
           {%- for image in imgs -%}
-            <div class="thumnail-gallery-block">
+            <div style="order:{{ forloop.index }}" class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
                 <img
                   loading="lazy"
@@ -184,9 +234,15 @@ calc(100vw - 4rem)
                 >
               </div>
             </div>
+            {% if forloop.index == 2 %}
+              {{ youtubeopenerthumb }}
+            {% endif %}
+            {% if forloop.index < 2 and forloop.last %}
+             {{ youtubeopenerthumb }}
+            {% endif %}
           {%- endfor -%}
           {%- for video in videos -%}
-            <div class="thumnail-gallery-block">
+            <div style="order:{{ forloop.index }}"  class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
                 <img
                   src="{{ video | image_url : width: 100 }}"
@@ -209,23 +265,7 @@ calc(100vw - 4rem)
               </div>
             </div>
           {%- endfor -%}
-          {% if youtubeId %}
-            <div class="thumnail-gallery-block"      style="pointer-events: none;">
-              <div class="thumbnail-wrap">
-                <label
-                for="youtube-modal-input-{{ youtubeId }}"
-                style="width:100%;position:absolute;height:100%; pointer-events: auto;"
-              >
-              <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/1.jpg"   
-              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;",
-              loading="lazy"/>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
-                      <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
-                    </svg>
-              </label>
-              </div>
-            </div>
-          {% endif %}
+        
         </div>
       </div>
     </div>
@@ -324,6 +364,12 @@ calc(100vw - 4rem)
               {{ new_label }}
             </div>
           </div>
+          {% if forloop.index == 2 %}
+            {{ youtubeopener }}
+          {% endif %}
+          {% if forloop.index < 2 and forloop.last %}
+            {{ youtubeopener }}
+          {% endif %}
         {%- endfor -%}
         {%- for video in videos -%}
           {%- assign had_images = true -%}
@@ -375,7 +421,7 @@ calc(100vw - 4rem)
         <div class="thumbnail-slider">
           <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
             {%- for image in imgs -%}
-              <div class="thumnail-gallery-block">
+              <div style="order:{{ forloop.index }}"  class="thumnail-gallery-block">
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ image | image_url : width: 100 }}"
@@ -386,9 +432,15 @@ calc(100vw - 4rem)
                   >
                 </div>
               </div>
+              {% if forloop.index == 2 %}
+                {{ youtubeopenerthumb }}
+              {% endif %}
+              {% if forloop.index < 2 and forloop.last %}
+               {{ youtubeopenerthumb }}
+              {% endif %}
             {%- endfor -%}
             {%- for video in videos -%}
-              <div class="thumnail-gallery-block">
+              <div style="order:{{ forloop.index }}"  class="thumnail-gallery-block">
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ video | image_url : width: 100 }}"
@@ -411,23 +463,7 @@ calc(100vw - 4rem)
                 </div>
               </div>
             {%- endfor -%}
-            {% if youtubeId %}
-              <div class="thumnail-gallery-block"      style="pointer-events: none;">
-                <div class="thumbnail-wrap">
-                  <label
-                  for="youtube-modal-input-{{ youtubeId }}"
-                  style="width:100%;position:absolute;height:100%; pointer-events: auto;"
-                >
-                <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/1.jpg"   
-                style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;",
-                loading="lazy"/>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
-                        <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
-                      </svg>
-                </label>
-                </div>
-              </div>
-            {% endif %}
+            
           </div>
         </div>
       </div>
