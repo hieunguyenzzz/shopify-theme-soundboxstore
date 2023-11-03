@@ -477,7 +477,7 @@ calc(100vw - 4rem)
 
 
 {% if youtubeId %}
-  <div style="position: fixed;z-index: 9999999; ">
+  <div style="position: fixed;z-index: 9999999; overflow:hidden">
     {% render 'youtube-popup' ,blockid:'blockid', video_id:youtubeId %}
   </div>
 {% endif %}
