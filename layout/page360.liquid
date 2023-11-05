@@ -11,13 +11,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NGK2QSL');</script>
     <!-- End Google Tag Manager -->
-    <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification"/>
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
+<meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link rel="canonical" href="{{ canonical_url }}">
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
     <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
     <link rel="preload" as="script" href="{{ 'theme.min.js' | asset_url }}">
     <link href="https://cdn.shopify.com" rel="preconnect">
@@ -33,7 +42,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {%- render 'seo-title' -%}
 
     {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
+      {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta name="description" content="{{ page_description | escape }}">
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}

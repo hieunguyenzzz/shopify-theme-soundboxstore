@@ -155,6 +155,9 @@
   <a href="{{ blog.url }}" class="btn return-link"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-left" viewBox="0 0 50 15"><path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/></svg> {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
 </div>
 
+{%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.article -%}
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -195,7 +198,9 @@
     "name": {{ shop.name | json }}
   }
 }
+{%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
 </script>
+{%- endif -%}
 
 {% schema %}
   {

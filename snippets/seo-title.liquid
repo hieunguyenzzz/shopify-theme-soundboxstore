@@ -14,4 +14,8 @@
     {%- endunless -%}
   {%- endif -%}
 {%- endcapture -%}
+{%- comment -%}Auto-disabled. Yoast plugin is taking care of SEO output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
 <title>{{ seo_title }}</title>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}

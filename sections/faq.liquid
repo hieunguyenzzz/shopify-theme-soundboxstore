@@ -32,7 +32,7 @@
             </div>
 
           {% when 'question' %}
-            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemprop="mainEntity"{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Question"{% endif %}>
               <button
                 type="button"
                 class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
@@ -40,7 +40,7 @@
               >
                 <span class="collapsible-trigger__layout">
                   <span style="padding-right:50px">
-                    <span itemprop="name">{{ block.settings.title }}</span>
+                    <span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ block.settings.title }}</span>
                   </span>
                   {%- render 'collapsible-icons' -%}
                 </span>
@@ -48,11 +48,11 @@
               <div
                 id="FAQ-content-{{ block.id }}"
                 class="collapsible-content collapsible-content--all"
-                itemscope
-                itemprop="acceptedAnswer"
-                itemtype="https://schema.org/Answer"
+                {% if disabled_by_yoast_seo %}itemscope{% endif %}
+                {% if disabled_by_yoast_seo %}itemprop="acceptedAnswer"{% endif %}
+                {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Answer"{% endif %}
               >
-                <div class="collapsible-content__inner rte" itemprop="text">
+                <div class="collapsible-content__inner rte" {% if disabled_by_yoast_seo %}itemprop="text"{% endif %}>
                   {{ block.settings.text }}
                 </div>
               </div>
