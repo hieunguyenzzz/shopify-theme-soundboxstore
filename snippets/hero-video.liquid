@@ -180,7 +180,11 @@
               </svg>
             </button>
           {%- endif -%}
-
+ {%- unless block.settings.h1 == blank -%}
+            <h1 style="position:absolute;opacity:0">
+                {{ block.settings.h1 | newline_to_br }}
+            </h1>
+          {%- endunless -%}
           {%- unless block.settings.title == blank -%}
             <h2 class="h1 hero__title">
               <div class="animation-contents">
