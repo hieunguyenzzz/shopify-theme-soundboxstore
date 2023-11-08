@@ -80,11 +80,11 @@
 
                   {%- if block.settings.image != blank -%}
                     {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    <div class="small--hide">
+                    <div class="small--hide"  style="width: 100%; height: 100%;position: relative;">
                     {{ block.settings.image  | image_url: width: 1920  |  image_tag:  style:'width: 100%; height: 100%;position: relative;object-fit: cover;'}}
                     </div>
                     {%- if has_mobile_image -%}
-                      <div class="medium-up--hide">
+                      <div class="medium-up--hide" style="width: 100%; height: 100%;position: relative;">
                       {{ block.settings.image_mobile | image_url: width: 500  | image_tag: style:'width: 100%; height: 100%;position: relative;object-fit: cover;' }}
                       </div>
                     {%- endif -%}
