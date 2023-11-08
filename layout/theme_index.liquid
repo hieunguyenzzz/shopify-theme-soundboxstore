@@ -380,8 +380,8 @@
   function MeroxIO_Function(){
     if(!isReplaced){
       window.yett.unblock();
-      console.log("apps lazyloaded successfully");
       isReplaced=true;
+      document.dispatchEvent(new Event('apps_lazyloaded_successfully'))
     }
   }    
   document.addEventListener("click", MeroxIO_Function);
