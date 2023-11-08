@@ -23,7 +23,7 @@
                     font-size: {{ block.settings.title_size | times: 0.43 }}px;
                   }
                   .slideshow__slide--{{ block.id }} .hero__title,.slideshow__slide--{{ block.id }} .hero__subtitle{
-                    font-size: 70%;
+                    font-size:min(3vw,24px);
                   }
                   @media only screen and (min-width: 769px) {
                     .slideshow__slide--{{ block.id }} .hero__title ,.slideshow__slide--{{ block.id }} .hero__title h1 {
