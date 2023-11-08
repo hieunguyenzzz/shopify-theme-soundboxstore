@@ -104,7 +104,7 @@
                         alt="{{ block.settings.image_mobile.alt | escape }}"
                         style="object-position: {{ block.settings.focal_point }}"
                       > {% endcomment %}
-                    {{ block.settings.image_mobile | image_url: width: 500  | image_tag: class: 'hero__image  lazyload medium-up--hide lazyloaded' }}
+                    {{ block.settings.image_mobile | image_url: width: 500  | image_tag: class: 'hero__image medium-up--hide lazyloaded' }}
                     {%- endif -%}
                     <noscript>
                       <img
