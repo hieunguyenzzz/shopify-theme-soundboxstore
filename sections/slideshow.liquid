@@ -19,11 +19,11 @@
         
               >
                 {%- style -%}
-                  .slideshow__slide--{{ block.id }} .hero__title {
+                  .slideshow__slide--{{ block.id }} .hero__title,.slideshow__slide--{{ block.id }} .hero__title h1 {
                     font-size: {{ block.settings.title_size | times: 0.43 }}px;
                   }
                   @media only screen and (min-width: 769px) {
-                    .slideshow__slide--{{ block.id }} .hero__title {
+                    .slideshow__slide--{{ block.id }} .hero__title ,.slideshow__slide--{{ block.id }} .hero__title h1 {
                       font-size: {{ block.settings.title_size }}px;
                     }
                   }
