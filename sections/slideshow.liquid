@@ -80,9 +80,9 @@
 
                   {%- if block.settings.image != blank -%}
                     {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    {{ block.settings.image  | image_url: width: 1920  |  image_tag: class: 'small--hide' , style:'width: 100%; height: 100%;position: relative;object-fit: cover;display: none;'}}
+                    {{ block.settings.image  | image_url: width: 1920  |  image_tag: class: 'small--hide' , style:'width: 100%; height: 100%;position: relative;object-fit: cover;'}}
                     {%- if has_mobile_image -%}
-                    {{ block.settings.image_mobile | image_url: width: 500  | image_tag: class: ' medium-up--hide ', style:'width: 100%; height: 100%;position: relative;object-fit: cover;display: none;' }}
+                    {{ block.settings.image_mobile | image_url: width: 500  | image_tag: class: ' medium-up--hide ', style:'width: 100%; height: 100%;position: relative;object-fit: cover;' }}
                     {%- endif -%}
                     <noscript>
                       <img
