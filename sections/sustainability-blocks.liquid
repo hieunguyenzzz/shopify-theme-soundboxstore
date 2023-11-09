@@ -84,9 +84,9 @@
               <a
                 class="btn  bg-[var(--colorBtnPrimary)]"
                 href=""
-                onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                onclick="Calendly.initPopupWidget({url: '{{ block.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
               >
-                {{- section.settings.btn_text | default: 'Schedule time with me' -}}
+                {{- block.settings.btn_text | default: 'Schedule time with me' -}}
               </a>
             </div>
           </div>
@@ -115,7 +115,13 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-  }],
+  },{
+          "type": "text",
+          "id": "url",
+          "label": "calendly url",
+    "default":"https://calendly.com/james-low-wyy/consultancy"
+        }
+  ],
   "blocks":[
 
     {
@@ -141,6 +147,10 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+  }, {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text"
   }]
     }
   ],
