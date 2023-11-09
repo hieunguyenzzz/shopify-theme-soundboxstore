@@ -11,7 +11,7 @@
         <a href="{{ product.url }}" class="collection-item">
           {% assign image = product.featured_image %}
           <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
-            {%- unless image? -%}
+            {%- unless image -%}
               {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
               <div class="collection-image collection-image--placeholder">
                 {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
@@ -32,7 +32,7 @@
         <a href="{{ product.url }}" class="collection-item">
           {% assign image = product.featured_image %}
           <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
-            {%- unless image? -%}
+            {%- unless image -%}
               {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
               <div class="collection-image collection-image--placeholder">
                 {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
