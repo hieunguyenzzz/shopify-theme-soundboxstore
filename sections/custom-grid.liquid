@@ -8,13 +8,6 @@
   {%- endif -%}
 
   <div class="new-grid" data-view="6-3">
-    {%- liquid
-      assign isEmpty = true
-      if section.blocks.size > 0
-        assign isEmpty = false
-      endif
-    -%}
-
     {%- for block in section.blocks -%}
       <div class="grid-item">
         <a href="{{ block.settings.url }}" class="collection-item">
