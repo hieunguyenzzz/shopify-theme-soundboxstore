@@ -1,0 +1,100 @@
+<div class="page-width">
+  {%- if section.settings.title != blank -%}
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div class="new-grid" data-view="6-3">
+    {%- for block in section.blocks -%}
+      <div class="grid-item">
+        <a href="{{ block.settings.url }}" class="collection-item">
+          {% assign image = block.settings.image %}
+          <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
+            {%- unless image? -%}
+              {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+              <div class="collection-image collection-image--placeholder">
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- else -%}
+              <div class="collection-image image-wrap">
+                {{ image | image_url: width: 600 | image_tag }}
+              </div>
+            {%- endunless -%}
+          </div>
+          <span class="collection-item__title">{{ block.settings.title }}</span>
+        </a>
+      </div>
+      -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "class": "index-section",
+  "max_blocks": 18,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Popular categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "product"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Defaults to collection title"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Product Grid",
+    "blocks": [
+      {
+        "type": "item"
+      },
+      {
+        "type": "item"
+      },
+      {
+        "type": "item"
+      },
+      {
+        "type": "item"
+      },
+      {
+        "type": "item"
+      },
+      {
+        "type": "item"
+      }
+    ]
+  }]
+}
+{% endschema %}
