@@ -16,26 +16,10 @@
     -%}
 
     {%- for block in section.blocks -%}
-      {% assign image = block.settings.image %}
-      {% assign title = block.settings.title %}
-      {% assign url = block.settings.url %}
-      <div class="grid-item">
-        <a href="{{ url }}" class="collection-item">
-          <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
-            {%- unless image -%}
-              {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
-              <div class="collection-image collection-image--placeholder">
-                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-            {%- else -%}
-              <div class="collection-image image-wrap">
-                {{ image | image_url: width: 600 | image_tag: style: 'padding:0' }}
-              </div>
-            {%- endunless -%}
-          </div>
-          <span class="collection-item__title">{{ title }}</span>
-        </a>
-      </div>
+      {%- liquid
+        assign collection = collections[block.settings.collection]
+        render 'collection-grid-item', collection: collection, block: block
+      -%}
     {%- endfor -%}
 
     {%- if isEmpty -%}
@@ -79,16 +63,6 @@
           "type": "collection",
           "label": "Collection",
           "info": "Image source can be adjusted under Theme Settings > Collection Tiles"
-        },
-         {
-          "id": "url",
-          "type": "url",
-          "label": "Url"
-        },
-         {
-          "id": "image",
-          "type": "image_picker",
-          "label": "Image"
         },
         {
           "type": "text",
