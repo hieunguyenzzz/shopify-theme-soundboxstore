@@ -16,9 +16,25 @@
     -%}
 
     {%- for block in section.blocks -%}
-      {%- liquid
-        assign collection = collections[block.settings.collection]
-        render 'collection-grid-item', collection: collection, block: block
+      <div class="grid-item">
+        <a href="{{ block.settings.url }}" class="collection-item">
+          {% assign image = block.settings.image %}
+
+          <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
+            {%- unless image? -%}
+              {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+              <div class="collection-image collection-image--placeholder">
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- else -%}
+              <div class="collection-image image-wrap">
+                {{ image | image_url: width: 600 | image_tag }}
+              </div>
+            {%- endunless -%}
+          </div>
+          <span class="collection-item__title">{{ block.settings.title }}</span>
+        </a>
+      </div>
       -%}
     {%- endfor -%}
 
