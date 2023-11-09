@@ -1,74 +1,95 @@
-{% if section.settings.heading != blank or section.settings.product_list != blank %}
-  <section class="shop-accessories">
-    <div class="page-width">
-      {% if section.settings.heading != blank %}
-        <div class="section-title">
-          <h2 class="title-font">{{ section.settings.heading }}</h2>
-        </div>
-      {% endif %}
-      {% if section.settings.product_list != blank %}
-        <div class="flexbox">
-          {% for product in section.settings.product_list %}
-            <div class="col">
-              <div class="col-wrap" style="background: transparent;">
-                <div class="col-image">
-                  <a href="{{ product.url }}">
-                    <img
-                      src="{{ product.featured_image | img_url:'525x' }}"
-                      alt=""
-                    >
-                  </a>
-                </div>
-                <div class="col-details">
-                  <div class="">
-                    <a href="{{ product.url }}">
-                      <h3 class="title-font">{{ product.title }}</h3>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-
-          <!--
-            <div class="col">
-              <div class="col-wrap">
-                <div class="col-image">
-                  <a href="">
-                    <img src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/the-stool.png?v=1651123521" alt="">
-                  </a>
-                </div>
-                <div class="col-details">
-                  <h3>The Stool</h3>
-                  <div class="col-link">
-                    <a href="">Shop</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          -->
-        </div>
-      {% endif %}
+<div class="page-width">
+  {%- if section.settings.title != blank -%}
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
     </div>
-  </section>
-{% endif %}
+  {%- endif -%}
+
+  <div class="new-grid" data-view="6-3">
+    {%- for product in section.settings.collection.products -%}
+      <div class="grid-item">
+        <a href="{{ product.url }}" class="collection-item">
+          {% assign image = product.featured_image %}
+          <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
+            {%- unless image -%}
+              {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+              <div class="collection-image collection-image--placeholder">
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- else -%}
+              <div class="collection-image image-wrap">
+                {{ image | image_url: width: 600 | image_tag }}
+              </div>
+            {%- endunless -%}
+          </div>
+          <span class="collection-item__title">{{ product.title }}</span>
+        </a>
+      </div>
+    {%- endfor -%}
+    {%- for block in section.blocks -%}
+      {% assign product = block.settings.product %}
+      <div class="grid-item">
+        <a href="{{ product.url }}" class="collection-item">
+          {% assign image = product.featured_image %}
+          <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
+            {%- unless image -%}
+              {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+              <div class="collection-image collection-image--placeholder">
+                {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- else -%}
+              <div class="collection-image image-wrap">
+                {{ image | image_url: width: 600 | image_tag }}
+              </div>
+            {%- endunless -%}
+          </div>
+          <span class="collection-item__title">{{ product.title }}</span>
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
 
 {% schema %}
 {
   "name": "Shop Accessories",
   "class": "index-section",
+  "max_blocks": 18,
   "settings": [
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading"
+      "id": "title",
+      "label": "Heading",
+      "default": "Popular categories"
     },
-    {
-      "type": "product_list",
-      "id": "product_list",
-      "label": "Products",
-      "limit": 2
+      {
+      "type": "collection",
+      "id": "collection",
+      "label": "collection"
     }
-  ]
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "product"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Shop Accessories",
+    "settings": {
+        "title": "Shop Accessories",
+        "collection": "accesories"
+      },
+    "blocks": [
+
+    ]
+  }]
 }
 {% endschema %}
