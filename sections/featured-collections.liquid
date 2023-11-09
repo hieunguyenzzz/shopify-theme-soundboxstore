@@ -29,7 +29,7 @@
               </div>
             {%- else -%}
               <div class="collection-image image-wrap">
-                {{ image | image_url: width: 600 | image_tag }}
+                {{ image | image_url: width: 600 | image_tag: style: 'padding:0' }}
               </div>
             {%- endunless -%}
           </div>
