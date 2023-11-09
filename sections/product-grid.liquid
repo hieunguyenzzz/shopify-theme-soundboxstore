@@ -27,9 +27,10 @@
       </div>
     {%- endfor -%}
     {%- for block in section.blocks -%}
+      {% assign product = block.settings.product %}
       <div class="grid-item">
-        <a href="{{ block.settings.url }}" class="collection-item">
-          {% assign image = block.settings.image %}
+        <a href="{{ product.url }}" class="collection-item">
+          {% assign image = product.featured_image %}
           <div class="collection-image-wrap collection-image--{{ settings.collection_grid_shape }}">
             {%- unless image? -%}
               {%- capture placeholder -%}collection-{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
@@ -42,7 +43,7 @@
               </div>
             {%- endunless -%}
           </div>
-          <span class="collection-item__title">{{ block.settings.title }}</span>
+          <span class="collection-item__title">{{ product.title }}</span>
         </a>
       </div>
     {%- endfor -%}
@@ -76,17 +77,6 @@
           "id": "product",
           "type": "product",
           "label": "product"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "info": "Defaults to collection title"
-        },
-        {
-          "id": "image",
-          "type": "image_picker",
-          "label": "Image"
         }
       ]
     }
@@ -94,24 +84,7 @@
   "presets": [{
     "name": "Product Grid",
     "blocks": [
-      {
-        "type": "item"
-      },
-      {
-        "type": "item"
-      },
-      {
-        "type": "item"
-      },
-      {
-        "type": "item"
-      },
-      {
-        "type": "item"
-      },
-      {
-        "type": "item"
-      }
+
     ]
   }]
 }
