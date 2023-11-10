@@ -1,3 +1,13 @@
+{% assign size = section.blocks.size | at_most: 6 %}
+{% assign peritem = 100 | divided_by: size %}
+{% style %}
+  .{{section.id}} [data-view]{
+    --item-flex: 0 0 {{peritem}}%
+  }
+   .{{section.id}} [data-view] .grid-item{
+    flex: var( --item-flex)
+  }
+{% endstyle %}
 <div class="page-width">
   {%- if section.settings.title != blank -%}
     <div class="section-header">
