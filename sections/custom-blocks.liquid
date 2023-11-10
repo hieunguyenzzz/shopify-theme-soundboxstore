@@ -43,18 +43,18 @@
             ></div>
             <div class="px-[var(--pageWidthPadding)] md:w-1/2">
               {% if block.settings.external_video_url != blank %}
-                {%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
-                  {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
+                {%- if block.settings.external_video_url contains 'youtube.com/watch' -%}
+                  {%- assign video_id = block.settings.external_video_url | split: 'v=' -%}
                   {%- assign video_id = video_id[1] | split: '&' | first -%}
                 {%- endif -%}
-                {%- if section.settings.external_video_url contains 'youtu.be/' -%}
-                  {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
+                {%- if block.settings.external_video_url contains 'youtu.be/' -%}
+                  {%- assign video_id = block.settings.external_video_url | split: '.be/' -%}
                   {%- assign video_id = video_id[1] | split: '&' | first -%}
                 {%- endif -%}
                 <div class="mx-auto max-w-[880px] relative  w-full">
-                  {% render 'youtube-popup', video_id: 'u4Tc535R0bQ' %}
+                  {% render 'youtube-popup', video_id: video_id %}
                   <label
-                    for="youtube-modal-input-u4Tc535R0bQ"
+                    for="youtube-modal-input-{{ video_id }}"
                     style="position:absolute;top:0;left:0;width:100%;height:100%; pointer-events: none;"
                   >
                     {{
@@ -133,18 +133,18 @@
             ></div>
             <div class="px-[var(--pageWidthPadding)] md:w-1/2">
               {% if block.settings.external_video_url != blank %}
-                {%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
-                  {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
+                {%- if block.settings.external_video_url contains 'youtube.com/watch' -%}
+                  {%- assign video_id = block.settings.external_video_url | split: 'v=' -%}
                   {%- assign video_id = video_id[1] | split: '&' | first -%}
                 {%- endif -%}
-                {%- if section.settings.external_video_url contains 'youtu.be/' -%}
-                  {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
+                {%- if block.settings.external_video_url contains 'youtu.be/' -%}
+                  {%- assign video_id = block.settings.external_video_url | split: '.be/' -%}
                   {%- assign video_id = video_id[1] | split: '&' | first -%}
                 {%- endif -%}
                 <div class="mx-auto max-w-[880px] relative  w-full">
-                  {% render 'youtube-popup', video_id: 'u4Tc535R0bQ' %}
+                  {% render 'youtube-popup', video_id: video_id %}
                   <label
-                    for="youtube-modal-input-u4Tc535R0bQ"
+                    for="youtube-modal-input-{{ video_id }}"
                     style="position:absolute;top:0;left:0;width:100%;height:100%; pointer-events: none;"
                   >
                     {{
