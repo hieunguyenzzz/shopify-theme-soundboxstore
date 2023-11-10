@@ -79,9 +79,9 @@
               </a>
 
               {% if section.settings.button_text_2 != blank %}
-                <button type="button" class="btn btn--secondary ">
+                <a href="{{ section.settings.button_link_2 }}" type="button" class="btn btn--secondary specBtn">
                   {{ section.settings.button_text_2 }}
-                </button>
+                </a>
               {% endif %}
             </div>
           {% endif %}
