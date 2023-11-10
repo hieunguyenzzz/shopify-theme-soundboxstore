@@ -7,8 +7,8 @@
   }
 </style>
 {% for block in section.blocks %}
-  {% case block.type === 'header' %}
-    {% when condition %}
+  {% case block.type %}
+    {% when 'header' %}
       <section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)] sm:items-center">
         <div class="block  flex-1  md:max-w-[52rem] ">
           <h3 class="block  flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl 2xl:text-5xl">
@@ -57,7 +57,7 @@
                 </div>
                 <a
                   class="btn  bg-[var(--colorBtnPrimary)]"
-                  href={{block.settings.btn_url }}
+                  href="{{block.settings.btn_url }}"
                 >
                   {{- block.settings.btn_text | default: 'Schedule time with me' -}}
                 </a>
@@ -92,7 +92,7 @@
                 </div>
                 <a
                   class="btn  bg-[var(--colorBtnPrimary)]"
-                  href={{block.settings.btn_url }}
+                  href="{{block.settings.btn_url }}"
                 >
                   {{- block.settings.btn_text | default: 'Schedule time with me' -}}
                 </a>
@@ -145,6 +145,14 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
+        },
+        {
+          "type": "video_url",
+          "id": "external_video_url",
+          "label": "Youtube video",
+          "accept": [
+            "youtube"
+          ]
         },
         {
           "type": "text",
