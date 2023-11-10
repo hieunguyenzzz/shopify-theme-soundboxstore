@@ -51,10 +51,10 @@
                   {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
                   {%- assign video_id = video_id[1] | split: '&' | first -%}
                 {%- endif -%}
-                <div class="mx-auto max-w-[880px]  w-full">
+                <div class="mx-auto max-w-[880px]  w-full" style="padding-bottom:67%">
                   <label
-                    for="youtube-modal-input-{{ video_id }}"
-                    style="width:100%;position:relative;padding-bottom:67%;  pointer-events: none;"
+                    for="youtube-modal-input-u4Tc535R0bQ"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%; pointer-events: none;"
                   >
                     {{
                       block.settings.image
@@ -68,7 +68,7 @@
                       </svg>
                     </div>
                   </label>
-                  {% render 'youtube-popup', video_id: video_id %}
+                  {% render 'youtube-popup', video_id: 'u4Tc535R0bQ' %}
                 </div>
               {% else %}
                 {% if block.settings.image %}
