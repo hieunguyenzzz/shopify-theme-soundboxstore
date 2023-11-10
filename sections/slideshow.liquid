@@ -1,171 +1,181 @@
-
 {%- unless section.settings.full_width -%}
   <div class="page-width">
 {%- endunless -%}
 {% if section.blocks.size == 1 %}
   <div
-    class="slideshow {{ section.settings.section_class }}" >
-  <div class="slideshow-wrapper">
-        <div class="hero-natural--{{ section.id }}">
-          <div
-            id="Slideshow-{{ section.id }}"
-            class="hero loaded hero--{{ section.id }}"
-          >
-            {%- for block in section.blocks -%}
-              
-              <div
-                {{ block.shopify_attributes }}
-                class="slideshow__slide is-selected slideshow__slide--{{ block.id }}"
-        
-              >
-                {%- style -%}
-                  .slideshow__slide--{{ block.id }} .hero__title,.slideshow__slide--{{ block.id }} .hero__title h1 {
-                    font-size: min(7vw,36px);
+    class="slideshow {{ section.settings.section_class }}"
+  >
+    <div class="slideshow-wrapper">
+      <div class="hero-natural--{{ section.id }}">
+        <div
+          id="Slideshow-{{ section.id }}"
+          class="hero loaded hero--{{ section.id }}"
+        >
+          {%- for block in section.blocks -%}
+            <div
+              {{ block.shopify_attributes }}
+              class="slideshow__slide is-selected slideshow__slide--{{ block.id }}"
+            >
+              {%- style -%}
+                .slideshow__slide--{{ block.id }} .hero__title,.slideshow__slide--{{ block.id }} .hero__title h1 {
+                  font-size: min(7vw,36px);
+                }
+                .slideshow__slide--{{ block.id }} .hero__subtitle{
+                  font-size:min(3vw,24px);
+                }
+                @media only screen and (min-width: 769px) {
+                  .slideshow__slide--{{ block.id }} .hero__title ,.slideshow__slide--{{ block.id }} .hero__title h1 {
+                    font-size: {{ block.settings.title_size }}px;
                   }
-                  .slideshow__slide--{{ block.id }} .hero__subtitle{
-                    font-size:min(3vw,24px);
+                }
+
+                {%- assign button_alpha = block.settings.color_accent | color_extract: 'alpha' -%}
+                {% unless button_alpha == 0.0 %}
+                  .slideshow__slide--{{ block.id }} .btn {
+                    background: {{ block.settings.color_accent }} !important;
+                    border: none;
+
+                    {%- assign accent_brightness = block.settings.color_accent | color_extract: 'lightness' -%}
+
+                    {% if accent_brightness > 40 %}
+                      color: #000 !important;
+                    {% endif %}
                   }
-                  @media only screen and (min-width: 769px) {
-                    .slideshow__slide--{{ block.id }} .hero__title ,.slideshow__slide--{{ block.id }} .hero__title h1 {
-                      font-size: {{ block.settings.title_size }}px;
-                    }
+                {% endunless %}
+
+                {% if block.settings.overlay_opacity > 0 %}
+                  .slideshow__slide--{{ block.id }} .hero__image-wrapper:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 3;
+                    background-color: #000;
+                    opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
                   }
+                {% endif %}
+              {%- endstyle -%}
 
-                  {%- assign button_alpha = block.settings.color_accent | color_extract: 'alpha' -%}
-                  {% unless button_alpha == 0.0 %}
-                    .slideshow__slide--{{ block.id }} .btn {
-                      background: {{ block.settings.color_accent }} !important;
-                      border: none;
+              {%- liquid
+                assign hero_text = false
+                if block.settings.top_subheading != blank or block.settings.title != blank or block.settings.subheading != blank or block.settings.link_text != blank
+                  assign hero_text = true
+                endif
 
-                      {%- assign accent_brightness = block.settings.color_accent | color_extract: 'lightness' -%}
+                assign has_mobile_image = false
+                if block.settings.image_mobile != blank
+                  assign has_mobile_image = true
+                endif
+              -%}
 
-                      {% if accent_brightness > 40 %}
-                        color: #000 !important;
-                      {% endif %}
-                    }
-                  {% endunless %}
-
-                  {% if block.settings.overlay_opacity > 0 %}
-                    .slideshow__slide--{{ block.id }} .hero__image-wrapper:after {
-                      content: '';
-                      position: absolute;
-                      left: 0;
-                      right: 0;
-                      top: 0;
-                      bottom: 0;
-                      z-index: 3;
-                      background-color: #000;
-                      opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
-                    }
-                  {% endif %}
-                {%- endstyle -%}
-
-                {%- liquid
-                  assign hero_text = false
-                  if block.settings.top_subheading != blank or block.settings.title != blank or block.settings.subheading != blank or block.settings.link_text != blank
-                    assign hero_text = true
-                  endif
-
-                  assign has_mobile_image = false
-                  if block.settings.image_mobile != blank
-                    assign has_mobile_image = true
-                  endif
-                -%}
-
-                <div class="hero__image-wrapper{% unless hero_text %} hero__image-wrapper--no-overlay{% endunless %}">
-                  {%- if section.settings.parallax -%}
-                    <div class="parallax-container">
-                    <div class="parallax-image">
-                  {%- endif -%}
-
-                  {%- if block.settings.image != blank -%}
-                    {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    <div class="small--hide"  style="width: 100%; height: 100%;position: relative;">
-                    {{ block.settings.image  | image_url: width: 1920  |  image_tag: loading: 'lazy' , style:'width: 100%; height: 100%;position: relative;object-fit: cover;'}}
-                    </div>
-                    {%- if has_mobile_image -%}
-                      <div class="medium-up--hide" style="width: 100%; height: 100%;position: relative;">
-                      {{ block.settings.image_mobile | image_url: width: 500  | image_tag: loading: 'lazy' , style:'width: 100%; height: 100%;position: relative;object-fit: cover;' }}
-                      </div>
-                    {%- endif -%}
-                    <noscript>
-                      <img
-                        class="hero__image hero__image--{{ block.id }}"
-                        src="{{ block.settings.image | img_url: '1920x' }}"
-                        alt="{{ block.settings.image.alt | escape }}"
-                      >
-                    </noscript>
-                  {%- else -%}
-                    {%- if template == 'password' -%}
-                      {%- assign password_image = 'password-page-background.jpg' | asset_url -%}
-                      <img class="hero__image lazyload" src="{{ password_image }}">
-                    {%- else -%}
-                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                    {%- endif -%}
-                  {%- endif -%}
-
-                  {%- if section.settings.parallax -%}
-                    </div>
-                    </div>
-                  {%- endif -%}
-                </div>
-
-                {%- if block.settings.link != blank and block.settings.link_2 == blank -%}
-                  <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"></a>
+              <div class="hero__image-wrapper{% unless hero_text %} hero__image-wrapper--no-overlay{% endunless %}">
+                {%- if section.settings.parallax -%}
+                  <div class="parallax-container">
+                  <div class="parallax-image">
                 {%- endif -%}
 
-                {%- if hero_text -%}
-                  <div class="hero__text-wrap">
-                    <div class="page-width" style="min-height:min(600px,60vw)">
-                      <div class="hero__text-content {{ block.settings.text_align }}">
-                        <div class="hero__text-shadow">
-                          {%- unless block.settings.top_subheading == blank -%}
-                            <div class="hero__top-subtitle">
-                                {{ block.settings.top_subheading | escape }}
-                            </div>
-                          {%- endunless -%}
-                          {%- unless block.settings.title == blank -%}
-                            <div class="h1 hero__title">
-                                {{ block.settings.title | newline_to_br }}
-                            </div>
-                          {%- endunless -%}
-                          {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
-                            {%- unless block.settings.subheading == blank -%}
-                              <div class="hero__subtitle">
-                                  {{ block.settings.subheading | escape }}
-                              </div>
-                            {%- endunless -%}
-                            {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
-                              <div class="hero__link">
-                                {%- if block.settings.link_text != blank -%}
-                                  <a
-                                    href="{{ block.settings.link }}"
-                                    class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                                  >
-                                    {{ block.settings.link_text }}
-                                  </a>
-                                {%- endif -%}
-                                {%- if block.settings.link_text_2 != blank -%}
-                                  <a
-                                    href="{{ block.settings.link_2 }}"
-                                    class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                                  >
-                                    {{ block.settings.link_text_2 }}
-                                  </a>
-                                {%- endif -%}
-                              </div>
-                            {%- endif -%}
-                          {%- endif -%}
-                        </div>
-                      </div>
+                {%- if block.settings.image != blank -%}
+                  {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <div class="small--hide" style="width: 100%; height: 100%;position: relative;">
+                    {{
+                      block.settings.image
+                      | image_url: width: 1920
+                      | image_tag:
+                        loading: 'lazy',
+                        style: 'width: 100%; height: 100%;position: relative;object-fit: cover;'
+                    }}
+                  </div>
+                  {%- if has_mobile_image -%}
+                    <div class="medium-up--hide" style="width: 100%; height: 100%;position: relative;">
+                      {{
+                        block.settings.image_mobile
+                        | image_url: width: 500
+                        | image_tag:
+                          loading: 'lazy',
+                          style: 'width: 100%; height: 100%;position: relative;object-fit: cover;'
+                      }}
                     </div>
+                  {%- endif -%}
+                  <noscript>
+                    <img
+                      class="hero__image hero__image--{{ block.id }}"
+                      src="{{ block.settings.image | img_url: '1920x' }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                    >
+                  </noscript>
+                {%- else -%}
+                  {%- if template == 'password' -%}
+                    {%- assign password_image = 'password-page-background.jpg' | asset_url -%}
+                    <img class="hero__image lazyload" src="{{ password_image }}">
+                  {%- else -%}
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                {%- endif -%}
+
+                {%- if section.settings.parallax -%}
+                  </div>
                   </div>
                 {%- endif -%}
               </div>
-            {%- endfor -%}
-          </div>
+
+              {%- if block.settings.link != blank and block.settings.link_2 == blank -%}
+                <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"></a>
+              {%- endif -%}
+
+              {%- if hero_text -%}
+                <div class="hero__text-wrap">
+                  <div class="page-width" style="min-height:min(600px,60vw)">
+                    <div class="hero__text-content {{ block.settings.text_align }}">
+                      <div class="hero__text-shadow">
+                        {%- unless block.settings.top_subheading == blank -%}
+                          <div class="hero__top-subtitle">
+                            {{ block.settings.top_subheading | escape }}
+                          </div>
+                        {%- endunless -%}
+                        {%- unless block.settings.title == blank -%}
+                          <div class="h1 hero__title">
+                            {{ block.settings.title | newline_to_br }}
+                          </div>
+                        {%- endunless -%}
+                        {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
+                          {%- unless block.settings.subheading == blank -%}
+                            <div class="hero__subtitle">
+                              {{ block.settings.subheading | escape }}
+                            </div>
+                          {%- endunless -%}
+                          {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
+                            <div class="hero__link">
+                              {%- if block.settings.link_text != blank -%}
+                                <a
+                                  href="{{ block.settings.link }}"
+                                  class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                                >
+                                  {{ block.settings.link_text }}
+                                </a>
+                              {%- endif -%}
+                              {%- if block.settings.link_text_2 != blank -%}
+                                <a
+                                  href="{{ block.settings.link_2 }}"
+                                  class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                                >
+                                  {{ block.settings.link_text_2 }}
+                                </a>
+                              {%- endif -%}
+                            </div>
+                          {%- endif -%}
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
         </div>
       </div>
+    </div>
   </div>
 {% else %}
   <div
@@ -547,6 +557,11 @@
           "min": 40,
           "max": 100,
           "unit": "px"
+        },
+         {
+          "type": "richtext",
+          "id": "subheading_richtext",
+          "label": "Rich Text"
         },
         {
           "type": "text",
