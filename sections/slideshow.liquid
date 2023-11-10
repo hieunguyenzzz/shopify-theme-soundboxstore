@@ -139,6 +139,11 @@
                             {{ block.settings.title | newline_to_br }}
                           </div>
                         {%- endunless -%}
+                        {% if block.settings.subheading_richtext != blank %}
+                          <div class="hero__subtitle">
+                            {{ block.settings.subheading_richtext }}
+                          </div>
+                        {% endif %}
                         {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
                           {%- unless block.settings.subheading == blank -%}
                             <div class="hero__subtitle">
