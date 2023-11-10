@@ -92,10 +92,25 @@
               class="absolute bottom-0 left-0 -z-20 h-[70%] w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
             ></div>
             <div class="px-[var(--pageWidthPadding)] md:w-1/2">
-              {% if block.settings.image %}
-                {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px] w-full' }}
+              {% if block.settings.external_video_url != blank %}
+                {%- if section.settings.external_video_url contains 'youtube.com/watch' -%}
+                  {%- assign video_id = section.settings.external_video_url | split: 'v=' -%}
+                  {%- assign video_id = video_id[1] | split: '&' | first -%}
+                {%- endif -%}
+                {%- if section.settings.external_video_url contains 'youtu.be/' -%}
+                  {%- assign video_id = section.settings.external_video_url | split: '.be/' -%}
+                  {%- assign video_id = video_id[1] | split: '&' | first -%}
+                {%- endif -%}
+                <div class="mx-auto max-w-[880px]  w-full">
+                  {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px]  w-full' }}
+                  {% render 'youtube-popup', video_id: video_id %}
+                </div>
               {% else %}
-                <div class="mx-auto max-w-[640px]"></div>
+                {% if block.settings.image %}
+                  {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px]  w-full' }}
+                {% else %}
+                  <div class="mx-auto max-w-[640px]"></div>
+                {% endif %}
               {% endif %}
             </div>
 
