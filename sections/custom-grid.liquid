@@ -5,7 +5,7 @@
     </div>
   {%- endif -%}
 
-  <div class="new-grid" data-view="{{ section.blocks.size | at_most: 6 }}-2">
+  <div class="new-grid" data-view="6-2">
     {%- for block in section.blocks -%}
       <div class="grid-item">
         <a href="{{ block.settings.url }}" class="collection-item">
