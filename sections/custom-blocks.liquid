@@ -32,7 +32,7 @@
       {% assign content = block.settings.content | default: '' %}
       {% if isLeft == 1 %}
         <section
-          class="relative isolate my-12 min-h-[40vw] flex items-center   text-base lg:text-lg"
+          class="relative  my-12 min-h-[40vw] flex items-center   text-base lg:text-lg"
           id="section-{{ section.id }}-{{ forloop.index }}"
           {{ block.shopify_attributes }}
         >
@@ -123,7 +123,7 @@
       {% else %}
         <section
           id="section-{{ section.id }}-{{ forloop.index }}"
-          class="relative isolate my-12 min-h-[40vw]  flex items-center"
+          class="relative  my-12 min-h-[40vw]  flex items-center"
           {{ block.shopify_attributes }}
         >
           <div class="md:px  page-width w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
