@@ -20,6 +20,31 @@
         "space_around": false
       }
     },
+    "image-text-section": {
+      "type": "image-text-section",
+      "custom_css": [
+        ".image-text-section .section-content .btn {background-color: #ffffff; color: #555;}",
+        ".section-btn {display: flex; text-wrap: nowrap;}",
+        ".section-btn .btn {text-wrap: nowrap; font-size: min(3.2vw, 16px);}",
+        ".image-text-section.image-text-section--product .section-content {text-align: left;}"
+      ],
+      "settings": {
+        "lazyload": true,
+        "image": "shopify:\/\/shop_images\/SBS-Black-Friday-2560.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/SBS-Black-Friday-1000.jpg",
+        "overlay": false,
+        "overlay_range": 20,
+        "title": "Black Friday Exclusive",
+        "title_width": "",
+        "description": "<p>Unwrap savings with Extra 5% discount on Folio Phone Booths and Folio Stand Up Phone Pods<\/p>",
+        "description_width": "600px",
+        "button_text": "Folio Phone Booth",
+        "button_link": "shopify:\/\/products\/soundproof-phone-booth",
+        "button_text_2": "Folio Stand Up",
+        "text_alignment": "center-left",
+        "section_class": "movable-silence-booth"
+      }
+    },
     "330c8d4a-ae31-4fd0-b557-fd62f5aaecea": {
       "type": "hero-video",
       "disabled": true,
@@ -72,6 +97,7 @@
       "block_order": [
         "49ed2f14-e8eb-449e-9fcb-0057445922a3"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 769px) {.video-parent-section {height: 900px; height: 40vw; } .btn {line-height: 2; padding: 0.8em 1.6em; }}",
         ".hero__subtitle {font-size: min(30vw, 1em);}",
@@ -779,6 +805,7 @@
   "order": [
     "e71c5c13-0813-457a-b6ff-6cf6bc34c1fb",
     "330c8d4a-ae31-4fd0-b557-fd62f5aaecea",
+    "image-text-section",
     "caeb4e31-7b8d-4ce9-b58a-e2b6bc92d8a7",
     "165096617269397650",
     "16510350612404e999",
