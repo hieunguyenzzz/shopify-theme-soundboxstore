@@ -222,7 +222,7 @@ calc(100vw - 4rem)
                   src="{{ image | image_url : width: 100 }}"
                   width="100"
                   height="100"
-                  alt="{{ image.alt | default: product.title | 'product thumb'  | escape }}"
+                  alt="{{ image.alt  | 'product thumb'  | escape }}"
                 >
               </div>
             </div>
