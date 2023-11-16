@@ -6,11 +6,11 @@ document.addEventListener(
     var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function onYouTubePlayerAPIReady() {
+    window.onYouTubePlayerAPIReady = function onYouTubePlayerAPIReady() {
       window.onYouTubePlayerAPIReadyCalls =
         window.onYouTubePlayerAPIReadyCalls || [];
       window.onYouTubePlayerAPIReadyCalls?.forEach((call) => call());
-    }
+    };
   },
   {
     once: true,
