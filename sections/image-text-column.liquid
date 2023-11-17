@@ -26,14 +26,14 @@
             {% else %}
               {{
                 section.settings.image
-                | img_url: '750x'
+                | image_url: '750x'
                 | image_tag: class: 'desktop-only', alt: section.settings.image.alt
                 | default: section.settings.title
               }}
               {% if section.settings.mobile_image != blank %}
                 {{
                   section.settings.mobile_image
-                  | img_url: '520x'
+                  | image_url: '520x'
                   | image_tag: class: 'mobile-only', alt: section.settings.image.alt
                   | default: section.settings.title
                 }}
