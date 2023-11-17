@@ -24,21 +24,19 @@
             {% if hadmedia %}
               {{ mediaitem }}
             {% else %}
-              <img
-                loading="lazy"
-                src="{{ section.settings.image | img_url:"750x" }}"
-                {% if section.settings.mobile_image != blank %}
-                  class="desktop-only"
-                {% endif %}
-                alt="{{ section.settings.image.alt | default:section.settings.title }}"
-              >
+              {{
+                section.settings.image
+                | img_url: '750x'
+                | image_tag: class: 'desktop-only', alt: section.settings.image.alt
+                | default: section.settings.title
+              }}
               {% if section.settings.mobile_image != blank %}
-                <img
-                  loading="lazy"
-                  src="{{ section.settings.mobile_image | img_url:"520x" }}"
-                  class="mobile-only"
-                  alt="{{ section.settings.mobile_image.alt  |  default: section.settings.title}}"
-                >
+                {{
+                  section.settings.mobile_image
+                  | img_url: '520x'
+                  | image_tag: class: 'mobile-only', alt: section.settings.image.alt
+                  | default: section.settings.title
+                }}
               {% endif %}
             {% endif %}
           </div>
