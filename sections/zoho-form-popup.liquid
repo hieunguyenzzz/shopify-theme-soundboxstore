@@ -1,101 +1,103 @@
-<style>
-.zc_animated.zc_fadeIn{
-    margin:0!important;
-    inset:0!important;
-    padding:5%;
-    overflow:auto;
-   height:80vh!important;
-   width:100vw!important;
-      transition-property: opacity;
-}
-[name="signupFormContainer"]{
-    min-height:100vh;
-    display:flex;
-   align-items: center;
-   justify-content: center;
-}
-[name="signupFormContainer"] img {
-   width:100%!important;
-   height:100%!important;
-      object-fit: cover;
-}
+{% if section.blocks.size %}
+  <style>
+    .zc_animated.zc_fadeIn{
+        margin:0!important;
+        inset:0!important;
+        padding:5%;
+        overflow:auto;
+       height:80vh!important;
+       width:100vw!important;
+          transition-property: opacity;
+    }
+    [name="signupFormContainer"]{
+        min-height:100vh;
+        display:flex;
+       align-items: center;
+       justify-content: center;
+    }
+    [name="signupFormContainer"] img {
+       width:100%!important;
+       height:100%!important;
+          object-fit: cover;
+    }
 
-[name="signupFormContainer"] .zh_magicformtxt{
-   padding:0
-}
-[name="signupFormContainer"] .zh_formcont{
-   padding:0 20px
-}
-.zc_animated.zc_fadeIn{
-    margin:0!important;
-    inset:0!important;
-    padding:5%;
-    overflow:auto;
-   height:100vh!important;
-}
-[name="signupFormContainer"]{
-    min-height:100vh;
-    display:flex;
-   align-items: center;
-}
-[name="signupFormContainer"] img {
-   width:100%!important;
-   height:100%!important;
-}
+    [name="signupFormContainer"] .zh_magicformtxt{
+       padding:0
+    }
+    [name="signupFormContainer"] .zh_formcont{
+       padding:0 20px
+    }
+    .zc_animated.zc_fadeIn{
+        margin:0!important;
+        inset:0!important;
+        padding:5%;
+        overflow:auto;
+       height:100vh!important;
+    }
+    [name="signupFormContainer"]{
+        min-height:100vh;
+        display:flex;
+       align-items: center;
+    }
+    [name="signupFormContainer"] img {
+       width:100%!important;
+       height:100%!important;
+    }
 
-[name="signupFormContainer"] .zh_magicformtxt{
-   padding:0
-}
-[name="signupFormContainer"] .zh_formcont{
-   padding:0 20px
-}
-@media only screen and (min-width: 447px) {
- [name="signupFormContainer"] .zh_magicformcont{
-    height:auto!important
-}
-[name="signupFormContainer"] .zh_frominpcont,[name="signupFormContainer"] .zh_frombtncont{
-    width:100%!important
-}
-[name="signupFormContainer"] .zh_formcont{
-    width:50%!important
-}
-[name="signupFormContainer"] .zh_magicforhedone{
-    position:unset!important
-}
-[name="signupFormContainer"] .zh_forminput ,[name="signupFormContainer"] .zh_forminputbtn {
-    left:unset!important;
-    top:unset!important;
-    width:100%!important
-}
-[name="signupFormContainer"]  .zh_magicformbg {
-        left: 0!important;
-    top:0!important;
-    height: 100%!important;
-    width: 50%!important;
-    opacity: 1;
-}
-[name="signupFormContainer"]  .zh_magicforhedone{
-    width:100%!important;
-    height:unset!important;
-}
-}
-
-</style>
-{% for block in section.blocks %}
-  {% if forloop.index == 1 %}
-    {% assign content = block.settings.content %}
-  {% endif %}
-  {%- if localization.country.iso_code == block.settings.countryCode -%}
-    {%- if block.settings.langCode != blank -%}
-      {% if block.settings.langCode == localization.language.iso_code %}
-        {% assign content = block.settings.content %}
-      {% endif %}
-    {% else %}
+    [name="signupFormContainer"] .zh_magicformtxt{
+       padding:0
+    }
+    [name="signupFormContainer"] .zh_formcont{
+       padding:0 20px
+    }
+    @media only screen and (min-width: 447px) {
+     [name="signupFormContainer"] .zh_magicformcont{
+        height:auto!important
+    }
+    [name="signupFormContainer"] .zh_frominpcont,[name="signupFormContainer"] .zh_frombtncont{
+        width:100%!important
+    }
+    [name="signupFormContainer"] .zh_formcont{
+        width:50%!important
+    }
+    [name="signupFormContainer"] .zh_magicforhedone{
+        position:unset!important
+    }
+    [name="signupFormContainer"] .zh_forminput ,[name="signupFormContainer"] .zh_forminputbtn {
+        left:unset!important;
+        top:unset!important;
+        width:100%!important
+    }
+    [name="signupFormContainer"]  .zh_magicformbg {
+            left: 0!important;
+        top:0!important;
+        height: 100%!important;
+        width: 50%!important;
+        opacity: 1;
+    }
+    [name="signupFormContainer"]  .zh_magicforhedone{
+        width:100%!important;
+        height:unset!important;
+    }
+    }
+  </style>
+  {% for block in section.blocks %}
+    {% if forloop.index == 1 %}
       {% assign content = block.settings.content %}
+    {% endif %}
+    {%- if localization.country.iso_code == block.settings.countryCode -%}
+      {%- if block.settings.langCode != blank -%}
+        {% if block.settings.langCode == localization.language.iso_code %}
+          {% assign content = block.settings.content %}
+        {% endif %}
+      {% else %}
+        {% assign content = block.settings.content %}
+      {%- endif -%}
     {%- endif -%}
-  {%- endif -%}
-{% endfor %}
-{{ content }}
+  {% endfor %}
+  {{ content }}
+{% endif %}
+
 <!-- <template id="{{ section.id }}">{{ content }}</template> -->
 <!--
   <script>
