@@ -84,8 +84,8 @@
   "shopify": {
     "sentence": {
       "words_connector": ", ",
-      "two_words_connector": "og",
-      "last_word_connector": ", og"
+      "two_words_connector": " og ",
+      "last_word_connector": ", og "
     },
     "checkout": {
       "general": {
@@ -94,19 +94,19 @@
         "skip_to_content": "Hopp til innholdet",
         "breadcrumb": "Brødsmule",
         "continue_button_label": "Fortsette",
-        "complete_purchase_button_label": "Komplett bestilling",
+        "complete_purchase_button_label": "Fullstendig bestilling",
         "pay_now_button_label": "Betal nå",
-        "authenticate_purchase_button_label": "Autentiser betaling",
+        "authenticate_purchase_button_label": "Autentisere betaling",
         "edit_link_label": "Redigere",
-        "all_rights_reserved": "Alle rettigheter reservert %{shop_name}",
+        "all_rights_reserved": "Alle rettigheter forbeholdt %{shop_name}",
         "print_policies_link_label": "Skrive ut",
-        "cart": "Vogn",
+        "cart": "Handlekurv",
         "close_modal_label": "Lukk",
         "close_notice_label": "Lukk",
         "expand_notice_label": "Se mer",
         "continue_to_shipping_method": "Fortsett å sende",
-        "continue_to_payment_method": "Fortsett å betale",
-        "continue_to_review": "Gjennomgå bestilling",
+        "continue_to_payment_method": "Fortsett å betaling",
+        "continue_to_review": "Gjennomgangsordre",
         "back_to_cart": "Gå tilbake til handlekurven",
         "back_to_contact_information": "Gå tilbake til informasjon",
         "back_to_shipping_method": "Gå tilbake til frakt",
@@ -117,13 +117,13 @@
         "contact_us_html": "Kontakt oss for mer informasjon",
         "autocomplete_title": "Forslag",
         "autocomplete_single_item": "1 vare tilgjengelig",
-        "autocomplete_multi_item": "{{number}} Elementer tilgjengelig",
+        "autocomplete_multi_item": "{{number}} varer tilgjengelig",
         "autocomplete_selection": "{{number}} av {{total}}",
-        "autocomplete_close": "Lukk forslag",
+        "autocomplete_close": "Nære forslag",
         "forwarding_indicator": {
           "new_window": "Åpnes i et nytt vindu.",
-          "external": "Åpner ekstern nettside.",
-          "external_and_new_window": "Åpner ekstern nettside i nytt vindu."
+          "external": "Åpner ekstern nettsted.",
+          "external_and_new_window": "Åpner ekstern nettsted i et nytt vindu."
         },
         "checkout_context": {
           "step_one": "%{shop_name} - Sjekk ut"
@@ -149,7 +149,14 @@
             "one": "Klynge av {{number}} markør",
             "other": "Klynge av {{number}} markører"
           }
-        }
+        },
+        "title": "Sjekk ut - {{shopName}}",
+        "full_title": "{{pageTitle}} - {{shopName}} - Sjekk ut",
+        "loading_title": "Sjekk ut - {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Google Kart",
+        "submit_order_button_label": "Sende inn ordre",
+        "submit_for_review_button_label": "Send inn for gjennomgang"
       },
       "contact": {
         "title": "Informasjon",
@@ -1837,6 +1844,9 @@
       },
       "note": {
         "length_exceeds_maximum": "Reduser størrelsen på notatet til 5000 eller færre tegn."
+      },
+      "address_management": {
+        "confirm_address_deletion": "Er du sikker på at du vil slette adressen {{address}}?"
       }
     },
     "pagination": {
