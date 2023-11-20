@@ -1756,45 +1756,46 @@
           "calculating": "Beregning av estimert ventetid",
           "less_than_one": "Estimert ventetid: mindre enn et minutt",
           "one": "Estimert ventetid: {{count}} minutt",
-          "other": "Beregnet ventetid: {{count}} minutter"
+          "other": "Estimert ventetid: {{count}} minutter"
         },
         "last_checked": "(Sist sjekket: {{time}})",
         "footer": {
           "heading": "Ikke oppdater denne siden, den oppdateres automatisk.",
-          "body": "Varer i handlekurven din er ikke reservert før du fullfører kassen."
+          "body": "Elementer i handlekurven er ikke reservert før du fullfører kassen."
         }
       },
       "cart_checkout_validation": {
-        "runtime_error": "Det oppsto et problem med å behandle forespørselen din. Ta kontakt med butikkeieren."
+        "runtime_error": "Det var et problem som behandler forespørselen din, vennligst kontakt butikkeieren."
       },
       "no_address_location": {
         "title": "Sted uten adresse",
-        "header": "Du har ingen leveringsadresse for dette stedet",
-        "alt_header": "Mangler leveringsadresse",
+        "header": "Du har ikke en fraktadresse for dette stedet",
+        "alt_header": "Mangler fraktadresse",
         "message": "Kontakt oss for å legge til en adresse for dette stedet for å fullføre kassen.",
-        "email_us_button_label": "Send oss ​​en e-post"
+        "email_us_button_label": "Send oss ​​en e -post"
       },
       "order_errors": {
-        "creation_failure": "Det oppsto et problem med å opprette bestillingen din. Prøv igjen, eller kontakt oss for mer informasjon.",
-        "network_failure": "Bestillingen din kunne ikke sendes på grunn av en nettverksfeil. Sjekk tilkoblingen og prøv igjen."
+        "creation_failure": "Det var et problem med å opprette bestillingen din. Prøv igjen, eller kontakt oss for mer informasjon.",
+        "network_failure": "Bestillingen din kunne ikke sendes inn på grunn av en nettverksfeil. Sjekk tilkoblingen din og prøv igjen.",
+        "inventory_reservation_failure": "Noen varer er ikke lenger tilgjengelige."
       },
       "session_errors": {
-        "session_not_unique": "Det oppsto et problem under behandlingen av bestillingen din. Oppdater denne siden for å gå tilbake til butikken.",
-        "session_already_finished": "Denne bestillingen er allerede sendt inn. Du kan gå tilbake til butikken for å starte en ny bestilling."
+        "session_not_unique": "Det var et problem å behandle bestillingen din. Oppdater denne siden for å gå tilbake til butikken.",
+        "session_already_finished": "Denne ordren er allerede sendt inn. Du kan returnere til butikken for å starte en ny bestilling."
       },
       "pickup_point": {
         "location_is_currently_closed": "Lukket",
         "business_hours": "Åpningstider",
-        "title": "Hentested",
+        "title": "Pickup Point",
         "or": "eller",
         "search_button": "Søk",
-        "selector_tabs": "Velger for hentepunkt",
+        "selector_tabs": "Pickup Point Selector",
         "selector_tab_map": "Kart",
         "selector_tab_list": "Liste",
-        "could_not_resolve_address": "Kunne ikke finne adressen din. Prøv på nytt eller bruk en annen adresse",
-        "no_pickup_points_near_you": "Ingen hentepunkter funnet i nærheten av den valgte adressen",
-        "no_pickup_points_near_location": "Ingen hentepunkter funnet i nærheten av din plassering",
-        "no_pickup_points_found": "Ingen hentepunkter funnet",
+        "could_not_resolve_address": "Adressen din kunne ikke være lokalisert. Prøv igjen eller bruk en annen adresse",
+        "no_pickup_points_near_you": "Ingen pickup -poeng funnet i nærheten av den valgte adressen",
+        "no_pickup_points_near_location": "Ingen pickup -poeng funnet i nærheten av stedet ditt",
+        "no_pickup_points_found": "Ingen pickup -poeng funnet",
         "paginator": {
           "next_accessibility_label": "Neste side",
           "previous_accessibility_label": "Forrige side",
@@ -1812,17 +1813,17 @@
           }
         },
         "number_of_pickup_points_near_location": {
-          "one": "%{count} hentepunkt i nærheten av din plassering",
-          "other": "%{count} hentepunkter i nærheten av din plassering"
+          "one": "%{count} Pickup Point nær din beliggenhet",
+          "other": "%{count} Pickup -poeng i nærheten av stedet ditt"
         },
         "change": "Endring",
-        "waiting_on_pickup_point_location_notice": "Søker etter hentepunkter...",
+        "waiting_on_pickup_point_location_notice": "Søker etter hentingspoeng ...",
         "geolocation": {
-          "shared_location_button": "Bruk posisjonen min",
+          "shared_location_button": "Bruk plasseringen min",
           "errors": {
-            "unsuported_by_browser": "Å få geolokalisering støttes ikke av nettleseren din. Prøv på nytt eller bruk en annen nettleser.",
-            "permission_not_allowed": "Tillat deling av posisjonen din.",
-            "permission_denied": "Kunne ikke finne posisjonen din. Prøv igjen."
+            "unsuported_by_browser": "Å få geolokalisering støttes ikke av nettleseren din. Prøv igjen eller bruk en annen nettleser.",
+            "permission_not_allowed": "Tillat deling av stedet.",
+            "permission_denied": "Kunne ikke få din beliggenhet. Prøv igjen."
           }
         }
       },
@@ -1833,13 +1834,13 @@
           "action": {
             "cta": "Oppdater side"
           },
-          "request_id": "Forespørsels-ID: {{requestId}}"
+          "request_id": "Forespørsel ID: {{requestId}}"
         }
       },
       "notice_banner": {
         "return_to_cart_link_text": "Gå tilbake til handlekurven",
-        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} for å oppdatere mengdene",
-        "subscription_changed": "Ett av abonnementene dine er endret.",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} For å oppdatere mengdene",
+        "subscription_changed": "Et av abonnementene dine har endret seg.",
         "company_location_changed": "Handlekurven din har blitt oppdatert. Se gjennom bestillingen din før du sender den.",
         "company_location_changed_product_removed": "Handlekurven din har blitt oppdatert fordi noen produkter ikke er tilgjengelige på dette stedet. Se gjennom bestillingen din før du sender den.",
         "violations_title": "{{violation}} mangler eller er ugyldig",
