@@ -554,22 +554,22 @@
         "estimated_time": "Antatt %{time}",
         "estimated_time_range": "Antatt %{min_time}–%{max_time}",
         "shipping_line_phone_label": "Mobiltelefonnummer (påkrevd)",
-        "shipping_line_phone": "Kureren kan bruke dette nummeret til å kontakte deg.",
+        "shipping_line_phone": "Kureren din kan bruke dette nummeret til å kontakte deg.",
         "shipping_line_delivery_phone_label": "Mobiltelefonnummer",
         "shipping_line_delivery_phone": "Du kan bli kontaktet med oppdateringer om leveransen din.",
-        "optional_shipping_line_delivery_instructions_label": "Leveringsanvisninger (valgfritt)",
-        "shipping_line_delivery_instructions": "Skriv inn nødvendig informasjon som dørkoder eller avgangsinstruksjoner.",
+        "optional_shipping_line_delivery_instructions_label": "Leveringsinstruksjoner (valgfritt)",
+        "shipping_line_delivery_instructions": "Skriv inn nødvendig informasjon som dørkoder eller avleveringsinstruksjoner.",
         "other_method": {
           "zero": "Ingen andre metoder tilgjengelig",
           "one": "%{count} annen metode tilgjengelig på",
-          "other": "%{count} Andre metoder tilgjengelig som begynner på"
+          "other": "%{count} Andre metoder tilgjengelig fra og med"
         },
         "shipping_rate_discounted_amount": "Var: %{original_amount}. Nå: %{amount}",
         "local_delivery": "Lokal levering",
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
             "one": "til %{count} leveranse",
-            "other": "til %{count} Leveranser"
+            "other": "til %{count} leveranser"
           },
           "subscription_delivery_frequency": {
             "day": {
@@ -590,7 +590,7 @@
             }
           },
           "multiple_subscriptions_shipping_price_label": "%{shipping_price} per levering",
-          "prepaid_shipping_price_label": "%{shipping_price} per levering X. %{delivery_interval_count}",
+          "prepaid_shipping_price_label": "%{shipping_price} per levering x %{delivery_interval_count}",
           "initial_order_discounted": "Første fraktkostnad %{discounted_shipping_cost}, deretter %{frequency_description}",
           "prepaid_initial_order_discounted": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency}",
           "prepaid_initial_order_discounted_with_per_delivery_price": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
@@ -598,11 +598,11 @@
           "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Første fraktkostnad %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), deretter %{shipping_price} %{billing_cycle}",
           "shipping_price_included": "Inkludert",
           "recurring_order_shipping_price": "etterfulgt av %{recurring_order_shipping_price}",
-          "first_order_shipping_price_included": "Første bestilling inkludert, etterfulgt av %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Første ordre inkludert, etterfulgt av %{recurring_order_shipping_price}",
           "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per levering), etterfulgt av %{recurring_order_shipping_price}",
           "first_n_order_free": {
-            "one": "Første ordrefri",
-            "other": "Første %{count} bestillinger gratis"
+            "one": "Første ordre gratis",
+            "other": "Først %{count} Bestillinger gratis"
           },
           "free_for_first_n_order": {
             "one": "For første bestilling",
@@ -667,7 +667,14 @@
           "search_address": "Søk etter adresse",
           "rollup_title": "Hentested"
         },
-        "missing_shipping_address": "Leveringsadresse mangler"
+        "missing_shipping_address": "Leveringsadresse mangler",
+        "split_cart_merchandise_shipment_number": "Forsendelse %{number} av %{total}",
+        "split_cart_ships_now": "Skip nå",
+        "split_cart_ships_later": "Skip senere",
+        "split_cart_ships_by_date": "Skip forbi %{date}",
+        "split_cart_ships_date": "Skip %{date}",
+        "split_cart_multiple_shipment_label": "Flere forsendelser",
+        "split_cart_shipping_label": "Metode"
       },
       "localized_fields": {
         "additional_information": {
