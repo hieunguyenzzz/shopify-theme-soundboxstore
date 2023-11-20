@@ -605,11 +605,11 @@
             "other": "Først %{count} Bestillinger gratis"
           },
           "free_for_first_n_order": {
-            "one": "For første bestilling",
-            "other": "For første %{count} rekkefølge"
+            "one": "For første ordre",
+            "other": "For først %{count} bestillinger"
           }
         },
-        "one_time_purchase_shipping": "Engangs frakt",
+        "one_time_purchase_shipping": "Engangsfrakt",
         "delivery_date_range": "%{min_time}–%{max_time}",
         "subscription_local_delivery": "Abonnement lokal levering",
         "subscription_pickup": "Abonnement Pickup",
@@ -622,25 +622,25 @@
         "merchandise_quantity_label_inline_primary": "Mengde: %{quantity}",
         "merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
         "address2_add_label": "Legg til leilighet, suite osv.",
-        "duties_and_taxes_title": "Toll og skatter",
-        "shipping_information_required_notice": "Fraktinformasjon kreves. {{link}}.",
+        "duties_and_taxes_title": "Plikter og skatter",
+        "shipping_information_required_notice": "Skriv inn leveringsadressen din for å se tilgjengelige leveringsmetoder.",
         "shipping_information_redirect_link": "Skriv inn informasjonen din her",
-        "loading_progressive_rates": "Søker etter flere priser …",
+        "loading_progressive_rates": "Søker etter flere priser ...",
         "no_other_methods_available": "Ingen andre metoder tilgjengelig",
         "duties_and_taxes_options": {
           "ddu_title": "Betal ved levering",
-          "ddu_caption": "Ekstra avgifter kan påløpe",
+          "ddu_caption": "Ytterligere gebyrer kan gjelde",
           "ddp_title": "Betal nå",
-          "ddp_caption": "Ingen tilleggsgebyrer ved levering"
+          "ddp_caption": "Ingen ekstra gebyrer ved levering"
         },
         "shipping_method_combinations": {
           "without_separator": "%{firstMethod}, %{secondMethod}",
           "with_separator": "%{rest}, %{current},",
           "combination": "%{rest} og %{current}"
         },
-        "shipping_used_as_billing_notice": "Dette vil også bli brukt som din faktureringsadresse for denne bestillingen.",
-        "address_update": "Oppdater adressen",
-        "enter_address_manually_label": "Skriv inn adressen manuelt",
+        "shipping_used_as_billing_notice": "Dette vil også bli brukt som faktureringsadresse for denne bestillingen.",
+        "address_update": "Oppdateringsadresse",
+        "enter_address_manually_label": "Skriv inn adresse manuelt",
         "shipping_address_title": "Send til",
         "add_address": "Bruk en annen adresse",
         "add_delivery_instructions": "Legg til leveringsinstruksjoner",
@@ -654,20 +654,20 @@
           "add_address": "Legg til adresse",
           "save": "Lagre",
           "cancel": "Avbryt",
-          "generic_error": "Det oppsto et problem med å lagre adressen din. Vær så snill, prøv på nytt.",
+          "generic_error": "Det var et problem med å lagre adressen din. Vær så snill, prøv på nytt.",
           "one_time_address_subtitle": "Bruk en engangsadresse for denne bestillingen"
         },
-        "different_shipping_method_summary": "Angi en annen leveringsadresse for å se tilgjengelige leveringsmetoder",
-        "invalid_shipping_method_summary": "Skriv inn en gyldig leveringsadresse for å se tilgjengelige leveringsmetoder",
+        "different_shipping_method_summary": "Skriv inn en annen fraktadresse for å se tilgjengelige fraktmetoder",
+        "invalid_shipping_method_summary": "Skriv inn en gyldig fraktadresse for å se tilgjengelige leveringsmetoder",
         "method_summary": {
-          "incomplete_address_entered": "Skriv inn en fullstendig leveringsadresse for å se tilgjengelige forsendelsesmetoder",
-          "incomplete_address_selected": "Velg en komplett leveringsadresse for å se tilgjengelige leveringsmetoder"
+          "incomplete_address_entered": "Skriv inn en komplett fraktadresse for å se tilgjengelige fraktmetoder",
+          "incomplete_address_selected": "Velg en komplett fraktadresse for å se tilgjengelige fraktmetoder"
         },
         "local_pickup": {
           "search_address": "Søk etter adresse",
           "rollup_title": "Hentested"
         },
-        "missing_shipping_address": "Leveringsadresse mangler",
+        "missing_shipping_address": "Fraktadresse mangler",
         "split_cart_merchandise_shipment_number": "Forsendelse %{number} av %{total}",
         "split_cart_ships_now": "Skip nå",
         "split_cart_ships_later": "Skip senere",
@@ -678,19 +678,19 @@
       },
       "localized_fields": {
         "additional_information": {
-          "title": "Tilleggsinformasjon"
+          "title": "Ytterligere informasjon"
         }
       },
       "payment": {
         "amazon_payments_label": "Amazon Pay",
-        "amazon_payments_login_hint": "Du vil bli bedt om å logge Inn Med Amazon.",
-        "amazon_payments_logout": "Logg Ut Fra Amazon Pay",
-        "amazon_payments_failed_mfa_challenge": "Den valgte betalingsmåten kunne ikke brukes. Velg en annen metode eller kontakt banken eller kortutstederen.",
-        "amazon_payments_abandoned_mfa_challenge": "Betalingen kunne ikke fullføres. Prøv en annen betalingsmåte eller kontakt banken eller kortutstederen.",
-        "amazon_payments_could_not_enqueue_authorize": "Det oppstod et problem med å behandle betalingen din. Prøv på nytt eller bruk en annen betalingsmåte.",
-        "title": "Betaling",
-        "amount_left_to_pay_label": "Betaling på grunn:",
-        "discount_button_action_label": "Rabattkode",
+        "amazon_payments_login_hint": "Du blir bedt om å logge inn med Amazon.",
+        "amazon_payments_logout": "Logg ut fra Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Den valgte betalingsmetoden kunne ikke brukes. Velg en annen metode eller kontakt bank- eller kortutstederen.",
+        "amazon_payments_abandoned_mfa_challenge": "Betalingen din kunne ikke fullføres. Prøv en annen betalingsmetode eller kontakt bank- eller kortutstederen.",
+        "amazon_payments_could_not_enqueue_authorize": "Det var et problem som behandler betalingen din. Prøv igjen eller bruk en annen betalingsmetode.",
+        "title": "innbetaling",
+        "amount_left_to_pay_label": "Betalings forfall:",
+        "discount_button_action_label": "Bruk rabattkode",
         "gift_card_code_label": "Gavekort kode",
         "apply_gift_card_button_label": "Søke om",
         "gift_card_balance_label": "Saldo:",
