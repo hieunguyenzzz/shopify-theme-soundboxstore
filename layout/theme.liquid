@@ -16,7 +16,8 @@
     {% elsif content_for_header contains "Shopify.designMode" %}
     {% else %}
     <script>
-      (function (w, d, s, l, i) {
+      funtion startGTAG(){
+        (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
         var f = d.getElementsByTagName(s)[0],
@@ -26,6 +27,7 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
+      }
     </script>
     {% endif %}
     
@@ -397,6 +399,7 @@
             t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
           })()
+          startGTAG()
           isReplaced=true;
         }
       }    
