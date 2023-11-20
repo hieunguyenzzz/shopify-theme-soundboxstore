@@ -3130,44 +3130,47 @@
         "edit_payment_method_button_accessibility_label": "Rediger betalingsmetode som slutter {{lastDigits}}",
         "payment_method_expired_on": "Utløpt på {{expiryDate}}",
         "loading_shop_pay": "Laster butikklønn",
-        "invalid_payment_method": "Ugyldig betalingsmåte",
+        "invalid_payment_method": "Ugyldig betalingsmetode",
         "invalid_payment_method_message": "Bruk et nytt kredittkort for å fortsette å motta kommende bestillinger.",
-        "replace_payment_method": "Bytt ut betalingsmåten",
-        "checkout_card_banner": "Denne betalingsmåten kan kun brukes for forhåndsautoriserte betalinger. Det vil ikke vises i kassen hvis du er logget inn i denne butikken."
+        "replace_payment_method": "Erstatte betalingsmetode",
+        "checkout_card_banner": "Denne betalingsmetoden kan bare brukes til forhåndsautoriserte betalinger. Det vises ikke i kassen hvis du er logget inn i denne butikken.",
+        "default_checkbox": "Satt som standard",
+        "default_checkbox_accessibility_label": "Angi denne betalingsmetoden som standard"
       },
       "edit_payment_method": {
         "title": "Rediger betalingsmetode",
         "save_payment_method_button": "Lagre",
         "cancel_edit_payment_method_button": "Avbryt",
         "payment_method_updated_toast": "Betalingsmetode oppdatert",
-        "billing_address": "Faktureringsadresse",
+        "billing_address": "Fakturaadresse",
         "billing_address_add_new": "Legg til ny",
         "billing_address_choose_from_list": "Velg mellom listen",
-        "future_purchases_notice": "Denne betalingsmetoden vil bli lagret for fremtidige kjøp."
+        "future_purchases_notice": "Denne betalingsmetoden vil bli lagret for fremtidige kjøp.",
+        "generic_error": "Det var et problemoppdatering. Vær så snill, prøv på nytt."
       },
       "card_fields": {
         "card_number_label": "Kortnummer",
         "card_number_placeholder": "Kortnummer",
         "name_on_card_label": "Navn på kort",
         "name_on_card_placeholder": "Navn på kort",
-        "card_expiry_label": "Utløpsdato (MM \/ ÅÅ)",
-        "card_expiry_placeholder": "Utløpsdato (MM \/ ÅÅ)",
+        "card_expiry_label": "Utløpsdato (mm \/ yy)",
+        "card_expiry_placeholder": "Utløpsdato (mm \/ yy)",
         "card_verification_value_label": "Sikkerhetskode",
         "card_verification_value_placeholder": "Sikkerhetskode",
-        "card_start_label": "Utstedelsesdato (MM \/ ÅÅ)",
-        "card_start_placeholder": "Utstedelsesdato (MM \/ ÅÅ)",
+        "card_start_label": "Utstedelsesdato (mm \/ yy)",
+        "card_start_placeholder": "Utstedelsesdato (mm \/ yy)",
         "tooltip": {
           "tooltip_accessibility_label": "Mer informasjon",
-          "card_verification_value_explanation_amex": "4-sifret sikkerhetskode på forsiden av kortet",
-          "card_verification_value_explanation_other": "3-sifret sikkerhetskode på baksiden av kortet",
-          "card_verification_value_explanation": "3-sifret sikkerhetskode som vanligvis finnes på baksiden av kortet ditt. American Express-kort har en 4-sifret kode plassert på forsiden.",
+          "card_verification_value_explanation_amex": "4-sifret sikkerhetskode foran på kortet ditt",
+          "card_verification_value_explanation_other": "3-sifret sikkerhetskode på baksiden av kortet ditt",
+          "card_verification_value_explanation": "3-sifret sikkerhetskode som vanligvis finnes på baksiden av kortet ditt. American Express-kort har en 4-sifret kode som ligger foran.",
           "card_security_notice": "Alle transaksjoner er sikre og krypterte."
         },
         "field_errors": {
           "credit_card_name_invalid": "Skriv inn navnet ditt nøyaktig som det er skrevet på kortet ditt",
           "credit_card_number_invalid": "Skriv inn et gyldig kortnummer",
-          "credit_card_expiry_invalid": "Skriv inn et gyldig kort utløpsdato",
-          "credit_card_verification_value_blank": "Skriv inn CVV eller sikkerhetskoden på kortet ditt"
+          "credit_card_expiry_invalid": "Skriv inn en gyldig utløpsdato for kort",
+          "credit_card_verification_value_blank": "Skriv inn CVV eller sikkerhetskode på kortet ditt"
         }
       },
       "payment_delete": {
@@ -3183,14 +3186,14 @@
         "deleted_successfully": "Betalingsmetode slettet vellykket.",
         "loading_available_payment_methods_accessibility_label": "Laster tilgjengelige betalingsmetoder",
         "warning_message_with_replacement": {
-          "with_pending_orders_and_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Med mindre du velger en alternativ betalingsmetode, vil denne betalingsmetoden fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger. Ved å velge en alternativ betalingsmetode kan du motta kommende abonnementsbestillinger uten avbrudd.",
-          "with_pending_orders": "Hvis du sletter denne betalingsmåten, fjernes den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Med mindre du velger en alternativ betalingsmetode, vil den fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger.",
-          "with_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Erstatt den med en alternativ betalingsmetode for å fortsette å motta kommende bestillinger."
+          "with_pending_orders_and_subscriptions": "Å slette denne betalingsmetoden vil påvirke preautoriserte betalinger. Med mindre du velger en alternativ betalingsmetode, vil denne betalingsmetoden fortsatt bli belastet for utestående saldoer på eksisterende ordrer. Ved å velge en alternativ betalingsmetode lar deg motta kommende abonnementsordrer uten avbrudd.",
+          "with_pending_orders": "Å slette denne betalingsmetoden vil fjerne den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Med mindre du velger en alternativ betalingsmetode, vil den fremdeles bli belastet for utestående saldoer på eksisterende ordrer.",
+          "with_subscriptions": "Å slette denne betalingsmetoden vil påvirke preautoriserte betalinger. Bytt den ut med en alternativ betalingsmetode for å fortsette å motta kommende bestillinger."
         },
         "warning_message_without_replacement": {
-          "with_pending_orders_and_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Denne betalingsmåten vil fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger, men du vil ikke motta kommende abonnementsbestillinger. Legg til en alternativ betalingsmåte for å fortsette å motta abonnementsbestillinger.",
-          "with_pending_orders": "Hvis du sletter denne betalingsmåten, fjernes den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Det vil fortsatt bli belastet for eventuelle utestående saldoer på eksisterende bestillinger.",
-          "with_subscriptions": "Sletting av denne betalingsmåten vil påvirke forhåndsautoriserte betalinger. Legg til en alternativ betalingsmåte for å fortsette å motta kommende bestillinger."
+          "with_pending_orders_and_subscriptions": "Å slette denne betalingsmetoden vil påvirke preautoriserte betalinger. Denne betalingsmetoden vil fortsatt bli belastet for utestående saldoer på eksisterende ordrer, men du vil ikke motta kommende abonnementsordrer. Legg til en alternativ betalingsmetode for å fortsette å motta abonnementsordrer.",
+          "with_pending_orders": "Å slette denne betalingsmetoden vil fjerne den fra kontoen din og vil ikke lenger være tilgjengelig for fremtidige kjøp. Det vil fortsatt bli belastet for utestående saldoer på eksisterende ordrer.",
+          "with_subscriptions": "Å slette denne betalingsmetoden vil påvirke preautoriserte betalinger. Legg til en alternativ betalingsmetode for å fortsette å motta kommende ordrer."
         }
       },
       "expires_soon": "Dette kortet utløper snart",
