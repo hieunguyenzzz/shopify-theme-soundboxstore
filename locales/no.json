@@ -136,12 +136,19 @@
         "full_price": "Full pris:",
         "list_formatter": {
           "or": {
-            "twoWordConnector": "{{firstWord}} eller {{secondWord}}"
+            "twoWordConnector": "{{firstWord}} eller {{secondWord}}",
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, eller {{lastWord}}"
           },
           "narrow": {
             "wordConnector": "{{previousWords}}, {{anotherWord}}",
             "lastWordConnector": "{{previousWords}}, {{lastWord}}",
             "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          },
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, og {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} og {{secondWord}}"
           }
         },
         "map": {
@@ -156,7 +163,64 @@
         "display_name": "{{firstName}} {{lastName}}",
         "google_map_title": "Google Kart",
         "submit_order_button_label": "Sende inn ordre",
-        "submit_for_review_button_label": "Send inn for gjennomgang"
+        "submit_for_review_button_label": "Send inn for gjennomgang",
+        "submit_for_review_notice_label": "Betalingen forfaller ikke før bestillingen din blir vurdert",
+        "continue_to_payment_plans_button_label": "Fortsett til betalingsplaner",
+        "back_button_label": "Komme tilbake",
+        "choose_delivery_strategy": "Velg en leveringsmetode",
+        "autocomplete_zero_item": "Ingen ting tilgjengelig",
+        "autocomplete_powered_by_google": "Drevet av {{brandName}}",
+        "submit": "Sende inn",
+        "processing": "Behandling…",
+        "stepper": {
+          "increase": "Øke {{type}}",
+          "decrease": "Avta {{type}}",
+          "minimum_reached": "Minimum {{value}} nådd",
+          "maximum_reached": "Maksimalt {{value}} nådd"
+        },
+        "remove_item": "Fjerne %{label}",
+        "remove_tag": "Fjern taggen",
+        "dates": {
+          "weekdays": {
+            "monday": "mandag",
+            "tuesday": "tirsdag",
+            "wednesday": "onsdag",
+            "thursday": "Torsdag",
+            "friday": "fredag",
+            "saturday": "lørdag",
+            "sunday": "søndag"
+          },
+          "weekdays_abbreviation": {
+            "monday": "Mo",
+            "tuesday": "Tu",
+            "wednesday": "Vi",
+            "thursday": "Th",
+            "friday": "Fr",
+            "saturday": "Sa",
+            "sunday": "Su"
+          },
+          "months": {
+            "january": "januar",
+            "february": "februar",
+            "march": "mars",
+            "april": "april",
+            "may": "Kan",
+            "june": "juni",
+            "july": "juli",
+            "august": "august",
+            "september": "september",
+            "october": "oktober",
+            "november": "november",
+            "december": "desember"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Vis forrige måned, {{month}} {{year}}",
+          "show_next_month": "Vis neste måned, {{month}} {{year}}",
+          "range_start": "Rekkevidde start",
+          "in_range": "Innen rekkevidde",
+          "range_end": "Rekkevidde"
+        }
       },
       "contact": {
         "title": "Informasjon",
