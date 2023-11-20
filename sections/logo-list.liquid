@@ -6,7 +6,11 @@
         <h2 class="title-font">{{ section.settings.title | escape }}</h2>
       </div>
     {%- endif -%}
-
+    {%- if section.settings.content != blank -%}
+      <div>
+        {{ section.settings.content | escape }}
+      </div>
+    {%- endif -%}
     {%- if section.blocks.size > 0 -%}
       <div class="logo-bar logo-bar--{{ section.id }}">
         <div class="new-grid product-grid" data-view="6-2">
@@ -52,6 +56,11 @@
       "id": "title",
       "label": "Heading",
       "default": "Our brands"
+    },
+     {
+      "type": "textarea",
+      "id": "content",
+      "label": "Cotent"
     },
     {
       "type": "checkbox",
