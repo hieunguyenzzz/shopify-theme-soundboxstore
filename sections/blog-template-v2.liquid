@@ -356,13 +356,17 @@
               <div class="image-wrap">
                 <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
                   {% assign img_url = img | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  {{ img | image_url: width: 1440 | image_tag : loading:'edge' ,data-aspectratio: article.image.aspect_ratio  }}
-                
+                  {{
+                    img
+                    | image_url: width: 1440
+                    | image_tag: loading: 'edge', data-aspectratio: article.image.aspect_ratio
+                  }}
+                </div>
               </div>
             {%- else -%}
               <div class="image-wrap">
                 {%- assign img_url = img | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                  {{ img | image_url: width: 1440 | image_tag : loading:'edge' ,data-aspectratio:  img.aspect_ratio  }}
+                {{ img | image_url: width: 1440 | image_tag: loading: 'edge', data-aspectratio: img.aspect_ratio }}
               </div>
             {%- endif -%}
           {%- endif -%}
