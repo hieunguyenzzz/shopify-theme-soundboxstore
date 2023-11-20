@@ -939,51 +939,56 @@
           "apply_another_gift_card_label": "Bruk et annet gavekort",
           "gift_card_label": "Gavekort %{identifier}",
           "payment_tag": "Gavekort",
-          "add_label": "Legg til et gavekort"
+          "add_label": "Legg til et gavekort",
+          "manage_label": "Administrer gavekort"
         },
         "custom_onsite_payment_method_modal": {
-          "title": "Tilpasset betalingsbekreftelse på stedet"
+          "title": "Tilpasset betalingsbekreftelse"
         },
-        "markets_pro_disclaimer_label": "Ved å klikke nedenfor og fullføre bestillingen, godtar du å kjøpe varene dine fra Global-e som registrert forhandler for denne transaksjonen, på Global-e's %{markets_pro_terms} og %{privacy_policy}. Global-e er en internasjonal oppfyllelsestjenesteleverandør til %{shop_name}",
+        "markets_pro_disclaimer_label": "Ved å klikke nedenfor og fullføre bestillingen, samtykker du i å kjøpe varen (e) fra Global-E som selger av rekord for denne transaksjonen, på Global-E's %{markets_pro_terms} og %{privacy_policy}. Global-e er en internasjonal leverandør av oppfyllingstjenester til %{shop_name}",
         "markets_pro_disclaimer_terms_and_conditions": "Vilkår og betingelser",
-        "markets_pro_disclaimer_privacy_policy": "Personvernerklæring",
-        "markets_pro_disclaimer_terms_and_conditions_title": "Forhandlerens vilkår og betingelser",
-        "markets_pro_disclaimer_privacy_policy_title": "Personvernerklæring for selgere",
+        "markets_pro_disclaimer_privacy_policy": "Personvernregler",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Kjøpmann av rekordvilkår og betingelser",
+        "markets_pro_disclaimer_privacy_policy_title": "Merchant of Record Personvernregler",
         "purchase_order_number": {
           "title": "Postnummer",
-          "label": "PO-nummer (valgfritt)"
+          "label": "PO -nummer (valgfritt)"
         },
-        "alternative_payment_currency_total_notice": "Merk: du vil bli belastet %{amount_due}.",
-        "waiting_on_taxes_message": "Hvis skatten din ikke beregnes innen de neste sekundene, oppdater siden.",
-        "waiting_on_taxes_notice": "Beregning av skatter",
+        "alternative_payment_currency_total_notice": "Merk: Du blir belastet %{amount_due}.",
+        "waiting_on_taxes_message": "Hvis skattene dine ikke beregner i løpet av de neste sekundene, må du oppdatere siden.",
+        "waiting_on_taxes_notice": "Beregne skatter",
         "payment_method": "Betalingsmetode",
-        "expired_payment_method": "Valgt betalingsmåte er utløpt",
+        "expired_payment_method": "Valgt betalingsmetode er utløpt",
         "purchase_options_agreement_label_wallets": "Ved å fortsette med betalingen din, samtykker du til de fremtidige kostnadene som er oppført på denne siden og avbestillingsreglene.",
-        "saved_credit_card_cvv_verification": "For verifiseringsformål, vennligst skriv inn kortets sikkerhetskode."
+        "saved_credit_card_cvv_verification": "For verifiseringsformål, vennligst skriv inn kortets sikkerhetskode.",
+        "gift_card_store_credit": {
+          "add_label": "Legg til et gavekort eller butikkkreditt",
+          "manage_label": "Administrer gavekort eller butikkkreditt"
+        }
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "Nåværende saldo %{amount}",
         "credit_card_expires_on_notice": "Går ut på dato den %{month}\/%{year}",
         "express_payment_gateway_label": "Uttrykke",
         "manual_payment_gateway_label": "Håndbok",
-        "billing_address_title": "Faktureringsadresse",
+        "billing_address_title": "Fakturaadresse",
         "free_label": "Gratis"
       },
       "field_errors": {
         "handle_phone_invalid": "Skriv inn et gyldig telefonnummer",
-        "handle_email_invalid": "Skriv inn en gyldig e-post",
-        "email_invalid": "Skriv inn en gyldig e-post",
-        "email_or_phone_blank": "Skriv inn en e-post eller mobilnummer",
-        "email_or_phone_invalid": "Skriv inn en gyldig e-post eller mobilnummer",
+        "handle_email_invalid": "Skriv inn en gyldig e -post",
+        "email_invalid": "Skriv inn en gyldig e -post",
+        "email_or_phone_blank": "Skriv inn en e -post eller telefonnummer",
+        "email_or_phone_invalid": "Skriv inn en gyldig e -post eller et mobiltelefonnummer",
         "address_first_name_blank": "Skriv inn et fornavn",
-        "address_first_name_too_long": "Fornavn er for lang (maks er 255 tegn)",
+        "address_first_name_too_long": "Fornavn er for langt (maksimum er 255 tegn)",
         "address_first_name_contains_emojis": "Fornavn kan ikke inneholde emojis",
-        "address_first_name_contains_html_tags": "Fornavn kan ikke inneholde HTML-koder.",
+        "address_first_name_contains_html_tags": "Fornavn kan ikke inneholde HTML -tagger.",
         "address_first_name_contains_url": "Fornavn kan ikke inneholde en URL",
         "address_last_name_blank": "Skriv inn et etternavn",
-        "address_last_name_too_long": "Etternavn er for lang (maks er 255 tegn)",
+        "address_last_name_too_long": "Etternavn er for langt (maksimum er 255 tegn)",
         "address_last_name_contains_emojis": "Etternavn kan ikke inneholde emojis",
-        "address_last_name_contains_html_tags": "Etternavn kan ikke inneholde HTML-koder.",
+        "address_last_name_contains_html_tags": "Etternavn kan ikke inneholde HTML -tagger.",
         "address_last_name_contains_url": "Etternavn kan ikke inneholde en URL",
         "address_address1_blank": "Skriv inn en adresse",
         "address_address1_too_long": "Den første adresselinje er for lang (maksimalt er 255 tegn)",
@@ -1674,7 +1679,7 @@
         }
       },
       "billing": {
-        "billing_address_title": "Regning til",
+        "billing_address_title": "Bill til",
         "same_as_shipping": "samme som leveringsadressen",
         "add_address": "Bruk en annen adresse",
         "edit": "Redigere",
