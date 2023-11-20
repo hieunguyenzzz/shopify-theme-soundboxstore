@@ -2135,14 +2135,14 @@
           "partially_paid": "Delvis betalt",
           "partially_refunded": "Delvis refundert",
           "refunded": "Refundert",
-          "expired": "Utløpe"
+          "expired": "Utløpt"
         },
         "fulfillment_status": {
           "fulfilled": "Oppfylt",
           "complete": "Fullstendig",
           "partial": "Delvis",
-          "unfulfilled": "Unfulfilled.",
-          "restocked": "Restocked."
+          "unfulfilled": "Uoppfylt",
+          "restocked": "Omstart"
         },
         "transaction_status": {
           "success": "Suksess",
@@ -2152,48 +2152,50 @@
         },
         "cancel_reason": {
           "declined": "Betaling avvist",
-          "inventory": "Elementer utilgjengelige",
-          "fraud": "Bedragerisk ordre",
-          "customer": "Kunde endret \/ kansellert rekkefølge",
-          "other": "Annen"
+          "inventory": "Gjenstander som ikke er tilgjengelige",
+          "fraud": "Uredelig orden",
+          "customer": "Kunden endret\/kansellert ordre",
+          "other": "Annen",
+          "staff": "Personalfeil"
         },
-        "cash_on_delivery": "Postoppkrav (COD)"
+        "cash_on_delivery": "Kontanter ved levering (COD)"
       },
       "cart": {
-        "only_n_items_available": "Du kan bare legge til %{count} %{name} til vognen.",
-        "too_many_items_in_cart": "Du kan ikke legge til mer %{name} til vognen.",
+        "only_n_items_available": "Du kan bare legge til %{count} %{name} til handlekurven.",
+        "too_many_items_in_cart": "Du kan ikke legge til mer %{name} til handlekurven.",
         "all_items_in_cart": "Alle %{count} %{name} er i handlekurven din.",
-        "empty_update": "kan ikke oppdatere tom handlevogn",
-        "missing_parameters": "ingen gyldig ID eller linje parameter",
-        "generic_error": "kurven Feil",
-        "too_many_line_items_error": "Handlekurven kan ikke inneholde mer enn %{max} elementer.",
+        "empty_update": "Kan ikke oppdatere tom vogn",
+        "missing_parameters": "Ingen gyldig ID- eller linjeparameter",
+        "generic_error": "CART -feil",
+        "too_many_line_items_error": "Vogna din kan ikke inneholde mer enn %{max} gjenstander.",
         "link_expired": "Link utløpt",
         "link_no_longer_exists": "Link eksisterer ikke lenger.",
-        "stock_problems_html": "En eller flere elementer er ikke lenger tilgjengelig. Vi har gitt en <a href='%{link}'>oppdatert kurven<\/a>.",
-        "changed": "kurven endret",
-        "items_changed": "Ett eller flere elementer har endret seg.",
+        "stock_problems_html": "En eller flere varer er ikke lenger tilgjengelige. Vi har gitt en <a href='%{link}'>Oppdatert vogn<\/a>.",
+        "changed": "Handlekurven endret",
+        "items_changed": "En eller flere varer har endret seg.",
         "product_sold_out": "Produktet '%{name}'Er allerede utsolgt.",
-        "variant_not_found": "Kan ikke finne variant",
-        "variant_requires_selling_plan": "Variant kan kun kjøpes med en selger plan.",
+        "variant_not_found": "Finner ikke variant",
+        "variant_requires_selling_plan": "Variant kan bare kjøpes med en salgsplan.",
         "selling_plan_not_available_for_company_locations": "Bare engangskjøp er tilgjengelig for B2B-bestillinger",
         "digital_product_not_available_for_company_locations": "Denne varen kan ikke legges til en B2B -ordre",
-        "selling_plan_not_applicable": "Kan ikke gjelde selge plan for å variant",
-        "shipping_address_not_required": "Denne vognen ikke krever frakt",
-        "shipping_address_invalid": "Det var et problem å beregne fraktpriser. Fortsett til kassen for å velge en fraktkostnad før du fullfører din bestilling.",
+        "selling_plan_not_applicable": "Kan ikke bruke salgsplan til varianten",
+        "shipping_address_not_required": "Denne handlekurven krever ikke frakt",
+        "shipping_address_invalid": "Det var et problem å beregne fraktprisene dine. Fortsett å sjekke ut for å velge en fraktfrekvens før du fullfører bestillingen.",
         "product_not_available": "Produktet er ikke tilgjengelig",
         "less_than_minimum": "Denne varen har minimum %{min}.",
         "more_than_maximum": "Denne varen har maksimalt %{max}.",
         "not_respect_step": "Du kan bare legge til dette elementet i multipler av %{step}.",
-        "bundle_requires_components": "Buntproduktet '%{name}' kan ikke legges i handlekurven.",
-        "gift_card_with_components_not_supported": "Buntproduktet '%{name}' kan ikke legges i handlekurven.",
-        "bundle_products_not_supported_for_b2b_draft": "Samlede varer kan ikke legges til B2B-bestillinger for dette stedet."
+        "bundle_requires_components": "Buntproduktet '%{name}'Kan ikke legges til i vogna.",
+        "gift_card_with_components_not_supported": "Buntproduktet '%{name}'Kan ikke legges til i vogna.",
+        "bundle_products_not_supported_for_b2b_draft": "Medfølgende gjenstander kan ikke legges til B2B -bestillinger for dette stedet.",
+        "view_lines_limit_reached": "Linjer må være mindre enn %{limit}"
       },
       "storefront": {
-        "invalid_password": "Feil passord, prøv igjen."
+        "invalid_password": "Passord feil, prøv igjen."
       },
       "tags": {
-        "add_articles": "Smal søk til artiklene også ha tag %{tag}",
-        "add_products": "Smal utvalg til produkter som svarer tag %{tag}",
+        "add_articles": "Smalt søk til artikler som også har tag %{tag}",
+        "add_products": "Smalt utvalg til produkter som matchende tag %{tag}",
         "remove_articles": "Utvide til artikler som ikke er merket søk %{tag}",
         "remove_products": "Fjern tag %{tag}"
       },
