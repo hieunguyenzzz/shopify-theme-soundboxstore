@@ -213,11 +213,21 @@
       {% endif %}
   {% endcase %}
 {% endfor %}
+<script>
+  let options = {
+    root: document.querySelector("#{{section.id}}"),
+    rootMargin: "100px",
+    threshold: 1.0,
+  };
 
+  let observer = new IntersectionObserver((...args)=>{
+    console.log({args})
+  }, options);
+</script>
 {% schema %}
 {
   "name": "custome-blocks",
-    "class":"custome-blocks",
+  "class":"custome-blocks",
   "settings": [],
   "blocks": [
     {
