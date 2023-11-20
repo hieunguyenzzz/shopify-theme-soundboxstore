@@ -1841,20 +1841,21 @@
         "return_to_cart_link_text": "Gå tilbake til handlekurven",
         "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} For å oppdatere mengdene",
         "subscription_changed": "Et av abonnementene dine har endret seg.",
-        "company_location_changed": "Handlekurven din har blitt oppdatert. Se gjennom bestillingen din før du sender den.",
-        "company_location_changed_product_removed": "Handlekurven din har blitt oppdatert fordi noen produkter ikke er tilgjengelige på dette stedet. Se gjennom bestillingen din før du sender den.",
-        "violations_title": "{{violation}} mangler eller er ugyldig",
+        "company_location_changed": "Vognen din er oppdatert. Gå gjennom bestillingen før du sender den inn.",
+        "company_location_changed_product_removed": "Vognen din har blitt oppdatert fordi noen produkter ikke er tilgjengelige på dette stedet. Gå gjennom bestillingen før du sender den inn.",
+        "violations_title": "{{violation}} mangler eller ugyldig",
         "individual_violations_title": {
           "DeliveryViolations": "Sendingsadresse",
           "PaymentViolations": "Fakturaadresse",
           "OtherViolations": "BESTILLINGSINFORMASJON"
         },
         "all_violations_content": "Ring eller {{emailLink}} oss for å oppdatere denne informasjonen og fullføre bestillingen din:",
-        "all_violations_email_link": "e-post",
-        "editable_shipping_address_violations_message_title": "Legg til denne informasjonen for å fullføre bestillingen:",
-        "editable_shipping_address_violations_message_footer": "For å permanent oppdatere adressen for denne plasseringen, {{emailLink}}.",
+        "all_violations_email_link": "e -post",
+        "editable_shipping_address_violations_message_title": "Legg til denne informasjonen for å fullføre bestillingen din:",
+        "editable_shipping_address_violations_message_footer": "For å oppdatere adressen permanent for dette stedet, {{emailLink}}.",
         "editable_shipping_address_violations_email_link": "kontakt oss",
-        "shipping_address_incomplete_title": "Leveringsadressen er ufullstendig"
+        "shipping_address_incomplete_title": "Fraktadresse er ufullstendig",
+        "calculating_shipping": "Frakt blir fortsatt beregnet. Prøv igjen om noen sekunder. Du er ikke siktet."
       },
       "marketplaces": {
         "legal_notice": {
@@ -1867,18 +1868,18 @@
       },
       "local_pickup": {
         "location_information": {
-          "one": "Det er %{count} butikk med lager i nærheten av %{address}",
-          "other": "Det er %{count} butikker med lager i nærheten av %{address}"
+          "one": "Det er %{count} butikk med lager nær %{address}",
+          "other": "Det er %{count} butikker med lager nær %{address}"
         },
-        "toggle_location": "Endre posisjonen min",
+        "toggle_location": "Endre plasseringen min",
         "or": "ELLER",
         "cancel": "Avbryt",
         "your_location": "posisjonen din",
         "search_button": "Finn butikker",
         "no_stores_found": "Ingen butikker funnet",
-        "could_not_resolve_address": "Kunne ikke finne adressen din. Prøv på nytt eller bruk en annen adresse",
+        "could_not_resolve_address": "Adressen din kunne ikke være lokalisert. Prøv igjen eller bruk en annen adresse",
         "paginator": {
-          "accessibility_label": "Lokal henting paginering",
+          "accessibility_label": "Lokal pickup -paginering",
           "previous": "Forrige side",
           "next": "Neste side",
           "label": {
@@ -1887,33 +1888,33 @@
           }
         },
         "reveal_more_label": {
-          "one": "Forestilling %{count} mer plassering",
-          "other": "Forestilling %{count} flere lokasjoner"
+          "one": "Forestilling %{count} mer beliggenhet",
+          "other": "Forestilling %{count} Flere steder"
         }
       },
       "captcha": {
-        "title": "Fullfør CAPTCHA for å fortsette",
+        "title": "Fullfør Captcha for å fortsette",
         "errors": {
-          "not_solved": "Fullfør CAPTCHA for å fortsette"
+          "not_solved": "Fullfør Captcha for å fortsette"
         }
       },
       "discount_errors": {
-        "generic_error": "Bestillingen din kunne ikke behandles fordi rabattkoden din ikke lenger er tilgjengelig. Se gjennom ordresummen og prøv igjen."
+        "generic_error": "Bestillingen din kunne ikke behandles fordi rabattkoden din ikke lenger er tilgjengelig. Gå gjennom bestillingen og prøv igjen."
       },
       "wallets": {
         "return_to_store": "Gå tilbake til butikken",
-        "redirect_hint": "Du vil bli bedt om å logge inn med {{walletName}}.",
+        "redirect_hint": "Du blir bedt om å logge inn med {{walletName}}.",
         "logged_in": "Koblet til {{email}}",
         "shipping_line_label": "Shipping",
         "connect_shipping_methods": "{{method1}} og {{method2}}",
         "payment_in_progress_title": "Betaling pågår",
-        "payment_in_progress_body": "Betalingen din behandles. Bestillingen din vil snart bli fullført.",
+        "payment_in_progress_body": "Betalingen din blir behandlet. Bestillingen din blir fullført snart.",
         "call_to_action": "Betale med {{walletName}}",
-        "redirection_notice": "Etter å ha klikket \"{{buttonLabel}}\", vil du bli omdirigert til {{walletName}} for å fullføre kjøpet på en sikker måte.",
+        "redirection_notice": "Etter å ha klikket \"{{buttonLabel}}\", vil du bli omdirigert til {{walletName}} For å fullføre kjøpet sikkert.",
         "errors": {
           "unavailable": {
             "title": "{{walletName}} ikke tilgjengelig",
-            "description": "{{walletName}} var ikke tilgjengelig. Bruk en annen betalingsmåte eller prøv igjen senere.",
+            "description": "{{walletName}} var ikke tilgjengelig. Bruk en annen betalingsmetode eller prøv igjen senere.",
             "instructions": "Det var et problem med {{walletName}}. Gå tilbake til butikken for å prøve igjen eller sjekk ut på en annen måte."
           },
           "generic": "Det var et problem med {{walletName}}. Prøv på nytt eller bruk en annen betalingsmåte.",
@@ -1966,6 +1967,13 @@
       },
       "vaulted": {
         "change_button": "Endring"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Det er et problem med å laste butikklønn",
+          "try_again_later": "Sjekk tilkoblingen din eller lukk dette vinduet og prøv igjen om noen få øyeblikk."
+        },
+        "return_to_store": "Tilbake til {{shopName}}"
       }
     },
     "pagination": {
