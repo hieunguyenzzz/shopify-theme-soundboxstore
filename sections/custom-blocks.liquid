@@ -1,4 +1,3 @@
-<script src="https://cdn.tailwindcss.com?plugins=typography,forms" defer></script>
 <style type="text/tailwindcss">
   @layer base {
     h2 {
@@ -215,6 +214,7 @@
 {% endfor %}
 <script>
      (()=>{
+       let loaded = false
     let options = {
        root: document,
        rootMargin: "100px",
@@ -222,8 +222,20 @@
      };
 
 
-     let observer = new IntersectionObserver((...args)=>{
-       console.log({args})
+     let observer = new IntersectionObserver((entities)=>{
+       if(entities[0].isIntersecting){
+         console.log({args})
+                     var d = document;
+            s = d.createElement("script");
+            s.type = "text/javascript";
+            s.id = "zsiqscript";
+            s.defer = true;
+            s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
+            t = d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(s, t);
+         loaded= true
+    observer.disconnect()
+       }
      }, options);
      let target = document.querySelector("#shopify-section-{{section.id}}");
   observer.observe(target);
