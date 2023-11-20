@@ -784,17 +784,17 @@
         "subscription_agreement_cancelled": "Avbestillingspolicy",
         "subscription_agreement_label_html": "Jeg forstår at jeg godtar et abonnement. Den vil fornye seg til prisen og frekvensen som er oppført til den slutter eller er\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">avbrutt<\/a>.\n",
         "change_currency_section_description": "Velg et valutaalternativ",
-        "no_real_orders_dev_store": "Denne butikken kan ikke godta ekte bestillinger eller ekte betalinger.",
-        "waiting_on_payment_methods": "Får tilgjengelige betalingsmetoder ...",
-        "apple_pay_payment_error": "Betalingen kunne ikke fullføres. Prøv igjen eller bruke en annen betalingsmåte.",
-        "taxes_not_included": "Avgifter ikke inkludert",
-        "no_taxes_banner_content": "Skatter vil ikke bli belastet på denne ordren. Når du har samlet betaling, kan skatter ikke lenger legges til.",
+        "no_real_orders_dev_store": "Denne butikken kan ikke godta reelle bestillinger eller reelle betalinger.",
+        "waiting_on_payment_methods": "Få tilgjengelige betalingsmetoder ...",
+        "apple_pay_payment_error": "Betalingen din kunne ikke fullføres. Prøv igjen eller bruk en annen betalingsmetode.",
+        "taxes_not_included": "Skatter ikke inkludert",
+        "no_taxes_banner_content": "Skatter vil ikke bli belastet etter denne ordren. Når du har samlet betaling, kan ikke skatt lenger legges til.",
         "paypal": {
-          "connect": "Klikk for å koble din PayPal-konto"
+          "connect": "Klikk for å koble PayPal -kontoen din"
         },
         "apple": {
-          "connect": "Klikk for å koble din Apple Pay-konto",
-          "not_available": "Apple Pay er ikke tilgjengelig i denne nettleseren. Slik kobler du Apple Pay konto du må bruke Safari på en Apple-enhet."
+          "connect": "Klikk for å koble til Apple Pay -kontoen din",
+          "not_available": "Apple Pay er ikke tilgjengelig i denne nettleseren. For å koble Apple -lønnskontoen din, må du bruke Safari på en Apple -enhet."
         },
         "google": {
           "connect": "Klikk for å koble deg til Google Pay -kontoen din",
@@ -826,35 +826,38 @@
         "card_vaulted_company_location": "Kort lagret for dette stedet",
         "shop_pay_installments_label": "Butikklønnsinsjoner",
         "subscription_heading": "Abonnementsavtale",
-        "order_covered_by_store_credit_notice": "Bestillingen din dekkes av butikkkreditten din.",
+        "order_covered_by_store_credit_notice": "Bestillingen din dekkes av butikken din.",
         "order_covered_by_redeemables_notice": "Bestillingen din er dekket.",
         "store_credit": {
           "label": "Butikkreditt",
-          "apply_label": "Bruk butikkkreditt"
+          "apply_label": "Bruk butikkkreditt",
+          "add_label": "Legg til butikkkreditt",
+          "manage_label": "Administrer butikkkreditt",
+          "buying_gift_card": "Du kan ikke bruke butikkkreditt til å kjøpe et gavekort"
         },
         "clear": "Klar",
-        "billing_must_match_shipping_notice": "Betalingsmetodens faktureringsadresse må samsvare med leveringsadressen.",
-        "same_billing_address_checkbox_label": "Bruk leveringsadresse som faktureringsadresse",
-        "location_billing_address_label": "Steds faktureringsadresse",
+        "billing_must_match_shipping_notice": "Betalingsmetoden din faktureringsadresse må samsvare med fraktadressen.",
+        "same_billing_address_checkbox_label": "Bruk fraktadresse som faktureringsadresse",
+        "location_billing_address_label": "Plasseringsfaktureringsadresse",
         "fact_billing_address_label": "Fakturaadresse",
-        "location_shipping_address_label": "Sted leveringsadresse",
-        "use_order_billing_address_label": "Bruk ordrefaktureringsadresse",
-        "use_location_billing_address_label": "Bruk stedets faktureringsadresse",
-        "use_location_shipping_address_label": "Bruk leveringsadresse på stedet",
+        "location_shipping_address_label": "Plasseringsadresse",
+        "use_order_billing_address_label": "Bruk ordre faktureringsadresse",
+        "use_location_billing_address_label": "Bruk faktureringsadresse",
+        "use_location_shipping_address_label": "Bruk stedsfraktadresse",
         "no_working_method_error": "Denne butikken kan ikke godta betalinger akkurat nå. Oppdater denne siden eller kom tilbake senere.",
         "brand_not_available": "Denne butikken godtar ikke {{brand}}. Bruk et annet kort for å betale.",
-        "shipping_rate_updated": "Tilgjengelige fraktmetoder er oppdatert. Bekreft valget før du sjekker ut.",
-        "billing_address_invalid_phone": "Oppdater telefonnummeret i faktureringsadressen for {{label}} {{last_digits}} å fortsette.",
+        "shipping_rate_updated": "Tilgjengelige fraktmetoder er oppdatert. Bekreft valget ditt før du sjekker ut.",
+        "billing_address_invalid_phone": "Oppdater telefonnummeret i faktureringsadressen din for {{label}} {{last_digits}} å fortsette.",
         "billing_address_invalid_phone_no_card": "Oppdater telefonnummeret i faktureringsadressen din for å fortsette.",
         "preview_not_available": {
           "title": "Forhåndsvisning ikke tilgjengelig",
-          "content": "Ikke bekymre deg, denne ekspresskassen fungerer for kundene dine.",
+          "content": "Ikke bekymre deg, denne Express -kassen fungerer for kundene dine.",
           "button": "Ok"
         },
         "card_fields": {
           "errors": {
             "required": {
-              "issue_date": "Angi en gyldig utstedelsesdato",
+              "issue_date": "Skriv inn en gyldig utstedelsesdato",
               "issue_number": "Skriv inn et gyldig problemnummer"
             },
             "invalid": {
@@ -863,9 +866,9 @@
           }
         },
         "simulated_checkout": "Forhåndsvisning kommer snart",
-        "vaulting_agreement_label": "Lagre betalingsinformasjonen min med %{company} for en raskere utsjekking.",
-        "business_customer_vaulting_payment_label": "Lagre dette kortet ved utsjekking og godkjenn %{company} for å belaste dette kortet for fremtidige kjøp for dette stedet. Enhver kontakt som er tildelt dette stedet er autorisert til å bruke dette kortet.",
-        "purchase_options_and_vaulting_agreement_label": "En eller flere varer i handlekurven din er et utsatt eller tilbakevendende kjøp. Ved å fortsette med betalingen godtar du at betalingsmåten din automatisk belastes med prisen og frekvensen som er oppført på denne siden til den avsluttes eller du kansellerer. Alle kanselleringer er underlagt %{cancellation_policy_label}.",
+        "vaulting_agreement_label": "Lagre betalingsinformasjonen min med %{company} for en raskere kasse.",
+        "business_customer_vaulting_payment_label": "Lagre dette kortet ved kassen og autoriser %{company} For å belaste dette kortet for fremtidige kjøp for dette stedet. Enhver kunde som er tildelt dette stedet vil bli autorisert til å bruke dette kortet.",
+        "purchase_options_and_vaulting_agreement_label": "En eller flere varer i handlekurven din er et utsatt eller abonnementskjøp. Ved å fortsette med betalingen din, samtykker du i at betalingsmetoden din automatisk blir belastet til prisen og frekvensen som er oppført på denne siden til den avsluttes eller du kansellerer. Alle avbestillinger er underlagt %{cancellation_policy_label}.",
         "purchase_options_cancellation_policy_label": "avbestillingsregler",
         "use_different_credit_card_label": "Bruk et annet kort",
         "saved_credit_card": "Ditt lagrede kredittkort",
