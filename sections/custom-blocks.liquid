@@ -31,7 +31,7 @@
       {% assign content = block.settings.content | default: '' %}
       {% if isLeft == 1 %}
         <section
-          class="relative  my-12 min-h-[40vw] flex items-center   text-base lg:text-lg"
+          class="relative   my-12 min-h-[40vw] flex items-center   text-base lg:text-lg"
           id="section-{{ section.id }}-{{ forloop.index }}"
           {{ block.shopify_attributes }}
         >
@@ -224,7 +224,6 @@
 
      let observer = new IntersectionObserver((entities)=>{
        if(entities[0].isIntersecting){
-         console.log({args})
                      var d = document;
             s = d.createElement("script");
             s.type = "text/javascript";
