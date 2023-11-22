@@ -1,4 +1,4 @@
-<script src="https://cdn.tailwindcss.com?plugins=typography,forms" type="text/javascript" defer="true" />
+<link rel="preload" href="https://cdn.tailwindcss.com?plugins=typography,forms" as="script">
 <style type="text/tailwindcss">
   @layer base {
     h2 {
@@ -232,35 +232,33 @@
   {% endfor %}
 </div>
 
-{% comment %}
-  <script>
-       (()=>{
-         let loaded = false
-      let options = {
-         root: document,
-         rootMargin: "1000px",
-         threshold: 1.0,
-       };
+<script>
+     (()=>{
+       let loaded = false
+    let options = {
+       root: document,
+       rootMargin: "1000px",
+       threshold: 1.0,
+     };
 
 
-       let observer = new IntersectionObserver((entities)=>{
-         if(entities[0].isIntersecting){
-                       var d = document;
-              s = d.createElement("script");
-              s.type = "text/javascript";
-              s.defer = true;
-              s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
-              t = d.getElementsByTagName("script")[0];
-              t.parentNode.insertBefore(s, t);
-           loaded= true
-      observer.disconnect()
-         }
-       }, options);
-       let target = document.querySelector("#shopify-section-{{section.id}}");
-    observer.observe(target);
-       })()
-  </script>
-{% endcomment %}
+     let observer = new IntersectionObserver((entities)=>{
+       if(entities[0].isIntersecting){
+                     var d = document;
+            s = d.createElement("script");
+            s.type = "text/javascript";
+            s.defer = true;
+            s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
+            t = d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(s, t);
+         loaded= true
+    observer.disconnect()
+       }
+     }, options);
+     let target = document.querySelector("#shopify-section-{{section.id}}");
+  observer.observe(target);
+     })()
+</script>
 {% schema %}
 {
   "name": "custome-blocks",
