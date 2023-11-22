@@ -13,7 +13,7 @@
   position:relative
   }
 </style>
-<div style="display:hidden" class="!block">
+<div style="display:hidden;transition:opacity 0.3s linear;opacity:0" class="!block !opacity-100">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'header' %}
