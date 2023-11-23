@@ -102,7 +102,10 @@
             {% assign title = product.title %}
             {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
             {% assign url = product.url %}
-            <div id="{{ product.handle }}" class="collection-template-grid-item">
+            <div
+              id="{{ product.handle }}"
+              class="collection-template-grid-item"
+            >
               <a class="image" href="{{ url }}">
                 {{
                   image
@@ -115,7 +118,7 @@
                 <div class="description">{{ content }}</div>
                 <div class="collection-btn-group">
                   <a href="{{ product.url }}" class="btn buy-btn">
-                    {{- 'strings.others.browse_further' | t -}}
+                    {{- block.settings.button_text | default: 'strings.others.browse_further' | t -}}
                   </a>
                 </div>
               </div>
@@ -128,7 +131,10 @@
           {% assign title = block.settings.title | default: block.settings.product.title %}
           {% assign content = block.settings.content | default: block.settings.product.description %}
           {% assign url = block.settings.url | default: block.settings.product.url %}
-          <div id="{{ block.settings.product.handle }}" class="collection-template-grid-item">
+          <div
+            id="{{ block.settings.product.handle }}"
+            class="collection-template-grid-item"
+          >
             {% if image_bg %}
               {{
                 image_bg
@@ -150,31 +156,29 @@
               <div class="description">{{ content }}</div>
               <div class="collection-btn-group">
                 <a href="{{ url }}" class="btn buy-btn">
-                  {{- 'strings.others.browse_further' | t -}}
+                  {{- block.settings.button_text | default: 'strings.others.browse_further' | t -}}
                 </a>
               </div>
             </div>
           </div>
         {% endif %}
         {% if block.type == 'email' %}
-          <div
-            style="
+          <div style="
                   position: relative;
                   isolation: isolate;
               display:flex;
               align-items:center
-            "
-          >
+            ">
             {% if block.settings.image_bg %}
               {{
                 block.settings.image_bg
                 | image_url: width: 700
                 | image_tag:
-                  widths: '400, 600, 800',
-                  loading: 'lazy',
-                  class: 'js-lazy-image',
-                  alt: title,
-                  class: 'image_bg'
+                widths: '400, 600, 800',
+                loading: 'lazy',
+                class: 'js-lazy-image',
+                alt: title,
+                class: 'image_bg'
               }}
             {% endif %}
             <div
@@ -197,12 +201,7 @@
           </div>
         {% endif %}
         {% if block.type == 'instagram' %}
-          <div
-            style="
-              position: relative;
-     
-            "
-          >
+          <div style="              position: relative;">
             {% if block.settings.image_bg %}
               {{
                 block.settings.image_bg
@@ -210,7 +209,10 @@
                 | image_tag: widths: '400, 600', loading: 'lazy',  alt: title, class: 'image_bg', style: 'z-index:1'
               }}
             {% endif %}
-            <div class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}" style="z-index:2">
+            <div
+              class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+              style="z-index:2"
+            >
               <div class="page-width page-width--narrow text-center">
                 <p class="h2">{{ block.settings.title | escape }}</p>
                 <div class="rte" {{ block.shopify_attributes }}>
@@ -238,26 +240,26 @@
 {%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
 {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
 {%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.webpage -%}
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "CollectionPage",
-    {% if collection.description != blank %}
-      "description": {{ collection.description | strip_html | json }},
-    {% endif %}
-    {% if page_image %}
-      {% assign image_size = page_image.width | append: 'x' %}
-      "image": {
-        "@type": "ImageObject",
-        "height": {{ page_image.height | json }},
-        "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
-        "width": {{ page_image.width | json }}
-      },
-    {% endif %}
-    "name": {{ collection.title | json }}
-  }
-{%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
-</script>
+  <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "CollectionPage",
+        {% if collection.description != blank %}
+          "description": {{ collection.description | strip_html | json }},
+        {% endif %}
+        {% if page_image %}
+          {% assign image_size = page_image.width | append: 'x' %}
+          "image": {
+            "@type": "ImageObject",
+            "height": {{ page_image.height | json }},
+            "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+            "width": {{ page_image.width | json }}
+          },
+        {% endif %}
+        "name": {{ collection.title | json }}
+      }
+    {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
+  </script>
 {%- endif -%}
 
 {% schema %}
@@ -265,24 +267,24 @@
   "name": "Product grid next",
   "class": "main-collection-next",
   "settings": [
-  {
-    "type":"collection",
-    "id":"collection",
-    "label":"Collection"
-  }
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
   ],
   "blocks": [
     {
-        "type": "@app"
-      },
+      "type": "@app"
+    },
     {
       "type": "product_grid",
       "name": "Products",
       "settings": [
         {
-            "type": "image_picker",
+          "type": "image_picker",
           "id": "image_bg",
-          "label" :"background Image"
+          "label": "background Image"
         },
         {
           "type": "select",
@@ -303,119 +305,127 @@
       ],
       "limit": 1
     },
-     {
+    {
       "type": "product",
       "name": "Product",
       "settings": [
         {
           "type": "product",
           "id": "product",
-          "label" :"Product"
-        },{
-            "type": "image_picker",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
           "id": "image",
-          "label" :"Image"
-        },{
-            "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
           "id": "image_bg",
-          "label" :"background Image"
-        },{
-            "type": "text",
+          "label": "background Image"
+        },
+        {
+          "type": "text",
           "id": "title",
-          "label" :"Title"
+          "label": "Title"
         },
         {
-            "type": "richtext",
+          "type": "richtext",
           "id": "content",
-          "label" :"Content"
+          "label": "Content"
         },
         {
-            "type": "url",
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Browse Further"
+        },
+        {
+          "type": "url",
           "id": "url",
-          "info": "Seclect variant ,ex: \"\/products\/soundproof-phone-booth?variant=43305191407841\" ",
-          "label" :"Url"
+          "info": "Seclect variant ,ex: \"/products/soundproof-phone-booth?variant=43305191407841\" ",
+          "label": "Url"
         }
       ]
     },
     {
       "type": "email",
       "name": "Sign Up",
-      "settings":[
-         {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Sign up and save"
-          },
-         {
-            "type": "richtext",
-            "id": "text",
-            "label": "Subheading",
-            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
-          },
+      "settings": [
         {
-            "type": "image_picker",
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Sign up and save"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Subheading",
+          "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+        },
+        {
+          "type": "image_picker",
           "id": "image_bg",
-          "label" :"background Image"
+          "label": "background Image"
         }
       ]
     },
     {
       "type": "instagram",
       "name": "In stagram",
-      "settings":[
-         {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Follow Us"
-          },
-         {
-            "type": "richtext",
-            "id": "text",
-            "label": "Subheading",
-            "default": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>"
-          },
+      "settings": [
         {
-            "type": "image_picker",
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Follow Us"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Subheading",
+          "default": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>"
+        },
+        {
+          "type": "image_picker",
           "id": "image_bg",
-          "label" :"background Image"
+          "label": "background Image"
         }
       ]
     }
   ],
   "presets": [
-      {
-        "name": "Collection next",
-        "blocks": [
+    {
+      "name": "Collection next",
+      "blocks": [
         {
           "type": "product",
           "settings": {
             "product": "soundproof-phone-booth",
-            "image": "shopify:\/\/shop_images\/Folio_Teal_1.webp",
-            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg",
+            "image": "shopify://shop_images/Folio_Teal_1.webp",
+            "image_bg": "shopify://shop_images/sbs-stn6-3-4-bg.jpg",
             "title": "{{ block.settings.product.title }}",
-            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
-            "url": "shopify:\/\/products\/soundproof-phone-booth"
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.</p>",
+            "url": "shopify://products/soundproof-phone-booth"
           }
         },
-       {
+        {
           "type": "product",
           "settings": {
             "product": "soundproof-phone-booth",
-            "image": "shopify:\/\/shop_images\/Folio_Bar_Fly_Blush_01.png",
-            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
+            "image": "shopify://shop_images/Folio_Bar_Fly_Blush_01.png",
+            "image_bg": "shopify://shop_images/sbs-stn6-1-2-bg.jpg",
             "title": "{{ block.settings.product.title }}",
-            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.<\/p>",
+            "content": "<p>In today's fast-paced and bustling work environment, it's no secret that busy environments can be chaotic, interruptive and frustrating.</p>",
             "url": ""
           }
         }
-        ],
-
+      ],
       "settings": {
         "collection": ""
       }
-      }
-    ]
+    }
+  ]
 }
 {% endschema %}
