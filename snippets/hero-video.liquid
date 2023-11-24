@@ -225,6 +225,20 @@
                 </a>
               </div>
             {%- endif -%}
+            {%- if block.settings.link2_text != blank -%}
+              {%- assign link_href = block.settings.link2 -%}
+              {%- if block.settings.link2 == blank -%}
+                {%- assign link_href = block.settings.video_url -%}
+              {%- endif -%}
+              <div class="hero__link">
+                <a
+                  href="{{ link_href }}"
+                  class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                >
+                  {{ block.settings.link2_text }}
+                </a>
+              </div>
+            {%- endif -%}
           {%- endif -%}
         </div>
       </div>
