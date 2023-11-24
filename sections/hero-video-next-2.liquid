@@ -1,27 +1,4 @@
-{% assign isResserllerOrTradeAccount = false %}
-{% if request.design_mode %}
-  {% if section.settings.reseller_mode %}
-    {% assign isResserllerOrTradeAccount = true %}
-  {% endif %}
-{% endif %}
-{% if customer %}
-  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-    {% if customer.metafields['custom-register'].trade_account_status == '1' %}
-      {% assign isResserllerOrTradeAccount = true %}
-    {% endif %}
-  {% endif %}
-{% endif %}
-{% unless isResserllerOrTradeAccount %}
-  {% render 'hero-video', block: section %}
-{% else %}
-  {% for block in section.blocks %}
-    {% render 'hero-video', block: block %}
-    {% assign hadVideo = true %}
-  {% endfor %}
-  {% unless hadVideo %}
-    {% render 'hero-video', block: section %}
-  {% endunless %}
-{% endunless %}
+{% render 'hero-video', block: section %}
 
 {% schema %}
 {
