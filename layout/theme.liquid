@@ -1,3 +1,16 @@
+{% assign isResserllerOrTradeAccount = false %}
+{% if request.design_mode %}
+  {% if section.settings.reseller_mode %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% endif %}
+{% if customer %}
+  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+    {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+      {% assign isResserllerOrTradeAccount = true %}
+    {% endif %}
+  {% endif %}
+{% endif %}
 <!doctype html>
 <html
   class="no-js"
@@ -265,7 +278,7 @@
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
   </head>
 
-  <body
+  <body {% if isResserllerOrTradeAccount  %} data-reseller {% endif %}
     class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
     data-transitions="{{ settings.animate_page_transitions }}"
     data-button_style="{{ settings.button_style }}"
@@ -289,6 +302,7 @@
     <div class="page-container" id="PageContainer">
       <div class="transition-body">
         {%- section 'toolbar' -%}
+        
         {%- section 'header' -%}
 
         <main class="main-content" id="MainContent">
