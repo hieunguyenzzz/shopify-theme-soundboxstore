@@ -1,6 +1,6 @@
 {% assign isResserllerOrTradeAccount = false %}
 {% if request.design_mode %}
-  {% if section.settings.reseller_mode %}
+  {% if settings.isreseller %}
     {% assign isResserllerOrTradeAccount = true %}
   {% endif %}
 {% endif %}
