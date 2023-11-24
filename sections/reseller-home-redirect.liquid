@@ -12,9 +12,11 @@
   {% endif %}
 {% endif %}
 {% if isResserllerOrTradeAccount %}
+  {% if section.settings.url != blank %}
     <script id="reseller_only">
       window.location.href="{{ section.settings.url}}"
     </script>
+{% endif %}
 {% endif %}
 {% schema %}
   {
