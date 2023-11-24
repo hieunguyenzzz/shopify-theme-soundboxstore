@@ -200,6 +200,7 @@
                 </div>
               </div>
             {%- endunless -%}
+            <div style="display:flex;gap:1.4em">
             {%- if block.settings.link_text != blank -%}
               {%- assign link_href = block.settings.link -%}
               {%- if block.settings.link == blank -%}
@@ -239,7 +240,9 @@
                 </a>
               </div>
             {%- endif -%}
+            </div>
           {%- endif -%}
+          
         </div>
       </div>
     </div>
