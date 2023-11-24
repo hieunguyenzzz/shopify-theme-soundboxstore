@@ -302,9 +302,12 @@
     <div class="page-container" id="PageContainer">
       <div class="transition-body">
         {%- section 'toolbar' -%}
-        
+        {% unless isResserllerOrTradeAccount %}
         {%- section 'header' -%}
-
+{% else %}
+        {%- section 'header-reseller' -%}
+          
+          {% endunless %}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>
