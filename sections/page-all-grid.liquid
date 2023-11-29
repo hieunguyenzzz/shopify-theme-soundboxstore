@@ -115,7 +115,7 @@ max-width:100%
         assign fixed_aspect_ratio = true
       endunless
 
-      assign preview_image = product.featured_media.preview_image
+      assign preview_image = block.settings.image | default: product.featured_media.preview_image
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
     <div class="product-image-wrap">
@@ -245,6 +245,11 @@ max-width:100%
       "type": "product",
       "id": "left_product",
       "label": "Product"
+    },
+         {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
     },
     {
       "type": "text",
