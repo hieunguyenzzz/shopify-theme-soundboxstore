@@ -325,6 +325,8 @@
             <img
               loading="lazy"
               style="width:100%"
+            width="675"
+            height="675"
               srcset="
                 {% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
                 {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
