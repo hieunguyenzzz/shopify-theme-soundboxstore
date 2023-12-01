@@ -108,6 +108,8 @@ max-width:100%
 <div class="page-width">
   <div class="grid-item-wrap">
       {% for block in section.blocks %}
+    {% assign btnid= 'button-' | append : forloop.index %}
+        
     {%- assign product  = block.settings.left_product -%}
     {%- liquid
       assign fixed_aspect_ratio = false
@@ -208,7 +210,7 @@ max-width:100%
       <h3>{{ block.settings.left_content }}</h3>
       {%- if block.settings.left_button_file != blank -%}
         <a
-          id="{{block.settings.left_button_id}}"
+          id="{{btnid}}"
           type="button"
           target="_blank"
           href="{{block.settings.left_button_file}}"
@@ -218,7 +220,7 @@ max-width:100%
         </a>
       {%- else -%}
         <button
-          id="{{block.settings.left_button_id}}"
+          id="{{ btnid }}"
           type="button"
           class="btn btn--secondary left_button"
         >
