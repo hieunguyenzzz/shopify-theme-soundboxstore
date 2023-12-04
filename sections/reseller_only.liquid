@@ -1,4 +1,12 @@
-{% render 'reseller_only' %}
+{% if customer %}
+  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+    {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+      <script id="reseller_only">
+        window.location.href="{{ pages['reseller-home'].url }}"
+      </script>
+    {% endif %}
+  {% endif %}
+{% endif %}
 {% schema %}
 {
   "name": "Reseller Only",
