@@ -147,12 +147,7 @@ calc(100vw - 4rem)
             {%- endif -%}
           >
             {% if forloop.first == true %}
-              {{
-                image
-                | image_url: width: 800
-                | image_tag: class: 'photoswipe__image', sizes: sizes, widths: '246, 493, 600, 713, 823, 990', alt: alt
-                | escape
-              }}
+              {{ image | image_url: width: 800 | image_tag: class: 'photoswipe__image', alt: alt | escape }}
             {% else %}
               {{
                 image
