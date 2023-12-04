@@ -24,17 +24,25 @@
             {% if hadmedia %}
               {{ mediaitem }}
             {% else %}
-              {{
-                section.settings.image
-                | image_url: width: 528
-                | image_tag: class: 'desktop-only', alt: section.settings.image.alt
-                | default: section.settings.title
-              }}
               {% if section.settings.mobile_image != blank %}
+                {{
+                  section.settings.image
+                  | image_url: width: 528
+                  | image_tag: class: 'desktop-only', alt: section.settings.image.alt
+                  | default: section.settings.title
+                }}
                 {{
                   section.settings.mobile_image
                   | image_url: width: 450
                   | image_tag: class: 'mobile-only', alt: section.settings.image.alt
+                  | default: section.settings.title
+                }}
+
+              {% else %}
+                {{
+                  section.settings.image
+                  | image_url: width: 528
+                  | image_tag: alt: section.settings.image.alt
                   | default: section.settings.title
                 }}
               {% endif %}
