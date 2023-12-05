@@ -53,7 +53,13 @@
         <small>{{ 'layout.customer.create_account' | t | customer_register_link }}</small>
       </p>
       <p>
-        <small>{{ 'layout.customer.log_in_as_reseller' | t | link_to: pages['reseller-login'].url }}</small>
+        <small>
+          {{-
+            'layout.customer.log_in_as_reseller'
+            | t
+            | link_to: pages['reseller-login'].url, style: 'text-decoration:underline'
+          -}}
+        </small>
       </p>
     {%- endform -%}
   </div>
