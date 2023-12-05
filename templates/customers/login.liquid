@@ -49,8 +49,8 @@
           {{ 'customer.login.sign_in' | t }}
         </button>
       </p>
-      <p>{{ 'layout.customer.create_account' | t | customer_register_link }}</p>
-      <p>{{ 'layout.customer.log_in_as_reseller' | t | link_to: pages['reseller-login'].url }}</p>
+      <small>{{ 'layout.customer.create_account' | t | customer_register_link }}</small>
+      <small>{{ 'layout.customer.log_in_as_reseller' | t | link_to: pages['reseller-login'].url }}</small>
     {%- endform -%}
   </div>
 
