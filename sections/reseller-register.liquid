@@ -144,7 +144,7 @@
         display:none
       }
   </style>
-  {% assign reUrl = routes.root_url | append: 'pages/reseller-home' | replace: '//pages/', '/pages/' %}
+  {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <div
     style="
       position:relative;isolation: isolate;
@@ -243,7 +243,7 @@
               autocapitalize="off"
               autofocus
             >
-
+            <input type="hidden" name="return_to" value="{{ pages["reseller-home"].url }}">
             {%- if form.password_needed -%}
               <div class="grid">
                 <div class="grid__item one-half">
