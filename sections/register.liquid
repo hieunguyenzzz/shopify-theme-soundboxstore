@@ -45,48 +45,80 @@
   Date:
 {% endcomment %}
 <style>
-       .form-section{
-        display: grid;
-        gap:2em;
-          grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-      .form-vertical .form-section{
-
-            padding-bottom: 3rem;
-      }
-      .form-section:not(:first-child){
-        margin-top: 3em;
-      }
-
-      .form-section .section-header{
-        margin:0;
-      }
-      .form-radio>div{
-        display: flex;
-        align-items: flex-start;
-      }
-      .form-radio input{
-        margin-top: 0.6em;
-      }
-      .form-radio{
-        margin-bottom: 30px;
-      }
-      .form-section h4{
-        line-height: 30.24px;
-      }
-      @media (min-width: 768px){
-        .form-section{
+         .form-section{
           display: grid;
-            grid-template-columns: repeat(3,  minmax(0, 1fr));
-      }
-      .form-section h3{
-      text-align: right;
-      }
-   .form-section>div:nth-child(2) {
-      grid-column: span 2 / 4;
-      max-width: 500px;
+          gap:2em;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .form-vertical .form-section{
+
+              padding-bottom: 3rem;
+        }
+        .form-section:not(:first-child){
+          margin-top: 3em;
+        }
+
+        .form-section .section-header{
+          margin:0;
+        }
+        .form-radio>div{
+          display: flex;
+          align-items: flex-start;
+        }
+        .form-radio input{
+          margin-top: 0.6em;
+        }
+        .form-radio{
+          margin-bottom: 30px;
+        }
+        .form-section h4{
+          line-height: 30.24px;
+        }
+        @media (min-width: 768px){
+          .form-section{
+            display: grid;
+              grid-template-columns: repeat(3,  minmax(0, 1fr));
+        }
+        .form-section h3{
+        text-align: right;
+        }
+     .form-section>div:nth-child(2) {
+        grid-column: span 2 / 4;
+        max-width: 500px;
+    }
+        }
+    div#shopify-section-{{section.id}}:before {
+      content:'';
+      position: absolute;
+      inset:0;
+      background:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Layer_4.png?v=1701750742);
+      background-repeat:no-repeat;
+      background-size: cover;
+      background-position:center;
+      /* height:100vh; */
+      background-attachment: fixed;
+      z-index:-1;
   }
-      }
+  #shopify-section-{{section.id}}{
+      isolation:isolate;
+      overflow:hidden;
+      position: relative;
+  }
+  #shopify-section-{{section.id}} .page-content{
+  max-width:600px;
+      background:white;
+      margin:2em auto;
+      padding:1em 2em
+  }
+  .form-section{
+      display:block
+  }
+  .section-header__title{
+      text-align:center
+  }
+  .form-section>div:nth-child(2){
+      margin:auto
+  }
 </style>
 <div class="page-width page-content">
   <div class="form-section">
