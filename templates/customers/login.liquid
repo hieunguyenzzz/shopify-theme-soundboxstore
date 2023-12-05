@@ -50,7 +50,9 @@
         </button>
       </p>
       <p>
-        <small>{{ 'layout.customer.create_account' | t | customer_register_link }}</small>
+        <small>
+          {{- 'layout.customer.create_account' | t | customer_register_link: style: 'text-decoration:underline' -}}
+        </small>
       </p>
       <p>
         <small>
