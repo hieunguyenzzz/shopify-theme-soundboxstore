@@ -301,18 +301,29 @@
           data-index="{{ forloop.index0 }}"
           data-id="{{ block.id }}"
         >
-          <product-model
-            class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
-            style="display: block;padding-top: 100%;"
-          >
-            {{
-              first_3d_model
-              | media_tag:
-                image_size: '2048x',
-                toggleable: true,
-                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
-            }}
-          </product-model>
+          <script
+            type="module"
+            src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"
+          ></script>
+          <model-viewer
+            style="
+              --poster-color: transparent;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+            src="https://cdn.shopify.com/3d/models/bc90f2640ce1e2a7/scene.glb"
+            ar=""
+            environment-image="shared-assets/environments/moon_1k.hdr"
+            poster="shared-assets/models/NeilArmstrong.webp"
+            shadow-intensity="1"
+            camera-controls=""
+            touch-action="pan-y"
+            ar-status="not-presenting"
+          ></model-viewer>
           <button
             style="
               position: absolute;
