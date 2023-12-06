@@ -195,9 +195,6 @@
     .shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus {
       transform: translate(-50%, -50%) scale(1.1);
     }
-  .grfq-quote-widget,.zsiq_float{
-    display:none
-  }
 </style>
 <link
   id="ModelViewerStyle"
@@ -304,27 +301,49 @@
           data-index="{{ forloop.index0 }}"
           data-id="{{ block.id }}"
         >
-          <script
-            type="module"
-            src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"
-          ></script>
-          <model-viewer
+          <product-model
+            class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
+            style="display: block;padding-top: 100%;"
+          >
+            {{
+              first_3d_model
+              | media_tag:
+                image_size: '2048x',
+                toggleable: true,
+                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
+            }}
+          </product-model>
+          <button
             style="
-              --poster-color: transparent;
               position: absolute;
-              top: 0;
+              bottom: 0;
+              width: auto;
               left: 0;
-              width: 100%;
-              height: 100%;
+              margin: 0;
+              right: 50%;
+              transform: translateX(50%);
             "
-            alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-            src="https://cdn.shopify.com/3d/models/bc90f2640ce1e2a7/scene.glb"
-            ar=""
-            shadow-intensity="1"
-            camera-controls=""
-            touch-action="pan-y"
-            ar-status="not-presenting"
-          ></model-viewer>
+            aria-label="{{ 'products.product.view_in_space_label' | t }}"
+            class="product-single__view-in-space"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-3d"
+              viewBox="18.24 17.35 24.52 28.3"
+            >
+              <path fill="#3A3A3A"
+                d="M30.5 17.35l-12.26 7.07v14.16l12.26 7.07 12.26-7.08V24.42L30.5 17.35zM20.24 37.42V25.58l10.26-5.93 10.13 5.85-10.13 5.88v12l-10.26-5.96z" />
+            </svg>
+            <span class="product-single__view-in-space-text">
+              {{ 'products.product.view_in_space' | t }}
+            </span>
+          </button>
         </div>
       </div>
     </div>
