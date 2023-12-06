@@ -304,7 +304,7 @@
           data-index="{{ forloop.index0 }}"
           data-id="{{ block.id }}"
         >
-          {{ first_3d_model | json }}
+          {{ first_3d_model.sources | json }}
           <model-viewer
             style="--poster-color: transparent; --poster-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
             src="{{ first_3d_model | json  }}"
