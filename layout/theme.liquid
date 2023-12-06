@@ -401,6 +401,8 @@
         if(!isReplaced){
           window.yett.unblock();
           console.log("apps lazyloaded successfully");
+          isReplaced=true;
+          
           (function zsiqchat(){
             window['$zoho'] = window['$zoho'] || {};
             $zoho.salesiq = $zoho.salesiq || {
@@ -419,7 +421,6 @@
             t.parentNode.insertBefore(s, t);
           })()
           startGTAG()
-          isReplaced=true;
         }
       }    
       document.addEventListener("click", MeroxIO_Function);
