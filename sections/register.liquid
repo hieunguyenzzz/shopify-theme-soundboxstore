@@ -135,7 +135,7 @@
           <div class="form-group">
             <label for="details-company-name">{{ 'customer.application.details-company-name' | t }}</label>
             <input
-              type="text"
+              type="text" 
               name="details-company-name"
               id="details-company-name"
               class="input-full"
@@ -146,7 +146,7 @@
                  
          <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
           <input
-            type="text"
+            type="text" required
             name="customer[first_name]"
             id="FirstName"
             class="input-full"
@@ -159,7 +159,7 @@
 
           <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
           <input
-            type="text"
+            type="text" required
             name="customer[last_name]"
             id="LastName"
             class="input-full"
@@ -171,7 +171,7 @@
 
           <label for="Email">{{ 'customer.register.email' | t }}</label>
           <input
-            type="email"
+            type="email" required
             name="customer[email]"
             id="Email"
             class="input-full{% if form.errors contains 'email' %} error{% endif %}"
@@ -184,7 +184,7 @@
           <div class="form-group">
             <label for="details-telephone">{{ 'customer.application.details-telephone' | t }}</label>
             <input
-              type="text"
+              type="text" required
               name="details-telephone"
               id="details-telephone"
               class="input-full"
@@ -372,7 +372,7 @@
       <div  class="form-section form-section-register" style="margin:0;padding:0;border:none">
         <div style="display:flex; align-items:baseline">
                 <input
-                  type="checkbox"
+                  type="checkbox" required
                   name="terms_and_conditions"
                   id="terms_and_conditions"
                   class="input-full"
