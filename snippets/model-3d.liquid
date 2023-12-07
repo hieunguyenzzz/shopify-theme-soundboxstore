@@ -317,7 +317,12 @@
               ar-status="not-presenting"
             ></model-viewer>
           -->
-          {{ model | model_viewer_tag: interaction-policy: 'allow-when-focused' }}
+          {{
+            model
+            | model_viewer_tag:
+              interaction-policy: 'allow-when-focused',
+              style: '--poster-color: transparent; --poster-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 100%;'
+          }}
           <div style="display:none">{{ model | json }}</div>
         </div>
       </div>
