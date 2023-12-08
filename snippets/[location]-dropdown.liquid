@@ -74,7 +74,7 @@ IT it /it-it' %}
       >
         {{ country.name | capitalize }}
         {% if show %}
-          ({{ lang.name | capitalize }})
+          ({{ lang | capitalize }})
         {% endif %}
         {%- assign iconPath = country.iso_code | downcase | append: '-flag' | append: '.svg' %}
         <img
