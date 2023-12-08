@@ -173,7 +173,7 @@
   {%- if img -%}
     {%- capture threeCol -%}
               {{ threeCol }}
-                <a href="{{ block.settings.link  }}" data-id="{{ block.settings.id }}">
+                <a href="{{ block.settings.link  }}" data-id="{{ block.settings.id }}" {{ block.shopify_attributes }}>
                   {{
                    img
                     | image_url: width: 400
@@ -188,7 +188,7 @@
                <a
                 href="{{ block.settings.link }}"
                 data-id="{{block.settings.id }}"
-                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
+                class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} " {{ block.shopify_attributes }}
               >
                 {{ block.settings.title }}
               </a>
@@ -199,7 +199,7 @@
               {{ twoCol }}
         {%-if block.settings.title != blank  -%}
                <div
-              class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}"
+              class="col-two-item col-two-item-{{ oneId }} col-{{ block.settings.id  }}" {{ block.shopify_attributes }}
               data-id="{{ oneId }}"
             >
       {%-if block.settings.link -%}
@@ -218,7 +218,7 @@
             </div>
             {%-else -%}
                         <div
-              class="col-two-item col-two-item-space col-two-item-{{ oneId }} col-{{ block.settings.id }}"
+              class="col-two-item col-two-item-space col-two-item-{{ oneId }} col-{{ block.settings.id }}" {{ block.shopify_attributes }}
               data-id="{{ oneId }}"
             >
             </div>
