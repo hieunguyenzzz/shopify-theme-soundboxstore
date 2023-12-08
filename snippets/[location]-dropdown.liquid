@@ -57,8 +57,11 @@ IT it /it-it' %}
       {% unless country %}
         {% continue %}
       {% endunless %}
-      {% assign lang = langcode %}
+
       {% assign lang = localization.available_countries | where: 'iso_code', langcode | first %}
+      {% if lang == blank %}
+        {% assign lang = langcode %}
+      {% endif %}
       <a
         title="{{country.name}}"
         href="{{root_url | append: path | replace: '//', '/'}}"
