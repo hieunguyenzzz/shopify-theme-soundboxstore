@@ -11,4 +11,7 @@
 {%- if localization.country.iso_code == 'NL' -%}
   {%- assign phone = settings.phone_number_nl -%}
 {%- endif -%}
+{%- if localization.country.iso_code == 'DE' -%}
+  {%- assign phone = '+49 3040517694' -%}
+{%- endif -%}
 {{ phone }}
