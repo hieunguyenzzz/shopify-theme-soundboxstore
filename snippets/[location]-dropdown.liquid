@@ -1,5 +1,7 @@
 {% assign countrymap = '
 GB en,
+US en /en-us,
+DK da /da-dk,
 SE se /sv-se,
 DE de /de-de,
 NO no /no-no,
@@ -8,7 +10,11 @@ NL nl /nl-nl,
 BE nl /nl-be show,
 BE fr /fr-be show,
 AT de /de-at,
-ES es /es-es' %}
+CH de /de-ch,
+ES es /es-es,
+FI fi /fi-fi,
+PL pl /pl-pl,
+IT it /it-it' %}
 {% assign path = request.path %}
 {% if request.locale.root_url and request.locale.root_url != '/' %}
   {% assign path = request.path | replace_first: request.locale.root_url, '/' %}
@@ -19,7 +25,13 @@ ES es /es-es' %}
     class="tw-btn tw-btn-ghost !tw-font-normal !tw-mb-0 tw-rounded-none tw-btn-xs tw-items-center tw-gap-1"
   >
     {%- assign iconPath = localization.country.iso_code | downcase | append: '-flag' | append: '.svg' %}
-    <img width="16" height="16" class="tw-w-4 tw-h-4 tw-rounded-full tw-object-cover" src="{{ iconPath | asset_url}}">
+    <img
+      width="16"
+      height="16"
+      class="tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
+      src="{{ iconPath | asset_url}}"
+      alt="{{ localization.country.name }} flag"
+    >
     {{
       localization.language.iso_code
       | append: '/'
@@ -45,11 +57,8 @@ ES es /es-es' %}
       {% unless country %}
         {% continue %}
       {% endunless %}
-      {% assign lang = localization.available_languages
-        | where: 'iso_code', langcode
-        | first
-        | default: localization.language
-      %}
+      {% assign lang = 'general.language.' | append: langcode | t %}
+
       <a
         title="{{country.name}}"
         href="{{root_url | append: path | replace: '//', '/'}}"
@@ -64,14 +73,16 @@ ES es /es-es' %}
       >
         {{ country.name | capitalize }}
         {% if show %}
-          ({{ lang.name | capitalize }})
+          ({{ lang | capitalize }})
         {% endif %}
         {%- assign iconPath = country.iso_code | downcase | append: '-flag' | append: '.svg' %}
         <img
+          loading="lazy"
           width="16"
           height="16"
           class="!tw-pl-0 tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
           src="{{ iconPath | asset_url}}"
+          alt="{{ country.name | capitalize }} flag"
         >
       </a>
     {%- endfor -%}
