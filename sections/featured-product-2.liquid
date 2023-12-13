@@ -209,6 +209,8 @@
                 assign is_color = false
                 if option_name contains swatch_trigger
                   assign is_color = true
+                if option_name contains 'color'
+                  assign is_color = true
                 elsif swatch_trigger == 'color' and option_name contains 'colour'
                   assign is_color = true
                 endif
