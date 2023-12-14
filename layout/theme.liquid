@@ -261,7 +261,7 @@
     <!-- content_for_header -->
 {{ content_for_header }}
     <!-- end content_for_header -->
-    <link rel="alternate" hreflang="{{ request.locale.iso_code }}-{{ localization.country.iso_code }}" href="{{ canonical_url  }}" />
+    <link rel="alternate" hreflang="{{ request.locale.iso_code }}-{{ localization.country.iso_code }}" href="{{ request.origin  }}{{ request.path }}" />
     <style>
       label[for='_gcl_au'],
       label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
