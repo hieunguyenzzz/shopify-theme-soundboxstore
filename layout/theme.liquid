@@ -18,7 +18,7 @@
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
 >
-  <head>
+  <head>{% render 'yoast-seo' %}
   {% render 'pre-header' %}
   {% render 'yett' %}
     <!-- Google Tag Manager -->
