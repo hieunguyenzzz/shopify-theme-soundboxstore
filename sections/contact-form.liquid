@@ -111,6 +111,19 @@
               required
               id="ContactFormName-{{ section.id }}"
               class="input-full input"
+              placeholder="{{ 'contact.form.company' | t }}"
+              name="contact[industry]"
+              autocapitalize="words"
+              value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
+            >
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.company' | t }}</label>
+          </div>
+          <div class="grid__item">
+            <input
+              type="text"
+              required
+              id="ContactFormName-{{ section.id }}"
+              class="input-full input"
               placeholder="{{ 'contact.form.address' | t }}"
               name="contact[address]"
               autocapitalize="words"
