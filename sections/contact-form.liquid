@@ -103,7 +103,7 @@
               autocapitalize="words"
               value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
             >
-            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.company' | t }}</label>
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.industry' | t }}</label>
           </div>
           <div class="grid__item">
             <input
@@ -111,7 +111,7 @@
               required
               id="ContactFormName-{{ section.id }}"
               class="input-full input"
-              placeholder="{{ 'contact.form.company' | t }}"
+              placeholder="{{ 'contact.form.industry' | t }}"
               name="contact[industry]"
               autocapitalize="words"
               value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
