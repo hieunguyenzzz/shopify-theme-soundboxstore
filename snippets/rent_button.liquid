@@ -1,0 +1,139 @@
+{% if block.settings.product %}
+{% assign product = block.settings.product %}
+{% style %}
+label.btn-rent {
+font-weight: 600;
+font-size: 14px;
+line-height: 1;
+letter-spacing: 2px;
+text-transform: uppercase;
+font-family: "Banana Grotesk", var(--typeBasePrimary), var(--typeBaseFallback)
+, system-ui;
+padding: 22px 15px;
+width: 100%;
+font-size:14px;
+}
+.renting-modal-{{ block.id }}{
+position: absolute;
+padding: 0;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+display: none;
+align-items: center;
+background:#000000cf;
+justify-content: center;
+opacity:0;
+}
+.renting-modal-input-{{ block.id }}:checked + .renting-modal-{{ block.id }} {
+opacity:1;
+position: fixed;
+display:flex;
+padding:60px min(60px,4vw);z-index:99999999;
+}
+.renting-modal-{{ block.id }} iframe{
+max-width:1600px;
+position: relative;
+aspect-ratio: 16/9;width:100%;height:100%
+}
+.renting-modal-close-{{ block.id }}{
+position: absolute;
+top: 5px;
+right: 5px;
+width: 50px;
+height: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+background: white;
+font-size: 1.6em;
+border-radius: 99em;
+}
+.block-for-rent{
+display: flex;
+flex-direction: column;
+gap: 1em;
+background:white;
+padding: 1em;
+border: 1px solid #8f8f8f;
+border-radius: 0.4em;
+margin-bottom: 1em;
+line-height: 2em;
+padding: 1em;
+}
+
+.block-for-rent .price-text{
+font-size:1.8em;
+font-weight:bold
+}
+{% endstyle %}
+
+<label for="renting-modal-input-{{ block.id }}" type="button"
+  class="btn text-label btn--full  btn-rent  btn--secondary">
+  <span>
+    {{ block.settings.text }}
+  </span>
+</label>
+
+<div class="renting-wrap-{{ block.id }}" id="renting-wrap-{{ block.id }}" style="position:relative;">
+  <input type="checkbox" name="renting-modal-input-{{ block.id }}"
+    class="slideshow-input renting-modal-input-{{ block.id }} hidden" hidden id="renting-modal-input-{{ block.id }}">
+  <div class="renting-modal-{{ block.id }}" for="renting-modal-input-{{ block.id }}">
+    <div style="
+          width: 100%;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+        ">
+      {%- form 'product', product, id: form_id, class: 'product-renting__form' -%}
+      <div data-rent-product-id="{{ product.id }}" class="block-for-rent">
+        {% assign sku = current_variant.sku %}
+        {% assign current_variant = product.variants | where: "sku", sku | first %}
+        {% render 'subscriptions', variant: current_variant, product: product %}
+        <select style="display:none" name="id">
+          {%- for variant in product.variants -%}
+          {%- if variant.available -%}
+          <option data-variant-sku="{{variant.sku}}" {% if variant.id==current_variant.id %} selected="selected" {%
+            endif %} value="{{ variant.id }}">
+            {{ variant.title }} - {{ variant.sku }} - {{ variant.price | money_with_currency }}
+          </option>
+          {%- else -%}
+          <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+          {%- endif -%}
+          {%- endfor -%}
+        </select>
+        <button data-sku="{{ sku }}" data-variant-id="{{ variant.id }}" type="submit" name="add-rent"
+          class="btn text-label btn--full  btn-rent ">
+          <span> RENT NOW </span>
+        </button>
+        <script>
+          document.addEventListener('variant:change', function (evt) {
+            try {
+              console.log(evt.detail.variant.sku)
+              let subscriptionE = document.querySelector(`[data-variant-sku="${evt.detail.variant.sku}"]`)
+              if (subscriptionE) {
+                console.log({ subscriptionE })
+                let value = subscriptionE.value
+                subscriptionE.parentElement.value = value
+                console.log({ subscriptionE }, subscriptionE.parentElement.value, value)
+              }
+            } catch (error) {
+              console.log({ error })
+            }
+
+          });
+        </script>
+      </div>
+      {%- endform -%}
+    </div>
+    <label for="renting-modal-input-{{ block.id }}" id="renting-modal-close-{{ block.id }}"
+      class="renting-modal-close-{{ block.id }}">
+      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill="none" stroke="#000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"></path>
+      </svg>
+    </label>
+  </div>
+</div>
+{% endif %}
