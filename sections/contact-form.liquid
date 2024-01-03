@@ -1,21 +1,21 @@
 {%- assign form_id = 'contact-' | append: section.id -%}
 <style>
-    #{{form_id}}{
-      --color-error:red
-    }
-    #{{form_id}} .input.blured:invalid{
-      border-color: var(--color-error);
-    }
-    #{{form_id}} .input.blured:invalid+label{
-      color: var(--color-error);
-    }
-    #{{form_id}} .input:not([required])+label::after{
-      content: ' (Optional)';
-    }
-    #{{form_id}} .grid__item{
-      display: flex;
-      flex-direction: column-reverse;
-    }
+  #{{form_id}}{
+    --color-error:red
+  }
+  #{{form_id}} .input.blured:invalid{
+    border-color: var(--color-error);
+  }
+  #{{form_id}} .input.blured:invalid+label{
+    color: var(--color-error);
+  }
+  #{{form_id}} .input:not([required])+label::after{
+    content: ' (Optional)';
+  }
+  #{{form_id}} .grid__item{
+    display: flex;
+    flex-direction: column-reverse;
+  }
 </style>
 <div
   id="{{section.id}}"
@@ -31,10 +31,10 @@
           <h2 class="title-font">{{ section.settings.title }}</h2>
         {%- endif -%}
         {%- if section.settings.text != blank -%}
-            {%- capture phone -%}
+          {%- capture phone -%}
               {%- render '[phone-number]' -%}
               {%- endcapture -%}
-          {%- assign content = section.settings.text |replace :'+44 (0) 20 4586 3800',phone  -%}
+          {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
           <div class="rte section-header__rte">{{ content }}</div>
         {%- endif -%}
       </div>
@@ -163,6 +163,88 @@
             >
             <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
           </div>
+          <div class="form-group">
+            <label for="details-company-industry">Company Industry</label>
+            <div class="form-radio">
+              <div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-architects"
+                  class="input-full"
+                  value="architects"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-architects">Architects</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-design_and_build"
+                  class="input-full"
+                  value="design_and_build"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-design_and_build">Design &amp; Build </label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-commercial_out_fitter"
+                  class="input-full"
+                  value="commercial_out_fitter"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-commercial_out_fitter"
+                  >Commercial Out Fitter</label
+                >
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-furniture_dealer"
+                  class="input-full"
+                  value="furniture_dealer"
+                  autocapitalize="words"
+                >
+                <label class="text-label" for="details-company-industry-furniture_dealer">Furniture Dealer</label>
+              </div>
+
+              <div>
+                <style>
+                  .form-vertical input[name="details-company-industry-other"]{
+                    display:none
+                  }
+                  .form-vertical [name="details-company-industry"]:checked ~ label input[name="details-company-industry-other"]{
+                    display:block
+                  }
+                </style>
+                <input
+                  type="radio"
+                  name="details-company-industry"
+                  id="details-company-industry-other"
+                  class="input-full"
+                  value="other"
+                  autocapitalize="words"
+                >
+                <label style="width: 100%;" class="text-label" for="details-company-industry-other"
+                  >other<input
+                    type="text"
+                    name="details-company-industry-other"
+                    id="details-company-industry-other"
+                    class="input-full"
+                    autocapitalize="words"
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="grid__item">
             <textarea
               rows="5"
@@ -175,6 +257,7 @@
             ></textarea>
             <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
           </div>
+
           <div class="submit-btn-wrap">
             <button type="submit" class="btn btn--full">
               {{ 'contact.form.send' | t }}
