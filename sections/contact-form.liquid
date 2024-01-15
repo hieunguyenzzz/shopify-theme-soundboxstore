@@ -121,6 +121,19 @@
           <div class="grid__item">
             <input
               type="text"
+              required
+              id="ContactFormName-{{ section.id }}"
+              class="input-full input"
+              placeholder="{{ 'contact.form.postcode' | t }}"
+              name="contact[postcode]"
+              autocapitalize="words"
+              value="{% if form.postcode %}{{ form.postcode }}{% elsif customer %}{{ customer.postcode }}{% endif %}"
+            >
+            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+          </div>
+          <div class="grid__item">
+            <input
+              type="text"
               id="ContactFormName-{{ section.id }}"
               class="input-full input"
               placeholder="{{ 'contact.form.website-url' | t }}"
