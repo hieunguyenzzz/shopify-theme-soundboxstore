@@ -434,7 +434,8 @@
     </div>
   </div>
   <div class="page-width blog-grid">
-    {% for block in section.blocks %}
+    {% assign blocks = section.blocks | sort: 'settings.article.published_at' %}
+    {% for block in blocks %}
       {% assign article = block.settings.article | default: blog.articles.first %}
       <div class="blog-grid-item ">
         <div class="blog-grid-article__image">
