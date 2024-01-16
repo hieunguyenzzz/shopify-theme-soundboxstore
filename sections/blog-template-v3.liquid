@@ -1,35 +1,37 @@
-{% comment %} {%- paginate blog.articles by 20 -%}
+{% comment %}
+  {%- paginate blog.articles by 20 -%}
 
-  <div data-section-id="{{ section.id }}" data-section-type="blog">
-  <div class="new-grid">
-  {%- for article in blog.articles -%}
-  {%- liquid
-  assign style = 'medium'
-  if forloop.first
-  assign style = 'large'
-  endif
-  -%}
-  {%- render 'article-grid-item',
-  blog: blog,
-  article: article,
-  style: style,
-  show_tags: section.settings.blog_show_tags,
-  show_date: section.settings.blog_show_date,
-  show_comments: section.settings.blog_show_comments,
-  show_author: section.settings.blog_show_author,
-  image_size: section.settings.blog_image_size -%}
-  {%- endfor -%}
-  </div>
+    <div data-section-id="{{ section.id }}" data-section-type="blog">
+    <div class="new-grid">
+    {%- for article in blog.articles -%}
+    {%- liquid
+    assign style = 'medium'
+    if forloop.first
+    assign style = 'large'
+    endif
+    -%}
+    {%- render 'article-grid-item',
+    blog: blog,
+    article: article,
+    style: style,
+    show_tags: section.settings.blog_show_tags,
+    show_date: section.settings.blog_show_date,
+    show_comments: section.settings.blog_show_comments,
+    show_author: section.settings.blog_show_author,
+    image_size: section.settings.blog_image_size -%}
+    {%- endfor -%}
+    </div>
 
-  {%- liquid
-  if paginate.pages > 1
-  render 'pagination', paginate: paginate
-  endif
-  -%}
-  </div>
-{%- endpaginate -%} {% endcomment %}
+    {%- liquid
+    if paginate.pages > 1
+    render 'pagination', paginate: paginate
+    endif
+    -%}
+    </div>
+  {%- endpaginate -%}
+{% endcomment %}
 <style>
- 
+
   .blog-group {
     display: flex;
     gap: 28px;
@@ -124,18 +126,18 @@
     padding: 0;
   }
   @media screen and (max-width: 1080px) {
-    
+
     .blog-group {
       display: flex;
       gap: 1.6em;
       flex-direction: column;
     }
-  
+
     .blog-group>div:first-child {
       position: relative;
       top: unset;
     }
-  
+
     .blog-group>div:first-child .image-wrap {
       height:
         calc(100vh - 100px);
@@ -143,19 +145,19 @@
       position: relative;
       overflow: unset;
     }
-  
+
     .blog-group>div:first-child h2 a {
       font-size: 32px;
       font-size: calc(min(32px, 5vw));
     }
-  
+
     .blog-group>div:first-child .blog-grid-article__meta {
       top: 6vw;
       padding: 2em;
     }
     .blog-group>div:first-child{
       width: 100%;
-     
+
     }
     .blog-group > div:first-child .image-wrap img{
       width: 100%;
@@ -164,22 +166,22 @@
       font-size: 12px;
       font-size: calc(min(12px, 3vw));
     }
-  
+
     .blog-group>div:first-child .blog-article-content {
       font-size: 16px;
       font-size: calc(min(16px, 4vw));
     }
-  
+
     .blog-group>div:first-child .blog-article__sub-meta .blog-article-tag {
       font-weight: bold;
     }
-  
+
     .blog-grid.blog-col {
       display: flex;
       width: 100%;
       flex-direction: column;
     }
-    
+
   }
 </style>
 
@@ -214,13 +216,15 @@
                       data-widths="[360, 540, 720, 900, 1080]"
                       data-aspectratio="{{ article.image.aspect_ratio }}"
                       data-sizes="auto"
-                      alt="{{ img.alt | escape }}">
+                      alt="{{ img.alt | escape }}"
+                    >
                   </div>
                   <noscript>
                     <img
                       class="lazyloaded"
                       src="{{ img | img_url: '400x' }}"
-                      alt="{{ article.title | escape }}">
+                      alt="{{ article.title | escape }}"
+                    >
                   </noscript>
                 </div>
               {%- else -%}
@@ -232,19 +236,19 @@
                     data-widths="[180, 360, 540, 720, 900, 1080]"
                     data-aspectratio="{{ article.image.aspect_ratio }}"
                     data-sizes="auto"
-                    alt="{{ img.alt | escape }}">
+                    alt="{{ img.alt | escape }}"
+                  >
                   <noscript>
                     <img
                       class="lazyloaded"
                       src="{{ img | img_url: '400x' }}"
-                      alt="{{ article.title | escape }}">
+                      alt="{{ article.title | escape }}"
+                    >
                   </noscript>
                 </div>
               {%- endif -%}
             {%- endif -%}
           {%- endif -%}
-
-
         </div>
         <div class="blog-grid-article__meta ">
           <div>
@@ -283,13 +287,15 @@
                             data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
                             data-aspectratio="{{ article.image.aspect_ratio }}"
                             data-sizes="auto"
-                            alt="{{ article.image.alt | escape }}">
+                            alt="{{ article.image.alt | escape }}"
+                          >
                         </div>
                         <noscript>
                           <img
                             class="lazyloaded"
                             src="{{ article.image | img_url: '400x' }}"
-                            alt="{{ article.title | escape }}">
+                            alt="{{ article.title | escape }}"
+                          >
                         </noscript>
                       </div>
                     {%- else -%}
@@ -301,21 +307,21 @@
                           data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
                           data-aspectratio="{{ article.image.aspect_ratio }}"
                           data-sizes="auto"
-                          alt="{{ article.image.alt | escape }}">
+                          alt="{{ article.image.alt | escape }}"
+                        >
                         <noscript>
                           <img
                             class="lazyloaded"
                             src="{{ article.image | img_url: '400x' }}"
-                            alt="{{ article.title | escape }}">
+                            alt="{{ article.title | escape }}"
+                          >
                         </noscript>
                       </div>
                     {%- endif -%}
                   {%- endif -%}
                 {%- endif -%}
-    
-    
               </div>
-    
+
               <div class="blog-grid-article__meta ">
                 <div>
                   <div class="blog-article__sub-meta-bg"></div>
@@ -330,7 +336,7 @@
                         </span>
                       {%- endif -%}
                       {%- if show_date -%}
-                        <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: "%Y" }}</span>
+                        <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: '%Y' }}</span>
                       {%- endif -%}
                       {%- if show_author -%}
                         <span>by Themes</span>
@@ -338,7 +344,9 @@
                     </div>
                   {%- else -%}
                     {%- if show_date -%}
-                      <span class="blog-article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                      <span class="blog-article__sub-meta-date">
+                        {{- article.published_at | time_tag: format: 'month_day_year' -}}
+                      </span>
                     {%- endif -%}
                     <h3>
                       <a href="{{ article.url }}" class="blog-article__title">{{ article.title }}</a>
@@ -355,28 +363,33 @@
                         <span>SoundBox Store</span>
                         in
                         {%- for tag in article.tags -%}
-                          {% if tag contains "_" %}
-                            {%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}
+                          {% if tag contains '_' %}
+                            {%- assign tag_starts_with = tag | slice: 0 -%}
+                            {% if tag_starts_with == '_' %}
                               {% if tag_count %}
-                                {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
-                              {% continue %}{% endif %}
+                                {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}
+                              {% endif %}
+                              {% continue -%}
+                            {%- endif %}
                           {% endif %}
                           <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                         {%- endfor -%}
                       </div>
-    
                     </div>
                   {%- endif -%}
                 </div>
-    
               </div>
             </div>
           {% endif %}
-          
         {% endfor %}
       {% endif %}
       {% for block in section.blocks %}
         {% assign article = block.settings.article | default: blog.articles.first %}
+        <style>
+          .blog-grid-item-{{ article.handle }}{
+            display:none
+          }
+        </style>
         <div class="blog-grid-item ">
           <div class="blog-grid-article__image">
             {%- if article.empty? -%}
@@ -397,13 +410,15 @@
                         data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
                         data-aspectratio="{{ article.image.aspect_ratio }}"
                         data-sizes="auto"
-                        alt="{{ article.image.alt | escape }}">
+                        alt="{{ article.image.alt | escape }}"
+                      >
                     </div>
                     <noscript>
                       <img
                         class="lazyloaded"
                         src="{{ article.image | img_url: '400x' }}"
-                        alt="{{ article.title | escape }}">
+                        alt="{{ article.title | escape }}"
+                      >
                     </noscript>
                   </div>
                 {%- else -%}
@@ -415,19 +430,19 @@
                       data-widths="[360, 540, 720, 900, 1080, 1440, 1660]"
                       data-aspectratio="{{ article.image.aspect_ratio }}"
                       data-sizes="auto"
-                      alt="{{ article.image.alt | escape }}">
+                      alt="{{ article.image.alt | escape }}"
+                    >
                     <noscript>
                       <img
                         class="lazyloaded"
                         src="{{ article.image | img_url: '400x' }}"
-                        alt="{{ article.title | escape }}">
+                        alt="{{ article.title | escape }}"
+                      >
                     </noscript>
                   </div>
                 {%- endif -%}
               {%- endif -%}
             {%- endif -%}
-
-
           </div>
 
           <div class="blog-grid-article__meta ">
@@ -444,7 +459,7 @@
                     </span>
                   {%- endif -%}
                   {%- if show_date -%}
-                    <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: "%Y" }}</span>
+                    <span class="blog-article__sub-meta-date">Jul 17, {{ 'now' | date: '%Y' }}</span>
                   {%- endif -%}
                   {%- if show_author -%}
                     <span>by Themes</span>
@@ -452,7 +467,9 @@
                 </div>
               {%- else -%}
                 {%- if show_date -%}
-                  <span class="blog-article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                  <span class="blog-article__sub-meta-date">
+                    {{- article.published_at | time_tag: format: 'month_day_year' -}}
+                  </span>
                 {%- endif -%}
                 <h3>
                   <a href="{{ article.url }}" class="blog-article__title">{{ article.title }}</a>
@@ -469,138 +486,137 @@
                     <span>SoundBox Store</span>
                     in
                     {%- for tag in article.tags -%}
-                      {% if tag contains "_" %}
-                        {%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}
+                      {% if tag contains '_' %}
+                        {%- assign tag_starts_with = tag | slice: 0 -%}
+                        {% if tag_starts_with == '_' %}
                           {% if tag_count %}
-                            {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}
-                          {% continue %}{% endif %}
+                            {%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}
+                          {% endif %}
+                          {% continue -%}
+                        {%- endif %}
                       {% endif %}
                       <a class="blog-article-tag" href="{{ blog.url }}#{{ tag | handle }}">{{ tag }}</a>
                     {%- endfor -%}
                   </div>
-
                 </div>
               {%- endif -%}
             </div>
-
           </div>
         </div>
       {% endfor %}
-
     </div>
-
   </div>
 </div>
 
 {% schema %}
-  {
-    "name": "Blog Feature",
-    "class": "blog-layout__main",
-    "settings": [
-      {
-        "type": "text",
-        "id": "tag",
-        "label": "Tag",
-        "default": "Title"
-      },
-      {
-        "type": "header",
-        "content": "Banner"
-      },
-      {
-        "type": "image_picker",
-        "id": "banner_image",
-        "label": "Banner"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "default": "Title"
-      },
-      {
-        "type": "text",
-        "id": "subtitle",
-        "label": "Subtitle",
-        "default": "TOPIC"
-      }, {
-        "type": "textarea",
-        "id": "content",
-        "label": "Content",
-        "default": "<p>If the open office dies, as its critics predict, what will be the new norm? We take a look at how the workplace is evolving and what's next.</p>"
-      }, {
-        "type": "header",
-        "content": "Article"
-      }, {
-        "type": "checkbox",
-        "id": "blog_show_rss",
-        "label": "Show RSS link"
-      }, {
-        "type": "checkbox",
-        "id": "blog_show_tags",
-        "label": "Show tags",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "blog_show_comments",
-        "label": "Show comment count",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author"
-      }, {
-        "type": "select",
-        "id": "blog_image_size",
-        "label": "Force image size",
-        "default": "wide",
-        "options": [
-          {
-            "value": "natural",
-            "label": "Natural"
-          },
-          {
-            "value": "square",
-            "label": "Square (1:1)"
-          },
-          {
-            "value": "landscape",
-            "label": "Landscape (4:3)"
-          },
-          {
-            "value": "portrait",
-            "label": "Portrait (2:3)"
-          }, {
-            "value": "wide",
-            "label": "Wide (16:9)"
-          }
-        ]
-      }
-    ],
-    "blocks": [
-      {
-        "type": "article",
-        "name": "Article",
-        "settings": [
-          {
-            "type": "article",
-            "id": "article",
-            "label": "Article"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Blog feature",
-        "settings": {},
-        "blocks": []
-      }
-    ]
-  }
+{
+  "name": "Blog Feature",
+  "class": "blog-layout__main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag",
+      "default": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "TOPIC"
+    }, {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>If the open office dies, as its critics predict, what will be the new norm? We take a look at how the workplace is evolving and what's next.</p>"
+    }, {
+      "type": "header",
+      "content": "Article"
+    }, {
+      "type": "checkbox",
+      "id": "blog_show_rss",
+      "label": "Show RSS link"
+    }, {
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "Show tags",
+      "default": true
+    }, {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    }, {
+      "type": "checkbox",
+      "id": "blog_show_comments",
+      "label": "Show comment count",
+      "default": true
+    }, {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author"
+    }, {
+      "type": "select",
+      "id": "blog_image_size",
+      "label": "Force image size",
+      "default": "wide",
+      "options": [
+        {
+          "value": "natural",
+          "label": "Natural"
+        },
+        {
+          "value": "square",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait (2:3)"
+        }, {
+          "value": "wide",
+          "label": "Wide (16:9)"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog feature",
+      "settings": {},
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}
