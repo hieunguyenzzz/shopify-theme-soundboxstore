@@ -436,7 +436,7 @@
   <div class="page-width blog-grid">
     {% assign blocks = section.blocks | sort: 'settings.article.published_at' %}
     {% for article in blog.articles %}
-      <div class="blog-grid-item ">
+      <div class="blog-grid-item blog-grid-item-{{ article.handle }}">
         <div class="blog-grid-article__image">
           {%- if article.empty? -%}
             <div class="image-wrap">
