@@ -31,7 +31,6 @@
   {%- endpaginate -%}
 {% endcomment %}
 <style>
-
   .blog-group {
     display: flex;
     gap: 28px;
@@ -268,6 +267,11 @@
         {% for article in blog.articles %}
           {% if article.tags contains section.settings.tag %}
             <div class="blog-grid-item ">
+              <style>
+                .blog-grid-item-{{ article.handle }}{
+                  display:none
+                }
+              </style>
               <div class="blog-grid-article__image">
                 {%- if article.empty? -%}
                   <div class="image-wrap">
@@ -385,11 +389,7 @@
       {% endif %}
       {% for block in section.blocks %}
         {% assign article = block.settings.article | default: blog.articles.first %}
-        <style>
-          .blog-grid-item-{{ article.handle }}{
-            display:none
-          }
-        </style>
+
         <div class="blog-grid-item ">
           <div class="blog-grid-article__image">
             {%- if article.empty? -%}
