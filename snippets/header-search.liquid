@@ -1,3 +1,55 @@
+<style>
+  .site-header__search-container.is-active {
+    background: #000000d9;
+    color: white;
+  }
+  .site-header__search-container.is-active > div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 108px 24px 0 24px;
+    font-size: 0;
+    background: #000000d9;
+    color: white;
+  }
+  .site-header__search-container .page-width {
+    max-width: 900px;
+    margin: atuo;
+  }
+  .site-header__search-container .site-header__search {
+    display: flex;
+    flex-direction: column;
+  }
+  .site-header__search-form.is-active .site-header__search-btn--cancel {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+  }
+  .site-header__search-form.is-active .site-header__search-btn--cancel svg {
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    fill: #fff;
+    display: block;
+    left: 0;
+  }
+  .site-header__search-container h3 {
+    margin-bottom: 32px;
+    font-size: 38px;
+    line-height: 1.2;
+    text-align: center;
+    color: #fff;
+  }
+  .site-header__search-form.is-active {
+    width: 100%;
+  }
+</style>
 {%- liquid
   assign dark_search_bg = true
   assign lightness = settings.color_header_search | color_brightness
@@ -6,7 +58,7 @@
     assign dark_search_bg = false
   endif
 -%}
-
+<h3>What are you looking for?</h3>
 <form
   action="{{ routes.search_url }}"
   method="get"

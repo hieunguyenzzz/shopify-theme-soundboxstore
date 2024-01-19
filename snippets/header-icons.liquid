@@ -7,8 +7,7 @@
 
 <div class="site-nav">
   <div class="site-nav__icons">
-    <!--
-      <a
+    <a
         href="{{ routes.search_url }}"
         class="site-nav__link site-nav__link--icon js-search-header{% if nav_position == 'below' %} medium-up--hide{% endif %} js-no-transition"
       >
@@ -17,7 +16,6 @@
         </svg>
         <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
       </a>
-    -->
 
     {%- if shop.customer_accounts_enabled -%}
       <a class="site-nav__link site-nav__link--icon small--hide" href="{{ routes.account_url }}">
