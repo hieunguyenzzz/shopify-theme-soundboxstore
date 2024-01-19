@@ -18,67 +18,75 @@
           <span class="small--hide">{{ 'general.search.cancel' | t }}</span>
         </button>
       </div>
-      {%- if settings.predictive_search_enabled or settings.search_top_collection != blank -%}
+      {%- if settings.predictive_search_enabled -%}
         <div id="SearchResultsWrapper" class="site-header__search-results hide">
-          {%- if settings.search_top_collection != blank -%}
-            {%- assign search_collection = collections[settings.search_top_collection] -%}
-            <div id="TopSearched" class="site-header__search-results-wrapper">
-              <div class="page-width">
-                <div>
-                  <div style="font-weight: bold;" class="h4 site-header__search-title">
-                    {{ 'general.search.quick_link' | t }}
-                  </div>
-                  <div>
-                    {%- for product in search_collection.products limit: 6 -%}
-                      <div>
-                        <a style="font-size: 16px; display: block; padding: 0.2em 0;" href="{{ product.url }}">
-                          {{- product.title -}}
-                        </a>
-                      </div>
-                    {%- endfor -%}
-                  </div>
-                </div>
+          <div class="page-width">
+            <div
+              id="PredictiveWrapper"
+              style="width: 100%;"
+              class="hide"
+              data-image-size="{{ settings.predictive_image_size }}"
+            >
+              <style>
+                .site-header__search-container .new-grid.product-grid {
+                  display: block;
+                }
+                .site-header__search-container .grid-item.grid-product {
+                }
+                .site-header__search-container a.grid-item__link {
+                  display: flex;
+                }
+
+                .site-header__search-container .grid-product__image-wrap {
+                  margin: 0;
+                  width: 80px;
+                  padding: 2%;
+                }
+              </style>
+              <div id="PredictiveResults" class="predictive-result__layout"></div>
+              <div class="text-center predictive-results__footer">
+                <button type="button" class="btn btn--small" data-predictive-search-button>
+                  <small>
+                    {{ 'general.search.view_more' | t }}
+                  </small>
+                </button>
               </div>
             </div>
-          {%- endif -%}
-
-          {%- if settings.predictive_search_enabled -%}
-            <div class="page-width">
-              <div
-                id="PredictiveWrapper"
-                style="width: 100%;"
-                class="hide"
-                data-image-size="{{ settings.predictive_image_size }}"
-              >
-                <style>
-                  .site-header__search-container .new-grid.product-grid {
-                    display: block;
-                  }
-                  .site-header__search-container .grid-item.grid-product {
-                  }
-                 .site-header__search-container  a.grid-item__link {
-                    display: flex;
-                  }
-
-                  .site-header__search-container .grid-product__image-wrap {
-                    margin: 0;
-                    width: 80px;
-                    padding: 2%;
-                  }
-                </style>
-                <div id="PredictiveResults" class="predictive-result__layout"></div>
-                <div class="text-center predictive-results__footer">
-                  <button type="button" class="btn btn--small" data-predictive-search-button>
-                    <small>
-                      {{ 'general.search.view_more' | t }}
-                    </small>
-                  </button>
-                </div>
-              </div>
-            </div>
-          {%- endif -%}
+          </div>
         </div>
       {%- endif -%}
     </div>
+    {%- if settings.search_top_collection != blank -%}
+      {%- assign search_collection = collections[settings.search_top_collection] -%}
+      <div id="TopSearched" class="site-header__search-results-wrapper">
+        <div class="search-page-width">
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+              color: white;
+            "
+          >
+            {%- for product in search_collection.products limit: 6 -%}
+              <div>
+                <a style="font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                margin: 4px;
+                padding: 7px 15px;
+                font-size: 12px;
+                line-height: 16px;
+                color: #fff;
+                border: 1px solid rgba(255,255,255,0.3);
+                border-radius: 16px;
+                background-color: rgba(0,0,0,0.3);" href="{{ product.url }}">
+                  {{- product.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
