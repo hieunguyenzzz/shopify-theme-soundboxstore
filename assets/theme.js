@@ -946,13 +946,12 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-        let leadingTimeE = document.querySelector("[data-quantity-variant]")
-           if(leadingTimeE){
-             leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
-           }
+        let leadingTimeE = document.querySelector("[data-quantity-variant]");
+        if (leadingTimeE) {
+          leadingTimeE.setAttribute("data-quantity-variant", "" + variant.id);
+        }
       },
       _updateImagesCustom: function (variant) {
-      
         function handleUpdateGallery2() {
           const template = document.querySelector(
             `template[data-id='${variant.id}']`
@@ -1023,7 +1022,6 @@ lazySizesConfig.expFactor = 4;
           }
         }
         handleUpdateGallery2();
-       
       },
       _updateImages: function (variant) {
         var variantImage = variant.featured_image || {};
@@ -3132,8 +3130,8 @@ lazySizesConfig.expFactor = 4;
       adaptiveHeight: false,
       autoPlay: false,
       avoidReflow: false,
-      childNav: null, 
-      childNavScroller: null, 
+      childNav: null,
+      childNavScroller: null,
       childVertical: false,
       fade: false,
       initialIndex: 0,
@@ -4871,22 +4869,22 @@ lazySizesConfig.expFactor = 4;
 
         output = `
           <div data-type-products>
+            <div style="font-weight: bold;" class="h4 site-header__search-title">
+              ${theme.strings.searchProducts}
+            </div>
             <div class="new-grid product-grid" data-view="small">
               ${markup}
             </div>
           </div>
         `;
       }
-
       return output;
     }
 
     function buildCollections(collections) {
       var output = "";
-
       if (collections.length) {
         var markup = theme.buildCollectionItem(collections);
-
         output = `
           <div data-type-collections>
             <p class="h6 predictive__label">${theme.strings.searchCollections}</p>
@@ -7828,7 +7826,7 @@ lazySizesConfig.expFactor = 4;
           "variantChange" + this.settings.namespace,
           this.updateCartButton.bind(this)
         );
- 
+
         this.container.on(
           "variantPriceChange" + this.settings.namespace,
           this.updatePrice.bind(this)
@@ -8444,8 +8442,6 @@ lazySizesConfig.expFactor = 4;
       getThumbIndex: function (target) {
         return target.dataset.index;
       },
-
-
 
       initProductSlider: function (variant) {
         // Stop if only a single image, but add active class to first slide

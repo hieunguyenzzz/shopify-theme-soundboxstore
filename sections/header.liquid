@@ -239,40 +239,7 @@
         </div>
       </div>
 
-      {%- if settings.predictive_search_enabled or settings.search_top_collection != blank -%}
-        <div id="SearchResultsWrapper" class="site-header__search-results hide">
-          {%- if settings.search_top_collection != blank -%}
-            {%- assign search_collection = collections[settings.search_top_collection] -%}
-            <div id="TopSearched" class="site-header__search-results-wrapper">
-              <div class="page-width">
-                <div class="h4 site-header__search-title">{{ 'general.search.search_title' | t }}</div>
-              </div>
-              <div class="page-width page-width--flush-small">
-                <div class="new-grid product-grid scrollable-grid--small" data-view="scrollable">
-                  {%- for product in search_collection.products limit: 6 -%}
-                    {%- render 'product-grid-item', product: product, no_actions: true -%}
-                  {%- endfor -%}
-                </div>
-              </div>
-            </div>
-          {%- endif -%}
-
-          {%- if settings.predictive_search_enabled -%}
-            <div id="PredictiveWrapper" class="hide" data-image-size="{{ settings.predictive_image_size }}">
-              <div class="page-width">
-                <div id="PredictiveResults" class="predictive-result__layout"></div>
-                <div class="text-center predictive-results__footer">
-                  <button type="button" class="btn btn--small" data-predictive-search-button>
-                    <small>
-                      {{ 'general.search.view_more' | t }}
-                    </small>
-                  </button>
-                </div>
-              </div>
-            </div>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+      
     </header>
   </div>
 </div>

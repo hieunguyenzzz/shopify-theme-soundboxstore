@@ -1,7 +1,6 @@
 <style>
   .site-header__search-container.is-active {
-    background: #000000d9;
-    color: white;
+    background: transparent;
   }
   .site-header__search-container.is-active > div {
     position: fixed;
@@ -10,13 +9,17 @@
     width: 100%;
     height: 100%;
     padding: 108px 24px 0 24px;
-    font-size: 0;
+    font-size: 16px;
     background: #000000d9;
     color: white;
   }
-  .site-header__search-container .page-width {
-    max-width: 900px;
-    margin: atuo;
+  .site-header__search-container .search-page-width {
+    max-width: 684px;
+    margin: auto;
+    position: relative;
+  }
+  .site-header__search-container .site-header__search-results {
+    max-height: calc(100vh - 100% - 180px);
   }
   .site-header__search-container .site-header__search {
     display: flex;
