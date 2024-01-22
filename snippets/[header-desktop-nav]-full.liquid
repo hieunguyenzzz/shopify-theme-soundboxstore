@@ -142,7 +142,8 @@
           {% for item in blocks %}
             {% if item.id contains block.settings.id %}
               {%- assign ids = item.settings.id | split: '-' -%}
-              {% if ids contains block.settings.id %}
+              {%- assign firstId = ids | first -%}
+              {% if block.settings.id == firstId %}
                 {% if ids.size == 2 %}
                   <li>
                     <a
