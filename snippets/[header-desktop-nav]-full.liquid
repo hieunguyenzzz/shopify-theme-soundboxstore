@@ -240,16 +240,3 @@
     </div>
   </div>
 </li>
-<script>
-  (() => {
-    let wraper = document.querySelector('.cols-wraper');
-    wraper.addEventListener('mouseover', (e) => {
-      let currentId = e.target.dataset.id;
-      let img = e.target.dataset.img;
-      if (currentId) {
-        wraper.dataset.current = currentId;
-        wraper.dataset.img = currentId;
-      }
-    });
-  })();
-</script>
