@@ -1,0 +1,196 @@
+<style>
+  {% unless request.design_mode %}
+    {% assign isResserllerOrTradeAccount = false %}
+    {% if customer %}
+      {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+        {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+          {% assign isResserllerOrTradeAccount = true %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    {% unless isResserllerOrTradeAccount %}
+      [data-id="#"] {
+        display: none !important
+      }
+    {% endunless %}
+  {% endunless %}
+  .site-header .site-nav__item-verticle .megamenu {
+    padding: 40px 0;
+  }
+  .site-header .megamenu .page-width {}
+  .site-header .site-nav__item .cols-wraper img {
+    display: none
+  }
+  .site-header .site-nav__item:hover .cols-wraper img {
+    object-fit: scale-down;
+    display: block
+  }
+  .site-header .site-nav__item-verticle .megamenu .megamenu__wrapper .megamenu__cols {
+    display: flex;
+    flex: unset;
+    width: 100%;
+    flex-flow: unset;
+    columns: unset;
+    flex-direction: row;
+
+  }
+  .site-header .site-nav__item-verticle .megamenu .megamenu__wrapper .megamenu__col:not(:last-child) {
+    padding-right: unset;
+    max-width: unset;
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+    margin-bottom: 0.5em;
+  }
+  .site-header .site-nav__item-verticle .megamenu .megamenu__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  .site-nav-level--one {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .site-header .cols-wraper {
+    display: flex;
+    position: relative;
+    gap: 2em
+  }
+  .site-header .cols-wraper .col-item-link {
+    display: inline-block;
+    line-height: 1.3;
+    padding: 0.2em 0;
+    margin-bottom: 0.4em;
+
+  }
+
+  .site-header .cols-wraper .col-item-link:hover {
+    text-decoration: underline;
+    text-decoration-color: #ff263f;
+    text-decoration-thickness: 2px;
+  }
+  .site-header .col-one {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: flex-start;
+  }
+  .site-header .col-one a {
+    display: inline-block;
+    line-height: 1;
+    padding: 0.2em 0;
+    position: relative;
+    margin-bottom: 0.4em;
+  }
+  .site-header .col-one ul {
+    margin-left: 0;
+  }
+  .site-header .col-one ul li {
+    flex: 1;
+  }
+  .site-header .col-one > li > a {
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 1.2em;
+  }
+</style>
+{%- liquid
+  unless limit
+    assign limit = menu.links.size
+  endunless
+  unless offset
+    assign offset = 0
+  endunless
+-%}
+{%- unless title -%}
+  {%- assign title = 'Our Products' -%}
+{%- endunless -%}
+{%- for block in blocks -%}
+  {%- assign ids = block.settings.id | split: '-' -%}
+  {%- assign oneId = ids.first -%}
+  {%- assign img = block.settings.image -%}
+  {%- if img -%}
+    {%- capture threeCol -%}
+      {{ threeCol }}
+      <a
+        href="{{ block.settings.link  }}"
+        data-id="{{ block.settings.id }}"
+        {{ block.shopify_attributes }}>
+        {{
+           img
+         | image_url: width: 400
+         | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: block.settings.title }}
+      </a>
+    {%- endcapture -%}
+  {%- endif -%}
+  {%- if ids.size == 1 -%}
+    {%- capture oneCol -%}
+      {{ oneCol }}
+      <li>
+        <a
+          href="{{ block.settings.link }}"
+          data-id="{{block.settings.id }}"
+          class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
+          {{ block.shopify_attributes }}>
+          {{ block.settings.title }}
+        </a>
+        <ul>
+          {% for item in blocks %}
+            {% if item.id contains block.settings.id %}
+              {%- assign ids = item.settings.id | split: '-' -%}
+              {% if ids contains block.settings.id %}
+                {% if ids.size == 2 %}
+                  <li>
+                    <a
+                      class="col-item-link"
+                      href="{{  item.settings.link }}"
+                      data-id="{{ item.settings.id }}"
+                      data-title="{{ item.settings.link.title }}"
+                      data-type="{{ item.settings.link.type }}">
+                      {{ item.settings.product.title | default: item.settings.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {%- endcapture -%}
+  {%- endif -%}
+{%- endfor -%}
+<li class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu" aria-haspopup="true">
+  <a href="{{ collections['all'].url }}" class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown ">
+    {{ title | default: menu.title }}
+  </a>
+  <div class="site-nav__dropdown megamenu text-left">
+    <div class="page-width">
+      <div
+        class="site-nav__dropdown-animate megamenu__wrapper cols-wraper"
+        style="max-width: none;"
+        data-current="1"
+        data-img="1">
+        <ul class="col-one">
+          {{ oneCol }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</li>
+<script>
+  (() => {
+    let wraper = document.querySelector('.cols-wraper');
+    wraper.addEventListener('mouseover', (e) => {
+      let currentId = e.target.dataset.id;
+      let img = e.target.dataset.img;
+      if (currentId) {
+        wraper.dataset.current = currentId;
+        wraper.dataset.img = currentId;
+      }
+    });
+  })();
+</script>
