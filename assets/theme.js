@@ -5624,17 +5624,9 @@ lazySizesConfig.expFactor = 4;
     items.forEach((article) => {
       var image = theme.buildPredictiveImage(article);
       var markup = `
-        <div class="grid__item small--one-half medium-up--one-quarter">
+        <div class="grid__item ">
           <a href="${article.url}" class="grid-item__link grid-item__link--inline">
-            <div class="grid-product__image-wrap">
-              <div
-                class="grid__image-ratio grid__image-ratio--object grid__image-ratio--${imageSize}">
-                <div class="predictive__image-wrap">
-                  ${image}
-                </div>
-              </div>
-            </div>
-            <div class="grid-item__meta">
+            <div class="">
               ${article.title}
             </div>
           </a>
