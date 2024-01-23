@@ -68,11 +68,13 @@
         </button>
       </div>
     </form>
-    {% assign products = '' %}
+    {% assign productsresult = '' %}
+    {% assign pageresult = '' %}
+    {% assign othersresult = '' %}
     {%- for item in search.results -%}
       {%- if item.object_type == 'product' -%}
-        {% capture products %}
-              {{ products }}
+        {% capture productsresult %}
+              {{ productsresult }}
             {%- liquid
               render 'product-grid-item', product: item
             -%}
@@ -97,8 +99,8 @@
             </div>
         {% endcapture %}
       {%- else -%}
-        {% capture others %}
-          {{ others }}
+        {% capture othersresult %}
+          {{ othersresult }}
           <div class="grid-item grid-product">
             <div class="grid-item__content">
               <a href="{{ item.url }}" class="grid-item__link">
@@ -131,10 +133,10 @@
       </div>
       <div class="search-results-layout">
         <div class="new-grid search-grid result-products" data-view="xsmall">
-          {{ products }}
+          {{ productsresult }}
         </div>
         <div class="result-pages">{{ pageresult }}</div>
-        <div class="result-others">{{ others }}</div>
+        <div class="result-others">{{ othersresult }}</div>
       </div>
 
       {%- liquid
