@@ -1,3 +1,43 @@
+<style>
+    .search-bar--page{
+         width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 684px;
+      padding: 32px 0 16px 0;
+      margin: auto;
+  }
+  .new-grid{
+        display: flex;
+      flex-direction: column;
+  }
+  .grid-item-wrap{
+    display: flex;
+    padding: 1em 1em 1em 0;
+  }
+  .product-image-wrap{
+    max-width: 300px;
+    width: 30%;
+    flex-shrink: 0;
+  }
+  .title-font{
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  .product-tag-sale{
+    display: none;
+  }
+  .grid-product-dec{
+    display: none;
+  }
+  .price-title{
+    margin: 0 ;
+    font-size: 0.8em;
+  }
+  .collection-btn-group{
+    margin-top: 0.5em;
+  }
+</style>
 {%- paginate search.results by 20 -%}
   <div class="page-width page-content">
     {%- render 'breadcrumbs' -%}
