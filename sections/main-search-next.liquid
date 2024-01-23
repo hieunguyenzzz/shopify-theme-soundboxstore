@@ -10,7 +10,7 @@
    .new-grid{
          display: flex;
        flex-direction: column;
-     flex-wrap:nowrap;
+     flex-wrap:nowrap;flex:1;
    }
    .new-grid .grid-item-wrap{
      display: flex;
@@ -44,6 +44,10 @@
   }
    .new-grid .grid-item-meta{
     font-size:min(1rem,4vw)
+  }
+  .search-results-layout{
+    display: flex;
+    gap: 2em;
   }
 </style>
 {%- paginate search.results by 20 -%}
