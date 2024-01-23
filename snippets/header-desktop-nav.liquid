@@ -25,7 +25,7 @@
         href="{{ menu.url }}"
         class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
       >
-        <span class="btn btn--secondary">{{ menu.title }}</span>
+        {{ menu.title }}
       </a>
       {% if menu.links.size > 1 %}
         <div class="site-nav__dropdown  text-left">
