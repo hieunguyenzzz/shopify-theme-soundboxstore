@@ -130,7 +130,6 @@
 
             {%- if nav_position == 'beside' -%}
               <div class="header-item header-item--navigation{% if section.settings.main_menu_alignment == 'left-center' %} text-center{% endif %}">
-                <style></style>
                 {%- render 'header-desktop-nav',
                   section: section,
                   main_menu: main_menu,
@@ -172,8 +171,6 @@
             </div>
           </div>
         </div>
-
-   
       </div>
 
       {%- if nav_position == 'below' -%}
@@ -238,8 +235,6 @@
           </div>
         </div>
       </div>
-
-      
     </header>
   </div>
 </div>
@@ -254,6 +249,11 @@
       "id": "main_menu_link_list",
       "label": "Navigation",
       "default": "main-menu"
+    },
+     {
+      "type": "link_list",
+      "id": "sub_menu_link_list",
+      "label": "Sub Navigation"
     },
     {
       "type": "collection",
@@ -450,7 +450,7 @@
           "id": "title",
           "label": "Title"
         },
- 
+
         {
           "type": "url",
           "id": "link",
