@@ -1,61 +1,64 @@
 <style>
-     .search-bar--page{
-          width: 100%;
-       display: flex;
-       justify-content: center;
-       max-width: 684px;
-       padding: 32px 0 16px 0;
-       margin: auto;
-   }
-   .new-grid{
+       .search-bar--page{
+            width: 100%;
          display: flex;
-       flex-direction: column;
-     flex-wrap:nowrap;flex:1;
-   }
-   .new-grid .grid-item-wrap{
-     display: flex;
-     padding: 1em 1em 1em 0;
-   }
-   .new-grid .product-image-wrap{
-     max-width: 300px;
-     width: 30%;
-     flex-shrink: 0;
-   }
-    .new-grid .title-font{
-     font-size: 1.1em;
-     font-weight: bold;
-   }
-  .new-grid  .product-tag-sale{
-     display: none;
-   }
-   .new-grid .grid-product-dec{
-     display: none;
-   }
-   .new-grid .price-title{
-     margin: 0 ;
-     font-size: 0.8em;
-   }
-   .new-grid .collection-btn-group{
-     margin-top: 0.5em;
-   }
-   .new-grid .grid-product__price--original{
-    opacity: 0.5;
-    font-weight: 300;
+         justify-content: center;
+         max-width: 684px;
+         padding: 32px 0 16px 0;
+         margin: auto;
+     }
+     .new-grid{
+           display: flex;
+         flex-direction: column;
+       flex-wrap:nowrap;flex:1;
+     }
+     .new-grid .grid-item-wrap{
+       display: flex;
+       padding: 1em 1em 1em 0;
+     }
+     .new-grid .product-image-wrap{
+       max-width: 300px;
+       width: 30%;
+       flex-shrink: 0;
+     }
+      .new-grid .title-font{
+       font-size: 1.1em;
+       font-weight: bold;
+     }
+    .new-grid  .product-tag-sale{
+       display: none;
+     }
+     .new-grid .grid-product-dec{
+       display: none;
+     }
+     .new-grid .price-title{
+       margin: 0 ;
+       font-size: 0.8em;
+     }
+     .new-grid .collection-btn-group{
+       margin-top: 0.5em;
+     }
+     .new-grid .grid-product__price--original{
+      opacity: 0.5;
+      font-weight: 300;
+    }
+     .new-grid .grid-item-meta{
+      font-size:min(1rem,4vw)
+    }
+    @media screen and (min-width: 800px) {
+     .search-results-layout{
+      display: flex;
+      gap: 2em;
+    }
   }
-   .new-grid .grid-item-meta{
-    font-size:min(1rem,4vw)
-  }
-  .search-results-layout{
-    display: flex;
-    gap: 2em;
-  }
-  .result-others{
-        width: 33%;
-    max-width: 360px;
-  }
-  .result-others>div:not(:first-child) h3{
-    margin-top:2em
-  }
+
+    .result-others{
+          width: 33%;
+      max-width: 360px;
+    }
+    .result-others>div:not(:first-child) h3{
+      margin-top:2em
+    }
 </style>
 {%- paginate search.results by 20 -%}
   <div class="page-width page-content">
