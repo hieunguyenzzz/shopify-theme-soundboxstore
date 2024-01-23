@@ -12,6 +12,26 @@
     {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
   {% endfor %}
   {%- for menu in sub_menu.links -%}
-    {{ menu.title }}
+    <li
+      class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+      aria-haspopup="true"
+    >
+      <a
+        href="{{ collections['all'].url }}"
+        class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+      >
+        <span class="btn btn--secondary">{{ menu.title }}</span>
+      </a>
+      <div class="site-nav__dropdown megamenu text-left">
+        <div class="page-width">
+          <div
+            class="site-nav__dropdown-animate megamenu__wrapper cols-wraper"
+            style="max-width: none;"
+            data-current="1"
+            data-img="1"
+          ></div>
+        </div>
+      </div>
+    </li>
   {% endfor %}
 </ul>
