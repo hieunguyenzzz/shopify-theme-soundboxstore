@@ -31,7 +31,37 @@
             data-img="1"
           >
             <ul class="col-one">
-              {{ oneCol }}
+              {%- for menu in menu.links -%}
+                <li
+                  class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+                  aria-haspopup="true"
+                >
+                  <a
+                    href="{{ menu.url }}"
+                    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+                  >
+                    <span class="btn btn--secondary">{{ menu.title }}</span>
+                  </a>
+                  <div class="site-nav__dropdown megamenu text-left">
+                    <div class="page-width">
+                      <div
+                        class="site-nav__dropdown-animate megamenu__wrapper cols-wraper"
+                        style="max-width: none;"
+                        data-current="1"
+                        data-img="1"
+                      >
+                        <ul class="col-one">
+                          {{ oneCol }}
+                        </ul>
+                        <p style="font-size: 0.8em; text-align:center">
+                          Various furniture options are available for all Office Pods, click on the product name to see
+                          all options.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
             </ul>
             <p style="font-size: 0.8em; text-align:center">
               Various furniture options are available for all Office Pods, click on the product name to see all options.
