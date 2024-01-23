@@ -105,7 +105,7 @@
     width: 100%;
     padding-bottom: 100%;
   }
-  .site-header .col-one ul:hover + div {
+  .site-header .col-one ul + div {
     visibility: invisible;
     opacity: 0;
   }
@@ -220,8 +220,14 @@
     {%- endcapture -%}
   {%- endif -%}
 {%- endfor -%}
-<li class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu" aria-haspopup="true">
-  <a href="{{ collections['all'].url }}" class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown ">
+<li
+  class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+  aria-haspopup="true"
+>
+  <a
+    href="{{ collections['all'].url }}"
+    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown "
+  >
     {{ title | default: menu.title }}
   </a>
   <div class="site-nav__dropdown megamenu text-left">
@@ -230,7 +236,8 @@
         class="site-nav__dropdown-animate megamenu__wrapper cols-wraper"
         style="max-width: none;"
         data-current="1"
-        data-img="1">
+        data-img="1"
+      >
         <ul class="col-one">
           {{ oneCol }}
         </ul>
