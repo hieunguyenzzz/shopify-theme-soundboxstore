@@ -78,8 +78,8 @@
             -%}
               {% endcapture %}
       {%- elsif item.object_type == 'page' -%}
-        {% capture pages %}
-            {{ pages }}
+        {% capture pageresult %}
+            {{ pageresult }}
             <div class="grid-item grid-product">
               <div class="grid-item__content">
                 <a href="{{ item.url }}" class="grid-item__link">
@@ -133,7 +133,7 @@
         <div class="new-grid search-grid result-products" data-view="xsmall">
           {{ products }}
         </div>
-        <div class="result-pages">{{ pages }}</div>
+        <div class="result-pages">{{ pageresult }}</div>
         <div class="result-others">{{ others }}</div>
       </div>
 
