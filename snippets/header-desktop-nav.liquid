@@ -17,7 +17,7 @@
       aria-haspopup="true"
     >
       <a
-        href="{{ collections['all'].url }}"
+        href="{{ menu.url }}"
         class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
       >
         <span class="btn btn--secondary">{{ menu.title }}</span>
@@ -29,7 +29,14 @@
             style="max-width: none;"
             data-current="1"
             data-img="1"
-          ></div>
+          >
+            <ul class="col-one">
+              {{ oneCol }}
+            </ul>
+            <p style="font-size: 0.8em; text-align:center">
+              Various furniture options are available for all Office Pods, click on the product name to see all options.
+            </p>
+          </div>
         </div>
       </div>
     </li>
