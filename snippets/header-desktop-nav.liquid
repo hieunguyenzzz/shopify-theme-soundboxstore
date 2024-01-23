@@ -6,7 +6,11 @@
     assign offset = 0
   endunless
 -%}
+<style>
+  .site-nav__link:hover {
 
+  }
+</style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
     {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
