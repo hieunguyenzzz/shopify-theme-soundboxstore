@@ -129,9 +129,12 @@
           </p>
         {%- endif -%}
       </div>
-
-      <div class="new-grid search-grid" data-view="xsmall">
-        {{ products }}
+      <div class="search-results-layout">
+        <div class="new-grid search-grid result-products" data-view="xsmall">
+          {{ products }}
+        </div>
+        <div class="result-pages">{{ pages }}</div>
+        <div class="result-others">{{ others }}</div>
       </div>
 
       {%- liquid
