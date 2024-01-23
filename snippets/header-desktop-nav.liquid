@@ -11,4 +11,7 @@
   {%- for menu in main_menu.links -%}
     {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
   {% endfor %}
+  {%- for menu in sub_menu.links -%}
+    {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
+  {% endfor %}
 </ul>
