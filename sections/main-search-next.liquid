@@ -136,18 +136,20 @@
         <div class="new-grid search-grid result-products" data-view="xsmall">
           {{ productsresult }}
         </div>
-        {% if pageresult != blank %}
-          <div class="result-pages">
-            <h3>Pages</h3>
-            {{ pageresult }}
-          </div>
-        {% endif %}
-        {% if othersresult != blank %}
-          <div class="result-others">
-            <h3>Articles</h3>
-            {{ othersresult }}
-          </div>
-        {% endif %}
+        <div>
+          {% if pageresult != blank %}
+            <div class="result-pages">
+              <h3>Pages</h3>
+              {{ pageresult }}
+            </div>
+          {% endif %}
+          {% if othersresult != blank %}
+            <div class="result-others">
+              <h3>Articles</h3>
+              {{ othersresult }}
+            </div>
+          {% endif %}
+        </div>
       </div>
 
       {%- liquid
