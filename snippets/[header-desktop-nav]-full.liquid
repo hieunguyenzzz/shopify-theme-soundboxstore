@@ -173,6 +173,7 @@
     {%- capture oneCol -%}
       {{ oneCol }}
       <li>
+        {% if block.settings.link  %}
         <a
           href="{{ block.settings.link }}"
           data-id="{{block.settings.id }}"
@@ -180,6 +181,14 @@
           {{ block.shopify_attributes }}>
           {{ block.settings.title }}
         </a>
+          {% else %}
+           <div
+            data-id="{{block.settings.id }}"
+            class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
+            {{ block.shopify_attributes }}>
+            {{ block.settings.title }}
+          </div>
+        {% endif %}
         {%- assign img = block.settings.image -%}
 
         <ul>
