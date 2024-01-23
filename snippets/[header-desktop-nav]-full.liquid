@@ -227,9 +227,9 @@
 >
   <a
     href="{{ collections['all'].url }}"
-    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown btn btn--secondary"
+    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
   >
-    {{ title | default: menu.title }}
+    <span class="btn btn--secondary">{{ title | default: menu.title }}</span>
   </a>
   <div class="site-nav__dropdown megamenu text-left">
     <div class="page-width">
