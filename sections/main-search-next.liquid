@@ -107,7 +107,10 @@
                     </div>
                   {%- endif -%}
                   <div class="grid-item__meta">
-                    <span class="h4">{{ item.title }}</span>
+                    <span class="h4">
+                      {{- item.title }}
+                      {{ item.object_type -}}
+                    </span>
                     <div>
                       {{ item.content | strip_html | truncatewords: 45 }}
                     </div>
