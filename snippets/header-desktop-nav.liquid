@@ -24,26 +24,24 @@
       </a>
       {% if menu.links.size > 1 %}
         <div class="site-nav__dropdown  text-left">
-          <div class="page-width">
-            <div
-              class="site-nav__dropdown-animate  cols-wraper"
-            >
-              <ul>
-                {%- for menu in menu.links -%}
-                  <li
-                    class="site-nav__item "
-                    aria-haspopup="true"
+          <div
+            class="site-nav__dropdown-animate  cols-wraper"
+          >
+            <ul>
+              {%- for menu in menu.links -%}
+                <li
+                  class="site-nav__item "
+                  aria-haspopup="true"
+                >
+                  <a
+                    href="{{ menu.url }}"
+                    class="site-nav__link "
                   >
-                    <a
-                      href="{{ menu.url }}"
-                      class="site-nav__link "
-                    >
-                      {{ menu.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
+                    {{ menu.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
       {% endif %}
