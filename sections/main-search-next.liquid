@@ -136,10 +136,16 @@
           {{ productsresult }}
         </div>
         {% if pageresult != blank %}
-          <div class="result-pages">{{ pageresult }}</div>
+          <div class="result-pages">
+            <h3>Pages</h3>
+            {{ pageresult }}
+          </div>
         {% endif %}
         {% if othersresult != blank %}
-          <div class="result-others">{{ othersresult }}</div>
+          <div class="result-others">
+            <h3>Articles</h3>
+            {{ othersresult }}
+          </div>
         {% endif %}
       </div>
 
