@@ -278,6 +278,28 @@
       <div class="grid-item-meta">
         <div class="grid-item-meta-wrap">
           <div class="grid-item__meta-main">
+            <div class="product-tag-wrap">
+              {%- if has_custom_label -%}
+                {%- assign labels = custom_labels | split: ',' -%}
+                {%- for label in labels -%}
+                  <div class="product-tag product-tag-custom">{{ label }}</div>
+                {%- endfor -%}
+              {%- endif -%}
+              {%- unless product.available -%}
+                <div class="product-tag product-tag-sold-out">
+                  {{ 'products.product.sold_out' | t }}
+                </div>
+              {%- endunless -%}
+              {%- if showPrice and on_sale and product.available -%}
+                <div class="product-tag product-tag-sale">
+                  {{ 'products.general.sale' | t }}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="grid-product__title">
+              <h2 class="title-font">{{ product.title }}</h2>
+            </div>
+            <div class="grid-product-dec">{{ product.description | strip_html | truncate: 500, '. . . ' }}</div>
             {%- if settings.enable_swatches -%}
               {%- liquid
                 assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
@@ -339,29 +361,6 @@
                 {%- endif -%}
               {%- endfor -%}
             {%- endif -%}
-
-            <div class="product-tag-wrap">
-              {%- if has_custom_label -%}
-                {%- assign labels = custom_labels | split: ',' -%}
-                {%- for label in labels -%}
-                  <div class="product-tag product-tag-custom">{{ label }}</div>
-                {%- endfor -%}
-              {%- endif -%}
-              {%- unless product.available -%}
-                <div class="product-tag product-tag-sold-out">
-                  {{ 'products.product.sold_out' | t }}
-                </div>
-              {%- endunless -%}
-              {%- if showPrice and on_sale and product.available -%}
-                <div class="product-tag product-tag-sale">
-                  {{ 'products.general.sale' | t }}
-                </div>
-              {%- endif -%}
-            </div>
-            <div class="grid-product__title">
-              <h2 class="title-font">{{ product.title }}</h2>
-            </div>
-            <div class="grid-product-dec">{{ product.description | strip_html | truncate: 500, '. . . ' }}</div>
             {%- if settings.vendor_enable -%}
               <div class="grid-product__vendor">{{ product.vendor }}</div>
             {%- endif -%}
