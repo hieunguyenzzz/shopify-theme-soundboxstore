@@ -13,7 +13,7 @@
   {% endfor %}
   {%- for menu in sub_menu.links -%}
     <li
-      class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+      class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown "
       aria-haspopup="true"
     >
       <a
@@ -23,25 +23,23 @@
         <span class="btn btn--secondary">{{ menu.title }}</span>
       </a>
       {% if menu.links.size > 1 %}
-        <div class="site-nav__dropdown megamenu text-left">
+        <div class="site-nav__dropdown  text-left">
           <div class="page-width">
             <div
               class="site-nav__dropdown-animate  cols-wraper"
               style="max-width: none;"
-              data-current="1"
-              data-img="1"
             >
-              <ul class="col-one">
+              <ul>
                 {%- for menu in menu.links -%}
                   <li
-                    class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+                    class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown"
                     aria-haspopup="true"
                   >
                     <a
                       href="{{ menu.url }}"
                       class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
                     >
-                      <span class="btn btn--secondary">{{ menu.title }}</span>
+                      {{ menu.title }}
                     </a>
                   </li>
                 {% endfor %}
