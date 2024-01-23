@@ -296,9 +296,9 @@
                 </div>
               {%- endif -%}
             </div>
-            <div class="grid-product__title">
+            <a href="{{ product.url | within: collection }}" class="grid-product__title">
               <h2 class="title-font">{{ product.title }}</h2>
-            </div>
+            </a>
             <div class="grid-product-dec">{{ product.description | strip_html | truncate: 500, '. . . ' }}</div>
             {%- if settings.enable_swatches -%}
               {%- liquid
