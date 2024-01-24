@@ -194,8 +194,7 @@
 
         <ul>
           {% for item in blocks %}
-            {{ item.id }} - {{ block.settings.id }}
-            {% if item.id contains block.settings.id %}
+            {% if item.settings.id contains block.settings.id %}
               {%- assign ids = item.settings.id | split: '-' -%}
               {%- assign firstId = ids | first -%}
               {% if block.settings.id == firstId %}
