@@ -20,6 +20,12 @@
     text-decoration-thickness: 2px;
 
   }
+  .site-nav.site-navigation{
+    display:flex
+  }
+  .site-nav.site-navigation .site-nav__item{
+    padding:0
+  }
 </style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
