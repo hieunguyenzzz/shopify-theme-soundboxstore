@@ -978,8 +978,8 @@
           "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>",
-              "richtext_mobile": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>"
+              "richtext": "{% if localization.country.iso_code == 'GB' %}\n{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n{% else %}\n    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}\n      {% if customer.metafields['custom-register'].trade_account_status == '1' %}\n       {{ 'SIGN OUT OF VAULT' |  link_to:  routes.account_logout_url }}\n      {% endif %}\n    {% endif %}\n  {% endunless %}\n{% else %}\n<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>\n{% endif %}",
+              "richtext_mobile": "{% if localization.country.iso_code == 'GB' %}\n{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n  {% endunless %}\n{% else %}\n<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>\n{% endif %}"
             }
           },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
