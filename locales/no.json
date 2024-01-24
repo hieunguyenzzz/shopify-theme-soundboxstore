@@ -252,7 +252,64 @@
             "unexpected_retail_attributions": "Detaljhandelattribusjoner sørget uventet for kredittkortbetaling.",
             "invalid_card_source": "Denne økten har ikke tillatelse til å bruke denne kortkilden.",
             "wallet_content_missing": "Lommebokinnhold mangler.",
-            "payment_instrument_not_found": "Kunne ikke finne betalingsmetode"
+            "payment_instrument_not_found": "Kunne ikke finne betalingsmetode",
+            "unauthorized_capture_method": "Konfigurere metoden for betalingsfangst er ikke tillatt.",
+            "saved_payment_methods_not_allowed": "Lagrede betalingsmetoder er ikke tillatt.",
+            "saved_payment_methods_not_enabled": "Lagrede betalingsmetoder er ikke aktivert for denne butikken.",
+            "store_credit_not_enabled": "Butikkkreditt er ikke aktivert for denne butikken.",
+            "store_credit_account_not_found": "Lagre kredittkonto ikke funnet.",
+            "store_credit_account_mismatch": "Butikk kredittkonto samsvarer ikke med kjøperidentiteten.",
+            "store_credit_mismatched_currency": "Butikkkredittkontoens valuta samsvarer ikke med kassen.",
+            "store_credit_insufficient_funds": "Det er utilstrekkelige midler på butikkkredittkontoen.",
+            "store_credit_buying_gift_card": "Du kan ikke bruke butikkkreditt til å kjøpe et gavekort.",
+            "gift_cards_not_allowed_for_b2b": "Gavekort er ikke tillatt i B2B -butikker.",
+            "method_required": "En betalingsmetode må foreslås.",
+            "paypal_express_address_invalid": "PayPal returnerte en ugyldig adresse.",
+            "shop_cash_unsupported_currency": "Butikk kontanter støtter ikke denne valutaen.",
+            "market_manager_blocks_wallet_payments": "Betalingsmetode støttes ikke av markedssjefen."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Butikk godtar ikke tips.",
+            "only_one_tip_line_allowed": "Flere tipslinjer støttes ikke.",
+            "tips_not_allowed_for_b2b": "Tips er ikke tillatt i B2B -butikker.",
+            "currency_change_reset": "Tips er tilbakestilt på grunn av valutaendring.",
+            "tips_not_allowed_for_deferred_purchase_options": "Tips støttes ennå ikke for defferede kjøpsalternativer."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Denne utkastet til ordre eksisterer ikke i den nåværende butikken.",
+            "staff_member_not_exist": "Denne personalet eksisterer ikke i den nåværende butikken.",
+            "location_not_exist": "Dette stedet eksisterer ikke i den nåværende butikken.",
+            "point_of_sale_device_not_exist": "Dette salgsstedet eksisterer ikke i den nåværende butikken.",
+            "unresolvable_target_merchandise_lines": "De foreslåtte salgsattribusjonene er uoppløselige gitt den nåværende forhandlingskonteksten."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "Kjøperens forslag skal inneholde ikke-omsettelige_termer.",
+            "invalid_signature": "Signaturen for {{target_terms}} er ugyldig."
+          },
+          "inventory": {
+            "missing_quantity_value": "Mengdefelt mangler i kjøperens varelinjer.",
+            "changing_behavior_not_allowed": "Denne klienten har ikke tillatelse til å endre varelageratferd.",
+            "only_one_inventory_behavior_allowed": "Foreløpig er det bare en lageratferd som er tillatt per kassa."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Å nekte oppgaver er ikke tillatt for denne kassen."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "Det er ikke tillatt for denne kassen.",
+            "retail_attribution_required": "Det kreves detaljhandelattribusjon for denne kassen."
+          },
+          "captcha": {
+            "metadata_missing": "Å fullføre en CAPTCHA kreves for denne kassen.",
+            "metadata_mismatch": "Gitt CAPTCHA -leverandør og type samsvarer ikke med de forventede verdiene.",
+            "token_missing": "Det må gis en CAPTCHA -token for å fullføre denne kassen.",
+            "job_enqueue_failed": "Captcha -valideringsjobben klarte ikke å bli pålagt.",
+            "job_already_queued": "Captcha -validering er allerede i kø for dette CAPTCHA -tokenet.",
+            "token_expired": "Det medfølgende CAPTCHA -tokenet har gått ut. Fullfør en ny CAPTCHA for å fortsette kassen.",
+            "token_invalid": "Det medfølgende CAPTCHA -tokenet var ugyldig. Fullfør en ny CAPTCHA for å fortsette kassen.",
+            "token_not_valid_for_session": "Den medfølgende CAPTCHA kan ikke brukes i denne kassen."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Beløpet som mottas må være i butikkvalutaen."
           }
         },
         "full_price": "Full pris:",
