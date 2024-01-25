@@ -186,7 +186,7 @@
       <li class="first-menu">
         {% if block.settings.link  %}
         <a
-          href="{{ block.settings.link }}" style="text-transform: uppercase;"
+          href="{{ block.settings.link }}"
           data-id="{{block.settings.id }}"
           class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
           {{ block.shopify_attributes }}>
@@ -194,7 +194,7 @@
         </a>
           {% else %}
            <div
-            data-id="{{block.settings.id }}" style="text-transform: uppercase;"
+            data-id="{{block.settings.id }}"
             class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
             {{ block.shopify_attributes }}>
             {{ block.settings.title }}
@@ -251,6 +251,7 @@
 >
   <a
     href="{{ collections['all'].url }}"
+    style="text-transform: uppercase;"
     class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
   >
     {{ title | default: menu.title }}
