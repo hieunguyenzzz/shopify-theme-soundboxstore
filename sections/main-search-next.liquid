@@ -138,7 +138,7 @@
     {% assign othersresult = '' %}
     {%- for item in search.results -%}
       {% if forloop.first %}
-        {{ item.title }}
+        {% assign firstType = item.object_type %}
       {% endif %}
       {%- if item.object_type == 'product' -%}
         {% capture productsresult %}
@@ -192,9 +192,11 @@
         {%- endif -%}
       </div>
       <div class="search-results-layout">
-        <div class="new-grid search-grid result-products" data-view="xsmall">
-          {{ productsresult }}
-        </div>
+        {% if productsresult != blank %}
+          <div class="new-grid search-grid result-products" data-view="xsmall">
+            {{ productsresult }}
+          </div>
+        {% endif %}
         <div class="result-others">
           {% if pageresult != blank %}
             <div class="result-pages">
