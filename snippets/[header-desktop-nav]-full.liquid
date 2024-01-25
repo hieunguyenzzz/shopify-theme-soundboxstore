@@ -137,7 +137,11 @@
     display: none !important;
   }
   .site-header .col-one > li:last-child ul + div {
-    display: none;
+    display:none;
+    visibility:hidden;
+  }
+  .site-header .col-one:hover > li:last-child ul + div {
+        display:block;
   }
   .site-header .col-one ul li a + div img {
     position: absolute;
@@ -162,10 +166,6 @@
     .site-header .col-one:hover>li:first-child ul + div{
     visibility: hidden;
     opacity: 0;
-  }
-  .col-item-link+div{
-    display:none;
-    visibility:hidden;
   }
 </style>
 {%- liquid
