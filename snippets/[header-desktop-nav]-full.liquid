@@ -163,6 +163,9 @@
     visibility: hidden;
     opacity: 0;
   }
+    .first-menu a.site-nav__link{
+    text-transform: uppercase;
+  }
 </style>
 {%- liquid
   unless limit
@@ -183,7 +186,7 @@
   {%- if ids.size == 1 -%}
     {%- capture oneCol -%}
       {{ oneCol }}
-      <li>
+      <li class="first-menu">
         {% if block.settings.link  %}
         <a
           href="{{ block.settings.link }}"
