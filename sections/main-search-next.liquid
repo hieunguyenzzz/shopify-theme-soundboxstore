@@ -182,9 +182,6 @@
     {%- if search.performed -%}
       <hr class="hr--medium">
       <div class="section-header">
-        <h2 class="section-header__title">
-          {{ 'general.search.result_count' | t: count: search.results_count }}
-        </h2>
         {%- if search.results_count == 0 -%}
           <p>
             {{ 'general.search.no_results_html' | t: terms: search.terms | replace: '*', '' }}
@@ -194,6 +191,9 @@
       <div class="search-results-layout search-results-layout-{{ firstType }}">
         {% if productsresult != blank %}
           <div class="new-grid search-grid result-products" data-view="xsmall">
+            <h2 class="section-header__title">
+              {{ 'general.search.result_count' | t: count: search.results_count }}
+            </h2>
             {{ productsresult }}
           </div>
         {% endif %}
