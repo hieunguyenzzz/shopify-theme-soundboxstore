@@ -163,9 +163,6 @@
     visibility: hidden;
     opacity: 0;
   }
-    .first-menu a.site-nav__link{
-    text-transform: uppercase;
-  }
 </style>
 {%- liquid
   unless limit
@@ -189,7 +186,7 @@
       <li class="first-menu">
         {% if block.settings.link  %}
         <a
-          href="{{ block.settings.link }}"
+          href="{{ block.settings.link }}" style="    text-transform: uppercase;"
           data-id="{{block.settings.id }}"
           class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
           {{ block.shopify_attributes }}>
