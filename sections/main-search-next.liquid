@@ -137,6 +137,9 @@
     {% assign pageresult = '' %}
     {% assign othersresult = '' %}
     {%- for item in search.results -%}
+      {% if forloop.first %}
+        {{ item.title }}
+      {% endif %}
       {%- if item.object_type == 'product' -%}
         {% capture productsresult %}
               {{ productsresult }}
