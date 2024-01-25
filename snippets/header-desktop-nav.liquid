@@ -29,6 +29,9 @@
    .site-nav.site-navigation .site-nav__link{
     margin:0!imporatnt
   }
+  .site-header .header-layout[data-logo-align=left] .site-nav>li.site-nav__item:first-child>a.site-nav__link{
+    text-transform: uppercase;
+  }
 </style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
@@ -59,7 +62,7 @@
                 >
                   <a
                     href="{{ menu.url }}"
-                    class=" "
+                    =" "
                   >
                     {{ menu.title }}
                   </a>
