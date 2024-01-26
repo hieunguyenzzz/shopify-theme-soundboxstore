@@ -1,7 +1,9 @@
-{% for block in section.blocks %}
-  {% assign image = block.settings.image %}
-  {{ image | image_url: width: 400, height: 400, crop: 'center' | image_tag }}
-{% endfor %}
+<div class="page-width">
+  {% for block in section.blocks %}
+    {% assign image = block.settings.image %}
+    {{ image | image_url: width: 400, height: 400, crop: 'center' | image_tag }}
+  {% endfor %}
+</div>
 {% schema %}
 {
   "name": "Events Images",
