@@ -21,7 +21,7 @@
       top:40%
   }
 </style>
-<div class="page-width">
+<div class="page-width" style="position:relative">
   {% for block in section.blocks %}
     {% assign image = block.settings.image %}
     {{ image | image_url: width: 400, height: 400, crop: 'center' | image_tag }}
