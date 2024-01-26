@@ -1,3 +1,7 @@
+{% for block in section.blocks %}
+  {% assign image = block.settings.image %}
+  {{ image | image_url: width: 450 | image_tag }}
+{% endfor %}
 {% schema %}
 {
   "name": "Events Images",
