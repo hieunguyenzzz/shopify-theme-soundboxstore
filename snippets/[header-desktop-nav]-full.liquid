@@ -237,10 +237,10 @@
             {% endif %}
           {% endfor %}
         </ul>
-        {%- if img -%}
+        {%- if block.settings.image -%}
           <div>
             {{
-               img
+               block.settings.image
              | image_url: width: 400
              | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: block.settings.title }}
           </div>
