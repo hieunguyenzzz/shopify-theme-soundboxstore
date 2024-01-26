@@ -178,7 +178,7 @@
 {%- for block in blocks -%}
   {%- assign ids = block.settings.id | split: '-' -%}
   {%- assign oneId = ids.first -%}
-  {%- assign img = block.settings.image -%}
+  {%- assign fimg = block.settings.image -%}
 
   {%- if ids.size == 1 -%}
     {%- capture oneCol -%}
@@ -233,10 +233,10 @@
             {% endif %}
           {% endfor %}
         </ul>
-        {%- if block.settings.image -%}
+        {%- if fimg -%}
           <div>
             {{
-               block.settings.image
+               fimg
              | image_url: width: 400
              | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: block.settings.title }}
           </div>
