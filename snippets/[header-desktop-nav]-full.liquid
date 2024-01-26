@@ -59,6 +59,7 @@
     padding: 0.2em 0;
     margin-bottom: 0.4em;
 
+
   }
   .site-header .site-nav__item-verticle .megamenu {
     overflow: auto;
@@ -84,7 +85,7 @@
     margin-bottom: 0.4em;
   }
   .site-header .col-one ul {
-    margin-left: 0;
+    margin: 0;
     flex: 1;
   }
   .site-header .col-one > li {
@@ -106,7 +107,7 @@
     width: 100%;
     padding-bottom: 75%;
   }
-  .site-header .col-one ul + div {
+  .site-header .col-one ul:hover + div {
     visibility: hidden;
     opacity: 0;
   }
@@ -158,10 +159,9 @@
     white-space: nowrap;
     font-size: 1.2em;
   }
-
-    .site-header .col-one:hover>li:first-child ul + div{
-    visibility: hidden;
-    opacity: 0;
+  .site-header:hover .col-one>li ul + div{
+    visibility: visible;
+    opacity: 1;
   }
 </style>
 {%- liquid
@@ -178,7 +178,7 @@
 {%- for block in blocks -%}
   {%- assign ids = block.settings.id | split: '-' -%}
   {%- assign oneId = ids.first -%}
-  {%- assign fimg = block.settings.image -%}
+  {%- assign img = block.settings.image -%}
 
   {%- if ids.size == 1 -%}
     {%- capture oneCol -%}
@@ -233,10 +233,10 @@
             {% endif %}
           {% endfor %}
         </ul>
-        {%- if fimg -%}
+        {%- if img -%}
           <div>
             {{
-               fimg
+               img
              | image_url: width: 400
              | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: block.settings.title }}
           </div>
