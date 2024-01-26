@@ -1,3 +1,26 @@
+<style>
+    #{{section.id}} img {
+      position: absolute;
+      width: 40%;
+      aspect-ratio: 1;
+      /* object-fit: scale-down; */
+      height: auto;
+  }
+  #{{section.id}} img:nth-child(1){
+      left:0   ;
+      top:0
+  }
+  #{{section.id}} img:nth-child(2){
+
+      left:30%   ;
+      top:20%
+  }
+  #{{section.id}} img:nth-child(3){
+
+      right:0 ;
+      top:40%
+  }
+</style>
 <div class="page-width">
   {% for block in section.blocks %}
     {% assign image = block.settings.image %}
