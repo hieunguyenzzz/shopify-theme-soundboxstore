@@ -71,15 +71,20 @@
           >
             {%- for product in search_collection.products limit: 6 -%}
               <div>
-                <a style="font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
-                margin: 4px;
-                padding: 7px 15px;
-                font-size: 12px;
-                line-height: 16px;
-                color: #fff;
-                border: 1px solid rgba(255,255,255,0.3);
-                border-radius: 16px;
-                background-color: rgba(0,0,0,0.3);" href="{{ product.url }}">
+                <a
+                  style="
+                    font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                    margin: 4px;
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #fff;
+                    border: 1px solid rgba(255,255,255,0.3);
+                    border-radius: 16px;
+                    background: url(https://soundboxstore.com/cdn/shop/files/sbs-stn6-1-2-bg.jpg?v=1688973031&width=700)
+                  "
+                  href="{{ product.url }}"
+                >
                   {{- product.title -}}
                 </a>
               </div>
