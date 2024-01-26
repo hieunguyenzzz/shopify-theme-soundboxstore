@@ -35,6 +35,11 @@
   .header-item--icons{
     flex:unset!important
   }
+  .header-item .site-nav{
+    flex:1;
+    display:flex;
+    jusify-content:center
+  }
 </style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
