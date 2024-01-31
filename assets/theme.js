@@ -5537,7 +5537,6 @@ lazySizesConfig.expFactor = 4;
               </div>
               <div class="grid-item__meta">
                 <div class="grid-product__title">${product.title}</div>
-                ${product.body}
               </div>
             </a>
           </div>
