@@ -4857,6 +4857,7 @@ lazySizesConfig.expFactor = 4;
         var new_product = {
           title: product.title,
           url: product.url,
+          body: product.body,
           image_responsive_url: theme.Images.lazyloadImagePath(product.image),
           image_aspect_ratio: product.featured_image.aspect_ratio,
         };
@@ -4869,7 +4870,7 @@ lazySizesConfig.expFactor = 4;
 
         output = `
           <div data-type-products>
-            <div style="font-weight: bold;" class="h4 site-header__search-title">
+            <div style="font-weight: bold;display:none" class="h4 site-header__search-title">
               ${theme.strings.searchProducts}
             </div>
             <div class="new-grid product-grid" data-view="small">
@@ -5536,6 +5537,7 @@ lazySizesConfig.expFactor = 4;
               </div>
               <div class="grid-item__meta">
                 <div class="grid-product__title">${product.title}</div>
+                ${product.body}
               </div>
             </a>
           </div>

@@ -34,13 +34,27 @@
                 .site-header__search-container .grid-item.grid-product {
                 }
                 .site-header__search-container a.grid-item__link {
-                  display: flex;
+                  display: flex;flex:1;
                 }
 
                 .site-header__search-container .grid-product__image-wrap {
                   margin: 0;
-                  width: 80px;
+                  width: 30%;
+                  max-width: 300px;
                   padding: 2%;
+                  flex-shrink: 0;
+                }
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio{
+                  background: transparent;
+                }
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio img{
+                  mix-blend-mode: multiply;
+                }
+                .site-header__search-container .grid-item .grid-product__title{
+                  font-size: 1.1em;
+                }
+                .site-header__search-container .grid-item  .grid-item__meta{
+                  padding: 1em 2em 1em 0;
                 }
               </style>
               <div id="PredictiveResults" class="predictive-result__layout"></div>
