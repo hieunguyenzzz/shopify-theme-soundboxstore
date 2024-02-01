@@ -7,41 +7,43 @@
   endunless
 -%}
 <style>
-      .site-nav__item a{
-                             line-height: 1.3;
-                        padding: 0.2em 2em;
-                        font-size: 16px;
-                        margin-bottom: 0.4em;
-        white-space:nowrap;
-       display: inline-block;
-      }
-    .site-nav__item a:hover {
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
+        .site-nav__item a{
+                               line-height: 1.3;
+                          padding: 0.2em 2em;
+                          font-size: 16px;
+                          margin-bottom: 0.4em;
+          white-space:nowrap;
+         display: inline-block;
+        }
+      .site-nav__item a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
 
+      }
+      .site-nav.site-navigation{
+        display:flex
+      }
+      .site-nav.site-navigation .site-nav__item{
+        padding:0!important
+      }
+       .site-nav.site-navigation .site-nav__link{
+        margin:0!important
+      }
+      .site-header .header-layout[data-logo-align=left] .header-item--logo{
+        margin:0!important;flex:1;
+      }
+      .header-item--icons{
+        flex:1!important
+      }
+    .site-nav.site-navigation {
+  display: flex;
+      width: 100%;
+      justify-content: space-around;
+      padding-left: 0;
+      min-width: 50%;
+      width: 50%;
+      flex: 1;
     }
-    .site-nav.site-navigation{
-      display:flex
-    }
-    .site-nav.site-navigation .site-nav__item{
-      padding:0!important
-    }
-     .site-nav.site-navigation .site-nav__link{
-      margin:0!important
-    }
-    .site-header .header-layout[data-logo-align=left] .header-item--logo{
-      margin:0!important;flex:1;
-    }
-    .header-item--icons{
-      flex:unset!important
-    }
-  .site-nav.site-navigation {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    padding-right: 140px;
-    padding-left: 0;
-  }
 </style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
