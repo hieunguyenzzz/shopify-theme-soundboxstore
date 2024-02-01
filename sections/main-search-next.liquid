@@ -153,18 +153,21 @@
       action="{{ routes.search_url }}"
       method="get"
       class="input-group search-bar search-bar--page"
-      role="search">
+      role="search"
+    >
       <input
         type="hidden"
         name="type"
-        value="{{ settings.search_type }}">
+        value="{{ settings.search_type }}"
+      >
       <input
         type="search"
         name="q"
         value="{{ search.terms | escape | replace: '*', '' }}"
         placeholder="{{ 'general.search.placeholder' | t }}"
         class="input-group-field"
-        aria-label="{{ 'general.search.placeholder' | t }}">
+        aria-label="{{ 'general.search.placeholder' | t }}"
+      >
       <div class="input-group-btn">
         <button type="submit" class="btn btn--large btn--icon">
           <svg
@@ -172,7 +175,8 @@
             focusable="false"
             role="presentation"
             class="icon icon-search"
-            viewBox="0 0 64 64">
+            viewBox="0 0 64 64"
+          >
             <defs>
               <style>
                 .cls-1 {
@@ -193,17 +197,21 @@
       <div
         id="TopSearched"
         style="max-width:900px;margin:auto"
-        class="search_TopSearched">
+        class="search_TopSearched"
+      >
         <div class="search-page-width">
-          <div style="
+          <div
+            style="
               display: flex;
               white-space: nowrap;
               flex-wrap: wrap;
               justify-content: center;
-            ">
+            "
+          >
             {%- for product in search_collection.products limit: 6 -%}
               <div>
-                <a style="
+                <a
+                  style="
                                          display: -webkit-inline-box;
                     display: -ms-inline-flexbox;
                     display: inline-flex;
@@ -216,7 +224,9 @@
                     border-radius: 16px;
                     border: 1px solid rgba(0, 0, 0, 0.15);
                     background: rgba(255, 255, 255, 0.3);
-                  " href="{{ product.url }}">
+                  "
+                  href="{{ product.url }}"
+                >
                   {{- product.title -}}
                 </a>
               </div>
@@ -280,13 +290,14 @@
             aria-labelledby="verticalTitle"
             class="facets-wrapper "
             id="main-search-filters"
-            data-id="{{ section.id }}">
-            {% render 'facets'
-              , results: search
-              , enable_filtering: true
-              , enable_sorting: false
-              , filter_type: 'vertical'
-              , paginate: paginate
+            data-id="{{ section.id }}"
+          >
+            {% render 'facets',
+              results: search,
+              enable_filtering: true,
+              enable_sorting: false,
+              filter_type: 'vertical',
+              paginate: paginate
             %}
           </aside>
         </div>
@@ -297,7 +308,7 @@
                 {{ 'general.search.no_results_html' | t: terms: search.terms | replace: '*', '' }}
               </p>
             {%- endif -%}
-            <h2 class="section-header__title">
+            <h2>
               {{ 'general.search.result_count' | t: count: search.results_count }}
             </h2>
           </div>
@@ -308,11 +319,11 @@
                 class="new-grid search-grid result-products collection"
                 data-view="xsmall"
                 id="product-grid"
-                data-id="{{ section.id }}">
+                data-id="{{ section.id }}"
+              >
                 {{ productsresult }}
               </div>
             </div>
-
           {% endif %}
         </div>
       </div>
@@ -326,5 +337,5 @@
 {%- endpaginate -%}
 
 {% schema %}
-  {"name": "Search"}
+{"name": "Search"}
 {% endschema %}
