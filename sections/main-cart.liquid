@@ -27,7 +27,7 @@
     >
       <div class="cart__page">
         <div class="cart__page-col">
-          <h1 class="cart-col-title">{{ 'cart.general.your_items'|t }}</h1>
+          <h1 class="cart-col-title">{{ 'cart.general.your_items' | t }}</h1>
           <div data-products class="cart-items-list">
             {% for item in cart.items %}
               {%- render 'cart-item', product: item -%}
@@ -37,7 +37,7 @@
           {%- render 'cart-recommendations', cart: cart, location: 'page' -%}
         </div>
         <div class="cart__page-col">
-          <h1 class="cart-col-title">{{ 'cart.general.order_summary'|t }}</h1>
+          <h1 class="cart-col-title">{{ 'cart.general.order_summary' | t }}</h1>
           {% if settings.cart_notes_enable %}
             <div class="cart__item-row">
               <label for="CartNote" class="add-note">
@@ -85,13 +85,13 @@
             </div>
 
             <div class="tax-text">
-              <span>{{ 'cart.general.tax'|t }}</span>
-              <span>{{ 'cart.general.calculated_at_checkout'|t }}</span>
+              <span>{{ 'cart.general.tax' | t }}</span>
+              <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
             </div>
 
             <div class="shipping-text">
-              <span>{{ 'cart.general.shipping'|t }}</span>
-              <span>{{ 'cart.general.calculated_at_checkout'|t }}</span>
+              <span>{{ 'cart.general.shipping' | t }}</span>
+              <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
             </div>
 
             {% comment %}
@@ -198,17 +198,8 @@
             </div>
           {% endcomment %}
 
-          <div class="cart-payment-block">
-            <div class="payment-wrap">
-              <img
-                src="https://cdn.shopify.com/s/files/1/2589/1828/t/86/assets/payment-logos.png?v=106543724149054969671653418035"
-                alt=""
-              >
-            </div>
-          </div>
-
           {% assign accordion_blocks = section.blocks | where: 'type', 'accordion_info' %}
-          {% if accordion_blocks.size  > 0 %}
+          {% if accordion_blocks.size > 0 %}
             <div class="additional-info-block">
               <div class="accordion-block">
                 {% for block in accordion_blocks %}
