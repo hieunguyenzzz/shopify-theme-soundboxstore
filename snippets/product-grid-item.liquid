@@ -299,7 +299,7 @@
             <a href="{{ product.url | within: collection }}" class="grid-product__title">
               <h2 class="title-font">{{ product.title }}</h2>
             </a>
-            <div class="grid-product-dec">{{ product.description | strip_html | truncate: 500, '. . . ' }}</div>
+            <div class="grid-product-dec">{{ product.description | strip_html | truncate: 200, '. . . ' }}</div>
             {%- if settings.enable_swatches -%}
               {%- liquid
                 assign swatch_trigger = 'products.general.color_swatch_trigger' | t | downcase
