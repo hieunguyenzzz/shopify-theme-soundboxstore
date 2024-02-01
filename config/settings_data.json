@@ -81,7 +81,7 @@
     "favicon": "shopify:\/\/shop_images\/sound-icon-white.png",
     "search_type": "product",
     "search_top_collection": "all",
-    "predictive_search_enabled": true,
+    "predictive_search_enabled": false,
     "show_breadcrumbs": false,
     "show_breadcrumbs_collection_link": true,
     "checkout_logo_image": "shopify:\/\/shop_images\/SBS-new-logo_c8db171c-f035-4268-8051-67ed14b0fefa.jpg",
@@ -1004,8 +1004,8 @@
           "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "{% if localization.country.iso_code == 'GB' %}\n{% unless customer %}\n <p>{{ 'Reseller Log In' | link_to: pages[\"reseller-login\"].url }}<\/p>\n{% else %}\n    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}\n      {% if customer.metafields['custom-register'].trade_account_status == '1' %}\n       {{ 'SIGN OUT OF VAULT' |  link_to:  routes.account_logout_url }}\n      {% endif %}\n    {% endif %}\n  {% endunless %}\n{% else %}\n<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>\n{% endif %}",
-              "richtext_mobile": "{% if localization.country.iso_code == 'GB' %}\n{% unless customer %}\n <p>{{ 'Reseller Log In' | link_to: pages[\"reseller-login\"].url }}<\/p>\n  {% endunless %}\n{% else %}\n<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>\n{% endif %}"
+              "richtext": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>",
+              "richtext_mobile": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}<\/a><\/p>"
             }
           },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
@@ -1049,8 +1049,8 @@
           "6ff9e0cd-9a01-4679-9437-1442b22cd3a7": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "{% if localization.country.iso_code == 'GB' %}\n{% assign p = pages['events-at-soundbox-store'] %}\n<style>.{{ section.id }} a:hover{text-decoration: underline; }<\/style>\n<a style=\"color:#d34150;text-transform: initial;\" href=\"{{p.url}}\">Visit during Clerkenwell design week, London, 21-23 May 2024<\/a>\n{% else %}\n{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n{% else %}\n    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}\n      {% if customer.metafields['custom-register'].trade_account_status == '1' %}\n       {{ 'SIGN OUT OF VAULT' |  link_to:  routes.account_logout_url }}\n      {% endif %}\n    {% endif %}\n  {% endunless %}\n{% endif %}",
-              "richtext_mobile": "{% if localization.country.iso_code == 'GB' %}\n{% assign p = pages['events-at-soundbox-store'] %}\n<a style=\"color:#d34150;text-transform: initial;\" href=\"{{p.url}}\">Visit us at clerkenwell design week, London, 21-23 May 2024<\/a>\n{% else %}\n{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n{% else %}\n    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}\n      {% if customer.metafields['custom-register'].trade_account_status == '1' %}\n       {{ 'SIGN OUT OF VAULT' |  link_to:  routes.account_logout_url }}\n      {% endif %}\n    {% endif %}\n  {% endunless %}\n{% endif %}"
+              "richtext": "{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n{% else %}\n    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}\n      {% if customer.metafields['custom-register'].trade_account_status == '1' %}\n       {{ 'SIGN OUT OF VAULT' |  link_to:  routes.account_logout_url }}\n      {% endif %}\n    {% endif %}\n  {% endunless %}",
+              "richtext_mobile": "{% unless customer %}\n <p>{{ 'Reseller Log In - Here' | link_to: pages[\"reseller-login\"].url }}<\/p>\n  {% endunless %}"
             }
           },
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
