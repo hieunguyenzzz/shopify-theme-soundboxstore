@@ -12,19 +12,20 @@
   {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical', paginate: paginate %}
 {% endcomment %}
 
-
 <style>
-  .button-show-more {
-  padding-left: 0;
-  justify-content: flex-start;
-  padding-bottom: 1.1rem;
-}
+    .button-show-more {
+    padding-left: 0;
+    justify-content: flex-start;
+    padding-bottom: 1.1rem;
+  }
 
-.button-show-more,
-.button-show-less {
-  margin-top: 1.5rem;
-}
-
+  .button-show-more,
+  .button-show-less {
+    margin-top: 1.5rem;
+  }
+  .facets-container{
+        font-size: min(3vw,16px);
+  }
 </style>
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
@@ -37,7 +38,10 @@
   endif
 -%}
 
-<div style="--typeBaseSize:12px" class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div
+  style="--typeBaseSize:12px"
+  class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+>
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form
@@ -143,7 +147,7 @@
                     id="Details-{{ forloop.index }}-{{ section.id }}"
                     class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
                     data-index="{{ forloop.index }}"
-                      open
+                    open
                   >
                     <summary
                       class="facets__summary caption-large focus-offset"
@@ -282,13 +286,15 @@
                           {%- endfor -%}
                         </ul>
                         {% comment %} No show more for no JS {% endcomment %}
-                        <ul style="display: none;"
+                        <ul
+                          style="display: none;"
                           class="{% if filter_type != 'vertical' %} facets__list{% endif %} no-js-list list-unstyled no-js"
                           role="list"
                         >
                           {%- for value in filter.values -%}
                             <li class="list-menu__item facets__item">
-                              <label style="font-size: calc(var(--typeBaseSize));"
+                              <label
+                                style="font-size: calc(var(--typeBaseSize));"
                                 for="Filter-{{ filter.param_name | escape }}-{{ forloop.index }}-no-js"
                                 class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
                               >
@@ -376,7 +382,7 @@
                     id="Details-{{ forloop.index }}-{{ section.id }}"
                     class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
                     data-index="{{ forloop.index }}"
-                      open
+                    open
                   >
                     <summary class="facets__summary caption-large focus-offset">
                       <div>
