@@ -1,0 +1,111 @@
+<div class="site-header__search-container">
+  <div>
+    <div class="search-page-width" style="display: flex; justify">
+      <div class="site-header__search">
+        {%- render 'header-search' -%}
+        <button type="button" class="text-link site-header__search-btn site-header__search-btn--cancel">
+          <span class="medium-up--hide">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-close"
+              viewBox="0 0 64 64"
+            >
+              <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/>
+            </svg>
+          </span>
+          <span class="small--hide">{{ 'general.search.cancel' | t }}</span>
+        </button>
+      </div>
+      {%- if settings.predictive_search_enabled -%}
+        <div id="SearchResultsWrapper" class="site-header__search-results hide">
+          <div class="page-width">
+            <div
+              id="PredictiveWrapper"
+              style="width: 100%;"
+              class="hide"
+              data-image-size="{{ settings.predictive_image_size }}"
+            >
+              <style>
+                .site-header__search-container .new-grid.product-grid {
+                  display: block;
+                }
+                .site-header__search-container .grid-item.grid-product {
+                }
+                .site-header__search-container a.grid-item__link {
+                  display: flex;flex:1;
+                }
+
+                .site-header__search-container .grid-product__image-wrap {
+                  margin: 0;
+                  width: 30%;
+                  max-width: 300px;
+                  padding: 2%;
+                  flex-shrink: 0;
+                }
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio{
+                  background: transparent;
+                }
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio img{
+                  mix-blend-mode: multiply;
+                }
+                .site-header__search-container .grid-item .grid-product__title{
+                  font-size: 1.1em;
+                }
+                .site-header__search-container .grid-item  .grid-item__meta{
+                  padding: 1em 2em 1em 0;
+                }
+              </style>
+              <div id="PredictiveResults" class="predictive-result__layout"></div>
+              <div class="text-center predictive-results__footer">
+                <button type="button" class="btn btn--small" data-predictive-search-button>
+                  <small>
+                    {{ 'general.search.view_more' | t }}
+                  </small>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if settings.search_top_collection != blank -%}
+      {%- assign search_collection = collections[settings.search_top_collection] -%}
+      <div id="TopSearched" class="site-header__search-results-wrapper">
+        <div class="search-page-width">
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+              color: white;
+            "
+          >
+            {%- for product in search_collection.products limit: 6 -%}
+              <div>
+                <a
+                  style="
+                    font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                    margin: 4px;
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #fff;
+                    border: 1px solid rgba(255,255,255,0.3);
+                    border-radius: 16px;
+                    background-color: rgba(0,0,0,0.3);
+                  "
+                  href="{{ product.url }}"
+                >
+                  {{- product.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

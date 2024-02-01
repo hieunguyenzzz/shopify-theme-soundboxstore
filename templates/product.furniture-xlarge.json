@@ -118,7 +118,6 @@
     },
     "product-icon-text-section": {
       "type": "Product-icon-text-section",
-      "disabled": true,
       "blocks": {
         "873c2214-06d5-4a5c-9edf-d70f57ff9a02": {
           "type": "icon-text-block",
@@ -155,6 +154,7 @@
         "2f4ce18f-fc46-4d16-ab85-52111f71d6a9",
         "aff0d8c6-1f4e-4905-8c02-2071a65a5787"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -210,7 +210,6 @@
     },
     "meeting-rooms-features": {
       "type": "meeting-rooms-features",
-      "disabled": true,
       "blocks": {
         "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
           "type": "features_list_left",
@@ -367,12 +366,23 @@
         "bc551de3-5e98-40bc-9296-ef2a8d4b5cf6",
         "37878577-3166-41ea-816c-44b0f1e676cd"
       ],
+      "disabled": true,
       "settings": {
+        "show_videos": false,
+        "no_sound": false,
+        "loop": true,
+        "close_label": "Close door",
+        "close_audio": "https:\/\/cdn.shopify.com\/s\/files\/1\/0631\/9892\/0929\/files\/Closing_Audio_MP3.mp3?v=1667799734",
+        "close_video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/fecf113d20434e068abd32a1bc8c3ed6.mp4",
+        "close_thumb": "",
+        "open_label": "Open door",
+        "open_audio": "https:\/\/cdn.shopify.com\/s\/files\/1\/0631\/9892\/0929\/files\/Opening_Audio_MP3.mp3?v=1667799734",
+        "open_video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f9efd8f6c5794c16b07d5dccc0e32b37.mp4",
+        "open_thumb": ""
       }
     },
     "16514886521bb2c480": {
       "type": "image-slider",
-      "disabled": true,
       "blocks": {
         "d1bac85b-c4e9-4f84-9605-6e017a84e81a": {
           "type": "image_slide",
@@ -387,6 +397,7 @@
       "block_order": [
         "d1bac85b-c4e9-4f84-9605-6e017a84e81a"
       ],
+      "disabled": true,
       "settings": {
         "slide_dots": false,
         "slide_arrow": false,
@@ -477,6 +488,7 @@
       "disabled": true,
       "settings": {
         "full_width": true,
+        "h1": "Phone Booths",
         "title": "",
         "title_size": 70,
         "subheading": "",
@@ -488,6 +500,33 @@
         "overlay_opacity": 0,
         "height": 700,
         "height_mobile": 300
+      }
+    },
+    "subscribe_follow_wf3jh4": {
+      "type": "subscribe-follow",
+      "blocks": {
+        "email_pddRLk": {
+          "type": "email",
+          "settings": {
+            "title": "Thinking Outside The Box, Inside The Booth",
+            "text": "<p>Stay ahead of the curve by subscribing to our newsletter. Don't miss out on exciting events, product launches, meet and greets, and valuable upgrades. Join our community and be a part of the workspace revolution.<\/p>",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg"
+          }
+        },
+        "instagram_WpY3Tp": {
+          "type": "instagram",
+          "settings": {
+            "title": "Follow Us",
+            "text": "<p><a href=\"https:\/\/www.instagram.com\/soundboxstore\/\" target=\"_blank\">@soundboxstore<\/a><\/p>",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "email_pddRLk",
+        "instagram_WpY3Tp"
+      ],
+      "settings": {
       }
     },
     "9feac80b-e399-4ea8-9045-291758052834": {
@@ -712,12 +751,14 @@
       ],
       "settings": {
         "title": "The world's leading brands choose Soundbox.",
+        "content": "",
         "divider": false
       }
     },
     "165414989285a6b146": {
       "type": "image-text-section",
       "settings": {
+        "lazyload": true,
         "image": "shopify:\/\/shop_images\/Meeting-Pod-Solo-White.png",
         "mobile_image": "shopify:\/\/shop_images\/Meeting-Pod-Solo-White-SQ-2.png",
         "overlay": true,
@@ -729,6 +770,7 @@
         "button_text": "full range",
         "button_link": "shopify:\/\/collections\/all",
         "button_text_2": "",
+        "button_link_2": "",
         "text_alignment": "center-left",
         "section_class": "movable-silence-booth"
       }
@@ -755,6 +797,7 @@
       "block_order": [
         "2b19c121-0ea7-4de4-ad9c-06737fe27b53"
       ],
+      "disabled": true,
       "settings": {
       }
     },
@@ -762,10 +805,11 @@
       "type": "apps",
       "blocks": {
         "48c52e75-eab5-4c4d-9962-5612d7ab3824": {
-          "type": "shopify:\/\/apps\/instafeed-instagram-feed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "heading_size": 20,
-            "feed_width": 100,
+            "title": "",
+            "title_color": "",
+            "alignment": "center",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"><\/div>"
           }
         }
@@ -788,7 +832,6 @@
     },
     "16613277917527439f": {
       "type": "advanced-content",
-      "disabled": true,
       "blocks": {
         "1661327791869c4140-1": {
           "type": "html",
@@ -802,26 +845,10 @@
       "block_order": [
         "1661327791869c4140-1"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "space_around": false
-      }
-    },
-    "16634827806de3d844": {
-      "type": "image-text-section",
-      "disabled": true,
-      "settings": {
-        "overlay": true,
-        "overlay_range": 60,
-        "title": "",
-        "title_width": "",
-        "description": "",
-        "description_width": "",
-        "button_text": "",
-        "button_link": "",
-        "button_text_2": "",
-        "text_alignment": "center-left",
-        "section_class": ""
       }
     }
   },
@@ -842,6 +869,7 @@
     "16634828078a75c3a3",
     "acoustic-environment",
     "1651221880f746c680",
+    "subscribe_follow_wf3jh4",
     "9feac80b-e399-4ea8-9045-291758052834",
     "logo-list",
     "165414989285a6b146",
@@ -849,7 +877,6 @@
     "1651488261633e1eab",
     "1651508688dadacecf",
     "16574290364e705c32",
-    "16613277917527439f",
-    "16634827806de3d844"
+    "16613277917527439f"
   ]
 }

@@ -18,51 +18,56 @@
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
 >
-  <head>{% render 'yoast-seo' %}
-  {% render 'pre-header' %}
-  {% render 'yett' %}
+  <head>
+    {% render 'yoast-seo' %}
+    {% render 'pre-header' %}
+    {% render 'yett' %}
     <!-- Google Tag Manager -->
     <script>
       window.dataLayer = window.dataLayer || [];
     </script>
     {% if content_for_header contains "previewBarInjector.init();" %}
     {% elsif content_for_header contains "Shopify.designMode" %}
+
     {% else %}
-    <script>
-      function startGTAG(){
-        (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
-      }
-    </script>
+      <script>
+        function startGTAG(){
+          (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
+        }
+      </script>
     {% endif %}
-    
+
     <!-- End Google Tag Manager -->
 
-    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
-<meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+    {%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
+      <meta
+        content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY"
+        name="google-site-verification"
+      >
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
-      <meta http-equiv="Expires" content="30" > 
+    <meta http-equiv="Expires" content="30">
     {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- if disabled_by_yoast_seo -%}
-<link rel="canonical" href="{{ canonical_url }}">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+    {%- if disabled_by_yoast_seo -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <link href="https://cdn.shopify.com" rel="preconnect">
 
@@ -96,14 +101,14 @@
 
     {%- if page_description -%}
       {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- if disabled_by_yoast_seo -%}
-<meta name="description" content="{{ page_description | escape }}">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+      {%- if disabled_by_yoast_seo -%}
+        <meta name="description" content="{{ page_description | escape }}">
+        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+      {%- endif -%}
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
-     <style>
+    <style>
       @font-face {
         font-family: 'Banana Grotesk';
         src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
@@ -232,6 +237,7 @@
         cartEmpty: {{ 'cart.general.empty' | t | json }},
         cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
         searchCollections: {{ 'general.search.collections' | t | json }},
+        searchProducts: {{ 'general.search.products' | t | json }},
         searchPages: {{ 'general.search.pages' | t | json }},
         searchArticles: {{ 'general.search.articles' | t | json }},
         viewLess: {{ 'strings.others.view_less' | t | json }},
@@ -259,7 +265,7 @@
       };
     </script>
     <!-- content_for_header -->
-{{ content_for_header }}
+    {{ content_for_header }}
     <!-- end content_for_header -->
     <style>
       label[for='_gcl_au'],
@@ -274,12 +280,19 @@
       async
       type="text/javascript"
       src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    ></script>
+    >
+    </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
-    <script src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"></script>
+    <script
+      src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
+    >
+    </script>
   </head>
 
-  <body {% if isResserllerOrTradeAccount  %} data-reseller {% endif %}
+  <body
+    {% if isResserllerOrTradeAccount %}
+      data-reseller
+    {% endif %}
     class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
     data-transitions="{{ settings.animate_page_transitions }}"
     data-button_style="{{ settings.button_style }}"
@@ -304,11 +317,12 @@
       <div class="transition-body">
         {%- section 'toolbar' -%}
         {% unless isResserllerOrTradeAccount %}
-        {%- section 'header' -%}
+          {%- section 'header' -%}
         {% else %}
-        {%- section 'header-reseller' -%}
-          
-          {% endunless %}
+          {%- section 'header-reseller' -%}
+        {% endunless %}
+        {%- section 'quick-search' -%}
+
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>
@@ -323,21 +337,23 @@
     {% include 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer">
+    </script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
       type="text/javascript"
-    ></script>
+    >
+    </script>
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
-      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer">
+      </script>
     {%- endif -%}
 
-    
     <script type="text/javascript">
       window.smartlook ||
         (function (d) {
@@ -370,8 +386,6 @@
       }
     </style>
 
-    
-
     <script>
       function getCookie(cname) {
         let name = cname + '=';
@@ -388,7 +402,7 @@
         }
         return '';
       }
-      
+
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
         const _gcl_awCookie = getCookie('_gcl_aw').split('.')
         document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
@@ -397,13 +411,13 @@
     {% section 'zoho-form-popup' %}
 
     <script>
-      var isReplaced = false;       
+      var isReplaced = false;
       function MeroxIO_Function(){
         if(!isReplaced){
           window.yett.unblock();
           console.log("apps lazyloaded successfully");
           isReplaced=true;
-          
+
           (function zsiqchat(){
             window['$zoho'] = window['$zoho'] || {};
             $zoho.salesiq = $zoho.salesiq || {
@@ -423,33 +437,33 @@
           })()
           startGTAG()
         }
-      }    
+      }
       document.addEventListener("click", MeroxIO_Function);
       document.addEventListener("scroll", MeroxIO_Function);
       document.addEventListener("touchstart", MeroxIO_Function);
       document.addEventListener("mousemove", MeroxIO_Function);
     </script>
-<script>
-  jQuery.event.special.touchstart = {
-    setup: function( _, ns, handle ) {
-        this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-    }
-};
-jQuery.event.special.touchmove = {
-    setup: function( _, ns, handle ) {
-        this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-    }
-};
-jQuery.event.special.wheel = {
-    setup: function( _, ns, handle ){
-        this.addEventListener("wheel", handle, { passive: true });
-    }
-};
-jQuery.event.special.mousewheel = {
-    setup: function( _, ns, handle ){
-        this.addEventListener("mousewheel", handle, { passive: true });
-    }
-};
-</script>
+    <script>
+        jQuery.event.special.touchstart = {
+          setup: function( _, ns, handle ) {
+              this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+          }
+      };
+      jQuery.event.special.touchmove = {
+          setup: function( _, ns, handle ) {
+              this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+          }
+      };
+      jQuery.event.special.wheel = {
+          setup: function( _, ns, handle ){
+              this.addEventListener("wheel", handle, { passive: true });
+          }
+      };
+      jQuery.event.special.mousewheel = {
+          setup: function( _, ns, handle ){
+              this.addEventListener("mousewheel", handle, { passive: true });
+          }
+      };
+    </script>
   </body>
 </html>

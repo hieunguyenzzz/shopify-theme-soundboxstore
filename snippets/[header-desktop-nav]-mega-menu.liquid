@@ -207,9 +207,10 @@
                   href="{{  block.settings.link }}"
                   data-href="{{  block.settings.link }}"
                   data-id="{{ block.settings.id }}"
+                  data-title="{{ block.settings.link.title }}"
                   data-type="{{ block.settings.link.type }}"
                 >
-                  {{ block.settings.title }}
+                  {{ block.settings.product.title | default : block.settings.title }}
                 </a>
                  {%-else -%}
         <div class="col-two-item-header">
@@ -254,15 +255,15 @@
   </div>
 </li>
 <script>
-  (()=>{
-    let wraper =  document.querySelector(".cols-wraper")
-     wraper.addEventListener("mouseover",(e)=>{
-       let currentId = e.target.dataset.id
-       let img = e.target.dataset.img
-       if(currentId){
-             wraper.dataset.current=currentId
-             wraper.dataset.img=currentId
-       }
-   })
-  })()
+  (() => {
+    let wraper = document.querySelector('.cols-wraper');
+    wraper.addEventListener('mouseover', (e) => {
+      let currentId = e.target.dataset.id;
+      let img = e.target.dataset.img;
+      if (currentId) {
+        wraper.dataset.current = currentId;
+        wraper.dataset.img = currentId;
+      }
+    });
+  })();
 </script>

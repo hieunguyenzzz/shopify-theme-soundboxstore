@@ -1,0 +1,54 @@
+<style>
+    #shopify-section-{{section.id}} img {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+  }
+  #shopify-section-{{section.id}} img:nth-child(1){
+      left:0   ;
+      top:0
+  }
+  #shopify-section-{{section.id}} img:nth-child(2){
+
+      left:30%   ;
+      top:20%
+  }
+  #shopify-section-{{section.id}} img:nth-child(3){
+
+      right:0 ;
+      top:40%
+  }
+</style>
+<div class="page-width" style="position:relative;aspect-ratio: 3/2;">
+  {% for block in section.blocks %}
+    {% assign image = block.settings.image %}
+    {{ image | image_url: width: 600, height: 400, crop: 'center' | image_tag }}
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Events Images",
+  "settings": [],
+  "blocks":[
+    {
+      "type": "image",
+      "name": "Image",
+      "limit":3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+    "name": "Events Images"
+    }
+  ]
+}
+{% endschema %}

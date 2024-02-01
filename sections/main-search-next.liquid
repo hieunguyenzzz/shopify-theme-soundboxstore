@@ -1,0 +1,340 @@
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .template-search__header {
+    margin-bottom: 3rem;
+  }
+
+  .template-search__search {
+    margin: 0 auto 3.5rem;
+    max-width: 74.1rem;
+  }
+
+  .template-search__search .search {
+    margin-top: 3rem;
+  }
+
+  .template-search--empty {
+    padding-bottom: 18rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .template-search__header {
+      margin-bottom: 5rem;
+    }
+  }
+
+  .search__button .icon {
+    height: 1.8rem;
+  }
+</style>
+
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<style>
+  .search-bar--page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 684px;
+    padding: 32px 0 16px;
+    margin: auto;
+  }
+  .new-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 1;
+    margin-bottom: 2em
+  }
+  .new-grid .grid-item-wrap {
+    display: flex;
+    padding:1em;
+    flex-direction: column;
+  }
+
+  .new-grid .grid-product__image-wrap {
+    margin: 0;
+    padding: 5%;
+  }
+  .new-grid .title-font {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  .new-grid .product-tag-sale {
+    display: none;
+  }
+
+  .new-grid .price-title {
+    margin: 0;
+    font-size: 0.8em;
+  }
+  .new-grid .collection-btn-group {
+    margin-top: 0.5em;
+  }
+  .new-grid .grid-product__price--original {
+    opacity: 0.5;
+    font-weight: 300;
+  }
+
+  .search-results-layout .grid-item {
+    flex: auto;
+
+  }
+  .search_TopSearched {
+    display: none
+  }
+    .new-grid .grid-item-meta {
+    padding: 0 0 1em 0;
+          text-align: center;
+  }
+  @media screen and (min-width: 800px) {
+     .new-grid .grid-item-wrap {
+    flex-direction: row;
+  }
+    .search-results-layout {
+      display: flex;
+      gap: 2em;
+    }
+    .search_TopSearched {
+      display: block
+    }
+
+    .result-filter {
+      width: 33%;
+      max-width: 360px;
+    }
+  .new-grid .grid-item-meta {
+    font-size: min(1rem, 4vw);
+    padding: 4em 4em 1em 0;
+        text-align: left;
+  }
+    .new-grid .product-image-wrap {
+      max-width: 500px;
+      width: 40%;
+      flex-shrink: 0;
+    }
+  }
+  #ProductGridContainer .loading {
+    opacity: 0.3;
+  }
+  [data-grid-style*=grey] .grid-product {
+    isolation: isolate;
+  }
+  [data-grid-style*=grey] .grid-product:after {
+    border-radius: 0.8em;
+    border-top-right-radius: 5em;
+    background:  url('https://soundboxstore.com/cdn/shop/files/sbs-stn6-1-2-bg.jpg?v=1688973031&width=400')   top left / cover no-repeat;
+    z-index: -1;
+  }
+  #ProductGridContainer .grid__image-ratio {
+    background: transparent;
+  }
+  #ProductGridContainer .grid__image-ratio img {
+    mix-blend-mode: multiply;
+  }
+  [data-grid-style*=grey] .grid-product:nth-child(odd):after {
+    background: url('https://soundboxstore.com/cdn/shop/files/sbs-stn6-3-4-bg.jpg?v=1688973032&width=400')   top left / cover no-repeat;
+  }
+</style>
+{%- paginate search.results by 20 -%}
+  <div class="page-width page-content">
+    {%- render 'breadcrumbs' -%}
+    <form
+      action="{{ routes.search_url }}"
+      method="get"
+      class="input-group search-bar search-bar--page"
+      role="search"
+    >
+      <input
+        type="hidden"
+        name="type"
+        value="{{ settings.search_type }}"
+      >
+      <input
+        type="search"
+        name="q"
+        value="{{ search.terms | escape | replace: '*', '' }}"
+        placeholder="{{ 'general.search.placeholder' | t }}"
+        class="input-group-field"
+        aria-label="{{ 'general.search.placeholder' | t }}"
+      >
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn--large btn--icon">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+            class="icon icon-search"
+            viewBox="0 0 64 64"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #000;
+                  stroke-miterlimit: 10;
+                  stroke-width: 2px
+                }
+              </style>
+            </defs><path class="cls-1" d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42" />
+          </svg>
+          <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+      </div>
+    </form>
+    {%- if settings.search_top_collection != blank -%}
+      {%- assign search_collection = collections[settings.search_top_collection] -%}
+      <div
+        id="TopSearched"
+        style="max-width:900px;margin:auto"
+        class="search_TopSearched"
+      >
+        <div class="search-page-width">
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            {%- for product in search_collection.products limit: 6 -%}
+              <div>
+                <a
+                  style="
+                                         display: -webkit-inline-box;
+                    display: -ms-inline-flexbox;
+                    display: inline-flex;
+                    position: relative;
+                    font-size: 12px;
+                    line-height: 1.33;
+                    padding: 8px 16px;
+                    margin: 8px 4px 0 4px;
+                    color: inherit;
+                    border-radius: 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.15);
+                    background: rgba(255, 255, 255, 0.3);
+                  "
+                  href="{{ product.url }}"
+                >
+                  {{- product.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+    {% assign productsresult = '' %}
+    {% assign pageresult = '' %}
+    {% assign othersresult = '' %}
+    {%- for item in search.results -%}
+      {% if forloop.first %}
+        {% assign firstType = item.object_type %}
+      {% endif %}
+      {%- if item.object_type == 'product' -%}
+        {% capture productsresult %}
+              {{ productsresult }}
+            {%- liquid
+              render 'product-grid-item', product: item
+            -%}
+              {% endcapture %}
+      {%- elsif item.object_type == 'page' -%}
+        {% capture pageresult %}
+            {{ pageresult }}
+            <div class="grid-item grid-product">
+              <div class="grid-item__content">
+                <a href="{{ item.url }}" class="grid-item__link">
+                  <div class="grid-item__meta">
+                    <span class="h4">
+                      {{- item.title }}
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </div>
+        {% endcapture %}
+      {%- else -%}
+        {% capture othersresult %}
+          {{ othersresult }}
+          <div class="grid-item grid-product">
+            <div class="grid-item__content">
+              <a href="{{ item.url }}" class="grid-item__link">
+                <div class="grid-item__meta">
+                  <span class="h4">
+                    {{- item.title }}
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endcapture %}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if search.performed -%}
+      <hr class="hr--medium">
+
+      <div class="search-results-layout search-results-layout-{{ firstType }}">
+        <div class="result-filter facets-vertical">
+          <aside
+            aria-labelledby="verticalTitle"
+            class="facets-wrapper "
+            id="main-search-filters"
+            data-id="{{ section.id }}"
+          >
+            {% render 'facets',
+              results: search,
+              enable_filtering: true,
+              enable_sorting: false,
+              filter_type: 'vertical',
+              paginate: paginate
+            %}
+          </aside>
+        </div>
+        <div style="flex:1">
+          {% if productsresult != blank %}
+            <div id="ProductGridContainer">
+              <div
+                class="new-grid search-grid result-products collection"
+                data-view="xsmall"
+                id="product-grid"
+                data-id="{{ section.id }}"
+              >
+                {{ productsresult }}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {%- liquid
+        if paginate.pages > 1
+          render 'pagination', paginate: paginate
+        endif
+      -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{"name": "Search"}
+{% endschema %}

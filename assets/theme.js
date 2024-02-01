@@ -946,13 +946,12 @@ lazySizesConfig.expFactor = 4;
         if (this.enableHistoryState) {
           this._updateHistoryState(variant);
         }
-        let leadingTimeE = document.querySelector("[data-quantity-variant]")
-           if(leadingTimeE){
-             leadingTimeE.setAttribute("data-quantity-variant",''+variant.id)
-           }
+        let leadingTimeE = document.querySelector("[data-quantity-variant]");
+        if (leadingTimeE) {
+          leadingTimeE.setAttribute("data-quantity-variant", "" + variant.id);
+        }
       },
       _updateImagesCustom: function (variant) {
-      
         function handleUpdateGallery2() {
           const template = document.querySelector(
             `template[data-id='${variant.id}']`
@@ -1023,7 +1022,6 @@ lazySizesConfig.expFactor = 4;
           }
         }
         handleUpdateGallery2();
-       
       },
       _updateImages: function (variant) {
         var variantImage = variant.featured_image || {};
@@ -3132,8 +3130,8 @@ lazySizesConfig.expFactor = 4;
       adaptiveHeight: false,
       autoPlay: false,
       avoidReflow: false,
-      childNav: null, 
-      childNavScroller: null, 
+      childNav: null,
+      childNavScroller: null,
       childVertical: false,
       fade: false,
       initialIndex: 0,
@@ -4859,6 +4857,7 @@ lazySizesConfig.expFactor = 4;
         var new_product = {
           title: product.title,
           url: product.url,
+          body: product.body,
           image_responsive_url: theme.Images.lazyloadImagePath(product.image),
           image_aspect_ratio: product.featured_image.aspect_ratio,
         };
@@ -4871,22 +4870,22 @@ lazySizesConfig.expFactor = 4;
 
         output = `
           <div data-type-products>
+            <div style="font-weight: bold;display:none" class="h4 site-header__search-title">
+              ${theme.strings.searchProducts}
+            </div>
             <div class="new-grid product-grid" data-view="small">
               ${markup}
             </div>
           </div>
         `;
       }
-
       return output;
     }
 
     function buildCollections(collections) {
       var output = "";
-
       if (collections.length) {
         var markup = theme.buildCollectionItem(collections);
-
         output = `
           <div data-type-collections>
             <p class="h6 predictive__label">${theme.strings.searchCollections}</p>
@@ -5626,17 +5625,9 @@ lazySizesConfig.expFactor = 4;
     items.forEach((article) => {
       var image = theme.buildPredictiveImage(article);
       var markup = `
-        <div class="grid__item small--one-half medium-up--one-quarter">
+        <div class="grid__item ">
           <a href="${article.url}" class="grid-item__link grid-item__link--inline">
-            <div class="grid-product__image-wrap">
-              <div
-                class="grid__image-ratio grid__image-ratio--object grid__image-ratio--${imageSize}">
-                <div class="predictive__image-wrap">
-                  ${image}
-                </div>
-              </div>
-            </div>
-            <div class="grid-item__meta">
+            <div class="">
               ${article.title}
             </div>
           </a>
@@ -7828,7 +7819,7 @@ lazySizesConfig.expFactor = 4;
           "variantChange" + this.settings.namespace,
           this.updateCartButton.bind(this)
         );
- 
+
         this.container.on(
           "variantPriceChange" + this.settings.namespace,
           this.updatePrice.bind(this)
@@ -8444,8 +8435,6 @@ lazySizesConfig.expFactor = 4;
       getThumbIndex: function (target) {
         return target.dataset.index;
       },
-
-
 
       initProductSlider: function (variant) {
         // Stop if only a single image, but add active class to first slide
