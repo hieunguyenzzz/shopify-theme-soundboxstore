@@ -6,7 +6,13 @@ function getFocusableElements(container) {
     )
   );
 }
+function removeTrapFocus(elementToFocus = null) {
+  document.removeEventListener('focusin', trapFocusHandlers.focusin);
+  document.removeEventListener('focusout', trapFocusHandlers.focusout);
+  document.removeEventListener('keydown', trapFocusHandlers.keydown);
 
+  if (elementToFocus) elementToFocus.focus();
+}
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute('role', 'button');
   summary.setAttribute('aria-expanded', summary.parentNode.hasAttribute('open'));
