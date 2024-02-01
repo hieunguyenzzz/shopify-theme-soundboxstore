@@ -299,14 +299,14 @@ summary::-webkit-details-marker {
 
 .facets__and-helptext {
   color: rgba(var(--color-foreground), 0.5);
-  font-size: calc(var(--font-heading-scale) * 1.2em);
-  line-height: calc(var(--font-heading-scale) * 1.2em);
+  font-size: calc(1 * 1.2em);
+  line-height: calc(1 * 1.2em);
 }
 
 @media only screen and (min-width: 750px) {
   .facets__and-helptext {
-    font-size: calc(var(--font-heading-scale) * 1.3em);
-    line-height: calc(var(--font-heading-scale) * 1.3em);
+    font-size: calc(1 * 1.3em);
+    line-height: calc(1 * 1.3em);
   }
 }
 
@@ -790,7 +790,7 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__heading {
-  font-size: calc(var(--font-heading-scale) * 1.4em);
+  font-size: calc(1 * 1.4em);
   margin: 0;
 }
 
@@ -816,16 +816,16 @@ a.active-facets__button.focused .active-facets__button-inner,
 }
 
 .mobile-facets__open:hover {
-  color: rgb(var(--color-link));
+  color: currentcolor;
 }
 
 .mobile-facets__open:hover line,
 .mobile-facets__open:hover circle {
-  stroke: rgb(var(--color-link));
+  stroke: currentcolor;
 }
 
 .mobile-facets__open-label {
-  transition: text-decoration var(--duration-short) ease;
+  transition: text-decoration 0.5s ease;
 }
 
 .mobile-facets__open:hover .mobile-facets__open-label {
@@ -843,7 +843,7 @@ a.active-facets__button.focused .active-facets__button-inner,
 
 .mobile-facets__open line,
 .mobile-facets__open circle {
-  stroke: rgba(var(--color-link), var(--alpha-link));
+  stroke: currentcolor;
 }
 
 .mobile-facets__close {
@@ -857,7 +857,7 @@ a.active-facets__button.focused .active-facets__button-inner,
   height: 4.4em;
   z-index: 101;
   opacity: 0;
-  transition: opacity var(--duration-short) ease;
+  transition: opacity 0.5s ease;
 }
 
 .mobile-facets__close svg {
