@@ -301,17 +301,6 @@
           </aside>
         </div>
         <div style="flex:1">
-          <div class="section-header">
-            {%- if search.results_count == 0 -%}
-              <p>
-                {{ 'general.search.no_results_html' | t: terms: search.terms | replace: '*', '' }}
-              </p>
-            {%- endif -%}
-            <h2>
-              {{ 'general.search.result_count' | t: count: search.results_count }}
-            </h2>
-          </div>
-
           {% if productsresult != blank %}
             <div id="ProductGridContainer">
               <div
