@@ -289,7 +289,7 @@ summary::-webkit-details-marker {
 
 .facets__disclosure[open] .facets__display,
 .facets__disclosure-vertical[open] .facets__display-vertical {
-  animation: animateMenuOpen var(--duration-default) ease;
+  animation: animateMenuOpen 0.5s ease;
 }
 
 .facets__summary span {
@@ -751,7 +751,9 @@ a.active-facets__button.focused .active-facets__button-inner,
 .mobile-facets__wrapper .disclosure-has-popup[open] > summary::before {
   height: 100vh;
   z-index: 9;
-  background: #00000087;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .mobile-facets__inner {
