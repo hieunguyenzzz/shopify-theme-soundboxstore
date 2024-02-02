@@ -197,7 +197,7 @@
           data-id="{{block.settings.id }}"
           class="site-nav__link-1 col-item-link col-{{ block.settings.id  }} "
           {{ block.shopify_attributes }}>
-          {{ block.settings.title }}
+          {{ block.settings.product.title | default: block.settings.title | default: block.settings.link.object.title }}
         </a>
           {% else %}
            <div
