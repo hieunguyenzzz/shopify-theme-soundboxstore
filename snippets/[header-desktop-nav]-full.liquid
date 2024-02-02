@@ -223,7 +223,7 @@
                       data-id="{{ item.settings.id }}"
                       data-title="{{ item.settings.link.title }}"
                       data-type="{{ item.settings.link.type }}">
-                      {{ item.settings.product.title | default: item.settings.title }}
+                      {{ item.settings.product.title | default: item.settings.title | default: item.settings.link.title }}
                     </a>
                     {%- assign img = item.settings.image -%}
                     {%- if img -%}
