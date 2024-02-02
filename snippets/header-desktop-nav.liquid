@@ -47,7 +47,7 @@
 </style>
 <ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
   {%- for menu in main_menu.links -%}
-    {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
+    {% render '[header-desktop-nav]-mega-menu', blocks: section.blocks, title: menu.title %}
   {% endfor %}
   {%- for menu in sub_menu.links -%}
     <li
