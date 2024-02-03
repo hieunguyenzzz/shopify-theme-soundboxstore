@@ -61,6 +61,8 @@
   data-history="{{ enableHistory }}"
   data-modal="{{ isModal }}"
 >
+{% render "breadcrumbs" %}
+  
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
 
   {%- capture product_header -%}
