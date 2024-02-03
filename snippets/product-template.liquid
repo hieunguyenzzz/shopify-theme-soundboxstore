@@ -49,7 +49,9 @@
       assign product_description_width = 'medium-up--two-fifths'
   endcase
 -%}
-
+{%- if settings.show_breadcrumbs and isModal != true -%}
+  {%- render 'breadcrumbs' -%}
+{%- endif -%}
 <div
   id="ProductSection-{{ section_id }}-{{ product.id }}"
   class="product-section"
@@ -64,9 +66,7 @@
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
 
   {%- capture product_header -%}
-    {%- if settings.show_breadcrumbs and isModal != true -%}
-      {%- render 'breadcrumbs' -%}
-    {%- endif -%}
+
 
     {%- if isModal -%}
       <p class="h2 product-single__title">
