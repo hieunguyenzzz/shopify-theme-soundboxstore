@@ -1,34 +1,33 @@
 {%- style -%}
-  .breadcrumbs {
-    color:#787878;
-  }
+    .breadcrumbs {
+      color:#787878;
+    }
 
 
-  .breadcrumbs li {
+    .breadcrumbs li {
+        display: inline-block;
+    }
+
+    .breadcrumbs a {
+        text-decoration: none;
+        /*Will put liquid customization here*/
+        font-size: 15px;
+        color: inherit;
+
+    }
+
+    .breadcrumb-delimeter:not(:last-child):after {
+      content: "/";
       display: inline-block;
-  }
-
-  .breadcrumbs a {
-      text-decoration: none;
-      /*Will put liquid customization here*/
-      font-size: 15px;
-      color: inherit;
-
-  }
-
-  .breadcrumb-delimeter:not(:last-child):after {
-       content: "/";
-      display: inline-block;
-      margin-left: .75rem;
-      margin-right: 0.50rem;
+      margin-left: 0.2em;
       speak: none;
   }
 
-  .breadcrumbs [aria-current="page"] {
-      color: inherit;
-      font-weight: normal;
-      text-decoration: none;
-  }
+    .breadcrumbs [aria-current="page"] {
+        color: inherit;
+        font-weight: normal;
+        text-decoration: none;
+    }
 {%- endstyle -%}
 
 <div class="breadcrumbs" aria-label="breadcrumbs">
