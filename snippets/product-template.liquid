@@ -91,6 +91,7 @@
       
     {%- endif -%}
 
+    {%- if settings.vendor_enable or sku_enable -%}
       <div class="product-single__vendor-sku">
         {%- if settings.vendor_enable -%}
           <span class="product-single__vendor">
@@ -114,6 +115,7 @@
           </span>
         {%- endif -%}
       </div>
+    {%- endif -%}
   {%- endcapture -%}
 
   <div class="page-content page-content--product">
