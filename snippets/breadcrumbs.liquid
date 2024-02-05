@@ -49,7 +49,6 @@
             {%- endcapture -%}
 
         {%- assign object_url_string = product_url_string | append: product.url -%}
-        {{ object_url_string }}
         {%- assign object_urls = object_url_string | split: '|' -%}
         {%- capture linklist_titles_str -%}{%- for linklist in linklists -%}{{ linklist.title | handleize }}|{%- endfor -%}{%- endcapture -%}
         {%- assign str_size = linklist_titles_str | size | minus: 1 -%}
