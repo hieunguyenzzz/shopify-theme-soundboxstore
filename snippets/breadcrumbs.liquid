@@ -66,8 +66,8 @@
         {%- assign linklist_titles = linklist_titles_str | split: '|' -%}
 
         {%- assign level = 1 -%}
-        {%- for link in linklists['new-menu-1'].links -%}
-          {%- assign link_handle = link.title | handle -%}
+        {%- for link in linklists['new-menu'].links -%}
+          {%- assign link_handle = link.object.handle -%}
           {%- assign link_titles = link_titles | append: link.title | append: '|' -%}
           {%- assign link_urls = link_urls | append: link.url | append: '|' -%}
           {%- assign link_levels = link_levels | append: level | append: '|' -%}
@@ -78,12 +78,12 @@
               {%- if forloop.first == true -%}
                 {%- assign level = level | plus: 1 -%}
               {%- endif -%}
-              {% assign clink_handle = clink.title | handle %}
+              {% assign clink_handle = clink.object.handle %}
               {%- assign link_titles = link_titles | append: clink.title | append: '|' -%}
               {%- assign link_urls = link_urls | append: clink.url | append: '|' -%}
               {%- assign link_levels = link_levels | append: level | append: '|' -%}
               {%- assign link_parents = link_parents | append: link_handle | append: '|' -%}
-              {%- assign handle = link.title | handleize -%}
+              {%- assign handle = link.object.handle -%}
               {%- assign link_handles = link_handles | append: clink_handle | append: '|' -%}
 
               {%- if linklist_titles contains clink_handle -%}
@@ -92,7 +92,7 @@
                     {%- assign level = level | plus: 1 -%}
                   {%- endif -%}
 
-                  {% assign gclink_handle = gclink.title | handle %}
+                  {% assign gclink_handle = gclink.object.handle %}
                   {%- assign link_titles = link_titles | append: gclink.title | append: '|' -%}
                   {%- assign link_urls = link_urls | append: gclink.url | append: '|' -%}
                   {%- assign link_levels = link_levels | append: level | append: '|' -%}
