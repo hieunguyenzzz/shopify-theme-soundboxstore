@@ -400,46 +400,35 @@
   </div>
 </div>
 <script>
-   (() => {
-     function formSubmit(e) {
-       if (e.preventDefault) e.preventDefault();
-  fetch(
-         "https://hooks.zapier.com/hooks/catch/14043376/3qfwwl8/",
-         {
-           method: "POST",
-           headers: {
-             "Content-Type": "application/json",
-           },
-           body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
-         }
-       ).then((res) => {
-         console.log({res})
-       });
-       fetch(
-         "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
-         {
-           method: "POST", // or 'PUT'
-           // body: new FormData(e.target),
-           // headers: {
-           //   "Content-Type": "application/x-www-form-urlencoded",
-           //   // "Content-Type": "multipart/form-data",
-           // },
-           headers: {
-             "Content-Type": "application/json",
-           },
-           body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
-         }
-       ).then((res) => {
-         location.href =
-           "https://{{ request.host | append:'/pages/thankpage' }}";
-       });
+  (() => {
+    function formSubmit(e) {
+      if (e.preventDefault) e.preventDefault();
 
-       return false;
-     }
-     document
-       .getElementById("form-{{ section.id }}")
-       .addEventListener("submit", formSubmit);
-   })();
+      fetch(
+        "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
+        {
+          method: "POST", // or 'PUT'
+          // body: new FormData(e.target),
+          // headers: {
+          //   "Content-Type": "application/x-www-form-urlencoded",
+          //   // "Content-Type": "multipart/form-data",
+          // },
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+        }
+      ).then((res) => {
+        location.href =
+          "https://{{ request.host | append:'/pages/thankpage' }}";
+      });
+
+      return false;
+    }
+    document
+      .getElementById("form-{{ section.id }}")
+      .addEventListener("submit", formSubmit);
+  })();
 </script>
 {% schema %}
 {
