@@ -44,7 +44,7 @@
       {%- when 'product' -%}
         <div style="display:none">
           {%- for collection in product.collections -%}
-            <a href="{{ collection.url }}" aria-current="collection">{{ collection.title }}</a>
+            <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
           {%- endfor -%}
           <a href="/" title="Home">Home</a>
         </div>
@@ -57,7 +57,7 @@
 
         {%- assign object_url_string = product_url_string | append: product.url -%}
         {%- assign object_urls = object_url_string | split: '|' -%}
-        {%- capture linklist_titles_str -%}{%- for linklist in linklists -%}{{ linklist.title | handleize }}|{%- endfor -%}{%- endcapture -%}
+        {%- capture linklist_titles_str -%}{%- for linklist in linklists -%}{{ linklist.handle }}|{%- endfor -%}{%- endcapture -%}
         {%- assign str_size = linklist_titles_str | size | minus: 1 -%}
         {%- assign linklist_titles_str = linklist_titles_str | slice: 0, str_size -%}
         {%- assign linklist_titles = linklist_titles_str | split: '|' -%}
