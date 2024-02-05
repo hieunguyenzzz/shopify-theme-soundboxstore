@@ -30,8 +30,11 @@
   <div class="breadcrumbs" aria-label="breadcrumbs">
     {%- unless template == 'index' or template == 'cart' -%}
       <a href="/" title="Home">Home</a>
+      <div hidden>
+        {{  }}
+      </div>
       <span class="breadcrumb-delimeter" aria-hidden="true"></span>
-      {% for collection in custom.collections.value %}
+      {% for collection in product.metafields.custom.collections.value %}
         <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% endfor %}
