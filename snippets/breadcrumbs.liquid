@@ -66,7 +66,7 @@
         {%- assign linklist_titles = linklist_titles_str | split: '|' -%}
 
         {%- assign level = 1 -%}
-        {%- for link in linklists['new-menu'].links -%}
+        {%- for link in linklists['new-menu-1'].links -%}
           {%- assign link_handle = link.title | handle -%}
           {%- assign link_titles = link_titles | append: link.title | append: '|' -%}
           {%- assign link_urls = link_urls | append: link.url | append: '|' -%}
