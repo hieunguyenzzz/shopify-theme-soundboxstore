@@ -44,7 +44,7 @@
       {%- when 'product' -%}
         <div style="display:none">
           {%- for collection in product.collections -%}
-            {{ collection | link_to }}
+            <a href="{{ collection.url }}" aria-current="collection">{{ collection.title }}</a>
           {%- endfor -%}
           <a href="/" title="Home">Home</a>
         </div>
