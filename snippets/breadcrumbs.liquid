@@ -46,7 +46,9 @@
           {%- for collection in product.collections -%}
             <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
           {%- endfor -%}
-          <a href="/" title="Home">Home</a>
+          {%- for link in linklists['main-menu'].links -%}
+            {% assign handles = handles | append: link.object.handle %}
+          {% endfor %}
         </div>
 
         {%- capture product_url_string -%}
