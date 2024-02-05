@@ -42,7 +42,8 @@
         {% if forloop.first %}
           <a href="{{ collections['all'].url }}" title="{{ collection.title }}">{{ collection.title }}</a>
         {% else %}
-          <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+          {% assign url = '/pages/' | append: collection.handle %}
+          <a href="{{ url}}" title="{{ collection.title }}">{{ collection.title }}</a>
         {% endif %}
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% endfor %}
