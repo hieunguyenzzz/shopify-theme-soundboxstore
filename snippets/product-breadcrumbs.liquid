@@ -45,7 +45,7 @@
         {% else %}
           {% assign page = pages[collection.handle] %}
           {% assign url = page.url | default: collection.url %}
-          <a href="{{ url}}" title="{{ collection.title }}">{{ collection.title }}</a>
+          <a href="{{ url }}" title="{{ collection.title }}">{{ collection.title }}</a>
         {% endif %}
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% endfor %}
