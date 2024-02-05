@@ -50,7 +50,9 @@
   endcase
 -%}
 {%- if settings.show_breadcrumbs and isModal != true -%}
-  {%- render 'breadcrumbs' -%}
+  <div class="page-width">
+    {%- render 'breadcrumbs' -%}
+  </div>
 {%- endif -%}
 <div
   id="ProductSection-{{ section_id }}-{{ product.id }}"
