@@ -39,7 +39,11 @@
       <a href="/" title="Home">Home</a>
       <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% for collection in product.metafields.custom.collections.value %}
-        <a href="{{ collections['all'].url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+        {% if forloop.first %}
+          <a href="{{ collections['all'].url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+        {% else %}
+          <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+        {% endif %}
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% endfor %}
       <a href="#" title="{{ product.title }}">{{ product.title }}</a>
