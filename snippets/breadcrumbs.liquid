@@ -65,7 +65,6 @@
           {%- assign link_levels = link_levels | append: level | append: '|' -%}
           {%- assign link_parents = link_parents | append: 'main-menu' | append: '|' -%}
           {%- assign link_handles = link_handles | append: link_handle | append: '|' -%}
-          <div style="display:none">{{ linklist_titles }}</div>
           {%- if linklist_titles contains link_handle -%}
             {%- for clink in linklists[link_handle].links -%}
               {%- if forloop.first == true -%}
