@@ -49,6 +49,7 @@
           {%- for link in linklists['main-menu'].links -%}
             {% assign handles = handles | append: link.object.handle %}
           {% endfor %}
+          {{ handles }}
         </div>
 
         {%- capture product_url_string -%}
