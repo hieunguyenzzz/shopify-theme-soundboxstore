@@ -27,6 +27,7 @@
 {%- endstyle -%}
 
 <div class="breadcrumbs" aria-label="breadcrumbs">
+  <div style="display:none">{{ template }}</div>
   {%- unless template == 'index' or template == 'cart' -%}
     <a href="/" title="Home">Home</a>
     {%- case template.name -%}
