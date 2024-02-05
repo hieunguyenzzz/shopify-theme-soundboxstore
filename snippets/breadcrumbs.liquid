@@ -46,7 +46,7 @@
           {%- for collection in product.collections -%}
             <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
           {%- endfor -%}
-          {%- for link in linklists['main-menu'].links -%}
+          {%- for link in linklists['new-menu'].links -%}
             {% assign handles = handles | append: link.object.handle %}
           {% endfor %}
           {{ handles }}
@@ -66,12 +66,12 @@
         {%- assign linklist_titles = linklist_titles_str | split: '|' -%}
 
         {%- assign level = 1 -%}
-        {%- for link in linklists['main-menu'].links -%}
+        {%- for link in linklists['new-menu'].links -%}
           {%- assign link_handle = link.title | handle -%}
           {%- assign link_titles = link_titles | append: link.title | append: '|' -%}
           {%- assign link_urls = link_urls | append: link.url | append: '|' -%}
           {%- assign link_levels = link_levels | append: level | append: '|' -%}
-          {%- assign link_parents = link_parents | append: 'main-menu' | append: '|' -%}
+          {%- assign link_parents = link_parents | append: 'new-menu' | append: '|' -%}
           {%- assign link_handles = link_handles | append: link_handle | append: '|' -%}
           {%- if linklist_titles contains link_handle -%}
             {%- for clink in linklists[link_handle].links -%}
