@@ -42,7 +42,12 @@
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
         <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
       {%- when 'product' -%}
-        <div style="display:none">{{ template }}</div>
+        <div style="display:none">
+          {%- for collection in product.collections -%}
+            {{ collection | link_to }}
+          {%- endfor -%}
+          <a href="/" title="Home">Home</a>
+        </div>
 
         {%- capture product_url_string -%}
             {%- for collection in product.collections -%}
