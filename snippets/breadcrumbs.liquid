@@ -196,7 +196,7 @@
               {%- for bc1_sibling_link in linklists[bc1_parent_list_handle].links -%}
                 {%- assign bc1_sibling_title_handleized = bc1_sibling_link.title | handle -%}
                 {% if bc1_sibling_title_handleized == bc1_list_handle %}
-                  {%- capture bc1 -%}{{ bc1_sibling_link.title | link_to: collections['all'].url, bc1_sibling_link.title }}{%- endcapture -%}
+                  {%- capture bc1 -%}{{ bc1_sibling_link.title | link_to: bc1_sibling_link.url, bc1_sibling_link.title }}{%- endcapture -%}
                   {% break %}
                 {%- endif -%}
               {%- endfor -%}
