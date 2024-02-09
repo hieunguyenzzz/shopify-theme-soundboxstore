@@ -7406,12 +7406,16 @@
   .template-product .product-right-col .buy_buttons { margin-bottom: 25px }
 
   .template-product .furniture-variant .variant-input-wrap,.template-product
-  .option-variant .variant-input-wrap { display: flex; flex-wrap: wrap }
+  .option-variant .variant-input-wrap {     display: grid;
+    gap: 2%;
+    grid-template-columns: 1fr 1fr; }
 
   .template-product .furniture-variant .variant-input-wrap
   .variant-input,.template-product .option-variant .variant-input-wrap
-  .variant-input { max-width: 50%; width: 100%; background-color: #fff; display:
-  flex }
+  .variant-input {  width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex}
 
   .template-product .furniture-variant .variant-input-wrap .variant-input
   .variant__button-label,.template-product .option-variant .variant-input-wrap
