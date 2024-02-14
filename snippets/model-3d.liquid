@@ -305,22 +305,7 @@
           data-index="{{ forloop.index0 }}"
           data-id="{{ block.id }}"
         >
-          <script
-            type="module"
-            src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"
-          ></script>
-          <model-viewer
-            alt="3D - Test  Booth"
-            style="--poster-color: transparent; --poster-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-            src="https://cdn.shopify.com/3d/models/7775d430c6baf709/untitled.glb"
-            ar=""
-            environment-image="shared-assets/environments/moon_1k.hdr"
-            shadow-intensity="1"
-            camera-controls=""
-            touch-action="pan-y"
-            ar-status="not-presenting"
-          ></model-viewer>
-          <div style="display:none">{{ model | json }}</div>
+          {{ model | model_viewer_tag: interaction-policy: 'allow-when-focused' }}
         </div>
       </div>
     </div>
