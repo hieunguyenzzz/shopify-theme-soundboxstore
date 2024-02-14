@@ -48,7 +48,9 @@
                   <br>
                   {% if block.settings.phone_de != blank %}
                     {{ 'customer.addresses.phone' | t }}:
-                    <a href="tel:{{block.settings.phone_de}}">{{ block.settings.phone_de }}</a>
+                    <a href="tel:{{settings.phone_number_de | default: block.settings.phone_de}}">
+                      {{- settings.phone_number_de | default: block.settings.phone_de -}}
+                    </a>
                   {% endif %}
                 </li>
               {% endif %}
