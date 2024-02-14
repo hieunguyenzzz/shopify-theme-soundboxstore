@@ -123,16 +123,13 @@
         }
 
         .product__xr-button[data-shopify-xr-hidden] {
-          visibility: hidden;
         }
 
         .shopify-design-mode .product__xr-button[data-shopify-xr-hidden] {
-          display: none;
         }
 
         @media screen and (max-width: 749px) {
           slider-component .product__xr-button {
-            display: none;
           }
 
           .active .product__xr-button:not([data-shopify-xr-hidden]) {
@@ -318,7 +315,6 @@
             ></model-viewer>
           -->
           {{ model | model_viewer_tag: interaction-policy: 'allow-when-focused' }}
-          <div style="display:none">{{ model | json }}</div>
         </div>
       </div>
     </div>
