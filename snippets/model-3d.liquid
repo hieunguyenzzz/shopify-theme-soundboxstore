@@ -310,7 +310,7 @@
           data-index="{{ forloop.index0 }}"
           data-id="{{ block.id }}"
         >
-          {{ model | model_viewer_tag: interaction-policy: 'allow-when-focused' }}
+          {{ model | model_viewer_tag: interaction-policy: 'allow-when-focused', ar: true }}
         </div>
       </div>
     </div>
