@@ -305,18 +305,35 @@
             class="deferred-media media media--transparent global-media-settings global-media-settings--no-shadow"
             style="display: block;padding-top: 100%;"
           >
-            {{
-              first_3d_model
-              | media_tag:
-                image_size: '2048x',
-                toggleable: true,
-                ar: true,
-                ar-scale: 'fixed',
-                camera-controls: true,
-                touch-action: 'pan-y',
-                ios-src: first_3d_model.url,
-                style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
-            }}
+            <!--
+              {{
+                first_3d_model
+                | media_tag:
+                  image_size: '2048x',
+                  toggleable: true,
+                  ar: true,
+                  ar-scale: 'fixed',
+                  camera-controls: true,
+                  touch-action: 'pan-y',
+                  ios-src: first_3d_model.url,
+                  style: 'position: absolute;top: 0;left: 0; width: 100%; height: 100%;'
+              }}
+            -->
+            <model-viewer
+              toggleable="true"
+              ar="true"
+              ar-scale="fixed"
+              camera-controls="true"
+              touch-action="pan-y"
+              ios-src="https://cdn.shopify.com/3d/models/o/f3de907746f44010/scene.usdz"
+              style="--poster-color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+              src="https://cdn.shopify.com/3d/models/o/753b51c6a03c4381/scene.glb"
+              data-shopify-feature="1.12"
+              alt="3D - Test  Booth"
+              poster="//soundboxstore.com/cdn/shop/files/preview_images/scene_2048x.jpg?v=1707900615"
+              data-js-focus-visible=""
+              ar-status="not-presenting"
+            ></model-viewer>
           </product-model>
           <button
             style="
