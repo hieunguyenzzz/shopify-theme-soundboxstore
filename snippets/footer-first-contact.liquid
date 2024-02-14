@@ -52,6 +52,32 @@
                   {% endif %}
                 </li>
               {% endif %}
+              {% if localization.country.iso_code == 'ES' %}
+                {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
+                  <li class="location address_3">
+                    <syle> </syle>
+                    {% if block.settings['address-heading3'] != blank %}
+                      <strong>{{ block.settings['address-heading3'] }}</strong>
+                    {% endif %}
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      {% if block.settings.address_url_3 != blank %}
+                        href="{{ block.settings.address_url_3 }}"
+                      {% else %}
+                        href="https://www.google.com/search?q={{ block.settings.address3 }}"
+                      {% endif %}
+                    >
+                      {{- block.settings.address3 -}}
+                    </a>
+                    <br>
+                    {% if block.settings.phone3 != blank %}
+                      {{ 'customer.addresses.phone' | t }}:
+                      <a href="tel:{{block.settings.phone3}}">{{ block.settings.phone3 }}</a>
+                    {% endif %}
+                  </li>
+                {% endif %}
+              {% endif %}
               {% if block.settings['address-heading1'] != blank or block.settings.address1 != blank %}
                 <li class="location address_1">
                   {% if block.settings['address-heading1'] != blank %}
@@ -99,29 +125,32 @@
                     <a href="tel:{{block.settings.phone2}}">{{ block.settings.phone2 }}</a>
                   {% endif %}
               {% endif %}
-              {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
-                <li class="location address_3">
-                  {% if block.settings['address-heading3'] != blank %}
-                    <strong>{{ block.settings['address-heading3'] }}</strong>
-                  {% endif %}
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    {% if block.settings.address_url_3 != blank %}
-                      href="{{ block.settings.address_url_3 }}"
-                    {% else %}
-                      href="https://www.google.com/search?q={{ block.settings.address3 }}"
+              {% unless localization.country.iso_code == 'ES' %}
+                {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
+                  <li class="location address_3">
+                    <syle> </syle>
+                    {% if block.settings['address-heading3'] != blank %}
+                      <strong>{{ block.settings['address-heading3'] }}</strong>
                     {% endif %}
-                  >
-                    {{- block.settings.address3 -}}
-                  </a>
-                  <br>
-                  {% if block.settings.phone3 != blank %}
-                    {{ 'customer.addresses.phone' | t }}:
-                    <a href="tel:{{block.settings.phone3}}">{{ block.settings.phone3 }}</a>
-                  {% endif %}
-                </li>
-              {% endif %}
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      {% if block.settings.address_url_3 != blank %}
+                        href="{{ block.settings.address_url_3 }}"
+                      {% else %}
+                        href="https://www.google.com/search?q={{ block.settings.address3 }}"
+                      {% endif %}
+                    >
+                      {{- block.settings.address3 -}}
+                    </a>
+                    <br>
+                    {% if block.settings.phone3 != blank %}
+                      {{ 'customer.addresses.phone' | t }}:
+                      <a href="tel:{{block.settings.phone3}}">{{ block.settings.phone3 }}</a>
+                    {% endif %}
+                  </li>
+                {% endif %}
+              {% endunless %}
               {% if block.settings.email != blank %}
                 <li class="email">
                   <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
