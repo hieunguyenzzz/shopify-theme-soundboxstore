@@ -145,8 +145,11 @@
 
     .header-item--navigation .col-one:hover ul li a:hover + div {
       display:block;         pointer-events: none;
-      isibility: hidden;    transition: all .5s linear;
+
     }
+  .header-item--navigation:hover .col-one:hover ul li a + div{
+       visibility: hidden;    transition: all .5s linear;
+  }
     .header-item--navigation .col-one ul li a + div img {
       position: absolute;
       left: 0;
