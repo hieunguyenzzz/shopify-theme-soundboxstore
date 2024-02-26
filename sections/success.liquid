@@ -31,21 +31,15 @@
         .{{id}}-right p{
           color:#aeaeae
         }
-  .{{id}}-right .section-btn{
-        display: flex;
-    column-gap: 1em;
-    flex-wrap: wrap;
-  }
         .{{id}}-right .section-btn a{
-       width: 100%;
-    line-height: 2.4;min-width:240px;
-    font-size: 0.7em;
-    flex: 1;
-    margin-top: 20px;
+          width: 100%;
+          line-height:2.4;
+          font-size:0.9em ;
+          margin-top: 20px;
         }
         .{{id}}-right .h2,.{{id}}-right h2{
-            font-size: min(calc(var(--typeHeaderSize)*1),5vw);
-            margin-bottom: 1em;
+            font-size: calc(var(--typeHeaderSize)*1);
+            margin-bottom: 40px;
         }
         .{{id}}-wrap::before{
         content:'';
@@ -85,7 +79,7 @@
        max-width: 90%;
           z-index: 1 !important;
           padding: 3em 2em !important;
-          background:#ffffffe8 !important;
+          background: #ffffff96 !important;
           backdrop-filter: blur(4px);
 
       }
@@ -94,7 +88,6 @@
       }
       .{{id}}-right p{
         color: #696969;
-                 font-size: min(16px,3vw);
       }
       }
 </style>
@@ -111,8 +104,7 @@
     <div class="{{ id }}-content">
       {{ section.settings.content }}
       <div class="section-btn">
-        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
-        <a href="{{ section.settings.button_link_2 }}" class="btn">{{ section.settings.button_text_2 }}</a>
+        <a href="{{ section.settings.button_link }}" class="btn">Explore Products </a>
       </div>
     </div>
   </div>
@@ -120,7 +112,7 @@
 
 {% schema %}
  {
-   "name": "Quote success",
+   "name": "Image Text Column",
    "settings": [
 	{
          "type": "image_picker",
@@ -137,25 +129,10 @@
          "id": "content",
          "label": "Content"
        },
-     {
-         "type": "text",
-         "id": "button_text",
-         "label": "Showroom Button Text","default":"BOOK SHOWROOM VISIT"
-       },
 	{
          "type": "url",
          "id": "button_link",
-         "label": "Showroom Button Link"
-       },
-          {
-         "type": "text",
-         "id": "button_text_2",
-         "label": "Remote Tour Button Text","default":"REMOTE TOUR"
-       },
-     	{
-         "type": "url",
-         "id": "button_link_2",
-         "label": "Remote Tour Button Link"
+         "label": "Button Link"
        }
 ],
    "presets": [
