@@ -90,6 +90,54 @@
         color: #696969;
       }
       }
+   .{{id}}-right  ul {margin:0;padding:0;list-style:none;display:flex;gap: 1em;flex-wrap:wrap}
+   .{{id}}-right  ul li {
+  flex:1;
+      display:flex ;
+      min-width:min(50vw,240px);
+      width:100%
+  }
+   .{{id}}-right  ul li a{
+  text-decoration: none;
+      text-align: center;
+      white-space: normal;
+      font-size: calc(var(--typeBaseSize) + 2px);
+      padding: var(--btnPadding);
+      margin: 0;
+      min-width: 90px;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 1px solid transparent;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border-radius: var(--buttonRadius);
+      color: #fff;
+      color: var(--colorBtnPrimaryText);
+      background: #313652;
+      background: var(--colorBtnPrimary);
+      font-family: "Banana Grotesk",var(--typeBasePrimary),var(--typeBaseFallback),system-ui;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      padding: 11px 17px;
+      text-align:center;
+      width:100%;
+      font-family: "Banana Grotesk",var(--typeBasePrimary),var(--typeBaseFallback),system-ui;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      padding: 11px 17px;
+      min-height:3.4rem;
+      display:flex ;
+      justify-content:center;
+      align-items:center
+  }
 </style>
 
 <div class="{{ id }}-wrap page-width">
