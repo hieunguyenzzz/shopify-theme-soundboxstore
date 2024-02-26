@@ -110,8 +110,8 @@
     <div class="{{ id }}-content">
       {{ section.settings.content }}
       <div class="section-btn">
-        <a href="{{ section.settings.button_link }}" class="btn">BOOK SHOWROOM VISIT</a>
-        <a href="{{ section.settings.button_link_2 }}" class="btn">REMOTE TOUR</a>
+        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.button_link_2 }}" class="btn">{{ section.settings.button_text_2 }}</a>
       </div>
     </div>
   </div>
@@ -136,10 +136,20 @@
          "id": "content",
          "label": "Content"
        },
+     {
+         "type": "text",
+         "id": "button_text",
+         "label": "Showroom Button Text","default":"BOOK SHOWROOM VISIT"
+       },
 	{
          "type": "url",
          "id": "button_link",
          "label": "Showroom Button Link"
+       },
+          {
+         "type": "text",
+         "id": "button_text_2",
+         "label": "Remote Tour Button Text","default":"REMOTE TOUR"
        },
      	{
          "type": "url",
