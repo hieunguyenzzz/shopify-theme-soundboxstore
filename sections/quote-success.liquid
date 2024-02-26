@@ -146,7 +146,9 @@
       align-items:center
   }
 </style>
-
+{%- capture phone -%}
+              {%- render '[phone-number]' -%}
+              {%- endcapture -%}
 <div class="{{ id }}-wrap page-width">
   <div class="{{ id }}-left">
     {{
@@ -157,7 +159,7 @@
   </div>
   <div class="{{ id }}-right">
     <div class="{{ id }}-content">
-      {{ section.settings.content }}
+      {{ section.settings.content | replace: '+44 (0) 20 4586 3800', phone }}
     </div>
   </div>
 </div>
