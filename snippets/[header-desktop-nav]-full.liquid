@@ -172,9 +172,12 @@
       visibility: visible;
       opacity: 1;
     }
+     .site-header:hover .col-one>li ul:hover + div{
+    pointer-events: auto;
+    }
       .site-header:hover .col-one>li ul:hover + div{
-      visibility: hidden; pointer-events: auto;
-      opacity: 0
+      visibility: hidden;
+      opacity: 0;
     }
 </style>
 {%- liquid
