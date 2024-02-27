@@ -169,12 +169,10 @@
       line-height:1
     }
     .site-header:hover .col-one>li ul + div{
-      visibility: visible;
+      visibility: visible;    pointer-events: auto;
       opacity: 1;
     }
-     .site-header:hover .col-one>li ul + div{
-    pointer-events: auto;
-    }
+
       .site-header:hover .col-one>li ul:hover + div{
       visibility: hidden;
       opacity: 0;
@@ -237,10 +235,13 @@
                     {%- assign img = item.settings.image -%}
                     {%- if img -%}
                       <div>
-                        {{
+                        <a         href="{{  item.settings.link }}">
+                                 {{
                            img
                          | image_url: width: 400
                          | image_tag: widths: '400, 600, 800', loading: 'lazy', alt: item.settings.title }}
+                        </a>
+                 
                       </div>
                     {%- endif -%}
                   </li>
