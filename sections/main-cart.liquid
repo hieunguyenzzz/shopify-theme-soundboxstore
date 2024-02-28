@@ -93,7 +93,7 @@
                     type="checkbox"
                     name="attributes[showroom_visit]"
                     value="Yes"
-                    {%- if attributes[showroom_visit] == 'Yes' -%}
+                    {%- if attributes.showroom_visit == 'Yes' -%}
                       checked
                     {%- endif -%}
                     style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
@@ -113,7 +113,7 @@
                   type="checkbox"
                   name="attributes[remote_tour]"
                   value="Yes"
-                  {%- if attributes[remote_tour] == 'Yes' -%}
+                  {%- if attributes.remote_tour == 'Yes' -%}
                     checked
                   {%- endif -%}
                   style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
