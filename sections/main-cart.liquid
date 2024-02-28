@@ -77,7 +77,7 @@
           {% endif %}
           <div>
             {% for att in cart.attributes %}
-              {{ att }}
+              {{ att | json }}
             {% endfor %}
             <div id="showroom_visit_checkbox">
               <template>
