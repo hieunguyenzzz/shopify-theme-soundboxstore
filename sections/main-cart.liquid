@@ -75,11 +75,27 @@
               >{{ cart.note }}</textarea>
             </div>
           {% endif %}
-          {% if localization.country.iso_code == 'GB' %}
-            <div class="cart__item-row">
-              <label><input type="checkbox" style="font-size:1.4em" name="">Do you want a showroom visit</label>
-            </div>
-          {% endif %}
+          <div>
+            <template>
+              <label
+                style="
+                  display: flex;
+                  align-items: flex-start;
+                  padding: 20px 0;
+                  border-top: 1px solid #eaeaea;
+                  border-bottom: 1px solid #eaeaea;
+                "
+                ><input
+                  type="checkbox"
+                  style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
+                  name=""
+                  data-gtm-form-interact-field-id="0"
+
+                >Do you want a showroom visit</label
+              >
+            </template>
+          </div>
+
           <div class="cart__item-sub cart__item-row cart__item--subtotal">
             <div class="subtotal-text">
               <span>{{ 'cart.general.subtotal' | t }}</span>
