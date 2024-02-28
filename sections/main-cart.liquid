@@ -75,7 +75,11 @@
               >{{ cart.note }}</textarea>
             </div>
           {% endif %}
-
+          {% if localization.country == 'GB' %}
+            <div class="cart__item-row">
+              <label for="CartNote"> do you want a showroom visit [ checbox ] </label>
+            </div>
+          {% endif %}
           <div class="cart__item-sub cart__item-row cart__item--subtotal">
             <div class="subtotal-text">
               <span>{{ 'cart.general.subtotal' | t }}</span>
