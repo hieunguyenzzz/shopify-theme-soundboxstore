@@ -96,6 +96,23 @@
                   >Do you want a showroom visit
                 </label>
               </template>
+              <label
+                style="
+                  display: flex;
+                  align-items: flex-start;
+                  padding: 20px 0;
+                  border-top: 1px solid #eaeaea;
+                  border-bottom: 1px solid #eaeaea;color:red
+                "
+                ><input
+                  type="checkbox"
+                  name="attributes[remote_tour]"
+                  value="Yes"
+                  checked="{%- if attributes[remote_tour] == 'Yes' -%}true{%- endif -%}"
+                  style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
+
+                >Do you want a remote tour
+              </label>
             </div>
             <script>
               (()=>{
