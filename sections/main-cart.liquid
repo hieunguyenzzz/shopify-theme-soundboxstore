@@ -90,7 +90,9 @@
                     type="checkbox"
                     name="attributes[showroom_visit]"
                     value="Yes"
-                    checked="{%- if attributes[showroom_visit] == 'Yes' -%}true{%- endif -%}"
+                    {%- if attributes[showroom_visit] == 'Yes' -%}
+                      checked
+                    {%- endif -%}
                     style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
 
                   >Do you want a showroom visit
@@ -108,7 +110,9 @@
                   type="checkbox"
                   name="attributes[remote_tour]"
                   value="Yes"
-                  checked="{%- if attributes[remote_tour] == 'Yes' -%}true{%- endif -%}"
+                  {%- if attributes[remote_tour] == 'Yes' -%}
+                    checked
+                  {%- endif -%}
                   style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
 
                 >Do you want a remote tour
