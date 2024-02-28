@@ -102,6 +102,7 @@
                 fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
                   if(res.city=="London"){
                     let clone =document.querySelector("#showroom_visit_checkbox template").content.cloneNode(true);
+                    document.querySelector("#showroom_visit_checkbox").innerHTML=''
                     document.querySelector("#showroom_visit_checkbox").appendChild(clone)
                   }
                 })
