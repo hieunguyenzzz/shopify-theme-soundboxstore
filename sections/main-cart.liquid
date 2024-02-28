@@ -94,7 +94,7 @@
                   <div style="display:flex;gap:1em;margin-top:0.5em">
                     <label style="flex:1"
                       ><input
-                        type="checkbox"
+                        type="radio"
                         name="attributes[showroom_visit]"
                         value="Yes"
                         {% if cart.attributes.showroom_visit != 'Yes' %}
@@ -106,7 +106,7 @@
                     </label>
                     <label style="flex:1"
                       ><input
-                        type="checkbox"
+                        type="radio"
                         name="attributes[showroom_visit]"
                         value="No"
                         {% if cart.attributes.showroom_visit == 'Yes' %}
@@ -119,25 +119,41 @@
                   </div>
                 </div>
               </template>
-              <label
+              <div
                 style="
-                  display: flex;
-                  align-items: flex-start;
                   padding: 20px 0;
                   border-top: 1px solid #eaeaea;
-                  border-bottom: 1px solid #eaeaea;color:red
+                  border-bottom: 1px solid #eaeaea;
                 "
-                ><input
-                  type="checkbox"
-                  name="attributes[remote_tour]"
-                  value="Yes"
-                  {% if cart.attributes.remote_tour == 'Yes' %}
-                    checked
-                  {% endif %}
-                  style="font-size: 1em;width: 1em;height: 1em;margin-top: 0.25em;"
+              >
+                Do you want a remote tour?
+                <div style="display:flex;gap:1em;margin-top:0.5em">
+                  <label style="flex:1"
+                    ><input
+                      type="radio"
+                      name="attributes[remote_tour]"
+                      value="Yes"
+                      {% if cart.attributes.remote_tour != 'Yes' %}
+                        checked
+                      {% endif %}
+                      style="font-size: 1em;margin-top: 0.25em;"
 
-                >Do you want a remote tour
-              </label>
+                    >Yes
+                  </label>
+                  <label style="flex:1"
+                    ><input
+                      type="radio"
+                      name="attributes[showroom_visit]"
+                      value="No"
+                      {% if cart.attributes.remote_tour == 'Yes' %}
+                        checked
+                      {% endif %}
+                      style="font-size: 1em;margin-top: 0.25em;"
+
+                    >No
+                  </label>
+                </div>
+              </div>
             </div>
             <script>
               (()=>{
