@@ -547,9 +547,19 @@
               this.addEventListener("mousewheel", handle, { passive: true });
           }
       };
-      document.addEventListener("trackingConsentAccepted", function() {
+    </script>
+    <script>
+      (()=>{
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied'
+              });
+              document.addEventListener("trackingConsentAccepted", function() {
                                          console.log("trackingConsentAccepted event fired")
       })
+      })()
     </script>
   </body>
 </html>
