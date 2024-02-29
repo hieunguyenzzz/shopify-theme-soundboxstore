@@ -19,6 +19,33 @@
   country="{{  localization.country.iso_code }}"
 >
   <head>
+    <script>
+                  (()=>{
+
+      function gtag(){
+        window.dataLayer = window.dataLayer || [];
+      dataLayer.push(arguments);}
+
+      // Set default consent to 'denied' as a placeholder
+      // Determine actual values based on your own requirements
+      gtag('consent', 'default', {
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+      });
+            function allConsentGranted() {
+              gtag('consent', 'update', {
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                // 'ad_storage': 'granted',
+                // 'analytics_storage': 'granted'
+              });
+              }
+                          document.addEventListener("trackingConsentAccepted", function() {
+            allConsentGranted()
+                                                     console.log("trackingConsentAccepted event fired")
+                  })
+                  })()
+    </script>
     {% render 'pandectes-rules' %}
     {% render 'yoast-seo' %}
     {% render 'pre-header' %}
@@ -547,33 +574,6 @@
               this.addEventListener("mousewheel", handle, { passive: true });
           }
       };
-    </script>
-    <script>
-                  (()=>{
-
-      function gtag(){
-        window.dataLayer = window.dataLayer || [];
-      dataLayer.push(arguments);}
-
-      // Set default consent to 'denied' as a placeholder
-      // Determine actual values based on your own requirements
-      gtag('consent', 'default', {
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-      });
-            function allConsentGranted() {
-              gtag('consent', 'update', {
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted',
-                // 'ad_storage': 'granted',
-                // 'analytics_storage': 'granted'
-              });
-              }
-                          document.addEventListener("trackingConsentAccepted", function() {
-            allConsentGranted()
-                                                     console.log("trackingConsentAccepted event fired")
-                  })
-                  })()
     </script>
   </body>
 </html>
