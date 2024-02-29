@@ -118,6 +118,41 @@
                     </label>
                   </div>
                 </div>
+                <div
+                  style="
+                    padding: 20px 0;
+                    border-top: 1px solid #eaeaea;
+                    border-bottom: 1px solid #eaeaea;
+                  "
+                >
+                  Would you like us to organise free site survey (this is for orders over £15,000) ?
+                  <div style="display:flex;gap:1em;margin-top:0.5em">
+                    <label style="flex:1"
+                      ><input
+                        type="radio"
+                        name="attributes[site_survey]"
+                        value="Yes"
+                        {% if cart.attributes.site_survey != 'Yes' %}
+                          checked
+                        {% endif %}
+                        style="font-size: 1em;margin-top: 0.25em;"
+
+                      >Yes
+                    </label>
+                    <label style="flex:1"
+                      ><input
+                        type="radio"
+                        name="attributes[site_survey]"
+                        value="No"
+                        {% if cart.attributes.site_survey == 'Yes' %}
+                          checked
+                        {% endif %}
+                        style="font-size: 1em;margin-top: 0.25em;"
+
+                      >No
+                    </label>
+                  </div>
+                </div>
               </template>
               <div
                 style="
