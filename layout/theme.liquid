@@ -35,69 +35,71 @@
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
-    <script>
+    <!--
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0HET6EXHTH');
+      </script>
+    -->
+
+    <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
+    <script async id="gaf-loading-script"></script>
+    <script id="gdpr-gaf-blocking-script">
+        let isGAFExecuted = false;
+        let gafScript = document.getElementById('gaf-loading-script');
+        let gafLink = 'https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH';
+
+        function executeGAF() {
+          if(!isGAFExecuted) {
+            gafScript.setAttribute('src', gafLink);
+            // The content of Google Analytics 4 script goes here
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-      gtag('config', 'G-0HET6EXHTH');
-    </script> -->
-
-      <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
-  <script async id="gaf-loading-script"></script>
-  <script id="gdpr-gaf-blocking-script">
-    let isGAFExecuted = false;
-    let gafScript = document.getElementById('gaf-loading-script');
-    let gafLink = 'https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH';
-
-    function executeGAF() {
-      if(!isGAFExecuted) {
-        gafScript.setAttribute('src', gafLink);
-        // The content of Google Analytics 4 script goes here
-  window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-0HET6EXHTH');
-        isGAFExecuted = true;
-      }
-    }
-    function checkConsentForGAF(adittionalChecks = 0) {  
-      let cpdCookie=(document.cookie.match(/^(?:.*;)?\s*cookieconsent_preferences_disabled(\s*=\s*([^;]+)?)(?:.*)?$/)||[,null])[1];
-      if(cpdCookie != null) {
-        if(parseInt(cpdCookie.indexOf('analytics')) === -1) {
-          executeGAF();
+          gtag('config', 'G-0HET6EXHTH');
+            isGAFExecuted = true;
+          }
         }
-      } else {
-        let gdprCache = localStorage.getItem('gdprCache') ? JSON.parse(localStorage.getItem('gdprCache')) : null;
-        let gdprCacheConsentSettings = gdprCache && gdprCache.getCookieConsentSettings ? JSON.parse(gdprCache.getCookieConsentSettings) : null;
-        let gdprCacheCountryDetection = gdprCache && gdprCache.countryDetection ? JSON.parse(gdprCache.countryDetection) : null;
-        let ccsCookie = (document.cookie.match(/^(?:.*;)?\s*cookieconsent_status\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
-        if((gdprCacheConsentSettings || (gdprCacheCountryDetection && gdprCacheCountryDetection.disable === '1')) && !ccsCookie) {
-          if((gdprCacheConsentSettings && gdprCacheConsentSettings.status === 'disabled') || gdprCacheCountryDetection.disable === '1'){
-            executeGAF();
-          } else {
-            let initPreferences = parseInt(gdprCacheConsentSettings.checkboxes_behavior);
-            if(initPreferences === 1 || initPreferences === 2 || initPreferences === 4 || initPreferences === 5) {
+        function checkConsentForGAF(adittionalChecks = 0) {
+          let cpdCookie=(document.cookie.match(/^(?:.*;)?\s*cookieconsent_preferences_disabled(\s*=\s*([^;]+)?)(?:.*)?$/)||[,null])[1];
+          if(cpdCookie != null) {
+            if(parseInt(cpdCookie.indexOf('analytics')) === -1) {
               executeGAF();
             }
-          }
-        } else {
-          if (adittionalChecks > 0) {
-            setTimeout(function() {
-              checkConsentForGAF(adittionalChecks - 1);
-            }, 1000);
           } else {
-            executeGAF();
+            let gdprCache = localStorage.getItem('gdprCache') ? JSON.parse(localStorage.getItem('gdprCache')) : null;
+            let gdprCacheConsentSettings = gdprCache && gdprCache.getCookieConsentSettings ? JSON.parse(gdprCache.getCookieConsentSettings) : null;
+            let gdprCacheCountryDetection = gdprCache && gdprCache.countryDetection ? JSON.parse(gdprCache.countryDetection) : null;
+            let ccsCookie = (document.cookie.match(/^(?:.*;)?\s*cookieconsent_status\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+            if((gdprCacheConsentSettings || (gdprCacheCountryDetection && gdprCacheCountryDetection.disable === '1')) && !ccsCookie) {
+              if((gdprCacheConsentSettings && gdprCacheConsentSettings.status === 'disabled') || gdprCacheCountryDetection.disable === '1'){
+                executeGAF();
+              } else {
+                let initPreferences = parseInt(gdprCacheConsentSettings.checkboxes_behavior);
+                if(initPreferences === 1 || initPreferences === 2 || initPreferences === 4 || initPreferences === 5) {
+                  executeGAF();
+                }
+              }
+            } else {
+              if (adittionalChecks > 0) {
+                setTimeout(function() {
+                  checkConsentForGAF(adittionalChecks - 1);
+                }, 1000);
+              } else {
+                executeGAF();
+              }
+            }
           }
         }
-      }
-    }
-  
-    checkConsentForGAF(3);
-  </script>
-    
+
+        checkConsentForGAF(3);
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -545,6 +547,9 @@
               this.addEventListener("mousewheel", handle, { passive: true });
           }
       };
+      document.addEventListener("trackingConsentAccepted", function() {
+                                         console.log("trackingConsentAccepted event fired")
+      })
     </script>
   </body>
 </html>
