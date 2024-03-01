@@ -81,10 +81,6 @@
                 {{ att | json }}
               {% endfor %}
             -->
-            {{ cart.items_subtotal_price }}
-            {% if cart.items_subtotal_price >= 1500000 %}
-              asdas
-            {% endif %}
             <div id="showroom_visit_checkbox">
               <template>
                 <div
@@ -122,42 +118,43 @@
                     </label>
                   </div>
                 </div>
+                {% if cart.items_subtotal_price >= 1500000 %}
+                  <div
+                    style="
+                      padding: 20px 0;
+                      border-top: 1px solid #eaeaea;
+                      border-bottom: 1px solid #eaeaea;
+                    "
+                  >
+                    Would you like us to organise free site survey (this is for orders over £15,000) ?
+                    <div style="display:flex;gap:1em;margin-top:0.5em">
+                      <label style="flex:1"
+                        ><input
+                          type="radio"
+                          name="attributes[site_survey]"
+                          value="Yes"
+                          {% if cart.attributes.site_survey != 'Yes' %}
+                            checked
+                          {% endif %}
+                          style="font-size: 1em;margin-top: 0.25em;"
 
-                <div
-                  style="
-                    padding: 20px 0;
-                    border-top: 1px solid #eaeaea;
-                    border-bottom: 1px solid #eaeaea;
-                  "
-                >
-                  Would you like us to organise free site survey (this is for orders over £15,000) ?
-                  <div style="display:flex;gap:1em;margin-top:0.5em">
-                    <label style="flex:1"
-                      ><input
-                        type="radio"
-                        name="attributes[site_survey]"
-                        value="Yes"
-                        {% if cart.attributes.site_survey != 'Yes' %}
-                          checked
-                        {% endif %}
-                        style="font-size: 1em;margin-top: 0.25em;"
+                        >Yes
+                      </label>
+                      <label style="flex:1"
+                        ><input
+                          type="radio"
+                          name="attributes[site_survey]"
+                          value="No"
+                          {% if cart.attributes.site_survey != 'Yes' %}
+                            checked
+                          {% endif %}
+                          style="font-size: 1em;margin-top: 0.25em;"
 
-                      >Yes
-                    </label>
-                    <label style="flex:1"
-                      ><input
-                        type="radio"
-                        name="attributes[site_survey]"
-                        value="No"
-                        {% if cart.attributes.site_survey != 'Yes' %}
-                          checked
-                        {% endif %}
-                        style="font-size: 1em;margin-top: 0.25em;"
-
-                      >No
-                    </label>
+                        >No
+                      </label>
+                    </div>
                   </div>
-                </div>
+                {% endif %}
               </template>
               <div
                 style="
