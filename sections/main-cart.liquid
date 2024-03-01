@@ -89,6 +89,7 @@
                   <div style="display:flex;gap:1em;margin-top:0.5em">
                     <label style="flex:1"
                       ><input
+                        required
                         type="radio"
                         name="attributes[showroom_visit]"
                         value="Yes"
@@ -104,9 +105,7 @@
                         type="radio"
                         name="attributes[showroom_visit]"
                         value="No"
-                        {% if cart.attributes.showroom_visit != 'Yes' %}
-                          checked
-                        {% endif %}
+
                         style="font-size: 1em;margin-top: 0.25em;"
 
                       >No
@@ -125,6 +124,7 @@
                     <div style="display:flex;gap:1em;margin-top:0.5em">
                       <label style="flex:1"
                         ><input
+                          required
                           type="radio"
                           name="attributes[site_survey]"
                           value="Yes"
@@ -160,6 +160,7 @@
                 <div style="display:flex;gap:1em;margin-top:0.5em">
                   <label style="flex:1"
                     ><input
+                      required
                       type="radio"
                       name="attributes[remote_tour]"
                       value="Yes"
