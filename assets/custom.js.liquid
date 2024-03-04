@@ -583,5 +583,10 @@ $(document).ready(function() {
   //     $("#vid2").click();
   // })
 
-
+ (()=>{
+                fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
+                  document.querySelector('html').setAttribute('city', res.city)
+                 
+                })
+              })()
 });
