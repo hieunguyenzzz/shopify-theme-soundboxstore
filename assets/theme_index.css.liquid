@@ -8948,6 +8948,12 @@ section#shopify-pc__banner .shopify-pc__banner__wrapper{
   [city="London"] .grfq__popupForm__formGroup:has([name="request_remote_tour"]){
     display:none
 }
+   .grfq__popupForm__formGroup:has([name="request-showroom-visit"]), .grfq__popupForm__formGroup:has([name="free-site-survey"]){
+    display:none
+}
+    [city="London"] .grfq__popupForm__formGroup:has([name="request-showroom-visit"]),[city="London"] .grfq__popupForm__formGroup:has([name="free-site-survey"]){
+    display:block
+}
 {%- endcapture -%}
 
 {%- assign before =  content.size -%}
