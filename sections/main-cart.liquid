@@ -156,6 +156,7 @@
                 "
               >
                 Would you like to arrange a remote viewing?
+                {{ 'strings.others.remote_viewing_question' | t }}
                 <div style="display:flex;gap:1em;margin-top:0.5em">
                   <label style="flex:1"
                     ><input
@@ -167,8 +168,8 @@
                         checked
                       {% endif %}
                       style="font-size: 1em;margin-top: 0.25em;"
-
-                    >Yes
+                    >
+                    {{- 'strings.others.Yes' | t }}
                   </label>
                   <label style="flex:1"
                     ><input
@@ -177,8 +178,8 @@
                       value="No"
 
                       style="font-size: 1em;margin-top: 0.25em;"
-
-                    >No
+                    >
+                    {{- 'strings.others.No' | t }}
                   </label>
                 </div>
               </div>
