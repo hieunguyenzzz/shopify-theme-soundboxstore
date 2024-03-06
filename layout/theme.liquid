@@ -377,14 +377,6 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    <input
-      style="display:none"
-      type="radio"
-      data-type="radio-group"
-      name="radio-group-currency"
-      checked
-      value="{{  localization.country.currency.iso_code }}"
-    >
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -477,7 +469,7 @@
     <script>
       forceProductPriceSelector = '.grfq-price';
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-        console.log('12321321');
+        document.querySelector(".grfq__popupForm__formInput [name=\"Currency\"]").value="{{ localization.country.currency.iso_code }}"
       });
     </script>
     <style>
