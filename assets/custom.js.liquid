@@ -586,28 +586,28 @@ $(document).ready(function() {
  (()=>{
                 fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
                   document.querySelector('html').setAttribute('city', res.city);
-                  if(res.city==='London'){
-                             document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-                          let showroom_visit_Field = document.querySelector("#request-showroom-visit-option-0")
-                          let site_survey_Field = document.querySelector("#free-site-survey-option-0")
-                          if(showroom_visit_Field){
-                            showroom_visit_Field.required=true
+                  // if(res.city==='London'){
+                  //            document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+                  //         let showroom_visit_Field = document.querySelector("#request-showroom-visit-option-0")
+                  //         let site_survey_Field = document.querySelector("#free-site-survey-option-0")
+                  //         if(showroom_visit_Field){
+                  //           showroom_visit_Field.required=true
 
-                          }
-                                    if(site_survey_Field){
-                            site_survey_Field.required=true
+                  //         }
+                  //                   if(site_survey_Field){
+                  //           site_survey_Field.required=true
 
-                          }
-                        });
-                  }else{
-                         document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-                          let remote_tour_Field = document.querySelector("#request_remote_tour-option-0")
-                          if(remote_tour_Field){
-                            remote_tour_Field.required=true
+                  //         }
+                  //       });
+                  // }else{
+                  //        document.addEventListener('GRFQ:Popup_Form_rendered', function () {
+                  //         let remote_tour_Field = document.querySelector("#request_remote_tour-option-0")
+                  //         if(remote_tour_Field){
+                  //           remote_tour_Field.required=true
 
-                          }
-                        });
-                  }
+                  //         }
+                  //       });
+                  // }
          
                  
                 })
