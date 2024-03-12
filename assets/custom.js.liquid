@@ -584,7 +584,12 @@ $(document).ready(function() {
   // })
 
  (()=>{
-                fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
+             // Listen for the event.
+          document.addEventListener(
+            "app:ready",
+            (e) => {
+              /* … */
+               fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
                   document.querySelector('html').setAttribute('city', res.city);
                   if(res.city==='London' && GRFQConfigs?.form_elements){
  let field_showroom = GRFQConfigs.form_elements.find(i=>i.code==="request-showroom-visit")
@@ -606,3 +611,9 @@ $(document).ready(function() {
                 })
               })()
 });
+            },
+            false,
+          );
+
+          // Dispatch the event.
+              
