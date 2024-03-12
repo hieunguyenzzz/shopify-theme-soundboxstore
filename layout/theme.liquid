@@ -528,18 +528,6 @@
             t.parentNode.insertBefore(s, t);
           })()
           const event = new Event("app:ready");
-
-          // Listen for the event.
-          document.addEventListener(
-            "build",
-            (e) => {
-              /* … */
-              console.log(123)
-            },
-            false,
-          );
-
-          // Dispatch the event.
           document.dispatchEvent(event);
         }
       }
