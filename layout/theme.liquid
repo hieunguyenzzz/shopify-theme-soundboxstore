@@ -39,18 +39,18 @@
     <!-- Google tag (gtag.js) -->
     <!--
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
               gtag('consent', 'default', {
         'ad_storage': 'denied',
         'analytics_storage': 'denied'
       });
 
-            gtag('config', 'G-0HET6EXHTH');
-          </script>
+          gtag('config', 'G-0HET6EXHTH');
+        </script>
     -->
 
     <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
@@ -527,6 +527,20 @@
             t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
           })()
+          const event = new Event("app:ready");
+
+          // Listen for the event.
+          document.addEventListener(
+            "build",
+            (e) => {
+              /* … */
+              console.log(123)
+            },
+            false,
+          );
+
+          // Dispatch the event.
+          document.dispatchEvent(event);
         }
       }
       document.addEventListener("click", MeroxIO_Function);
