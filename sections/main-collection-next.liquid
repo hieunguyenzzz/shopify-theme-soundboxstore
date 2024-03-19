@@ -83,6 +83,9 @@
         width:100%
       }
      }
+  .main-collection-next .image img:not(first-child){
+    display:none
+  }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div>
