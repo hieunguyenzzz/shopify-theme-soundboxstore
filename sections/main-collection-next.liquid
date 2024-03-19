@@ -89,6 +89,9 @@
   .main-collection-next .collection-template-grid-item:hover  .image img:not(first-child){
     display:block
   }
+  .main-collection-next .collection-template-grid-item:hover  .image.had img:first-child{
+    display:block
+  }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div>
@@ -149,7 +152,7 @@
                 | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
               }}
             {% endif %}
-            <a class="image" href="{{ url }}">
+            <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
               {% if image %}
                 {{
                   image
