@@ -127,6 +127,7 @@
         {% endif %}
         {% if block.type == 'product' %}
           {% assign image = block.settings.image %}
+          {% assign image2 = block.settings.image_2 %}
           {% assign image_bg = block.settings.image_bg %}
           {% assign title = block.settings.title | default: block.settings.product.title %}
           {% assign content = block.settings.content | default: block.settings.product.description %}
@@ -146,6 +147,13 @@
               {% if image %}
                 {{
                   image
+                  | image_url: width: 700
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                }}
+              {% endif %}
+              {% if image2 %}
+                 {{
+                  image2
                   | image_url: width: 700
                   | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
                 }}
@@ -321,7 +329,7 @@
         },
           {
           "type": "image_picker",
-          "id": "image-2",
+          "id": "image_2",
           "label": "Image 2"
         },
         {
