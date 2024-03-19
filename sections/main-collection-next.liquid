@@ -86,6 +86,9 @@
   .main-collection-next .image img:not(first-child){
     display:none
   }
+  .main-collection-next .collection-template-grid-item:hover  .image img:not(first-child){
+    display:block
+  }
 </style>
 {% assign collection = section.settings.collection | default: collections.all %}
 <div>
