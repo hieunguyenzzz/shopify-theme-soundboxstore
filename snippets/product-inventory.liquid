@@ -69,7 +69,6 @@
   {%- endif -%}
     window.inventories['{{ product.id }}'][{{ variant.id }}] = {
       'quantity': {{ variant.inventory_quantity | default: quantity_default }},
-      'instock': {{ instock }},
       'incoming': '{{ variant.incoming | default: false }}',
       'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
     };
