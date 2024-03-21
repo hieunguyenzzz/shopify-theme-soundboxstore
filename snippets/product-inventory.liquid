@@ -1,8 +1,5 @@
 {%- assign inventory_visible = false -%}
-{%- assign instock = 'false' -%}
-{% if current_variant.inventory_quantity > 0 %}
-  {%- assign instock = 'true' -%}
-{% endif %}
+
 {%- if current_variant.inventory_management == 'shopify' -%}
   {%- if current_variant.inventory_quantity <= block.settings.inventory_threshold and current_variant.inventory_quantity >= 0 -%}
     {%- assign inventory_visible = true -%}
@@ -23,7 +20,7 @@
 <ul class="sales-points">
   <li class="sales-point">
     <span class="icon-and-text{% if inventory_visible == true %} inventory--low{% endif %}{% unless current_variant.available %} hide{% endunless %}">
-      <span data-instock="{{ instock }}" data-quantity="{{ current_variant.inventory_quantity }}" data-product-inventory data-threshold="{{ block.settings.inventory_threshold }}">
+      <span data-product-inventory data-threshold="{{ block.settings.inventory_threshold }}">
         {%- if inventory_visible -%}
           {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
         {%- else -%}
