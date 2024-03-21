@@ -64,9 +64,6 @@
   window.inventories['{{ product.id }}'] = {};
    {% for variant in variants_with_inventory_tracking %}
       {%- assign quantity_default = variant.inventory_quantity | default: 0 -%}
-  {%- if variant.available -%}
-    {%- assign quantity_default = 1 -%}
-  {%- endif -%}
     window.inventories['{{ product.id }}'][{{ variant.id }}] = {
       'quantity': {{ quantity_default }},
       'incoming': '{{ variant.incoming | default: false }}',
