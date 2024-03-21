@@ -8188,7 +8188,6 @@ lazySizesConfig.expFactor = 4;
 
         var el = this.container.querySelector(this.selectors.inventory);
         var salesPoint = el.closest(".product-block");
-console.log({qty,inventoryThreshold:this.settings.inventoryThreshold})
         if (parseInt(qty) <= parseInt(this.settings.inventoryThreshold)) {
           el.parentNode.classList.add("inventory--low");
           el.textContent = theme.strings.stockLabel.replace("[count]", qty);
