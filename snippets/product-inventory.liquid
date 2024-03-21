@@ -63,9 +63,25 @@
   window.inventories = window.inventories || {};
   window.inventories['{{ product.id }}'] = {};
    {% for variant in variants_with_inventory_tracking %}
-     
+     {%- if variant.inventory_management == 'shopify' -%}
+  {%- if variant.inventory_quantity <= block.settings.inventory_threshold and variant.inventory_quantity >= 0 -%}
+    {%- assign inventory_visible = true -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- liquid
+  if variant.inventory_quantity == 0 or variant.inventory_policy == 'continue'
+    assign inventory_visible = false
+  endif
+    assign instock = false
+  if inventory_visible
+    assign instock = true
+  endif
+
+-%}
     window.inventories['{{ product.id }}'][{{ variant.id }}] = {
       'quantity': {{ variant.inventory_quantity | default: 0 }},
+      'instock': {{ instock }},
       'incoming': '{{ variant.incoming | default: false }}',
       'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
     };
