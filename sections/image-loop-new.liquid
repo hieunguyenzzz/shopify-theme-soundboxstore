@@ -62,11 +62,6 @@
               }}
               <div
                 class="col-wrap"
-                {% if forloop.first %}
-                  style="margin-right: 0;"
-                {% else %}
-                  style="left: 0;"
-                {% endif %}
               >
                 {% if block.settings.title != blank %}
                   <h2 class="title-font">{{ block.settings.title }}</h2>
