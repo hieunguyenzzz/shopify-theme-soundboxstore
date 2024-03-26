@@ -1,10 +1,9 @@
-{% assign option1 = variant.option1 %}
+{% assign _variant = variant %}
 {%- liquid
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
   endif
-
   assign product_tags = product.tags | join: ','
   assign has_custom_label = false
   assign custom_labels = ''
@@ -21,12 +20,6 @@
     endfor
   endif
 -%}
-{% assign _variant = product.selected_or_first_available_variant %}
-{% for v in product.variants %}
-  {% if v.option1 == option1 %}
-    {% assign _variant = v %}
-  {% endif %}
-{% endfor %}
 <div
   data-option1="{{ option1 }}"
   class="grid-item grid-product {{ classes }}"
