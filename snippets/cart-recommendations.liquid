@@ -13,9 +13,7 @@
     data-view="small"
   >
     {% for item in cart.items %}
-      <script type="application/json">
-        {{ item.variant | json }}
-      </script>
+      <script type="application/json"></script>
       {% for product in item.product.metafields.custom.upsell_list.value %}
         {%- assign handle = product.handle | append: ',' -%}
         {%- unless exitred contains handle -%}
