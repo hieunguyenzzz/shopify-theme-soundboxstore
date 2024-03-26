@@ -13,14 +13,11 @@
     data-view="small"
   >
     {% for item in cart.items %}
-      <script type="application/json" style="display:none">
-        {{ item.variant | json }}
-      </script>
       {% for product in item.product.metafields.custom.upsell_list.value %}
         {%- assign handle = product.handle | append: ',' -%}
         {%- unless exitred contains handle -%}
           {%- liquid
-            render 'cart-product-grid-item', product: product
+            render 'cart-product-grid-item', product: product, variant: item.variant
 
             if settings.quick_shop_enable
               render 'quick-shop-modal', product: product
