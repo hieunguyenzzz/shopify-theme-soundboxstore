@@ -15,16 +15,14 @@
     {% for item in cart.items %}
       {% for variant in item.variant.metafields.custom.upsell.value %}
         {%- assign handle = variant.product.handle | append: ',' -%}
-        {%- unless exitred contains handle -%}
-          {%- liquid
-            render 'cart-product-grid-item', product: product, variant: variant
+        {%- liquid
+          render 'cart-product-grid-item', product: product, variant: variant
 
-            if settings.quick_shop_enable
-              render 'quick-shop-modal', product: product
-            endif
-          -%}
-          {%- assign exitred = exitred | append: handle -%}
-        {%- endunless -%}
+          if settings.quick_shop_enable
+            render 'quick-shop-modal', product: product
+          endif
+        -%}
+        {%- assign exitred = exitred | append: handle -%}
       {% endfor %}
     {% endfor %}
     {%- if exitred == blank -%}
