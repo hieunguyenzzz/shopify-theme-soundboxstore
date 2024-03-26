@@ -1,4 +1,4 @@
-
+{% assign option1 = variant.option1 %}
 {%- liquid
   assign on_sale = false
   if product.compare_at_price > product.price
@@ -23,6 +23,7 @@
 -%}
 
 <div
+  data-option1="{{ option1 }}"
   class="grid-item grid-product {{ classes }}"
   data-product-handle="{{ product.handle }}"
   data-product-id="{{ product.id }}"
@@ -203,13 +204,10 @@
             >
           </div>
         {%- endif -%}
-
       </div>
 
       <div class="grid-item__meta">
         <div class="grid-item__meta-main">
-         
-
           <div class="grid-product__title">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
             <div class="grid-product__vendor">{{ product.vendor }}</div>
@@ -217,7 +215,7 @@
         </div>
         <div class="grid-item__meta-secondary">
           <div class="grid-product__price">
-            <p class="price-title">{{ 'strings.others.starting_from'|t }}</p>
+            <p class="price-title">{{ 'strings.others.starting_from' | t }}</p>
             {%- if product.price_varies -%}
               <span class="grid-product__price--current">
                 {%- render 'price-varies', price: product.price_min -%}
