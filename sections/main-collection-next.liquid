@@ -116,7 +116,8 @@
             {% assign image = product.featured_image %}
             {% assign image2 = product.images[1] %}
             {% assign title = product.title %}
-             {% assign image_bg = block.settings.image_bg %}
+            {% assign image_bg = block.settings.image_bg %}
+            {% assign image_bg_2 = block.settings.image_bg_2 %}
             {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
             {% assign url = product.url %}
             <div
@@ -330,6 +331,17 @@
           "type": "image_picker",
           "id": "image_bg",
           "label": "background Image"
+        },
+         {
+          "type": "image_picker",
+          "id": "image_bg_2",
+          "label": "background Image 2"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Browse Further"
         },
         {
           "type": "select",
