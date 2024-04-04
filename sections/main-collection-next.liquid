@@ -106,10 +106,15 @@
         {% assign hadBlock = true %}
         {% if block.type == 'product_grid' %}
           {%- for product in collection.products -%}
-            {% assign image = product.variants[0].metafields.global.images.value[0]  %}
-            {{ product.variants[0].metafields.global.images.value }}
-            {{ image  }}
-            {% assign image2 = product.variants[1].metafields.global.images.value[0]   %}
+            {% for img in  product.variants[0].metafields.global.images.value %}
+              {% if forloop.first %}
+                {% assign image = img  %}
+              {% endif %}
+              {% if forloop.index == 1 %}
+            {% assign image2 = img   %}
+              {% endif %}
+            {% endfor %}
+
             {% assign title = product.title %}
             {% assign image_bg = block.settings.image_bg %}
             {% assign image_bg_2 = block.settings.image_bg_2 | default: image_bg %}
