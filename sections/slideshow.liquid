@@ -153,6 +153,10 @@
                             <div class="hero__subtitle">
                               {{ block.settings.subheading | escape }}
                             </div>
+                             {% else %}
+                            <div class="hero__subtitle hero__description">
+                              {{ collection.description }}
+                            </div>
                           {%- endunless -%}
                           {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
                             <div class="hero__link">
