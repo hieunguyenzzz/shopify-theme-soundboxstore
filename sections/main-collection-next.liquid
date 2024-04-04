@@ -151,7 +151,7 @@
               <div class="description">{{ content }}</div>
               <div class="collection-btn-group">
                 <a href="{{ url }}" class="btn buy-btn">
-                  {{- block.settings.button_text -}}
+                  {{- block.settings.button_text | default:'Browse Further' -}}
                 </a>
               </div>
             </div>
