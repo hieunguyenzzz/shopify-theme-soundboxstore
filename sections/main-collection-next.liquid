@@ -107,7 +107,7 @@
         {% if block.type == 'product_grid' %}
           {%- for product in collection.products -%}
             {% assign image = product.variants[0].metafields.global.images.value.first  %}
-            {{ product.variants[0].metafields.global.images.first  }}
+            {{ product.variants[0].metafields.global.images | json  }}
             {% assign image2 = product.variants[1].metafields.global.images.value.first  %}
             {% assign title = product.title %}
             {% assign image_bg = block.settings.image_bg %}
