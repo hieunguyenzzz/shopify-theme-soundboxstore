@@ -143,19 +143,15 @@
                           <div class="hero__subtitle">
                             {{ block.settings.subheading_richtext }}
                           </div>
-                          {% else %}
-                          <div class="hero__subtitle hero__description">
+                       
+                        {% endif %}
+                           <div class="hero__subtitle hero__description">
                             {{ collection.description }}
                           </div>
-                        {% endif %}
                         {%- if block.settings.subheading or block.settings.link or block.settings.link_2 -%}
                           {%- unless block.settings.subheading == blank -%}
                             <div class="hero__subtitle">
                               {{ block.settings.subheading | escape }}
-                            </div>
-                             {% else %}
-                            <div class="hero__subtitle hero__description">
-                              {{ collection.description }}
                             </div>
                           {%- endunless -%}
                           {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
