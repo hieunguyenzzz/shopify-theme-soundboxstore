@@ -117,7 +117,7 @@
             {% assign image2 = product.images[1] %}
             {% assign title = product.title %}
             {% assign image_bg = block.settings.image_bg %}
-            {% assign image_bg_2 = block.settings.image_bg_2 %}
+            {% assign image_bg_2 = block.settings.image_bg_2 | default: image_bg %}
             {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
             {% assign url = product.url %}
             <div
