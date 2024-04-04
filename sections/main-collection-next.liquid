@@ -106,8 +106,8 @@
         {% assign hadBlock = true %}
         {% if block.type == 'product_grid' %}
           {%- for product in collection.products -%}
-            {% assign image = product.variants[1].image %}
-            {% assign image2 = product.variants[2].image %}
+            {% assign image = product.variants[0].image %}
+            {% assign image2 = product.variants[1].image %}
             {% assign title = product.title %}
             {% assign image_bg = block.settings.image_bg %}
             {% assign image_bg_2 = block.settings.image_bg_2 | default: image_bg %}
@@ -124,7 +124,7 @@
                 | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
               }}
             {% endif %}
-            <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
+            <a class="image {% if image2 %} had {% endif %}" href="{{ url }}" style="mix-blend-mode: darken;">
               {% if image %}
                 {{
                   image
