@@ -98,7 +98,7 @@
     display:none
   }
 </style>
-{% assign collection = section.settings.collection | default: collections.all %}
+{% assign collection = section.settings.collection %}
 <div>
   {% if block.settings.image_bg %}
     {{
