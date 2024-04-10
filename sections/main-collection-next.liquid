@@ -195,7 +195,7 @@
             </a>
             <div class="content">
               <h3>{{ title }}</h3>
-              <div class="description">{{ content }}</div>
+              <div class="description">{{  content | strip_html | truncate: 200, '. . . '  }}</div>
               <div class="collection-btn-group">
                 <a href="{{ url }}" class="btn buy-btn">
                   {{- block.settings.button_text -}}
