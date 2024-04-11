@@ -170,6 +170,7 @@
           {% assign url = block.settings.url | default: block.settings.product.url %}
           <div
             id="{{ block.settings.product.handle }}"
+            {{ block.shopify_attributes }}
             class="collection-template-grid-item"
           >
             {% if image_bg %}
