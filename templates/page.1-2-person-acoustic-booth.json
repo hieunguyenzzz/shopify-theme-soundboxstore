@@ -222,6 +222,47 @@
         "collection": ""
       }
     },
+    "main-collection-1": {
+      "type": "main-collection-next",
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "office-phone-booth-folio-2-4-person",
+            "image": "shopify:\/\/shop_images\/Folio_4_Person_01_Dark_Grey.png",
+            "image_2": "shopify:\/\/shop_images\/Folio_4_Person_02_Dark_Grey.png",
+            "image_bg": "shopify:\/\/shop_images\/SBS-col-bg1_56ef9ead-7618-45aa-9516-c9a3384e9cde.png",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>{{ block.settings.product.metafields.custom.description | metafield_tag }}<\/p>",
+            "button_text": "Browse Further",
+            "url": "shopify:\/\/products\/office-phone-booth-folio-2-4-person"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "office-phone-booth-folio-2-4-person",
+            "image": "shopify:\/\/shop_images\/Folio_4_Person_01_Dusty_Teal.png",
+            "image_2": "shopify:\/\/shop_images\/Folio_4_Person_02_Dusty_Teal.png",
+            "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>{{ block.settings.product.metafields.custom.description | metafield_tag }}<\/p>",
+            "button_text": "Browse Further",
+            "url": "shopify:\/\/products\/office-phone-booth-folio-2-4-person"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2"
+      ],
+      "custom_css": [
+        ".index-section {padding: 0;}"
+      ],
+      "settings": {
+        "collection": ""
+      }
+    },
     "5c80aa2e-8986-401d-b302-b4b94beb7891": {
       "type": "slideshow",
       "blocks": {
@@ -519,6 +560,7 @@
     "94798879-c49e-4f4a-838f-3563f7779a6c",
     "5c80aa2e-8986-401d-b302-b4b94beb7891",
     "main-collection-2",
+    "main-collection-1",
     "77a1042c-44e2-40ba-adcb-f33ca7c5f3a5",
     "04e915ad-dc54-4882-8c19-69a67c786f0b",
     "f6ac66f9-6f01-49e0-ba3c-8e364479fe1b",
