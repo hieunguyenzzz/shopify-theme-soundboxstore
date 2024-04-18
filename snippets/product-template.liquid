@@ -591,15 +591,24 @@
                   {%- when 'ticks' -%}
                     {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     <ul
+                      {{ block.shopify_attributes }}
                       style="
-                        display: grid;
+                                           display: grid;
                         list-style: none;
                         margin: 0;
-                        font-size: 1rem;
+                        font-size: 13.5px;
+                        line-height: 1.2;
+                        gap: 0.3em;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
                       "
                     >
                       {% for line in texts %}
-                        <li>
+                        <li
+                          style="
+                            display: flex;
+                            gap: 0.3em;
+                          "
+                        >
                           <span
                             class="icon icon--inventory"
                             style="
