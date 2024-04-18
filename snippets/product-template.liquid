@@ -409,14 +409,13 @@
                               color_option_index: color_option_index
                             -%}
                           {%- else -%}
-                            {%-
-                              render 'variant-dropdown',
+                            {%- render 'variant-dropdown',
                               product: product,
                               form_id: form_id,
                               section_id: section_id,
                               option: option,
                               forloop: forloop,
-                              variant_labels: block.settings.variant_labels,
+                              variant_labels: block.settings.variant_labels
                             -%}
                           {%- endif -%}
                         {%- endfor -%}
@@ -589,6 +588,13 @@
                         share_image: product
                       -%}
                     </div>
+                  {%- when 'ticks' -%}
+                    <ul>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
                   {%- when 'trust_badge' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div style="max-width: {{ block.settings.trust_image.width }}px; margin: 0 auto;">
