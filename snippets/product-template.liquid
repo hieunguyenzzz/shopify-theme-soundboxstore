@@ -591,9 +591,9 @@
                   {%- when 'ticks' -%}
                     {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     <ul style="display:none">
-                      <li>{{ texts[0] }}</li>
-                      <li></li>
-                      <li></li>
+                      {% for line in texts %}
+                        <li>{{ line }}</li>
+                      {% endfor %}
                       <li></li>
                     </ul>
                   {%- when 'trust_badge' -%}
