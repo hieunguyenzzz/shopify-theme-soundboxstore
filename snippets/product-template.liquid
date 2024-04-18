@@ -164,9 +164,12 @@
                   {%- when 'separator' -%}
                     <div class="product-block"><hr></div>
                   {%- when 'text' -%}
-                    <div class="product-block product-block-text" {{ block.shopify_attributes }}>
-                      {{ block.settings.text }}
-                    </div>
+                    {% assign texthide = true %}
+                    {% unless texthide %}
+                      <div class="product-block product-block-text" {{ block.shopify_attributes }}>
+                        {{ block.settings.text }}
+                      </div>
+                    {% endunless %}
                   {%- when 'richtext' -%}
                     <div class="product-block product-block-richtext" {{ block.shopify_attributes }}>
                       {{ block.settings.richtext }}
