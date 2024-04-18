@@ -589,7 +589,7 @@
                       -%}
                     </div>
                   {%- when 'ticks' -%}
-                    {% assign texts = block.settings.richtext | split: '\n' %}
+                    {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     <ul style="display:none">
                       <li>{{ texts[0] }}</li>
                       <li></li>
