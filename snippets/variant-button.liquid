@@ -1,5 +1,8 @@
 {%- assign swatch_file_extension = 'png' -%}
 <div
+  {% if option.values.size == 1 %}
+    style="display:none"
+  {% endif %}
   class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
   data-type="button"
 >
@@ -22,9 +25,7 @@
   <div
     class="variant-input-wrap"
     name="{{ option.name }}"
-    {% if option.values.size == 1 %}
-      style="display:none"
-    {% endif %}
+
     data-index="option{{ option_index }}"
     data-handle="{{ option.name | handleize }}"
     id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
