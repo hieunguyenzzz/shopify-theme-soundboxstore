@@ -592,7 +592,7 @@
                     {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     <ul style="display:none">
                       {% for line in texts %}
-                        <li>{{ line }}</li>
+                        <li>{{ line | rstrip }}</li>
                       {% endfor %}
                       <li></li>
                     </ul>
