@@ -590,19 +590,29 @@
                     </div>
                   {%- when 'ticks' -%}
                     {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
-                    <ul style="    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    list-style: none;
-    margin: 0;
-    gap: 1em;
-    font-size: 1rem;">
+                    <ul
+                      style="
+                        display: grid;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                        list-style: none;
+                        margin: 0;
+                        gap: 1em;
+                        font-size: 1rem;
+                      "
+                    >
                       {% for line in texts %}
-                        <li <span class="icon icon--inventory" style="
-    position: relative;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-"></span>{{ line | rstrip }}</li>
+                        <li>
+                          <span
+                            class="icon icon--inventory"
+                            style="
+                              position: relative;
+                              width: 25px;
+                              height: 25px;
+                              margin-right: 10px;
+                            "
+                          ></span>
+                          {{- line | rstrip }}
+                        </li>
                       {% endfor %}
                       <li></li>
                     </ul>
