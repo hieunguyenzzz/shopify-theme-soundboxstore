@@ -18,4 +18,10 @@
 {%- if localization.country.iso_code == 'CH' -%}
   {%- assign phone = settings.phone_number_ch -%}
 {%- endif -%}
+{%- if localization.country.iso_code == 'FR' -%}
+  {%- assign phone = settings.phone_number_fr -%}
+{%- endif -%}
+{%- if localization.country.iso_code == 'IT' -%}
+  {%- assign phone = settings.phone_number_it -%}
+{%- endif -%}
 {{ phone }}
