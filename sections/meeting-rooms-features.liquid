@@ -28,6 +28,7 @@
       padding: 0.2em 0.5em;
       background-color: #f1f1f1;
       position: relative;
+      font-weight:bold;
     }
     .features-list-row-wrap > label::after {
       transition: all 0.3s ease-in-out;
@@ -325,8 +326,8 @@
             <img
               loading="lazy"
               style="width:100%"
-            width="675"
-            height="675"
+              width="675"
+              height="675"
               srcset="
                 {% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
                 {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
