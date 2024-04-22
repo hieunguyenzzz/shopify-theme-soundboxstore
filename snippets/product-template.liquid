@@ -312,10 +312,10 @@
                           {%- render 'price' with current_variant.unit_price -%}</span
                         >/{{ unit_price_base_unit }}
                       </div>
-                      {% unless block.settings.desc == blank %}
-                        <div style="display:none">{{ block.settings.desc }}</div>
-                      {% endunless %}
                     </div>
+                    {% unless block.settings.desc == blank %}
+                      <div style="display:none">{{ block.settings.desc }}</div>
+                    {% endunless %}
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div class="product__quantity">
