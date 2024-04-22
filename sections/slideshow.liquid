@@ -152,13 +152,13 @@
                           {%- endunless -%}
                           {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
                             <style>
-                              [data-city="London"]{
+                              [data-onlycity="London"]{
                                 display:none
                               }
-                              [city="London"] [data-city="London"]{
+                              [city="London"] [data-onlycity="London"]{
                                 display:block
                               }
-                               [city="London"] [data-city="other"]{
+                               [city="London"] [data-onlycity="other"]{
                                 display:none
                               }
                             </style>
