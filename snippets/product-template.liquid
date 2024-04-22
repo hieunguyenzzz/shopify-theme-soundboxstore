@@ -231,6 +231,9 @@
                           <span class="vat_text">(INC VAT)</span>
                         {%- endif -%}
                       </span>
+                      {% unless block.settings.desc == blank %}
+                        <div style="display:hidden">{{ block.settings.desc }}</div
+                      {% endunless %}
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
                         {%- if current_variant.compare_at_price > current_variant.price -%}
