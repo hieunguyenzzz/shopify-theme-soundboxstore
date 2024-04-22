@@ -314,7 +314,15 @@
                       </div>
                     </div>
                     {% unless block.settings.desc == blank %}
-                      <div style="display:none">{{ block.settings.desc }}</div>
+                      <div
+                        style="
+                          font-size: 0.7em;
+                          margin-top: -20px;
+                          margin-bottom: 20px;
+                        "
+                      >
+                        {{ block.settings.desc }}
+                      </div>
                     {% endunless %}
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
