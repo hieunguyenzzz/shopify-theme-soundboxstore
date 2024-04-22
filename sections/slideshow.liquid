@@ -151,15 +151,32 @@
                             </div>
                           {%- endunless -%}
                           {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
+                            <style>
+                              [data-city="London"]{
+                                display:none
+                              }
+                              [city="London"] [data-city="London"]{
+                                display:block
+                              }
+                               [city="London"] [data-city="other"]{
+                                display:none
+                              }
+                            </style>
                             <div class="hero__link">
                               {% assign pageF = pages['remote-tours'] %}
                               {% assign textF = pageF.title %}
-                              {% if localization.country.iso_code == 'GB' %}
-                                {% assign pageF = pages['showroom-london'] %}
-                                {% assign textF = 'Showroom visit' %}
-                              {% endif %}
+                              <a
+                                data-onlycity="other"
+                                href="{{pageF.url }}"
+                                class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                              >
+                                {{ textF }}
+                              </a>
+                              {% assign pageF = pages['showroom-london'] %}
+                              {% assign textF = 'Showroom visit' %}
                               <a
                                 href="{{pageF.url }}"
+                                data-onlycity="London"
                                 class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
                               >
                                 {{ textF }}
