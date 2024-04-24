@@ -125,7 +125,7 @@
 {%- for block in section.blocks -%}
   {% if block.settings.background_color != blank %}
     <style>
-      .brand-details-section .slide-{{ block.id }} .slide-wrap{background-color:{{ block.settings.background_color }};}
+      .brand-details-section .slide-{{ block.id }} {background-color:{{ block.settings.background_color }};}
     </style>
   {% endif %}
 {% endfor %}
