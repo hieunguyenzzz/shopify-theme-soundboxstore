@@ -23,7 +23,7 @@
 {% endif %}
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
-    {% if section.settings.title %}
+    {% if section.settings.title != blank %}
       <div class="section-header text-center">
         <h2 class="title-font">{{ section.settings.title }}</h2>
       </div>
