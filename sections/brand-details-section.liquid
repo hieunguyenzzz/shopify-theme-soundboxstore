@@ -32,7 +32,7 @@
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in section.blocks -%}
         <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
-          <div class="slide-wrap">
+          <div class="slide-wrap page-width">
             {% if block.settings.title != blank %}
               <h2 class="title-font">{{ block.settings.title }}</h2>
             {% endif %}
