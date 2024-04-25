@@ -97,6 +97,49 @@
                           </div>
                         </div>
                       {% endif %}
+
+                      {% if block.settings.slide_image4 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image4
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image5 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image5
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image6 != blank %}
+                        <div class="image-col">
+                          <div class="image-wrap">
+                            {{
+                              block.settings.slide_image6
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
                     </div>
                     {% if block.settings.slider %}
                       <script>
