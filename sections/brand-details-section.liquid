@@ -51,7 +51,10 @@
                 </div>
                 <div class="col right-col">
                   <div class="col-wrap">
-                    <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
+                    <div
+                      id="slider-{{ block.id }}"
+                      class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}"
+                    >
                       {% if block.settings.slide_image1 != blank %}
                         <div class="image-col">
                           <div class="image-wrap">
@@ -95,6 +98,17 @@
                         </div>
                       {% endif %}
                     </div>
+                    {% if block.settings.slider %}
+                      <script>
+                        $(document).ready(function(){
+                          $('#slider-{{ block.id }}').slick({
+                            infinite: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                          });
+                        })
+                      </script>
+                    {% endif %}
                   </div>
                 </div>
               </div>
