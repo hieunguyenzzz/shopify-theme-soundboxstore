@@ -19,7 +19,7 @@
             <div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}<a href="{{ section.settings.button_link }}">{%- endif -%}
                 <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.image.aspect_ratio }}%;">
-                  {{ section.settings.image | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop_width: 512, crop_height: 512 | image_tag: class: 'feature-row__image lazyload' }}
+                  {{ section.settings.image | image_url: width:section.settings.image_width ,height:section.settings.image_width ,crop_left: 32, crop_top: 32, crop_width: 512, crop_height: 512 | image_tag: class: 'feature-row__image lazyload' }}
                 </div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}</a>{%- endif -%}
             </div>
@@ -28,7 +28,7 @@
             <div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}<a href="{{ section.settings.button_link }}">{%- endif -%}
                 <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.image2.aspect_ratio }}%;">
-                  {{ section.settings.image2 | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop_width: 512, crop_height: 512| image_tag: class: 'feature-row__image lazyload' }}
+                  {{ section.settings.image2 | image_url: width:section.settings.image_width ,height:section.settings.image_width ,crop_left: 32, crop_top: 32, crop_width: 512, crop_height: 512| image_tag: class: 'feature-row__image lazyload' }}
                 </div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}</a>{%- endif -%}
             </div>
