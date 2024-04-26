@@ -19,9 +19,7 @@
             <div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}<a href="{{ section.settings.button_link }}">{%- endif -%}
                 <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.image.aspect_ratio }}%;">
-                  {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                 
-                  {{ section.settings.image | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop: 'center' | image_tag: class: 'feature-row__image lazyload' }}
+                  {{ section.settings.image | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop_width: 512, crop_height: 512 | image_tag: class: 'feature-row__image lazyload' }}
                 </div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}</a>{%- endif -%}
             </div>
@@ -30,8 +28,7 @@
             <div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}<a href="{{ section.settings.button_link }}">{%- endif -%}
                 <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.image2.aspect_ratio }}%;">
-                  {%- assign img_url = section.settings.image2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                  {{ section.settings.image2 | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop: 'center' | image_tag: class: 'feature-row__image lazyload' }}
+                  {{ section.settings.image2 | image_url: width:section.settings.image_width ,height:section.settings.image_width , crop_width: 512, crop_height: 512| image_tag: class: 'feature-row__image lazyload' }}
                 </div>
               {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}</a>{%- endif -%}
             </div>
