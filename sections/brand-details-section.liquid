@@ -21,10 +21,20 @@
   </style>
 {% endif %}
 <style>
-   .image-group img{
-          border-radius: 0.4em;
-  border-top-right-radius: min(4em,12vw);
+     .image-group img{
+            border-radius: 0.4em;
+    border-top-right-radius: min(4em,12vw);
 
+    }
+    .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col{
+      max-width:100%;
+
+  }
+  .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col .image-wrap:after{
+      display:none
+  }
+  .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col .image-wrap img{
+      position:relative
   }
 </style>
 <section class="brand-details-section">
