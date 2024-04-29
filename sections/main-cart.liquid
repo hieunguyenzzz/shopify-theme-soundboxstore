@@ -322,6 +322,21 @@
           {% if accordion_blocks.size > 0 %}
             <div class="additional-info-block">
               <div class="accordion-block">
+                <div class="set eu_tax_mess">
+                  <div class="title-block active">
+                    <span
+                      class="icon icon--inventory"
+                      style="
+                                                 position: relative;
+                        width: 25px;
+                        height: 25px;
+                        flex-shrink: 0;
+                        margin-top: -0.3em;
+                      "
+                    ></span>
+                    <h3>{{ 'cart.general.eu_tax_mess' | t }}</h3>
+                  </div>
+                </div>
                 {% for block in accordion_blocks %}
                   <div class="set">
                     {% if block.settings.title != blank %}
