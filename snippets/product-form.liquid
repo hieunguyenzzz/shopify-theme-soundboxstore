@@ -66,6 +66,7 @@
       {{ button_text }}
     </span>
   </button>
+
   {% assign isResserllerOrTradeAccount = false %}
 
   {% if customer %}
@@ -86,6 +87,17 @@
         display:none
       }
     </style>
+    <button
+      type="button"
+      class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
+      id="rfq-btn-0"
+      data-product-id="{{ product.id }}"
+      onclick="GRFQApp.addProduct(this,{{ product.id }})"
+    >
+      <span data-add-to-cart-text="" data-default-text="Add to cart">Add to Quote</span>
+    </button>
+  {% endif %}
+  {% if show_add_quote %}
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
