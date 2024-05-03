@@ -154,9 +154,7 @@
             </div>
 
             <div class="product-blocks-wrap" data-product-blocks>
-              {%- capture form_id -%}
-                AddToCartForm-{{ section_id }}-{{ product.id }}
-              {%- endcapture -%}
+              {%- capture form_id -%}AddToCartForm-{{ section_id }}-{{ product.id }}{%- endcapture -%}
               {%- for block in blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
