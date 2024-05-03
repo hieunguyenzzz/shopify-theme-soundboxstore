@@ -47,9 +47,6 @@
   -%}
 
   <button
-    {% if current_variant.price == 0 %}
-      style="display:none"
-    {% endif %}
     {% if product.empty? %}
       type="button"
     {% else %}
