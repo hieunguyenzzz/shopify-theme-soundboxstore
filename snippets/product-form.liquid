@@ -78,32 +78,24 @@
       {% assign isResserllerOrTradeAccount = true %}
     {% endif %}
   {% endif %}
-  {% if isResserllerOrTradeAccount %}
-    <style>
-      [data-add-to-cart]{
-        display:none
-      }
-    </style>
-    <button
-      type="button"
-      class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
-      id="rfq-btn-0"
-      data-product-id="{{ product.id }}"
-      onclick="GRFQApp.addProduct(this,{{ product.id }})"
-    >
-      <span data-add-to-cart-text="" data-default-text="Add to cart">{{ 'strings.general.request_quote' | t }}</span>
-    </button>
-  {% endif %}
-  {% if show_add_quote %}
-    <style>
-      #{{form_id}}{
-        display:flex;
-        gap:10px
-      }
-       #{{form_id}} .btn{
-         flex: 1 0 ;
-       }
-    </style>
+  {% if isResserllerOrTradeAccount or show_add_quote %}
+    {% if isResserllerOrTradeAccount %}
+      <style>
+        [data-add-to-cart]{
+          display:none
+        }
+      </style>
+    {% else %}
+      <style>
+        #{{form_id}}{
+          display:flex;
+          gap:10px
+        }
+         #{{form_id}} .btn{
+           flex: 1 0 ;
+         }
+      </style>
+    {% endif %}
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
