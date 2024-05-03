@@ -98,6 +98,14 @@
     </button>
   {% endif %}
   {% if show_add_quote %}
+    <style>
+      #{{form_id}}{
+        display:flex;
+      }
+       #{{form_id}} .btn{
+         flex: 1 0 100%
+       }
+    </style>
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
@@ -125,7 +133,7 @@
       }
     {% endfor %}
   </style>
-  <div data-quantity-variant="{{ current_variant.id }}">
+  <div style="display:none" data-quantity-variant="{{ current_variant.id }}">
     {% for current_variant in product.variants %}
       {% assign inventory_quantity = current_variant.inventory_quantity %}
       {%- for item in current_variant.metafields.custom.bundle.value -%}
