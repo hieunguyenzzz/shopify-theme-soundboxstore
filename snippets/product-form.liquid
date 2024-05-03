@@ -94,7 +94,7 @@
       data-product-id="{{ product.id }}"
       onclick="GRFQApp.addProduct(this,{{ product.id }})"
     >
-      <span data-add-to-cart-text="" data-default-text="Add to cart">Add to Quote</span>
+      <span data-add-to-cart-text="" data-default-text="Add to cart">{{ 'strings.general.request_quote' | t }}</span>
     </button>
   {% endif %}
   {% if show_add_quote %}
