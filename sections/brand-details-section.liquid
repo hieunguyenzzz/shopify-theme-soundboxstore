@@ -21,23 +21,14 @@
   </style>
 {% endif %}
 <style>
-     .image-group img{
-            border-radius: 0.4em;
-    border-top-right-radius: min(4em,12vw);
-
-    }
-    .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col{
-      max-width:100%;
+   .image-group img{
+          border-radius: 0.4em;
+  border-top-right-radius: min(4em,12vw);
 
   }
-  .brand-details-section .image-group {
-    gap:10px;
-  }
-  .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col .image-wrap:after{
-      display:none
-  }
-  .right-col .col-wrap .image-group:not(:has(.image-col:nth-child(2))) .image-col .image-wrap img{
-      position:relative;    max-height: min(70vh,80vw);
+  .brand-details-section .image-group{
+    padding:0 10px;
+    gap:10px
   }
 </style>
 <section class="brand-details-section">
@@ -47,8 +38,81 @@
         <h2 class="title-font">{{ section.settings.title }}</h2>
       </div>
     {% endif %}
+    {% assign index_g = 0 %}
+    {%- for block in section.blocks -%}
+      <div
+        style="display:none"
+      >
+        {% if block.settings.slide_image1 != blank %}
+          {% assign index_g = index_g | plus: 1 %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image1 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image2 != blank %}
+          {% assign index_g = index_g | plus: 1 %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image2 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image3 != blank %}
+          {% assign index_g = index_g | plus: 1 %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image3 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
 
+        {% if block.settings.slide_image4 != blank %}
+          {% assign index_g = index_g | plus: 1 %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image4 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image5 != blank %}
+          {% assign index_g = index_g | plus: 1 %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image5 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image6 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image6 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
+      {% assign index_g = 0 %}
       {%- for block in section.blocks -%}
         <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
           <div class="slide-wrap page-width">
@@ -71,8 +135,12 @@
                       class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}"
                     >
                       {% if block.settings.slide_image1 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image1
                               | image_url: width: 800, crop: 'center'
@@ -81,12 +149,16 @@
                                 sizes: '(max-width: 425px) 320px,(max-width: 425px) 320px, 66.6vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image2 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image2
                               | image_url: width: 400, crop: 'center'
@@ -95,12 +167,16 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image3 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image3
                               | image_url: width: 400, crop: 'center'
@@ -109,13 +185,17 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
 
                       {% if block.settings.slide_image4 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image4
                               | image_url: width: 400, crop: 'center'
@@ -124,12 +204,16 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image5 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image5
                               | image_url: width: 400, crop: 'center'
@@ -138,12 +222,15 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image6 != blank %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#template--17781060305121__use-case-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image6
                               | image_url: width: 400, crop: 'center'
@@ -152,25 +239,52 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                     </div>
                     {% if block.settings.slider %}
                       <style>
-                        #slider-{{ block.id }} .slick-arrow{
-                          background:#0000003d !important
-                        }
-                        #slider-{{ block.id }}  .image-wrap {
-                          margin:5px
-                        }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }}{
+                                              overflow:hidden
+                                            }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .image-col{
+                                                  max-width: 33.33%;
+                        width: 33%;
+                        flex-shrink: 0;
+                                            }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow{
+                                                                    background:#000000b5 !important;
+                                                                    bottom:50%;filter: invert(1);width:40px;height:40px;border-radius:100%
+                                            }
+                                             #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-next{
+                                               padding-left:8px
+                                             }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow::after {
+                                              width: 25px;
+                                              height: 25px;
+                                              background-size: contain;
+                                            }
                       </style>
                       <script>
                         $(document).ready(function(){
                           $('#slider-{{ block.id }}').slick({
                             infinite: true,
+                            draggable:false,
                             slidesToShow: 3,
                             slidesToScroll: 1
+                          });
+                          $('[data-fancybox="gallery"]').fancybox({
+                            buttons: [
+                              "slideShow",
+                              "thumbs",
+                              "zoom",
+                              "fullScreen",
+                              "share",
+                              "close"
+                            ],
+                            loop: false,
+                            protect: true
                           });
                         })
                       </script>
@@ -237,7 +351,12 @@
     })
   </script>
 {% endif %}
-
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" defer></script>
 {% schema %}
  {
    "name": "Brand Details",
