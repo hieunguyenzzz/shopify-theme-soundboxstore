@@ -10,16 +10,6 @@
             "product_tagline": "<p>Open up a new way to collaborate<\/p>"
           }
         },
-        "a57c3e13-5e6a-49ff-b769-0ead6e48ef7e": {
-          "type": "shopify:\/\/apps\/product-reviews\/blocks\/star_rating\/bae150af-8da8-48b2-9867-398188115e5f",
-          "settings": {
-            "stars_fill_color": "#000000",
-            "star_size": 15,
-            "text_align": "flex-start",
-            "product": "{{product}}",
-            "stars_text_empty": "No reviews"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -30,13 +20,14 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {
+            "desc": "<p>Prices exclude VAT , trade and reseller discount applied<\/p>"
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "show_add_quote": false,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
           }
@@ -56,7 +47,6 @@
       },
       "block_order": [
         "80d88b2f-fa19-4538-ad26-bbbc66103e15",
-        "a57c3e13-5e6a-49ff-b769-0ead6e48ef7e",
         "variant_picker",
         "price",
         "buy_buttons",
@@ -817,16 +807,6 @@
     },
     "1651488261633e1eab": {
       "type": "apps",
-      "blocks": {
-        "2b19c121-0ea7-4de4-ad9c-06737fe27b53": {
-          "type": "shopify:\/\/apps\/product-reviews\/blocks\/reviews\/bae150af-8da8-48b2-9867-398188115e5f",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "2b19c121-0ea7-4de4-ad9c-06737fe27b53"
-      ],
       "settings": {
       }
     },
