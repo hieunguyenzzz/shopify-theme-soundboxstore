@@ -534,7 +534,7 @@ $(document).ready(function() {
     $("span.hotspot-icon[data-tooltip='" + clicked_feature + "']").addClass("active");
 
   });
-
+  {% comment %}
   $(".variant-input-wrap[name='Furniture']").each(function() {
     let lessString = theme.strings.viewLess;
     let moreString = theme.strings.viewMore;
@@ -576,7 +576,7 @@ $(document).ready(function() {
       }).click();
     }
   });
-
+{% endcomment %}
 
   // $(window).on("load",function(){
   // $("#vid2").attr("loop","loop");
