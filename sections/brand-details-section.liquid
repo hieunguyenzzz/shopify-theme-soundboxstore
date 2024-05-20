@@ -40,10 +40,11 @@
     {% if section.settings.title != blank %}
       <div class="section-header text-center">
         <h2 class="title-font">{{ section.settings.title }}</h2>
-      </div>
-      <div>
+          <div>
         {{ 'strings.general.gallery_subheading' | t }}
+      </div
       </div>
+    >
     {% endif %}
     {% assign index_g = 0 %}
     {%- for block in section.blocks -%}
