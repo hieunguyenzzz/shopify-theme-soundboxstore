@@ -45,13 +45,11 @@
         </div>
       </div>
     {% endif %}
-    {% assign index_g = 0 %}
     {%- for block in section.blocks -%}
       <div
         style="display:none"
       >
         {% if block.settings.slide_image1 != blank %}
-          {% assign index_g = index_g | plus: 1 %}
           <a
             style="display:none"
             href="{{ block.settings.slide_image1 | image_url }}"
@@ -62,7 +60,6 @@
           </a>
         {% endif %}
         {% if block.settings.slide_image2 != blank %}
-          {% assign index_g = index_g | plus: 1 %}
           <a
             style="display:none"
             href="{{ block.settings.slide_image2 | image_url }}"
@@ -73,7 +70,6 @@
           </a>
         {% endif %}
         {% if block.settings.slide_image3 != blank %}
-          {% assign index_g = index_g | plus: 1 %}
           <a
             style="display:none"
             href="{{ block.settings.slide_image3 | image_url }}"
@@ -85,7 +81,6 @@
         {% endif %}
 
         {% if block.settings.slide_image4 != blank %}
-          {% assign index_g = index_g | plus: 1 %}
           <a
             style="display:none"
             href="{{ block.settings.slide_image4 | image_url }}"
@@ -96,7 +91,6 @@
           </a>
         {% endif %}
         {% if block.settings.slide_image5 != blank %}
-          {% assign index_g = index_g | plus: 1 %}
           <a
             style="display:none"
             href="{{ block.settings.slide_image5 | image_url }}"
@@ -119,8 +113,8 @@
       </div>
     {% endfor %}
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
-      {% assign index_g = 0 %}
       {%- for block in section.blocks -%}
+        {% assign index_g = 0 %}
         <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
           <div class="slide-wrap page-width">
             {% if block.settings.title != blank %}
@@ -142,7 +136,7 @@
                       class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}"
                     >
                       {% if block.settings.slide_image1 != blank %}
-                        {% assign index_g = forloop.index %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
@@ -197,7 +191,7 @@
                       {% endif %}
 
                       {% if block.settings.slide_image4 != blank %}
-                        {% assign index_g = forloop.index %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
