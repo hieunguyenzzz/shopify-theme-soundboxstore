@@ -142,7 +142,7 @@
                       class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}"
                     >
                       {% if block.settings.slide_image1 != blank %}
-                        {% assign index_g = index_g | plus: 1 %}
+                        {% assign index_g = forloop.index %}
                         <div class="image-col">
                           <a
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
@@ -197,7 +197,7 @@
                       {% endif %}
 
                       {% if block.settings.slide_image4 != blank %}
-                        {% assign index_g = index_g | plus: 1 %}
+                        {% assign index_g = forloop.index %}
                         <div class="image-col">
                           <a
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
