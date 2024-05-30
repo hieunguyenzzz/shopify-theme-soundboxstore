@@ -1,8 +1,14 @@
-<ul class="sales-points">
-  <li class="sales-point">
-    <span class="icon-and-text">
-      <span class="icon icon--inventory" style="margin-right:0"></span>
-      <span>{{ 'products.product.in_stock_label' | t }}</span>
-    </span>
-  </li>
-</ul>
+{% assign instock = false %}
+{% if current_variant.inventory_quantity >= 0 %}
+  {% assign instock = true %}
+{% endif %}
+{% if instock %}
+  <ul id="product-inventory-instock" class="sales-points">
+    <li class="sales-point">
+      <span class="icon-and-text">
+        <span class="icon icon--inventory" style="margin-right:0"></span>
+        <span>{{ 'products.product.in_stock_label' | t }}</span>
+      </span>
+    </li>
+  </ul>
+{% endif %}
