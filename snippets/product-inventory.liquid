@@ -29,7 +29,7 @@
 </style>
 <ul class="sales-points">
   <li class="sales-point">
-    <span class="icon-and-text{% if inventory_visible == true %} inventory--low{% endif %}{% unless instock %} hide{% endunless %}">
+    <span class="icon-and-text{% if  current_variant.inventory_quantity > 0 %} inventory--low{% endif %}{% unless instock %} hide{% endunless %}">
       <span class="icon icon--inventory" style="margin-right:0"></span>
         <span data-quantity="{{ current_variant.inventory_quantity | at_least: 0 }}" data-product-inventory data-threshold="{{ block.settings.inventory_threshold }}">
           {%- if inventory_visible -%}
