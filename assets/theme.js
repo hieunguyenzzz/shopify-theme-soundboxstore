@@ -8146,7 +8146,7 @@ lazySizesConfig.expFactor = 4;
           var showInventory = true;
           var showIncomingInventory = false;
 
-          if (quantity <= 0 || quantity > this.settings.inventoryThreshold) {
+          if ( quantity > this.settings.inventoryThreshold) {
             showInventory = false;
           }
 
