@@ -21,6 +21,11 @@
     {% endunless %}
     {% if instock %}
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
+        <style>
+                    [data-variant="{{variant.id}}"] #product-inventory-instock-{{variant.id}} {
+              display: block;
+          }
+        </style>
         <span class="icon-and-text">
           <span class="icon icon--inventory" style="margin-right:0"></span>
           <span>{{ 'products.product.in_stock_label' | t }}</span>
