@@ -353,7 +353,7 @@
         "product_a7Np9q": {
           "type": "product",
           "settings": {
-            "product": "copy-of-cobble-acoustic-panels-draft-1",
+            "product": "cobble-acoustic-panels-1",
             "image": "shopify:\/\/shop_images\/Dark_Grey_Pebble_Grey_NO_BG_Set_01.png",
             "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
             "title": "",
@@ -365,11 +365,11 @@
         "product_B68WcA": {
           "type": "product",
           "settings": {
-            "product": "copy-of-privacy-film-cobble-acoustic-panels",
+            "product": "privacy-film-cobble-acoustic-panels",
             "image": "shopify:\/\/shop_images\/DIM_DrkPebGry_Cobble_MED_01.png",
             "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
-            "title": "",
-            "content": "",
+            "title": "{{ block.settings.product.title }}",
+            "content": "<p>{{ block.settings.product.metafields.custom.description | metafield_tag }}<\/p>",
             "button_text": "Browse Further",
             "url": ""
           }
