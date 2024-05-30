@@ -7841,7 +7841,7 @@ lazySizesConfig.expFactor = 4;
         );
         if (inventoryEl) {
           this.settings.inventory = true;
-          this.settings.inventoryThreshold = inventoryEl.dataset.threshold;
+          this.settings.inventoryThreshold = inventoryEl.dataset.threshold||0;
           this.container.on(
             "variantChange" + this.settings.namespace,
             this.updateInventory.bind(this)
