@@ -1,25 +1,27 @@
-{% assign isBundle = false %}
-{% assign instock = true %}
-{% for v in current_variant.metafields.custom.bundle.value %}
-  {% assign isBundle = true %}
-  {% if v.inventory_quantity < 1 %}
-    {% assign instock = false %}
-  {% endif %}
-{% endfor %}
-{% unless isBundle %}
-  {% assign instock = false %}
-  {% if current_variant.inventory_quantity > 0 %}
+<ul style="display:none" id="product-inventory-instock" class="sales-points">
+  {% for variant in product.variants %}
+    {% assign isBundle = false %}
     {% assign instock = true %}
-  {% endif %}
-{% endunless %}
-{% if instock %}
-  <ul id="product-inventory-instock" class="sales-points">
-    <li class="sales-point">
-      <span class="icon-and-text">
-        <span class="icon icon--inventory" style="margin-right:0"></span>
-        <span>{{ 'products.product.in_stock_label' | t }}</span>
-      </span>
-    </li>
-  </ul>
-{% endif %}
+    {% for v in variant.metafields.custom.bundle.value %}
+      {% assign isBundle = true %}
+      {% if v.inventory_quantity < 1 %}
+        {% assign instock = false %}
+      {% endif %}
+    {% endfor %}
+    {% unless isBundle %}
+      {% assign instock = false %}
+      {% if variant.inventory_quantity > 0 %}
+        {% assign instock = true %}
+      {% endif %}
+    {% endunless %}
+    {% if instock %}
+      <li class="sales-point">
+        <span class="icon-and-text">
+          <span class="icon icon--inventory" style="margin-right:0"></span>
+          <span>{{ 'products.product.in_stock_label' | t }}</span>
+        </span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
 <script></script>
