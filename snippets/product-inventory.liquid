@@ -12,7 +12,7 @@
 {%- endif -%}
 
 {%- liquid
-  if current_variant.inventory_quantity == 0 or current_variant.inventory_policy == 'continue'
+  if current_variant.inventory_quantity <= 0 or current_variant.inventory_policy == 'continue'
     assign inventory_visible = false
   endif
 
@@ -23,9 +23,6 @@
 -%}
    
 <style>
-  [data-data-quantity="0"]{
-    display:none
-  }
   .inventory--low{
     display:none
   }
