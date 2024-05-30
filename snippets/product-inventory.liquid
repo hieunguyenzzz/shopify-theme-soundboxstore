@@ -22,7 +22,11 @@
   endif
 -%}
    
-
+<style>
+  [data-data-quantity="0"]{
+    display:none
+  }
+</style>
 <ul class="sales-points">
   <li class="sales-point">
     <span class="icon-and-text{% if inventory_visible == true %} inventory--low{% endif %}{% unless instock %} hide{% endunless %}">
