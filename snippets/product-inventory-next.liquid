@@ -2,6 +2,9 @@
 {% if current_variant.inventory_quantity > 0 %}
   {% assign instock = true %}
 {% endif %}
+{% assign variant = current_variant %}
+{% if variant.metafields.custom.bundle %}
+{% endif %}
 {% if instock %}
   <ul id="product-inventory-instock" class="sales-points">
     <li class="sales-point">
@@ -12,3 +15,4 @@
     </li>
   </ul>
 {% endif %}
+<scripts> var bundle = {{ variant.metafields.custom.bundle | json }} </scripts>
