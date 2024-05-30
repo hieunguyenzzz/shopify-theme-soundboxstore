@@ -1,5 +1,5 @@
 {% assign instock = false %}
-{% if current_variant.inventory_quantity >= 0 %}
+{% if current_variant.inventory_quantity > 0 %}
   {% assign instock = true %}
 {% endif %}
 {% if instock %}
