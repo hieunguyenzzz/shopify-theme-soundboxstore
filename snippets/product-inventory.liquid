@@ -99,7 +99,7 @@
     <div
       class="js-variant-inventory-data"
       data-id="{{ variant.id }}"
-      data-quantity="{{ variant.inventory_quantity | at_least: 0  | default: 0 }}"
+      data-quantity="{{ variant.inventory_quantity  | default: 0 }}"
       data-incoming="{{ variant.incoming | default: false }}"
       data-date="{{ variant.next_incoming_date | date: format: 'date' }}"
     ></div>
