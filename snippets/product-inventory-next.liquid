@@ -1,7 +1,7 @@
 <ul style="display:none" id="product-inventory-instock" class="sales-points">
   {% for variant in product.variants %}
     <hr>
-    {{ variant.title }}
+    {{ variant.title }} ({{ variant.inventory_quantity }})
     {% assign isBundle = false %}
     {% assign instock = true %}
     {% for v in variant.metafields.custom.bundle.value %}
