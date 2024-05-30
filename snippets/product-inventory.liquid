@@ -21,7 +21,15 @@
     assign show_incoming = true
   endif
 -%}
+   
+{%- liquid
+  assign inventory_visible = false
+  if current_variant.inventory_quantity > 0
+    assign inventory_visible = true
+   
+  endif
 
+-%}
 <ul class="sales-points">
   <li class="sales-point">
     <span class="icon-and-text{% if inventory_visible == true %} inventory--low{% endif %}{% unless instock %} hide{% endunless %}">
