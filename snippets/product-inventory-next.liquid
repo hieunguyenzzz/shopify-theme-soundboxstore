@@ -33,7 +33,7 @@
             try {
               console.log(evt.detail.variant)
               let e = document.querySelector(`#product-inventory-instock`)
-              e.dataset.variant="{{ evt.detail.variant.id }}"
+              e.dataset.variant=evt.detail.variant.id+""
             } catch (error) {
               console.log({ error })
             }
