@@ -2,7 +2,7 @@
 {% if current_variant.inventory_quantity > 0 %}
   {% assign instock = true %}
 {% endif %}
-{% if current_variant.metafields.custom.bundle.value %}
+{% if current_variant.metafields.custom.bundle.value[1] %}
   .
 {% endif %}
 {% if instock %}
@@ -16,5 +16,5 @@
   </ul>
 {% endif %}
 <script>
-  var bundles = {{ current_variant.metafields.custom.bundle.value | json }}
+  var bundles = {{ current_variant.metafields.custom.bundle.value[1] | json }}
 </script>
