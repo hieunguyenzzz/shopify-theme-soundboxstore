@@ -8149,7 +8149,7 @@ lazySizesConfig.expFactor = 4;
           if ( quantity > inventoryThreshold) {
             showInventory = false;
           }
-  console.log("quantity > this.settings.inventoryThreshol",quantity , inventoryThreshol)
+  console.log("quantity > this.settings.inventoryThreshol",quantity , inventoryThreshold)
           this.toggleInventoryQuantity(variant, showInventory, quantity);
 
           // Only show incoming inventory when:
