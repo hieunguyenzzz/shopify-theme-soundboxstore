@@ -8145,11 +8145,11 @@ lazySizesConfig.expFactor = 4;
           var quantity = variantInventoryObject.quantity;
           var showInventory = true;
           var showIncomingInventory = false;
-
-          if ( quantity > this.settings.inventoryThreshold) {
+          var inventoryThreshold = this.settings.inventoryThreshold  || 0
+          if ( quantity > inventoryThreshold) {
             showInventory = false;
           }
-  console.log("quantity > this.settings.inventoryThreshol",quantity , this.settings.inventoryThreshol)
+  console.log("quantity > this.settings.inventoryThreshol",quantity , inventoryThreshol)
           this.toggleInventoryQuantity(variant, showInventory, quantity);
 
           // Only show incoming inventory when:
@@ -8159,7 +8159,7 @@ lazySizesConfig.expFactor = 4;
           if (
             !showInventory &&
             variantInventoryObject.incoming === "true" &&
-            quantity <= this.settings.inventoryThreshold
+            quantity <= inventoryThreshold
           ) {
             showIncomingInventory = true;
           }
