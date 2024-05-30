@@ -28,4 +28,15 @@
     {% endif %}
   {% endfor %}
 </ul>
-<script></script>
+<script>
+          document.addEventListener('variant:change', function (evt) {
+            try {
+              console.log(evt.detail.variant)
+              let e = document.querySelector(`#product-inventory-instock`)
+              e.dataset.variant="{{ evt.detail.variant.id }}"
+            } catch (error) {
+              console.log({ error })
+            }
+
+          });
+</script>
