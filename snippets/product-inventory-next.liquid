@@ -2,7 +2,7 @@
   <li class="sales-point">
     <span class="icon-and-text">
       <span class="icon icon--inventory" style="margin-right:0"></span>
-      <span data-quantity="1" data-product-inventory="" data-threshold="0">*IN STOCK NOW </span>
+      <span>{{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}</span>
     </span>
   </li>
 </ul>
