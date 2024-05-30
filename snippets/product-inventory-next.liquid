@@ -2,7 +2,8 @@
 {% if current_variant.inventory_quantity > 0 %}
   {% assign instock = true %}
 {% endif %}
-{% if variant.metafields.custom.bundle %}
+{% if current_variant.metafields.custom.bundle.value %}
+  .
 {% endif %}
 {% if instock %}
   <ul id="product-inventory-instock" class="sales-points">
