@@ -16,5 +16,5 @@
   </ul>
 {% endif %}
 <script>
-  var bundles = {{ current_variant.metafields.custom.bundle.value[1] | json }}
+  var bundles = {{ current_variant.metafields.custom.bundle.value | first  | json }}
 </script>
