@@ -1,5 +1,5 @@
 {% assign isBundle = false %}
-{% assign instock = false %}
+{% assign instock = true %}
 
 {% for v in current_variant.metafields.custom.bundle.value %}
   {% assign isBundle = true %}
@@ -8,6 +8,7 @@
   {% endif %}
 {% endfor %}
 {% unless isBundle %}
+  {% assign instock = false %}
   {% if current_variant.inventory_quantity > 0 %}
     {% assign instock = true %}
   {% endif %}
