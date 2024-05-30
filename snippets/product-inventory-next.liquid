@@ -5,14 +5,10 @@
 </style>
 <ul id="product-inventory-instock" class="sales-points" data-variant="{{ current_variant.id }}">
   {% for variant in product.variants %}
-    <hr>
-    {{ variant.title }} ({{ variant.inventory_quantity }})
     {% assign isBundle = false %}
     {% assign instock = true %}
     {% for v in variant.metafields.custom.bundle.value %}
       {% assign isBundle = true %}
-      {{ v.title }} : {{ v.inventory_quantity -}}
-      <br>
       {% if v.inventory_quantity < 1 %}
         {% assign instock = false %}
       {% endif %}
