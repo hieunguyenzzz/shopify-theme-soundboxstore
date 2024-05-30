@@ -1,4 +1,9 @@
-<ul style="display:none" id="product-inventory-instock" class="sales-points">
+<style>
+  .sales-point{
+    display:none
+  }
+</style>
+<ul id="product-inventory-instock" class="sales-points" data-variant="{{ current_variant.id }}">
   {% for variant in product.variants %}
     <hr>
     {{ variant.title }} ({{ variant.inventory_quantity }})
@@ -19,7 +24,7 @@
       {% endif %}
     {% endunless %}
     {% if instock %}
-      <li class="sales-point">
+      <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
         <span class="icon-and-text">
           <span class="icon icon--inventory" style="margin-right:0"></span>
           <span>{{ 'products.product.in_stock_label' | t }}</span>
