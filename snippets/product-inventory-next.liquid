@@ -17,6 +17,14 @@
       {% if v.inventory_quantity < 1 %}
         {% assign instock = false %}
       {% endif %}
+      <li style="display:none">
+        {{ variant.title -}}
+        <br>
+        instock: {{ instock -}}
+        <br>
+        inventory_quantity: {{ variant.inventory_quantity -}}
+        <br>
+      </li>
     {% endfor %}
     {% unless isBundle %}
       {% assign instock = false %}
@@ -24,14 +32,7 @@
         {% assign instock = true %}
       {% endif %}
     {% endunless %}
-    <li style="display:none">
-      {{ variant.title -}}
-      <br>
-      instock: {{ instock -}}
-      <br>
-      inventory_quantity: {{ variant.inventory_quantity -}}
-      <br>
-    </li>
+
     {% if instock %}
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
         <style>
