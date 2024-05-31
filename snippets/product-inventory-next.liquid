@@ -20,7 +20,7 @@
     {% endfor %}
     {% unless isBundle %}
       {% assign instock = false %}
-      {% if variant.inventory_quantity > 0 %}
+      {% if variant.available %}
         {% assign instock = true %}
       {% endif %}
     {% endunless %}
