@@ -18,8 +18,8 @@
         {% assign instock = false %}
       {% endif %}
       <li style="display:none">
-        {{ ['title'] -}}
-        inventory_quantity: {{ ['inventory_quantity'] -}}
+        {{ v.title -}}
+        inventory_quantity: {{ v.inventory_quantity -}}
         <br>
       </li>
     {% endfor %}
