@@ -44,7 +44,9 @@
   {% endfor %}
 </ul>
 <script>
-          document.addEventListener('variant:change', function (evt) {
+  (()=>{
+    console.log({{current_variant|join}})
+      document.addEventListener('variant:change', function (evt) {
             try {
               console.log(evt.detail.variant)
               let e = document.querySelector(`#product-inventory-instock`)
@@ -54,4 +56,5 @@
             }
 
           });
+  })()
 </script>
