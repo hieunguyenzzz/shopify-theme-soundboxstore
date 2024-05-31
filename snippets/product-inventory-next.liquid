@@ -19,13 +19,13 @@
         {% assign instock = true %}
       {% endif %}
     {% endunless %}
+    <li style="display:none">
+      instock: {{ instock -}}
+      <br>
+      inventory_quantity: {{ variant.inventory_quantity -}}
+      <br>
+    </li>
     {% if instock %}
-      <li style="display:none">
-        instock: {{ instock -}}
-        <br>
-        inventory_quantity: {{ variant.inventory_quantity -}}
-        <br>
-      </li>
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
         <style>
                     [data-variant="{{variant.id}}"] #product-inventory-instock-{{variant.id}} {
