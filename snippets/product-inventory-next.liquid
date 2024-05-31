@@ -7,7 +7,6 @@
   id="product-inventory-instock"
   class="sales-points"
   data-variant="{{ current_variant.id }}"
-  data-quantity="{{ current_variant.inventory_quantity }}"
 >
   {% for variant in product.variants %}
     {% assign isBundle = false %}
@@ -17,15 +16,10 @@
       {% if v.inventory_quantity < 1 %}
         {% assign instock = false %}
       {% endif %}
-      <li style="display:none">
-        {{ v.title -}}
-        inventory_quantity: {{ v.inventory_quantity -}}
-        <br>
-      </li>
     {% endfor %}
     {% unless isBundle %}
       {% assign instock = false %}
-      {% if variant.available %}
+      {% if variant.inventory_quantity > 0 %}
         {% assign instock = true %}
       {% endif %}
     {% endunless %}
