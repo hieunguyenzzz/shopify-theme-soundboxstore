@@ -11,18 +11,10 @@
   {% for variant in product.variants %}
     {% assign isBundle = false %}
     {% assign instock = true %}
-    {% for v in variant.metafields.custom.bundle.value %}
-      {% assign isBundle = true %}
-      {% if v.inventory_quantity < 1 %}
-        {% assign instock = false %}
-      {% endif %}
-    {% endfor %}
-    {% unless isBundle %}
+
+    {% if variant.metafields.global.stock <= 0 %}
       {% assign instock = false %}
-      {% if variant.inventory_quantity > 0 %}
-        {% assign instock = true %}
-      {% endif %}
-    {% endunless %}
+    {% endif %}
 
     {% if instock %}
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
