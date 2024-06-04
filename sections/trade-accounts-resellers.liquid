@@ -52,8 +52,8 @@
         font-weight: 600;
     }
 </style>
-{% if section.settings.heading != blank %}
 <div class="page-width page-width--narrow page-content">
+{% if section.settings.heading != blank %}
   <header
     class="section-header"
     style="    text-align: center;"
@@ -69,8 +69,8 @@
       >
         {{- section.settings.url_text -}}
       </a>
-    {% endif %}
   </header>
+    {% endif %}
 </div>
   {% endif %}
 <div class="{{section.id}}-page-width page-width">
