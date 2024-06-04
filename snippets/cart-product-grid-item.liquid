@@ -1,4 +1,4 @@
-{% assign _variant = variant %}
+{% assign _variant = variant |default :product.first_available_variant %}
 {%- liquid
   assign on_sale = false
   if product.compare_at_price > product.price
