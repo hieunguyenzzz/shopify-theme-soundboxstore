@@ -48,7 +48,7 @@
     <div class="new-grid product-grid {%comment %}{% if mobileScrollOnly %} scrollable-grid--small{% else %} scrollable-grid{% endif %}{% endcomment %}" data-view="small">
       {%- liquid
         for product in recommendationsproducts 
-          render 'cart-product-grid-item', product: product
+          render 'cart-product-grid-item', product: product ,variant: product.first_available_variant
         endfor
       -%}
     </div>
