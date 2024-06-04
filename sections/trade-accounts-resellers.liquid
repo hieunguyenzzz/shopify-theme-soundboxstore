@@ -52,6 +52,7 @@
         font-weight: 600;
     }
 </style>
+{% if section.settings.heading != blank %}
 <div class="page-width page-width--narrow page-content">
   <header
     class="section-header"
@@ -71,6 +72,7 @@
     {% endif %}
   </header>
 </div>
+  {% endif %}
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">
     {% assign block = section.blocks[0] %}
