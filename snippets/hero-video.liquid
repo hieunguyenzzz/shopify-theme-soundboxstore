@@ -180,9 +180,9 @@
               </svg>
             </button>
           {%- endif -%}
- {%- unless block.settings.h1 == blank -%}
+          {%- unless block.settings.h1 == blank -%}
             <h1 style="position:absolute;opacity:0">
-                {{ block.settings.h1 | newline_to_br }}
+              {{ block.settings.h1 | newline_to_br }}
             </h1>
           {%- endunless -%}
           {%- unless block.settings.title == blank -%}
@@ -201,48 +201,87 @@
               </div>
             {%- endunless -%}
             <div style="display:flex;gap:1em">
-            {%- if block.settings.link_text != blank -%}
-              {%- assign link_href = block.settings.link -%}
-              {%- if block.settings.link == blank -%}
-                {%- assign link_href = block.settings.video_url -%}
+              {%- if block.settings.link_text != blank -%}
+                {%- assign link_href = block.settings.link -%}
+                {%- if block.settings.link == blank -%}
+                  {%- assign link_href = block.settings.video_url -%}
+                {%- endif -%}
+                <div class="hero__link">
+                  <a
+                    href="{{ link_href }}"
+                    class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                  >
+                    {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        role="presentation"
+                        class="icon icon-play"
+                        viewBox="18.24 17.35 24.52 28.3"
+                      >
+                        <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+                      </svg>
+                    {%- endif -%}
+                    {{ block.settings.link_text }}
+                  </a>
+                </div>
               {%- endif -%}
-              <div class="hero__link">
-                <a
-                  href="{{ link_href }}"
-                  class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                >
-                  {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      role="presentation"
-                      class="icon icon-play"
-                      viewBox="18.24 17.35 24.52 28.3"
-                    >
-                      <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
-                    </svg>
-                  {%- endif -%}
-                  {{ block.settings.link_text }}
-                </a>
-              </div>
-            {%- endif -%}
-            {%- if block.settings.link2_text != blank -%}
-              {%- assign link_href = block.settings.link2 -%}
-              {%- if block.settings.link2 == blank -%}
-                {%- assign link_href = block.settings.video_url -%}
+              {%- if block.settings.link2_text != blank -%}
+                {%- assign link_href = block.settings.link2 -%}
+                {%- if block.settings.link2 == blank -%}
+                  {%- assign link_href = block.settings.video_url -%}
+                {%- endif -%}
+                <div class="hero__link">
+                  <a
+                    href="{{ link_href }}"
+                    class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                  >
+                    {{ block.settings.link2_text }}
+                  </a>
+                </div>
               {%- endif -%}
-              <div class="hero__link">
-                <a
-                  href="{{ link_href }}"
-                  class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                >
-                  {{ block.settings.link2_text }}
-                </a>
-              </div>
-            {%- endif -%}
             </div>
           {%- endif -%}
-          
+          <div style="display:none">
+            <div style="display:flex;gap:6px">
+              <div style="display:flex ;width:60px;height:60px">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+              <div style="display:flex ;width:60px;height:60px">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+              <div style="display:flex ;width:60px;height:60px">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+              <div style="display:flex ;width:60px;height:60px">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
