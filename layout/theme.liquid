@@ -19,10 +19,10 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>
+  <head>{% render 'yoast-seo' %}
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
-    {% render 'yoast-seo' %}
+    
     {% render 'pre-header' %}
     {% render 'yett' %}
 
