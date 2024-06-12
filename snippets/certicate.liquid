@@ -1,4 +1,4 @@
-<section class="product-icon-text-section">
+<section id="{{ id }}" class="product-icon-text-section">
   <div class="page-width">
     <div class="flexbox">
       <div class="col" style="" aria-hidden="true" tabindex="0">
@@ -80,3 +80,22 @@
     </div>
   </div>
 </section>
+<script>
+    $(window).on('load', function() {
+
+    $('#{{ id }}.product-icon-text-section .flexbox').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      mobileFirst: true,
+      arrows: false,
+      autoplay: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 861,
+          settings: 'unslick'
+        }
+      ]
+    });
+  }
+</script>
