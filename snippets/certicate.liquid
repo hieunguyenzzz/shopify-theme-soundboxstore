@@ -1,15 +1,11 @@
 <style>
-    .product-icon-text-section .flexbox {
-
-      flex-wrap: wrap;
+  .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
+    flex-shrink:0
   }
-    .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
-      flex-shrink:0
-    }
 </style>
 <section id="{{ id }}" class="product-icon-text-section">
   <div class="page-width">
-    <div class="flexbox">
+    <div class="flexbox" style="flex-wrap:nowrap">
       <div class="col" style="" aria-hidden="true" tabindex="0">
         <div class="col-wrap">
           <div class="icon-text-block">
