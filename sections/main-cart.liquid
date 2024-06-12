@@ -32,7 +32,7 @@
               {%- render 'cart-item', product: item -%}
             {% endfor %}
           </div>
-          {% render 'certicate' %}
+          {% render 'certicate', id: 'product-icon-text-section-cart' %}
           {%- render 'cart-recommendations', cart: cart, location: 'page' -%}
         </div>
         <div class="cart__page-col">
