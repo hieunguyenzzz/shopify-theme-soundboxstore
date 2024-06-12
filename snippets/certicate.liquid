@@ -1,6 +1,11 @@
 <style>
-  .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
-    flex-shrink:0
+    .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
+      flex-shrink:0
+    }
+    #{{ id }}.product-icon-text-section .flexbox .col {
+      flex: 1 1 auto;
+      padding: 0 15px;
+      flex-shrink: 0;
   }
 </style>
 <section id="{{ id }}" class="product-icon-text-section">
