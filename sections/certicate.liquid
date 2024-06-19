@@ -1,31 +1,96 @@
 <section class="product-icon-text-section">
-  <div class="page-width">
-    <div class="flexbox">
-      {% for block in section.blocks %}
-        <div class="col">
-          <div class="col-wrap">
-            <div class="icon-text-block">
-              {% if block.settings.iconimage != blank %}
-                <div class="icon-block">
-                  <div class="icon-wrap">
-                    <img
-                      loading="lazy"
-                      src="{{ block.settings.iconimage | image_url : width: 50 }}"
-                      width="50"
-                      height="50"
-                      alt="{{ block.settings.iconimage.alt }}"
-                    >
+  <!--
+    <div class="page-width">
+      <div class="flexbox">
+        {% for block in section.blocks %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="icon-text-block">
+                {% if block.settings.iconimage != blank %}
+                  <div class="icon-block">
+                    <div class="icon-wrap">
+                      <img
+                        loading="lazy"
+                        src="{{ block.settings.iconimage | image_url : width: 50 }}"
+                        width="50"
+                        height="50"
+                        alt="{{ block.settings.iconimage.alt }}"
+                      >
+                    </div>
                   </div>
-                </div>
-              {% endif %}
+                {% endif %}
 
-              {% if block.settings.text != blank %}
-                <div class="text-block">{{ block.settings.text }}</div>
-              {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="text-block">{{ block.settings.text }}</div>
+                {% endif %}
+              </div>
             </div>
           </div>
+        {% endfor %}
+      </div>
+    </div>
+  -->
+  <div class="page-width">
+    <div class="flexbox">
+      <div class="col">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_1.png?v=1717686879&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>FSC Certification</p></div>
+          </div>
         </div>
-      {% endfor %}
+      </div>
+
+      <div class="col">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png?v=1717689671&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>UL Certification</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_2.png?v=1717686878&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>CE Certification</p></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
