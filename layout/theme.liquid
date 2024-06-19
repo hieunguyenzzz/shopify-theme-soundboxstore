@@ -14,17 +14,11 @@
 <!doctype html>
 <html
   class="no-js"
-  <!--
   lang="{{ request.locale.iso_code }}"
-  --
+  dir="{{ settings.text_direction }}"
+  country="{{  localization.country.iso_code }}"
+  currency="{{  localization.country.currency.iso_code }}"
 >
-  dir="
-  {{- settings.text_direction -}}
-  " country="
-  {{- localization.country.iso_code -}}
-  " currency="
-  {{- localization.country.currency.iso_code -}}
-  " >
   <head>
     {% render 'yoast-seo' %}
     {% render 'gcm-integration-script' %}
