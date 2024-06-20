@@ -10,10 +10,10 @@
 >
   {% for variant in product.variants %}
     {% assign isBundle = false %}
-    {% assign instock = true %}
+    {% assign instock = false %}
 
-    {% if variant.metafields.global.stock <= 0 %}
-      {% assign instock = false %}
+    {% if variant.metafields.global.stock > 0 %}
+      {% assign instock = true %}
     {% endif %}
 
     {% if instock %}
