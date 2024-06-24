@@ -748,9 +748,10 @@
     "blog_posts_dhw4dK": {
       "type": "blog-posts",
       "custom_css": [
-        ".blog-layout__main + .blog-layout__sidebar, {border: none;}",
+        ".blog-layout__main + .blog-layout__sidebar {border: none;}",
         "@media only screen and (max-width: 1024px) {.grid__image-ratio--wide:before {padding-bottom: 100%; }}",
-        "img {border-radius: 0.4em min(4vw, 4vw) 0.4em 0.4em;}"
+        "img {border-radius: 0.4em min(4vw, 4vw) 0.4em 0.4em;}",
+        "a {font-weight: 700; line-height: 0; font-family:var(--typeHeaderPrimary) ;}"
       ],
       "settings": {
         "title": "From the blog",
