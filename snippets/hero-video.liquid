@@ -187,17 +187,13 @@
           {%- endunless -%}
           {%- unless block.settings.title == blank -%}
             <h2 class="h1 hero__title">
-              <div class="animation-contents">
-                {{ block.settings.title | newline_to_br }}
-              </div>
+              {{ block.settings.title | newline_to_br }}
             </h2>
           {%- endunless -%}
           {%- if block.settings.subheading or block.settings.link -%}
             {%- unless block.settings.subheading == blank -%}
               <div class="hero__subtitle">
-                <div class="animation-contents">
-                  {{ block.settings.subheading | escape }}
-                </div>
+                {{ block.settings.subheading | escape }}
               </div>
             {%- endunless -%}
             <div style="display:flex;gap:1em">
