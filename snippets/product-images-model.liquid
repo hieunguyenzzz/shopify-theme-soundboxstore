@@ -221,7 +221,6 @@
             <div style="order:{{ forloop.index }}" class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
                 <img
-                  loading="lazy"
                   src="{{ image | image_url : width: 100 }}"
                   width="100"
                   height="100"
@@ -241,7 +240,6 @@
               <div class="thumbnail-wrap">
                 <img
                   src="{{ video | image_url : width: 100 }}"
-                  loading="lazy"
                   width="100"
                   height="100"
                   alt="{{ image.alt | default: 'product thumb' | escape }}"
@@ -419,7 +417,6 @@
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ image | image_url : width: 100 }}"
-                    loading="lazy"
                     width="100"
                     height="100"
                     alt="{{ image.alt | default: 'product thumb' | escape }}"
@@ -438,7 +435,6 @@
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ video | image_url : width: 100 }}"
-                    loading="lazy"
                     width="100"
                     height="100"
                     alt="{{ image.alt | default: 'product thumb' | escape }}"
