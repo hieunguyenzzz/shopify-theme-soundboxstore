@@ -127,6 +127,7 @@
     {% assign id = block.id | append: '_v' %}
     <script>
                                    (()=>{
+                                     if(window.debug) return
                                       let played = false
                                        function onviedoHover (){
                                          if(played) return
