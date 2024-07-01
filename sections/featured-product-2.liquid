@@ -209,8 +209,6 @@
                 assign is_color = false
                 if option_name contains swatch_trigger
                   assign is_color = true
-                if option_name contains 'color'
-                  assign is_color = true
                 elsif swatch_trigger == 'color' and option_name contains 'colour'
                   assign is_color = true
                 endif
@@ -331,7 +329,7 @@
 
         <div class="grid-item__meta-secondary">
           <div class="grid-product__price">
-            <p class="price-title">{{ 'strings.others.starting_from'|t }}</p>
+            <p class="price-title">{{ 'strings.others.starting_from' | t }}</p>
             {%- if product.price_varies -%}
               <span class="grid-product__price--current">
                 {%- render 'price-varies', price: product.price_min -%}
@@ -406,39 +404,33 @@
   </div>
 </div>
 {% schema %}
-  {
-    "name": "Featured product 2",
-    "class": "index-section",
-    "settings": [
-      {
-        "type": "product",
-        "id": "featured_product",
-        "label": "Product"
-      },
-      {
-        "type": "image_picker",
-        "id": "featured_product_image",
-        "label": "Product image 1"
-      },
-       {
-        "type": "image_picker",
-        "id": "featured_product_image2",
-        "label": "Product image 2"
-      }
-    ],
-     "presets": [
-      {
-        "name": "Featured product 2",
-        "blocks": [
-        ]
-        
-      }
-    ]
-  }
+{
+  "name": "Featured product 2",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_product_image",
+      "label": "Product image 1"
+    },
+     {
+      "type": "image_picker",
+      "id": "featured_product_image2",
+      "label": "Product image 2"
+    }
+  ],
+   "presets": [
+    {
+      "name": "Featured product 2",
+      "blocks": [
+      ]
+
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
