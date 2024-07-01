@@ -248,3 +248,12 @@
 {%- unless block.settings.full_width -%}
   </div>
 {%- endunless -%}
+<script>
+  document.addEventListener(
+    "app:ready",
+    (e) => {
+      console.log("app:ready")
+    },
+    false,
+  );
+</script>
