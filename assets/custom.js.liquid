@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  document.addEventListener(
+    "app:ready",
+    (e) => {
 
 
   // var vid = document.getElementById("vid2");
@@ -619,4 +622,11 @@ $(document).ready(function() {
                  
                 })
               })()
+
+
+    },
+    false,
+  );
+
+
 });
