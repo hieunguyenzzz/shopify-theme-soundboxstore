@@ -571,16 +571,16 @@
                     "{{ 'theme.js' | asset_url }}",
                     "{{ 'custom.js' | asset_url }}"]
             getScript(jqueryAsseturl, function () {
-              jQueryGang.forEach((url) => {
-                getScript(url, () =>{
-                    const event = new Event("app:ready:"+url);
-                    document.dispatchEvent(event);
-                  if(url==="{{ 'theme.js'  | asset_url }}"){
+              getScript("{{ 'vendor-scripts-v1.js' | asset_url  }}", function () {
+                  getScript("{{ 'theme.js' | asset_url }}", function () {
                     const event = new Event("app:ready");
                     document.dispatchEvent(event);
-                  }
-                });
+                     getScript("{{ 'custom.js' | asset_url }}", function () {
+
+                    });
+                  });
               });
+
             });
         }
       }
