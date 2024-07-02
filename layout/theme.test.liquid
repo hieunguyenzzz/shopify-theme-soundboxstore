@@ -559,6 +559,7 @@
                 ) {
                   done = true;
                   success();
+                  console.log(url + " loaded")
                   script.onload = script.onreadystatechange = null;
                   head.removeChild(script);
                 }
@@ -572,10 +573,9 @@
             getScript(jqueryAsseturl, function () {
               jQueryGang.forEach((url) => {
                 getScript(url, () =>{
-                   console.log(url + " loaded")
                     const event = new Event("app:ready:"+url);
                     document.dispatchEvent(event);
-                  if(url==="{{ 'slick.js'  | asset_url }}"){
+                  if(url==="{{ 'theme.js'  | asset_url }}"){
                     const event = new Event("app:ready");
                     document.dispatchEvent(event);
                   }
