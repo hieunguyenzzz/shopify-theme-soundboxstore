@@ -132,10 +132,7 @@
       {% endfor %}
     </div>
     <script>
-            document.addEventListener(
-            "app:ready",
-            (e) => {
-              	document.addEventListener('DOMContentLoaded', () => {
+        	document.addEventListener('DOMContentLoaded', () => {
         $('#thing').click(() => {
             $(document).ready(function() {
                     $('.{{ section.id }}-slider').slick({
@@ -170,10 +167,6 @@
                 });
         });
       });
-
-               },
-            false,
-          );
     </script>
   {% endif %}
 </section>
