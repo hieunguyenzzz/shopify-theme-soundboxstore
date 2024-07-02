@@ -374,7 +374,6 @@
       }
     </style>
 
-    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script
       async
       type="text/javascript"
@@ -450,16 +449,13 @@
 
     {% include 'dataLayer-allPages' %}
 
-    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
       type="text/javascript"
     ></script>
-    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
@@ -549,8 +545,46 @@
             t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
           })()
-          const event = new Event("app:ready");
-          document.dispatchEvent(event);
+           function getScript(url, success) {
+              var script = document.createElement("script");
+              script.src = url;
+              var head = document.getElementsByTagName("head")[0],
+                done = false;
+              script.onload = script.onreadystatechange = function () {
+                if (
+                  !done &&
+                  (!this.readyState ||
+                    this.readyState == "loaded" ||
+                    this.readyState == "complete")
+                ) {
+                  done = true;
+                  success();
+                  script.onload = script.onreadystatechange = null;
+                  head.removeChild(script);
+                }
+              };
+              head.appendChild(script);
+            }
+            let jqueryAsseturl = "{{ 'jquery.min.js' | asset_url }}"
+            let jQueryGang = ["{{ 'slick.js'  | asset_url }}",
+                    "{{ 'theme.js' | asset_url }}",
+                    "{{ 'custom.js' | asset_url }}"]
+            getScript(jqueryAsseturl, function () {
+              jQueryGang.forEach((url) => {
+                getScript(url, () =>{
+                   console.log(url + " loaded")
+                    const event = new Event("app:ready:"+url);
+                    document.dispatchEvent(event);
+                  if(url==="{{ 'slick.js'  | asset_url }}"){
+                    const event = new Event("app:ready");
+              document.dispatchEvent(event);
+                  }
+                });
+              });
+
+            });
+
+
         }
       }
       document.addEventListener("click", MeroxIO_Function);
@@ -558,28 +592,30 @@
       document.addEventListener("touchstart", MeroxIO_Function);
       document.addEventListener("mousemove", MeroxIO_Function);
     </script>
-    <script>
-        jQuery.event.special.touchstart = {
-          setup: function( _, ns, handle ) {
-              this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-          }
-      };
-      jQuery.event.special.touchmove = {
-          setup: function( _, ns, handle ) {
-              this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-          }
-      };
-      jQuery.event.special.wheel = {
-          setup: function( _, ns, handle ){
-              this.addEventListener("wheel", handle, { passive: true });
-          }
-      };
-      jQuery.event.special.mousewheel = {
-          setup: function( _, ns, handle ){
-              this.addEventListener("mousewheel", handle, { passive: true });
-          }
-      };
-    </script>
+    <!--
+      <script>
+          jQuery.event.special.touchstart = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.touchmove = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.wheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("wheel", handle, { passive: true });
+            }
+        };
+        jQuery.event.special.mousewheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("mousewheel", handle, { passive: true });
+            }
+        };
+      </script>
+    -->
     {% render 'linkedin_insights_tag' %}
   </body>
 </html>
