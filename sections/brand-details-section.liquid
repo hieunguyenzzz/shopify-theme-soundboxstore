@@ -272,26 +272,32 @@
                          }
                       </style>
                       <script>
-                        $(document).ready(function(){
-                          $('#slider-{{ block.id }}').slick({
-                            infinite: true,
-                            draggable:false,
-                            slidesToShow: 3,
-                            slidesToScroll: 1
-                          });
-                          $('[data-fancybox="gallery"]').fancybox({
-                            buttons: [
-                              "slideShow",
-                              "thumbs",
-                              "zoom",
-                              "fullScreen",
-                              "share",
-                              "close"
-                            ],
-                            loop: false,
-                            protect: true
-                          });
-                        })
+                                               document.addEventListener(
+                          "app:ready",
+                          (e) => {
+                                            $(document).ready(function(){
+                                              $('#slider-{{ block.id }}').slick({
+                                                infinite: true,
+                                                draggable:false,
+                                                slidesToShow: 3,
+                                                slidesToScroll: 1
+                                              });
+                                              $('[data-fancybox="gallery"]').fancybox({
+                                                buttons: [
+                                                  "slideShow",
+                                                  "thumbs",
+                                                  "zoom",
+                                                  "fullScreen",
+                                                  "share",
+                                                  "close"
+                                                ],
+                                                loop: false,
+                                                protect: true
+                                              });
+                                            })
+                              },
+                          false,
+                        );
                       </script>
                     {% endif %}
                   </div>
