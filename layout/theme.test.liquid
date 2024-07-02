@@ -167,15 +167,13 @@
       {{- 'general.accessibility.skip_to_content' | t -}}
     </a>
 
-    <div class="page-container" id="PageContainer">
-      <div>
-        <main class="main-content" id="MainContent">
-          {{ content_for_layout }}
-        </main>
-        {%- section 'footer-promotions' -%}
-        {%- section 'footer' -%}
-      </div>
-    </div>
+    {%- section 'toolbar' -%}
+    {%- section 'header' -%}
+    <main class="main-content" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+    {%- section 'footer-promotions' -%}
+    {%- section 'footer' -%}
 
     {%- section 'newsletter-popup' -%}
 
