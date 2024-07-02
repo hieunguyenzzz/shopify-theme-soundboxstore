@@ -571,14 +571,15 @@
             "{{ 'theme.js' | asset_url }}",
             "{{ 'custom.js' | asset_url }}"]
           getScript(jqueryAsseturl, function () {
+            getScript("{{ 'slick.js' | asset_url  }}", function () {
             getScript("{{ 'vendor-scripts-v1.js' | asset_url  }}", function () {
               getScript("{{ 'theme.js' | asset_url }}", function () {
-
                 getScript("{{ 'custom.js' | asset_url }}", function () {
                   const event = new Event("app:ready");
                   document.dispatchEvent(event);
                 });
               });
+            });
             });
 
           });
