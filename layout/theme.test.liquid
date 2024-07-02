@@ -139,6 +139,7 @@
         display: none !important;
       }
     </style>
+    {{ 'jquery.min.js' | asset_url | script_tag  defer:true async:true }}
   </head>
 
   <body
@@ -189,7 +190,6 @@
 
     {%- section 'newsletter-popup' -%}
 
-    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
     {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | script_tag  defer:true }}
     {{ 'https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js' | script_tag  defer:true }}
     {{ 'youtubeplayer.js' | asset_url  | script_tag  defer:true }}
