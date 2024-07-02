@@ -139,10 +139,10 @@
         display: none !important;
       }
     </style>
-    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
   </head>
 
   <body
+    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
     {% if isResserllerOrTradeAccount %}
       data-reseller
     {% endif %}
