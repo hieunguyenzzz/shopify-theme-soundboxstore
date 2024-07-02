@@ -168,7 +168,7 @@
     </a>
 
     <div class="page-container" id="PageContainer">
-      <div class="transition-body">
+      <div>
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
@@ -180,7 +180,6 @@
 
     {%- section 'newsletter-popup' -%}
 
-    {% include 'dataLayer-allPages' %}
     {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
     {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | script_tag  defer:true }}
     {{ 'https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js' | script_tag  defer:true }}
@@ -293,6 +292,5 @@
         };
       </script>
     -->
-    <!-- {% render 'linkedin_insights_tag' %} -->
   </body>
 </html>
