@@ -132,9 +132,11 @@
       {% endfor %}
     </div>
     <script>
-        	document.addEventListener('DOMContentLoaded', () => {
-        $('#thing').click(() => {
-            $(document).ready(function() {
+            document.addEventListener(
+            "app:ready",
+            (e) => {
+              	document.addEventListener('DOMContentLoaded', () => {
+        $(document).ready(function() {
                     $('.{{ section.id }}-slider').slick({
                     infinite: false,
                     slidesToShow: 4,
@@ -165,8 +167,11 @@
                     ]
                   });
                 });
-        });
       });
+
+               },
+            false,
+          );
     </script>
   {% endif %}
 </section>
