@@ -295,7 +295,11 @@
             ];
             getScript(jqueryAsseturl, function () {
               jQueryGang.forEach((url) => {
-                getScript(url, () => console.log(url + " loaded"));
+                getScript(url, () =>{
+                   console.log(url + " loaded")
+                    const event = new Event("app:ready:"+url);
+                    document.dispatchEvent(event);
+                });
               });
               const event = new Event("app:ready");
               document.dispatchEvent(event);
