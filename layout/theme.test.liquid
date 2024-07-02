@@ -11,18 +11,6 @@
     {% endif %}
   {% endif %}
 {% endif %}
-{%- liquid
-  assign enableSuperScript = false
-  unless shop.money_format contains 'money' or shop.money_format contains '.'
-    if settings.superscript_decimals
-      if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'
-        assign enableSuperScript = true
-      elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'
-        assign enableSuperScript = true
-      endif
-    endif
-  endunless
--%}
 <!doctype html>
 <html
   class="no-js"
@@ -32,15 +20,152 @@
   currency="{{  localization.country.currency.iso_code }}"
 >
   <head>
+    {% render 'yoast-seo' %}
+    {% render 'gcm-integration-script' %}
+    {% render 'pandectes-rules' %}
+
+    {% render 'pre-header' %}
     {% render 'yett' %}
+
+    <script>
+      (function(w,d,t,r,u)
+      {
+          var f,n,i;
+          w[u]=w[u]||[],f=function()
+          {
+              var o={ti:"187133965", enableAutoSpaTracking: true};
+              o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+          },
+          n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+          {
+              var s=this.readyState;
+              s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+          },
+          i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })
+      (window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W3VDBP8N');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <!--
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+              gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+          gtag('config', 'G-0HET6EXHTH');
+        </script>
+    -->
+
+    <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
+    <script async id="gaf-loading-script"></script>
+    <script id="gdpr-gaf-blocking-script">
+      let isGAFExecuted = false;
+      let gafScript = document.getElementById('gaf-loading-script');
+      let gafLink = 'https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH' ;
+
+      function executeGAF() {
+        if(!isGAFExecuted) {
+          gafScript.setAttribute('src', gafLink);
+          // The content of Google Analytics 4 script goes here
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+            gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied' });
+
+          gtag('config', 'G-0HET6EXHTH');
+          isGAFExecuted = true;
+        }
+      }
+      function checkConsentForGAF(adittionalChecks = 0) {
+        let cpdCookie=(document.cookie.match(/^(?:.*;)?\s*cookieconsent_preferences_disabled(\s*=\s*([^;]+)?)(?:.*)?$/)||[,null])[1];
+        if(cpdCookie != null) {
+          if(parseInt(cpdCookie.indexOf('analytics')) === -1) {
+            executeGAF();
+          }
+        } else {
+          let gdprCache = localStorage.getItem('gdprCache') ? JSON.parse(localStorage.getItem('gdprCache')) : null;
+          let gdprCacheConsentSettings = gdprCache && gdprCache.getCookieConsentSettings ? JSON.parse(gdprCache.getCookieConsentSettings) : null;
+          let gdprCacheCountryDetection = gdprCache && gdprCache.countryDetection ? JSON.parse(gdprCache.countryDetection) : null;
+          let ccsCookie = (document.cookie.match(/^(?:.*;)?\s*cookieconsent_status\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+          if((gdprCacheConsentSettings || (gdprCacheCountryDetection && gdprCacheCountryDetection.disable === '1')) && !ccsCookie) {
+            if((gdprCacheConsentSettings && gdprCacheConsentSettings.status === 'disabled') || gdprCacheCountryDetection.disable === '1'){
+              executeGAF();
+            } else {
+              let initPreferences = parseInt(gdprCacheConsentSettings.checkboxes_behavior);
+              if(initPreferences === 1 || initPreferences === 2 || initPreferences === 4 || initPreferences === 5) {
+                executeGAF();
+              }
+            }
+          } else {
+            if (adittionalChecks > 0) {
+              setTimeout(function() {
+                checkConsentForGAF(adittionalChecks - 1);
+              }, 1000);
+            } else {
+              executeGAF();
+            }
+          }
+        }
+      }
+
+      checkConsentForGAF(3);
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NGK2QSL');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+      | default: shop.metafields.yoast_seo.settings
+    -%}
+    {%- if disabled_by_yoast_seo
+      or yoast_seo_settings.integrations.webmasterVerification.google == blank
+      or yoast_seo_settings.integrations.webmasterVerification.google == null
+    -%}
+      <meta
+        content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY"
+        name="google-site-verification"
+      >
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
     <meta http-equiv="Expires" content="30">
-
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+    {%- if disabled_by_yoast_seo -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <link href="https://cdn.shopify.com" rel="preconnect">
 
@@ -73,9 +198,118 @@
 
     {%- render 'seo-title' -%}
 
-    <meta name="description" content="{{ page_description | escape }}">
+    {%- if page_description -%}
+      {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+      {%- if disabled_by_yoast_seo -%}
+        <meta name="description" content="{{ page_description | escape }}">
+        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+      {%- endif -%}
+    {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
+    <style>
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Semibold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Semibold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Semibold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Semibold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Semibold.svg#BananaGrotesk-Semibold' | file_url }}') format('svg');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Medium.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Medium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Medium.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Medium.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Medium.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Medium.svg#BananaGrotesk-Medium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Regular.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Regular.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Regular.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Regular.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Regular.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Regular.svg#BananaGrotesk-Regular' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Thin.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Thin.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Thin.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Thin.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Thin.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Thin.svg#BananaGrotesk-Thin' | file_url }}') format('svg');
+        font-weight: 100;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Light.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Light.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Light.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Light.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Light.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Light.svg#BananaGrotesk-Light' | file_url }}') format('svg');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Bold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Bold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Bold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Bold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Bold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Bold.svg#BananaGrotesk-Bold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extrabold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extrabold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extrabold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extrabold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extrabold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extrabold.svg#BananaGrotesk-Extrabold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extralight.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extralight.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extralight.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extralight.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extralight.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extralight.svg#BananaGrotesk-Extralight' | file_url }}') format('svg');
+        font-weight: 200;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica Neue';
+        src: url('{{ 'HelveticaNeue.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeue.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeue.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeue.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeue.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeue.svg#HelveticaNeue' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'HelveticaNeue';
+        src: url('{{ 'HelveticaNeueMedium.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeueMedium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeueMedium.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeueMedium.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeueMedium.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeueMedium.svg#HelveticaNeueMedium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    {%- liquid
+      assign enableSuperScript = false
+      unless shop.money_format contains 'money' or shop.money_format contains '.'
+        if settings.superscript_decimals
+          if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'
+            assign enableSuperScript = true
+          elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'
+            assign enableSuperScript = true
+          endif
+        endif
+      endunless
+    -%}
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -139,6 +373,18 @@
         display: none !important;
       }
     </style>
+
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script
+      async
+      type="text/javascript"
+      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+    ></script>
+    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
+    <script
+      defer
+      src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
+    ></script>
   </head>
 
   <body
@@ -153,11 +399,6 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer />
-    <script src="https://crmplus.zoho.eu/crm/javascript/zcga.js' }}" defer />
-    <script src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js" defer />
-    <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4" defer />
-
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -180,20 +421,67 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {%- section 'toolbar' -%}
-    {%- section 'header' -%}
-    <main class="main-content" id="MainContent">
-      {{ content_for_layout }}
-    </main>
-    {%- section 'footer-promotions' -%}
-    {%- section 'footer' -%}
+    {% if settings.animate_page_transitions %}
+      <script type="text/javascript">
+        window.setTimeout(function () {
+          document.body.className += ' loaded';
+        }, 25);
+      </script>
+    {% endif %}
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+
+    <div class="page-container" id="PageContainer">
+      <div class="transition-body">
+        {%- section 'toolbar' -%}
+        {%- section 'header' -%}
+        {%- section 'quick-search' -%}
+        <main class="main-content" id="MainContent">
+          {{ content_for_layout }}
+        </main>
+        {%- section 'footer-promotions' -%}
+        {%- section 'footer' -%}
+      </div>
+    </div>
 
     {%- section 'newsletter-popup' -%}
+
+    {% include 'dataLayer-allPages' %}
+
+    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script
+      async
+      defer="defer"
+      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
+      type="text/javascript"
+    ></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName('head')[0];
+          var c = d.createElement('script');
+          o.api = new Array();
+          c.async = true;
+          c.type = 'text/javascript';
+          c.charset = 'utf-8';
+          c.src = 'https://web-sdk.smartlook.com/recorder.js';
+          h.appendChild(c);
+        })(document);
+      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+    </script>
     <script>
       forceProductPriceSelector = '.grfq-price';
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
@@ -261,46 +549,8 @@
             t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
           })()
-           function getScript(url, success) {
-              var script = document.createElement("script");
-              script.src = url;
-              var head = document.getElementsByTagName("head")[0],
-                done = false;
-              script.onload = script.onreadystatechange = function () {
-                if (
-                  !done &&
-                  (!this.readyState ||
-                    this.readyState == "loaded" ||
-                    this.readyState == "complete")
-                ) {
-                  done = true;
-                  success();
-                  script.onload = script.onreadystatechange = null;
-                  head.removeChild(script);
-                }
-              };
-              head.appendChild(script);
-            }
-            let jqueryAsseturl = "{{ 'jquery.min.js' | asset_url }}"
-            let jQueryGang = ["{{ 'slick.js'  | asset_url }}",
-                    "{{ 'theme.js' | asset_url }}",
-                    "{{ 'custom.js' | asset_url }}"]
-            getScript(jqueryAsseturl, function () {
-              jQueryGang.forEach((url) => {
-                getScript(url, () =>{
-                   console.log(url + " loaded")
-                    const event = new Event("app:ready:"+url);
-                    document.dispatchEvent(event);
-                  if(url==="{{ 'slick.js'  | asset_url }}"){
-                    const event = new Event("app:ready");
-              document.dispatchEvent(event);
-                  }
-                });
-              });
-
-            });
-
-
+          const event = new Event("app:ready");
+          document.dispatchEvent(event);
         }
       }
       document.addEventListener("click", MeroxIO_Function);
@@ -308,29 +558,28 @@
       document.addEventListener("touchstart", MeroxIO_Function);
       document.addEventListener("mousemove", MeroxIO_Function);
     </script>
-    <!--
-      <script>
-          jQuery.event.special.touchstart = {
-            setup: function( _, ns, handle ) {
-                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-            }
-        };
-        jQuery.event.special.touchmove = {
-            setup: function( _, ns, handle ) {
-                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-            }
-        };
-        jQuery.event.special.wheel = {
-            setup: function( _, ns, handle ){
-                this.addEventListener("wheel", handle, { passive: true });
-            }
-        };
-        jQuery.event.special.mousewheel = {
-            setup: function( _, ns, handle ){
-                this.addEventListener("mousewheel", handle, { passive: true });
-            }
-        };
-      </script>
-    -->
+    <script>
+        jQuery.event.special.touchstart = {
+          setup: function( _, ns, handle ) {
+              this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+          }
+      };
+      jQuery.event.special.touchmove = {
+          setup: function( _, ns, handle ) {
+              this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+          }
+      };
+      jQuery.event.special.wheel = {
+          setup: function( _, ns, handle ){
+              this.addEventListener("wheel", handle, { passive: true });
+          }
+      };
+      jQuery.event.special.mousewheel = {
+          setup: function( _, ns, handle ){
+              this.addEventListener("mousewheel", handle, { passive: true });
+          }
+      };
+    </script>
+    {% render 'linkedin_insights_tag' %}
   </body>
 </html>
