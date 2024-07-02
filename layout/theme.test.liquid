@@ -153,14 +153,15 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    {{ 'jquery.min.js' | asset_url | script_tag: defer: true }}
-    {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | script_tag  defer: true }}
-    {{ 'https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js' | script_tag  defer:true }}
-    {{ 'youtubeplayer.js' | asset_url  | script_tag  defer:true }}
-    {{ 'slick.js' | asset_url | script_tag  defer:true }}
-    {{ 'theme.js' | asset_url | script_tag  defer:true }}
-    {{ 'custom.js' | asset_url | script_tag  defer:true }}
-    {{ 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4' | script_tag  defer:true }}
+    <script src="{{ 'jquery.min.js' | asset_url }}" defer />
+    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer />
+    <script src="https://crmplus.zoho.eu/crm/javascript/zcga.js' }}" defer />
+    <script src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js" defer />
+    <script src="{{ 'slick.js'  | asset_url }}" defer />
+    <script src="{{ 'theme.js' | asset_url }}" defer />
+    <script src="{{ 'custom.js' | asset_url }}" defer />
+    <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4" defer />
+
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
