@@ -286,13 +286,10 @@
               };
               head.appendChild(script);
             }
-            let jqueryAsseturl =
-              "//soundboxstore.com/cdn/shop/t/17/assets/jquery.min.js?v=47330032009134755151659608919";
-            let jQueryGang = [
-              "//soundboxstore.com/cdn/shop/t/17/assets/slick.js?v=32481168414992951351659608923",
-              "//soundboxstore.com/cdn/shop/t/17/assets/theme.js?v=24364682125829313811717054872",
-              "//soundboxstore.com/cdn/shop/t/17/assets/custom.js?v=75249054700311991821719830368",
-            ];
+            let jqueryAsseturl = "{{ 'jquery.min.js' | asset_url }}"
+            let jQueryGang = ["{{ 'slick.js'  | asset_url }}",
+                    "{{ 'theme.js' | asset_url }}",
+                    "{{ 'custom.js' | asset_url }}"]
             getScript(jqueryAsseturl, function () {
               jQueryGang.forEach((url) => {
                 getScript(url, () =>{
