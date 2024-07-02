@@ -291,10 +291,13 @@
                    console.log(url + " loaded")
                     const event = new Event("app:ready:"+url);
                     document.dispatchEvent(event);
+                  if(url==="{{ 'slick.js'  | asset_url }}"){
+                    const event = new Event("app:ready");
+              document.dispatchEvent(event);
+                  }
                 });
               });
-              const event = new Event("app:ready");
-              document.dispatchEvent(event);
+
             });
 
 
