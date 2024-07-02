@@ -153,13 +153,10 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    <script src="{{ 'jquery.min.js' | asset_url }}" defer />
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer />
     <script src="https://crmplus.zoho.eu/crm/javascript/zcga.js' }}" defer />
     <script src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js" defer />
-    <script src="{{ 'slick.js'  | asset_url }}" defer />
-    <script src="{{ 'theme.js' | asset_url }}" defer />
-    <script src="{{ 'custom.js' | asset_url }}" defer />
+
     <script src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4" defer />
 
     <!-- Google Tag Manager (noscript) -->
@@ -269,8 +266,35 @@
             t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
           })()
-          const event = new Event("app:ready");
-          document.dispatchEvent(event);
+          (function tai JqueryVaDongBon() {
+             function getScript(url,success){
+                var script=document.createElement('script');
+                script.src=url;
+                var head=document.getElementsByTagName('head')[0],
+                    done=false;
+                script.onload=script.onreadystatechange = function(){
+                  if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+                    done=true;
+                    success();
+                    script.onload = script.onreadystatechange = null;
+                    head.removeChild(script);
+                  }
+                };
+                head.appendChild(script);
+              }
+               let jqueryAsseturl = "{{ 'jquery.min.js' | asset_url }}"
+                let jQueryGang = ["{{ 'slick.js'  | asset_url }}",
+                    "{{ 'theme.js' | asset_url }}",
+                    "{{ 'custom.js' | asset_url }}"]
+              getScript(jqueryAsseturl,function(){
+                jQueryGang.forEach(url=>{
+                  getScript(url,()=>console.log(url+' loaded'))
+                })
+                       const event = new Event("app:ready");
+                    document.dispatchEvent(event);
+              });
+          })();
+
         }
       }
       document.addEventListener("click", MeroxIO_Function);
