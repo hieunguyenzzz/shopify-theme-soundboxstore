@@ -127,18 +127,6 @@
         display: none !important;
       }
     </style>
-
-    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
-    <script
-      async
-      type="text/javascript"
-      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    ></script>
-    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
-    <script
-      defer
-      src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
-    ></script>
   </head>
 
   <body
@@ -175,23 +163,12 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {% if settings.animate_page_transitions %}
-      <script type="text/javascript">
-        window.setTimeout(function () {
-          document.body.className += ' loaded';
-        }, 25);
-      </script>
-    {% endif %}
-
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">
       {{- 'general.accessibility.skip_to_content' | t -}}
     </a>
 
     <div class="page-container" id="PageContainer">
-      <div class="transition-body">
-        {%- section 'toolbar' -%}
-        {%- section 'header' -%}
-        {%- section 'quick-search' -%}
+      <div>
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>
@@ -202,19 +179,14 @@
 
     {%- section 'newsletter-popup' -%}
 
-    {% include 'dataLayer-allPages' %}
-
-    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-    <script
-      async
-      defer="defer"
-      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-      type="text/javascript"
-    ></script>
-    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
-
+    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
+    {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | script_tag  defer:true }}
+    {{ 'https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js' | script_tag  defer:true }}
+    {{ 'youtubeplayer.js' | asset_url  | script_tag  defer:true }}
+    {{ 'slick.js' | asset_url | script_tag  defer:true }}
+    {{ 'theme.js' | asset_url | script_tag  defer:true }}
+    {{ 'custom.js' | asset_url | script_tag  defer:true }}
+    {{ 'https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4' | script_tag  defer:true }}
     {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -295,28 +267,29 @@
       document.addEventListener("touchstart", MeroxIO_Function);
       document.addEventListener("mousemove", MeroxIO_Function);
     </script>
-    <script>
-        jQuery.event.special.touchstart = {
-          setup: function( _, ns, handle ) {
-              this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-          }
-      };
-      jQuery.event.special.touchmove = {
-          setup: function( _, ns, handle ) {
-              this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-          }
-      };
-      jQuery.event.special.wheel = {
-          setup: function( _, ns, handle ){
-              this.addEventListener("wheel", handle, { passive: true });
-          }
-      };
-      jQuery.event.special.mousewheel = {
-          setup: function( _, ns, handle ){
-              this.addEventListener("mousewheel", handle, { passive: true });
-          }
-      };
-    </script>
-    {% render 'linkedin_insights_tag' %}
+    <!--
+      <script>
+          jQuery.event.special.touchstart = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.touchmove = {
+            setup: function( _, ns, handle ) {
+                this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            }
+        };
+        jQuery.event.special.wheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("wheel", handle, { passive: true });
+            }
+        };
+        jQuery.event.special.mousewheel = {
+            setup: function( _, ns, handle ){
+                this.addEventListener("mousewheel", handle, { passive: true });
+            }
+        };
+      </script>
+    -->
   </body>
 </html>
