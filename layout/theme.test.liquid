@@ -343,24 +343,19 @@
       {{- 'general.accessibility.skip_to_content' | t -}}
     </a>
 
-    <div class="page-container" id="PageContainer">
-      <div class="transition-body">
-        {%- section 'toolbar' -%}
-        {%- section 'header' -%}
-        {%- section 'quick-search' -%}
-        <main class="main-content" id="MainContent">
-          {{ content_for_layout }}
-        </main>
-        {%- section 'footer-promotions' -%}
-        {%- section 'footer' -%}
-      </div>
-    </div>
+    {%- section 'toolbar' -%}
+    {%- section 'header' -%}
+    {%- section 'quick-search' -%}
+    <main class="main-content" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+    {%- section 'footer-promotions' -%}
+    {%- section 'footer' -%}
 
     {%- section 'newsletter-popup' -%}
 
-    {% include 'dataLayer-allPages' %}
+    {% render 'dataLayer-allPages' %}
 
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
     <script
       async
       defer="defer"
