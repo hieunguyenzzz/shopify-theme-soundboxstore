@@ -75,95 +75,101 @@
       </div>
     </div>
   {% endif %}
-{% if section.blocks.size > 0 %}
-  <div class="{{ section.id }}-slider  product-list-group slider_active">
-    {% for block in section.blocks %}
-      {% capture productId %}product{% endcapture %}
-      {% capture productImgId %}image{% endcapture %}
-      {% if block.settings[productId] != blank %}
-        {% assign product = all_products[block.settings[productId]] %}
-        <div class="col">
-          <div class="col-wrap">
-            <div class="col-image">
-              <a href="{{ all_products[block.settings[productId]].url }}">
-                {% assign featured_image = block.settings[productImgId]
-                  | default: all_products[block.settings[productId]].featured_image
-                %}
-                {% if forloop.index == 1 %}
-                  {{
-                    featured_image
-                    | image_url: width: 700
-                    | image_tag:
-                      preload: true,
-                      widths: '400, 600, 800',
-                      loading: 'lazy',
-                      class: 'js-lazy-image',
-                      alt: product.title
-                  }}
-                {% else %}
-                  {{
-                    featured_image
-                    | image_url: width: 700
-                    | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
-                  }}
-                {% endif %}
-              </a>
-            </div>
-            <div class="product-details">
-              <h4>
+  {% if section.blocks.size > 0 %}
+    <div class="{{ section.id }}-slider  product-list-group slider_active">
+      {% for block in section.blocks %}
+        {% capture productId %}product{% endcapture %}
+        {% capture productImgId %}image{% endcapture %}
+        {% if block.settings[productId] != blank %}
+          {% assign product = all_products[block.settings[productId]] %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="col-image">
                 <a href="{{ all_products[block.settings[productId]].url }}">
-                  {{- all_products[block.settings[productId]].title -}}
+                  {% assign featured_image = block.settings[productImgId]
+                    | default: all_products[block.settings[productId]].featured_image
+                  %}
+                  {% if forloop.index == 1 %}
+                    {{
+                      featured_image
+                      | image_url: width: 700
+                      | image_tag:
+                        preload: true,
+                        widths: '400, 600, 800',
+                        loading: 'lazy',
+                        class: 'js-lazy-image',
+                        alt: product.title
+                    }}
+                  {% else %}
+                    {{
+                      featured_image
+                      | image_url: width: 700
+                      | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
+                    }}
+                  {% endif %}
                 </a>
-              </h4>
-              {%- if section.settings.show_price -%}
-                <p class="price">
-                  <span class="price-title">{{ 'strings.others.starting_from' | t }} </span>
-                  {%- if product.price_varies -%}
-                    {{ product.price_min | money_without_trailing_zeros }}
-                  {%- else -%}
-                    {{ product.price | money_without_trailing_zeros }}
-                  {%- endif -%}
-                </p>
-              {% endif %}
+              </div>
+              <div class="product-details">
+                <h4>
+                  <a href="{{ all_products[block.settings[productId]].url }}">
+                    {{- all_products[block.settings[productId]].title -}}
+                  </a>
+                </h4>
+                {%- if section.settings.show_price -%}
+                  <p class="price">
+                    <span class="price-title">{{ 'strings.others.starting_from' | t }} </span>
+                    {%- if product.price_varies -%}
+                      {{ product.price_min | money_without_trailing_zeros }}
+                    {%- else -%}
+                      {{ product.price | money_without_trailing_zeros }}
+                    {%- endif -%}
+                  </p>
+                {% endif %}
+              </div>
             </div>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-  <script>
-    $(document).ready(function() {
-      $('.{{ section.id }}-slider').slick({
-      infinite: false,
-      slidesToShow: 4,
-      arrows: true,
-      dots: true,
-      slidesToScroll: 1,
-      responsive: [
-        {
-          breakpoint: 860,
-          settings: {
-            slidesToShow: 2.3
-          }
-        }, {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2.3,
-            arrows: false,
-            dots: false
-          }
-        }, {
-          breakpoint: 540,
-          settings: {
-            slidesToShow: 1.3,
-            arrows: false,
-            dots: false
-          }
-        }
-      ]
-    });
-  });
-</script>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <script>
+                document.addEventListener(
+          "app:ready",
+          (e) => {
+        $(document).ready(function() {
+          $('.{{ section.id }}-slider').slick({
+          infinite: false,
+          slidesToShow: 4,
+          arrows: true,
+          dots: true,
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 860,
+              settings: {
+                slidesToShow: 2.3
+              }
+            }, {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2.3,
+                arrows: false,
+                dots: false
+              }
+            }, {
+              breakpoint: 540,
+              settings: {
+                slidesToShow: 1.3,
+                arrows: false,
+                dots: false
+              }
+            }
+          ]
+        });
+      });
+             },
+          false,
+        );
+    </script>
   {% endif %}
 </section>
 
