@@ -566,7 +566,7 @@
               head.appendChild(script);
             }
             let jqueryAsseturl = "{{ 'jquery.min.js' | asset_url }}"
-            let jQueryGang = ["{{ 'slick.js'  | asset_url }}",
+            let jQueryGang = ["{{ 'slick.js'  | asset_url }}","{{ 'vendor-scripts-v1.js' | asset_url  }}",
                     "{{ 'theme.js' | asset_url }}",
                     "{{ 'custom.js' | asset_url }}"]
             getScript(jqueryAsseturl, function () {
@@ -577,14 +577,11 @@
                     document.dispatchEvent(event);
                   if(url==="{{ 'slick.js'  | asset_url }}"){
                     const event = new Event("app:ready");
-              document.dispatchEvent(event);
+                    document.dispatchEvent(event);
                   }
                 });
               });
-
             });
-
-
         }
       }
       document.addEventListener("click", MeroxIO_Function);
