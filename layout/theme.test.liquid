@@ -153,7 +153,7 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    {{ 'jquery.min.js' | asset_url | script_tag }}
+    {{ 'jquery.min.js' | asset_url | script_tag: defer: true }}
     {{ 'https://crmplus.zoho.eu/crm/javascript/zcga.js' | script_tag  defer: true }}
     {{ 'https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js' | script_tag  defer:true }}
     {{ 'youtubeplayer.js' | asset_url  | script_tag  defer:true }}
