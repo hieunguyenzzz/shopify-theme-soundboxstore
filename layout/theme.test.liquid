@@ -128,7 +128,7 @@
       }
     </style>
 
-    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    {{ 'jquery.min.js' | asset_url | script_tag  defer:true }}
     <script
       async
       type="text/javascript"
