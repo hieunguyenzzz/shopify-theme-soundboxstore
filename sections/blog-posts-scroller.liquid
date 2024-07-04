@@ -112,6 +112,19 @@
   {%- if section.settings.divider -%}</div>{%- endif -%}
 {% endcomment %}
 
+{%- liquid
+  assign blog = blogs[section.settings.blog]
+  assign sidebar_count = 4
+
+  if section.settings.blog_show_tags
+    assign sidebar_count = 3
+  endif
+
+  assign have_blog = true
+  if blog.empty? or blog.articles.size == 0
+    assign have_blog = false
+  endif
+-%}
 <style>
     .{{ section.id }}-section{
          padding-top:40px;
