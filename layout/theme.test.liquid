@@ -423,23 +423,23 @@
           console.log("apps lazyloaded successfully");
           isReplaced = true;
 
-          (function zsiqchat() {
-            window['$zoho'] = window['$zoho'] || {};
-            $zoho.salesiq = $zoho.salesiq || {
-              widgetcode:
-                "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
-              values: {},
-              ready: function () { },
-            };
-            var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.id = "zsiqscript";
-            s.defer = true;
-            s.src = "https://salesiq.zoho.eu/widget";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-          })()
+          // (function zsiqchat() {
+          //   window['$zoho'] = window['$zoho'] || {};
+          //   $zoho.salesiq = $zoho.salesiq || {
+          //     widgetcode:
+          //       "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
+          //     values: {},
+          //     ready: function () { },
+          //   };
+          //   var d = document;
+          //   s = d.createElement("script");
+          //   s.type = "text/javascript";
+          //   s.id = "zsiqscript";
+          //   s.defer = true;
+          //   s.src = "https://salesiq.zoho.eu/widget";
+          //   t = d.getElementsByTagName("script")[0];
+          //   t.parentNode.insertBefore(s, t);
+          // })()
           function getScript(url, success) {
             var script = document.createElement("script");
             script.src = url;
