@@ -188,7 +188,7 @@
       </div>
     </div>
   {% endif %}
-  {% if have_blog > 0 %}
+  {% if blog.articles.size > 0 %}
     <div class="{{ section.id }}-slider  product-list-group slider_active">
       {% for article in blog.articles %}
         <div class="col">
