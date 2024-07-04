@@ -28,24 +28,24 @@
     {% render 'yett' %}
 
     <script>
-    (function(w,d,t,r,u)
-    {
-        var f,n,i;
-        w[u]=w[u]||[],f=function()
-        {
-            var o={ti:"187133965", enableAutoSpaTracking: true};
-            o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
-        },
-        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
-        {
-            var s=this.readyState;
-            s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
-        },
-        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
-    })
-    (window,document,"script","//bat.bing.com/bat.js","uetq");
-</script>
-    
+      (function(w,d,t,r,u)
+      {
+          var f,n,i;
+          w[u]=w[u]||[],f=function()
+          {
+              var o={ti:"187133965", enableAutoSpaTracking: true};
+              o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+          },
+          n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+          {
+              var s=this.readyState;
+              s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+          },
+          i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })
+      (window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -178,9 +178,7 @@
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'custom.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
-
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
