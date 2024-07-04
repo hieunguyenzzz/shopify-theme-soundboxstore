@@ -211,12 +211,7 @@
                 {{
                   article.image
                   | image_url: width: 700
-                  | image_tag:
-                    preload: true,
-                    widths: '300, 600, 800',
-                    loading: 'lazy',
-                    class: 'js-lazy-image',
-                    alt: product.title
+                  | image_tag: widths: '300, 600, 800', loading: 'lazy', alt: product.title
                 }}
               </a>
             </div>
