@@ -202,18 +202,8 @@
 <section class="{{ section.id }}-section collections-product-list">
   {% if section.settings.title != blank or section.settings.description != blank %}
     <div class="page-width">
-      <div class="section-header">
-        {% if section.settings.title != blank %}
-          <div class="left-col">
-            <h2 class="title-font">{{ section.settings.title }}</h2>
-          </div>
-        {% endif %}
-
-        {% if section.settings.description != blank %}
-          <div class="right-col">
-            {{ section.settings.description }}
-          </div>
-        {% endif %}
+      <div class="section-title">
+        <h2 class="title-font">{{ section.settings.title }}</h2>
       </div>
     </div>
   {% endif %}
