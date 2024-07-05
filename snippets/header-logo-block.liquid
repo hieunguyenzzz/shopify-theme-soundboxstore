@@ -54,6 +54,14 @@
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
         <img
+          style="position:absolute;opacity:0"
+          loading="eager"
+          width="100"
+          height="73"
+          src="//soundboxstore.com/cdn/shop/files/preview_images/5aec4d0ec8464a11bfde29854bf5f1cf.thumbnail.0000000000_small.jpg?v=1696865500"
+          alt=""
+        >
+        <img
           loading="eager"
           width="230"
           height="73"
@@ -77,14 +85,6 @@
           href="{{ routes.root_url }}"
           class="site-header__logo-link logo--inverted"
         >
-          <img
-            style="position:absolute;opacity:0"
-            loading="eager"
-            width="100"
-            height="73"
-            src="//soundboxstore.com/cdn/shop/files/preview_images/5aec4d0ec8464a11bfde29854bf5f1cf.thumbnail.0000000000_small.jpg?v=1696865500"
-            alt=""
-          >
           <img
             class="small--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
