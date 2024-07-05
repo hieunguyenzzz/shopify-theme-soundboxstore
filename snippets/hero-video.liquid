@@ -84,7 +84,11 @@
           tabindex="-1"
         ></iframe>
       {% else %}
-        {{ block.settings.video.preview_image | image_url: width: 100 | image_tag: style: 'filter: blur(3px)' }}
+        {{
+          block.settings.video.preview_image
+          | image_url: width: 100
+          | image_tag: style: 'filter: blur(3px)', preload: true
+        }}
         <!--
           {% if block.settings.video_m %}
             {{
