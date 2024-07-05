@@ -183,13 +183,12 @@
 
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
-    <!--
-      <link
-        rel="preload"
-        as="script"
-        href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-      >
-    -->
+    <link
+      rel="preload"
+      as="script"
+      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
+    >
+
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
