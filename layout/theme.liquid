@@ -182,6 +182,7 @@
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
