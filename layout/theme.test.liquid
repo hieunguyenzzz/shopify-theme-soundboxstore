@@ -181,7 +181,7 @@
     {{ 'custom.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
 
-    {{ 'theme.test.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'styles.css' | asset_url | stylesheet_tag: preload: true }}
 
     <link
       rel="preload"
