@@ -225,11 +225,15 @@
               </a>
             </div>
             <div class="product-details" style="padding-top:0.8em">
+              <span class="article__sub-meta-date">
+                {{- article.published_at | time_tag: format: 'month_day_year' -}}
+              </span>
               <h4>
                 <a href="{{ article.url}}">
                   {{- article.title -}}
                 </a>
               </h4>
+              <div>{{ article.excerpt_or_content }}</div>
             </div>
           </div>
         </div>
