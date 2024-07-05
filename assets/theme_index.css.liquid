@@ -1,5 +1,5 @@
-{%- capture content %}
-  @charset "UTF-8"; html{ overflow-y:scroll; } @keyframes spin { 0% { transform:
+  @charset "UTF-8"; 
+  html{ overflow-y:scroll; } @keyframes spin { 0% { transform:
   rotate(0deg) }
 
   to { transform: rotate(360deg) } }
@@ -9010,14 +9010,5 @@ section#shopify-pc__banner .shopify-pc__banner__wrapper{
     background-position: center;
     background-size: 90%;
 }
-{%- endcapture -%}
 
-{%- assign before =  content.size -%}
-{%- assign content =  content | strip_newlines | split: " " | join: " " | split: "*/" -%}
-{%- assign new_content = "" -%}
-{%- for word in content -%}
-  {%- assign new_word = word | split: "/*" | first | strip | replace: "; ", ";" | replace: "} ", "}" | replace: "{ ", "{" | replace: " {", "{" -%}
-  {%- assign new_content = new_content | append: new_word -%}
-{%- endfor -%}
-/* CSS minifed: {{ before }} --> {{ new_content.size }} */
-{{- new_content }}
+
