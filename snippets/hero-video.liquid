@@ -84,11 +84,21 @@
           tabindex="-1"
         ></iframe>
       {% else %}
-        {{
-          block.settings.video.preview_image
-          | image_url: width: 100
-          | image_tag: style: 'filter: blur(3px)', preload: true, loading="eager"
-        }}
+        <img
+          loading="eager"
+          width="100"
+          height="73"
+          src="{{  block.settings.video.preview_image | img_url: '100x' }}"
+          srcset="{{ block.settings.logo | img_url: '100x' }} 1x"
+          alt=""
+        >
+        <!--
+          {{
+            block.settings.video.preview_image
+            | image_url: width: 100
+            | image_tag: style: 'filter: blur(3px)', preload: true, loading: 'eager'
+          }}
+        -->
         <!--
           {% if block.settings.video_m %}
             {{
