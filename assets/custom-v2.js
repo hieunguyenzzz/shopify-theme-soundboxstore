@@ -542,32 +542,32 @@ $(document).ready(function () {
   //     $("#vid2").click();
   // })
 
-  // (() => {
-  //   fetch("https://test.hieunguyenel2686.workers.dev/")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       document.querySelector("html").setAttribute("city", res.city);
-  //       if (res.city === "London" && GRFQConfigs?.form_elements) {
-  //         let field_showroom = GRFQConfigs.form_elements.find(
-  //           (i) => i.code === "request-showroom-visit"
-  //         );
-  //         let field_site_survey = GRFQConfigs.form_elements.find(
-  //           (i) => i.code === "free-site-survey"
-  //         );
-  //         if (field_showroom) {
-  //           field_showroom.required = 1;
-  //         }
-  //         if (field_site_survey) {
-  //           field_site_survey.required = 1;
-  //         }
-  //       } else {
-  //         let field = GRFQConfigs.form_elements.find(
-  //           (i) => i.code === "request_remote_tour"
-  //         );
-  //         if (field) {
-  //           field.required = 1;
-  //         }
-  //       }
-  //     });
-  // })();
+  (() => {
+    fetch("https://test.hieunguyenel2686.workers.dev/")
+      .then((res) => res.json())
+      .then((res) => {
+        document.querySelector("html").setAttribute("city", res.city);
+        if (res.city === "London" && GRFQConfigs?.form_elements) {
+          let field_showroom = GRFQConfigs.form_elements.find(
+            (i) => i.code === "request-showroom-visit"
+          );
+          let field_site_survey = GRFQConfigs.form_elements.find(
+            (i) => i.code === "free-site-survey"
+          );
+          if (field_showroom) {
+            field_showroom.required = 1;
+          }
+          if (field_site_survey) {
+            field_site_survey.required = 1;
+          }
+        } else {
+          let field = GRFQConfigs.form_elements.find(
+            (i) => i.code === "request_remote_tour"
+          );
+          if (field) {
+            field.required = 1;
+          }
+        }
+      });
+  })();
 });
