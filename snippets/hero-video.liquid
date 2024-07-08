@@ -128,39 +128,43 @@
   {%- unless block.settings.video_url contains 'youtube.com/watch' -%}
     {% assign id = block.id | append: '_v' %}
     <script>
-      (() => {
-           let played = false
-           function onviedoHover() {
-             if (played) return
-             played = true
-             localStorage.setItem("{{ id }}", true)
-             let e = document.querySelector(".hero--{{ block.id }} .hero__media-container")
-             let t = document.querySelector(".hero--{{ block.id }} template.desktop-only")
-             if (window.innerWidth < 679) {
-               t = document.querySelector(".hero--{{ block.id }} template.mobile-only")
-             }
-             e.append(t.content.cloneNode(true))
+      document.addEventListener(
+        "app:ready",
+        (e) => {
+          let played = false
+          function onviedoHover() {
+            if (played) return
+            played = true
+            localStorage.setItem("{{ id }}", true)
+            let e = document.querySelector(".hero--{{ block.id }} .hero__media-container")
+            let t = document.querySelector(".hero--{{ block.id }} template.desktop-only")
+            if (window.innerWidth < 679) {
+              t = document.querySelector(".hero--{{ block.id }} template.mobile-only")
+            }
+            e.append(t.content.cloneNode(true))
 
-             let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
-             if (v) {
-               v.addEventListener("play", (event) => {
-                 v.classList.add("playing")
-               });
-             }
-             setTimeout(() => {
-               let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
-               if (v.currentTime === 0) {
-                 v.play()
-               }
-             }, 300)
-           }
-           if (localStorage.getItem("{{ id }}")) {
-             onviedoHover()
-           } else {
-             document.addEventListener("mouseover", onviedoHover, { once: true })
-             window.addEventListener("scroll", onviedoHover, { once: true })
-           }
-         })()
+            let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
+            if (v) {
+              v.addEventListener("play", (event) => {
+                v.classList.add("playing")
+              });
+            }
+            setTimeout(() => {
+              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
+              if (v.currentTime === 0) {
+                v.play()
+              }
+            }, 300)
+          }
+          if (localStorage.getItem("{{ id }}")) {
+            onviedoHover()
+          } else {
+            document.addEventListener("mouseover", onviedoHover, { once: true })
+            window.addEventListener("scroll", onviedoHover, { once: true })
+          }
+        },
+        false,
+      );
     </script>
   {% endunless %}
 
