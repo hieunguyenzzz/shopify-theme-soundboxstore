@@ -218,22 +218,22 @@
     {%- endfor -%}
   </div>
 {%- endif -%}
-
-<div class="text-center">
-  <a href="{{ blog.url }}" class="btn return-link">
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      role="presentation"
-      class="icon icon--wide icon-arrow-left"
-      viewBox="0 0 50 15"
-    >
-      <path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/>
-    </svg>
-    {{ 'blogs.article.back_to_blog' | t: title: blog.title -}}
-  </a>
-</div>
-
+{% if section.settings.backBtn %}
+  <div class="text-center">
+    <a href="{{ blog.url }}" class="btn return-link">
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        role="presentation"
+        class="icon icon--wide icon-arrow-left"
+        viewBox="0 0 50 15"
+      >
+        <path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/>
+      </svg>
+      {{ 'blogs.article.back_to_blog' | t: title: blog.title -}}
+    </a>
+  </div>
+{% endif %}
 {%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
 {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
   | default: shop.metafields.yoast_seo.settings
