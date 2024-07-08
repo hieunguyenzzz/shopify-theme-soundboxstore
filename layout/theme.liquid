@@ -558,16 +558,16 @@
               })()
               const event = new Event("app:ready");
               document.dispatchEvent(event);
+              localStorage.setItem("app:ready","true")
             }
           }
           if(isReplaced){
             MeroxIO_Function()
           }else{
-
-          document.addEventListener("click", MeroxIO_Function);
-          document.addEventListener("scroll", MeroxIO_Function);
-          document.addEventListener("touchstart", MeroxIO_Function);
-          document.addEventListener("mousemove", MeroxIO_Function);
+            document.addEventListener("click", MeroxIO_Function);
+            document.addEventListener("scroll", MeroxIO_Function);
+            document.addEventListener("touchstart", MeroxIO_Function);
+            document.addEventListener("mousemove", MeroxIO_Function);
           }
 
       })()
