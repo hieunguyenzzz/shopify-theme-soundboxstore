@@ -43,16 +43,6 @@
   <h1 class="section-header__title">{{ article.title }}</h1>
 
   <div class="article__sub-meta">
-    <div
-      style="
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        max-width: 100%;
-      "
-    >
-      {{ article.image | image_url: width: 1560 | image_tag }}
-    </div>
     {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
       <span>
         <a href="{{ article.url }}#comments">
@@ -66,6 +56,16 @@
     {%- if section.settings.blog_show_author -%}
       <span>by {{ article.author }}</span>
     {%- endif -%}
+  </div>
+  <div
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+    "
+  >
+    {{ article.image | image_url: width: 1560 | image_tag }}
   </div>
 </header>
 
