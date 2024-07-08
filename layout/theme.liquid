@@ -526,38 +526,51 @@
     {% section 'zoho-form-popup' %}
 
     <script>
-      var isReplaced = false;
-      function MeroxIO_Function(){
-        if(!isReplaced){
-          window.yett.unblock();
-          console.log("apps lazyloaded successfully");
-          isReplaced=true;
+      (()=>{
+          var isReplaced = false;
+          try {
+            isReplaced=!!localStorage.getItem("app:ready")
+          } catch (error) {
+            console.error(error)
+          }
+         function MeroxIO_Function(){
+            if(!isReplaced){
+              window.yett.unblock();
+              console.log("apps lazyloaded successfully");
+              isReplaced=true;
 
-          (function zsiqchat(){
-            window['$zoho'] = window['$zoho'] || {};
-            $zoho.salesiq = $zoho.salesiq || {
-              widgetcode:
-                "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
-              values: {},
-              ready: function () {},
-            };
-            var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.id = "zsiqscript";
-            s.defer = true;
-            s.src = "https://salesiq.zoho.eu/widget";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-          })()
-          const event = new Event("app:ready");
-          document.dispatchEvent(event);
-        }
-      }
-      document.addEventListener("click", MeroxIO_Function);
-      document.addEventListener("scroll", MeroxIO_Function);
-      document.addEventListener("touchstart", MeroxIO_Function);
-      document.addEventListener("mousemove", MeroxIO_Function);
+              (function zsiqchat(){
+                window['$zoho'] = window['$zoho'] || {};
+                $zoho.salesiq = $zoho.salesiq || {
+                  widgetcode:
+                    "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
+                  values: {},
+                  ready: function () {},
+                };
+                var d = document;
+                s = d.createElement("script");
+                s.type = "text/javascript";
+                s.id = "zsiqscript";
+                s.defer = true;
+                s.src = "https://salesiq.zoho.eu/widget";
+                t = d.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(s, t);
+              })()
+              const event = new Event("app:ready");
+              document.dispatchEvent(event);
+            }
+          }
+          if(isReplaced){
+            MeroxIO_Function()
+          }else{
+
+          document.addEventListener("click", MeroxIO_Function);
+          document.addEventListener("scroll", MeroxIO_Function);
+          document.addEventListener("touchstart", MeroxIO_Function);
+          document.addEventListener("mousemove", MeroxIO_Function);
+          }
+
+      })()
     </script>
     <script>
         jQuery.event.special.touchstart = {
