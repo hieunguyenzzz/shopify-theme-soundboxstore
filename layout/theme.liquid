@@ -529,11 +529,11 @@
       (()=>{
           var isReplaced = false;
           try {
-            isReplaced=!!localStorage.getItem("app:ready")
+            isReplaced=localStorage.getItem("app:ready")
           } catch (error) {
             console.error(error)
           }
-         function MeroxIO_Function(){
+          function MeroxIO_Function(){
             if(!isReplaced){
               window.yett.unblock();
               console.log("apps lazyloaded successfully");
@@ -558,18 +558,12 @@
               })()
               const event = new Event("app:ready");
               document.dispatchEvent(event);
-              localStorage.setItem("app:ready","true")
             }
           }
-          if(isReplaced){
-            MeroxIO_Function()
-          }else{
-            document.addEventListener("click", MeroxIO_Function);
-            document.addEventListener("scroll", MeroxIO_Function);
-            document.addEventListener("touchstart", MeroxIO_Function);
-            document.addEventListener("mousemove", MeroxIO_Function);
-          }
-
+          document.addEventListener("click", MeroxIO_Function);
+          document.addEventListener("scroll", MeroxIO_Function);
+          document.addEventListener("touchstart", MeroxIO_Function);
+          document.addEventListener("mousemove", MeroxIO_Function);
       })()
     </script>
     <script>
