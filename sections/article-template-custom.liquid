@@ -74,19 +74,18 @@
       <span>by {{ article.author }}</span>
     {%- endif -%}
   </div>
-  <div
-    class="article-image-wrap"
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      max-width: 100%;
-    "
-  >
-    {{ article.image | image_url: width: 1560 | image_tag }}
-  </div>
 </header>
-
+<div
+  class="article-image-wrap"
+  style="
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+  "
+>
+  {{ article.image | image_url: width: 1560 | image_tag }}
+</div>
 <div class="rte{% if section.settings.blog_capitalize_first %} capitalize-first-letter{% endif %}">
   {{ article.content }}
 </div>
