@@ -528,11 +528,7 @@
     <script>
       (()=>{
           var isReplaced = false;
-          try {
-            isReplaced=localStorage.getItem("app:ready")
-          } catch (error) {
-            console.error(error)
-          }
+
           function MeroxIO_Function(){
             if(!isReplaced){
               window.yett.unblock();
