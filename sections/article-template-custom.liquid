@@ -8,10 +8,10 @@
     margin: auto;
   }
   .template-article  .rte {
-    max-width: 72ch;
+    max-width: 1024px;
     margin: auto;
   }
-  .template-article  .section-header {
+  .template-article  .section-header__title ,  .template-article .article__sub-meta{
         max-width: 1024px;
     margin: auto;
   }
@@ -74,18 +74,19 @@
       <span>by {{ article.author }}</span>
     {%- endif -%}
   </div>
+  <div
+    class="article-image-wrap"
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+    "
+  >
+    {{ article.image | image_url: width: 1560 | image_tag }}
+  </div>
 </header>
-<div
-  class="article-image-wrap"
-  style="
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    max-width: 100%;
-  "
->
-  {{ article.image | image_url: width: 1560 | image_tag }}
-</div>
+
 <div class="rte{% if section.settings.blog_capitalize_first %} capitalize-first-letter{% endif %}">
   {{ article.content }}
 </div>
