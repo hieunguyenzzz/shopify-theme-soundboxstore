@@ -34,10 +34,11 @@
 
 <header class="section-header">
   <h1 class="section-header__title">{{ article.title }}</h1>
-  <div>
-    {{ article.image | image_url: width: 1560 | image_tag }}
-  </div>
+
   <div class="article__sub-meta">
+    <div>
+      {{ article.image | image_url: width: 1560 | image_tag }}
+    </div>
     {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
       <span>
         <a href="{{ article.url }}#comments">
