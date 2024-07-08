@@ -17,6 +17,11 @@
   <link rel="preload" as="image" href="{{ collection.products.first.featured_image | img_url: '800x' }}">
 {% endif %}
 
+<link rel="preload" href="{{ 'HelveticaNeue.woff2' | file_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ 'BananaGrotesk-Regular.woff2' | file_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ 'BananaGrotesk-Semibold.woff2' | file_url }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ 'BananaGrotesk-Thin.woff2' | file_url }}" as="font" type="font/woff2" crossorigin>
+
 <link rel="preconnect" href="//fonts.shopifycdn.com/" crossorigin>
 <link rel="preconnect" href="//cdn.shopify.com/" crossorigin>
 <link rel="preconnect" href="//v.shopify.com/" crossorigin>
