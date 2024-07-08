@@ -7,6 +7,10 @@
     max-width: 72ch;
     margin: auto;
   }
+   .template-article .article__sub-meta img{
+      width: 100vw;
+      max-width: 1560px;
+  }
 </style>
 {%- liquid
   assign number_of_comments = article.comments_count
@@ -36,7 +40,14 @@
   <h1 class="section-header__title">{{ article.title }}</h1>
 
   <div class="article__sub-meta">
-    <div>
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+      "
+    >
       {{ article.image | image_url: width: 1560 | image_tag }}
     </div>
     {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
