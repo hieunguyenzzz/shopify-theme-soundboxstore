@@ -33,7 +33,7 @@
               href=""
               onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
             >
-              {{- section.settings.btn_text | default: 'Schedule Site Visit' -}}
+              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
             </a>
           </p>
         {% endif %}
@@ -64,7 +64,7 @@
           "type": "text",
           "id": "btn_text",
           "label": "Button text",
-            "default":"Schedule Site Visit"
+            "default":"Schedule Design Survey "
   },{
           "type": "text",
           "id": "url",
