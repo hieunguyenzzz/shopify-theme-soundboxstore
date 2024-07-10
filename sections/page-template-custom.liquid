@@ -38,7 +38,7 @@
 {%- render 'breadcrumbs' -%}
 
 <header class="section-header">
-  <h1 class="section-header__title">{{ article.title }}</h1>
+  <h1 class="section-header__title">{{ page.title }}</h1>
 
   <div class="article__sub-meta"></div>
   <div
@@ -55,7 +55,7 @@
 </header>
 
 <div class="rte">
-  {{ article.content }}
+  {{ page.content }}
 </div>
 
 {% schema %}
