@@ -58,6 +58,9 @@
     {% unless current_variant.available %}
       disabled="disabled"
     {% endunless %}
+    {% if settings.hide_add_to_cart %}
+      hidden
+    {% endif %}
   >
     <span data-add-to-cart-text data-default-text="{{ default_text }}">
       {{ button_text }}
