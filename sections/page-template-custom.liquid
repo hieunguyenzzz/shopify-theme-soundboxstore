@@ -55,21 +55,7 @@
 <header class="section-header">
   <h1 class="section-header__title">{{ article.title }}</h1>
 
-  <div class="article__sub-meta">
-    {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
-      <span>
-        <a href="{{ article.url }}#comments">
-          {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
-        </a>
-      </span>
-    {%- endif -%}
-    {%- if section.settings.blog_show_date -%}
-      <span class="article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
-    {%- endif -%}
-    {%- if section.settings.blog_show_author -%}
-      <span>by {{ article.author }}</span>
-    {%- endif -%}
-  </div>
+  <div class="article__sub-meta"></div>
   <div
     class="article-image-wrap"
     style="
