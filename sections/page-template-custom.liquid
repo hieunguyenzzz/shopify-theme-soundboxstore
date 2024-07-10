@@ -1,6 +1,132 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{%- comment -%}
+  This file has been modified by the Yoast SEO for Shopify app.
+  You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+<style>
+   .template-article .main-content {
+    max-width: unset;
+    margin: auto;
   }
+  .template-article  .rte {
+    max-width: 1024px;
+    margin: auto;
+  }
+  .template-article  .section-header__title ,  .template-article .article__sub-meta{
+        max-width: 1024px;
+    margin: auto;
+  }
+   .template-article  .rte{
+
+        text-align: justify;
+
+  }
+   .template-article .article-image-wrap {
+    margin-top:var(--sectionHeaderBottom)
+  }
+  .template-article .article-image-wrap img{
+      width: 100vw;
+      max-width: 1560px;
+  }
+  .blog-layout__main{
+        width: 100%;
+  }
+  .breadcrumbs{
+    display:none
+  }
+</style>
+{%- liquid
+  assign number_of_comments = article.comments_count
+  if comment.status == 'pending'
+    assign number_of_comments = article.comments_count | plus: 1
+  endif
+-%}
+
+{%- render 'breadcrumbs' -%}
+
+{%- if section.settings.blog_show_tags and article.tags.size > 0 -%}
+  <div class="article-tag__wrapper">
+    {%- for tag in article.tags -%}
+      {% if tag contains '_' %}
+        {%- assign tag_starts_with = tag | slice: 0 -%}
+        {% if tag_starts_with == '_' -%}
+          {%- if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif -%}
+          {%- continue -%}
+        {%- endif -%}
+      {%- endif %}
+      <a href="{{ page.url }}/tagged/{{ tag | handle }}" class="article-tag">{{ tag }}</a>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+<header class="section-header">
+  <h1 class="section-header__title">{{ article.title }}</h1>
+
+  <div class="article__sub-meta">
+    {%- if section.settings.blog_show_comments and article.comments_count > 0 -%}
+      <span>
+        <a href="{{ article.url }}#comments">
+          {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+        </a>
+      </span>
+    {%- endif -%}
+    {%- if section.settings.blog_show_date -%}
+      <span class="article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+    {%- endif -%}
+    {%- if section.settings.blog_show_author -%}
+      <span>by {{ article.author }}</span>
+    {%- endif -%}
+  </div>
+  <div
+    class="article-image-wrap"
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+    "
+  >
+    {{ article.image | image_url: width: 1560 | image_tag }}
+  </div>
+</header>
+
+<div class="rte{% if section.settings.blog_capitalize_first %} capitalize-first-letter{% endif %}">
+  {{ article.content }}
+</div>
+
+{% schema %}
+{
+  "name": "Article pages custom",
+  "class": "blog-layout__main",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_capitalize_first",
+      "label": "Capitalize first letter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "Show tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_comments",
+      "label": "Show comment count",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author"
+    }
+  ]
+}
 {% endschema %}
