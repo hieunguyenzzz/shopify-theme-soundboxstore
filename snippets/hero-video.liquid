@@ -114,14 +114,11 @@
       <template class="mobile-only">
         {{
           block.settings.video_m
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m', class: 'mobile-only'
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m'
         }}
       </template>
       <template class="desktop-only">
-        {{
-          block.settings.video
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d', class: 'desktop-only'
-        }}
+        {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d' }}
       </template>
     {%- endif -%}
   </div>
