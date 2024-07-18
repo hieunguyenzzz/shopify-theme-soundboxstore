@@ -35,7 +35,7 @@
             <a
               class="btn  bg-[var(--colorBtnPrimary)]"
               href=""
-              onclick="Calendly.initPopupWidget({url: '{{ alendly_url| default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+              onclick="Calendly.initPopupWidget({url: '{{ calendly_url| default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
             >
               {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
             </a>
