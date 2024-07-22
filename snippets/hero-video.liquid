@@ -147,7 +147,6 @@
              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
              if (v.currentTime === 0) {
                v.play().then(() => {}).catch((error) => {
-                 alert("controls")
                   v.setAttribute("controls","controls");
               });
              }
