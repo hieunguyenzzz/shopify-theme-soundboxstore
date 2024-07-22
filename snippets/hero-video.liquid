@@ -139,6 +139,10 @@
              v.addEventListener("play", (event) => {
                v.classList.add("playing")
              });
+             v.addEventListener('suspend', () => {
+               alert("suspend")
+            });
+
            }
            setTimeout(() => {
              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
