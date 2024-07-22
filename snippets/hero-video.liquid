@@ -183,7 +183,7 @@
            if (v) {
              v.addEventListener("play", (event) => {
                v.classList.add("playing")
-               v.removeAttribute('controls')
+
              });
 
 
@@ -192,9 +192,10 @@
              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
              if (v.currentTime === 0) {
                v.play().then(() => {}).catch((error) => {
-                  e.classList.add("low-lower-mode")
+
                   document.querySelector(".hero__text-wrap").addEventListener("click",()=>{v.play()})
               });
+                v.removeAttribute('controls')
              }
            }, 300)
          }
