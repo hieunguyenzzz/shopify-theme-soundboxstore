@@ -183,6 +183,7 @@
            if (v) {
              v.addEventListener("play", (event) => {
                v.classList.add("playing")
+               v.removeAttribute('controls')
                 e.classList.remove("low-lower-mode")
              });
             //  v.addEventListener('suspend', () => {
