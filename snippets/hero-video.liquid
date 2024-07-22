@@ -128,7 +128,6 @@
       let played = false
          function onviedoHover() {
            if (played) return
-           console.log("played")
            played = true
            localStorage.setItem("{{ id }}", true)
            let e = document.querySelector(".hero--{{ block.id }} .hero__media-container")
