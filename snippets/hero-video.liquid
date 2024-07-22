@@ -146,7 +146,9 @@
            setTimeout(() => {
              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
              if (v.currentTime === 0) {
-               v.play()
+               v.play().then(() => {}).catch((error) => {
+                    videoElement.setAttribute("controls","controls");
+                });
              }
            }, 300)
          }
