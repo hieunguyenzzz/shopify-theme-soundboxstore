@@ -128,6 +128,7 @@
       let played = false
          function onviedoHover() {
            if (played) return
+           console.log("played")
            played = true
            localStorage.setItem("{{ id }}", true)
            let e = document.querySelector(".hero--{{ block.id }} .hero__media-container")
@@ -156,6 +157,7 @@
            document.addEventListener("mouseover", onviedoHover, { once: true })
            window.addEventListener("scroll", onviedoHover, { once: true })
          }
+        setTimeout(onviedoHover, 2000)
     </script>
   {% endunless %}
 
