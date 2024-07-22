@@ -112,10 +112,13 @@
       ></div>
     {% else %}
       <template class="mobile-only">
-        {{ block.settings.video_m | video_tag: autoplay: true, loop: true, muted: true, controls: true, id: 'video_m' }}
+        {{
+          block.settings.video_m
+          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m'
+        }}
       </template>
       <template class="desktop-only">
-        {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, id: 'video_d' }}
+        {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d' }}
       </template>
     {%- endif -%}
   </div>
