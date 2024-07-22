@@ -197,7 +197,6 @@
              let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
              if (v.currentTime === 0) {
                v.play().then(() => {}).catch((error) => {
-                  v.setAttribute("controls","controls");
                   e.classList.add("low-lower-mode")
                   document.querySelector(".hero__text-wrap").addEventListener("click",()=>{v.play()})
               });
