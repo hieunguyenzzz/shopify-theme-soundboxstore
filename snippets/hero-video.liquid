@@ -60,7 +60,13 @@
        }
   .hero__media-container.low-lower-mode video{
    }
-   .hero--{{ block.id }} .hero__media:has(.low-lower-mode){
+  .hero--{{ block.id }} .play-btn{
+     z-index:-1;
+    visibility: hidden;
+  }
+   .hero--{{ block.id }}:has(.low-lower-mode) .play-btn{
+     z-index:9;
+    visibility: visible;
   }
 {%- endstyle -%}
 
