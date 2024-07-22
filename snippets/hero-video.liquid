@@ -63,6 +63,7 @@
   .hero--{{ block.id }} .play-btn{
      z-index:-1;
     visibility: hidden;
+    pointer-events: none;
   }
    .hero--{{ block.id }}:has(.low-lower-mode) .play-btn{
      z-index:9;
@@ -155,8 +156,9 @@
     >
       <svg
         style="
-          backdrop-filter: blur(5px);
-          padding: 6px;
+                   backdrop-filter: blur(5px);
+          padding: 0 12px;
+          border-radius: 50%;
         "
         xmlns="http://www.w3.org/2000/svg"
         width="100"
