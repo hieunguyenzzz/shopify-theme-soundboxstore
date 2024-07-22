@@ -149,6 +149,7 @@
              if (v.currentTime === 0) {
                v.play().then(() => {}).catch((error) => {
                   v.setAttribute("controls","controls");
+                  v.play()
               });
              }
            }, 300)
