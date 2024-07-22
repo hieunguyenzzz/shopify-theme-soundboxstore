@@ -8,7 +8,6 @@
 * ------------------------------------------------------------
 */
 {
-  "layout": "theme.test",
   "sections": {
     "e9d8df25-a0b9-44a6-858f-3adf853126c7": {
       "type": "redirect_to_reseller_home",
@@ -58,7 +57,7 @@
         "subheading": "Find Your Ideal Soundproof Office Phone Booth \/ Pods,  Acoustically Controlled Meeting Rooms for Focused Work Environments. ISO 23351-1 Certified.",
         "link_text": "SHOWROOM VISIT",
         "link": "shopify:\/\/pages\/showroom-london",
-        "link2_text": "Schedule Design Survey ",
+        "link2_text": "Schedule Design Survey",
         "link2": "shopify:\/\/pages\/consultancy",
         "color_accent": "#ffffff",
         "text_align": "vertical-center horizontal-left",
@@ -108,9 +107,8 @@
         "icon_text_block_gdcwjp",
         "icon_text_block_AAeAN8"
       ],
-      "disabled": true,
       "custom_css": [
-        "ov.product-icon-text-section {margin: 0;}",
+        ".product-icon-text-section {margin: 0;}",
         ".flexbox {flex-wrap: nowrap; overflow: auto;}",
         ".icon-wrap {min-width: 60px;}"
       ],
@@ -420,7 +418,7 @@
         "b81f8a1e-4b50-4e80-9331-506585be47c4"
       ],
       "settings": {
-        "title": "View some of our many brands sold to...",
+        "title": "You're in good company.",
         "content": "",
         "divider": false
       }
@@ -613,7 +611,6 @@
         "fde14c79-79dd-487b-9223-27464b25d6b0",
         "brand_details_Y6dbVU"
       ],
-      "disabled": true,
       "custom_css": [
         "{display: flow-root; justify-content: center; padding-bottom: 2em; background: #f5e8d8; margin: 0;}",
         "h2 {margin-top: 1.4em;}",
@@ -751,11 +748,17 @@
       }
     },
     "blog_posts_dhw4dK": {
-      "type": "blog-posts-scroller",
+      "type": "blog-posts",
+      "disabled": true,
       "custom_css": [
-        "section {background: rgb(232 232 232);}",
-        "img {border-radius: 0.8rem; border-top-right-radius: min(5rem, 8vw);}",
-        "a {font-weight: 700; font-family: var(--typeHeaderPrimary);}"
+        ".blog-layout__main + .blog-layout__sidebar {border: none;}",
+        ".grid__image-ratio--wide:before {padding-bottom: 100%;}",
+        "@media only screen and (max-width: 1024px) {.grid__image-ratio--wide:before {padding-bottom: 100%; }}",
+        "img {border-radius: 0.4em;}",
+        "a {font-weight: 700; line-height: 0; font-family: var(--typeHeaderPrimary);}",
+        ".section-header--with-link {align-items: baseline;}",
+        ".grid-article__meta {line-height: 1.3;}",
+        ".article__sub-meta {margin-block-start: 0.5em;}"
       ],
       "settings": {
         "title": "Blog",
