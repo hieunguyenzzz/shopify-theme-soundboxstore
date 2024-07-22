@@ -62,7 +62,7 @@
        }
   .hero__media-container.low-lower-mode video{
          pointer-events: auto;
-    z-index:999
+    z-index:9
    }
    .hero--{{ block.id }} .hero__media:has(.low-lower-mode){
     z-index:9
@@ -164,8 +164,7 @@
                v.play().then(() => {}).catch((error) => {
                   v.setAttribute("controls","controls");
                   e.classList.add("low-lower-mode")
-                  v.pause()
-                  v.play()
+
               });
              }
            }, 300)
