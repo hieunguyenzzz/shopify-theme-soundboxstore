@@ -41,7 +41,7 @@
       <div class="section-header text-center">
         <h2 class="title-font" style="margin-bottom:0;padding-bottom:5px">{{ section.settings.title }}</h2>
         <div>
-          {{ 'strings.general.gallery_subheading' | t }}
+          {{ section.settings.conten | default: 'strings.general.gallery_subheading' | t }}
         </div>
         {% if section.settings.btn_url %}
           <div class="section-btn" style="margin-top:1em">
@@ -393,6 +393,11 @@
            "type": "text",
            "id": "title",
            "label": "Title"
+         },
+       {
+           "type": "richtext",
+           "id": "content",
+           "label": "Content"
          },
 	{
          "type": "checkbox",
