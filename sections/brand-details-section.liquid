@@ -43,6 +43,14 @@
         <div>
           {{ 'strings.general.gallery_subheading' | t }}
         </div>
+        {% if section.settings.btn_url %}
+          <div class="section-btn">
+            <a href="{{ section.settings.btn_url }}" class="btn">
+              {{- section.settings.btn_text }}
+            </a>
+          </div>
+        {% endif %}
+        <div></div>
       </div>
     {% endif %}
     {%- for block in section.blocks -%}
