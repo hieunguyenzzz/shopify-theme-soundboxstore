@@ -1,20 +1,5 @@
-{%- style -%}
-  @media only screen and (max-width:1024px) {
-    .image-text-section .image-wrap .desktop-only {
-      display: none;
-    }
-  }
-  .image-text-section .image-wrap .mobile-only {
-    display: none;
-  }
-  @media only screen and (max-width:1024px) {
-    .image-text-section .image-wrap .mobile-only {
-      display: block;
-      min-height: 337px;
-      object-fit: cover;
-    }
-  }
-{%- endstyle -%}
+{{ 'image-text-section.css' | asset_url | stylesheet_tag }}
+
 {% if section.settings.image != blank %}
   <section class="image-text-section {{ section.settings.section_class }} image-text-section--style_{{ section.settings.style }} image-text-section--product">
     <div class="section-wrap">
