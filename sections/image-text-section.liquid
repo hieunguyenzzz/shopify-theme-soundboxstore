@@ -12,14 +12,24 @@
         --text: var(--colorBtnPrimary);
     {% endif %}
     {% if section.settings.style == 'schema-1' %}
-        --bg: var(--colorBtnPrimaryText);
-        --color: var(--colorBtnPrimary);
-        --text: var(--colorBtnPrimary);
+        --bg: {{ settings.color_scheme_1_bg }};
+        --color: {{ settings.color_scheme_1_text }};
+        --text:  {{ settings.color_scheme_1_text }};
     {% endif %}
     {% if section.settings.style == 'schema-1-reverse' %}
-        --bg: var(--colorBtnPrimaryText);
-        --color: var(--colorBtnPrimary);
-        --text: var(--colorBtnPrimary);
+        --bg: {{ settings.color_scheme_1_text }};
+        --color: {{ settings.color_scheme_1_bg }};
+        --text:  {{ settings.color_scheme_1_bg }};
+    {% endif %}
+    {% if section.settings.style == 'schema-2' %}
+        --bg: {{ settings.color_scheme_2_bg }};
+        --color: {{ settings.color_scheme_2_text }};
+        --text:  {{ settings.color_scheme_2_text }};
+    {% endif %}
+    {% if section.settings.style == 'schema-2-reverse' %}
+        --bg: {{ settings.color_scheme_2_text }};
+        --color: {{ settings.color_scheme_2_bg }};
+        --text:  {{ settings.color_scheme_2_bg }};
     {% endif %}
   }
 {%- endstyle -%}
