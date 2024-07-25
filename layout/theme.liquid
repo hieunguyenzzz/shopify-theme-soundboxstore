@@ -52,6 +52,15 @@
     script.src =
       'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
     script.onload = function () {
+      function sendToAnalytics(metric) {
+        // Replace with whatever serialization method you prefer.
+        // Note: JSON.stringify will likely include more data than you need.
+        const body = JSON.stringify(metric);
+      
+        // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
+        (navigator.sendBeacon && navigator.sendBeacon('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', body)) ||
+          fetch('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', {body, method: 'POST', keepalive: true});
+      }
       // When loading `web-vitals` using a classic script, all the public
       // methods can be found on the `webVitals` global namespace.
       webVitals.onCLS(console.log, {reportAllChanges: true});
