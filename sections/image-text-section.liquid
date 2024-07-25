@@ -1,6 +1,6 @@
 {{ 'image-text-section.css' | asset_url | stylesheet_tag }}
 {%- style -%}
-  .image-text-section--style_{{ section.id }}{
+  .image-text-section--{{ section.id }}{
     {% if section.settings.style == 'primary' %}
         --bg: var(--colorBtnPrimaryText);
         --color: var(--colorBtnPrimary);
@@ -14,7 +14,7 @@
   }
 {%- endstyle -%}
 {% if section.settings.image != blank %}
-  <section class="image-text-section {{ section.settings.section_class }} image-text-section--style_{{ section.id }} image-text-section--product">
+  <section class="image-text-section {{ section.settings.section_class }} image-text-section--{{ section.id }} image-text-section--style_{{ section.settings.style }} image-text-section--product">
     <div class="section-wrap">
       <div class="section-image">
         <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
