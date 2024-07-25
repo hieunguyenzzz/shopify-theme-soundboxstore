@@ -63,7 +63,7 @@
       }
       // When loading `web-vitals` using a classic script, all the public
       // methods can be found on the `webVitals` global namespace.
-      webVitals.onCLS(sendToAnalytics, {reportAllChanges: true});
+      webVitals.onCLS(console.log, {reportAllChanges: true});
       webVitals.onINP(sendToAnalytics, {reportAllChanges: true});
       webVitals.onLCP(console.log);
     };
