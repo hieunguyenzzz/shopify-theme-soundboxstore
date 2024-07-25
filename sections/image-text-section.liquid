@@ -11,6 +11,16 @@
         --color: var(--colorBtnPrimary);
         --text: var(--colorBtnPrimary);
     {% endif %}
+    {% if section.settings.style == 'schema-1' %}
+        --bg: var(--colorBtnPrimaryText);
+        --color: var(--colorBtnPrimary);
+        --text: var(--colorBtnPrimary);
+    {% endif %}
+    {% if section.settings.style == 'schema-1-reverse' %}
+        --bg: var(--colorBtnPrimaryText);
+        --color: var(--colorBtnPrimary);
+        --text: var(--colorBtnPrimary);
+    {% endif %}
   }
 {%- endstyle -%}
 {% if section.settings.image != blank %}
@@ -106,10 +116,22 @@
           "value": "primary",
           "label": "Primary"
         },
-           {
+        {
           "value": "primary-reverse",
           "label": "Primary Reverse"
-        },
+        }, {
+          "value": "schema-1",
+          "label": "schema 1"
+        },{
+          "value": "schema-1-reverse",
+          "label": "schema 1 Reverse"
+        }, {
+          "value": "schema-2",
+          "label": "schema 2"
+        },{
+          "value": "schema-2-reverse",
+          "label": "schema 2 Reverse"
+        }
       ]
     },
     {
