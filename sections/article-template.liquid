@@ -184,6 +184,7 @@
   </div>
 {%- endif -%}
 <div class="related-articles" style="display:none">
+  {% render 'article-bottom' %}
   {% if blog.previous_article %}
     <div style="float: right; clear: right">
       <a href="{{ blog.previous_article.url }}">
