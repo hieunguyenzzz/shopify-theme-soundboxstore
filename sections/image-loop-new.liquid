@@ -67,6 +67,11 @@
                   <h2 class="title-font">{{ block.settings.title }}</h2>
                 {% endif %}
                 {% if block.settings.description != blank %}{{ block.settings.description }}{% endif %}
+                {% if block.settings.btn_url %}
+                  <a href="{{ block.settings.btn_url }}" type="button" class="btn btn--secondary specBtn">
+                    {{ block.settings.btn_text }}
+                  </a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -124,6 +129,16 @@
            "type": "richtext",
            "id": "description",
            "label": "Description"
+         },
+     {
+           "type": "text",
+           "id": "btn_text",
+           "label": "Button text"
+         },
+      {
+           "type": "url",
+           "id": "btn_url",
+           "label": "Button Url"
          }
 	]
      }
