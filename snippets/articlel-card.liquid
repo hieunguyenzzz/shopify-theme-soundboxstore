@@ -12,15 +12,8 @@
         {%- if article.image -%}
           <div class="image-wrap">
             <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
-              {{ article.image | image_url: width: 600 | image_tag }}
+              {{ article.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
             </div>
-            <noscript>
-              <img
-                class="lazyloaded"
-                src="{{ article.image | img_url: '400x' }}"
-                alt="{{ article.title | escape }}"
-              >
-            </noscript>
           </div>
         {%- endif -%}
       {%- endif -%}
