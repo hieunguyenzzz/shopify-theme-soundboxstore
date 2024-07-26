@@ -1,6 +1,6 @@
 {%- comment -%}
-This file has been modified by the Yoast SEO for Shopify app.
-You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+  This file has been modified by the Yoast SEO for Shopify app.
+  You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
 {%- endcomment -%}
 <style>
   .template-article .main-content {
@@ -20,7 +20,13 @@ You can learn more about this (and learn how to cleanly revert these changes) at
 {%- if section.settings.blog_show_tags and article.tags.size > 0 -%}
   <div class="article-tag__wrapper">
     {%- for tag in article.tags -%}
-      {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+      {% if tag contains '_' %}
+        {%- assign tag_starts_with = tag | slice: 0 -%}
+        {% if tag_starts_with == '_' -%}
+          {%- if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif -%}
+          {%- continue -%}
+        {%- endif -%}
+      {%- endif %}
       <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-tag">{{ tag }}</a>
     {%- endfor -%}
   </div>
@@ -92,7 +98,6 @@ You can learn more about this (and learn how to cleanly revert these changes) at
         {%- if paginate.pages > 1 -%}
           {%- render 'pagination', paginate: paginate, hash: '#comments' -%}
         {%- endif -%}
-
       {%- endif -%}
 
       <hr class="hr--large">
@@ -103,25 +108,45 @@ You can learn more about this (and learn how to cleanly revert these changes) at
 
       <div class="form-vertical">
         {%- form 'new_comment', article -%}
-
           {{ form.errors | default_errors }}
 
           <div class="grid grid--small">
             <div class="grid__item medium-up--one-half">
               <label for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
-              <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words">
+              <input
+                class="input-full{% if form.errors contains 'author' %} error{% endif %}"
+                type="text"
+                name="comment[author]"
+                id="CommentAuthor"
+                value="{{ form.author }}"
+                autocapitalize="words"
+              >
             </div>
             <div class="grid__item medium-up--one-half">
               <label for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
-              <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+              <input
+                class="input-full{% if form.errors contains 'email' %} error{% endif %}"
+                type="email"
+                name="comment[email]"
+                id="CommentEmail"
+                value="{{ form.email }}"
+                autocorrect="off"
+                autocapitalize="off"
+              >
             </div>
           </div>
 
           <label for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
-          <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody">{{ form.body }}</textarea>
+          <textarea
+            class="input-full{% if form.errors contains 'body' %} error{% endif %}"
+            name="comment[body]"
+            id="CommentBody"
+          >{{ form.body }}</textarea>
 
           {%- if blog.moderated? -%}
-            <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+            <p>
+              <small>{{ 'blogs.comments.moderated' | t }}</small>
+            </p>
           {%- endif -%}
 
           <button type="submit" class="btn btn--secondary">
@@ -135,10 +160,8 @@ You can learn more about this (and learn how to cleanly revert these changes) at
             bottom right corner of the page.
           {% endcomment %}
           {{ 'shopify.online_store.spam_detection.disclaimer_html' | t }}
-
         {%- endform -%}
       </div>
-
     </div>
   {%- endpaginate -%}
 {%- endif -%}
@@ -149,97 +172,139 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   <div class="article-tag__wrapper">
     <span class="label">{{ 'blogs.article.more_from' | t }}:</span>
     {%- for tag in article.tags -%}
-      {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+      {% if tag contains '_' %}
+        {%- assign tag_starts_with = tag | slice: 0 -%}
+        {% if tag_starts_with == '_' -%}
+          {%- if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif -%}
+          {%- continue -%}
+        {%- endif -%}
+      {%- endif %}
       <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article-tag">{{ tag }}</a>
     {%- endfor -%}
   </div>
 {%- endif -%}
+<div class="related-articles" style="display:none">
+  {% if blog.next_article %}
+    <div style="float: right; clear: right">
+      <a href="{{ blog.previous_article.url }}">
+        <svg class="icon icon--tail-left" viewBox="0 0 24 24" role="presentation">
+          <path fill="currentColor" d="M1.293 11.293L9 3.586 10.414 5l-6 6H22c.553 0 1 .448 1 1s-.447 1-1 1H4.414l6 6L9 20.414l-7.707-7.707c-.391-.391-.391-1.023 0-1.414z"></path>
+        </svg>
+      </a>
+    </div>
+  {% endif %}
 
+  {% if blog.next_article %}
+    <div style="float: left; clear: left">
+      <a href="{{ blog.next_article.url }}">
+        <svg class="icon icon--tail-right" viewBox="0 0 24 24" role="presentation">
+          <path fill="currentColor" d="M22.707 11.293L15 3.586 13.586 5l6 6H2c-.553 0-1 .448-1 1s.447 1 1 1h17.586l-6 6L15 20.414l7.707-7.707c.391-.391.391-1.023 0-1.414z"></path>
+        </svg>
+      </a>
+    </div>
+  {% endif %}
+</div>
 <div class="text-center">
-  <a href="{{ blog.url }}" class="btn return-link"><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-arrow-left" viewBox="0 0 50 15"><path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/></svg> {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+  <a href="{{ blog.url }}" class="btn return-link">
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      class="icon icon--wide icon-arrow-left"
+      viewBox="0 0 50 15"
+    >
+      <path d="M50 5.38v4.25H15V15L0 7.5 15 0v5.38z"/>
+    </svg>
+    {{ 'blogs.article.back_to_blog' | t: title: blog.title -}}
+  </a>
 </div>
 
 {%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.article -%}
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "articleBody": {{ article.content | strip_html | json }},
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": {{ shop.url | append: article.url | json }}
-  },
-  "headline": {{ article.title | json }},
-  {% if article.excerpt != blank %}
-    "description": {{ article.excerpt | strip_html | json }},
-  {% endif %}
-  {% if article.image %}
-    {% assign image_size = article.image.width | append: 'x' %}
-    "image": [
-      {{ article | img_url: image_size | prepend: "https:" | json }}
-    ],
-  {% endif %}
-  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-  "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-  "author": {
-    "@type": "Person",
-    "name": {{ article.author | json }}
-  },
-  "publisher": {
-    "@type": "Organization",
-    {% if page_image %}
-      {% assign image_size = page_image.width | append: 'x' %}
-      "logo": {
-        "@type": "ImageObject",
-        "height": {{ page_image.height | json }},
-        "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
-        "width": {{ page_image.width | json }}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+  | default: shop.metafields.yoast_seo.settings
+-%}
+{%- if disabled_by_yoast_seo
+  or yoast_seo_settings.schema.useTheme.schema
+  or yoast_seo_settings.schema.useTheme.article
+-%}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "articleBody": {{ article.content | strip_html | json }},
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ shop.url | append: article.url | json }}
       },
-    {% endif %}
-    "name": {{ shop.name | json }}
-  }
-}
-{%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
-</script>
+      "headline": {{ article.title | json }},
+      {% if article.excerpt != blank %}
+        "description": {{ article.excerpt | strip_html | json }},
+      {% endif %}
+      {% if article.image %}
+        {% assign image_size = article.image.width | append: 'x' %}
+        "image": [
+          {{ article | img_url: image_size | prepend: "https:" | json }}
+        ],
+      {% endif %}
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      "author": {
+        "@type": "Person",
+        "name": {{ article.author | json }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        {% if page_image %}
+          {% assign image_size = page_image.width | append: 'x' %}
+          "logo": {
+            "@type": "ImageObject",
+            "height": {{ page_image.height | json }},
+            "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+            "width": {{ page_image.width | json }}
+          },
+        {% endif %}
+        "name": {{ shop.name | json }}
+      }
+    }
+    {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
+  </script>
 {%- endif -%}
 
 {% schema %}
-  {
-    "name": "Article pages",
-    "class": "blog-layout__main",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "blog_capitalize_first",
-        "label": "Capitalize first letter",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_tags",
-        "label": "Show tags",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_date",
-        "label": "Show date",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_comments",
-        "label": "Show comment count",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "blog_show_author",
-        "label": "Show author"
-      }
-    ]
-  }
+{
+  "name": "Article pages",
+  "class": "blog-layout__main",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_capitalize_first",
+      "label": "Capitalize first letter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_tags",
+      "label": "Show tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_comments",
+      "label": "Show comment count",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author"
+    }
+  ]
+}
 {% endschema %}
