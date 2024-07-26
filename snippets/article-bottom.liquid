@@ -303,13 +303,6 @@
    }
 </style>
 
-{% assign article = section.settings.banner_article | default: blog.articles.first %}
-{% assign img = section.settings.banner_image | default: article.image %}
-{% assign show_date = section.settings.blog_show_date %}
-{% assign show_comments = section.settings.blog_show_comments %}
-{% assign show_author = section.settings.blog_show_author %}
-{% assign image_size = section.settings.blog_image_size %}
-
 <div class="page-width blog-grid">
   {% assign article = blog.previous_article %}
   {% if article %}
