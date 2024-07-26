@@ -6,7 +6,7 @@
   .template-article .blog-article {
     max-width: 72ch;
     margin: auto;
-    padding:12px 0
+    padding-block:12px 0
   }
 </style>
 {%- liquid
@@ -15,7 +15,7 @@
     assign number_of_comments = article.comments_count | plus: 1
   endif
 -%}
-<div class="blog-article">
+<div class="blog-article page-width">
   {%- render 'breadcrumbs' -%}
 
   {%- if section.settings.blog_show_tags and article.tags.size > 0 -%}
