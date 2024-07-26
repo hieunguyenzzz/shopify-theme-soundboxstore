@@ -11,7 +11,7 @@
       {%- if article.image -%}
         {%- if article.image -%}
           <div class="image-wrap">
-            <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+            <div class="">
               {{ article.image | image_url: width: 600, height: 400 | image_tag: loading: 'lazy' }}
             </div>
           </div>
