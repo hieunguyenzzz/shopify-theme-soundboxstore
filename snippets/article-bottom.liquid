@@ -323,47 +323,18 @@
           </div>
         {%- else -%}
           {%- if article.image -%}
-            {%- if fixed_aspect_ratio -%}
-              <div class="image-wrap">
-                <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
-                  {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img
-                    class="lazyload"
-                    data-src="{{ img_url }}"
-                    data-widths="[360, 540, 720, 900, 1080]"
-                    data-aspectratio="{{ article.image.aspect_ratio }}"
-                    data-sizes="auto"
-                    alt="{{ article.image.alt | escape }}"
-                  >
-                </div>
-                <noscript>
-                  <img
-                    class="lazyloaded"
-                    src="{{ article.image | img_url: '400x' }}"
-                    alt="{{ article.title | escape }}"
-                  >
-                </noscript>
+            <div class="image-wrap">
+              <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
+                {{ article.image | image_url: width: 600 | image_tag }}
               </div>
-            {%- else -%}
-              <div class="image-wrap">
-                {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <noscript>
                 <img
-                  class="lazyload"
-                  data-src="{{ img_url }}"
-                  data-widths="[180, 360, 540, 720, 900, 1080]"
-                  data-aspectratio="{{ article.image.aspect_ratio }}"
-                  data-sizes="auto"
-                  alt="{{ article.image.alt | escape }}"
+                  class="lazyloaded"
+                  src="{{ article.image | img_url: '400x' }}"
+                  alt="{{ article.title | escape }}"
                 >
-                <noscript>
-                  <img
-                    class="lazyloaded"
-                    src="{{ article.image | img_url: '400x' }}"
-                    alt="{{ article.title | escape }}"
-                  >
-                </noscript>
-              </div>
-            {%- endif -%}
+              </noscript>
+            </div>
           {%- endif -%}
         {%- endif -%}
       </div>
@@ -439,38 +410,11 @@
           </div>
         {%- else -%}
           {%- if article.image -%}
-            {%- if fixed_aspect_ratio -%}
+            {%- if article.image -%}
               <div class="image-wrap">
                 <div class="grid__image-ratio grid__image-ratio--{{ image_size }}">
-                  {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img
-                    class="lazyload"
-                    data-src="{{ img_url }}"
-                    data-widths="[360, 540, 720, 900, 1080]"
-                    data-aspectratio="{{ article.image.aspect_ratio }}"
-                    data-sizes="auto"
-                    alt="{{ article.image.alt | escape }}"
-                  >
+                  {{ article.image | image_url: width: 600 | image_tag }}
                 </div>
-                <noscript>
-                  <img
-                    class="lazyloaded"
-                    src="{{ article.image | img_url: '400x' }}"
-                    alt="{{ article.title | escape }}"
-                  >
-                </noscript>
-              </div>
-            {%- else -%}
-              <div class="image-wrap">
-                {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                <img
-                  class="lazyload"
-                  data-src="{{ img_url }}"
-                  data-widths="[180, 360, 540, 720, 900, 1080]"
-                  data-aspectratio="{{ article.image.aspect_ratio }}"
-                  data-sizes="auto"
-                  alt="{{ article.image.alt | escape }}"
-                >
                 <noscript>
                   <img
                     class="lazyloaded"
