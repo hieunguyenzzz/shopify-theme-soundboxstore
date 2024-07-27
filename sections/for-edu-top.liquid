@@ -24,22 +24,25 @@
       <div class="p-y md:w-1/2 md:bg-white md:p-12  max-w-[72ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
         <div class="flex gap-4">
           {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px]' }}
-          <h1 class="my-4 md:my-8 text-4xl font-semibold ">{{ section.settings.heading }}</h1>
+          <div>
+            <h1 class="my-4 md:my-8 text-4xl font-semibold ">{{ section.settings.heading }}</h1>
+
+            <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
+              {{ section.settings.content }}
+            </div>
+            {% if section.settings.btn_text != blank %}
+              <p>
+                <a
+                  class="btn  bg-[var(--colorBtnPrimary)]"
+                  href=""
+                  onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                >
+                  {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
+                </a>
+              </p>
+            {% endif %}
+          </div>
         </div>
-        <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
-          {{ section.settings.content }}
-        </div>
-        {% if section.settings.btn_text != blank %}
-          <p>
-            <a
-              class="btn  bg-[var(--colorBtnPrimary)]"
-              href=""
-              onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
-            >
-              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
-            </a>
-          </p>
-        {% endif %}
       </div>
     </div>
   </div>
