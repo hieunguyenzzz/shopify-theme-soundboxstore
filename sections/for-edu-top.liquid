@@ -42,13 +42,11 @@
   <div class="page-width">
     <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
       {% if section.settings.image %}
-        <!--
-          {{
-            section.settings.image
-            | image_url: width: 1440
-            | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block'
-          }}
-        -->
+        {{
+          section.settings.image
+          | image_url: width: 1440
+          | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block'
+        }}
       {% else %}
         <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
       {% endif %}
