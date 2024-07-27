@@ -50,9 +50,9 @@
       {% else %}
         <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
       {% endif %}
-      <div class="p-y md:w-1/2 md:bg-white md:p-12 py-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
+      <div class="p-y md:w-1/2 md:bg-white rounded-lg md:p-12 py-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
         <div class="flex gap-8">
-          {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/2 rounded"' }}
+          {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/2 rounded-lg' }}
           <h1 class="my-4 md:my-8 text-4xl font-semibold ">{{ section.settings.heading }}</h1>
         </div>
         <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
@@ -71,7 +71,7 @@
         {% endif %}
       </div>
       <div class="flex-1">
-        <div class="form-vertical p-12 shadow-lg rounded" style="max-width:480px;margin:auto">
+        <div class="form-vertical p-12 shadow-lg rounded-lg" style="max-width:480px;margin:auto">
           <h2 class="text-4xl font-bold mb-12 ">Book a consultation</h2>
           {%- form 'contact', id: form_id -%}
             {%- if form.posted_successfully? -%}
