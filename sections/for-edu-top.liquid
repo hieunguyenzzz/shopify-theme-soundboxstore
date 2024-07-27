@@ -9,6 +9,35 @@
     }
   }
 </style>
+{%- assign form_id = 'contact-' | append: section.id -%}
+<style>
+  #{{form_id}}{
+    --color-error:red
+  }
+  #{{form_id}} .input.blured:invalid{
+    border-color: var(--color-error);
+  }
+  #{{form_id}} .input.blured:invalid+label{
+    color: var(--color-error);
+  }
+  #{{form_id}} .input:not([required])+label::after{
+    content: ' (Optional)';
+  }
+  #{{form_id}} .grid__item{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #{{form_id}}  .grid__item input{
+    padding: 0.8em;
+  }
+  #{{form_id}} .grid__item label{
+    margin-bottom:0.2em
+  }
+  #Contact_us_form{
+    scroll-margin-top: 140px;
+    text-align:center
+  }
+</style>
 <section class="relative isolate">
   <div class="page-width">
     <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
