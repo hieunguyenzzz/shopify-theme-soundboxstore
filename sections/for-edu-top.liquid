@@ -42,7 +42,7 @@
         {% endif %}
       </div>
       <div class="flex-1">
-        <div class="form-vertical">
+        <div class="form-vertical" style="max-width:480px;margin:auto">
           {%- form 'contact', id: form_id -%}
             {%- if form.posted_successfully? -%}
               <p class="note note--success">
