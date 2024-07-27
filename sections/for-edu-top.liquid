@@ -42,35 +42,370 @@
         {% endif %}
       </div>
       <div class="flex-1">
-        <form class="max-w-sm mx-auto">
-          <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input
-              type="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@flowbite.com"
-              required
-            >
-          </div>
-          <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Your password</label
-            >
-            <input
-              type="password"
-              id="password"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-            >
-          </div>
-          <button
-            type="submit"
-            class="btn"
-          >
-            Submit
-          </button>
-        </form>
+        <div class="form-vertical">
+          {%- form 'contact', id: form_id -%}
+            {%- if form.posted_successfully? -%}
+              <p class="note note--success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {%- endif -%}
+
+            {{ form.errors | default_errors }}
+
+            <div class="grid grid--small">
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  {% comment %} oninvalid="this.setCustomValidity('Enter First Name Here')" {% endcomment %}
+
+                  placeholder="{{ 'contact.form.fname' | t }}"
+                  class="input-full input"
+                  name="contact[fname]"
+                  autocapitalize="words"
+                  value="{% if form.fname %}{{ form.fname }}{% elsif customer %}{{ customer.fname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.fname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.lname' | t }}"
+                  name="contact[lname]"
+                  autocapitalize="words"
+                  value="{% if form.lname %}{{ form.lname }}{% elsif customer %}{{ customer.lname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.lname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+
+                  class="input-full input"
+                  required
+                  placeholder="{{ 'contact.form.subject' | t }}"
+                  name="contact[subject]"
+                  autocapitalize="words"
+                  value="{% if form.subject %}{{ form.subject }}{% elsif customer %}{{ customer.subject }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.subject' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.company' | t }}"
+                  name="contact[company]"
+                  autocapitalize="words"
+                  value="{% if form.company %}{{ form.company }}{% elsif customer %}{{ customer.company }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.company' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.address' | t }}"
+                  name="contact[address]"
+                  autocapitalize="words"
+                  value="{% if form.address %}{{ form.address }}{% elsif customer %}{{ customer.address }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.address' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.postcode' | t }}"
+                  name="contact[postcode]"
+                  autocapitalize="words"
+                  value="{% if form.postcode %}{{ form.postcode }}{% elsif customer %}{{ customer.postcode }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.website-url' | t }}"
+                  name="contact[website-url]"
+                  autocapitalize="words"
+                  value="{% if form.website-url %}{{ form.website-url }}{% elsif customer %}{{ customer.website-url }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.website-url' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  class="input-full input"
+                  autocomplete="email"
+                  type="email"
+                  required
+                  id="ContactForm-email"
+                  class="field__input"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"aria-describedby="ContactForm-email-error"
+                  {% endif -%}
+                  placeholder="{{ 'contact.form.email' | t }}"
+                >
+                <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="tel"
+                  required
+                  id="ContactFormPhone-{{ section.id }}"
+                  class="input-full input"
+                  name="contact[phone]"
+                  placeholder="{{ 'contact.form.phone' | t }}"
+                  pattern="[0-9\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+                <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <style>
+                  .form-radio label{
+                    display:inline-block
+                  }
+                </style>
+                <!--
+                  Reseller
+                  Architect
+                  Design & Build,
+                  Interior Designer
+                  Government
+                  Media / Marketing Agency
+                  Health Care
+                  Energy / Utilities
+                  Business Service
+                  Financial Industries
+                  Charties
+                  Educational
+                  Other
+                -->
+                <div
+                  class="form-radio"
+                  style="display: grid;     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) ); "
+                >
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-reseller"
+                      class="input-full"
+                      value="reseller"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-reseller">
+                      {{- 'contact.form.industry.reseller' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-architects"
+                      class="input-full"
+                      value="architects"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-architects">
+                      {{- 'contact.form.industry.architect' | t -}}
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-design_and_build"
+                      class="input-full"
+                      value="design_and_build"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-design_and_build">
+                      {{- 'contact.form.industry.design-build' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-interior_designer"
+                      class="input-full"
+                      value="interior_designer"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-interior_designer">
+                      {{- 'contact.form.industry.interior-designer' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-government"
+                      class="input-full"
+                      value="government"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-government">
+                      {{- 'contact.form.industry.government' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-media_marketing_agency"
+                      class="input-full"
+                      value="media_marketing_agency"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-media_marketing_agency">
+                      {{- 'contact.form.industry.media-marketing-agency' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Health_Care"
+                      class="input-full"
+                      value="Health_Care"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Health_Care">
+                      {{- 'contact.form.industry.health-care' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Energy_Utilities"
+                      class="input-full"
+                      value="Energy_Utilities"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Energy_Utilities">
+                      {{- 'contact.form.industry.energy-utilities' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Business_Service"
+                      class="input-full"
+                      value="Business_Service"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Business_Service">
+                      {{- 'contact.form.industry.business-service' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Financial_Industries"
+                      class="input-full"
+                      value="Financial_Industries"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Financial_Industries">
+                      {{- 'contact.form.industry.financial-industries' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Charties"
+                      class="input-full"
+                      value="Charties"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Charties">
+                      {{- 'contact.form.industry.charties' | t -}}
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="details-company-industry"
+                      id="details-company-industry-Educational"
+                      class="input-full"
+                      value="Educational"
+                      autocapitalize="words"
+                    >
+                    <label class="text-label" for="details-company-industry-Educational">
+                      {{- 'contact.form.industry.educational' | t -}}
+                    </label>
+                  </div>
+
+                  <div>
+                    <label style="width: 100%;" class="text-label" for="details-company-industry-other">
+                      {{- 'contact.form.industry.other' | t -}}
+                      :
+                      <input
+                        type="text"
+                        name="details-company-industry-other"
+                        id="details-company-industry-other"
+                        class="input-full"
+                        autocapitalize="words"
+                      >
+                    </label>
+                  </div>
+                </div>
+                <label for="details-company-industry-{{ section.id }}">{{ 'contact.form.industry.title' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <textarea
+                  rows="5"
+                  required
+                  id="ContactFormMessage-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.message' | t }}"
+                  name="contact[body]"
+                  value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+                ></textarea>
+                <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+              </div>
+
+              <div class="submit-btn-wrap grid__item">
+                <button
+                  type="submit"
+                  class="btn btn--full"
+                  style="
+                    width: 100%;
+                    max-width: 40%;
+                    margin: auto;
+                  "
+                >
+                  {{ 'contact.form.send' | t }}
+                </button>
+              </div>
+            </div>
+          {%- endform -%}
+        </div>
       </div>
     </div>
   </div>
