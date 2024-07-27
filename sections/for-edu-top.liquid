@@ -40,12 +40,12 @@
 </style>
 <section class="relative isolate">
   <div class="page-width">
-    <div class="w-full md:flex gap-12 md:min-h-[40vw] md:items-center md:py-12 bg-[#f7f7f7]]">
+    <div class="w-full md:flex gap-12 md:min-h-[40vw] md:items-center md:py-12 bg-[#f7f7f7]">
       {% if section.settings.image %}
         {{
           section.settings.image
           | image_url: width: 1440
-          | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block blur-lg'
+          | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block'
         }}
       {% else %}
         <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
