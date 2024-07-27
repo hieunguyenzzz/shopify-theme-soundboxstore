@@ -71,7 +71,10 @@
         {% endif %}
       </div>
       <div class="flex-1">
-        <div class="form-vertical p-12 shadow-lg rounded-lg bg-white" style="max-width:480px;margin:auto">
+        <div
+          class="form-vertical py-12 md:p-12 md:shadow-lg md:rounded-lg bg-[#f7f7f7] md:bg-white"
+          style="max-width:480px;margin:auto"
+        >
           <h2 class="text-4xl font-bold mb-6 ">Book a consultation</h2>
           {%- form 'contact', id: form_id -%}
             {%- if form.posted_successfully? -%}
