@@ -1,6 +1,84 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+{% comment %}
+  https://play.tailwindcss.com/qwvCADIYZy
+{% endcomment %}
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+<style type="text/tailwindcss">
+  @layer base {
+    h2 {
+          font-size: calc(var(--typeHeaderSize)*.85);
+    }
   }
+</style>
+<section class="relative isolate">
+  <div class="page-width">
+    <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
+      {% if section.settings.image %}
+        {{
+          section.settings.image
+          | image_url: width: 1440
+          | image_tag: class: 'inset-0 -z-10 h-full w-full object-cover md:absolute'
+        }}
+      {% else %}
+        <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
+      {% endif %}
+      <div class="p-y md:w-1/2 md:bg-white md:p-12  max-w-[72ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
+        <h1 class="my-4 md:my-8 text-4xl font-semibold md:text-5xl">{{ section.settings.heading }}</h1>
+        <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
+          {{ section.settings.content }}
+        </div>
+        {% if section.settings.btn_text != blank %}
+          <p>
+            <a
+              class="btn  bg-[var(--colorBtnPrimary)]"
+              href=""
+              onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+            >
+              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
+            </a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "For Edu top",
+  "settings":[ {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+  },{
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+    "default":"Embracing Sustainability"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+            "default":"<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+        },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+  },{
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text",
+            "default":"Schedule Design Survey "
+  },  {
+          "type": "url",
+          "id": "calendly_url",
+          "label": "calendly url"
+        }],
+  "presets": [
+    {
+      "name": "For Edu top",
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}
