@@ -87,6 +87,18 @@
                 <input
                   type="text"
                   required
+                  placeholder="Education facilities"
+                  class="input-full input"
+                  name="contact[education_facilities]"
+                  autocapitalize="words"
+                  value="{% if form.fname %}{{ form.fname }}{% elsif customer %}{{ customer.fname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.fname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
                   placeholder="{{ 'contact.form.full_name' | t }}"
                   class="input-full input"
                   name="contact[full_name]"
