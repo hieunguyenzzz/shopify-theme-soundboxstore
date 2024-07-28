@@ -39,7 +39,7 @@
         {% assign isLeft = forloop.index | modulo: 2 %}
         {% assign heading = block.settings.heading | default: '' %}
         {% assign content = block.settings.content | default: '' %}
-        {% if isLeft == 1 %}
+        {% if isLeft == 1 or block.settings.style == 'image-left' %}
           <section
             class="relative   my-12 min-h-[40vw] flex items-center   text-base lg:text-lg"
             id="section-{{ section.id }}-{{ forloop.index }}"
