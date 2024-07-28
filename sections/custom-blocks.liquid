@@ -263,8 +263,11 @@
 {
   "name": "custome-blocks",
   "class":"custome-blocks",
-  "settings": [],
+  "settings": [
+
+  ],
   "blocks": [
+
     {
       "type": "header",
       "name": "header",
@@ -292,6 +295,23 @@
       "type": "block",
       "name": "block",
       "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "default": "image-left",
+          "options": [
+             {
+              "value": "image-left",
+              "label": "Image left"
+            },
+            {
+              "value": "image-right",
+              "label": "Image Right"
+            },
+
+          ]
+        },
         {
           "type": "color",
           "id": "color",
