@@ -87,25 +87,13 @@
                 <input
                   type="text"
                   required
-                  placeholder="{{ 'contact.form.fname' | t }}"
+                  placeholder="{{ 'contact.form.full_name' | t }}"
                   class="input-full input"
-                  name="contact[fname]"
+                  name="contact[full_name]"
                   autocapitalize="words"
                   value="{% if form.fname %}{{ form.fname }}{% elsif customer %}{{ customer.fname }}{% endif %}"
                 >
                 <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.fname' | t }}</label>
-              </div>
-              <div class="grid__item">
-                <input
-                  type="text"
-                  required
-                  class="input-full input"
-                  placeholder="{{ 'contact.form.lname' | t }}"
-                  name="contact[lname]"
-                  autocapitalize="words"
-                  value="{% if form.lname %}{{ form.lname }}{% elsif customer %}{{ customer.lname }}{% endif %}"
-                >
-                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.lname' | t }}</label>
               </div>
               <div class="grid__item">
                 <input
