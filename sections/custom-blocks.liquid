@@ -39,7 +39,7 @@
         {% assign isLeft = forloop.index | modulo: 2 %}
         {% assign heading = block.settings.heading | default: '' %}
         {% assign subheading = block.settings['sub-heading'] | default: '' %}
-        {% assign subheadingbottom = block.settings['sub-heading-bottom'] | default: '' %}
+        {% assign subheadingbottom = block.settings['sub-heading-botoom'] | default: '' %}
         {% assign content = block.settings.content | default: '' %}
         {% if block.settings.style == 'image-left' %}
           {% assign isLeft = 1 %}
