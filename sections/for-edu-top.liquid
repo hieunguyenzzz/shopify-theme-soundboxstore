@@ -11,12 +11,15 @@
 </style>
 {%- assign form_id = 'consultation-form' -%}
 <style>
+  *{
+      scroll-margin-top: 160px;
+  }
   html{
     scroll-behavior: smooth;
   }
   #{{form_id}}{
     --color-error:red,
-      scroll-margin-top: 160px;
+
   }
   #{{form_id}} .input.blured:invalid{
     border-color: var(--color-error);
