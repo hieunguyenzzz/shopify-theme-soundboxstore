@@ -9,9 +9,38 @@
     }
   }
 </style>
+{%- assign form_id = 'contact-' | append: section.id -%}
+<style>
+  #{{form_id}}{
+    --color-error:red
+  }
+  #{{form_id}} .input.blured:invalid{
+    border-color: var(--color-error);
+  }
+  #{{form_id}} .input.blured:invalid+label{
+    color: var(--color-error);
+  }
+  #{{form_id}} .input:not([required])+label::after{
+    content: ' (Optional)';
+  }
+  #{{form_id}} .grid__item{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #{{form_id}}  .grid__item input{
+    padding: 0.8em;
+  }
+  #{{form_id}} .grid__item label{
+    margin-bottom:0.2em
+  }
+  #Contact_us_form{
+    scroll-margin-top: 140px;
+    text-align:center
+  }
+</style>
 <section class="relative isolate">
   <div class="page-width">
-    <div class="w-full md:flex md:min-h-[40vw] md:items-center md:py-12 ">
+    <div class="w-full md:flex gap-12 md:min-h-[40vw] md:items-center md:py-12 ">
       {% if section.settings.image %}
         {{
           section.settings.image
@@ -21,10 +50,10 @@
       {% else %}
         <div class="inset-0 -z-10 h-full w-full object-cover md:absolute bg-gray-300"></div>
       {% endif %}
-      <div class="p-y md:w-1/2 md:bg-white md:p-12 py-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
-        <div class="flex gap-4">
-          {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/3' }}
-          <h1 class="my-4 md:my-8 text-4xl font-semibold ">{{ section.settings.heading }}</h1>
+      <div class="p-y md:w-1/2 md:bg-white rounded-lg md:p-12 py-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
+        <div class="flex gap-8">
+          {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/2 rounded-lg' }}
+          <h1 class="my-4 md:my-8 text-3xl md:text-4xl font-semibold ">{{ section.settings.heading }}</h1>
         </div>
         <div class="my-4 md:my-8 md:text-2xl prose prose-a:underline">
           {{ section.settings.content }}
@@ -40,6 +69,106 @@
             </a>
           </p>
         {% endif %}
+      </div>
+      <div class="flex-1">
+        <div class="form-vertical p-12 shadow-lg rounded-lg bg-white" style="max-width:480px;margin:auto">
+          <h2 class="text-4xl font-bold mb-6 ">Book a consultation</h2>
+          {%- form 'contact', id: form_id -%}
+            {%- if form.posted_successfully? -%}
+              <p class="note note--success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+            {%- endif -%}
+
+            {{ form.errors | default_errors }}
+
+            <div class="grid grid--small">
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  placeholder="{{ 'contact.form.fname' | t }}"
+                  class="input-full input"
+                  name="contact[fname]"
+                  autocapitalize="words"
+                  value="{% if form.fname %}{{ form.fname }}{% elsif customer %}{{ customer.fname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.fname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="text"
+                  required
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.lname' | t }}"
+                  name="contact[lname]"
+                  autocapitalize="words"
+                  value="{% if form.lname %}{{ form.lname }}{% elsif customer %}{{ customer.lname }}{% endif %}"
+                >
+                <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.lname' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  class="input-full input"
+                  autocomplete="email"
+                  type="email"
+                  required
+                  id="ContactForm-email"
+                  class="field__input"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"aria-describedby="ContactForm-email-error"
+                  {% endif -%}
+                  placeholder="{{ 'contact.form.email' | t }}"
+                >
+                <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+              </div>
+              <div class="grid__item">
+                <input
+                  type="tel"
+                  required
+                  id="ContactFormPhone-{{ section.id }}"
+                  class="input-full input"
+                  name="contact[phone]"
+                  placeholder="{{ 'contact.form.phone' | t }}"
+                  pattern="[0-9\-]*"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                >
+                <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+              </div>
+
+              <div class="grid__item">
+                <textarea
+                  rows="5"
+                  required
+                  id="ContactFormMessage-{{ section.id }}"
+                  class="input-full input"
+                  placeholder="{{ 'contact.form.message' | t }}"
+                  name="contact[body]"
+                  value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
+                ></textarea>
+                <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+              </div>
+
+              <div class="submit-btn-wrap grid__item">
+                <button
+                  type="submit"
+                  class="btn btn--full"
+                  style="
+                    width: 100%;
+                    max-width: 40%;
+                  "
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          {%- endform -%}
+        </div>
       </div>
     </div>
   </div>
