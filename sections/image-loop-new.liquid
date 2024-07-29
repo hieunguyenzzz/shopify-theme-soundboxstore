@@ -68,7 +68,12 @@
                 {% endif %}
                 {% if block.settings.description != blank %}{{ block.settings.description }}{% endif %}
                 {% if block.settings.btn_url %}
-                  <a href="{{ block.settings.btn_url }}" type="button" class="btn {{ block.settings.btn_class }}">
+                  <a
+                    style="margin-top:1em"
+                    href="{{ block.settings.btn_url }}"
+                    type="button"
+                    class="btn {{ block.settings.btn_class }}"
+                  >
                     {{ block.settings.btn_text }}
                   </a>
                 {% endif %}
