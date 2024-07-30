@@ -202,8 +202,7 @@
 <script>
   (()=>{
     document.querySelector("#{{- form_id -}}").submit=function(event) {
-      console.log(event)
-      return true;
+      console.log(document.querySelector("#{{- form_id -}}"))
     }
   })()
 </script>
