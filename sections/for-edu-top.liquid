@@ -204,6 +204,10 @@
    function logSubmit(event) {
    console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
       event.preventDefault();
+      new FormData(event.target).forEach((value, key) =>{
+          console.log(key,value)
+      })
+      
     }
 const form = document.getElementById("{{- form_id -}}");
 form.addEventListener("submit", logSubmit);
