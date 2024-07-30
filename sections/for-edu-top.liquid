@@ -201,9 +201,12 @@
 </section>
 <script>
   (()=>{
-    document.querySelector("#{{- form_id -}}").submit=function(event) {
-      console.log(document.querySelector("#{{- form_id -}}"))
+   function logSubmit(event) {
+   console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
+      event.preventDefault();
     }
+const form = document.getElementById("{{- form_id -}}");
+form.addEventListener("submit", logSubmit);
   })()
 </script>
 {% schema %}
