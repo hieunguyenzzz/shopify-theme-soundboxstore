@@ -203,12 +203,23 @@
   (()=>{
    function logSubmit(event) {
    console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
-      event.preventDefault();
-     event.stopPropagation();
+
+     let data={}
       new FormData(event.target).forEach((value, key) =>{
-          console.log(key,value)
+          console.log(key,value);
+data[key]=value;
       })
-      
+      fetch("https://hooks.zapier.com/hooks/catch/14043376/2ustr8l/",
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(data)
+})
+.then(function(res){ console.log(res) })
+.catch(function(res){ console.log(res) })
     }
 const form = document.getElementById("{{- form_id -}}");
 form.addEventListener("submit", logSubmit);
