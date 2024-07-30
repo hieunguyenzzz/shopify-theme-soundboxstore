@@ -203,8 +203,7 @@
   (()=>{
     document.querySelector("#{{- form_id -}}").submit=function(event) {
       console.log(event)
-      event.preventDefault();
-      return false;
+      return true;
     }
   })()
 </script>
