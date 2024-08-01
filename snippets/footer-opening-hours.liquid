@@ -33,7 +33,12 @@
           {% if block.settings.richtext != blank -%}
             <div style="font-size:13px">{{ block.settings.richtext }}</div>
           {%- endif %}
-          <div style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;">
+          <style>
+            .iso-images img:not(:first-child){
+              filter:invert(1)
+            }
+          </style>
+          <div class="iso-images" style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;">
             {% render 'iso-images' %}
           </div>
         </div>
