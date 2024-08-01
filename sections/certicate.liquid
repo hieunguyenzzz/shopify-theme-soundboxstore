@@ -27,24 +27,30 @@
           </div>
         {% endfor %}
       {% else %}
-        <div class="col">
-          <div class="col-wrap">
-            <div class="icon-text-block">
-              <div class="col">
-                <div class="col-wrap">
-                  <div class="icon-text-block">
-                    <div class="icon-block">
-                      <div class="icon-wrap">
-                        {{ settings.iso_1 | image_url: width: 50 | image_tag: loading: 'lazy' }}
+        {% for i in (1..5) %}
+          {% assign key = 'iso_' | append: forloop.index %}
+          {% assign image = settings[key] %}
+          {% if image %}
+            <div class="col">
+              <div class="col-wrap">
+                <div class="icon-text-block">
+                  <div class="col">
+                    <div class="col-wrap">
+                      <div class="icon-text-block">
+                        <div class="icon-block">
+                          <div class="icon-wrap">
+                            {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div class="text-block">{{ image.alt }}</div>
                 </div>
               </div>
-              <div class="text-block">{{ settings.iso_1.alt }}</div>
             </div>
-          </div>
-        </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
     </div>
   </div>
