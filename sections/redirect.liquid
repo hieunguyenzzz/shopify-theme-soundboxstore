@@ -1,6 +1,25 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<script>
+  let url = "{{ section.settings.url |json }}"
+  if(url){
+    location.href=url
   }
+</script>
+{% schema %}
+{
+  "name": "Redirect",
+  "settings": [{
+    "type": "url",
+    "id": "url",
+    "label": "Url"
+  }],
+  "presets": [{
+    "name": "Redirect",
+    "settings": {
+
+      },
+    "blocks": [
+
+    ]
+  }]
+}
 {% endschema %}
