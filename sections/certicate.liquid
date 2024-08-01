@@ -27,9 +27,15 @@
           </div>
         {% endfor %}
       {% else %}
-        <div class="icon-block">
-          <div class="icon-wrap">
-            {{ settings.iso_1 | image_url: width: 50 | image_tag: loading: 'lazy' }}
+        <div class="col">
+          <div class="col-wrap">
+            <div class="icon-text-block">
+              <div class="icon-block">
+                <div class="icon-wrap">
+                  {{ settings.iso_1 | image_url: width: 50 | image_tag: loading: 'lazy' }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       {% endif %}
