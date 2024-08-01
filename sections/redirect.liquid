@@ -1,9 +1,11 @@
-<script>
-  let url = "{{ section.settings.url |json }}"
-  if(url){
-    location.href=url
-  }
-</script>
+{% if section.settings.url != blank %}
+  <script>
+    let url = "{{ section.settings.url }}"
+    if(url){
+      location.href=url
+    }
+  </script>
+{% endif %}
 {% schema %}
 {
   "name": "Redirect",
