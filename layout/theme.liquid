@@ -45,7 +45,7 @@
       })
       (window,document,"script","//bat.bing.com/bat.js","uetq");
     </script>
-    <!-- append core web vitals  -->
+    <!-- append core web vitals -->
     <script>
   (function () {
     var script = document.createElement('script');
@@ -69,8 +69,8 @@
     };
     document.head.appendChild(script);
   })();
-</script>
-    <!-- append core web vitals  -->
+    </script>
+    <!-- append core web vitals -->
 
     <!-- Google Tag Manager -->
     <script>
@@ -80,7 +80,7 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-W3VDBP8N');
     </script>
-    
+
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
@@ -414,10 +414,7 @@
       src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
     ></script>
     <script type="text/javascript" src="https://secure.24-astute.com/js/796186.js"></script>
-<noscript><img src="https://secure.24-astute.com/796186.png" style="display:none;" /></noscript>
-
-
-  
+    <noscript><img src="https://secure.24-astute.com/796186.png" style="display:none;"></noscript>
   </head>
 
   <body
@@ -432,7 +429,6 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
-    
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -618,8 +614,17 @@
       };
     </script>
     {% render 'linkedin_insights_tag' %}
-    
-    <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('bElvO73QlzEaZMqj'); </script>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "33fccb99ae914e9792dbbb82260a0cbe"}'></script><!-- End Cloudflare Web Analytics -->
+
+    <script>
+      (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('bElvO73QlzEaZMqj');
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "33fccb99ae914e9792dbbb82260a0cbe"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+    {% render 'ClickCease' %}
   </body>
 </html>
