@@ -175,10 +175,28 @@ $(document).ready(function () {
     autoplay: true,
     dots: false,
     responsive: [
-      {
-        breakpoint: 861,
+     responsive: [
+       {
+        breakpoint: 1440,
         settings: "unslick",
       },
+          {
+            breakpoint: 1081,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              adaptiveHeight: true,
+            },
+          },
+          {
+            breakpoint: 861,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              adaptiveHeight: true,
+            },
+          },
+        ],
     ],
   });
   $(".template-product .product-icon-text-section .flexbox").slick({
