@@ -553,13 +553,14 @@
         try{
           const country = {{ localization.country.name | json }};
           console.log({country})
+          console.log({country:    {{ localization.country.available_languages.first.endonym_name | json }} })
         }catch(e){
           console.error(e)
         }
       });
     </script>
     {% section 'zoho-form-popup' %}
-    {{ localization.country.available_languages.first.name | json }}
+
     <script>
       (()=>{
           var isReplaced = false;
