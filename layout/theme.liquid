@@ -574,9 +574,9 @@
             Other:"Other"
           }
           const country = contriesMap[{{ localization.country.iso_code | json }}];
-          let coutriesSelectInput =  document.querySelector('.grfq__popupForm__formInput [name="Country"]')
-          if(coutriesSelectInput){
-          coutriesSelectInput.value=country
+          let countriesSelectInput =  document.querySelector('.grfq__popupForm__formInput [name="Country"]')
+          if(countriesSelectInput){
+            countriesSelectInput.value=country
           }
         }catch(e){
           console.error(e)
