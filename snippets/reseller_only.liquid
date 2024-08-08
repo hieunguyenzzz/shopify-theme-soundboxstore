@@ -7,6 +7,9 @@
       {% endif %}
     {% endif %}
   {% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
   {% unless isResserllerOrTradeAccount %}
     <script id="reseller_only">
       window.location.href="{{ pages['reseller-login'].url }}"
