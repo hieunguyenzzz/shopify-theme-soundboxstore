@@ -554,6 +554,7 @@
           const country = {{ localization.country.name | json }};
           console.log({country})
           console.log({country:    {{ localization.country.available_languages.first.endonym_name | json }} })
+          console.log({country:    {{ localization.country.available_languages.first | json }} })
         }catch(e){
           console.error(e)
         }
