@@ -551,10 +551,31 @@
         const _gcl_awCookie = getCookie('_gcl_aw').split('.')
         document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
         try{
-          const country = {{ localization.country.name | json }};
+          const contriesMap = {
+            "UK":"United Kingdom",
+            "DE":"Germany",
+            "FR":"France",
+            "IT":"Italy",
+            "ES":"Spain",
+            "PT":"Portugal",
+            "UA":"Ukraine",
+            "RO":"Romania",
+            "PL":"Poland",
+            "NL":"Netherlands",
+            "BE":"Belgium",
+            "SE":"Sweden",
+            "GR":"Greece",
+            "CH":"Switzerland",
+            "AT":"Austria",
+            "RS":"Serbia",
+            "NO":"Norway",
+            "US":"United States",
+            "CA":"Canada",
+            Other:"Other"
+          }
+          const country = contriesMap[{{ localization.country.iso_code | json }}];
+
           console.log({country})
-          console.log({country:    {{ localization.country.available_languages.first.endonym_name | json }} })
-          console.log({country:    {{ localization.country.available_languages.first | json }} })
         }catch(e){
           console.error(e)
         }
