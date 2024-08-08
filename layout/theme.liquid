@@ -551,10 +551,11 @@
         const _gcl_awCookie = getCookie('_gcl_aw').split('.')
         document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
         try{
-          const country = {{ localization.country.name | json }}
-        }catch((e)=>{
+          const country = {{ localization.country.name | json }};
+          console.log({country})
+        }catch(e){
           console.error(e)
-        })
+        }
       });
     </script>
     {% section 'zoho-form-popup' %}
