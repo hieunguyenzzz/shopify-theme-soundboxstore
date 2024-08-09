@@ -391,6 +391,7 @@
 
   <div class="form-vertical">
     <form
+      data-shopify-captcha="true"
       id="form-{{ section.id }}"
       method="POST"
       action="https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}"
