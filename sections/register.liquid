@@ -404,8 +404,8 @@
   (() => {
     function formSubmit(e) {
       if (e.preventDefault) e.preventDefault();
-
-      fetch(
+      window.Shopify.captcha.protect(e.target, () => {
+  fetch(
         "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
         {
           method: "POST", // or 'PUT'
@@ -424,9 +424,12 @@
           "https://{{ request.host | append:'/pages/thankpage' }}";
       });
 
+      });
+
 
       return false;
     }
+
     document
       .getElementById("form-{{ section.id }}")
       .addEventListener("submit", formSubmit);
