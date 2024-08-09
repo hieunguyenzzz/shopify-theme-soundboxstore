@@ -405,24 +405,25 @@
     function formSubmit(e) {
       if (e.preventDefault) e.preventDefault();
       window.Shopify.captcha.protect(e.target, () => {
-        fetch(
-          "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
-          {
-            method: "POST", // or 'PUT'
-            // body: new FormData(e.target),
-            // headers: {
-            //   "Content-Type": "application/x-www-form-urlencoded",
-            //   // "Content-Type": "multipart/form-data",
-            // },
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
-          }
-        ).then((res) => {
-          location.href =
-            "https://{{ request.host | append:'/pages/thankpage' }}";
-        });
+        console.log(e.target);
+        // fetch(
+        //   "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
+        //   {
+        //     method: "POST", // or 'PUT'
+        //     // body: new FormData(e.target),
+        //     // headers: {
+        //     //   "Content-Type": "application/x-www-form-urlencoded",
+        //     //   // "Content-Type": "multipart/form-data",
+        //     // },
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+        //   }
+        // ).then((res) => {
+        //   location.href =
+        //     "https://{{ request.host | append:'/pages/thankpage' }}";
+        // });
 
       });
 
