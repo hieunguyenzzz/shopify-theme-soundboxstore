@@ -18,7 +18,7 @@
     {% for block in section.blocks %}
       {% if block.type == 'product' %}
         {% assign url = block.settings.url | default: collection.products %}
-        <li>
+        <li {{ block.shopify_attributes }}>
           {% render '[product-item]',
             product: block.settings.product,
             url: url,
