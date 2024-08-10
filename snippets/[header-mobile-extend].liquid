@@ -1,0 +1,66 @@
+<style>
+    .header-mobile-extend{
+        height:50px;
+        width:100%;
+        overflow:auto;
+        padding-bottom:10px;
+        gap:10px;
+        display:flex;
+      font-size:14px;
+      border-bottom:1px solid #f1f1f1;
+    }
+    .header-mobile-extend a {
+      background: #e9e9e9;
+      display:flex;
+      align-items:center;
+      padding:0 1em;
+      white-space:nowrap;
+      text-align: center;
+      justify-content: center;
+      border-radius: 0.3em;
+      flex-shrink: 0;
+  }
+   .header-mobile-extend a img{
+     margin-right:0.5em; width:30px;
+   }
+     .header-mobile-extend a:has(img){
+        padding-left:0.5em;
+     }
+  .site-header__drawer{
+    height: 100%;
+    top:0;
+    padding-top:148px;
+    max-height:unset;
+  }
+  .header-wrapper.header-wrapper--compressed .site-header__drawer{
+        height: 100%;
+    top:0;
+    padding-top:109px;
+  }
+      @media only screen and (min-width:1024px) {
+     .header-mobile-extend{
+       display:none
+     }
+    }
+</style>
+<div class="header-mobile-extend page-width">
+  <a href="/collections/all" style="background: #f6efe4;">
+    {{
+      all_products['office-phone-booth-folio-2-4-person'].metafields.custom.menu_image
+      | image_url: width: 30
+      | image_tag
+    }}
+    Explore Booths</a
+  >
+  <a href="#" class="specBtn">
+    <img
+      style="
+        background: var(--image-bg);
+        border-radius: 1em;
+      "
+      src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
+    >
+    Product Guide</a
+  >
+  <a href="{{ pages['about-us'].url }}">About us</a>
+</div>

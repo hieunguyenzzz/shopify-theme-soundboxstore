@@ -1,0 +1,460 @@
+<style>
+        .site-desktopnav__dropdown  a {
+          padding:0;
+          white-space: normal;
+       }
+      .site-desktopnav__dropdown  a:hover {
+           text-decoration: none;
+     }
+                   .site-nav__item .site-desktopnav__dropdown {
+                     --image-bg:#e9f0f0;
+                     padding-top: 64px;
+                     padding-right: 38px;
+                     padding-bottom: 64px;
+                     padding-left: 24px;
+                     background:{{ settings.color_header_nav | default: '#9fb5b4' }};
+                     color:{{ settings.color_header_nav_content | default: '#000' }};
+                   }
+   .site-desktopnav__dropdown a:hover >img {
+     filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.00)) drop-shadow(0px 3.28515px 5.84026px rgba(0, 0, 0, 0.0827978)) drop-shadow(0px 1.59488px 2.83534px rgba(0, 0, 0, 0.0667549))
+   }
+
+
+   .site-nav__dropdown-menu {
+     display: flex
+   }
+
+   .page-width.site-nav__dropdown-menu {
+     display: flex;
+     gap: 2em;
+   }
+
+   .site-nav__dropdown-menu_right {
+     width: 351px;
+     max-width: 40%;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+
+   .site-nav__dropdown-menu_left {
+     flex: 1;
+     border-right: 2px solid currentColor;
+     display: flex;
+     flex-direction: column;
+     overflow: hidden
+   }
+
+   .site-nav__dropdown-menu_left-bottom {
+     border-top: 2px solid currentColor;
+     padding-top: 16px;
+     font-size: 0.9em;
+   }
+
+
+   .site-nav__dropdown-menu_left-top {
+     flex: 1;
+     overflow: hidden;
+     padding-bottom: 2em
+   }
+
+   .site-nav__dropdown-menu_left-top {
+     position: relative;
+     box-sizing: border-box;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     -webkit-touch-callout: none;
+     scroll-behavior: smooth;
+     -khtml-user-select: none;
+     -ms-touch-action: pan-y;
+     touch-action: pan-y;
+     -webkit-tap-highlight-color: transparent;
+     display: flex;
+   }
+
+   .site-nav__dropdown-menu_left-top ul {
+
+     display: flex;
+     margin: 0;
+     gap: 1.4em
+   }
+
+   .site-nav__dropdown-menu_left-top ul * {
+     -webkit-user-select: none;
+     -webkit-user-drag: none;
+     -webkit-app-region: no-drag;
+   }
+
+   .site-nav__dropdown-menu_left-top ul li {
+     flex: 1 1 192px;
+     width: 192px;
+     flex-shrink: 0;
+   }
+
+   .site-nav__dropdown-menu_left-slider {
+     flex: 1;
+     overflow: hidden;
+     width: 100%;
+     scroll-behavior: smooth;
+     display: flex;
+   }
+
+   .scrolling-arrows button {
+     font-size: 1.2em;
+     width: 40px;
+     backdrop-filter: blur(2px);
+     background: #e9e9e9cc;
+     pointer-events: auto;
+     filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.00)) drop-shadow(0px 3.28515px 5.84026px rgba(0, 0, 0, 0.0827978)) drop-shadow(0px 1.59488px 2.83534px rgba(0, 0, 0, 0.0667549));
+     opacity: 100;
+     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+     transition-property: border-color, background-color, box-shadow, opacity, filter, transform;
+   }
+
+   .scrolling-arrows button:disabled {
+     visibility: hidden;
+     opacity: 0
+   }
+
+   .site-nav__dropdown-menu_left-icons img {
+     width: auto;
+     height: 30px;
+   }
+
+   .site-desktopnav__dropdown a.specBtn {
+     padding: 0;
+     cursor: pointer
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_image img {
+     height: 240px
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_title {
+     font-size: 18px;
+     line-height: 1.3;
+     padding: 0;
+     text-transform: uppercase;
+     display: block;
+     white-space: pre-line;
+     font-weight: 500;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     font-family: "Banana Grotesk",var(--typeBasePrimary),var(--typeBaseFallback),system-ui;
+     margin-top: 0.2em;
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_subtitle {
+     opacity: 0.4
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item {
+     display: block
+   }
+    .site-desktopnav__dropdown .site-nav__dropdown-item:hover  .site-nav__dropdown-item_image   img {
+     filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.00)) drop-shadow(0px 3.28515px 5.84026px rgba(0, 0, 0, 0.0827978)) drop-shadow(0px 1.59488px 2.83534px rgba(0, 0, 0, 0.0667549));
+   }
+   .site-desktopnav__dropdown .site-nav__dropdown-item>* {
+     margin-top: 0.5em
+   }
+
+   .site-nav__dropdown-ittemprice {
+     text-transform: capitalize;
+   }
+
+  .site-desktopnav__dropdown .site-nav__dropdown-item_image img {
+     width: 100%;
+     padding: 0;
+     background: var(--image-bg);
+     border-radius: 1em;
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_seats img {
+     height: 20px;
+     width: auto;
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_seats {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0 0.7em;
+         flex-direction: column;
+   }
+
+   .site-desktopnav__dropdown .site-nav__dropdown-item_content {
+     display: flex;
+     flex-direction: column;
+     padding:0 0.2em;
+     gap: 0.5em
+   }
+</style>
+{%- liquid
+  unless limit
+    assign limit = menu.links.size
+  endunless
+  unless offset
+    assign offset = 0
+  endunless
+-%}
+{%- unless title -%}
+  {%- assign title = settings.header_explore_product -%}
+{%- endunless -%}
+
+<li
+  class="site-nav__item site-nav__item_open site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown  site-nav--is-megamenu"
+  aria-haspopup="true"
+>
+  <a
+    href="/collections/all"
+    style="text-transform: uppercase;"
+    class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+  >
+    {{ title }}
+  </a>
+  <div
+    class="site-nav__dropdown site-nav__dropdown-animate  site-desktopnav__dropdown"
+    style="
+      padding-bottom: 64px;
+      font-size: 14px;width:100%
+    "
+  >
+    <div class="page-width site-nav__dropdown-menu">
+      <div class="site-nav__dropdown-menu_left">
+        <div class="site-nav__dropdown-menu_left-top">
+          {% assign collection = collections['menu-booths'] %}
+          {% unless collection %}
+            {% assign collection = collections.first %}
+          {% endunless %}
+          <div class="site-nav__dropdown-menu_left-slider">
+            <ul>
+              {% for product in collection.products %}
+                <li>
+                  {% render '[menu-item]', product: product %}
+                </li>
+              {% endfor %}
+              <li>
+                {% assign accessories = collections.accessories %}
+                {% assign title = accessories.metafields.custom.menu_title.value | default: accessories.title %}
+                {% assign subtitle = accessories.metafields.custom.menu_subtitle.value
+                  | default: product.metafields.custom.subtitle
+                %}
+                {% assign image = accessories.metafields.custom.menu_image.value | default: accessories.image %}
+                <a class="site-nav__dropdown-item" href="{{ pages['accessories'].url }}">
+                  <div class="site-nav__dropdown-item_image">
+                    {{ image | image_url: width: 300 | image_tag: class: '' }}
+                  </div>
+                  <div class="site-nav__dropdown-item_content">
+                    <div class="site-nav__dropdown-item_title">{{ title }}</div>
+                    <div class="site-nav__dropdown-item_subtitle">
+                      {{ subtitle }}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div style="width:40px;flex-shrink: 0;"></div>
+          </div>
+          <div
+            class="scrolling-arrows"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              pointer-events: none;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: space-between;
+              font-size: 1.4em;
+            "
+          >
+            <button
+              disabled=""
+              data-rold="scrolling-arrow-left"
+              class="scrolling-arrow-left"
+              style="                transform: rotate(180deg);"
+            >
+              <svg
+                width="1em"
+                height="1em"
+                fill="none"
+                strokewidth="0.03em"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 8.14 14.74"
+              >
+                <g>
+                  <polyline points="0.74 14.07 6.79 7.41 0.74 0.67"></polyline>
+                </g>
+              </svg>
+            </button>
+            <button
+              data-rold="scrolling-arrow-right"
+              class="scrolling-arrow-right"
+            >
+              <svg
+                width="1em"
+                height="1em"
+                fill="none"
+                strokewidth="0.03em"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 8.14 14.74"
+              >
+                <g>
+                  <polyline points="0.74 14.07 6.79 7.41 0.74 0.67"></polyline>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="site-nav__dropdown-menu_left-bottom">
+          <div>{{settings.header_delivery_message}}</div>
+          <div
+            class="site-nav__dropdown-menu_left-icons"
+            style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;"
+          >
+           {% render 'iso-images' %}
+          </div>
+        </div>
+      </div>
+      <div class="site-nav__dropdown-menu_right">
+        <a class="specBtn">
+          {% if settings.header_guide_image %}
+            {{ settings.header_guide_image |  image_url: width: 500 |  image_tag : style:"background: var(--image-bg);border-radius: 1em;" }}
+            {% else  %}
+              <img
+            style="
+              background: var(--image-bg);
+              border-radius: 1em;
+            "
+            src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
+          >
+          {% endif %}
+        </a>
+        <div
+          style="flex:1;display: flex;flex-direction: column;justify-content: center;"
+        >
+          <div style="font-size: 1.4em;line-height: 1.3;font-weight: 500;margin-block: 0.5em;">
+            {{settings.header_guide_title}}
+          </div>
+          <div>
+            {{settings.header_guide_description}}
+          </div>
+        </div>
+
+        <button
+          class="btn specBtn"
+          style="
+            margin-block: 1.4em;
+            display: flex;
+            align-items: center;
+          "
+        >
+          <div
+            class=""
+            style="
+              display: inline-flex;
+              font-size: 1.4em;
+              height: 0;
+              align-items: center;
+              margin-right: 0.6em;
+            "
+          >
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              style="display: inline;line-height: 0;display: block;"
+            >
+              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          {{  settings.header_guide_button}}
+        </button>
+      </div>
+    </div>
+  </div>
+</li>
+
+<script>
+   (() => {
+    const slider = document?.querySelector(
+      ".site-nav__dropdown-menu_left-slider"
+    );
+    if (!slider) {
+      console.error(".site-nav__dropdown-menu_left-slider not found!");
+      return
+    };
+    let timer = null
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const handleMove = ()=>{
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        slider.scrollLeft = scrollLeft - walk;
+      }
+      window.requestAnimationFrame(handleMove)
+    });
+    const sroller = slider;
+    const start = () => {
+      const arrowLeft = document?.querySelector(".scrolling-arrow-left");
+      const arrowRight = document?.querySelector(".scrolling-arrow-right");
+      if (arrowLeft && arrowRight) {
+        arrowRight.addEventListener("click", () => {
+          sroller.scrollLeft = sroller.scrollLeft + (sroller.clientWidth/2);
+        });
+        arrowLeft.addEventListener("click", () => {
+          sroller.scrollLeft = sroller.scrollLeft - (sroller.clientWidth/2);
+        });
+        const valid = () => {
+          if (sroller.scrollLeft === 0) {
+            arrowLeft.disabled = true;
+          } else {
+            arrowLeft.disabled = false;
+          }
+          if (Math.round(sroller.scrollLeft + sroller.clientWidth) >= sroller.scrollWidth) {
+            arrowRight.disabled = true;
+          } else {
+            arrowRight.disabled = false;
+          }
+        };
+        sroller.addEventListener(
+          "scroll",
+          () => {
+            if (timer !== null) {
+              clearTimeout(timer);
+            }
+            timer = setTimeout(()=>window.requestAnimationFrame(valid), 150);
+          },
+          false
+        );
+        window.requestAnimationFrame(valid);
+      }
+    };
+    start()
+  })();
+</script>
