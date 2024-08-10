@@ -44,17 +44,11 @@
      }
    {% endif %}
 
-   {%- if settings.color_header == settings.color_body_bg or settings.color_body_bg contains settings.color_header -%}
      .site-header,
      .site-header__element--sub {
-       box-shadow: 0 0 25px rgb(0 0 0 / 10%);
+       border-bottom: 1px solid {{ settings.color_borders }}
      }
 
-     .is-light .site-header,
-     .is-light .site-header__element--sub {
-       box-shadow: none;
-     }
-   {%- endif -%}
 
    {%- if settings.color_header == settings.color_header_search -%}
      .site-header__search-form {
