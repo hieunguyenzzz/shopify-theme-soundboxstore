@@ -1,0 +1,96 @@
+{% assign collection = collections['office-pods'] %}
+{% for block in section.blocks %}
+  {% if block.type == 'products' %}
+    {% assign products = block.settings.product_list | default: collection.products %}
+    {% assign products = products | default: collection.products %}
+    {% capture items %}
+     {% for product in products %}
+        <li>
+          {% render '[product-item]', product: product %}
+        </li>
+      {% endfor %}
+  {% endcapture %}
+  {% endif %}
+{% endfor %}
+<section style="margin:1em auto" class="collection-main page-width">
+  <ul class="collection-products">
+    {{ items }}
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign url = block.settings.url | default: collection.products %}
+        <li>
+          {% render '[product-item]',
+            product: block.settings.product,
+            url: url,
+            title: block.settings.title,
+            subtitle: block.settings.subtitle,
+            image: block.settings.image,
+            image_2: block.settings.image_2
+          %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% schema %}
+{
+  "name": "Collection products",
+  "settings": [
+
+  ],
+  "blocks": [{
+      "type": "products",
+      "name": "Products",
+      "settings": [
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "Products"
+        }
+      ]
+  },  {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sub Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+          {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "info": "Seclect variant ,ex: \"/products/soundproof-phone-booth?variant=43305191407841\" ",
+          "label": "Url"
+        }
+      ]
+    }],
+  "presets": [
+    {
+      "name": "Collection products",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

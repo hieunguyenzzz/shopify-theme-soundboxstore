@@ -1,0 +1,125 @@
+{% unless title != blank %}
+  {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
+{% endunless %}
+{% unless subtitle != blank %}
+  {% assign subtitle = product.metafields.custom.menu_subtitle.value | default: product.metafields.custom.subtitle %}
+{% endunless %}
+{% assign images = images | default: product.metafields.custom.card_images.value %}
+
+{% unless image %}
+  {%- for img in images -%}
+    {% if forloop.first %}
+      {% assign image = img %}
+    {% else %}
+      {% assign image_2 = img %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endunless %}
+{% unless image %}
+  {% assign imgs = product.variants.first.metafields.global.images.value %}
+  {%- for img in imgs -%}
+    {% assign image = img %}
+    {% break %}
+  {% endfor %}
+{% endunless %}
+{% unless image_2 %}
+  {% assign imgs = product.variants[2].metafields.global.images.value %}
+  {%- for img in imgs -%}
+    {% if forloop.first %}
+      {% continue %}
+    {% endif %}
+    {% assign image_2 = img %}
+    {% break %}
+  {% endfor %}
+{% endunless %}
+{% unless description %}
+  {% assign description = product.description | strip_html | slice: 0, 150 | append: '...' %}
+{% endunless %}
+{% assign url = url | default: product.url %}
+{% capture seatimg %}
+{{ settings.manicon | image_url :width:40 |image_tag }}
+{% endcapture %}
+<a
+  href="{{ url }}"
+  class="collection-product-item"
+>
+  <div class="image {% if image_2 %} had {% endif %}">
+    {% if image %}
+      {{
+        image
+        | image_url: width: 900
+        | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
+      }}
+    {% endif %}
+    {% if image_2 %}
+      {{
+        image_2
+        | image_url: width: 900
+        | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
+      }}
+    {% endif %}
+  </div>
+  <div class="content">
+    <div>
+      <h3>{{ title }}</h3>
+      <div class="subtitle">{{ subtitle }}</div>
+    </div>
+    {% if product.metafields.custom.seats.value %}
+      <div class="seats">
+        <div style="display:flex;gap:0.3em" title="{{ product.metafields.custom.seats.value }} Seats">
+          {% for i in (1..product.metafields.custom.seats.value) %}
+            {{ seatimg }}
+          {% endfor %}
+        </div>
+        <span style="display:none">{{ product.metafields.custom.seats.value }} Seats</span>
+      </div>
+    {% endif %}
+    {%- assign swatch_file_extension = 'png' -%}
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign option_name = option.name | downcase
+        assign is_color = false
+        if option_name contains swatch_trigger
+          assign is_color = true
+        elsif option_name == 'color' or option_name == 'colour'
+          assign is_color = true
+        endif
+      -%}
+      {%- if is_color -%}
+        <div class="colours" style="display:flex;gap:0.3em">
+          {% for value in option.values %}
+            {% unless color_image %}
+              {%- liquid
+                assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
+                assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                assign color_swatch_fallback = value | split: ' ' | last | handle
+              -%}
+            {% endunless %}
+            <div
+              title="{{ value }}"
+              class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+              style="width:1.5em;height:1.5em;margin:0;background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+            >
+              {{ tranValue | escape }}
+            </div>
+            {% assign color_image = null %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {%- endfor -%}
+    {% assign lowest_price = product.price_min | money_without_trailing_zeros %}
+
+    {% if lowest_price != blank %}
+      <div class="itemprice">
+        {{ 'products.general.from_text_html' | t: price: lowest_price }}
+        {% if product.compare_at_price_min > product.price_min %}
+          <span class="compare_at_price">
+            {{- product.compare_at_price_min | money_without_trailing_zeros -}}
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+    <!-- <div class="description">{{ description }}</div> -->
+  </div>
+</a>

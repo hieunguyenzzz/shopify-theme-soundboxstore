@@ -1,0 +1,68 @@
+{% assign title = title | default: collection.title %}
+{% assign description = description | default: collection.description %}
+{% assign products = products | default: collection.products %}
+{% assign products_count = products_count | default: collection.products_count %}
+{% assign image = image | default: collection.image %}
+<header class="page-width">
+  <h1>{{ title }}</h1>
+  <div class="collection-main-content">
+    {{ image | image_url: width: 600 | image_tag: width: 600, class: 'image' }}
+    <div class="collection-main-description">
+      {% if description != blank %}
+        {{ description }}
+      {% else %}
+        <p>
+          There are many soundproof phone booths on the market but that doesn’t mean there are a lot of good options.
+          Inbox Booths are the perfect fit for the pragmatic customer.
+        </p>
+        <p>
+          As you compare popular booth options, you will notice that we focus on the elements savvy customers find most
+          important:
+        </p>
+
+        <ul>
+          <li>Industry leading quality</li>
+          <li>Competitive pricing</li>
+          <li>Fast lead time</li>
+          <li>Exceptional customer experience</li>
+        </ul>
+      {% endif %}
+      <div style="margin-top:0.5em" class="hero__link">
+        {% assign pageF = pages['remote-tours'] %}
+        {% assign textF = pageF.title %}
+        <a
+          data-onlycity="other"
+          href="{{pageF.url }}"
+          class="btn"
+        >
+          {{ textF }}
+        </a>
+        {% assign pageF = pages['showroom-london'] %}
+        {% assign textF = 'Showroom visit' %}
+        <a
+          href="{{pageF.url }}"
+          data-onlycity="London"
+          class="btn "
+        >
+          {{ textF }}
+        </a>
+        {% assign page = pages.consultancy %}
+        <a
+          href="{{ page.url }}"
+          class="btn"
+        >
+          Schedule Design Survey
+        </a>
+      </div>
+      <div>
+        <p class="delivery-message">Delivered in as little as 2 weeks</p>
+        <div
+          class="site-nav__dropdown-menu_left-icons"
+          style="display: flex; margin-top:0.5em;gap: 1em;flex-wrap: wrap;"
+        >
+          {% render 'iso-images' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
