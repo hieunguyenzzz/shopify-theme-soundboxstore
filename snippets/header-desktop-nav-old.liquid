@@ -1,0 +1,87 @@
+{%- liquid
+  unless limit
+    assign limit = main_menu.links.size
+  endunless
+  unless offset
+    assign offset = 0
+  endunless
+-%}
+<style>
+        .site-nav__item a{
+                               line-height: 1.3;
+                          padding: 0.2em 2em;
+                          font-size: 16px;
+                          margin-bottom: 0.4em;
+          white-space:nowrap;
+         display: inline-block;
+        }
+      .site-nav__item a:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+
+      }
+      .site-nav.site-navigation{
+        display:flex
+      }
+      .site-nav.site-navigation .site-nav__item{
+        padding:0!important
+      }
+       .site-nav.site-navigation .site-nav__link{
+        margin:0!important
+      }
+      .site-header .header-layout[data-logo-align=left] .header-item--logo{
+        margin:0!important;flex:1;
+      }
+      .header-item--icons{
+        flex:1!important
+      }
+    .site-nav.site-navigation {
+  display: flex;
+      width: 100%;
+      justify-content: space-around;
+      padding-left: 0;
+      min-width: 50%;
+      width: 50%;
+      flex: 1;
+    }
+</style>
+<ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
+  {%- for menu in main_menu.links -%}
+    {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
+  {% endfor %}
+  {%- for menu in sub_menu.links -%}
+    <li
+      class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown "
+      aria-haspopup="true"
+    >
+      <a
+        href="{{ menu.url }}"
+        class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+      >
+        {{ menu.title }}
+      </a>
+      {% if menu.links.size > 1 %}
+        <div class="site-nav__dropdown  text-left" style="min-height: unset;">
+          <div
+            class="site-nav__dropdown-animate  cols-wraper"
+          >
+            <ul style="margin:0">
+              {%- for menu in menu.links -%}
+                <li
+                  class="site-nav__item "
+                  aria-haspopup="true"
+                >
+                  <a
+                    href="{{ menu.url }}"
+                  >
+                    {{ menu.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

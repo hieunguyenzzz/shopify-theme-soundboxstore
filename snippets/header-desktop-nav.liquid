@@ -21,7 +21,8 @@
 
       }
       .site-nav.site-navigation{
-        display:flex
+        display:flex;
+        padding: 0 1em;
       }
       .site-nav.site-navigation .site-nav__item{
         padding:0!important
@@ -30,10 +31,10 @@
         margin:0!important
       }
       .site-header .header-layout[data-logo-align=left] .header-item--logo{
-        margin:0!important;flex:1;
+        margin:0!important;
       }
       .header-item--icons{
-        flex:1!important
+        flex:none!important
       }
     .site-nav.site-navigation {
   display: flex;
@@ -45,43 +46,70 @@
       flex: 1;
     }
 </style>
-<ul class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide" role="navigation">
-  {%- for menu in main_menu.links -%}
-    {% render '[header-desktop-nav]-full', blocks: section.blocks, title: menu.title %}
-  {% endfor %}
-  {%- for menu in sub_menu.links -%}
+<ul
+  style="padding: 0 1em; gap:1em"
+  class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide"
+  role="navigation"
+>
+  {% render '[header-desktop-nav]-next' %}
+
+  <li class="site-nav__item" style="flex:1"></li>
+  {% render '[header-desktop-nav-moreinfo]', sub_menu: sub_menu %}
+  {% if settings.predictive_search_enabled %}
     <li
-      class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown "
-      aria-haspopup="true"
+      class="site-nav__item site-nav__item_open site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown site-nav--is-megamenu"
+      style="
+        display: flex;
+        align-items: center;
+      "
     >
       <a
-        href="{{ menu.url }}"
-        class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+        href="/search"
+        class="site-nav__link site-nav__link--icon js-search-header js-no-transition"
+        style="    line-height: 1;"
       >
-        {{ menu.title }}
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 64 64">
+          <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"></path>
+        </svg>
+        <span class="visually-hidden">Search</span>
       </a>
-      {% if menu.links.size > 1 %}
-        <div class="site-nav__dropdown  text-left" style="min-height: unset;">
-          <div
-            class="site-nav__dropdown-animate  cols-wraper"
-          >
-            <ul style="margin:0">
-              {%- for menu in menu.links -%}
-                <li
-                  class="site-nav__item "
-                  aria-haspopup="true"
-                >
-                  <a
-                    href="{{ menu.url }}"
-                  >
-                    {{ menu.title }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      {% endif %}
     </li>
-  {% endfor %}
+  {% endif %}
+  <!--
+    {%- for menu in sub_menu.links -%}
+      <li
+        class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown "
+        aria-haspopup="true"
+      >
+        <a
+          href="{{ menu.url }}"
+          class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
+        >
+          {{ menu.title }}
+        </a>
+        {% if menu.links.size > 1 %}
+          <div class="site-nav__dropdown  text-left" style="min-height: unset;">
+            <div
+              class="site-nav__dropdown-animate  cols-wraper"
+            >
+              <ul style="margin:0">
+                {%- for menu in menu.links -%}
+                  <li
+                    class="site-nav__item "
+                    aria-haspopup="true"
+                  >
+                    <a
+                      href="{{ menu.url }}"
+                    >
+                      {{ menu.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  -->
 </ul>
