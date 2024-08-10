@@ -185,7 +185,7 @@
 {% capture col_3 %}
   <div class="quote-form-modal-content-right-inner">
         
-          <button class="col_1">
+          <button onclick="$zoho.salesiq.floatwindow.open()" class="col_1">
             <div class="col_1-content">
               <div class="col_1-content-inner">
                 <div class="">
@@ -283,7 +283,7 @@
           <div class="header-desktop-nav-moreinfo-col3" style="flex:1">{{ col_3 }}</div>
         </div>
         <div class="header-desktop-nav-moreinfo-bottom">
-          <div>{{  settings.header_delivery_message}}</div>
+          <div>{{ settings.header_delivery_message }}</div>
           <div
             class="site-nav__dropdown-menu_left-icons"
             style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;"
