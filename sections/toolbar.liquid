@@ -239,16 +239,29 @@
           </div>
         {%- endif -%}
 
-        {%- if show_selectors -%}
-          <div class="toolbar__item small--hide">
-            {%-
-              render 'multi-selectors',
-              locale_selector: locale_selector,
-              currency_selector: currency_selector,
-              location: 'toolbar'
-            -%}
+        <div
+          class="toolbar__item small--hide site-header"
+          style="
+                    box-shadow: none;
+              height: 43px;
+              border-left: 1px solid #cecece;
+              margin-left: 1em;
+              padding: 0;
+              display: flex;
+              align-items: center;
+            z-index:1
+          "
+        >
+          <div
+            style="
+              display: flex;
+              align-items: stretch;
+            "
+            class="tw-h-full tw-inline-flex tw-align-middle tw-items-center language-drpodown"
+          >
+            {% render '[location]-dropdown', class: '' %}
           </div>
-        {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
