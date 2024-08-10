@@ -47,7 +47,7 @@
     }
 </style>
 <ul
-  style="padding: 0 1em; gap:1em"
+  style="padding: 0 1em; gap:2em;padding-left:3em"
   class="site-nav site-navigation site-navigation--{{ nav_position }} small--hide"
   role="navigation"
 >
@@ -75,41 +75,5 @@
       </a>
     </li>
   {% endif %}
-  <!--
-    {%- for menu in sub_menu.links -%}
-      <li
-        class="site-nav__item site-nav__item-verticle site-nav__expanded-item site-nav--has-dropdown "
-        aria-haspopup="true"
-      >
-        <a
-          href="{{ menu.url }}"
-          class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
-        >
-          {{ menu.title }}
-        </a>
-        {% if menu.links.size > 1 %}
-          <div class="site-nav__dropdown  text-left" style="min-height: unset;">
-            <div
-              class="site-nav__dropdown-animate  cols-wraper"
-            >
-              <ul style="margin:0">
-                {%- for menu in menu.links -%}
-                  <li
-                    class="site-nav__item "
-                    aria-haspopup="true"
-                  >
-                    <a
-                      href="{{ menu.url }}"
-                    >
-                      {{ menu.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        {% endif %}
-      </li>
-    {% endfor %}
-  -->
+ 
 </ul>
