@@ -1,0 +1,64 @@
+{%- style -%}
+  @media only screen and (max-width: 860px){
+    .breadcrumbs {
+     display:none
+    }
+  }
+{%- endstyle -%}
+{% if product.metafields.custom.collections %}
+  {%- style -%}
+      .breadcrumbs {
+        color:#787878;
+      }
+      .breadcrumbs li {
+          display: inline-block;
+      }
+      .breadcrumbs a {
+          text-decoration: none;
+          /*Will put liquid customization here*/
+          font-size: 15px;
+          color: inherit;
+
+      }
+      .breadcrumb-delimeter:not(:last-child):after {
+        content: ">";
+        opacity:0.4;
+        display: inline-block;
+        margin-left: 0.2em;
+        font-size:0.7em;
+        speak: none;
+    }
+      .breadcrumbs [aria-current="page"] {
+          color: inherit;
+          font-weight: normal;
+          text-decoration: none;
+      }
+  {%- endstyle -%}
+
+  <div class="breadcrumbs" aria-label="breadcrumbs">
+    {%- unless template == 'index' or template == 'cart' -%}
+      <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t  }}">{{ 'general.breadcrumbs.home' | t }}</a>
+      <span class="breadcrumb-delimeter" aria-hidden="true"></span>
+      {% for collection in product.metafields.custom.collections.value %}
+        {% if forloop.first %}
+          <a href="{{ collections['all'].url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+        {% else %}
+          {% assign page = pages[collection.handle] %}
+          {% assign url = page.url | default: collection.url %}
+          <a href="{{ url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+        {% endif %}
+        <span class="breadcrumb-delimeter" aria-hidden="true"></span>
+      {% endfor %}
+      <a href="#" title="{{ product.title }}">{{ product.title }}</a>
+    {%- endunless -%}
+  </div>
+
+  <script defer>
+    const breadCrumbLinks = document.querySelectorAll(".breadcrumbs a")
+    const lastLink = breadCrumbLinks[breadCrumbLinks.length - 1]
+    lastLink.href = "javascript:void(0)"
+  </script>
+
+{% else %}
+  {% render 'breadcrumbs' %}
+{% endif %}

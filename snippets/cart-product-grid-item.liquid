@@ -1,10 +1,9 @@
-
+{% assign _variant = variant |default :product.first_available_variant %}
 {%- liquid
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
   endif
-
   assign product_tags = product.tags | join: ','
   assign has_custom_label = false
   assign custom_labels = ''
@@ -21,8 +20,8 @@
     endfor
   endif
 -%}
-
 <div
+  data-option1="{{ option1 }}"
   class="grid-item grid-product {{ classes }}"
   data-product-handle="{{ product.handle }}"
   data-product-id="{{ product.id }}"
@@ -115,11 +114,10 @@
         assign fixed_aspect_ratio = true
       endunless
 
-      assign preview_image = product.featured_media.preview_image
+      assign preview_image = _variant.image | default: product.featured_media.preview_image
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
-
-    <a href="{{ product.url | within: collection }}" class="grid-item__link">
+    <a href="{{ _variant.url | within: collection }}" class="grid-item__link">
       <div class="grid-product__image-wrap">
         <div class="grid-product__tags">
           {%- if has_custom_label -%}
@@ -203,13 +201,10 @@
             >
           </div>
         {%- endif -%}
-
       </div>
 
       <div class="grid-item__meta">
         <div class="grid-item__meta-main">
-         
-
           <div class="grid-product__title">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
             <div class="grid-product__vendor">{{ product.vendor }}</div>
@@ -217,7 +212,7 @@
         </div>
         <div class="grid-item__meta-secondary">
           <div class="grid-product__price">
-            <p class="price-title">{{ 'strings.others.starting_from'|t }}</p>
+            <p class="price-title">{{ 'strings.others.starting_from' | t }}</p>
             {%- if product.price_varies -%}
               <span class="grid-product__price--current">
                 {%- render 'price-varies', price: product.price_min -%}

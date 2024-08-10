@@ -31,9 +31,9 @@
             <a
               class="btn  bg-[var(--colorBtnPrimary)]"
               href=""
-              onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+              onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
             >
-              {{- section.settings.btn_text | default: 'Schedule Site Visit' -}}
+              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
             </a>
           </p>
         {% endif %}
@@ -64,13 +64,12 @@
           "type": "text",
           "id": "btn_text",
           "label": "Button text",
-            "default":"Schedule Site Visit"
-  },{
-          "type": "text",
-          "id": "url",
-          "label": "calendly url",
-    "default":"https://calendly.com/james-low-wyy/consultancy"
-    }],
+            "default":"Schedule Design Survey "
+  },  {
+          "type": "url",
+          "id": "calendly_url",
+          "label": "calendly url"
+        }],
   "presets": [
     {
       "name": "sustainability-hero",

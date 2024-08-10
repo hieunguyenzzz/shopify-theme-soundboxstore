@@ -17,40 +17,165 @@
   lang="{{ request.locale.iso_code }}"
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
+  currency="{{  localization.country.currency.iso_code }}"
 >
   <head>
     {% render 'yoast-seo' %}
+    {% render 'gcm-integration-script' %}
+    {% render 'pandectes-rules' %}
+
     {% render 'pre-header' %}
     {% render 'yett' %}
+
+    <script>
+      (function(w,d,t,r,u)
+      {
+          var f,n,i;
+          w[u]=w[u]||[],f=function()
+          {
+              var o={ti:"187133965", enableAutoSpaTracking: true};
+              o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+          },
+          n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+          {
+              var s=this.readyState;
+              s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+          },
+          i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })
+      (window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+    <!-- append core web vitals -->
+    <script>
+  (function () {
+    var script = document.createElement('script');
+    script.src =
+      'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
+    script.onload = function () {
+      function sendToAnalytics(metric) {
+        // Replace with whatever serialization method you prefer.
+        // Note: JSON.stringify will likely include more data than you need.
+        const body = JSON.stringify(metric);
+      
+        // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
+        (navigator.sendBeacon && navigator.sendBeacon('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', body)) ||
+          fetch('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', {body, method: 'POST', keepalive: true});
+      }
+      // When loading `web-vitals` using a classic script, all the public
+      // methods can be found on the `webVitals` global namespace.
+      webVitals.onCLS(console.log, {reportAllChanges: true});
+      webVitals.onINP(sendToAnalytics, {reportAllChanges: true});
+      webVitals.onLCP(console.log);
+    };
+    document.head.appendChild(script);
+  })();
+    </script>
+    <!-- append core web vitals -->
+
     <!-- Google Tag Manager -->
     <script>
-      window.dataLayer = window.dataLayer || [];
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W3VDBP8N');
     </script>
-    {% if content_for_header contains "previewBarInjector.init();" %}
-    {% elsif content_for_header contains "Shopify.designMode" %}
-
-    {% else %}
-      <script>
-        function startGTAG(){
-          (function (w, d, s, l, i) {
-          w[l] = w[l] || [];
-          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-          var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != 'dataLayer' ? '&l=' + l : '';
-          j.async = true;
-          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-          f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
-        }
-      </script>
-    {% endif %}
 
     <!-- End Google Tag Manager -->
 
+    <!-- Google tag (gtag.js) -->
+    <!--
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+              gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+          gtag('config', 'G-0HET6EXHTH');
+        </script>
+    -->
+
+    <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
+    <script async id="gaf-loading-script"></script>
+    <script id="gdpr-gaf-blocking-script">
+      let isGAFExecuted = false;
+      let gafScript = document.getElementById('gaf-loading-script');
+      let gafLink = 'https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH' ;
+
+      function executeGAF() {
+        if(!isGAFExecuted) {
+          gafScript.setAttribute('src', gafLink);
+          // The content of Google Analytics 4 script goes here
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+            gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied' });
+
+          gtag('config', 'G-0HET6EXHTH');
+          isGAFExecuted = true;
+        }
+      }
+      function checkConsentForGAF(adittionalChecks = 0) {
+        let cpdCookie=(document.cookie.match(/^(?:.*;)?\s*cookieconsent_preferences_disabled(\s*=\s*([^;]+)?)(?:.*)?$/)||[,null])[1];
+        if(cpdCookie != null) {
+          if(parseInt(cpdCookie.indexOf('analytics')) === -1) {
+            executeGAF();
+          }
+        } else {
+          let gdprCache = localStorage.getItem('gdprCache') ? JSON.parse(localStorage.getItem('gdprCache')) : null;
+          let gdprCacheConsentSettings = gdprCache && gdprCache.getCookieConsentSettings ? JSON.parse(gdprCache.getCookieConsentSettings) : null;
+          let gdprCacheCountryDetection = gdprCache && gdprCache.countryDetection ? JSON.parse(gdprCache.countryDetection) : null;
+          let ccsCookie = (document.cookie.match(/^(?:.*;)?\s*cookieconsent_status\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+          if((gdprCacheConsentSettings || (gdprCacheCountryDetection && gdprCacheCountryDetection.disable === '1')) && !ccsCookie) {
+            if((gdprCacheConsentSettings && gdprCacheConsentSettings.status === 'disabled') || gdprCacheCountryDetection.disable === '1'){
+              executeGAF();
+            } else {
+              let initPreferences = parseInt(gdprCacheConsentSettings.checkboxes_behavior);
+              if(initPreferences === 1 || initPreferences === 2 || initPreferences === 4 || initPreferences === 5) {
+                executeGAF();
+              }
+            }
+          } else {
+            if (adittionalChecks > 0) {
+              setTimeout(function() {
+                checkConsentForGAF(adittionalChecks - 1);
+              }, 1000);
+            } else {
+              executeGAF();
+            }
+          }
+        }
+      }
+
+      checkConsentForGAF(3);
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NGK2QSL');
+    </script>
+    <!-- End Google Tag Manager -->
+
     {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
-    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-    {%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+      | default: shop.metafields.yoast_seo.settings
+    -%}
+    {%- if disabled_by_yoast_seo
+      or yoast_seo_settings.integrations.webmasterVerification.google == blank
+      or yoast_seo_settings.integrations.webmasterVerification.google == null
+    -%}
       <meta
         content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY"
         name="google-site-verification"
@@ -81,6 +206,7 @@
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
 
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
 
@@ -89,6 +215,7 @@
       as="script"
       href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
     >
+
     {%- if settings.favicon != blank -%}
       <link
         rel="shortcut icon"
@@ -280,13 +407,14 @@
       async
       type="text/javascript"
       src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    >
-    </script>
+    ></script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     <script
+      defer
       src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
-    >
-    </script>
+    ></script>
+    <script type="text/javascript" src="https://secure.24-astute.com/js/796186.js"></script>
+    <noscript><img src="https://secure.24-astute.com/796186.png" style="display:none;"></noscript>
   </head>
 
   <body
@@ -301,6 +429,28 @@
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NGK2QSL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     {% if settings.animate_page_transitions %}
       <script type="text/javascript">
         window.setTimeout(function () {
@@ -316,17 +466,11 @@
     <div class="page-container" id="PageContainer">
       <div class="transition-body">
         {%- section 'toolbar' -%}
-        {% unless isResserllerOrTradeAccount %}
-          {%- section 'header' -%}
-        {% else %}
-          {%- section 'header-reseller' -%}
-        {% endunless %}
+        {%- section 'header' -%}
         {%- section 'quick-search' -%}
-
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>
-
         {%- section 'footer-promotions' -%}
         {%- section 'footer' -%}
       </div>
@@ -337,21 +481,18 @@
     {% include 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer">
-    </script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script
       async
       defer="defer"
       src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
       type="text/javascript"
-    >
-    </script>
-    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+    ></script>
+    <script src="{{ 'custom-v2.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
-      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer">
-      </script>
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
 
     <script type="text/javascript">
@@ -374,7 +515,10 @@
     <script>
       forceProductPriceSelector = '.grfq-price';
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-        console.log('12321321');
+        let currencyField = document.querySelector(".grfq__popupForm__formInput [name=\"Currency\"]")
+        if(currencyField){
+          document.querySelector(".grfq__popupForm__formInput [name=\"Currency\"]").value="{{ localization.country.currency.iso_code }}"
+        }
       });
     </script>
     <style>
@@ -406,42 +550,77 @@
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
         const _gcl_awCookie = getCookie('_gcl_aw').split('.')
         document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
+        try{
+          const contriesMap = {
+            "UK":"United Kingdom",
+            "DE":"Germany",
+            "FR":"France",
+            "IT":"Italy",
+            "ES":"Spain",
+            "PT":"Portugal",
+            "UA":"Ukraine",
+            "RO":"Romania",
+            "PL":"Poland",
+            "NL":"Netherlands",
+            "BE":"Belgium",
+            "SE":"Sweden",
+            "GR":"Greece",
+            "CH":"Switzerland",
+            "AT":"Austria",
+            "RS":"Serbia",
+            "NO":"Norway",
+            "US":"United States",
+            "CA":"Canada",
+            Other:"Other"
+          }
+          const country = contriesMap[{{ localization.country.iso_code | json }}];
+          let countriesSelectInput =  document.querySelector('.grfq__popupForm__formInput [name="Country"]')
+          if(countriesSelectInput){
+            countriesSelectInput.value=country
+          }
+        }catch(e){
+          console.error(e)
+        }
       });
     </script>
     {% section 'zoho-form-popup' %}
 
     <script>
-      var isReplaced = false;
-      function MeroxIO_Function(){
-        if(!isReplaced){
-          window.yett.unblock();
-          console.log("apps lazyloaded successfully");
-          isReplaced=true;
+      (()=>{
+          var isReplaced = false;
 
-          (function zsiqchat(){
-            window['$zoho'] = window['$zoho'] || {};
-            $zoho.salesiq = $zoho.salesiq || {
-              widgetcode:
-                "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
-              values: {},
-              ready: function () {},
-            };
-            var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.id = "zsiqscript";
-            s.defer = true;
-            s.src = "https://salesiq.zoho.eu/widget";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-          })()
-          startGTAG()
-        }
-      }
-      document.addEventListener("click", MeroxIO_Function);
-      document.addEventListener("scroll", MeroxIO_Function);
-      document.addEventListener("touchstart", MeroxIO_Function);
-      document.addEventListener("mousemove", MeroxIO_Function);
+          function MeroxIO_Function(){
+            if(!isReplaced){
+              window.yett.unblock();
+              console.log("apps lazyloaded successfully");
+              isReplaced=true;
+
+              (function zsiqchat(){
+                window['$zoho'] = window['$zoho'] || {};
+                $zoho.salesiq = $zoho.salesiq || {
+                  widgetcode:
+                    "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0",
+                  values: {},
+                  ready: function () {},
+                };
+                var d = document;
+                s = d.createElement("script");
+                s.type = "text/javascript";
+                s.id = "zsiqscript";
+                s.defer = true;
+                s.src = "https://salesiq.zoho.eu/widget";
+                t = d.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(s, t);
+              })()
+              const event = new Event("app:ready");
+              document.dispatchEvent(event);
+            }
+          }
+          document.addEventListener("click", MeroxIO_Function);
+          document.addEventListener("scroll", MeroxIO_Function);
+          document.addEventListener("touchstart", MeroxIO_Function);
+          document.addEventListener("mousemove", MeroxIO_Function);
+      })()
     </script>
     <script>
         jQuery.event.special.touchstart = {
@@ -465,5 +644,18 @@
           }
       };
     </script>
+    {% render 'linkedin_insights_tag' %}
+
+    <script>
+      (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('bElvO73QlzEaZMqj');
+    </script>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "33fccb99ae914e9792dbbb82260a0cbe"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+    {% render 'ClickCease' %}
   </body>
 </html>

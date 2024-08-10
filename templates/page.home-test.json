@@ -1,12 +1,27 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
+  "layout": "theme.test",
   "sections": {
+    "e9d8df25-a0b9-44a6-858f-3adf853126c7": {
+      "type": "redirect_to_reseller_home",
+      "settings": {
+      }
+    },
     "e71c5c13-0813-457a-b6ff-6cf6bc34c1fb": {
       "type": "advanced-content",
       "blocks": {
         "template--16306515280097__e71c5c13-0813-457a-b6ff-6cf6bc34c1fb-166736123619ca6fbc-1": {
           "type": "html",
           "settings": {
-            "code": "<style>\n[lang=\"da\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 16ch!important;\n}\n[lang=\"no\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 15ch!important;\n}\n[lang=\"sv\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 19ch!important;\n}\n<\/style>",
+            "code": "<style>\n[lang=\"da\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 16ch!important;\n}\n[lang=\"no\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 15ch!important;\n}\n[lang=\"sv\"] .image-text-section.image-text-section--product .section-content h2 {\n    max-width: 19ch!important;\n}\n\n#shopify-section-template--17001466101985__165155261226239609 .image-wrap img{\n    border-radius: 0.8rem;\n    border-top-right-radius: min(5rem, 8vw);\n}\n.brand-details-section .image-group {\n    display: flex;\n    \/* margin: 0 -10px; *\/\n    gap: 10px;\n}\n<\/style>",
             "width": "50%",
             "alignment": "center"
           }
@@ -15,140 +30,90 @@
       "block_order": [
         "template--16306515280097__e71c5c13-0813-457a-b6ff-6cf6bc34c1fb-166736123619ca6fbc-1"
       ],
+      "custom_css": [
+        "{display: none;}"
+      ],
       "settings": {
         "full_width": false,
         "space_around": false
       }
     },
-    "f9f1ef12-4297-493f-9432-280a5af18606": {
-      "type": "hero-video",
-      "custom_css": [
-
-      ],
-      "settings": {
-        "full_width": true,
-        "title": "Ready For Productivity?",
-        "title_size": 43,
-        "subheading": "Find Your Ideal Soundproof Office Booths, Pods, and Meeting Rooms for Focused Work Environments. ISO 23351-1 Certified",
-        "link_text": "Optional button",
-        "link": "",
-        "color_accent": "#ffffff",
-        "text_align": "vertical-center horizontal-left",
-        "video_url": "https:\/\/youtu.be\/oa5soROeuNE",
-        "overlay_opacity": 8,
-        "height": 750,
-        "height_mobile": 300
-      }
-    },
     "caeb4e31-7b8d-4ce9-b58a-e2b6bc92d8a7": {
       "type": "hero-video-next-2",
-      "blocks": {
-        "49ed2f14-e8eb-449e-9fcb-0057445922a3": {
-          "type": "Reseller",
-          "disabled": true,
-          "settings": {
-            "heading": "Reseller",
-            "full_width": true,
-            "title": "Ready For Productivity?",
-            "title_size": 43,
-            "subheading": "Find Your Ideal Soundproof Office Booths, Pods, and Meeting Rooms for Focused Work Environments. ISO 23351-1 Certified.",
-            "link_text": "Explore products",
-            "link": "shopify:\/\/collections\/reseller-only",
-            "color_accent": "#ffffff",
-            "text_align": "vertical-center horizontal-left",
-            "video": "shopify:\/\/files\/videos\/Compress-Video-No-Music.mp4",
-            "video_m": "shopify:\/\/files\/videos\/Compress-Video-No-Music.mp4",
-            "video_url": "",
-            "overlay_opacity": 2,
-            "height": 700,
-            "height_mobile": 500
-          }
-        }
-      },
-      "block_order": [
-        "49ed2f14-e8eb-449e-9fcb-0057445922a3"
-      ],
-      "disabled": true,
       "custom_css": [
-        "@media only screen and (min-width: 769px) {.video-parent-section {height: 900px; height: 40vw; } .btn {line-height: 2; padding: 0.8em 1.6em; }}",
+        "@media only screen and (min-width: 1025px) {.video-parent-section {height: 900px; height: 40vw; } .btn {line-height: 2; padding: 0.8em 1.6em; }}",
         ".hero__subtitle {font-size: min(30vw, 1em);}",
-        ".hero__title {font-size: min(10vw, 10-20em); font-weight: bold;}"
+        ".hero__title {font-size: min(10vw, 10-20em); font-weight: bold;}",
+        ".hero__title {max-width: 500px;}",
+        ".hero__subtitle {max-width: 500px;}",
+        ".horizontal-left .hero__text-shadow {max-width: unset;}"
       ],
       "settings": {
         "reseller_mode": true,
+        "certifications": false,
         "full_width": true,
-        "title": "Ready For Productivity?",
-        "title_size": 43,
-        "subheading": "Find Your Ideal Soundproof Office Booths, Pods, and Meeting Rooms for Focused Work Environments. ISO 23351-1 Certified.",
-        "link_text": "Explore products",
-        "link": "shopify:\/\/collections\/all",
+        "h1": "Phone Booths",
+        "title": "Acoustic Phone Booths & Meeting Spaces",
+        "title_size": 47,
+        "subheading": "Find Your Ideal Soundproof Office Phone Booth \/ Pods,  Acoustically Controlled Meeting Rooms for Focused Work Environments. ISO 23351-1 Certified.",
+        "link_text": "SHOWROOM VISIT",
+        "link": "shopify:\/\/pages\/showroom-london",
+        "link2_text": "Schedule Design Survey",
+        "link2": "shopify:\/\/pages\/consultancy",
         "color_accent": "#ffffff",
         "text_align": "vertical-center horizontal-left",
         "video": "shopify:\/\/files\/videos\/Compress-Video-No-Music-Higher-Res.mp4",
         "video_m": "shopify:\/\/files\/videos\/Compress-Video-No-Music.mp4",
         "video_url": "",
         "overlay_opacity": 2,
-        "height": 700,
-        "height_mobile": 500
+        "height": 550,
+        "height_mobile": 450
       }
     },
-    "165096617269397650": {
-      "type": "images-slider-section-lite",
+    "certicate_VPNhRe": {
+      "type": "certicate",
       "blocks": {
-        "76f8aab2-df9e-4d36-a939-57c4360dca6d": {
-          "type": "image_block",
+        "icon_text_block_BNpYi8": {
+          "type": "icon-text-block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home-Page-Banner2.png",
-            "image_mobile": "shopify:\/\/shop_images\/Home-Page-Banner1.png"
+            "iconimage": "shopify:\/\/shop_images\/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png",
+            "text": "<p>TUV.SUD Certification<\/p>"
           }
         },
-        "0feb9d24-3558-44d6-9628-d44f0fc38ec2": {
-          "type": "image_block",
+        "icon_text_block_Niyrz6": {
+          "type": "icon-text-block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Home_Page_New.png",
-            "image_mobile": "shopify:\/\/shop_images\/Home_Page_New_Thumb_e71c3b4b-0024-4e5f-ba85-8cf23e23809e.png"
+            "iconimage": "shopify:\/\/shop_images\/pngwing.com_1.png",
+            "text": "<p>FSC Certification<\/p>"
+          }
+        },
+        "icon_text_block_gdcwjp": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify:\/\/shop_images\/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png",
+            "text": "<p>UL Certification<\/p>"
+          }
+        },
+        "icon_text_block_AAeAN8": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify:\/\/shop_images\/pngwing.com_2.png",
+            "text": "<p>CE Certification<\/p>"
           }
         }
       },
       "block_order": [
-        "76f8aab2-df9e-4d36-a939-57c4360dca6d",
-        "0feb9d24-3558-44d6-9628-d44f0fc38ec2"
+        "icon_text_block_BNpYi8",
+        "icon_text_block_Niyrz6",
+        "icon_text_block_gdcwjp",
+        "icon_text_block_AAeAN8"
       ],
-      "disabled": true,
+      "custom_css": [
+        ".product-icon-text-section {margin: 0;}",
+        ".flexbox {flex-wrap: nowrap; overflow: auto;}",
+        ".icon-wrap {min-width: 60px;}"
+      ],
       "settings": {
-        "lazy_img": true,
-        "lazyload": true,
-        "image": "shopify:\/\/shop_images\/Home-Page-Banner2.png",
-        "mobile_image": "shopify:\/\/shop_images\/Home-Page-Banner1.png",
-        "overlay": true,
-        "overlay_range": 20,
-        "title": "Putting productivity into the hush!",
-        "title_width": "17",
-        "description": "<p>Zoom rooms, phone booths, and meeting pods <br\/>for progressive thinking environments.<br\/><\/p>",
-        "description_width": "",
-        "button_text": "Explore Products",
-        "button_link": "shopify:\/\/collections\/all",
-        "button_text_2": "",
-        "text_alignment": "center-left",
-        "section_class": "hero-section"
-      }
-    },
-    "16510350612404e999": {
-      "type": "collections-product",
-      "disabled": true,
-      "settings": {
-        "show_price": false,
-        "title": "Zoom rooms, meeting rooms, phone booths",
-        "description": "<p>Soundbox store, the highest in acoustic technology designed in portable meeting rooms, zoom rooms, and phone booths. Promoting functional, inspirational, creative, and productive working environments.<\/p>",
-        "product1": "office-phone-booth",
-        "product1-img1": "shopify:\/\/shop_images\/S-Black-Meeting-Phone-Booth.png",
-        "product2": "1-2-person-multi-use-booth",
-        "product2-img2": "shopify:\/\/shop_images\/M-White-Meeting-Medium.png",
-        "product3": "soundproof-meeting-booth-3-4-persons",
-        "product3-img3": "shopify:\/\/shop_images\/LRG-White-Meeting-Booth-HP.png",
-        "product4": "meeting-booth-4-6-persons-old",
-        "product4-img4": "shopify:\/\/shop_images\/XL-Pod.png",
-        "slider_active": false
       }
     },
     "collections-product-scroller": {
@@ -157,50 +122,57 @@
         "7cba8444-2eba-4c64-b9f0-d13a82e79d19": {
           "type": "item",
           "settings": {
-            "product": "soundproof-phone-booth",
+            "product": "office-phone-booth-folio",
             "image": "shopify:\/\/shop_images\/sbs-001-Folio-Phone-Booth.png"
           }
         },
         "7a29dd87-46ad-49e7-8728-3f9778e07e67": {
           "type": "item",
           "settings": {
-            "product": "acoustic-phone-booth",
+            "product": "office-phone-booth-folio-stand-up",
             "image": "shopify:\/\/shop_images\/sbs-002-Folio-Stand-Up.png"
           }
         },
         "470b8b72-973d-4a4a-9ca9-ccbecca4a8a7": {
           "type": "item",
           "settings": {
-            "product": "office-phone-booth",
+            "product": "office-pod-quell-acoustic",
             "image": "shopify:\/\/shop_images\/sbs-003-quell-acoustic-phone-booth_2x_d28c0843-0535-45e8-814b-bf0eb578b09c.png"
           }
         },
         "1e3300dd-0f4c-4c81-8f94-4981e6972957": {
           "type": "item",
           "settings": {
-            "product": "quell-flex-phone-booth",
+            "product": "office-pod-quell-flex",
             "image": "shopify:\/\/shop_images\/sbs-003-quell-flex-phone-booth-v2_2x_735568ed-a6ab-416c-849f-e657a9a432d4.png"
           }
         },
         "bcb5fcaa-b610-4db3-8294-8f83de9f5453": {
           "type": "item",
           "settings": {
-            "product": "1-2-person-multi-use-booth",
+            "product": "office-phone-booth-quell-2-person",
             "image": "shopify:\/\/shop_images\/sbs-004-Office-Pod-1-2-Person.png"
+          }
+        },
+        "9b8e1df4-d69a-4982-b2dd-489b5254a169": {
+          "type": "item",
+          "settings": {
+            "product": "office-phone-booth-folio-2-4-person",
+            "image": "shopify:\/\/shop_images\/sbs-005-Folio-2-4-Person_2x_d70143f4-b8b1-42c7-8d78-18aa321ef9e2.png"
           }
         },
         "5cbaf1f6-a311-4881-8888-eb47bdfb1ce1": {
           "type": "item",
           "settings": {
-            "product": "soundproof-meeting-booth-3-4-persons",
+            "product": "office-pod-quell-4-person",
             "image": "shopify:\/\/shop_images\/sbs-005-Meeting-Pod-3-4-Person_2x_c6c7a12b-194c-4195-90e6-ce5da6cd9aa6.png"
           }
         },
         "9650ecec-0c91-4344-af54-2171a15a5385": {
           "type": "item",
           "settings": {
-            "product": "meeting-booth-4-6-persons-old",
-            "image": "shopify:\/\/shop_images\/sbs-006-Meeting-Booth-4-6-Person_2x_9c107357-3582-4822-b212-ebe7ca8959c6.png"
+            "product": "meeting-booth-quell-6-person",
+            "image": "shopify:\/\/shop_images\/sbs-006-Meeting-Booth-6-Person_2x_4e93df7b-9113-4e50-83f9-9373e2803fc2.png"
           }
         }
       },
@@ -210,13 +182,43 @@
         "470b8b72-973d-4a4a-9ca9-ccbecca4a8a7",
         "1e3300dd-0f4c-4c81-8f94-4981e6972957",
         "bcb5fcaa-b610-4db3-8294-8f83de9f5453",
+        "9b8e1df4-d69a-4982-b2dd-489b5254a169",
         "5cbaf1f6-a311-4881-8888-eb47bdfb1ce1",
         "9650ecec-0c91-4344-af54-2171a15a5385"
       ],
+      "custom_css": [
+        ".product-list-group {margin-top: 70px;}",
+        "a img {border-radius: 0.4em;}"
+      ],
       "settings": {
         "show_price": false,
-        "title": "Solutions for Zoom Rooms, Meeting Spaces, and Phone Booths",
-        "description": "<p>Soundbox Store brings you cutting-edge acoustic technology in portable meeting rooms, Zoom rooms, and phone booths. Elevate your work environment with our functional, inspirational, creative, and productive solutions.<\/p>"
+        "title": "Congratulations for Finding Your Solution for Zoom Rooms, Meeting Spaces, and Phone Booths",
+        "description": "<p>Soundbox Store brings you cutting-edge acoustic technology in portable Phone Booths, Meeting Rooms, and Zoom Rooms. Elevate your work environment with our functional, inspirational, creative, and productive solutions.<\/p>"
+      }
+    },
+    "16509686001ade3e0c": {
+      "type": "image-text-section",
+      "custom_css": [
+        ".image-wrap img {max-height: min(800px, 34vw);}",
+        ".btn {background: #fff; color: black;}"
+      ],
+      "settings": {
+        "style": "default",
+        "lazyload": true,
+        "image": "shopify:\/\/shop_images\/SR-Quell-Solo-Movable-Silent-Booth-BG.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile-SR-Quell-Solo-Movable-Silent-Booth-BG.jpg",
+        "overlay": true,
+        "overlay_range": 40,
+        "title": "Movable Acoustic Phone Booths",
+        "title_width": "",
+        "description": "<p>A sustainable, acoustic phone booth that provides privacy, comfort and promotes creativity. Various sizes available to suit many environments from office, hospitality, medical to music. <\/p>",
+        "description_width": "",
+        "button_text": "shop now",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_text_2": "",
+        "button_link_2": "",
+        "text_alignment": "center-left",
+        "section_class": "movable-silence-booth"
       }
     },
     "logo-list": {
@@ -224,16 +226,19 @@
       "blocks": {
         "fb7786ac-93bb-4c34-8f47-ecf6e0288372": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-2.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "7cb115c5-490b-46a5-9ef6-33d3a06e8dc8": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-3.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "1589d64b-85af-4015-ac15-f33710231e87": {
@@ -241,7 +246,8 @@
           "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-2.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "c324bf16-2324-4be7-9bc1-67e98a08edd4": {
@@ -249,119 +255,146 @@
           "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-3.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "9e247341-72b1-4118-a6a1-c8ff6f9d2196": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-4.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "c39d840a-9a44-485d-9580-0ee5d4cc76c7": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-5.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "b2de9c0c-e943-4f93-9dec-fa5ab4f23135": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-6.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "f7c89d2e-006c-4b15-8505-5bb811ced9e7": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-1_29a0e9ab-dca7-41e0-b209-c4708164cf92.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "1a5e367e-6eac-45d1-b745-034dbc978aec": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-7.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "ed2083a6-ea56-47e0-8ccf-da3cc02ffe68": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-8.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "38548191-d8ef-4c70-85f3-5e8116861400": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-9.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "fcf9c4ef-54c4-48a0-ae51-fad22aa76693": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-10.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "88835f96-fffd-4051-949e-b3d4fb3c96d2": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-11.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "1d875877-6dc6-4fa2-9acb-27dc57f9b216": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-12.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "0c4d0e85-89a6-4424-a091-e546161e99f6": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-13.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/UCL-Colored.png",
+            "link-2": ""
           }
         },
         "f605ff4e-05e0-4ff9-8b66-a76ad02f03ff": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-14.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/Grail-Colored.png",
+            "link-2": ""
           }
         },
         "d313cad7-b481-4554-a02c-06039d5b854d": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-15.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/Newcastle-United-Colored.png",
+            "link-2": ""
           }
         },
         "14048310-921a-4859-b043-4b282e8317f2": {
           "type": "logo_image",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-16.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/LeoVegas-Colored.png",
+            "link-2": ""
           }
         },
         "cb61961b-a574-4021-86ab-2a927888d075": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-17.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/Google-Colored.png",
+            "link-2": ""
           }
         },
         "b81f8a1e-4b50-4e80-9331-506585be47c4": {
           "type": "logo_image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-18.jpg",
-            "link": ""
+            "link": "",
+            "image-2": "shopify:\/\/shop_images\/Uni-of-Oxford-Colored.png",
+            "link-2": ""
           }
         }
       },
@@ -388,44 +421,44 @@
         "b81f8a1e-4b50-4e80-9331-506585be47c4"
       ],
       "settings": {
-        "title": "View some of our many brands sold to....",
+        "title": "You're in good company.",
+        "content": "",
         "divider": false
-      }
-    },
-    "16509686001ade3e0c": {
-      "type": "image-text-section",
-      "settings": {
-        "lazyload": true,
-        "image": "shopify:\/\/shop_images\/Movable-Silent-Booth-BG.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/Home-Page-2nd-Element-2-Mobile.png",
-        "overlay": true,
-        "overlay_range": 40,
-        "title": "Movable Silence Booth",
-        "title_width": "",
-        "description": "<p>A private, productive and comfortable place promotes creativity. Various sizes are available to suit many environments from office, hospitality, medical to music. <\/p>",
-        "description_width": "",
-        "button_text": "shop now",
-        "button_link": "shopify:\/\/collections\/all",
-        "button_text_2": "",
-        "text_alignment": "center-left",
-        "section_class": "movable-silence-booth"
       }
     },
     "165155261226239609": {
       "type": "brand-details-section",
       "blocks": {
+        "brand_details_MNU6pR": {
+          "type": "brand_details",
+          "settings": {
+            "title": "",
+            "logo_image": "shopify:\/\/shop_images\/Herbal_93639e5a-9331-4c30-b0a4-c7f8489f2291.png",
+            "slider": false,
+            "slide_image1": "shopify:\/\/shop_images\/IMG-20240418-WA0002.png",
+            "slide_image2": "shopify:\/\/shop_images\/IMG-20240418-WA0007_1b6ff6fb-55ef-4cdb-b8ff-c73d264d0af7.jpg",
+            "slide_image3": "shopify:\/\/shop_images\/IMG-20240418-WA0005_8c2759e2-381c-4a26-bdb9-d629ad2538b5.jpg",
+            "slide_image4": "shopify:\/\/shop_images\/IMG-20240418-WA0008_1.jpg",
+            "bottom_title": "Herbal House",
+            "bottom_sub_title": "London",
+            "bottm_right_text": "<p>Herbal House  were looking for a quiet meeting space in their very sleek atrium area, after a brief site survey the Quell 4 Person Charcol with full furniture set was chosen. A great choice, what a lovely space!<\/p>",
+            "background_color": "#f5e8d8",
+            "slide_class": ""
+          }
+        },
         "3a5adb54-e23b-4d31-b5e1-29bbe95a58db": {
           "type": "brand_details",
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/alibaba_group-logo.png",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/alibaba1.jpg",
             "slide_image2": "shopify:\/\/shop_images\/alibaba_group2.jpg",
             "slide_image3": "shopify:\/\/shop_images\/alibaba_group3.jpg",
             "bottom_title": "Alibaba Hangzhou Office",
             "bottom_sub_title": "Hangzhou, China",
-            "bottm_right_text": "<p>Continuing to expand its Hangzhou office, Alibaba needed several office phone pods and meeting booths for various tasks, including departmental meetings for training where focus was required. The overall requirement was ten pods for the existing floor; the job entailed working with the building service manager and security, and every detail was considered.<\/p>",
-            "background_color": "#e8e8e8",
+            "bottm_right_text": "<p>Continuing to expand their Hangzhou office, Alibaba needed several office phone pods and meeting booths for various tasks, including departmental meetings for training where focus was required. The overall requirement was ten pods for the existing floor; the job entailed working with the building service manager and security, and every detail was considered.<\/p>",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -434,12 +467,13 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/zip-logo.jpg",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/L_1.jpg",
             "slide_image2": "shopify:\/\/shop_images\/S.jpg",
             "bottom_title": "Zipline Drone Production Office Area",
             "bottom_sub_title": "South San Francisco, California",
             "bottm_right_text": "<p>Zipline needed two meeting pods and a solo pod to help employees focus, gather peace of mind and be proactive in the task. These are especially useful during calls with clients to ensure they are doing their job correctly or during meetings requiring employee input or collaboration.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -448,13 +482,14 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/boeing-logo.jpg",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/M_1.jpg",
             "slide_image2": "shopify:\/\/shop_images\/M_2.jpg",
             "slide_image3": "shopify:\/\/shop_images\/M--_3.jpg",
             "bottom_title": "Boeing Singaper Office",
             "bottom_sub_title": "Singapre",
             "bottm_right_text": "<p>Boeing Singapore Office introduced a Meeting Pod from Soundbox as an ultimate collaboration space for meetings, events, and training. Meetings are more productive, engaging, and memorable when you can focus on the right things without being distracted by outside noise.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -463,13 +498,14 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/tiktok-logo.jpg",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/L_2.jpg",
             "slide_image2": "shopify:\/\/shop_images\/L_M.jpg",
             "slide_image3": "shopify:\/\/shop_images\/L_M3.png",
             "bottom_title": "ByteDance all branches",
             "bottom_sub_title": "",
             "bottm_right_text": "<p>ByteDance Ltd has availed the meeting pods for their meeting for the most productive, comfortable, and seamless collaboration experience when they need to meet with teams or individuals across time zones, countries, or even continents.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": "tiktok-slide"
           }
         },
@@ -478,12 +514,13 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/starbucks-logo.png",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/M_L_MODEL.jpg",
             "slide_image2": "shopify:\/\/shop_images\/M_L_MODEL2.png",
             "bottom_title": "Starbucks Office",
             "bottom_sub_title": "Shanghai, china",
             "bottm_right_text": "<p>Need to get some work done? Need some quiet time for<br\/>one-on-one meetings? This is why Starbucks installed Meeting Pods to help anyone make the most of any meeting or event with a full range of modern designer furniture, flexible spaces, and innovative tech to keep the team productive.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -492,12 +529,13 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/huawei-logo.jpg",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/M_PODS.jpg",
             "slide_image2": "shopify:\/\/shop_images\/M_PODS2.png",
             "bottom_title": "Huawei Tech all branches",
             "bottom_sub_title": "China",
             "bottm_right_text": "<p>Huawei needed Meeting Pods, which are ideal for meetings, presentations, and brainstorming. These Meeting Pods are designed to make it easy for teams to get together and create better rapport, communication, and collaboration in a casual meeting environment.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -505,13 +543,14 @@
           "type": "brand_details",
           "settings": {
             "title": "",
-            "logo_image": "shopify:\/\/shop_images\/lg-logo_74a9ffbb-3450-434a-9368-8a94a60ee265.jpg",
+            "logo_image": "shopify:\/\/shop_images\/C__Users_long_Downloads_brand-elements-logo-primary-d.svg-removebg-preview.png",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/M--_1.jpg",
             "slide_image2": "shopify:\/\/shop_images\/M--_1_2.png",
             "bottom_title": "LG Corporation",
             "bottom_sub_title": "Seoul, South Korea",
             "bottm_right_text": "<p>The commercial sales department for LG requested partitioned office space for focus as the office environment was getting too chaotic, with noisy sales executives on the phones. After calculating the partitioning cost and assessing the two options' ceiling height and residual value, the management team decided to invest in our medium, zoom room\/focus pods, allowing focused sales calls and a focused training environment.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         },
@@ -520,12 +559,13 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/volvo-png-12247.png",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/M11_4.jpg",
             "slide_image2": "shopify:\/\/shop_images\/M11_4_2.png",
             "bottom_title": "Volve Cars Belgium",
             "bottom_sub_title": "Ghent, Belgium",
             "bottm_right_text": "<p>The requirement for engineers to be on the factory floor, yet needing a workplace for focus, was proving difficult for Volvo - Gent. In addition, the need for flexibility as the production line expands and diversifies was also a requirement. The installation of our sizeable Creative Pod 3-4 person was a great success; an optional movability pack was purchased, meaning they can move the booth within 5 minutes anywhere around the production floor.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
             "slide_class": "volve-slide"
           }
         },
@@ -534,17 +574,35 @@
           "settings": {
             "title": "",
             "logo_image": "shopify:\/\/shop_images\/tencent-logo.jpg",
+            "slider": false,
             "slide_image1": "shopify:\/\/shop_images\/XL-F7_2_2.png",
             "slide_image2": "shopify:\/\/shop_images\/tencent-image1.jpg",
             "bottom_title": "Tencent Holdings all branches",
             "bottom_sub_title": "China",
             "bottm_right_text": "<p>Needing meeting rooms for 1 to 1 staff and HR management team. Tencent's new breakout area project started with 3 * medium size pods with 2 *  corners sofa and table option. Allowing staff and the human resource department to have open, relaxed meetings.<\/p>",
-            "background_color": "#e8e8e8",
+            "background_color": "#f5e8d8",
+            "slide_class": ""
+          }
+        },
+        "brand_details_Y6dbVU": {
+          "type": "brand_details",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "slider": false,
+            "slide_image1": "shopify:\/\/shop_images\/IMG-20240418-WA0004.jpg",
+            "slide_image2": "shopify:\/\/shop_images\/IMG-20240418-WA0005.jpg",
+            "slide_image3": "shopify:\/\/shop_images\/IMG-20240418-WA0001.jpg",
+            "bottom_title": "Herbal House",
+            "bottom_sub_title": "London",
+            "bottm_right_text": "",
+            "background_color": "#f5e8d8",
             "slide_class": ""
           }
         }
       },
       "block_order": [
+        "brand_details_MNU6pR",
         "3a5adb54-e23b-4d31-b5e1-29bbe95a58db",
         "e4e0ca42-7066-4780-a91d-995d8142f7cb",
         "5478ef1f-c787-46bb-a788-38bc648a738a",
@@ -553,14 +611,30 @@
         "ba272020-a733-4509-a476-825f487f556a",
         "51edb6eb-e458-47d9-91a7-b3e224c98de9",
         "376284e3-105f-4bf9-aee8-6d872cc8ff64",
-        "fde14c79-79dd-487b-9223-27464b25d6b0"
+        "fde14c79-79dd-487b-9223-27464b25d6b0",
+        "brand_details_Y6dbVU"
+      ],
+      "custom_css": [
+        "{display: flow-root; justify-content: center; padding-bottom: 2em; background: #f5e8d8; margin: 0;}",
+        "h2 {margin-top: 1.4em;}",
+        ".left-col .col-wrap img {object-position: left; height: 120px;}",
+        ".brand-details-section .slick-arrow {top: unset; bottom: 0;}",
+        ".slide-wrap {padding: 0;}",
+        ".brand-details-section .slick-dots li button {background: white;}",
+        ".slick-active button {background: black !important;}",
+        ".image-wrap {background: none;}",
+        ".brand-details-section .image-group {padding: 0 10px;}",
+        ".image-wrap img {background: #f2f2f2;}"
       ],
       "settings": {
-        "title": "Corporates We Work With",
+        "title": "Brands We Helped Reclaim Focus",
+        "content": "<p>Real stories speak louder than words.<\/p>",
         "sliderenable": true,
         "slide_dots": true,
         "slide_arrow": true,
-        "sectionwidth": false
+        "sectionwidth": false,
+        "btn_text": "SEE ALL OFFICE BOOTHS",
+        "btn_url": "shopify:\/\/collections\/all"
       }
     },
     "image-loop-new": {
@@ -569,10 +643,13 @@
         "9d8aec96-c9d8-4b5b-b03e-f8152828e3ba": {
           "type": "image_section",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sbs-stn6-1-2.png",
+            "image": "shopify:\/\/shop_images\/Quell_SR_Solo_Our_Philosophy.png",
             "image_bg": "shopify:\/\/shop_images\/sbs-stn6-1-2-bg.jpg",
             "title": "",
-            "description": "<h4>Our philosophy<\/h4><p>Partnering with professionals from different industry sectors to deliver consistent, reliable, and competitive acoustic control, insulation, and damping solutions. We are in the business of inspiring and opening up a new era of infinite possibilities within the industry.<\/p><p><\/p><h4>Our mission<\/h4><p>As Europe's acoustic solution leader, we're dedicated to providing comfortable, sustainable soundproof pod and booth environments that foster productivity.<\/p>"
+            "description": "<h4>Our philosophy<\/h4><p>Partnering with professionals from different industry sectors to deliver consistent, reliable, and competitive acoustic control, insulation, and damping solutions. We are in the business of inspiring and opening up a new era of infinite possibilities within the industry.<\/p><p><\/p><h4>Our mission<\/h4><p>As Europe's acoustic solution leader, we're dedicated to providing comfortable, sustainable soundproof pod and booth environments that foster productivity.<\/p>",
+            "btn_text": "Let's talk",
+            "btn_class": "",
+            "btn_url": "shopify:\/\/pages\/contact"
           }
         },
         "274907dc-3e29-4235-af23-66c46219173a": {
@@ -581,7 +658,10 @@
             "image": "shopify:\/\/shop_images\/sbs-stn6-3-4.png",
             "image_bg": "shopify:\/\/shop_images\/sbs-stn6-3-4-bg.jpg",
             "title": "",
-            "description": "<h4>10 years in the making<\/h4><p>With a state-of-the-art manufacturing facility in Europe, we've spent 10 years perfecting our sound booth solutions. From mature markets to emerging ones, our innovative Zoom rooms and phone booths enhance productivity and acoustic control.<\/p><h4>Environmental Responsibility<\/h4><p>Pioneers in using recycled carbon plastic, Soundbox Store champions a low-carbon footprint approach. Each Soundbox booth boasts a:<\/p><ul><li>Carbon footprint of <strong>≤0.071kg Co2e<\/strong><\/li><li>Energy consumption average of<strong> ≤0.4MJ<\/strong><\/li><li>Air acidification level of <strong>≤0.0001kg SO2e<\/strong> <\/li><li>Water eutrophication of <strong>≤0.00002PO4<\/strong><\/li><\/ul>"
+            "description": "<h4>10 years in the making<\/h4><p>With a state-of-the-art manufacturing facility in Europe, we've spent 10 years perfecting our sound booth solutions. From mature markets to emerging ones, our innovative Zoom rooms and phone booths enhance productivity and acoustic control.<\/p><h4>Environmental Responsibility<\/h4><p>Pioneers in using recycled carbon plastic, Soundbox Store champions a low-carbon footprint approach. Each Soundbox booth boasts a:<\/p><ul><li>Carbon footprint of <strong>≤0.071kg Co2e<\/strong><\/li><li>Energy consumption average of<strong> ≤0.4MJ<\/strong><\/li><li>Air acidification level of <strong>≤0.0001kg SO2e<\/strong> <\/li><li>Water eutrophication of <strong>≤0.00002PO4<\/strong><\/li><\/ul>",
+            "btn_text": "GET PHONE BOOTHS SPECIFICATIONS",
+            "btn_class": "specBtn",
+            "btn_url": ""
           }
         }
       },
@@ -590,11 +670,17 @@
         "274907dc-3e29-4235-af23-66c46219173a"
       ],
       "custom_css": [
-
+        "h3 {margin-top: 2.8em;}",
+        ".image-loop .right-col img {object-position: top left; object-fit: scale-down;}",
+        ".image-loop .image-text-row:nth-child(2n) img {object-position: right bottom;}",
+        "section {max-width: unset; padding: 0;}",
+        ".image-text-row .flexbox {max-width: 1640px; margin: auto;}",
+        ".image-text-row:first-child .left-col {justify-content: end;}",
+        "@media only screen and (min-width: 1025px) {.left-col .col-wrap {max-width: min(40vw, 765px); }}"
       ],
       "settings": {
         "title": "",
-        "description": "<h3>Premium Acoustic Solutions for Office Booths, Pods, and Meeting Rooms<\/h3><p>Soundbox offers advanced acoustic meeting rooms, Zoom rooms, and phone booths designed with sustainability, safety, and impeccable design in mind.<\/p><p>Our frames showcase a blend of engineering and aesthetics, distinguishing us from bulkier alternatives in the market.<\/p>",
+        "description": "<h3>Premium Acoustic Soundproof Office Pods, Meeting Rooms and Phone Booths<\/h3><p>Soundbox offers advanced acoustic soundproof office pods, meeting rooms, Zoom rooms, and phone booths. Designed with sustainability, safety, and impeccable design in mind, they level up your business and offer premium service to your clients.<\/p><p>Our frames showcase a blend of engineering and aesthetics, recognizable for high-end features and distinguishable qualities unlike any bulky alternatives in the market.<\/p>",
         "bg_color": "rgba(0,0,0,0)"
       }
     },
@@ -658,64 +744,13 @@
         "2b68871a-cdde-4d01-8a5c-5aeaa110600e",
         "a95f9fed-7028-4170-ae4d-3155b52e8c59"
       ],
+      "custom_css": [
+        "h2 {margin-top: 1.4em;}"
+      ],
       "settings": {
         "title": "Revive Creative and Productive Workspaces!",
-        "button_text": "Explore",
+        "button_text": "EXPLORE OFFICE BOOTHS NOW",
         "button_link": "shopify:\/\/collections\/all"
-      }
-    },
-    "165097094638a0de7e": {
-      "type": "image-text-section",
-      "disabled": true,
-      "settings": {
-        "lazyload": true,
-        "image": "shopify:\/\/shop_images\/Home-Page-Content-2.png",
-        "mobile_image": "shopify:\/\/shop_images\/Home-Page-Content-2.png",
-        "overlay": true,
-        "overlay_range": 60,
-        "title": "Step inside a booth",
-        "title_width": "",
-        "description": "<p>We'd love for you to see a Soundbox. Visit our factory showroom or schedule a virtual visit to see the booths for yourself.<\/p>",
-        "description_width": "",
-        "button_text": "Schedule Now",
-        "button_link": "shopify:\/\/collections",
-        "button_text_2": "",
-        "text_alignment": "center-center",
-        "section_class": "step-inside-booth"
-      }
-    },
-    "1650977728e07752c8": {
-      "type": "testimonials",
-      "blocks": {
-        "1650977728e7aa560f-0": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, commodo nisl convallis molestie ultrices vitae lacus. Cras ac, morbi gravida phasellus. Libero aliquet faucibus pellentesque massa. Imperdiet bibendum sociis. Lorem tincidunt vitae dolor maecenas ut. <\/p>",
-            "image": "shopify:\/\/shop_images\/review-image.png",
-            "author": "Alex atallah",
-            "author_info": "Co-Founder & CTO, Opensea"
-          }
-        },
-        "4d7a0652-aa85-4558-ac30-50c025229aa6": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, commodo nisl convallis molestie ultrices vitae lacus. Cras ac, morbi gravida phasellus. Libero aliquet faucibus pellentesque massa. Imperdiet bibendum sociis. Lorem tincidunt vitae dolor maecenas ut. <\/p>",
-            "image": "shopify:\/\/shop_images\/review-image.png",
-            "author": "Alex atallah",
-            "author_info": "Co-Founder & CTO, Opensea"
-          }
-        }
-      },
-      "block_order": [
-        "1650977728e7aa560f-0",
-        "4d7a0652-aa85-4558-ac30-50c025229aa6"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "align_text": "center",
-        "round_images": true,
-        "color_scheme": "none"
       }
     },
     "165181756663053863": {
@@ -724,18 +759,48 @@
         "productId": "meeting-booth-4-6-persons-old"
       }
     },
+    "blog_posts_dhw4dK": {
+      "type": "blog-posts",
+      "disabled": true,
+      "custom_css": [
+        ".blog-layout__main + .blog-layout__sidebar {border: none;}",
+        ".grid__image-ratio--wide:before {padding-bottom: 100%;}",
+        "@media only screen and (max-width: 1024px) {.grid__image-ratio--wide:before {padding-bottom: 100%; }}",
+        "img {border-radius: 0.4em;}",
+        "a {font-weight: 700; line-height: 0; font-family: var(--typeHeaderPrimary);}",
+        ".section-header--with-link {align-items: baseline;}",
+        ".grid-article__meta {line-height: 1.3;}",
+        ".article__sub-meta {margin-block-start: 0.5em;}"
+      ],
+      "settings": {
+        "title": "Blog",
+        "blog": "news",
+        "blog_show_tags": false,
+        "blog_show_date": true,
+        "blog_show_comments": false,
+        "blog_show_author": false,
+        "blog_image_size": "wide",
+        "divider": false
+      }
+    },
     "16514747962a80bb1f": {
       "type": "apps",
       "blocks": {
         "fef1885e-047f-4ded-b6b4-ca926e431758": {
           "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
+            "title": "Insta Inspiration",
+            "title_color": "#392525",
+            "alignment": "center",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"><\/div>"
           }
         }
       },
       "block_order": [
         "fef1885e-047f-4ded-b6b4-ca926e431758"
+      ],
+      "custom_css": [
+        "h2 {margin-top: 1.4em;}"
       ],
       "settings": {
       }
@@ -749,46 +814,22 @@
         "color": "#ffffff",
         "full_width": false
       }
-    },
-    "ccb63eab-f7a8-4517-803f-eee6a6b86b1a": {
-      "type": "advanced-content",
-      "blocks": {
-        "template--16306515280097__ccb63eab-f7a8-4517-803f-eee6a6b86b1a-html-1": {
-          "type": "html",
-          "settings": {
-            "code": "<a href=\"https:\/\/online.flippingbook.com\/view\/540110593\/\" class=\"fbo-embed\" data-fbo-id=\"6bca3e33d8\" data-fbo-ratio=\"3:2\" data-fbo-lightbox=\"yes\" data-fbo-width=\"100%\" data-fbo-height=\"auto\" data-fbo-version=\"1\" style=\"max-width: 100%\">Brochure-Digital-Format-Digita-Size<\/a><script async defer src=\"https:\/\/online.flippingbook.com\/EmbedScriptUrl.aspx?m=redir&hid=540110593\"><\/script>",
-            "width": "100%",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "template--16306515280097__ccb63eab-f7a8-4517-803f-eee6a6b86b1a-html-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "space_around": false
-      }
     }
   },
   "order": [
+    "e9d8df25-a0b9-44a6-858f-3adf853126c7",
     "e71c5c13-0813-457a-b6ff-6cf6bc34c1fb",
-    "f9f1ef12-4297-493f-9432-280a5af18606",
     "caeb4e31-7b8d-4ce9-b58a-e2b6bc92d8a7",
-    "165096617269397650",
-    "16510350612404e999",
+    "certicate_VPNhRe",
     "collections-product-scroller",
-    "logo-list",
     "16509686001ade3e0c",
+    "logo-list",
     "165155261226239609",
     "image-loop-new",
     "16509759748685f23e",
-    "165097094638a0de7e",
-    "1650977728e07752c8",
     "165181756663053863",
+    "blog_posts_dhw4dK",
     "16514747962a80bb1f",
-    "16574282983761a5ab",
-    "ccb63eab-f7a8-4517-803f-eee6a6b86b1a"
+    "16574282983761a5ab"
   ]
 }

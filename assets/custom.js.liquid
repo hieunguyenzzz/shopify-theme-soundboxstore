@@ -1,4 +1,6 @@
+
 $(document).ready(function() {
+
 
 
   // var vid = document.getElementById("vid2");
@@ -169,7 +171,20 @@ $(document).ready(function() {
     }
   });
 
-
+ // $('.template-index .product-icon-text-section .flexbox').slick({
+ //    slidesToShow: 1,
+ //    slidesToScroll: 1,
+ //    mobileFirst: true,
+ //    arrows: false,
+ //    autoplay: true,
+ //    dots: false,
+ //    responsive: [
+ //      {
+ //        breakpoint: 861,
+ //        settings: 'unslick'
+ //      }
+ //    ]
+ //  });
   $('.template-product .product-icon-text-section .flexbox').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -534,7 +549,7 @@ $(document).ready(function() {
     $("span.hotspot-icon[data-tooltip='" + clicked_feature + "']").addClass("active");
 
   });
-
+  {% comment %}
   $(".variant-input-wrap[name='Furniture']").each(function() {
     let lessString = theme.strings.viewLess;
     let moreString = theme.strings.viewMore;
@@ -576,12 +591,39 @@ $(document).ready(function() {
       }).click();
     }
   });
-
+{% endcomment %}
 
   // $(window).on("load",function(){
   // $("#vid2").attr("loop","loop");
   //     $("#vid2").click();
   // })
+
+ (()=>{
+   
+                fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
+                  document.querySelector('html').setAttribute('city', res.city);
+                  if(res.city==='London' && GRFQConfigs?.form_elements){
+ let field_showroom = GRFQConfigs.form_elements.find(i=>i.code==="request-showroom-visit")
+                      let field_site_survey = GRFQConfigs.form_elements.find(i=>i.code==="free-site-survey")
+                      if(field_showroom){
+                        field_showroom.required=1
+                      }
+    if(field_site_survey){
+                        field_site_survey.required=1
+                      }
+                  }else{
+                     let field = GRFQConfigs.form_elements.find(i=>i.code==="request_remote_tour");
+                      if(field){
+                        field.required=1
+                      }
+                  }
+         
+                 
+                })
+              })()
+
+
+  
 
 
 });

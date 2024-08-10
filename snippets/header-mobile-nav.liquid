@@ -188,9 +188,9 @@
     </li>
   </ul>
 </div>
-{% for block in section.blocks %}
-  {% if block.settings['btn-text1'] != blank or block.settings['btn-text2'] != blank %}
-    <div class="mobile-footer-menu">
+<div class="mobile-footer-menu">
+  {% for block in section.blocks %}
+    {% if block.settings['btn-text1'] != blank or block.settings['btn-text2'] != blank %}
       <div class="top-menu-wrap">
         <div class="header-button-group">
           {% if block.settings['btn-text1'] != blank -%}
@@ -208,10 +208,10 @@
           {%- endif %}
         </div>
       </div>
+    {% endif %}
+  {% endfor %}
 
-      <div class="tw-h-full tw-inline-flex tw-align-middle tw-items-center language-drpodown">
-        {% render '[location]-dropdown', class: '' %}
-      </div>
-    </div>
-  {% endif %}
-{% endfor %}
+  <div class="tw-h-full tw-inline-flex tw-align-middle tw-items-center language-drpodown">
+    {% render '[location]-dropdown', class: '' %}
+  </div>
+</div>

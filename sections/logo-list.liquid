@@ -42,6 +42,30 @@
                 {%- endif -%}
               </div>
             </div>
+            {% if block.settings['image-2'] %}
+              <div class="grid-item grid-product" {{ block.shopify_attributes }}>
+                <div class="logo-bar__item{% if block.settings.image-2 == blank %} logo-bar__item-svg{% endif %}">
+                  {%- if block.settings['link-2'] != blank -%}
+                    <a
+                      href="{{ block.settings.link-2 }}"
+                      class="logo-bar__link"
+                      aria-label="{{ block.settings.image-2.alt }}"
+                    >
+                  {%- endif -%}
+                  <div class="image-wrap">
+                    {{
+                      block.settings['image-2']
+                      | image_url: width: '180px', height: '61px'
+                      | image_tag: loading: 'lazy'
+                      | default: 'logo'
+                    }}
+                  </div>
+                  {%- if block.settings['link-2'] != blank -%}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            {% endif %}
           {%- endfor -%}
         </div>
       </div>
@@ -89,6 +113,18 @@
           "type": "url",
           "id": "link",
           "label": "Link",
+          "info": "Optional"
+        },
+         {
+          "type": "image_picker",
+          "id": "image-2",
+          "label": "Image 2",
+          "info": "Add alt text for better SEO with 'Edit' button above"
+        },
+        {
+          "type": "url",
+          "id": "link-2",
+          "label": "Link 2",
           "info": "Optional"
         }
       ]

@@ -14,7 +14,7 @@
   .product-block--price .product__price--compare>span:first-child{
     font-size:1em!important;
   }
-  .product-block--price .product__price  .vat_text{
+  .product-block--price   .vat_text{
     display: none!important;
   }
   @media only screen and (max-width: 540px){
@@ -49,7 +49,11 @@
       assign product_description_width = 'medium-up--two-fifths'
   endcase
 -%}
-
+{%- if settings.show_breadcrumbs and isModal != true -%}
+  <div class="page-width">
+    {%- render 'product-breadcrumbs' -%}
+  </div>
+{%- endif -%}
 <div
   id="ProductSection-{{ section_id }}-{{ product.id }}"
   class="product-section"
@@ -64,9 +68,7 @@
   {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
 
   {%- capture product_header -%}
-    {%- if settings.show_breadcrumbs and isModal != true -%}
-      {%- render 'breadcrumbs' -%}
-    {%- endif -%}
+
 
     {%- if isModal -%}
       <p class="h2 product-single__title">
@@ -152,9 +154,7 @@
             </div>
 
             <div class="product-blocks-wrap" data-product-blocks>
-              {%- capture form_id -%}
-                AddToCartForm-{{ section_id }}-{{ product.id }}
-              {%- endcapture -%}
+              {%- capture form_id -%}AddToCartForm-{{ section_id }}-{{ product.id }}{%- endcapture -%}
               {%- for block in blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
@@ -162,9 +162,11 @@
                   {%- when 'separator' -%}
                     <div class="product-block"><hr></div>
                   {%- when 'text' -%}
-                    <div class="product-block product-block-text" {{ block.shopify_attributes }}>
-                      {{ block.settings.text }}
-                    </div>
+                    <!--
+                      <div class="product-block product-block-text" {{ block.shopify_attributes }}>
+                        {{ block.settings.text }}
+                      </div>
+                    -->
                   {%- when 'richtext' -%}
                     <div class="product-block product-block-richtext" {{ block.shopify_attributes }}>
                       {{ block.settings.richtext }}
@@ -227,6 +229,7 @@
                           <span class="vat_text">(INC VAT)</span>
                         {%- endif -%}
                       </span>
+
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
                         {%- if current_variant.compare_at_price > current_variant.price -%}
@@ -308,6 +311,17 @@
                         >/{{ unit_price_base_unit }}
                       </div>
                     </div>
+                    {% unless block.settings.desc == blank %}
+                      <div
+                        style="
+                          font-size: 0.7em;
+                          margin-top: -20px;
+                          margin-bottom: 20px;
+                        "
+                      >
+                        {{ block.settings.desc }}
+                      </div>
+                    {% endunless %}
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div class="product__quantity">
@@ -407,14 +421,13 @@
                               color_option_index: color_option_index
                             -%}
                           {%- else -%}
-                            {%-
-                              render 'variant-dropdown',
+                            {%- render 'variant-dropdown',
                               product: product,
                               form_id: form_id,
                               section_id: section_id,
                               option: option,
                               forloop: forloop,
-                              variant_labels: block.settings.variant_labels,
+                              variant_labels: block.settings.variant_labels
                             -%}
                           {%- endif -%}
                         {%- endfor -%}
@@ -436,6 +449,7 @@
                           {%- render 'product-form',
                             form_id: form_id,
                             product: product,
+                            show_add_quote: block.settings.show_add_quote,
                             show_dynamic_checkout: block.settings.show_dynamic_checkout,
                             current_variant: current_variant
                           -%}
@@ -573,7 +587,7 @@
                       class="product-block product-block--sales-point"
                       {{ block.shopify_attributes }}
                     >
-                      {%- render 'product-inventory',
+                      {%- render 'product-inventory-next',
                         product: product,
                         current_variant: current_variant,
                         block: block
@@ -587,6 +601,42 @@
                         share_image: product
                       -%}
                     </div>
+                  {%- when 'ticks' -%}
+                    {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
+                    <ul
+                      {{ block.shopify_attributes }}
+                      style="
+                                           display: grid;text-align:left;
+                        list-style: none;
+                        margin: 0;
+                        font-size: 13.5px;
+                        line-height: 1.2;
+                        gap: 0.3em;
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                      "
+                    >
+                      {% for line in texts %}
+                        <li
+                          style="
+                            display: flex;
+                            gap: 0.3em;
+                          "
+                        >
+                          <span
+                            class="icon icon--inventory"
+                            style="
+                                                       position: relative;
+                              width: 25px;
+                              height: 25px;
+                              flex-shrink: 0;
+                              margin-top: -0.3em;
+                            "
+                          ></span>
+                          {{- line | rstrip }}
+                        </li>
+                      {% endfor %}
+                      <li></li>
+                    </ul>
                   {%- when 'trust_badge' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
                       <div style="max-width: {{ block.settings.trust_image.width }}px; margin: 0 auto;">

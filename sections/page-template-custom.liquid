@@ -1,0 +1,74 @@
+{%- comment -%}
+  This file has been modified by the Yoast SEO for Shopify app.
+  You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+<style>
+   .template-article .main-content {
+    max-width: unset;
+    margin: auto;
+  }
+  .template-article  .rte {
+    max-width: 1024px;
+    margin: auto;
+  }
+  .template-article  .section-header__title ,  .template-article .article__sub-meta{
+        max-width: 1024px;
+    margin: auto;
+  }
+   .template-article  .rte{
+
+        text-align: justify;
+
+  }
+   .template-article .article-image-wrap {
+    margin-top:var(--sectionHeaderBottom)
+  }
+  .template-article .article-image-wrap img{
+      width: 100vw;
+      max-width: 1560px;
+  }
+  .blog-layout__main{
+        width: 100%;
+  }
+  .breadcrumbs{
+    display:none
+  }
+</style>
+
+{%- render 'breadcrumbs' -%}
+
+<header class="section-header">
+  <h1 class="section-header__title" style="font-size: var(--typeHeaderSize);">{{ page.title }}</h1>
+
+  <div class="article__sub-meta"></div>
+  <div
+    class="article-image-wrap"
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      max-width: 100%;
+    "
+  >
+    {{ section.settings.image | image_url: width: 1560 | image_tag }}
+  </div>
+</header>
+
+<div class="rte" style="max-width:1024px; margin:auto">
+  {{ page.content }}
+</div>
+
+{% schema %}
+{
+  "name": "Article pages custom",
+  "class": "blog-layout__main",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+
+  ]
+}
+{% endschema %}

@@ -6,8 +6,11 @@
     .brand-details-slider  .slick-slide .image-group  img{
       display: none;
     }
-      .brand-details-slider  .slick-slide.slick-current .image-group img{
+
+      .brand-details-slider   .slick-slide.slick-current  .image-group img{
       display: block;
+
+
     }
       .brand-details-slider .slide:first-child{
         display: block;
@@ -15,21 +18,117 @@
       .slick-initialized.brand-details-slider .slide{
         display: block;
       }
-      slick-slide
   </style>
 {% endif %}
+<style>
+  .brand-details-section{
+    max-width:1440px;
+    margin:auto
+  }
+   .image-group img{
+          border-radius: 0.4em;
+  border-top-right-radius: min(4em,12vw);
+
+  }
+  .brand-details-section .image-group{
+    padding:0 10px;
+    gap:10px
+  }
+</style>
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
-    {% if section.settings.title %}
+    {% if section.settings.title != blank %}
       <div class="section-header text-center">
-        <h2 class="title-font">{{ section.settings.title }}</h2>
+        <h2 class="title-font" style="margin-bottom:0;padding-bottom:5px">{{ section.settings.title }}</h2>
+        <div>
+          {% if section.settings.content != blank %}
+            {{ section.settings.content }}
+          {% else %}
+            {{ 'strings.general.gallery_subheading' | t }}
+          {% endif %}
+        </div>
+        {% if section.settings.btn_url %}
+          <div class="section-btn" style="margin-top:1em">
+            <a href="{{ section.settings.btn_url }}" class="btn">
+              {{- section.settings.btn_text }}
+            </a>
+          </div>
+        {% endif %}
+        <div></div>
       </div>
     {% endif %}
+    {%- for block in section.blocks -%}
+      <div
+        style="display:none"
+      >
+        {% if block.settings.slide_image1 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image1 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image2 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image2 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image3 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image3 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
 
+        {% if block.settings.slide_image4 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image4 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image5 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image5 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+        {% if block.settings.slide_image6 != blank %}
+          <a
+            style="display:none"
+            href="{{ block.settings.slide_image6 | image_url }}"
+            class="image-wrap"
+            data-fancybox="{{ section.id }}-{{ block.id }}"
+            data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
+          >
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in section.blocks -%}
+        {% assign index_g = 0 %}
         <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
-          <div class="slide-wrap">
+          <div class="slide-wrap page-width">
             {% if block.settings.title != blank %}
               <h2 class="title-font">{{ block.settings.title }}</h2>
             {% endif %}
@@ -44,10 +143,17 @@
                 </div>
                 <div class="col right-col">
                   <div class="col-wrap">
-                    <div class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}">
+                    <div
+                      id="slider-{{ block.id }}"
+                      class="image-group {% if block.settings.slide_image3 != blank %}not-two-col-show{% endif %}"
+                    >
                       {% if block.settings.slide_image1 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image1
                               | image_url: width: 800, crop: 'center'
@@ -56,12 +162,16 @@
                                 sizes: '(max-width: 425px) 320px,(max-width: 425px) 320px, 66.6vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image2 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image2
                               | image_url: width: 400, crop: 'center'
@@ -70,12 +180,16 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
                         </div>
                       {% endif %}
                       {% if block.settings.slide_image3 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
-                          <div class="image-wrap">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
                             {{
                               block.settings.slide_image3
                               | image_url: width: 400, crop: 'center'
@@ -84,10 +198,120 @@
                                 sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
                                 loading: 'lazy'
                             }}
-                          </div>
+                          </a>
+                        </div>
+                      {% endif %}
+
+                      {% if block.settings.slide_image4 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
+                        <div class="image-col">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
+                            {{
+                              block.settings.slide_image4
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image5 != blank %}
+                        {% assign index_g = index_g | plus: 1 %}
+                        <div class="image-col">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
+                            {{
+                              block.settings.slide_image5
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </a>
+                        </div>
+                      {% endif %}
+                      {% if block.settings.slide_image6 != blank %}
+                        <div class="image-col">
+                          <a
+                            href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
+                            class="image-wrap"
+                          >
+                            {{
+                              block.settings.slide_image6
+                              | image_url: width: 400, crop: 'center'
+                              | image_tag:
+                                widths: '100, 160,200, 400',
+                                sizes: '(min-width: 768px) 400px,(min-width: 425px) 150px, 30vw',
+                                loading: 'lazy'
+                            }}
+                          </a>
                         </div>
                       {% endif %}
                     </div>
+                    {% if block.settings.slider and index_g > 3 %}
+                      <style>
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }}{
+                                              overflow:hidden
+                                            }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .image-col{
+                                                  max-width: 33.33%;
+                        width: 33%;
+                        flex-shrink: 0;
+                                            }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow{
+                                                                    background:#000000b5 !important;
+                                                                    bottom:50%;filter: invert(1);border-radius:100%;transform: translateY(50%)
+                                            }
+                                             #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-next{
+                                               padding-left:8px
+                                             }
+                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow::after {
+                                              background-size: contain;
+                                            }
+                         #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow.slick-prev{
+                           left:20px
+                         }
+                         #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow.slick-next{
+                           right:20px
+                         }
+                      </style>
+                      <script>
+                                               document.addEventListener(
+                          "app:ready",
+                          (e) => {
+                                            $(document).ready(function(){
+                                              $('#slider-{{ block.id }}').slick({
+                                                infinite: true,
+                                                draggable:false,
+                                                slidesToShow: 3,
+                                                slidesToScroll: 1
+                                              });
+                                              $('[data-fancybox="gallery"]').fancybox({
+                                                buttons: [
+                                                  "slideShow",
+                                                  "thumbs",
+                                                  "zoom",
+                                                  "fullScreen",
+                                                  "share",
+                                                  "close"
+                                                ],
+                                                loop: false,
+                                                protect: true
+                                              });
+                                            })
+                              },
+                          false,
+                        );
+                      </script>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -122,35 +346,48 @@
 {%- for block in section.blocks -%}
   {% if block.settings.background_color != blank %}
     <style>
-      .brand-details-section .slide-{{ block.id }} .slide-wrap{background-color:{{ block.settings.background_color }};}
+      .brand-details-section .slide-{{ block.id }} {background-color:{{ block.settings.background_color }};}
     </style>
   {% endif %}
 {% endfor %}
 {% if section.settings.sliderenable %}
   <script>
-    $(document).ready(function(){
-      $('.brand-details-section .brand-details-slider.active').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
-        arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
-        fade: true,
-        cssEase: 'linear',
-        responsive: [
-          {
-            breakpoint: 860,
-            settings: {
-              arrows:false,
+        document.addEventListener(
+      "app:ready",
+      (e) => {
+      $(document).ready(function(){
+        $('.brand-details-section .brand-details-slider.active').slick({
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          adaptiveHeight: true,
+          dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
+          arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
+          fade: true,
+          cssEase: 'linear',
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                arrows:false,
+              }
             }
-          }
-        ]
-      });
-    })
+          ]
+        });
+      })
+         },
+      false,
+    );
   </script>
 {% endif %}
-
+<link
+  rel="stylesheet"
+  type="text/css"
+  defer
+  async
+  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" defer async></script>
 {% schema %}
  {
    "name": "Brand Details",
@@ -160,6 +397,11 @@
            "type": "text",
            "id": "title",
            "label": "Title"
+         },
+       {
+           "type": "richtext",
+           "id": "content",
+           "label": "Content"
          },
 	{
          "type": "checkbox",
@@ -182,7 +424,17 @@
          "id": "sectionwidth",
          "label": "Full Width",
          "default": false
-       }
+       },
+        {
+           "type": "text",
+           "id": "btn_text",
+           "label": "Button text"
+         },
+      {
+           "type": "url",
+           "id": "btn_url",
+           "label": "Button url"
+         }
 ],
    "blocks": [
      {
@@ -200,6 +452,11 @@
            "id": "logo_image",
            "label": "logo"
          },
+          {
+           "type": "checkbox",
+           "id": "slider",
+           "label": "Use slider?"
+         },
 	  {
            "type": "image_picker",
            "id": "slide_image1",
@@ -214,6 +471,21 @@
            "type": "image_picker",
            "id": "slide_image3",
            "label": "Slide Image 3"
+         },
+          {
+           "type": "image_picker",
+           "id": "slide_image4",
+           "label": "Slide Image 4"
+         },
+          {
+           "type": "image_picker",
+           "id": "slide_image5",
+           "label": "Slide Image 5"
+         },
+          {
+           "type": "image_picker",
+           "id": "slide_image6",
+           "label": "Slide Image 6"
          },
 	  {
            "type": "text",

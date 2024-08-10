@@ -49,7 +49,37 @@
     {%- endfor -%}
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+  $("#shopify-section-{{section.id}} .new-grid").slick({
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    mobileFirst: true,
+    arrows: false,
+    autoplay: true,
+    dots: false,
+    responsive: [
 
+      {
+        breakpoint: 1081,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          adaptiveHeight: true,
+        },
+      },
+      {
+        breakpoint: 861,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          adaptiveHeight: true,
+        },
+      },
+    ],
+  });
+  })
+</script>
 {% schema %}
 {
   "name": "Shop Accessories",

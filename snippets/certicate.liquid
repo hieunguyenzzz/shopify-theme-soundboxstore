@@ -1,0 +1,111 @@
+<style>
+    .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
+      flex-shrink:0
+    }
+    #{{ id }}.product-icon-text-section .flexbox .col {
+      flex: 1 1 auto;
+      padding: 0 15px;
+      flex-shrink: 0;
+  }
+</style>
+<section id="{{ id }}" class="product-icon-text-section">
+  <div class="page-width">
+    <div class="flexbox" style="flex-wrap:nowrap; overflow:auto">
+      <div class="col" style="" aria-hidden="true" tabindex="0">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>TUV.SUD Certification</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col slick-current slick-active" style="" aria-hidden="false" tabindex="-1">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_1.png?v=1717686879&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>FSC Certification</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="" aria-hidden="true" tabindex="-1">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png?v=1717689671&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>UL Certification</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="" aria-hidden="true" tabindex="-1">
+        <div class="col-wrap">
+          <div class="icon-text-block">
+            <div class="icon-block">
+              <div class="icon-wrap">
+                <img
+                  loading="lazy"
+                  src="//soundboxstore.com/cdn/shop/files/ce.png?v=1717688682&amp;width=50"
+                  width="50"
+                  height="50"
+                  alt=""
+                >
+              </div>
+            </div>
+
+            <div class="text-block"><p>CE Certification</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    $(window).on('load', function() {
+
+    $('#{{ id }}.product-icon-text-section .flexbox').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      mobileFirst: true,
+      arrows: false,
+      autoplay: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 861,
+          settings: 'unslick'
+        }
+      ]
+    });
+  })
+</script>

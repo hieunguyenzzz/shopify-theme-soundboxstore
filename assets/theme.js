@@ -7841,7 +7841,7 @@ lazySizesConfig.expFactor = 4;
         );
         if (inventoryEl) {
           this.settings.inventory = true;
-          this.settings.inventoryThreshold = inventoryEl.dataset.threshold;
+          this.settings.inventoryThreshold = inventoryEl.dataset.threshold||0;
           this.container.on(
             "variantChange" + this.settings.namespace,
             this.updateInventory.bind(this)
@@ -8145,9 +8145,9 @@ lazySizesConfig.expFactor = 4;
           var quantity = variantInventoryObject.quantity;
           var showInventory = true;
           var showIncomingInventory = false;
-
-          if (quantity <= 0 || quantity > this.settings.inventoryThreshold) {
-            showInventory = false;
+          var inventoryThreshold = this.settings.inventoryThreshold  || 0
+          if ( quantity > inventoryThreshold) {
+            showInventory = true;
           }
 
           this.toggleInventoryQuantity(variant, showInventory, quantity);
@@ -8159,7 +8159,7 @@ lazySizesConfig.expFactor = 4;
           if (
             !showInventory &&
             variantInventoryObject.incoming === "true" &&
-            quantity <= this.settings.inventoryThreshold
+            quantity <= inventoryThreshold
           ) {
             showIncomingInventory = true;
           }
@@ -8188,8 +8188,7 @@ lazySizesConfig.expFactor = 4;
 
         var el = this.container.querySelector(this.selectors.inventory);
         var salesPoint = el.closest(".product-block");
-
-        if (parseInt(qty) <= parseInt(this.settings.inventoryThreshold)) {
+        if (parseInt(qty) <= parseInt(this.settings.inventoryThreshold||0)) {
           el.parentNode.classList.add("inventory--low");
           el.textContent = theme.strings.stockLabel.replace("[count]", qty);
         } else {

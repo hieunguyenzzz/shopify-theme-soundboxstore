@@ -1,22 +1,40 @@
-<style>
-  @media only screen and (max-width:767px) {
-    .image-text-section .image-wrap .desktop-only {
-      display: none;
-    }
+{{ 'image-text-section.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .image-text-section--{{ section.id }}{
+    {% if section.settings.style == 'primary' %}
+        --bg: var(--colorBtnPrimaryText);
+        --color: var(--colorBtnPrimary);
+        --text: var(--colorBtnPrimary);
+    {% endif %}
+    {% if section.settings.style == 'primary-reverse' %}
+        --bg: var(--colorBtnPrimaryText);
+        --color: var(--colorBtnPrimary);
+        --text: var(--colorBtnPrimary);
+    {% endif %}
+    {% if section.settings.style == 'schema-1' %}
+        --bg: {{ settings.color_scheme_1_bg }};
+        --color: {{ settings.color_scheme_1_text }};
+        --text:  {{ settings.color_scheme_1_text }};
+    {% endif %}
+    {% if section.settings.style == 'schema-1-reverse' %}
+        --bg: {{ settings.color_scheme_1_text }};
+        --color: {{ settings.color_scheme_1_bg }};
+        --text:  {{ settings.color_scheme_1_bg }};
+    {% endif %}
+    {% if section.settings.style == 'schema-2' %}
+        --bg: {{ settings.color_scheme_2_bg }};
+        --color: {{ settings.color_scheme_2_text }};
+        --text:  {{ settings.color_scheme_2_text }};
+    {% endif %}
+    {% if section.settings.style == 'schema-2-reverse' %}
+        --bg: {{ settings.color_scheme_2_text }};
+        --color: {{ settings.color_scheme_2_bg }};
+        --text:  {{ settings.color_scheme_2_bg }};
+    {% endif %}
   }
-  .image-text-section .image-wrap .mobile-only {
-    display: none;
-  }
-  @media only screen and (max-width:767px) {
-    .image-text-section .image-wrap .mobile-only {
-      display: block;
-      min-height: 337px;
-      object-fit: cover;
-    }
-  }
-</style>
+{%- endstyle -%}
 {% if section.settings.image != blank %}
-  <section class="image-text-section {{ section.settings.section_class }} image-text-section--product">
+  <section class="image-text-section {{ section.settings.section_class }} image-text-section--{{ section.id }} image-text-section--style_{{ section.settings.style }} image-text-section--product">
     <div class="section-wrap">
       <div class="section-image">
         <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
@@ -95,6 +113,38 @@
   "name": "Image text section",
   "settings": [
     {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "default": "default",
+      "options": [
+         {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "primary-reverse",
+          "label": "Primary Reverse"
+        }, {
+          "value": "schema-1",
+          "label": "schema 1"
+        },{
+          "value": "schema-1-reverse",
+          "label": "schema 1 Reverse"
+        }, {
+          "value": "schema-2",
+          "label": "schema 2"
+        },{
+          "value": "schema-2-reverse",
+          "label": "schema 2 Reverse"
+        }
+      ]
+    },
+    {
       "type": "checkbox",
       "id": "lazyload",
       "label": "Lazyload",
@@ -162,6 +212,7 @@
       "label": "Text Alignment",
       "default": "center-left",
       "options": [
+
         {
           "value": "top-left",
           "label": "Top Left"
@@ -180,7 +231,10 @@
         }, {
           "value": "center-center",
           "label": "Center center"
-        }, {
+        },   {
+          "value": "center-right",
+          "label": "Center right"
+        },{
           "value": "bottom-left",
           "label": "Bottom left"
         }, {

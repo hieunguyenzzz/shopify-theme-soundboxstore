@@ -1,3 +1,4 @@
+{% assign show_add_quote = settings.show_add_quote %}
 {%- form 'product', product, id: form_id, class: 'product-single__form' -%}
   <!--
     {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
@@ -58,11 +59,16 @@
     {% unless current_variant.available %}
       disabled="disabled"
     {% endunless %}
+    {% if settings.hide_add_to_cart %}
+      hidden
+      style="display:none"
+    {% endif %}
   >
     <span data-add-to-cart-text data-default-text="{{ default_text }}">
       {{ button_text }}
     </span>
   </button>
+
   {% assign isResserllerOrTradeAccount = false %}
 
   {% if customer %}
@@ -77,12 +83,24 @@
       {% assign isResserllerOrTradeAccount = true %}
     {% endif %}
   {% endif %}
-  {% if isResserllerOrTradeAccount %}
-    <style>
-      [data-add-to-cart]{
-        display:none
-      }
-    </style>
+  {% if isResserllerOrTradeAccount or show_add_quote %}
+    {% if isResserllerOrTradeAccount %}
+      <style>
+        [data-add-to-cart]{
+          display:none
+        }
+      </style>
+    {% else %}
+      <style>
+        #{{form_id}}{
+          display:flex;
+          gap:10px
+        }
+         #{{form_id}} .btn{
+           flex: 1 0 ;
+         }
+      </style>
+    {% endif %}
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
@@ -90,7 +108,7 @@
       data-product-id="{{ product.id }}"
       onclick="GRFQApp.addProduct(this,{{ product.id }})"
     >
-      <span data-add-to-cart-text="" data-default-text="Add to cart">Add to Quote</span>
+      <span data-add-to-cart-text="" data-default-text="Add to cart">{{ 'strings.general.request_quote' | t }}</span>
     </button>
   {% endif %}
   {%- if enable_dynamic_buttons -%}
@@ -110,7 +128,7 @@
       }
     {% endfor %}
   </style>
-  <div data-quantity-variant="{{ current_variant.id }}">
+  <div style="display:none" data-quantity-variant="{{ current_variant.id }}">
     {% for current_variant in product.variants %}
       {% assign inventory_quantity = current_variant.inventory_quantity %}
       {%- for item in current_variant.metafields.custom.bundle.value -%}

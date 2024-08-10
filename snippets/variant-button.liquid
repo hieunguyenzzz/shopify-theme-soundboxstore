@@ -1,5 +1,8 @@
 {%- assign swatch_file_extension = 'png' -%}
 <div
+  {% if option.values.size == 1 %}
+    style="display:none"
+  {% endif %}
   class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
   data-type="button"
 >
@@ -8,7 +11,7 @@
     for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
   >
     {%- assign optionNameHandlized = option.name | handleize -%}
-    {{ 'strings.option_name.' | append: optionNameHandlized  | t }}
+    {{ 'strings.option_name.' | append: optionNameHandlized | t }}
     {% comment %}
       {%- if is_color -%}
         <span class="variant__label-info">
@@ -22,6 +25,7 @@
   <div
     class="variant-input-wrap"
     name="{{ option.name }}"
+
     data-index="option{{ option_index }}"
     data-handle="{{ option.name | handleize }}"
     id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
@@ -42,7 +46,7 @@
         endif
       -%}
       {%- assign optionValueHandlized = value | handleize -%}
-      {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized  | t -%}
+      {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized | t -%}
       <div
         class="variant-input {% unless product_available %} disabled{% endunless %}"
         data-index="option{{ option_index }}"
@@ -84,7 +88,7 @@
           >
             {{ tranValue | escape }}
           </label>
-          {% assign color_image = nil %}
+          {% assign color_image = null %}
 
         {% elsif option.name contains 'Furniture' %}
           <label
@@ -92,7 +96,7 @@
             class="variant__button-label{% unless product_available %} disabled{% endunless %}"
           >
             {%- assign optionValueHandlized = value | handleize -%}
-            {{ 'strings.option_value.' | append: optionValueHandlized  | t   | escape }}
+            {{ 'strings.option_value.' | append: optionValueHandlized | t | escape }}
             {%- if value == 'No Furniture' and product.metafields.my_fields.standard_suite != blank %}
               <span>{{ product.metafields.my_fields.standard_suite }}</span>
             {%- endif -%}

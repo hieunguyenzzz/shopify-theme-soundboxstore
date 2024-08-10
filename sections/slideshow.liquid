@@ -73,7 +73,7 @@
               <div class="hero__image-wrapper{% unless hero_text %} hero__image-wrapper--no-overlay{% endunless %}">
                 {%- if section.settings.parallax -%}
                   <div class="parallax-container">
-                  <div class="parallax-image">
+                    <div class="parallax-image">
                 {%- endif -%}
 
                 {%- if block.settings.image != blank -%}
@@ -151,7 +151,36 @@
                             </div>
                           {%- endunless -%}
                           {%- if block.settings.link_text != blank or block.settings.link_text_2 != blank -%}
+                            <style>
+                              [data-onlycity="London"]{
+                                display:none
+                              }
+                              [city="London"] [data-onlycity="London"]{
+                                display: inline-block
+                              }
+                               [city="London"] [data-onlycity="other"]{
+                                display:none
+                              }
+                            </style>
                             <div class="hero__link">
+                              {% assign pageF = pages['remote-tours'] %}
+                              {% assign textF = pageF.title %}
+                              <a
+                                data-onlycity="other"
+                                href="{{pageF.url }}"
+                                class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                              >
+                                {{ textF }}
+                              </a>
+                              {% assign pageF = pages['showroom-london'] %}
+                              {% assign textF = 'Showroom visit' %}
+                              <a
+                                href="{{pageF.url }}"
+                                data-onlycity="London"
+                                class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                              >
+                                {{ textF }}
+                              </a>
                               {%- if block.settings.link_text != blank -%}
                                 <a
                                   href="{{ block.settings.link }}"
@@ -160,14 +189,16 @@
                                   {{ block.settings.link_text }}
                                 </a>
                               {%- endif -%}
-                              {%- if block.settings.link_text_2 != blank -%}
-                                <a
-                                  href="{{ block.settings.link_2 }}"
-                                  class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                                >
-                                  {{ block.settings.link_text_2 }}
-                                </a>
-                              {%- endif -%}
+                              {% comment %}
+                                {%- if block.settings.link_text_2 != blank -%}
+                                  <a
+                                    href="{{ block.settings.link_2 }}"
+                                    class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                                  >
+                                    {{ block.settings.link_text_2 }}
+                                  </a>
+                                {%- endif -%}
+                              {% endcomment %}
                             </div>
                           {%- endif -%}
                         {%- endif -%}
@@ -327,7 +358,7 @@
                 <div class="hero__image-wrapper{% unless hero_text %} hero__image-wrapper--no-overlay{% endunless %}">
                   {%- if section.settings.parallax -%}
                     <div class="parallax-container">
-                    <div class="parallax-image">
+                      <div class="parallax-image">
                   {%- endif -%}
 
                   {%- if block.settings.image != blank -%}
@@ -458,7 +489,6 @@
 {% schema %}
 {
   "name": "Hero (optional slides)",
-  "class": "index-section",
   "max_blocks": 5,
   "settings": [
     {

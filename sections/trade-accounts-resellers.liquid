@@ -53,6 +53,7 @@
     }
 </style>
 <div class="page-width page-width--narrow page-content">
+{% if section.settings.heading != blank %}
   <header
     class="section-header"
     style="    text-align: center;"
@@ -70,6 +71,7 @@
       </a>
     {% endif %}
   </header>
+  {% endif %}
 </div>
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">

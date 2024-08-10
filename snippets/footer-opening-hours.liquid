@@ -1,12 +1,17 @@
 {% if block.type == 'footer_hours' %}
   <div class="footer-opening-hours">
     <div class="footer-opening-hours">
-      {% if block.settings.opening-hour-heading -%}
+      {% if block.settings['opening-hour-heading'] -%}
         <div class="footer__title">
-          {{ block.settings.opening-hour-heading }}
+          {{ block.settings['opening-hour-heading'] }}
         </div>
       {%- endif %}
-      {% if block.settings.text1 != blank or block.settings.text2 != blank or block.settings.text3 != blank or block.settings.text4 != blank or block.settings.text5 != blank %}
+      {% if block.settings.text1 != blank
+        or block.settings.text2 != blank
+        or block.settings.text3 != blank
+        or block.settings.text4 != blank
+        or block.settings.text5 != blank
+      %}
         <div class="footer-opening-dec">
           {% if block.settings.text1 != blank -%}
             <p>{{ block.settings.text1 }}</p>
@@ -28,6 +33,17 @@
           {% if block.settings.richtext != blank -%}
             <div style="font-size:13px">{{ block.settings.richtext }}</div>
           {%- endif %}
+          <style>
+            .iso-images img{
+              height:40px
+            }
+            .iso-images img:not(:first-child){
+              filter:invert(1)
+            }
+          </style>
+          <div class="iso-images" style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;">
+            {% render 'iso-images' %}
+          </div>
         </div>
       {% endif %}
     </div>

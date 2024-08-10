@@ -13,7 +13,6 @@
     assign isAjax = true
   endif
 -%}
-
 {%- render 'product-template',
   product: product,
   section_id: section.id,
@@ -183,7 +182,13 @@
     {
       "type": "price",
       "name": "Price",
-      "limit": 1
+      "limit": 1,
+      "settings": [{
+            "type": "richtext",
+            "id": "desc",
+            "label": "Content",
+            "default": "<p>Prices exclude VAT<\/p>"
+        }]
     },
     {
       "type": "quantity_selector",
@@ -254,6 +259,12 @@
       "name": "Buy buttons",
       "limit": 1,
       "settings": [
+         {
+          "type": "checkbox",
+          "id": "show_add_quote",
+          "label": "Show add quote button",
+          "default": false
+        },
         {
           "type": "checkbox",
           "id": "show_dynamic_checkout",
@@ -261,6 +272,7 @@
           "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
           "default": true
         },
+
         {
           "type": "checkbox",
           "id": "surface_pickup_enable",
@@ -316,7 +328,7 @@
           "type": "range",
           "id": "inventory_threshold",
           "label": "Low inventory threshold",
-          "default": 10,
+          "default": 0,
           "min": 0,
           "max": 20,
           "step": 2
@@ -326,7 +338,7 @@
           "id": "inventory_transfers_enable",
           "label": "Show inventory transfer notice",
           "info": "Learn how to create inventory transfers [here](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)",
-          "default": true
+          "default": false
         }
       ]
     },
@@ -445,6 +457,18 @@
     {
       "type": "separator",
       "name": "Separator"
+    },
+     {
+      "type": "ticks",
+      "name": "Ticks",
+             "limit": 1,
+       "settings": [
+          {
+          "type": "textarea",
+          "id": "richtext",
+          "label": "richtext"
+        }
+       ]
     },
     {
       "type": "contact",

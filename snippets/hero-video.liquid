@@ -51,7 +51,7 @@
     }
    .hero--{{ block.id }} video{
     opacity: 0;
-      transition: opacity 0.5s ease-out;
+      transition: opacity 1s ease-out;
   }
      .hero--{{ block.id }} video.playing{
       opacity: 1;
@@ -87,15 +87,17 @@
         {{
           block.settings.video.preview_image
           | image_url: width: 100
-          | image_tag: class: 'desktop-only', style: 'filter: blur(3px)'
+          | image_tag: width: null, style: 'filter: blur(3px)', preload: true, loading: 'eager'
         }}
-        {% if block.settings.video_m %}
-          {{
-            block.settings.video_m.preview_image
-            | image_url: width: 100
-            | image_tag: class: 'mobile-only', style: 'filter: blur(3px)'
-          }}
-        {% endif %}
+        <!--
+          {% if block.settings.video_m %}
+            {{
+              block.settings.video_m.preview_image
+              | image_url: width: 100
+              | image_tag: class: 'mobile-only', style: 'filter: blur(3px)'
+            }}
+          {% endif %}
+        -->
       {% endif %}
     </div>
 
@@ -110,56 +112,55 @@
       ></div>
     {% else %}
       <template class="mobile-only">
-        {{
-          block.settings.video_m
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_m', class: 'mobile-only'
-        }}
+        {{ block.settings.video_m | video_tag: autoplay: true, loop: true, muted: true, controls: true, id: 'video_m' }}
       </template>
       <template class="desktop-only">
-        {{
-          block.settings.video
-          | video_tag: autoplay: true, loop: true, muted: true, controls: false, id: 'video_d', class: 'desktop-only'
-        }}
+        {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, id: 'video_d' }}
       </template>
     {%- endif -%}
   </div>
   {%- unless block.settings.video_url contains 'youtube.com/watch' -%}
     {% assign id = block.id | append: '_v' %}
     <script>
-                                   (()=>{
-                                      let played = false
-                                       function onviedoHover (){
-                                         if(played) return
-                                         played=true
-                             localStorage.setItem("{{ id }}",true)
-                                         let e= document.querySelector(".hero--{{ block.id }} .hero__media-container")
-                                         let t = document.querySelector(".hero--{{ block.id }} template.desktop-only")
-                                         if(window.innerWidth<679){
-                                                  t = document.querySelector(".hero--{{ block.id }} template.mobile-only")
-                                         }
-                                             e.append(t.content.cloneNode(true))
+      let played = false
+         function onviedoHover() {
+           if (played) return
+           played = true
+           localStorage.setItem("{{ id }}", true)
+           let e = document.querySelector(".hero--{{ block.id }} .hero__media-container")
+           let t = document.querySelector(".hero--{{ block.id }} template.desktop-only")
+           if (window.innerWidth < 679) {
+             t = document.querySelector(".hero--{{ block.id }} template.mobile-only")
+           }
+           e.append(t.content.cloneNode(true))
 
-                                             let v= document.querySelector(".hero--{{ block.id }} .hero__media-container video")
-                     if(v){
-                       v.addEventListener("play", (event) => {
-           v.classList.add("playing")
-                 });
-                     }
-                                         setTimeout(()=>{
-      let v= document.querySelector(".hero--{{ block.id }} .hero__media-container video")
-                                           if(v.currentTime===0){
-                                             v.play()
-                       }
-                       },300)
-                                       }
-                                     if(localStorage.getItem("{{ id }}")){
-                                       onviedoHover()
-                                     }else{
-                                        document.addEventListener("mouseover",onviedoHover,{ once: true })
-                                         window.addEventListener("scroll", onviedoHover,{ once: true })
-                                     }
+           let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
+           if (v) {
+             v.addEventListener("play", (event) => {
+               v.classList.add("playing")
 
-                                   })()
+             });
+
+
+           }
+            v.removeAttribute('controls')
+           setTimeout(() => {
+             let v = document.querySelector(".hero--{{ block.id }} .hero__media-container video")
+             if (v.currentTime === 0) {
+               v.play().then(() => {}).catch((error) => {
+
+              });
+
+             }
+           }, 300)
+         }
+         if (localStorage.getItem("{{ id }}")) {
+           onviedoHover()
+         } else {
+           document.addEventListener("mouseover", onviedoHover, { once: true })
+           window.addEventListener("scroll", onviedoHover, { once: true })
+         }
+        setTimeout(onviedoHover, 2000)
     </script>
   {% endunless %}
 
@@ -180,69 +181,64 @@
               </svg>
             </button>
           {%- endif -%}
- {%- unless block.settings.h1 == blank -%}
+          {%- unless block.settings.h1 == blank -%}
             <h1 style="position:absolute;opacity:0">
-                {{ block.settings.h1 | newline_to_br }}
+              {{ block.settings.h1 | newline_to_br }}
             </h1>
           {%- endunless -%}
           {%- unless block.settings.title == blank -%}
             <h2 class="h1 hero__title">
-              <div class="animation-contents">
-                {{ block.settings.title | newline_to_br }}
-              </div>
+              {{ block.settings.title | newline_to_br }}
             </h2>
           {%- endunless -%}
           {%- if block.settings.subheading or block.settings.link -%}
             {%- unless block.settings.subheading == blank -%}
               <div class="hero__subtitle">
-                <div class="animation-contents">
-                  {{ block.settings.subheading | escape }}
-                </div>
+                {{ block.settings.subheading | escape }}
               </div>
             {%- endunless -%}
             <div style="display:flex;gap:1em">
-            {%- if block.settings.link_text != blank -%}
-              {%- assign link_href = block.settings.link -%}
-              {%- if block.settings.link == blank -%}
-                {%- assign link_href = block.settings.video_url -%}
+              {%- if block.settings.link_text != blank -%}
+                {%- assign link_href = block.settings.link -%}
+                {%- if block.settings.link == blank -%}
+                  {%- assign link_href = block.settings.video_url -%}
+                {%- endif -%}
+                <div class="hero__link">
+                  <a
+                    href="{{ link_href }}"
+                    class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                  >
+                    {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        role="presentation"
+                        class="icon icon-play"
+                        viewBox="18.24 17.35 24.52 28.3"
+                      >
+                        <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+                      </svg>
+                    {%- endif -%}
+                    {{ block.settings.link_text }}
+                  </a>
+                </div>
               {%- endif -%}
-              <div class="hero__link">
-                <a
-                  href="{{ link_href }}"
-                  class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                >
-                  {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      role="presentation"
-                      class="icon icon-play"
-                      viewBox="18.24 17.35 24.52 28.3"
-                    >
-                      <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
-                    </svg>
-                  {%- endif -%}
-                  {{ block.settings.link_text }}
-                </a>
-              </div>
-            {%- endif -%}
-            {%- if block.settings.link2_text != blank -%}
-              {%- assign link_href = block.settings.link2 -%}
-              {%- if block.settings.link2 == blank -%}
-                {%- assign link_href = block.settings.video_url -%}
+              {%- if block.settings.link2_text != blank -%}
+                {%- assign link_href = block.settings.link2 -%}
+                {%- if block.settings.link2 == blank -%}
+                  {%- assign link_href = block.settings.video_url -%}
+                {%- endif -%}
+                <div class="hero__link">
+                  <a
+                    href="{{ link_href }}"
+                    class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
+                  >
+                    {{ block.settings.link2_text }}
+                  </a>
+                </div>
               {%- endif -%}
-              <div class="hero__link">
-                <a
-                  href="{{ link_href }}"
-                  class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                >
-                  {{ block.settings.link2_text }}
-                </a>
-              </div>
-            {%- endif -%}
             </div>
           {%- endif -%}
-          
         </div>
       </div>
     </div>

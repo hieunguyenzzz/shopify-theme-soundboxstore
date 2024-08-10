@@ -1,0 +1,38 @@
+@media only screen and (max-width: 1024px) {
+  .image-text-section .image-wrap .desktop-only {
+    display: none;
+  }
+}
+.image-text-section .image-wrap .mobile-only {
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
+  .image-text-section .image-wrap .mobile-only {
+    display: block;
+    min-height: 337px;
+    object-fit: cover;
+  }
+}
+.image-text-section,
+.image-text-section--style_primary-reverse,
+.image-text-section--style_default {
+  --color: var(--colorBtnPrimaryText);
+  --text: var(--colorBtnPrimaryText);
+  --bg: var(--colorBtnPrimary);
+}
+
+.image-text-section .section-content {
+  color: var(--text);
+}
+.image-text-section .overlay:after {
+  background: var(--bg);
+}
+.image-text-section .section-content h2,
+.image-text-section.image-text-section--product .section-content h2,
+.image-text-section .section-content p {
+  color: var(--text);
+}
+.image-text-section .section-content .btn {
+  background: var(--color);
+  color: var(--bg);
+}

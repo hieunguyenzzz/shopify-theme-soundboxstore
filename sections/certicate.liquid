@@ -1,0 +1,120 @@
+<style>
+  .product-icon-text-section .page-width{
+    max-width:unset
+  }
+  .product-icon-text-section .text-block{
+    white-space:nowrap
+  }
+  .product-icon-text-section .flexbox{
+    justify-content:center
+  }
+   .product-icon-text-section .icon-text-block .col{
+    flex:unset
+  }
+    .product-icon-text-section .flexbox >.col{
+     max-width: 350px;
+  }
+</style>
+<section class="product-icon-text-section">
+  <div class="page-width">
+    <div class="flexbox">
+      {% if section.settings.dynamic %}
+        {% for block in section.blocks %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="icon-text-block">
+                {% if block.settings.iconimage != blank %}
+                  <div class="icon-block">
+                    <div class="icon-wrap">
+                      <img
+                        loading="lazy"
+                        src="{{ block.settings.iconimage | image_url : width: 50 }}"
+                        width="50"
+                        height="50"
+                        alt="{{ block.settings.iconimage.alt }}"
+                      >
+                    </div>
+                  </div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="text-block">{{ block.settings.text }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..5) %}
+          {% assign key = 'iso_' | append: forloop.index %}
+          {% assign image = settings[key] %}
+          {% if image %}
+            <div class="col">
+              <div class="col-wrap">
+                <div class="icon-text-block">
+                  <div class="col">
+                    <div class="col-wrap">
+                      <div class="icon-text-block">
+                        <div class="icon-block">
+                          <div class="icon-wrap">
+                            {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-block">{{ image.alt }}</div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="visually-hidden">{{ section.settings.seo }}</div>
+</section>
+
+{% schema %}
+{
+  "name": "certicate",
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "dynamic",
+        "label": "Dynamic",
+        "default":false
+      },
+     {
+       "type": "text",
+      "id": "seo",
+      "label": "SEO title",
+      "default":"FULLY CERTIFIED & TESTED"
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "name": "Icon Text Block",
+      "type": "icon-text-block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "iconimage",
+          "label": "Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+    "presets": [
+     {
+       "name": "certicate",
+       "blocks": []
+     }
+   ]
+}
+{% endschema %}

@@ -4,8 +4,8 @@
     "theme_name": "soundboxstore",
     "theme_author": "soundboxstore Themes",
     "theme_version": "1.0.0",
-    "theme_documentation_url": "https:\/\/soundboxstore.co\/blogs\/expanse",
-    "theme_support_url": "https:\/\/soundboxstore.co\/pages\/support#expanse"
+    "theme_documentation_url": "https://soundboxstore.co/blogs/expanse",
+    "theme_support_url": "https://soundboxstore.co/pages/support#expanse"
   },
   {
     "name": "Reseller",
@@ -14,6 +14,21 @@
         "type": "checkbox",
         "id": "isreseller",
         "label": "Is Reseller"
+      }
+    ]
+  },
+  {
+    "name": "External Links",
+    "settings": [
+      {
+        "type": "url",
+        "label": "calendly remote tour url",
+        "id": "calendly_remote_tour"
+      },
+      {
+        "type": "url",
+        "label": "calendly remote tour url (DE)",
+        "id": "calendly_remote_tour_de"
       }
     ]
   },
@@ -69,7 +84,25 @@
         "type": "text",
         "id": "phone_number_de",
         "label": "Phone number(German)",
-        "default": "+49 3040517694"
+        "default": "+49800 664 8081"
+      },
+      {
+        "type": "text",
+        "id": "phone_number_ch",
+        "label": "Phone number(switzerland)",
+        "default": "+41 56 588 05 72"
+      },
+      {
+        "type": "text",
+        "id": "phone_number_fr",
+        "label": "Phone number(France)",
+        "default": "+33805119611"
+      },
+      {
+        "type": "text",
+        "id": "phone_number_it",
+        "label": "Phone number(Italy)",
+        "default": "+39 800561908"
       }
     ]
   },
@@ -744,6 +777,18 @@
     "settings": [
       {
         "type": "checkbox",
+        "id": "show_add_quote",
+        "label": "Show quote button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_add_to_cart",
+        "label": "Hide add to cart",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "superscript_decimals",
         "label": "Show cents as superscript",
         "default": true
@@ -1026,61 +1071,61 @@
         "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook",
-        "info": "https:\/\/www.facebook.com\/shopify"
+        "info": "https://www.facebook.com/shopify"
       },
       {
         "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter",
-        "info": "https:\/\/twitter.com\/shopify"
+        "info": "https://twitter.com/shopify"
       },
       {
         "type": "text",
         "id": "social_pinterest_link",
         "label": "Pinterest",
-        "info": "https:\/\/www.pinterest.com\/shopify"
+        "info": "https://www.pinterest.com/shopify"
       },
       {
         "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram",
-        "info": "https:\/\/instagram.com\/shopify"
+        "info": "https://instagram.com/shopify"
       },
       {
         "type": "text",
         "id": "social_snapchat_link",
         "label": "Snapchat",
-        "info": "https:\/\/www.snapchat.com\/add\/shopify"
+        "info": "https://www.snapchat.com/add/shopify"
       },
       {
         "type": "text",
         "id": "social_tiktok_link",
         "label": "TikTok",
-        "info": "https:\/\/www.tiktok.com\/@shopify"
+        "info": "https://www.tiktok.com/@shopify"
       },
       {
         "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr",
-        "info": "http:\/\/shopify.tumblr.com"
+        "info": "http://shopify.tumblr.com"
       },
       {
         "type": "text",
         "id": "social_linkedin_link",
         "label": "LinkedIn",
-        "info": "https:\/\/www.linkedin.com\/in\/shopify"
+        "info": "https://www.linkedin.com/in/shopify"
       },
       {
         "type": "text",
         "id": "social_youtube_link",
         "label": "YouTube",
-        "info": "https:\/\/www.youtube.com\/user\/shopify"
+        "info": "https://www.youtube.com/user/shopify"
       },
       {
         "type": "text",
         "id": "social_vimeo_link",
         "label": "Vimeo",
-        "info": "https:\/\/vimeo.com\/shopify"
+        "info": "https://vimeo.com/shopify"
       },
       {
         "type": "header",
@@ -1163,7 +1208,7 @@
         "id": "predictive_search_enabled",
         "label": "Enable predictive search",
         "default": true,
-        "info": "Live search results. Not available in all languages. [Learn more](https:\/\/help.shopify.com\/en\/themes\/development\/search\/predictive-search#general-requirements-and-limitations)"
+        "info": "Live search results. Not available in all languages. [Learn more](https://help.shopify.com/en/themes/development/search/predictive-search#general-requirements-and-limitations)"
       },
       {
         "type": "select",
@@ -1199,6 +1244,46 @@
         "type": "checkbox",
         "id": "show_breadcrumbs_collection_link",
         "label": "Show collections page in breadcrumb list"
+      }
+    ]
+  },
+  {
+    "name": "ISO images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "iso_full",
+        "label": "All iso image"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_1",
+        "label": "Iso 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_2",
+        "label": "Iso 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_3",
+        "label": "Iso 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_4",
+        "label": "Iso 4"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_5",
+        "label": "Iso 5"
+      },
+      {
+        "type": "image_picker",
+        "id": "iso_6",
+        "label": "Iso 6"
       }
     ]
   }

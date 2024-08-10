@@ -1,0 +1,27 @@
+{% if section.settings.url != blank %}
+  <script>
+    let url = "{{ section.settings.url }}"
+    if(url){
+      location.href=url
+    }
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "Redirect",
+  "settings": [{
+    "type": "url",
+    "id": "url",
+    "label": "Url"
+  }],
+  "presets": [{
+    "name": "Redirect",
+    "settings": {
+
+      },
+    "blocks": [
+
+    ]
+  }]
+}
+{% endschema %}

@@ -8,6 +8,10 @@
       margin-top: 20px;
     }
   }
+   .features-list-row-wrap > label {
+
+      font-weight:bold!important;
+    }
   @media only screen and (max-width: 991px) {
     .features-list-row {
       padding: 0.5em;
@@ -28,6 +32,7 @@
       padding: 0.2em 0.5em;
       background-color: #f1f1f1;
       position: relative;
+      font-weight:bold;
     }
     .features-list-row-wrap > label::after {
       transition: all 0.3s ease-in-out;
@@ -156,6 +161,7 @@
         {% endif %}
       >
         <div class="col-wrap">
+          <label class="visually-hidden">{{ section.settings.seo }}</label>
           {%- if section.settings.show_videos -%}
             <div>
               <div class="video-player active">
@@ -325,8 +331,8 @@
             <img
               loading="lazy"
               style="width:100%"
-            width="675"
-            height="675"
+              width="675"
+              height="675"
               srcset="
                 {% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
                 {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
@@ -501,6 +507,12 @@
 {
   "name": "Meeting Rooms Features",
   "settings": [
+     {
+       "type": "text",
+      "id": "seo",
+      "label": "SEO title",
+      "default":"Experience This Phone Booth Yourself"
+    },
     {
       "type": "checkbox",
       "id": "show_videos",

@@ -17,41 +17,58 @@
 {%- capture new_label -%}
  {% render '[product-label]' product:product  %}{%- endcapture -%}
 <style>
-    .slick-initialized .slick-slide .gallery-wrap {
-      display: none;
-  }
+      .slick-initialized .slick-slide .gallery-wrap {
+        display: none;
 
-    .slick-initialized .slick-slide.slick-current .gallery-wrap {
-      display: block !important;
     }
-  .thumbnail-slider-inner  .slick-current img{
-    border: 1px solid #00000061!important
-  }
-  .thumbnail-slider-inner{
-    display: none;
 
+      .slick-initialized .slick-slide.slick-current .gallery-wrap {
+        display: block !important;
+      }
+    .thumbnail-slider-inner  .slick-current img{
+      border: 1px solid #00000061!important
+    }
+    .thumbnail-slider-inner:not(.slick-initialized){
+      height: 54px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
   }
-  .thumbnail-slider{
-    min-height: 54px;
+
+  .thumbnail-slider-inner:not(.slick-initialized) .thumbnail-wrap {
+      width: 54px;
+
+    }
+   .thumbnail-slider-inner:not(.slick-initialized) .thumnail-gallery-block:first-child img{
+      border:1px solid #00000061!important
+    }
+    .thumbnail-slider-inner.slick-initialized{
+      display: block;
+    }
+    .image-gallery-block .gallery-wrap video{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+    }
+    .product-main-slider .thumbnail-gallery .thumbnail-wrap svg{
+      position: absolute;
+        width: 40%;
+        height: 40%;
+        left: 30%;
+        opacity: 0.7;
+        top: 30%;
+    }
+    @media (min-width:860px){
+        .thumbnail-slider-inner:not(.slick-initialized){
+      height: auto;
+      flex-direction: column;
   }
-  .thumbnail-slider-inner.slick-initialized{
-    display: block;
+     .thumbnail-slider-inner:not(.slick-initialized) .thumbnail-wrap {
+      width: 100%;
   }
-  .image-gallery-block .gallery-wrap video{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: contain;
-  }
-  .product-main-slider .thumbnail-gallery .thumbnail-wrap svg{
-    position: absolute;
-      width: 40%;
-      height: 40%;
-      left: 30%;
-      opacity: 0.7;
-      top: 30%;
   }
 </style>
 
@@ -97,8 +114,7 @@
       for="youtube-modal-input-{{ youtubeId }}"
       style="width:100%;position:absolute;height:100%; pointer-events: auto;    display: flex; justify-content: center; align-items: center;">
       <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"   
-      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events: none;",
-      loading="lazy"/>
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events: none;"/>
             <svg style="overflow: visible;z-index: 1;" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
               <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
             </svg>
@@ -117,8 +133,8 @@
         style="width:100%;position:absolute;height:100%; pointer-events: auto;"
       >
       <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"   
-      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;",
-      loading="lazy"/>
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
+      />
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
               <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
             </svg>
@@ -149,7 +165,12 @@
               {{
                 image
                 | image_url: width: 800
-                | image_tag: class: 'photoswipe__image', sizes: sizes, widths: '246, 493, 600, 713, 823, 990', alt: alt
+                | image_tag:
+                  preload: true,
+                  class: 'photoswipe__image',
+                  sizes: sizes,
+                  widths: '246, 493, 600, 713, 823, 990',
+                  alt: alt
                 | escape
               }}
             {% else %}
@@ -216,13 +237,18 @@
           {%- for image in imgs -%}
             <div style="order:{{ forloop.index }}" class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
-                <img
-                  loading="lazy"
-                  src="{{ image | image_url : width: 100 }}"
-                  width="100"
-                  height="100"
-                  alt="{{ image.alt | default:  'product thumb'  | escape }}"
-                >
+                {{
+                  image
+                  | image_url: width: 100, height: 100
+                  | image_tag:
+                    preload: true,
+                    class: 'photoswipe__image',
+                    sizes: sizes,
+                    widths: '246, 493, 600, 713, 823, 990',
+                    alt: image.alt
+                  | default: 'product thumb'
+                  | escape
+                }}
               </div>
             </div>
             {% if forloop.index == 2 %}
@@ -237,7 +263,6 @@
               <div class="thumbnail-wrap">
                 <img
                   src="{{ video | image_url : width: 100 }}"
-                  loading="lazy"
                   width="100"
                   height="100"
                   alt="{{ image.alt | default: 'product thumb' | escape }}"
@@ -415,7 +440,6 @@
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ image | image_url : width: 100 }}"
-                    loading="lazy"
                     width="100"
                     height="100"
                     alt="{{ image.alt | default: 'product thumb' | escape }}"
@@ -434,7 +458,6 @@
                 <div class="thumbnail-wrap">
                   <img
                     src="{{ video | image_url : width: 100 }}"
-                    loading="lazy"
                     width="100"
                     height="100"
                     alt="{{ image.alt | default: 'product thumb' | escape }}"

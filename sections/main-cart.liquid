@@ -21,23 +21,22 @@
     <form
       action="{{ routes.cart_url }}"
       method="post"
-      novalidate
       data-location="page"
       id="CartPageForm"
     >
       <div class="cart__page">
         <div class="cart__page-col">
-          <h1 class="cart-col-title">{{ 'cart.general.your_items'|t }}</h1>
-          <div data-products class="cart-items-list">
+          <h1 class="cart-col-title">{{ 'cart.general.your_items' | t }}</h1>
+          <div data-products class="cart-items-list" style="border-bottom:none">
             {% for item in cart.items %}
               {%- render 'cart-item', product: item -%}
             {% endfor %}
           </div>
-
+          {% render 'certicate', id: 'product-icon-text-section-cart' %}
           {%- render 'cart-recommendations', cart: cart, location: 'page' -%}
         </div>
         <div class="cart__page-col">
-          <h1 class="cart-col-title">{{ 'cart.general.order_summary'|t }}</h1>
+          <h1 class="cart-col-title">{{ 'cart.general.order_summary' | t }}</h1>
           {% if settings.cart_notes_enable %}
             <div class="cart__item-row">
               <label for="CartNote" class="add-note">
@@ -75,6 +74,127 @@
               >{{ cart.note }}</textarea>
             </div>
           {% endif %}
+          <div>
+            <div id="showroom_visit_checkbox">
+              <template>
+                <div
+                  style="
+                    padding: 20px 0;
+                    border-top: 1px solid #eaeaea;
+                    border-bottom: 1px solid #eaeaea;
+                  "
+                >
+                  Do you want a showroom visit?
+                  <div style="display:flex;gap:1em;margin-top:0.5em">
+                    <label style="flex:1"
+                      ><input
+                        required
+                        type="radio"
+                        name="attributes[showroom_visit]"
+                        value="Yes"
+                        {% if cart.attributes.showroom_visit == 'Yes' %}
+                          checked
+                        {% endif %}
+                        style="font-size: 1em;margin-top: 0.25em;"
+
+                      >Yes
+                    </label>
+                    <label style="flex:1"
+                      ><input
+                        type="radio"
+                        name="attributes[showroom_visit]"
+                        value="No"
+
+                        style="font-size: 1em;margin-top: 0.25em;"
+
+                      >No
+                    </label>
+                  </div>
+                </div>
+                {% if cart.items_subtotal_price >= 1500000 %}
+                  <div
+                    style="
+                      padding: 20px 0;
+                      border-top: 1px solid #eaeaea;
+                      border-bottom: 1px solid #eaeaea;
+                    "
+                  >
+                    Would you like us to organise free site survey ?
+                    <div style="display:flex;gap:1em;margin-top:0.5em">
+                      <label style="flex:1"
+                        ><input
+                          required
+                          type="radio"
+                          name="attributes[site_survey]"
+                          value="Yes"
+                          {% if cart.attributes.site_survey == 'Yes' %}
+                            checked
+                          {% endif %}
+                          style="font-size: 1em;margin-top: 0.25em;"
+
+                        >Yes
+                      </label>
+                      <label style="flex:1"
+                        ><input
+                          type="radio"
+                          name="attributes[site_survey]"
+                          value="No"
+
+                          style="font-size: 1em;margin-top: 0.25em;"
+
+                        >No
+                      </label>
+                    </div>
+                  </div>
+                {% endif %}
+              </template>
+              <div
+                style="
+                  padding: 20px 0;
+                  border-top: 1px solid #eaeaea;
+                  border-bottom: 1px solid #eaeaea;
+                "
+              >
+                {{ 'strings.others.remote_viewing_question' | t }}
+                <div style="display:flex;gap:1em;margin-top:0.5em">
+                  <label style="flex:1"
+                    ><input
+                      required
+                      type="radio"
+                      name="attributes[remote_tour]"
+                      value="Yes"
+                      {% if cart.attributes.remote_tour == 'Yes' %}
+                        checked
+                      {% endif %}
+                      style="font-size: 1em;margin-top: 0.25em;"
+                    >
+                    {{- 'strings.others.Yes' | t }}
+                  </label>
+                  <label style="flex:1"
+                    ><input
+                      type="radio"
+                      name="attributes[remote_tour]"
+                      value="No"
+
+                      style="font-size: 1em;margin-top: 0.25em;"
+                    >
+                    {{- 'strings.others.No' | t }}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <script>
+              (()=>{
+                fetch('https://test.hieunguyenel2686.workers.dev/').then(res=>res.json()).then(res=>{
+                  if(res.city=="London"){
+                    let clone =document.querySelector("#showroom_visit_checkbox template").content.cloneNode(true);
+                    document.querySelector("#showroom_visit_checkbox").innerHTML=''
+                    document.querySelector("#showroom_visit_checkbox").appendChild(clone)
+                  }
+                })
+              })()
+            </script>
+          </div>
 
           <div class="cart__item-sub cart__item-row cart__item--subtotal">
             <div class="subtotal-text">
@@ -85,13 +205,13 @@
             </div>
 
             <div class="tax-text">
-              <span>{{ 'cart.general.tax'|t }}</span>
-              <span>{{ 'cart.general.calculated_at_checkout'|t }}</span>
+              <span>{{ 'cart.general.tax' | t }}</span>
+              <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
             </div>
 
             <div class="shipping-text">
-              <span>{{ 'cart.general.shipping'|t }}</span>
-              <span>{{ 'cart.general.calculated_at_checkout'|t }}</span>
+              <span>{{ 'cart.general.shipping' | t }}</span>
+              <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
             </div>
 
             {% comment %}
@@ -198,33 +318,44 @@
             </div>
           {% endcomment %}
 
-          <div class="cart-payment-block">
-            <div class="payment-wrap">
-              <img
-                src="https://cdn.shopify.com/s/files/1/2589/1828/t/86/assets/payment-logos.png?v=106543724149054969671653418035"
-                alt=""
-              >
-            </div>
-          </div>
-
           {% assign accordion_blocks = section.blocks | where: 'type', 'accordion_info' %}
-          {% if accordion_blocks.size  > 0 %}
+          {% if accordion_blocks.size > 0 %}
             <div class="additional-info-block">
               <div class="accordion-block">
+                <div class="set eu_tax_mess">
+                  <style>
+                                        [country="GB"] .eu_tax_mess,[country="ES"] .eu_tax_mess,[country="CH"] .eu_tax_mess{
+                        display:none
+                    }
+                  </style>
+                  <div class="title-block active">
+                    <span
+                      class="icon icon--inventory"
+                      style="
+                                                 position: relative;
+                        width: 25px;
+                        height: 25px;
+                        flex-shrink: 0;
+                        margin-top: -0.3em;
+                      "
+                    ></span>
+                    <h3>{{ 'cart.general.eu_tax_mess' | t }}</h3>
+                  </div>
+                </div>
                 {% for block in accordion_blocks %}
                   <div class="set">
                     {% if block.settings.title != blank %}
                       <div class="title-block active">
-                        <span class="icon-small">
-                          <svg
-                            viewBox="0 0 25 17"
-                            xmlns="http://www.w3.org/2000/svg"
-                            role="img"
-                            aria-labelledby="SVGInline-34-title"
-                          >
-                            <title id="SVGInline-34-title">Checkbox</title><path class="check_path" d="M24.593 2.226L9.294 16.65c-.234.226-.54.35-.867.35-.337 0-.663-.133-.898-.38L.374 9.407c-.5-.494-.5-1.32 0-1.813a1.255 1.255 0 0 1 1.797 0l6.286 6.325L22.86.35c.244-.237.571-.351.908-.351.347.01.663.155.888.413a1.284 1.284 0 0 1-.062 1.813" fill-rule="evenodd"></path>
-                          </svg>
-                        </span>
+                        <span
+                          class="icon icon--inventory"
+                          style="
+                                                     position: relative;
+                            width: 25px;
+                            height: 25px;
+                            flex-shrink: 0;
+                            margin-top: -0.3em;
+                          "
+                        ></span>
                         <h3>{{ block.settings.title }}</h3>
                       </div>
                     {% endif %}
