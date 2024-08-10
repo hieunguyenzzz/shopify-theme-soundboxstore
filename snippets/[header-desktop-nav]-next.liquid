@@ -324,7 +324,7 @@
         <a class="specBtn">
           {% if settings.header_guide_image %}
             {{ settings.header_guide_image |  image_url: width: 500 |  image_tag : style:"background: var(--image-bg);border-radius: 1em;" }}
-            {% elsif  %}
+            {% else  %}
               <img
             style="
               background: var(--image-bg);

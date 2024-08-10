@@ -122,62 +122,64 @@
 {% capture col_2 %}
   <div style="display:flex; flex-direction:column;align-items:center;text-align:center">
       <a class="specBtn" style="display:flex; justify-content:center;margin-bottom:0.5em">
-          <img
-            style="
-              height:250px;
-              background: var(--image-bg);
-              border-radius: 1em;
-            "
-            src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
-          >
-        </a>
-        <div
-          style="flex:1;display: flex;flex-direction: column;justify-content: center;"
-        >
-          <div class="header-desktop-nav-moreinf-title">
-            Download our product guide
-          </div>
-          <p style="font-size:0.9em;opacity:0.4">
-            We’ve put together all the information you’ll need to share with your team—models, dimensions, upgrades,
-            colors, and more.
-          </p>
-        </div>
-        
-
-        <button
-          class="btn specBtn"
+        {% if settings.header_guide_image %}
+          {{ settings.header_guide_image |  image_url: width: 500 |  image_tag : style:"background: var(--image-bg);border-radius: 1em;    height:250px;" }}
+          {% else %}
+            <img
           style="
-            margin-top: 1.4em;
-            display: flex;
+              height:250px;
+            background: var(--image-bg);
+            border-radius: 1em;
+          "
+          src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
+        >
+        {% endif %}
+      </a>
+      <div
+        style="flex:1;display: flex;flex-direction: column;justify-content: center;"
+      >
+        <div style="font-size: 1.4em;line-height: 1.3;font-weight: 500;margin-block: 0.5em;">
+          {{settings.header_guide_title}}
+        </div>
+        <div>
+          {{settings.header_guide_description}}
+        </div>
+      </div>
+
+      <button
+        class="btn specBtn"
+        style="
+          margin-block: 1.4em;
+          display: flex;
+          align-items: center;
+        "
+      >
+        <div
+          class=""
+          style="
+            display: inline-flex;
+            font-size: 1.4em;
+            height: 0;
             align-items: center;
+            margin-right: 0.6em;
           "
         >
-          <div
-            class=""
-            style="
-              display: inline-flex;
-              font-size: 1.4em;
-              height: 0;
-              align-items: center;
-              margin-right: 0.6em;
-            "
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+            style="display: inline;line-height: 0;display: block;"
           >
-            <svg
-              stroke="currentColor"
-              fill="currentColor"
-              stroke-width="0"
-              viewBox="0 0 20 20"
-              aria-hidden="true"
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-              style="display: inline;line-height: 0;display: block;"
-            >
-              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          Product guide
-        </button>
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        {{  settings.header_guide_button}}
+      </button>
       </div>
     {% endcapture %}
 {% capture col_3 %}
@@ -259,7 +261,7 @@
   aria-haspopup="true"
 >
   <a
-    href="/collections/all"
+    href="/pages/about-us"
     style="text-transform: uppercase;"
     class="site-nav__link site-nav__link--underline site-nav__link--has-dropdown"
   >
@@ -281,7 +283,7 @@
           <div class="header-desktop-nav-moreinfo-col3" style="flex:1">{{ col_3 }}</div>
         </div>
         <div class="header-desktop-nav-moreinfo-bottom">
-          <div>Delivered in as little as 2 weeks</div>
+          <div>{{  settings.header_delivery_message}}</div>
           <div
             class="site-nav__dropdown-menu_left-icons"
             style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;"
