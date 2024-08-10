@@ -466,7 +466,6 @@
     <div class="page-container" id="PageContainer">
       <div class="transition-body">
         {%- section 'toolbar' -%}
-        {%- section 'header-old' -%}
         {%- section 'header' -%}
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
@@ -478,8 +477,7 @@
     </div>
 
     {%- section 'newsletter-popup' -%}
-
-    {% include 'dataLayer-allPages' %}
+    {% render 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
