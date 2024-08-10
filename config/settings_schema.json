@@ -209,6 +209,18 @@
       },
       {
         "type": "color",
+        "id": "color_header_nav",
+        "label": "Menu Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_header_nav_content",
+        "label": "Menu Text",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
         "id": "color_announcement",
         "label": "Announcement",
         "default": "#ffffff"
@@ -1248,6 +1260,17 @@
     ]
   },
   {
+    "name": "Menu",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "manicon",
+        "label": "Man icon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
     "name": "ISO images",
     "settings": [
       {
@@ -1284,6 +1307,126 @@
         "type": "image_picker",
         "id": "iso_6",
         "label": "Iso 6"
+      }
+    ]
+  },
+  {
+    "name": "Quote Form Modal",
+    "settings": [
+      {
+        "type": "text",
+        "id": "quote_btn_text",
+        "label": "Button text",
+        "default": "Request a quote"
+      },
+      {
+        "type": "text",
+        "id": "quote_form_title",
+        "label": "Form Title",
+        "default": "Request a quote"
+      },
+      {
+        "type": "text",
+        "id": "quote_full_name",
+        "label": "Full name",
+        "default": "Full name"
+      },
+      {
+        "type": "text",
+        "id": "quote_email",
+        "label": "Email",
+        "default": "Email"
+      },
+      {
+        "type": "text",
+        "id": "quote_phone_number",
+        "label": "Phone number",
+        "default": "Phone number"
+      },
+      {
+        "type": "text",
+        "id": "quote_company_name",
+        "label": "Company name",
+        "default": "Company name"
+      },
+      {
+        "type": "text",
+        "id": "quote_country",
+        "label": "Country/Region",
+        "default": "Country/Region"
+      },
+      {
+        "type": "text",
+        "id": "quote_message",
+        "label": "Potential Booths Interest In?",
+        "default": "Potential Booths Interest In?"
+      },
+      {
+        "type": "text",
+        "id": "quote_interested_booths",
+        "label": "Select the booths you are most interested in",
+        "default": "Select the booths you are most interested in"
+      },
+      {
+        "type": "text",
+        "id": "quote_submit_btn",
+        "label": "Submit button text",
+        "default": "Contact sales"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "header_menu",
+        "label": "menu"
+      },
+      {
+        "type": "text",
+        "id": "header_explore_product",
+        "label": "Explore Priducts",
+        "default": "Explore Priducts"
+      },
+      {
+        "type": "text",
+        "id": "header_moreinfo",
+        "label": "More info",
+        "default": "More info"
+      },
+      {
+        "type": "text",
+        "id": "header_delivery_message",
+        "label": "Delivery message",
+        "default": "Delivered in as little as 2 weeks"
+      },
+      {
+        "type": "header",
+        "content": "Product guide"
+      },
+      {
+        "type": "image_picker",
+        "id": "header_guide_image",
+        "label": "Product guide image"
+      },
+      {
+        "type": "text",
+        "id": "header_guide_title",
+        "label": "Product guide title",
+        "default": "Download our product guide"
+      },
+      {
+        "type": "richtext",
+        "id": "header_guide_description",
+        "label": "Product guide description",
+        "default": "<p>We’ve put together all the information you’ll need to share with your team—models, dimensions, upgrades, colors, and more.</p>"
+      },
+      {
+        "type": "text",
+        "id": "header_guide_button",
+        "label": "Product guide button",
+        "default": "Product guide"
       }
     ]
   }
