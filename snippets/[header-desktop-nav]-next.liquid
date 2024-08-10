@@ -199,7 +199,7 @@
   endunless
 -%}
 {%- unless title -%}
-  {%- assign title = 'Explore Products' -%}
+  {%- assign title = settings.header_explore_product -%}
 {%- endunless -%}
 
 <li
@@ -311,62 +311,38 @@
           </div>
         </div>
         <div class="site-nav__dropdown-menu_left-bottom">
-          <div>Delivered in as little as 2 weeks</div>
+          <div>{{settings.header_delivery_message}}</div>
           <div
             class="site-nav__dropdown-menu_left-icons"
             style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;"
           >
-            <img
-              loading="lazy"
-              src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
-              width="30"
-              height="30"
-              alt="TUV.SUD Certification"
-            >
-            <img
-              loading="lazy"
-              src="//soundboxstore.com/cdn/shop/files/pngwing.com_1.png?v=1717686879&amp;width=50"
-              width="30"
-              height="30"
-              alt="FSC Certification"
-            >
-            <img
-              loading="lazy"
-              src="//soundboxstore.com/cdn/shop/files/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png?v=1717689671&amp;width=50"
-              width="30"
-              height="30"
-              alt="UL Certification"
-            >
-            <img
-              loading="lazy"
-              src="//soundboxstore.com/cdn/shop/files/ce.png?v=1717688682&amp;width=50"
-              width="30"
-              height="30"
-              alt="CE Certification"
-            >
+           {% render 'iso-images' %}
           </div>
         </div>
       </div>
       <div class="site-nav__dropdown-menu_right">
         <a class="specBtn">
-          <img
+          {% if settings.header_guide_image %}
+            {{ settings.header_guide_image |  image_url: width: 500 |  image_tag : style:"background: var(--image-bg);border-radius: 1em;" }}
+            {% elsif  %}
+              <img
             style="
               background: var(--image-bg);
               border-radius: 1em;
             "
             src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
           >
+          {% endif %}
         </a>
         <div
           style="flex:1;display: flex;flex-direction: column;justify-content: center;"
         >
           <div style="font-size: 1.4em;line-height: 1.3;font-weight: 500;margin-block: 0.5em;">
-            Download our product guide
+            {{settings.header_guide_title}}
           </div>
-          <p>
-            We’ve put together all the information you’ll need to share with your team—models, dimensions, upgrades,
-            colors, and more.
-          </p>
+          <div>
+            {{settings.header_guide_description}}
+          </div>
         </div>
 
         <button
@@ -401,7 +377,7 @@
               <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </div>
-          Product guide
+          {{  settings.header_guide_button}}
         </button>
       </div>
     </div>

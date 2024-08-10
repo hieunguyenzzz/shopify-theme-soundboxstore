@@ -102,13 +102,13 @@
         <input
           type="text"
           required
-          placeholder="Full name"
+          placeholder="{{  settings.quote_full_name }}"
           class="input-full input"
-          name="contact[full_name]"
+          name="contact[{{  settings.quote_full_name }}]"
           autocapitalize="words"
           value=""
         >
-        <label for="ContactFormName-{{ section.id }}">Full name</label>
+        <label for="ContactFormName-{{ section.id }}">{{  settings.quote_full_name }}</label>
       </div>
       <div class="grid__item">
         <input
@@ -118,7 +118,7 @@
           required
           id="ContactForm-email"
           class="field__input"
-          name="contact[email]"
+          name="contact[{{  settings.quote_email }}]"
           spellcheck="false"
           autocapitalize="off"
           value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
@@ -126,7 +126,7 @@
           {% if form.errors contains 'email' %}
             aria-invalid="true"aria-describedby="ContactForm-email-error"
           {% endif -%}
-          placeholder="{{ 'contact.form.email' | t }}"
+          placeholder="{{  settings.quote_email }}"
         >
         <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
       </div>
@@ -136,33 +136,33 @@
           required
           id="ContactFormPhone-{{ section.id }}"
           class="input-full input"
-          name="contact[phone]"
-          placeholder="{{ 'contact.form.phone' | t }}"
+          name="contact[{{  settings.quote_phone_number }}]"
+          placeholder="{{  settings.quote_phone_number }}"
           pattern="[0-9\-]*"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
         >
-        <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.phone' | t }}</label>
+        <label for="ContactFormPhone-{{ section.id }}">{{  settings.quote_phone_number }}</label>
       </div>
       <div class="grid__item">
         <input
           type="text"
           required
-          placeholder="Company name"
+          placeholder="{{  settings.quote_company_name }}"
           class="input-full input"
-          name="contact[company_name]"
+          name="contact[{{ settings.quote_company_name }}]"
           autocapitalize="words"
           value=""
         >
-        <label for="ContactFormName-{{ section.id }}">Company name</label>
+        <label for="ContactFormName-{{ section.id }}">{{ settings.quote_company_name }}</label>
       </div>
 
       <div class="grid__item">
         <select
           type="text"
           required
-          placeholder="Country/Region"
+          placeholder="{{ settings.quote_country }}"
           class="input-full input"
-          name="contact[Country/Region]"
+          name="contact[{{ settings.quote_country }}]"
           style="    appearance: auto;"
           value="{{ localization.country.iso_code }}"
         >
@@ -204,7 +204,7 @@ IT it /it-it' %}
           {%- endfor -%}
           <option value="other">Other</option>
         </select>
-        <label for="ContactFormName-{{ section.id }}">Country/Region</label>
+        <label for="ContactFormName-{{ section.id }}">{{ settings.quote_country }}</label>
       </div>
       <div class="grid__item">
         <textarea
@@ -212,11 +212,11 @@ IT it /it-it' %}
           required
           id="ContactFormMessage-{{ section.id }}"
           class="input-full input"
-          placeholder="Potential Booths Interest In?"
+          placeholder="{{ settings.quote_message }}"
           name="contact[body]"
           value="{%- if form.body -%}{{ form.body }}{%- endif -%}"
         ></textarea>
-        <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
+        <label for="ContactFormMessage-{{ section.id }}">{{ settings.quote_message }}</label>
       </div>
       {% assign collection = collections['office-pods'] %}
       {% unless collection %}
@@ -232,7 +232,7 @@ IT it /it-it' %}
         >
           {% for product in collection.products %}
             <label style="display:block">
-              <input hidden type="checkbox" name="product" value="{{ product.title  }}" id="product-{{ product.title }}"/>
+              <input hidden type="checkbox" name="product" value="{{ product.title }}" />
               {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
               {% assign subtitle = product.metafields.custom.menu_subtitle.value
                 | default: product.metafields.custom.subtitle
@@ -250,7 +250,7 @@ IT it /it-it' %}
           {% endfor %}
         </div>
         <label style="display:block" for="ContactFormMessage-{{ section.id }}"
-          >Select the booths you are most interested in</label
+          >{{ settings.quote_interested_booths }}</label
         >
       </div>
 
@@ -260,7 +260,7 @@ IT it /it-it' %}
             type="submit"
             class="btn"
           >
-            CONTACT SALES
+          {{ settings.quote_submit_btn }}
           </button>
         </div>
       </div>
