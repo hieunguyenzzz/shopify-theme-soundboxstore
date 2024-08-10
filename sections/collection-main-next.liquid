@@ -1,0 +1,272 @@
+{% style %}
+       body.template-collection .main-content {
+           font-size: min(20px,4vw);
+           --image-bg: #e9f0f0;
+       }
+
+       body.template-collection .main-content header {
+           padding-top: min(104px,4em)
+       }
+
+       body.template-collection .main-content header .image {
+           aspect-ratio: 3 / 2 ;
+           border-radius: 1em;
+           object-fit: cover;
+       }
+
+       body.template-collection .main-content header h1 {
+           font-size: min(3.4em, 10vw);
+           line-height: 1.14;
+           font-weight: 500;
+           max-width: 24ch;
+       }
+
+       body.template-collection .main-content header .delivery-message {
+           opacity: 0.4;
+       }
+
+       .collection-main-description {
+           padding: 1em 0
+       }
+
+       .products_count {
+           font-size: 0.8;
+           margin-bottom: 1em;
+       }
+
+       .products_count span {
+           opacity: 0.4
+       }
+
+       .collection-main {
+           margin: 1em auto
+       }
+
+       .collection-main ul {
+           list-style: none;
+           margin: 0;
+           display: grid;
+           gap: 1em;
+       }
+
+       .collection-main ul li {
+           position: relative;
+       }
+
+       .collection-main ul li:before {
+           content: ''
+       }
+
+       .collection-product-item .content {
+           padding: 1em;
+       }
+
+       .collection-product-item .content>* {
+           margin-bottom: 0.5em
+       }
+
+       .collection-product-item {
+           gap: 0;
+           /* flex-direction: column; */
+           align-items: center;
+           /* padding: 1em 0; */
+           font-size: 0.9em;
+           display: flex;
+           background: var(--image-bg);
+           border-radius: 1em;
+       }
+
+       .collection-product-item .image {
+           /* background:var(--image-bg); */
+           aspect-ratio: 1 / 1;
+           position: relative;
+           /* padding-bottom: 100%; */
+           display: block;
+       }
+
+       .collection-product-item .image img {
+           position: absolute;
+           padding: 1px;
+           top: 0;
+           left: 0;
+           width: 100%;
+           border-radius: 1em;
+           height: 100%;
+       }
+
+       .collection-product-item .image {
+           border-radius: 1em;
+           width: 50%;
+           max-width: 500px;
+           flex-shrink: 0;
+       }
+
+       .collection-product-item .collection-btn-group {
+           justify-content: center;
+           margin-top: 1em;
+       }
+   }
+
+   .collection-main .image img:not(:first-child) {
+       opacity: 0
+   }
+
+   .collection-main .collection-product-item h3 {
+       margin: 0;
+   font-size: min(1.4em, 4vw);
+       text-transform: uppercase;
+       font-weight: 500
+   }
+
+   .collection-main .collection-product-item:hover .image img {
+       filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.00)) drop-shadow(0px 3.28515px 5.84026px rgba(0, 0, 0, 0.0827978)) drop-shadow(0px 1.59488px 2.83534px rgba(0, 0, 0, 0.0667549))
+   }
+
+   .collection-main .collection-product-item .subtitle {
+       opacity: 0.4
+   }
+
+   .collection-main .collection-product-item .image img:not(:first-child) {
+        opacity: 0
+   }
+
+   .collection-main .collection-product-item:hover .image img:not(:first-child) {
+      opacity: 1
+   }
+
+   .collection-main .collection-product-item:hover .image img:first-child {
+       opacity: 0
+   }
+
+   .collection-main .collection-product-item .itemprice {
+       font-size: 1.2em;
+       text-transform: capitalize;
+   }
+
+   .collection-main .collection-product-item .compare_at_price {
+       opacity: 0.4;
+       font-size: 0.8em;
+       text-decoration: line-through;
+   }
+
+   .collection-main .collection-product-item .seats img {
+       height: 1.4em;
+       width: auto;
+   }
+
+   @media screen and (min-width: 979px) {
+       .collection-main ul {
+           grid-template-columns: 1fr 1fr;
+       }
+
+       body.template-collection .main-content header .collection-main-content {
+           display: flex;
+           justify-content: space-between;
+           flex-direction: row-reverse;
+           gap: 3em;
+           align-items: center;
+       }
+
+       body.template-collection .main-content header .collection-main-content>* {
+           flex: 1 1 aut0;
+           max-width: 520px;
+       }
+     body.template-collection .main-content header .collection-main-content .collection-main-description {
+           flex: 1 1 520px;
+           max-width: 520px;
+       }
+      body.template-collection .main-content header .collection-main-content .image {
+  flex: 1 1 50%;
+         max-width: calc(50% - 0.5em);
+         max-height: 400px;
+       }
+   }
+{% endstyle %}
+
+{% assign collection = collections['office-pods'] %}
+{% assign title = section.settings.title | default: collection.metafields.custom.card_title.value %}
+{% assign description = section.settings.subheading_richtext
+  | default: collection.metafields.custom.card_description.value
+%}
+{% assign image = section.settings.image | default: collection.metafields.custom.card_image.value %}
+{% render 'collection-main-header',
+  title: title,
+  description: description,
+  image: image,
+  products: collection.products,
+  products_count: collection.products_count
+%}
+{% if section.settings.show_products %}
+  {% render 'collection-main-products',
+    title: title,
+    description: description,
+    image: image,
+    products: collection.products,
+    products_count: collection.products_count
+  %}
+{% endif %}
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "CollectionPage",
+      {% if collection.description != blank %}
+        "description": {{ collection.description | strip_html | json }},
+      {% endif %}
+      {% assign page_image = collection.image %}
+      {% if page_image %}
+        "image": {
+          "@type": "ImageObject",
+          "height": {{ page_image.height | json }},
+          "url": {{ page_image | image_url:  width:400 | prepend: "https:" | json }},
+          "width": {{ page_image.width | json }}
+        },
+      {% endif %}
+      "name": {{ collection.title | json }}
+    }
+  {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
+</script>
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Edit content",
+      "info": "Subscribers added automatically to your “accepted marketing” customer list. [Go to Edit](https://admin.shopify.com/store/thankyou-485/apps/256-metafields-editor/collections)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_products",
+      "label": "Show products?",
+      "default":true
+
+    },
+    {
+          "type": "richtext",
+          "id": "title",
+          "label": "Heading",
+          "default": "<p>Overlaid Hero Slide</p>"
+        },
+
+         {
+          "type": "richtext",
+          "id": "subheading_richtext",
+          "label": "Rich Text"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+
+  ],
+  "presets": [
+    {
+      "name": "Collection page",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}
