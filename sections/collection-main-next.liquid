@@ -229,17 +229,22 @@
 {
   "name": "Collection page",
   "settings": [
+
     {
       "type": "header",
       "content": "Edit content",
       "info": "Subscribers added automatically to your “accepted marketing” customer list. [Go to Edit](https://admin.shopify.com/store/thankyou-485/apps/256-metafields-editor/collections)"
+    },
+     {
+       "type": "collection",
+      "id": "collection",
+      "label": "Collection"
     },
     {
       "type": "checkbox",
       "id": "show_products",
       "label": "Show products?",
       "default":true
-
     },
     {
           "type": "richtext",
@@ -253,13 +258,11 @@
           "id": "subheading_richtext",
           "label": "Rich Text"
         },
-
         {
           "type": "image_picker",
           "id": "image",
           "label": "Image"
         }
-
   ],
   "presets": [
     {
