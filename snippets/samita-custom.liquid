@@ -6,8 +6,9 @@
      if(translations.length){
        let trans = JSON.parse(translations[0].translations);
        let listLang = trans.values;
-       console.log(document.querySelectorAll('select#Country option'));
-       console.log('trans',listLang)
+       listLang.forEach(function(item){
+         document.querySelector(`select#Country option[value="${item.label}"]`).textContent = item.value;
+       })
      }
    }
  },500)
