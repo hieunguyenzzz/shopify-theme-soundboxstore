@@ -1,51 +1,50 @@
 {% capture seatimg %}
   {{ settings.manicon | image_url :width:40 |image_tag }}
   {% endcapture %}
-  <a class="site-nav__dropdown-item" href="{{ product.url }}">
-    {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
-    {% assign subtitle = product.metafields.custom.menu_subtitle.value | default: product.metafields.custom.subtitle %}
-    {% assign image = product.metafields.custom.menu_image.value %}
-    {% unless image %}
-      {% assign imgs = product.variants.first.metafields.global.images.value %}
-      {%- for img in imgs -%}
-        {% assign image = img %}
-        {% break %}
-      {% endfor %}
-    {% endunless %}
-    <div class="site-nav__dropdown-item_image">
-      {{ image | image_url: width: 300 | image_tag: class: '' }}
-    </div>
-    <div class="site-nav__dropdown-item_content">
-      <div class="site-nav__dropdown-item_title">{{ subtitle }}</div>
-      <div class="site-nav__dropdown-item_subtitle">{{ title }}</div>
-      {% if product.metafields.custom.seats.value %}
-        <div class="site-nav__dropdown-item_seats">
-          <div class="display:flex" title="{{ product.metafields.custom.seats.value }} Seats">
-            {% for i in (1..product.metafields.custom.seats.value) %}
-              {{ seatimg }}
-            {% endfor %}
-          </div>
-          <span style="display:none">{{ product.metafields.custom.seats.value }} Seats</span>
+<a class="site-nav__dropdown-item" href="{{ product.url }}">
+  {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
+  {% assign subtitle = product.metafields.custom.menu_subtitle.value | default: product.metafields.custom.subtitle %}
+  {% assign image = product.metafields.custom.menu_image.value %}
+  {% unless image %}
+    {% assign imgs = product.variants.first.metafields.global.images.value %}
+    {%- for img in imgs -%}
+      {% assign image = img %}
+      {% break %}
+    {% endfor %}
+  {% endunless %}
+  <div class="site-nav__dropdown-item_image">
+    {{ image | image_url: width: 300 | image_tag: class: '' }}
+  </div>
+  <div class="site-nav__dropdown-item_content">
+    <div class="site-nav__dropdown-item_title">{{ subtitle }}</div>
+    <div class="site-nav__dropdown-item_subtitle">{{ title }}</div>
+    {% if product.metafields.custom.seats.value %}
+      <div class="site-nav__dropdown-item_seats">
+        <div style="display:flex" title="{{ product.metafields.custom.seats.value }} Seats">
+          {% for i in (1..product.metafields.custom.seats.value) %}
+            {{ seatimg }}
+          {% endfor %}
         </div>
-      {% endif %}
-      {% assign lowest_price = product.price_min | money_without_trailing_zeros %}
-      {% if lowest_price != blank %}
-        <div class="site-nav__dropdown-ittemprice">
-          {{ 'products.general.from_text_html' | t: price: lowest_price }}
-          {% if product.compare_at_price_min > product.price_min %}
-            <span
-              style="
-                opacity: 0.4;
-                font-size: 0.8em;
-                text-decoration: line-through;
-              "
-              class="compare_at_price"
-            >
-              {{- product.compare_at_price_min | money_without_trailing_zeros -}}
-            </span>
-          {% endif %}
-        </div>
-      {% endif %}
-    </div>
-  </a>
-  
+        <span style="display:none">{{ product.metafields.custom.seats.value }} Seats</span>
+      </div>
+    {% endif %}
+    {% assign lowest_price = product.price_min | money_without_trailing_zeros %}
+    {% if lowest_price != blank %}
+      <div class="site-nav__dropdown-ittemprice">
+        {{ 'products.general.from_text_html' | t: price: lowest_price }}
+        {% if product.compare_at_price_min > product.price_min %}
+          <span
+            style="
+              opacity: 0.4;
+              font-size: 0.8em;
+              text-decoration: line-through;
+            "
+            class="compare_at_price"
+          >
+            {{- product.compare_at_price_min | money_without_trailing_zeros -}}
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</a>
