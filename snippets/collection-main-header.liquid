@@ -28,7 +28,15 @@
           <li>Exceptional customer experience</li>
         </ul>
       {% endif %}
-      <div style="margin-top:0.5em" class="hero__link">
+      <div
+        style="
+          margin-top: 0.5em;
+          flex: 1;
+          display: flex;
+          align-items: center;
+        "
+        class="hero__link"
+      >
         {% assign pageF = pages['remote-tours'] %}
         {% assign textF = pageF.title %}
         <a
