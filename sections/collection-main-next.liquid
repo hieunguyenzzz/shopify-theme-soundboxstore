@@ -13,9 +13,9 @@
            border-radius: 1em;
            object-fit: cover;
        }
-
+        {% assign title_size = 1 | plus:section.settings.title_size %}
         .main-content header h1 {
-           font-size: min(3.4em, 10vw);
+           font-size: min({{ title_size }}.4em, 10vw);
            line-height: 1.14;
            font-weight: 500;
            max-width: 24ch;
