@@ -4,7 +4,8 @@
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
 <header class="page-width">
-  <h1>{{ title }}</h1>
+  <h1>{{ collection.title }}</h1>
+  <div class="collection-main-title">{{ title }}</div>
   <div class="collection-main-content">
     {{ image | image_url: width: 600 | image_tag: width: 600, class: 'image' }}
     <div class="collection-main-description">
