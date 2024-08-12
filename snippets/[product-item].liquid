@@ -108,17 +108,19 @@
         </div>
       {% endif %}
     {%- endfor -%}
-    {% assign lowest_price = product.price_min | money_without_trailing_zeros %}
+    {% if product.price_min > 0 %}
+      {% assign lowest_price = product.price_min | money_without_trailing_zeros %}
 
-    {% if lowest_price != blank %}
-      <div class="itemprice">
-        {{ 'products.general.from_text_html' | t: price: lowest_price }}
-        {% if product.compare_at_price_min > product.price_min %}
-          <span class="compare_at_price">
-            {{- product.compare_at_price_min | money_without_trailing_zeros -}}
-          </span>
-        {% endif %}
-      </div>
+      {% if lowest_price != blank %}
+        <div class="itemprice">
+          {{ 'products.general.from_text_html' | t: price: lowest_price }}
+          {% if product.compare_at_price_min > product.price_min %}
+            <span class="compare_at_price">
+              {{- product.compare_at_price_min | money_without_trailing_zeros -}}
+            </span>
+          {% endif %}
+        </div>
+      {% endif %}
     {% endif %}
     <!-- <div class="description">{{ description }}</div> -->
   </div>
