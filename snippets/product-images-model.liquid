@@ -168,6 +168,7 @@
                 | image_tag:
                   preload: true,
                   class: 'photoswipe__image',
+                  data-orgin-url: image.src,
                   sizes: sizes,
                   widths: '246, 493, 600, 713, 823, 990',
                   alt: alt
@@ -179,6 +180,7 @@
                 | image_url: width: 1900
                 | image_tag:
                   loading: lazy,
+                  data-orgin-url: image.src,
                   class: 'photoswipe__image',
                   sizes: sizes,
                   widths: '246, 493, 600, 713, 823, 990',
@@ -263,7 +265,7 @@
               <div class="thumbnail-wrap">
                 <img
                   src="{{ video | image_url : width: 100 }}"
-                  data-orgin-url="{{ image.src }}"
+
                   width="100"
                   height="100"
                   alt="{{ image.alt | default: 'product thumb' | escape }}"
