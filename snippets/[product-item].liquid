@@ -36,7 +36,9 @@
 {% unless description %}
   {% assign description = product.description | strip_html | slice: 0, 150 | append: '...' %}
 {% endunless %}
-{% assign url = url | default: product.url %}
+{% if url == blank %}
+  {% assign url = product.url %}
+{% endif %}
 {% capture seatimg %}
 {{ settings.manicon | image_url :width:40 |image_tag }}
 {% endcapture %}
