@@ -461,7 +461,7 @@ $("form.product-single__form").on("click", ".addon_addtocart", function (e) {
 $(function () {
   // Lightbox function
   var lightbox = function () {
-    var src = $(".active").attr("src");
+    var src = $(".photoswipe__image.active").attr("src");
     $("#lightbox img").attr("src", src);
   };
 
