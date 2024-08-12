@@ -1,7 +1,8 @@
 <script>
  setInterval(function(){
    if(document.querySelector('input#Country-1668755629810') !== null){
-     let translations = GRFQConfigs.translationsFormbuilder;
+     let locale = Shopify.locale;
+     let translations = GRFQConfigs.translationsFormbuilder.filter((item => item.element_name = "Country"));
      console.log('GRFQConfigs',translations)
    }
  },500)
