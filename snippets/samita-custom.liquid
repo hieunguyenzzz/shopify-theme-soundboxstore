@@ -4,7 +4,8 @@
      let locale = Shopify.locale;
      let translations = GRFQConfigs.translationsFormbuilder.filter((item => item.element_name == "Country"));
      if(translations.length){
-       let trans = ...translations;
+       let trans = translations[0];
+       console.log('trans',trans)
      }
    }
  },500)
