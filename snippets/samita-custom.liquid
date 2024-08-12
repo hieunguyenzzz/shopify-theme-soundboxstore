@@ -5,7 +5,8 @@
      let translations = GRFQConfigs.translationsFormbuilder.filter((item => item.element_name == "Country"));
      if(translations.length){
        let trans = JSON.parse(translations[0].translations);
-       console.log('trans',trans)
+       let listLang = trans.value;
+       console.log('trans',listLang)
      }
    }
  },500)
