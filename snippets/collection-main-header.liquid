@@ -5,7 +5,7 @@
 {% assign image = image | default: collection.image %}
 <header class="page-width">
   <h1 class="visually-hidden">{{ collection.title }}</h1>
-  <div class="collection-main-title">{{ title | strip_html }}</div>
+  <div class="collection-main-title only-mobile">{{ title | strip_html }}</div>
   <div class="collection-main-content">
     {{ image | image_url: width: 600 | image_tag: width: 600, class: 'image' }}
     <div
@@ -16,6 +16,7 @@
       "
       class="collection-main-description"
     >
+      <div class="collection-main-title only-desktop">{{ title | strip_html }}</div>
       {% if description != blank %}
         {{ description }}
       {% else %}
