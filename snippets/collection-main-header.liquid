@@ -3,12 +3,7 @@
 {% assign products = products | default: collection.products %}
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
-<div
-  style="
-    margin-bottom: 2em;
-    background: var(--image-bg);
-  "
->
+<div class="collection-main-header-wrap">
   <header class="page-width">
     <h1 class="visually-hidden">{{ collection.title }}</h1>
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
