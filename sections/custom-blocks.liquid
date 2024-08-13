@@ -256,6 +256,7 @@
 
      let observer = new IntersectionObserver((entities)=>{
        if(entities[0].isIntersecting){
+         console.log('entities[0].isIntersecting',entities[0].isIntersecting)
                      var d = document;
             s = d.createElement("script");
             s.type = "text/javascript";
