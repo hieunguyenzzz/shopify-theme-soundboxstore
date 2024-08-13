@@ -1,4 +1,4 @@
-<link rel="preload" href="https://cdn.tailwindcss.com?plugins=typography,forms" as="script">
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms" defer />
 <style type="text/tailwindcss">
   @layer base {
     h2 {
@@ -14,7 +14,7 @@
   position:relative
   }
 </style>
-<div style="display:hidden;transition:opacity 0.3s linear;opacity:0" class="!block !opacity-100">
+<div style="    visibility: hidden;;transition:opacity 0.3s linear;opacity:0" class="!block !opacity-100 !visible">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'header' %}
@@ -244,33 +244,6 @@
   {% endfor %}
 </div>
 
-<script>
-     (()=>{
-       let loaded = false
-    let options = {
-       root: document,
-       rootMargin: "100px",
-       threshold: 1.0,
-     };
-
-
-     let observer = new IntersectionObserver((entities)=>{
-       if(entities[0].isIntersecting){
-                     var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.defer = true;
-            s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-         loaded= true
-    observer.disconnect()
-       }
-     }, options);
-     let target = document.querySelector("#shopify-section-{{section.id}}");
-  observer.observe(target);
-     })()
-</script>
 {% schema %}
 {
   "name": "custome-blocks",
