@@ -2,7 +2,7 @@
   <script type="text/javascript">
     window.location.href=window.location.href.replace('/collections/all','/collections/office-pods')
   </script>
-  {% endif %}
+{% endif %}
 <style>
       .main-collection-next{
         padding: 1em 0
@@ -120,27 +120,27 @@
 </style>
 {% assign collection = section.settings.collection %}
 
-  <div>
-    <div class="collection-template-grid">
-      {% for block in section.blocks %}
-        {% assign hadBlock = true %}
-        {% if block.type == 'product_grid' %}
-          {%- for product in collection.products -%}
-            {% for img in  product.variants[0].metafields.global.images.value %}
-              {% if forloop.first %}
-                {% assign image = img  %}
-              {% endif %}
-              {% if forloop.index == 2 %}
-            {% assign image2 = img   %}
-              {% endif %}
-            {% endfor %}
+<div>
+  <div class="collection-template-grid">
+    {% for block in section.blocks %}
+      {% assign hadBlock = true %}
+      {% if block.type == 'product_grid' %}
+        {%- for product in collection.products -%}
+          {% for img in product.variants[0].metafields.global.images.value %}
+            {% if forloop.first %}
+              {% assign image = img %}
+            {% endif %}
+            {% if forloop.index == 2 %}
+              {% assign image2 = img %}
+            {% endif %}
+          {% endfor %}
 
-            {% assign title = product.title %}
-            {% assign image_bg = block.settings.image_bg %}
-            {% assign image_bg_2 = block.settings.image_bg_2 | default: image_bg %}
-            {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
-            {% assign url = product.url %}
-            <div
+          {% assign title = product.title %}
+          {% assign image_bg = block.settings.image_bg %}
+          {% assign image_bg_2 = block.settings.image_bg_2 | default: image_bg %}
+          {% assign content = product.description | strip_html | slice: 0, 150 | append: '...' %}
+          {% assign url = product.url %}
+          <div
             id="{{ block.settings.product.handle }}"
             class="collection-template-grid-item"
           >
@@ -160,7 +160,7 @@
                 }}
               {% endif %}
               {% if image2 %}
-                 {{
+                {{
                   image2
                   | image_url: width: 700
                   | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
@@ -172,142 +172,151 @@
               <div class="description">{{ content | strip_html | truncate: 200, '. . . ' }}</div>
               <div class="collection-btn-group">
                 <a href="{{ url }}" class="btn buy-btn">
-                  {{- block.settings.button_text | default:'Browse Further' -}}
+                  {{- block.settings.button_text | default: 'Browse Further' -}}
                 </a>
               </div>
             </div>
           </div>
-          {%- endfor -%}
-        {% endif %}
-        {% if block.type == 'product' %}
-          {% assign image = block.settings.image %}
-          {% assign image2 = block.settings.image_2 %}
-          {% assign image_bg = block.settings.image_bg %}
-          {% assign title = block.settings.title | default: block.settings.product.title %}
-          {% assign content = block.settings.content | default: block.settings.product.description %}
-          {% assign content = content   | strip_html | truncate: 200, '. . . ' %}
-         
-          {% assign url = block.settings.url | default: block.settings.product.url %}
-          <div
-            id="{{ block.settings.product.handle }}"
-            {{ block.shopify_attributes }}
-            class="collection-template-grid-item"
-          >
-            {% if image_bg %}
+        {%- endfor -%}
+      {% endif %}
+      {% if block.type == 'product' %}
+        {% assign image = block.settings.image %}
+        {% assign image2 = block.settings.image_2 %}
+        {% assign image_bg = block.settings.image_bg %}
+        {% assign title = block.settings.title | default: block.settings.product.title %}
+        {% assign content = block.settings.content | default: block.settings.product.description %}
+        {% assign content = content | strip_html | truncate: 200, '. . . ' %}
+
+        {% assign url = block.settings.url | default: block.settings.product.url %}
+        <div
+          id="{{ block.settings.product.handle }}"
+          {{ block.shopify_attributes }}
+          class="collection-template-grid-item"
+        >
+          {% if image_bg %}
+            {{
+              image_bg
+              | image_url: width: 700
+              | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
+            }}
+          {% endif %}
+          <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
+            {% if image %}
               {{
-                image_bg
+                image
                 | image_url: width: 700
-                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
+                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
               }}
             {% endif %}
-            <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
-              {% if image %}
-                {{
-                  image
-                  | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
-                }}
-              {% endif %}
-              {% if image2 %}
-                 {{
-                  image2
-                  | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
-                }}
-              {% endif %}
-            </a>
-            <div class="content">
-              <h3>{{ title }}</h3>
-              <div class="description">{{  content  }}</div>
-              <div class="collection-btn-group">
-                <a href="{{ url }}" class="btn buy-btn">
-                  {{- block.settings.button_text -}}
-                </a>
-              </div>
+            {% if image2 %}
+              {{
+                image2
+                | image_url: width: 700
+                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+              }}
+            {% endif %}
+          </a>
+          <div class="content">
+            <h3>{{ title }}</h3>
+            <div class="description">{{ content }}</div>
+            <div class="collection-btn-group">
+              <a href="{{ url }}" class="btn buy-btn">
+                {{- block.settings.button_text -}}
+              </a>
             </div>
           </div>
-        {% endif %}
-        {% if block.type == 'email' %}
-          <div style="
-                  position: relative;
-                  isolation: isolate;
-              display:flex;
-              align-items:center
-            ">
-            {% if block.settings.image_bg %}
-              {{
-                block.settings.image_bg
-                | image_url: width: 700
-                | image_tag:
+        </div>
+      {% endif %}
+      {% if block.type == 'email' %}
+        <div
+          style="
+                position: relative;
+                isolation: isolate;
+            display:flex;
+            align-items:center
+          "
+        >
+          {% if block.settings.image_bg %}
+            {{
+              block.settings.image_bg
+              | image_url: width: 700
+              | image_tag:
                 widths: '400, 600, 800',
                 loading: 'lazy',
                 class: 'js-lazy-image',
                 alt: title,
                 class: 'image_bg'
-              }}
-            {% endif %}
-            <div
-              style="margin:auto"
-              class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
-            >
-              {%- if section.settings.color_scheme != 'none' -%}
-                {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
-              {%- endif -%}
-              <div class="page-width page-width--narrow text-center">
-                <p class="h2">{{ block.settings.title | escape }}</p>
-                <div class="rte" {{ block.shopify_attributes }}>
-                  <div class="enlarge-text">
-                    {{ block.settings.text }}
-                  </div>
+            }}
+          {% endif %}
+          <div
+            style="margin:auto"
+            class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+          >
+            {%- if section.settings.color_scheme != 'none' -%}
+              {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
+            {%- endif -%}
+            <div class="page-width page-width--narrow text-center">
+              <p class="h2">{{ block.settings.title | escape }}</p>
+              <div class="rte" {{ block.shopify_attributes }}>
+                <div class="enlarge-text">
+                  {{ block.settings.text }}
                 </div>
-                {%- render 'newsletter-form', section_id: section.id, snippet_context: 'section' -%}
+              </div>
+              {%- render 'newsletter-form', section_id: section.id, snippet_context: 'section' -%}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% if block.type == 'instagram' %}
+        <div style="              position: relative;">
+          {% if block.settings.image_bg %}
+            {{
+              block.settings.image_bg
+              | image_url: width: 700
+              | image_tag: widths: '400, 600', loading: 'lazy', alt: title, class: 'image_bg', style: 'z-index:1'
+            }}
+          {% endif %}
+          <div
+            class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
+            style="z-index:2"
+          >
+            <div class="page-width page-width--narrow text-center">
+              <p class="h2">{{ block.settings.title | escape }}</p>
+              <div class="rte" {{ block.shopify_attributes }}>
+                <div class="enlarge-text">
+                  {{ block.settings.text }}
+                </div>
               </div>
             </div>
           </div>
-        {% endif %}
-        {% if block.type == 'instagram' %}
-          <div style="              position: relative;">
-            {% if block.settings.image_bg %}
-              {{
-                block.settings.image_bg
-                | image_url: width: 700
-                | image_tag: widths: '400, 600', loading: 'lazy',  alt: title, class: 'image_bg', style: 'z-index:1'
-              }}
-            {% endif %}
-            <div
-              class="index-section newsletter-{{ section.id }} color-scheme-{{ section.settings.color_scheme }}"
-              style="z-index:2"
-            >
-              <div class="page-width page-width--narrow text-center">
-                <p class="h2">{{ block.settings.title | escape }}</p>
-                <div class="rte" {{ block.shopify_attributes }}>
-                  <div class="enlarge-text">
-                    {{ block.settings.text }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              id="feed-24765"
-              class="instafeed-shopify"
-              style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
-            ></div>
+          <div
+            id="feed-24765"
+            class="instafeed-shopify"
+            style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
+          >
+            {% render 'intafeed-holder' %}
           </div>
-        {% endif %}
-        {% if block.type == '@app' %}
-          {% render block %}
-        {% endif %}
+        </div>
+      {% endif %}
+      {% if block.type == '@app' %}
+        {% render block %}
+      {% endif %}
+    {% endfor %}
+    {% unless hadBlock %}
+      {% for product in collection.products %}
       {% endfor %}
-      {% unless hadBlock %}
-        {% for product in collection.products %}
-        {% endfor %}
-      {% endunless %}
-    </div>
+    {% endunless %}
   </div>
+</div>
 
 {%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.webpage -%}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+  | default: shop.metafields.yoast_seo.settings
+-%}
+{%- if disabled_by_yoast_seo
+  or yoast_seo_settings.schema.useTheme.schema
+  or yoast_seo_settings.schema.useTheme.webpage
+-%}
   <script type="application/ld+json">
       {
         "@context": "http://schema.org",
