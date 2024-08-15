@@ -163,7 +163,9 @@
         <header class="section-header">
           <h1 style="text-align:center" class="section-header__title">{{ 'customer.register.title' | t }}</h1>
         </header>
-
+        <div class="note note--success hide" id="ResetSuccess">
+          {{ 'customer.recover_password.success' | t }}
+        </div>
         <div class="form-vertical">
           {%- form 'create_customer' -%}
             {{ form.errors | default_errors }}
