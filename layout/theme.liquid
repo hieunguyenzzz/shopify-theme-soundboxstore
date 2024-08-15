@@ -467,7 +467,7 @@
       <div class="transition-body">
         {%- section 'toolbar' -%}
         {%- section 'header' -%}
- 
+
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
@@ -476,7 +476,9 @@
         {%- section 'footer' -%}
       </div>
     </div>
-    {% render '[quote-form-modal]' %}
+    {% if settings.header_show_quote_request %}
+      {% render '[quote-form-modal]' %}
+    {% endif %}
     {%- section 'newsletter-popup' -%}
     {% render 'dataLayer-allPages' %}
 
