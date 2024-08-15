@@ -19,7 +19,7 @@
         </span>
       </a>
     {%- endif -%}
-    <!--
+    {% if settings.header_show_quote_request %}
       <label
         for="quote-form-modal"
         class=" btn btn--secondary text-label"
@@ -30,6 +30,6 @@
         </svg>
         <div>Request a quote</div>
       </label>
-    -->
+    {% endif %}
   </div>
 </div>
