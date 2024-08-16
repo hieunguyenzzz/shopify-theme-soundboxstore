@@ -7484,11 +7484,7 @@ lazySizesConfig.expFactor = 4;
     function Toolbar(container) {
       this.container = container;
       this.sectionId = this.container.getAttribute("data-section-id");
-      if (window.yett.lazyloaded) {
-        this.init();
-      } else {
-        document.addEventListener("app:ready", this.init, { once: true });
-      }
+      this.init();
     }
 
     Toolbar.prototype = Object.assign({}, Toolbar.prototype, {
