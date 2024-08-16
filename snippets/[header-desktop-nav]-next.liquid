@@ -326,7 +326,7 @@
             {{
               settings.header_guide_image
               | image_url: width: 500
-              | image_tag: style: 'background: var(--image-bg);border-radius: 1em;'
+              | image_tag: loading: 'lazy', style: 'background: var(--image-bg);border-radius: 1em;'
             }}
           {% else %}
             <img
