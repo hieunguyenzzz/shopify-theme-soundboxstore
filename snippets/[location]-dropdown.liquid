@@ -20,6 +20,14 @@ IT it /it-it' %}
 {% if request.locale.root_url and request.locale.root_url != '/' %}
   {% assign path = request.path | replace_first: request.locale.root_url, '/' %}
 {% endif %}
+<style>
+  .tw-btn img{
+    display:none
+  }
+  .tw-btn:hover img{
+    display:block
+  }
+</style>
 <div class="tw-dropdown tw-flex tw-dropdown-end tw-dropdown-hover">
   <div
     tabindex="0"
@@ -81,7 +89,7 @@ IT it /it-it' %}
           loading="lazy"
           width="16"
           height="16"
-          class="!tw-pl-0 tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
+          class="!tw-pl-0 tw-w-4 tw-h-4 tw-rounded-full tw-object-cover countryimage"
           src="{{ iconPath | asset_url}}"
           alt="{{ country.name | capitalize }} flag"
         >
