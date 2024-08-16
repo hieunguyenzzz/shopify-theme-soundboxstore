@@ -3694,6 +3694,7 @@ lazySizesConfig.expFactor = 4;
 
   theme.announcementBar = (function () {
     console.log("announcementBar");
+    console.trace();
     var args = {
       autoPlay: 5000,
       avoidReflow: true,
