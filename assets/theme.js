@@ -3739,9 +3739,15 @@ lazySizesConfig.expFactor = 4;
         flickity.destroy();
       }
     }
-
+    function hadnleLazyInit() {
+      if (window.yett.lazyloaded) {
+        init();
+      } else {
+        document.addEventListener("app:ready", init, { once: true });
+      }
+    }
     return {
-      init: init,
+      init: hadnleLazyInit,
       onBlockSelect: onBlockSelect,
       onBlockDeselect: onBlockDeselect,
       unload: unload,
