@@ -103,7 +103,7 @@
           {% assign image = accessories.metafields.custom.menu_image.value | default: accessories.image %}
           <a class="site-nav__dropdown-item" href="{{ pages['accessories'].url }}">
             <div class="site-nav__dropdown-item_image">
-              {{ image | image_url: width: 300 | image_tag: class: '' }}
+              {{ image | image_url: width: 300 | image_tag: loading: 'lazy', class: '' }}
             </div>
             <div class="site-nav__dropdown-item_content">
               <div class="site-nav__dropdown-item_title">{{ title }}</div>
