@@ -7484,8 +7484,11 @@ lazySizesConfig.expFactor = 4;
     function Toolbar(container) {
       this.container = container;
       this.sectionId = this.container.getAttribute("data-section-id");
-
-      this.init();
+      if (window.yett.lazyloaded) {
+        this.init();
+      } else {
+        document.addEventListener("app:ready", this.init, { once: true });
+      }
     }
 
     Toolbar.prototype = Object.assign({}, Toolbar.prototype, {
@@ -7841,7 +7844,7 @@ lazySizesConfig.expFactor = 4;
         );
         if (inventoryEl) {
           this.settings.inventory = true;
-          this.settings.inventoryThreshold = inventoryEl.dataset.threshold||0;
+          this.settings.inventoryThreshold = inventoryEl.dataset.threshold || 0;
           this.container.on(
             "variantChange" + this.settings.namespace,
             this.updateInventory.bind(this)
@@ -8145,8 +8148,8 @@ lazySizesConfig.expFactor = 4;
           var quantity = variantInventoryObject.quantity;
           var showInventory = true;
           var showIncomingInventory = false;
-          var inventoryThreshold = this.settings.inventoryThreshold  || 0
-          if ( quantity > inventoryThreshold) {
+          var inventoryThreshold = this.settings.inventoryThreshold || 0;
+          if (quantity > inventoryThreshold) {
             showInventory = true;
           }
 
@@ -8188,7 +8191,7 @@ lazySizesConfig.expFactor = 4;
 
         var el = this.container.querySelector(this.selectors.inventory);
         var salesPoint = el.closest(".product-block");
-        if (parseInt(qty) <= parseInt(this.settings.inventoryThreshold||0)) {
+        if (parseInt(qty) <= parseInt(this.settings.inventoryThreshold || 0)) {
           el.parentNode.classList.add("inventory--low");
           el.textContent = theme.strings.stockLabel.replace("[count]", qty);
         } else {
