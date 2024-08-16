@@ -626,10 +626,10 @@
               document.dispatchEvent(event);
             }
           }
-          document.addEventListener("click", MeroxIO_Function);
-          document.addEventListener("scroll", MeroxIO_Function);
-          document.addEventListener("touchstart", MeroxIO_Function);
-          document.addEventListener("mousemove", MeroxIO_Function);
+          document.addEventListener("click", MeroxIO_Function,{ once: true });
+          document.addEventListener("scroll", MeroxIO_Function,{ once: true });
+          document.addEventListener("touchstart", MeroxIO_Function,{ once: true });
+          document.addEventListener("mousemove", MeroxIO_Function,{ once: true });
       })()
     </script>
     <script>
