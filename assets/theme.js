@@ -3693,6 +3693,7 @@ lazySizesConfig.expFactor = 4;
   };
 
   theme.announcementBar = (function () {
+    console.log("announcementBar");
     var args = {
       autoPlay: 5000,
       avoidReflow: true,
