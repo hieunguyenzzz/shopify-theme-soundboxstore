@@ -101,7 +101,7 @@
         <div class="md:px  page-width w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
           <div
             alt=""
-            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
+            class="absolute bottom-0 left-0 -z-20 h-[calc(100%-15vw) w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
           ></div>
           <div class="px-[var(--pageWidthPadding)] md:w-1/2 relative">
             {% if block.settings.image %}
