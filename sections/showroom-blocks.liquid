@@ -7,16 +7,16 @@
   }
 </style>
 <style>
-    #shopify-section-{{section.id}} iframe{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      border: 2px solid #000;
-    }
-    .prose li strong{
-      font-size:0.8em
+  #shopify-section-{{section.id}} iframe{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 2px solid #000;
+  }
+  .prose li strong{
+    font-size:0.8em
   }
 </style>
 <section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)] sm:items-center">
@@ -65,7 +65,7 @@
         <div class="md:px  page-width w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
           <div
             alt=""
-            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[{{ block.settings.color | default:"#f7f7f7" }}] md:left-auto md:right-0 md:h-full md:w-[70%]"
+            class="absolute bottom-0 left-0 -z-20 h-[calc(100%-15vw)] w-full bg-[{{ block.settings.color | default:"#f7f7f7" }}] md:left-auto md:right-0 md:h-full md:w-[70%]"
           ></div>
           <div class="px-[var(--pageWidthPadding)] md:w-1/2 relative">
             {% if block.settings.image %}
