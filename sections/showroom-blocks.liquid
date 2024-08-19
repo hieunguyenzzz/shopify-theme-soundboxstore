@@ -33,9 +33,11 @@
           class="block rounded-lg bg-white p-3"
         >
           <h5 class="mb-2 text-xl font-medium leading-tight">{{ block.settings.heading }}</h5>
-          <p class="mb-4 text-base">
-            {{ block.settings.subheading }}
-          </p>
+          {% if block.settings.subheading != blank %}
+            <p class="mb-4 text-base">
+              {{ block.settings.subheading }}
+            </p>
+          {% endif %}
         </a>
       </li>
     {% endfor %}
