@@ -68,7 +68,7 @@
             {% if block.settings.image %}
               {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px]  w-full' }}
             {% else %}
-              <div class="mx-auto max-w-[880px]  w-full"></div>
+              <div class="mx-auto max-w-[880px]  w-full aspect-video"></div>
             {% endif %}
             {{ map }}
           </div>
@@ -105,7 +105,7 @@
             {% if block.settings.image %}
               {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px] w-full' }}
             {% else %}
-              <div class="mx-auto max-w-[880px]  w-full"></div>
+              <div class="mx-auto max-w-[880px]  w-full aspect-video"></div>
             {% endif %}
             {{ map }}
           </div>
