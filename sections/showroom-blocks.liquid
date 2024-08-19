@@ -1,6 +1,183 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms" defer></script>
+<style type="text/tailwindcss">
+  @layer base {
+    h2 {
+          font-size: calc(var(--typeHeaderSize)*.85);
+    }
   }
+</style>
+<section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)] sm:items-center">
+  <div class="block  flex-1  md:max-w-[52rem] ">
+    <h3 class="block  flex-1 text-2xl font-semibold md:max-w-[52rem] md:text-4xl 2xl:text-5xl">
+      {{ section.settings.heading }}
+    </h3>
+    <div class="my-4 md:my-8 prose prose-a:underline">
+      {{ section.settings.content }}
+    </div>
+  </div>
+  <ul class="flex md:max-w-[50%] flex-wrap gap-2 md:w-[640px] lg:text-base text-xs">
+    {% for block in section.blocks %}
+      <li class="rounded border border-gray-300 py-1 px-2 leading-none hover:border-gray-500">
+        <a href="#section-{{ section.id }}-{{ forloop.index }}">{{ block.settings.heading }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+<div class="  text-base lg:text-lg">
+  {% for block in section.blocks %}
+    {% assign isLeft = forloop.index | modulo: 2 %}
+    {% assign heading = block.settings.heading | default: '' %}
+    {% assign content = block.settings.content | default: '' %}
+    {% if isLeft == 1 %}
+      <section
+        class="relative isolate my-12 min-h-[40vw] flex items-center"
+        id="section-{{ section.id }}-{{ forloop.index }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="md:px  page-width w-full items-center md:flex md:px-[var(--pageWidthPadding)] md:py-24">
+          <div
+            alt=""
+            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full bg-[{{ block.settings.color | default:"#f7f7f7" }}] md:left-auto md:right-0 md:h-full md:w-[70%]"
+          ></div>
+          <div class="px-[var(--pageWidthPadding)] md:w-1/2">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px]  w-full' }}
+            {% else %}
+              <div class="mx-auto max-w-[640px]"></div>
+            {% endif %}
+          </div>
+
+          <div class="flex-1">
+            <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+              <h3 class="text-lg font-semibold  md:text-3xl 2xl:text-5xl">{{ heading }}</h3>
+              <div class="my-4 lg:my-8">
+                {{ content }}
+              </div>
+              <a
+                class="btn bg-[var(--colorBtnPrimary)]"
+                href=""
+                onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url  | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+              >
+                {{- block.settings.btn_text | default: 'Schedule Design Survey ' -}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% else %}
+      <section
+        id="section-{{ section.id }}-{{ forloop.index }}"
+        class="relative isolate my-12 min-h-[40vw]  flex items-center"
+        {{ block.shopify_attributes }}
+      >
+        <div class="md:px  page-width w-full items-center md:flex-row-reverse md:flex md:px-[var(--pageWidthPadding)] md:py-24">
+          <div
+            alt=""
+            class="absolute bottom-0 left-0 -z-20 h-[70%] w-full  bg-[{{ block.settings.color | default:"#fce3df" }}]  md:h-full md:w-[70%]"
+          ></div>
+          <div class="px-[var(--pageWidthPadding)] md:w-1/2">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 880 | image_tag: class: 'mx-auto max-w-[880px] w-full' }}
+            {% else %}
+              <div class="mx-auto max-w-[640px]"></div>
+            {% endif %}
+          </div>
+
+          <div class="flex-1">
+            <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+              <h3 class="text-lg font-semibold md:text-3xl 2xl:text-5xl">{{ heading }}</h3>
+              <div class="my-4 lg:my-8">
+                {{ content }}
+              </div>
+              <a
+                class="btn  bg-[var(--colorBtnPrimary)]"
+                href=""
+                onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+              >
+                {{- block.settings.btn_text | default: 'Schedule Design Survey ' -}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "showroom-blocks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Embracing Sustainability"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+     {
+          "type": "url",
+          "id": "calendly_url",
+          "label": "calendly url"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Embracing Sustainability"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text",
+          "default": "Schedule Design Survey "
+        },
+
+        {
+          "type": "url",
+          "id": "calendly_url",
+          "label": "calendly url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "showroom-blocks",
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}
