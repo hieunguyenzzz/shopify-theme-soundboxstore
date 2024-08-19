@@ -23,7 +23,7 @@
     {% endfor %}
   </ul>
 </section>
-<div class="  text-base lg:text-lg prose">
+<div class="  text-base lg:text-lg ">
   {% for block in section.blocks %}
     {% assign isLeft = forloop.index | modulo: 2 %}
     {% assign heading = block.settings.heading | default: '' %}
