@@ -18,9 +18,11 @@
         "
         class="collection-main-description"
       >
-        <div class="collection-main-title rte desktop-only">{{ title | strip_html }}</div>
+        <div class="collection-main-title desktop-only">{{ title | strip_html }}</div>
         {% if description != blank %}
-          {{ description }}
+          <div class="rte">
+            {{ description }}
+          </div>
         {% else %}
           <p>
             There are many soundproof phone booths on the market but that doesn’t mean there are a lot of good options.
