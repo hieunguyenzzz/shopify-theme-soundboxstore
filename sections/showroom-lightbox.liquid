@@ -1,12 +1,12 @@
 <style>
-    div#shopify-section-template--18328202739937__showroom-lightbox li:first-child {
+  #shopify-section-{{section.id}} li {
       min-width: 0;
       width: 0;
-      transition: all 0.5s cubic-bezier(0.4, 0, 1, 1);
+
   }
 
-  div#shopify-section-template--18328202739937__showroom-lightbox li:hover {
-      min-width: 50%;width:50%
+  #shopify-section-{{section.id}} li hover {
+      min-width: 50%;width:50%; transition: all 0.5s cubic-bezier(0.4, 0, 1, 1);
   }
 </style>
 {% for block in section.blocks %}
