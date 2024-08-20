@@ -95,7 +95,7 @@
       {% endunless %}
       <div class="p-6 mb-6  md:w-1/2 bg-white rounded-lg md:p-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center z-10 relative ">
         <div class="flex gap-4 md:gap-8">
-          {% if section.settings.avatar %}
+          {% if section.settings.avatar != blank %}
             {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/3 rounded-lg' }}
           {% endif %}
           <div
