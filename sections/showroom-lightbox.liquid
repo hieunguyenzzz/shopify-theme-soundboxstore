@@ -28,8 +28,19 @@
       data-lf-vimeo-playback-inspected-belvo73qlzeazmqj="true"
     ></iframe>
   </div>
-  <ul style="flex: 1;border-left: 2px solid;">
-    <li></li>
+  <ul style="flex: 1;border-left: 2px solid;min-width: 300px">
+    {% for block in section.blocks %}
+      <li>
+        <a
+          style="display:none"
+          href="{{ block.settings.image | image_url }}"
+          class="image-wrap"
+          data-fancybox="{{ section.id }}-{{ block.id }}"
+          data-caption="{{block.settings.image.alt }}"
+        >
+        </a>
+      </li>
+    {% endfor %}
   </ul>
 </div>
 <link
