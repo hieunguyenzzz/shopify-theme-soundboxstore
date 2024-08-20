@@ -155,7 +155,11 @@
 {% schema %}
 {
   "name": "showroom-hero",
-  "settings":[  {
+  "settings":[ {
+    "type": "checkbox",
+    "id": "hidemap",
+    "label": "Hide map"
+  }, {
           "type": "url",
           "id": "calendly_url",
           "label": "calendly url"
@@ -203,7 +207,8 @@
           "type": "url",
           "id": "btn_url",
           "label": "button url"
-        }],
+        }
+  ],
   "presets": [
     {
       "name": "showroom-hero",
