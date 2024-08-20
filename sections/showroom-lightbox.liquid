@@ -1,6 +1,17 @@
+{% for block in section.blocks %}
+  <a
+    style="display:none"
+    href="{{ block.settings.image | image_url }}"
+    class="image-wrap"
+    data-fancybox="{{ section.id }}-{{ block.id }}"
+    data-caption="{{block.settings.image.alt }}"
+  >
+  </a>
+{% endfor %}
 {% schema %}
 {
   "name": "ShowRoom lightbox",
+  "class": "hidden",
   "settings": [
 
   ],
