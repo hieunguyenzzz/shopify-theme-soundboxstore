@@ -1,11 +1,11 @@
 <style>
   #shopify-section-{{section.id}} li {
-      min-width: 0;
+      min-width: 0;transition: width 0.5s cubic-bezier(0.4, 0, 1, 1);
       width: 0;
   }
 
   #shopify-section-{{section.id}} li:hover {
-      min-width: 50%;width:50%; transition: width 0.5s cubic-bezier(0.4, 0, 1, 1);
+      min-width: 50%;width:50%;
   }
 </style>
 {% for block in section.blocks %}
