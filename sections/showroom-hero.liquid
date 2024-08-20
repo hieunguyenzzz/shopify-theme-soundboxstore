@@ -155,7 +155,11 @@
 {% schema %}
 {
   "name": "showroom-hero",
-  "settings":[ {
+  "settings":[  {
+          "type": "url",
+          "id": "calendly_url",
+          "label": "calendly url"
+        },{
           "type": "image_picker",
           "id": "avatar",
           "label": "Avatar"
@@ -197,8 +201,8 @@
             "default":"Schedule Design Survey "
   },  {
           "type": "url",
-          "id": "calendly_url",
-          "label": "calendly url"
+          "id": "btn_url",
+          "label": "button url"
         }],
   "presets": [
     {
