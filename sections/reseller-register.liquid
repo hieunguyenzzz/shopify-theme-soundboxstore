@@ -163,7 +163,7 @@
         <header class="section-header">
           <h1 style="text-align:center" class="section-header__title">{{ 'customer.register.title' | t }}</h1>
         </header>
-        {%- form 'recover_customer_password', return_to: loginurl -%}
+        {%- form 'recover_customer_password' -%}
           {{ form.errors | default_errors }}
 
           {%- if form.posted_successfully? -%}
