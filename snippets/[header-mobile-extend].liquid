@@ -6,7 +6,7 @@
         padding-bottom:10px;
         gap:10px;
         display:flex;
-      font-size:12px;
+      font-size:min(12px,2.6vw);
       border-bottom:1px solid #f1f1f1;
     }
     .header-mobile-extend a {
@@ -51,7 +51,7 @@
     {{
       all_products['office-phone-booth-folio-2-4-person'].metafields.custom.menu_image
       | image_url: width: 40
-      | image_tag: loading: 'lazy'
+      | image_tag: loading: 'lazy', preload: true
     }}
     {{ settings.header_explore_product -}}
   </a>
@@ -60,7 +60,7 @@
       {{
         settings.header_guide_image
         | image_url: width: 50
-        | image_tag: loading: 'lazy', style: 'background:var(--image-bg); border-radius: 1em;'
+        | image_tag: loading: 'lazy', preload: true, style: 'background:var(--image-bg); border-radius: 1em;'
       }}
     {% else %}
       <img
