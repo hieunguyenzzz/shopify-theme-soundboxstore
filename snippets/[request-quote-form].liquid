@@ -93,9 +93,9 @@
     border-color: #7fc4eb;
   }
 </style>
-{%  assign thankpageurl ='/pages/thankpage'  %} 
+{% assign thankpageurl = '/pages/thankpage' %}
 <div id="{{form_id}}-wrap">
-  {%- form 'contact', id: form_id, class: 'target:ring-3' , return_to: thankpageurl -%}
+  {%- form 'contact', id: form_id, class: 'target:ring-3', return_to: thankpageurl -%}
     {{ form.errors | default_errors }}
     <div class="grid grid--small">
       <div class="grid__item">
@@ -108,7 +108,7 @@
           autocapitalize="words"
           value=""
         >
-        <label for="ContactFormName-{{ section.id }}">{{  settings.quote_full_name }}</label>
+        <label for="ContactFormName-{{ section.id }}">{{ settings.quote_full_name }}</label>
       </div>
       <div class="grid__item">
         <input
@@ -118,7 +118,7 @@
           required
           id="ContactForm-email"
           class="field__input"
-          name="contact[{{  settings.quote_email }}]"
+          name="contact[email]"
           spellcheck="false"
           autocapitalize="off"
           value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
@@ -141,7 +141,17 @@
           pattern="[0-9\-]*"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
         >
-        <label for="ContactFormPhone-{{ section.id }}">{{  settings.quote_phone_number }}</label>
+        <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_phone_number }}</label>
+      </div>
+      <div class="grid__item">
+        <input
+          required
+          id="ContactFormPhone-{{ section.id }}"
+          class="input-full input"
+          name="contact[address]"
+          placeholder="Address"
+        >
+        <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.address' | t }}</label>
       </div>
       <div class="grid__item">
         <input
@@ -232,13 +242,19 @@ IT it /it-it' %}
         >
           {% for product in collection.products %}
             <label style="display:block">
-              <input hidden type="checkbox" name="product" value="{{ product.title }}" />
+              <input
+                hidden
+                type="checkbox"
+                class="hide"
+                name="product"
+                value="{{ product.title }}:{{ product.first_available_variant.sku }}"
+              >
               {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
               {% assign subtitle = product.metafields.custom.menu_subtitle.value
                 | default: product.metafields.custom.subtitle
               %}
               {% assign image = product.metafields.custom.menu_image.value %}
-              <div class="product-item" >
+              <div class="product-item">
                 <div class="product-item_image">
                   {{ image | image_url: width: 300 | image_tag: class: '' }}
                 </div>
@@ -249,9 +265,9 @@ IT it /it-it' %}
             </label>
           {% endfor %}
         </div>
-        <label style="display:block" for="ContactFormMessage-{{ section.id }}"
-          >{{ settings.quote_interested_booths }}</label
-        >
+        <label style="display:block" for="ContactFormMessage-{{ section.id }}">
+          {{- settings.quote_interested_booths -}}
+        </label>
       </div>
 
       <div class="submit-btn-wrap grid__item">
@@ -260,7 +276,7 @@ IT it /it-it' %}
             type="submit"
             class="btn"
           >
-          {{ settings.quote_submit_btn }}
+            {{ settings.quote_submit_btn }}
           </button>
         </div>
       </div>
@@ -270,10 +286,22 @@ IT it /it-it' %}
     (() => {
       function logSubmit(event) {
         console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
-        let data = {}
+        let data = {
+          create_at: new Date().toISOString(),
+          products:[]
+        }
         new FormData(event.target).forEach((value, key) => {
           console.log(key, value);
-          data[key] = value;
+          if(key==='product'){
+            let [title,sku] = value.split(":")
+            data.products.push({
+              title,
+              sku,
+              quantity:1
+            });
+          }else{
+            data[key] = value;
+          }
         })
         fetch("https://hooks.zapier.com/hooks/catch/14043376/248z11w/",
           {
