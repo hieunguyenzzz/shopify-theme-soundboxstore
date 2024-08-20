@@ -163,9 +163,32 @@
         <header class="section-header">
           <h1 style="text-align:center" class="section-header__title">{{ 'customer.register.title' | t }}</h1>
         </header>
-        <div class="note note--success hide" id="ResetSuccess">
-          {{ 'customer.recover_password.success' | t }}
-        </div>
+        {%- form 'recover_customer_password', return_to: loginurl -%}
+          {{ form.errors | default_errors }}
+
+          {%- if form.posted_successfully? -%}
+            <div class="note note--success reset-password-success">{{ 'customer.recover_password.success' | t }}</div>
+          {%- endif -%}
+          <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
+          <input
+            type="email"
+            value=""
+            name="email"
+            id="RecoverEmail"
+            class="input-full"
+            autocorrect="off"
+            autocapitalize="off"
+          >
+
+          <p>
+            <button type="submit" class="btn">
+              {{ 'customer.recover_password.submit' | t }}
+            </button>
+          </p>
+          <a href="loginurl" type="button" id="HideRecoverPasswordLink">
+            {{- 'customer.recover_password.cancel' | t -}}
+          </a>
+        {%- endform -%}
         <div class="form-vertical">
           {%- form 'create_customer' -%}
             {{ form.errors | default_errors }}
