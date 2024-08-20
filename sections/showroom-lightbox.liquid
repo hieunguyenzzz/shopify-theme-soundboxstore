@@ -28,9 +28,9 @@
       data-lf-vimeo-playback-inspected-belvo73qlzeazmqj="true"
     ></iframe>
   </div>
-  <ul style="flex: 1;border-left: 2px solid;min-width: 300px">
+  <ul style="flex: 1;border-left: 2px solid;min-width: 300px;display:flex">
     {% for block in section.blocks %}
-      <li>
+      <li style="flex:1">
         <a
           style="display:none"
           href="{{ block.settings.image | image_url }}"
