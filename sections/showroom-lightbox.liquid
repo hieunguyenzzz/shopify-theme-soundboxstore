@@ -37,7 +37,16 @@
           data-fancybox="{{ section.id }}-{{ block.id }}"
           data-caption="{{block.settings.image.alt }}"
         >
-          {{ block.settings.image | image_url: width: 400 | image_tag }}
+          {{
+            block.settings.image
+            | image_url: width: 400
+            | image_tag:
+              style: 'position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;'
+          }}
         </a>
       </li>
     {% endfor %}
