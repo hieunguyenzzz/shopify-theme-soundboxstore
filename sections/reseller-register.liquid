@@ -169,25 +169,9 @@
           {%- if form.posted_successfully? -%}
             <div class="note note--success reset-password-success">{{ 'customer.recover_password.success' | t }}</div>
           {%- endif -%}
-          <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
-          <input
-            type="email"
-            value=""
-            name="email"
-            id="RecoverEmail"
-            class="input-full"
-            autocorrect="off"
-            autocapitalize="off"
-          >
-
-          <p>
-            <button type="submit" class="btn">
-              {{ 'customer.recover_password.submit' | t }}
-            </button>
-          </p>
-          <a href="loginurl" type="button" id="HideRecoverPasswordLink">
-            {{- 'customer.recover_password.cancel' | t -}}
-          </a>
+          <button type="submit" class="btn hide">
+            {{ 'customer.recover_password.submit' | t }}
+          </button>
         {%- endform -%}
         <div class="form-vertical">
           {%- form 'create_customer' -%}
