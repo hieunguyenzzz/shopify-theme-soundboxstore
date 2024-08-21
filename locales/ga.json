@@ -1080,7 +1080,89 @@
         "no_working_method_error": "Ní féidir leis an siopa seo glacadh le híocaíochtaí anois. Athnuachan an leathanach seo nó teacht ar ais níos déanaí.",
         "brand_not_available": "Ní ghlacann an siopa seo {{brand}}. Bain úsáid as cárta difriúil le híoc.",
         "shipping_rate_updated": "Nuashonraíodh na modhanna loingseoireachta atá ar fáil. Deimhnigh do rogha sula seiceálann tú amach.",
-        "billing_address_invalid_phone": "Nuashonraigh an uimhir theileafóin i do sheoladh billeála do {{label}} {{last_digits}} leanúint ar aghaidh."
+        "billing_address_invalid_phone": "Nuashonraigh an uimhir theileafóin i do sheoladh billeála do {{label}} {{last_digits}} leanúint ar aghaidh.",
+        "billing_address_invalid_phone_no_card": "Nuashonraigh an uimhir theileafóin i do sheoladh billeála le leanúint ar aghaidh.",
+        "preview_not_available": {
+          "title": "Réamhamharc Níl sé ar fáil",
+          "content": "Ná bíodh imní ort, oibríonn an tseiceáil sainráite seo do do chustaiméirí.",
+          "button": "Go maith"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Iontráil dáta eisiúna bailí",
+              "issue_number": "Iontráil uimhir eisiúna bhailí"
+            },
+            "invalid": {
+              "verification_value": "Iontráil CVV bailí nó cód slándála"
+            }
+          }
+        },
+        "simulated_checkout": "Réamhamharc ag teacht go luath",
+        "vaulting_agreement_label": "Sábháil mo chuid faisnéise íocaíochta le %{company} Le haghaidh seiceála níos tapúla.",
+        "business_customer_vaulting_payment_label": "Sábháil an cárta seo ag an tseiceáil agus údaraigh %{company} Chun é a ghearradh as ceannacháin amach anseo don suíomh seo. Is féidir le gach teagmháil a shanntar don suíomh seo an cárta a úsáid.",
+        "purchase_options_and_vaulting_agreement_label": "Ceannach iarchurtha nó suibscríbhinne is ea mír amháin nó níos mó i do chairt. Trí leanúint ar aghaidh le d'íocaíocht, aontaíonn tú go ngearrfar do mhodh íocaíochta go huathoibríoch ar an bpraghas agus ar an minicíocht atá liostaithe ar an leathanach seo go dtí go gcríochnóidh sé nó go gcuirfidh tú ar ceal. Tá gach cealú faoi réir an %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "Polasaí Cealúcháin",
+        "use_different_credit_card_label": "Úsáid cárta difriúil",
+        "saved_credit_card": "Do Chárta Creidmheasa Sábháilte",
+        "saved_credit_card_info": "Ceithre dhigit dheireanacha",
+        "saved_credit_card_cvv_verification": "Chun críocha fíoraithe, cuir isteach cód slándála do chárta le do thoil.",
+        "saved_credit_card_actions": {
+          "edit": "Eagar a chur ar",
+          "delete": "Scrios amach"
+        },
+        "saved_credit_cards_modal": {
+          "view_all_label": "Féach ar gach cárta sábhála",
+          "done": "Ar siúl",
+          "cancel": "Cealaigh"
+        },
+        "add_credit_card_modal": {
+          "title": "Cuir cárta leis",
+          "save": "Spáráil",
+          "cancel": "Cealaigh"
+        },
+        "delete_credit_card_modal": {
+          "title": "Cárta Scrios",
+          "confirmation": "An bhfuil tú cinnte gur mhaith leat an {{brandName}} Ag críochnú i {{lastDigits}}?",
+          "cancel": "Cealaigh",
+          "delete": "Scrios amach"
+        },
+        "edit_credit_card_modal": {
+          "title": "Cárta eagarthóireachta",
+          "done": "Ar siúl",
+          "cancel": "Cealaigh",
+          "description": "Ní féidir leat ach seoladh billeála do chárta a mhodhnú.",
+          "fields": {
+            "default": "Socraigh mar réamhshocrú",
+            "card_number": "Uimhir chárta",
+            "expiry": "Dáta éagtha",
+            "security_code": "Cód slándála",
+            "name": "Ainm ar chárta",
+            "billing": "Bille"
+          }
+        },
+        "expired_cards_info": {
+          "one": "Tá %{count} Cárta imithe in éag, ar féidir leat a fheiceáil agus a chur in eagar i do chuntas.",
+          "other": "Tá %{count} Cártaí imithe in éag, ar féidir leat a fheiceáil agus a chur in eagar i do chuntas."
+        },
+        "local_payment_method_receiver_notice": "Tar éis duit d'ordú a chur, gheobhaidh tú sonraí íocaíochta. An íocaíocht a dhéanamh ag ATM nó ar líne laistigh de {{dueDays}} laethanta.",
+        "order_edit_banner_title": "Íocaíocht {{amount_owed}} ag teastáil",
+        "order_edit_banner_subtitle": "D’ordú {{order_number}} nuashonraíodh é. Déan athbhreithniú ar na hathruithe seo, ansin íoc chun d'ordú a dheimhniú.",
+        "order_edit_banner_items_added": {
+          "one": "Cuir cuireadh leis",
+          "other": "Cuir cuireadh leis %{count}"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Aistrithe",
+          "with_quantities": "Aistrithe {{delta}} de {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Ar ais {{quantity}}",
+          "with_quantities": "Ar ais {{delta}} de {{quantity}}"
+        },
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Bainte as filleadh"
+        }
       }
     }
   }
