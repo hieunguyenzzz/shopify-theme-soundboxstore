@@ -1330,7 +1330,65 @@
         "payment_gateway_unsupported_for_order_above_maximum_orders_html": "Tá an teorainn le haghaidh orduithe siopa forbartha bainte amach agat leis an bpróiseálaí íocaíochta seo. Chun ordú eile a chur, beidh ort geata íocaíochta tástála a úsáid. Níos mó a fhoghlaim faoi <a href=\"%{docs_link}\">Orduithe tástála i siopaí forbartha<\/a>.",
         "purchase_options_agreement_blank": "Chun leanúint ar aghaidh le do cheannach, aontaigh leis na téarmaí ceannaigh iarchurtha nó athfhillteach.",
         "physical_gift_card_invalid_quantity": "Ní mór go mbeadh cainníocht ag míreanna líne cártaí bronntanais fhisiciúil a mheaitseálann líon na gcóid cárta bronntanais.",
-        "physical_gift_card_duplicate_code": "Tá cód dúblach i mír líne chárta bronntanais fhisiciúil."
+        "physical_gift_card_duplicate_code": "Tá cód dúblach i mír líne chárta bronntanais fhisiciúil.",
+        "physical_gift_card_invalid_code": "Tá cód cárta bronntanais fhisiciúil neamhbhailí.",
+        "email_blank": "Iontráil r -phost",
+        "phone_blank": "Iontráil uimhir theileafóin",
+        "address_country_invalid": "Roghnaigh tír\/réigiún ón liosta",
+        "address_zip_invalid": "Iontráil cód bailí zip \/ poist",
+        "gift_card_invalid": "Cárta Bronntanais \"••••%{last_four_characters}\"Níl sé bailí a thuilleadh",
+        "vaulting_agreement_blank": "Ní mór do chárta a shábháil toisc go bhfuil íocaíocht as iarmhéid an ordaithe seo dlite níos déanaí.",
+        "sms_marketing_phone_invalid": "Iontráil uimhir theileafóin bhailí",
+        "address_suggestion_did_you_mean_html": "An raibh i gceist agat %{html}?"
+      },
+      "store_credit_errors": {
+        "generic_error": "Bhí fadhb le do chreidmheas stórála. Bain triail eile as nó athlódáil an leathanach."
+      },
+      "redeemable_errors": {
+        "gift_card": {
+          "duplicate": "Tá an cárta bronntanais curtha i bhfeidhm cheana féin ar d’ordú",
+          "insufficient_funds": "Níl aon chistí fágtha ag an gcárta bronntanais seo",
+          "expired": "Tá an cárta bronntanais seo imithe in éag",
+          "not_available": "Níl an cárta bronntanais seo ar fáil a thuilleadh",
+          "invalid": "Iontráil cárta bronntanais bailí",
+          "currency_mismatch": "Cártaí bronntanais amháin i %{shop_currency} glactar leis",
+          "generic": "Níorbh fhéidir an cárta bronntanais a chur leis an tseiceáil",
+          "throttle_limit_exceeded": "Sháraigh tú an líon uasta iarrachtaí. Bain triail eile as níos déanaí.",
+          "no_longer_available": "Ní féidir an cárta bronntanais seo a úsáid a thuilleadh leis an tseiceáil seo"
+        }
+      },
+      "payment_errors": {
+        "amount_too_small": "Caithfidh an méid íocaíochta íosta a bheith níos airde ná $ 0.50 USD. Bain triail eile as le do thoil le méid níos airde.",
+        "method_not_available": "Níl an modh íocaíochta iarrtha ar fáil.",
+        "available_methods_updated": "Nuashonraíodh na modhanna íocaíochta atá ar fáil.",
+        "generic_error": "Bhí saincheist ann a phróiseáil d’íocaíocht. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "rejected_transaction": "Diúltaíodh d’íocaíocht. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "credit_card_processing": "Ní féidir d’íocaíocht a phróiseáil ar chúiseanna teicniúla. Bain triail eile as i gceann cúpla nóiméad nó bain úsáid as modh íocaíochta difriúil.",
+        "checkout_amount_changed": "Níorbh fhéidir d'íocaíocht a phróiseáil toisc go bhfuil athrú tagtha ar an méid atá dlite ag an tseiceáil. Seiceáil d’ordú le do thoil agus bain triail eile as.",
+        "deferred_payment_not_allowed": "Ní cheadaítear íocaíochtaí iarchurtha. Seiceáil d’ordú le do thoil agus bain triail eile as.",
+        "deferred_payment_required": "Éilíonn an t -ordú seo íocaíocht iarchurtha. Seiceáil d’ordú le do thoil agus bain triail eile as.",
+        "deferred_amount_changed": "Níorbh fhéidir d'íocaíocht a phróiseáil toisc go bhfuil an méid íocaíochta iarchurtha athraithe. Seiceáil d’ordú le do thoil agus bain triail eile as.",
+        "deferred_date_changed": "Níorbh fhéidir d'íocaíocht a phróiseáil toisc go bhfuil athrú tagtha ar an dáta íocaíochta iarchurtha. Seiceáil d’ordú le do thoil agus bain triail eile as.",
+        "order_total_changed": "Tá athrú tagtha ar iomlán d’ordú. Déan athbhreithniú agus bain triail eile as.",
+        "payment_processing": "Ní féidir d’íocaíocht a phróiseáil ar chúiseanna teicniúla. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "payment_processing_no_retry": "Ní féidir d’íocaíocht a phróiseáil ar chúiseanna teicniúla. Bain triail as modh íocaíochta difriúil le do thoil.",
+        "paypal_zero_amount": "Ní féidir leat PayPal a úsáid as %{amount} orduithe. Deimhnigh go bhfuil d’ordú ceart agus seiceáil amach gan PayPal.",
+        "paypal_invalid_token": "Ní raibh PayPal ar fáil. Bain triail eile as nó bain úsáid as rogha seiceála difriúil.",
+        "pay_later_failed": "Bhí earráid ann ag próiseáil d’íocaíocht le pá níos déanaí. Roghnaigh modh íocaíochta eile agus bain triail eile as.",
+        "three_d_secure_failed": "Níorbh fhéidir d'íocaíocht a fhíorú. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "three_d_secure_failed_duplicate": "Theip ar fhíordheimhniú slán 3D an chárta creidmheasa toisc go bhfuil ceann eile ar siúl cheana féin.",
+        "three_d_secure_throttled": "An iomarca iarrachtaí; Fan roimh iarracht a dhéanamh arís",
+        "subscription_agreement_blank": "Chun síntiús a cheannach ní mór do chuid sonraí íocaíochta a shábháil. Chun leanúint ar aghaidh, deimhnigh go n -aontaíonn tú nó go mbainfidh tú míreanna síntiúis uait.",
+        "insufficient_funds": "Laghdaíodh d'íocaíocht mar gheall ar neamhleor cistí. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "multiple_deferred_payment_not_allowed": "Ní cheadaítear ach íocaíocht iarchurtha amháin in aghaidh an iarratais. Seiceáil d’iarratas le do thoil agus bain triail eile as.",
+        "shipping_must_match_billing": "Ní mór don seoladh billeála seoladh loingseoireachta a mheaitseáil. Úsáid modh íocaíochta difriúil le do thoil.",
+        "decision_rule_block": "Bhí saincheist ann a phróiseáil d’íocaíocht. Téigh i dteagmháil le húinéir an siopa le do thoil.",
+        "pick_up_card": "Diúltaíodh do chárta. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "cannot_verify": "Níorbh fhéidir do shonraí íocaíochta a fhíorú. Seiceáil sonraí do chárta agus bain triail eile as.",
+        "invalid_number": "Iontráil uimhir chárta bhailí",
+        "invalid_expiry_date": "Iontráil dáta éaga bailí",
+        "invalid_cvc": "Iontráil cód slándála bailí",
+        "expired_card": "Tá do chárta imithe in éag. Bain úsáid as modh íocaíochta difriúil."
       }
     }
   }
