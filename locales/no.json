@@ -1433,7 +1433,8 @@
         "selected_payment_method": "Det var et problem med den valgte betalingsmetoden din, og du har ikke blitt belastet. Prøv igjen eller bruk en annen betalingsmetode.",
         "payment_method_billing_address": "Det var et problem med den valgte betalingsmetodeens faktureringsadresse, og du har ikke blitt belastet. Sjekk adressen og prøv igjen eller bruk en annen betalingsmetode.",
         "processing_error_checkout_as_guest": "Det var et problem som behandler betalingen din. Prøv igjen med en annen betalingsmetode eller {{checkout_as_guest_link}}.",
-        "amount_too_small": "Minimumsbetalingsbeløpet må være høyere enn $ 0,50 USD. Prøv igjen med et høyere beløp."
+        "amount_too_small": "Minimumsbetalingsbeløpet må være høyere enn $ 0,50 USD. Prøv igjen med et høyere beløp.",
+        "payment_above_threshold": "Betalingsbeløpet er over den monetære grensen for denne regionen. Reduser totalen og prøv igjen"
       },
       "shipping_errors": {
         "shipping_method": "Fraktalternativene har endret seg for bestillingen din. Gå gjennom valget ditt og prøv igjen.",
@@ -1455,7 +1456,10 @@
         "express_checkout": "hurtigutsjekking",
         "or": "ELLER",
         "show_more_options": "Vis flere alternativer",
-        "hide_more_options": "Skjul flere alternativer"
+        "hide_more_options": "Skjul flere alternativer",
+        "or_pay_another_way": "Eller betale en annen måte",
+        "or_check_out_another_way": "Eller sjekk ut en annen måte",
+        "or_pay_with_credit_card": "Eller betal med kredittkort"
       },
       "alternative_payment_method": {
         "button_html": "Kassa med: %{method}",
@@ -1504,7 +1508,8 @@
           "no_auto_refresh_html": "Hvis du ikke automatisk blir omdirigert, %{link}.",
           "refresh_this_page": "Oppdater denne siden"
         },
-        "action_required": "Handling kreves"
+        "action_required": "Handling kreves",
+        "redirecting_to_bank": "Omdirigere til {{bank}}"
       },
       "failed_payment": {
         "page_title": "Betaling kunne ikke behandles",

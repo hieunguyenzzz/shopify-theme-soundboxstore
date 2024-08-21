@@ -1388,7 +1388,71 @@
         "invalid_number": "Iontráil uimhir chárta bhailí",
         "invalid_expiry_date": "Iontráil dáta éaga bailí",
         "invalid_cvc": "Iontráil cód slándála bailí",
-        "expired_card": "Tá do chárta imithe in éag. Bain úsáid as modh íocaíochta difriúil."
+        "expired_card": "Tá do chárta imithe in éag. Bain úsáid as modh íocaíochta difriúil.",
+        "card_declined": "Diúltaíodh do chárta. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "processing_error": "Bhí saincheist ann a phróiseáil d’íocaíocht. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "processing_error_checkout_as_guest": "Bhí saincheist ann a phróiseáil d’íocaíocht. Bain triail eile as le modh íocaíochta difriúil nó {{checkout_as_guest_link}}.",
+        "selected_payment_method": "Bhí saincheist ann le do mhodh íocaíochta roghnaithe agus níor gearradh táille ort. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "payment_method_billing_address": "Bhí saincheist ann le seoladh billeála do mhodh íocaíochta roghnaithe agus níor gearradh táille ort. Seiceáil an seoladh agus bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "call_issuer": "Diúltaíodh do chárta. Bain úsáid as modh íocaíochta difriúil nó déan teagmháil le do bhanc chun tuilleadh eolais a fháil.",
+        "test_mode_live_card": "Ní féidir leis an siopa seo glacadh le fíor -orduithe nó fíor -íocaíochtaí.",
+        "transient_error": "Bhí fadhb ann do íocaíocht a phróiseáil. Bain triail as an leathanach seo a athnuachan nó seiceáil do nasc idirlín.",
+        "missing_shipping_address": "Níorbh fhéidir d'íocaíocht a phróiseáil toisc go bhfuil do sheoladh loingseoireachta ar iarraidh. Cuir seoladh loingseoireachta leis agus bain triail eile as.",
+        "invalid_shipping_address": "Níorbh fhéidir d'íocaíocht a phróiseáil toisc nach bhféadfaimis do sheoladh loingseoireachta a fháil. Seiceáil do sheoladh loingseoireachta agus bain triail eile as.",
+        "successful_offsite_with_gift_card_error": "Bhí saincheist ag próiseáil d’íocaíocht do chárta bronntanais. Bain triail eile as nó bain úsáid as modh íocaíochta difriúil.",
+        "development_store_order_limit_reached": "Tá an teorainn le haghaidh orduithe siopa forbartha bainte amach agat leis an bpróiseálaí íocaíochta seo. Chun ordú eile a chur, beidh ort geata íocaíochta tástála a úsáid. Níos mó a fhoghlaim faoi %{development_store_order_testing_docs_link}.",
+        "development_store_with_order_limit": "Chun ordú tástála a chur, beidh ort geata íocaíochta tástála a úsáid. Níos mó a fhoghlaim faoi %{development_store_order_testing_docs_link}.",
+        "development_store_order_testing_docs_link": "Orduithe tástála i siopaí forbartha",
+        "payment_above_threshold": "Tá an méid íocaíochta os cionn na teorann airgeadaíochta don réigiún seo. An t -iomlán a laghdú agus bain triail eile as"
+      },
+      "shipping_errors": {
+        "shipping_method": "Tá na roghanna loingseoireachta athraithe le haghaidh d’ordú. Déan athbhreithniú ar do rogha agus bain triail eile as.",
+        "shipping_method_not_available": "Rinneadh do chairt a nuashonrú agus ní féidir na míreanna a chuir tú leis a sheoladh chuig do sheoladh. Bain na míreanna chun d’ordú a chomhlánú.",
+        "shipping_method_not_available_generic": {
+          "one": "Ní féidir d’ordú a sheoladh chuig an seoladh roghnaithe. Déan athbhreithniú ar do sheoladh lena chinntiú go bhfuil sé ceart agus bain triail eile as, nó roghnaigh seoladh difriúil.",
+          "other": "Ní féidir roinnt míreanna i do chairt a sheoladh chuig an seoladh a chuir tú isteach. Déan athbhreithniú ar do sheoladh lena chinntiú go bhfuil sé ceart agus bain triail eile as, nó roghnaigh seoladh difriúil."
+        },
+        "shipping_method_not_available_due_to_unsatisfied_conditions": "Ní chomhlíonann míreanna sa chairt riachtanais praghsanna nó meáchain chun cáiliú le haghaidh loingseoireachta. Nuashonraigh do chairt agus bain triail eile as.",
+        "shipping_method_not_available_updated": {
+          "one": "Ní chuireann an mhír a chuir tú isteach ar do shuíomh. Bain amach é le seiceáil amach, nó déan teagmháil leis an siopa.",
+          "other": "Níl aon rud amháin nó níos mó a chuir tú leis an long le do shuíomh. Bain amach iad chun seiceáil amach, nó déan teagmháil leis an siopa."
+        },
+        "payment_method_not_supported": "Ní féidir leat an modh íocaíochta seo a úsáid le haghaidh %{country}. Bain úsáid as modh íocaíochta difriúil le do thoil chun an tír seo a chur chuig an tír seo.",
+        "empty_state": "Cuir isteach do sheoladh loingseoireachta chun na modhanna loingseoireachta atá ar fáil a fheiceáil.",
+        "title": "Níl an loingseoireacht ar fáil"
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Seiceáil Express",
+        "or": "Nó",
+        "or_pay_another_way": "Nó bealach eile a íoc",
+        "or_check_out_another_way": "Nó seiceáil ar bhealach eile",
+        "or_pay_with_credit_card": "Nó íoc le cárta creidmheasa",
+        "show_more_options": "Taispeáin níos mó roghanna",
+        "hide_more_options": "Folaigh níos mó roghanna"
+      },
+      "post_purchase": {
+        "page_title": "Iar-",
+        "title": "Iar-",
+        "escape_confirmation": "Tá tú íoctha as d'ordú.",
+        "escape_action": "Féach ar dhearbhú ordaithe ›",
+        "components": {
+          "close": "Críoch a chur le",
+          "expand": "Féach níos mó",
+          "processing": "Próiseáil…",
+          "submit": "Cuir isteach"
+        }
+      },
+      "processing": {
+        "redirecting_page_title": "Ag atreorú…",
+        "redirecting_title": "Ag atreorú…",
+        "redirecting_notice": "Fan agus muid ag atreorú thú.",
+        "redirecting_to_bank": "Ag atreorú chuig {{bank}}",
+        "complete_your_purchase_title": "Comhlánaigh do Cheannach",
+        "continue_to_payment_gateway_notice": "Lean ar aghaidh le híocaíocht chun do chuid faisnéise íocaíochta a chur leis.",
+        "continue_to_payment_gateway_button_label": "Lean ar aghaidh le híocaíocht",
+        "complete_your_purchase_title_error": "Ceartaigh d’fhaisnéis íocaíochta",
+        "continue_to_payment_gateway_notice_error": "Ní fhéadfaí do chuid faisnéise íocaíochta a fhíorú.",
+        "continue_to_payment_gateway_button_label_error": "Faisnéis íocaíochta a nuashonrú"
       }
     }
   }
