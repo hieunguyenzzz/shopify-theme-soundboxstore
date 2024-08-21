@@ -2498,8 +2498,88 @@
     "filters": {
       "availability": {
         "value": {
-          "in_stock": "I stoc"
+          "in_stock": "I stoc",
+          "out_of_stock": "As stoc"
         }
+      },
+      "boolean": {
+        "true_label": "Tá",
+        "false_label": "Níl"
+      }
+    },
+    "search": {
+      "error": "Bhí fadhb ann do thorthaí cuardaigh a luchtú. Athnuachan an leathanach le do thoil nó bain triail eile as níos déanaí.",
+      "sorting": {
+        "relevance": "Tábhacht",
+        "price_ascending": "Praghas, íseal go hard",
+        "price_descending": "Praghas, ard go híseal"
+      }
+    },
+    "page_titles": {
+      "blog_or_article_with_error": "Earráid - %{title}",
+      "products": "Táirgeacht",
+      "shopping_cart": "Do Chart Siopadóireachta",
+      "account": "Bheith den tuairim",
+      "create_account": "Cuntas a chruthú",
+      "reset_account": "Cuntas athshocraithe",
+      "addresses": "Seoltaí",
+      "order": "Éide %{name}",
+      "search": "Cíor",
+      "search_results": {
+        "one": "Cuardaigh: %{count} Toradh a fuarthas le haghaidh \"%{terms}\"",
+        "other": "Cuardaigh: %{count} Torthaí a fuarthas le haghaidh \"%{terms}\""
+      },
+      "collections": "Bailiú",
+      "not_found": "Níor aimsíodh 404",
+      "challenge": "Cuir in aghaidh",
+      "checkpoint": "Pointe"
+    },
+    "cart": {
+      "discounts_with_count": "%{count} Cuireadh lascainí i bhfeidhm"
+    },
+    "challenge": {
+      "message": "Chun leanúint ar aghaidh, cuir in iúl dúinn nach róbat thú.",
+      "error": "Ní raibh do fhreagra ceart, bain triail eile as.",
+      "submit_button_text": "Cuir isteach"
+    },
+    "forms_captcha": {
+      "badge_text": "Cosanta ag Hcaptcha",
+      "terms_link_text": "Téarma",
+      "privacy_link_text": "Príobháideachas"
+    },
+    "checkpoint": {
+      "message": "Réitigh Captcha le leanúint ar aghaidh",
+      "error": "Theip ar bhailíochtú captcha",
+      "submit_button_text": "Cuir isteach"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Réidh de ghnáth in 1 uair an chloig",
+        "two_hours": "De ghnáth réidh i 2 uair an chloig",
+        "four_hours": "Réidh de ghnáth i 4 uair an chloig",
+        "twenty_four_hours": "De ghnáth réidh i 24 uair an chloig",
+        "two_to_four_days": "De ghnáth réidh i 2-4 lá",
+        "five_or_more_days": "De ghnáth réidh i 5+ lá",
+        "zero_to_two_hours": "De ghnáth réidh i 2 uair an chloig",
+        "two_to_four_hours": "Réidh de ghnáth i 4 uair an chloig",
+        "immediately": "Réidh le haghaidh pickup anois",
+        "next_day": "Réidh le haghaidh pickup an lá dár gcionn"
+      }
+    }
+  },
+  "customer_accounts": {
+    "date": {
+      "range": "{{startDate}}–{{endDate}}",
+      "humanize": {
+        "lessThanOneYearAgo": "{{date}} i {{time}}",
+        "lessThanOneHourAgo": {
+          "one": "{{count}} Nóiméad ó shin",
+          "other": "{{count}} Miontuairiscí ó shin"
+        },
+        "lessThanOneMinuteAgo": "Díreach anois",
+        "lessThanOneWeekAgo": "{{weekday}} i {{time}}",
+        "yesterday": "Inné ag {{time}}",
+        "today": "Inniu ag {{time}}"
       }
     }
   }
