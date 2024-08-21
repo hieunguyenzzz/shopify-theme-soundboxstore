@@ -197,9 +197,77 @@
             "shop_cash_unsupported_subscriptions": "Ní thacaíonn Siop Cash le síntiúis.",
             "shop_cash_unsupported_shipping": "Ní thacaíonn Siop Cash le marsantas gan aon loingseoireacht.",
             "invalid_address_type": "Tá an cineál seoltaí curtha ar fáil neamhbhailí don mhodh íocaíochta seo.",
-            "missing_retail_attributions": "Teastaíonn tréithe miondíola le haghaidh íocaíochtaí cárta creidmheasa atá iontráilte de láimh."
+            "missing_retail_attributions": "Teastaíonn tréithe miondíola le haghaidh íocaíochtaí cárta creidmheasa atá iontráilte de láimh.",
+            "unexpected_retail_attributions": "Soláthraíodh tréithe miondíola gan choinne le haghaidh íocaíochta cártaí creidmheasa.",
+            "invalid_card_source": "Níl cead ag an seisiún seo foinse an chárta seo a úsáid.",
+            "wallet_content_missing": "Tá ábhar sparán ar iarraidh.",
+            "payment_instrument_not_found": "Níorbh fhéidir modh íocaíochta a fháil",
+            "unauthorized_capture_method": "Ní cheadaítear an modh gabhála íocaíochta a chumrú.",
+            "saved_payment_methods_not_allowed": "Ní cheadaítear modhanna íocaíochta sábhála.",
+            "saved_payment_methods_not_enabled": "Ní chumasaítear modhanna íocaíochta sábhála don siopa seo.",
+            "saved_payment_methods_cvv_verification_disabled": "Éilíonn an modh íocaíochta roghnaithe fíorú CVV nach bhfuil cumasaithe don siopa seo. Roghnaigh modh íocaíochta difriúil.",
+            "store_credit_not_enabled": "Ní chumasaítear creidmheas stórála don siopa seo.",
+            "store_credit_account_not_found": "Cuntas Creidmheasa Stóráil nár aimsíodh.",
+            "store_credit_account_mismatch": "Ní mheaitseálann Cuntas Creidmheasa Store an fhéiniúlacht ceannaitheora.",
+            "store_credit_mismatched_currency": "Ní mheaitseálann airgeadra an chuntais chreidmheasa stórála an t -airgeadra seiceála.",
+            "store_credit_insufficient_funds": "Níl dóthain airgid sa chuntas creidmheasa siopa.",
+            "store_credit_buying_gift_card": "Ní féidir leat creidmheas stórála a úsáid chun cárta bronntanais a cheannach.",
+            "gift_cards_not_allowed_for_b2b": "Ní cheadaítear cártaí bronntanais i siopaí B2B.",
+            "method_required": "Ní mór modh íocaíochta a mholadh.",
+            "paypal_express_address_invalid": "D'fhill PayPal seoladh neamhbhailí.",
+            "shop_cash_unsupported_currency": "Ní thacaíonn Siop Cash leis an airgeadra seo.",
+            "market_manager_blocks_wallet_payments": "Ní thacaíonn an bainisteoir margaidh leis an modh íocaíochta."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Ní ghlacann an siopa leideanna.",
+            "only_one_tip_line_allowed": "Ní thacaítear le línte leideanna iolracha.",
+            "tips_not_allowed_for_b2b": "Ní cheadaítear leideanna i siopaí B2B.",
+            "currency_change_reset": "Athsholáraíodh Leid mar gheall ar athrú airgeadra.",
+            "tips_not_allowed_for_deferred_purchase_options": "Ní thacaítear leideanna go fóill le haghaidh roghanna ceannaigh defered."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Níl an dréacht -ordú seo ann sa siopa reatha.",
+            "staff_member_not_exist": "Níl an fhoireann seo ann sa siopa reatha.",
+            "location_not_exist": "Níl an suíomh seo ann sa siopa reatha.",
+            "point_of_sale_device_not_exist": "Níl an gléas díola seo ann sa siopa reatha.",
+            "unresolvable_target_merchandise_lines": "Ní féidir na tréithe díolachán atá beartaithe a dhéanamh gan a bheith dodhéanta mar gheall ar an gcomhthéacs idirbheartaíochta reatha."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "Ba chóir go mbeadh neamh-shoshannta ag togra do cheannaitheora.",
+            "invalid_signature": "An síniú do {{target_terms}} neamhbhailí."
+          },
+          "inventory": {
+            "missing_quantity_value": "Tá an réimse cainníochta ar iarraidh i línte fardail an cheannaitheora.",
+            "changing_behavior_not_allowed": "Níl cead ag an gcliant seo iompar fardail a athrú.",
+            "only_one_inventory_behavior_allowed": "Faoi láthair ní cheadaítear ach iompar fardail amháin in aghaidh an tseiceáil."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Ní cheadaítear dualgais a dhiúltú don tseiceáil seo."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "Ní cheadaítear sannadh miondíola don tseiceáil seo.",
+            "retail_attribution_required": "Teastaíonn sannadh miondíola don tseiceáil seo."
+          },
+          "captcha": {
+            "metadata_missing": "Tá gá le captcha a chomhlánú don tseiceáil seo.",
+            "metadata_mismatch": "Ar choinníoll nach bhfuil soláthraí agus cineál Captcha ag teacht leis na luachanna ionchais.",
+            "token_missing": "Ní mór comhartha Captcha a sholáthar chun an tseiceáil seo a chomhlánú.",
+            "job_enqueue_failed": "Theip ar an bpost bailíochtaithe Captcha a bheith faoi bhrú.",
+            "job_already_queued": "Tá bailíochtú Captcha ciúáilte cheana féin don chomhartha Captcha seo.",
+            "token_expired": "Tá an comhartha Captcha curtha in éag. Comhlánaigh Captcha nua le leanúint ar aghaidh le seic.",
+            "token_invalid": "Bhí an comhartha Captcha a cuireadh ar fáil neamhbhailí. Comhlánaigh Captcha nua le leanúint ar aghaidh le seic.",
+            "token_not_valid_for_session": "Ní féidir an captcha a chuirtear ar fáil a úsáid leis an tseiceáil seo."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Caithfidh an méid a fhaightear a bheith in airgeadra an siopa."
+          },
+          "checkout_source": {
+            "revoked": "Níl an tseiceáil seo ar fáil a thuilleadh."
           }
-        }
+        },
+        "full_price": "Praghas iomlán:",
+        "title": "Seiceáil - {{shopName}}",
+        "full_title": "{{pageTitle}} - {{shopName}} - Seiceáil"
       }
     }
   }
