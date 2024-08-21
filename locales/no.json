@@ -2306,7 +2306,8 @@
           "unavailable": {
             "title": "{{walletName}} ikke tilgjengelig",
             "description": "{{walletName}} var ikke tilgjengelig. Bruk en annen betalingsmetode eller prøv igjen senere.",
-            "instructions": "Det var et problem med {{walletName}}. Gå tilbake til butikken for å prøve igjen eller sjekk ut en annen måte."
+            "instructions": "Det var et problem med {{walletName}}. Gå tilbake til butikken for å prøve igjen eller sjekk ut en annen måte.",
+            "unavailable_for_country": "{{walletName}} er ikke tilgjengelig i {{countryName}}. Velg en annen betalingsmetode for å fullføre kjøpet"
           },
           "generic": "Det var et problem med {{walletName}}. Prøv igjen eller bruk en annen betalingsmetode.",
           "terminal": "Det var et problem med {{walletName}}. Bruk en annen betalingsmetode.",
@@ -2317,10 +2318,12 @@
           },
           "unsupported": {
             "address": "Selgeren kan ikke levere til denne adressen",
-            "postal_code": "Dette stedet støttes ikke"
+            "postal_code": "Dette stedet støttes ikke",
+            "wallet_is_unavailable": "{{walletName}} Kan ikke brukes med denne adressen. Velg en annen adresse eller lukk {{walletName}} For å fullføre kjøpet"
           },
           "outdated": {
-            "shipping_method": "Fraktalternativene har endret seg for bestillingen din. Gjennomgå valget ditt."
+            "shipping_method": "Fraktalternativene har endret seg for bestillingen din. Gjennomgå valget ditt.",
+            "payment_terms": "Betalingsbetingelsene har endret seg. Vennligst se på bestillingen din"
           },
           "invalid": {
             "shipping_address": "Skriv inn en gyldig fraktadresse",
@@ -2329,7 +2332,9 @@
             "email": "Skriv inn en gyldig e -post",
             "zone": "Skriv inn en gyldig stat \/ provins",
             "postal_code": "Skriv inn et gyldig glidelås \/ postnummer",
-            "reduction_code": "Skriv inn en gyldig rabattkode eller gavekort"
+            "reduction_code": "Skriv inn en gyldig rabattkode eller gavekort",
+            "phone": "Skriv inn et gyldig telefonnummer",
+            "billing_must_match_shipping": "Må samsvare med fraktadresse"
           },
           "missing": {
             "first_name": "Skriv inn et fornavn",
@@ -2347,8 +2352,14 @@
             "postal_code_contains_emoji": "Slett emoji fra postnummeret ditt",
             "first_name_too_long": "Fornavn inneholder for mange bokstaver",
             "last_name_too_long": "Etternavn inneholder for mange bokstaver"
-          }
-        }
+          },
+          "unavailable_terminal": {
+            "instructions": "{{walletName}} er for øyeblikket ikke tilgjengelig for bestillingen din. For å fortsette kjøpet, velg en annen kassemetode."
+          },
+          "discount_code": "Kan ikke bruke denne rabattkoden. Vennligst gå gjennom koden og prøv igjen.",
+          "select_different_shipping_address_to_resolve_errors": "Fraktadressen din er ugyldig. Velg en annen adresse eller bruk en ny."
+        },
+        "return_to_checkout": "Gå tilbake til kassen"
       },
       "note": {
         "length_exceeds_maximum": "Reduser størrelsen på lappen til 5000 eller færre tegn."
