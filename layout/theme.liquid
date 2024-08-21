@@ -18,9 +18,11 @@
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
+  data-title="{{ page_title }}"
 >
   <head>
-    
+    {% render 'yoast-seo' %}
+
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
 
