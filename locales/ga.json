@@ -2345,9 +2345,81 @@
             "link_text": "Déan iniúchadh ar na heagráin is déanaí"
           },
           "store_owner": {
-            "header": "An tusa úinéir an siopa?"
+            "header": "An tusa úinéir an siopa?",
+            "caption": "An bhfuil deacracht agat dul isteach i do stór? Bain triail as an %{forgot_your_store_link} Gné. Más mian leat do theagmháil siopa a athghníomhachtú %{shopify_support_link}.",
+            "shopify_support_link_text": "Tacaíocht Shopify"
           }
         }
+      }
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Earráid athshocraithe pasfhocal",
+        "no_account_found": "Níor aimsíodh aon chuntas leis an ríomhphost sin.",
+        "invalid_credentials": "Ríomhphost mícheart nó pasfhocal.",
+        "denylisted_reset_password": "Ní fhéadfaí teacht ar do chuntas toisc nach bhfuil an focal faire reatha slán. Gheobhaidh tú ríomhphost chun do phasfhocal a nuashonrú.",
+        "signup_disabled": "Tá cruthú cuntas custaiméirí faoi mhíchumas."
+      },
+      "address": {
+        "updated": "Seoladh nuashonraithe go rathúil.",
+        "error_updating": "Seoladh Nuashonraithe Earráide",
+        "created": "Seoladh a cruthaíodh go rathúil",
+        "error_creating": "Earráid ag cruthú seoladh.",
+        "deleted": "Seoladh scriosta go rathúil",
+        "error_deleting": "Earráid a scriosadh seoladh."
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Cuir cuireadh leis %{delta}",
+          "increment_item": "Cuir cuireadh leis %{delta}",
+          "decrement_item": "Aistrithe %{delta} de %{total}",
+          "decrement_fulfilled_line_item": "Ar ais %{delta} de %{total}",
+          "decrement_return_line_item": "Aistrithe %{delta} Ó Tuairisceán"
+        }
+      },
+      "order": {
+        "not_available": "Níl an t -ordú seo ar fáil",
+        "financial_status": {
+          "authorized": "Údaraithe",
+          "pending": "Ar feitheamh",
+          "paid": "Sa",
+          "unpaid": "Gan phá",
+          "voided": "Arna dhíriú",
+          "partially_paid": "Íoctha go páirteach",
+          "partially_refunded": "Aisíoctha go páirteach",
+          "refunded": "Aisíoc",
+          "expired": "Imithe in éag"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Lánsásta",
+          "complete": "Iomlán",
+          "partial": "Páirteach",
+          "unfulfilled": "Neamh -chomhlíonta",
+          "restocked": "Athstocáilte"
+        },
+        "transaction_status": {
+          "success": "Rath",
+          "pending": "Ar feitheamh",
+          "failure": "Spreasán",
+          "error": "Earráid"
+        },
+        "cancel_reason": {
+          "declined": "Dhiúltaigh íocaíocht",
+          "inventory": "Míreanna nach bhfuil ar fáil",
+          "fraud": "Ordú calaoiseach",
+          "customer": "D'athraigh an custaiméir\/an t -ordú a cuireadh ar ceal",
+          "staff": "Earráid foirne",
+          "other": "Nach iad"
+        },
+        "cash_on_delivery": "Airgead Tirim ar Sheachadadh (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "Ní féidir leat ach cur leis %{count} %{name} go dtí an cart.",
+        "too_many_items_in_cart": "Ní féidir leat níos mó a chur leis %{name} go dtí an cart.",
+        "less_than_minimum": "Tá a laghad ag an mír seo %{min}.",
+        "more_than_maximum": "Tá uasmhéid de %{max}.",
+        "not_respect_step": "Ní féidir leat ach an mhír seo a chur le hincrimintí de %{step}.",
+        "all_items_in_cart": "Uile %{count} %{name} atá i do chairt."
       }
     }
   }
