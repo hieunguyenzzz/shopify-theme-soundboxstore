@@ -104,7 +104,7 @@
           required
           placeholder="{{  settings.quote_full_name }}"
           class="input-full input"
-          name="contact[{{  settings.quote_full_name }}]"
+          name="contact[Full name]"
           autocapitalize="words"
           value=""
         >
@@ -136,7 +136,7 @@
           required
           id="ContactFormPhone-{{ section.id }}"
           class="input-full input"
-          name="contact[{{  settings.quote_phone_number }}]"
+          name="contact[Phone number]"
           placeholder="{{  settings.quote_phone_number }}"
           pattern="[0-9\-]*"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
@@ -159,7 +159,7 @@
           required
           placeholder="{{  settings.quote_company_name }}"
           class="input-full input"
-          name="contact[{{ settings.quote_company_name }}]"
+          name="contact[Company name]"
           autocapitalize="words"
           value=""
         >
@@ -172,7 +172,7 @@
           required
           placeholder="{{ settings.quote_country }}"
           class="input-full input"
-          name="contact[{{ settings.quote_country }}]"
+          name="contact[Country/Region]"
           style="    appearance: auto;"
           value="{{ localization.country.iso_code }}"
         >
