@@ -189,8 +189,9 @@
        }
    }
 {% endstyle %}
-
-{% assign collection = section.settings.collection | default: collections['office-pods'] %}
+{% unless collection %}
+  {% assign collection = section.settings.collection | default: collections['office-pods'] %}
+{% endunless %}
 {% assign title = section.settings.title | default: collection.metafields.custom.card_title.value %}
 {% assign description = section.settings.subheading_richtext
   | default: collection.metafields.custom.card_description.value
