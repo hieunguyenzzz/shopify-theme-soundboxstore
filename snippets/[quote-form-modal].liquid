@@ -289,8 +289,11 @@
                     </svg>
                   </span>
                 </div>
+                {%- capture phonenumber -%}
+                  {%- render '[phone-number]' -%}
+                {%- endcapture -%}
                 <div class="">
-                  <a class="quote-form-card-title" href="tel: +44 (0) 20 4586 3800">+44 (0) 20 4586 3800</a>
+                  <a class="quote-form-card-title" href="tel: {{ phonenumber }}">{{ phonenumber }}</a>
                   <div class="quote-form-card-subtitle">M–F, 9am–5pm PT</div>
                 </div>
               </div>
