@@ -221,7 +221,11 @@
                   </span>
                 </div>
                 <div class="">
-                  <a class="col_1-title" href="tel: +44 (0) 20 4586 3800">+44 (0) 20 4586 3800</a>
+                    {%- capture phonenumber -%}
+                  {%- render '[phone-number]' -%}
+                {%- endcapture -%}
+      
+                  <a class="col_1-title" href="tel: {{ phonenumber }}">{{ phonenumber }}</a>
                   <div class="col_1-subtitle">M–F, 9am–5pm PT</div>
                 </div>
               </div>
