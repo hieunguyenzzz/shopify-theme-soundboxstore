@@ -3243,9 +3243,85 @@
             "title_with_date": "Íocaíocht dlite {{date}}",
             "title_due_on_receipt": "Íocaíocht nach bhfuil dlite fós",
             "title_due_on_fulfillment": "Íocaíocht atá dlite ar chomhlíonadh",
-            "description_overdue": "Tá d’íocaíocht déanach."
-          }
+            "description_overdue": "Tá d’íocaíocht déanach.",
+            "description_partially_paid": "Íocadh an t -ordú seo go páirteach. Tá cothromaíocht eile agat.",
+            "description_authorized": "Gearrfar do mhodh íocaíochta ar an dáta dlite, nó is féidir leat íoc anois.",
+            "description_waiting_for_manual_payment": "Tá íocaíocht ar feitheamh ag an ordú seo. Déanfar an t -iarmhéid a nuashonrú nuair a fhaightear íocaíocht.",
+            "description_due_on_receipt": "Gheobhaidh tú sonrasc nuair a bheidh an íocaíocht dlite.",
+            "description_due_on_receipt_partially_paid": "Íocadh an t -ordú seo go páirteach. Tá cothromaíocht eile agat. Gheobhaidh tú sonrasc nuair a bheidh an íocaíocht dlite.",
+            "description_due_on_fulfillment": "Tá an íocaíocht dlite nuair a chomhlíontar na hítimí go léir san ordú seo.",
+            "description_due_on_fulfillment_partially_paid": "Íocadh an t -ordú seo go páirteach. Tá cothromaíocht eile agat. Tá an íocaíocht dlite nuair a chomhlíontar na hítimí go léir san ordú seo."
+          },
+          "draft": {
+            "description": "Cinntear sonraí íocaíochta nuair a dheimhnítear an t -ordú.",
+            "title": "Íocaíocht nach bhfuil dlite fós",
+            "in_review": {
+              "description": "Cinntear sonraí íocaíochta nuair a dheimhnítear an t -ordú.",
+              "title": "Íocaíocht nach bhfuil dlite fós"
+            },
+            "submitted": {
+              "description": "Cuir an íocaíocht isteach chun an t -ordú seo a dheimhniú.",
+              "title": "Íoc le Deimhniú"
+            }
+          },
+          "paid": {
+            "title": "Sa",
+            "title_with_date": "Sa {{date}}",
+            "description": "Tá d’ordú íoctha go hiomlán."
+          },
+          "refund": {
+            "title": "Aisíoc",
+            "title_with_date": "Aisíoc {{date}}",
+            "description_full_refund": "Fuair ​​tú aisíocaíocht iomlán don ordú seo.",
+            "description_single_refund": "Fuair ​​tú aisíocaíocht pháirteach don ordú seo.",
+            "description_multiple_refunds": "Fuair ​​tú aisíocaíochtaí páirteach don ordú seo."
+          },
+          "canceled": {
+            "title": "Íocaíocht curtha ar ceal",
+            "description": "Níor gearradh ort."
+          },
+          "pay_now": "Íoc Anois",
+          "pay_now_accessibility_label": "Íoc anois as ordú {{orderName}}",
+          "title": "Stádas íocaíochta"
+        },
+        "order_timeline": {
+          "expand_events_label": "Taispeáin sonraí",
+          "expand_events_accessibility_label": "Taispeáin sonraí dréacht -ordaithe",
+          "hide_events_label": "Sonraí Folaigh",
+          "hide_events_accessibility_label": "Folaigh sonraí dréacht -ordaithe"
+        },
+        "subtitle": "Arna chur isteach {{date}}",
+        "title": "Éide {{name}}"
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "Ní bheidh an modh íocaíochta seo ar fáil a thuilleadh le haghaidh ceannacháin amach anseo ón suíomh seo.",
+          "description_with_replacement": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe don suíomh seo. Cuir modh íocaíochta malartach in ionad é chun leanúint ar aghaidh ag fáil orduithe atá le teacht."
+        },
+        "payment_details": {
+          "order_label": "Éide {{name}}",
+          "draft_label": "Dréacht -ordú {{name}}"
         }
+      },
+      "purchase_order_number": {
+        "add_accessibility_label": "Cuir uimhir PO leis",
+        "add_modal_title": "Cuir uimhir PO leis",
+        "cancel": "Cealaigh",
+        "close_modal_accessibility_label": "Dún uimhir po modal",
+        "discard": "Ar leataobh",
+        "discard_changes_modal_title": "Athruithe a scriosadh?",
+        "edit_accessibility_label": "Cuir uimhir PO in eagar",
+        "edit_modal_title": "Cuir uimhir PO in eagar",
+        "empty_state": "Aon uimhir PO",
+        "modal_po_number_input_label": "PO Uimhir",
+        "modal_po_number_input_max_length_error": "Tá uasmhéid de uimhreacha po {{maxLength}} carachtair.",
+        "save": "Spáráil",
+        "title": "Po #{{poNumber}}"
+      }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "Bhí fadhb ann an seoladh seo a scriosadh. Bain triail eile as nó déan an leathanach a athnuachan."
       }
     }
   }
