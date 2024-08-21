@@ -224,8 +224,8 @@
         type="image/png"
       >
     {%- endif -%}
-    <title>{{ page_title }}</title>
-    <!-- {%- render 'seo-title', page_title: page_title -%} -->
+
+    {%- render 'seo-title', page_title: page_title -%}
 
     {%- if page_description -%}
       {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
