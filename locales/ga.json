@@ -3469,8 +3469,74 @@
       },
       "card_fields": {
         "card_number_label": "Uimhir chárta",
-        "card_number_placeholder": "Uimhir chárta"
+        "card_number_placeholder": "Uimhir chárta",
+        "name_on_card_label": "Ainm ar chárta",
+        "name_on_card_placeholder": "Ainm ar chárta",
+        "card_expiry_label": "Dáta éagtha (mm \/ yy)",
+        "card_expiry_placeholder": "Dáta éagtha (mm \/ yy)",
+        "card_verification_value_label": "Cód slándála",
+        "card_verification_value_placeholder": "Cód slándála",
+        "card_start_label": "Dáta Eisiúna (mm \/ yy)",
+        "card_start_placeholder": "Dáta Eisiúna (mm \/ yy)",
+        "tooltip": {
+          "tooltip_accessibility_label": "Tuilleadh eolais",
+          "card_verification_value_explanation_amex": "Cód slándála 4-dhigit ar aghaidh do chárta",
+          "card_verification_value_explanation_other": "Cód slándála 3-dhigit ar chúl do chárta",
+          "card_verification_value_explanation": "Cód slándála 3-dhigit a fhaightear de ghnáth ar chúl do chárta. Tá cód 4 dhigit ag American Express Cártaí atá suite ar an taobh tosaigh.",
+          "card_security_notice": "Tá gach idirbheart slán agus criptithe."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "Iontráil d’ainm go díreach mar atá sé scríofa ar do chárta",
+          "credit_card_number_invalid": "Iontráil uimhir chárta bhailí",
+          "credit_card_expiry_invalid": "Iontráil dáta bailí cártaí bailí",
+          "credit_card_verification_value_blank": "Iontráil an CVV nó an cód slándála ar do chárta"
+        }
+      },
+      "payment_delete": {
+        "title": "Scrios an modh íocaíochta",
+        "description_without_replacement": "Ní bheidh an modh íocaíochta seo ar fáil a thuilleadh le haghaidh ceannacháin amach anseo.",
+        "description_with_replacement": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe. Is féidir leat modh íocaíochta eile a athsholáthar go roghnach chun leanúint ar aghaidh ag fáil orduithe atá le teacht.",
+        "warning_message_with_replacement": {
+          "with_pending_orders_and_subscriptions": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe. Mura roghnaíonn tú modh íocaíochta malartach, gearrfar an modh íocaíochta seo ar aon iarmhéideanna gan íoc ar orduithe atá ann cheana féin. Trí mhodh íocaíochta malartach a roghnú, beidh tú in ann orduithe síntiús atá le teacht a fháil gan briseadh.",
+          "with_pending_orders": "Bainfidh an modh íocaíochta seo é a scriosadh as do chuntas agus ní bheidh sé ar fáil a thuilleadh le haghaidh ceannacháin amach anseo. Mura roghnaíonn tú modh íocaíochta malartach, gearrfar é fós as aon iarmhéideanna gan íoc ar orduithe atá ann cheana féin.",
+          "with_subscriptions": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe. Cuir modh íocaíochta malartach in ionad é chun leanúint ar aghaidh ag fáil orduithe atá le teacht."
+        },
+        "warning_message_without_replacement": {
+          "with_pending_orders_and_subscriptions": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe. Gearrfar an modh íocaíochta seo fós as aon iarmhéideanna gan íoc ar orduithe atá ann cheana féin, ach ní bhfaighidh tú orduithe síntiús atá le teacht. Cuir modh íocaíochta malartach leis chun leanúint ar aghaidh ag fáil orduithe síntiúis.",
+          "with_pending_orders": "Bainfidh an modh íocaíochta seo é a scriosadh as do chuntas agus ní bheidh sé ar fáil a thuilleadh le haghaidh ceannacháin amach anseo. Gearrfar táille air fós as aon iarmhéideanna gan íoc ar orduithe atá ann cheana féin.",
+          "with_subscriptions": "Beidh tionchar ag scriosadh an mhodha íocaíochta seo ar íocaíochtaí réamhúdaraithe. Cuir modh íocaíochta malartach leis chun leanúint ar aghaidh ag fáil orduithe atá le teacht."
+        },
+        "payment_method_selector_placeholder": "Roghnaigh modh íocaíochta athsholáthair (roghnach)",
+        "payment_method_selector_no_alternative_payment": "Gan aon mhodh athsholáthair",
+        "replace_method_with_new_method_description": "An ... s'agat {{currentPaymentMethodName}} scriosfar do {{newPaymentMethodName}}.",
+        "error_when_deleting": "Gabhaimid leithscéal ach chuaigh rud éigin mícheart agus ní rabhamar in ann an modh íocaíochta seo a scriosadh. Bain triail eile as níos déanaí nó déan an leathanach a athnuachan.",
+        "delete_and_replace_button": "Scrios agus athsholáthar",
+        "delete_and_replace_button_accessibility_label": "Scrios amach {{currentPaymentMethodName}} agus cuir in ionad {{newPaymentMethodName}}.",
+        "deleted_successfully": "Scriosadh an modh íocaíochta go rathúil.",
+        "loading_available_payment_methods_accessibility_label": "Modhanna íocaíochta atá ar fáil a luchtú"
+      },
+      "add_payment_method": {
+        "title": "Cuir modh íocaíochta leis",
+        "payment_method_added_confirmation": "Modh íocaíochta curtha leis",
+        "billing_address": {
+          "title": "Seoladh billeála",
+          "add_billing_address_button": "Cuir nua leis",
+          "add_billing_address_button_accessibility_label": "Cuir seoladh billeála nua leis",
+          "choose_billing_address_from_list_button": "Roghnaigh ón liosta",
+          "choose_billing_address_from_list_button_accessibility_label": "Roghnaigh seoladh billeála ón liosta",
+          "missing_billing_address_error_message": "Sonraigh seoladh billeála le do thoil",
+          "default_checkbox": "Socraigh mar mhodh íocaíochta réamhshocraithe"
+        }
       }
+    },
+    "payment_method_brands": {
+      "visa": "Víosa",
+      "mastercard": "Máistirchárta",
+      "americanexpress": "American Express",
+      "discover": "Aimsigh",
+      "dinersclub": "Club diners",
+      "jcb": "An CP IT",
+      "elo": "Ean"
     }
   }
 }
