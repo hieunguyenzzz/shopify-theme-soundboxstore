@@ -232,7 +232,7 @@
     <!--
       {% if template.name != 'index' %}
         <title>
-          {{- page_title -}}{{ ' | ' }}{{- shop.name -}}
+          {{ page_title }}{{ ' | ' }}{{ shop.name }}
         </title>
       {% else %}
         {%- render 'seo-title', page_title: page_title -%}
