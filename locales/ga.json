@@ -776,7 +776,81 @@
         "estimated_time": "Measta %{time}",
         "estimated_time_range": "Measta %{min_time}–%{max_time}",
         "shipping_line_phone_label": "Uimhir Fón Póca (Riachtanach)",
-        "shipping_line_phone": "Féadfaidh do theachtaire an uimhir seo a úsáid chun teagmháil a dhéanamh leat."
+        "shipping_line_phone": "Féadfaidh do theachtaire an uimhir seo a úsáid chun teagmháil a dhéanamh leat.",
+        "shipping_line_delivery_phone_label": "Uimhir fóin phóca",
+        "shipping_line_delivery_phone": "D'fhéadfaí teagmháil a dhéanamh leat le nuashonruithe ar do sheachadadh.",
+        "optional_shipping_line_delivery_instructions_label": "Treoracha Seachadta (Roghnach)",
+        "shipping_line_delivery_instructions": "Cuir isteach an fhaisnéis riachtanach mar chóid dorais nó treoracha fágála.",
+        "other_method": {
+          "zero": "Níl aon mhodhanna eile ar fáil",
+          "one": "%{count} Modh eile ar fáil ag",
+          "other": "%{count} modhanna eile atá ar fáil ag tosú ag"
+        },
+        "shipping_rate_discounted_amount": "Ba é: %{original_amount}. Anois: %{amount}",
+        "local_delivery": "Seachadadh áitiúil",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "faoi %{count} .",
+            "other": "faoi %{count} seachadadh"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "Gach Lá",
+              "other": "gach uile %{count} lá ar"
+            },
+            "week": {
+              "one": "Gach seachtain",
+              "other": "gach uile %{count} weeks"
+            },
+            "month": {
+              "one": "Gach mí",
+              "other": "gach uile %{count} mí"
+            },
+            "year": {
+              "one": "Gach bliain",
+              "other": "gach uile %{count} cinn"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} in aghaidh an tseachadta",
+          "prepaid_shipping_price_label": "%{shipping_price} in aghaidh an tseachadta x %{delivery_interval_count}",
+          "initial_order_discounted": "An chéad chostas loingseoireachta %{discounted_shipping_cost}, ansin %{frequency_description}",
+          "prepaid_initial_order_discounted": "An chéad chostas loingseoireachta %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "An chéad chostas loingseoireachta %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "An chéad chostas loingseoireachta %{discounted_shipping_price} %{prepaid_delivery_frequency}, ansin %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "An chéad chostas loingseoireachta %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), ansin %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "San san áireamh",
+          "recurring_order_shipping_price": "ina dhiaidh sin ina dhiaidh %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "An chéad ordú san áireamh, agus ina dhiaidh sin %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} in aghaidh an tseachadta), agus ina dhiaidh sin %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "An chéad ordú saor in aisce",
+            "other": "Chun tosaigh %{count} Orduithe saor in aisce"
+          },
+          "free_for_first_n_order": {
+            "one": "Don chéad ordú",
+            "other": "Ar dtús %{count} orduithe"
+          }
+        },
+        "one_time_purchase_shipping": "Loingseoireacht aon-uaire",
+        "duties_and_taxes_title": "Dualgais agus cánacha",
+        "shipping_information_required_notice": "Teastaíonn faisnéis loingseoireachta. {{link}}.",
+        "shipping_information_redirect_link": "Iontráil do chuid faisnéise anseo",
+        "loading_progressive_rates": "Ag cuardach níos mó rátaí…",
+        "no_other_methods_available": "Níl aon mhodhanna eile ar fáil",
+        "duties_and_taxes_options": {
+          "ddu_title": "Íoc ar sheachadadh",
+          "ddu_caption": "Féadfaidh táillí breise a bheith i bhfeidhm",
+          "ddp_title": "Íoc Anois",
+          "ddp_caption": "Gan aon táillí breise ar an seachadadh"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} is %{current}"
+        },
+        "shipping_used_as_billing_notice": "Bainfear úsáid as seo freisin mar do sheoladh billeála don ordú seo.",
+        "address_update": "Seoladh nuashonraithe",
+        "shipping_address_title": "Long go"
       }
     }
   }
