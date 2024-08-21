@@ -224,8 +224,15 @@
         type="image/png"
       >
     {%- endif -%}
-
-    {%- render 'seo-title', page_title: page_title -%}
+    {% if template.name != 'index' %}
+      <title>
+        {{ page_title }}
+        |
+        {{ shop.name }}
+      </title>
+    {% else %}
+      {%- render 'seo-title', page_title: page_title -%}
+    {% endif %}
 
     {%- if page_description -%}
       {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
