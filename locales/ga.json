@@ -2419,7 +2419,87 @@
         "less_than_minimum": "Tá a laghad ag an mír seo %{min}.",
         "more_than_maximum": "Tá uasmhéid de %{max}.",
         "not_respect_step": "Ní féidir leat ach an mhír seo a chur le hincrimintí de %{step}.",
-        "all_items_in_cart": "Uile %{count} %{name} atá i do chairt."
+        "all_items_in_cart": "Uile %{count} %{name} atá i do chairt.",
+        "empty_update": "Ní féidir cart folamh a nuashonrú",
+        "missing_parameters": "Gan aon ID bailí nó paraiméadar líne",
+        "generic_error": "Earráid Cart",
+        "product_not_available": "Níl an táirge ar fáil",
+        "too_many_line_items_error": "Ní féidir níos mó ná a bheith i do chairt %{max} Míreanna.",
+        "link_expired": "Nasc imithe in éag",
+        "link_no_longer_exists": "Níl nasc ann a thuilleadh.",
+        "stock_problems_html": "Níl aon rud amháin nó níos mó ar fáil a thuilleadh. Táimid tar éis a chur ar fáil <a href='%{link}'>Cart Nuashonraithe<\/a>.",
+        "changed": "D'athraigh cart",
+        "items_changed": "Tá athrú tagtha ar mhír amháin nó níos mó.",
+        "product_sold_out": "An táirge '%{name}'Díoltar amach cheana féin.",
+        "variant_not_found": "Ní féidir leagan a fháil",
+        "variant_requires_selling_plan": "Ní féidir athraitheach a cheannach ach le plean díola.",
+        "selling_plan_not_available_for_company_locations": "Níl ach ceannach aon-uaire ar fáil le haghaidh orduithe B2B",
+        "digital_product_not_available_for_company_locations": "Ní féidir an mhír seo a chur le hordú B2B",
+        "selling_plan_not_applicable": "Ní féidir plean díolacháin a chur i bhfeidhm ar athraitheach",
+        "shipping_address_not_required": "Ní éilíonn an cart seo loingseoireacht",
+        "shipping_address_invalid": "Bhí fadhb ann a ríomh do rátaí loingseoireachta. Lean ort ag seiceáil chun ráta loingseoireachta a roghnú sula gcomhlánaíonn tú d'ordú.",
+        "bundle_requires_components": "An táirge bundle '%{name}'Ní féidir é a chur leis an gcart.",
+        "gift_card_with_components_not_supported": "An táirge bundle '%{name}'Ní féidir é a chur leis an gcart.",
+        "gift_card_price_must_be_greater_than_zero": "An táirge bundle '%{name}'Ní féidir é a chur leis an gcart.",
+        "view_lines_limit_reached": "Caithfidh línte a bheith níos lú ná %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Tharla earráid i do chairt."
+        }
+      },
+      "storefront": {
+        "invalid_password": "Pasfhocal mícheart, bain triail eile as."
+      },
+      "tags": {
+        "add_articles": "Cuardach caol ar ailt a bhfuil clib acu freisin %{tag}",
+        "add_products": "Roghnú cúng le clib mheaitseála táirgí %{tag}",
+        "remove_articles": "Cuardach a leathnú ar ailt nach bhfuil clibeáilte orthu %{tag}",
+        "remove_products": "Bain an clib %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Go raibh maith agat as suibscríobh a dhéanamh ar ár liosta postála.",
+        "disclaimer": "Is féidir leat díliostáil ag am ar bith.",
+        "unsubscribe": "Díliostáil"
+      },
+      "unsubscribed": {
+        "confirmation": "Tá tú díliostáil ónár liosta postála.",
+        "disclaimer": "Ní bhfaighidh tú níos mó nuashonruithe margaíochta uainn. Is féidir leat suibscríobh arís ag am ar bith.",
+        "preview": "Tá tú ag réamhamharc ar an méid a fheicfidh custaiméirí nuair a dhíliostáil siad."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Roghnaigh tú isteach chun rianú oscailte a chur ar ríomhphost.<\/b>",
+          "visibility": "Tuairisceofar rátaí oscailte ríomhphoist gan ainm. Ní fheicfimid ach an bhfuil ríomhphost oscailte agat mar chuid de ráta oscailte ríomhphoist comhiomlánaithe.",
+          "opt_out_html": "Is féidir leat <a style='text-decoration:underline;' href='%{link}'>diúltaigh<\/a> de rianú oscailte ríomhphoist mura bhfuil tú ag iarraidh an fhaisnéis seo a roinnt.",
+          "preview_bar": "Tá tú ag réamhamharc ar an méid a fheicfidh custaiméirí nuair a roghnaíonn siad isteach ar r -phost a rianú."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Roghnaigh tú rianú oscailte ríomhphoist.<\/b>",
+          "visibility": "Ní fheicfimid an bhfuil ár ríomhphoist oscailte agat.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Roghnaigh i<\/a> Chun rianú oscailte a chur ar ríomhphost.",
+          "preview_bar": "Tá tú ag réamhamharc ar an méid a fheicfidh custaiméirí nuair a roghnaíonn siad rianú oscailte ríomhphoist."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Ní dhéanaimid rianú ar aon ríomhphost a thuilleadh.<\/b>",
+          "privacy_policy": "Tar éis an ríomhphost seo a sheoladh, rinneamar nuashonrú ar ár bpolasaí príobháideachais agus ní osclaíonn muid a thuilleadh."
+        },
+        "track": {
+          "status_html": "<b>Tuairiscítear rianú oscailte ríomhphoist.<\/b>",
+          "visibility": "Ní fheicfimid ach an bhfuil an ríomhphost oscailte agat, mar chuid den ráta oscailte ríomhphoist iomlán."
+        },
+        "updated_policy": {
+          "status_html": "<b>Tuairiscítear rianú oscailte ríomhphoist.<\/b>",
+          "visibility": "Táimid tar éis ár mbeartas a nuashonrú, agus anois osclaíonn r -phoist rian. Tuairisceofar rátaí oscailte ríomhphoist gan ainm. Ní fheicfimid ach an bhfuil ríomhphost oscailte agat mar chuid den ráta oscailte ríomhphoist iomlán.",
+          "opt_out_html": "Mura bhfuil tú ag iarraidh an fhaisnéis seo a roinnt, is féidir leat <a style='text-decoration:underline;' href='%{link}'>díliostáil.<\/a>"
+        }
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "I stoc"
+        }
       }
     }
   }
