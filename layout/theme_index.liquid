@@ -1,6 +1,6 @@
 {%- comment -%}
-This file has been modified by the Yoast SEO for Shopify app.
-You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+  This file has been modified by the Yoast SEO for Shopify app.
+  You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
 {%- endcomment -%}
 <!doctype html>
 <html
@@ -8,78 +8,86 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   lang="{{ request.locale.iso_code }}"
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
+  data-title="{{ page_title }}"
 >
   <head>
-  {% render 'pre-header' %}
-  {% render 'yett' %}
+    {% render 'pre-header' %}
+    {% render 'yett' %}
 
-<script>
-    (function(w,d,t,r,u)
-    {
-        var f,n,i;
-        w[u]=w[u]||[],f=function()
-        {
-            var o={ti:"187133965", enableAutoSpaTracking: true};
-            o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
-        },
-        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
-        {
-            var s=this.readyState;
-            s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
-        },
-        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
-    })
-    (window,document,"script","//bat.bing.com/bat.js","uetq");
-</script>
-    
+    <script>
+      (function(w,d,t,r,u)
+      {
+          var f,n,i;
+          w[u]=w[u]||[],f=function()
+          {
+              var o={ti:"187133965", enableAutoSpaTracking: true};
+              o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+          },
+          n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+          {
+              var s=this.readyState;
+              s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+          },
+          i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })
+      (window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W3VDBP8N');</script>
-<!-- End Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W3VDBP8N');
+    </script>
+    <!-- End Google Tag Manager -->
 
-    
     <!-- Google Tag Manager -->
     <script>
       window.dataLayer = window.dataLayer || [];
     </script>
-    {% if content_for_header contains "previewBarInjector.init();" %}
-    {% elsif content_for_header contains "Shopify.designMode" %}
+    {% if content_for_header contains 'previewBarInjector.init();' %}
+    {% elsif content_for_header contains 'Shopify.designMode' %}
+
     {% else %}
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
-    </script>
+      <script>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NGK2QSL');
+      </script>
     {% endif %}
-    
+
     <!-- End Google Tag Manager -->
 
-    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
-<meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+      | default: shop.metafields.yoast_seo.settings
+    -%}
+    {%- if disabled_by_yoast_seo
+      or yoast_seo_settings.integrations.webmasterVerification.google == blank
+      or yoast_seo_settings.integrations.webmasterVerification.google == null
+    -%}
+      <meta content="TJozjrNtNRmGCvySYAsbMofMzu2Gzw8syMzHROEY_QY" name="google-site-verification">
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta name="theme-color" content="{{ settings.color_button }}">
     {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- if disabled_by_yoast_seo -%}
-<link rel="canonical" href="{{ canonical_url }}">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+    {%- if disabled_by_yoast_seo -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <link href="https://cdn.shopify.com" rel="preconnect">
 
@@ -114,14 +122,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     {%- if page_description -%}
       {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- if disabled_by_yoast_seo -%}
-<meta name="description" content="{{ page_description | escape }}">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+      {%- if disabled_by_yoast_seo -%}
+        <meta name="description" content="{{ page_description | escape }}">
+        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+      {%- endif -%}
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
-     <style>
+    <style>
       @font-face {
         font-family: 'Banana Grotesk';
         src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
@@ -288,11 +296,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-    <!-- <script
-      async
-      type="text/javascript"
-      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    ></script> -->
+    <!--
+      <script
+        async
+        type="text/javascript"
+        src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+      ></script>
+    -->
   </head>
 
   <body
@@ -304,12 +314,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
   >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    
     {% if settings.animate_page_transitions %}
       <script type="text/javascript">
         window.setTimeout(function () {
@@ -388,8 +403,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     </style>
 
-    
-
     <script>
       function getCookie(cname) {
         let name = cname + '=';
@@ -406,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         return '';
       }
-      
+
       document.addEventListener('GRFQ:Popup_Form_rendered', function () {
         const _gcl_awCookie = getCookie('_gcl_aw').split('.')
         document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
@@ -414,22 +427,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
     <!-- {% section 'zoho-form-popup' %} -->
 
-<script>
-  var isReplaced = false;       
-  function MeroxIO_Function(){
-    if(!isReplaced){
-      window.yett.unblock();
-      isReplaced=true;
-      document.dispatchEvent(new Event('apps_lazyloaded_successfully'))
-    }
-  }    
-  document.addEventListener("click", MeroxIO_Function);
-  document.addEventListener("scroll", MeroxIO_Function);
-  document.addEventListener("touchstart", MeroxIO_Function);
-  document.addEventListener("mousemove", MeroxIO_Function);
-</script>
+    <script>
+      var isReplaced = false;
+      function MeroxIO_Function(){
+        if(!isReplaced){
+          window.yett.unblock();
+          isReplaced=true;
+          document.dispatchEvent(new Event('apps_lazyloaded_successfully'))
+        }
+      }
+      document.addEventListener("click", MeroxIO_Function);
+      document.addEventListener("scroll", MeroxIO_Function);
+      document.addEventListener("touchstart", MeroxIO_Function);
+      document.addEventListener("mousemove", MeroxIO_Function);
+    </script>
 
-<!-- <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
-</script> -->
+    <!--
+      <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.eu/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);
+      </script>
+    -->
   </body>
 </html>
