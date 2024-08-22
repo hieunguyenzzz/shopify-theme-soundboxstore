@@ -407,7 +407,7 @@
       window.Shopify.captcha.protect(e.target, () => {
         console.log(e.target);
         fetch(
-          "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle",
+          "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}",
           {
             method: "POST", // or 'PUT'
             // body: new FormData(e.target),
