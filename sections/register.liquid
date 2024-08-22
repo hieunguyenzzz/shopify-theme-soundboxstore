@@ -404,7 +404,7 @@
   (() => {
 
     let myForm = document
-      .getElementById("form-{{ section.id }}")
+      .getElementById("form-{{ section.id }}");
     window.Shopify.captcha.protect(myForm, () => {
        fetch(
           "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}",
