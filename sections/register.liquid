@@ -402,11 +402,11 @@
 </div>
 <script>
   (() => {
-
-    let myForm = document
-      .getElementById("form-{{ section.id }}");
-    window.Shopify.captcha.protect(myForm, () => {
-       fetch(
+    function formSubmit(e) {
+      if (e.preventDefault) e.preventDefault();
+      window.Shopify.captcha.protect(e.target, () => {
+        console.log(e.target);
+        fetch(
           "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}",
           {
             method: "POST", // or 'PUT'
@@ -418,14 +418,22 @@
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(Object.fromEntries(new FormData(myForm))),
+            body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
           }
         ).then((res) => {
           location.href =
             "https://{{ request.host | append:'/pages/thankpage' }}";
         });
-      myForm.submit()
-    });
+
+      });
+
+
+      return false;
+    }
+
+    let formE = document
+      .getElementById("form-{{ section.id }}")
+      .addEventListener("submit", formSubmit);
   })();
 </script>
 {% schema %}
