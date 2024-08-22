@@ -402,11 +402,11 @@
 </div>
 <script>
   (() => {
-    function formSubmit(e) {
-      if (e.preventDefault) e.preventDefault();
-      window.Shopify.captcha.protect(e.target, () => {
-        console.log(e.target);
-        fetch(
+
+    let myForm = document
+      .getElementById("form-{{ section.id }}")
+    window.Shopify.captcha.protect(myForm, () => {
+       fetch(
           "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}",
           {
             method: "POST", // or 'PUT'
@@ -424,16 +424,8 @@
           location.href =
             "https://{{ request.host | append:'/pages/thankpage' }}";
         });
-
-      });
-
-
-      return false;
-    }
-
-    document
-      .getElementById("form-{{ section.id }}")
-      .addEventListener("submit", formSubmit);
+      myForm.submit()
+    });
   })();
 </script>
 {% schema %}
