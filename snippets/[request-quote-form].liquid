@@ -97,6 +97,14 @@
 <div id="{{form_id}}-wrap">
   {%- form 'contact', id: form_id, class: 'target:ring-3', return_to: thankpageurl -%}
     {{ form.errors | default_errors }}
+    <input
+      hidden
+      type="text"
+      placeholder="{{  settings.quote_full_name }}"
+      class="input-full input hide"
+      name="contact[subject]"
+      value="NEW CUSTOMER QUOTE REQUEST"
+    >
     <div class="grid grid--small">
       <div class="grid__item">
         <input
@@ -246,7 +254,7 @@ IT it /it-it' %}
                 hidden
                 type="checkbox"
                 class="hide"
-                name="product"
+                name="contact[product]"
                 value="{{ product.title }}:{{ product.first_available_variant.sku }}"
               >
               {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
