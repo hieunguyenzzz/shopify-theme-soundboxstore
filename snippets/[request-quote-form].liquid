@@ -300,7 +300,7 @@ IT it /it-it' %}
         }
         new FormData(event.target).forEach((value, key) => {
           console.log(key, value);
-          if(key==='product'){
+          if(key==='contact[product]'){
             let [title,sku] = value.split(":")
             data.products.push({
               title,
