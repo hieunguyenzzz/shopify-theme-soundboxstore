@@ -55,25 +55,6 @@
     }}
     {{ settings.header_explore_product -}}
   </a>
-  <a href="#" class="specBtn">
-    {% if settings.header_guide_image %}
-      {{
-        settings.header_guide_image
-        | image_url: width: 50
-        | image_tag: loading: 'lazy', preload: true, style: 'background:var(--image-bg); border-radius: 1em;'
-      }}
-    {% else %}
-      <img
-        style="
-          background: var(--image-bg);
-          border-radius: 1em;
-        "
-        src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
-      >
-    {% endif %}
-    {{ settings.header_guide_button -}}
-  </a>
-  <!-- <a style="flex:1 1 300px" href="{{ pages['about-us'].url }}">{{ settings.header_moreinfo }}</a> -->
   <label
     for="quote-form-modal"
     class="header-mobile-extend-item text-label"
@@ -94,4 +75,23 @@
     </svg>
     <div>Request a quote</div>
   </label>
+  <a href="#" class="specBtn">
+    {% if settings.header_guide_image %}
+      {{
+        settings.header_guide_image
+        | image_url: width: 50
+        | image_tag: loading: 'lazy', preload: true, style: 'background:var(--image-bg); border-radius: 1em;'
+      }}
+    {% else %}
+      <img
+        style="
+          background: var(--image-bg);
+          border-radius: 1em;
+        "
+        src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
+      >
+    {% endif %}
+    {{ settings.header_guide_button -}}
+  </a>
+  <!-- <a style="flex:1 1 300px" href="{{ pages['about-us'].url }}">{{ settings.header_moreinfo }}</a> -->
 </div>
