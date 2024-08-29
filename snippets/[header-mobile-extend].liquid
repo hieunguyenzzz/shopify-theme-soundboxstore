@@ -9,7 +9,7 @@
       font-size:min(12px,2.6vw);
       border-bottom:1px solid #f1f1f1;
     }
-    .header-mobile-extend a {
+    .header-mobile-extend a ,.header-mobile-extend-item{
       background: #e9e9e9;
       display:flex;
       align-items:center;
@@ -76,6 +76,7 @@
   <a style="flex:1 1 300px" href="{{ pages['about-us'].url }}">{{ settings.header_moreinfo }}</a>
   <label
     for="quote-form-modal"
+    class="header-mobile-extend-item"
     style="white-space: nowrap;display: flex;gap: 1em;align-items: center;padding: 11px 1em;padding-right: 1em;"
   >
     <svg width="25" height="25" viewBox="0 0 28 25" fill="none" xmlns="http://www.w3.org/2000/svg">
