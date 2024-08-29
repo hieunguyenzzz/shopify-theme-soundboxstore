@@ -264,7 +264,7 @@ IT it /it-it' %}
               {% assign image = product.metafields.custom.menu_image.value %}
               <div class="product-item">
                 <div class="product-item_image">
-                  {{ image | image_url: width: 300 | image_tag: class: '' }}
+                  {{ image | image_url: width: 300 | image_tag: class: '', loading: 'lazy' }}
                 </div>
                 <div class="product-item_content">
                   <div class="product-item_title">{{ title }}</div>
