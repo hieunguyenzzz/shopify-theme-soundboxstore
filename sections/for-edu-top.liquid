@@ -202,7 +202,9 @@
 <script>
   (()=>{
    function logSubmit(event) {
-   console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
+      if (event.preventDefault) event.preventDefault();
+      window.Shopify.captcha.protect(event.target, () => {
+         console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
 
      let data={}
       new FormData(event.target).forEach((value, key) =>{
@@ -221,6 +223,12 @@ data[key]=value;
 })
 .then(function(res){ console.log(res) })
 .catch(function(res){ console.log(res) })
+
+      });
+setTimeout(()=>{event.target.submit();},300)
+
+      return false;
+  
     }
 const form = document.getElementById("{{- form_id -}}");
 form.addEventListener("submit", logSubmit);
