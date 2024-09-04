@@ -10,7 +10,7 @@
   {%- for link in linklists[block.settings.menu].links -%}
     {% if link.url contains '#get-spec' %}
       <li>
-        <a target="_blank" href="#get-spec" class="specBtn">{{ link.title }}</a>
+        <a href="#get-spec" class="specBtn">{{ link.title }}</a>
       </li>
     {% else %}
       {% if link.handle == 'consultancy' %}
@@ -19,7 +19,7 @@
           {% continue %}
         {% endif %}
       {% endif %}
-      <li data-halde="{{ localization.country.iso_code}}">
+      <li>
         <a
           href="{{ link.url }}"
           {% if link.url contains 'files.soundboxstore.com' %}
