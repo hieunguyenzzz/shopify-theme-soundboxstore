@@ -14,7 +14,7 @@
       </li>
     {% else %}
       {% if link.handle == 'consultancy' %}
-        {% if localization.country.iso_code != 'GB' %}
+        {% if localization.country.iso_code == 'GB' %}
         {% else %}
           {% continue %}
         {% endif %}
