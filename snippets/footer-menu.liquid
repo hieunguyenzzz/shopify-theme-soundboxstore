@@ -13,7 +13,7 @@
         <a target="_blank" href="#get-spec" class="specBtn">{{ link.title }}</a>
       </li>
     {% else %}
-      <li>
+      <li data-halde="{{ link.handle }}">
         <a
           href="{{ link.url }}"
           {% if link.url contains 'files.soundboxstore.com' %}
