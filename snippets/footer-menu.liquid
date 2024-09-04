@@ -13,6 +13,12 @@
         <a target="_blank" href="#get-spec" class="specBtn">{{ link.title }}</a>
       </li>
     {% else %}
+      {% if link.handle == 'consultancy' %}
+        {% if localization.country.iso_code != 'GB' %}
+        {% else %}
+          {% continue %}
+        {% endif %}
+      {% endif %}
       <li data-halde="{{ link.handle }}">
         <a
           href="{{ link.url }}"
