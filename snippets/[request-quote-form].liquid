@@ -299,6 +299,7 @@ IT it /it-it' %}
   <script>
     (() => {
       function logSubmit(event) {
+        event.preventDefault()
         console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
         let data = {
           create_at: new Date().toISOString(),
@@ -334,6 +335,7 @@ IT it /it-it' %}
           })
           .then(function (res) { console.log(res,data) })
           .catch(function (res) { console.log(res,data) })
+        event.target.submit()
       }
       const form = document.getElementById("{{- form_id -}}");
       form.addEventListener("submit", logSubmit);
