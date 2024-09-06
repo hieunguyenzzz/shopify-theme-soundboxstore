@@ -318,6 +318,10 @@ IT it /it-it' %}
           }
         })
         console.log({data})
+        let stringproducts = JSON.stringify(data.products)
+        if(form.elements['contact[products]']){
+          form.elements['contact[products]'].value=products
+        }
         fetch("https://hooks.zapier.com/hooks/catch/14043376/248z11w/",
           {
             headers: {
