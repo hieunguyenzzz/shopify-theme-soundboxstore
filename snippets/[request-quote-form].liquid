@@ -300,7 +300,8 @@ IT it /it-it' %}
     (() => {
       function logSubmit(event) {
         event.preventDefault()
-        console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
+        try {
+console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
         let data = {
           create_at: new Date().toISOString(),
           products:[]
@@ -335,6 +336,11 @@ IT it /it-it' %}
           })
           .then(function (res) { console.log(res,data) })
           .catch(function (res) { console.log(res,data) })
+}
+catch(err) {
+  console.error(err)
+}
+        
         event.target.submit()
       }
       const form = document.getElementById("{{- form_id -}}");
