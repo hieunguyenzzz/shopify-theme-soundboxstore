@@ -49,7 +49,7 @@
         {% endif %}
         <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% endfor %}
-      <a href="#" title="{{ product.title }}">{{ product.title }}</a>
+      <a href="{{ request.path }}" title="{{ product.title }}">{{ product.title }}</a>
     {%- endunless -%}
   </div>
 
