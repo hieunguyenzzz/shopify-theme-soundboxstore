@@ -53,11 +53,7 @@
     {%- endunless -%}
   </div>
 
-  <script defer>
-    const breadCrumbLinks = document.querySelectorAll(".breadcrumbs a")
-    const lastLink = breadCrumbLinks[breadCrumbLinks.length - 1]
-    lastLink.href = "javascript:void(0)"
-  </script>
+
 
 {% else %}
   {% render 'breadcrumbs' %}
