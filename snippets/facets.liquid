@@ -273,6 +273,7 @@
                                   {{- value.label | escape }} ({{ value.count }})
                                 </span >
                                 <span class="visually-hidden">
+                                  {{ value.presentation }}
                                   {{ value.image | image_url | image_tag }}
                                   {{- value.label | escape }} (
                                   {%- if value.count == 1 -%}
