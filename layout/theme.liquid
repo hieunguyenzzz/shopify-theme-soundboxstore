@@ -232,13 +232,7 @@
       {%- render 'seo-title', page_title: page_title -%}
     {% endif %}
 
-    {%- if page_description -%}
-      {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-      {%- if disabled_by_yoast_seo -%}
-        <meta name="description" content="{{ page_description | escape }}">
-        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-      {%- endif -%}
-    {%- endif -%}
+          <meta name="description" content="{{ page_description | escape }}">
 
     {%- render 'social-meta-tags' -%}
     <style>
