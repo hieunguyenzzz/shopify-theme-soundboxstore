@@ -19,7 +19,7 @@
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
     <div class="flexbox">
-      {% for certification in shop.metaobjects.certification.values %}
+      {% for certification in shop.metaobjects.certifications.certifications %}
         {% assign image = certification.image %}
         {% if image %}
           <div class="col">
@@ -48,7 +48,6 @@
 </section>
 <script>
     $(window).on('load', function() {
-
     $('.product-icon-text-section-{{ section.id }} .flexbox').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
