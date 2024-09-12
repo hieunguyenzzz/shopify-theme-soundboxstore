@@ -16,7 +16,7 @@
   }
 </style>
 
-<section id="{{ section.id }}" class="product-icon-text-section">
+<section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
     <div class="flexbox">
       {% for certification in shop.metaobjects.certification.values %}
@@ -49,7 +49,7 @@
 <script>
     $(window).on('load', function() {
 
-    $('#{{ section.id }}.product-icon-text-section .flexbox').slick({
+    $('.product-icon-text-section-{{ section.id }} .flexbox').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       mobileFirst: true,
