@@ -76,7 +76,7 @@
         {% endfor %}
       </div>
     {% endfor %}
-    <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
+    <div class="brand-details-slider {% if shop.metaobjects.customer_gallery.values.size > 1 %}active{% endif %}">
       {%- for block in shop.metaobjects.customer_gallery.values -%}
         {% assign galleryid = section.id | append: '-' | append: forloop.index %}
         <div class="slide  slide-{{- galleryid -}}">
