@@ -80,7 +80,7 @@
       </div>
     {% endfor %}
     <div class="brand-details-slider active">
-      {%- for block in items- %}
+      {%- for block in items -%}
         {% assign galleryid = section.id | append: '-' | append: forloop.index %}
         {% assign content = block.content | metafield_tag %}
         <div class="slide  slide-{{- galleryid -}}">
