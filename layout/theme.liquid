@@ -49,30 +49,7 @@
       (window,document,"script","//bat.bing.com/bat.js","uetq");
     </script>
     <!-- append core web vitals -->
-    <script>
-  (function () {
-    var script = document.createElement('script');
-    script.src =
-      'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
-    script.onload = function () {
-      function sendToAnalytics(metric) {
-        // Replace with whatever serialization method you prefer.
-        // Note: JSON.stringify will likely include more data than you need.
-        const body = JSON.stringify(metric);
-      
-        // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
-        (navigator.sendBeacon && navigator.sendBeacon('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', body)) ||
-          fetch('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', {body, method: 'POST', keepalive: true});
-      }
-      // When loading `web-vitals` using a classic script, all the public
-      // methods can be found on the `webVitals` global namespace.
-      //webVitals.onCLS(console.log, {reportAllChanges: true});
-      webVitals.onINP(console.log, {reportAllChanges: true});
-      webVitals.onLCP(console.log);
-    };
-    document.head.appendChild(script);
-  })();
-    </script>
+    <script></script>
     <!-- append core web vitals -->
 
     <!-- Google Tag Manager -->
@@ -601,6 +578,28 @@
               })()
               const event = new Event("app:ready");
               document.dispatchEvent(event);
+                (function () {
+    var script = document.createElement('script');
+    script.src =
+      'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.iife.js';
+    script.onload = function () {
+      function sendToAnalytics(metric) {
+        // Replace with whatever serialization method you prefer.
+        // Note: JSON.stringify will likely include more data than you need.
+        const body = JSON.stringify(metric);
+      
+        // Use `navigator.sendBeacon()` if available, falling back to `fetch()`.
+        (navigator.sendBeacon && navigator.sendBeacon('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', body)) ||
+          fetch('https://snowy-waterfall-4a75.hieunguyenel2686.workers.dev/', {body, method: 'POST', keepalive: true});
+      }
+      // When loading `web-vitals` using a classic script, all the public
+      // methods can be found on the `webVitals` global namespace.
+      //webVitals.onCLS(console.log, {reportAllChanges: true});
+      webVitals.onINP(console.log, {reportAllChanges: true});
+      webVitals.onLCP(console.log);
+    };
+    document.head.appendChild(script);
+  })();
             }
           }
           document.addEventListener("click", MeroxIO_Function,{ once: true });
