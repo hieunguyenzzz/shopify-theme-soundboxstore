@@ -93,11 +93,12 @@
                 </div>
                 <div class="col right-col">
                   <div class="col-wrap">
+                    {% assign galleryid = section.id | append: '-' | append: forloop.index %}
+
                     <div
-                      id="slider-{{ block.id }}"
+                      id="slider-{{ galleryid }}"
                       class="image-group {% if block.images.size > 3 %}not-two-col-show{% endif %}"
                     >
-                      {% assign galleryid = forloop.index %}
                       {% for image in block.images.value %}
                         <div class="image-col">
                           <a
@@ -118,28 +119,28 @@
                     </div>
                     {% if block.images.size > 3 %}
                       <style>
-                                            #shopify-section-{{section.id}} #slider-{{ block.id }}{
+                                            #shopify-section-{{section.id}} #slider-{{ galleryid }}{
                                               overflow:hidden
                                             }
-                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .image-col{
+                                            #shopify-section-{{section.id}} #slider-{{ galleryid }} .image-col{
                                                   max-width: 33.33%;
                         width: 33%;
                         flex-shrink: 0;
                                             }
-                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow{
+                                            #shopify-section-{{section.id}} #slider-{{ galleryid }} .slick-arrow{
                                                                     background:#000000b5 !important;
                                                                     bottom:50%;filter: invert(1);border-radius:100%;transform: translateY(50%)
                                             }
-                                             #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-next{
+                                             #shopify-section-{{section.id}} #slider-{{ galleryid }} .slick-next{
                                                padding-left:8px
                                              }
-                                            #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow::after {
+                                            #shopify-section-{{section.id}} #slider-{{ galleryid }} .slick-arrow::after {
                                               background-size: contain;
                                             }
-                         #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow.slick-prev{
+                         #shopify-section-{{section.id}} #slider-{{ galleryid }} .slick-arrow.slick-prev{
                            left:20px
                          }
-                         #shopify-section-{{section.id}} #slider-{{ block.id }} .slick-arrow.slick-next{
+                         #shopify-section-{{section.id}} #slider-{{ galleryid }} .slick-arrow.slick-next{
                            right:20px
                          }
                       </style>
@@ -148,7 +149,7 @@
                           "app:ready",
                           (e) => {
                                             $(document).ready(function(){
-                                              $('#slider-{{ block.id }}').slick({
+                                              $('#slider-{{ galleryid }}').slick({
                                                 infinite: true,
                                                 draggable:false,
                                                 slidesToShow: 3,
