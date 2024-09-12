@@ -15,11 +15,11 @@
      max-width: 350px;
   }
 </style>
-{{ shop.metaobjects.certifications.certifications.certifications | json }}
+{{ shop.metaobjects.certifications.certifications | json }}
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
     <div class="flexbox">
-      {% for certification in shop.metaobjects.certifications.certifications.certifications.values %}
+      {% for certification in shop.metaobjects.certifications.certifications.values %}
         {% assign image = certification.image %}
         {% if image %}
           <div class="col">
