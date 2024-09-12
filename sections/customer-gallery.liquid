@@ -197,7 +197,7 @@
 </section>
 
 <script>
-      document.addEventListener(
+  document.addEventListener(
     "app:ready",
     (e) => {
     $(document).ready(function(){
@@ -206,8 +206,8 @@
         slidesToShow: 1,
         slidesToScroll: 1,
         adaptiveHeight: true,
-        dots: {% if section.settings.slide_dots %}true{% else %}false{% endif %},
-        arrows: {% if section.settings.slide_arrow %}true{% else %}false{% endif %},
+        dots: true,
+        arrows: true,
         fade: true,
         cssEase: 'linear',
         responsive: [
