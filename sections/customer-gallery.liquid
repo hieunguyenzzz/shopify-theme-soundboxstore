@@ -78,7 +78,8 @@
     {% endfor %}
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in shop.metaobjects.customer_gallery.values -%}
-        <div class="slide  slide-{{- block.id -}}">
+        {% assign galleryid = section.id | append: '-' | append: forloop.index %}
+        <div class="slide  slide-{{- galleryid -}}">
           <div class="slide-wrap page-width">
             <div class="slide-top-section">
               <div class="flexbox">
@@ -91,7 +92,6 @@
                 </div>
                 <div class="col right-col">
                   <div class="col-wrap">
-                    {% assign galleryid = section.id | append: '-' | append: forloop.index %}
                     <div
                       id="slider-{{ galleryid }}"
                       class="image-group {% if block.images.size > 3 %}not-two-col-show{% endif %}"
