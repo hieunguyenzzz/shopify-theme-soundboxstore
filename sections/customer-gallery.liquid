@@ -35,6 +35,8 @@
     gap:10px
   }
 </style>
+
+{% assign items = shop.metaobjects.customer_gallery_list.default.items.value %}
 <section class="brand-details-section">
   <div class="{% if section.settings.sectionwidth %}section-wrap{% else %}page-width{% endif %}">
     {% if section.settings.title != blank %}
@@ -57,7 +59,7 @@
         <div></div>
       </div>
     {% endif %}
-    {% assign items = shop.metaobjects.customer_gallery_list.default.items.value %}
+
     {%- for block in items -%}
       {% assign content = block.content | metafield_tag %}
       {% assign galleryid = section.id | append: '-' | append: forloop.index %}
