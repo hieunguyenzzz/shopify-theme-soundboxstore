@@ -97,7 +97,7 @@
                       id="slider-{{ block.id }}"
                       class="image-group {% if block.images.size > 3 %}not-two-col-show{% endif %}"
                     >
-                      {% for image in block.images %}
+                      {% for image in block.images.value %}
                         <div class="image-col">
                           <a
                             href="#{{section.id}}-{{ block.id }}-{{ forloop.index }}"
