@@ -58,7 +58,7 @@
       </div>
     {% endif %}
     {%- for block in shop.metaobjects.customer_gallery.values -%}
-      {% assign content = block.content | escape %}
+      {% assign content = block.content | metafield_tag %}
       <div
         style="display:none"
       >
