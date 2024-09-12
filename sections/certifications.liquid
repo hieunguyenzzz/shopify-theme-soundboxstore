@@ -19,7 +19,7 @@
 <section class="product-icon-text-section">
   <div class="page-width">
     <div class="flexbox">
-      {% for certification in shop.metaobjects.certifications.certifications %}
+      {% for certification in shop.metaobjects.certifications.certifications.values %}
         {% assign image = certification.image %}
         {% if image %}
           <div class="col">
