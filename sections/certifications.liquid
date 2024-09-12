@@ -16,6 +16,36 @@
   }
 </style>
 {{ shop.metaobjects.certifications.certifications | json }}
+<section class="product-icon-text-section">
+  <div class="page-width">
+    <div class="flexbox">
+      {% for certification in shop.metaobjects.certifications.certifications.values %}
+        {% assign image = certification.image %}
+        {% if image %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="icon-text-block">
+                <div class="col">
+                  <div class="col-wrap">
+                    <div class="icon-text-block">
+                      <div class="icon-block">
+                        <div class="icon-wrap">
+                          {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block">{{ image.alt }}</div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="visually-hidden">{{ section.settings.seo }}</div>
+</section>
 
 {% schema %}
 {
