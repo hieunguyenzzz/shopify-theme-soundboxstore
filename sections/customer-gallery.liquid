@@ -59,6 +59,8 @@
     {% endif %}
     {%- for block in shop.metaobjects.customer_gallery.values -%}
       {% assign content = block.content | metafield_tag %}
+      {% assign galleryid = section.id | append: '-' | append: forloop.index %}
+
       <div
         style="display:none"
       >
@@ -67,7 +69,7 @@
             style="display:none"
             href="{{ image | image_url }}"
             class="image-wrap"
-            data-fancybox="{{ section.id }}-{{ forloop.index }}"
+            data-fancybox="{{ galleryid }}"
             data-caption="&lt;b&gt;{{ block.title }}&lt;/b&gt;&lt;br /&gt;{{ content | escape  }}"
           >
           </a>
@@ -76,7 +78,6 @@
     {% endfor %}
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in shop.metaobjects.customer_gallery.values -%}
-        {% assign index_g = 0 %}
         <div class="slide  slide-{{- block.id -}}">
           <div class="slide-wrap page-width">
             {% if block.title != blank %}
@@ -101,7 +102,7 @@
                       {% for image in block.images.value %}
                         <div class="image-col">
                           <a
-                            href="#{{section.id}}-{{ galleryid }}-{{ forloop.index }}"
+                            href="#{{ galleryid }}-{{ forloop.index }}"
                             class="image-wrap"
                           >
                             {{
