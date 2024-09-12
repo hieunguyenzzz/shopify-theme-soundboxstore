@@ -46,6 +46,25 @@
   </div>
   <div class="visually-hidden">{{ section.settings.seo }}</div>
 </section>
+<script>
+    $(window).on('load', function() {
+
+    $('#{{ section.id }}.product-icon-text-section .flexbox').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      mobileFirst: true,
+      arrows: false,
+      autoplay: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 861,
+          settings: 'unslick'
+        }
+      ]
+    });
+  })
+</script>
 
 {% schema %}
 {
