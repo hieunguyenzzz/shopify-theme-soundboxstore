@@ -62,7 +62,7 @@
       <div
         style="display:none"
       >
-        {% for image in block.images %}
+        {% for image in block.images.value %}
           <a
             style="display:none"
             href="{{ image | image_url }}"
