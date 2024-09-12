@@ -57,7 +57,8 @@
         <div></div>
       </div>
     {% endif %}
-    {%- for block in shop.metaobjects.customer_gallery.values -%}
+    {% assign items = shop.metaobjects.customer_gallery_list.default.items.value %}
+    {%- for block in items -%}
       {% assign content = block.content | metafield_tag %}
       {% assign galleryid = section.id | append: '-' | append: forloop.index %}
 
@@ -77,7 +78,7 @@
       </div>
     {% endfor %}
     <div class="brand-details-slider active">
-      {%- for block in shop.metaobjects.customer_gallery.values -%}
+      {%- for block in items -%}
         {% assign galleryid = section.id | append: '-' | append: forloop.index %}
         <div class="slide  slide-{{- galleryid -}}">
           <div class="slide-wrap page-width">
