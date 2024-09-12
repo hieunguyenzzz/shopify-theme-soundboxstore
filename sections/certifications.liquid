@@ -36,7 +36,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="text-block">{{ image.alt }}</div>
+                <div class="text-block">{{ image.alt | default: certification.label }}</div>
               </div>
             </div>
           </div>
