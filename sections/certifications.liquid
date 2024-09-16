@@ -14,6 +14,9 @@
     .product-icon-text-section .flexbox >.col{
      max-width: 350px;
   }
+  .slick-initialized.slick-slider {
+
+  }
 </style>
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
@@ -29,17 +32,16 @@
           >
             <div class="col-wrap">
               <div class="icon-text-block">
-                <div class="col">
-                  <div class="col-wrap">
-                    <div class="icon-text-block">
-                      <div class="icon-block">
-                        <div class="icon-wrap">
-                          {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
-                        </div>
+                <div class="col-wrap">
+                  <div class="icon-text-block">
+                    <div class="icon-block">
+                      <div class="icon-wrap">
+                        {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="text-block">{{ image.alt | default: certification.label }}</div>
               </div>
             </div>
