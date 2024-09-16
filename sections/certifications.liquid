@@ -14,8 +14,11 @@
     .product-icon-text-section .flexbox >.col{
      max-width: 350px;
   }
-  .slick-initialized.slick-slider {
-
+  .product-icon-text-section-{{ section.id }} .col:not(:first-child){
+    display:none
+  }
+   .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
+    display:auto
   }
 </style>
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
