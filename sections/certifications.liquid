@@ -21,7 +21,12 @@
       {% for certification in shop.metaobjects.certifications.certifications.certifications.value %}
         {% assign image = certification.image %}
         {% if image %}
-          <div class="col">
+          <div
+            class="col"
+            {% if forloop.first %}
+              style="display:none"
+            {% endif %}
+          >
             <div class="col-wrap">
               <div class="icon-text-block">
                 <div class="col">
