@@ -1,18 +1,43 @@
 <style>
   .product-icon-text-section .page-width{
-    max-width:unset
+    max-width:unset;
   }
   .product-icon-text-section .text-block{
     white-space:nowrap
   }
   .product-icon-text-section .flexbox{
-    justify-content:center
+    justify-content:center;
+
   }
-   .product-icon-text-section .icon-text-block .col{
-    flex:unset
-  }
+     .product-icon-text-section .icon-text-block .col{
+      flex:unset
+    }
     .product-icon-text-section .flexbox >.col{
-     max-width: 350px;
+       max-width: 350px;
+    }
+  @media screen and (max-width: 860px) {
+
+      .product-icon-text-section-{{ section.id }} .col:not(:first-child){
+    display:none
+  }
+   .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
+    display:unset
+  }
+  }
+    @media screen and (min-width: 861px) {
+
+      .product-icon-text-section .page-width{
+    max-width:unset;
+    display:flex;
+    overflow:auto;
+  }
+  .product-icon-text-section .text-block{
+    white-space:nowrap
+  }
+  .product-icon-text-section .flexbox{
+    justify-content:center;flex-shrink: 0;min-width:100%
+
+  }
   }
 </style>
 <section class="product-icon-text-section">
@@ -51,13 +76,11 @@
             <div class="col">
               <div class="col-wrap">
                 <div class="icon-text-block">
-                  <div class="col">
-                    <div class="col-wrap">
-                      <div class="icon-text-block">
-                        <div class="icon-block">
-                          <div class="icon-wrap">
-                            {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
-                          </div>
+                  <div class="col-wrap">
+                    <div class="icon-text-block">
+                      <div class="icon-block">
+                        <div class="icon-wrap">
+                          {{ image | image_url: width: 50 | image_tag: loading: 'lazy' }}
                         </div>
                       </div>
                     </div>
