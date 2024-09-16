@@ -1,14 +1,12 @@
 <style>
   .product-icon-text-section .page-width{
     max-width:unset;
-    display:flex;
-    overflow:auto;
   }
   .product-icon-text-section .text-block{
     white-space:nowrap
   }
   .product-icon-text-section .flexbox{
-    justify-content:center;flex-shrink: 0;min-width:100%;
+    justify-content:center;
 
   }
      .product-icon-text-section .icon-text-block .col{
@@ -18,15 +16,27 @@
        max-width: 350px;
     }
   @media screen and (max-width: 860px) {
-  .product-icon-text-section .flexbox{
-   min-width:0;
 
-  }
       .product-icon-text-section-{{ section.id }} .col:not(:first-child){
     display:none
   }
    .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
     display:unset
+  }
+  }
+    @media screen and (min-width: 861px) {
+
+      .product-icon-text-section .page-width{
+    max-width:unset;
+    display:flex;
+    overflow:auto;
+  }
+  .product-icon-text-section .text-block{
+    white-space:nowrap
+  }
+  .product-icon-text-section .flexbox{
+    justify-content:center;flex-shrink: 0;min-width:100%
+
   }
   }
 </style>
