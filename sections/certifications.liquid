@@ -1,20 +1,30 @@
 <style>
   .product-icon-text-section .page-width{
-    max-width:unset
+    max-width:unset;
+    display:flex;
+    overflow:auto;
   }
   .product-icon-text-section .text-block{
     white-space:nowrap
   }
   .product-icon-text-section .flexbox{
-    justify-content:center
+    justify-content:center;flex-shrink: 0;
+
   }
-  @media screen and (max-width: 860px) {
-   .product-icon-text-section .icon-text-block .col{
+     .product-icon-text-section .icon-text-block .col{
       flex:unset
     }
     .product-icon-text-section .flexbox >.col{
        max-width: 350px;
     }
+  @media screen and (max-width: 860px) {
+
+      .product-icon-text-section-{{ section.id }} .col:not(:first-child){
+    display:none
+  }
+   .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
+    display:unset
+  }
   }
 </style>
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
