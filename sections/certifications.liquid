@@ -1,18 +1,20 @@
 <style>
-  .product-icon-text-section .page-width{
-    max-width:unset
-  }
-  .product-icon-text-section .text-block{
-    white-space:nowrap
-  }
-  .product-icon-text-section .flexbox{
-    justify-content:center
-  }
-   .product-icon-text-section .icon-text-block .col{
-    flex:unset
-  }
-    .product-icon-text-section .flexbox >.col{
-     max-width: 350px;
+    .product-icon-text-section .page-width{
+      max-width:unset
+    }
+    .product-icon-text-section .text-block{
+      white-space:nowrap
+    }
+    .product-icon-text-section .flexbox{
+      justify-content:center
+    }
+    @media screen and (max-width: 860px) {
+     .product-icon-text-section .icon-text-block .col{
+      flex:unset
+    }
+      .product-icon-text-section .flexbox >.col{
+       max-width: 350px;
+    }
   }
 </style>
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
