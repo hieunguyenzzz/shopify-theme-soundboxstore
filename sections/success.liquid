@@ -104,7 +104,7 @@
     <div class="{{ id }}-content">
       {{ section.settings.content }}
       <div class="section-btn">
-        <a href="{{ section.settings.button_link }}" class="btn">Explore Products </a>
+        <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }} </a>
       </div>
       <div class="quote-iso-images" style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;">
         {% render 'iso-images' %}
@@ -131,6 +131,12 @@
          "type": "richtext",
          "id": "content",
          "label": "Content"
+       },
+     {
+         "type": "text",
+         "id": "button_text",
+         "label": "Button text",
+       "default":"Explore Products"
        },
 	{
          "type": "url",
