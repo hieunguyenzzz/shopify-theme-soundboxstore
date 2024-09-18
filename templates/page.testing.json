@@ -38,7 +38,7 @@
         "html_apKyyz": {
           "type": "html",
           "settings": {
-            "code": "<script>\nconsole.log(\"window.innerWidth\",window.innerWidth)\nif(window.innerWidth<1025){\n    document.querySelector(\"#MobileNav\").remove()\n}\n<\/script>",
+            "code": "<script>\nconsole.log(\"window.innerWidth\",window.innerWidth)\nif(window.innerWidth>1024){\n    document.querySelector(\"#MobileNav\").remove()\n}\n<\/script>",
             "width": "100%",
             "alignment": "top-middle"
           }
