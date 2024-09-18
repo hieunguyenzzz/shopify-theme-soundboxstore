@@ -28,17 +28,26 @@
       "blocks": {
         "html_AWXaiq": {
           "type": "html",
+          "disabled": true,
           "settings": {
             "code": "<style>\n.main-content>.shopify-section:not(:first-child) {\n    content-visibility: auto;\n}\n<\/style>",
             "width": "50%",
             "alignment": "center"
           }
+        },
+        "html_apKyyz": {
+          "type": "html",
+          "settings": {
+            "code": "<script>\nif(window.innerWidth<1025){\n    document.querySelector(\"#MobileNav\").remove()\n}\n<\/script>",
+            "width": "100%",
+            "alignment": "top-middle"
+          }
         }
       },
       "block_order": [
-        "html_AWXaiq"
+        "html_AWXaiq",
+        "html_apKyyz"
       ],
-      "disabled": true,
       "custom_css": [
         "{display: none;}"
       ],
@@ -498,7 +507,6 @@
       "block_order": [
         "4a699ce5-60d5-4454-8f1c-f336acbdd1f9"
       ],
-      "disabled": true,
       "settings": {
       }
     },
@@ -553,7 +561,6 @@
         "template--16658204262625__4753286e-f5c3-4d17-b164-e93ac1014a62-item-4",
         "template--16658204262625__4753286e-f5c3-4d17-b164-e93ac1014a62-item-5"
       ],
-      "disabled": true,
       "settings": {
         "title": "Explore Our Products"
       }
@@ -579,7 +586,6 @@
         "template--16818200281313__213100eb-731a-40d6-a158-886b0706bbb2-heading-1",
         "template--16818200281313__213100eb-731a-40d6-a158-886b0706bbb2-text-1"
       ],
-      "disabled": true,
       "settings": {
         "align_text": "center",
         "narrow_column": false,
