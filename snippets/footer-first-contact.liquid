@@ -80,6 +80,37 @@
                   </li>
                 {% endif %}
               {% endif %}
+              {% assign headoffice = shop.metaobjects.address['head-office'] %}
+              {% if headoffice %}
+                {% assign label = headoffice.label %}
+                {% assign address = headoffice.address %}
+                {% assign url = headoffice.url %}
+                {% assign phone = headoffice.phone %}
+                <li class="location address_1">
+                  {% if label != blank %}
+                    <strong>{{ label }}</strong>
+                  {% endif %}
+
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    {% if url != blank %}
+                      href="{{ url }}"
+                    {% else %}
+                      href="https://www.google.com/search?q={{ address }}"
+                    {% endif %}
+                  >
+                    {{- address -}}
+                  </a>
+
+                  {% if phone != blank %}
+                    <br>
+                    {{ 'customer.addresses.phone' | t }}:
+                    <a href="tel:{{phone}}">{{ phone }}</a>
+                  {% endif %}
+                </li>
+              {% endif %}
+
               {% if block.settings['address-heading1'] != blank or block.settings.address1 != blank %}
                 <li class="location address_1">
                   {% if block.settings['address-heading1'] != blank %}
