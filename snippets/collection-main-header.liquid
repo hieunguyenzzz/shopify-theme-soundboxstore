@@ -8,7 +8,7 @@
     <h1 class="visually-hidden">{{ collection.title }}</h1>
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
     <div class="collection-main-content">
-      {{ image | image_url: width: 980, height: 653 | image_tag: class: 'image' }}
+      {{ image | image_url: width: 980, height: 653 | image_tag: class: 'image', preload: true }}
       <div
         style="
                display: flex;
