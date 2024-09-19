@@ -50,14 +50,14 @@
     {% if image %}
       {{
         image
-        | image_url: width: 900
+        | image_url: width: 400
         | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
       }}
     {% endif %}
     {% if image_2 %}
       {{
         image_2
-        | image_url: width: 900
+        | image_url: width: 400
         | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
       }}
     {% endif %}
