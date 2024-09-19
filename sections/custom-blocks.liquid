@@ -244,34 +244,36 @@
   {% endfor %}
 </div>
 
-<script>
-     (()=>{
-       let loaded = false
-    let options = {
-       root: document.quer,
-       rootMargin: "100px",
-       threshold: 0,
-     };
+<!--
+  <script>
+       (()=>{
+         let loaded = false
+      let options = {
+         root: document.quer,
+         rootMargin: "100px",
+         threshold: 0,
+       };
 
 
-     let observer = new IntersectionObserver((entities)=>{
-       if(entities[0].isIntersecting){
-         console.log('entities[0].isIntersecting',entities[0].isIntersecting)
-                     var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.defer = true;
-            s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-         loaded= true
-    observer.disconnect()
-       }
-     }, options);
-     let target = document.querySelector("main");
-  observer.observe(target);
-     })()
-</script>
+       let observer = new IntersectionObserver((entities)=>{
+         if(entities[0].isIntersecting){
+           console.log('entities[0].isIntersecting',entities[0].isIntersecting)
+              var d = document;
+              s = d.createElement("script");
+              s.type = "text/javascript";
+              s.defer = true;
+              s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
+              t = d.getElementsByTagName("script")[0];
+              t.parentNode.insertBefore(s, t);
+           loaded= true
+      observer.disconnect()
+         }
+       }, options);
+       let target = document.querySelector("main");
+    observer.observe(target);
+       })()
+  </script>
+-->
 {% schema %}
 {
   "name": "custome-blocks",
