@@ -245,46 +245,45 @@
 </div>
 
 <script>
-     (()=>{
-       let yettloaded =window.yett.lazyloaded
-       function handleLoad (){
-            let loaded = false
-    let options = {
-       root: document.quer,
-       rootMargin: "100px",
-       threshold: 0,
-     };
+    (() => {
+    let yettloaded = window.yett.lazyloaded;
+    function handleLoad() {
+      let loaded = false;
+      let options = {
+        root: document.quer,
+        rootMargin: "100px",
+        threshold: 0,
+      };
 
-
-     let observer = new IntersectionObserver((entities)=>{
-       if(entities[0].isIntersecting){
-         console.log('entities[0].isIntersecting',entities[0].isIntersecting)
-            var d = document;
-            s = d.createElement("script");
-            s.type = "text/javascript";
-            s.defer = true;
-            s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
-            t = d.getElementsByTagName("script")[0];
-            t.parentNode.insertBefore(s, t);
-         loaded= true
-    observer.disconnect()
-       }
-     }, options);
-     let target = document.querySelector("main");
-  observer.observe(target);
-     })()
-       }
-        if(yettloaded){
-             handleLoad()
-        }else{
-        document.addEventListener(
+      let observer = new IntersectionObserver((entities) => {
+        if (entities[0].isIntersecting) {
+          console.log("entities[0].isIntersecting", entities[0].isIntersecting);
+          var d = document;
+          s = d.createElement("script");
+          s.type = "text/javascript";
+          s.defer = true;
+          s.src = "https://cdn.tailwindcss.com?plugins=typography,forms";
+          t = d.getElementsByTagName("script")[0];
+          t.parentNode.insertBefore(s, t);
+          loaded = true;
+          observer.disconnect();
+        }
+      }, options);
+      let target = document.querySelector("main");
+      observer.observe(target);
+    }
+    if (yettloaded) {
+      handleLoad();
+    } else {
+      document.addEventListener(
         "app:ready",
         (e) => {
-       handleLoad()
-           },
-        false,
+          handleLoad();
+        },
+        false
       );
-        }
+    }
+  })();
 </script>
 {% schema %}
 {
