@@ -7728,7 +7728,6 @@ input[type=image] {
 }
 
 .site-header__drawer {
-  display: none;
   width: 100%;
   max-height: 75vh;
   max-height: var(--maxDrawerHeight);
@@ -7740,9 +7739,6 @@ input[type=image] {
     var(--colorTextBody);
   box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
   z-index: 5;
-  transition: all .25s cubic-bezier(.165, .84, .44, 1);
-  transform:
-    translateY(-100%)
 }
 
 @media only screen and (max-width:1024px) {
@@ -7753,8 +7749,7 @@ input[type=image] {
 }
 
 .site-header__drawer.is-active {
-  display: block;
-  transform: translateY(0)
+  opacity: 1;
 }
 
 .header-wrapper--compressed .site-header__drawer {
