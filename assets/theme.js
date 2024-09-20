@@ -4316,7 +4316,7 @@ lazySizesConfig.expFactor = 4;
         return;
       }
       this.nav = this.wrapper.querySelector(selectors.nav);
-      //this.openTriggers = document.querySelectorAll(selectors.openBtn);
+      this.openTriggers = document.querySelectorAll(selectors.openBtn);
 
       this.init();
     }
