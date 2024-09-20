@@ -131,6 +131,15 @@ html {
   content: '';
   background-image: url({{ 'menu.svg' | asset_url }});
   background-size: 24px;
+  background-repeat: no-repeat;
+  left: 10px;
+  position: relative;
+}
+
+.mobile-nav-trigger.is-active {
+  background-image: url({{ 'close.svg' | asset_url }});
+  background-size: 24px;
+  background-repeat: no-repeat;
 }
 
 .fancybox-container {
