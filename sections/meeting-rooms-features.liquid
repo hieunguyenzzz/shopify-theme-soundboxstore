@@ -166,6 +166,9 @@
             <div>
               <div class="video-player active">
                 <div class="video-wrapper">
+                  <template>
+                    {{ section.settings.close_video_file | video_tag: image_size: '700x' }}
+                  </template>
                   <video
                     width="1000"
                     height="1000"
