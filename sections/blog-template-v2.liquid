@@ -482,7 +482,7 @@
                   </noscript>
                 </div>
               {%- else -%}
-                <div class="image-wrap">
+                <a href="{{ article.url }}" class="image-wrap">
                   {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                   <img
                     class="lazyload"
@@ -499,7 +499,7 @@
                       alt="{{ article.title | escape }}"
                     >
                   </noscript>
-                </div>
+                </diva
               {%- endif -%}
             {%- endif -%}
           {%- endif -%}
