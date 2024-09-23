@@ -191,7 +191,12 @@
         if(window.yett.lazyloaded){
           setTimeout(onviedoHover, 100)
         }else{
-           setTimeout(onviedoHover, 3000)
+             document.addEventListener(
+        "app:ready",
+        (e) => {
+            setTimeout(onviedoHover, 1000)
+        })
+
         }
       })()
     </script>
