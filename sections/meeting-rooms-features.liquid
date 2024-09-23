@@ -176,7 +176,7 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-src="{{ section.settings.open_video }}"
+                    data-lazysrc="{{ section.settings.open_video }}"
                     {% if section.settings.open_thumb != blank %}
                       poster="{{ section.settings.open_thumb }}"
                     {% endif %}
@@ -193,7 +193,7 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-src="{{ section.settings.close_video }}"
+                    data-lazysrc="{{ section.settings.close_video }}"
                     {% if section.settings.close_thumb != blank %}
                       poster="{{ section.settings.close_thumb }}"
                     {% endif %}
@@ -236,8 +236,8 @@
                             document.addEventListener(
               "app:ready",
               (e) => {
-                document.querySelector("#vid1").src=document.querySelector("#vid1").dataset.src
-                document.querySelector("#vid2").src=document.querySelector("#vid2").dataset.src
+                document.querySelector("#vid1").src=document.querySelector("#vid1").dataset.lazysrc
+                document.querySelector("#vid2").src=document.querySelector("#vid2").dataset.lazysrc
                   $(document).ready(function() {
                        $('#audio-close').get(0).muted = true;
                              $('#audio-open').get(0).muted = true;
