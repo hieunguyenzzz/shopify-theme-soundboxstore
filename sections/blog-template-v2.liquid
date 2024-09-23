@@ -333,6 +333,9 @@
       }
 
    }
+  a.image-wrap {
+    display:block
+  }
 </style>
 {% comment %}
    {%- for tag in blog.tags -%}
@@ -499,7 +502,7 @@
                       alt="{{ article.title | escape }}"
                     >
                   </noscript>
-                </diva
+                </a>
               {%- endif -%}
             {%- endif -%}
           {%- endif -%}
