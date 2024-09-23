@@ -11,9 +11,9 @@
       {%- if article.image -%}
         {%- if article.image -%}
           <div class="image-wrap">
-            <div class="">
+            <a href="{{ article.url }}" class="">
               {{ article.image | image_url: width: 600, height: 400 | image_tag: loading: 'lazy' }}
-            </div>
+            </a>
           </div>
         {%- endif -%}
       {%- endif -%}
