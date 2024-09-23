@@ -236,7 +236,8 @@
                             document.addEventListener(
               "app:ready",
               (e) => {
-                document.querySelector("#vid1").src=document.querySelector("#vid1").dataset.lazysrc
+                setTimeout(()=>{
+                            document.querySelector("#vid1").src=document.querySelector("#vid1").dataset.lazysrc
                 document.querySelector("#vid2").src=document.querySelector("#vid2").dataset.lazysrc
                   $(document).ready(function() {
                        $('#audio-close').get(0).muted = true;
@@ -331,6 +332,8 @@
                          }
                        });
                      });
+                },1000)
+
               })
             </script>
           {%- else -%}
