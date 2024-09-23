@@ -181,6 +181,7 @@
            }, 300)
          }
          if (localStorage.getItem("{{ id }}")) {
+           console.log("onviedoHover()")
            onviedoHover()
          } else {
            document.addEventListener("mouseover", onviedoHover, { once: true })
