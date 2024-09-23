@@ -176,6 +176,7 @@
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
 
@@ -621,12 +622,13 @@
       ></script>
       <!-- End Cloudflare Web Analytics
     -->
-    <script
-      defer
-      async
-      type="text/javascript"
-      src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-    ></script>
+    <!--
+      <script
+        defer
+        async
+        type="text/javascript"
+        src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
+      ></script>
     -->
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     <!--
