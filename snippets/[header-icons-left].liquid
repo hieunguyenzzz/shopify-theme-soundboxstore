@@ -21,8 +21,11 @@
   </div>
 </div>
 <script>
-  // document.getElementById('mobile-nav-trigger').addEventListener('click', function() {
-  //           document.documentElement.classList.add('mobile-nav-open');
-  //           document.getElementById('MobileNav').classList.add('is-active');
-  //       });
+  var buttonMenu = document.getElementById('mobile-nav-trigger');
+  var menuMobile = document.getElementById('MobileNav');
+  buttonMenu.addEventListener('click', function() {
+    buttonMenu.classList.toggle('is-active');
+    menuMobile.classList.toggle('is-active');
+    document.documentElement.classList.toggle('mobile-nav-open');
+  });
 </script>
