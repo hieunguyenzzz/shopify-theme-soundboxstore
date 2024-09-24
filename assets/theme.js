@@ -4287,7 +4287,6 @@ lazySizesConfig.expFactor = 4;
       childList: ".slide-nav__dropdown",
       allLinks: "a.slide-nav__link",
       subNavToggleBtn: ".js-toggle-submenu",
-      openBtn: ".mobile-nav-trigger",
     };
   
     var classes = {
@@ -4314,7 +4313,6 @@ lazySizesConfig.expFactor = 4;
         return;
       }
       this.nav = this.wrapper.querySelector(selectors.nav);
-      this.openTriggers = Array.from(document.querySelectorAll(selectors.openBtn));
   
       this.init();
     }
