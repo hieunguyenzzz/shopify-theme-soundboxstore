@@ -93,7 +93,7 @@
     border-color: #7fc4eb;
   }
 </style>
-{% assign thankpageurl = pages['thankpage'].url | escape  %}
+{% assign thankpageurl = pages.thankpage.url | escape %}
 <div id="{{form_id}}-wrap">
   {%- form 'contact', id: form_id, class: 'target:ring-3', return_to: thankpageurl -%}
     {{ form.errors | default_errors }}
@@ -184,8 +184,7 @@
           style="    appearance: auto;"
           value="{{ localization.country.iso_code }}"
         >
-          {% assign countrymap = '
-GB en,
+          {% assign countrymap = 'GB en,
 IE ie /en-ie,
 US en /en-us,
 DK da /da-dk,
@@ -223,6 +222,37 @@ IT it /it-it' %}
           <option value="other">Other</option>
         </select>
         <label for="ContactFormName-{{ section.id }}">{{ settings.quote_country }}</label>
+      </div>
+      <div
+        class="grid__item"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  gap: 1em; max-width: 566px;"
+      >
+        <div class="">
+          <input
+            class="input-full input"
+            required
+            id="ContactForm-city"
+            class="field__input"
+            name="contact[city]"
+            value=""
+            aria-required="true"
+            placeholder="{{  'customer.addresses.city' | t }}"
+          >
+          <label for="ContactFormCity-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+        </div>
+        <div class="">
+          <input
+            class="input-full input"
+            required
+            id="ContactForm-postcode"
+            class="field__input"
+            name="contact[postcode]"
+            value=""
+            aria-required="true"
+            placeholder="{{ 'contact.form.postcode' | t }}"
+          >
+          <label for="ContactFormPostcode-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+        </div>
       </div>
       <div class="grid__item">
         <textarea
@@ -283,7 +313,6 @@ IT it /it-it' %}
           {{- settings.quote_interested_booths -}}
         </label>
       </div>
-
       <div class="submit-btn-wrap grid__item">
         <div>
           <button
@@ -299,52 +328,53 @@ IT it /it-it' %}
   <script>
     (() => {
       function logSubmit(event) {
-        event.preventDefault()
+        event.preventDefault();
         try {
-console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
-        let data = {
-          create_at: new Date().toISOString(),
-          products:[]
-        }
-        new FormData(event.target).forEach((value, key) => {
-          console.log(key, value);
-          if(key==='contact[product]'){
-            let [title,sku] = value.split(":")
-            data.products.push({
-              title,
-              sku,
-              quantity:1
-            });
-          }else{
-            data[key] = value;
+          console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
+          let data = {
+            create_at: new Date().toISOString(),
+            products: [],
+          };
+          new FormData(event.target).forEach((value, key) => {
+            console.log(key, value);
+            if (key === 'contact[product]') {
+              let [title, sku] = value.split(':');
+              data.products.push({
+                title,
+                sku,
+                quantity: 1,
+              });
+            } else {
+              data[key] = value;
+            }
+          });
+          console.log({ data });
+          let stringproducts = JSON.stringify(data.products);
+          if (form.elements['contact[products]']) {
+            form.elements['contact[products]'].value = stringproducts;
           }
-        })
-        console.log({data})
-        let stringproducts = JSON.stringify(data.products)
-        if(form.elements['contact[products]']){
-          form.elements['contact[products]'].value=stringproducts
-        }
-        fetch("https://hooks.zapier.com/hooks/catch/14043376/248z11w/",
-          {
+          fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
             },
-            method: "POST",
-            mode: "no-cors",
-            body: JSON.stringify(data)
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(data),
           })
-          .then(function (res) { console.log(res,data) })
-          .catch(function (res) { console.log(res,data) })
-}
-catch(err) {
-  console.error(err)
-}
-        
-        event.target.submit()
+            .then(function (res) {
+              console.log(res, data);
+            })
+            .catch(function (res) {
+              console.log(res, data);
+            });
+        } catch (err) {
+          console.error(err);
+        }
+        event.target.submit();
       }
-      const form = document.getElementById("{{- form_id -}}");
-      form.addEventListener("submit", logSubmit);
-    })()
+      const form = document.getElementById('{{- form_id -}}');
+      form.addEventListener('submit', logSubmit);
+    })();
   </script>
 </div>
