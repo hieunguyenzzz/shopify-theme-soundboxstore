@@ -457,17 +457,7 @@
             products: [],
           };
           new FormData(event.target).forEach((value, key) => {
-            console.log(key, value);
-            if (key === 'contact[product]') {
-              let [title, sku] = value.split(':');
-              data.products.push({
-                title,
-                sku,
-                quantity: 1,
-              });
-            } else {
               data[key] = value;
-            }
           });
           console.log({ data });
           let stringproducts = JSON.stringify(data.products);
