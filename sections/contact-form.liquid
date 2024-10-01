@@ -446,6 +446,58 @@
     );
   });
 </script>
+<script>
+    (() => {
+      function logSubmit(event) {
+        event.preventDefault();
+        try {
+          console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
+          let data = {
+            create_at: new Date().toISOString(),
+            products: [],
+          };
+          new FormData(event.target).forEach((value, key) => {
+            console.log(key, value);
+            if (key === 'contact[product]') {
+              let [title, sku] = value.split(':');
+              data.products.push({
+                title,
+                sku,
+                quantity: 1,
+              });
+            } else {
+              data[key] = value;
+            }
+          });
+          console.log({ data });
+          let stringproducts = JSON.stringify(data.products);
+          if (form.elements['contact[products]']) {
+            form.elements['contact[products]'].value = stringproducts;
+          }
+          fetch('https://hooks.zapier.com/hooks/catch/14043376/2m3defl/', {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(data),
+          })
+            .then(function (res) {
+              console.log(res, data);
+            })
+            .catch(function (res) {
+              console.log(res, data);
+            });
+        } catch (err) {
+          console.error(err);
+        }
+        event.target.submit();
+      }
+      const form = document.getElementById('{{- form_id -}}');
+      form.addEventListener('submit', logSubmit);
+    })();
+</script>
 {% schema %}
 {
   "name": "Contact form",
