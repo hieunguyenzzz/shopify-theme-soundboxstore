@@ -2,11 +2,16 @@
   <div class="site-nav__icons">
     <button
       type="button"
+      style="
+        width: 24px;
+            height: 24px;
+            padding: 0;
+        }
+      "
       aria-controls="MobileNav"
       class="site-nav__link site-nav__link--icon medium-up--hide mobile-nav-trigger"
       id="mobile-nav-trigger"
     >
-      
       <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
     </button>
   </div>
@@ -21,14 +26,14 @@
   </div>
 </div>
 <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var buttonMenu = document.getElementById('mobile-nav-trigger');
-        var menuMobile = document.getElementById('MobileNav');
-        
-        buttonMenu.addEventListener('click', function() {
-          buttonMenu.classList.toggle('is-active');
-          menuMobile.classList.toggle('is-active');
-          document.documentElement.classList.toggle('mobile-nav-open');
-        });
-      });
+  document.addEventListener('DOMContentLoaded', function() {
+    var buttonMenu = document.getElementById('mobile-nav-trigger');
+    var menuMobile = document.getElementById('MobileNav');
+
+    buttonMenu.addEventListener('click', function() {
+      buttonMenu.classList.toggle('is-active');
+      menuMobile.classList.toggle('is-active');
+      document.documentElement.classList.toggle('mobile-nav-open');
+    });
+  });
 </script>
