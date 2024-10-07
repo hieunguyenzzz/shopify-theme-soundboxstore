@@ -30,13 +30,10 @@
     var buttonMenu = document.getElementById('mobile-nav-trigger');
     var menuMobile = document.getElementById('MobileNav');
 
-    if (buttonMenu && menuMobile) {
-      // Use passive event listener for better scroll performance
-      buttonMenu.addEventListener('click', function() {
-        buttonMenu.classList.toggle('is-active');
-        menuMobile.classList.toggle('is-active');
-        document.documentElement.classList.toggle('mobile-nav-open');
-      }, { passive: true });
-    }
+    buttonMenu.addEventListener('click', function() {
+      buttonMenu.classList.toggle('is-active');
+      menuMobile.classList.toggle('is-active');
+      document.documentElement.classList.toggle('mobile-nav-open');
+    });
   });
 </script>
