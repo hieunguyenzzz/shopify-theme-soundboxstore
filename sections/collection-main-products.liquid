@@ -29,6 +29,19 @@
           %}
         </li>
       {% endif %}
+      {% if block.type == 'collection' %}
+        {% assign collection = block.settings.collection %}
+        {% assign url = block.settings.url | default: collection.url %}
+        <li {{ block.shopify_attributes }}>
+          {% render '[card-item]',
+            collection: block.settings.collection,
+            url: url,
+            title: collection.metafields.custom.menu_title.value,
+            subtitle: collection.metafields.custom.menu_subtitle.value,
+            image: collection.metafields.custom.menu_image.value
+          %}
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
 </section>
@@ -49,6 +62,17 @@
         }
       ]
   },  {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "collection"
+        }
+
+      ]
+    }, {
       "type": "product",
       "name": "Product",
       "settings": [
