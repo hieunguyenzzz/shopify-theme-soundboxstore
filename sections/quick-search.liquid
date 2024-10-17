@@ -83,7 +83,17 @@
               color: white;
             "
           >
-            {%- for product in search_collection.products limit: 6 -%}
+            <div
+              style="
+                width: 100%;
+                text-align: center;
+                margin: 1em 0 0.5em;
+                font-weight: bold;
+              "
+            >
+              {{ 'general.search.products' | t }}
+            </div>
+            {%- for product in search_collection.products limit: 12 -%}
               <div>
                 <a
                   style="
@@ -100,6 +110,88 @@
                   href="{{ product.url }}"
                 >
                   {{- product.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+              color: white;
+            "
+          >
+            <div
+              style="
+                width: 100%;
+                text-align: center;
+                margin: 1em 0 0.5em;
+                font-weight: bold;
+              "
+            >
+              {{ 'collections.filters.categories_title' | t }}
+            </div>
+            {%- for link in linklists['main-next'].links limit: 12 -%}
+              <div>
+                <a
+                  style="
+                    font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                    margin: 4px;
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #fff;
+                    border: 1px solid rgba(255,255,255,0.3);
+                    border-radius: 16px;
+                    background-color: rgba(0,0,0,0.3);
+                  "
+                  href="{{ link.url }}"
+                >
+                  {{- link.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+              color: white;
+            "
+          >
+            {% assign keywords = 'Private Solo Call, Private 2 Person Call, HR, One on One Training, Zoom Call, Dual Zoom Call, Meeting Room, Conference Room, Occasional 2-4 Person Meeting Booth, Diversity Booth, Prayer Booth, Sleep Pod' %}
+            {% assign words = keywords | split: ',' %}
+            <div
+              style="
+                width: 100%;
+                text-align: center;
+                margin: 1em 0 0.5em;
+                font-weight: bold;
+              "
+            >
+              Use Case Scenarios
+            </div>
+            {%- for word in words -%}
+              <div>
+                <a
+                  style="
+                    font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                    margin: 4px;
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #fff;
+                    border: 1px solid rgba(255,255,255,0.3);
+                    border-radius: 16px;
+                    background-color: rgba(0,0,0,0.3);
+                  "
+                  href="{{ routes.search_url }}?type=product&q={{ word | strip }}"
+                >
+                  {{- word -}}
                 </a>
               </div>
             {%- endfor -%}
