@@ -133,7 +133,7 @@
             >
               {{ 'collections.filters.categories_title' | t }}
             </div>
-            {%- for link in linklists['main-next'].links limit: 12 -%}
+            {%- for link in linklists['main-next'].links -%}
               <div>
                 <a
                   style="
@@ -175,7 +175,7 @@
             >
               Use Case Scenarios
             </div>
-            {%- for word in words -%}
+            {%- for link in linklists['search-use-case'].links -%}
               <div>
                 <a
                   style="
@@ -189,9 +189,9 @@
                     border-radius: 16px;
                     background-color: rgba(0,0,0,0.3);
                   "
-                  href="{{ routes.search_url }}?type=product&q={{ word | strip }}"
+                  href="{{ link.url }}"
                 >
-                  {{- word -}}
+                  {{- link.title -}}
                 </a>
               </div>
             {%- endfor -%}
