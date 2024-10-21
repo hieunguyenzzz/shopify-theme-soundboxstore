@@ -549,9 +549,9 @@
     </script>
     {% section 'zoho-form-popup' %}
     <script>
-       function openSpecForm (e) {
-         e.preventDefault()
-         e.stoppagination()
+       function openSpecForm (event) {
+         event.preventDefault()
+         event.stopPropagation()
         window.location.href.indexOf("/sv-se") > -1
           ? ((window._klOnsite = window._klOnsite || []),
             window._klOnsite.push(["openForm", "TwSp4h"]))
