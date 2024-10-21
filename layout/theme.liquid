@@ -612,6 +612,7 @@
               const event = new Event("app:ready");
               document.dispatchEvent(event);
             }
+            return true
           }
           document.addEventListener("click", MeroxIO_Function,{ once: true });
           document.addEventListener("scroll", MeroxIO_Function,{ once: true });
