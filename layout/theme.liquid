@@ -26,7 +26,7 @@
     {% render 'pandectes-rules' %}
 
     {% render 'pre-header' %}
-    {% render 'yett' %}
+    <!-- {% render 'yett' %} -->
     {% if template.name == 'product' %}
       <script src="https://cdn.debugbear.com/JY5AELhfMwlt.js" async></script>
     {% endif %}
@@ -589,7 +589,7 @@
           var isReplaced = false;
           function MeroxIO_Function(){
             if(!isReplaced){
-              window.yett.unblock();
+              window.yett?.unblock();
               window.yett.lazyloaded=true
               console.log("apps lazyloaded successfully");
               isReplaced=true;
