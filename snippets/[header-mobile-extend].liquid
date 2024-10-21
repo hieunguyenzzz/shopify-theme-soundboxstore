@@ -77,7 +77,7 @@
       <div>Request a quote</div>
     </label>
   -->
-  <a href="#" class="specBtn">
+  <a href="#" onclick="openSpecForm()" class="specBtn">
     {% if settings.header_guide_image %}
       {{
         settings.header_guide_image
@@ -95,7 +95,10 @@
     {% endif %}
     {{ settings.header_guide_button -}}
   </a>
-    {% assign page_about = pages['about-us'] %}
- 
-  <a style="flex:1 1 300px" href="{{ page_about.url }}">{{ settings.header_moreinfo }}  <span class="visually-hidden">{{ page_about.title }}</span></a>
+  {% assign page_about = pages['about-us'] %}
+
+  <a style="flex:1 1 300px" href="{{ page_about.url }}">
+    {{- settings.header_moreinfo }}
+    <span class="visually-hidden">{{ page_about.title }}</span></a
+  >
 </div>
