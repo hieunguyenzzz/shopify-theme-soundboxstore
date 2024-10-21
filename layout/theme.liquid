@@ -644,6 +644,7 @@
     <script>
       $(window).on("load", function () {
         $(".specBtn").on("click", function (e) {
+          console.log( window.location.href)
           window.location.href.indexOf("/sv-se") > -1
             ? ((window._klOnsite = window._klOnsite || []),
               window._klOnsite.push(["openForm", "TwSp4h"]))
