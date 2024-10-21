@@ -613,6 +613,10 @@
               })()
               const event = new Event("app:ready");
               document.dispatchEvent(event);
+                        document.removeEventListener("click", MeroxIO_Function);
+          document.removeEventListener("scroll", MeroxIO_Function);
+          document.removeEventListener("touchstart", MeroxIO_Function);
+          document.removeEventListener("mousemove", MeroxIO_Function);
             }
           }
           setTimeout(MeroxIO_Function, 1000);
