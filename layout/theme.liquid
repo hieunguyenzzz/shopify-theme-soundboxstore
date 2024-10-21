@@ -615,6 +615,7 @@
               document.dispatchEvent(event);
             }
           }
+          setTimeout(MeroxIO_Function, 1000);
           document.addEventListener("click", MeroxIO_Function,{ once: true });
           document.addEventListener("scroll", MeroxIO_Function,{ once: true });
           document.addEventListener("touchstart", MeroxIO_Function,{ once: true });
