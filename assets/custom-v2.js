@@ -182,38 +182,7 @@ $(document).ready(function () {
             },
           ],
         });
-    }, 2500),
-      $(".specBtn").on("click", function (e) {
-        window.location.href.indexOf("/sv-se") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "TwSp4h"]))
-          : window.location.href.indexOf("/de-de") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "WkKQQ2"]))
-          : window.location.href.indexOf("/no-no") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "WUVpej"]))
-          : window.location.href.indexOf("/fr-fr") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "VE4MVg"]))
-          : window.location.href.indexOf("/nl-nl") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "S7A35J"]))
-          : window.location.href.indexOf("/nl-be") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "RDAf8s"]))
-          : window.location.href.indexOf("/fr-be") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "WE2X63"]))
-          : window.location.href.indexOf("/de-at") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "YqJKtL"]))
-          : window.location.href.indexOf("/es-es") > -1
-          ? ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "RbAtba"]))
-          : ((window._klOnsite = window._klOnsite || []),
-            window._klOnsite.push(["openForm", "V4fNJA"]));
-      });
+    }, 2500);
   }),
   $("form.product-single__form").on("click", ".addon_addtocart", function (e) {
     e.preventDefault();
