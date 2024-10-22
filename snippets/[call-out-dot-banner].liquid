@@ -37,6 +37,8 @@
           "
           class="hero__link"
         >
+          {% assign pageF = pages['remote-tours'] %}
+          {% assign textF = pageF.title %}
           <a
             data-onlycity="other"
             href="{{pageF.url }}"
@@ -44,7 +46,8 @@
           >
             {{ textF }}
           </a>
-
+          {% assign pageF = pages['showroom-london'] %}
+          {% assign textF = 'Showroom visit' %}
           <a
             href="{{pageF.url }}"
             data-onlycity="London"
