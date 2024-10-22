@@ -197,7 +197,8 @@
   | default: collection.metafields.custom.card_description.value
 %}
 {% assign image = section.settings.image | default: collection.metafields.custom.card_image.value %}
-{% render 'collection-main-header',
+{% render '[call-out-dot-banner]',
+  blocks: section.blocks,
   title: title,
   description: description,
   image: image,
@@ -280,6 +281,37 @@
           "id": "image",
           "label": "Image"
         }
+  ],
+    "blocks": [
+    {
+      "name": "product",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "vertical",
+          "label": "Vertical",
+          "min": 0,
+          "max": 100,
+          "default":0,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "horizontal",
+          "label": "horizontal",
+          "default":0,
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        }
+      ]
+    }
   ],
   "presets": [
     {
