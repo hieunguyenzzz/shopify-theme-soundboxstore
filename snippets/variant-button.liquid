@@ -1,4 +1,5 @@
 {%- assign swatch_file_extension = 'png' -%}
+{% assign product_available = true %}
 <div
   {% if option.values.size == 1 %}
     style="display:none"
@@ -32,13 +33,32 @@
   >
     {% comment %}<legend class="hide">{{ option.name }}</legend>{% endcomment %}
     {%- for value in option.values -%}
-      {% for variant in product.variants -%}
-        {% if variant.option1 == value %}
-          {% if variant.metafields.custom.color_image %}
-            {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' %}
+      {% if value.swatch %}
+        {% render 'swatch',
+          swatch: value.swatch,
+          value: value,
+          option: option,
+          product_available: product_available,
+          section_id: section_id,
+          form_id: form_id,
+          option_index: option_index
+        %}
+        {% continue %}
+      {% endif %}
+      {% if value.swatch.image -%}
+        {% assign color_image = value.swatch.image | image_url: '50x50' %}
+      {% endif %}
+      {% assign color_swatch_fallback = value.swatch.color | default: value %}
+      {% unless color_image %}
+        {% for variant in product.variants -%}
+          {% if variant.option1 == value %}
+            {% if variant.metafields.custom.color_image %}
+              {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' %}
+            {% endif %}
           {% endif %}
-        {% endif %}
-      {%- endfor %}
+        {%- endfor %}
+      {% endunless %}
+
       {%- liquid
         assign product_available = true
         if product.options.size == 1
@@ -77,7 +97,7 @@
             {%- liquid
               assign color_file_name = value | handle | append: '.' | append: swatch_file_extension
               assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
-              assign color_swatch_fallback = value | split: ' ' | last | handle
+              assign color_swatch_fallback = color_swatch_fallback | split: ' ' | last | handle
             -%}
           {% endunless %}
 
