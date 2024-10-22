@@ -1,0 +1,46 @@
+{%- liquid
+  assign swatch_value = null
+  if swatch.image
+    assign image_url = swatch.image | image_url: width: 50
+    assign swatch_image = 'url(' | append: image_url | append: ')'
+    assign swatch_focal_point = swatch.image.presentation.focal_point
+  endif
+  if swatch.color
+    assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+  endif
+-%}
+
+<div
+  class="variant-input {% unless product_available %} disabled{% endunless %}"
+  data-index="option{{ option_index }}"
+  data-value="{{ value | escape }}"
+  data-trvalue="{{value | escape}}"
+>
+  <input
+    type="radio"
+    hidden
+    form="{{ form_id }}"
+    {% if option.selected_value == value %}
+      checked="checked"
+    {% endif %}
+    value="{{ value | escape }}"
+    data-index="option{{ option_index }}"
+    name="{{ option.name }}"
+    data-variant-input
+    class="hide {% unless product_available %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch{% endif %}"
+    {% if is_color %}
+      data-color-name="{{ value | escape }}"
+    {% endif %}
+    {% if is_color %}
+      data-color-index="{{ color_option_index }}"
+    {% endif %}
+    id="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+  >
+  <label
+    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+    class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
+    style="background-color: {{ swatch_value }};background-image: {{ swatch_image }}"
+  >
+    {{ value | escape }}
+  </label>
+</div>
