@@ -1,0 +1,75 @@
+{% assign title = title | default: collection.title %}
+{% assign description = description | default: collection.description %}
+{% assign products = products | default: collection.products %}
+{% assign products_count = products_count | default: collection.products_count %}
+{% assign image = image | default: collection.image %}
+<div class="collection-main-header-wrap">
+  <header class="page-width">
+    <h1 class="visually-hidden">{{ collection.title }}</h1>
+    <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
+    <div class="collection-main-content">
+      <div>
+        {% render '[callout-image]', image: image, blocks: blocks %}
+      </div>
+      <div
+        style="
+               display: flex;
+          align-self: stretch;
+          flex-direction: column;
+          justify-content: center;
+        "
+        class="collection-main-description"
+      >
+        <div class="collection-main-title desktop-only">{{ title | strip_html }}</div>
+        {% if description != blank %}
+          <div class="[&_ul]:list-disc [&_ul]:ml-[30px]">
+            {{ description }}
+          </div>
+        {% else %}
+          {{ collection.description }}
+        {% endif %}
+        <div
+          style="
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+          "
+          class="hero__link"
+        >
+          <a
+            data-onlycity="other"
+            href="{{pageF.url }}"
+            class="btn"
+          >
+            {{ textF }}
+          </a>
+
+          <a
+            href="{{pageF.url }}"
+            data-onlycity="London"
+            class="btn "
+          >
+            {{ textF }}
+          </a>
+          {% assign page = pages.consultancy %}
+          <a
+            href="{{ page.url }}"
+            class="btn"
+          >
+            {{ 'strings.others.Schedule_Design_Survey' | t }}
+          </a>
+        </div>
+        <div>
+          <p style="font-size:0.8em" class="delivery-message">{{ settings.header_delivery_message }}</p>
+          <div
+            class="site-nav__dropdown-menu_left-icons"
+            style="display: flex; margin-top:0.5em;gap: 1em;flex-wrap: wrap;"
+          >
+            {% render 'iso-images' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
