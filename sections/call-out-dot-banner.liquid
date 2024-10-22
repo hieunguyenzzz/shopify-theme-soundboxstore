@@ -197,7 +197,7 @@
   | default: collection.metafields.custom.card_description.value
 %}
 {% assign image = section.settings.image | default: collection.metafields.custom.card_image.value %}
-{% render 'collection-main-header',
+{% render '[call-out-dot-banner]',
   blocks: section.blocks,
   title: title,
   description: description,
