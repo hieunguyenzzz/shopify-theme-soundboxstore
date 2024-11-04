@@ -1571,6 +1571,7 @@
               );
           }),
           (e.prototype.open = function (e) {
+            console.log("this.modal", this.modal);
             var t = !1;
             !this.modalIsOpen &&
               (e ? e.preventDefault() : (t = !0),
