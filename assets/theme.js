@@ -3012,6 +3012,7 @@
                 return;
             }
           }
+          return;
           document.activeElement.blur(),
             a.wrapper.classList.add("hide"),
             r.topSearched && a.topSearched.classList.remove("hide"),
