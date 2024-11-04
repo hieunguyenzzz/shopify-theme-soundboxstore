@@ -3000,16 +3000,16 @@
         }
         function l(t) {
           console.log("click" + r.namespace, t);
-          // if (t && t.target.closest) {
-          //   if (t.target.closest(s.closeSearch));
-          //   else {
-          //     if (t.target.closest(".site-header__search-form")) return;
-          //     if (t.target.closest(".site-header__element--sub")) return;
-          //     if (t.target.closest("#SearchResultsWrapper")) return;
-          //     else if (t.target.closest(".site-header__search-container"))
-          //       return;
-          //   }
-          // }
+          if (t && t.target.closest) {
+            if (t.target.closest(s.closeSearch));
+            else {
+              if (t.target.closest(".site-header__search-form")) return;
+              if (t.target.closest(".site-header__element--sub")) return;
+              if (t.target.closest("#SearchResultsWrapper")) return;
+              else if (t.target.closest(".site-header__search-container"))
+                return;
+            }
+          }
           document.activeElement.blur(),
             a.wrapper.classList.add("hide"),
             r.topSearched && a.topSearched.classList.remove("hide"),
