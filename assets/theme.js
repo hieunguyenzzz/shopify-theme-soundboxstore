@@ -3235,14 +3235,14 @@
             m();
         }
         function m() {
-          setTimeout(function () {
-            window.on("click" + r.namespace, function (e) {
-              l(e);
-            });
-          }, 0),
-            window.on("keyup", function (e) {
-              27 === e.keyCode && l();
-            });
+          // setTimeout(function () {
+          //   window.on("click" + r.namespace, function (e) {
+          //     l(e);
+          //   });
+          // }, 0),
+          window.on("keyup", function (e) {
+            27 === e.keyCode && l();
+          });
         }
         function g(e) {
           return Object.keys(e)
