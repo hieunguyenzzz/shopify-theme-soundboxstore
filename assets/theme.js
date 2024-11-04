@@ -2999,8 +2999,8 @@
               : a.wrapper.classList.add("hide");
         }
         function l(t) {
-                     console.log("click" + r.namespace);
-            window.off("click" + r.namespace);
+          console.log("click" + r.namespace);
+          window.off("click" + r.namespace);
           console.log("click" + r.namespace, t);
           if (t && t.target.closest) {
             if (t.target.closest(s.closeSearch));
@@ -3021,8 +3021,7 @@
               a.inlineSearchContainer.classList.remove("is-active"),
             document.querySelectorAll(s.form).forEach((e) => {
               e.classList.remove("is-active");
-            }),
- 
+            });
         }
         function d(e) {
           e.preventDefault(), e.stopImmediatePropagation();
