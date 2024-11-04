@@ -3020,7 +3020,7 @@
             document.querySelectorAll(s.form).forEach((e) => {
               e.classList.remove("is-active");
             });
-          window.off("click" + r.namespace);
+          // window.off("click" + r.namespace);
         }
         function d(e) {
           e.preventDefault(), e.stopImmediatePropagation();
