@@ -3010,16 +3010,16 @@
                 return;
             }
           }
-          document.activeElement.blur(),
-            a.wrapper.classList.add("hide"),
-            r.topSearched && a.topSearched.classList.remove("hide"),
-            r.predictiveSearch &&
-              (a.predictiveWrapper.classList.add("hide"), clearTimeout(e)),
-            a.inlineSearchContainer &&
-              a.inlineSearchContainer.classList.remove("is-active"),
-            document.querySelectorAll(s.form).forEach((e) => {
-              e.classList.remove("is-active");
-            });
+          // document.activeElement.blur(),
+          //   a.wrapper.classList.add("hide"),
+          //   r.topSearched && a.topSearched.classList.remove("hide"),
+          //   r.predictiveSearch &&
+          //     (a.predictiveWrapper.classList.add("hide"), clearTimeout(e)),
+          //   a.inlineSearchContainer &&
+          //     a.inlineSearchContainer.classList.remove("is-active"),
+          //   document.querySelectorAll(s.form).forEach((e) => {
+          //     e.classList.remove("is-active");
+          //   });
           // window.off("click" + r.namespace);
         }
         function d(e) {
