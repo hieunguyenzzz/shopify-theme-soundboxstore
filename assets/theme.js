@@ -2999,8 +2999,7 @@
               : a.wrapper.classList.add("hide");
         }
         function l(t) {
-          console.log("click" + r.namespace);
-
+          console.log("click" + r.namespace, t);
           console.log("click" + r.namespace, t);
           if (t && t.target.closest) {
             if (t.target.closest(s.closeSearch));
@@ -3012,8 +3011,7 @@
                 return;
             }
           }
-          document.activeElement.blur(),
-            a.wrapper.classList.add("hide"),
+          a.wrapper.classList.add("hide"),
             r.topSearched && a.topSearched.classList.remove("hide"),
             r.predictiveSearch &&
               (a.predictiveWrapper.classList.add("hide"), clearTimeout(e)),
