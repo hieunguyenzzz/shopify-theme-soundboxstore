@@ -2999,7 +2999,6 @@
               : a.wrapper.classList.add("hide");
         }
         function l(t) {
-          console.log("click" + r.namespace, t);
           if (t && t.target.closest) {
             if (t.target.closest(s.closeSearch));
             else {
@@ -3010,17 +3009,17 @@
                 return;
             }
           }
-          // document.activeElement.blur(),
-          //   a.wrapper.classList.add("hide"),
-          //   r.topSearched && a.topSearched.classList.remove("hide"),
-          //   r.predictiveSearch &&
-          //     (a.predictiveWrapper.classList.add("hide"), clearTimeout(e)),
-          //   a.inlineSearchContainer &&
-          //     a.inlineSearchContainer.classList.remove("is-active"),
-          //   document.querySelectorAll(s.form).forEach((e) => {
-          //     e.classList.remove("is-active");
-          //   });
-          // window.off("click" + r.namespace);
+          document.activeElement.blur(),
+            a.wrapper.classList.add("hide"),
+            r.topSearched && a.topSearched.classList.remove("hide"),
+            r.predictiveSearch &&
+              (a.predictiveWrapper.classList.add("hide"), clearTimeout(e)),
+            a.inlineSearchContainer &&
+              a.inlineSearchContainer.classList.remove("is-active"),
+            document.querySelectorAll(s.form).forEach((e) => {
+              e.classList.remove("is-active");
+            });
+          window.off("click" + r.namespace);
         }
         function d(e) {
           e.preventDefault(), e.stopImmediatePropagation();
