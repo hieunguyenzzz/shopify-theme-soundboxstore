@@ -2999,20 +2999,17 @@
               : a.wrapper.classList.add("hide");
         }
         function l(t) {
-          console.log("click" + r.namespace);
-          window.off("click" + r.namespace);
           console.log("click" + r.namespace, t);
-          if (t && t.target.closest) {
-            if (t.target.closest(s.closeSearch));
-            else {
-              if (t.target.closest(".site-header__search-form")) return;
-              if (t.target.closest(".site-header__element--sub")) return;
-              if (t.target.closest("#SearchResultsWrapper")) return;
-              else if (t.target.closest(".site-header__search-container"))
-                return;
-            }
-          }
-          return;
+          // if (t && t.target.closest) {
+          //   if (t.target.closest(s.closeSearch));
+          //   else {
+          //     if (t.target.closest(".site-header__search-form")) return;
+          //     if (t.target.closest(".site-header__element--sub")) return;
+          //     if (t.target.closest("#SearchResultsWrapper")) return;
+          //     else if (t.target.closest(".site-header__search-container"))
+          //       return;
+          //   }
+          // }
           document.activeElement.blur(),
             a.wrapper.classList.add("hide"),
             r.topSearched && a.topSearched.classList.remove("hide"),
@@ -3023,6 +3020,7 @@
             document.querySelectorAll(s.form).forEach((e) => {
               e.classList.remove("is-active");
             });
+          window.off("click" + r.namespace);
         }
         function d(e) {
           e.preventDefault(), e.stopImmediatePropagation();
