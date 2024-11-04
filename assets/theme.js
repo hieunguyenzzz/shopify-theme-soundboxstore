@@ -2999,8 +2999,6 @@
               : a.wrapper.classList.add("hide");
         }
         function l(t) {
-          console.log("click" + r.namespace, t);
-          console.log("click" + r.namespace, t);
           if (t && t.target.closest) {
             if (t.target.closest(s.closeSearch));
             else {
