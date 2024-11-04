@@ -3235,7 +3235,6 @@
             m();
         }
         function m() {
-          return;
           setTimeout(function () {
             window.on("click" + r.namespace, function (e) {
               l(e);
