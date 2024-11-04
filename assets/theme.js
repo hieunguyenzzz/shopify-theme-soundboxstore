@@ -3021,6 +3021,7 @@
               e.classList.remove("is-active");
             });
           window.off("click" + r.namespace);
+          return;
         }
         function d(e) {
           e.preventDefault(), e.stopImmediatePropagation();
