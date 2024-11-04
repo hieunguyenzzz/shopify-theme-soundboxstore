@@ -3019,6 +3019,7 @@
             document.querySelectorAll(s.form).forEach((e) => {
               e.classList.remove("is-active");
             }),
+            console.log("click" + r.namespace),
             window.off("click" + r.namespace);
         }
         function d(e) {
