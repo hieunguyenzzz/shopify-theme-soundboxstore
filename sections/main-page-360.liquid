@@ -356,6 +356,10 @@
                   {% assign isResellerProduct = false %}
                   {% continue %}
                 {% endif %}
+                <script>
+                  console.log({{isResserllerOrTradeAccount|json}})
+                  console.log({{isResellerProduct|json}})
+                </script>
               {% endunless %}
               {%- if product.metafields.custom.page360.value.url -%}
                 <div
