@@ -347,7 +347,7 @@
           <div class="seel-all-details-grid">
             {% for product in collections.all.products %}
               {% unless isResserllerOrTradeAccount %}
-                {% for p in collections['reseller-login'].products %}
+                {% for p in collections['reseller-only'].products %}
                   {% if p.handle == product.handle %}
                     {% assign isResellerProduct = true %}
                   {% endif %}
