@@ -1,3 +1,16 @@
+{% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% endunless %}
 {% unless mainProduct %}
   {% for product in collections.all.products %}
     {%- if product.metafields.custom.page360.value.handle == page.handle -%}
@@ -333,6 +346,17 @@
         <div class="bottomBar-header-center">
           <div class="seel-all-details-grid">
             {% for product in collections.all.products %}
+              {% unless isResserllerOrTradeAccount %}
+                {% for p in collections['reseller-login'].products %}
+                  {% if p.handle == product.handle %}
+                    {% assign isResellerProduct = true %}
+                  {% endif %}
+                {% endfor %}
+                {% if isResellerProduct %}
+                  {% assign isResellerProduct = false %}
+                  {% continue %}
+                {% endif %}
+              {% endunless %}
               {%- if product.metafields.custom.page360.value.url -%}
                 <div
                   class="
