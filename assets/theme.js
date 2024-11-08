@@ -3038,7 +3038,7 @@
           for (var n of i.keys()) t[n] = i.get(n);
           t.q && (t.q += "*");
           var s = g(t);
-          return (window.location.href = "/search?" + s), !1;
+          return (window.location.href = window.theme.routes.search"?" + s), !1;
         }
         function p(s) {
           if (
