@@ -1,16 +1,18 @@
-{% assign isResserllerOrTradeAccount = false %}
-{% if request.design_mode %}
-  {% if settings.isreseller %}
-    {% assign isResserllerOrTradeAccount = true %}
-  {% endif %}
-{% endif %}
-{% if customer %}
-  {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-    {% if customer.metafields['custom-register'].trade_account_status == '1' %}
-      {% assign isResserllerOrTradeAccount = true %}
+{% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
     {% endif %}
   {% endif %}
-{% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% else %}
+  {% assign isResserllerOrTradeAccount = settings.isreseller %}
+{% endunless %}
 <!doctype html>
 <html
   class="no-js"
@@ -316,6 +318,7 @@
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
       window.theme = window.theme || {};
+      theme.reseller=true
       theme.routes = {
         home: "{{ routes.root_url }}",
         collections: "{{ routes.collections_url }}",
