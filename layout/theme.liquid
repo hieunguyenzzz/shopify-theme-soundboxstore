@@ -318,7 +318,9 @@
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
       window.theme = window.theme || {};
-      theme.reseller=true
+      {% if isResserllerOrTradeAccount %}
+      theme.reseller=true;
+      {% endif %}
       theme.routes = {
         home: "{{ routes.root_url }}",
         collections: "{{ routes.collections_url }}",
