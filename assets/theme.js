@@ -3628,6 +3628,9 @@
         var i = "";
         return (
           e.forEach((e) => {
+            if (theme.reseller && e.resellerOnly) {
+              return;
+            }
             i += `
         <div class="grid-item grid-product">
           <div class="grid-item__content">
