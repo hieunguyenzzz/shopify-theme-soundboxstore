@@ -243,6 +243,17 @@
           {% unless collection %}
             {% assign collection = collections.first %}
           {% endunless %}
+          {% if isResserllerOrTradeAccount %}
+            <style>
+              .isResserlleInput+.site-nav__dropdown-menu_left-slider .isResserlleInput-list{
+                display:none
+              }
+              .isResserlleInput:checked+.site-nav__dropdown-menu_left-slider .isResserlleInput-list{
+                display:flex
+              }
+            </style>
+            <input class="isResserlleInput" type="checkbox">
+          {% endif %}
           <div class="site-nav__dropdown-menu_left-slider">
             <ul>
               {% for product in collection.products %}
@@ -271,7 +282,7 @@
               </li>
             </ul>
             {% if isResserllerOrTradeAccount %}
-              <ul>
+              <ul class="isResserlleInput-list">
                 {% for product in collections['co-worker'].products %}
                   <li>
                     {% render '[menu-item]', product: product %}
