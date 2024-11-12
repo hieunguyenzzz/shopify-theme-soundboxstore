@@ -3120,6 +3120,8 @@
                                           var t = {
                                             title: e.title,
                                             url: e.url,
+                                            resellerOnly:
+                                              e.tags?.includes("reseller only"),
                                             body: e.body,
                                             image_responsive_url:
                                               theme.Images.lazyloadImagePath(
@@ -3626,7 +3628,6 @@
         var i = "";
         return (
           e.forEach((e) => {
-            console.log(theme.reseller, e);
             i += `
         <div class="grid-item grid-product">
           <div class="grid-item__content">
