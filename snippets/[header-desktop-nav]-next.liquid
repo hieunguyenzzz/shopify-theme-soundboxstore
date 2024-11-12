@@ -1,3 +1,19 @@
+{% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% else %}
+  {% assign isResserllerOrTradeAccount = settings.isreseller %}
+{% endunless %}
+
 <style>
         .site-desktopnav__dropdown  a {
           padding:0;
@@ -254,6 +270,34 @@
                 </a>
               </li>
             </ul>
+            {% if isResserllerOrTradeAccount %}
+              <ul>
+                {% for product in collections['co-worker'].products %}
+                  <li>
+                    {% render '[menu-item]', product: product %}
+                  </li>
+                {% endfor %}
+                <li>
+                  {% assign accessories = collections.accessories %}
+                  {% assign title = accessories.metafields.custom.menu_title.value | default: accessories.title %}
+                  {% assign subtitle = accessories.metafields.custom.menu_subtitle.value
+                    | default: product.metafields.custom.subtitle
+                  %}
+                  {% assign image = accessories.metafields.custom.menu_image.value | default: accessories.image %}
+                  <a class="site-nav__dropdown-item" href="{{ pages['accessories'].url }}">
+                    <div class="site-nav__dropdown-item_image">
+                      {{ image | image_url: width: 300 | image_tag: class: '', loading: 'lazy' }}
+                    </div>
+                    <div class="site-nav__dropdown-item_content">
+                      <div class="site-nav__dropdown-item_title">{{ title }}</div>
+                      <div class="site-nav__dropdown-item_subtitle">
+                        {{ subtitle }}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            {% endif %}
             <div style="width:40px;flex-shrink: 0;"></div>
           </div>
           <div
