@@ -3628,7 +3628,7 @@
         var i = "";
         return (
           e.forEach((e) => {
-            if (theme.reseller && e.resellerOnly) {
+            if (theme.reseller && !e.resellerOnly) {
               return;
             }
             i += `
