@@ -238,22 +238,25 @@
   >
     {% if isResserllerOrTradeAccount %}
       <style>
-            .isResserlleInput~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider .isResserlleInput-list{
-              display:none
-            }
-            .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
-              display:none
-            }
-            .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
-              display:flex
-            }
-            .isResserlleInput-label{
-              padding: 0.3em 1em;
-        margin-bottom: 1em;
-        display: inline-block;
-        cursor: pointer;
-        background: #ffffffdb;
-            }
+        .isResserlleInput~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider .isResserlleInput-list{
+          display:none
+        }
+        .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
+          display:none
+        }
+        .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
+          display:flex
+        }
+        .isResserlleInput{
+          display:none
+        }
+        .isResserlleInput-label{
+          padding: 0.3em 1em;
+          margin-bottom: 1em;
+          display: inline-block;
+          cursor: pointer;
+          background: #ffffffdb;
+        }
       </style>
       <input id="isResserlleInput" class="isResserlleInput" type="checkbox">
       <div class="page-width">
