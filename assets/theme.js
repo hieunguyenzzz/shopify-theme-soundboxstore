@@ -3084,7 +3084,7 @@
                                 "resources[options][unavailable_products]":
                                   "last",
                                 "resources[options][fields]":
-                                  "title,product_type,variants.title,vendor",
+                                  "title,product_type,variants.title,vendor,tags",
                               })
                           )
                             .then((e) => e.json())
