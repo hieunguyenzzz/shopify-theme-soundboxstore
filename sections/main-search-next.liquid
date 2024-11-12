@@ -252,6 +252,9 @@
       {% if forloop.first %}
         {% assign firstType = item.object_type %}
       {% endif %}
+      {% if product.tags contains 'reseller only' %}
+        {% continue %}
+      {% endif %}
       {%- if item.object_type == 'product' -%}
         {% capture productsresult %}
               {{ productsresult }}
