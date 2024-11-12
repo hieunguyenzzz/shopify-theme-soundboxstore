@@ -1,3 +1,19 @@
+{% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% else %}
+  {% assign isResserllerOrTradeAccount = settings.isreseller %}
+{% endunless %}
+
 {{ 'component-facets.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
@@ -252,9 +268,12 @@
       {% if forloop.first %}
         {% assign firstType = item.object_type %}
       {% endif %}
-      {% if item.tags contains 'reseller only' %}
-        {% continue %}
-      {% endif %}
+      {% unless isResserllerOrTradeAccount %}
+        {% if item.tags contains 'reseller only' %}
+          {% continue %}
+        {% endif %}
+      {% endunless %}
+
       {%- if item.object_type == 'product' -%}
         {% capture productsresult %}
               {{ productsresult }}
