@@ -237,26 +237,27 @@
     "
   >
     <div class="page-width site-nav__dropdown-menu">
+      {% if isResserllerOrTradeAccount %}
+        <style>
+          .isResserlleInput+.site-nav__dropdown-menu_left-slider .isResserlleInput-list{
+            display:none
+          }
+          .isResserlleInput:checked+.site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
+            display:none
+          }
+          .isResserlleInput:checked+.site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
+            display:flex
+          }
+        </style>
+        <input class="isResserlleInput" type="checkbox">
+      {% endif %}
       <div class="site-nav__dropdown-menu_left">
         <div class="site-nav__dropdown-menu_left-top">
           {% assign collection = collections['menu-booths'] %}
           {% unless collection %}
             {% assign collection = collections.first %}
           {% endunless %}
-          {% if isResserllerOrTradeAccount %}
-            <style>
-              .isResserlleInput+.site-nav__dropdown-menu_left-slider .isResserlleInput-list{
-                display:none
-              }
-              .isResserlleInput:checked+.site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
-                display:none
-              }
-              .isResserlleInput:checked+.site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
-                display:flex
-              }
-            </style>
-            <input class="isResserlleInput" type="checkbox">
-          {% endif %}
+
           <div class="site-nav__dropdown-menu_left-slider">
             <ul>
               {% for product in collection.products %}
