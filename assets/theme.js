@@ -3626,7 +3626,7 @@
         var i = "";
         return (
           e.forEach((e) => {
-            console.log(theme.reseller);
+            console.log(theme.reseller, e);
             i += `
         <div class="grid-item grid-product">
           <div class="grid-item__content">
