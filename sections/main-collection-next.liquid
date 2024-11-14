@@ -184,8 +184,11 @@
         {% assign image2 = block.settings.image_2 %}
         {% assign image_bg = block.settings.image_bg %}
         {% assign title = block.settings.title | default: block.settings.product.title %}
-        {% assign content = block.settings.content | default: block.settings.product.description %}
-        {% assign content = content | strip_html | truncate: 200, '. . . ' %}
+        {% assign content = block.settings.content %}
+        {% unless content %}
+          {% assign content = block.settings.product.description %}
+          {% assign content = content | strip_html | truncate: 200, '. . . ' %}
+        {% endunless %}
 
         {% assign url = block.settings.url | default: block.settings.product.url %}
         <div
