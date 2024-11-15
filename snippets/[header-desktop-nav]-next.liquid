@@ -13,7 +13,6 @@
 {% else %}
   {% assign isResserllerOrTradeAccount = settings.isreseller %}
 {% endunless %}
-{% assign isResserllerOrTradeAccount = false %}
 
 <style>
         .site-desktopnav__dropdown  a {
@@ -237,37 +236,39 @@
       font-size: 14px;width:100%
     "
   >
-    {% if isResserllerOrTradeAccount %}
-      <style>
-        .isResserlleInput~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider .isResserlleInput-list{
-          display:none
-        }
-        .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
-          display:none
-        }
-        .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
-          display:flex
-        }
-        .isResserlleInput{
-          display:none
-        }
-        .isResserlleInput-label{
-          padding: 0.3em 1em;
-          margin-bottom: 1em;
-          display: inline-block;
-          cursor: pointer;
-          background: #ffffffdb;
-        }
-        .isResserlleInput:checked~.page-width>.isResserlleInput-label{
-          color:#fff;
-          background-color: #303a44;
-        }
-      </style>
-      <input id="isResserlleInput" class="isResserlleInput" type="checkbox">
-      <div class="page-width">
-        <label for="isResserlleInput" class="isResserlleInput-label">Coworker</label>
-      </div>
-    {% endif %}
+    <!--
+      {% if isResserllerOrTradeAccount %}
+        <style>
+          .isResserlleInput~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider .isResserlleInput-list{
+            display:none
+          }
+          .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>*:not(.isResserlleInput-list){
+            display:none
+          }
+          .isResserlleInput:checked~.site-nav__dropdown-menu .site-nav__dropdown-menu_left-slider>.isResserlleInput-list{
+            display:flex
+          }
+          .isResserlleInput{
+            display:none
+          }
+          .isResserlleInput-label{
+            padding: 0.3em 1em;
+            margin-bottom: 1em;
+            display: inline-block;
+            cursor: pointer;
+            background: #ffffffdb;
+          }
+          .isResserlleInput:checked~.page-width>.isResserlleInput-label{
+            color:#fff;
+            background-color: #303a44;
+          }
+        </style>
+        <input id="isResserlleInput" class="isResserlleInput" type="checkbox">
+        <div class="page-width">
+          <label for="isResserlleInput" class="isResserlleInput-label">Coworker</label>
+        </div>
+      {% endif %}
+    -->
     <div class="page-width site-nav__dropdown-menu">
       <div class="site-nav__dropdown-menu_left">
         <div class="site-nav__dropdown-menu_left-top">
@@ -387,6 +388,79 @@
             </button>
           </div>
         </div>
+        {% if isResserllerOrTradeAccount %}
+          <h3>Coworker Range</h3>
+          <div class="site-nav__dropdown-menu_left-top">
+            {% assign collection = collections['menu-booths'] %}
+            {% unless collection %}
+              {% assign collection = collections.first %}
+            {% endunless %}
+
+            <div class="site-nav__dropdown-menu_left-slider">
+              <ul class="isResserlleInput-list">
+                {% for product in collections['co-worker'].products %}
+                  <li>
+                    {% render '[menu-item]', product: product %}
+                  </li>
+                {% endfor %}
+              </ul>
+              <div style="width:40px;flex-shrink: 0;"></div>
+            </div>
+            <div
+              class="scrolling-arrows"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.4em;
+              "
+            >
+              <button
+                disabled=""
+                data-rold="scrolling-arrow-left"
+                class="scrolling-arrow-left"
+                style="                transform: rotate(180deg);"
+              >
+                <svg
+                  width="1em"
+                  height="1em"
+                  fill="none"
+                  strokewidth="0.03em"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 8.14 14.74"
+                >
+                  <g>
+                    <polyline points="0.74 14.07 6.79 7.41 0.74 0.67"></polyline>
+                  </g>
+                </svg>
+              </button>
+              <button
+                data-rold="scrolling-arrow-right"
+                class="scrolling-arrow-right"
+              >
+                <svg
+                  width="1em"
+                  height="1em"
+                  fill="none"
+                  strokewidth="0.03em"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 8.14 14.74"
+                >
+                  <g>
+                    <polyline points="0.74 14.07 6.79 7.41 0.74 0.67"></polyline>
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </div>
+        {% endif %}
         <div class="site-nav__dropdown-menu_left-bottom">
           <div>{{ settings.header_delivery_message }}</div>
           <div
