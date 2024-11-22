@@ -944,7 +944,7 @@
       "#judgeme_product_reviews {margin-top: -80px; padding-top: 80px;}",
       "@media only screen and (min-width: 1025px) {.product-blocks-wrap {position: relative; } .jdgm-preview-badge {position: absolute; bottom: calc(100% + 0.5em); right: 0; font-size: 0.8em; } .shopify-app-block:has(.jdgm-preview-badge) {margin: 0; }}",
       ".product-qoute-button {background-color: #303a44; border-color: #303a44; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: \"Banana Grotesk\", var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%;}",
-      ".template-product .buy_buttons .add-to-cart{display:none}"
+      ".template-product:has(.product-qoute-button) .buy_buttons .add-to-cart {display: none;}"
     ]
   }
 }
