@@ -369,17 +369,21 @@
     {{ content_for_header }}
     <!-- end content_for_header -->
     <style>
-      label[for='_gcl_au'],
-      label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
-      .grfq__popupForm__formInput input[name='_gcl_au'] {
-        display: none !important;
-      }
-      button.pKrqgcVNmqUx8tgLuy22.isense-cc-submit-consent {
-        /* transition: none !important; */
-        /* pointer-events: none !important; */
-        background:black;
-        background:var(--banner-text-color);
-      }
+        label[for='_gcl_au'],
+        label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
+        .grfq__popupForm__formInput input[name='_gcl_au'] {
+          display: none !important;
+        }
+        button.pKrqgcVNmqUx8tgLuy22.isense-cc-submit-consent {
+          /* transition: none !important; */
+          /* pointer-events: none !important; */
+           background-color: var(--button-color);
+      color: var(--button-text-color);
+      border-color: var(--button-color);
+        }
+        butoon.pKrqgcVNmqUx8tgLuy22{
+
+        }
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
