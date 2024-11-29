@@ -601,8 +601,7 @@
               window.yett.lazyloaded=true
               console.log("apps lazyloaded successfully");
               isReplaced=true;
-              setTimeout(()=>{
-                  (function zsiqchat(){
+              function zsiqchat(){
                   window['$zoho'] = window['$zoho'] || {};
                   $zoho.salesiq = $zoho.salesiq || {
                     widgetcode:
@@ -618,7 +617,8 @@
                   s.src = "https://salesiq.zoho.eu/widget";
                   t = d.getElementsByTagName("script")[0];
                   t.parentNode.insertBefore(s, t);
-                })()
+                }
+              setTimeout(()=>{
               },10000)
 
               const event = new Event("app:ready");
