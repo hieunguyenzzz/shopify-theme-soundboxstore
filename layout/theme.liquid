@@ -23,10 +23,8 @@
 >
   <head>
     {% render 'yoast-seo' %}
-
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
-
     {% render 'pre-header' %}
     {% render 'yett' %}
     {% if template.name == 'product' %}
@@ -50,7 +48,6 @@
       })
       (window,document,"script","//bat.bing.com/bat.js","uetq");
     </script>
-
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -59,26 +56,7 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-W3VDBP8N');
     </script>
-
     <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) -->
-    <!--
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-              gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied'
-      });
-
-          gtag('config', 'G-0HET6EXHTH');
-        </script>
-    -->
-
     <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
     <script async id="gaf-loading-script"></script>
     <script id="gdpr-gaf-blocking-script">
@@ -137,10 +115,6 @@
       checkConsentForGAF(3);
     </script>
 
-    <!-- Google Tag Manager -->
-
-    <!-- End Google Tag Manager -->
-
     {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
     {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
       | default: shop.metafields.yoast_seo.settings
@@ -176,13 +150,7 @@
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
-
     {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
-    <link
-      rel="preload"
-      as="script"
-      href="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-    >
 
     {%- if settings.favicon != blank -%}
       <link
@@ -419,14 +387,6 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {% if settings.animate_page_transitions %}
-      <script type="text/javascript">
-        window.setTimeout(function () {
-          document.body.className += ' loaded';
-        }, 25);
-      </script>
-    {% endif %}
-
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">
       {{- 'general.accessibility.skip_to_content' | t -}}
     </a>
@@ -435,7 +395,6 @@
       <div class="transition-body">
         {%- section 'toolbar' -%}
         {%- section 'header' -%}
-
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
@@ -453,14 +412,6 @@
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
-    <!--
-      <script
-        async
-        defer="defer"
-        src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rs39V4"
-        type="text/javascript"
-      ></script>
-    -->
     <script src="{{ 'custom-v2.js' | asset_url }}" defer="defer"></script>
 
     {%- if request.page_type contains 'customers/' -%}
@@ -484,78 +435,6 @@
         })(document);
       smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
     </script>
-    <script>
-      forceProductPriceSelector = '.grfq-price';
-      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-        let currencyField = document.querySelector(".grfq__popupForm__formInput [name=\"Currency\"]")
-        if(currencyField){
-          document.querySelector(".grfq__popupForm__formInput [name=\"Currency\"]").value="{{ localization.country.currency.iso_code }}"
-        }
-      });
-    </script>
-    <style>
-      .grid-item-meta .rfq-btn {
-        max-width: 200px;
-      }
-      .grfq__popupForm__formGroup:last-child {
-        display: none !important;
-      }
-    </style>
-
-    <script>
-      function getCookie(cname) {
-        let name = cname + '=';
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-          let c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return '';
-      }
-
-      document.addEventListener('GRFQ:Popup_Form_rendered', function () {
-        const _gcl_awCookie = getCookie('_gcl_aw').split('.')
-        document.querySelector('input[name="_gcl_aw"]').value = _gcl_awCookie[_gcl_awCookie.length-1];
-        try{
-          const contriesMap = {
-            "UK":"United Kingdom",
-            "DE":"Germany",
-            "FR":"France",
-            "IT":"Italy",
-            "ES":"Spain",
-            "PT":"Portugal",
-            "UA":"Ukraine",
-            "RO":"Romania",
-            "PL":"Poland",
-            "NL":"Netherlands",
-            "BE":"Belgium",
-            "SE":"Sweden",
-            "GR":"Greece",
-            "CH":"Switzerland",
-            "AT":"Austria",
-            "RS":"Serbia",
-            "NO":"Norway",
-            "US":"United States",
-            "CA":"Canada",
-            Other:"Other"
-          }
-          const country = contriesMap[{{ localization.country.iso_code | json }}];
-          let countriesSelectInput =  document.querySelector('.grfq__popupForm__formInput [name="Country"]')
-          if(countriesSelectInput){
-            countriesSelectInput.value=country
-          }
-        }catch(e){
-          console.error(e)
-        }
-      });
-    </script>
-    {% section 'zoho-form-popup' %}
     <script>
        function openSpecForm (event) {
          event.preventDefault()
@@ -662,33 +541,8 @@
     <script>
       (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('bElvO73QlzEaZMqj');
     </script>
-    <!-- Cloudflare Web Analytics -->
-    <!--
-      <script
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon='{"token": "33fccb99ae914e9792dbbb82260a0cbe"}'
-      ></script>
-      <!-- End Cloudflare Web Analytics
-    -->
-    <!--
-      <script
-        defer
-        async
-        type="text/javascript"
-        src="https://crmplus.zoho.eu/crm/javascript/zcga.js"
-      ></script>
-    -->
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
-    <!--
-      <script
-        defer="defer"
-        src="https://cdn-eu.pagesense.io/js/soundboxstore/46720b15a74e407f8cd2306128512707.js"
-      ></script>
-      <script type="text/javascript" src="https://secure.24-astute.com/js/796186.js"></script>
-      <noscript><img src="https://secure.24-astute.com/796186.png" style="display:none;"></noscript>
-    -->
     {% render 'ClickCease' %}
-    {% render 'samita-custom' %}
+  
   </body>
 </html>
