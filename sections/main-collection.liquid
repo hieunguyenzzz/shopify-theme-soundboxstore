@@ -1,7 +1,3 @@
-{%- comment -%}
-This file has been modified by the Yoast SEO for Shopify app.
-You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
-{%- endcomment -%}
 {% if collection.handle == 'all' %}
   <script type="text/javascript">
     window.location.href=window.location.href.replace('/collections/all','/collections/office-pods')
@@ -32,9 +28,6 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   </div>
 </div>
 
-{%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.webpage -%}
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -53,9 +46,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   {% endif %}
   "name": {{ collection.title | json }}
 }
-{%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
 </script>
-{%- endif -%}
 
 {% schema %}
   {
