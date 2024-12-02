@@ -18,6 +18,11 @@
     {% if variant.inventory_quantity > 0 %}
       {% assign instock = true %}
     {% endif %}
+    <li
+      class="sales-point"
+      id="product-inventory-instock-{{ variant.id }}"
+      data-quantity="{{ variant.inventory_quantity |json  }}"
+    ></li>
     {% if instock %}
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
         <style>
