@@ -15,7 +15,9 @@
     {% if variant.metafields.global.stock > 0 %}
       {% assign instock = true %}
     {% endif %}
-
+    {% if variant.inventory_quantity > 0 %}
+      {% assign instock = true %}
+    {% endif %}
     {% if instock %}
       <li class="sales-point" id="product-inventory-instock-{{ variant.id }}">
         <style>
