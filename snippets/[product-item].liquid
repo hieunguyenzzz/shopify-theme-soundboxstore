@@ -92,6 +92,7 @@
         <div class="colours" style="display:flex;gap:0.3em">
           {% for value in option.values %}
             {% if value.swatch %}
+              {% assign swatch = value.swatch %}
               {%- liquid
                 assign swatch_value = null
                 if swatch.image
