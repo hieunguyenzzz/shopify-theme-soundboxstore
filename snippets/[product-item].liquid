@@ -79,6 +79,22 @@
     {% endif %}
     {%- assign swatch_file_extension = 'png' -%}
     {%- for option in product.options_with_values -%}
+      {%- for value in option.values -%}
+        <div style="display:none">
+          {% if value.swatch %}
+            {% render 'swatch',
+              swatch: value.swatch,
+              value: value,
+              option: option,
+              product_available: product_available,
+              section_id: section_id,
+              form_id: form_id,
+              option_index: option_index
+            %}
+            {% continue %}
+          {% endif %}
+        </div>
+      {% endfor %}
       {%- liquid
         assign option_name = option.name | downcase
         assign is_color = false
