@@ -22,7 +22,6 @@
   currency="{{  localization.country.currency.iso_code }}"
 >
   <head>
-    
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
     {% render 'pre-header' %}
@@ -543,6 +542,6 @@
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     {% render 'ClickCease' %}
-  
+    {% render 'klaviyo' %}
   </body>
 </html>
