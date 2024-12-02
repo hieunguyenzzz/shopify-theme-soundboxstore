@@ -267,25 +267,25 @@ $(document).ready(function () {
         $(this).addClass("active"),
         $("span.hotspot-icon[data-tooltip='" + i + "']").addClass("active");
     }),
-      fetch("https://test.hieunguyenel2686.workers.dev/")
-        .then((e) => e.json())
-        .then((e) => {
-          if (
-            (document.querySelector("html").setAttribute("city", e.city),
-            "London" === e.city && GRFQConfigs?.form_elements)
-          ) {
-            let e = GRFQConfigs.form_elements.find(
-                (e) => "request-showroom-visit" === e.code
-              ),
-              i = GRFQConfigs.form_elements.find(
-                (e) => "free-site-survey" === e.code
-              );
-            e && (e.required = 1), i && (i.required = 1);
-          } else {
-            let e = GRFQConfigs.form_elements.find(
-              (e) => "request_remote_tour" === e.code
-            );
-            e && (e.required = 1);
-          }
-        });
+      // fetch("https://test.hieunguyenel2686.workers.dev/")
+      //   .then((e) => e.json())
+      //   .then((e) => {
+      //     if (
+      //       (document.querySelector("html").setAttribute("city", e.city),
+      //       "London" === e.city && GRFQConfigs?.form_elements)
+      //     ) {
+      //       let e = GRFQConfigs.form_elements.find(
+      //           (e) => "request-showroom-visit" === e.code
+      //         ),
+      //         i = GRFQConfigs.form_elements.find(
+      //           (e) => "free-site-survey" === e.code
+      //         );
+      //       e && (e.required = 1), i && (i.required = 1);
+      //     } else {
+      //       let e = GRFQConfigs.form_elements.find(
+      //         (e) => "request_remote_tour" === e.code
+      //       );
+      //       e && (e.required = 1);
+      //     }
+      //   });
   });
