@@ -513,7 +513,7 @@
           document.addEventListener("scroll", MeroxIO_Function,{ once: true });
           document.addEventListener("touchstart", MeroxIO_Function,{ once: true });
           document.addEventListener("mousemove", MeroxIO_Function,{ once: true });
-          var isHuman = localStorage.get("human");
+          var isHuman = localStorage.getItem("human");
           if(isHuman){
             body.classList.add('human')
             MeroxIO_Function()
