@@ -472,7 +472,7 @@
     </script>
     <script>
       (()=>{
-          var isReplaced = localStorage.setItem("human", "true");;
+          var isReplaced = false;
           function MeroxIO_Function(){
             if(!isReplaced){
               window.yett.unblock();
@@ -504,14 +504,19 @@
               document.removeEventListener("scroll", MeroxIO_Function);
               document.removeEventListener("touchstart", MeroxIO_Function);
               document.removeEventListener("mousemove", MeroxIO_Function);
-                localStorage.setItem("human", "true");
+              localStorage.setItem("human", "true");
             }
           }
+
           // setTimeout(MeroxIO_Function, 300);
           document.addEventListener("click", MeroxIO_Function,{ once: true });
           document.addEventListener("scroll", MeroxIO_Function,{ once: true });
           document.addEventListener("touchstart", MeroxIO_Function,{ once: true });
           document.addEventListener("mousemove", MeroxIO_Function,{ once: true });
+          var isHuman = localStorage.get("human");
+          if(isHuman){
+            MeroxIO_Function()
+          }
 
       })()
     </script>
