@@ -515,6 +515,7 @@
           document.addEventListener("mousemove", MeroxIO_Function,{ once: true });
           var isHuman = localStorage.get("human");
           if(isHuman){
+            body.classList.add('human')
             MeroxIO_Function()
           }
 
