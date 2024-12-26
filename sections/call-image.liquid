@@ -1,10 +1,12 @@
 {% if section.settings.call_banner %}
   <div style="display:none;position:relative">
-    {{
-      section.settings.call_banner
-      | image_url: width: 500
-      | image_tag: style: 'position:absolute;z-index:2;right:0;width:min(500px,25vw)'
-    }}
+    <a>
+      {{
+        section.settings.call_banner
+        | image_url: width: 500
+        | image_tag: style: 'position:absolute;z-index:2;right:0;width:min(500px,25vw)'
+      }}
+    </a>
   </div>
 {% endif %}
 {% schema %}
