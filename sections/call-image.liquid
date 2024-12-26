@@ -1,11 +1,15 @@
 <style>
-    .{{ section.id }}-wrap{
-  position:relative;
-      z-index:5;
-    }
-     .{{ section.id }}-wrap a{
-  position:absolute;z-index:2;right:0;width:min(500px,25vw)
-    }
+      .{{ section.id }}-wrap{
+    position:relative;
+        z-index:5;
+      }
+       .{{ section.id }}-wrap a{
+    position:absolute;z-index:2;right:0;width:min(500px,25vw)
+      }
+         .{{ section.id }}-wrap a:hover{
+  transition: transform 0.2s linear;
+           transform :scale(1.1)
+      }
 </style>
 {% if section.settings.call_banner %}
   <div class="{{ section.id }}-wrap">
