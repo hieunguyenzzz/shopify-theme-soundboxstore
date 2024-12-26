@@ -1,5 +1,5 @@
 {% if section.settings.call_banner %}
-  <div style="display:none">
+  <div style="display:none;position:relative">
     {{ section.settings.call_banner | image_url: width: 500 | image_tag }}
   </div>
 {% endif %}
