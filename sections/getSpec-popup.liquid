@@ -220,83 +220,13 @@
       </div>
     </div>
   </div>
-  <div
-    id="NewsletterPopup-{{ section.id }}-success"
-    class="modal modal--square modal--mobile-friendly"
-    data-section-id="{{ section.id }}-success"
-    data-section-type="newsletter-popup"
-    data-delay-days="300"
-    data-delay-seconds="999999999"
-  >
-    <div class="modal__inner{% if section.settings.popup_image %} modal__inner--bg-image{% endif %}">
-      <div class="modal__centered">
-        <div
-          style="max-width:min(450px,95vw);padding:20px"
-          class="modal__centered-content modal__centered-content--padded color-scheme-{{ section.settings.color_scheme }}"
-        >
-          {%- if section.settings.color_scheme != 'none' -%}
-            {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
-          {%- endif -%}
-
-          <div class="newsletter-popup">
-            <div class="rte">
-              {{ section.settings.popup_text_success }}
-            </div>
-            <button
-              type="button"
-              class="btn js-modal-close"
-              name="commit"
-              aria-label="{{ 'general.newsletter_form.submit' | t }}"
-              style="
-                width:100%;
-                background: rgb(48, 59, 67);
-                border-radius: 0px;
-                border-style: none;
-                border-color: rgb(0, 0, 0);
-                border-width: 2px;
-                color: rgb(255, 255, 255);
-                font-size: 14px;
-                font-weight: 700;
-                letter-spacing: 0px;
-                line-height: 1;
-                white-space: normal;
-                padding-top: 0px;
-                padding-bottom: 0px;
-                text-align: center;
-                word-break: break-word;
-                align-self: flex-end;
-                cursor: pointer;
-                pointer-events: auto;
-                height: 50px;
-                width: 100%;
-              "
-            >
-              <span>{{ 'general.accessibility.close' | t }}</span>
-            </button>
-            {%- if section.settings.enable_button -%}
-              <hr class="hr--clear">
-              <a href="{{ section.settings.button_link }}" class="btn js-modal-close">
-                {{ section.settings.button_label }}
-              </a>
-            {%- endif -%}
-          </div>
-        </div>
-        <button type="button" style="padding:10px" class="btn btn--circle btn--icon modal__close js-modal-close">
-          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64">
-            <defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/>
-          </svg>
-          <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t | json }}</span>
-        </button>
-      </div>
-    </div>
-  </div>
 {%- endif -%}
 <script>
   function openSpecFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
     document.querySelector("#shopify-section-{{ section.id }}").classList.add("ready")
-    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}-success");
+    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
     modal.open();
       (() => {
         function handleSubmit(event) {
