@@ -265,6 +265,7 @@
     event.preventDefault()
     event.stopPropagation()
     let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
+    modal.modal.classList.add("ready")
     modal.open();
       (() => {
         function handleSubmit(event) {
