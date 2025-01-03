@@ -3923,9 +3923,9 @@
             document.addEventListener(
               "modalClose." + e.id,
               this.closePopup.bind(this)
-            ),
-              (this.data.cookie && "true" !== this.data.testMode) ||
-                // this.initPopupDelay();
+            );
+            // (this.data.cookie && "true" !== this.data.testMode) ||
+            //   this.initPopupDelay();
           }
         }
         return (
