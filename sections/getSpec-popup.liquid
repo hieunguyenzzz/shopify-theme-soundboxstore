@@ -219,6 +219,7 @@
   function openSpecFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
+    window.modals=window.modals||[]
     let modal = window.modals.find(m => m.id === "inboxFile-{{- section.id -}}");
     if(!modal) {
       modal = new theme.Modals(
