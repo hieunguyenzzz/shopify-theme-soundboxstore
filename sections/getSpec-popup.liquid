@@ -296,7 +296,7 @@
     event.preventDefault()
     event.stopPropagation()
     document.querySelector("#shopify-section-{{ section.id }}").classList.add("ready")
-    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
+    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}-success");
     modal.open();
       (() => {
         function handleSubmit(event) {
@@ -305,6 +305,7 @@
             console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
             let data = {
               create_at: new Date().toISOString(),
+              type:
             };
             new FormData(event.target).forEach((value, key) => {
                 data[key] = value;
