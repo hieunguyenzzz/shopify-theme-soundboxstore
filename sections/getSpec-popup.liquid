@@ -1,4 +1,10 @@
 <style>
+  #NewsletterPopup-{{ section.id }}{
+    display:none
+  }
+   #NewsletterPopup-{{ section.id }}.ready{
+    display:block
+  }
   #NewsletterPopup-{{ section.id }} .rte{
     color: rgb(131, 129, 129);
     font-size: 14px;
@@ -255,6 +261,7 @@
 {%- endif -%}
 <script>
   function openSpecFormPopup(event) {
+    console.log("123")
     event.preventDefault()
     event.stopPropagation()
     let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
