@@ -31,7 +31,7 @@
 </style>
 {% assign section_id = section.id %}
 {% assign snippet_context = 'getSpecPopup-' | append: 'form' %}
-{%- assign newsletter_form_id = 'getSpec-' | append: section_id -%}
+{%- assign form_id = 'getSpec-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
     id="inboxFile-{{ section.id }}"
@@ -52,7 +52,7 @@
           {%- endif -%}
 
           <div class="newsletter-popup">
-            <form id="newsletter_form_id">
+            <form id="{{ form_id }}">
               {%- if form.errors and form.context == snippet_context -%}
                 {{ form.errors | default_errors }}
               {%- endif -%}
