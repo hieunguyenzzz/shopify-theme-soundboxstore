@@ -229,7 +229,9 @@
     }
     console.log({modal})
     modal.open();
-      (() => {
+    
+  }
+    (() => {
         function handleSubmit(event) {
           event.preventDefault();
           try {
@@ -263,7 +265,6 @@
         const form = document.getElementById('{{- newsletter_form_id -}}');
         form.addEventListener('submit', handleSubmit);
       })();
-  }
 </script>
 {% schema %}
 {
