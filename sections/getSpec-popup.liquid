@@ -5,20 +5,20 @@
    #shopify-section-{{ section.id }}.ready{
     display:block
   }
-  #NewsletterPopup-{{ section.id }} .rte{
+  #inboxFile{{ section.id }} .rte{
     color: rgb(131, 129, 129);
     font-size: 14px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
   }
-  #NewsletterPopup-{{ section.id }} .rte h2{
+  #inboxFile{{ section.id }} .rte h2{
     font-size: 30px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: bold;
     margin:0;
     padding:10px 0;color:black
   }
-  #NewsletterPopup-{{ section.id }} .newsletter__input{
+  #inboxFile{{ section.id }} .newsletter__input{
     border:1px solid black;
     -webkit-appearance: none;
     appearance: none;
@@ -40,7 +40,7 @@
 {%- assign newsletter_form_id = 'getSpec-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
-    id="NewsletterPopup-{{ section.id }}"
+    id="inboxFile-{{ section.id }}"
     class="modal modal--square modal--mobile-friendly"
     data-section-id="{{ section.id }}"
     data-section-type="newsletter-popup"
@@ -226,7 +226,7 @@
     event.preventDefault()
     event.stopPropagation()
     document.querySelector("#shopify-section-{{ section.id }}").classList.add("ready")
-    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
+    let modal = window.modals.find(m => m.id === "inboxFile-{{- section.id -}}");
     modal.open();
       (() => {
         function handleSubmit(event) {
