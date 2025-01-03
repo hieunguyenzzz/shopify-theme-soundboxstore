@@ -1,10 +1,4 @@
 <style>
-  #shopify-section-{{ section.id }}{
-    display:none
-  }
-   #shopify-section-{{ section.id }}.ready{
-    display:block
-  }
   #inboxFile{{ section.id }} .rte{
     color: rgb(131, 129, 129);
     font-size: 14px;
@@ -225,7 +219,6 @@
   function openSpecFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
-    document.querySelector("#shopify-section-{{ section.id }}").classList.add("ready")
     let modal = window.modals.find(m => m.id === "inboxFile-{{- section.id -}}");
     modal.open();
       (() => {
