@@ -52,7 +52,7 @@
           {%- endif -%}
 
           <div class="newsletter-popup">
-            {% form 'contact', id: newsletter_form_id %}
+            <form id="newsletter_form_id">
               {%- if form.errors and form.context == snippet_context -%}
                 {{ form.errors | default_errors }}
               {%- endif -%}
@@ -194,7 +194,7 @@
                   </div>
                 </div>
               {%- endunless -%}
-            {% endform %}
+            </form>
 
             {%- if section.settings.enable_button -%}
               <hr class="hr--clear">
