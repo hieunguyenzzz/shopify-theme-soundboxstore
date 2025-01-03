@@ -3932,12 +3932,12 @@
           (e.prototype = Object.assign({}, e.prototype, {
             initPopupDelay: function () {
               (!Shopify || !Shopify.designMode) &&
-                // setTimeout(
-                //   function () {
-                //     this.modal.open();
-                //   }.bind(this),
-                //   1e3 * this.data.secondsBeforeShow
-                // );
+                setTimeout(
+                  function () {
+                    this.modal.open();
+                  }.bind(this),
+                  1e3 * this.data.secondsBeforeShow
+                );
             },
             closePopup: function (e) {
               if ("true" === this.data.testMode) {
