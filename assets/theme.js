@@ -1553,6 +1553,8 @@
               : this.modal),
             (this.isSolid = this.config.solid),
             this.init();
+          window.modals = window.modals || [];
+          window.modals.push(this);
         }
         return (
           (e.prototype.init = function () {
