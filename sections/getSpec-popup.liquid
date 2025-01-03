@@ -248,6 +248,7 @@
             new FormData(event.target).forEach((value, key) => {
                 data[key] = value;
             });
+            
             form.dataset.state="loading"
             fetch('{{- section.settings.api_url -}}', {
               headers: {
@@ -260,6 +261,7 @@
             })
               .then(function (res) {
                 console.log(res, data);
+                 form.dataset.state="success"
               })
               .catch(function (res) {
                 console.log(res, data);
