@@ -34,6 +34,12 @@
      pointer-events:none;
 
   }
+  #inboxFile-{{ section.id }} .form-success{
+    display:none
+  }
+    #inboxFile-{{ section.id }}  form[data-state="success"] .form-success{
+    display:block
+  }
     #inboxFile-{{ section.id }} form[data-state="loading"] .btn:before {
       content: "";
       display: block;
