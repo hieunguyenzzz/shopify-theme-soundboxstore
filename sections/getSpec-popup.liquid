@@ -220,8 +220,11 @@
     event.preventDefault()
     event.stopPropagation()
     window.modals=window.modals||[]
-    let modal = window.modals.find(m => m.id === "inboxFile-{{- section.id -}}");
-
+    let modal = new theme.Modals(
+                "inboxFile-{{- section.id -}}",
+                "inboxFile-modal"
+              )
+    console.log({modal})
     modal.open();
       (() => {
         function handleSubmit(event) {
