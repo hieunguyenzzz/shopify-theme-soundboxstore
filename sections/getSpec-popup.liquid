@@ -254,7 +254,7 @@
   </div>
 {%- endif -%}
 <script>
-  function openSpecForm(event) {
+  function openSpecFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
     let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
