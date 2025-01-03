@@ -246,7 +246,7 @@
             new FormData(event.target).forEach((value, key) => {
                 data[key] = value;
             });
-            form.class
+            form.dataset.add('loading')
             fetch('{{- section.settings.api_url -}}', {
               headers: {
                 Accept: 'application/json',
