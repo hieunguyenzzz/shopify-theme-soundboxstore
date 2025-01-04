@@ -1553,6 +1553,8 @@
               : this.modal),
             (this.isSolid = this.config.solid),
             this.init();
+          window.modals = window.modals || [];
+          window.modals.push(this);
         }
         return (
           (e.prototype.init = function () {
@@ -3921,9 +3923,9 @@
             document.addEventListener(
               "modalClose." + e.id,
               this.closePopup.bind(this)
-            ),
-              (this.data.cookie && "true" !== this.data.testMode) ||
-                this.initPopupDelay();
+            );
+            // (this.data.cookie && "true" !== this.data.testMode) ||
+            //   this.initPopupDelay();
           }
         }
         return (
