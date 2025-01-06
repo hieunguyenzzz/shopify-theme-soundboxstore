@@ -60,6 +60,7 @@
     {%- for block in section.blocks -%}
       <div
         style="display:none"
+        {{ block.shopify_attributes }}
       >
         {% if block.settings.slide_image1 != blank %}
           <a
@@ -127,7 +128,7 @@
     <div class="brand-details-slider {% if section.blocks.size > 1 %}active{% endif %}">
       {%- for block in section.blocks -%}
         {% assign index_g = 0 %}
-        <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}">
+        <div class="slide {{ block.settings.slide_class }} slide-{{- block.id -}}" {{ block.shopify_attributes }}>
           <div class="slide-wrap page-width">
             {% if block.settings.title != blank %}
               <h2 class="title-font">{{ block.settings.title }}</h2>
