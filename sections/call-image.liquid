@@ -5,27 +5,31 @@
       }
     .template-index .{{ section.id }}-wrap a{
   width:min(500px,40vw);
-      }
+  height: min(500px,40vw);
+
+  clip-path: polygon(10% 0, 100% 0, 100% 90%);
+  }
        .{{ section.id }}-wrap a{
     position:absolute;z-index:2;right:0;width:min(300px,40vw);
            transition: transform 0.2s ease-in-out;
     transform-origin: right top;
       }
-         .{{ section.id }}-wrap a:hover{
+         .{{ section.id }}-wrap:hover img{
 
            transform :scale(1.1)
       }
 </style>
 {% if section.settings.call_banner %}
   <div class="{{ section.id }}-wrap">
+    {{ section.settings.call_banner | image_url: width: 700 | image_tag }}
     <a
       target="_blank"
       href="{{ section.settings.url }}"
     >
-      {{ section.settings.call_banner | image_url: width: 700 | image_tag }}
     </a>
   </div>
 {% endif %}
+
 {% schema %}
 {
   "name": "call image",
