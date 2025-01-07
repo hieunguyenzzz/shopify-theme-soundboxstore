@@ -11,11 +11,23 @@
   {%- unless form.posted_successfully? -%}
     <input type="hidden" name="contact[tags]" value="newsletter">
     <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
-    <label for="Email-{{ section_id }}" class="hidden-label">
-      {{- 'general.newsletter_form.newsletter_email' | t -}}
-    </label>
-    <label for="Name-{{ section_id }}" class="hidden-label">{{ 'general.newsletter_form.full_name' | t }}</label>
+
     <div class="input-group newsletter__input-group">
+      <label for="Name-{{ section_id }}" class="hidden-label">
+        {{- 'general.newsletter_form.newsletter_fullname' | t -}}
+      </label>
+      <input
+        type="text"
+        placeholder="{{ 'general.newsletter_form.newsletter_fullname' | t }}"
+        name="contact[fullname]"
+        id="Email-{{ section_id }}"
+        class="input-group-field newsletter__input"
+        autocorrect="off"
+        autocapitalize="off"
+      >
+      <label for="Email-{{ section_id }}" class="hidden-label">
+        {{- 'general.newsletter_form.newsletter_email' | t -}}
+      </label>
       <input
         type="email"
         value="{% if customer %}{{ customer.email }}{% endif %}"
