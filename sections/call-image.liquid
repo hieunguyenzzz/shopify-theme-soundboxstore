@@ -16,16 +16,17 @@
   clip-path: polygon(10% 0, 100% 0, 100% 90%);
 
       }
-         .{{ section.id }}-wrap:hover img{
 
-           transform :scale(1.1)
-      }
-   .{{ section.id }}-wrap:has(a:hover) img{
+   .{{ section.id }}-wrap img{
     position: absolute;
        width:min(300px,40vw);
   height:min(300px,40vw);
      pointer-events: none;
     right: 0;
+     top:0
+      }
+           .{{ section.id }}-wrap:has(a:hover) img{
+
            transform :scale(1.1)
       }
 </style>
