@@ -265,7 +265,7 @@
     (() => {
       
         const form = document.getElementById('{{- form_id -}}');
-      function openSpecFormPopup(event) {
+      function openCateFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
     window.modals=window.modals||[]
@@ -279,7 +279,7 @@
         form.dataset.state="input"
     modal.open();
   }
-      window.openSpecFormPopup=openSpecFormPopup
+      window.openCateFormPopup=openCateFormPopup
         function handleSubmit(event) {
           event.preventDefault();
           try {
