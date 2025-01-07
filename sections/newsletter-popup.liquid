@@ -123,9 +123,7 @@
               .then(function (res) {
                 console.log(res, data);
                  form.dataset.state="success";
-                
-                let modal = window.modals.find(m => m.id === "inboxFile-{{- section.id -}}");
-                modal.close()
+         
 
               })
               .catch(function (res) {
