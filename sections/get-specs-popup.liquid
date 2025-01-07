@@ -50,7 +50,7 @@
           {%- endif -%}
 
           <div class="newsletter-popup">
-            {% form 'customer', id: newsletter_form_id %}
+            <form id="{{ form_id }}">
               {%- if form.posted_successfully? -%}
                 <div class="rte">
                   {{ section.settings.popup_text_success }}
@@ -230,7 +230,7 @@
                   </div>
                 </div>
               {%- endunless -%}
-            {% endform %}
+            </form>
 
             {%- if section.settings.enable_button -%}
               <hr class="hr--clear">
