@@ -1,3 +1,11 @@
+<style>
+  #shopify-section-{{section.id}} .rte .enlarge-text h3 {
+    margin-bottom:0.5em;
+  }
+   #shopify-section-{{section.id}} .rte .enlarge-text p {
+    font-size: min(3.4vw,16px);
+  }
+</style>
 {%- if section.settings.mode != 'disabled' -%}
   <div
     id="NewsletterPopup-{{ section.id }}"
