@@ -1,33 +1,64 @@
 <style>
-  #NewsletterPopup-{{ section.id }} .rte{
-    color: rgb(131, 129, 129);
-    font-size: 14px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-  }
-  #NewsletterPopup-{{ section.id }} .rte h2{
-    font-size: 30px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    margin:0;
-    padding:10px 0;color:black
-  }
-  #NewsletterPopup-{{ section.id }} .newsletter__input{
-    border:1px solid black;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    border-color: #6b7280;
-    border-width: 1px;
-    border-radius: 0px;
-    padding-top: 0.5rem;
-    padding-right: 0.75rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    --tw-shadow: 0 0 #0000;
-  }
+   #NewsletterPopup-{{ section.id }} .rte{
+     color: rgb(131, 129, 129);
+     font-size: 14px;
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     font-weight: 400;
+   }
+   #NewsletterPopup-{{ section.id }} .rte h2{
+     font-size: 30px;
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+     font-weight: bold;
+     margin:0;
+     padding:10px 0;color:black
+   }
+   #NewsletterPopup-{{ section.id }} .newsletter__input{
+     border:1px solid black;
+     -webkit-appearance: none;
+     appearance: none;
+     background-color: #fff;
+     border-color: #6b7280;
+     border-width: 1px;
+     border-radius: 0px;
+     padding-top: 0.5rem;
+     padding-right: 0.75rem;
+     padding-bottom: 0.5rem;
+     padding-left: 0.75rem;
+     font-size: 1rem;
+     line-height: 1.5rem;
+     --tw-shadow: 0 0 #0000;
+   }
+    #shopify-section-{{section.id}}form[data-state="loading"] .btn {
+      position:relative;
+      color:transparent;
+      pointer-events:none;
+
+   }
+  #shopify-section-{{section.id}} .form-success{
+     display:none
+   }
+     #shopify-section-{{section.id}}  form[data-state="success"] .form-success{
+     display:block
+   }
+   #shopify-section-{{section.id}}  form[data-state="success"] .form-main{
+     display:none
+   }
+    #shopify-section-{{section.id}} form[data-state="loading"] .btn:before {
+       content: "";
+       display: block;
+       width: 22px;
+       height: 22px;
+       position: absolute;
+       left: 50%;
+       top: 50%;
+       margin-left: -11px;
+       margin-top: -11px;
+       border-radius: 50%;
+       border: 3px solid;
+       border-color: var(--colorBtnPrimaryText);
+       border-color: transparent #fff #fff;
+       animation: spin 1s linear infinite;
+   }
 </style>
 {% assign section_id = section.id %}
 {% assign snippet_context = 'get-specs-' | append: 'form' %}
