@@ -10,7 +10,7 @@
   {%- for link in linklists[block.settings.menu].links -%}
     {% if link.url contains '#getFileInbox' %}
       <li>
-        <a href="#getFileInbox" data-type="category" onclick="openSpecFormPopup(event)" class="">{{ link.title }}</a>
+        <a href="#getFileInbox" data-type="category" onclick="openCateFormPopup(event)" class="">{{ link.title }}</a>
       </li>
       {% continue %}
     {% endif %}
