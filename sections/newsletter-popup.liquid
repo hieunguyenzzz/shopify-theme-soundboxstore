@@ -9,7 +9,7 @@
   >
     <div class="modal__inner{% if section.settings.popup_image %} modal__inner--bg-image{% endif %}">
       <div class="modal__centered">
-        <div class="modal__centered-content modal__centered-content--padded color-scheme-{{ section.settings.color_scheme }}">
+        <div class="modal__centered-content color-scheme-{{ section.settings.color_scheme }}">
           {%- if section.settings.color_scheme != 'none' -%}
             {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
           {%- endif -%}
