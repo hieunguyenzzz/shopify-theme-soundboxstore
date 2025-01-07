@@ -34,12 +34,10 @@
 {%- assign newsletter_form_id = 'getSpec-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
-    id="NewsletterPopup-{{ section.id }}"
-    class="modal modal--square modal--mobile-friendly"
+    id="get-specs-{{ section.id }}"
+    class="modal modal--square "
     data-section-id="{{ section.id }}"
-    data-section-type="newsletter-popup"
-    data-delay-days="30"
-    data-delay-seconds="99999999"
+    data-section-type="get-specs-popup"
   >
     <div class="modal__inner{% if section.settings.popup_image %} modal__inner--bg-image{% endif %}">
       <div class="modal__centered">
@@ -254,22 +252,38 @@
   </div>
 {%- endif -%}
 <script>
-  function openSpecForm(event) {
+
+    (() => {
+      
+        const form = document.getElementById('{{- form_id -}}');
+      function openSpecFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
-    let modal = window.modals.find(m => m.id === "NewsletterPopup-{{- section.id -}}");
+    window.modals=window.modals||[]
+    let modal = window.modals.find(m => m.id === "get-specs-{{- section.id -}}");
+    if(!modal) {
+      modal = new theme.Modals(
+                "get-specs-{{- section.id -}}",
+                "get-specs-modal"
+              )
+    }
+        form.dataset.state="input"
     modal.open();
-      (() => {
+  }
+      window.openSpecFormPopup=openSpecFormPopup
         function handleSubmit(event) {
           event.preventDefault();
           try {
             console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
             let data = {
               create_at: new Date().toISOString(),
+              type:event.target.dataset.type
             };
             new FormData(event.target).forEach((value, key) => {
                 data[key] = value;
             });
+            
+            form.dataset.state="loading"
             fetch('{{- section.settings.api_url -}}', {
               headers: {
                 Accept: 'application/json',
@@ -281,7 +295,12 @@
             })
               .then(function (res) {
                 console.log(res, data);
-                event.target.submit();
+                 form.dataset.state="success";
+                window.open("https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Brochure-Digital-Format-NB.pdf?v=1698411169", '_blank').focus();
+                
+                let modal = window.modals.find(m => m.id === "get-specs-{{- section.id -}}");
+                modal.close()
+
               })
               .catch(function (res) {
                 console.log(res, data);
@@ -290,12 +309,8 @@
             console.error(err);
           }
         }
-        const form = document.getElementById('{{- newsletter_form_id -}}');
         form.addEventListener('submit', handleSubmit);
       })();
-  }
-
-  $(".specBtn").on("click", openSpecForm);
 </script>
 {% schema %}
 {
