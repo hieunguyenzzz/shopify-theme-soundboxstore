@@ -11,8 +11,7 @@
        .{{ section.id }}-wrap a{
     position:absolute;z-index:2;right:0;width:min(300px,40vw);
          height:min(300px,40vw);
-           transition: transform 0.2s ease-in-out;
-    transform-origin: right top;
+
   clip-path: polygon(10% 0, 100% 0, 100% 90%);
 
       }
@@ -21,6 +20,8 @@
     position: absolute;
        width:min(300px,40vw);
      pointer-events: none;
+                transition: transform 0.2s ease-in-out;
+    transform-origin: right top;
     right: 0;
      top:0
       }
