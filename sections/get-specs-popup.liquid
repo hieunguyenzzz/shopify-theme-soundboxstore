@@ -62,7 +62,7 @@
 </style>
 {% assign section_id = section.id %}
 {% assign snippet_context = 'get-specs-' | append: 'form' %}
-{%- assign form_id = 'get-specs-' | append: section_id -%}
+{%- assign form_id = 'get-specs-form-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
     id="get-specs-{{ section.id }}"
