@@ -345,7 +345,7 @@
         </label>
         <div class="bottomBar-header-center">
           <div class="seel-all-details-grid">
-            {% for product in collections.all.products %}
+            {% for product in collections['office-pods'].products %}
               {% unless isResserllerOrTradeAccount %}
                 {% for p in collections['reseller-only'].products %}
                   {% if p.handle == product.handle %}
