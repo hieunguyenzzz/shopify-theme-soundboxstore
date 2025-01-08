@@ -1,3 +1,4 @@
+newsletter
 {%- assign newsletter_form_id = 'newsletter-' | append: section.id -%}
 
 <style>
@@ -66,7 +67,7 @@
             {%- endif -%}
 
             {%- if section.settings.enable_newsletter -%}
-              {%- render 'newsletter-form', section_id: section.id, snippet_context: 'popup' -%}
+              {%- render 'newsletter-form', section_id: section.id, snippet_context: 'newsletter' -%}
             {%- endif -%}
 
             {%- if section.settings.enable_button -%}
