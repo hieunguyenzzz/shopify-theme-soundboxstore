@@ -61,7 +61,7 @@
   }
 </style>
 {% assign section_id = section.id %}
-{% assign snippet_context = 'getSpecPopup-' | append: 'form' %}
+{% assign snippet_context = 'get-categories-' | append: 'form' %}
 {%- assign form_id = 'getSpec-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
@@ -132,7 +132,7 @@
                   <label for="Email-{{ section_id }}" class="hidden-label">
                     {{- 'general.newsletter_form.newsletter_email' | t -}}
                   </label>
-                  <input type="hidden" name="contact[tags]" value="newsletter,getSpecs">
+                  <input type="hidden" name="contact[tags]" value="newsletter,get-categories">
                   <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
                   <div class="input-group newsletter__input-group">
                     <input
