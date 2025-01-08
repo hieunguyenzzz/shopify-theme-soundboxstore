@@ -291,8 +291,9 @@
     if(!modal) {
       modal = new theme.Modals(
                 "get-specs-{{- section.id -}}",
-                "get-specs-modal"
+                "get-specs-popup"
               )
+           theme.sections.register("get-specs-popup", modal),
     }
         form.dataset.state="input"
     modal.open();
