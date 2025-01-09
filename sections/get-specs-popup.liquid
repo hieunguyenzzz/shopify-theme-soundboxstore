@@ -141,6 +141,7 @@
                   <input
                     type="name"
                     value=""
+                    required
                     placeholder="{{ 'blogs.comments.name' | t }}"
                     name="contact[name]"
                     id="Name-{{ section_id }}"
@@ -152,6 +153,7 @@
                 <div class="input-group newsletter__input-group">
                   <input
                     type="email"
+                    required
                     value="{% if customer %}{{ customer.email }}{% endif %}"
                     placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}"
                     name="contact[email]"
