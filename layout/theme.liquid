@@ -149,7 +149,6 @@
     <link href="https://ajax.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.gstatic.com" rel="dns-prefetch">
-    <link href="https://static.klaviyo.com" rel="preconnect">
     <link href="https://crmplus.zoho.eu" rel="preconnect">
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
@@ -419,6 +418,7 @@
     {% endif %}
     {%- section 'newsletter-popup' -%}
     {%- section 'getSpec-popup' %}
+    {%- section 'get-specs-popup' %}
     {% render 'dataLayer-allPages' %}
 
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
@@ -564,6 +564,5 @@
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     {% render 'ClickCease' %}
-    {% render 'klaviyo' %}
   </body>
 </html>

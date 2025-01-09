@@ -61,12 +61,12 @@
   }
 </style>
 {% assign section_id = section.id %}
-{% assign snippet_context = 'getSpecPopup-' | append: 'form' %}
+{% assign snippet_context = 'get-categories-' | append: 'form' %}
 {%- assign form_id = 'getSpec-' | append: section_id -%}
 {%- if section.settings.mode != 'disabled' -%}
   <div
     id="inboxFile-{{ section.id }}"
-    class="modal modal--square modal--mobile-friendly"
+    class="modal modal--square "
     data-section-id="{{ section.id }}"
     data-section-type="inboxFile-popup"
   >
@@ -132,7 +132,7 @@
                   <label for="Email-{{ section_id }}" class="hidden-label">
                     {{- 'general.newsletter_form.newsletter_email' | t -}}
                   </label>
-                  <input type="hidden" name="contact[tags]" value="newsletter,getSpecs">
+                  <input type="hidden" name="contact[tags]" value="newsletter,get-categories">
                   <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
                   <div class="input-group newsletter__input-group">
                     <input
@@ -265,7 +265,7 @@
     (() => {
       
         const form = document.getElementById('{{- form_id -}}');
-      function openSpecFormPopup(event) {
+      function openCateFormPopup(event) {
     event.preventDefault()
     event.stopPropagation()
     window.modals=window.modals||[]
@@ -279,7 +279,7 @@
         form.dataset.state="input"
     modal.open();
   }
-      window.openSpecFormPopup=openSpecFormPopup
+      window.openCateFormPopup=openCateFormPopup
         function handleSubmit(event) {
           event.preventDefault();
           try {
