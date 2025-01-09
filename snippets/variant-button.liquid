@@ -115,7 +115,8 @@
             class="variant__button-label{% unless product_available %} disabled{% endunless %}"
           >
             {%- assign optionValueHandlized = value | handleize -%}
-            {{ 'strings.option_value.' | append: optionValueHandlized | t | escape }}
+            {% assign labelValue = 'strings.option_value.' | append: optionValueHandlized | t | escape %}
+            {{ labelValue }}
             {%- if value == 'No Furniture' and product.metafields.my_fields.standard_suite != blank %}
               <span>{{ product.metafields.my_fields.standard_suite }}</span>
               {% continue %}
@@ -148,7 +149,6 @@
               <span>{{ product.metafields.my_fields.furniture_set_6 }}</span>
               {% continue %}
             {%- endif -%}
-            <span>{{ value }}</span>
           </label>
         {%- else -%}
           <label
