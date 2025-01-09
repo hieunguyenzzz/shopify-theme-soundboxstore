@@ -116,7 +116,11 @@
           >
             {%- assign optionValueHandlized = value | handleize -%}
             {% assign labelValue = 'strings.option_value.' | append: optionValueHandlized | t | escape %}
-            {{ labelValue }}
+            {% if labelValue contains 'Translation missing:' %}
+              {{ labelValue }}
+            {% else %}
+              {{ value }}
+            {% endif %}
             {%- if value == 'No Furniture' and product.metafields.my_fields.standard_suite != blank %}
               <span>{{ product.metafields.my_fields.standard_suite }}</span>
               {% continue %}
