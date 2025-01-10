@@ -1,17 +1,25 @@
 <div
   class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
+  data-type="button"
 >
+  <div
+    class="variant__label"
+  >
+    {{ name }}}
+  </div>
   <div
     class="variant-input-wrap"
   >
-    <div
-      class="variant-input {% unless product_available %} disabled{% endunless %}"
-    >
-      <label
-        class="variant__button-label{% unless product_available %} disabled{% endunless %}"
+    {% if option_1_name %}
+      <div
+        class="variant-input {% unless product_available %} disabled{% endunless %}"
       >
-        <span>{{ value }}</span>
-      </label>
-    </div>
+        <label
+          class="variant__button-label{% unless product_available %} disabled{% endunless %}"
+        >
+          <span>{{ value }}</span>
+        </label>
+      </div>
+    {% endif %}
   </div>
 </div>
