@@ -19,16 +19,16 @@
     {% if block.settings.option_1_url %}
       <div
         class="variant-input "
-        {% if block.settings.option_1_url == product.url %}
-          style="
-            background-color: #303a44;
-            color: #fff;
-          "
-        {% endif %}
       >
         <a
           href="{{  block.settings.option_1_url }}"
           class="variant__button-label"
+          {% if block.settings.option_1_url == product.url %}
+            style="
+              background-color: #303a44;
+              color: #fff;
+            "
+          {% endif %}
         >
           {{ block.settings.option_1_name }}
         </a>
@@ -36,16 +36,16 @@
     {% endif %}
     {% if block.settings.option_2_url %}
       <div
-        {% if block.settings.option_2_url == product.url %}
-          style="
-            background-color: #303a44;
-            color: #fff;
-          "
-        {% endif %}
         class="variant-input "
       >
         <a
           href="{{  block.settings.option_2_url }}"
+          {% if block.settings.option_2_url == product.url %}
+            style="
+              background-color: #303a44;
+              color: #fff;
+            "
+          {% endif %}
           class="variant__button-label"
         >
           {{ block.settings.option_2_name }}
@@ -55,15 +55,16 @@
     {% if block.settings.option_3_url %}
       <div
         class="variant-input "
-        {% if block.settings.option_3_url == product.url %}
-          style="
-            background-color: #303a44;
-            color: #fff;
-          "
-        {% endif %}
+        x
       >
         <a
           href="{{  block.settings.option_3_url }}"
+          {% if block.settings.option_2_url == product.url %}
+            style="
+              background-color: #303a44;
+              color: #fff;
+            "
+          {% endif %}
           class="variant__button-label"
         >
           {{ block.settings.option_3_name }}
