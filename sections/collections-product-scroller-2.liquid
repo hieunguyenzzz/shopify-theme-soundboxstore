@@ -86,7 +86,7 @@
         {% assign featured_image = block.settings.image | default: collection.image %}
         {% assign url = collection.url %}
         {% if collection != blank %}
-          <div class="col">
+          <div class="col" {{ block.shopify_attributes }}>
             <div class="col-wrap">
               <div class="col-image">
                 <a href="{{ url }}">
