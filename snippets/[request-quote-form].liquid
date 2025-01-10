@@ -297,7 +297,7 @@ IT it /it-it' %}
               {% assign subtitle = product.metafields.custom.menu_subtitle.value
                 | default: product.metafields.custom.subtitle
               %}
-              {% assign image = product.metafields.custom.menu_image.value %}
+              {% assign image = product.metafields.custom.menu_image.value | default: product.featured_image %}
               <div class="product-item">
                 <div class="product-item_image">
                   {{ image | image_url: width: 300 | image_tag: class: '', loading: 'lazy' }}
