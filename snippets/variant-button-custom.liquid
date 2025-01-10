@@ -5,44 +5,44 @@
   <div
     class="variant__label"
   >
-    {{ name }}}
+    {{ block.settings.name }}}
   </div>
   <div
     class="variant-input-wrap"
   >
-    {% if option_1_url %}
+    {% if block.settings.option_1_url %}
       <div
         class="variant-input "
       >
         <a
-          href="{{ option_1_url }}"
+          href="{{  block.settings.option_1_url }}"
           class="variant__button-label"
         >
-          <span>{{ option_1_name }}</span>
+          <span>{{ block.settings.option_1_name }}</span>
         </a>
       </div>
     {% endif %}
-    {% if option_2_url %}
+    {% if block.settings.option_2_url %}
       <div
         class="variant-input "
       >
         <a
-          href="{{ option_2_url }}"
+          href="{{  block.settings.option_2_url }}"
           class="variant__button-label"
         >
-          <span>{{ option_2_name }}</span>
+          <span>{{ block.settings.option_2_name }}</span>
         </a>
       </div>
     {% endif %}
-    {% if option_3_url %}
+    {% if block.settings.option_3_url %}
       <div
         class="variant-input "
       >
         <a
-          href="{{ option_3_url }}"
+          href="{{  block.settings.option_3_url }}"
           class="variant__button-label"
         >
-          <span>{{ option_3_name }}</span>
+          <span>{{ block.settings.option_3_name }}</span>
         </a>
       </div>
     {% endif %}
