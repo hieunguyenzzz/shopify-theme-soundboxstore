@@ -30,31 +30,43 @@
           href="{{  block.settings.option_1_url }}"
           class="variant__button-label"
         >
-          <span>{{ block.settings.option_1_name }}</span>
+          {{ block.settings.option_1_name }}
         </a>
       </div>
     {% endif %}
     {% if block.settings.option_2_url %}
       <div
+        {% if block.settings.option_2_url == product.url %}
+          style="
+            background-color: #303a44;
+            color: #fff;
+          "
+        {% endif %}
         class="variant-input "
       >
         <a
           href="{{  block.settings.option_2_url }}"
           class="variant__button-label"
         >
-          <span>{{ block.settings.option_2_name }}</span>
+          {{ block.settings.option_2_name }}
         </a>
       </div>
     {% endif %}
     {% if block.settings.option_3_url %}
       <div
         class="variant-input "
+        {% if block.settings.option_3_url == product.url %}
+          style="
+            background-color: #303a44;
+            color: #fff;
+          "
+        {% endif %}
       >
         <a
           href="{{  block.settings.option_3_url }}"
           class="variant__button-label"
         >
-          <span>{{ block.settings.option_3_name }}</span>
+          {{ block.settings.option_3_name }}
         </a>
       </div>
     {% endif %}
