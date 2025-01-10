@@ -1,15 +1,6 @@
 <div
-  {% if option.values.size == 1 %}
-    style="display:none"
-  {% endif %}
   class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
-  data-type="button"
 >
-  <label
-    class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
-    for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
-  >
-  </label>
   <div
     class="variant-input-wrap"
   >
