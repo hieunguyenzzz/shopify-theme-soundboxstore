@@ -79,7 +79,10 @@
     </div>
   {% endif %}
   {% if section.blocks.size > 0 %}
-    <div class="{{ section.id }}-slider  product-list-group slider_active">
+    <div
+      class="{{ section.id }}-slider  product-list-group slider_active"
+      style="display:flex ; gap:10px; flex-wrap:wrap; width:100%"
+    >
       {% for block in section.blocks %}
         {% assign collection = block.settings.collection | default: collections.first %}
         {% assign title = block.settings.title | default: collection.title %}
