@@ -171,6 +171,10 @@
                     <div class="product-block product-block-richtext" {{ block.shopify_attributes }}>
                       {{ block.settings.richtext }}
                     </div>
+                  {%- when 'variant-button-custom' -%}
+                    <div class="product-block product-block-variant-button-custom" {{ block.shopify_attributes }}>
+                      {% render 'variant-button-custom', block: block %}
+                    </div>
                   {%- when 'tab' -%}
                     <div
                       class="product-block product-block--tab"
