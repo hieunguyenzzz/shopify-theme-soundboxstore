@@ -19,6 +19,12 @@
     {% if block.settings.option_1_url %}
       <div
         class="variant-input "
+        {% if block.settings.option_1_url == product.url %}
+          style="
+            background-color: #303a44;
+            color: #fff;
+          "
+        {% endif %}
       >
         <a
           href="{{  block.settings.option_1_url }}"
