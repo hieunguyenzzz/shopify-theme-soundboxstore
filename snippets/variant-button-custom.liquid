@@ -1,5 +1,5 @@
 <div
-  class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
+  class="variant-wrapper js   option-variant"
   data-type="button"
 >
   <div
@@ -10,15 +10,40 @@
   <div
     class="variant-input-wrap"
   >
-    {% if option_1_name %}
+    {% if option_1_url %}
       <div
-        class="variant-input {% unless product_available %} disabled{% endunless %}"
+        class="variant-input "
       >
-        <label
-          class="variant__button-label{% unless product_available %} disabled{% endunless %}"
+        <a
+          href="{{ option_1_url }}"
+          class="variant__button-label"
         >
-          <span>{{ value }}</span>
-        </label>
+          <span>{{ option_1_name }}</span>
+        </a>
+      </div>
+    {% endif %}
+    {% if option_2_url %}
+      <div
+        class="variant-input "
+      >
+        <a
+          href="{{ option_2_url }}"
+          class="variant__button-label"
+        >
+          <span>{{ option_2_name }}</span>
+        </a>
+      </div>
+    {% endif %}
+    {% if option_3_url %}
+      <div
+        class="variant-input "
+      >
+        <a
+          href="{{ option_3_url }}"
+          class="variant__button-label"
+        >
+          <span>{{ option_3_name }}</span>
+        </a>
       </div>
     {% endif %}
   </div>
