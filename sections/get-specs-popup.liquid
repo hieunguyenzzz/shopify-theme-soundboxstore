@@ -281,7 +281,7 @@
   </div>
 {%- endif -%}
 <script>
-
+$(document).ready(function () {
     (() => {
       
         const form = document.getElementById('{{- form_id -}}');
@@ -338,6 +338,7 @@
         form.addEventListener('submit', handleSubmit);
        $(".specBtn").on("click", openSpecFormPopup);
       })();
+})
 </script>
 {% schema %}
 {
