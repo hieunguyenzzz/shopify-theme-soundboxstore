@@ -133,6 +133,34 @@
             </div>
           {% endif %}
         {% endif %}
+        {% if block.type == 'collection' %}
+          {% assign collection = block.settings.collection | default: collections.first %}
+          {% assign title = block.settings.title | default: collection.title %}
+          {% assign featured_image = block.settings.image | default: collection.image %}
+          {% assign url = collection.url %}
+          {% if collection != blank %}
+            <div class="col" {{ block.shopify_attributes }} style="max-width:23vw">
+              <div class="col-wrap">
+                <div class="col-image">
+                  <a href="{{ url }}">
+                    {{
+                      featured_image
+                      | image_url: width: 700
+                      | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: product.title
+                    }}
+                  </a>
+                </div>
+                <div class="product-details">
+                  <h4>
+                    <a href="{{ url }}">
+                      {{- title -}}
+                    </a>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
       {% endfor %}
     </div>
     <script>
