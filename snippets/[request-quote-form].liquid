@@ -227,6 +227,8 @@ IT it /it-it' %}
         class="grid__item"
         style="display: grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));  gap: 1em; max-width: 410px;"
       >
+        <input type="hidden" name="contact[tags]" value="quote-request">
+        <input type="hidden" name="contact[context]" value="quote-request-header">
         <div class="">
           <input
             class="input-full input"
@@ -354,6 +356,21 @@ IT it /it-it' %}
             form.elements['contact[products]'].value = stringproducts;
           }
           fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(data),
+          })
+            .then(function (res) {
+              console.log(res, data);
+            })
+            .catch(function (res) {
+              console.log(res, data);
+            });
+           fetch('https://n8n.soundboxstore.com/webhook-test/subscribe', {
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json',
