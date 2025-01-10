@@ -1,6 +1,206 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<style>
+    .{{ section.id }}-section{
+         padding-top:40px;
+            padding-bottom:40px;
+    }
+  .slick-disabled{
+        visibility: hidden;
   }
+          .{{ section.id }}-slider.product-list-group .slick-list{
+      padding:0;
+            padding-left:15px;
+          width:calc(100% + 15px);
+            flex-shrink:0;
+
+          }
+          .{{ section.id }}-slider.product-list-group {
+            display:flex;margin-top:120px;      padding:0 var(--pageWidthPadding);overflow:hidden
+
+
+          }
+          .{{ section.id }}-slider.product-list-group .slick-arrow{
+            background: #ffffffab;
+            border-radius: 100%;
+            width: 40px;
+            height: 40px;
+    box-shadow: 0px 0px 10px 2px #0000001a;
+          }
+          .{{ section.id }}-slider.product-list-group .slick-arrow.slick-prev{
+               left: 15px;
+            top: calc(50% - 40px);
+            background-image: url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-left.png?v=1688531622);
+            background-repeat: no-repeat;
+            background-position: left 6px center;
+            background-size: 26px;
+          }
+          .{{ section.id }}-slider.product-list-group .slick-arrow.slick-next{
+          right: 15px;
+            top: calc(50% - 40px);
+            background-image: url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/arrow-right.png?v=1688531621);
+            background-repeat: no-repeat;
+              background-position: right 6px center;
+            background-size: 26px;
+        }
+          }
+          .{{ section.id }}-slider.product-list-group .col-image img{
+            height:382px;
+          }
+          .{{ section.id }}-slider.product-list-group .col{
+            flex-shrink: 0;
+            max-width:unset;
+          }
+           .{{ section.id }}-slider.product-list-group .col .col-image a:after{
+            padding-bottom:70%
+          }
+
+    @media only screen and (max-width: 678px) {
+      .{{ section.id }}-slider.product-list-group {
+            display:flex;margin-top:70px;      padding:0 var(--pageWidthPadding);
+
+
+          }
+  }
+</style>
+<section class="{{ section.id }}-section collections-product-list">
+  {% if section.settings.title != blank or section.settings.description != blank %}
+    <div class="page-width">
+      <div class="section-header">
+        {% if section.settings.title != blank %}
+          <div class="left-col">
+            <h2 class="title-font">{{ section.settings.title }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="right-col">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% if section.blocks.size > 0 %}
+    <div class="{{ section.id }}-slider  product-list-group slider_active">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        {% assign title = block.settings.title | default: collection.title %}
+        {% assign featured_image = block.settings.image | default: collection.image %}
+        {% assign url = collection.url %}
+        {% if collection != blank %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="col-image">
+                <a href="{{ url }}">
+                  {{
+                    featured_image
+                    | image_url: width: 700
+                    | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: product.title
+                  }}
+                </a>
+              </div>
+              <div class="product-details">
+                <h4>
+                  <a href="{{ url }}">
+                    {{- title -}}
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <script>
+        document.addEventListener(
+        "app:ready",
+        (e) => {
+              $(document).ready(function() {
+                $('.{{ section.id }}-slider').slick({
+                infinite: false,
+                slidesToShow: 4,
+                arrows: true,
+                dots: true,
+                slidesToScroll: 2,
+                responsive: [
+                  {
+                    breakpoint: 860,
+                    settings: {
+                      slidesToShow: 2.3,
+                           slidesToScroll: 2,
+                    }
+                  }, {
+                    breakpoint: 768,
+                    settings: {
+                      slidesToShow: 2.3,
+                       slidesToScroll: 2,
+                      arrows: false,
+                      dots: false
+                    }
+                  }, {
+                    breakpoint: 540,
+                    settings: {
+                      slidesToShow: 1.3,
+                       slidesToScroll: 1,
+                      arrows: false,
+                      dots: false
+                    }
+                  }
+                ]
+              });
+            });
+           },
+        false,
+      );
+    </script>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Scroller | Collections",
+  "class": "index-section",
+  "settings": [ {
+        "type": "checkbox",
+        "id": "show_price",
+        "label": "Show price"
+      },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    }
+
+  ],
+  "blocks":[{
+        "type": "item",
+        "name": "Item",
+        "settings": [
+          {
+      "type":"collection",
+      "id":"collection",
+      "label":"Assign Collection"
+    },
+          	{
+	  "type":"text",
+	  "id":"title",
+	  "label":"Title"
+	},
+	{
+	  "type":"image_picker",
+	  "id":"image",
+	  "label":"Image"
+	}
+        ]
+  }],
+  "presets": [
+    {
+      "name": "Collections scroller",
+      "blocks": []
+    }
+  ]
+}
 {% endschema %}
