@@ -32,6 +32,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+          "variant_button_custom": {
+          "type": "variant-button-custom",
+          "settings": {
+            "name": "Size",
+            "option_1_name": "Large (4 people)",
+            "option_1_url": "shopify://products/accessible-large-meeting-booth-soundproof-inclusive",
+            "option_2_name": "X - Large (6 people)",
+            "option_2_url": "shopify://products/accessible-extra-large-meeting-booth-soundproof-inclusive",
+            "option_3_name": "",
+            "option_3_url": ""
+          }
+        },
         "judge_me_reviews_preview_badge_L4RdnG": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "disabled": true,
@@ -81,6 +93,7 @@
       },
       "block_order": [
         "judge_me_reviews_preview_badge_L4RdnG",
+        "variant_button_custom",
         "variant_picker",
         "price",
         "buy_buttons",
