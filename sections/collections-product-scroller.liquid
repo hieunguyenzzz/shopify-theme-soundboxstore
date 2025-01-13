@@ -13,6 +13,10 @@
             flex-shrink:0;
 
           }
+   .{{ section.id }}-section .product-list-group .col-image img{
+            height:382px;
+  border-radius: 1em 3.5rem 1em 1em
+          }
           .{{ section.id }}-slider.product-list-group {
             display:flex;margin-top:120px;      padding:0 var(--pageWidthPadding);overflow:hidden
 
@@ -42,9 +46,7 @@
             background-size: 26px;
         }
           }
-          .{{ section.id }}-slider.product-list-group .col-image img{
-            height:382px;
-          }
+
           .{{ section.id }}-slider.product-list-group .col{
             flex-shrink: 0;
             max-width:unset;
@@ -81,51 +83,85 @@
   {% if section.blocks.size > 0 %}
     <div class="{{ section.id }}-slider  product-list-group slider_active">
       {% for block in section.blocks %}
-        {% capture productId %}product{% endcapture %}
-        {% capture productImgId %}image{% endcapture %}
-        {% if block.settings[productId] != blank %}
-          {% assign product = all_products[block.settings[productId]] %}
-          <div class="col">
-            <div class="col-wrap">
-              <div class="col-image">
-                <a href="{{ all_products[block.settings[productId]].url }}">
-                  {% assign featured_image = block.settings[productImgId]
-                    | default: all_products[block.settings[productId]].featured_image
-                  %}
-                  {% if forloop.index == 1 %}
+        {% if block.type == 'item' %}
+          {% capture productId %}product{% endcapture %}
+          {% capture productImgId %}image{% endcapture %}
+          {% if block.settings[productId] != blank %}
+            {% assign product = all_products[block.settings[productId]] %}
+            <div class="col">
+              <div class="col-wrap">
+                <div class="col-image">
+                  <a href="{{ all_products[block.settings[productId]].url }}">
+                    {% assign featured_image = block.settings[productImgId]
+                      | default: all_products[block.settings[productId]].featured_image
+                    %}
+                    {% if forloop.index == 1 %}
+                      {{
+                        featured_image
+                        | image_url: width: 700
+                        | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: product.title
+                      }}
+                    {% else %}
+                      {{
+                        featured_image
+                        | image_url: width: 700
+                        | image_tag:
+                          widths: '400, 600, 800',
+                          loading: 'lazy',
+                          class: 'js-lazy-image',
+                          alt: product.title
+                      }}
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="product-details">
+                  <h4>
+                    <a href="{{ all_products[block.settings[productId]].url }}">
+                      {{- all_products[block.settings[productId]].title -}}
+                    </a>
+                  </h4>
+                  {%- if section.settings.show_price -%}
+                    <p class="price">
+                      <span class="price-title">{{ 'strings.others.starting_from' | t }} </span>
+                      {%- if product.price_varies -%}
+                        {{ product.price_min | money_without_trailing_zeros }}
+                      {%- else -%}
+                        {{ product.price | money_without_trailing_zeros }}
+                      {%- endif -%}
+                    </p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+        {% if block.type == 'collection' %}
+          {% assign collection = block.settings.collection | default: collections.first %}
+          {% assign title = block.settings.title | default: collection.title %}
+          {% assign featured_image = block.settings.image | default: collection.image %}
+          {% assign url = collection.url %}
+          {% if collection != blank %}
+            <div class="col" {{ block.shopify_attributes }} style="max-width:23vw">
+              <div class="col-wrap">
+                <div class="col-image">
+                  <a href="{{ url }}">
                     {{
                       featured_image
                       | image_url: width: 700
                       | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: product.title
                     }}
-                  {% else %}
-                    {{
-                      featured_image
-                      | image_url: width: 700
-                      | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: product.title
-                    }}
-                  {% endif %}
-                </a>
-              </div>
-              <div class="product-details">
-                <h4>
-                  <a href="{{ all_products[block.settings[productId]].url }}">
-                    {{- all_products[block.settings[productId]].title -}}
                   </a>
-                </h4>
-                {%- if section.settings.show_price -%}
-                  <p class="price">
-                    <span class="price-title">{{ 'strings.others.starting_from' | t }} </span>
-                    {%- if product.price_varies -%}
-                      {{ product.price_min | money_without_trailing_zeros }}
-                    {%- else -%}
-                      {{ product.price | money_without_trailing_zeros }}
-                    {%- endif -%}
-                  </p>
-                {% endif %}
+                </div>
+                <div class="product-details">
+                  <h4>
+                    <a href="{{ url }}">
+                      {{- title -}}
+                    </a>
+                  </h4>
+                </div>
               </div>
             </div>
-          </div>
+          {% endif %}
         {% endif %}
       {% endfor %}
     </div>
@@ -204,6 +240,26 @@
       "id":"product",
       "label":"Assign Product 1"
     },
+	{
+	  "type":"image_picker",
+	  "id":"image",
+	  "label":"Image"
+	}
+        ]
+  },{
+        "type": "collection",
+        "name": "collection",
+        "settings": [
+          {
+      "type":"collection",
+      "id":"collection",
+      "label":"Assign Collection"
+    },
+          	{
+	  "type":"text",
+	  "id":"title",
+	  "label":"Title"
+	},
 	{
 	  "type":"image_picker",
 	  "id":"image",
