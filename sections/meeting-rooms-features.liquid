@@ -1,76 +1,87 @@
 <style>
-  @media only screen and (max-width: 540px) {
+    .meeting-rooms-features .flexbox{
+        display: flex;
+
+    justify-content: center;
+    }
     .meeting-rooms-features .flexbox .col:not(:last-child) {
-      max-width: 100%;
+       flex:1;
     }
     .meeting-rooms-features .flexbox .col.right-col {
-      max-width: 100%;
+      max-width: 440px;
       margin-top: 20px;
+    margin-inline: auto;
     }
-  }
    .features-list-row-wrap > label {
 
       font-weight:bold!important;
     }
-  @media only screen and (max-width: 991px) {
+
     .features-list-row {
       padding: 0.5em;
     }
     .features-list-row-wrap > div {
-      max-height: 0;
-      opacity: 0;
-      height: 0;
-      transition: all 0.3s linear;
-      overflow: hidden;
-      padding-bottom: 0;
-      margin-bottom: 10px;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+
     }
     .features-list-row-wrap > label {
       margin: 0;
-      height: 40px;
       line-height: 30px;
-      padding: 0.2em 0.5em;
-      background-color: #f1f1f1;
+      padding: 1rem 2rem;
+      border-bottom:1px solid #f1f1f1;
       position: relative;
       font-weight:bold;
     }
+      .features-list-row-wrap > label::before {
+        content: "";
+    position: absolute;
+    background-color: black;
+    width: 0.8em;
+    height: 0.15em;
+    right: 14px;
+    top: calc(50% - 0.075em);
+    transition: all 0.5s ease-in-out;
+    transform: rotate(-90deg);
+    }
     .features-list-row-wrap > label::after {
-      transition: all 0.3s ease-in-out;
-      display: block;
-      content: "";
-      width: 8px;
-      height: 8px;
-      border: 2px solid currentColor;
-      border-right: none;
-      border-bottom: none;
-      transform: rotate(-135deg);
+       content: "";
       position: absolute;
-      right: 14px;
-      top: 14px;
+      background-color: black;
+      height: 0.8em;
+      width: 0.15em;
+      right: calc(14px + 0.31em);
+      top: calc(50% - 0.4em);
+      transition: all 0.5s ease-in-out;
+      transform: rotate(-90deg);
+    }
+    .features-list-row input:checked + .features-list-row-wrap > label::before {
+       transition: all 0.5s ease-in-out;
+      transform: rotate(90deg);    opacity: 0;
     }
     .features-list-row input:checked + .features-list-row-wrap > label::after {
-      transform: rotate(45deg);
-      top: 14px;
+    transition: all 0.5s ease-in-out;
+    transform: rotate(90deg);
+
     }
     .meeting-rooms-features .features-list .features-list-row {
       padding: 0;
     }
     .features-list-row-wrap > div > div {
-      transform: translateY(-100%);
-      transition: all 0.3s linear;
-      padding: 0.2em 0.5em;
+
+            padding: 1rem 2rem;
     }
     .features-list-row input:checked + .features-list-row-wrap > div {
       display: block;
-      max-height: 9999px;
+      max-height: 500px;
       opacity: 1;
       height: auto;
-      transform: scale(1);
-      padding-bottom: 10px;
-      background-color: #f1f1f1;
+
+
     }
     .features-list-row input:checked + .features-list-row-wrap > div > div {
-      transform: translateY(0);
     }
     .meeting-rooms-features .flexbox .col.right-col {
       text-align: left;
@@ -79,7 +90,8 @@
       opacity: 1;
       visibility: visible;
     }
-  }
+
+
   .meeting-room-features-video .video-player-controls > button {
     padding:0;
     border-radius: 99em;
@@ -105,6 +117,49 @@
     -moz-backface-visibility: hidden;
     -webkit-appearance: none
   }
+
+    {% for block in section.blocks %}
+    {% if block.type == "hotspot_point" %}
+      {% if block.settings.point_x != blank or block.settings.point_y != blank %}
+        .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
+          left: {{ block.settings.point_x }}%;
+          top: {{ block.settings.point_y }}%
+        }
+        {%- if block.settings.point_x < 40 -%}
+          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
+            left: unset;
+            right: 0;
+          }
+        {%- endif - %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  .ping {
+    position: relative;
+  }
+  .ping::before {
+    position: absolute;
+    top: -0.5em;
+    bottom: -0.5em;
+    left: -0.5em;
+    right: -0.5em;
+    content: '';
+    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
+    border: 2px solid lightblue;
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+  .features-list-row-wrap {
+    scroll-margin-top: 160px
+  }
+  .meeting-rooms-features .hotspot-icon {
+    width: 5vw;
+  }
 </style>
 <section
   class="
@@ -117,30 +172,6 @@
 >
   <div class="page-width">
     <div class="flexbox">
-      <div class="col left-col">
-        <div class="col-wrap">
-          <div class="features-list">
-            {% for block in section.blocks %}
-              {% if block.type == 'features_list_left' %}
-                {% if block.settings.title != blank %}
-                  <div class="features-list-row" data-type="{{ block.settings.title }}" {{ block.shopify_attributes }}>
-                    <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}">
-                    <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }} </label>
-                      <div>
-                        <div>
-                          {{ block.settings.description }}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-
       {%- assign current_variant = product.selected_or_first_available_variant -%}
       {%- assign imgs = current_variant.metafields.global.images.value -%}
       {%- unless imgs -%}
@@ -389,21 +420,6 @@
                     <g>
                       <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
                     </g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
-                    <g></g>
                   </svg>
                 </span>
               {% endif %}
@@ -414,18 +430,64 @@
 
       <div class="col right-col">
         <div class="col-wrap">
-          {% comment %}
-            {% if section.settings.title != blank %}
-            <h2 class="title-font">{{ section.settings.title }}</h2>
-            {% endif %}
-          {% endcomment %}
-
-          <div class="features-list">
+          <h2
+            style="
+              font-size: calc(var(--typeHeaderSize)* .75);
+              margin-bottom: 0.4em;
+              padding: 0rem 2rem;
+            "
+          >
+            {{ section.settings.title }}
+          </h2>
+          <div
+            style="
+              padding: 0rem 2rem;
+              font-size: 0.7em;    color: #939393;
+            "
+          >
+            {{ section.settings.content }}
+          </div>
+          <div
+            class="features-list"
+            style="
+              border-top: 1px solid #f1f1f1;
+              margin-top: 1em;
+            "
+          >
+            {% for block in section.blocks %}
+              {% if block.type == 'features_list_left' %}
+                {% if block.settings.title != blank %}
+                  <div class="features-list-row" data-type="{{ block.settings.title }}" {{ block.shopify_attributes }}>
+                    <input
+                      name="{{ section.id }}-radio"
+                      hidden
+                      type="radio"
+                      value="block.settings.title"
+                      id="input-{{ block.settings.title | handleize }}"
+                    >
+                    <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
+                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }} </label>
+                      <div>
+                        <div>
+                          {{ block.settings.description }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
             {% for block in section.blocks %}
               {% if block.type == 'features_list_right' %}
                 {% if block.settings.title != blank %}
                   <div class="features-list-row" data-type="{{ block.settings.title }}" {{ block.shopify_attributes }}>
-                    <input hidden type="checkbox" id="input-{{ block.settings.title | handleize }}">
+                    <input
+                      name="{{ section.id }}-radio"
+                      hidden
+                      type="radio"
+                      value="block.settings.title"
+                      id="input-{{ block.settings.title | handleize }}"
+                    >
                     <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
                       <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }} </label>
                       <div>
@@ -445,51 +507,6 @@
   </div>
 </section>
 
-<style>
-  {% for block in section.blocks %}
-    {% if block.type == "hotspot_point" %}
-      {% if block.settings.point_x != blank or block.settings.point_y != blank %}
-        .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
-          left: {{ block.settings.point_x }}%;
-          top: {{ block.settings.point_y }}%
-        }
-        {%- if block.settings.point_x < 40 -%}
-          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
-            left: unset;
-            right: 0;
-          }
-
-        {%- endif - %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-  .ping {
-    position: relative;
-  }
-  .ping::before {
-    position: absolute;
-    top: -0.5em;
-    bottom: -0.5em;
-    left: -0.5em;
-    right: -0.5em;
-    content: '';
-    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
-    border: 2px solid lightblue;
-  }
-  @keyframes ping {
-    75%,
-    100% {
-      transform: scale(1.1);
-      opacity: 0;
-    }
-  }
-  .features-list-row-wrap {
-    scroll-margin-top: 160px
-  }
-  .meeting-rooms-features .hotspot-icon {
-    width: 5vw;
-  }
-</style>
 {% assign scrollWhenClick = true %}
 
 <script>
@@ -497,11 +514,13 @@
     node.addEventListener("click", (e) => {
       console.log(node.dataset.target)
       const targetE = document.querySelector("#" + node.dataset.target);
-      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));{% if scrollWhenClick %}
+      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
+      {% if scrollWhenClick %}
         if (window.innerWidth < 991) {
           targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         }
-      {%  endif %}targetE.classList.remove('ping');
+      {%  endif %}
+      targetE.classList.remove('ping');
       setTimeout(() => {
         targetE.classList.add('ping');
         if (targetInput) {
@@ -522,6 +541,18 @@
       "id": "seo",
       "label": "SEO title",
       "default":"Experience This Phone Booth Yourself"
+    },
+         {
+       "type": "text",
+      "id": "title",
+      "label": "Title",
+           "default":"Experience This Phone Booth Yourself",
+    },
+       {
+       "type": "textarea",
+      "id": "content",
+      "label": "Content",
+         "default":"<p>Dimensions and details</p>"
     },
     {
       "type": "checkbox",
