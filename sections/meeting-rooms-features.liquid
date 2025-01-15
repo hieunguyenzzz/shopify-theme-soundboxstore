@@ -466,7 +466,9 @@
                       id="input-{{ block.settings.title | handleize }}"
                     >
                     <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }} </label>
+                      <label onclick="hotspotIconClick(event)" for="input-{{ block.settings.title | handleize }}">
+                        {{- block.settings.title }}
+                      </label>
                       <div>
                         <div>
                           {{ block.settings.description }}
@@ -489,7 +491,9 @@
                       id="input-{{ block.settings.title | handleize }}"
                     >
                     <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                      <label for="input-{{ block.settings.title | handleize }}">{{ block.settings.title }} </label>
+                      <label onclick="hotspotIconClick(event)" for="input-{{ block.settings.title | handleize }}">
+                        {{- block.settings.title }}
+                      </label>
                       <div>
                         <div>
                           {{ block.settings.description }}
@@ -510,6 +514,9 @@
 {% assign scrollWhenClick = true %}
 
 <script>
+  function hotspotIconClick (event){
+    console.log({event})
+  }
   document.querySelectorAll(".hotspot-icon").forEach(node => {
     node.addEventListener("click", (e) => {
       console.log(node.dataset.target)
