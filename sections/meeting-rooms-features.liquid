@@ -516,7 +516,10 @@
 <script>
   function hotspotIconClick (event){
     console.log(" event.target.control.checked", event.target.control.checked)
-    event.target.control.checked=!event.target.control.checked
+    if(event.target.control.checked){
+      event.target.control.checked=!event.target.control.checked
+    }
+
   }
   document.querySelectorAll(".hotspot-icon").forEach(node => {
     node.addEventListener("click", (e) => {
