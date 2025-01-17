@@ -45,6 +45,8 @@
         <div class="col">
           <div class="col-wrap">
             <div class="icon-text-block">
+              {{ forloop.index }}
+              {{ block | json }}
               {% if block.settings.iconimage != blank %}
                 <div class="icon-block">
                   <div class="icon-wrap">
