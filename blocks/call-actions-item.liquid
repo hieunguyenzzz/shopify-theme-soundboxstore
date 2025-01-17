@@ -1,24 +1,41 @@
 <div class="col">
-  <div class="col-wrap">
+  <a href="{{ block.settings.url }}" class="col-wrap">
     <div class="icon-text-block">
       {% if block.settings.iconimage != blank %}
         <div class="icon-block">
           <div class="icon-wrap">
             <img
               loading="lazy"
-              src="{{ block.settings.iconimage | image_url : width: 50 }}"
-              width="50"
-              height="50"
+              src="{{ block.settings.iconimage | image_url : width: 100 }}"
+              width="80"
+              height="80"
               alt="{{ block.settings.iconimage.alt }}"
             >
           </div>
         </div>
       {% endif %}
       {% if block.settings.text != blank %}
-        <div class="text-block">{{ block.settings.text }}</div>
+        <div>
+          <div class="" style="position:relative">
+            {{ block.settings.text -}}
+            <span
+              style="
+                margin-right: 0;
+                position: absolute;
+                top: .1em;
+                left: -1.1em;
+              "
+              class="icon icon--inventory"
+              style="margin-right:0"
+            ></span>
+          </div>
+          <div style="font-size:0.8em ;  text-underline-offset:0.3em;    text-decoration: underline;  opacity: 0.7;">
+            {{ block.settings.url_text }}
+          </div>
+        </div>
       {% endif %}
     </div>
-  </div>
+  </a>
 </div>
 {% schema %}
 {
