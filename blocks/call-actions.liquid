@@ -1,10 +1,21 @@
 <style>
-  #shopify-section-{{section.id}}  .product-icon-text-section .flexbox>div{
+   #shopify-section-{{section.id}}{
+     margin-top: 2em !important
+   }
+     #shopify-section-{{section.id}} p{
+     margin:0;
+   }
+  #shopify-section-{{section.id}}  .product-icon-text-section .flexbox .shopify-block{
     flex:1;
-
-    max-width: 340px;
   }
-    #shopify-section-{{section.id}} .product-icon-text-section .page-width{
+   #shopify-section-{{section.id}}  .slick-track{
+    width:100%
+  }
+  #shopify-section-{{section.id}}  .product-icon-text-section .flexbox .col .icon-text-block .icon-wrap {
+    max-width: 80px;
+    height: 80px;    margin-right: 1em;
+  }
+   #shopify-section-{{section.id}} .product-icon-text-section .page-width{
     max-width:1024px;
   }
   .product-icon-text-section .text-block{
@@ -52,7 +63,7 @@
 </section>
 <script>
     $(window).on('load', function() {
-      $(".template-index .product-icon-text-section .flexbox").slick({
+      $("#shopify-section-{{section.id}} .flexbox").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     mobileFirst: true,
@@ -61,25 +72,10 @@
     dots: false,
     responsive: [
       {
-        breakpoint: 1440,
+        breakpoint: 862,
         settings: "unslick",
       },
-      {
-        breakpoint: 1081,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          adaptiveHeight: true,
-        },
-      },
-      {
-        breakpoint: 861,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          adaptiveHeight: true,
-        },
-      },
+
     ],
   });
   })
