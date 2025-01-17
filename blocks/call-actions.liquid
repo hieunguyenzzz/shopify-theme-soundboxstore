@@ -42,30 +42,7 @@
   <div class="page-width">
     <div class="flexbox">
       {% for block in section.blocks %}
-        <div class="col">
-          <div class="col-wrap">
-            <div class="icon-text-block">
-              {{ forloop.index }}
-              {{ block | json }}
-              {% if block.settings.iconimage != blank %}
-                <div class="icon-block">
-                  <div class="icon-wrap">
-                    <img
-                      loading="lazy"
-                      src="{{ block.settings.iconimage | image_url : width: 50 }}"
-                      width="50"
-                      height="50"
-                      alt="{{ block.settings.iconimage.alt }}"
-                    >
-                  </div>
-                </div>
-              {% endif %}
-              {% if block.settings.text != blank %}
-                <div class="text-block">{{ block.settings.text }}</div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
+        {% content_for 'blocks' %}
       {% endfor %}
     </div>
   </div>
