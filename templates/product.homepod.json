@@ -87,48 +87,50 @@
         "product_video_style": "muted"
       }
     },
-    "certicate_6PjdXE": {
-      "type": "certicate",
+    "call_blocks_qfHXik": {
+      "type": "call-blocks",
       "blocks": {
-        "icon_text_block_qAqiqh": {
-          "type": "icon-text-block",
-          "settings": {
-            "iconimage": "shopify://shop_images/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png",
-            "text": "<p>TUV.SUD Certification</p>"
-          }
-        },
-        "icon_text_block_DPXVFC": {
-          "type": "icon-text-block",
-          "settings": {
-            "iconimage": "shopify://shop_images/pngwing.com_1.png",
-            "text": "<p>FSC Certification</p>"
-          }
-        },
-        "icon_text_block_pmmmQE": {
-          "type": "icon-text-block",
-          "settings": {
-            "iconimage": "shopify://shop_images/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png",
-            "text": "<p>UL Certification</p>"
-          }
-        },
-        "icon_text_block_jXggJh": {
-          "type": "icon-text-block",
-          "settings": {
-            "iconimage": "shopify://shop_images/ce.png",
-            "text": "<p>CE Certification</p>"
-          }
+        "call-actions": {
+          "type": "call-actions",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "call-actions-item-1": {
+              "type": "call-actions-item",
+              "settings": {
+                "iconimage": "shopify://shop_images/image_55b1406b-fd1e-4d6a-93cd-f490a35c4e3c.png",
+                "text": "<p>SHOWROOM VISIT </p>",
+                "url": "shopify://pages/showroom-london",
+                "url_text": "Speak to Eva"
+              }
+            },
+            "call-actions-item-2": {
+              "type": "call-actions-item",
+              "settings": {
+                "iconimage": "shopify://shop_images/image_1.png",
+                "text": "<p>SITE SURVEY</p>",
+                "url": "shopify://pages/consultancy",
+                "url_text": "Speak to Katy"
+              }
+            },
+            "call-actions-item-3": {
+              "type": "call-actions-item",
+              "settings": {
+                "iconimage": "shopify://shop_images/IMMIE.png",
+                "text": "<p>REMOTE TOUR</p>",
+                "url": "shopify://pages/remote-tours",
+                "url_text": "Speak to Immie"
+              }
+            }
+          },
+          "block_order": [
+            "call-actions-item-1",
+            "call-actions-item-2",
+            "call-actions-item-3"
+          ]
         }
       },
-      "block_order": [
-        "icon_text_block_qAqiqh",
-        "icon_text_block_DPXVFC",
-        "icon_text_block_pmmmQE",
-        "icon_text_block_jXggJh"
-      ],
-      "settings": {
-        "dynamic": false,
-        "seo": "FULLY CERTIFIED & TESTED"
-      }
+      "settings": {}
     },
     "1657348293dc4e4fd8": {
       "type": "rich-text",
@@ -336,6 +338,59 @@
         "open_thumb": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/cdn.shopify.com_videos_c_o_v_431e8f28471b4cc381ad17972d376259.mp4.png?v=1701660349&width=600"
       }
     },
+    "certicate_6PjdXE": {
+      "type": "certicate",
+      "blocks": {
+        "icon_text_block_qAqiqh": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png",
+            "text": "<p>TUV.SUD Certification</p>"
+          }
+        },
+        "icon_text_block_DPXVFC": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/pngwing.com_1.png",
+            "text": "<p>FSC Certification</p>"
+          }
+        },
+        "icon_text_block_pmmmQE": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png",
+            "text": "<p>UL Certification</p>"
+          }
+        },
+        "icon_text_block_jXggJh": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/ce.png",
+            "text": "<p>CE Certification</p>"
+          }
+        },
+        "icon_text_block_mGHxUC": {
+          "type": "icon-text-block",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_block_qAqiqh",
+        "icon_text_block_DPXVFC",
+        "icon_text_block_pmmmQE",
+        "icon_text_block_jXggJh",
+        "icon_text_block_mGHxUC"
+      ],
+      "custom_css": [
+        "section {margin: 0;}"
+      ],
+      "settings": {
+        "dynamic": false,
+        "seo": "FULLY CERTIFIED & TESTED"
+      }
+    },
     "use-case": {
       "type": "brand-details-section",
       "blocks": {
@@ -425,7 +480,7 @@
         "brand_details_HcWHPH"
       ],
       "custom_css": [
-        "{display: flow-root; justify-content: center; background: #f5e8d8; margin: 0; padding: 0 0 30px; margin-top: -60px; margin-bottom: 30px;}",
+        "{display: flow-root; justify-content: center; background: #f5e8d8; margin: 0; padding: 0 0 30px;}",
         "h2 {margin-top: 1em;}",
         ".left-col .col-wrap img {object-position: left; height: 120px;}",
         ".slide-wrap {padding: 0;}",
@@ -962,9 +1017,10 @@
   },
   "order": [
     "main",
-    "certicate_6PjdXE",
+    "call_blocks_qfHXik",
     "1657348293dc4e4fd8",
     "meeting-rooms-features",
+    "certicate_6PjdXE",
     "use-case",
     "1b9c93bf-f5cd-43fc-9291-cab9b11c444d",
     "56f25c83-4f63-43f9-826a-dbb813b64ac5",
