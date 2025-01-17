@@ -2,17 +2,7 @@
 {% if reseller_product.size > 0 %}
   {% render 'reseller_only' %}
 {% endif %}
-{%- liquid
-  assign isModal = false
-  if template == 'product.modal'
-    assign isModal = true
-  endif
 
-  assign isAjax = false
-  if template == 'product.ajax'
-    assign isAjax = true
-  endif
--%}
 {%- render 'product-template',
   product: product,
   section_id: section.id,
