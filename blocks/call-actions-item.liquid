@@ -1,3 +1,25 @@
+<div class="col">
+  <div class="col-wrap">
+    <div class="icon-text-block">
+      {% if block.settings.iconimage != blank %}
+        <div class="icon-block">
+          <div class="icon-wrap">
+            <img
+              loading="lazy"
+              src="{{ block.settings.iconimage | image_url : width: 50 }}"
+              width="50"
+              height="50"
+              alt="{{ block.settings.iconimage.alt }}"
+            >
+          </div>
+        </div>
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <div class="text-block">{{ block.settings.text }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% schema %}
 {
   "name": "call-actions-item",
