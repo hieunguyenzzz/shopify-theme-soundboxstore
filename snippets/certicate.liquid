@@ -1,111 +1,103 @@
 <style>
-    .product-icon-text-section .flexbox .col .icon-text-block .icon-block{
-      flex-shrink:0
+  .product-icon-text-section .page-width{
+    max-width:unset;
+  }
+  .product-icon-text-section .text-block{
+    white-space:nowrap
+  }
+  .product-icon-text-section .flexbox{
+    justify-content:center;
+
+  }
+     .product-icon-text-section .icon-text-block .col{
+      flex:unset
     }
-    #{{ id }}.product-icon-text-section .flexbox .col {
-      flex: 1 1 auto;
-      padding: 0 15px;
-      flex-shrink: 0;
+    .product-icon-text-section .flexbox >.col{
+       max-width: 350px;
+    }
+  @media screen and (max-width: 860px) {
+      .product-icon-text-section-{{ section.id }} .col:not(:first-child){
+    display:none
+  }
+   .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
+    display:unset
+  }
+  }
+    @media screen and (min-width: 1440) {
+      .product-icon-text-section .page-width{
+    max-width:unset;
+    display:flex;
+    overflow:auto;
+  }
+  .product-icon-text-section .text-block{
+    white-space:nowrap
+  }
+  .product-icon-text-section .flexbox{
+    justify-content:center;flex-shrink: 0;min-width:100%
+
+  }
   }
 </style>
-<section id="{{ id }}" class="product-icon-text-section">
+<section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
-    <div class="flexbox" style="flex-wrap:nowrap; overflow:auto">
-      <div class="col" style="" aria-hidden="true" tabindex="0">
-        <div class="col-wrap">
-          <div class="icon-text-block">
-            <div class="icon-block">
-              <div class="icon-wrap">
-                <img
-                  loading="lazy"
-                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png?v=1717688880&amp;width=50"
-                  width="50"
-                  height="50"
-                  alt=""
-                >
+    <div class="flexbox">
+      {% for i in (1..5) %}
+        {% assign key = 'iso_' | append: forloop.index %}
+        {% assign image = settings[key] %}
+        {% if image %}
+          <div class="col">
+            <div class="col-wrap">
+              <div class="icon-text-block">
+                <div class="col-wrap">
+                  <div class="icon-text-block">
+                    <div class="icon-block">
+                      <div class="icon-wrap">
+                        {{ image | image_url: width: 50 | image_tag }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-block">{{ image.alt }}</div>
               </div>
             </div>
-
-            <div class="text-block"><p>TUV.SUD Certification</p></div>
           </div>
-        </div>
-      </div>
-      <div class="col slick-current slick-active" style="" aria-hidden="false" tabindex="-1">
-        <div class="col-wrap">
-          <div class="icon-text-block">
-            <div class="icon-block">
-              <div class="icon-wrap">
-                <img
-                  loading="lazy"
-                  src="//soundboxstore.com/cdn/shop/files/pngwing.com_1.png?v=1717686879&amp;width=50"
-                  width="50"
-                  height="50"
-                  alt=""
-                >
-              </div>
-            </div>
-
-            <div class="text-block"><p>FSC Certification</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col" style="" aria-hidden="true" tabindex="-1">
-        <div class="col-wrap">
-          <div class="icon-text-block">
-            <div class="icon-block">
-              <div class="icon-wrap">
-                <img
-                  loading="lazy"
-                  src="//soundboxstore.com/cdn/shop/files/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png?v=1717689671&amp;width=50"
-                  width="50"
-                  height="50"
-                  alt=""
-                >
-              </div>
-            </div>
-
-            <div class="text-block"><p>UL Certification</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="col" style="" aria-hidden="true" tabindex="-1">
-        <div class="col-wrap">
-          <div class="icon-text-block">
-            <div class="icon-block">
-              <div class="icon-wrap">
-                <img
-                  loading="lazy"
-                  src="//soundboxstore.com/cdn/shop/files/ce.png?v=1717688682&amp;width=50"
-                  width="50"
-                  height="50"
-                  alt=""
-                >
-              </div>
-            </div>
-
-            <div class="text-block"><p>CE Certification</p></div>
-          </div>
-        </div>
-      </div>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
+  <div class="visually-hidden">{{ section.settings.seo }}</div>
 </section>
 <script>
     $(window).on('load', function() {
-
-    $('#{{ id }}.product-icon-text-section .flexbox').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      mobileFirst: true,
-      arrows: false,
-      autoplay: true,
-      dots: false,
-      responsive: [
-        {
-          breakpoint: 861,
-          settings: 'unslick'
-        }
-      ]
-    });
+      $(".template-index .product-icon-text-section .flexbox").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    mobileFirst: true,
+    arrows: false,
+    autoplay: true,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: "unslick",
+      },
+      {
+        breakpoint: 1081,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          adaptiveHeight: true,
+        },
+      },
+      {
+        breakpoint: 861,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          adaptiveHeight: true,
+        },
+      },
+    ],
+  });
   })
 </script>
