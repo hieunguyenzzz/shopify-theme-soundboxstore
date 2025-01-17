@@ -41,9 +41,7 @@
 <section class="product-icon-text-section product-icon-text-section-{{ section.id }}">
   <div class="page-width">
     <div class="flexbox">
-      {% for block in section.blocks %}
-        {% content_for 'blocks' %}
-      {% endfor %}
+      {% content_for 'blocks' %}
     </div>
   </div>
   <div class="visually-hidden">{{ section.settings.seo }}</div>
