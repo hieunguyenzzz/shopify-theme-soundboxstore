@@ -1,6 +1,23 @@
+{% content_for 'block', type: 'call-actions', id: 'collapsible-row' %}
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Call blocks",
+  "class": "details",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collapsible row",
+      "blocks": [
+        {
+          "type": "call-actions",
+          "static": true,
+          "id": "collapsible-row",
+        },
+
+      ]
+    }
+  ]
+}
 {% endschema %}
