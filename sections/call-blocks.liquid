@@ -1,5 +1,7 @@
 {% content_for 'block', type: 'call-actions', id: 'call-actions' %}
-
+{% if section.blocks.size > 1 %}
+  {% content_for 'block', type: '_slideshow-controls', id: 'static-slideshow-controls' %}
+{% endif %}
 {% schema %}
 {
   "name": "Call blocks",
