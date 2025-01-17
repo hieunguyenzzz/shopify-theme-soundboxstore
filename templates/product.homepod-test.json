@@ -9,40 +9,12 @@
  */
 {
   "sections": {
-    "16635619322291a846": {
-      "type": "advanced-content",
-      "blocks": {
-        "1663561932ddfd5e61-1": {
-          "type": "html",
-          "settings": {
-            "code": "<style>\nlabel.variant__button-label.color-swatch.color-swatch--folio-blush {\n  background-color: #ccb7c9;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-pebble-grey {\n  background-color: #ccccca!important;\n\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dusty-teal{\n  background-color: #a3b6b6!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-dark-grey{\nbackground-color:#8b8d8f!important;\n}\nlabel.variant__button-label.color-swatch.color-swatch--folio-beige{\nbackground-color:#c9c4b4!important;\n}\n\n</style>",
-            "width": "50%",
-            "alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "1663561932ddfd5e61-1"
-      ],
-      "settings": {
-        "full_width": false,
-        "space_around": false
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
-        "variant_button_custom_mTfdNH": {
-          "type": "variant-button-custom",
-          "settings": {
-            "name": "Size",
-            "option_1_name": "Large (4 people)",
-            "option_1_url": "shopify://products/access-large-meeting-booth-soundproof-inclusive",
-            "option_2_name": "X - Large (6 people)",
-            "option_2_url": "shopify://products/access-extra-large-meeting-booth-soundproof-inclusive",
-            "option_3_name": "",
-            "option_3_url": ""
-          }
+        "judge_me_reviews_preview_badge_LX84Rr": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -58,32 +30,49 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
+        "soundboxstore_quote_quote_btn_RdM36t": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_add_quote": false,
+            "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
           }
         },
-        "c063b162-27ae-4aa9-adeb-e550be9dd3b1": {
-          "type": "text",
+        "inventory_status_JtU3mG": {
+          "type": "inventory_status",
           "settings": {
-            "text": "*Resellers, Distributors Please Contact For Prices"
+            "inventory_threshold": 0,
+            "inventory_transfers_enable": false
+          }
+        },
+        "ticks_aN7BxY": {
+          "type": "ticks",
+          "settings": {
+            "richtext": "Furniture, Lighting, Desk, Ventilation All Included.  \nInstall In 45 Minutes (unpacked)\nBest Quality / Best Price\nTrade Discount On Quantity\nAcoustic ISO-2355-1 Accredited\nEuropes's #1 Best Selling Phone Booth"
           }
         }
       },
       "block_order": [
-        "variant_button_custom_mTfdNH",
+        "judge_me_reviews_preview_badge_LX84Rr",
         "variant_picker",
         "price",
+        "soundboxstore_quote_quote_btn_RdM36t",
         "buy_buttons",
-        "c063b162-27ae-4aa9-adeb-e550be9dd3b1"
+        "inventory_status_JtU3mG",
+        "ticks_aN7BxY"
       ],
       "custom_css": [
         ".product-block-text {font-size: 13.5px; margin-top: -18px;}",
-        ".product-block-richtext {font-size: 0.9em;}",
-        ".product-single__title h2 {font-style: italic; opacity: 0.7;}"
+        ".product-block--sales-point {font-size: 16px; margin-top: -10px;}",
+        ".product-single__title h2 {font-style: italic; opacity: 0.7;}",
+        ".product-block.product-block--sales-point:has(.inventory--low) {display: none;}"
       ],
       "settings": {
         "sku_enable": false,
@@ -136,7 +125,51 @@
         "2f4ce18f-fc46-4d16-ab85-52111f71d6a9",
         "aff0d8c6-1f4e-4905-8c02-2071a65a5787"
       ],
+      "disabled": true,
       "settings": {}
+    },
+    "certicate_6PjdXE": {
+      "type": "certicate",
+      "blocks": {
+        "icon_text_block_qAqiqh": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/pngwing.com_b3e58321-5c12-4b6c-8ff5-b82118cb0c41.png",
+            "text": "<p>TUV.SUD Certification</p>"
+          }
+        },
+        "icon_text_block_DPXVFC": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/pngwing.com_1.png",
+            "text": "<p>FSC Certification</p>"
+          }
+        },
+        "icon_text_block_pmmmQE": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/ul_ae1adaf0-d96b-450e-b7b6-036b671627fb.png",
+            "text": "<p>UL Certification</p>"
+          }
+        },
+        "icon_text_block_jXggJh": {
+          "type": "icon-text-block",
+          "settings": {
+            "iconimage": "shopify://shop_images/ce.png",
+            "text": "<p>CE Certification</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_block_qAqiqh",
+        "icon_text_block_DPXVFC",
+        "icon_text_block_pmmmQE",
+        "icon_text_block_jXggJh"
+      ],
+      "settings": {
+        "dynamic": false,
+        "seo": "FULLY CERTIFIED & TESTED"
+      }
     },
     "1657348293dc4e4fd8": {
       "type": "rich-text",
@@ -144,25 +177,22 @@
         "165734829349367447-0": {
           "type": "heading",
           "settings": {
-            "title": "Seated Folio Phone Booth: Your Space for Focus"
+            "title": "Seated Folio Office Phone Booth: Your Space for Focus"
           }
         },
         "165734829349367447-1": {
           "type": "text",
           "settings": {
             "enlarge_text": true,
-            "text": "<p>In today's bustling work environment, distractions are constant. Noise and interruptions can derail focus and productivity, hindering your performance and creativity. That's where our soundproof phone booth comes in.</p><h3>A Tranquil Retreat</h3><p>At Soundbox Store, we understand the value of a quiet and comfortable workspace. Our Folio Phone Booth offers a tranquil and ergonomic cocoon where you can focus on your tasks with minimal interruption, delivering outstanding results.</p><h3>Premium Soundproofing</h3><p>Our phone booths are built to the highest standards, providing the best sound insulation and noise reduction. The acoustic panels are crafted from quality materials, ensuring superior sound absorption and preventing noise leaks.</p><h3>Comfort and Ergonomics</h3><p>The Folio Phone Booth prioritises your comfort with soft lighting and ample ventilation, creating a stress-free environment. The booth's ergonomic design allows for extended work time without discomfort.</p><h3>Swift Setup</h3><p>At Soundbox Store, we understand that time is valuable. Our phone booths arrive flat-packed and can be assembled in just an hour with our easy-to-follow instructions.</p><h3>Your Productivity Oasis</h3><p>Our Folio Soundproof Seated Phone Booth is the ideal solution for a quiet and comfortable workspace. With superior sound insulation, ergonomic design, and easy assembly, it’s the perfect addition to any busy office environment. Say goodbye to distractions and invest in a Soundproof Phone Booth today.</p>"
+            "text": "<p>In today's bustling work environment, distractions are constant. Noise and interruptions can derail focus and productivity, hindering your performance and creativity. That's where our soundproof office phone booth comes in.</p><h3>A Tranquil Retreat</h3><p>At Soundbox Store, we understand the value of a quiet and comfortable workspace. Our Folio Office Phone Booth offers a tranquil and ergonomic cocoon where you can focus on your tasks with minimal interruption, delivering outstanding results.</p><h3>Premium Soundproofing</h3><p>Our office phone booths are built to the highest standards, providing the best sound insulation and noise reduction. The acoustic panels are crafted from quality materials, ensuring superior sound absorption and preventing noise leaks.</p><h3>Comfort and Ergonomics</h3><p>The Folio Office Phone Booth prioritises your comfort with soft lighting and ample ventilation, creating a stress-free environment. The booth's ergonomic design allows for extended work time without discomfort.</p><h3>Swift Setup</h3><p>At Soundbox Store, we understand that time is valuable. Our office phone booths arrive flat-packed and can be assembled in just an hour with our easy-to-follow instructions.</p><h3>Your Productivity Oasis</h3><p>Our Folio Soundproof Seated Office Phone Booth is the ideal solution for a quiet and comfortable workspace. With superior sound insulation, ergonomic design, and easy assembly, it’s the perfect addition to any busy office environment. Say goodbye to distractions and invest in a Soundproof Office Phone Booth today.</p>"
           }
         }
       },
-      "block_order": [
-        "165734829349367447-0",
-        "165734829349367447-1"
-      ],
+      "block_order": ["165734829349367447-0", "165734829349367447-1"],
       "settings": {
         "collapable": true,
         "align_text": "center",
-        "narrow_column": true,
+        "narrow_column": false,
         "color_scheme": "none",
         "divider": false
       }
@@ -170,6 +200,13 @@
     "meeting-rooms-features": {
       "type": "meeting-rooms-features",
       "blocks": {
+        "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
+          "type": "features_list_left",
+          "settings": {
+            "title": "Dimensions",
+            "description": "<p><strong>Internal Size:</strong><br/>Height: 196cm Width: 100cm Depth: 80cm <strong><br/>External Size:</strong><br/>Height: 225cm* Width: 110cm *Height includes clearance for fan</p><p>Depth: 90cm<br/><strong>Weight:<br/></strong>Total Weight: 224kg (Pod+Furniture)</p>"
+          }
+        },
         "d390db88-124b-4e53-b3e8-234749d7ec3a": {
           "type": "features_list_left",
           "settings": {
@@ -182,13 +219,6 @@
           "settings": {
             "title": "Materials",
             "description": "<p><strong>Construction<br/></strong>Carbon Composite / Honey Comb Panels ≤0.071kg CO2e<br/><strong>Glass<br/></strong>Similar To High Speed Trains<strong><br/></strong>≤0.4MJ<br/><strong>Adjustable Feet / Coasters<br/></strong>Reduce feet to deploy wheels to move the Folio Phone Booth<strong><br/></strong></p>"
-          }
-        },
-        "82e4437d-c3ed-46e1-8f33-db6645f21ed8": {
-          "type": "features_list_left",
-          "settings": {
-            "title": "Dimensions",
-            "description": "<p><strong>Internal Size:</strong><br/>Height: 196cm Width: 100cm Depth: 80cm <strong><br/>External Size:</strong><br/>Height: 210cm Width: 110cm Depth: 90cm<br/><strong>Weight:<br/></strong>Total Weight: 224kg (Pod+Furniture)</p>"
           }
         },
         "453c3266-3dfc-413c-a2c1-d76c8e57c79d": {
@@ -277,7 +307,7 @@
           "settings": {
             "point_x": 47,
             "point_y": 77,
-            "hotspot_title": "Optional Furniture"
+            "hotspot_title": "Furniture"
           }
         },
         "2d40ae58-07ae-4961-b1d8-de4b16e7ea22": {
@@ -306,9 +336,9 @@
         }
       },
       "block_order": [
+        "82e4437d-c3ed-46e1-8f33-db6645f21ed8",
         "d390db88-124b-4e53-b3e8-234749d7ec3a",
         "d3a6f941-b3fc-45f8-b5a6-c82167cfcad9",
-        "82e4437d-c3ed-46e1-8f33-db6645f21ed8",
         "453c3266-3dfc-413c-a2c1-d76c8e57c79d",
         "cb2a41ec-f379-4bf5-bcce-bde5e4db4e1a",
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
@@ -327,81 +357,176 @@
       ],
       "settings": {
         "seo": "Experience This Phone Booth Yourself",
-        "show_videos": false,
+        "show_videos": true,
         "no_sound": false,
         "loop": true,
         "close_label": "Close door",
         "close_audio": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Closing_Audio_MP3.mp3?v=1667799734",
-        "close_video": "https://cdn.shopify.com/videos/c/o/v/fecf113d20434e068abd32a1bc8c3ed6.mp4",
-        "close_thumb": "",
+        "close_video": "https://cdn.shopify.com/videos/c/o/v/431e8f28471b4cc381ad17972d376259.mp4",
+        "close_video_file": "shopify://files/videos/Folio Solo Door Closing (2).mp4",
+        "close_thumb": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/cdn.shopify.com_videos_c_o_v_431e8f28471b4cc381ad17972d376259.mp4.png?v=1701660349&width=600",
         "open_label": "Open door",
         "open_audio": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Opening_Audio_MP3.mp3?v=1667799734",
-        "open_video": "https://cdn.shopify.com/videos/c/o/v/f9efd8f6c5794c16b07d5dccc0e32b37.mp4",
-        "open_thumb": ""
+        "open_video": "https://cdn.shopify.com/videos/c/o/v/626da5d4bcc3473a9343e6a7ca5a3172.mp4",
+        "open_video_file": "shopify://files/videos/Folio Solo Door Opening (2).mp4",
+        "open_thumb": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/cdn.shopify.com_videos_c_o_v_431e8f28471b4cc381ad17972d376259.mp4.png?v=1701660349&width=600"
       }
     },
-    "3aac5b08-2c34-49ce-a3a0-64e33efb226a": {
-      "type": "hero-video-next-2",
-      "settings": {
-        "reseller_mode": false,
-        "certifications": true,
-        "full_width": false,
-        "h1": "",
-        "title": "",
-        "title_size": 70,
-        "subheading": "",
-        "link_text": "",
-        "link": "",
-        "link2_text": "Optional button",
-        "link2": "",
-        "color_accent": "#ffffff",
-        "text_align": "vertical-center horizontal-center",
-        "video": "shopify://files/videos/Overview _ Folio Booth.mp4",
-        "video_url": "",
-        "overlay_opacity": 0,
-        "height": 570,
-        "height_mobile": 300
-      }
-    },
-    "16514886521bb2c480": {
-      "type": "image-slider",
+    "use-case": {
+      "type": "brand-details-section",
       "blocks": {
-        "d1bac85b-c4e9-4f84-9605-6e017a84e81a": {
-          "type": "image_slide",
+        "brand_details_MNU6pR": {
+          "type": "brand_details",
           "settings": {
-            "image": "shopify://shop_images/Why-Soundbox13.jpg",
-            "overlay": false,
-            "overlay_range": 10,
-            "overlay_color": "#303a44"
+            "title": "",
+            "logo_image": "shopify://shop_images/Logo_11e0845d-2ea8-4014-ab4d-bf277aaef9df.png",
+            "slider": true,
+            "slide_image1": "shopify://shop_images/Untitled1.png",
+            "slide_image2": "shopify://shop_images/Untitled-detailed2.png",
+            "slide_image3": "shopify://shop_images/Untitled-detailed.png",
+            "bottom_title": "Datamaran",
+            "bottom_sub_title": "Valencia",
+            "bottm_right_text": "<p>Datamaran a Software, Data, Analytics company in Valencia, Spain were needing tranquil work stations for staff urgently. The Folio Phone booth fitted the requirement perfectly. </p>",
+            "background_color": "#f5e8d8",
+            "slide_class": ""
+          }
+        },
+        "brand_details_cwMbLG": {
+          "type": "brand_details",
+          "settings": {
+            "title": "",
+            "logo_image": "shopify://shop_images/Lore-Group-Logo.png",
+            "slider": false,
+            "slide_image1": "shopify://shop_images/Untitled-3.png",
+            "slide_image2": "shopify://shop_images/Untitled-2.png",
+            "bottom_title": "Lore Group",
+            "bottom_sub_title": "London",
+            "bottm_right_text": "<p>Lore Group, have a spacious break out coffee area requiring Phone Booths for work / social  areas. The Beige Folio sit down perfectly fitted the bill. Thanks to all at Lore Group!</p>",
+            "background_color": "#f5e8d8",
+            "slide_class": ""
+          }
+        },
+        "3a5adb54-e23b-4d31-b5e1-29bbe95a58db": {
+          "type": "brand_details",
+          "settings": {
+            "title": "",
+            "logo_image": "shopify://shop_images/Sail-GP.png",
+            "slider": false,
+            "slide_image1": "shopify://shop_images/F50-Leauge-1.png",
+            "slide_image2": "shopify://shop_images/F50-Leauge-2.png",
+            "bottom_title": "Sail GP",
+            "bottom_sub_title": "London",
+            "bottm_right_text": "<p>A number of Folio Sit Down Booths and 2-4 Person Folio Meeting Booths required for team meeting and sales calls, work stations.</p>",
+            "background_color": "#f5e8d8",
+            "slide_class": ""
+          }
+        },
+        "brand_details_G9eFpK": {
+          "type": "brand_details",
+          "settings": {
+            "title": "",
+            "logo_image": "shopify://shop_images/Untitled-3_0f0f20b1-3e55-4070-a2d8-bd323fc1307f.png",
+            "slider": false,
+            "slide_image1": "shopify://shop_images/Folio-Booth-Dark-Grey.png",
+            "slide_image2": "shopify://shop_images/Folio-Booth-Dark-Grey-2.png",
+            "bottom_title": "David Phillips",
+            "bottom_sub_title": "London",
+            "bottm_right_text": "<p>Well known commercial and residential reseller, opted for the Folio Booth range for their client, great build, feel and look with quality materials!</p>",
+            "background_color": "#f5e8d7",
+            "slide_class": ""
+          }
+        },
+        "brand_details_HcWHPH": {
+          "type": "brand_details",
+          "settings": {
+            "title": "",
+            "logo_image": "shopify://shop_images/Logo_b707b359-0727-4950-98ce-ebea9b1d0003.png",
+            "slider": false,
+            "slide_image1": "shopify://shop_images/RockarTech1-e.png",
+            "slide_image2": "shopify://shop_images/RockarTech2-e.png",
+            "slide_image3": "shopify://shop_images/RockarTech3-e.png",
+            "bottom_title": "Rockar Tech",
+            "bottom_sub_title": "York",
+            "bottm_right_text": "<p>Meeting and focus work areas needed for automotive software provider Rockar Tech, required style and aesthetics, the Beige Folio Range are perfect.</p>",
+            "background_color": "#f5e8d7",
+            "slide_class": ""
           }
         }
       },
       "block_order": [
-        "d1bac85b-c4e9-4f84-9605-6e017a84e81a"
+        "brand_details_MNU6pR",
+        "brand_details_cwMbLG",
+        "3a5adb54-e23b-4d31-b5e1-29bbe95a58db",
+        "brand_details_G9eFpK",
+        "brand_details_HcWHPH"
       ],
-      "disabled": true,
+      "custom_css": [
+        "{display: flow-root; justify-content: center; background: #f5e8d8; margin: 0; padding: 0 0 30px; margin-top: -60px; margin-bottom: 30px;}",
+        "h2 {margin-top: 1em;}",
+        ".left-col .col-wrap img {object-position: left; height: 120px;}",
+        ".slide-wrap {padding: 0;}",
+        ".brand-details-section .slick-dots li button {background: white;}",
+        ".slick-active button {background: black !important;}",
+        ".brand-details-section .slick-arrow {top: unset; bottom: 0; transform: translateY(38%);}",
+        ".image-wrap {background: none;}",
+        ".brand-details-section .image-group {padding: 0 10px;}"
+      ],
       "settings": {
-        "slide_dots": false,
-        "slide_arrow": false,
-        "sectionwidth": true
+        "title": "Customer gallery",
+        "content": "",
+        "sliderenable": true,
+        "slide_dots": true,
+        "slide_arrow": true,
+        "sectionwidth": false,
+        "btn_text": "",
+        "btn_url": ""
       }
     },
-    "35190d40-c9af-4640-8788-27898d12320a": {
-      "type": "image-text-column",
+    "1b9c93bf-f5cd-43fc-9291-cab9b11c444d": {
+      "type": "youtube-popup",
+      "disabled": true,
       "settings": {
-        "video": "shopify://files/videos/Overview _ Folio Booth.mp4",
+        "image": "shopify://shop_images/Screenshot_2023-10-27_133141.png",
+        "external_video_url": "https://youtu.be/XKGY_x06k1I"
+      }
+    },
+    "56f25c83-4f63-43f9-826a-dbb813b64ac5": {
+      "type": "image-text-column",
+      "blocks": {
+        "b0ef7e96-9aae-400a-af1d-742cd053aa69": {
+          "type": "youtube-popup",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2023-10-27_133141.png",
+            "external_video_url": "https://youtu.be/YpkT4xnlwbo"
+          }
+        }
+      },
+      "block_order": ["b0ef7e96-9aae-400a-af1d-742cd053aa69"],
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2023-10-27_133141.png",
         "image_position": "right",
         "mobile_image_position": "top",
-        "title": "Modern Applications",
-        "detection": "<p>Lights, Power, Action! Within the Folio Task Booth sits a mini sofa, cushioned for comfort but primarily for support, complimented by an organically curved task desk.<br/>Equipped with a directional task lighting bar and singular UL/CE 220-240v power socket (UK or EU) with 2 * USB and 1 * USB-C will power the devices required.<br/>The PIR sensor will help save on power, automatically turning off after 5mins of not being occupied.</p>",
+        "title": "The Folio Office Phone Booth",
+        "detection": "<p>The Folio Office Phone Booth from Soundbox Store provides an excellent solution for those looking for a quiet and comfortable workspace.With superior sound insulation, ergonomic design, and easy assembly, our acoustic phone booths are the perfect addition to any busy office environment. Don't let noise and distractions get in the way of your productivity and creativity - invest in a Folio Office Phone Booth today.</p>",
         "button_text": "",
         "button_link": ""
       }
     },
-    "16554719626663b231": {
+    "703a9024-9f53-4f02-bab2-e969aab39065": {
       "type": "image-text-column",
+      "blocks": {
+        "47bac0d9-3aa0-49e1-8db8-082dc2812cd1": {
+          "type": "youtube-popup",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2023-10-27_133141.png",
+            "external_video_url": "https://youtu.be/XKGY_x06k1I"
+          }
+        }
+      },
+      "block_order": ["47bac0d9-3aa0-49e1-8db8-082dc2812cd1"],
       "settings": {
-        "image": "shopify://shop_images/folio-booth-desk-electrics_c15741d9-ef48-4ba6-81d0-d167f346305e.png",
+        "image": "shopify://shop_images/folio-booth-desk-electrics.png",
         "image_position": "left",
         "mobile_image_position": "top",
         "title": "Modern Applications",
@@ -441,7 +566,7 @@
         "image_position": "right",
         "mobile_image_position": "top",
         "title": "Air Flow Technology",
-        "detection": "<p>Replacing the air regularly within the Folio phone booth helps the occupant feel fresh and comfortable and surrounds them with fresh oxygen every 40 seconds, promoting health and wellbeing.</p>",
+        "detection": "<p>Replacing the air regularly within the Folio office phone booth helps the occupant feel fresh and comfortable and surrounds them with fresh oxygen every 40 seconds, promoting health and wellbeing.</p>",
         "button_text": "",
         "button_link": ""
       }
@@ -449,11 +574,11 @@
     "16634828078a75c3a3": {
       "type": "image-text-column",
       "settings": {
-        "image": "shopify://shop_images/Folio-Phone-Power-In.png",
+        "image": "shopify://shop_images/SBS_Folio_Image_001.png",
         "image_position": "left",
         "mobile_image_position": "top",
         "title": "Design & Function",
-        "detection": "<p>We've considered every element of the Folio phone booth from the best in acoustic technology, comfort, flexibility and safety. Every detail is considered, complementing the clients' interior design aspirations, + assembly can be completed in 1.5 Hours! </p>",
+        "detection": "<p>We've considered every element of the Folio office phone booth from the best in acoustic technology, comfort, flexibility and safety. Every detail is considered, complementing the clients' interior design aspirations, + assembly can be completed in 1.5 Hours! </p>",
         "button_text": "",
         "button_link": ""
       }
@@ -472,86 +597,28 @@
         "graphtitle": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
       }
     },
-    "1651221880f746c680": {
-      "type": "hero-video",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "h1": "Phone Booths",
-        "title": "",
-        "title_size": 70,
-        "subheading": "",
-        "link_text": "",
-        "link": "",
-        "color_accent": "#ffffff",
-        "text_align": "vertical-center horizontal-center",
-        "video_url": "https://youtu.be/yAoLSRbwxL8",
-        "overlay_opacity": 0,
-        "height": 700,
-        "height_mobile": 300
-      }
-    },
-    "9feac80b-e399-4ea8-9045-291758052834": {
-      "type": "acoustic-environment-2",
+    "subscribe_follow_kmB6a7": {
+      "type": "subscribe-follow",
       "blocks": {
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-0": {
-          "type": "item",
+        "email_qGKJ6J": {
+          "type": "email",
           "settings": {
-            "heading": "62%",
-            "subheading": "<p>Increase work motivation by more than 62%.</p>"
+            "title": "Thinking Outside The Box, Inside The Booth",
+            "text": "<p>Stay ahead of the curve by subscribing to our newsletter. Don't miss out on exciting events, product launches, meet and greets, and valuable upgrades. Join our community and be a part of the workspace revolution.</p>",
+            "image_bg": "shopify://shop_images/sbs-stn6-1-2-bg.jpg"
           }
         },
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-1": {
-          "type": "item",
+        "instagram_fqfLgn": {
+          "type": "instagram",
           "settings": {
-            "heading": "44%",
-            "subheading": "<p>Increase the ability to focus on tasks by more than 44%.</p>"
-          }
-        },
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-2": {
-          "type": "item",
-          "settings": {
-            "heading": "52%",
-            "subheading": "<p>In tasks that require full concentration, increase task performance by up to 52%.</p>"
-          }
-        },
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-3": {
-          "type": "item",
-          "settings": {
-            "heading": "29%",
-            "subheading": "<p>Reduce the pressure level by 29%.</p>"
-          }
-        },
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-4": {
-          "type": "item",
-          "settings": {
-            "heading": "55%",
-            "subheading": "<p>Reduce session interference by more than 55%.</p>"
-          }
-        },
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-5": {
-          "type": "item",
-          "settings": {
-            "heading": "18%",
-            "subheading": "<p>Reduce the error rate by 18%.</p>"
+            "title": "Follow Us",
+            "text": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>",
+            "image_bg": "shopify://shop_images/sbs-stn6-3-4-bg.jpg"
           }
         }
       },
-      "block_order": [
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-0",
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-1",
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-2",
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-3",
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-4",
-        "template--16505126420705__9feac80b-e399-4ea8-9045-291758052834-16655654320306fb2b-5"
-      ],
-      "disabled": true,
-      "settings": {
-        "bg_image": "shopify://shop_images/acoustic-environment-main-bg_5ae9d929-8f94-4b80-ac0a-bfa0e9594710.jpg",
-        "heading": "Acoustic control in working environments",
-        "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.</p>",
-        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
-      }
+      "block_order": ["email_qGKJ6J", "instagram_fqfLgn"],
+      "settings": {}
     },
     "acoustic-environment-next": {
       "type": "acoustic-environment-next",
@@ -812,8 +879,8 @@
         "title_width": "",
         "description": "<p>A private, productive, and comfortable <br/>place creates creativity. Various sizes are <br/>suitable for many environments, from <br/>office, hospitality, and medical to music.</p>",
         "description_width": "",
-        "button_text": "full range",
-        "button_link": "shopify://collections/all",
+        "button_text": "Schedule Design Survey",
+        "button_link": "shopify://pages/consultancy",
         "button_text_2": "",
         "button_link_2": "",
         "text_alignment": "center-left",
@@ -866,23 +933,48 @@
         "title": "FAQs"
       }
     },
+    "collection_recommendations_QQbAU6": {
+      "type": "collection-recommendations",
+      "settings": {
+        "title": "Goes great with",
+        "collection": "acoustic-wall-and-ceiling-panel"
+      }
+    },
     "1651508688dadacecf": {
       "type": "apps",
       "blocks": {
         "48c52e75-eab5-4c4d-9962-5612d7ab3824": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "disabled": true,
           "settings": {
             "title": "",
             "title_color": "",
             "alignment": "center",
             "background_color": "",
             "feed_id": "",
-            "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"></div>"
+            "html_area": "<div id=\"feed-37680\" class=\"instafeed-shopify\"></div>"
           }
+        },
+        "instafeed_app_block_TW3mEg": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "alignment": "center",
+            "background_color": "",
+            "feed_id": "37680",
+            "html_area": ""
+          }
+        },
+        "judge_me_reviews_review_widget_ymjamq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
-        "48c52e75-eab5-4c4d-9962-5612d7ab3824"
+        "48c52e75-eab5-4c4d-9962-5612d7ab3824",
+        "instafeed_app_block_TW3mEg",
+        "judge_me_reviews_review_widget_ymjamq"
       ],
       "settings": {}
     },
@@ -898,27 +990,27 @@
     }
   },
   "order": [
-    "16635619322291a846",
     "main",
     "product-icon-text-section",
+    "certicate_6PjdXE",
     "1657348293dc4e4fd8",
     "meeting-rooms-features",
-    "3aac5b08-2c34-49ce-a3a0-64e33efb226a",
-    "16514886521bb2c480",
-    "35190d40-c9af-4640-8788-27898d12320a",
-    "16554719626663b231",
+    "use-case",
+    "1b9c93bf-f5cd-43fc-9291-cab9b11c444d",
+    "56f25c83-4f63-43f9-826a-dbb813b64ac5",
+    "703a9024-9f53-4f02-bab2-e969aab39065",
     "1655472025349426d8",
     "16634102988a9c9e05",
     "16634104451e452603",
     "16634828078a75c3a3",
     "acoustic-environment",
-    "1651221880f746c680",
-    "9feac80b-e399-4ea8-9045-291758052834",
+    "subscribe_follow_kmB6a7",
     "acoustic-environment-next",
     "logo-list",
     "165414989285a6b146",
     "1651488261633e1eab",
     "d860300d-7c49-4055-87c4-01913a46c1c6",
+    "collection_recommendations_QQbAU6",
     "1651508688dadacecf",
     "16574290364e705c32"
   ]
