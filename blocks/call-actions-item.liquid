@@ -1,6 +1,25 @@
 {% schema %}
-  {
-    "name": "Block name",
-    "settings": []
-  }
+{
+  "name": "call-actions-item",
+  "settings": [ {
+          "type": "image_picker",
+          "id": "iconimage",
+          "label": "Icon Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "label": "Link",
+          "id": "url"
+        },
+          {
+          "type": "text",
+          "label": "Link text",
+          "id": "url_text"
+        }]
+}
 {% endschema %}
