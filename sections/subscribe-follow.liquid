@@ -161,22 +161,24 @@
           </div>
         {% endif %}
         {% if block.type == 'email' %}
-          <div style="
+          <div
+            style="
                   position: relative;
                   isolation: isolate;
               display:flex;
               align-items:center
-            ">
+            "
+          >
             {% if block.settings.image_bg %}
               {{
                 block.settings.image_bg
                 | image_url: width: 700
                 | image_tag:
-                widths: '400, 600, 800',
-                loading: 'lazy',
-                class: 'js-lazy-image',
-                alt: shop.name,
-                class: 'image_bg'
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: shop.name,
+                  class: 'image_bg'
               }}
             {% endif %}
             <div
@@ -204,7 +206,7 @@
               {{
                 block.settings.image_bg
                 | image_url: width: 700
-                | image_tag: widths: '400, 600', loading: 'lazy', alt: title, class: 'image_bg', style: 'z-index:1'
+                | image_tag: widths: '400, 600', loading: 'lazy', alt: shop.name, class: 'image_bg', style: 'z-index:1'
               }}
             {% endif %}
             <div
@@ -221,7 +223,7 @@
               </div>
             </div>
             <div
-              id="feed-24765"
+              id="feed-37680"
               class="instafeed-shopify"
               style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
             ></div>
@@ -233,12 +235,10 @@
 </div>
 
 {%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
-{%-
-  assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
   | default: shop.metafields.yoast_seo.settings
 -%}
-{%-
-  if disabled_by_yoast_seo
+{%- if disabled_by_yoast_seo
   or yoast_seo_settings.schema.useTheme.schema
   or yoast_seo_settings.schema.useTheme.webpage
 -%}
