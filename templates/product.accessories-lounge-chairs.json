@@ -490,10 +490,10 @@
         "height_mobile": 300
       }
     },
-    "subscribe_follow_eXp4AN": {
-      "type": "subscribe-follow",
+    "subscribe-follow": {
+      "type": "main-collection-next",
       "blocks": {
-        "email_nPp8qV": {
+        "28cea507-6689-4704-af63-50ae541df227": {
           "type": "email",
           "settings": {
             "title": "Thinking Outside The Box, Inside The Booth",
@@ -501,17 +501,27 @@
             "image_bg": "shopify://shop_images/sbs-stn6-1-2-bg.jpg"
           }
         },
-        "instagram_TQyMDV": {
+        "b781bad8-6c0a-4ac9-86de-bedf4e1fdc25": {
           "type": "instagram",
           "settings": {
+            "feed_id": "37698",
             "title": "Follow Us",
             "text": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>",
             "image_bg": "shopify://shop_images/sbs-stn6-3-4-bg.jpg"
           }
         }
       },
-      "block_order": ["email_nPp8qV", "instagram_TQyMDV"],
-      "settings": {}
+      "block_order": [
+        "28cea507-6689-4704-af63-50ae541df227",
+        "b781bad8-6c0a-4ac9-86de-bedf4e1fdc25"
+      ],
+      "custom_css": [
+        ".main-collection-next {padding: 10;}",
+        ".collection-template-grid {padding: 10; gap: 10;}"
+      ],
+      "settings": {
+        "collection": ""
+      }
     },
     "9feac80b-e399-4ea8-9045-291758052834": {
       "type": "acoustic-environment-2",
@@ -873,7 +883,7 @@
     "16634828078a75c3a3",
     "acoustic-environment",
     "1651221880f746c680",
-    "subscribe_follow_eXp4AN",
+    "subscribe-follow",
     "9feac80b-e399-4ea8-9045-291758052834",
     "logo-list",
     "165414989285a6b146",
