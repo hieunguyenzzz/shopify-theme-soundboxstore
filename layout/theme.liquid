@@ -164,17 +164,15 @@
     </script>
 
     {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
-    <!--
-      {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
-        | default: shop.metafields.yoast_seo.settings
-      -%}
-      {%- if disabled_by_yoast_seo
-        or yoast_seo_settings.integrations.webmasterVerification.google == blank
-        or yoast_seo_settings.integrations.webmasterVerification.google == null
-      -%}
-        {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-      {%- endif -%}
-    -->
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+      | default: shop.metafields.yoast_seo.settings
+    -%}
+    {%- if disabled_by_yoast_seo
+      or yoast_seo_settings.integrations.webmasterVerification.google == blank
+      or yoast_seo_settings.integrations.webmasterVerification.google == null
+    -%}
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -217,7 +215,13 @@
         {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
       </title>
     {% else %}
-      {%- render 'seo-title', page_title: page_title -%}
+      <!-- {%- render 'seo-title', page_title: page_title -%} -->
+      <title>
+        {{ page_title -}}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      </title>
     {% endif %}
 
     <meta name="description" content="{{ page_description | escape }}">
