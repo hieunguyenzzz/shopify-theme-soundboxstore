@@ -84,17 +84,14 @@
     <div class="{{ section.id }}-slider  product-list-group slider_active">
       {% for block in section.blocks %}
         {% if block.type == 'item' %}
-          {% capture productId %}product{% endcapture %}
-          {% capture productImgId %}image{% endcapture %}
-          {% if block.settings[productId] != blank %}
-            {% assign product = all_products[block.settings[productId]] %}
+          {% if block.settings.product != blank %}
+            {% assign product = block.settings.product %}
             <div class="col">
               <div class="col-wrap">
                 <div class="col-image">
-                  <a href="{{ all_products[block.settings[productId]].url }}">
-                    {% assign featured_image = block.settings[productImgId]
-                      | default: all_products[block.settings[productId]].featured_image
-                    %}
+                  <a href="{{ product.url }}">
+                    {% assign title = block.settings.title | default: product.title %}
+                    {% assign featured_image = block.settings.image | default: product.featured_image %}
                     {% if forloop.index == 1 %}
                       {{
                         featured_image
@@ -116,8 +113,8 @@
                 </div>
                 <div class="product-details">
                   <h4>
-                    <a href="{{ all_products[block.settings[productId]].url }}">
-                      {{- all_products[block.settings[productId]].title -}}
+                    <a href="{{ product.url }}">
+                      {{- title -}}
                     </a>
                   </h4>
                   {%- if section.settings.show_price -%}
