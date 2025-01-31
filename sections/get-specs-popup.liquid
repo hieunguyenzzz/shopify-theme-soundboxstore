@@ -325,8 +325,12 @@ $(document).ready(function () {
               .then(function (res) {
                 console.log(res, data);
                  form.dataset.state="success";
-          
-
+                 // Get form data
+                 const formData = new FormData(form);
+                 umami.track('get-specs', { 
+                   name: formData.get('contact[fullname]') || 'not_provided',
+                   email: formData.get('contact[email]') || 'not_provided'
+                 });
               })
               .catch(function (res) {
                 console.log(res, data);
@@ -387,7 +391,7 @@ $(document).ready(function () {
       "type": "richtext",
       "id": "popup_text_success",
       "label": "Success Text",
-      "default": "<h2>Thanks for your interest!</h2><p>We’ve sent our Product Guide directly to your inbox. You can expect to receive an email from us in the next couple of minutes. Feel free to take a look around while you wait.</p>"
+      "default": "<h2>Thanks for your interest!</h2><p>We've sent our Product Guide directly to your inbox. You can expect to receive an email from us in the next couple of minutes. Feel free to take a look around while you wait.</p>"
     },
     {
       "type": "select",
