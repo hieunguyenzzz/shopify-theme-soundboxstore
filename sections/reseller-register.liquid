@@ -286,6 +286,25 @@
     </div>
   </div>
 {% endif %}
+<script>
+  (() => {
+    const form = document.querySelector('#form-register form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      try {
+        const formData = new FormData(e.target);
+        umami.track('reseller-register', {
+          name: `${formData.get('customer[first_name]')} ${formData.get('customer[last_name]')}`,
+          email: formData.get('customer[email]'),
+          industry: formData.get('contact[industry]') || 'not_provided'
+        });
+      } catch(err) {
+        console.error('Tracking error:', err);
+      }
+      e.target.submit();
+    });
+  })();
+</script>
 {% schema %}
 {
   "name": "Reseller Register",
