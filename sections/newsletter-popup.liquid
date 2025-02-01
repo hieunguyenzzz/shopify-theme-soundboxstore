@@ -123,8 +123,12 @@
               .then(function (res) {
                 console.log(res, data);
                  form.dataset.state="success";
-         
-
+                 
+                 const formData = new FormData(form);
+                 umami.track('subscribe-popup-submit', { 
+                   name: formData.get('contact[fullname]') || 'not_provided',
+                   email: formData.get('contact[email]') || 'not_provided'
+                 });
               })
               .catch(function (res) {
                 console.log(res, data);
