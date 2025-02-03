@@ -1,9 +1,12 @@
+{%- assign optionNameHandlized = option.name | handleize -%}
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
 {%- for value in option.values -%}
-  {% if value.swatch %}
-    {% assign isColorSwatch = true %}
-  {% endif %}
+  {% unless optionNameHandlized != 'color' %}
+    {% if value.swatch %}
+      {% assign isColorSwatch = true %}
+    {% endif %}
+  {% endunless %}
 {% endfor %}
 
 <div
@@ -17,7 +20,6 @@
     {% if isColorSwatch %}
       {{ option.name }}
     {% else %}
-      {%- assign optionNameHandlized = option.name | handleize -%}
       {{ 'strings.option_name.' | append: optionNameHandlized | t }}
     {% endif %}
 
