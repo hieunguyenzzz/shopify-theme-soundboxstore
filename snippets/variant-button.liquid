@@ -20,15 +20,6 @@
       {%- assign optionNameHandlized = option.name | handleize -%}
       {{ 'strings.option_name.' | append: optionNameHandlized | t }}
     {% endif %}
-
-    {% comment %}
-      {%- if is_color -%}
-        <span class="variant__label-info">
-          &mdash;
-          <span data-variant-color-label data-index="{{ forloop.index0 }}" data-option-index="{{ color_option_index }}">{{ option.selected_value }}</span>
-        </span>
-      {%- endif -%}
-    {% endcomment %}
   </label>
   {%- assign option_index = forloop.index -%}
   <div
