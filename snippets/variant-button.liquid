@@ -1,10 +1,7 @@
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
 <div
-  {% if option.values.size == 1 %}
-    style="display:none"
-  {% endif %}
-  class="variant-wrapper js  {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
+  class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
   data-type="button"
 >
   <label
