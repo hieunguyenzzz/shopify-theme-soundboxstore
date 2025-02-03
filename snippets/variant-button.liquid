@@ -1,5 +1,11 @@
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
+{%- for value in option.values -%}
+  {% if value.swatch %}
+    {% assign isColorSwatch = true %}
+  {% endif %}
+{% endfor %}
+
 <div
   class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
   data-type="button"
@@ -8,8 +14,13 @@
     class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
     for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
   >
-    {%- assign optionNameHandlized = option.name | handleize -%}
-    {{ 'strings.option_name.' | append: optionNameHandlized | t }}
+    {% if isColorSwatch %}
+      {{ option.name }}
+    {% else %}
+      {%- assign optionNameHandlized = option.name | handleize -%}
+      {{ 'strings.option_name.' | append: optionNameHandlized | t }}
+    {% endif %}
+
     {% comment %}
       {%- if is_color -%}
         <span class="variant__label-info">
