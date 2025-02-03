@@ -15,7 +15,8 @@
     for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
   >
     {% if isColorSwatch %}
-      {{ option.name }}
+      {%- assign optionNameHandlized = option.name | handleize -%}
+      {{ 'strings.option_name.' | append: optionNameHandlized | t }}
     {% else %}
       {%- assign optionNameHandlized = option.name | handleize -%}
       {{ 'strings.option_name.' | append: optionNameHandlized | t }}
