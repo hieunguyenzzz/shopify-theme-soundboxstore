@@ -455,29 +455,31 @@
           {{ content_for_layout }}
         </main>
         {%- section 'footer-promotions' -%}
-        <div id="shopify-section-theme-call-actions" {{ template.name }}>
-          <style>
-                        #shopify-section-theme-call-actions{
-                    margin:0;
-               position:sticky;bottom:0;background:white;z-index:10
-                  }
-                    #shopify-section-theme-call-actions section{
-                    margin:0;
-                      font-size:16px
-                  }
-             #shopify-section-theme-call-actions .product-icon-text-section{
-              padding: 0
-            }
+        {% if template.name == 'index' or template.name == 'product' %}
+          <div id="shopify-section-theme-call-actions" {{ template.name }}>
+            <style>
+                          #shopify-section-theme-call-actions{
+                      margin:0;
+                 position:sticky;bottom:0;background:white;z-index:10
+                    }
+                      #shopify-section-theme-call-actions section{
+                      margin:0;
+                        font-size:16px
+                    }
+               #shopify-section-theme-call-actions .product-icon-text-section{
+                padding: 0
+              }
 
-             #shopify-section-theme-call-actions .flexbox{
-                  padding: 10px;
+               #shopify-section-theme-call-actions .flexbox{
+                    padding: 10px;
 
-            }
-            #shopify-section-theme-call-actions  .page-width{
-            }
-          </style>
-          {% render 'call-actions', sectionid: 'theme-call-actions' %}
-        </div>
+              }
+              #shopify-section-theme-call-actions  .page-width{
+              }
+            </style>
+            {% render 'call-actions', sectionid: 'theme-call-actions' %}
+          </div>
+        {% endif %}
         {%- section 'footer' -%}
       </div>
     </div>
