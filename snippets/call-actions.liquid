@@ -1,21 +1,24 @@
+{% unless sectionid %}
+  {% assign sectionid = section.id %}
+{% endunless %}
 <style>
-   #shopify-section-{{section.id}}{
-     margin-top: 2em !important
+   #shopify-section-{{sectionid}}{
+     margin-top:0;
    }
-     #shopify-section-{{section.id}} p{
+     #shopify-section-{{sectionid}} p{
      margin:0;
    }
-  #shopify-section-{{section.id}}  .product-icon-text-section .flexbox .shopify-block{
+  #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .shopify-block{
     flex:1;
   }
-   #shopify-section-{{section.id}}  .slick-track{
+   #shopify-section-{{sectionid}}  .slick-track{
     width:100%
   }
-  #shopify-section-{{section.id}}  .product-icon-text-section .flexbox .col .icon-text-block .icon-wrap {
-    max-width: 80px;
-    height: 80px;    margin-right: 1em;
+  #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .col .icon-text-block .icon-wrap {
+    max-width: 70px;
+    height: 70px;    margin-right: 1em;
   }
-   #shopify-section-{{section.id}} .product-icon-text-section .page-width{
+   #shopify-section-{{sectionid}} .product-icon-text-section .page-width{
     max-width:1024px;
   }
   .product-icon-text-section .text-block{
@@ -25,6 +28,9 @@
     justify-content:center;
 
   }
+  .product-icon-text-section .icon-text-block {
+     gap:12px
+    }
      .product-icon-text-section .icon-text-block .col{
       flex:unset
     }
@@ -32,10 +38,10 @@
        max-width: 350px;
     }
   @media screen and (max-width: 860px) {
-      .product-icon-text-section-{{section.id}} .col:not(:first-child){
+      .product-icon-text-section-{{sectionid}} .col:not(:first-child){
     display:none
   }
-   .product-icon-text-section-{{section.id}} .slick-initialized.slick-slider .col{
+   .product-icon-text-section-{{sectionid}} .slick-initialized.slick-slider .col{
     display:unset
   }
   }
@@ -54,10 +60,15 @@
   }
   }
 </style>
-<section class="product-icon-text-section product-icon-text-section-{{section.id}}">
+<section class="product-icon-text-section product-icon-text-section-{{sectionid}}">
   <div class="page-width">
     <div class="flexbox">
-      <div class="shopify-block">
+      <style>
+        .template-page.page-showroom-london .block-showroom-london{
+          display:none
+        }
+      </style>
+      <div class="shopify-block block-showroom-london">
         <div class="col">
           <a href="/pages/showroom-london" class="col-wrap">
             <div class="icon-text-block">
@@ -75,26 +86,31 @@
 
               <div>
                 <div class="" style="position:relative">
-                  <p>SHOWROOM VISIT</p>
+                  <p>{{ 'call_actions.showroom_visit' | t }}</p>
                   <span
                     style="
-                      margin-right: 0;
+                        margin-right: 0;
                       position: absolute;
-                      top: .1em;
-                      left: -1.1em;
+                      top: -0.03em;
+                      left: -1.4em;
                     "
                     class="icon icon--inventory"
                   ></span>
                 </div>
                 <div style="font-size:0.8em ;  text-underline-offset:0.3em;    text-decoration: underline;  opacity: 0.7;">
-                  Speak to Eva
+                  {{ 'call_actions.Speak_to_Eva' | t }}
                 </div>
               </div>
             </div>
           </a>
         </div>
       </div>
-      <div class="shopify-block">
+      <style>
+        .template-page.page-consultancy .block-consultancy{
+          display:none
+        }
+      </style>
+      <div class="shopify-block block-consultancy">
         <div class="col">
           <a href="/pages/consultancy" class="col-wrap">
             <div class="icon-text-block">
@@ -112,26 +128,31 @@
 
               <div>
                 <div class="" style="position:relative">
-                  <p>SITE SURVEY</p>
+                  <p>{{ 'call_actions.site_survey' | t }}</p>
                   <span
                     style="
-                      margin-right: 0;
-                      position: absolute;
-                      top: .1em;
-                      left: -1.1em;
+                        margin-right: 0;
+                       position: absolute;
+                       top: -0.03em;
+                      left: -1.4em;
                     "
                     class="icon icon--inventory"
                   ></span>
                 </div>
                 <div style="font-size:0.8em ;  text-underline-offset:0.3em;    text-decoration: underline;  opacity: 0.7;">
-                  Speak to Katy
+                  {{ 'call_actions.Speak_to_Katy' | t }}
                 </div>
               </div>
             </div>
           </a>
         </div>
       </div>
-      <div class="shopify-block">
+      <style>
+        .template-page.page-remote-tours .block-remote-tours{
+          display:none
+        }
+      </style>
+      <div class="shopify-block block-remote-tours">
         <div class="col">
           <a href="/pages/remote-tours" class="col-wrap">
             <div class="icon-text-block">
@@ -149,19 +170,19 @@
 
               <div>
                 <div class="" style="position:relative">
-                  <p>REMOTE TOUR</p>
+                  <p>{{ 'call_actions.REMOTE_TOUR' | t }}</p>
                   <span
                     style="
-                      margin-right: 0;
-                      position: absolute;
-                      top: .1em;
-                      left: -1.1em;
+                       margin-right: 0;
+                       position: absolute;
+                       top: -0.03em;
+                      left: -1.4em;
                     "
                     class="icon icon--inventory"
                   ></span>
                 </div>
                 <div style="font-size:0.8em ;  text-underline-offset:0.3em;    text-decoration: underline;  opacity: 0.7;">
-                  Speak to Immie
+                  {{ 'call_actions.Speak_to_Immie' | t }}
                 </div>
               </div>
             </div>
@@ -173,7 +194,7 @@
 </section>
 <script>
     $(window).on('load', function() {
-      $("#shopify-section-{{section.id}} .flexbox").slick({
+      $("#shopify-section-{{sectionid}} .flexbox").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     mobileFirst: true,
