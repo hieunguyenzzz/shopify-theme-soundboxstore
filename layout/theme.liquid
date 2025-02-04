@@ -49,14 +49,13 @@
           }
         })();
       </script>
-      
     {% endif %}
     <script
       defer
       src="https://umami.soundboxstore.com/script.js"
       data-website-id="21e88dd1-c45a-4ee7-ba57-726675f1584c"
     ></script>
-  
+
     <script>
       (function (w, d, t, r, u) {
         var f, n, i;
@@ -456,6 +455,34 @@
           {{ content_for_layout }}
         </main>
         {%- section 'footer-promotions' -%}
+        <div id="shopify-section-theme-call-actions">
+          <style>
+                            #shopify-section-theme-call-actions{
+                        margin:0;
+                   position:sticky;bottom:0;background:white;z-index:10
+                      }
+                        #shopify-section-theme-call-actions section{
+                        margin:0;
+                          font-size:16px
+                      }
+                 #shopify-section-theme-call-actions .product-icon-text-section{
+                  padding: 0
+                }
+                   /* body:has(iframe#preview-bar-iframe) #shopify-section-theme-call-actions{
+                bottom:60px
+                     } */
+                 #shopify-section-theme-call-actions .flexbox{
+                      padding: 10px;
+            /* background: #fff;
+            border-radius: 99em;
+            border: 1px solid #cecece;
+            box-shadow: 2px 2px 2px #0000001a; */
+                }
+                #shopify-section-theme-call-actions  .page-width{
+                }
+          </style>
+          {% render 'call-actions', sectionid: 'theme-call-actions' %}
+        </div>
         {%- section 'footer' -%}
       </div>
     </div>
@@ -587,6 +614,5 @@
       })('bElvO73QlzEaZMqj');
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
-    
   </body>
 </html>
