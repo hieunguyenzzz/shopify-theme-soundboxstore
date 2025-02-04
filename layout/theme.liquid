@@ -458,6 +458,9 @@
         {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
           {% assign showCallActions = true %}
         {% endif %}
+        {% if page.handle == 'accessories' %}
+          {% assign showCallActions = true %}
+        {% endif %}
         {% if showCallActions %}
           <div id="shopify-section-theme-call-actions" {{ template.name }}>
             <style>
