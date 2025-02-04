@@ -455,7 +455,7 @@
           {{ content_for_layout }}
         </main>
         {%- section 'footer-promotions' -%}
-        {% if template.name == 'index' or template.name == 'product' %}
+        {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
           <div id="shopify-section-theme-call-actions" {{ template.name }}>
             <style>
                           #shopify-section-theme-call-actions{
