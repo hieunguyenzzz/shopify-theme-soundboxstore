@@ -294,8 +294,13 @@
               </div>
             </div>
           </div>
+          {% if product %}
+            {% assign feedId = '18121' %}
+          {% else %}
+            {% assign feedId = block.settings.feed_id %}
+          {% endif %}
           <div
-            id="feed-{{ block.settings.feed_id }}"
+            id="feed-{{feedId}}"
             class="instafeed-shopify"
             style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
           ></div>
