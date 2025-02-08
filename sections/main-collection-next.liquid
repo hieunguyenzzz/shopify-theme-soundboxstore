@@ -316,9 +316,6 @@ soundproof-prayer-booth-for-focused-worship-space,
 
             {% for a in arr %}
               {% assign ars = a | strip %}
-              <script>
-                console.log({{ars | json}})
-              </script>
               {% if ars == product.handle %}
                 {% assign feedId = block.settings.feed_id %}
                 {% break %}
