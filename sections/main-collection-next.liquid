@@ -312,7 +312,7 @@ furniture-of-office-pod-1-2-person,
 joy-stool,
 soundproof-prayer-booth-for-focused-worship-space,
               {% endcapture %}
-            {% assign arr = custom | split: ', ' %}
+            {% assign arr = custom | split: ',' %}
             {% for a in arr %}
               {% assign ars = a | rstrip %}
               {% if ars == product.handle %}
