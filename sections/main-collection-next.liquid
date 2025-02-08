@@ -317,6 +317,7 @@ soundproof-prayer-booth-for-focused-worship-space,
               {% assign ars = a | rstrip %}
               {% if ars == product.handle %}
                 {% assign feedId = block.settings.feed_id %}
+                {% break %}
               {% endif %}
             {% endfor %}
           {% else %}
