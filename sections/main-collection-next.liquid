@@ -313,11 +313,12 @@ joy-stool,
 soundproof-prayer-booth-for-focused-worship-space,
               {% endcapture %}
             {% assign arr = custom | split: ',' %}
-            <script>
-              console.log({{arr | json}})
-            </script>
+
             {% for a in arr %}
               {% assign ars = a | rstrip %}
+              <script>
+                console.log({{ars | json}})
+              </script>
               {% if ars == product.handle %}
                 {% assign feedId = block.settings.feed_id %}
                 {% break %}
