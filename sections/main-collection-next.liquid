@@ -296,6 +296,28 @@
           </div>
           {% if product %}
             {% assign feedId = '18121' %}
+            {% capture custom %}
+access-extra-large-meeting-booth-soundproof-inclusive,
+access-large-soundproof-meeting-booth-inclusive-work,
+billy-office-chair-ergonomic-premium-comfortable-workspace,
+bugsy-lounge-chair-modern-stylish-workspace-design,
+ceiling-acoustic-panels,
+ceiling-panels,
+folio-acoustic-ceiling-panels,
+folio-geometric-acoustic-wall-panel,
+furniture-of-meeting-booth-4-6-person,
+furniture-of-meeting-pod-3-4-person,
+furniture-of-office-phone-pod-solo,
+furniture-of-office-pod-1-2-person,
+joy-stool,
+soundproof-prayer-booth-for-focused-worship-space,
+              {% endcapture %}
+            {% assign arr = custom | split: ', ' | rstrip %}
+            {% for a in arr %}
+              {% if a == product.handle %}
+                {% assign feedId = block.settings.feed_id %}
+              {% endif %}
+            {% endfor %}
           {% else %}
             {% assign feedId = block.settings.feed_id %}
           {% endif %}
