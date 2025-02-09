@@ -37,25 +37,36 @@
     .product-icon-text-section .flexbox {
       flex-wrap: nowrap;
       overflow: hidden;
+      display: block;
     }
     
     .product-icon-text-section .flexbox .shopify-block {
       min-width: 100%;
       flex: 0 0 100%;
+      opacity: 0;
+      visibility: hidden;
+      height: 0;
     }
 
-    /* Hide all blocks except the first one on mobile */
-    .product-icon-text-section .flexbox .shopify-block {
-      display: none;
-    }
-    
+    /* Show first block */
     .product-icon-text-section .flexbox .shopify-block:first-child {
-      display: block;
+      opacity: 1;
+      visibility: visible;
+      height: auto;
     }
 
-    /* Only show all blocks when slick is fully initialized */
+    /* Show all blocks when slick is initialized */
     .product-icon-text-section .flexbox.slick-initialized .shopify-block {
-      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      height: auto !important;
+    }
+
+    /* Fix for Safari slider */
+    .product-icon-text-section .slick-list,
+    .product-icon-text-section .slick-track {
+      display: block;
+      width: 100%;
     }
   }
     @media screen and (min-width: 1440) {
@@ -87,6 +98,12 @@
       
       if (window.innerWidth <= 767) {
         if (!$flexbox.hasClass('slick-initialized')) {
+          // Destroy any existing slider first
+          if ($flexbox.hasClass('slick-initialized')) {
+            $flexbox.slick('unslick');
+          }
+          
+          // Initialize new slider
           $flexbox.slick({
             dots: true,
             arrows: false,
@@ -97,10 +114,12 @@
             autoplay: true,
             autoplaySpeed: 3000,
             adaptiveHeight: true,
-            // Wait for slider to be fully initialized before showing slides
-            onInit: function() {
+            mobileFirst: true,
+            onInit: function(slick) {
               setTimeout(function() {
                 $flexbox.addClass('slick-initialized');
+                // Force refresh for Safari
+                $(window).trigger('resize');
               }, 100);
             }
           });
@@ -112,8 +131,20 @@
       }
     };
 
+    // Initialize on page load
     initSlider();
-    $(window).on('resize', initSlider);
+    
+    // Handle resize events
+    let resizeTimer;
+    $(window).on('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        initSlider();
+      }, 250);
+    });
+
+    // Force initialization after a short delay
+    setTimeout(initSlider, 500);
   });
 </script>
 
