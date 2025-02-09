@@ -22,8 +22,10 @@
     white-space:nowrap
   }
   .product-icon-text-section .flexbox{
-    justify-content:center;
-
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
      .product-icon-text-section .icon-text-block .col{
       flex:unset
@@ -31,13 +33,26 @@
     .product-icon-text-section .flexbox >.col{
        max-width: 350px;
     }
-  @media screen and (max-width: 860px) {
-      .product-icon-text-section-{{ section.id }} .col:not(:first-child){
-    display:none
-  }
-   .product-icon-text-section-{{ section.id }} .slick-initialized.slick-slider .col{
-    display:unset
-  }
+  @media screen and (max-width: 767px) {
+    .product-icon-text-section .flexbox {
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+    
+    .product-icon-text-section .flexbox .shopify-block {
+      min-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    /* Hide all slides initially except first one */
+    .product-icon-text-section .flexbox .shopify-block:not(:first-child) {
+      display: none;
+    }
+
+    /* Show all slides when slick is initialized */
+    .product-icon-text-section .flexbox.slick-initialized .shopify-block {
+      display: block;
+    }
   }
     @media screen and (min-width: 1440) {
       .product-icon-text-section .page-width{
@@ -62,23 +77,32 @@
   </div>
 </section>
 <script>
-    $(window).on('load', function() {
-      $("#shopify-section-{{section.id}} .flexbox").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    mobileFirst: true,
-    arrows: false,
-    autoplay: true,
-    dots: false,
-    responsive: [
-      {
-        breakpoint: 862,
-        settings: "unslick",
-      },
+  $(document).ready(function() {
+    const initSlider = () => {
+      if (window.innerWidth <= 767) {
+        if (!$('.product-icon-text-section .flexbox').hasClass('slick-initialized')) {
+          $('.product-icon-text-section .flexbox').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            adaptiveHeight: true
+          });
+        }
+      } else {
+        if ($('.product-icon-text-section .flexbox').hasClass('slick-initialized')) {
+          $('.product-icon-text-section .flexbox').slick('unslick');
+        }
+      }
+    };
 
-    ],
+    initSlider();
+    $(window).on('resize', initSlider);
   });
-  })
 </script>
 
 {% schema %}
