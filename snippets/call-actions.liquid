@@ -2,63 +2,70 @@
   {% assign sectionid = section.id %}
 {% endunless %}
 <style>
-   #shopify-section-{{sectionid}}{
-     margin-top:0;
-   }
-     #shopify-section-{{sectionid}} p{
-     margin:0;
-   }
-  #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .shopify-block{
-    flex:1;
-  }
-   #shopify-section-{{sectionid}}  .slick-track{
-    width:100%
-  }
-  #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .col .icon-text-block .icon-wrap {
-    max-width: 70px;
-    height: 70px;    margin-right: 1em;
-  }
-   #shopify-section-{{sectionid}} .product-icon-text-section .page-width{
-    max-width:1024px;
-  }
-  .product-icon-text-section .text-block{
-    white-space:nowrap
-  }
-  .product-icon-text-section .flexbox{
-    justify-content:center;
+     #shopify-section-{{sectionid}}{
+       margin-top:0;
+     }
+       #shopify-section-{{sectionid}} p{
+       margin:0;
+     }
+    #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .shopify-block{
+      flex:1;
+    }
+     #shopify-section-{{sectionid}}  .slick-track{
+      width:100%
+    }
+    #shopify-section-{{sectionid}}  .product-icon-text-section .flexbox .col .icon-text-block .icon-wrap {
+      max-width: 70px;
+      height: 70px;    margin-right: 1em;
+    }
+     #shopify-section-{{sectionid}} .product-icon-text-section .page-width{
+      max-width:1024px;
+    }
+    .product-icon-text-section .text-block{
+      white-space:nowrap
+    }
+    .product-icon-text-section .flexbox{
+      justify-content:center;
 
-  }
-  .product-icon-text-section .icon-text-block {
-     gap:12px
     }
-     .product-icon-text-section .icon-text-block .col{
-      flex:unset
+    .product-icon-text-section .icon-text-block {
+       gap:12px
+      }
+       .product-icon-text-section .icon-text-block .col{
+        flex:unset
+      }
+      .product-icon-text-section .flexbox >.col{
+         max-width: 350px;
+      }
+    @media screen and (max-width: 860px) {
+        .product-icon-text-section-{{sectionid}} .col:not(:first-child){
+      display:none
     }
-    .product-icon-text-section .flexbox >.col{
-       max-width: 350px;
+     .product-icon-text-section-{{sectionid}} .slick-initialized.slick-slider .col{
+      display:unset
     }
-  @media screen and (max-width: 860px) {
-      .product-icon-text-section-{{sectionid}} .col:not(:first-child){
-    display:none
-  }
-   .product-icon-text-section-{{sectionid}} .slick-initialized.slick-slider .col{
-    display:unset
-  }
-  }
-    @media screen and (min-width: 1440) {
-      .product-icon-text-section .page-width{
-    max-width:unset;
-    display:flex;
-    overflow:auto;
-  }
-  .product-icon-text-section .text-block{
-    white-space:nowrap
-  }
-  .product-icon-text-section .flexbox{
-    justify-content:center;flex-shrink: 0;min-width:100%
+    }
+      @media screen and (min-width: 1440) {
+        .product-icon-text-section .page-width{
+      max-width:unset;
+      display:flex;
+      overflow:auto;
+    }
+    .product-icon-text-section .text-block{
+      white-space:nowrap
+    }
+    .product-icon-text-section .flexbox{
+      justify-content:center;flex-shrink: 0;min-width:100%
 
+    }
+
+  #shopify-section-theme-call-actions{
+    display: none;
   }
+  #shopify-section-theme-call-actions:has(.slick-current){
+    display: block;
   }
+    }
 </style>
 <section class="product-icon-text-section product-icon-text-section-{{sectionid}}" id="shopify-section-{{sectionid}}">
   <div class="page-width">
