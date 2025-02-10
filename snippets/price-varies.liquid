@@ -1,9 +1,4 @@
-{%-
-  assign formatted_price = price | | divided_by: 100.0
-  | round
-  | times: 100
-  | money_without_trailing_zeros
--%}
+{%- assign formatted_price = price | divided_by: 100.0 | round | times: 100 | money_without_trailing_zeros -%}
 {% comment %}<span aria-hidden="true" class="grid-product__price--from">{{ 'products.general.from_text_html' | t: price: formatted_price }}</span>{% endcomment %}
 <span aria-hidden="true" class="grid-product__price--from">{{ formatted_price }}</span>
 <span class="visually-hidden">{{ 'products.general.from_text_html' | t: price: raw_price }}</span>
