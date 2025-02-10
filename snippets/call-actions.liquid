@@ -178,7 +178,6 @@
   </div>
 </section>
 <script>
-  $(document).ready(function () {
     $(window).on('load', function() {
       $("#shopify-section-{{sectionid}} .flexbox").slick({
     slidesToShow: 1,
@@ -188,10 +187,12 @@
     autoplay: true,
     dots: false,
     responsive: [
-
+            {
+        breakpoint: 862,
+        settings: "unslick",
+      },
 
     ],
   });
-  })
   })
 </script>
