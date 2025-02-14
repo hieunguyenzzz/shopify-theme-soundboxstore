@@ -1,1 +1,18 @@
-document.addEventListener("mouseover",e=>{var a=document.createElement("script");a.src="https://www.youtube.com/player_api";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o),window.onYouTubePlayerAPIReady=function e(){window.onYouTubePlayerAPIReadyCalls=window.onYouTubePlayerAPIReadyCalls||[],window.onYouTubePlayerAPIReadyCalls?.forEach(e=>e())}},{once:!0});
+document.addEventListener(
+  "mouseover",
+  (event) => {
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    window.onYouTubePlayerAPIReady = function onYouTubePlayerAPIReady() {
+      window.onYouTubePlayerAPIReadyCalls =
+        window.onYouTubePlayerAPIReadyCalls || [];
+      window.onYouTubePlayerAPIReadyCalls?.forEach((call) => call());
+    };
+  },
+  {
+    once: true,
+  }
+);
