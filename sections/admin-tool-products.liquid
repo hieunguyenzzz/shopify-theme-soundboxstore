@@ -1,30 +1,32 @@
-<style>
-  #shopify-section-{{ section.id }}{
-    margin:0
-  }
-</style>
-<link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/daisyui.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
-<style type="text/tailwindcss">
-  @theme {
-    --color-clifford: #da373d;
-  }
-</style>
-<div style="display:none" class="hidden !block">
-  <button class="btn" onclick="my_modal_1.showModal()">open modal</button>
-  <dialog id="my_modal_1" class="modal">
-    <div class="modal-box">
-      <h3 class="text-lg font-bold">Hello!</h3>
-      <p class="py-4">Press ESC key or click the button below to close</p>
-      <div class="modal-action">
-        <form method="dialog">
-          <!-- if there is a button in form, it will close the modal -->
-          <button class="btn">Close</button>
-        </form>
+{% comment %}
+  <style>
+    #shopify-section-{{ section.id }}{
+      margin:0
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/daisyui.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-clifford: #da373d;
+    }
+  </style>
+  <div style="display:none" class="hidden !block">
+    <button class="btn" onclick="my_modal_1.showModal()">open modal</button>
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
       </div>
-    </div>
-  </dialog>
-</div>
+    </dialog>
+  </div>
+{% endcomment %}
 {% schema %}
 {
   "name": "Admin tool products",
