@@ -11,12 +11,15 @@
 
 <div
   class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
-  {% unless isColorSwatch %}
-    {% if option.values.size == 1 %}
-      style="display:none"
-    {% endif %}
-  {% endunless %}
 
+  {%- for value in option.values -%}
+    {% unless value.swatch %}
+      {% if option.values.size == 1 %}
+        style="display:none"
+        {% break %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
   data-type="button"
 >
   <label
