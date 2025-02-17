@@ -1,24 +1,26 @@
-<style>
-  #shopify-section-{{ section.id }}{
-    margin:0
-  }
-</style>
-{% capture srcdoc %}
+{% if request.design_mode or request.visual_preview_mode %}
+  <style>
+    #shopify-section-{{ section.id }}{
+      margin:0
+    }
+  </style>
+  {% capture srcdoc %}
  {% render 'admin-tool-products' , product:product %}
 {% endcapture %}
 
-<iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  width="300"
-  height="60"
-  style="position:fixed;left:20px;bottom:20px;z-index:99999   ; border: none;"
->
-</iframe>
-<script>
-    const iframe = document.querySelector("#inlineFrameExample");
-  iframe.srcdoc = {{ srcdoc | json }};
-</script>
+  <iframe
+    id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="60"
+    style="position:fixed;left:20px;bottom:20px;z-index:99999   ; border: none;"
+  >
+  </iframe>
+  <script>
+      const iframe = document.querySelector("#inlineFrameExample");
+    iframe.srcdoc = {{ srcdoc | json }};
+  </script>
+{% endif %}
 {% schema %}
 {
   "name": "Admin tool products",
