@@ -4,7 +4,7 @@
   }
 </style>
 {% capture srcdoc %}
- {% render 'admin-tool-products' %}
+ {% render 'admin-tool-products' , product:product %}
 {% endcapture %}
 
 <iframe
@@ -16,8 +16,8 @@
 >
 </iframe>
 <script>
-  const iframe = document.querySelector("#inlineFrameExample");
-iframe.srcdoc = `{{ srcdoc }}`;
+    const iframe = document.querySelector("#inlineFrameExample");
+  iframe.srcdoc = {{ srcdoc | json }};
 </script>
 {% schema %}
 {
