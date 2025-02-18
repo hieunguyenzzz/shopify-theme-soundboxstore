@@ -64,6 +64,7 @@
       >
         {% if block.settings.slide_image1 != blank %}
           <a
+            aria-label="view image of {{  block.settings.slide_image1.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image1 | image_url }}"
             class="image-wrap"
@@ -74,6 +75,7 @@
         {% endif %}
         {% if block.settings.slide_image2 != blank %}
           <a
+             aria-label="view image of {{  block.settings.slide_image2.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image2 | image_url }}"
             class="image-wrap"
@@ -84,6 +86,7 @@
         {% endif %}
         {% if block.settings.slide_image3 != blank %}
           <a
+             aria-label="view image of {{  block.settings.slide_image3.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image3 | image_url }}"
             class="image-wrap"
@@ -95,6 +98,7 @@
 
         {% if block.settings.slide_image4 != blank %}
           <a
+             aria-label="view image of {{  block.settings.slide_image4.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image4 | image_url }}"
             class="image-wrap"
@@ -105,6 +109,7 @@
         {% endif %}
         {% if block.settings.slide_image5 != blank %}
           <a
+             aria-label="view image of {{  block.settings.slide_image5.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image5 | image_url }}"
             class="image-wrap"
@@ -115,6 +120,7 @@
         {% endif %}
         {% if block.settings.slide_image6 != blank %}
           <a
+             aria-label="view image of {{  block.settings.slide_image6.alt }}"
             style="display:none"
             href="{{ block.settings.slide_image6 | image_url }}"
             class="image-wrap"
@@ -152,6 +158,7 @@
                         {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image1.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
@@ -170,6 +177,7 @@
                         {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image2.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
@@ -188,6 +196,7 @@
                         {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image3.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
@@ -207,6 +216,7 @@
                         {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image4.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
@@ -225,6 +235,7 @@
                         {% assign index_g = index_g | plus: 1 %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image5.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
@@ -242,6 +253,7 @@
                       {% if block.settings.slide_image6 != blank %}
                         <div class="image-col">
                           <a
+                             aria-label="view image of {{  block.settings.slide_image6.alt }}"
                             href="#{{section.id}}-{{ block.id }}-{{ index_g }}"
                             class="image-wrap"
                           >
