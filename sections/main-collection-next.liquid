@@ -148,7 +148,7 @@
               {{
                 image_bg
                 | image_url: width: 700
-                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
+                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt', class: 'image_bg'
               }}
             {% endif %}
             <a class="image {% if image2 %} had {% endif %}" href="{{ url }}" style="mix-blend-mode: darken;">
@@ -156,14 +156,14 @@
                 {{
                   image
                   | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt'
                 }}
               {% endif %}
               {% if image2 %}
                 {{
                   image2
                   | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt'
                 }}
               {% endif %}
             </a>
@@ -200,7 +200,7 @@
             {{
               image_bg
               | image_url: width: 700
-              | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: title, class: 'image_bg'
+              | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt', class: 'image_bg'
             }}
           {% endif %}
           <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
@@ -208,14 +208,14 @@
               {{
                 image
                 | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt'
               }}
             {% endif %}
             {% if image2 %}
               {{
                 image2
                 | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: title
+                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: 'test-alt'
               }}
             {% endif %}
           </a>
@@ -249,7 +249,7 @@
                 widths: '400, 600, 800',
                 loading: 'lazy',
                 class: 'js-lazy-image',
-                alt: title,
+                alt: 'test-alt',
                 class: 'image_bg'
             }}
           {% endif %}
@@ -278,7 +278,7 @@
             {{
               block.settings.image_bg
               | image_url: width: 700
-              | image_tag: widths: '400, 600', loading: 'lazy', alt: title, class: 'image_bg', style: 'z-index:1'
+              | image_tag: widths: '400, 600', loading: 'lazy', alt: 'test-alt', class: 'image_bg', style: 'z-index:1'
             }}
           {% endif %}
           <div
