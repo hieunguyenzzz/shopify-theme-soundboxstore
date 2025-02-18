@@ -96,7 +96,7 @@
                       {{
                         featured_image
                         | image_url: width: 700
-                        | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: product.title
+                        | image_tag: widths: '400, 600, 800', class: 'js-lazy-image', alt: block.settings.image.alt
                       }}
                     {% else %}
                       {{
@@ -106,7 +106,7 @@
                           widths: '400, 600, 800',
                           loading: 'lazy',
                           class: 'js-lazy-image',
-                          alt: product.title
+                          alt: block.settings.image.alt
                       }}
                     {% endif %}
                   </a>
