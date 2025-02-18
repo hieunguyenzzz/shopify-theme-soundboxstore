@@ -89,7 +89,7 @@
             <div class="col">
               <div class="col-wrap">
                 <div class="col-image">
-                  <a href="{{ product.url }}" aria-label="view collection {{ block.settings.product.title }}">
+                  <a href="{{ product.url }}" aria-label="view collection {{ block.settings.product.title }}" aria-labelledby="view collection {{ block.settings.product.title }}">
                     {% assign title = block.settings.title | default: product.title %}
                     {% assign featured_image = block.settings.image | default: product.featured_image %}
                     {% if forloop.index == 1 %}
@@ -141,7 +141,7 @@
             <div class="col" {{ block.shopify_attributes }}>
               <div class="col-wrap">
                 <div class="col-image">
-                  <a href="{{ url }}" aria-label="view collection {{ block.settings.collection.title }}">
+                  <a href="{{ url }}" aria-label="view collection {{ block.settings.collection.title }}" aria-labelledby="view collection {{ block.settings.collection.title }}">
                     {{
                       featured_image
                       | image_url: width: 700
