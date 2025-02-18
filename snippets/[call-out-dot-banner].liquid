@@ -55,7 +55,7 @@
           >
             {{ textF }}
           </a>
-          {% assign page = pages.consultancy %}
+          {% assign page = settings.page_consultancy | default: pages.consultancy %}
           <a
             href="{{ page.url }}"
             class="btn"
