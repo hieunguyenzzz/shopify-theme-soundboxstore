@@ -323,7 +323,11 @@
                           margin-bottom: 20px;
                         "
                       >
-                        {{ block.settings.desc }}
+                        {%- if localization.country == 'United States' -%}
+                          {{ 'products.product.price_exclude_taxes' | t }}
+                        {%- else -%}
+                          {{ block.settings.desc }}
+                        {%- endif -%}
                       </div>
                     {% endunless %}
                   {%- when 'quantity_selector' -%}

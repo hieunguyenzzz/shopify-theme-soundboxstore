@@ -424,6 +424,7 @@
     data-type_header_capitalize="{{ settings.type_header_capitalize }}"
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
+    data-country="{{ localization.country.iso_code }}"
   >
     <script>
       (() => {
@@ -462,6 +463,9 @@
         {% if page.handle == 'accessories' %}
           {% assign showCallActions = true %}
         {% endif %}
+        {%- if localization.country == 'United States' -%}
+          {% assign showCallActions = false %}
+        {%- endif -%}
         {% if showCallActions %}
           <div id="shopify-section-theme-call-actions" {{ template.name }}>
             <style>
