@@ -148,7 +148,7 @@
                     data-aspectratio="{{ preview_image.aspect_ratio }}"
                     data-sizes="auto"
                     style="opacity:1"
-                    alt="{{ preview_image.alt | escape }}"
+                    alt="{{ preview_image.alt | escape }} alt-test"
                   >
                 {% else %}
                   <img
@@ -157,14 +157,14 @@
                     data-widths="[160, 200, 280, 360, 540, 720, 900]"
                     data-aspectratio="{{ preview_image.aspect_ratio }}"
                     data-sizes="auto"
-                    alt="{{ preview_image.alt | escape }}"
+                    alt="{{ preview_image.alt | escape }} alt-test"
                   >
                 {% endif %}
                 <noscript>
                   <img
                     class="grid-product__image lazyloaded"
                     src="{{ preview_image | img_url: '400x' }}"
-                    alt="{{ preview_image.alt | escape }}"
+                    alt="{{ preview_image.alt | escape }} alt-test"
                   >
                 </noscript>
               </div>
@@ -182,13 +182,13 @@
                   data-widths="[360, 540, 720, 900, 1080]"
                   data-aspectratio="{{ preview_image.aspect_ratio }}"
                   data-sizes="auto"
-                  alt="{{ preview_image.alt | escape }}"
+                  alt="{{ preview_image.alt | escape }} alt-test"
                 >
                 <noscript>
                   <img
                     class="grid-product__image lazyloaded"
                     src="{{ preview_image | img_url: '400x' }}"
-                    alt="{{ preview_image.alt | escape }}"
+                    alt="{{ preview_image.alt | escape }} alt-test"
                   >
                 </noscript>
               </div>
@@ -204,7 +204,7 @@
                     data-widths="[360, 540, 720, 1000]"
                     data-aspectratio="{{ second_image.aspect_ratio }}"
                     data-sizes="auto"
-                    alt="{{ second_image.alt }}"
+                    alt="{{ second_image.alt }} alt-test"
                   >
                 </div>
               {% else %}
@@ -219,7 +219,7 @@
                     data-widths="[360, 540, 720, 1000]"
                     data-aspectratio="{{ second_image.aspect_ratio }}"
                     data-sizes="auto"
-                    alt="{{ second_image.alt }}"
+                    alt="{{ second_image.alt }} alt-test"
                   >
                 </div>
               {% endif %}
