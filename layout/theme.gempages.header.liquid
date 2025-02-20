@@ -1,0 +1,622 @@
+{% unless request.design_mode %}
+  {% assign isResserllerOrTradeAccount = false %}
+  {% if customer %}
+    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
+      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
+        {% assign isResserllerOrTradeAccount = true %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if customer.tags contains 'trader' %}
+    {% assign isResserllerOrTradeAccount = true %}
+  {% endif %}
+{% else %}
+  {% assign isResserllerOrTradeAccount = settings.isreseller %}
+{% endunless %}
+<!doctype html>
+<html
+  class="no-js"
+  lang="{{ request.locale.iso_code }}"
+  dir="{{ settings.text_direction }}"
+  country="{{  localization.country.iso_code }}"
+  currency="{{  localization.country.currency.iso_code }}"
+>
+  <head>{% render 'yoast-seo' %}
+    {% render 'gcm-integration-script' %}
+    {% render 'pandectes-rules' %}
+    {% render 'pre-header' %}
+    {% render 'yett' %}
+    {% if template.name == 'product' %}
+      <script>
+        (function () {
+          var dbpr = 100;
+          if (Math.random() * 100 > 100 - dbpr) {
+            var d = 'dbbRum',
+              w = window,
+              o = document,
+              a = addEventListener,
+              scr = o.createElement('script');
+            scr.async = !0;
+            w[d] = w[d] || [];
+            w[d].push(['presampling', dbpr]);
+            ['error', 'unhandledrejection'].forEach(function (t) {
+              a(t, function (e) {
+                w[d].push([t, e]);
+              });
+            });
+            scr.src = 'https://cdn.debugbear.com/dSd8heSxvakE.js';
+            o.head.appendChild(scr);
+          }
+        })();
+      </script>
+    {% endif %}
+    <script
+      defer
+      src="https://umami.soundboxstore.com/script.js"
+      data-website-id="21e88dd1-c45a-4ee7-ba57-726675f1584c"
+    ></script>
+
+    <script>
+      (function (w, d, t, r, u) {
+        var f, n, i;
+        (w[u] = w[u] || []),
+          (f = function () {
+            var o = { ti: '187133965', enableAutoSpaTracking: true };
+            (o.q = w[u]), (w[u] = new UET(o)), w[u].push('pageLoad');
+          }),
+          (n = d.createElement(t)),
+          (n.src = r),
+          (n.async = 1),
+          (n.onload = n.onreadystatechange =
+            function () {
+              var s = this.readyState;
+              (s && s !== 'loaded' && s !== 'complete') || (f(), (n.onload = n.onreadystatechange = null));
+            }),
+          (i = d.getElementsByTagName(t)[0]),
+          i.parentNode.insertBefore(n, i);
+      })(window, document, 'script', '//bat.bing.com/bat.js', 'uetq');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-W3VDBP8N');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Analytics 4 integration- script from Consentmo GDPR Compliance App -->
+    <script async id="gaf-loading-script"></script>
+    <script id="gdpr-gaf-blocking-script">
+      let isGAFExecuted = false;
+      let gafScript = document.getElementById('gaf-loading-script');
+      let gafLink = 'https://www.googletagmanager.com/gtag/js?id=G-0HET6EXHTH';
+
+      function executeGAF() {
+        if (!isGAFExecuted) {
+          gafScript.setAttribute('src', gafLink);
+          // The content of Google Analytics 4 script goes here
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            analytics_storage: 'denied',
+          });
+
+          gtag('config', 'G-0HET6EXHTH');
+          isGAFExecuted = true;
+        }
+      }
+      function checkConsentForGAF(adittionalChecks = 0) {
+        let cpdCookie = (document.cookie.match(
+          /^(?:.*;)?\s*cookieconsent_preferences_disabled(\s*=\s*([^;]+)?)(?:.*)?$/
+        ) || [, null])[1];
+        if (cpdCookie != null) {
+          if (parseInt(cpdCookie.indexOf('analytics')) === -1) {
+            executeGAF();
+          }
+        } else {
+          let gdprCache = localStorage.getItem('gdprCache') ? JSON.parse(localStorage.getItem('gdprCache')) : null;
+          let gdprCacheConsentSettings =
+            gdprCache && gdprCache.getCookieConsentSettings ? JSON.parse(gdprCache.getCookieConsentSettings) : null;
+          let gdprCacheCountryDetection =
+            gdprCache && gdprCache.countryDetection ? JSON.parse(gdprCache.countryDetection) : null;
+          let ccsCookie = (document.cookie.match(/^(?:.*;)?\s*cookieconsent_status\s*=\s*([^;]+)(?:.*)?$/) || [
+            ,
+            null,
+          ])[1];
+          if (
+            (gdprCacheConsentSettings || (gdprCacheCountryDetection && gdprCacheCountryDetection.disable === '1')) &&
+            !ccsCookie
+          ) {
+            if (
+              (gdprCacheConsentSettings && gdprCacheConsentSettings.status === 'disabled') ||
+              gdprCacheCountryDetection.disable === '1'
+            ) {
+              executeGAF();
+            } else {
+              let initPreferences = parseInt(gdprCacheConsentSettings.checkboxes_behavior);
+              if (initPreferences === 1 || initPreferences === 2 || initPreferences === 4 || initPreferences === 5) {
+                executeGAF();
+              }
+            }
+          } else {
+            if (adittionalChecks > 0) {
+              setTimeout(function () {
+                checkConsentForGAF(adittionalChecks - 1);
+              }, 1000);
+            } else {
+              executeGAF();
+            }
+          }
+        }
+      }
+
+      checkConsentForGAF(3);
+    </script>
+
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
+    {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
+      | default: shop.metafields.yoast_seo.settings
+    -%}
+    {%- if disabled_by_yoast_seo
+      or yoast_seo_settings.integrations.webmasterVerification.google == blank
+      or yoast_seo_settings.integrations.webmasterVerification.google == null
+    -%}
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
+
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="theme-color" content="{{ settings.color_button }}">
+    <meta http-equiv="Expires" content="30">
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+    {%- if disabled_by_yoast_seo -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+      {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+    {%- endif -%}
+
+    <link href="https://cdn.shopify.com" rel="preconnect">
+
+    <link href="https://fonts.shopifycdn.com" rel="preconnect">
+    <link href="https://ajax.googleapis.com" rel="dns-prefetch">
+    <link href="https://maps.googleapis.com" rel="dns-prefetch">
+    <link href="https://maps.gstatic.com" rel="dns-prefetch">
+    <link href="https://crmplus.zoho.eu" rel="preconnect">
+    {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {%- if settings.favicon != blank -%}
+      <link
+        rel="shortcut icon"
+        href="{{ settings.favicon | img_url: '32x32' }}"
+        type="image/png"
+      >
+    {%- endif -%}
+
+    {% if template.name == 'index' %}
+      <title>
+        {{ page_title -}}
+        {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      </title>
+    {% else %}
+      <title>
+        {{ page_title -}}
+      </title>
+    {% endif %}
+
+    <meta name="description" content="{{ page_description | escape }}">
+
+    {%- render 'social-meta-tags' -%}
+    <style>
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Semibold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Semibold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Semibold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Semibold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Semibold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Semibold.svg#BananaGrotesk-Semibold' | file_url }}') format('svg');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Medium.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Medium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Medium.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Medium.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Medium.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Medium.svg#BananaGrotesk-Medium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Regular.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Regular.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Regular.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Regular.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Regular.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Regular.svg#BananaGrotesk-Regular' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Thin.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Thin.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Thin.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Thin.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Thin.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Thin.svg#BananaGrotesk-Thin' | file_url }}') format('svg');
+        font-weight: 100;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Light.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Light.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Light.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Light.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Light.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Light.svg#BananaGrotesk-Light' | file_url }}') format('svg');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Bold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Bold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Bold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Bold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Bold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Bold.svg#BananaGrotesk-Bold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extrabold.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extrabold.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extrabold.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extrabold.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extrabold.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extrabold.svg#BananaGrotesk-Extrabold' | file_url }}') format('svg');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Banana Grotesk';
+        src: url('{{ 'BananaGrotesk-Extralight.eot' | file_url }}');
+        src: url('{{ 'BananaGrotesk-Extralight.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'BananaGrotesk-Extralight.woff2' | file_url }}') format('woff2'), url('{{ 'BananaGrotesk-Extralight.woff' | file_url }}') format('woff'), url('{{ 'BananaGrotesk-Extralight.ttf' | file_url }}') format('truetype'), url('{{ 'BananaGrotesk-Extralight.svg#BananaGrotesk-Extralight' | file_url }}') format('svg');
+        font-weight: 200;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Helvetica Neue';
+        src: url('{{ 'HelveticaNeue.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeue.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeue.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeue.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeue.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeue.svg#HelveticaNeue' | file_url }}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'HelveticaNeue';
+        src: url('{{ 'HelveticaNeueMedium.eot' | file_url }}');
+        src: url('{{ 'HelveticaNeueMedium.eot?#iefix' | file_url }}') format('embedded-opentype'), url('{{ 'HelveticaNeueMedium.woff2' | file_url }}') format('woff2'), url('{{ 'HelveticaNeueMedium.woff' | file_url }}') format('woff'), url('{{ 'HelveticaNeueMedium.ttf' | file_url }}') format('truetype'), url('{{ 'HelveticaNeueMedium.svg#HelveticaNeueMedium' | file_url }}') format('svg');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    {%- liquid
+      assign enableSuperScript = false
+      unless shop.money_format contains 'money' or shop.money_format contains '.'
+        if settings.superscript_decimals
+          if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'
+            assign enableSuperScript = true
+          elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'
+            assign enableSuperScript = true
+          endif
+        endif
+      endunless
+    -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+      window.theme = window.theme || {};
+      {% if isResserllerOrTradeAccount %}
+      theme.reseller=true;
+      {% endif %}
+      theme.routes = {
+        home: "{{ routes.root_url }}",
+        collections: "{{ routes.collections_url }}",
+        cart: "{{ routes.cart_url | append: '.js' }}",
+        cartPage: "{{ routes.cart_url }}",
+        cartAdd: "{{ routes.cart_add_url | append: '.js' }}",
+        cartChange: "{{ routes.cart_change_url | append: '.js' }}",
+        search: "{{ routes.search_url }}"
+      };
+      theme.strings = {
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+        willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+        waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+        savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+        cartEmpty: {{ 'cart.general.empty' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
+        searchCollections: {{ 'general.search.collections' | t | json }},
+        searchProducts: {{ 'general.search.products' | t | json }},
+        searchPages: {{ 'general.search.pages' | t | json }},
+        searchArticles: {{ 'general.search.articles' | t | json }},
+        viewLess: {{ 'strings.others.view_less' | t | json }},
+        viewMore: {{ 'strings.others.view_more' | t | json }}
+      };
+      theme.settings = {
+        dynamicVariantsEnable: true,
+        cartType: {{ settings.cart_type | json }},
+        isCustomerTemplate:{% if request.page_type contains 'customers/' %}true
+        {% else %}
+          false
+        {% endif %},
+        moneyFormat: {{ shop.money_format | json }},
+        saveType: {{ settings.product_save_type | json }},
+        productImageSize: {{ settings.product_grid_image_size | json }},
+        productImageCover: {{ settings.product_grid_image_fill }},
+        predictiveSearch: {{ settings.predictive_search_enabled }},
+        predictiveSearchType: {{ settings.search_type | json }},
+        superScriptSetting: {{ settings.superscript_decimals }},
+        superScriptPrice: {{ enableSuperScript }},
+        quickView: {{ settings.quick_shop_enable }},
+        quickAdd: {{ settings.quick_add_enable }},
+        themeName: 'Expanse',
+        themeVersion: "2.0.0"
+      };
+    </script>
+    <!-- content_for_header -->
+    {{ content_for_header }}
+    <!-- end content_for_header -->
+    <style>
+      label[for='_gcl_au'],
+      label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
+      .grfq__popupForm__formInput input[name='_gcl_au'] {
+        display: none !important;
+      }
+      button.pKrqgcVNmqUx8tgLuy22.isense-cc-submit-consent {
+        /* transition: none !important; */
+        /* pointer-events: none !important; */
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        border-color: var(--button-color);
+      }
+
+      .zsiq_floatmain {
+        animation: none !important;
+        transform: none !important;
+      }
+      .page-content--product .product-main-slider .image-gallery-block {
+        transition: none !important;
+      }
+    </style>
+
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+  </head>
+
+  <body
+    {% if isResserllerOrTradeAccount %}
+      data-reseller
+    {% endif %}
+    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
+    data-transitions="{{ settings.animate_page_transitions }}"
+    data-button_style="{{ settings.button_style }}"
+    data-edges="{{ settings.roundness }}"
+    data-type_header_capitalize="{{ settings.type_header_capitalize }}"
+    data-swatch_style="{{ settings.swatch_style }}"
+    data-grid-style="{{ settings.product_grid_style }}"
+  >
+    <script>
+      (() => {
+        if (window.innerWidth > 1024) {
+          window.document.body.classList.add('desktop');
+        }
+      })();
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+
+    <div class="page-container" id="PageContainer">
+      <div class="transition-body">
+        {%- section 'toolbar' -%}
+        {%- section 'header' -%}
+        {%- section 'quick-search' -%}
+        <main class="main-content" id="MainContent">
+          {{ content_for_layout }}
+        </main>
+        
+        {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
+          {% assign showCallActions = true %}
+        {% endif %}
+        {% if page.handle == 'accessories' %}
+          {% assign showCallActions = true %}
+        {% endif %}
+        {% if showCallActions %}
+          <div id="shopify-section-theme-call-actions" {{ template.name }}>
+            <style>
+                          #shopify-section-theme-call-actions{
+                      margin:0;
+                 position:sticky;bottom:0;background:white;z-index:10
+                    }
+                      #shopify-section-theme-call-actions section{
+                      margin:0;
+                        font-size:16px
+                    }
+               #shopify-section-theme-call-actions .product-icon-text-section{
+                padding: 0
+              }
+
+               #shopify-section-theme-call-actions .flexbox{
+                    padding: 10px;
+
+              }
+              #shopify-section-theme-call-actions  .page-width{
+              }
+            </style>
+            
+          </div>
+        {% endif %}
+        
+      </div>
+    </div>
+    {% if settings.header_show_quote_request %}
+      
+    {% endif %}
+    
+    
+    
+    
+
+    <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'custom-v2.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName('head')[0];
+          var c = d.createElement('script');
+          o.api = new Array();
+          c.async = true;
+          c.type = 'text/javascript';
+          c.charset = 'utf-8';
+          c.src = 'https://web-sdk.smartlook.com/recorder.js';
+          h.appendChild(c);
+        })(document);
+      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+    </script>
+    <script>
+      (() => {
+        var isReplaced = false;
+        function MeroxIO_Function() {
+          if (!isReplaced) {
+            window.yett.unblock();
+            window.yett.lazyloaded = true;
+            console.log('apps lazyloaded successfully');
+            isReplaced = true;
+            function zsiqchat() {
+              window['$zoho'] = window['$zoho'] || {};
+              $zoho.salesiq = $zoho.salesiq || {
+                widgetcode: '00f33205e195e32084969fefc7d2a574e9697c3e44cf4024b87b8f147c4f8bb0',
+                values: {},
+                ready: function () {},
+              };
+              var d = document;
+              s = d.createElement('script');
+              s.type = 'text/javascript';
+              s.id = 'zsiqscript';
+              s.defer = true;
+              s.src = 'https://salesiq.zoho.eu/widget';
+              t = d.getElementsByTagName('script')[0];
+              t.parentNode.insertBefore(s, t);
+            }
+            zsiqchat();
+
+            const event = new Event('app:ready');
+            document.dispatchEvent(event);
+            document.removeEventListener('click', MeroxIO_Function);
+            document.removeEventListener('scroll', MeroxIO_Function);
+            document.removeEventListener('touchstart', MeroxIO_Function);
+            document.removeEventListener('mousemove', MeroxIO_Function);
+            localStorage.setItem('human', 'true');
+            document.body.classList.add('human');
+          }
+        }
+
+        // setTimeout(MeroxIO_Function, 300);
+        document.addEventListener('click', MeroxIO_Function, { once: true });
+        document.addEventListener('scroll', MeroxIO_Function, { once: true });
+        document.addEventListener('touchstart', MeroxIO_Function, { once: true });
+        document.addEventListener('mousemove', MeroxIO_Function, { once: true });
+        var isHuman = localStorage.getItem('human');
+        if (isHuman) {
+          document.body.classList.add('human');
+          MeroxIO_Function();
+        }
+      })();
+    </script>
+    <script>
+      jQuery.event.special.touchstart = {
+        setup: function (_, ns, handle) {
+          this.addEventListener('touchstart', handle, { passive: !ns.includes('noPreventDefault') });
+        },
+      };
+      jQuery.event.special.touchmove = {
+        setup: function (_, ns, handle) {
+          this.addEventListener('touchmove', handle, { passive: !ns.includes('noPreventDefault') });
+        },
+      };
+      jQuery.event.special.wheel = {
+        setup: function (_, ns, handle) {
+          this.addEventListener('wheel', handle, { passive: true });
+        },
+      };
+      jQuery.event.special.mousewheel = {
+        setup: function (_, ns, handle) {
+          this.addEventListener('mousewheel', handle, { passive: true });
+        },
+      };
+    </script>
+    
+
+    <script>
+      (function (ss, ex) {
+        window.ldfdr =
+          window.ldfdr ||
+          function () {
+            (ldfdr._q = ldfdr._q || []).push([].slice.call(arguments));
+          };
+        (function (d, s) {
+          fs = d.getElementsByTagName(s)[0];
+          function ce(src) {
+            var cs = d.createElement(s);
+            cs.src = src;
+            cs.async = 1;
+            fs.parentNode.insertBefore(cs, fs);
+          }
+          ce('https://sc.lfeeder.com/lftracker_v1_' + ss + (ex ? '_' + ex : '') + '.js');
+        })(document, 'script');
+      })('bElvO73QlzEaZMqj');
+    </script>
+    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
+  </body>
+</html>
