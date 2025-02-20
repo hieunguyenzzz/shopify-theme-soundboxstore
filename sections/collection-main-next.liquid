@@ -195,7 +195,7 @@
     }
 {% endstyle %}
 {% unless collection %}
-  {% assign collection = section.settings.collection | default: collections['office-pods'] %}
+  {% assign collection = section.settings.collection | default: settings. collections['office-pods'] %}
 {% endunless %}
 {% assign title = section.settings.title | default: collection.metafields.custom.card_title.value %}
 {% assign description = section.settings.subheading_richtext

@@ -268,7 +268,7 @@ IT it /it-it' %}
         ></textarea>
         <label for="ContactFormMessage-{{ section.id }}">{{ settings.quote_message }}</label>
       </div>
-      {% assign collection = settings.quote_collection | default: collections['office-pods'] %}
+      {% assign collection = settings.quote_collection | default: settings. collections['office-pods'] %}
       {% unless collection %}
         {% assign collection = collections.first %}
       {% endunless %}

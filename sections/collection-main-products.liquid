@@ -1,4 +1,4 @@
-{% assign collection = collections['office-pods'] %}
+{% assign collection = settings. collections['office-pods'] %}
 {% for block in section.blocks %}
   {% if block.type == 'products' %}
     {% assign products = block.settings.product_list | default: collection.products %}
