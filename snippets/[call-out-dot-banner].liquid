@@ -37,7 +37,7 @@
           "
           class="hero__link"
         >
-          {% assign pageR = settings.page_remote_tour | default: pages['remote-tours'] %}
+          {% assign pageR = settings.page_remote_tour | default: settings.page_remote_tour %}
           {% assign textR = 'strings.others.Remote_Tour' | t %}
           <a
             data-onlycity="other"
@@ -46,7 +46,7 @@
           >
             {{ textR }}
           </a>
-          {% assign pageF = settings.page_showroom | default: pages['showroom-london'] %}
+          {% assign pageF = settings.page_showroom | default:  settings.page_showroom %}
           {% assign textF = 'call_actions.showroom_visit' | t %}
           <a
             href="{{pageF.url }}"
