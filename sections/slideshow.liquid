@@ -181,6 +181,8 @@
                               >
                                 {{ textF }}
                               </a>
+                              {% assign pageC = settings.page_consultancy %}
+                              {% assign textC = 'strings.others.Schedule_Design_Survey' | t %}
                               {%- if block.settings.link_text != blank -%}
                                 <a
                                   href="{{ block.settings.link }}"
