@@ -108,7 +108,7 @@
             | default: product.metafields.custom.subtitle
           %}
           {% assign image = accessories.metafields.custom.menu_image.value | default: accessories.image %}
-          <a class="site-nav__dropdown-item" href="{{ pages['accessories'].url }}">
+          <a class="site-nav__dropdown-item" href="{{ settings.page_accessories.url }}">
             <div class="site-nav__dropdown-item_image">
               {{ image | image_url: width: 300 | image_tag: loading: 'lazy', class: '' }}
             </div>
@@ -144,7 +144,7 @@
     {% assign accessories = collections.accessories %}
     <!--
       <li class="slide-nav__item ">
-        <a href="{{ pages['accessories'].url }}" class="slide-nav__link"
+        <a href="{{ settings.page_accessories.url }}" class="slide-nav__link"
           ><span class="link-text">{{ accessories.title }}</span>
         </a>
       </li>

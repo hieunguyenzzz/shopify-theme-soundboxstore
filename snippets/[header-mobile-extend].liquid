@@ -95,7 +95,7 @@
     {% endif %}
     {{ settings.header_guide_button -}}
   </a>
-  {% assign page_about = pages['about-us'] %}
+  {% assign page_about = settings.page_about %}
 
   <a style="flex:1 1 300px" href="{{ page_about.url }}">
     {{- settings.header_moreinfo }}
