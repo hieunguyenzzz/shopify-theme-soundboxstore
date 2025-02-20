@@ -185,10 +185,10 @@
                               {% assign textC = 'strings.others.Schedule_Design_Survey' | t %}
                               {%- if block.settings.link_text != blank -%}
                                 <a
-                                  href="{{ block.settings.link }}"
+                                  href="{{pageC.url}}"
                                   class="btn{% if block.settings.color_accent contains 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
                                 >
-                                  {{ block.settings.link_text }}
+                                  {{ textC }}
                                 </a>
                               {%- endif -%}
                               {% comment %}
