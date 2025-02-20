@@ -163,8 +163,8 @@
                               }
                             </style>
                             <div class="hero__link">
-                              {% assign pageF = pages['remote-tours'] %}
-                              {% assign textF = pageF.title %}
+                              {% assign pageF = settings.page_remote_tour | default: pages['remote-tours'] %}
+                              {% assign textF = 'call_actions.REMOTE_TOUR' | default: pageF.title %}
                               <a
                                 data-onlycity="other"
                                 href="{{pageF.url }}"
@@ -172,8 +172,8 @@
                               >
                                 {{ textF }}
                               </a>
-                              {% assign pageF = pages['showroom-london'] %}
-                              {% assign textF = 'Showroom visit' %}
+                              {% assign pageF = settings.page_remote_tour | default: pages['showroom-london'] %}
+                              {% assign textF = 'call_actions.showroom_visit' | t %}
                               <a
                                 href="{{pageF.url }}"
                                 data-onlycity="London"
