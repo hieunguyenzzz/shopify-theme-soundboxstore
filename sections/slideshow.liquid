@@ -164,7 +164,7 @@
                             </style>
                             <div class="hero__link">
                               {% assign pageF = settings.page_remote_tour | default: pages['remote-tours'] %}
-                              {% assign textF = 'call_actions.REMOTE_TOUR' | default: pageF.title %}
+                              {% assign textF = 'call_actions.REMOTE_TOUR' | t | default: pageF.title %}
                               <a
                                 data-onlycity="other"
                                 href="{{pageF.url }}"
