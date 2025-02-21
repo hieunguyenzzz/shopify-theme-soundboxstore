@@ -239,14 +239,19 @@
       {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
     </script>
   {%- endif -%}
+  <div class="theme-block">
+    <h4>{{ 'general.social.share_this' | t }}</h4>
+    {%- render 'social-sharing',
+      share_title: article.title,
+      share_permalink: article.url,
+      share_image: article.image
+    -%}
+  </div>
+  <div class="related-articles" style="display:none">
+    {% render 'article-bottom' %}
+  </div>
 </div>
-<div class="theme-block">
-  <h4>{{ 'general.social.share_this' | t }}</h4>
-  {%- render 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image -%}
-</div>
-<div class="related-articles" style="display:none">
-  {% render 'article-bottom' %}
-</div>
+
 <div class="text-center">
   <a href="{{ blog.url }}" class="btn return-link">
     <svg
