@@ -239,6 +239,10 @@
       {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
     </script>
   {%- endif -%}
+
+  <div class="related-articles" style="display:none">
+    {% render 'article-bottom' %}
+  </div>
   <div class="theme-block">
     <h4>{{ 'general.social.share_this' | t }}</h4>
     {%- render 'social-sharing',
@@ -247,9 +251,7 @@
       share_image: article.image
     -%}
   </div>
-  <div class="related-articles" style="display:none">
-    {% render 'article-bottom' %}
-  </div>
+  <hr class="hr--large">
 </div>
 
 <div class="text-center">
