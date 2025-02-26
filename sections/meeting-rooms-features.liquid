@@ -127,7 +127,7 @@
       {% if block.settings.point_x != blank or block.settings.point_y != blank %}
         .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
           left: {{ block.settings.point_x }}%;
-          top: {% if block.settings.negative_y %}-{% endif %} {{ block.settings.point_y }}%
+          top: {% if block.settings.negative_y %}-{% endif %}{{ block.settings.point_y }}%
         }
         {%- if block.settings.point_x < 40 -%}
           .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
