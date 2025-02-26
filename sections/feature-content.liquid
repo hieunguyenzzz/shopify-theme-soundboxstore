@@ -1,0 +1,45 @@
+{%- if section.blocks.size > 0 -%}
+  {%- for block in section.blocks -%}
+    {% render 'feature-content', block: block, index: forloop.index %}
+  {%- endfor -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Feature content",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature-content",
+      "name": "Feature content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "youtube_url",
+          "label": "Youtube URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature content"
+    }
+  ]
+}
+{% endschema %}

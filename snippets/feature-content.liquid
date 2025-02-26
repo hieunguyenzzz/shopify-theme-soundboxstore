@@ -1,0 +1,41 @@
+{% capture mediaitem %}
+    {% if block.settings.youtube_url != blank %}
+      <div style="width:100%;max-width:528px">
+      {% render 'youtube-popup' ,block :block %}
+      {% assign hadmedia = true %}
+      </div>
+    {% endif %}
+{% endcapture %}
+{% assign alt = block.settings.image.alt | default: block.settings.title %}
+{%- assign reverse = index | modulo: 2 -%}
+<section class="image-text-column" style="margin:60px 0">
+  <div class="section-wrap page-width">
+    <div class="flexbox {% if reverse == 0 %}row-reverse{% endif %} mobile-column-reverse">
+      {% if block.settings.image != blank %}
+        <div class="col right-col">
+          <div class="col-wrap" style="width:100%; display: flex; justify-content: center;">
+            {% if hadmedia %}
+              {{ mediaitem }}
+            {% else %}
+              {{ block.settings.image | image_url: width: 528 | image_tag: alt: alt }}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="col left-col">
+        <div class="col-wrap">
+          {% if block.settings.title != blank %}
+            <h2 class="title-font">
+              {{ block.settings.title }}
+            </h2>
+          {% endif %}
+          {% if block.settings.content != blank %}
+            <div class="column-content">
+              {{ block.settings.content }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
