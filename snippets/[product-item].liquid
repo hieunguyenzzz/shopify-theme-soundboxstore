@@ -145,6 +145,7 @@
         | round
         | times: 100
         | money_without_trailing_zeros
+        | replace: 'Dhs.', 'AED'
       %}
 
       {% if lowest_price != blank %}
@@ -158,6 +159,7 @@
                 | round
                 | times: 100
                 | money_without_trailing_zeros
+                | replace: 'Dhs.', 'AED'
               -}}
             </span>
           {% endif %}
