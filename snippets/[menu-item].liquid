@@ -33,6 +33,7 @@
       | round
       | times: 100
       | money_without_trailing_zeros
+      | replace: 'Dhs.', 'AED'
     %}
     {% if lowest_price != blank %}
       <div class="site-nav__dropdown-ittemprice">
@@ -46,7 +47,14 @@
             "
             class="compare_at_price"
           >
-            {{- product.compare_at_price_min | divided_by: 100.0 | round | times: 100 | money_without_trailing_zeros -}}
+            {{-
+              product.compare_at_price_min
+              | divided_by: 100.0
+              | round
+              | times: 100
+              | money_without_trailing_zeros
+              | replace: 'Dhs.', 'AED'
+            -}}
           </span>
         {% endif %}
       </div>
