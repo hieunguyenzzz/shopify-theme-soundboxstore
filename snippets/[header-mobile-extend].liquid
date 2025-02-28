@@ -47,14 +47,22 @@
   }
 </style>
 <div class="header-mobile-extend page-width">
-  <a href="{{ settings.collection_products.url }}" style="background: #f6efe4;">
-    {{
-      all_products['office-phone-booth-folio-2-4-person'].metafields.custom.menu_image
-      | image_url: width: 40
-      | image_tag: loading: 'lazy', preload: true
-    }}
-    {{ settings.header_explore_product -}}
-  </a>
+  {% if settings.collection_products %}
+    <a href="{{ settings.collection_products.url | default: '#' }}" style="background: #f6efe4;">
+      {% if all_products['office-phone-booth-folio-2-4-person'].metafields.custom.menu_image %}
+        {{
+          all_products['office-phone-booth-folio-2-4-person'].metafields.custom.menu_image
+          | image_url: width: 40
+          | image_tag: loading: 'lazy', preload: true
+        }}
+      {% endif %}
+      {{ settings.header_explore_product | default: "Explore Products" -}}
+    </a>
+  {% else %}
+    <a href="/collections/all" style="background: #f6efe4;">
+      {{ settings.header_explore_product | default: "Explore Products" -}}
+    </a>
+  {% endif %}
   <!--
     <label
       for="quote-form-modal"
