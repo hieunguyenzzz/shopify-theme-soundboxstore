@@ -49,44 +49,53 @@
   },
   {
     "name": "Collections",
-    "settings": [{
-      "type": "collection",
-      "id": "collection_products",
-      "label": "Explore Products"
-    },{
-      "type": "collection",
-      "id": "collection_accessories",
-      "label": "accessories"
-    }]
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection_products",
+        "label": "Explore Products"
+      },
+      {
+        "type": "collection",
+        "id": "collection_accessories",
+        "label": "accessories"
+      }
+    ]
   },
   {
     "name": "Pages",
-    "settings": [{
-      "type": "page",
-      "id": "page_showroom",
-      "label": "Showroom"
-    },{
-      "type": "page",
-      "id": "page_remote_tour",
-      "label": "Remote Tour"
-    }
-    ,{
-      "type": "page",
-      "id": "page_consultancy",
-      "label": "consultancy"
-    },{
-      "type": "page",
-      "id": "page_about",
-      "label": "About"
-    },{
-      "type": "page",
-      "id": "page_contact",
-      "label": "Contact"
-    },{
-      "type": "page",
-      "id": "page_accessories",
-      "label": "accessories"
-    }]
+    "settings": [
+      {
+        "type": "page",
+        "id": "page_showroom",
+        "label": "Showroom"
+      },
+      {
+        "type": "page",
+        "id": "page_remote_tour",
+        "label": "Remote Tour"
+      },
+      {
+        "type": "page",
+        "id": "page_consultancy",
+        "label": "consultancy"
+      },
+      {
+        "type": "page",
+        "id": "page_about",
+        "label": "About"
+      },
+      {
+        "type": "page",
+        "id": "page_contact",
+        "label": "Contact"
+      },
+      {
+        "type": "page",
+        "id": "page_accessories",
+        "label": "accessories"
+      }
+    ]
   },
   {
     "name": "Phone bumber",
@@ -1184,8 +1193,7 @@
         "type": "header",
         "content": "Sharing options"
       },
-      
-         {
+      {
         "type": "checkbox",
         "id": "share_linkedin",
         "label": "Share on Linkedin",
@@ -1478,13 +1486,33 @@
         "type": "richtext",
         "id": "header_guide_description",
         "label": "Product guide description",
-        "default": "<p>We’ve put together all the information you’ll need to share with your team—models, dimensions, upgrades, colors, and more.</p>"
+        "default": "<p>We've put together all the information you'll need to share with your team—models, dimensions, upgrades, colors, and more.</p>"
       },
       {
         "type": "text",
         "id": "header_guide_button",
         "label": "Product guide button",
         "default": "Product guide"
+      }
+    ]
+  },
+  {
+    "name": "Page Links",
+    "settings": [
+      {
+        "type": "page",
+        "id": "page_showroom",
+        "label": "Showroom Page"
+      },
+      {
+        "type": "page",
+        "id": "page_remote_tour",
+        "label": "Remote Tour Page"
+      },
+      {
+        "type": "page",
+        "id": "page_consultancy",
+        "label": "Site Survey/Consultancy Page"
       }
     ]
   }

@@ -35,27 +35,27 @@
           "
           class="hero__link"
         >
-          {% assign pageF = settings.page_remote_tour %}
-          {% assign textF = pageF.title %}
+          {% assign remote_tour_page = pages[settings.page_remote_tour] %}
           <a
             data-onlycity="other"
-            href="{{pageF.url }}"
+            href="{{ remote_tour_page.url }}"
             class="btn"
           >
-            {{ textF }}
+            {{ remote_tour_page.title }}
           </a>
-          {% assign pageF =  settings.page_showroom %}
-          {% assign textF = 'Showroom visit' %}
+          
+          {% assign showroom_page = pages[settings.page_showroom] %}
           <a
-            href="{{pageF.url }}"
+            href="{{ showroom_page.url }}"
             data-onlycity="London"
             class="btn "
           >
-            {{ textF }}
+            {{ 'call_actions.showroom_visit' | t }}
           </a>
-          {% assign page = settings.page_consultancy  %}
+          
+          {% assign consultancy_page = pages[settings.page_consultancy] %}
           <a
-            href="{{ page.url }}"
+            href="{{ consultancy_page.url }}"
             class="btn"
           >
             {{ 'strings.others.Schedule_Design_Survey' | t }}

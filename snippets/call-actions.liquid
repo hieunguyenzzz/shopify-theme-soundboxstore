@@ -72,7 +72,8 @@
     <div class="flexbox">
       <div class="shopify-block block-showroom-london ctc" aria-hidden="false">
         <div class="col">
-          <a href="{{ settings.page_showroom }}" class="col-wrap">
+          {% assign showroom_page = pages[settings.page_showroom] %}
+          <a href="{{ showroom_page.url }}" class="col-wrap">
             <div class="icon-text-block">
               <div class="icon-block">
                 <div class="icon-wrap">
@@ -107,9 +108,10 @@
           </a>
         </div>
       </div>
-      <div class="shopify-block block-consultancy">
+      <div class="shopify-block block-consultancy" aria-hidden="false">
         <div class="col">
-          <a href="{{ settings.page_consultancy }}" class="col-wrap">
+          {% assign consultancy_page = pages[settings.page_consultancy] %}
+          <a href="{{ consultancy_page.url }}" class="col-wrap">
             <div class="icon-text-block">
               <div class="icon-block">
                 <div class="icon-wrap">
@@ -144,9 +146,10 @@
           </a>
         </div>
       </div>
-      <div class="shopify-block block-remote-tours">
+      <div class="shopify-block block-remote-tours" aria-hidden="false">
         <div class="col">
-          <a href="{{ settings.page_remote_tour }}" class="col-wrap">
+          {% assign remote_tour_page = pages[settings.page_remote_tour] %}
+          <a href="{{ remote_tour_page.url }}" class="col-wrap">
             <div class="icon-text-block">
               <div class="icon-block">
                 <div class="icon-wrap">
