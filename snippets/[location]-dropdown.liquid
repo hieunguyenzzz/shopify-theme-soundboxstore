@@ -1,6 +1,7 @@
 {% assign countrymap = '
 GB en,
 IE ie /en-ie,
+AE en /en-ae,
 US en /en-us,
 DK da /da-dk,
 SE se /sv-se,
@@ -21,11 +22,11 @@ IT it /it-it' %}
   {% assign path = request.path | replace_first: request.locale.root_url, '/' %}
 {% endif %}
 <style>
-  .tw-dropdown .countryimage{
-    display:none
+  .tw-dropdown .countryimage {
+    display: none;
   }
-  .tw-dropdown:hover .countryimage{
-    display:block
+  .tw-dropdown:hover .countryimage {
+    display: block;
   }
 </style>
 <div class="tw-dropdown tw-flex tw-dropdown-end tw-dropdown-hover">
