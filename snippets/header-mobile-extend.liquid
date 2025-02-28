@@ -1,0 +1,11 @@
+// Previous code...
+// Around line 51, you likely have something like:
+<a href="{{ "Explore Products" }}">Explore Products</a>
+
+// Change it to use a proper URL or path:
+<a href="{{ routes.collections_url }}">Explore Products</a>
+// Or if it should link to a specific collection or page:
+<a href="/collections/all">Explore Products</a>
+// Or if it should link to a specific page:
+<a href="{{ pages['explore-products'].url }}">Explore Products</a>
+// Additional code...
