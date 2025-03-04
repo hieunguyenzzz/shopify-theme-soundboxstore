@@ -198,13 +198,13 @@
     window.onYouTubePlayerAPIReadyCalls.push(onYouTubePlayerAPIReady);
   })();
 </script>
-{%- if block.settings.external_video_url -%}
+{%- if block.settings.external_video_url or video_url -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "VideoObject",
       "name": "{{ product.title }}",
-      "embedUrl": "{{ block.settings.external_video_url }}",
+      "embedUrl": "{{ block.settings.external_video_url | default: video_url }}",
       "publisher": {
         "@type": "Organization",
         "name": "{{ shop.name }}"

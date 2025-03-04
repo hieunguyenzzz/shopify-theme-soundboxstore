@@ -2,16 +2,16 @@
 <style type="text/tailwindcss">
   @layer base {
     h2 {
-          font-size: calc(var(--typeHeaderSize)*.85);
+      font-size: calc(var(--typeHeaderSize) * 0.85);
     }
   }
-  .relative{
-  position:relative
+  .relative {
+    position: relative;
   }
 </style>
 <style>
-  .relative{
-  position:relative
+  .relative {
+    position: relative;
   }
 </style>
 <div style="    visibility: hidden;transition:opacity 0.3s linear;opacity:0" class="!block !opacity-100 !visible">
@@ -69,7 +69,7 @@
                     {%- assign video_id = video_id[1] | split: '&' | first -%}
                   {%- endif -%}
                   <div class="mx-auto max-w-[880px] relative  w-full ">
-                    {% render 'youtube-popup', video_id: video_id %}
+                    {% render 'youtube-popup', video_id: video_id, video_url: block.settings.external_video_url %}
                     <label
                       for="youtube-modal-input-{{ video_id }}"
                       style="position:absolute;top:0;left:0;width:100%;height:100%; pointer-events: none;"
@@ -165,7 +165,7 @@
                     {%- assign video_id = video_id[1] | split: '&' | first -%}
                   {%- endif -%}
                   <div class="mx-auto max-w-[880px] relative  w-full">
-                    {% render 'youtube-popup', video_id: video_id %}
+                    {% render 'youtube-popup', video_id: video_id, video_url: block.settings.external_video_url %}
                     <label
                       for="youtube-modal-input-{{ video_id }}"
                       style="position:absolute;top:0;left:0;width:100%;height:100%; pointer-events: none;"
@@ -245,38 +245,38 @@
 </div>
 
 <script>
-    (() => {
+  (() => {
     let yettloaded = window.yett.lazyloaded;
     function handleLoad() {
       let loaded = false;
       let options = {
         root: document.quer,
-        rootMargin: "100px",
+        rootMargin: '100px',
         threshold: 0,
       };
 
       let observer = new IntersectionObserver((entities) => {
         if (entities[0].isIntersecting) {
-          console.log("entities[0].isIntersecting", entities[0].isIntersecting);
+          console.log('entities[0].isIntersecting', entities[0].isIntersecting);
           var d = document;
-          s = d.createElement("script");
-          s.type = "text/javascript";
+          s = d.createElement('script');
+          s.type = 'text/javascript';
           s.defer = true;
-          s.src = "https://cdn.tailwindcss.com/3.4.5?plugins=typography@0.5.13,forms@0.5.7";
-          t = d.getElementsByTagName("script")[0];
+          s.src = 'https://cdn.tailwindcss.com/3.4.5?plugins=typography@0.5.13,forms@0.5.7';
+          t = d.getElementsByTagName('script')[0];
           t.parentNode.insertBefore(s, t);
           loaded = true;
           observer.disconnect();
         }
       }, options);
-      let target = document.querySelector("main");
+      let target = document.querySelector('main');
       observer.observe(target);
     }
     if (yettloaded) {
       handleLoad();
     } else {
       document.addEventListener(
-        "app:ready",
+        'app:ready',
         (e) => {
           handleLoad();
         },
@@ -288,12 +288,9 @@
 {% schema %}
 {
   "name": "custome-blocks",
-  "class":"custome-blocks",
-  "settings": [
-
-  ],
+  "class": "custome-blocks",
+  "settings": [],
   "blocks": [
-
     {
       "type": "header",
       "name": "header",
@@ -327,19 +324,18 @@
           "label": "Style",
           "default": "default",
           "options": [
-             {
+            {
               "value": "default",
               "label": "Default"
             },
-             {
+            {
               "value": "image-left",
               "label": "Image left"
             },
             {
               "value": "image-right",
               "label": "Image Right"
-            },
-
+            }
           ]
         },
         {
@@ -356,11 +352,9 @@
           "type": "video_url",
           "id": "external_video_url",
           "label": "Youtube video",
-          "accept": [
-            "youtube"
-          ]
+          "accept": ["youtube"]
         },
-         {
+        {
           "type": "text",
           "id": "sub-heading",
           "label": "Sub Heading",
@@ -372,7 +366,7 @@
           "label": "Heading",
           "default": "Embracing Sustainability"
         },
-         {
+        {
           "type": "text",
           "id": "sub-heading-botoom",
           "label": "Sub Heading"

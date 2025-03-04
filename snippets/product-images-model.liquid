@@ -17,58 +17,56 @@
 {%- capture new_label -%}
  {% render '[product-label]' product:product  %}{%- endcapture -%}
 <style>
-      .slick-initialized .slick-slide .gallery-wrap {
-        display: none;
+  .slick-initialized .slick-slide .gallery-wrap {
+    display: none;
+  }
 
-    }
-
-      .slick-initialized .slick-slide.slick-current .gallery-wrap {
-        display: block !important;
-      }
-    .thumbnail-slider-inner  .slick-current img{
-      border: 1px solid #00000061!important
-    }
-    .thumbnail-slider-inner:not(.slick-initialized){
-      height: 54px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+  .slick-initialized .slick-slide.slick-current .gallery-wrap {
+    display: block !important;
+  }
+  .thumbnail-slider-inner .slick-current img {
+    border: 1px solid #00000061 !important;
+  }
+  .thumbnail-slider-inner:not(.slick-initialized) {
+    height: 54px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .thumbnail-slider-inner:not(.slick-initialized) .thumbnail-wrap {
-      width: 54px;
-
-    }
-   .thumbnail-slider-inner:not(.slick-initialized) .thumnail-gallery-block:first-child img{
-      border:1px solid #00000061!important
-    }
-    .thumbnail-slider-inner.slick-initialized{
-      display: block;
-    }
-    .image-gallery-block .gallery-wrap video{
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      object-fit: contain;
-    }
-    .product-main-slider .thumbnail-gallery .thumbnail-wrap svg{
-      position: absolute;
-        width: 40%;
-        height: 40%;
-        left: 30%;
-        opacity: 0.7;
-        top: 30%;
-    }
-    @media (min-width:860px){
-        .thumbnail-slider-inner:not(.slick-initialized){
+    width: 54px;
+  }
+  .thumbnail-slider-inner:not(.slick-initialized) .thumnail-gallery-block:first-child img {
+    border: 1px solid #00000061 !important;
+  }
+  .thumbnail-slider-inner.slick-initialized {
+    display: block;
+  }
+  .image-gallery-block .gallery-wrap video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+  }
+  .product-main-slider .thumbnail-gallery .thumbnail-wrap svg {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    opacity: 0.7;
+    top: 30%;
+  }
+  @media (min-width: 860px) {
+    .thumbnail-slider-inner:not(.slick-initialized) {
       height: auto;
       flex-direction: column;
-  }
-     .thumbnail-slider-inner:not(.slick-initialized) .thumbnail-wrap {
+    }
+    .thumbnail-slider-inner:not(.slick-initialized) .thumbnail-wrap {
       width: 100%;
-  }
+    }
   }
 </style>
 
@@ -113,7 +111,7 @@
       <label
       for="youtube-modal-input-{{ youtubeId }}"
       style="width:100%;position:absolute;height:100%; pointer-events: auto;    display: flex; justify-content: center; align-items: center;">
-      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"   
+      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"
       style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events: none;"/>
             <svg style="overflow: visible;z-index: 1;" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
               <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
@@ -132,8 +130,8 @@
         for="youtube-modal-input-{{ youtubeId }}"
         style="width:100%;position:absolute;height:100%; pointer-events: auto;"
       >
-      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"   
-      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;" 
+      <img  width="80" height="80" src="https://img.youtube.com/vi/{{youtubeId}}/0.jpg"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;"
       />
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
               <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
@@ -168,7 +166,7 @@
                 | image_url: width: 800
                 | image_tag:
                   preload: true,
-                  fetchpriority: "high",
+                  fetchpriority: 'high',
                   class: 'photoswipe__image',
                   data-orgin-url: orgin_url,
                   sizes: sizes,
@@ -293,31 +291,28 @@
 {% assign page360url = product.metafields.custom.page360.value.url %}
 {%- if page360url -%}
   <style>
-        .btn-360{
-          display:flex;
-    gap: 0.4em;
-    border-radius: 99em;
-        transform: translateX(calc(-50% + 40px));
+    .btn-360 {
+      display: flex;
+      gap: 0.4em;
+      border-radius: 99em;
+      transform: translateX(calc(-50% + 40px));
       position: absolute;
       bottom: -12px;
       left: 50%;
       max-width: unset;
-
     }
-    .btn-360:hover{
-    opacity: 0.7;
-
+    .btn-360:hover {
+      opacity: 0.7;
     }
-    .btn-360 img{
-
-        width: 2em;
-        max-width: unset;
-        margin-left: 0.3em;
+    .btn-360 img {
+      width: 2em;
+      max-width: unset;
+      margin-left: 0.3em;
       vertical-align: text-top;
     }
-    @media only screen and (max-width: 860px){
-      .btn-360{
-        display:flex;
+    @media only screen and (max-width: 860px) {
+      .btn-360 {
+        display: flex;
         transform: translateX(-50%);
         bottom: 22.5%;
         font-size: 10px;
@@ -502,6 +497,10 @@
       height: 0;
     "
   >
-    {% render 'youtube-popup', blockid: 'blockid', video_id: youtubeId %}
+    {% render 'youtube-popup',
+      blockid: 'blockid',
+      video_id: youtubeId,
+      video_url: product.metafields.custom.youtube_url.value
+    %}
   </div>
 {% endif %}
