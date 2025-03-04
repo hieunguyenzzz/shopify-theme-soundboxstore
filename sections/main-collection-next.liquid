@@ -1,121 +1,118 @@
 {% if collection.url == '/collections/all' %}
   <script type="text/javascript">
-    window.location.href=window.location.href.replace('/collections/all','/collections/office-pods')
+    window.location.href = window.location.href.replace('/collections/all', '/collections/office-pods');
   </script>
 {% endif %}
 <style>
-      .main-collection-next{
-        padding: 1em 0
-      }
-        .main-collection-next .collection-template-grid{
-          display:grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 1em;
-              padding: 0 var(--pageWidthPadding);
-
-        }
-        .collection-template-grid-item{
-        display: flex;
-       border-radius: 0.8em;
-       position: relative;
-       isolation: isolate;
-          scroll-margin-top: calc(100px + 1em);
-        }
-  .collection-template-grid-item h3{
-       font-size:110%;
-        }
-        .collection-template-grid-item .image{
-          width:50%;
-          flex-shrink:0;
-          display: flex;
-        }
-         .collection-template-grid-item .image img{
-          max-width: 100%;
-          object-fit: contain;
-          height: auto;
-      }
-     .collection-template-grid-item .content{
-       padding:4em 4em 1em 0;
-       max-width:calc(340px + 4em);
-       margin:auto
-     }
-      .collection-template-grid-item .description{
-       font-size:0.8em;
-     }
-       .collection-template-grid-item .collection-btn-group{
-       margin-top:1em;
-     }
-     .main-collection-next .image_bg{
-          position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       z-index:-1;
-     }
-  .collection-template-grid-item .image_bg{
-          position: absolute;
-       top: 0;
-       left: 0;
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       border-radius: 0.8em;
-           border-top-right-radius: 5em;
-     }
-    @media only screen and (max-width: 678px) {
-            .main-collection-next .collection-template-grid{
-          grid-template-columns: repeat(1, minmax(0, 1fr));
-
-        }
-
-      .collection-template-grid-item .content {
-      padding: 1em;
-  }
-              .collection-template-grid-item{
-       gap: 0;
-        flex-direction: column;
-    text-align: center;
-    align-items: center;
+  .main-collection-next {
     padding: 1em 0;
-                         font-size:0.9em;
-        }
-      .collection-template-grid-item .content {
-      padding: 1em;
   }
-      .collection-template-grid-item .image{
-        width:100%
-      }
-     }
-      @media only screen and (max-width: 1024px) {
+  .main-collection-next .collection-template-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1em;
+    padding: 0 var(--pageWidthPadding);
+  }
+  .collection-template-grid-item {
+    display: flex;
+    border-radius: 0.8em;
+    position: relative;
+    isolation: isolate;
+    scroll-margin-top: calc(100px + 1em);
+  }
+  .collection-template-grid-item h3 {
+    font-size: 110%;
+  }
+  .collection-template-grid-item .image {
+    width: 50%;
+    flex-shrink: 0;
+    display: flex;
+  }
+  .collection-template-grid-item .image img {
+    max-width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+  .collection-template-grid-item .content {
+    padding: 4em 4em 1em 0;
+    max-width: calc(340px + 4em);
+    margin: auto;
+  }
+  .collection-template-grid-item .description {
+    font-size: 0.8em;
+  }
+  .collection-template-grid-item .collection-btn-group {
+    margin-top: 1em;
+  }
+  .main-collection-next .image_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .collection-template-grid-item .image_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.8em;
+    border-top-right-radius: 5em;
+  }
+  @media only screen and (max-width: 678px) {
+    .main-collection-next .collection-template-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 
-              .collection-template-grid-item{
-       gap: 0;
-        flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 1em 0;
-                         font-size:0.9em;
-        }
-      .collection-template-grid-item .content {
+    .collection-template-grid-item .content {
       padding: 1em;
+    }
+    .collection-template-grid-item {
+      gap: 0;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      padding: 1em 0;
+      font-size: 0.9em;
+    }
+    .collection-template-grid-item .content {
+      padding: 1em;
+    }
+    .collection-template-grid-item .image {
+      width: 100%;
+    }
   }
-      .collection-template-grid-item .image{
-        width:100%
-      }
-        .collection-template-grid-item .collection-btn-group{
-          justify-content:center
-        }
-     }
-  .main-collection-next .image img:not(:first-child){
-    display:none
+  @media only screen and (max-width: 1024px) {
+    .collection-template-grid-item {
+      gap: 0;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      padding: 1em 0;
+      font-size: 0.9em;
+    }
+    .collection-template-grid-item .content {
+      padding: 1em;
+    }
+    .collection-template-grid-item .image {
+      width: 100%;
+    }
+    .collection-template-grid-item .collection-btn-group {
+      justify-content: center;
+    }
   }
-  .main-collection-next .collection-template-grid-item:hover  .image img:not(:first-child){
-    display:block
+  .main-collection-next .image img:not(:first-child) {
+    display: none;
   }
-  .main-collection-next .collection-template-grid-item:hover  .image.had img:first-child{
-    display:none
+  .main-collection-next .collection-template-grid-item:hover .image img:not(:first-child) {
+    display: block;
+  }
+  .main-collection-next .collection-template-grid-item:hover .image.had img:first-child {
+    display: none;
   }
 </style>
 {% assign collection = section.settings.collection %}
@@ -148,7 +145,12 @@
               {{
                 image_bg
                 | image_url: width: 700
-                | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image_bg.alt, class: 'image_bg'
+                | image_tag:
+                  widths: '400, 600',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: block.settings.image_bg.alt,
+                  class: 'image_bg'
               }}
             {% endif %}
             <a class="image {% if image2 %} had {% endif %}" href="{{ url }}" style="mix-blend-mode: darken;">
@@ -156,14 +158,22 @@
                 {{
                   image
                   | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image.alt
+                  | image_tag:
+                    widths: '400, 600, 800',
+                    loading: 'lazy',
+                    class: 'js-lazy-image',
+                    alt: block.settings.image.alt
                 }}
               {% endif %}
               {% if image2 %}
                 {{
                   image2
                   | image_url: width: 700
-                  | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image2.alt
+                  | image_tag:
+                    widths: '400, 600, 800',
+                    loading: 'lazy',
+                    class: 'js-lazy-image',
+                    alt: block.settings.image2.alt
                 }}
               {% endif %}
             </a>
@@ -200,7 +210,12 @@
             {{
               image_bg
               | image_url: width: 700
-              | image_tag: widths: '400, 600', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image_bg.alt, class: 'image_bg'
+              | image_tag:
+                widths: '400, 600',
+                loading: 'lazy',
+                class: 'js-lazy-image',
+                alt: block.settings.image_bg.alt,
+                class: 'image_bg'
             }}
           {% endif %}
           <a class="image {% if image2 %} had {% endif %}" href="{{ url }}">
@@ -208,14 +223,22 @@
               {{
                 image
                 | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image.alt
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: block.settings.image.alt
               }}
             {% endif %}
             {% if image2 %}
               {{
                 image2
                 | image_url: width: 700
-                | image_tag: widths: '400, 600, 800', loading: 'lazy', class: 'js-lazy-image', alt: block.settings.image2.alt
+                | image_tag:
+                  widths: '400, 600, 800',
+                  loading: 'lazy',
+                  class: 'js-lazy-image',
+                  alt: block.settings.image2.alt
               }}
             {% endif %}
           </a>
@@ -278,7 +301,12 @@
             {{
               block.settings.image_bg
               | image_url: width: 700
-              | image_tag: widths: '400, 600', loading: 'lazy', alt: block.settings.image_bg.alt, class: 'image_bg', style: 'z-index:1'
+              | image_tag:
+                widths: '400, 600',
+                loading: 'lazy',
+                alt: block.settings.image_bg.alt,
+                class: 'image_bg',
+                style: 'z-index:1'
             }}
           {% endif %}
           <div
@@ -297,20 +325,21 @@
           {% if product %}
             {% assign feedId = '18121' %}
             {% capture custom %}
-access-extra-large-meeting-booth-soundproof-inclusive,
-access-large-soundproof-meeting-booth-inclusive-work,
-billy-office-chair-ergonomic-premium-comfortable-workspace,
-bugsy-lounge-chair-modern-stylish-workspace-design,
-ceiling-acoustic-panels,
-ceiling-panels,
-folio-acoustic-ceiling-panels,
-folio-geometric-acoustic-wall-panel,
-furniture-of-meeting-booth-4-6-person,
-furniture-of-meeting-pod-3-4-person,
-furniture-of-office-phone-pod-solo,
-furniture-of-office-pod-1-2-person,
-joy-stool,
-soundproof-prayer-booth-for-focused-worship-space,
+              access-extra-large-meeting-booth-soundproof-inclusive,
+              access-large-soundproof-meeting-booth-inclusive-work,
+              billy-office-chair-ergonomic-premium-comfortable-workspace,
+              bugsy-lounge-chair-modern-stylish-workspace-design,
+              ceiling-acoustic-panels,
+              ceiling-panels,
+              folio-acoustic-ceiling-panels,
+              folio-geometric-acoustic-wall-panel,
+              furniture-of-meeting-booth-4-6-person,
+              furniture-of-meeting-pod-3-4-person,
+              furniture-of-office-phone-pod-solo,
+              furniture-of-office-pod-1-2-person,
+              joy-stool,
+              soundproof-prayer-booth-for-focused-worship-space,
+              office-phone-booth-soundproof-folio-private-workspace,
               {% endcapture %}
             {% assign arr = custom | split: ',' %}
 
@@ -396,7 +425,7 @@ soundproof-prayer-booth-for-focused-worship-space,
           "id": "image_bg",
           "label": "background Image"
         },
-         {
+        {
           "type": "image_picker",
           "id": "image_bg_2",
           "label": "background Image 2"
@@ -440,7 +469,7 @@ soundproof-prayer-booth-for-focused-worship-space,
           "id": "image",
           "label": "Image"
         },
-          {
+        {
           "type": "image_picker",
           "id": "image_2",
           "label": "Image 2"
@@ -501,7 +530,7 @@ soundproof-prayer-booth-for-focused-worship-space,
       "type": "instagram",
       "name": "In stagram",
       "settings": [
-          {
+        {
           "type": "text",
           "id": "feed_id",
           "label": "Feed id",
