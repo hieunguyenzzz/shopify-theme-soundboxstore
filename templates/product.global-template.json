@@ -111,8 +111,8 @@
           "settings": {
             "title": "{{ block.repeater.title.value }}",
             "description": "{{ block.repeater.description | metafield_tag }}",
-            "point_x": "0",
-            "point_y": "0"
+            "point_x": "{{ block.repeater.hotspot_point_left.value }}",
+            "point_y": "{{ block.repeater.hotspot_point_right.value }}"
           }
         }
       },
