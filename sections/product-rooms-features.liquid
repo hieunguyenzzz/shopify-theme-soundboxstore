@@ -128,7 +128,8 @@
           left: {{ block.settings.point_x }}%;
           top: {{ block.settings.point_y }}%
         }
-        {%- if block.settings.point_x < 40 -%}
+        {%- assign point_x = block.settings.point_x | times: 1 -%}
+        {%- if point_x < 40 -%}
           .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
             left: unset;
             right: 0;
@@ -573,11 +574,6 @@
       "default": "https://cdn.shopify.com/videos/c/o/v/fecf113d20434e068abd32a1bc8c3ed6.mp4"
     },
     {
-      "type": "video",
-      "id": "close_video_file",
-      "label": "Video Url File"
-    },
-    {
       "type": "text",
       "id": "close_thumb",
       "label": "Thumb Url"
@@ -603,11 +599,6 @@
       "id": "open_video",
       "label": "Video Url",
       "default": "https://cdn.shopify.com/videos/c/o/v/f9efd8f6c5794c16b07d5dccc0e32b37.mp4"
-    },
-    {
-      "type": "video",
-      "id": "open_video_file",
-      "label": "Open Video Url File"
     },
     {
       "type": "text",
