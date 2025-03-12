@@ -256,6 +256,14 @@
                   <div class="label label-inside">{{ section.settings.open_label }}</div>
                 </div>
               </div>
+              <audio id="audio-close" loop>
+                <!-- <source src="{{ section.settings.close_audio }}" type="audio/mpeg" > -->
+                Your browser does not support the audio element.
+              </audio>
+              <audio id="audio-open" loop>
+                <!-- <source src="{{ section.settings.open_audio }}" type="audio/mpeg"> -->
+                Your browser does not support the audio element.
+              </audio>
             </div>
             <script>
               document.addEventListener('app:ready', (e) => {
