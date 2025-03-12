@@ -199,6 +199,7 @@
             <div>
               <div class="video-player active">
                 <div class="video-wrapper">
+                  {{ section.settings.open_video | video_tag }}
                   <video
                     width="1000"
                     height="1000"
@@ -209,7 +210,7 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-lazysrc="{{ section.settings.open_video.sources.first.url }}"
+                    data-lazysrc="{{ section.settings.open_video }}"
                     {% if section.settings.open_thumb != blank %}
                       poster="{{ section.settings.open_thumb | image_url }}"
                     {% endif %}
