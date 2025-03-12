@@ -209,9 +209,9 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-lazysrc="{{ section.settings.open_video }}"
+                    data-lazysrc="{{ section.settings.open_video.video_source.url }}"
                     {% if section.settings.open_thumb != blank %}
-                      poster="{{ section.settings.open_thumb }}"
+                      poster="{{ section.settings.open_thumb | image_url }}"
                     {% endif %}
                     class="video video-primary"
                     id="vid1"
@@ -226,9 +226,9 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-lazysrc="{{ section.settings.close_video }}"
+                    data-lazysrc="{{ section.settings.close_video.video_source.url }}"
                     {% if section.settings.close_thumb != blank %}
-                      poster="{{ section.settings.close_thumb }}"
+                      poster="{{ section.settings.close_thumb | image_url }}"
                     {% endif %}
                     class="video video-secondary"
                     id="vid2"
