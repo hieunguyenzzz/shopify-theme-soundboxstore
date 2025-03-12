@@ -256,14 +256,6 @@
                   <div class="label label-inside">{{ section.settings.open_label }}</div>
                 </div>
               </div>
-              <audio id="audio-close" loop>
-                <!-- <source src="{{ section.settings.close_audio }}" type="audio/mpeg" > -->
-                Your browser does not support the audio element.
-              </audio>
-              <audio id="audio-open" loop>
-                <!-- <source src="{{ section.settings.open_audio }}" type="audio/mpeg"> -->
-                Your browser does not support the audio element.
-              </audio>
             </div>
             <script>
               document.addEventListener('app:ready', (e) => {
@@ -562,19 +554,12 @@
       "default": "Close door"
     },
     {
-      "type": "text",
-      "id": "close_audio",
-      "label": "Audio Url",
-      "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Closing_Audio_MP3.mp3?v=1667799734"
-    },
-    {
-      "type": "text",
+      "type": "video",
       "id": "close_video",
-      "label": "Video Url",
-      "default": "https://cdn.shopify.com/videos/c/o/v/fecf113d20434e068abd32a1bc8c3ed6.mp4"
+      "label": "Video Url"
     },
     {
-      "type": "text",
+      "type": "image_picker",
       "id": "close_thumb",
       "label": "Thumb Url"
     },
@@ -589,19 +574,12 @@
       "default": "Open door"
     },
     {
-      "type": "text",
-      "id": "open_audio",
-      "label": "Audio Url",
-      "default": "https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Opening_Audio_MP3.mp3?v=1667799734"
-    },
-    {
-      "type": "text",
+      "type": "video",
       "id": "open_video",
-      "label": "Video Url",
-      "default": "https://cdn.shopify.com/videos/c/o/v/f9efd8f6c5794c16b07d5dccc0e32b37.mp4"
+      "label": "Video Url"
     },
     {
-      "type": "text",
+      "type": "image_picker",
       "id": "open_thumb",
       "label": "Thumb Url"
     }
