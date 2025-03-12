@@ -209,7 +209,7 @@
                     {% if section.settings.no_sound %}
                       muted
                     {% endif %}
-                    data-lazysrc="{{ section.settings.open_video.sources.first.url }}"
+                    data-lazysrc="{{ section.settings.open_video.sources | where: 'format', 'mp4' | first | map: 'url' }}"
                     {% if section.settings.open_thumb != blank %}
                       poster="{{ section.settings.open_thumb | image_url }}"
                     {% endif %}
