@@ -1,5 +1,12 @@
-{%- paginate blog.articles by 9 -%}
+{% if section.settings.custom_layout_first_article %}
+    <style>
+       #shopify-section-{{section.id}}{
+       }         
+    </style>
+{% endif %}
+<p> #shopify-section-{{section.id}}</p>
 
+{%- paginate blog.articles by 9 -%}
 <div data-section-id="{{ section.id }}" data-section-type="blog">
   <header class="section-header{% if section.settings.blog_show_tag_filter and blog.tags.size > 0 %} section-header--with-link{% endif %}">
     <h1 class="section-header__title">
@@ -48,6 +55,12 @@
     "name": "Blog pages",
     "class": "blog-layout__main",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "custom_layout_first_article",
+        "label": "custom layout ",
+        "info": "Check to Use custom layout in first article"
+      },
       {
         "type": "checkbox",
         "id": "blog_show_rss",
