@@ -21,8 +21,9 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>{% render 'yoast-seo' %}
-    
+  <head>
+    {% render 'yoast-seo' %}
+
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
     {% render 'pre-header' %}
@@ -223,7 +224,9 @@
       </title>
     {% endif %}
 
-    <meta name="description" content="{{ page_description | escape }}">
+    {%- if disabled_by_yoast_seo -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
     <style>
