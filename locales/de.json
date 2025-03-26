@@ -648,35 +648,35 @@
         "shipping_line_delivery_phone_label": "Nummer des Mobiltelefons",
         "shipping_line_delivery_phone": "Sie können über den aktuellen Stand Ihrer Lieferung informiert werden.",
         "optional_shipping_line_delivery_instructions_label": "Lieferanweisungen (fakultativ)",
-        "shipping_line_delivery_instructions": "Geben Sie die erforderlichen Informationen wie Türcodes oder Anweisungen zur Abgabe ein.",
+        "shipping_line_delivery_instructions": "Geben Sie die erforderlichen Informationen ein, wie z. B. Türcodes oder Anweisungen für die Rückgabe.",
         "other_method": {
           "zero": "Keine anderen Methoden verfügbar",
-          "one": "%{count} andere Methode verfügbar bei ",
-          "other": "%{count} andere Methoden verfügbar ab "
+          "one": "%{count} andere Methode verfügbar unter",
+          "other": "%{count} andere Methoden verfügbar ab"
         },
-        "shipping_rate_discounted_amount": "War: %{original_amount}. Jetzt: %{amount}",
-        "local_delivery": "Lokale Lieferung",
+        "shipping_rate_discounted_amount": "Was: %{original_amount}. Jetzt: %{amount}",
+        "local_delivery": "Lokale Zustellung",
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
             "one": "für %{count} Lieferung",
-            "other": "für %{count} Teillieferungen"
+            "other": "für %{count} Lieferungen"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "one": "täglich",
-              "other": "jeder %{count} Days"
+              "one": "jeden Tag",
+              "other": "alle %{count} Tage"
             },
             "week": {
               "one": "jede Woche",
-              "other": "jeder %{count} wochenlang"
+              "other": "alle %{count} Wochen"
             },
             "month": {
-              "one": "monatlich",
-              "other": "jeder %{count} Monat"
+              "one": "jeden Monat",
+              "other": "alle %{count} Monate"
             },
             "year": {
-              "one": "jährlich",
-              "other": "jeder %{count} jahrelang"
+              "one": "jedes Jahr",
+              "other": "alle %{count} Jahre"
             }
           },
           "multiple_subscriptions_shipping_price_label": "%{shipping_price} pro Lieferung",
@@ -688,7 +688,7 @@
           "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Erste Versandkosten %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), dann %{shipping_price} %{billing_cycle}",
           "shipping_price_included": "Eingeschlossen",
           "recurring_order_shipping_price": "gefolgt von %{recurring_order_shipping_price}",
-          "first_order_shipping_price_included": "Erste Bestellung inklusive, gefolgt von %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Erste Bestellung enthalten, gefolgt von %{recurring_order_shipping_price}",
           "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} pro Lieferung), gefolgt von %{recurring_order_shipping_price}",
           "first_n_order_free": {
             "one": "Erste Bestellung kostenlos",
@@ -697,7 +697,52 @@
           "free_for_first_n_order": {
             "one": "Für die erste Bestellung",
             "other": "Für den ersten %{count} Orders"
-          }
+          },
+          "free_shipping_cycles": {
+            "one": "Kostenloser Versand für %{count} mehr Lieferung",
+            "other": "Kostenloser Versand für %{count} weitere Lieferungen"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "one": "Kostenloser Versand für %{count} Lieferung",
+            "other": "Kostenloser Versand für %{count} Lieferungen"
+          },
+          "first_n_order_free_with_cycle": {
+            "one": "Kostenloser Versand für %{count} mehr Lieferung, dann %{recurring_order_shipping_price}",
+            "other": "Kostenloser Versand für %{count} weitere Lieferungen, dann %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "one": "Kostenloser Versand für %{count} Lieferung, dann %{recurring_order_shipping_price}",
+            "other": "Kostenloser Versand für %{count} Lieferungen, dann %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "one": "%{count} mehr Lieferung für %{shipping_price}",
+            "other": "%{count} weitere Lieferungen für je %{shipping_price}"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "one": "%{count} Lieferung für %{shipping_price}",
+            "other": "%{count} weitere Lieferungen für je %{shipping_price}"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "one": "Kostenloser Versand für die ersten %{cycle}, gefolgt von %{recurring_order_shipping_price}",
+            "other": "Kostenloser Versand für die ersten %{cycle}, gefolgt von %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "one": "%{shipping_price} für %{count} mehr Lieferung",
+            "other": "%{shipping_price} für %{count} weitere Lieferungen (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "one": "%{shipping_price} für %{count} Lieferung",
+            "other": "%{shipping_price} für %{count} Lieferungen (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "one": "%{shipping_price} für %{count} weitere Lieferungen, gefolgt von %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} für %{count} weitere Lieferungen (%{per_delivery_cost}), gefolgt von %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "one": "%{shipping_price} für %{count} Lieferung, gefolgt von %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} für %{count} Lieferungen (%{per_delivery_cost}), gefolgt von %{recurring_order_shipping_price}"
+          },
+          "subscription_free_with_frequency_label": "Kostenloser Versand %{delivery_frequency}"
         },
         "one_time_purchase_shipping": "Einmaliger Versand",
         "split_cart_merchandise_quantity_label_standard": "%{quantity} Artikel",
