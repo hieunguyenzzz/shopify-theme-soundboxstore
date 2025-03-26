@@ -1984,24 +1984,48 @@
         "processing_error": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
         "processing_error_checkout_as_guest": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut mit einer anderen Zahlungsmethode oder {{checkout_as_guest_link}}.",
         "selected_payment_method": "Es gab ein Problem mit der von Ihnen gewählten Zahlungsmethode und Sie wurden nicht belastet. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "payment_method_billing_address": "Es gab ein Problem mit der Rechnungsadresse der von Ihnen gewählten Zahlungsmethode und Sie wurden nicht belastet. Überprüfen Sie die Adresse und versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode."
+        "payment_method_billing_address": "Es gab ein Problem mit der Rechnungsadresse der von Ihnen gewählten Zahlungsmethode und Sie wurden nicht belastet. Überprüfen Sie die Adresse und versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "call_issuer": "Ihre Karte wurde abgelehnt. Verwenden Sie eine andere Zahlungsmethode oder kontaktieren Sie Ihre Bank für weitere Informationen.",
+        "test_mode_live_card": "Dieser Laden kann weder echte Bestellungen noch echte Zahlungen annehmen.",
+        "transient_error": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie, diese Seite zu aktualisieren oder überprüfen Sie Ihre Internetverbindung.",
+        "missing_shipping_address": "Ihre Zahlung konnte nicht bearbeitet werden, weil Ihre Lieferadresse fehlt. Fügen Sie eine Lieferadresse hinzu und versuchen Sie es erneut.",
+        "invalid_shipping_address": "Ihre Zahlung konnte nicht bearbeitet werden, weil wir Ihre Lieferadresse nicht finden konnten. Überprüfen Sie Ihre Lieferadresse und versuchen Sie es erneut.",
+        "successful_offsite_with_gift_card_error": "Es gab ein Problem bei der Verarbeitung Ihrer Geschenkkartenzahlung. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "development_store_order_limit_reached": "Sie haben das Limit für Bestellungen im Entwicklungsshop mit diesem Zahlungsanbieter erreicht. Um eine weitere Bestellung aufzugeben, müssen Sie ein Test-Zahlungsgateway verwenden. Erfahren Sie mehr über %{development_store_order_testing_docs_link}.",
+        "development_store_with_order_limit": "Um eine Testbestellung aufzugeben, müssen Sie ein Test-Zahlungsgateway verwenden. Erfahren Sie mehr über %{development_store_order_testing_docs_link}.",
+        "development_store_order_testing_docs_link": "Testaufträge in Entwicklungsläden",
+        "payment_above_threshold": "Der Zahlungsbetrag liegt über dem Höchstbetrag für diese Region. Reduzieren Sie den Betrag und versuchen Sie es erneut",
+        "risky": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "expired_buyer_action": "Die Zahlungsmethode wurde abgebrochen. Bitte versuchen Sie es erneut."
       },
       "shipping_errors": {
-        "shipping_method": "Ihr Warenkorb wurde aktualisiert und die vorherigen Versandkosten sind ungültig. Wählen Sie einen neuen Tarif aus.",
-        "shipping_method_not_available": "Ihr Warenkorb wurde aktualisiert und die von Ihnen hinzugefügten Artikel können nicht an Ihre Adresse versendet werden. Entfernen Sie die Artikel, um Ihre Bestellung abzuschließen.",
+        "shipping_method": "Die Versandoptionen für Ihre Bestellung haben sich geändert. Überprüfen Sie Ihre Auswahl und versuchen Sie es erneut.",
+        "shipping_method_not_available": "Ihr Warenkorb wurde aktualisiert und die hinzugefügten Artikel können nicht an Ihre Adresse geliefert werden. Entfernen Sie die Artikel, um Ihre Bestellung abzuschließen.",
         "shipping_method_not_available_generic": {
-          "one": "Diese Bestellung kann nicht an die von Ihnen eingegebene Adresse versendet werden. Überprüfen Sie Ihre Adresse, um sicherzustellen, dass alle Felder korrekt eingegeben wurden, und versuchen Sie es erneut.",
-          "other": "Einige Artikel in Ihrem Warenkorb können nicht an die von Ihnen eingegebene Adresse versendet werden. Überprüfen Sie Ihre Adresse, um sicherzustellen, dass alle Felder korrekt eingegeben wurden, und versuchen Sie es erneut."
+          "one": "Ihre Bestellung kann nicht an die ausgewählte Adresse versandt werden. Überprüfen Sie Ihre Adresse, um sicherzustellen, dass sie korrekt ist und versuchen Sie es erneut, oder wählen Sie eine andere Adresse.",
+          "other": "Einige Artikel in Ihrem Warenkorb können nicht an die von Ihnen angegebene Adresse versandt werden. Überprüfen Sie Ihre Adresse, um sicherzustellen, dass sie korrekt ist, und versuchen Sie es erneut, oder wählen Sie eine andere Adresse."
         },
         "shipping_method_not_available_updated": {
-          "one": "Der von Ihnen hinzugefügte Artikel wird nicht an Ihren Standort geliefert. Entfernen Sie es zum Auschecken oder wenden Sie sich an den Laden.",
-          "other": "Ein oder mehrere Artikel, die Sie hinzugefügt haben, werden nicht an Ihren Standort geliefert. Entfernen Sie sie zum Auschecken oder wenden Sie sich an den Laden."
+          "one": "Der Artikel, den Sie hinzugefügt haben, wird nicht an Ihren Standort geliefert. Entfernen Sie ihn, um zur Kasse zu gehen, oder kontaktieren Sie das Geschäft.",
+          "other": "Ein oder mehrere Artikel, die Sie hinzugefügt haben, werden nicht an Ihren Standort geliefert. Entfernen Sie sie, um zur Kasse zu gehen, oder kontaktieren Sie den Shop."
         },
-        "payment_method_not_supported": "Sie können diese Zahlungsmethode nicht verwenden für %{country}. Bitte verwenden Sie eine andere Zahlungsmethode, um in dieses Land zu versenden."
+        "payment_method_not_supported": "Sie können diese Zahlungsmethode nicht für %{country} verwenden. Bitte verwenden Sie eine andere Zahlungsmethode für den Versand in dieses Land.",
+        "shipping_method_not_available_due_to_unsatisfied_conditions": "Die Artikel im Warenkorb entsprechen nicht den Preis- oder Gewichtsanforderungen, um für den Versand zu qualifizieren. Aktualisieren Sie Ihren Warenkorb und versuchen Sie es erneut.",
+        "empty_state": "Geben Sie Ihre Versandadresse ein, um die verfügbaren Versandmethoden anzuzeigen.",
+        "title": "Versand nicht möglich",
+        "invalid_selected_address": "Ausgewählte Lieferadresse ist nicht gültig",
+        "invalid_selected_address_with_update_link": "Die gewählte Lieferadresse ist nicht gültig. %{update_address_link} oder wählen Sie eine andere Adresse",
+        "unavailable_selected_address": "Versand für ausgewählte Adresse nicht verfügbar",
+        "unavailable_selected_address_for_region": "Der Versand ist nicht verfügbar für {{region}}. Wählen Sie eine andere Adresse, um fortzufahren"
       },
       "alternative_payment_method_banner": {
-        "express_checkout": "Express-Kaufabwicklung",
-        "or": "ODER"
+        "express_checkout": "Express-Kasse",
+        "or": "OR",
+        "or_pay_another_way": "Oder auf andere Weise bezahlen",
+        "or_check_out_another_way": "Oder sehen Sie sich eine andere Möglichkeit an",
+        "or_pay_with_credit_card": "Oder mit Kreditkarte bezahlen",
+        "show_more_options": "Weitere Optionen anzeigen",
+        "hide_more_options": "Weitere Optionen ausblenden"
       },
       "alternative_payment_method": {
         "button_html": "Kasse mit: %{method}",
@@ -2014,26 +2038,26 @@
         "button_html": "Kaufen mit %{logo}"
       },
       "post_purchase": {
-        "page_title": "Nach dem Kauf",
-        "title": "Nach dem Kauf",
+        "page_title": "Post-Kauf",
+        "title": "Post-Kauf",
         "escape_confirmation": "Sie haben Ihre Bestellung bezahlt.",
-        "escape_action": "Bestellbestätigung anzeigen ›",
+        "escape_action": "Auftragsbestätigung ansehen '",
         "components": {
-          "close": "Schließen",
+          "close": "Schließen Sie",
           "expand": "Mehr sehen",
-          "processing": "Verarbeitung…",
-          "submit": "Abgeben"
+          "processing": "Verarbeitung...",
+          "submit": "Einreichen"
         }
       },
       "processing": {
-        "redirecting_page_title": "Weiterleitungen…",
-        "redirecting_title": "Weiterleitungen…",
-        "redirecting_notice": "Warten Sie, während wir Sie umleiten.",
-        "complete_your_purchase_title": "Schließen Sie Ihren Einkauf ab",
-        "continue_to_payment_gateway_notice": "Fahren Sie mit Zahlung fort, um Ihre Zahlungsinformationen hinzuzufügen.",
+        "redirecting_page_title": "Umleitung...",
+        "redirecting_title": "Umleitung...",
+        "redirecting_notice": "Warten Sie, wir leiten Sie um.",
+        "complete_your_purchase_title": "Schließen Sie Ihren Kauf ab",
+        "continue_to_payment_gateway_notice": "Fahren Sie mit der Zahlung fort, um Ihre Zahlungsinformationen hinzuzufügen.",
         "continue_to_payment_gateway_button_label": "Weiter zur Zahlung",
         "complete_your_purchase_title_error": "Korrigieren Sie Ihre Zahlungsinformationen",
-        "continue_to_payment_gateway_notice_error": "Ihre Zahlungsinformationen konnten nicht überprüft werden.",
+        "continue_to_payment_gateway_notice_error": "Ihre Zahlungsinformationen konnten nicht verifiziert werden.",
         "continue_to_payment_gateway_button_label_error": "Zahlungsinformationen aktualisieren",
         "page_title": "Bestellung bearbeiten",
         "title": "Bestellung bearbeiten",
@@ -2049,7 +2073,8 @@
           "long": "Sie erhalten eine E-Mail, sobald Ihre Bestellung bearbeitet wurde. Derzeit gibt es ein hohes Auftragsvolumen.",
           "no_auto_refresh_html": "Wenn Sie nicht automatisch weitergeleitet werden, %{link}.",
           "refresh_this_page": "aktualisieren Sie diese Seite"
-        }
+        },
+        "redirecting_to_bank": "Weiterleitung an {{bank}}"
       },
       "failed_payment": {
         "page_title": "Zahlung konnte nicht verarbeitet werden",
