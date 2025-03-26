@@ -3826,8 +3826,8 @@
           "manual": "Handbuch - {{formattedTransactionAmount}}"
         }
       },
-      "refunded_amount": "Erstatten",
-      "request_return_failed": "Bei der Bearbeitung Ihrer Anfrage ist ein Problem aufgetreten. Bitte versuchen Sie es erneut.",
+      "refunded_amount": "Erstattet",
+      "request_return_failed": "Es gab ein Problem bei der Bearbeitung Ihrer Anfrage. Bitte versuchen Sie es erneut.",
       "returns": {
         "expand_events_label": "Details anzeigen",
         "hide_events_label": "Details ausblenden",
@@ -3835,23 +3835,29 @@
         "ineligible_return_without_policy_message": "Keine Artikel in dieser Bestellung können zurückgegeben werden.",
         "print_shipping_label": "Versandetikett drucken",
         "return_and_refund_link_text": "rückgabe- und rückerstattungspolitik",
-        "return_and_refund_modal_header": "Rückgabe- und Rückerstattungspolitik",
-        "tracking_number": "Spurhaltungszahl:"
+        "return_and_refund_modal_header": "Erstattungspolitik",
+        "tracking_number": "Verfolgungsnummer:",
+        "ineligible_return_message": "Die Artikel in dieser Bestellung können nicht zurückgegeben werden.",
+        "ineligible_return_message_when_returned": "Weitere Artikel in dieser Bestellung sind nicht rückgabeberechtigt."
       },
       "shipping": {
         "address": "Lieferadresse",
         "address_map_marker": "Lieferadresse",
         "method": "Versandart",
-        "summary": "Versand"
+        "summary": "Versand",
+        "free": "Kostenlos",
+        "free_shipping_discount": "Kostenloser Versand",
+        "one_time": "Einmaliger Versand",
+        "subscription": "Versand im Abonnement"
       },
       "show_items": "Artikel anzeigen",
       "show_order_summary": "Bestellübersicht anzeigen",
-      "hide_order_summary": "Bestellübersicht ausblenden",
-      "subtitle": "Bestätigen {{date}}",
-      "subtotal": "Zwischensummen",
-      "summary_list_title_accessibility_label": "Auftragspositionen",
-      "summary_title": "Bestellübersicht",
-      "summary_totals_title_accessibility_label": "Bestellsummen",
+      "hide_order_summary": "Zusammenfassung der Bestellung ausblenden",
+      "subtitle": "Confirmed {{date}}",
+      "subtotal": "Zwischensumme",
+      "summary_list_title_accessibility_label": "Artikel bestellen",
+      "summary_title": "Zusammenfassung der Bestellung",
+      "summary_totals_title_accessibility_label": "Auftragssummen",
       "taxes": "Steuern",
       "title": "Bestellen {{name}}",
       "total": "Insgesamt",
@@ -3893,6 +3899,38 @@
           "title": "Scannen für Erinnerungen",
           "description": "Lassen Sie sich mit Shop an Ihre Ratenzahlungen erinnern."
         }
+      },
+      "remaining_amount": "Verbleibende",
+      "marketing_section_title": "Neuigkeiten und Angebote",
+      "marketing_description": "Sie werden Marketing-E-Mails erhalten. Sie können sich jederzeit wieder abmelden.",
+      "marketing_checkbox_label": "E-Mail mit Neuigkeiten und Angeboten",
+      "marketing_checkmark_label": "Sie haben sich für den Erhalt von E-Mail-Nachrichten und Angeboten angemeldet",
+      "pickup": {
+        "pickup": "Abholung",
+        "pickup_location": "Ort der Abholung",
+        "pickup_point": "Abholstelle"
+      },
+      "shop_order_tracking": {
+        "download_shop_to_track": "Download Shop zur Paketverfolgung",
+        "track_order_with_shop": "Bestellung mit Shop verfolgen",
+        "title_header": "Scannen mit Ihrem Handy",
+        "real_time_delivery_updates": "Der Shop informiert Sie in Echtzeit über den Stand der Lieferung, sobald Ihre Bestellung versandt wurde."
+      },
+      "edit_summary": {
+        "added": "Hinzugefügt",
+        "added_with_quantity": "Added {{quantity}}",
+        "removed": "Entfernt",
+        "removed_with_quantity": "Removed {{quantity}}",
+        "updated_at": "Ihre Bestellung wurde aktualisiert am {{date}}",
+        "returned": "Zurückgeschickt",
+        "returned_with_quantities": "Returned {{delta}} of {{total}}",
+        "removed_with_quantities": "Removed {{delta}} of {{total}}",
+        "return_line_item_removed": "Aus der Rückgabe entfernt",
+        "return_line_item_removed_with_quantities": "{{delta}} aus der Rückgabe entfernt"
+      },
+      "shop_pay": {
+        "order_completed_with": "Bestellung abgeschlossen mit",
+        "learn_more": "Mehr erfahren"
       }
     },
     "addresses": {
