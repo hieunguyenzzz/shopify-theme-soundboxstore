@@ -692,11 +692,11 @@
           "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} pro Lieferung), gefolgt von %{recurring_order_shipping_price}",
           "first_n_order_free": {
             "one": "Erste Bestellung kostenlos",
-            "other": "Erst %{count} bestellungen kostenlos"
+            "other": "Erste %{count} Bestellungen kostenlos"
           },
           "free_for_first_n_order": {
             "one": "Für die erste Bestellung",
-            "other": "Für den ersten %{count} Orders"
+            "other": "Für Erstbestellungen %{count}"
           },
           "free_shipping_cycles": {
             "one": "Kostenloser Versand für %{count} mehr Lieferung",
@@ -761,7 +761,62 @@
           "one": "Wiederkehrende Sendung",
           "other": "Wiederkehrende Sendungen"
         },
-        "default_description": "Versand in 1 Werktag"
+        "default_description": "Versand in 1 Werktag",
+        "duties_and_taxes_title": "Zölle und Steuern",
+        "shipping_information_required_notice": "Versandinformationen sind erforderlich. {{link}}.",
+        "shipping_information_redirect_link": "Geben Sie hier Ihre Informationen ein",
+        "loading_progressive_rates": "Auf der Suche nach weiteren Tarifen...",
+        "no_other_methods_available": "Keine anderen Methoden verfügbar",
+        "duties_and_taxes_options": {
+          "ddu_title": "Zahlung bei Lieferung",
+          "ddu_caption": "Zusätzliche Gebühren können anfallen",
+          "ddp_title": "Jetzt bezahlen",
+          "ddp_caption": "Keine zusätzlichen Gebühren bei der Lieferung"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} and %{current}"
+        },
+        "shipping_used_as_billing_notice": "Diese Adresse wird auch als Rechnungsadresse für diese Bestellung verwendet.",
+        "address_update": "Adresse aktualisieren",
+        "shipping_address_title": "Versand nach",
+        "add_address": "Verwenden Sie eine andere Adresse",
+        "add_delivery_instructions": "Lieferanweisungen hinzufügen",
+        "edit": "bearbeiten",
+        "delete": "Löschen",
+        "address_more": "Weitere Aktionen für diese Adresse",
+        "address_edit": "Adresse bearbeiten",
+        "address_delete": "Adresse löschen",
+        "address_confirm": "Sind Sie sicher, dass Sie diese Adresse aus Ihrem Konto löschen möchten?",
+        "address_default": "Als Standard eingestellt",
+        "address_form": {
+          "add_address": "Adresse hinzufügen",
+          "save": "Speichern Sie",
+          "cancel": "Abbrechen",
+          "generic_error": "Beim Speichern Ihrer Adresse ist ein Problem aufgetreten. Bitte versuchen Sie es erneut.",
+          "one_time_address_subtitle": "Verwenden Sie eine einmalige Adresse für diese Bestellung"
+        },
+        "different_shipping_method_summary": "Geben Sie eine abweichende Versandadresse ein, um die verfügbaren Versandmethoden anzuzeigen.",
+        "invalid_shipping_method_summary": "Geben Sie eine gültige Versandadresse ein, um die verfügbaren Versandmethoden anzuzeigen.",
+        "method_summary": {
+          "incomplete_address_entered": "Geben Sie eine vollständige Versandadresse ein, um die verfügbaren Versandmethoden anzuzeigen.",
+          "incomplete_address_selected": "Wählen Sie eine vollständige Versandadresse aus, um die verfügbaren Versandmethoden anzuzeigen."
+        },
+        "local_pickup": {
+          "search_address": "Suche nach Adresse",
+          "rollup_title": "Standort der Filiale"
+        },
+        "missing_shipping_address": "Die Lieferadresse fehlt",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} items",
+        "split_shipping_merchandise_quantity_label_additional": "+%{quantity} more",
+        "split_shipping_merchandise_shipment_number": "Sendung %{number} von %{total}",
+        "pre_order_ships_now": "Schiffe jetzt",
+        "pre_order_ships_later": "Schiffe später",
+        "pre_order_ships_date": "Ships %{date}",
+        "split_shipping_shipped_by_shop": "Versendet von %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Mehrere Sendungen",
+        "split_shipping_shipping_label": "Methode"
       },
       "general": {
         "page_title": "Kasse",
