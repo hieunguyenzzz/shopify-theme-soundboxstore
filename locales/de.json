@@ -4344,24 +4344,34 @@
           "card_security_notice": "Alle Transaktionen sind sicher und verschlüsselt."
         },
         "field_errors": {
-          "credit_card_name_invalid": "Geben Sie Ihren Namen genau so ein, wie er auf Ihrer Karte steht",
+          "credit_card_name_invalid": "Geben Sie Ihren Namen genau so ein, wie er auf Ihrer Karte steht.",
           "credit_card_number_invalid": "Geben Sie eine gültige Kartennummer ein",
-          "credit_card_expiry_invalid": "Geben Sie ein gültiges Ablaufdatum der Karte ein",
-          "credit_card_verification_value_blank": "Geben Sie den CVV- oder Sicherheitscode auf Ihrer Karte ein"
+          "credit_card_expiry_invalid": "Geben Sie ein gültiges Gültigkeitsdatum der Karte ein",
+          "credit_card_verification_value_blank": "Geben Sie den CVV- oder Sicherheitscode auf Ihrer Karte ein."
         }
       },
       "payment_delete": {
         "title": "Zahlungsmethode löschen",
-        "description_without_replacement": "Diese Zahlungsmethode steht für zukünftige Einkäufe nicht mehr zur Verfügung.",
-        "description_with_replacement": "Das Löschen dieser Zahlungsmethode wirkt sich auf vorautorisierte Zahlungen aus. Sie können es optional durch eine andere Zahlungsmethode ersetzen, um weiterhin anstehende Bestellungen zu erhalten.",
+        "description_without_replacement": "Diese Zahlungsmethode wird für zukünftige Einkäufe nicht mehr zur Verfügung stehen.",
+        "description_with_replacement": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorab autorisierte Zahlungen aus. Sie können sie optional durch eine andere Zahlungsmethode ersetzen, um kommende Bestellungen weiterhin zu erhalten.",
         "payment_method_selector_placeholder": "Wählen Sie eine Ersatzzahlungsmethode (optional)",
         "payment_method_selector_no_alternative_payment": "Keine Ersatzmethode",
-        "replace_method_with_new_method_description": "Ihrer {{currentPaymentMethodName}} werden gelöscht und durch Ihre ersetzt {{newPaymentMethodName}}.",
-        "error_when_deleting": "Wir entschuldigen uns, aber etwas ist schief gelaufen und wir konnten diese Zahlungsmethode nicht löschen. Bitte versuchen Sie es später noch einmal oder aktualisieren Sie die Seite.",
-        "delete_and_replace_button": "Streichen und ersetzen",
-        "delete_and_replace_button_accessibility_label": "Löschen {{currentPaymentMethodName}} und ersetzen durch {{newPaymentMethodName}}.",
+        "replace_method_with_new_method_description": "Ihre {{currentPaymentMethodName}}  wird gelöscht und durch Ihre {{newPaymentMethodName}}. ersetzt",
+        "error_when_deleting": "Es tut uns leid, aber es ist etwas schief gelaufen und wir konnten diese Zahlungsmethode nicht löschen. Bitte versuchen Sie es später noch einmal oder aktualisieren Sie die Seite.",
+        "delete_and_replace_button": "Löschen und ersetzen",
+        "delete_and_replace_button_accessibility_label": "{{currentPaymentMethodName}}  löschen und durch {{newPaymentMethodName}}. ersetzen",
         "deleted_successfully": "Zahlungsmethode erfolgreich gelöscht.",
-        "loading_available_payment_methods_accessibility_label": "Verfügbare Zahlungsmethoden laden"
+        "loading_available_payment_methods_accessibility_label": "Laden verfügbarer Zahlungsarten",
+        "warning_message_with_replacement": {
+          "with_pending_orders_and_subscriptions": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorab autorisierte Zahlungen aus. Wenn Sie keine alternative Zahlungsmethode wählen, wird diese Zahlungsmethode weiterhin für alle ausstehenden Beträge für bestehende Bestellungen belastet. Wenn Sie eine alternative Zahlungsmethode wählen, können Sie kommende Abonnementbestellungen ohne Unterbrechung erhalten.",
+          "with_pending_orders": "Wenn Sie diese Zahlungsmethode löschen, wird sie von Ihrem Konto entfernt und steht für zukünftige Einkäufe nicht mehr zur Verfügung. Sofern Sie keine andere Zahlungsmethode wählen, wird sie weiterhin für alle ausstehenden Beträge für bestehende Bestellungen belastet.",
+          "with_subscriptions": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorab autorisierte Zahlungen aus. Ersetzen Sie sie durch eine alternative Zahlungsmethode, um weiterhin anstehende Bestellungen zu erhalten."
+        },
+        "warning_message_without_replacement": {
+          "with_pending_orders_and_subscriptions": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorautorisierte Zahlungen aus. Diese Zahlungsmethode wird weiterhin für alle ausstehenden Beträge für bestehende Bestellungen belastet, aber Sie erhalten keine neuen Abonnementbestellungen. Fügen Sie eine alternative Zahlungsmethode hinzu, um weiterhin Abonnementbestellungen zu erhalten.",
+          "with_pending_orders": "Wenn Sie diese Zahlungsmethode löschen, wird sie von Ihrem Konto entfernt und steht für zukünftige Einkäufe nicht mehr zur Verfügung. Ausstehende Beträge für bereits getätigte Bestellungen werden weiterhin damit bezahlt.",
+          "with_subscriptions": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorab autorisierte Zahlungen aus. Fügen Sie eine alternative Zahlungsmethode hinzu, um anstehende Bestellungen weiterhin zu erhalten."
+        }
       },
       "add_payment_method_banner": "Hinzufügen einer Zahlungsmethode für eine schnellere Kaufabwicklung oder vorautorisierte Dienste",
       "no_payment_methods_banner": "Keine zusätzlichen Zahlungsarten",
@@ -4426,15 +4436,43 @@
             "load_more_accessibility_label": "Laden Sie mehr wünschenswerte Mengen"
           }
         }
+      },
+      "add_payment_method": {
+        "title": "Zahlungsmethode hinzufügen",
+        "payment_method_added_confirmation": "Zahlungsmethode hinzugefügt",
+        "billing_address": {
+          "title": "Rechnungsadresse",
+          "add_billing_address_button": "Neu hinzufügen",
+          "add_billing_address_button_accessibility_label": "Neue Rechnungsadresse hinzufügen",
+          "choose_billing_address_from_list_button": "Wählen Sie aus der Liste",
+          "choose_billing_address_from_list_button_accessibility_label": "Wählen Sie eine Rechnungsadresse aus der Liste",
+          "missing_billing_address_error_message": "Bitte geben Sie eine Rechnungsadresse an",
+          "default_checkbox": "Als Standard-Zahlungsmethode festlegen"
+        }
+      },
+      "three_d_secure": {
+        "title": "3D-Sicherheit"
       }
     },
     "payment_method_brands": {
       "visa": "Visum",
-      "mastercard": "Kartenzahlung",
-      "shoppay": "Shop bezahlen",
-      "applepay": "Apple Bezahlen",
-      "googlepay": "Google-Zahlung",
-      "paypal": "paypal"
+      "mastercard": "Mastercard",
+      "shoppay": "Shop Bezahlen",
+      "applepay": "Apple Pay",
+      "googlepay": "Google Pay",
+      "paypal": "PayPal",
+      "americanexpress": "American Express",
+      "discover": "Entdecken Sie",
+      "dinersclub": "Diners Club",
+      "jcb": "JCB",
+      "elo": "Elo",
+      "visaelectron": "Visa-Elektron",
+      "maestro": "Maestro",
+      "forbrugsforeningen": "Forbrugsforeningen",
+      "dankort": "Dankort",
+      "hipercard": "Hipercard",
+      "unionpay": "UnionPay",
+      "laser": "Laser"
     },
     "shop_policies": {
       "legal_notice": "Rechtliche Hinweise",
