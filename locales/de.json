@@ -3297,28 +3297,28 @@
           "opted_out_html": "<b>Sie haben die Nachverfolgung der geöffneten E-Mails abbestellt.</b>",
           "visibility": "Wir werden nicht sehen, ob Sie unsere E-Mails geöffnet haben.",
           "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Melden Sie sich</a> für die Nachverfolgung geöffneter E-Mails an.",
-          "preview_bar": "Sie sehen in der Vorschau, was Kunden sehen, wenn sie sich von der E-Mail-Öffnungsverfolgung abmelden."
+          "preview_bar": "Sie geben eine Vorschau darauf, was Ihre Kunden sehen werden, wenn sie sich von der Verfolgung der geöffneten E-Mails abmelden."
         },
         "no_longer_track": {
-          "status_html": "<b>Wir verfolgen keine geöffneten E-Mails mehr.</b>",
-          "privacy_policy": "Nachdem diese E-Mail gesendet wurde, haben wir unsere Datenschutzrichtlinie aktualisiert und verfolgen keine Öffnungen mehr."
+          "status_html": "<b>Wir verfolgen nicht mehr, wie eine E-Mail geöffnet wird.</b>",
+          "privacy_policy": "Nachdem diese E-Mail verschickt wurde, haben wir unsere Datenschutzrichtlinien aktualisiert und verfolgen nun nicht mehr, wie eine E-Mail geöffnet wird."
         },
         "track": {
-          "status_html": "<b>E-Mail-Öffnungsverfolgung wird gemeldet.</b>",
-          "visibility": "Wir werden nur sehen, ob Sie die E-Mail geöffnet haben, als Teil der gesamten E-Mail-Öffnungsrate."
+          "status_html": "<b>E-Mail-Öffnungsnachweis wird gemeldet.</b>",
+          "visibility": "Wir sehen nur, ob Sie die E-Mail geöffnet haben, und zwar als Teil der gesamten Öffnungsrate der E-Mail."
         },
         "updated_policy": {
-          "status_html": "<b>E-Mail-Öffnungsverfolgung wird gemeldet.</b>",
-          "visibility": "Wir haben unsere Richtlinie aktualisiert und verfolgen jetzt das Öffnen von E-Mails. E-Mail-Öffnungsraten werden anonym gemeldet. Wir werden nur sehen, ob Sie eine E-Mail als Teil der gesamten E-Mail-Öffnungsrate geöffnet haben.",
-          "opt_out_html": "Wenn Sie diese Informationen nicht teilen möchten, können Sie <a style='text-decoration:underline;' href='%{link}'>abmelden.</a>"
+          "status_html": "<b>E-Mail-Öffnungsnachweis wird gemeldet.</b>",
+          "visibility": "Wir haben unsere Richtlinie aktualisiert und verfolgen nun die Öffnungsraten von E-Mails. Die Öffnungsrate von E-Mails wird anonym gemeldet. Wir werden nur sehen, ob Sie eine E-Mail als Teil der gesamten Öffnungsrate geöffnet haben.",
+          "opt_out_html": "Wenn Sie diese Informationen nicht weitergeben möchten, können Sie <a style='text-decoration:underline;' href='%{link}'>sich abmelden.</a>"
         }
       }
     },
     "filters": {
       "availability": {
         "value": {
-          "in_stock": "Bootsbestand",
-          "out_of_stock": "Nicht auf Lager"
+          "in_stock": "Vorrätig",
+          "out_of_stock": "Nicht mehr lieferbar"
         }
       },
       "boolean": {
@@ -3330,54 +3330,59 @@
       "sorting": {
         "relevance": "Relevanz",
         "price_ascending": "Preis, niedrig bis hoch",
-        "price_descending": "Preis, absteigend"
-      }
+        "price_descending": "Preis, hoch bis niedrig"
+      },
+      "error": "Beim Laden Ihrer Suchergebnisse ist ein Problem aufgetreten. Bitte aktualisieren Sie die Seite oder versuchen Sie es später noch einmal."
     },
     "page_titles": {
-      "blog_or_article_with_error": "Fehlermeldung - %{title}",
+      "blog_or_article_with_error": "Fehler - %{title}",
       "products": "Produkte",
-      "shopping_cart": "Ihr Warenkorb",
+      "shopping_cart": "Ihr Einkaufswagen",
       "account": "Konto",
       "create_account": "Konto erstellen",
       "reset_account": "Konto zurücksetzen",
-      "addresses": "Emailadressen",
-      "order": "Bestellen %{name}",
+      "addresses": "Adressen",
+      "order": "Order %{name}",
       "search": "Suche",
       "search_results": {
-        "one": "Suche: %{count} ergebnis gefunden für \"%{terms}\"",
-        "other": "Suche: %{count} ergebnisse gefunden für \"%{terms}\""
+        "one": "Suche: %{count} Ergebnis gefunden für \"%{terms}\"",
+        "other": "Suche: %{count} Ergebnisse gefunden für \"%{terms}\""
       },
-      "collections": "Sammlung",
-      "not_found": "404 Nicht gefunden",
+      "collections": "Sammlungen",
+      "not_found": "404 nicht gefunden",
       "challenge": "Herausforderung",
-      "checkpoint": "Checkpoint"
+      "checkpoint": "Kontrollpunkt"
     },
     "cart": {
-      "discounts_with_count": "%{count} rabatte wurden angewendet"
+      "discounts_with_count": "%{count} Rabatte wurden angewendet"
     },
     "challenge": {
       "message": "Um fortzufahren, lassen Sie uns wissen, dass Sie kein Roboter sind.",
-      "error": "Ihre Antwort war nicht korrekt, bitte versuchen Sie es erneut.",
-      "submit_button_text": "Abgeben"
+      "error": "Ihre Antwort war nicht richtig, bitte versuchen Sie es erneut.",
+      "submit_button_text": "Einreichen"
     },
     "checkpoint": {
-      "message": "Lösen Sie das Captcha, um fortzufahren",
+      "message": "Lösen Sie Captcha um fortzufahren",
       "error": "Captcha-Validierung fehlgeschlagen",
-      "submit_button_text": "Abgeben"
+      "submit_button_text": "Einreichen"
     },
     "store_availability": {
       "pick_up_time": {
-        "one_hour": "Normalerweise in 1 Stunde fertig",
-        "two_hours": "Normalerweise in 2 Stunden fertig",
-        "four_hours": "Normalerweise in 4 Stunden fertig",
-        "twenty_four_hours": "Normalerweise in 24 Stunden fertig",
+        "one_hour": "In der Regel in 1 Stunde fertig",
+        "two_hours": "In der Regel in 2 Stunden fertig",
+        "four_hours": "In der Regel in 4 Stunden fertig",
+        "twenty_four_hours": "In der Regel innerhalb von 24 Stunden fertig",
         "two_to_four_days": "Normalerweise in 2-4 Tagen fertig",
         "five_or_more_days": "Normalerweise in 5+ Tagen fertig",
-        "zero_to_two_hours": "Normalerweise in 2 Stunden fertig",
-        "two_to_four_hours": "Normalerweise in 4 Stunden fertig",
+        "zero_to_two_hours": "In der Regel in 2 Stunden fertig",
+        "two_to_four_hours": "In der Regel in 4 Stunden fertig",
         "immediately": "Jetzt zur Abholung bereit",
-        "next_day": "Abholbereit am nächsten Tag"
+        "next_day": "Bereit zur Abholung am nächsten Tag"
       }
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Dieser Artikel ist ein wiederkehrender oder aufgeschobener Kauf. Indem ich fortfahre, erkläre ich mich mit den %{cancellationPolicyLink} einverstanden und ermächtige Sie, meine Zahlungsmethode zu den auf dieser Seite aufgeführten Preisen, Häufigkeiten und Terminen zu belasten, bis meine Bestellung erfüllt ist oder ich sie storniere, sofern dies zulässig ist.",
+      "buyer_consent_cart": "Einer oder mehrere der Artikel in Ihrem Warenkorb ist ein wiederkehrender oder aufgeschobener Kauf. Indem ich fortfahre, erkläre ich mich mit den %{cancellationPolicyLink} einverstanden und ermächtige Sie, meine Zahlungsmethode zu den auf dieser Seite aufgeführten Preisen, Häufigkeiten und Terminen zu belasten, bis meine Bestellung erfüllt ist oder ich sie storniere, falls zulässig."
     }
   },
   "customer_accounts": {
