@@ -2600,23 +2600,23 @@
         "recurring_totals_with_policies": {
           "first_cycles": {
             "one": "Erste Zahlung %{total_price}",
-            "other": "Erst %{count} Direktzahlungen %{total_price} jeder"
+            "other": "Erste %{count} Zahlungen %{total_price} jeweils"
           },
-          "following_cycles": ", dann %{total_price} jeder %{interval}"
+          "following_cycles": ", dann %{total_price} alle %{interval}"
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "one": ", dann %{count} zahlung bei %{total_price}",
-            "other": ", dann %{count} zahlungen bei %{total_price} jeder"
+            "one": ", dann %{count} Zahlung an %{total_price}",
+            "other": ", dann %{count} Zahlungen zu je %{total_price}"
           }
         }
       },
       "customer_payment_methods": {
-        "page_title": "Zahlungsmethoden",
-        "title": "Zahlungsmethoden",
+        "page_title": "Zahlungsmöglichkeiten",
+        "title": "Zahlungsmöglichkeiten",
         "update_card_button_label": "Karte aktualisieren",
         "delete_customer_mandate": {
-          "generic_error": "Bei der Bearbeitung Ihrer Anfrage ist ein Problem aufgetreten.",
+          "generic_error": "Es gab ein Problem bei der Bearbeitung Ihrer Anfrage.",
           "success_message": "Ihre Zahlungsmethode wurde erfolgreich gelöscht"
         }
       },
@@ -2714,6 +2714,72 @@
       },
       "markets": {
         "invalid_market_manager_error": "Überprüfen Sie Ihre Kontaktinformationen, bevor Sie die Zahlung abschließen"
+      },
+      "throttle": {
+        "too_many_attempts": {
+          "message": "Zu viele Versuche",
+          "description": "Bitte versuchen Sie es in ein paar Minuten erneut"
+        },
+        "line_to_check_out": "Sie stehen in der Schlange zum Auschecken",
+        "cart_summary_heading": "Ihr Warenkorb",
+        "merchandise": {
+          "available": "Verfügbar",
+          "sold_out": "Ausverkauft"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Ein Teil Ihres Warenkorbs ist ausverkauft und steht an der Kasse nicht mehr zum Kauf zur Verfügung.",
+          "sold_out": {
+            "heading": "Ihr Warenkorb ist ausverkauft",
+            "storefront_body": "Zurück in den Laden gehen, um weiter einzukaufen",
+            "no_storefront_body": "Leider ist der Artikel, den Sie kaufen möchten, nicht mehr verfügbar.",
+            "link": "Zurück zum Shop"
+          }
+        },
+        "title": "Warteschlange",
+        "time_to_checkout_title": "Zeit zum Auschecken - {{shopName}}",
+        "estimated_wait_time": {
+          "calculating": "Berechnung der voraussichtlichen Wartezeit",
+          "less_than_one": "Geschätzte Wartezeit: Weniger als eine Minute",
+          "one": "Geschätzte Wartezeit: dc4a25f221121a3f8f062e81bfac5minute",
+          "other": "Geschätzte Wartezeit: dc4a25f221121a3f8f062e81bfac5Minuten"
+        },
+        "last_checked": "(Zuletzt geprüft: {{time}})",
+        "footer": {
+          "heading": "Aktualisieren Sie diese Seite nicht, sie wird automatisch aktualisiert.",
+          "body": "Die Artikel in Ihrem Einkaufswagen sind nicht reserviert, bis Sie die Kasse abgeschlossen haben."
+        }
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Es gab ein Problem bei der Bearbeitung Ihrer Anfrage. Bitte wenden Sie sich an den Shop-Betreiber."
+      },
+      "no_address_location": {
+        "title": "Ort ohne Adresse",
+        "header": "Sie haben keine Lieferadresse für diesen Ort",
+        "alt_header": "Fehlende Lieferadresse",
+        "message": "Setzen Sie sich mit uns in Verbindung, um eine Adresse für diesen Standort hinzuzufügen und die Kaufabwicklung abzuschließen.",
+        "email_us_button_label": "Schicken Sie uns eine E-Mail"
+      },
+      "order_errors": {
+        "creation_failure": "Bei der Erstellung Ihrer Bestellung ist ein Problem aufgetreten. Versuchen Sie es erneut, oder kontaktieren Sie uns für weitere Details.",
+        "network_failure": "Ihre Bestellung konnte aufgrund eines Netzwerkfehlers nicht abgeschickt werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+        "inventory_reservation_failure": "Einige Artikel sind nicht mehr verfügbar."
+      },
+      "session_errors": {
+        "session_not_unique": "Es gab ein Problem bei der Bearbeitung Ihrer Bestellung. Aktualisieren Sie diese Seite, um zum Shop zurückzukehren.",
+        "session_already_finished": "Diese Bestellung wurde bereits abgeschickt. Sie können in den Shop zurückkehren, um eine neue Bestellung aufzugeben."
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Bei der Bearbeitung Ihrer Bestellung ist ein Problem aufgetreten. Versuchen Sie es in ein paar Minuten erneut."
+      },
+      "pickup_point": {
+        "location_is_currently_closed": "Geschlossen",
+        "business_hours": "Die Öffnungszeiten",
+        "no_business_hours": "Keine Öffnungszeiten verfügbar",
+        "open_twenty_four_hours": "24/7 geöffnet",
+        "title": "Abholstelle",
+        "or": "oder",
+        "search_button": "Suche",
+        "address_label": "Adresse"
       }
     },
     "sentence": {
