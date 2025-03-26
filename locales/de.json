@@ -2860,7 +2860,90 @@
       },
       "marketplaces": {
         "legal_notice": {
-          "legal_text": "Überprüfung"
+          "legal_text": "Überprüfung",
+          "link_label": "{{partnerDisplayName}} Bedingungen und Konditionen"
+        }
+      },
+      "online_store_chat": {
+        "title": "Noch Fragen? Chatten Sie mit uns"
+      },
+      "local_pickup": {
+        "location_address_search_label": "Adresse",
+        "location_information": {
+          "one": "Es gibt einen %{count} Laden mit Lagerbestand in der Nähe von %{address}",
+          "other": "Es gibt %{count} Geschäfte mit Lagerbestand in der Nähe von %{address}"
+        },
+        "toggle_location": "Standort wechseln",
+        "or": "OR",
+        "cancel": "Abbrechen",
+        "your_location": "Ihr Standort",
+        "search_button": "Geschäfte finden",
+        "no_stores_found": "Keine Geschäfte gefunden",
+        "all_stores_far_away": {
+          "title": "Die nächstgelegenen Geschäfte sind mehr als %{distance} entfernt",
+          "description": "Wählen Sie stattdessen ein Geschäft oder %{ship_to_address_link}.",
+          "ship_to_address_link": "Lieferanschrift"
+        },
+        "could_not_resolve_address": "Ihre Adresse konnte nicht gefunden werden. Versuchen Sie es erneut oder verwenden Sie eine andere Adresse",
+        "paginator": {
+          "accessibility_label": "Paginierung bei lokaler Abholung",
+          "previous": "Vorherige Seite",
+          "next": "Nächste Seite",
+          "label": {
+            "one": "%{first} - %{last} von %{count} speichern",
+            "other": "%{first} - %{last} von %{count} speichert"
+          }
+        },
+        "reveal_more_label": {
+          "one": "Zeige %{count} mehr Standort",
+          "other": "%{count} weitere Standorte anzeigen"
+        }
+      },
+      "captcha": {
+        "title": "Füllen Sie das CAPTCHA aus, um fortzufahren",
+        "errors": {
+          "not_solved": "Füllen Sie das CAPTCHA aus, um fortzufahren"
+        }
+      },
+      "clipboard": {
+        "copied": "Kopiert",
+        "failed_to_copy": "Kopieren fehlgeschlagen"
+      },
+      "discount_errors": {
+        "generic_error": "Ihre Bestellung konnte nicht bearbeitet werden, da Ihr Rabattcode nicht mehr verfügbar ist. Überprüfen Sie den Gesamtbetrag Ihrer Bestellung und versuchen Sie es erneut."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Sie sind nicht mehr berechtigt, B2B-Bestellungen aufzugeben. %{logout_url}, um stattdessen eine persönliche Bestellung aufzugeben.",
+        "log_out_link_text": "Abmelden",
+        "lost_permissions_subtitle": "Sie haben keine Berechtigung mehr, B2B-Bestellungen aufzugeben, melden Sie sich ab, um eine persönliche Bestellung aufzugeben.",
+        "lost_permissions_title": "Keine Standortgenehmigungen"
+      },
+      "shop_pay_external": {
+        "title": "Shop Pay Checkout",
+        "errors": {
+          "problem_loading": "Beim Laden von Shop Pay ist ein Problem aufgetreten.",
+          "try_again_later": "Überprüfen Sie Ihre Verbindung oder schließen Sie dieses Fenster und versuchen Sie es in einigen Augenblicken erneut.",
+          "checkout_has_expired": "Ihr Checkout ist abgelaufen. Schließen Sie dieses Fenster und versuchen Sie erneut, von {{shopName}}. aus zu bezahlen."
+        },
+        "return_to_store": "Zurück zu {{shopName}}",
+        "return_to_store_simple": "Zurück zum Laden"
+      },
+      "wallets": {
+        "return_to_store": "Zurück zum Laden",
+        "return_to_checkout": "Zurück zur Kasse",
+        "redirect_hint": "Sie werden aufgefordert, sich mit {{walletName}}. anzumelden.",
+        "logged_in": "Verbunden mit {{email}}",
+        "shipping_line_label": "Versand",
+        "connect_shipping_methods": "{{method1}} and {{method2}}",
+        "payment_in_progress_title": "Laufende Zahlungen",
+        "payment_in_progress_body": "Ihre Zahlung wird gerade bearbeitet. Ihre Bestellung wird bald abgeschlossen sein.",
+        "call_to_action": "Bezahlen mit {{walletName}}",
+        "redirection_notice": "Nachdem Sie auf \"{{buttonLabel}}\" geklickt haben, werden Sie zu {{walletName}}  weitergeleitet, um Ihren Einkauf sicher abzuschließen.",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} not available",
+            "description": "{{walletName}} wasn’t available. Verwenden Sie eine andere Zahlungsmethode oder versuchen Sie es später erneut."
+          }
         }
       }
     },
