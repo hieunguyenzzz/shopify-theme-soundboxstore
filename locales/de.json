@@ -3153,7 +3153,13 @@
           },
           "editions": {
             "header": "Die Shopify-Editionen ansehen",
-            "caption": "Mit mehr als 100 Produktaktualisierungen können Sie produktiver und kreativer sein und im Handel mehr erreichen, als Sie es sich je vorstellen konnten."
+            "caption": "Mit mehr als 100 Produktaktualisierungen können Sie produktiver und kreativer sein und im Handel mehr erreichen, als Sie es sich je vorstellen konnten.",
+            "link_text": "Neueste Ausgaben erkunden"
+          },
+          "store_owner": {
+            "header": "Sind Sie der Geschäftsinhaber?",
+            "caption": "Haben Sie Probleme, in Ihr Geschäft zu gelangen? Versuchen Sie die Funktion %{forgot_your_store_link}. Wenn Sie Ihren Shop reaktivieren möchten, kontaktieren Sie %{shopify_support_link}.",
+            "shopify_support_link_text": "Shopify-Unterstützung"
           }
         }
       }
@@ -3161,56 +3167,58 @@
     "notices": {
       "customer": {
         "password_reset_error": "Fehler beim Zurücksetzen des Passworts",
-        "no_account_found": "Mit dieser E-Mail wurde kein Konto gefunden.",
-        "invalid_credentials": "Falsche E-Mail-Adresse oder falsches Passwort.",
-        "denylisted_reset_password": "Auf Ihr Konto konnte nicht zugegriffen werden, da das aktuelle Passwort nicht sicher ist. Sie erhalten eine E-Mail, um Ihr Passwort zu aktualisieren."
+        "no_account_found": "Kein Konto mit dieser E-Mail gefunden.",
+        "invalid_credentials": "Falsche E-Mail oder falsches Passwort.",
+        "denylisted_reset_password": "Auf Ihr Konto konnte nicht zugegriffen werden, weil das aktuelle Passwort nicht sicher ist. Sie werden eine E-Mail erhalten, um Ihr Passwort zu aktualisieren.",
+        "signup_disabled": "Die Erstellung von Kundenkonten wurde deaktiviert."
       },
       "address": {
-        "updated": "Adresse erfolgreich aktualisiert.",
+        "updated": "Die Adresse wurde erfolgreich aktualisiert.",
         "error_updating": "Fehler beim Aktualisieren der Adresse",
         "created": "Erfolgreich erstellte Adresse",
         "error_creating": "Fehler beim Erstellen der Adresse.",
-        "deleted": "Adresse erfolgreich gelöscht",
+        "deleted": "Erfolgreich gelöschte Adresse",
         "error_deleting": "Fehler beim Löschen der Adresse."
       },
       "order": {
         "not_available": "Diese Bestellung ist nicht verfügbar",
         "financial_status": {
-          "authorized": "Repräsentanten",
+          "authorized": "Autorisiert",
           "pending": "Anhängig",
-          "paid": "Bezahlen",
+          "paid": "Bezahlt",
           "unpaid": "Unbezahlt",
-          "voided": "Leer",
+          "voided": "Ungültig",
           "partially_paid": "Teilweise bezahlt",
-          "partially_refunded": "Teilweise zurückerstattet",
-          "refunded": "Erstatten",
+          "partially_refunded": "Teilweise erstattet",
+          "refunded": "Erstattet",
           "expired": "Abgelaufen"
         },
         "fulfillment_status": {
-          "fulfilled": "Erfüllen",
-          "complete": "Komplett",
+          "fulfilled": "Erfüllt",
+          "complete": "Vollständig",
           "partial": "Teilweise",
-          "unfulfilled": "Unerfüllt",
-          "restocked": "Auffüllen"
+          "unfulfilled": "Unerfüllte",
+          "restocked": "Wiederaufgefüllt"
         },
         "transaction_status": {
           "success": "Erfolg",
           "pending": "Anhängig",
-          "failure": "Scheitern",
-          "error": "Fehlermeldung"
+          "failure": "Versagen",
+          "error": "Fehler"
         },
         "cancel_reason": {
-          "declined": "Zahlung abgelehnt",
-          "inventory": "Artikel nicht verfügbar",
+          "declined": "Zahlung verweigert",
+          "inventory": "Nicht verfügbare Artikel",
           "fraud": "Betrügerische Bestellung",
-          "customer": "Kunde hat Bestellung geändert / storniert",
-          "other": "Andere"
+          "customer": "Kunde hat Auftrag geändert/storniert",
+          "other": "Andere",
+          "staff": "Fehler des Personals"
         },
         "cash_on_delivery": "Nachnahme (COD)"
       },
       "cart": {
-        "only_n_items_available": "Sie können nur hinzufügen %{count} %{name} in den Wagen.",
-        "too_many_items_in_cart": "Sie können nicht mehr hinzufügen %{name} in den Wagen.",
+        "only_n_items_available": "Sie können nur %{count} %{name} in den Warenkorb legen.",
+        "too_many_items_in_cart": "Sie können nicht mehr %{name} in den Warenkorb legen.",
         "less_than_minimum": "Dieser Artikel hat ein Minimum von %{min}.",
         "more_than_maximum": "Dieser Artikel hat maximal %{max}.",
         "not_respect_step": "Sie können diesen Artikel nur in Vielfachen von hinzufügen %{step}.",
@@ -3232,7 +3240,9 @@
         "digital_product_not_available_for_company_locations": "Dieser Artikel kann nicht zu einer B2B-Bestellung hinzugefügt werden",
         "selling_plan_not_applicable": "Verkaufsplan kann nicht auf Variante angewendet werden",
         "shipping_address_not_required": "Dieser Warenkorb erfordert keinen Versand",
-        "shipping_address_invalid": "Es gab ein Problem bei der Berechnung Ihrer Versandkosten. Fahren Sie mit der Kasse fort, um einen Versandtarif auszuwählen, bevor Sie Ihre Bestellung abschließen."
+        "shipping_address_invalid": "Es gab ein Problem bei der Berechnung Ihrer Versandkosten. Fahren Sie mit der Kasse fort, um einen Versandtarif auszuwählen, bevor Sie Ihre Bestellung abschließen.",
+        "only_one_added_to_cart": "Aufgrund der Verfügbarkeit wurde nur 1 Artikel in Ihren Warenkorb gelegt.",
+        "only_n_added_to_cart": "Aufgrund der Verfügbarkeit wurden nur %{quantity} Artikel in Ihren Warenkorb gelegt."
       },
       "storefront": {
         "invalid_password": "Passwort falsch, bitte versuchen Sie es erneut."
@@ -3242,6 +3252,15 @@
         "add_products": "Auswahl einschränken auf Produkte, die zum Tag passen %{tag}",
         "remove_articles": "Erweitern Sie die Suche auf Artikel, die nicht markiert sind %{tag}",
         "remove_products": "Markierung entfernen %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Added %{delta}",
+          "increment_item": "Added %{delta}",
+          "decrement_item": "Entfernt %{delta} von %{total}",
+          "decrement_fulfilled_line_item": "Zurückgegeben %{delta} von %{total}",
+          "decrement_return_line_item": "%{delta} aus Rückgabe entfernt"
+        }
       }
     },
     "email_marketing": {
