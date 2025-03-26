@@ -3493,53 +3493,53 @@
         },
         "items": {
           "one": "{{count}} item",
-          "other": "{{count}} Gegenst"
+          "other": "{{count}} items"
         },
         "list_view": "Listenansicht anzeigen",
         "multiple_shipments": "Mehrere Sendungen",
-        "no_filtered_results_description": "Filter entfernen oder anpassen, um Ihre Bestellungen anzuzeigen",
+        "no_filtered_results_description": "Filter entfernen oder anpassen, um Ihre Bestellungen zu sehen",
         "no_filtered_results_title": "Keine gefilterten Ergebnisse",
         "order_link": "Bestellung anzeigen {{name}}",
-        "order_number": "Bestellen {{name}}",
-        "orders_title": "Bestätigen",
+        "order_number": "Order {{name}}",
+        "orders_title": "Bestätigt",
         "pagination": {
           "nav_accessibility_label": "Navigationsschaltflächen für Bestellungen",
-          "next": "Nächsten",
-          "next_accessibility_label": "Nächste Bestellungen",
-          "previous": "Vorherige",
-          "previous_accessibility_label": "Frühere Bestellungen",
+          "next": "Weiter",
+          "next_accessibility_label": "Nächste Aufträge",
+          "previous": "Prev",
+          "previous_accessibility_label": "Frühere Aufträge",
           "load_more": "Mehr laden",
-          "load_more_accessibility_label": "Mehr Bestellungen laden"
+          "load_more_accessibility_label": "Mehr Aufträge laden"
         },
         "payment_status": {
           "list_view": {
-            "overdue": "Zahlung überfällig",
+            "overdue": "Überfällige Zahlung",
             "due": "Fällige Zahlung {{date}}",
-            "due_today": "Zahlung heute fällig",
+            "due_today": "Heute fällige Zahlung",
             "due_without_date": "Fällige Zahlung",
-            "due_on_fulfillment": "Zahlung fällig bei Erfüllung",
-            "pay_to_confirm": "Bezahlen, um zu bestätigen",
-            "payment_not_due": "Zahlung noch nicht fällig"
+            "due_on_fulfillment": "Fälligkeit der Zahlung bei Erfüllung",
+            "pay_to_confirm": "Zur Bestätigung bezahlen",
+            "payment_not_due": "Noch nicht fällige Zahlung"
           },
           "table_view": {
             "overdue": "Überfällig",
-            "due": "Durch {{date}}",
+            "due": "Due {{date}}",
             "due_today": "Heute fällig",
-            "paid": "Bezahlen",
-            "due_without_date": "Durch",
+            "paid": "Bezahlt",
+            "due_without_date": ".",
             "due_on_fulfillment": "Fällig bei Erfüllung",
-            "pay_to_confirm": "Bezahlen, um zu bestätigen",
+            "pay_to_confirm": "Zur Bestätigung bezahlen",
             "payment_not_due": "Noch nicht fällig"
           }
         },
         "sort_by": "Sortieren nach: {{option}}",
-        "sort_hide_options_accessibility_label": "Sortieroptionen für bestätigte Bestellungen ausblenden.",
-        "sort_show_options_accessibility_label": "Sortieroptionen für bestätigte Bestellungen anzeigen.",
+        "sort_hide_options_accessibility_label": "Sortieroptionen für bestätigte Aufträge ausblenden.",
+        "sort_show_options_accessibility_label": "Sortieroptionen für bestätigte Aufträge anzeigen.",
         "sort_currently_sorted_by_accessibility_label": "Derzeit sortiert nach: {{option}}",
         "sort_title": "Sortieren",
         "sort": {
           "date": {
-            "newest": "Neuestes zum ältesten",
+            "newest": "Jüngste bis älteste",
             "oldest": "Älteste bis neueste"
           },
           "location": {
@@ -3548,11 +3548,11 @@
           },
           "order_number": {
             "ascending": "Bestellnummer (niedrig bis hoch)",
-            "descending": "Bestellnummer (absteigend)"
+            "descending": "Bestellnummer (von oben nach unten)"
           },
           "order_total": {
-            "ascending": "Bestellsumme (niedrig bis hoch)",
-            "descending": "Bestellsumme (absteigend)"
+            "ascending": "Auftragssumme (niedrig bis hoch)",
+            "descending": "Auftragssumme (hoch zu niedrig)"
           }
         },
         "table_view": "Tabellenansicht anzeigen",
@@ -3560,7 +3560,23 @@
         "order_status_and_message": "{{orderStatus}} - {{message}}",
         "no_order_banner": "Um Ihre Erweiterung auf der Seite Auftragsstatus zu testen, legen Sie einen Auftrag an.",
         "more_than_three_products_accessibility_label": "Order includes {{lineItemName1}}, {{lineItemName2}}, and {{numberOfAdditionalProducts}} more products",
-        "plus_more": "+{{numberOfAdditionalProducts}}"
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Siehe Bestellung für Details",
+            "estimated_delivery": "Expected {{date}}",
+            "last_updated": "Zuletzt aktualisiert {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Voraussichtliche Lieferung {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "filter_title": "Filter",
+        "filter": {
+          "clear_section": "Abschnitt löschen",
+          "clear_all": "Alle löschen"
+        }
       },
       "order_status": {
         "attempted_delivery_label": "Versuchte Zustellung",
