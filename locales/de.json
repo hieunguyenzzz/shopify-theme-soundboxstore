@@ -3091,36 +3091,72 @@
       "customer_already_used_once_per_customer_discount_notice": "Dieser Rabatt hat sein Nutzungslimit erreicht",
       "gift_card_already_applied": "Der Code wurde bereits auf Ihre Kasse angewendet",
       "gift_card_code_invalid": "Code ist ungültig",
-      "gift_card_currency_mismatch": "Ihre Geschenkkarte ist in %{gift_card_currency}. Kontaktieren Sie uns, um es neu auflegen zu lassen %{checkout_currency}.",
+      "gift_card_currency_mismatch": "Ihre Geschenkkarte ist in %{gift_card_currency}. Kontaktieren Sie uns, um sie in %{checkout_currency} neu ausstellen zu lassen.",
       "gift_card_depleted": "Auf dieser Geschenkkarte ist kein Guthaben mehr vorhanden",
       "gift_card_disabled": "Geschenkkarte ist deaktiviert",
-      "gift_card_expired": "Geschenkkarte ist abgelaufen",
+      "gift_card_expired": "Die Geschenkkarte ist abgelaufen",
       "invalid": "ist ungültig",
-      "bad_domain": "enthält einen ungültigen Domainnamen",
-      "taken": "wurde bereits vergeben",
+      "bad_domain": "enthält einen ungültigen Domänennamen",
+      "taken": "wurde bereits eingenommen",
       "contains_html_tags": "darf keine HTML-Tags enthalten",
-      "too_short": "ist zu kurz (Minimum ist %{count} Zeichen)",
-      "too_long": "ist zu lang (Maximum ist %{count} Zeichen)",
+      "too_short": "zu kurz ist (Minimum ist %{count} Zeichen)",
+      "too_long": "zu lang ist (Maximum ist %{count} Zeichen)",
       "password_mismatch": "muss mit dem angegebenen Passwort übereinstimmen",
-      "contains_spaces": "beginnt oder endet mit Leerzeichen.",
-      "email_domain_invalid": "anbieter wird nicht unterstützt",
+      "contains_spaces": "mit Leerzeichen beginnt oder endet.",
+      "email_domain_invalid": "Anbieter wird nicht unterstützt",
       "invalid_for_country": "ist nicht gültig für %{country}",
       "invalid_for_country_and_province": "ist nicht gültig für %{province} und %{country}",
       "invalid_province_in_country": "ist keine gültige Provinz in %{country}",
       "invalid_state_in_country": "ist kein gültiger Zustand in %{country}",
       "invalid_region_in_country": "ist keine gültige Region in %{country}",
-      "less_than_or_equal_to": "muss kleiner oder gleich sein %{count}",
+      "less_than_or_equal_to": "muss kleiner als oder gleich %{count} sein",
       "not_supported": "wird nicht unterstützt",
-      "full_name_required": "Geben Sie einen Vor- und Nachnamen ein",
+      "full_name_required": "Geben Sie einen Vornamen und einen Nachnamen ein",
       "invalid_for_card_type": "ist nicht gültig",
-      "invalid_type": "entschuldigung, wir akzeptieren keine Karten dieses Typs",
-      "invalid_format": "format ist ungültig",
-      "expired": "ist abgelaufen",
-      "invalid_start_date_or_issue_number_for_debit": "ein gültiges Startdatum oder eine gültige Ausgabenummer ist erforderlich",
-      "invalid_expiry_year": "ist kein gültiges Ablaufjahr",
-      "reset_password_html": "Diese E-Mail-Adresse ist bereits mit einem Konto verknüpft. Wenn dieses Konto Ihnen gehört, können Sie <a href=\"/account/login#recover\">setze dein Passwort zurück</a>",
-      "verify_email": "Wir haben eine E-Mail an gesendet %{customer_email}, bitte klicken Sie auf den enthaltenen Link, um Ihre E-Mail-Adresse zu bestätigen.",
-      "product_not_available": "produkt ist für diesen Kunden nicht veröffentlicht."
+      "invalid_type": "Wir akzeptieren leider keine Karten dieser Art",
+      "invalid_format": "Format ist nicht gültig",
+      "expired": "ist ausgelaufen",
+      "invalid_start_date_or_issue_number_for_debit": "ein gültiges Startdatum oder eine gültige Ausstellungsnummer ist erforderlich",
+      "invalid_expiry_year": "kein gültiges Verfallsjahr ist",
+      "reset_password_html": "Diese E-Mail-Adresse ist bereits mit einem Konto verbunden. Wenn dies Ihr Konto ist, können Sie <a href=\"/account/login#recover\">Ihr Passwort zurücksetzen</a>",
+      "verify_email": "Wir haben eine E-Mail an %{customer_email} gesendet. Bitte klicken Sie auf den enthaltenen Link, um Ihre E-Mail-Adresse zu bestätigen.",
+      "product_not_available": "Produkt ist für diesen Kunden nicht veröffentlicht.",
+      "shop_404": {
+        "title": "Erstellen Sie eine E-Commerce-Website und verkaufen Sie online! Software für den elektronischen Handel von Shopify",
+        "heros": {
+          "store_unavailable": "Es tut uns leid, dieser Shop ist derzeit nicht verfügbar.",
+          "store_not_exist": "Dieses Geschäft gibt es nicht.",
+          "no_storefront": "Dieses Geschäft hat noch keine Website."
+        },
+        "links": {
+          "explore_other_stores": "Andere Geschäfte erkunden",
+          "start_free_trial": "Kostenlose Testversion starten"
+        },
+        "owner_ctas": {
+          "header": "Sind Sie der Geschäftsinhaber?",
+          "fix_domain": "Richten Sie Ihre neue Webadresse ein und gehen Sie zu %{domain_settings_link}. Klicken Sie auf \"Domäne verbinden\" und geben Sie ein: %{domain}.<br>Wenn Sie Probleme haben, in Ihren Shop zu gelangen, versuchen Sie die Seite %{forgot_your_store_link}.",
+          "fix_domain_link_text": "Ihre Domain-Einstellungen",
+          "forgot_your_store_link_text": "Ihr Geschäft vergessen",
+          "add_storefront": "Sie können Ihre Website einrichten, indem Sie den Channel Online-Shop in Ihrem %{admin_link} hinzufügen. Wenn Sie Probleme haben, in Ihren Shop zu gelangen, versuchen Sie die Seite %{forgot_your_store_link}.",
+          "admin_link_text": "admin"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Persönlich verkaufen",
+            "caption": "Holen Sie sich die Funktionen, die Sie für den Betrieb Ihres Einzelhandelsgeschäfts benötigen, egal ob Sie neu anfangen oder Ihr Angebot erweitern.",
+            "link_text": "Kostenlose Testversion starten"
+          },
+          "open_a_store": {
+            "header": "Eröffnen Sie einen neuen Shopify-Shop",
+            "caption": "Starten Sie eine 3-tägige kostenlose Testphase und fahren Sie dann für $1/Monat für die nächsten 3 Monate fort.",
+            "link_text": "Jetzt anmelden"
+          },
+          "editions": {
+            "header": "Die Shopify-Editionen ansehen",
+            "caption": "Mit mehr als 100 Produktaktualisierungen können Sie produktiver und kreativer sein und im Handel mehr erreichen, als Sie es sich je vorstellen konnten."
+          }
+        }
+      }
     },
     "notices": {
       "customer": {
