@@ -710,50 +710,60 @@
       },
       "general": {
         "page_title": "Kasse",
-        "error_page_title": "Fehlermeldung",
+        "error_page_title": "Fehler",
         "skip_to_content": "Zum Inhalt springen",
-        "breadcrumb": "Brotkrumen",
-        "continue_button_label": "Weiterhin",
-        "complete_purchase_button_label": "Bestellung abschließen",
+        "breadcrumb": "Brotkrümel",
+        "continue_button_label": "Weiter",
+        "complete_purchase_button_label": "Vollständige Bestellung",
         "pay_now_button_label": "Jetzt bezahlen",
         "authenticate_purchase_button_label": "Zahlung authentifizieren",
-        "edit_link_label": "Bearbeiten",
+        "edit_link_label": "bearbeiten",
         "all_rights_reserved": "Alle Rechte vorbehalten %{shop_name}",
-        "print_policies_link_label": "Druck",
-        "cart": "Warenkorb",
-        "close_modal_label": "Schließen",
-        "close_notice_label": "Schließen",
+        "print_policies_link_label": "Drucken",
+        "cart": "Wagen",
+        "close_modal_label": "Schließen Sie",
+        "close_notice_label": "Schließen Sie",
         "expand_notice_label": "Mehr sehen",
         "continue_to_shipping_method": "Weiter zum Versand",
         "continue_to_payment_method": "Weiter zur Zahlung",
         "continue_to_review": "Bestellung überprüfen",
         "back_to_cart": "Zurück zum Warenkorb",
-        "back_to_contact_information": "Zurück zu Informationen",
+        "back_to_contact_information": "Zurück zu den Informationen",
         "back_to_shipping_method": "Zurück zum Versand",
         "back_to_payment_method": "Zurück zur Zahlung",
         "choose_shipping_method": "Wählen Sie eine Versandart",
         "choose_payment_method": "Wählen Sie eine Zahlungsmethode",
         "choose_billing_address": "Wählen Sie eine Rechnungsadresse",
         "contact_us_html": "Kontaktieren Sie uns für weitere Informationen",
-        "autocomplete_title": "Vorschlag",
-        "autocomplete_single_item": "1 artikel verfügbar",
-        "autocomplete_multi_item": "{{number}} verfügbare Artikel",
-        "autocomplete_selection": "{{number}} von {{total}}",
+        "autocomplete_title": "Vorschläge",
+        "autocomplete_single_item": "1 Stück verfügbar",
+        "autocomplete_multi_item": "{{number}} items available",
+        "autocomplete_selection": "{{number}} of {{total}}",
         "autocomplete_close": "Vorschläge schließen",
         "forwarding_indicator": {
-          "new_window": "Öffnet in einem neuen Fenster.",
-          "external": "Öffnet externe Website.",
-          "external_and_new_window": "Öffnet externe Website in einem neuen Fenster."
+          "new_window": "Wird in einem neuen Fenster geöffnet.",
+          "external": "Öffnet eine externe Website.",
+          "external_and_new_window": "Öffnet eine externe Website in einem neuen Fenster."
         },
         "checkout_context": {
-          "step_one": "%{shop_name} - Kasse"
+          "step_one": "%{shop_name} - Zur Kasse"
         },
-        "tooltip_accessibility_label": "Mehr Informationen",
+        "tooltip_accessibility_label": "Weitere Informationen",
         "errors": {
-          "session_identifier_not_unique_error": "Bei Ihrer Bestellung ist ein Fehler aufgetreten.Bitte versuchen Sie es erneut.",
-          "line_item_limit_reached": "Die maximale Anzahl von Werbebuchungen wurde erreicht."
+          "session_identifier_not_unique_error": "Bei Ihrer Bestellung ist etwas schief gelaufen, bitte versuchen Sie es noch einmal.",
+          "line_item_limit_reached": "Die maximale Anzahl von Einzelposten ist erreicht.",
+          "only_empty_terms_accepted": "In dieser Politik werden nur leere Begriffe akzeptiert.",
+          "session_is_already_finished": "Diese Kassensitzung ist bereits abgeschlossen.",
+          "merchandise": {
+            "only_value_constraint": "Im Wareneingang sind nur exakte Werte erlaubt.",
+            "merchandise_not_found": "Produkt nicht gefunden.",
+            "merchandise_variant_not_found": "Produktvariante nicht gefunden.",
+            "merchandise_not_applicable": "Die Produktvariante kann nicht gekauft werden.",
+            "mixed_currencies": "Die Kasse enthält Einzelposten mit unterschiedlichen Währungen."
+          }
         },
-        "full_price": "Voller Preis:"
+        "full_price": "Voller Preis:",
+        "qr_code": "QR-Code"
       },
       "contact": {
         "title": "Information",
@@ -1691,12 +1701,15 @@
           "generic": "Die Geschenkkarte konnte nicht zur Kasse hinzugefügt werden",
           "throttle_limit_exceeded": "Sie haben die maximale Anzahl von Versuchen überschritten. Versuchen Sie es später erneut."
         }
+      },
+      "address_management": {
+        "confirm_address_deletion": "Sind Sie sicher, dass Sie die Adresse {{address}} löschen möchten?"
       }
     },
     "sentence": {
       "words_connector": ", ",
       "two_words_connector": " und ",
-      "last_word_connector": ", und "
+      "last_word_connector": "und "
     },
     "pagination": {
       "previous": "Vorherigen",
