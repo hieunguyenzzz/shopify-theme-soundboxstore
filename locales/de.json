@@ -1941,33 +1941,50 @@
         "invalid_delivery_address_reference_handle": "Das Referenzhandle der Lieferadresse konnte mit keiner verfügbaren Lieferadresse abgeglichen werden."
       },
       "payment_errors": {
-        "generic_error": "Bei der Verarbeitung Ihrer Zahlung ist ein Problem aufgetreten. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "generic_error": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
         "rejected_transaction": "Ihre Zahlung wurde abgelehnt. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "credit_card_processing": "Ihre Zahlung kann aus technischen Gründen nicht verarbeitet werden. Versuchen Sie es in wenigen Minuten erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "checkout_amount_changed": "Ihre Zahlung konnte nicht verarbeitet werden, da sich der an der Kasse fällige Betrag geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
+        "credit_card_processing": "Ihre Zahlung kann aus technischen Gründen nicht bearbeitet werden. Versuchen Sie es in ein paar Minuten erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "checkout_amount_changed": "Ihre Zahlung konnte nicht bearbeitet werden, weil sich der Betrag an der Kasse geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
         "deferred_payment_not_allowed": "Aufgeschobene Zahlungen sind nicht zulässig. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
         "deferred_payment_required": "Diese Bestellung erfordert einen Zahlungsaufschub. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
-        "deferred_amount_changed": "Ihre Zahlung konnte nicht verarbeitet werden, da sich der aufgeschobene Zahlungsbetrag geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
-        "deferred_date_changed": "Ihre Zahlung konnte nicht verarbeitet werden, da sich das aufgeschobene Zahlungsdatum geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
-        "order_total_changed": "Ihre Zahlung konnte nicht verarbeitet werden, da sich Ihre Bestellsumme geändert hat. Überprüfen Sie Ihre Bestellsumme und versuchen Sie es erneut.",
-        "payment_processing": "Ihre Zahlung kann aus technischen Gründen nicht verarbeitet werden. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "payment_processing_no_retry": "Ihre Zahlung kann aus technischen Gründen nicht verarbeitet werden. Bitte versuchen Sie es mit einer anderen Zahlungsmethode.",
-        "paypal_zero_amount": "Sie können PayPal nicht verwenden für %{amount} Orders. Bestätigen Sie, dass Ihre Bestellung korrekt ist und checken Sie ohne PayPal aus.",
-        "paypal_invalid_token": "PayPal war nicht verfügbar. Versuchen Sie es erneut oder verwenden Sie eine andere Checkout-Option.",
-        "pay_later_failed": "Bei der Verarbeitung Ihrer Zahlung mit Später bezahlen ist ein Fehler aufgetreten. Wählen Sie eine andere Zahlungsmethode und versuchen Sie es erneut.",
+        "deferred_amount_changed": "Ihre Zahlung konnte nicht bearbeitet werden, weil sich der aufgeschobene Zahlungsbetrag geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
+        "deferred_date_changed": "Ihre Zahlung konnte nicht bearbeitet werden, weil sich das Datum der aufgeschobenen Zahlung geändert hat. Bitte überprüfen Sie Ihre Bestellung und versuchen Sie es erneut.",
+        "order_total_changed": "Der Gesamtbetrag Ihrer Bestellung hat sich geändert. Überprüfen Sie und versuchen Sie es erneut.",
+        "payment_processing": "Ihre Zahlung kann aus technischen Gründen nicht bearbeitet werden. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "payment_processing_no_retry": "Ihre Zahlung kann aus technischen Gründen nicht bearbeitet werden. Bitte versuchen Sie eine andere Zahlungsmethode.",
+        "paypal_zero_amount": "Sie können PayPal nicht für %{amount} Bestellungen verwenden. Bestätigen Sie, dass Ihre Bestellung korrekt ist, und gehen Sie ohne PayPal zur Kasse.",
+        "paypal_invalid_token": "PayPal war nicht verfügbar. Versuchen Sie es erneut oder verwenden Sie eine andere Bezahloption.",
+        "pay_later_failed": "Es ist ein Fehler bei der Verarbeitung Ihrer Zahlung mit Pay later aufgetreten. Wählen Sie eine andere Zahlungsmethode und versuchen Sie es erneut.",
         "three_d_secure_failed": "Ihre Zahlung konnte nicht verifiziert werden. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "three_d_secure_failed_duplicate": "Die 3D Secure-Authentifizierung der Kreditkarte ist fehlgeschlagen, da bereits eine andere Authentifizierung ausgeführt wird.",
+        "three_d_secure_failed_duplicate": "Die 3D-Secure-Authentifizierung der Kreditkarte ist fehlgeschlagen, weil bereits eine weitere Authentifizierung im Gange ist.",
         "three_d_secure_throttled": "Zu viele Versuche; bitte warten Sie, bevor Sie es erneut versuchen",
-        "subscription_agreement_blank": "Um ein Abonnement zu kaufen, müssen Ihre Zahlungsdaten gespeichert werden. Um fortzufahren, bestätigen Sie, dass Sie zustimmen, oder entfernen Sie Abonnementartikel aus Ihrer Bestellung.",
-        "insufficient_funds": "Ihre Zahlung wurde aufgrund unzureichender Deckung abgelehnt. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
-        "multiple_deferred_payment_not_allowed": "Pro Antrag ist nur eine aufgeschobene Zahlung zulässig. Bitte überprüfen Sie Ihre Anfrage und versuchen Sie es erneut.",
+        "subscription_agreement_blank": "Um ein Abonnement zu kaufen, müssen Ihre Zahlungsdaten gespeichert werden. Um fortzufahren, bestätigen Sie, dass Sie einverstanden sind, oder entfernen Sie Abonnementartikel aus Ihrer Bestellung.",
+        "insufficient_funds": "Ihre Zahlung wurde wegen unzureichender Deckung abgelehnt. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "multiple_deferred_payment_not_allowed": "Pro Antrag ist nur ein Zahlungsaufschub zulässig. Bitte überprüfen Sie Ihren Antrag und versuchen Sie es erneut.",
         "fraud_payment_errors": {
           "transaction_declined": "Diese Transaktion wurde abgelehnt",
           "address_mismatch": "Straße und Postleitzahl stimmen nicht überein.",
           "cannot_process": "Diese Transaktion kann nicht verarbeitet werden.",
           "no_match": "Keine Übereinstimmung",
           "card_declined": "Ihre Karte wurde abgelehnt"
-        }
+        },
+        "amount_too_small": "Der Mindestzahlungsbetrag muss höher als $0,50 USD sein. Bitte versuchen Sie es erneut mit einem höheren Betrag.",
+        "method_not_available": "Die gewünschte Zahlungsmethode ist nicht verfügbar. Wählen Sie eine andere Zahlungsmethode und versuchen Sie es erneut.",
+        "available_methods_updated": "Die verfügbaren Zahlungsarten wurden aktualisiert.",
+        "three_d_secure_failed_payment_method": "Ihre Karte konnte nicht verifiziert werden. Versuchen Sie es erneut oder fügen Sie eine andere Karte hinzu.",
+        "shipping_must_match_billing": "Die Rechnungsadresse muss mit der Lieferadresse übereinstimmen. Bitte verwenden Sie eine andere Zahlungsmethode.",
+        "decision_rule_block": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Bitte kontaktieren Sie den Shop-Betreiber.",
+        "pick_up_card": "Ihre Karte wurde abgelehnt. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "cannot_verify": "Ihre Zahlungsdaten konnten nicht verifiziert werden. Überprüfen Sie Ihre Kartendaten und versuchen Sie es erneut.",
+        "invalid_number": "Geben Sie eine gültige Kartennummer ein",
+        "invalid_expiry_date": "Geben Sie ein gültiges Verfallsdatum ein",
+        "invalid_cvc": "Geben Sie einen gültigen Sicherheitscode ein",
+        "expired_card": "Ihre Karte ist abgelaufen. Verwenden Sie eine andere Zahlungsmethode.",
+        "card_declined": "Ihre Karte wurde abgelehnt. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "processing_error": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "processing_error_checkout_as_guest": "Es gab ein Problem bei der Bearbeitung Ihrer Zahlung. Versuchen Sie es erneut mit einer anderen Zahlungsmethode oder {{checkout_as_guest_link}}.",
+        "selected_payment_method": "Es gab ein Problem mit der von Ihnen gewählten Zahlungsmethode und Sie wurden nicht belastet. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+        "payment_method_billing_address": "Es gab ein Problem mit der Rechnungsadresse der von Ihnen gewählten Zahlungsmethode und Sie wurden nicht belastet. Überprüfen Sie die Adresse und versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode."
       },
       "shipping_errors": {
         "shipping_method": "Ihr Warenkorb wurde aktualisiert und die vorherigen Versandkosten sind ungültig. Wählen Sie einen neuen Tarif aus.",
@@ -2429,14 +2446,15 @@
       },
       "redeemable_errors": {
         "gift_card": {
-          "duplicate": "Die Geschenkkarte wurde bereits auf Ihre Bestellung angewendet",
-          "insufficient_funds": "Auf dieser Geschenkkarte ist kein Guthaben mehr vorhanden",
+          "duplicate": "Der Geschenkgutschein wurde bereits auf Ihre Bestellung angewendet",
+          "insufficient_funds": "Diese Geschenkkarte hat kein Guthaben mehr",
           "expired": "Diese Geschenkkarte ist abgelaufen",
           "not_available": "Diese Geschenkkarte ist nicht mehr verfügbar",
           "invalid": "Geben Sie eine gültige Geschenkkarte ein",
-          "currency_mismatch": "Nur Geschenkkarten im Angebot %{shop_currency} sind akzeptiert",
-          "generic": "Die Geschenkkarte konnte nicht zur Kasse hinzugefügt werden",
-          "throttle_limit_exceeded": "Sie haben die maximale Anzahl von Versuchen überschritten. Versuchen Sie es später erneut."
+          "currency_mismatch": "Es werden nur Geschenkkarten in %{shop_currency} akzeptiert",
+          "generic": "Der Geschenkgutschein konnte nicht zur Kasse gebracht werden",
+          "throttle_limit_exceeded": "Sie haben die maximale Anzahl von Versuchen überschritten. Versuchen Sie es später noch einmal.",
+          "no_longer_available": "Diese Geschenkkarte kann nicht mehr mit dieser Kasse verwendet werden"
         }
       },
       "address_management": {
@@ -2495,6 +2513,12 @@
       },
       "store_credit_errors": {
         "generic_error": "Es gab ein Problem mit Ihrem Guthaben. Versuchen Sie es erneut oder laden Sie die Seite neu."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Die Warenanweisung %{position} %{name} enthält eine leere Stall-ID.",
+        "invalid_stable_id_target": "Die Warenanweisung %{position} %{name} verweist auf die stabile ID %{stable_id}, aber diese stabile ID ist nicht in den Warenlinien enthalten.",
+        "duplicate_variant_id": "Die Warenanweisung %{position} %{name} enthält eine doppelte Varianten-ID %{variant_id}.",
+        "invalid_variant_id_target": "Die Warenanweisung %{position} %{name} verweist auf die Varianten-ID %{variant_id}, aber diese Variante ist nicht in den Warenlinien enthalten."
       }
     },
     "sentence": {
