@@ -3612,23 +3612,23 @@
         "delivered_description": "Diese Sendung wurde zugestellt.",
         "delivered_label": "Geliefert",
         "delivered_title": "Ihre Sendung wurde zugestellt",
-        "estimated_delivery": "Voraussichtliche Lieferung {{date}}",
-        "in_review_description": "Wir werden Sie wissen lassen, wenn wir weitere Informationen benötigen oder wenn Ihre Bestellung bestätigt ist.",
+        "estimated_delivery": "Expected {{date}}",
+        "in_review_description": "Wir teilen Ihnen mit, wenn wir weitere Informationen benötigen oder wenn Ihre Bestellung bestätigt wird.",
         "in_review_label": "Im Rückblick",
-        "in_review_title": "Ihre Bestellung wird überprüft",
+        "in_review_title": "Ihre Bestellung wird gerade geprüft",
         "last_updated": "Zuletzt aktualisiert {{date}}",
         "multiple_shipments_label": "Mehrere Sendungen",
         "no_tracking_number": "Für diese Sendung gibt es keine Sendungsverfolgungsnummer.",
-        "on_its_way_label": "Auf dem Weg",
+        "on_its_way_label": "Unterwegs",
         "on_its_way_title": "Ihre Sendung ist auf dem Weg",
-        "out_for_delivery_label": "Zur Auslieferung bereit",
-        "out_for_delivery_title": "Ihre Sendung ist zur Auslieferung bereit",
-        "resume_tracking": "Verfolgung fortsetzen",
-        "submitted_label": "Hochgeladen",
-        "submitted_description": "Bestell- und Zahlungsdetails überprüfen.",
+        "out_for_delivery_label": "Zur Auslieferung",
+        "out_for_delivery_title": "Ihre Sendung ist unterwegs zur Zustellung",
+        "resume_tracking": "Lebenslauf verfolgen",
+        "submitted_label": "Eingereicht",
+        "submitted_description": "Überprüfen Sie die Bestell- und Zahlungsdetails.",
         "track_shipment": "Sendung verfolgen",
-        "request_return": "Rücksendung anfordern",
-        "view_order_for_details": "Bestellung für Details anzeigen",
+        "request_return": "Rückgabe beantragen",
+        "view_order_for_details": "Siehe Bestellung für Details",
         "attempted_to_deliver_label": "Versucht zu liefern",
         "ready_for_pickup_location": "Ihre Bestellung ist abholbereit am Standort",
         "confirmed_description_pickup": "Sie erhalten eine E-Mail, wenn Ihre Bestellung zur Abholung bereitsteht.",
@@ -3656,7 +3656,60 @@
           "other": "Geschenkkarten erneut versenden"
         },
         "gift_resend_success": {
-          "one": "Geschenkkarte zurückgeschickt"
+          "one": "Geschenkkarte zurückgeschickt",
+          "other": "Zurückgeschickte Geschenkkarten"
+        },
+        "gift_resend_failure": {
+          "one": "Es gab ein Problem beim erneuten Versand Ihrer Geschenkkarte. Versuchen Sie es erneut oder kontaktieren Sie uns.",
+          "other": "Es gab ein Problem beim erneuten Versand Ihrer Geschenkkarten. Versuchen Sie es erneut oder kontaktieren Sie uns."
+        },
+        "confirmed_gift_card_additional_description": {
+          "one": "Die Geschenkkarte wird in einer separaten E-Mail versandt.",
+          "other": "Jede Geschenkkarte wird in einer separaten E-Mail verschickt."
+        },
+        "confirmed_gift_card_additional_description_text": {
+          "one": "Der Geschenkgutschein wird in einem separaten Text verschickt.",
+          "other": "Jede Geschenkkarte wird in einem separaten Text verschickt."
+        },
+        "status_timestamp": "Updated {{date}}",
+        "delivered": "Arrived {{date}}",
+        "buy_with_prime_logo_accessibility_label": "Amazon Buy mit Prime-Logo",
+        "multiple_statuses_label": "Mehrere Auftragsstatus",
+        "tracking_number": {
+          "one": "Verfolgungsnummer",
+          "other": "Verfolgungsnummern"
+        },
+        "there_was_a_problem_label": "Es gab ein Problem",
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "Verwalten auf Amazon"
+        },
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "text": "Verwalten mit Amazon",
+            "new_window_disclaimer": "(öffnet ein neues Fenster)"
+          }
+        },
+        "delivery_promise_v2": {
+          "promise_line": {
+            "shop_promise_brand_label": "Lieferung garantiert durch",
+            "external_promise_brand_label": "Lieferung durch",
+            "not_delivered_by_label": "Geliefert nach {{date}}",
+            "delivery_guarantee_expired_label": "Liefergarantie ist abgelaufen",
+            "modal_accessibility_button_label": "Details der Lieferzusage",
+            "download_shop_app_button_label": "Download Shop zum Verfolgen",
+            "track_with_shop_button_label": "Track mit Shop",
+            "claim_shop_cash_button_label": "Anspruch auf Shop Cash"
+          },
+          "details_modal": {
+            "title": "Liefergarantie",
+            "active_delivery_guarantee_label": "Lieferung per {{date}}",
+            "expired_delivery_guarantee_description": "Die 30-Tage-Garantie von Shop Promise für diese Bestellung ist abgelaufen.",
+            "expired_badge_label": "Abgelaufen",
+            "order_includes_guarantees_label": "Ihre Bestellung enthält {{deliveryAgreementsCount}} Garantien",
+            "order_includes_guarantees_description": "Shop Promise garantiert eine schnelle und zuverlässige Lieferung. Beanspruchen Sie Shop Cash, wenn Ihre Bestellung nach {{date}}. ankommt.",
+            "delivered_after_label": "Geliefert nach {{date}}",
+            "delivered_after_description": "Da Ihre Bestellung verspätet eingetroffen ist, haben Sie Anspruch auf {{amount}} Shop Cash."
+          }
         }
       },
       "status_mark_as_delivered": "Als geliefert markieren",
