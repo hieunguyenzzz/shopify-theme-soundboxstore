@@ -3556,7 +3556,7 @@
           }
         },
         "table_view": "Tabellenansicht anzeigen",
-        "show_order_actions_accessibility_label": "Bestellaktionen für Bestellung anzeigen {{name}}",
+        "show_order_actions_accessibility_label": "Auftragsaktionen für Auftrag {{name}} anzeigen",
         "order_status_and_message": "{{orderStatus}} - {{message}}",
         "no_order_banner": "Um Ihre Erweiterung auf der Seite Auftragsstatus zu testen, legen Sie einen Auftrag an.",
         "more_than_three_products_accessibility_label": "Order includes {{lineItemName1}}, {{lineItemName2}}, and {{numberOfAdditionalProducts}} more products",
@@ -3575,30 +3575,42 @@
         "filter_title": "Filter",
         "filter": {
           "clear_section": "Abschnitt löschen",
-          "clear_all": "Alle löschen"
+          "clear_all": "Alle löschen",
+          "apply": "Bewerbung",
+          "date": {
+            "start_date": "Datum des Beginns",
+            "end_date": "Datum des Endes",
+            "title": "Datum der Bestellung",
+            "today": "Heute",
+            "last_7_days": "Letzte 7 Tage",
+            "last_30_days": "Letzte 30 Tage",
+            "last_90_days": "Letzte 90 Tage",
+            "last_365_days": "Letzte 12 Monate",
+            "custom": "Benutzerdefiniert"
+          }
         }
       },
       "order_status": {
         "attempted_delivery_label": "Versuchte Zustellung",
-        "attempted_delivery_description": "Der Zustellversuch war erfolglos.",
+        "attempted_delivery_description": "Der Zustellungsversuch war erfolglos.",
         "confirmed_description": "Wir haben Ihre Bestellung erhalten.",
-        "on_its_way_description": "Diese Lieferung ist auf dem Weg.",
-        "out_for_delivery_description": "Diese Sendung ist zur Auslieferung bereit.",
+        "on_its_way_description": "Diese Sendung ist auf dem Weg.",
+        "out_for_delivery_description": "Diese Sendung ist unterwegs zur Auslieferung.",
         "preparing_for_shipping_label": "Vorbereitung für den Versand",
-        "preparing_for_shipping_description": "Diese Artikel werden für den Versand vorbereitet.",
+        "preparing_for_shipping_description": "Diese Artikel werden gerade für den Versand vorbereitet.",
         "ready_for_pickup_label": "Bereit zur Abholung",
-        "ready_for_pickup_description": "Diese Gegenstände stehen zur Abholung bereit.",
-        "picked_up_label": "Abholen",
-        "picked_up_description": "Diese Gegenstände wurden abgeholt.",
+        "ready_for_pickup_description": "Diese Artikel sind zur Abholung bereit. Bitte bringen Sie Ihre Auftragsbestätigung mit, wenn Sie Ihre Bestellung abholen.",
+        "picked_up_label": "Abgeholt",
+        "picked_up_description": "Diese Gegenstände wurden bereits abgeholt.",
         "canceled_description": "Ihre Bestellung wurde storniert am {{date}}.",
-        "canceled_label": "Stornieren",
+        "canceled_label": "Abgesagt",
         "canceled_title": "Ihre Bestellung wurde storniert",
-        "come_back": "Kehren Sie zu dieser Seite zurück, um Aktualisierungen zu Ihrem Versandstatus zu erhalten.",
-        "company_tracking_number": "{{company}} Spurhaltungszahl:",
-        "confirmed_label": "Bestätigen",
+        "come_back": "Besuchen Sie diese Seite regelmäßig, um sich über den Status Ihrer Sendung zu informieren.",
+        "company_tracking_number": "{{company}} tracking number:",
+        "confirmed_label": "Bestätigt",
         "confirmed_title": "Ihre Bestellung ist bestätigt",
         "delivered_description": "Diese Sendung wurde zugestellt.",
-        "delivered_label": "Liefern",
+        "delivered_label": "Geliefert",
         "delivered_title": "Ihre Sendung wurde zugestellt",
         "estimated_delivery": "Voraussichtliche Lieferung {{date}}",
         "in_review_description": "Wir werden Sie wissen lassen, wenn wir weitere Informationen benötigen oder wenn Ihre Bestellung bestätigt ist.",
@@ -3616,7 +3628,36 @@
         "submitted_description": "Bestell- und Zahlungsdetails überprüfen.",
         "track_shipment": "Sendung verfolgen",
         "request_return": "Rücksendung anfordern",
-        "view_order_for_details": "Bestellung für Details anzeigen"
+        "view_order_for_details": "Bestellung für Details anzeigen",
+        "attempted_to_deliver_label": "Versucht zu liefern",
+        "ready_for_pickup_location": "Ihre Bestellung ist abholbereit am Standort",
+        "confirmed_description_pickup": "Sie erhalten eine E-Mail, wenn Ihre Bestellung zur Abholung bereitsteht.",
+        "confirmed_description_digital": "Sie erhalten eine E-Mail, wenn Ihre Bestellung fertig ist.",
+        "confirmed_description_gift_card_text": "Sie erhalten eine SMS, wenn Ihre Bestellung fertig ist.",
+        "complete_label": "Vollständig",
+        "delivered_description_digital": {
+          "one": "Dieser Artikel ist vollständig.",
+          "other": "Diese Punkte sind vollständig."
+        },
+        "delivered_description_gift_card": {
+          "one": "Der Geschenkgutschein wurde per E-Mail verschickt.",
+          "other": "Die Geschenkkarten wurden per E-Mail verschickt."
+        },
+        "delivered_description_gift_card_text": {
+          "one": "Geschenkkarte wurde per SMS verschickt.",
+          "other": "Die Geschenkkarten wurden per SMS verschickt."
+        },
+        "gift_card_label": {
+          "one": "Geschenkkarte",
+          "other": "Geschenkkarten"
+        },
+        "gift_card_resend_button": {
+          "one": "Geschenkkarte erneut senden",
+          "other": "Geschenkkarten erneut versenden"
+        },
+        "gift_resend_success": {
+          "one": "Geschenkkarte zurückgeschickt"
+        }
       },
       "status_mark_as_delivered": "Als geliefert markieren",
       "status_title": "Bestellstatus",
