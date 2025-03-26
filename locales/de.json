@@ -2779,7 +2779,89 @@
         "title": "Abholstelle",
         "or": "oder",
         "search_button": "Suche",
-        "address_label": "Adresse"
+        "address_label": "Adresse",
+        "selector_tabs": "Wahl des Abholpunkts",
+        "selector_tab_map": "Karte",
+        "selector_tab_list": "Liste",
+        "could_not_resolve_address": "Ihre Adresse konnte nicht gefunden werden. Versuchen Sie es erneut oder verwenden Sie eine andere Adresse",
+        "no_pickup_points_near_you": "Keine Abholstellen in der Nähe der ausgewählten Adresse gefunden",
+        "no_pickup_points_near_location": "Keine Abholstellen in der Nähe Ihres Standorts gefunden",
+        "pickup_unavailable_banner_title": {
+          "one": "Ihr Artikel ist an den Abholstellen nicht verfügbar",
+          "other": "Ihre Artikel sind an den Abholstellen nicht verfügbar"
+        },
+        "no_pickup_points_found": "Keine Abholpunkte gefunden",
+        "paginator": {
+          "next_accessibility_label": "Nächste Seite",
+          "previous_accessibility_label": "Vorherige Seite",
+          "header": {
+            "one": "Zeigt %{first} - %{last} von %{count} Punkt",
+            "other": "Zeigt %{first} - %{last} von %{count} Punkten"
+          },
+          "selected_pickup_point_label": {
+            "one": "%{pickup_point_index} von %{count} Punkt",
+            "other": "%{pickup_point_index} von %{count} Punkte"
+          },
+          "selected_page": {
+            "one": "%{first} - %{last} von %{count} Punkt",
+            "other": "%{first} - %{last} von %{count} Punkten"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "one": "%{count} Abholstelle in der Nähe Ihres Standorts",
+          "other": "%{count} Abholstellen in der Nähe Ihres Standorts"
+        },
+        "change": "Standort wechseln",
+        "waiting_on_pickup_point_location_notice": "Auf der Suche nach Abholstellen...",
+        "geolocation": {
+          "shared_location_button": "Meinen Standort verwenden",
+          "errors": {
+            "unsuported_by_browser": "Die Geolokalisierung wird von Ihrem Browser nicht unterstützt. Versuchen Sie es erneut oder verwenden Sie einen anderen Browser.",
+            "permission_not_allowed": "Erlauben Sie die Freigabe Ihres Standorts.",
+            "permission_denied": "Ihr Standort konnte nicht ermittelt werden. Versuchen Sie es erneut."
+          }
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Es gab ein Problem mit unserem Checkout",
+          "message": "Aktualisieren Sie diese Seite oder versuchen Sie es in ein paar Minuten erneut",
+          "action": {
+            "cta": "Seite aktualisieren"
+          },
+          "request_id": "Anfrage-ID: {{requestId}}"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Zurück zum Warenkorb",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} zur Aktualisierung der Mengen",
+        "subscription_changed": "Eines Ihrer Abonnements hat sich geändert.",
+        "company_location_changed": "Ihr Warenkorb wurde aktualisiert. Überprüfen Sie Ihre Bestellung, bevor Sie sie abschicken.",
+        "company_location_changed_product_removed": "Ihr Warenkorb wurde aktualisiert, da einige Produkte an diesem Standort nicht verfügbar sind. Überprüfen Sie Ihre Bestellung, bevor Sie sie abschicken.",
+        "violations_title": "{{violation}}  fehlt oder ist ungültig",
+        "individual_violations_title": {
+          "DeliveryViolations": "Lieferadresse",
+          "PaymentViolations": "Rechnungsadresse",
+          "OtherViolations": "Informationen bestellen",
+          "UnhandledViolations": "Informationen bestellen"
+        },
+        "all_violations_content": "Rufen Sie an oder {{emailLink}} us , um diese Informationen zu aktualisieren und Ihre Bestellung abzuschließen:",
+        "all_violations_email_link": "E-Mail",
+        "editable_shipping_address_violations_message_title": "Fügen Sie diese Informationen hinzu, um Ihre Bestellung abzuschließen:",
+        "editable_shipping_address_violations_message_footer": "Um die Adresse für diesen Standort dauerhaft zu aktualisieren, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "Kontaktieren Sie uns",
+        "shipping_address_incomplete_title": "Die Lieferadresse ist unvollständig",
+        "calculating_shipping": "Der Versand wird noch berechnet. Versuchen Sie es in ein paar Sekunden erneut. Sie wurden noch nicht belastet.",
+        "calculating_taxes": "Die Steuern werden noch berechnet. Versuchen Sie es in ein paar Sekunden erneut. Sie wurden noch nicht belastet.",
+        "generic_processing_error": {
+          "title": "Es gab ein Problem bei der Bearbeitung Ihrer Bestellung",
+          "body": "Sie wurden nicht belastet. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode."
+        }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Überprüfung"
+        }
       }
     },
     "sentence": {
