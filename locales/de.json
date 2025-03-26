@@ -1648,25 +1648,76 @@
           "not_available": "Apple Pay ist in diesem Browser nicht verfügbar. Um Ihr Apple Pay-Konto zu verbinden, müssen Sie Safari auf einem Apple-Gerät verwenden."
         },
         "google": {
-          "connect": "Klicken Sie hier, um sich mit Ihrem Google Pay-Konto zu verbinden",
-          "error_authorizing": "Fehler beim Autorisieren der Zahlung"
+          "connect": "Klicken Sie auf , um eine Verbindung mit Ihrem Google Pay-Konto herzustellen",
+          "error_authorizing": "Fehler bei der Autorisierung der Zahlung"
         },
         "account_connected": "Konto verbunden.",
-        "mor_disclaimer_html": "Indem Sie unten klicken und Ihre Bestellung abschließen, erklären Sie sich damit einverstanden, Ihre Artikel von Global-e als eingetragener Händler zu kaufen\nfür diese Transaktion auf Global-e's <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Allgemeine Geschäftsbedingungen</a>\nund <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Datenschutzerklärung</a>. Global-e ist eine internationale\nfulfillment-Dienstleister für %{shop_name}\n",
+        "mor_disclaimer_html": "Indem Sie unten klicken und Ihre Bestellung abschließen, erklären Sie sich damit einverstanden, Ihre Artikel von Global-e als dem für diese Transaktion verantwortlichen Händler zu kaufen und die Allgemeinen <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Geschäftsbedingungen</a> und <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Datenschutzbestimmungen</a> von Global-e zu akzeptieren. Global-e ist ein internationaler Erfüllungsdienstleister für %{shop_name} ",
         "pending_payment": {
-          "due_notice": "Ihre Zahlung von %{amount_due} ist fällig am %{due_date}.",
+          "due_notice": "Ihre Zahlung von %{amount_due} ist am %{due_date} fällig.",
           "multibanco": {
-            "instruction_html": "Machen Sie Ihre Zahlung bei Multibanco oder online mit den unten angegebenen Details. Bei Fragen oder zur Aktualisierung der Zahlungsdetails, %{contact_us}.",
-            "entity": "Einheit",
+            "instruction_html": "Nehmen Sie Ihre Zahlung bei Multibanco oder online unter Verwendung der nachstehenden Angaben vor. Bei Fragen oder zur Aktualisierung der Zahlungsdaten, %{contact_us}.",
+            "entity": "Entität",
             "reference": "Referenz",
-            "amount": "Menge",
-            "find_nearest_atm": "Nächstgelegenen Geldautomaten finden"
+            "amount": "Betrag",
+            "find_nearest_atm": "Finden Sie den nächstgelegenen ATM",
+            "buyer_action_info": "Ihre Zahlung von %{amount_due} ist fällig."
           }
         },
         "update_payment_method": "Zahlungsmethode aktualisieren",
         "network_card_payment_options": "Wählen Sie ein Kartennetz",
         "network_card_persistence_description": "Das ausgewählte Netzwerk wird zusammen mit Ihrer Zahlungsmethode für zukünftige Transaktionen gespeichert.",
-        "card_nickname_label": "Spitzname (fakultativ)"
+        "card_nickname_label": "Spitzname (fakultativ)",
+        "order_covered_by_store_credit_notice": "Ihre Bestellung ist durch Ihr Geschäftsguthaben gedeckt.",
+        "order_covered_by_redeemables_notice": "Ihre Bestellung ist abgedeckt.",
+        "store_credit": {
+          "label": "Kredit im Geschäft",
+          "apply_label": "Kredit im Geschäft beantragen",
+          "add_label": "Ladenguthaben hinzufügen",
+          "manage_label": "Ladenguthaben verwalten",
+          "buying_gift_card": "Sie können kein Guthaben für den Kauf einer Geschenkkarte verwenden.",
+          "no_fixed_selling_plans": "Sie können bei aufgeschobenen Käufen keinen Geschäftskredit verwenden."
+        },
+        "clear": "Klar",
+        "billing_must_match_shipping_notice": "Die Rechnungsadresse Ihrer Zahlungsmethode muss mit der Lieferadresse übereinstimmen.",
+        "same_billing_address_checkbox_label": "Lieferadresse als Rechnungsadresse verwenden",
+        "location_billing_address_label": "Standort Rechnungsadresse",
+        "fact_billing_address_label": "Rechnungsadresse",
+        "location_shipping_address_label": "Standort Lieferadresse",
+        "use_order_billing_address_label": "Rechnungsadresse der Bestellung verwenden",
+        "use_location_billing_address_label": "Rechnungsadresse des Standorts verwenden",
+        "use_location_shipping_address_label": "Standort verwenden Lieferadresse",
+        "no_working_method_error": "Dieser Shop kann im Moment keine Zahlungen annehmen. Aktualisieren Sie diese Seite oder kommen Sie später wieder.",
+        "brand_not_available": "Dieser Shop akzeptiert keine {{brand}}. Bitte verwenden Sie eine andere Karte zur Bezahlung.",
+        "shipping_rate_updated": "Die verfügbaren Versandarten wurden aktualisiert. Bestätigen Sie Ihre Wahl, bevor Sie zur Kasse gehen.",
+        "billing_address_invalid_phone": "Aktualisieren Sie die Telefonnummer in Ihrer Rechnungsadresse für {{label}} {{last_digits}} tum fortzufahren.",
+        "billing_address_invalid_phone_no_card": "Aktualisieren Sie die Telefonnummer in Ihrer Rechnungsadresse, um fortzufahren.",
+        "preview_not_available": {
+          "title": "Vorschau nicht verfügbar",
+          "content": "Keine Sorge, diese Express-Kasse funktioniert für Ihre Kunden.",
+          "button": "Ok"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Geben Sie ein gültiges Ausstellungsdatum ein",
+              "issue_number": "Geben Sie eine gültige Ausgabenummer ein"
+            },
+            "invalid": {
+              "verification_value": "Geben Sie einen gültigen CVV- oder Sicherheitscode ein"
+            }
+          }
+        },
+        "simulated_checkout": "Vorschau folgt in Kürze",
+        "simulated_express_checkout": "Geldbörsen sind aufgrund Ihrer Region oder Ihres Browsers in der Editorvorschau nicht verfügbar",
+        "vaulting_agreement_label": "Speichern Sie meine Zahlungsinformationen mit %{company} für eine schnellere Kaufabwicklung.",
+        "business_customer_vaulting_payment_label": "Speichern Sie diese Karte an der Kasse und ermächtigen Sie %{company}, sie für zukünftige Einkäufe für diesen Standort zu belasten. Alle Kontakte, die diesem Standort zugewiesen sind, können die Karte verwenden.",
+        "purchase_options_and_vaulting_agreement_label": "Bei einem oder mehreren Artikeln in Ihrem Warenkorb handelt es sich um einen Kauf auf Zeit oder ein Abonnement. Indem Sie Ihre Zahlung fortsetzen, erklären Sie sich damit einverstanden, dass Ihre Zahlungsmethode automatisch zu dem auf dieser Seite angegebenen Preis und in der angegebenen Häufigkeit belastet wird, bis das Abonnement endet oder Sie es kündigen. Alle Stornierungen unterliegen den %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "Stornierungsbedingungen",
+        "use_different_credit_card_label": "Eine andere Karte verwenden",
+        "saved_credit_card": "Ihre gespeicherte Kreditkarte",
+        "saved_credit_card_info": "Letzte vier Ziffern",
+        "saved_credit_card_cvv_verification": "Zur Überprüfung geben Sie bitte den Sicherheitscode Ihrer Karte ein."
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "Leistungsbilanz %{amount}",
