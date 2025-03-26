@@ -4187,17 +4187,42 @@
             "description": "Sie wurden nicht angeklagt."
           },
           "pay_now": "Jetzt bezahlen",
-          "pay_now_accessibility_label": "Jetzt für Bestellung bezahlen {{orderName}}",
-          "title": "Zahlstatus"
+          "pay_now_accessibility_label": "Jetzt bezahlen für Bestellung {{orderName}}",
+          "title": "Zahlungsstatus"
         },
         "order_timeline": {
           "expand_events_label": "Details anzeigen",
-          "expand_events_accessibility_label": "Bestellentwurf anzeigen",
+          "expand_events_accessibility_label": "Details zum Entwurfsauftrag anzeigen",
           "hide_events_label": "Details ausblenden",
-          "hide_events_accessibility_label": "Bestellentwurfsdetails ausblenden"
+          "hide_events_accessibility_label": "Details zu Entwurfsaufträgen ausblenden"
         },
-        "subtitle": "Hochgeladen {{date}}",
-        "title": "Bestellen {{name}}"
+        "subtitle": "Submitted {{date}}",
+        "title": "Order {{name}}"
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "Diese Zahlungsmethode wird für zukünftige Einkäufe an diesem Standort nicht mehr verfügbar sein.",
+          "description_with_replacement": "Die Löschung dieser Zahlungsmethode wirkt sich auf vorautorisierte Zahlungen für diesen Standort aus. Ersetzen Sie sie durch eine alternative Zahlungsmethode, um weiterhin anstehende Bestellungen zu erhalten."
+        },
+        "payment_details": {
+          "order_label": "Order {{name}}",
+          "draft_label": "Entwurf der Bestellung {{name}}"
+        }
+      },
+      "purchase_order_number": {
+        "add_accessibility_label": "PO-Nummer hinzufügen",
+        "add_modal_title": "PO-Nummer hinzufügen",
+        "cancel": "Abbrechen",
+        "close_modal_accessibility_label": "Modal \"Bestellnummer schließen",
+        "discard": "Ablegen",
+        "discard_changes_modal_title": "Änderungen verwerfen?",
+        "edit_accessibility_label": "PO-Nummer bearbeiten",
+        "edit_modal_title": "PO-Nummer bearbeiten",
+        "empty_state": "Keine PO-Nummer",
+        "modal_po_number_input_label": "PO-Nummer",
+        "modal_po_number_input_max_length_error": "Bestellnummern haben maximal {{maxLength}} Zeichen.",
+        "save": "Speichern Sie",
+        "title": "PO #{{poNumber}}"
       }
     },
     "errors": {
@@ -4208,19 +4233,19 @@
         "description": "Verbindungsfehler. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut."
       },
       "banner_title": {
-        "one": "Es gibt {{count}} Fehlermeldung",
-        "other": "Es gibt {{count}} Fehlermeldung"
+        "one": "Es gibt einen {{count}} Fehler",
+        "other": "Es gibt {{count}} Fehler"
       },
       "failed_address_creation": {
-        "description": "Beim Erstellen Ihrer Adresse ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+        "description": "Bei der Erstellung Ihrer Adresse ist ein Problem aufgetreten. Versuchen Sie, diese Seite zu aktualisieren oder überprüfen Sie Ihre Internetverbindung."
       },
       "failed_address_update": {
-        "description": "Beim Aktualisieren Ihrer Adresse ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+        "description": "Bei der Aktualisierung Ihrer Adresse ist ein Problem aufgetreten. Versuchen Sie, diese Seite zu aktualisieren oder überprüfen Sie Ihre Internetverbindung."
       },
       "load_orders_error": {
-        "title": "Bestellungen können nicht geladen werden",
+        "title": "Aufträge können nicht geladen werden",
         "description": "Versuchen Sie es erneut oder kommen Sie später wieder.",
-        "retry_button": "Retry"
+        "retry_button": "Wiederholung"
       },
       "no_access": {
         "back_to_authentication_link": "Melden Sie sich bei einem anderen Konto an",
@@ -4228,23 +4253,34 @@
         "title": "Kein Zugang"
       },
       "no_access_to_locations": {
-        "description": "Sie haben keinen Zugriff auf Standorte"
+        "description": "Sie haben keinen Zugang zu irgendwelchen Orten"
       },
       "not_found": {
-        "description": "Überprüfen Sie die URL oder versuchen Sie es in wenigen Minuten erneut.",
+        "description": "Überprüfen Sie die URL oder versuchen Sie es in ein paar Minuten erneut.",
         "title": "Beim Laden dieser Seite ist ein Problem aufgetreten"
       },
       "order_not_found": {
-        "description": "Diese Bestellung existiert nicht oder Sie haben keine Berechtigung, sie anzuzeigen.",
+        "description": "Dieser Auftrag existiert nicht oder Sie haben keine Berechtigung, ihn zu sehen.",
         "title": "Bestellung nicht gefunden"
       },
       "profile_update_error": {
-        "description": "Beim Aktualisieren Ihres Profils ist ein Problem aufgetreten. Aktualisieren Sie diese Seite oder überprüfen Sie Ihre Internetverbindung."
+        "description": "Beim Aktualisieren Ihres Profils ist ein Problem aufgetreten. Versuchen Sie, diese Seite zu aktualisieren oder überprüfen Sie Ihre Internetverbindung."
       },
-      "retry_action_label": "Retry"
+      "retry_action_label": "Wiederholung",
+      "load_paypal_error": {
+        "description": "Beim Laden von PayPal ist ein Problem aufgetreten. Bitte versuchen Sie es erneut."
+      },
+      "logout_everywhere": {
+        "description": "Beim Abmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      },
+      "load_extension_error": {
+        "title": "Fehler",
+        "description": "Aktualisieren Sie diese Seite oder versuchen Sie es in ein paar Minuten erneut.",
+        "refresh_button": "Seite aktualisieren"
+      }
     },
     "payment_methods": {
-      "title": "Zahlungsmethoden",
+      "title": "Zahlungsmöglichkeiten",
       "add_payment_method_button": "Zahlungsmethode hinzufügen",
       "delete_payment_method_button": "Löschen",
       "delete_payment_method_button_accessibility_label": "Löschen {{paymentMethodName}}",
@@ -4351,6 +4387,12 @@
         "tomorrow": "Morgen bei {{time}}",
         "lessThanOneWeekAway": "{{weekday}} at {{time}}",
         "lessThanOneYearAway": "{{date}} at {{time}}"
+      }
+    },
+    "throttle": {
+      "too_many_attempts": {
+        "message": "Zu viele Versuche",
+        "description": "Bitte versuchen Sie es in ein paar Minuten erneut"
       }
     }
   },
