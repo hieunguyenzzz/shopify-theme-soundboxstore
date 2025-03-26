@@ -3859,13 +3859,13 @@
       "summary_title": "Zusammenfassung der Bestellung",
       "summary_totals_title_accessibility_label": "Auftragssummen",
       "taxes": "Steuern",
-      "title": "Bestellen {{name}}",
+      "title": "Order {{name}}",
       "total": "Insgesamt",
-      "unit_price": "({{price}}/ea)",
+      "unit_price": "{{price}}/ea",
       "pagination": {
         "load_more": "Mehr laden",
-        "load_more_accessibility_label": "Mehr Artikel laden",
-        "loading_accessibility_label": "Artikel laden"
+        "load_more_accessibility_label": "Weitere Artikel laden",
+        "loading_accessibility_label": "Laden von Artikeln"
       },
       "order_details": "Details zur Bestellung",
       "order_details_skeleton_accessibility_label": "Loggen Sie sich ein, um alle Bestelldetails zu sehen.",
@@ -3931,35 +3931,56 @@
       "shop_pay": {
         "order_completed_with": "Bestellung abgeschlossen mit",
         "learn_more": "Mehr erfahren"
-      }
+      },
+      "taxes_included": "Einschließlich {{amount}} in Steuern",
+      "duties_and_taxes_included": "Der Gesamtbetrag enthält Zölle und Steuern. Keine zusätzlichen Kosten für die Lieferung.",
+      "duties": "Zuständigkeiten",
+      "ok_duties_tooltip": "Diese Bestellung wird aus einem anderen Land versandt, daher wurden Zölle zu Ihrem Gesamtbetrag hinzugerechnet.",
+      "error_duties_tooltip": "Diese Bestellung wird aus einem anderen Land verschickt, daher können bei der Lieferung Zölle und Steuern anfallen.",
+      "zero_duties_tooltip": "Diese Bestellung wird aus einem anderen Land verschickt. Auf Bestellungen dieses Wertes werden keine Zölle erhoben.",
+      "tip": "Tipp",
+      "login_to_view_all_order_details": "Loggen Sie sich ein, um alle Bestelldetails zu sehen.",
+      "log_in": "Einloggen",
+      "logged_in_account_no_permission_to_order": "Sie sind eingeloggt als {{email}}. Dieses Konto hat keine Berechtigung, diese Bestellung zu verwalten.",
+      "log_in_to_a_different_account": "Bei einem anderen Konto anmelden",
+      "fees": {
+        "restocking_fee": "Wiedereinlagerungsgebühr",
+        "return_shipping_fee": "Rücksendung"
+      },
+      "vat_invoices": {
+        "title": "Mehrwertsteuerrechnungen"
+      },
+      "cash_rounding": "Rundung des Bargelds",
+      "adjusted_payment": "Angepasste Zahlung",
+      "adjusted_total": "Angepasste Summe"
     },
     "addresses": {
       "add_button": "Adresse hinzufügen",
-      "add_address_banner": "Fügen Sie Adressen hinzu, die Sie an der Kasse verwenden möchten",
+      "add_address_banner": "Adressen zur Verwendung an der Kasse hinzufügen",
       "address_deleted_notification": "Adresse gelöscht",
-      "cancel_adding_address_accessibility_label": "Adresse hinzufügen abbrechen",
-      "cancel_deletion_button": "Stornieren",
-      "cancel_deletion_button_accessibility_label": "Löschen abbrechen {{address}}",
+      "cancel_adding_address_accessibility_label": "Hinzufügen der Adresse abbrechen",
+      "cancel_deletion_button": "Abbrechen",
+      "cancel_deletion_button_accessibility_label": "Löschung abbrechen {{address}}",
       "default_address": {
         "title": "Standardadresse",
         "title_accessibility_label": "Standardadresse: {{address}}"
       },
       "delete_button": "Löschen",
-      "delete_button_accessibility_label": "Löschen {{address}}",
+      "delete_button_accessibility_label": "Delete {{address}}",
       "delete_confirmation_button": "Adresse löschen",
-      "delete_confirmation_button_accessibility_label": "Löschen {{address}}",
-      "delete_confirmation_message": "Adresse löschen? Bestehende Bestellungen sind nicht betroffen.",
+      "delete_confirmation_button_accessibility_label": "Delete {{address}}",
+      "delete_confirmation_message": "Adresse löschen? Bestehende Bestellungen sind davon nicht betroffen.",
       "delete_confirmation_title": "Adresse löschen?",
-      "delete_confirmation_description": "Bestehende Bestellungen sind nicht betroffen.",
-      "edit_button": "Bearbeiten",
-      "edit_button_accessibility_label": "Bearbeiten {{address}}",
-      "edit_section_accessibility_label": "Bearbeiten {{address}}",
+      "delete_confirmation_description": "Bestehende Bestellungen sind davon nicht betroffen.",
+      "edit_button": "bearbeiten",
+      "edit_button_accessibility_label": "Edit {{address}}",
+      "edit_section_accessibility_label": "Edit {{address}}",
       "edit_modal_title": {
         "default": "Adresse bearbeiten",
         "billing": "Rechnungsadresse bearbeiten",
         "shipping": "Lieferadresse bearbeiten"
       },
-      "loading_accessibility_message": "Ladeadresse",
+      "loading_accessibility_message": "Adresse laden",
       "loading_addresses_accessibility_message": "Adressen laden",
       "loading_billing_accessibility_message": "Rechnungsadresse wird geladen",
       "loading_finished_accessibility_message": "Neue Adressseite wurde geladen",
@@ -3969,7 +3990,12 @@
         "load_more_accessibility_label": "Weitere Adressen laden"
       },
       "save_new_address_accessibility_label": "Adresse speichern",
-      "title": "Emailadressen"
+      "title": "Emailadressen",
+      "add_button_text": "hinzufügen",
+      "add_button_accessibility_label": "Adresse hinzufügen",
+      "back_button": "Zurück",
+      "back_button_accessibility_label": "Zurück zur Bearbeitungsadresse {{address}}",
+      "no_addresses_banner": "Keine Adressen hinzugefügt"
     },
     "address_form": {
       "attention": "Aufmerksamkeit",
