@@ -3775,29 +3775,55 @@
       "contact": "Kontakt",
       "fully_refunded_label": "ERSTATTET",
       "discount": "Rabatt",
-      "hide_items": "Elemente ausblenden",
-      "loading": "Bestelldetails laden",
-      "loading_finished_accessibility_message": "Bestelldetails wurden geladen",
-      "location": "Lage",
+      "hide_items": "Artikel ausblenden",
+      "loading": "Auftragsdetails laden",
+      "loading_finished_accessibility_message": "Die Bestelldaten wurden geladen",
+      "location": "Standort",
       "mobile_summary_toggle_button": {
         "open": "Bestellübersicht anzeigen",
-        "closed": "Bestellübersicht ausblenden"
+        "closed": "Zusammenfassung der Bestellung ausblenden"
       },
-      "no_data": "Kein",
-      "not_applicable": "Nicht zutreffend",
+      "no_data": "Keine",
+      "not_applicable": "K.A.",
       "partially_refunded_label": "TEILWEISE ZURÜCKERSTATTET",
       "payment": {
-        "status_in_review": "Zahlung nach Überprüfung fällig",
+        "status_in_review": "Zahlung fällig nach Überprüfung",
         "status_unpaid": "Zahlung fällig am {{date}}",
         "title": "Zahlung",
         "transactions": {
           "show_emv_details": "EMV -Details zeigen",
-          "hide_emv_details": "EMV -Details verbergen"
+          "hide_emv_details": "EMV -Details verbergen",
+          "show_all": "Alle anzeigen",
+          "show_less": "Weniger anzeigen",
+          "details": "Einzelheiten",
+          "payment_details": "Details zur Bezahlung"
         },
         "emv_details": {
-          "auth": "Auth",
-          "aid": "HILFE",
-          "source": "QUELLE"
+          "auth": "AUTH:",
+          "aid": "AID:",
+          "source": "QUELLE:"
+        },
+        "card_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}",
+        "payment_type": {
+          "gift_card": "Geschenkkarte",
+          "store_credit": "Kredit im Geschäft",
+          "money_order": "Zahlungsanweisung",
+          "cash_on_delivery": "Nachnahme (COD)",
+          "bank_deposit": "Bankeinlage",
+          "manual": "Handbuch"
+        },
+        "card_payment_details": "endend mit {{lastDigits}} - {{formattedTransactionAmount}}",
+        "gift_card_payment_details": "endend mit {{lastDigits}} - {{formattedTransactionAmount}}",
+        "store_credit_payment_details": "Guthaben - {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "Bezahlt mit Shop Pay Raten",
+          "view_schedule": "Zeitplan ansehen"
+        },
+        "manual_payment_methods": {
+          "money_order": "Zahlungsanweisung - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "Nachnahme (COD) - {{formattedTransactionAmount}}",
+          "bank_deposit": "Bankeinzahlung - {{formattedTransactionAmount}}",
+          "manual": "Handbuch - {{formattedTransactionAmount}}"
         }
       },
       "refunded_amount": "Erstatten",
@@ -3844,7 +3870,29 @@
         "expand_line_items": "Show {{count}} items",
         "collapse_line_items": "Hide {{count}} items",
         "line_item_summary": "{{refundableQuantity}} x {{productTitle}}",
-        "line_item_summary_accessibility_label": "{{productTitle}}, Quantity: {{refundableQuantity}}"
+        "line_item_summary_accessibility_label": "{{productTitle}}, Quantity: {{refundableQuantity}}",
+        "line_item_summary_list_accessibility_label": "Artikel in {{productTitle}} bundle"
+      },
+      "image_gallery": {
+        "product_name_and_quantity": "{{productName}} quantity {{quantity}}",
+        "next": "Nächste Artikel anzeigen",
+        "previous": "Vorherige Artikel anzeigen",
+        "load_more_items": {
+          "one": "Laden Sie dc4a25f221121a3f8f062e81bfac5weitere Artikel",
+          "other": "Laden Sie dc4a25f221121a3f8f062e81bfac5weitere Artikel"
+        }
+      },
+      "no_data_provided": "-",
+      "no_data_provided_accessibility_label": "{{fieldName}} is empty",
+      "paid_amount": "Bezahlt",
+      "paid_with_shop_pay_installments_card": {
+        "paid_with_shop_pay_installments": "Bezahlt mit Shop Pay Raten",
+        "description": "Behalten Sie den Überblick über Ihren Zahlungsplan mit Erinnerungen in der Shop-App.",
+        "payment_reminders_button": "Zahlungserinnerungen erhalten",
+        "desktop_qr_code_content": {
+          "title": "Scannen für Erinnerungen",
+          "description": "Lassen Sie sich mit Shop an Ihre Ratenzahlungen erinnern."
+        }
       }
     },
     "addresses": {
