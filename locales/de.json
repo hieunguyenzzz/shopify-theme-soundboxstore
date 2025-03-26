@@ -2059,37 +2059,61 @@
         "complete_your_purchase_title_error": "Korrigieren Sie Ihre Zahlungsinformationen",
         "continue_to_payment_gateway_notice_error": "Ihre Zahlungsinformationen konnten nicht verifiziert werden.",
         "continue_to_payment_gateway_button_label_error": "Zahlungsinformationen aktualisieren",
-        "page_title": "Bestellung bearbeiten",
-        "title": "Bestellung bearbeiten",
+        "page_title": "Auftragsbearbeitung",
+        "title": "Auftragsbearbeitung",
         "your_order_has_been_received_title": "Danke für Ihre Bestellung",
-        "you_will_receive_confirmation": "Wir bekommen gerade viele Bestellungen. Sie sollten in Kürze eine Bestätigung per E-Mail oder SMS erhalten. Wenn Sie es in der nächsten Stunde nicht erhalten, lassen Sie es uns wissen.",
+        "you_will_receive_confirmation": "Wir erhalten im Moment viele Bestellungen. Sie sollten bald eine Bestätigung per E-Mail oder SMS erhalten. Wenn Sie sie nicht innerhalb der nächsten Stunde erhalten, lassen Sie es uns wissen.",
         "you_will_not_be_charged": "Sie werden noch nicht belastet",
         "wait": {
-          "short": "Ihre Bestellung wird bearbeitet.",
+          "short": "Ihre Bestellung wird gerade bearbeitet.",
           "medium": {
-            "one": "Ihre Bestellung wird bearbeitet. Geschätzte Wartezeit ist %{count} Minute.",
-            "other": "Ihre Bestellung wird bearbeitet. Geschätzte Wartezeit ist %{count} Minuten."
+            "one": "Ihre Bestellung wird gerade bearbeitet. Die geschätzte Wartezeit beträgt %{count} Minute.",
+            "other": "Ihre Bestellung wird gerade bearbeitet. Die geschätzte Wartezeit beträgt %{count} Minuten."
           },
           "long": "Sie erhalten eine E-Mail, sobald Ihre Bestellung bearbeitet wurde. Derzeit gibt es ein hohes Auftragsvolumen.",
           "no_auto_refresh_html": "Wenn Sie nicht automatisch weitergeleitet werden, %{link}.",
-          "refresh_this_page": "aktualisieren Sie diese Seite"
+          "refresh_this_page": "diese Seite aktualisieren"
         },
-        "redirecting_to_bank": "Weiterleitung an {{bank}}"
+        "redirecting_to_bank": "Weiterleitung an {{bank}}",
+        "action_required": "Erforderliche Maßnahmen",
+        "modal_notice": "Wir wenden uns an {{paymentMethod}}"
       },
       "failed_payment": {
-        "page_title": "Zahlung konnte nicht verarbeitet werden",
-        "title": "Zahlung konnte nicht verarbeitet werden",
+        "page_title": "Die Zahlung konnte nicht verarbeitet werden",
+        "title": "Die Zahlung konnte nicht verarbeitet werden",
         "payment_not_processed_title": "Ihre Zahlung konnte nicht verarbeitet werden",
-        "payment_not_processed_text": "Du wurdest nicht angeklagt. Kehren Sie zu Ihrem Warenkorb zurück, um Ihren Einkauf abzuschließen.",
+        "payment_not_processed_text": "Sie wurden noch nicht belastet. Kehren Sie zu Ihrem Warenkorb zurück, um Ihren Einkauf abzuschließen.",
         "return_to_cart_button_label": "Zurück zum Warenkorb"
       },
       "payment_gateway": {
         "credit_card_label": "Kreditkarte",
-        "bank_deposit_label": "Bankeinlagen",
+        "bank_deposit_label": "Bankeinlage",
         "cash_on_delivery_label": "Nachnahme (COD)",
         "money_order_label": "Zahlungsanweisung",
         "fixed_payment_label": "Ihre Zahlung wird fällig am {{dueDate}}.",
-        "fixed_direct_payment_terms": "Ihre Karte wird belastet am {{dueDate}}."
+        "fixed_direct_payment_terms": "Ihre Karte wird am {{dueDate}}. belastet",
+        "debit_card_label": "Debitkarte",
+        "deferred_payment_label": "Zahlungsmethode später wählen",
+        "generic_payment_terms": "Sie sind bei {{translatedName}} terms. Ihre Zahlung wird fällig am {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} zu einem Konto mit Zugang zu diesem Ort, um gespeicherte Zahlungsmethoden hinzuzufügen oder zu verwenden.",
+            "link": "Einloggen"
+          }
+        },
+        "direct_payment_terms": "Sie sind bei {{translatedName}} terms. Ihre Karte wird am {{dueDate}}. belastet",
+        "order_due_on_fulfillment_choose_later": "Ihre Zahlung wird fällig, sobald Ihre Bestellung erfüllt ist.",
+        "order_due_on_fulfillment_payment": "Ihre Karte wird belastet, sobald Ihre Bestellung erfüllt ist.",
+        "order_due_on_receipt_choose_later": "Ihre Zahlung wird bei Erhalt fällig.",
+        "order_deposit_due_now": "{{depositAmount}} ist heute fällig. Der Restbetrag beläuft sich auf {{translatedName}} Terms und ist am {{dueDate}}. fällig",
+        "order_deposit_due_on_fulfillment": "{{depositAmount}} ist heute fällig. Der Restbetrag wird fällig, sobald Ihre Bestellung erfüllt ist.",
+        "order_deposit_due_on_receipt": "{{depositAmount}} ist heute fällig. Der Restbetrag wird später fällig.",
+        "order_deposit_due_on_fixed_date": "{{depositAmount}} ist heute fällig. Der Restbetrag wird am {{dueDate}}. fällig.",
+        "draft_order_payment_due_later_no_terms": "Ihre Zahlung wird fällig, sobald Ihre Bestellung bestätigt ist.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Ihre Karte wird belastet, sobald Ihre Bestellung bestätigt ist.",
+        "draft_order_payment_due_later_terms": "Sie erhalten die {{translatedName}} terms, sobald Ihre Bestellung bestätigt ist.",
+        "draft_order_payment_due_on_fulfillment": "Ihre Zahlung wird fällig, sobald Ihre Bestellung bestätigt und ausgeführt wurde.",
+        "draft_order_deposit_due_later": "{{depositAmount}}  wird fällig, wenn Ihre Bestellung bestätigt wird. Der Restbetrag wird auf {{translatedName}} Terms sein."
       },
       "thank_you": {
         "title": "Vielen Dank für Ihren Einkauf!",
@@ -2544,6 +2568,19 @@
         "invalid_stable_id_target": "Die Warenanweisung %{position} %{name} verweist auf die stabile ID %{stable_id}, aber diese stabile ID ist nicht in den Warenlinien enthalten.",
         "duplicate_variant_id": "Die Warenanweisung %{position} %{name} enthält eine doppelte Varianten-ID %{variant_id}.",
         "invalid_variant_id_target": "Die Warenanweisung %{position} %{name} verweist auf die Varianten-ID %{variant_id}, aber diese Variante ist nicht in den Warenlinien enthalten."
+      },
+      "payment_challenge_modal": {
+        "instructions": "Schließen Sie Ihren Einkauf mit Ihrem {{paymentMethod}} code ab",
+        "timer_message": "Sie haben {{timeLeft}} zu zahlen",
+        "copy_text": "Copy {{paymentMethod}} code",
+        "header": "Bezahlen mit {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Schließen Sie Ihren Einkauf mit Ihrem {{paymentMethod}} code ab"
+        },
+        "external": {
+          "instructions": "Bestätigen Sie die Zahlung in Ihrer App, um diesen Kauf abzuschließen."
+        },
+        "close": "Schließen Sie die Herausforderung"
       }
     },
     "sentence": {
