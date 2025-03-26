@@ -4283,7 +4283,7 @@
       "title": "Zahlungsmöglichkeiten",
       "add_payment_method_button": "Zahlungsmethode hinzufügen",
       "delete_payment_method_button": "Löschen",
-      "delete_payment_method_button_accessibility_label": "Löschen {{paymentMethodName}}",
+      "delete_payment_method_button_accessibility_label": "Delete {{paymentMethodName}}",
       "back_button": "Zurück",
       "back_button_accessibility_label": "Zurück zu {{paymentMethodStepTitle}}",
       "generic_card": "Karte",
@@ -4353,6 +4353,66 @@
         "delete_and_replace_button_accessibility_label": "Löschen {{currentPaymentMethodName}} und ersetzen durch {{newPaymentMethodName}}.",
         "deleted_successfully": "Zahlungsmethode erfolgreich gelöscht.",
         "loading_available_payment_methods_accessibility_label": "Verfügbare Zahlungsmethoden laden"
+      },
+      "add_payment_method_banner": "Hinzufügen einer Zahlungsmethode für eine schnellere Kaufabwicklung oder vorautorisierte Dienste",
+      "no_payment_methods_banner": "Keine zusätzlichen Zahlungsarten",
+      "edit_payment_method_button_accessibility_label": "Bearbeiten {{paymentMethodName}} end in {{lastDigits}}",
+      "edit_payment_method_brand_button_accessibility_label": "Edit {{paymentMethodName}}",
+      "default": "Standard",
+      "expiration_warning_button_accessibility_label": "Verfallswarnung für {{paymentMethodName}} end in {{lastDigits}} anzeigen",
+      "expires_soon": "Diese Karte läuft demnächst ab",
+      "expired": "Diese Karte ist abgelaufen",
+      "card_update_consent": "Diese Zahlungsmethode wird für zukünftige Einkäufe gespeichert.",
+      "digital_wallet_title": "Digitale Brieftasche",
+      "credit_or_debit_card_title": "Kredit- oder Debitkarte",
+      "google_pay": {
+        "iframe_title_accessibility_label": "Google Pay Zahlungsmethode hinzufügen",
+        "loading_accessibility_message": "Google Pay laden",
+        "loading": "Google Pay laden",
+        "errors": {
+          "generic": "Es gab ein Problem mit Google Pay. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+          "missing_billing_address": "Für Google Pay ist eine Rechnungsadresse erforderlich. Bitte fügen Sie eine zu Ihrem Konto hinzu."
+        }
+      },
+      "pay_pal": {
+        "iframe_title_accessibility_label": "PayPal-Zahlungsmethode hinzufügen",
+        "loading_accessibility_message": "PayPal laden"
+      },
+      "apple_pay": {
+        "loading": "Apple Pay laden",
+        "errors": {
+          "generic": "Es gab ein Problem mit Apple Pay. Versuchen Sie es erneut oder verwenden Sie eine andere Zahlungsmethode.",
+          "not_available": "Apple Pay ist auf diesem Gerät nicht verfügbar.",
+          "missing_billing_address": "Für Apple Pay ist eine Rechnungsadresse erforderlich. Bitte fügen Sie eine zu Ihrem Konto hinzu."
+        }
+      },
+      "store_credit": {
+        "label": "Kredit im Geschäft",
+        "accesibility_label": "Kredit für den Laden - {{formattedBalance}}",
+        "expirable_amounts_button": "Sichtbare Beträge",
+        "expirable_amounts_label": "Erstreckbare Beträge",
+        "details_modal": {
+          "title": "Verfallbares Ladenguthaben",
+          "balance_label": "Bilanz",
+          "expiration_date_label": "Verfallsdatum",
+          "amount_label": "Betrag",
+          "date_label": "Datum",
+          "event_label": "Veranstaltung",
+          "events": {
+            "adjustment": "Einstellung",
+            "order_payment": "Bezahlung bestellen",
+            "order_refund": "Erstattung der Bestellung",
+            "payment_failure": "Zahlungsausfall",
+            "payment_returned": "Rückzahlung",
+            "order_cancellation": "Stornierung der Bestellung",
+            "tax_finalization": "Fertigstellung der Steuererklärung"
+          },
+          "expirable_balance_info": "Ein Teil Ihres Guthabens wird zu einem späteren Zeitpunkt verfallen",
+          "expirable_amount_label": "Verwendbarer Gesamtbetrag",
+          "expirable_amounts_info": "Beträge, die früher ablaufen, werden an der Kasse zuerst angewendet.",
+          "expirable_amounts_button": "Siehe",
+          "expired_amounts_button": "Abgelaufene Beträge anzeigen"
+        }
       }
     },
     "payment_method_brands": {
