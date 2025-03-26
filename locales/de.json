@@ -4043,14 +4043,14 @@
         "permissions_title": "Berechtigungen",
         "section_title": "Standort",
         "shipping_address_required": "Fügen Sie an dieser Stelle eine Lieferadresse hinzu, um Bestellungen aufzugeben.",
-        "tax_details_title": "Steuerliche Angaben",
-        "tax_id": "Steuernummer",
-        "tax_exemptions": "Steuerbefreiung",
-        "multiple_tax_exemptions": "{{taxExemptionsCount}} Mehr",
+        "tax_details_title": "Steuerliche Details",
+        "tax_id": "Steuer-ID",
+        "tax_exemptions": "Steuerbefreiungen",
+        "multiple_tax_exemptions": "{{taxExemptionsCount}} more",
         "multiple_tax_exemptions_and": "und",
-        "tax_exemptions_modal_close": "Schließen",
-        "taxes_none": "Kein",
-        "tax_exemption_not_applicable": "Nicht zutreffend",
+        "tax_exemptions_modal_close": "Schließen Sie",
+        "taxes_none": "Keine",
+        "tax_exemption_not_applicable": "K.A.",
         "tax_exemptions_modal_button_accessibility_label": "Alle Steuerbefreiungen anzeigen",
         "location_picker_accessibility_label": "Standortname: {{locationName}}",
         "deposit_percentage": "{{percentage}} deposit",
@@ -4058,24 +4058,25 @@
         "staff_and_permissions_title": "Personal und Genehmigungen"
       },
       "location_selection": {
-        "continue_to_store": "Weiter zum Speichern",
-        "description": "Wenn Sie bereits Artikel in Ihrem Warenkorb haben, kann sich ein Standortwechsel auf die Warenkorbpreise und -mengen auswirken.",
+        "continue_to_store": "Weiter zu speichern",
+        "description": "Wenn Sie bereits Artikel in Ihrem Einkaufswagen haben, kann sich ein Ortswechsel auf die Preise und Mengen im Einkaufswagen auswirken.",
         "list_accessibility_label": "Liste der Standorte",
         "list_item_accessibility_label": "{{name}}: {{address}}",
         "list_item_without_address_accessibility_label": "{{name}}: Keine Adresse",
-        "list_loading_accessibility_message": "Liste der Standorte wird geladen",
+        "list_loading_accessibility_message": "Liste der Standorte laden",
         "list_loading_address_accessibility_message": "Ladeadresse für {{locationName}}",
         "list_loading_finished_accessibility_message": "Liste der Standorte wurde geladen",
         "loading_store_accessibility_message": "In den Laden gehen",
         "no_location_title": "Nur persönliche Bestellungen",
-        "no_location_description": "Sie haben keine Berechtigung mehr, Bestellungen aufzugeben für {{company}}. Sie können weiterhin persönliche Bestellungen aufgeben.",
+        "no_location_description": "Sie haben nicht mehr die Erlaubnis, Bestellungen für {{company}}.  aufzugeben, aber Sie können weiterhin persönliche Bestellungen aufgeben.",
         "no_locations_found": "Keine Standorte gefunden",
-        "search": "Suche nach einem Standort",
-        "selection_cancel_button": "Stornieren",
+        "search": "Suche nach einem Ort",
+        "selection_cancel_button": "Abbrechen",
         "selection_confirmation_button": "Standort wählen",
-        "title": "Für welchen Standort kaufen Sie?",
+        "title": "Für welchen Standort wollen Sie kaufen?",
         "clear_search": "Suche löschen",
-        "try_new_search": "Versuchen Sie eine neue Suche"
+        "try_new_search": "Versuchen Sie eine neue Suche",
+        "search_location_title": "Wählen Sie einen Standort"
       },
       "addresses": {
         "add_billing_address_button": "Rechnungsadresse hinzufügen",
@@ -4091,16 +4092,25 @@
       },
       "orders": {
         "draft_order_list": {
-          "hide_all": "Alles ausblenden",
+          "hide_all": "Alle ausblenden",
           "show_all": "Alle anzeigen",
-          "hide_all_accessibility_label": "Alle Bestellungen in der Überprüfung ausblenden",
-          "show_all_accessibility_label": "Alle Bestellungen im Überblick anzeigen",
-          "show_all_orders_in_review": "Alle Bestellungen im Überblick anzeigen",
-          "show_less_orders_in_review": "Weniger Bestellungen im Rückblick anzeigen",
+          "hide_all_accessibility_label": "Alle Aufträge in der Überprüfung ausblenden",
+          "show_all_accessibility_label": "Alle Aufträge in der Überprüfung anzeigen",
+          "show_all_orders_in_review": "Alle Aufträge in der Überprüfung anzeigen",
+          "show_less_orders_in_review": "Weniger Aufträge in der Übersicht anzeigen",
           "title": "Anhängig",
           "pagination": {
             "nav_accessibility_label": "Bestellungen in der Überprüfung Navigationsschaltflächen"
-          }
+          },
+          "pending_tab_accessibility_label": {
+            "no_pending_orders": "Sie haben keine ausstehenden Aufträge",
+            "pending_orders": {
+              "one": "Sie haben {{count}} pending order",
+              "other": "Sie haben dc4a25f221121a3f8f062e81bfac5Anhängige Aufträge"
+            },
+            "more_than_pagination_length": "Sie haben mehr als dc4a25f221121a3f8f062e81bfac5Anhängige Aufträge"
+          },
+          "pending_orders_count_more_than_pagination_length": "{{count}}+"
         },
         "order_list_column_headers_location": "Lage",
         "order_list_column_headers_contact": "Kontakt"
