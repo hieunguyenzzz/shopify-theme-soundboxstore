@@ -3382,54 +3382,61 @@
     },
     "subscriptions": {
       "buyer_consent_product": "Dieser Artikel ist ein wiederkehrender oder aufgeschobener Kauf. Indem ich fortfahre, erkläre ich mich mit den %{cancellationPolicyLink} einverstanden und ermächtige Sie, meine Zahlungsmethode zu den auf dieser Seite aufgeführten Preisen, Häufigkeiten und Terminen zu belasten, bis meine Bestellung erfüllt ist oder ich sie storniere, sofern dies zulässig ist.",
-      "buyer_consent_cart": "Einer oder mehrere der Artikel in Ihrem Warenkorb ist ein wiederkehrender oder aufgeschobener Kauf. Indem ich fortfahre, erkläre ich mich mit den %{cancellationPolicyLink} einverstanden und ermächtige Sie, meine Zahlungsmethode zu den auf dieser Seite aufgeführten Preisen, Häufigkeiten und Terminen zu belasten, bis meine Bestellung erfüllt ist oder ich sie storniere, falls zulässig."
+      "buyer_consent_cart": "Einer oder mehrere der Artikel in Ihrem Warenkorb ist ein wiederkehrender oder aufgeschobener Kauf. Indem ich fortfahre, erkläre ich mich mit den %{cancellationPolicyLink} einverstanden und ermächtige Sie, meine Zahlungsmethode zu den auf dieser Seite aufgeführten Preisen, Häufigkeiten und Terminen zu belasten, bis meine Bestellung erfüllt ist oder ich sie storniere, falls zulässig.",
+      "cancellation_policy": "Stornierungsbedingungen"
     }
   },
   "customer_accounts": {
     "enable_javascript": "Um Ihr Konto anzuzeigen, aktivieren Sie JavaScript in Ihren Browsereinstellungen oder melden Sie sich mit einem anderen Browser an.",
     "navigation_and_structure": {
       "account_menu": {
-        "hide_accessibility_label": "Konto-Menü ausblenden",
+        "hide_accessibility_label": "Menü \"Konto ausblenden",
         "label": "Konto",
-        "show_accessibility_label": "Konto-Menü anzeigen"
+        "show_accessibility_label": "Menü Konto anzeigen",
+        "nav_accessibility_label": "Konto-Navigation",
+        "open_menu_accessibility_label": "Navigation zur Kontoeröffnung",
+        "close_menu_accessibility_label": "Konto schließen Navigation",
+        "loading_message": "Laden Kontonavigation"
       },
       "action_menu_accessibility_label": "Weitere Aktionen",
       "close_menu_accessibility_label": "Hauptnavigation schließen",
-      "contact_email_subject": "Kontakt von {{shopName}} Onlineshop",
-      "contact_link": "Kontaktieren Sie uns",
+      "contact_email_subject": "Kontakt von {{shopName}} online store",
+      "contact_link": "Kontaktinformationen",
       "delete_confirmation": {
-        "cancel": "Stornieren",
+        "cancel": "Abbrechen",
         "delete": "Löschen"
       },
-      "dismiss_toast": "Entlassen",
-      "document_title": "{{sectionName}} - {{shopName}} - Konto",
+      "dismiss_toast": "Ablehnen",
+      "document_title": "{{sectionName}} - {{shopName}} - Account",
       "generic_accessibility_label": "{{label}}: {{value}}",
-      "go_to_store_link": "Zum Shop gehen",
+      "go_to_store_link": "Zum Laden gehen",
       "loading_message": "Laden",
       "log_out_link": "Abmelden",
-      "logout_overlay_label": "Dich abmelden...",
+      "logout_overlay_label": "Ich logge dich aus...",
       "nav_label_accessibility_label": "Hauptnavigation",
-      "navigation_accessibility_message": "Sie navigierten zu {{sectionName}}",
+      "navigation_accessibility_message": "Sie haben zu {{sectionName}} navigiert",
       "open_menu_accessibility_label": "Hauptnavigation öffnen",
-      "orders_link_label": "Orders",
-      "shop_logo_accessibility_label": "{{shopName}} Firmenzeichen",
-      "subscriptions_link_label": "Abonnement"
+      "orders_link_label": "Bestellungen",
+      "shop_logo_accessibility_label": "{{shopName}} logo",
+      "subscriptions_link_label": "Abonnements",
+      "settings_link": "Einstellungen"
     },
     "account_information": {
-      "loading_accessibility_message": "Kontoinformationen laden",
+      "loading_accessibility_message": "Laden von Kontoinformationen",
       "loading_finished_accessibility_message": "Kontoinformationen wurden geladen",
       "profile_card": {
-        "cancel": "Stornieren",
-        "cancel_accessibility_label": "Bearbeitung des Profils abbrechen",
-        "edit": "Bearbeiten",
+        "cancel": "Abbrechen",
+        "cancel_accessibility_label": "Profil bearbeiten abbrechen",
+        "edit": "bearbeiten",
         "edit_accessibility_label": "Profil bearbeiten",
-        "email_help_text": "Die für die Anmeldung verwendete E-Mail-Adresse kann nicht geändert werden",
-        "first_name": "Vorname",
+        "email_help_text": "Die für die Anmeldung verwendete E-Mail kann nicht geändert werden",
+        "first_name": "Vornamen",
         "last_name": "Nachname",
         "phone_number_help_text": "Die für die Anmeldung verwendete Telefonnummer kann nicht geändert werden",
         "save": "Speichern",
         "save_accessibility_label": "Profil speichern",
-        "title": "Profil"
+        "title": "Profil",
+        "no_name_provided_accessibility_label": "Kein Name hinzugefügt"
       },
       "profile_update_confirmation_message": "Profil aktualisiert",
       "title": "Kontoinformationen",
@@ -4010,6 +4017,23 @@
       "subscription_policy": "Abonnementrichtlinie",
       "terms_of_sale": "Verkaufsbedingungen",
       "terms_of_service": "Servicebedingungen"
+    },
+    "date": {
+      "range": "{{startDate}}–{{endDate}}",
+      "humanize": {
+        "lessThanOneYearAgo": "{{date}} at {{time}}",
+        "lessThanOneHourAgo": {
+          "one": "{{count}} minute ago",
+          "other": "{{count}} minutes ago"
+        },
+        "lessThanOneMinuteAgo": "Gerade jetzt",
+        "lessThanOneWeekAgo": "{{weekday}} at {{time}}",
+        "yesterday": "Gestern bei {{time}}",
+        "today": "Heute bei {{time}}",
+        "tomorrow": "Morgen bei {{time}}",
+        "lessThanOneWeekAway": "{{weekday}} at {{time}}",
+        "lessThanOneYearAway": "{{date}} at {{time}}"
+      }
     }
   },
   "templates": {
