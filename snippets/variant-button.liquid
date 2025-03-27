@@ -2,7 +2,7 @@
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
 {%- for value in option.values -%}
-  {% unless optionNameHandlized != 'color' %}
+  {% unless optionNameHandlized != 'color' or optionNameHandlized != 'colour' %}
     {% if value.swatch %}
       {% assign isColorSwatch = true %}
     {% endif %}
@@ -12,7 +12,7 @@
 <div
   class="
     variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}  {%- if isColorSwatch  %}
-      {{ option.name }}
+      variant-wrapper-color
     {%- endif -%}
   "
 
