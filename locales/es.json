@@ -428,22 +428,23 @@
       "unavailable": "No disponible",
       "quantity": "Cantidad",
       "add_to_cart": "Añadir al carrito",
-      "preorder": "Pre-pedido",
+      "preorder": "Pre-orden",
       "include_taxes": "Impuesto incluido.",
-      "shipping_policy_html": "<a href='{{ link }}'>Envio</a> calculado al finalizar la compra.",
+      "shipping_policy_html": "<a href='{{ link }}'>Envío</a> calculado al finalizar la compra.",
       "will_not_ship_until": "Listo para enviar {{ date }}",
       "will_be_in_stock_after": "De nuevo en stock {{ date }}",
       "waiting_for_stock": "Inventario en camino",
-      "view_in_space": "Ver en su espacio",
-      "view_in_space_label": "Ver en su espacio, carga el elemento en la ventana de realidad aumentada"
+      "view_in_space": "Ver en tu espacio",
+      "view_in_space_label": "Ver en tu espacio, carga el artículo en la ventana de realidad aumentada",
+      "price_exclude_taxes": "El precio no incluye impuestos"
     },
     "facets": {
-      "filter_and_operator_subtitle": "Coincidir con",
+      "filter_and_operator_subtitle": "Coincidir todo",
       "apply": "Aplicar",
-      "clear": "Claro",
+      "clear": "Limpiar",
       "clear_all": "Eliminar todo",
-      "from": "De",
-      "filter_and_sort": "Filtrar y clasificar",
+      "from": "Desde",
+      "filter_and_sort": "Filtrar y ordenar",
       "filter_by_label": "Filtrar:",
       "filter_button": "Filtrar",
       "filters_selected": {
@@ -463,16 +464,16 @@
         "other": "{{ count }} productos"
       },
       "reset": "Reiniciar",
-      "sort_button": "Clasificar",
+      "sort_button": "Ordenar",
       "sort_by_label": "Ordenar por:",
-      "to": "A",
-      "clear_filter": "Eliminar el filtro"
+      "to": "Hasta",
+      "clear_filter": "Eliminar filtro"
     }
   },
   "store_availability": {
     "general": {
       "view_store_info": "Ver información de la tienda",
-      "check_other_stores": "Consultar disponibilidad en otras tiendas",
+      "check_other_stores": "Verificar disponibilidad en otras tiendas",
       "pick_up_available": "Recogida disponible",
       "pick_up_currently_unavailable": "Recogida actualmente no disponible",
       "pick_up_available_at_html": "Recogida disponible en <strong>{{ location_name }}</strong>",
@@ -481,15 +482,15 @@
   },
   "gift_cards": {
     "issued": {
-      "title_html": "Aquí está tu {{ value }} tarjeta de regalo para {{ shop }}!",
-      "subtext": "Aquí está su tarjeta de regalo!",
-      "disabled": "Discapacitado",
-      "expired": "Expiró el {{ expiry }}",
-      "active": "Caduca el {{ expiry }}",
-      "redeem": "Use este código al finalizar la compra para canjear su tarjeta de regalo",
-      "shop_link": "ComiencBeigemprar",
+      "title_html": "Aquí está tu tarjeta de regalo {{ value }}  para {{ shop }}!",
+      "subtext": "¡Aquí está tu tarjeta de regalo!",
+      "disabled": "Deshabilitado",
+      "expired": "Expirado el {{ expiry }}",
+      "active": "Expira el {{ expiry }}",
+      "redeem": "Usa este código al finalizar la compra para canjear tu tarjeta de regalo",
+      "shop_link": "Comenzar a comprar",
       "print": "Imprimir",
-      "add_to_apple_wallet": "Añadir a Apple Wallet"
+      "add_to_apple_wallet": "Agregar a Apple Wallet"
     }
   },
   "date_formats": {
@@ -4502,7 +4503,7 @@
   },
   "templates": {
     "search": {
-      "no_results": "No se encontraron resultados para \"{{ terms }}\". Verifique la ortografía o use una palabra o frase diferente.",
+      "no_results": "No se encontraron resultados para “{{ terms }}”. Verifica la ortografía o usa una palabra o frase diferente.",
       "page": "Página",
       "products": "Productos",
       "results_pages_with_count": {
