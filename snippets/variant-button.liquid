@@ -2,7 +2,7 @@
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
 {%- for value in option.values -%}
-  {% unless optionNameHandlized != 'color' or optionNameHandlized != 'colour' %}
+  {% unless optionNameHandlized != 'color' and optionNameHandlized != 'colour' %}
     {% if value.swatch %}
       {% assign isColorSwatch = true %}
       {% assign is_color = true %}
