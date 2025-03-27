@@ -3455,55 +3455,61 @@
     },
     "subscriptions": {
       "buyer_consent_product": "Este artículo es una compra recurrente o diferida. Al continuar, acepto el %{cancellationPolicyLink} y autorizo a que se cargue a mi método de pago a los precios, frecuencias y fechas listadas en esta página hasta que mi pedido se complete o yo lo cancele, si está permitido.",
-      "buyer_consent_cart": "Uno o más de los artículos en tu carrito es una compra recurrente o diferida. Al continuar, acepto el %{cancellationPolicyLink} y autorizo a que se cargue a mi método de pago a los precios, frecuencias y fechas listadas en esta página hasta que mi pedido se complete o yo lo cancele, si está permitido."
+      "buyer_consent_cart": "Uno o más de los artículos en tu carrito es una compra recurrente o diferida. Al continuar, acepto el %{cancellationPolicyLink} y autorizo a que se cargue a mi método de pago a los precios, frecuencias y fechas listadas en esta página hasta que mi pedido se complete o yo lo cancele, si está permitido.",
+      "cancellation_policy": "política de cancelación"
     }
   },
   "customer_accounts": {
-    "enable_javascript": "Para ver su cuenta, habilite JavaScript en la configuración de su navegador o inicie sesión con otro navegador.",
+    "enable_javascript": "Para ver tu cuenta, habilita JavaScript en la configuración de tu navegador o inicia sesión con otro navegador.",
     "navigation_and_structure": {
       "account_menu": {
-        "hide_accessibility_label": "Ocultar menú de cuenta",
+        "hide_accessibility_label": "Ocultar menú de Cuenta",
         "label": "Cuenta",
-        "show_accessibility_label": "Mostrar menú de Cuenta"
+        "show_accessibility_label": "Mostrar menú de Cuenta",
+        "nav_accessibility_label": "Navegación de Cuenta",
+        "open_menu_accessibility_label": "Abrir navegación de Cuenta",
+        "close_menu_accessibility_label": "Cerrar navegación de Cuenta",
+        "loading_message": "Cargando navegación de Cuenta"
       },
       "action_menu_accessibility_label": "Más acciones",
       "close_menu_accessibility_label": "Cerrar navegación principal",
-      "contact_email_subject": "Contacto desde {{shopName}} tienda online",
-      "contact_link": "Contáctenos",
+      "contact_email_subject": "Contacto desde {{shopName}} tienda en línea",
+      "contact_link": "Información de contacto",
       "delete_confirmation": {
         "cancel": "Cancelar",
         "delete": "Eliminar"
       },
-      "dismiss_toast": "Despedir",
+      "dismiss_toast": "Descartar",
       "document_title": "{{sectionName}} - {{shopName}} - Cuenta",
       "generic_accessibility_label": "{{label}}: {{value}}",
       "go_to_store_link": "Ir a la tienda",
-      "loading_message": "Carga",
+      "loading_message": "Cargando",
       "log_out_link": "Cerrar sesión",
-      "logout_overlay_label": "Desconectarte...",
+      "logout_overlay_label": "Cerrando sesión...",
       "nav_label_accessibility_label": "Navegación principal",
-      "navigation_accessibility_message": "Usted navegó a {{sectionName}}",
-      "open_menu_accessibility_label": "Abrir la navegación principal",
+      "navigation_accessibility_message": "Navegaste a {{sectionName}}",
+      "open_menu_accessibility_label": "Abrir navegación principal",
       "orders_link_label": "Pedidos",
-      "shop_logo_accessibility_label": "{{shopName}} logotipo",
-      "subscriptions_link_label": "Suscripción",
-      "settings_link": "Ajustes"
+      "shop_logo_accessibility_label": "{{shopName}} logo",
+      "subscriptions_link_label": "Suscripciones",
+      "settings_link": "Configuraciones"
     },
     "account_information": {
-      "loading_accessibility_message": "Cargando información de la cuenta",
-      "loading_finished_accessibility_message": "La información de la cuenta se ha cargado",
+      "loading_accessibility_message": "Cargando información de cuenta",
+      "loading_finished_accessibility_message": "La información de la cuenta ha sido cargada",
       "profile_card": {
         "cancel": "Cancelar",
         "cancel_accessibility_label": "Cancelar edición de perfil",
         "edit": "Editar",
         "edit_accessibility_label": "Editar perfil",
-        "email_help_text": "El correo electrónico utilizado para iniciar sesión no se puede cambiar",
-        "first_name": "Nombre de pila",
+        "email_help_text": "El correo electrónico usado para iniciar sesión no se puede cambiar",
+        "first_name": "Nombre",
         "last_name": "Apellido",
         "phone_number_help_text": "El número de teléfono utilizado para iniciar sesión no se puede cambiar",
         "save": "Guardar",
         "save_accessibility_label": "Guardar perfil",
-        "title": "Perfil"
+        "title": "Perfil",
+        "no_name_provided_accessibility_label": "No se ha añadido nombre"
       },
       "profile_update_confirmation_message": "Perfil actualizado",
       "title": "Información de la cuenta",
@@ -4092,6 +4098,23 @@
         "description": "Si ha perdido un dispositivo o tiene inquietudes de seguridad, cierre sesión en todas partes para garantizar la seguridad de su cuenta.",
         "button": "Iniciar sesión en todas partes",
         "warning_message": "También se registrará en este dispositivo."
+      }
+    },
+    "date": {
+      "range": "{{startDate}}–{{endDate}}",
+      "humanize": {
+        "lessThanOneYearAgo": "{{date}} at {{time}}",
+        "lessThanOneHourAgo": {
+          "one": "{{count}} minuto atrás",
+          "other": "{{count}} minutos atrás"
+        },
+        "lessThanOneMinuteAgo": "Justo ahora",
+        "lessThanOneWeekAgo": "{{weekday}} at {{time}}",
+        "yesterday": "Ayer a las {{time}}",
+        "today": "Hoy a las {{time}}",
+        "tomorrow": "Mañana a las {{time}}",
+        "lessThanOneWeekAway": "{{weekday}} at {{time}}",
+        "lessThanOneYearAway": "{{date}} at {{time}}"
       }
     }
   },
