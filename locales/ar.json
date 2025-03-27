@@ -2620,9 +2620,83 @@
           },
           "editions": {
             "header": "اطلع على إصدارات Shopify",
-            "caption": "مع أكثر من 100 تحديث للمنتجات، يمكنك أن تكون أكثر إنتاجية وإبداعًا وقوة في التجارة مما كنت تتخيل."
+            "caption": "مع أكثر من 100 تحديث للمنتجات، يمكنك أن تكون أكثر إنتاجية وإبداعًا وقوة في التجارة مما كنت تتخيل.",
+            "link_text": "استكشاف الإصدارات الأحدث"
+          },
+          "store_owner": {
+            "header": "هل أنت مالك المتجر؟",
+            "caption": "هل تواجه مشكلة في الدخول إلى متجرك؟ جرب ميزة %{forgot_your_store_link}. إذا كنت ترغب في إعادة تفعيل متجرك، اتصل بـ %{shopify_support_link}.",
+            "shopify_support_link_text": "دعم شوبيفاي"
           }
         }
+      }
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "خطأ في إعادة تعيين كلمة المرور",
+        "no_account_found": "لم يتم العثور على حساب بهذا البريد الإلكتروني.",
+        "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+        "denylisted_reset_password": "لا يمكن الوصول إلى حسابك لأن كلمة المرور الحالية غير آمنة. ستتلقى بريدًا إلكترونيًا لتحديث كلمة المرور الخاصة بك.",
+        "signup_disabled": "تم تعطيل إنشاء حساب العميل."
+      },
+      "address": {
+        "updated": "تم تحديث العنوان بنجاح.",
+        "error_updating": "حدث خطأ أثناء تحديث العنوان",
+        "created": "تم إنشاء العنوان بنجاح",
+        "error_creating": "حدث خطأ أثناء إنشاء العنوان.",
+        "deleted": "تم حذف العنوان بنجاح",
+        "error_deleting": "حدث خطأ أثناء حذف العنوان."
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "تمت إضافة %{delta}",
+          "increment_item": "تمت إضافة %{delta}",
+          "decrement_item": "تمت إزالة %{delta} من %{total}",
+          "decrement_fulfilled_line_item": "تمت إعادة %{delta} إلى %{total}",
+          "decrement_return_line_item": "تمت إزالة %{delta} من الإرجاع"
+        }
+      },
+      "order": {
+        "not_available": "هذا الطلب غير متاح",
+        "financial_status": {
+          "authorized": "مفوض",
+          "pending": "قيد الانتظار",
+          "paid": "مدفوع",
+          "unpaid": "غير مدفوع",
+          "voided": "ملغى",
+          "partially_paid": "مدفوع جزئيًا",
+          "partially_refunded": "مسترد جزئيًا",
+          "refunded": "مسترد",
+          "expired": "منتهي الصلاحية"
+        },
+        "fulfillment_status": {
+          "fulfilled": "مكتمل",
+          "complete": "مكتمل",
+          "partial": "جزئي",
+          "unfulfilled": "غير مكتمل",
+          "restocked": "معاد تخزينه"
+        },
+        "transaction_status": {
+          "success": "نجاح",
+          "pending": "قيد الانتظار",
+          "failure": "فشل",
+          "error": "خطأ"
+        },
+        "cancel_reason": {
+          "declined": "تم رفض الدفع",
+          "inventory": "العناصر غير متوفرة",
+          "fraud": "طلب احتيالي",
+          "customer": "قام العميل بتغيير/إلغاء الطلب",
+          "staff": "خطأ الموظفين",
+          "other": "آخر"
+        },
+        "cash_on_delivery": "الدفع عند الاستلام (COD)"
+      },
+      "cart": {
+        "only_n_items_available": "يمكنك فقط إضافة %{count} %{name} إلى السلة.",
+        "too_many_items_in_cart": "لا يمكنك إضافة المزيد من %{name} إلى السلة.",
+        "only_one_added_to_cart": "تمت إضافة عنصر واحد فقط إلى سلتك بسبب التوفر.",
+        "only_n_added_to_cart": "تمت إضافة %{quantity} عنصرًا فقط إلى سلتك بسبب التوفر."
       }
     }
   }
