@@ -691,11 +691,11 @@
           "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} por entrega), seguido por %{recurring_order_shipping_price}",
           "first_n_order_free": {
             "one": "Primer pedido gratis",
-            "other": "Primero %{count} pedidos gratis"
+            "other": "Primeros pedidos %{count} gratis"
           },
           "free_for_first_n_order": {
-            "one": "Para el primer orden",
-            "other": "Para los primeros %{count} pedidos"
+            "one": "Para el primer pedido",
+            "other": "Para los primeros pedidos %{count}"
           },
           "free_shipping_cycles": {
             "one": "Envío gratis para %{count} más entrega",
@@ -743,7 +743,7 @@
           },
           "subscription_free_with_frequency_label": "Envío gratis %{delivery_frequency}"
         },
-        "one_time_purchase_shipping": "Envío de una sola vez",
+        "one_time_purchase_shipping": "Envío único",
         "merchandise_quantity_label_inline_primary": "Número: %{quantity}",
         "merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
         "split_cart_ships_date": "Buques %{date}",
@@ -758,7 +758,62 @@
           "one": "Envío recurrente",
           "other": "Envíos recurrentes"
         },
-        "default_description": "Se envía en 1 día hábil"
+        "default_description": "Se envía en 1 día hábil",
+        "duties_and_taxes_title": "Impuestos y aranceles",
+        "shipping_information_required_notice": "Se requiere información de envío. {{link}}.",
+        "shipping_information_redirect_link": "Ingrese su información aquí",
+        "loading_progressive_rates": "Buscando más tarifas…",
+        "no_other_methods_available": "No hay otros métodos disponibles",
+        "duties_and_taxes_options": {
+          "ddu_title": "Pagar contra entrega",
+          "ddu_caption": "Pueden aplicarse tarifas adicionales",
+          "ddp_title": "Pagar ahora",
+          "ddp_caption": "No hay tarifas adicionales en la entrega"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} y %{current}"
+        },
+        "shipping_used_as_billing_notice": "Esto también se usará como su dirección de facturación para este pedido.",
+        "address_update": "Actualizar dirección",
+        "shipping_address_title": "Enviar a",
+        "add_address": "Usar una dirección diferente",
+        "add_delivery_instructions": "Agregar instrucciones de entrega",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "address_more": "Más acciones para esta dirección",
+        "address_edit": "Editar dirección",
+        "address_delete": "Eliminar dirección",
+        "address_confirm": "¿Está seguro de que desea eliminar esta dirección de su cuenta?",
+        "address_default": "Establecer como predeterminada",
+        "address_form": {
+          "add_address": "Agregar dirección",
+          "save": "Guardar",
+          "cancel": "Cancelar",
+          "generic_error": "Hubo un problema al guardar su dirección. Por favor, inténtelo de nuevo.",
+          "one_time_address_subtitle": "Usar una dirección única para este pedido"
+        },
+        "different_shipping_method_summary": "Ingrese una dirección de envío diferente para ver los métodos de envío disponibles",
+        "invalid_shipping_method_summary": "Ingrese una dirección de envío válida para ver los métodos de envío disponibles",
+        "method_summary": {
+          "incomplete_address_entered": "Ingrese una dirección de envío completa para ver los métodos de envío disponibles",
+          "incomplete_address_selected": "Seleccione una dirección de envío completa para ver los métodos de envío disponibles"
+        },
+        "local_pickup": {
+          "search_address": "Buscar dirección",
+          "rollup_title": "Ubicación de la tienda"
+        },
+        "missing_shipping_address": "Falta la dirección de envío",
+        "split_shipping_merchandise_quantity_label_standard": "Artículos %{quantity}",
+        "split_shipping_merchandise_quantity_label_additional": "+%{quantity} más",
+        "split_shipping_merchandise_shipment_number": "Envío %{number} de %{total}",
+        "pre_order_ships_now": "Envío ahora",
+        "pre_order_ships_later": "Envío más tarde",
+        "pre_order_ships_date": "Envío %{date}",
+        "split_shipping_shipped_by_shop": "Enviado por %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Múltiples envíos",
+        "split_shipping_shipping_label": "Método"
       },
       "general": {
         "page_title": "Pagar",
