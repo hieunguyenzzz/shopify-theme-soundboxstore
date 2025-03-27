@@ -3932,13 +3932,13 @@
       "summary_title": "Resumen del pedido",
       "summary_totals_title_accessibility_label": "Totales del pedido",
       "taxes": "Impuestos",
-      "title": "Orden {{name}}",
+      "title": "Pedido {{name}}",
       "total": "Total",
-      "unit_price": "({{price}}/ ea)",
+      "unit_price": "{{price}}/ea",
       "pagination": {
         "load_more": "Cargar más",
         "load_more_accessibility_label": "Cargar más artículos",
-        "loading_accessibility_label": "Carga de artículos"
+        "loading_accessibility_label": "Cargando artículos"
       },
       "order_details": "Detalles del pedido",
       "order_details_skeleton_accessibility_label": "Inicia sesión para ver todos los detalles del pedido.",
@@ -4004,25 +4004,46 @@
       "shop_pay": {
         "order_completed_with": "Pedido completado con",
         "learn_more": "Más información"
-      }
+      },
+      "taxes_included": "Incluyendo {{amount}} in impuestos",
+      "duties_and_taxes_included": "El total incluye aranceles e impuestos. No hay cargos adicionales en la entrega.",
+      "duties": "Aranceles",
+      "ok_duties_tooltip": "Este pedido se está enviando desde otro país, por lo que se han añadido aranceles al total de su pedido.",
+      "error_duties_tooltip": "Este pedido se está enviando desde otro país, por lo que es posible que se cobren aranceles e impuestos en la entrega.",
+      "zero_duties_tooltip": "Este pedido se está enviando desde otro país. No se cobran aranceles en pedidos de este valor.",
+      "tip": "Propina",
+      "login_to_view_all_order_details": "Inicie sesión para ver todos los detalles del pedido.",
+      "log_in": "Iniciar sesión",
+      "logged_in_account_no_permission_to_order": "Ha iniciado sesión como {{email}}. Esta cuenta no tiene permiso para gestionar este pedido.",
+      "log_in_to_a_different_account": "Iniciar sesión en una cuenta diferente",
+      "fees": {
+        "restocking_fee": "Cargo por reposición",
+        "return_shipping_fee": "Envío de devolución"
+      },
+      "vat_invoices": {
+        "title": "Facturas de IVA"
+      },
+      "cash_rounding": "Redondeo de efectivo",
+      "adjusted_payment": "Pago ajustado",
+      "adjusted_total": "Total ajustado"
     },
     "addresses": {
-      "add_button": "Añadir dirección",
-      "add_address_banner": "Agregar direcciones para usar en la caja",
+      "add_button": "Agregar dirección",
+      "add_address_banner": "Agregar direcciones para usar al finalizar la compra",
       "address_deleted_notification": "Dirección eliminada",
-      "cancel_adding_address_accessibility_label": "Cancelar agregar dirección",
+      "cancel_adding_address_accessibility_label": "Cancelar la adición de dirección",
       "cancel_deletion_button": "Cancelar",
-      "cancel_deletion_button_accessibility_label": "Cancelar eliminación {{address}}",
+      "cancel_deletion_button_accessibility_label": "Cancelar la eliminación de {{address}}",
       "default_address": {
-        "title": "Dirección por defecto",
-        "title_accessibility_label": "Dirección por defecto: {{address}}"
+        "title": "Dirección predeterminada",
+        "title_accessibility_label": "Dirección predeterminada: {{address}}"
       },
       "delete_button": "Eliminar",
       "delete_button_accessibility_label": "Eliminar {{address}}",
-      "delete_confirmation_button": "Borrar dirección",
+      "delete_confirmation_button": "Eliminar dirección",
       "delete_confirmation_button_accessibility_label": "Eliminar {{address}}",
-      "delete_confirmation_message": "Eliminar dirección? Los pedidos existentes no se ven afectados.",
-      "delete_confirmation_title": "Eliminar dirección?",
+      "delete_confirmation_message": "¿Eliminar dirección? Los pedidos existentes no se ven afectados.",
+      "delete_confirmation_title": "¿Eliminar dirección?",
       "delete_confirmation_description": "Los pedidos existentes no se ven afectados.",
       "edit_button": "Editar",
       "edit_button_accessibility_label": "Editar {{address}}",
@@ -4032,7 +4053,7 @@
         "billing": "Editar dirección de facturación",
         "shipping": "Editar dirección de envío"
       },
-      "loading_accessibility_message": "Dirección de carga",
+      "loading_accessibility_message": "Cargando dirección",
       "loading_addresses_accessibility_message": "Direcciones de carga",
       "loading_billing_accessibility_message": "Cargando dirección de facturación",
       "loading_finished_accessibility_message": "Se ha cargado una nueva página de direcciones",
@@ -4042,7 +4063,12 @@
         "load_more_accessibility_label": "Cargar más direcciones"
       },
       "save_new_address_accessibility_label": "Guardar dirección",
-      "title": "Dirección"
+      "title": "Dirección",
+      "add_button_text": "Agregar",
+      "add_button_accessibility_label": "Agregar dirección",
+      "back_button": "Atrás",
+      "back_button_accessibility_label": "Volver a editar la dirección {{address}}",
+      "no_addresses_banner": "No se han agregado direcciones"
     },
     "address_form": {
       "attention": "Atención",
