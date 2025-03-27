@@ -1223,7 +1223,75 @@
         "apple": {
           "connect": "انقر للاتصال بحسابك على Apple Pay",
           "not_available": "Apple Pay غير متاح في هذا المتصفح. للاتصال بحسابك على Apple Pay، ستحتاج إلى استخدام Safari على جهاز Apple."
-        }
+        },
+        "google": {
+          "connect": "انقر للاتصال بحساب Google Pay الخاص بك",
+          "error_authorizing": "خطأ في تفويض الدفع"
+        },
+        "account_connected": "تم توصيل الحساب.",
+        "mor_disclaimer_html": "بالنقر أدناه وإكمال طلبك، فإنك توافق على شراء العنصر (العناصر) الخاصة بك من Global-e كتاجر مسجل لهذه المعاملة، على <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">الشروط والأحكام</a> و<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">سياسة الخصوصية</a> الخاصة بـ Global-e. Global-e هي مزود خدمة تنفيذ دولي لـ %{shop_name}\n",
+        "pending_payment": {
+          "due_notice": "الدفع الخاص بك %{amount_due} مستحق في %{due_date}.",
+          "multibanco": {
+            "buyer_action_info": "الدفع الخاص بك %{amount_due} مستحق.",
+            "instruction_html": "قم بدفعك في Multibanco أو عبر الإنترنت باستخدام التفاصيل أدناه. للأسئلة أو لتحديث تفاصيل الدفع، %{contact_us}.",
+            "entity": "كيان",
+            "reference": "مرجع",
+            "amount": "المبلغ",
+            "find_nearest_atm": "العثور على أقرب جهاز صراف آلي"
+          }
+        },
+        "update_payment_method": "تحديث طريقة الدفع",
+        "order_covered_by_store_credit_notice": "طلبك مغطى برصيد المتجر الخاص بك.",
+        "order_covered_by_redeemables_notice": "طلبك مغطى.",
+        "store_credit": {
+          "label": "رصيد المتجر",
+          "apply_label": "تطبيق رصيد المتجر",
+          "add_label": "إضافة رصيد المتجر",
+          "manage_label": "إدارة رصيد المتجر",
+          "buying_gift_card": "لا يمكنك استخدام رصيد المتجر لشراء بطاقة هدية",
+          "no_fixed_selling_plans": "لا يمكنك استخدام رصيد المتجر مع خيارات الشراء المؤجلة"
+        },
+        "clear": "مسح",
+        "billing_must_match_shipping_notice": "يجب أن يتطابق عنوان الفواتير لطريقة الدفع الخاصة بك مع عنوان الشحن.",
+        "same_billing_address_checkbox_label": "استخدام عنوان الشحن كعنوان الفواتير",
+        "location_billing_address_label": "عنوان الفواتير للموقع",
+        "fact_billing_address_label": "عنوان الفواتير",
+        "location_shipping_address_label": "عنوان شحن الموقع",
+        "use_order_billing_address_label": "استخدام عنوان الفواتير للطلب",
+        "use_location_billing_address_label": "استخدام عنوان الفواتير للموقع",
+        "use_location_shipping_address_label": "استخدام عنوان الشحن للموقع",
+        "no_working_method_error": "لا يمكن لهذا المتجر قبول الدفعات الآن. قم بتحديث هذه الصفحة أو عد لاحقًا.",
+        "brand_not_available": "هذا المتجر لا يقبل {{brand}}.  يرجى استخدام بطاقة مختلفة للدفع.",
+        "shipping_rate_updated": "تم تحديث طرق الشحن المتاحة. أكد اختيارك قبل إتمام الشراء.",
+        "billing_address_invalid_phone": "قم بتحديث رقم الهاتف في عنوان الفواتير الخاص بك لـ {{label}} {{last_digits}}  للمتابعة.",
+        "billing_address_invalid_phone_no_card": "قم بتحديث رقم الهاتف في عنوان الفواتير الخاص بك للمتابعة.",
+        "preview_not_available": {
+          "title": "المعاينة غير متاحة",
+          "content": "لا تقلق، هذا الدفع السريع يعمل لعملائك.",
+          "button": "حسنًا"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "أدخل تاريخ إصدار صالح",
+              "issue_number": "أدخل رقم إصدار صالح"
+            },
+            "invalid": {
+              "verification_value": "أدخل CVV أو رمز أمان صالح"
+            }
+          }
+        },
+        "simulated_checkout": "المعاينة قادمة قريبًا",
+        "simulated_express_checkout": "المحافظ غير متوفرة في معاينة المحرر بسبب منطقتك أو متصفحك",
+        "vaulting_agreement_label": "احفظ معلومات الدفع الخاصة بي مع %{company} لتسريع عملية الدفع.",
+        "business_customer_vaulting_payment_label": "احفظ هذه البطاقة عند الدفع واسمح لـ %{company} بخصمها للمشتريات المستقبلية لهذا الموقع. يمكن لجميع جهات الاتصال المعينة لهذا الموقع استخدام البطاقة.",
+        "purchase_options_and_vaulting_agreement_label": "واحدة أو أكثر من العناصر في سلة التسوق الخاصة بك هي عملية شراء مؤجلة أو اشتراك. بمواصلة الدفع، فإنك توافق على أن يتم خصم طريقة الدفع الخاصة بك تلقائيًا بالسعر والتكرار المذكورين في هذه الصفحة حتى ينتهي أو تقوم بالإلغاء. جميع الإلغاءات تخضع ل %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "سياسة الإلغاء",
+        "use_different_credit_card_label": "استخدام بطاقة مختلفة",
+        "saved_credit_card": "بطاقتك الائتمانية المحفوظة",
+        "saved_credit_card_info": "آخر أربعة أرقام",
+        "saved_credit_card_cvv_verification": "لأغراض التحقق، يرجى إدخال رمز الأمان لبطاقتك."
       }
     }
   }
