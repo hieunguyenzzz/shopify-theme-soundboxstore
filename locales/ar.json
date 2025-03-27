@@ -3655,9 +3655,103 @@
           "canceled": {
             "title": "تم إلغاء الدفع",
             "description": "لم يتم خصم أي مبلغ منك."
-          }
+          },
+          "pay_now": "ادفع الآن",
+          "pay_now_accessibility_label": "ادفع الآن للطلب {{orderName}}",
+          "title": "حالة الدفع"
+        },
+        "order_timeline": {
+          "expand_events_label": "عرض التفاصيل",
+          "expand_events_accessibility_label": "عرض تفاصيل الطلب المؤقت",
+          "hide_events_label": "إخفاء التفاصيل",
+          "hide_events_accessibility_label": "إخفاء تفاصيل الطلب المؤقت"
+        },
+        "subtitle": "تم الإرسال {{date}}",
+        "title": "الطلب {{name}}"
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "لن يتوفر هذا الخيار للدفع للمشتريات المستقبلية من هذا الموقع.",
+          "description_with_replacement": "حذف طريقة الدفع هذه سيؤثر على المدفوعات المصرح بها مسبقًا لهذا الموقع. استبدلها بطريقة دفع بديلة لمواصلة استلام الطلبات القادمة."
+        },
+        "payment_details": {
+          "order_label": "الطلب {{name}}",
+          "draft_label": "طلب مؤقت {{name}}"
         }
+      },
+      "purchase_order_number": {
+        "add_accessibility_label": "أضف رقم أمر الشراء",
+        "add_modal_title": "أضف رقم أمر الشراء",
+        "cancel": "إلغاء",
+        "close_modal_accessibility_label": "إغلاق نافذة رقم أمر الشراء",
+        "discard": "تجاهل",
+        "discard_changes_modal_title": "تجاهل التغييرات؟",
+        "edit_accessibility_label": "تحرير رقم أمر الشراء",
+        "edit_modal_title": "تحرير رقم أمر الشراء",
+        "empty_state": "لا يوجد رقم أمر الشراء",
+        "modal_po_number_input_label": "رقم أمر الشراء",
+        "modal_po_number_input_max_length_error": "أرقام أوامر الشراء لها حد أقصى {{maxLength}}  حرف.",
+        "save": "حفظ",
+        "title": "رقم الأمر #{{poNumber}}"
       }
+    },
+    "errors": {
+      "address_deletion_error": {
+        "description": "حدثت مشكلة أثناء حذف هذا العنوان. حاول مرة أخرى أو قم بتحديث الصفحة."
+      },
+      "addresses_loading_issue": {
+        "description": "خطأ في الاتصال. تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+      },
+      "banner_title": {
+        "one": "يوجد خطأ {{count}} ",
+        "other": "يوجد أخطاء {{count}} "
+      },
+      "failed_address_creation": {
+        "description": "حدثت مشكلة أثناء إنشاء عنوانك. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "failed_address_update": {
+        "description": "حدثت مشكلة أثناء تحديث عنوانك. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "load_orders_error": {
+        "title": "غير قادر على تحميل الطلبات",
+        "description": "حاول مرة أخرى أو عد لاحقًا.",
+        "retry_button": "أعد المحاولة"
+      },
+      "load_paypal_error": {
+        "description": "هناك مشكلة في تحميل PayPal. يرجى المحاولة مرة أخرى."
+      },
+      "logout_everywhere": {
+        "description": "حدث خطأ أثناء تسجيل الخروج. يرجى المحاولة مرة أخرى."
+      },
+      "no_access_to_locations": {
+        "description": "ليس لديك وصول إلى أي مواقع"
+      },
+      "not_found": {
+        "description": "تحقق من الرابط أو حاول مرة أخرى بعد بضع دقائق.",
+        "title": "هناك مشكلة في تحميل هذه الصفحة"
+      },
+      "order_not_found": {
+        "description": "هذا الطلب غير موجود أو ليس لديك الإذن لعرضه.",
+        "title": "الطلب غير موجود"
+      },
+      "profile_update_error": {
+        "description": "حدثت مشكلة أثناء تحديث ملفك الشخصي. حاول تحديث هذه الصفحة أو تحقق من اتصالك بالإنترنت."
+      },
+      "retry_action_label": "أعد المحاولة",
+      "load_extension_error": {
+        "title": "خطأ",
+        "description": "قم بتحديث هذه الصفحة أو حاول مرة أخرى بعد بضع دقائق.",
+        "refresh_button": "تحديث الصفحة"
+      }
+    },
+    "throttle": {
+      "too_many_attempts": {
+        "message": "عدد المحاولات كبير جدًا",
+        "description": "يرجى المحاولة مرة أخرى بعد بضع دقائق"
+      }
+    },
+    "payment_methods": {
+      "title": "طرق الدفع"
     }
   }
 }
