@@ -5,16 +5,13 @@
   {% unless optionNameHandlized != 'color' or optionNameHandlized != 'colour' %}
     {% if value.swatch %}
       {% assign isColorSwatch = true %}
+      {% assign is_color = true %}
     {% endif %}
   {% endunless %}
 {% endfor %}
 
 <div
-  class="
-    variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}  {% if isColorSwatch  %}
-      option-variant  variant-wrapper-color
-    {% endif %}
-  "
+  class="    variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
 
   {%- for value in option.values -%}
     {% unless value.swatch %}
