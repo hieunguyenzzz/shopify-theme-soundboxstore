@@ -706,54 +706,64 @@
         "split_cart_multiple_shipment_notice": "Su pedido llegará en múltiples envíos"
       },
       "general": {
-        "page_title": "Checkout",
+        "page_title": "Pagar",
         "error_page_title": "Error",
         "skip_to_content": "Saltar al contenido",
-        "breadcrumb": "Migas de pan",
+        "breadcrumb": "Miga de pan",
         "continue_button_label": "Continuar",
-        "complete_purchase_button_label": "Pedido completo",
-        "pay_now_button_label": "Paga ahora",
-        "authenticate_purchase_button_label": "Autenticar el pago",
+        "complete_purchase_button_label": "Completar pedido",
+        "pay_now_button_label": "Pagar ahora",
+        "authenticate_purchase_button_label": "Autenticar pago",
         "edit_link_label": "Editar",
         "all_rights_reserved": "Todos los derechos reservados %{shop_name}",
         "print_policies_link_label": "Imprimir",
-        "cart": "Carro",
-        "close_modal_label": "Cerca",
-        "close_notice_label": "Cerca",
+        "cart": "Carrito",
+        "close_modal_label": "Cerrar",
+        "close_notice_label": "Cerrar",
         "expand_notice_label": "Ver más",
         "continue_to_shipping_method": "Continuar al envío",
-        "continue_to_payment_method": "Continuar con el pago",
-        "continue_to_review": "Orden de revisión",
+        "continue_to_payment_method": "Continuar al pago",
+        "continue_to_review": "Revisar pedido",
         "back_to_cart": "Volver al carrito",
         "back_to_contact_information": "Volver a la información",
         "back_to_shipping_method": "Volver al envío",
         "back_to_payment_method": "Volver al pago",
-        "choose_shipping_method": "Elige un método de envío",
-        "choose_payment_method": "Elige un método de pago",
-        "choose_billing_address": "Elige una dirección de facturación",
+        "choose_shipping_method": "Elegir un método de envío",
+        "choose_payment_method": "Elegir un método de pago",
+        "choose_billing_address": "Elegir una dirección de facturación",
         "contact_us_html": "Contáctenos para más información",
-        "autocomplete_title": "Sugerencia",
+        "autocomplete_title": "Sugerencias",
         "autocomplete_single_item": "1 artículo disponible",
         "autocomplete_multi_item": "{{number}} artículos disponibles",
         "autocomplete_selection": "{{number}} de {{total}}",
         "autocomplete_close": "Cerrar sugerencias",
         "forwarding_indicator": {
           "new_window": "Se abre en una nueva ventana.",
-          "external": "Abre un sitio web externo.",
-          "external_and_new_window": "Abre un sitio web externo en una ventana nueva."
+          "external": "Se abre un sitio web externo.",
+          "external_and_new_window": "Se abre un sitio web externo en una nueva ventana."
         },
         "checkout_context": {
-          "step_one": "%{shop_name} - Checkout"
+          "step_one": "%{shop_name} - Pagar"
         },
         "tooltip_accessibility_label": "Más información",
         "errors": {
-          "session_identifier_not_unique_error": "Algo ha ido mal con tu pedido, por favor, inténtalo de nuevo.",
-          "line_item_limit_reached": "Se ha alcanzado el número máximo de líneas de pedido.",
+          "session_identifier_not_unique_error": "Algo salió mal con su pedido, por favor intente pagar nuevamente.",
+          "line_item_limit_reached": "Se ha alcanzado el número máximo de artículos en la línea.",
           "payment": {
             "shop_cash_not_available": "Shop Cash no es compatible con este pago."
+          },
+          "only_empty_terms_accepted": "Esta política solo acepta términos vacíos.",
+          "session_is_already_finished": "Esta sesión de pago ya ha sido finalizada.",
+          "merchandise": {
+            "only_value_constraint": "Solo se permiten valores exactos en la entrada de mercancía.",
+            "merchandise_not_found": "Producto no encontrado.",
+            "merchandise_variant_not_found": "Variante de producto no encontrada.",
+            "merchandise_not_applicable": "La variante del producto no se puede comprar.",
+            "mixed_currencies": "El pago contiene artículos en línea con diferentes monedas."
           }
         },
-        "full_price": "Precio completo:"
+        "full_price": "Precio completo:",
+        "qr_code": "Código QR"
       },
       "contact": {
         "title": "Información",
@@ -1684,6 +1694,9 @@
         "gift_card": {
           "throttle_limit_exceeded": "Has superado el número máximo de intentos. Inténtalo de nuevo más tarde."
         }
+      },
+      "address_management": {
+        "confirm_address_deletion": "¿Está seguro de que desea eliminar la dirección {{address}}?"
       }
     },
     "sentence": {
