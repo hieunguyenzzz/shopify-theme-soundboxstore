@@ -1690,11 +1690,11 @@
           "not_available": "Apple Pay no está disponible en este navegador. Para conectar su cuenta de Apple Pay, deberá usar Safari en un dispositivo Apple."
         },
         "google": {
-          "connect": "Haz clic para conectarte con tu cuenta de Google Pay",
+          "connect": "Haga clic para conectarse con su cuenta de Google Pay",
           "error_authorizing": "Error al autorizar el pago"
         },
         "account_connected": "Cuenta conectada.",
-        "mor_disclaimer_html": "Al hacer clic a continuación y completar su pedido, acepta comprar sus artículos a Global-e como comerciante registrado\npara esta transacción, en Global-e <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Términos y Condiciones</a>\ny <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Política de Privacidad</a>. Global-e es una organización internacional\nproveedor de servicios de cumplimiento a %{shop_name}\n",
+        "mor_disclaimer_html": "Al hacer clic a continuación y completar su pedido, acepta comprar su(s) artículo(s) de Global-e como comerciante de registro\npara esta transacción, en los <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Términos y Condiciones</a> de Global-e\ny la <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Política de Privacidad</a>. Global-e es un proveedor internacional\nde servicios de cumplimiento para %{shop_name}\n",
         "pending_payment": {
           "due_notice": "Su pago de %{amount_due} vence el %{due_date}.",
           "multibanco": {
@@ -1702,7 +1702,8 @@
             "entity": "Entidad",
             "reference": "Referencia",
             "amount": "Cantidad",
-            "find_nearest_atm": "Encuentra el Cajero Automático más Cercano"
+            "find_nearest_atm": "Encuentre el cajero automático más cercano",
+            "buyer_action_info": "Su pago de %{amount_due} está vencido."
           }
         },
         "update_payment_method": "Actualizar método de pago",
@@ -1729,7 +1730,57 @@
         "grabpay_label": "GrabPay",
         "kcp_creditcard_label": "Tarjeta de Crédito KCP",
         "subscription_heading": "acuerdo de suscripción",
-        "purchase_options_agreement_label_wallets": "Al continuar con su pago, acepta los futuros cargos listados en esta página y la política de cancelación."
+        "purchase_options_agreement_label_wallets": "Al continuar con su pago, acepta los futuros cargos listados en esta página y la política de cancelación.",
+        "order_covered_by_store_credit_notice": "Su pedido está cubierto por su crédito de tienda.",
+        "order_covered_by_redeemables_notice": "Su pedido está cubierto.",
+        "store_credit": {
+          "label": "Crédito de tienda",
+          "apply_label": "Aplicar crédito de tienda",
+          "add_label": "Agregar crédito de tienda",
+          "manage_label": "Administrar crédito de tienda",
+          "buying_gift_card": "No puede usar el crédito de tienda para comprar una tarjeta de regalo",
+          "no_fixed_selling_plans": "No puede usar el crédito de tienda con opciones de compra diferida"
+        },
+        "clear": "Limpiar",
+        "billing_must_match_shipping_notice": "La dirección de facturación de su método de pago debe coincidir con la dirección de envío.",
+        "same_billing_address_checkbox_label": "Usar la dirección de envío como dirección de facturación",
+        "location_billing_address_label": "Dirección de facturación de la ubicación",
+        "fact_billing_address_label": "Dirección de facturación",
+        "location_shipping_address_label": "Dirección de envío de la ubicación",
+        "use_order_billing_address_label": "Usar dirección de facturación del pedido",
+        "use_location_billing_address_label": "Usar dirección de facturación de la ubicación",
+        "use_location_shipping_address_label": "Usar dirección de envío de la ubicación",
+        "no_working_method_error": "Esta tienda no puede aceptar pagos en este momento. Actualice esta página o vuelva más tarde.",
+        "brand_not_available": "Esta tienda no acepta {{brand}}. Por favor, use una tarjeta diferente para pagar.",
+        "shipping_rate_updated": "Los métodos de envío disponibles han sido actualizados. Confirme su elección antes de finalizar la compra.",
+        "billing_address_invalid_phone": "Actualice el número de teléfono en su dirección de facturación para {{label}} {{last_digits}}  para continuar.",
+        "billing_address_invalid_phone_no_card": "Actualice el número de teléfono en su dirección de facturación para continuar.",
+        "preview_not_available": {
+          "title": "Vista previa no disponible",
+          "content": "No se preocupe, este pago rápido funciona para sus clientes.",
+          "button": "Ok"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Ingrese una fecha de emisión válida",
+              "issue_number": "Ingrese un número de emisión válido"
+            },
+            "invalid": {
+              "verification_value": "Ingrese un CVV o código de seguridad válido"
+            }
+          }
+        },
+        "simulated_checkout": "Vista previa próximamente",
+        "simulated_express_checkout": "Las billeteras no están disponibles en la vista previa del editor debido a su región o navegador",
+        "vaulting_agreement_label": "Guarde mi información de pago con %{company} para un pago más rápido.",
+        "business_customer_vaulting_payment_label": "Guarde esta tarjeta al finalizar la compra y autorice a %{company} a cargarla para futuras compras para esta ubicación. Todos los contactos asignados a esta ubicación pueden usar la tarjeta.",
+        "purchase_options_and_vaulting_agreement_label": "Uno o más artículos en su carrito son una compra diferida o por suscripción. Al continuar con su pago, acepta que su método de pago se cargará automáticamente al precio y frecuencia listados en esta página hasta que finalice o cancele. Todas las cancelaciones están sujetas a la %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "política de cancelación",
+        "use_different_credit_card_label": "Usar una tarjeta diferente",
+        "saved_credit_card": "Su tarjeta de crédito guardada",
+        "saved_credit_card_info": "Últimos cuatro dígitos",
+        "saved_credit_card_cvv_verification": "Para fines de verificación, por favor ingrese el código de seguridad de su tarjeta."
       },
       "payment_summary": {
         "gift_card_current_balance_notice": "Saldo corriente %{amount}",
