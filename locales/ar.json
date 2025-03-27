@@ -2332,7 +2332,90 @@
       },
       "marketplaces": {
         "legal_notice": {
-          "legal_text": "مراجعة"
+          "legal_text": "مراجعة",
+          "link_label": "{{partnerDisplayName}} الشروط والأحكام"
+        }
+      },
+      "online_store_chat": {
+        "title": "أسئلة؟ تحدث معنا"
+      },
+      "local_pickup": {
+        "location_address_search_label": "العنوان",
+        "location_information": {
+          "one": "يوجد متجر %{count} مع مخزون قريب من %{address}",
+          "other": "يوجد %{count} متاجر مع مخزون قريب من %{address}"
+        },
+        "toggle_location": "تغيير الموقع",
+        "or": "أو",
+        "cancel": "إلغاء",
+        "your_location": "موقعك",
+        "search_button": "ابحث عن المتاجر",
+        "no_stores_found": "لم يتم العثور على متاجر",
+        "all_stores_far_away": {
+          "title": "أقرب المتاجر تبعد أكثر من %{distance}",
+          "description": "اختر متجراً أو %{ship_to_address_link} بدلاً من ذلك.",
+          "ship_to_address_link": "الشحن إلى العنوان"
+        },
+        "could_not_resolve_address": "لم يتم العثور على عنوانك. حاول مرة أخرى أو استخدم عنواناً مختلفاً",
+        "paginator": {
+          "accessibility_label": "ترقيم الاستلام المحلي",
+          "previous": "الصفحة السابقة",
+          "next": "الصفحة التالية",
+          "label": {
+            "one": "%{first} - %{last} من متجر %{count}",
+            "other": "%{first} - %{last} من متاجر %{count}"
+          }
+        },
+        "reveal_more_label": {
+          "one": "عرض %{count} موقع إضافي",
+          "other": "عرض %{count} مواقع إضافية"
+        }
+      },
+      "captcha": {
+        "title": "أكمل الكابتشا للمتابعة",
+        "errors": {
+          "not_solved": "أكمل الكابتشا للمتابعة"
+        }
+      },
+      "clipboard": {
+        "copied": "تم النسخ",
+        "failed_to_copy": "فشل النسخ"
+      },
+      "discount_errors": {
+        "generic_error": "لا يمكن معالجة طلبك لأن رمز الخصم لم يعد متاحاً. راجع إجمالي الطلب وحاول مرة أخرى."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "لم يعد لديك الإذن لإجراء طلبات B2B. %{logout_url} لتقديم طلب شخصي بدلاً من ذلك.",
+        "log_out_link_text": "تسجيل الخروج",
+        "lost_permissions_subtitle": "لم يعد لديك الإذن لإجراء طلبات B2B، قم بتسجيل الخروج لتقديم طلب شخصي.",
+        "lost_permissions_title": "لا توجد أذونات للموقع"
+      },
+      "shop_pay_external": {
+        "title": "Shop Pay Checkout",
+        "errors": {
+          "problem_loading": "هناك مشكلة في تحميل Shop Pay",
+          "try_again_later": "تحقق من اتصالك أو أغلق هذه النافذة وحاول مرة أخرى بعد لحظات.",
+          "checkout_has_expired": "انتهت صلاحية عملية الدفع الخاصة بك. أغلق هذه النافذة وحاول الدفع مرة أخرى من {{shopName}}."
+        },
+        "return_to_store": "العودة إلى {{shopName}}",
+        "return_to_store_simple": "العودة إلى المتجر"
+      },
+      "wallets": {
+        "return_to_store": "العودة إلى المتجر",
+        "return_to_checkout": "العودة إلى الدفع",
+        "redirect_hint": "سيُطلب منك تسجيل الدخول باستخدام {{walletName}}.",
+        "logged_in": "متصل بـ {{email}}",
+        "shipping_line_label": "الشحن",
+        "connect_shipping_methods": "{{method1}}  و {{method2}}",
+        "payment_in_progress_title": "الدفع قيد التقدم",
+        "payment_in_progress_body": "يتم معالجة دفعتك. سيتم إكمال طلبك قريباً.",
+        "call_to_action": "الدفع بواسطة {{walletName}}",
+        "redirection_notice": "بعد النقر على \"{{buttonLabel}}\"، سيتم توجيهك إلى {{walletName}}  لإكمال الشراء بأمان.",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}}  غير متاح",
+            "description": "لم يكن {{walletName}}  متاحاً. استخدم طريقة دفع مختلفة أو حاول مرة أخرى لاحقاً."
+          }
         }
       }
     }
