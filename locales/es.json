@@ -3015,8 +3015,74 @@
         "errors": {
           "unavailable": {
             "title": "{{walletName}} no disponible",
-            "description": "{{walletName}} no estaba disponible. Usa un método de pago diferente o inténtalo de nuevo más tarde."
-          }
+            "description": "{{walletName}} no estaba disponible. Usa un método de pago diferente o inténtalo de nuevo más tarde.",
+            "instructions": "Hubo un problema con {{walletName}}. Regrese a la tienda para intentarlo de nuevo o finalice la compra de otra manera.",
+            "unavailable_for_country": "{{walletName}} no está disponible en {{countryName}}. Seleccione un método de pago diferente para completar su compra."
+          },
+          "unavailable_terminal": {
+            "instructions": "{{walletName}} actualmente no está disponible para su pedido. Para continuar con su compra, elija otro método de pago."
+          },
+          "generic": "Hubo un problema con {{walletName}}. Inténtelo de nuevo o use un método de pago diferente.",
+          "discount_code": "No se puede aplicar este código de descuento. Revise su código e intente de nuevo.",
+          "terminal": "Hubo un problema con {{walletName}}. Por favor use un método de pago diferente.",
+          "detour": {
+            "stock_problems": "Algunos artículos ya no están disponibles. Cierre {{walletName}} e intente de nuevo.",
+            "price_change": "Algunos precios de los artículos han cambiado. Cierre {{walletName}} para revisar su pedido e intente de nuevo.",
+            "queue": "Se le ha colocado en una cola para finalizar la compra. Cierre {{walletName}} para continuar.",
+            "currency_change": "No puede usar una dirección diferente con {{walletName}}. Use la dirección original o intente con un método de pago diferente."
+          },
+          "unsupported": {
+            "address": "El comerciante no puede entregar a esta dirección.",
+            "wallet_is_unavailable": "{{walletName}} no se puede usar con esta dirección. Seleccione una dirección diferente o cierre {{walletName}} para completar su compra.",
+            "postal_code": "Esta ubicación no está soportada."
+          },
+          "outdated": {
+            "shipping_method": "Las opciones de envío han cambiado para su pedido. Revise su selección.",
+            "payment_terms": "Los términos de pago han cambiado. Por favor revise su pedido."
+          },
+          "invalid": {
+            "shipping_address": "Ingrese una dirección de envío válida.",
+            "billing_address": "Ingrese una dirección de facturación válida.",
+            "shipping_option": "Elija una opción de envío válida.",
+            "email": "Ingrese un correo electrónico válido.",
+            "zone": "Ingrese un estado/provincia válido.",
+            "billing_zone": "Ingrese un estado/provincia de dirección de facturación válido.",
+            "emirate": "Ingrese un emirato válido.",
+            "postal_code": "Ingrese un código postal/ZIP válido.",
+            "phone": "Ingrese un número de teléfono válido.",
+            "billing_phone": "Ingrese un número de teléfono de dirección de facturación válido.",
+            "reduction_code": "Ingrese un código de descuento o tarjeta de regalo válido.",
+            "billing_must_match_shipping": "Debe coincidir con la dirección de envío.",
+            "billing_zip": "Ingrese un código postal/ZIP de dirección de facturación válido."
+          },
+          "missing": {
+            "first_name": "Ingrese un nombre.",
+            "billing_first_name": "Ingrese un nombre de dirección de facturación.",
+            "last_name": "Ingrese un apellido.",
+            "address1": "Ingrese una dirección.",
+            "billing_address1": "Ingrese una dirección de facturación.",
+            "address2": "Ingrese un apartamento, suite, etc.",
+            "billing_address2": "Ingrese un apartamento, suite, etc. de dirección de facturación.",
+            "city": "Ingrese una ciudad.",
+            "billing_city": "Ingrese una ciudad de dirección de facturación.",
+            "province": "Seleccione un estado/provincia.",
+            "billing_province": "Seleccione un estado/provincia de dirección de facturación.",
+            "country": "Seleccione un país/región.",
+            "zip": "Ingrese un código postal/ZIP.",
+            "billing_zip": "Ingrese un código postal/ZIP de dirección de facturación.",
+            "phone": "Ingrese un número de teléfono."
+          },
+          "formatting": {
+            "name_contains_emojis": "Elimine el emoji de su nombre.",
+            "postal_code_contains_emoji": "Elimine el emoji de su código postal.",
+            "first_name_too_long": "El nombre contiene demasiadas letras.",
+            "last_name_too_long": "El apellido contiene demasiadas letras."
+          },
+          "select_different_shipping_address_to_resolve_errors": "Su dirección de envío no es válida. Seleccione una dirección diferente o use una nueva."
+        },
+        "scrim": {
+          "continue_purchase_in_window": "Continúe su compra en la ventana {{walletName}} ",
+          "and_return_to_checkout": "y regrese a la caja."
         }
       }
     },
