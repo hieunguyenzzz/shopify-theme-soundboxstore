@@ -2501,41 +2501,58 @@
         "blocks": {
           "contact_method_title": "Contacto",
           "billing_address_title": "Facturación",
-          "shipping_address_title": "Envío a",
-          "shipping_method_title": "Método",
-          "payment_method_title": "Pago",
-          "change_link_label": "Cambio",
+          "shipping_address_title": "Enviar a",
+          "shipping_method_title": "Método de envío",
+          "payment_method_title": "Método de pago",
+          "change_link_label": "Cambiar",
           "change_contact_method_link_label": "Cambiar la información de contacto",
           "change_billing_address_link_label": "Cambiar la dirección de facturación",
           "change_shipping_address_link_label": "Cambiar la dirección de envío",
-          "change_shipping_method_link_label": "Cambiar método de envío",
-          "change_payment_method_link_label": "Cambiar método de pago",
-          "pick_up_in_store_shipping_method_html": "Recogida en tienda · %{location_name}"
+          "change_shipping_method_link_label": "Cambiar el método de envío",
+          "change_payment_method_link_label": "Cambiar el método de pago",
+          "pick_up_in_store_shipping_method_html": "Recoger en tienda · %{location_name}",
+          "purchase_order_number_title": "Número de PO",
+          "change_purchase_order_number_label": "Cambiar el número de PO",
+          "change_delivery_method_link_label": "Cambiar el método de entrega",
+          "no_address": "(Sin dirección)",
+          "no_purchase_order_number": "(Sin número de PO)",
+          "due_after_order_reviewed_html": "Debido después de revisar el pedido",
+          "review_title_free_order": "Revisar y completar su pedido",
+          "payment_method_saved_company_location": "Guardar tarjeta para esta ubicación"
         },
         "review_and_confirm_title": "Revisar y confirmar",
-        "checkout_a_different_way": "Pagar de otra manera"
+        "checkout_a_different_way": "Pagar de otra manera",
+        "block_title": "Revise su información",
+        "item_header": {
+          "change_value": "Cambiar valor",
+          "section": "Sección",
+          "value": "Valor"
+        }
       },
       "marketing": {
-        "accept_marketing_checkbox_label": "Envíeme un correo electrónico con noticias y ofertas",
-        "post_accept_marketing_checkbox_label": "Está suscrito para recibir noticias y ofertas por correo electrónico",
-        "pending_accept_marketing_checkbox_label": "Revise su correo electrónico para confirmar su suscripción a noticias y ofertas",
-        "accept_sms_checkbox_label": "Envíame un mensaje de texto con noticias y ofertas",
+        "accept_marketing_checkbox_label": "Envíame correos con noticias y ofertas",
+        "post_accept_marketing_checkbox_label": "Estás suscrito para recibir noticias y ofertas por correo electrónico",
+        "pending_accept_marketing_checkbox_label": "Revisa tu correo electrónico para confirmar tu suscripción a noticias y ofertas",
+        "accept_sms_checkbox_label": "Envíame mensajes de texto con noticias y ofertas",
         "sms": {
           "disclaimer": {
-            "privacy_policy": "Política de Privacidad",
-            "terms_of_service": "Términos de Servicio",
-            "description_html": "Al registrarse por mensaje de texto, acepta recibir mensajes de marketing automatizados recurrentes, incluidos recordatorios de carritos, al número de teléfono proporcionado. El consentimiento no es una condición de compra. Responder STOP para darse de baja. Responda AYUDA para obtener ayuda. La frecuencia de los mensajes varía. Se pueden aplicar tarifas de Msg y datos. Vea nuestro %{privacy_policy_link} y %{terms_of_service_link}.",
-            "description_transactional_html": "Es posible que reciba mensajes de texto relacionados con la confirmación del pedido y las actualizaciones de envío. Responder STOP para darse de baja. Responda AYUDA para obtener ayuda. La frecuencia de los mensajes varía. Se pueden aplicar tarifas de Msg y datos. Vea nuestro %{privacy_policy_modal_link} y %{terms_of_service_modal_link}."
-          }
+            "privacy_policy": "Política de privacidad",
+            "terms_of_service": "Términos de servicio",
+            "description_html": "Al registrarte por mensaje de texto, aceptas recibir mensajes de marketing automatizados recurrentes, incluidos recordatorios de carrito, al número de teléfono proporcionado. El consentimiento no es una condición de compra. Responde STOP para cancelar la suscripción. Responde HELP para obtener ayuda. La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Consulta nuestro %{privacy_policy_link} y %{terms_of_service_link}.",
+            "description_transactional_html": "Puedes recibir mensajes de texto relacionados con la confirmación del pedido y actualizaciones de envío. Responde STOP para cancelar la suscripción. Responde HELP para obtener ayuda. La frecuencia de los mensajes varía. Pueden aplicarse tarifas de mensajes y datos. Consulta nuestro %{privacy_policy_modal_link} y %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Número de teléfono móvil",
+          "get_offers_by_text": "Recibir ofertas por mensaje de texto"
         },
         "unsubscribe": {
-          "title": "Has cancelado tu suscripción",
-          "description": "No recibirás más recordatorios de carrito de nuestra parte."
+          "title": "Te has dado de baja",
+          "description": "No recibirás más recordatorios de carrito de nosotros."
         },
         "disclaimer": {
-          "privacy_policy": "política de privacidad",
+          "privacy_policy": "Política de privacidad",
           "terms_of_service": "Términos de servicio"
-        }
+        },
+        "accept_shop_pay_marketing_checkbox_label": "Regístrame para recibir noticias y ofertas de esta tienda"
       },
       "shop_policies": {
         "refund_policy": "Política de reembolso",
@@ -2543,8 +2560,8 @@
         "terms_of_service": "Términos de servicio",
         "legal_notice": "Aviso legal",
         "shipping_policy": "Política de envío",
-        "terms_of_sale": "Condiciones de venta",
-        "subscription_policy": "Política de cancelación de opciones de compra",
+        "terms_of_sale": "Términos de venta",
+        "subscription_policy": "Política de cancelación",
         "purchase_options_policy": "Política de opciones de compra",
         "contact_information": "Información de contacto"
       },
