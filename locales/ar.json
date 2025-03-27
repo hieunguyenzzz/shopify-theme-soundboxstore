@@ -2163,7 +2163,95 @@
           }
         },
         "recurring_totals": "%{total_price} كل %{interval}",
-        "recurring_totals_with_initial_order_shipping_discount": "أول دفعة %{total_price_with_discount}، ثم %{recurring_total}"
+        "recurring_totals_with_initial_order_shipping_discount": "أول دفعة %{total_price_with_discount}، ثم %{recurring_total}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "أول دفعة %{total_price}",
+            "other": "أول دفعات %{count} %{total_price} لكل منها"
+          },
+          "following_cycles": "ثم %{total_price} كل %{interval}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": "ثم دفعة %{count} في %{total_price}",
+            "other": "ثم دفعات %{count} في %{total_price} لكل منها"
+          }
+        }
+      },
+      "customer_payment_methods": {
+        "page_title": "طرق الدفع",
+        "title": "طرق الدفع",
+        "update_card_button_label": "تحديث البطاقة",
+        "delete_customer_mandate": {
+          "generic_error": "حدثت مشكلة في معالجة طلبك.",
+          "success_message": "تم حذف طريقة الدفع الخاصة بك بنجاح"
+        }
+      },
+      "throttle": {
+        "too_many_attempts": {
+          "message": "محاولات كثيرة جدًا",
+          "description": "يرجى المحاولة مرة أخرى في غضون بضع دقائق"
+        },
+        "line_to_check_out": "أنت في صف الخروج",
+        "cart_summary_heading": "سلة التسوق الخاصة بك",
+        "merchandise": {
+          "available": "متاح",
+          "sold_out": "نفذ"
+        },
+        "inventory": {
+          "partial_inventory_banner": "جزء من سلة التسوق الخاصة بك قد نفد ولن يكون متاحًا للشراء عند الخروج.",
+          "sold_out": {
+            "heading": "سلة التسوق الخاصة بك قد نفدت",
+            "storefront_body": "العودة إلى المتجر لمواصلة التسوق",
+            "no_storefront_body": "للأسف، العنصر الذي تريد شراءه لم يعد متاحًا.",
+            "link": "العودة إلى المتجر"
+          }
+        },
+        "title": "طابور",
+        "time_to_checkout_title": "وقت الخروج - {{shopName}}",
+        "estimated_wait_time": {
+          "calculating": "حساب وقت الانتظار المقدر",
+          "less_than_one": "وقت الانتظار المقدر: أقل من دقيقة",
+          "one": "وقت الانتظار المقدر: {{count}} minute",
+          "other": "وقت الانتظار المقدر: {{count}} minutes"
+        },
+        "last_checked": "(آخر فحص: {{time}})",
+        "footer": {
+          "heading": "لا تقم بتحديث هذه الصفحة، سيتم تحديثها تلقائيًا.",
+          "body": "العناصر في سلة التسوق الخاصة بك غير محجوزة حتى تكمل عملية الخروج."
+        }
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "حدثت مشكلة في معالجة طلبك، يرجى الاتصال بصاحب المتجر."
+      },
+      "no_address_location": {
+        "title": "موقع بدون عنوان",
+        "header": "ليس لديك عنوان شحن لهذا الموقع",
+        "alt_header": "عنوان الشحن مفقود",
+        "message": "اتصل بنا لإضافة عنوان لهذا الموقع لإكمال عملية الخروج.",
+        "email_us_button_label": "أرسل لنا بريدًا إلكترونيًا"
+      },
+      "order_errors": {
+        "creation_failure": "حدثت مشكلة في إنشاء طلبك. حاول مرة أخرى، أو اتصل بنا لمزيد من التفاصيل.",
+        "network_failure": "لم يتم تقديم طلبك بسبب خطأ في الشبكة. تحقق من اتصالك وحاول مرة أخرى.",
+        "inventory_reservation_failure": "بعض العناصر لم تعد متاحة."
+      },
+      "session_errors": {
+        "session_not_unique": "حدثت مشكلة في معالجة طلبك. قم بتحديث هذه الصفحة للعودة إلى المتجر.",
+        "session_already_finished": "تم تقديم هذا الطلب بالفعل. يمكنك العودة إلى المتجر لبدء طلب جديد."
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "حدثت مشكلة في معالجة طلبك. حاول مرة أخرى في غضون بضع دقائق."
+      },
+      "pickup_point": {
+        "location_is_currently_closed": "مغلق",
+        "business_hours": "ساعات العمل",
+        "no_business_hours": "لا تتوفر ساعات عمل",
+        "open_twenty_four_hours": "مفتوح 24/7",
+        "title": "نقطة الاستلام",
+        "or": "أو",
+        "search_button": "بحث",
+        "address_label": "عنوان"
       }
     }
   }
