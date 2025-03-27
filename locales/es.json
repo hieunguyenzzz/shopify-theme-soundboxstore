@@ -611,41 +611,41 @@
     "checkout": {
       "shipping": {
         "delivery_date_range": "%{min_time}–%{max_time}",
-        "title": "Envio",
+        "title": "Envío",
         "shipping_method_title": "Método de envío",
         "shipping_method_one_time_purchase_group_title": "Compra única",
         "shipping_method_subscription_group_title": "Suscripción",
         "subscription_shipping": "Envío de suscripción",
-        "subscription_local_delivery": "Suscripción entrega local",
+        "subscription_local_delivery": "Entrega local de suscripción",
         "subscription_pickup": "Recogida de suscripción",
-        "waiting_on_rate_notice": "Obtener tarifas de envío disponibles…",
-        "waiting_on_pickup_location_notice": "Obtención de ubicaciones de recogida disponibles…",
+        "waiting_on_rate_notice": "Obteniendo tarifas de envío disponibles…",
+        "waiting_on_pickup_location_notice": "Obteniendo ubicaciones de recogida disponibles…",
         "no_rates_for_cart_or_destination_notice": "No hay métodos de envío disponibles para su carrito o dirección",
-        "no_pickup_location_notice": "Al menos uno de sus productos no está disponible para su recogida",
-        "no_rates_for_country_notice": "No se han encontrado tarifas de envío para esta dirección.",
+        "no_pickup_location_notice": "Al menos uno de sus productos no está disponible para recogida",
+        "no_rates_for_country_notice": "No se encontraron tarifas de envío para esta dirección.",
         "no_rates_contact_notice": "Contáctenos para más información",
-        "free_rate_label": "Libre",
-        "cheapest_rate_label": "Abaratamiento",
+        "free_rate_label": "Gratis",
+        "cheapest_rate_label": "Más barato",
         "please_enter_your_shipping_information_notice": "Por favor, introduzca su información de envío.",
         "estimated_delivery_date": {
-          "one": "%{count} día hábil",
-          "other": "%{count} días hábiles"
+          "one": "Día hábil %{count}",
+          "other": "Días hábiles %{count}"
         },
         "estimated_delivery_date_range": "%{minimum} a %{maximum} días hábiles",
         "estimated_delivery_time": "Entrega estimada %{time}",
         "estimated_delivery_time_range": "Entrega estimada %{min_time}–%{max_time}",
         "delivery_today": "Entrega el mismo día %{time}",
         "delivery_tomorrow": "Entrega al día siguiente %{time}",
-        "two_day_delivery": "entrega en 2 días %{time}",
+        "two_day_delivery": "Entrega en 2 días %{time}",
         "delivery": "Entrega %{time}",
-        "arrives_time": "Llegar %{time}",
-        "arrives_time_range": "Llegar %{min_time}–%{max_time}",
-        "estimated_time": "Estimar %{time}",
-        "estimated_time_range": "Estimar %{min_time}–%{max_time}",
+        "arrives_time": "Llega %{time}",
+        "arrives_time_range": "Llega %{min_time}–%{max_time}",
+        "estimated_time": "Estimado %{time}",
+        "estimated_time_range": "Estimado %{min_time}–%{max_time}",
         "shipping_line_phone_label": "Número de teléfono móvil (requerido)",
-        "shipping_line_phone": "Su servicio de mensajería puede utilizar este número para ponerse en contacto con usted.",
+        "shipping_line_phone": "Su mensajero puede usar este número para contactarlo.",
         "shipping_line_delivery_phone_label": "Número de teléfono móvil",
-        "shipping_line_delivery_phone": "Es posible que nos comuniquemos con usted para informarle sobre su entrega.",
+        "shipping_line_delivery_phone": "Puede ser contactado con actualizaciones sobre su entrega.",
         "optional_shipping_line_delivery_instructions_label": "Instrucciones de entrega (opcional)",
         "shipping_line_delivery_instructions": "Ingrese la información necesaria, como códigos de puerta o instrucciones de entrega.",
         "other_method": {
@@ -703,7 +703,17 @@
         "merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
         "split_cart_ships_date": "Buques %{date}",
         "split_cart_multiple_shipment_quantity_label": "%{quantity} envío",
-        "split_cart_multiple_shipment_notice": "Su pedido llegará en múltiples envíos"
+        "split_cart_multiple_shipment_notice": "Su pedido llegará en múltiples envíos",
+        "delivery_title": "Entrega",
+        "shipping_method_first_shipment_group_title": {
+          "one": "Primer envío",
+          "other": "Primeros envíos"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "one": "Envío recurrente",
+          "other": "Envíos recurrentes"
+        },
+        "default_description": "Se envía en 1 día hábil"
       },
       "general": {
         "page_title": "Pagar",
@@ -1421,8 +1431,22 @@
         "full_price": "Precio completo: %{price}",
         "custom_discount": "Descuento personalizado",
         "expand_component_information": {
-          "one": "Mostrar artículo %{count}"
-        }
+          "one": "Mostrar artículo %{count}",
+          "other": "Mostrar elementos %{count}"
+        },
+        "collapse_component_information": {
+          "one": "Ocultar elemento %{count}",
+          "other": "Ocultar elementos %{count}"
+        },
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "discount_discovery": {
+          "add_code": "Agregar descuento",
+          "merchandise_quantity_label": {
+            "one": "Elemento %{count}",
+            "other": "Elementos %{count}"
+          }
+        },
+        "alternative_payment_currency_total": "Cobrado como %{amount_due}"
       },
       "localized_fields": {
         "additional_information": {
