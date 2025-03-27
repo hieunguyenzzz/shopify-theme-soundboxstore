@@ -2852,7 +2852,89 @@
         "title": "Punto de recogida",
         "or": "o",
         "search_button": "Buscar",
-        "address_label": "Dirección"
+        "address_label": "Dirección",
+        "selector_tabs": "Selector de punto de recogida",
+        "selector_tab_map": "Mapa",
+        "selector_tab_list": "Lista",
+        "could_not_resolve_address": "No se pudo localizar tu dirección. Inténtalo de nuevo o usa una dirección diferente",
+        "no_pickup_points_near_you": "No se encontraron puntos de recogida cerca de la dirección seleccionada",
+        "no_pickup_points_near_location": "No se encontraron puntos de recogida cerca de tu ubicación",
+        "pickup_unavailable_banner_title": {
+          "one": "Tu artículo no está disponible en puntos de recogida",
+          "other": "Tus artículos no están disponibles en puntos de recogida"
+        },
+        "no_pickup_points_found": "No se encontraron puntos de recogida",
+        "paginator": {
+          "next_accessibility_label": "Página siguiente",
+          "previous_accessibility_label": "Página anterior",
+          "header": {
+            "one": "Mostrando %{first} - %{last} de %{count} punto",
+            "other": "Mostrando %{first} - %{last} de %{count} puntos"
+          },
+          "selected_pickup_point_label": {
+            "one": "%{pickup_point_index} de %{count} punto",
+            "other": "%{pickup_point_index} de %{count} puntos"
+          },
+          "selected_page": {
+            "one": "%{first} - %{last} de %{count} punto",
+            "other": "%{first} - %{last} de %{count} puntos"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "one": "%{count} punto de recogida cerca de tu ubicación",
+          "other": "%{count} puntos de recogida cerca de tu ubicación"
+        },
+        "change": "Cambiar ubicación",
+        "waiting_on_pickup_point_location_notice": "Buscando puntos de recogida...",
+        "geolocation": {
+          "shared_location_button": "Usar mi ubicación",
+          "errors": {
+            "unsuported_by_browser": "La obtención de geolocalización no es compatible con tu navegador. Inténtalo de nuevo o usa un navegador diferente.",
+            "permission_not_allowed": "Permitir compartir tu ubicación.",
+            "permission_denied": "No se pudo obtener tu ubicación. Inténtalo de nuevo."
+          }
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Hubo un problema con nuestro proceso de pago",
+          "message": "Actualiza esta página o inténtalo de nuevo en unos minutos",
+          "action": {
+            "cta": "Actualizar página"
+          },
+          "request_id": "ID de solicitud: {{requestId}}"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Volver al carrito",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} para actualizar las cantidades",
+        "subscription_changed": "Una de tus suscripciones ha cambiado.",
+        "company_location_changed": "Tu carrito ha sido actualizado. Revisa tu pedido antes de enviarlo.",
+        "company_location_changed_product_removed": "Tu carrito ha sido actualizado porque algunos productos no están disponibles en esta ubicación. Revisa tu pedido antes de enviarlo.",
+        "violations_title": "{{violation}}  falta o es inválido",
+        "individual_violations_title": {
+          "DeliveryViolations": "Dirección de envío",
+          "PaymentViolations": "Dirección de facturación",
+          "OtherViolations": "Información del pedido",
+          "UnhandledViolations": "Información del pedido"
+        },
+        "all_violations_content": "Llama o {{emailLink}} nos para actualizar esta información y completar tu pedido:",
+        "all_violations_email_link": "correo electrónico",
+        "editable_shipping_address_violations_message_title": "Agrega esta información para completar tu pedido:",
+        "editable_shipping_address_violations_message_footer": "Para actualizar permanentemente la dirección para esta ubicación, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "contáctanos",
+        "shipping_address_incomplete_title": "La dirección de envío está incompleta",
+        "calculating_shipping": "El envío aún se está calculando. Inténtalo de nuevo en unos segundos. No se ha realizado ningún cargo.",
+        "calculating_taxes": "Los impuestos aún se están calculando. Inténtalo de nuevo en unos segundos. No se ha realizado ningún cargo.",
+        "generic_processing_error": {
+          "title": "Hubo un problema al procesar tu pedido",
+          "body": "No se ha realizado ningún cargo. Inténtalo de nuevo o usa un método de pago diferente."
+        }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Revisar"
+        }
       }
     },
     "sentence": {
