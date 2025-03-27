@@ -4259,41 +4259,66 @@
             "title": "Pago cancelado",
             "description": "No se le cobró."
           },
-          "pay_now": "Paga ahora",
-          "pay_now_accessibility_label": "Pague ahora por el pedido {{orderName}}",
-          "title": "Estado de pago"
+          "pay_now": "Pagar ahora",
+          "pay_now_accessibility_label": "Pagar ahora por el pedido {{orderName}}",
+          "title": "Estado del pago"
         },
         "order_timeline": {
           "expand_events_label": "Mostrar detalles",
-          "expand_events_accessibility_label": "Mostrar detalles de la orden preliminar",
+          "expand_events_accessibility_label": "Mostrar detalles del pedido borrador",
           "hide_events_label": "Ocultar detalles",
-          "hide_events_accessibility_label": "Ocultar detalles de la orden preliminar"
+          "hide_events_accessibility_label": "Ocultar detalles del pedido borrador"
         },
-        "subtitle": "Presentar {{date}}",
-        "title": "Orden {{name}}"
+        "subtitle": "Enviado {{date}}",
+        "title": "Pedido {{name}}"
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "Este método de pago ya no estará disponible para futuras compras desde esta ubicación.",
+          "description_with_replacement": "Eliminar este método de pago afectará los pagos preautorizados para esta ubicación. Reemplácelo con un método de pago alternativo para continuar recibiendo próximos pedidos."
+        },
+        "payment_details": {
+          "order_label": "Pedido {{name}}",
+          "draft_label": "Pedido borrador {{name}}"
+        }
+      },
+      "purchase_order_number": {
+        "add_accessibility_label": "Agregar número de PO",
+        "add_modal_title": "Agregar número de PO",
+        "cancel": "Cancelar",
+        "close_modal_accessibility_label": "Cerrar modal de número de PO",
+        "discard": "Descartar",
+        "discard_changes_modal_title": "¿Descartar cambios?",
+        "edit_accessibility_label": "Editar número de PO",
+        "edit_modal_title": "Editar número de PO",
+        "empty_state": "Sin número de PO",
+        "modal_po_number_input_label": "Número de PO",
+        "modal_po_number_input_max_length_error": "Los números de PO tienen un máximo de {{maxLength}}  caracteres.",
+        "save": "Guardar",
+        "title": "PO #{{poNumber}}"
       }
     },
     "errors": {
       "address_deletion_error": {
-        "description": "Ha habido un problema al eliminar esta dirección. Inténtalo de nuevo o actualiza la página."
+        "description": "Hubo un problema al eliminar esta dirección. Inténtalo de nuevo o actualiza la página."
       },
       "addresses_loading_issue": {
-        "description": "Error de conexión. Comprueba tu conexión a Internet e inténtalo de nuevo."
+        "description": "Error de conexión. Verifica tu conexión a internet y vuelve a intentarlo."
       },
       "banner_title": {
-        "one": "Hay {{count}} error",
-        "other": "Hay {{count}} error"
+        "one": "Hay un {{count}} error",
+        "other": "Hay {{count}} errores"
       },
       "failed_address_creation": {
-        "description": "Ha habido un problema al crear tu dirección. Intente actualizar esta página o compruebe su conexión a Internet."
+        "description": "Hubo un problema al crear tu dirección. Intenta actualizar esta página o verifica tu conexión a internet."
       },
       "failed_address_update": {
-        "description": "Ha habido un problema al actualizar su dirección. Intente actualizar esta página o compruebe su conexión a Internet."
+        "description": "Hubo un problema al actualizar tu dirección. Intenta actualizar esta página o verifica tu conexión a internet."
       },
       "load_orders_error": {
-        "title": "No se pueden cargar pedidos",
-        "description": "Vuelva a intentarlo o vuelva más tarde.",
-        "retry_button": "Reintento"
+        "title": "No se pueden cargar los pedidos",
+        "description": "Reintentar o volver más tarde.",
+        "retry_button": "Reintentar"
       },
       "no_access": {
         "back_to_authentication_link": "Inicie sesión en una cuenta diferente",
@@ -4304,17 +4329,28 @@
         "description": "No tienes acceso a ninguna ubicación"
       },
       "not_found": {
-        "description": "Compruebe la URL o inténtelo de nuevo en unos minutos.",
+        "description": "Verifica la URL o inténtalo de nuevo en unos minutos.",
         "title": "Hay un problema al cargar esta página"
       },
       "order_not_found": {
-        "description": "Este pedido no existe o no tiene permiso para verlo.",
+        "description": "Este pedido no existe o no tienes permiso para verlo.",
         "title": "Pedido no encontrado"
       },
       "profile_update_error": {
-        "description": "Ha habido un problema al actualizar su perfil. Intente actualizar esta página o compruebe su conexión a Internet."
+        "description": "Hubo un problema al actualizar tu perfil. Intenta actualizar esta página o verifica tu conexión a internet."
       },
-      "retry_action_label": "Reintento"
+      "retry_action_label": "Reintentar",
+      "load_paypal_error": {
+        "description": "Hay un problema al cargar PayPal. Por favor, inténtalo de nuevo."
+      },
+      "logout_everywhere": {
+        "description": "Algo salió mal durante el cierre de sesión. Por favor, inténtalo de nuevo."
+      },
+      "load_extension_error": {
+        "title": "Error",
+        "description": "Actualiza esta página o inténtalo de nuevo en unos minutos.",
+        "refresh_button": "Actualizar página"
+      }
     },
     "payment_methods": {
       "title": "Métodos de pago",
@@ -4433,6 +4469,12 @@
         "tomorrow": "Mañana a las {{time}}",
         "lessThanOneWeekAway": "{{weekday}} at {{time}}",
         "lessThanOneYearAway": "{{date}} at {{time}}"
+      }
+    },
+    "throttle": {
+      "too_many_attempts": {
+        "message": "Demasiados intentos",
+        "description": "Por favor, inténtalo de nuevo en unos minutos"
       }
     }
   },
