@@ -3577,7 +3577,85 @@
             },
             "more_than_pagination_length": "لديك أكثر من {{count}} طلبات قيد الانتظار"
           },
-          "pending_orders_count_more_than_pagination_length": "{{count}}+"
+          "pending_orders_count_more_than_pagination_length": "{{count}}+",
+          "pagination": {
+            "nav_accessibility_label": "أزرار التنقل في المراجعة الطلبات"
+          }
+        },
+        "order_list_column_headers_location": "الموقع",
+        "order_list_column_headers_contact": "الاتصال",
+        "order_list_column_headers_status": "الحالة",
+        "removed_company_contact_tooltip": "تمت الإزالة من الشركة"
+      },
+      "draft_order_details": {
+        "draft_order_subtitle": "تم التأكيد {{date}}  من الطلب {{draftOrderName}}",
+        "loading": "جارٍ تحميل تفاصيل الطلب",
+        "loading_finished_accessibility_message": "تم تحميل تفاصيل الطلب",
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "one": "دفعتك متأخرة {{count}} day",
+              "other": "دفعتك متأخرة {{count}} days"
+            },
+            "banner_due": {
+              "one": "دفعتك مستحقة {{count}} day",
+              "other": "دفعتك مستحقة {{count}} days"
+            },
+            "banner_due_today": "دفعتك مستحقة اليوم",
+            "title": "الدفع مستحق",
+            "title_with_date": "الدفع مستحق {{date}}",
+            "title_due_on_receipt": "الدفع غير مستحق بعد",
+            "title_due_on_fulfillment": "الدفع مستحق عند الإنجاز",
+            "description_overdue": "دفعتك متأخرة.",
+            "description_partially_paid": "تم دفع هذا الطلب جزئيًا. لديك رصيد متبقي.",
+            "description_authorized": "سيتم خصم دفعتك في تاريخ الاستحقاق، أو يمكنك الدفع الآن.",
+            "description_waiting_for_manual_payment": "لدى هذا الطلب دفعة معلقة. سيتم تحديث الرصيد عند استلام الدفعة.",
+            "description_due_on_receipt": "ستتلقى فاتورة عند استحقاق الدفع.",
+            "description_due_on_receipt_partially_paid": "تم دفع هذا الطلب جزئيًا. لديك رصيد متبقي. ستتلقى فاتورة عند استحقاق الدفع.",
+            "description_due_on_fulfillment": "الدفع مستحق بمجرد إنجاز جميع العناصر في هذا الطلب.",
+            "description_due_on_fulfillment_partially_paid": "تم دفع هذا الطلب جزئيًا. لديك رصيد متبقي. الدفع مستحق بمجرد إنجاز جميع العناصر في هذا الطلب."
+          },
+          "draft": {
+            "description": "يتم تحديد تفاصيل الدفع عند تأكيد الطلب.",
+            "title": "الدفع غير مستحق بعد",
+            "in_review": {
+              "description": "يتم تحديد تفاصيل الدفع عند تأكيد الطلب.",
+              "title": "الدفع غير مستحق بعد"
+            },
+            "submitted": {
+              "description": "قم بتقديم الدفع لتأكيد هذا الطلب.",
+              "title": "ادفع للتأكيد",
+              "deposit": {
+                "title": "الدفع مستحق",
+                "due_later": "الرصيد على {{translatedName}} terms ومستحق في {{dueDate}}.",
+                "due_on_fulfillment": "الرصيد مستحق بمجرد إنجاز جميع العناصر في هذا الطلب.",
+                "due_on_receipt": "ستتلقى فاتورة للرصيد المتبقي.",
+                "due_on_date": "الرصيد مستحق في {{dueDate}}."
+              }
+            },
+            "deposit": {
+              "due_later": "{{depositAmount}}  سيكون مستحقًا عند تأكيد طلبك. سيكون الرصيد على {{translatedName}} terms.",
+              "due_on_fulfillment": "{{depositAmount}}  سيكون مستحقًا عند تأكيد طلبك. سيكون الرصيد مستحقًا عند إنجاز الطلب.",
+              "due_on_receipt": "{{depositAmount}}  سيكون مستحقًا عند تأكيد طلبك. سيكون الرصيد مستحقًا لاحقًا.",
+              "due_on_date": "{{depositAmount}}  سيكون مستحقًا عند تأكيد طلبك. سيكون الرصيد مستحقًا في {{dueDate}}."
+            }
+          },
+          "paid": {
+            "title": "مدفوع",
+            "title_with_date": "مدفوع {{date}}",
+            "description": "طلبك مدفوع بالكامل."
+          },
+          "refund": {
+            "title": "تم استرداد المبلغ",
+            "title_with_date": "تم استرداد المبلغ {{date}}",
+            "description_full_refund": "تلقيت استردادًا كاملاً لهذا الطلب.",
+            "description_single_refund": "تلقيت استردادًا جزئيًا لهذا الطلب.",
+            "description_multiple_refunds": "تلقيت استردادات جزئية لهذا الطلب."
+          },
+          "canceled": {
+            "title": "تم إلغاء الدفع",
+            "description": "لم يتم خصم أي مبلغ منك."
+          }
         }
       }
     }
