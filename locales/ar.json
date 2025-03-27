@@ -2696,7 +2696,75 @@
         "only_n_items_available": "يمكنك فقط إضافة %{count} %{name} إلى السلة.",
         "too_many_items_in_cart": "لا يمكنك إضافة المزيد من %{name} إلى السلة.",
         "only_one_added_to_cart": "تمت إضافة عنصر واحد فقط إلى سلتك بسبب التوفر.",
-        "only_n_added_to_cart": "تمت إضافة %{quantity} عنصرًا فقط إلى سلتك بسبب التوفر."
+        "only_n_added_to_cart": "تمت إضافة %{quantity} عنصرًا فقط إلى سلتك بسبب التوفر.",
+        "maximum_available_quantity_reached": "الكمية القصوى من هذا العنصر موجودة بالفعل في سلة التسوق الخاصة بك.",
+        "less_than_minimum": "هذا العنصر لديه حد أدنى من %{min}.",
+        "more_than_maximum": "هذا العنصر لديه حد أقصى من %{max}.",
+        "not_respect_step": "يمكنك إضافة هذا العنصر فقط بزيادات %{step}.",
+        "all_items_in_cart": "جميع %{count} %{name} موجودة في سلة التسوق الخاصة بك.",
+        "empty_update": "لا يمكن تحديث سلة التسوق الفارغة",
+        "missing_parameters": "لم يتم العثور على معرف صالح أو معلمة خط",
+        "generic_error": "خطأ في السلة",
+        "invalid_input": "المعلمة %{parameter} غير صالحة.",
+        "product_not_available": "المنتج غير متوفر",
+        "too_many_line_items_error": "لا يمكن أن تحتوي سلة التسوق الخاصة بك على أكثر من %{max} عناصر.",
+        "link_expired": "الرابط منتهي الصلاحية",
+        "link_no_longer_exists": "الرابط لم يعد موجودًا.",
+        "stock_problems_html": "واحد أو أكثر من العناصر لم تعد متوفرة. لقد قدمنا <a href='%{link}'>سلة محدثة</a>.",
+        "changed": "تم تغيير السلة",
+        "items_changed": "واحد أو أكثر من العناصر قد تغيرت.",
+        "product_sold_out": "المنتج '%{name}' تم بيعه بالفعل.",
+        "variant_not_found": "لا يمكن العثور على المتغير",
+        "variant_requires_selling_plan": "يمكن شراء المتغير فقط مع خطة بيع.",
+        "selling_plan_not_available_for_company_locations": "يتوفر الشراء لمرة واحدة فقط للطلبات B2B",
+        "digital_product_not_available_for_company_locations": "لا يمكن إضافة هذا العنصر إلى طلب B2B",
+        "buyer_cannot_purchase_for_company_locations": "لا يمكنك الشراء لهذا الموقع",
+        "selling_plan_not_applicable": "لا يمكن تطبيق خطة البيع على المتغير",
+        "shipping_address_not_required": "هذه السلة لا تتطلب الشحن",
+        "shipping_address_invalid": "كانت هناك مشكلة في حساب أسعار الشحن الخاصة بك. تابع إلى الخروج لاختيار سعر الشحن قبل إكمال طلبك.",
+        "bundle_requires_components": "لا يمكن إضافة المنتج الحزمي '%{name}' إلى السلة.",
+        "gift_card_with_components_not_supported": "لا يمكن إضافة المنتج الحزمي '%{name}' إلى السلة.",
+        "gift_card_price_must_be_greater_than_zero": "لا يمكن إضافة المنتج الحزمي '%{name}' إلى السلة.",
+        "gift_card_recipient_validation_error": "مستلم بطاقة الهدايا المحدد غير صالح",
+        "view_lines_limit_reached": "يجب أن تكون الخطوط أقل من %{limit}",
+        "cart_too_large": "السلة كبيرة جدًا.",
+        "merchandise_line_transformers": {
+          "run_error": "حدث خطأ في سلة التسوق الخاصة بك."
+        }
+      },
+      "storefront": {
+        "invalid_password": "كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى."
+      },
+      "tags": {
+        "add_articles": "تضييق البحث إلى المقالات التي تحتوي أيضًا على العلامة %{tag}",
+        "add_products": "تضييق الاختيار إلى المنتجات المطابقة للعلامة %{tag}",
+        "remove_articles": "توسيع البحث إلى المقالات التي لا تحمل العلامة %{tag}",
+        "remove_products": "إزالة العلامة %{tag}"
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "شكرًا لك على الاشتراك في قائمتنا البريدية.",
+        "disclaimer": "يمكنك إلغاء الاشتراك في أي وقت.",
+        "unsubscribe": "إلغاء الاشتراك"
+      },
+      "unsubscribed": {
+        "confirmation": "لقد قمت بإلغاء الاشتراك من قائمتنا البريدية.",
+        "disclaimer": "لن تتلقى أي تحديثات تسويقية منا بعد الآن. يمكنك الاشتراك مرة أخرى في أي وقت.",
+        "preview": "أنت تعرض ما سيراه العملاء عند إلغاء الاشتراك."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>لقد اخترت تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "سيتم الإبلاغ عن معدلات فتح البريد الإلكتروني بشكل مجهول. سنرى فقط إذا كنت قد فتحت بريدًا إلكترونيًا كجزء من معدل فتح البريد الإلكتروني المجمع.",
+          "opt_out_html": "يمكنك <a style='text-decoration:underline;' href='%{link}'>إلغاء الاشتراك</a> في تتبع فتح البريد الإلكتروني إذا كنت لا ترغب في مشاركة هذه المعلومات.",
+          "preview_bar": "أنت تعرض ما سيراه العملاء عند الاشتراك في تتبع فتح البريد الإلكتروني."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>لقد قمت بإلغاء الاشتراك في تتبع فتح البريد الإلكتروني.</b>",
+          "visibility": "لن نرى إذا كنت قد فتحت رسائل البريد الإلكتروني الخاصة بنا.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>اشترك</a> في تتبع فتح البريد الإلكتروني."
+        }
       }
     }
   }
