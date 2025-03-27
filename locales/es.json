@@ -3781,35 +3781,72 @@
             "order_includes_guarantees_label": "Tu pedido incluye {{deliveryAgreementsCount}} garantías",
             "order_includes_guarantees_description": "La promesa de Shop garantiza una entrega rápida y confiable. Reclama Shop Cash si tu pedido llega después de {{date}}.",
             "delivered_after_label": "Entregado después de {{date}}",
-            "delivered_after_description": "Debido a que tu pedido llegó tarde, eres elegible para reclamar {{amount}} Shop Cash."
+            "delivered_after_description": "Debido a que tu pedido llegó tarde, eres elegible para reclamar {{amount}} Shop Cash.",
+            "claimed_shop_cash_description": "Debido a que este pedido llegó tarde, reclamaste {{amount}} Shop Cash.",
+            "eligible_to_claim_shop_cash_description": "Debido a que tu pedido llegó tarde, eres elegible para reclamar {{amount}} Shop Cash.",
+            "learn_more_button_label": "Aprende más",
+            "claim_shop_cash_button_label": "Reclamar Shop Cash",
+            "view_balance_in_shop_button_label": "Ver saldo en Shop",
+            "scan_to_claim_shop_cash_label": "Escanear para reclamar {{amount}} Shop Cash"
+          }
+        },
+        "delivery_promise": {
+          "promise_line": {
+            "single_brand_label": "Entrega respaldada por",
+            "mixed_brands_label": "Entrega garantizada",
+            "not_delivered_by_label": "No entregado por {{date}}",
+            "modal_accessibility_button_label": "Detalles de la promesa de entrega"
+          },
+          "claim_shop_cash_cta": {
+            "has_shop_app_label": "Reclama tu Shop Cash",
+            "no_shop_app_label": "{{appDownloadLink}} para reclamar Shop Cash",
+            "download_shop_app_label": "Descargar Shop"
+          },
+          "details_modal": {
+            "title": "Entrega respaldada por",
+            "modal_accessiblity_label": "Detalles de la promesa de entrega",
+            "delivery_guarantee_label": "Garantía de entrega",
+            "delivery_by_label": "Entrega por {{date}}",
+            "delivery_guaranteed_by_label": "Entrega garantizada por {{date}}",
+            "shop_cash_claim": {
+              "may_be_eligible_label": "La Promesa de Shop garantiza una entrega rápida y confiable. Reclama Shop Cash si tu pedido llega tarde.",
+              "may_be_eligible_not_authorized_label": "Puedes ser elegible para reclamar Shop Cash porque este pedido llegó tarde. Inicia sesión para ver los detalles.",
+              "redeemed_label": "Ya has reclamado Shop Cash porque este pedido llegó tarde.",
+              "expired_label": "Este pedido no es elegible para una reclamación por entrega tardía porque la garantía de 30 días ha expirado.",
+              "no_shop_cash_label": "Este pedido no es elegible para una reclamación por entrega tardía porque no fue pagado con Shop Pay.",
+              "no_longer_guaranteed_label": "Estos artículos ya no están respaldados por una garantía de entrega.",
+              "claim_shop_cash_title": "Escanear para reclamar {{amount}} en Shop Cash",
+              "claim_shop_cash_description": "Puedes usar tu Shop Cash en futuras compras en la aplicación Shop."
+            }
           }
         }
       },
       "status_mark_as_delivered": "Marcar como entregado",
       "status_title": "Estado del pedido",
       "buy_again": "Comprar de nuevo",
-      "buy_again_accessibility_label": "Compre de nuevo para el pedido {{orderId}}",
+      "buy_again_accessibility_label": "Comprar de nuevo para el pedido {{orderId}}",
       "manage": "Gestionar",
-      "manage_accessiblity_label": "Gestionar el pedido {{orderId}}",
+      "manage_accessiblity_label": "Gestionar pedido {{orderId}}",
       "group_title_label": "Parte de: {{groupTitle}}",
       "list_title_with_pending_orders": "Pedidos:",
       "list_title_confirmed_orders_accessibility_label": "Pedidos: confirmados",
       "list_title_pending_orders_accessibility_label": "Pedidos: pendientes",
       "switch_order_type_pending_orders_accessibility_label": "Cambiar tipo de pedido, actualmente viendo pedidos pendientes",
-      "switch_order_type_confirmed_orders_accessibility_label": "Cambiar tipo de pedido, actualmente viendo pedidos confirmados"
+      "switch_order_type_confirmed_orders_accessibility_label": "Cambiar tipo de pedido, actualmente viendo pedidos confirmados",
+      "fulfillment_status_title": "Estado de cumplimiento: {{status}}"
     },
     "order_details": {
       "shipment_timeline": {
         "expand_events_label": "Mostrar detalles",
-        "expand_events_accessibility_label": "Mostrar detalles de envío del pedido",
+        "expand_events_accessibility_label": "Mostrar detalles del envío del pedido",
         "hide_events_label": "Ocultar detalles",
-        "hide_events_accessibility_label": "Ocultar detalles de envío del pedido"
+        "hide_events_accessibility_label": "Ocultar detalles del envío del pedido"
       },
       "addresses_section_title": "Facturación y envío",
       "billing_address": "Dirección de facturación",
       "card_ending_with": "terminando con {{lastDigits}}",
       "contact": "Contacto",
-      "fully_refunded_label": "REEMBOLSAR",
+      "fully_refunded_label": "REEMBOLSADO",
       "discount": "Descuento",
       "hide_items": "Ocultar elementos",
       "loading": "Cargando detalles del pedido",
@@ -3870,6 +3907,17 @@
         "load_more": "Cargar más",
         "load_more_accessibility_label": "Cargar más artículos",
         "loading_accessibility_label": "Carga de artículos"
+      },
+      "order_details": "Detalles del pedido",
+      "order_details_skeleton_accessibility_label": "Inicia sesión para ver todos los detalles del pedido.",
+      "contact_information": "Información de contacto",
+      "company": "Compañía",
+      "group_title_label": "Parte de: {{groupTitle}}",
+      "grouped_view_components": {
+        "expand_line_items": "Mostrar {{count}} artículos",
+        "collapse_line_items": "Ocultar {{count}} artículos",
+        "line_item_summary": "{{refundableQuantity}} x {{productTitle}}",
+        "line_item_summary_accessibility_label": "{{productTitle}}, Cantidad: {{refundableQuantity}}"
       }
     },
     "addresses": {
