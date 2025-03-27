@@ -3226,7 +3226,13 @@
           },
           "editions": {
             "header": "Consulta Shopify Editions",
-            "caption": "Con más de 100 actualizaciones de productos, puedes ser más productivo, creativo y poderoso en el comercio de lo que jamás imaginaste."
+            "caption": "Con más de 100 actualizaciones de productos, puedes ser más productivo, creativo y poderoso en el comercio de lo que jamás imaginaste.",
+            "link_text": "Explora las últimas ediciones"
+          },
+          "store_owner": {
+            "header": "¿Eres el propietario de la tienda?",
+            "caption": "¿Tienes problemas para ingresar a tu tienda? Prueba la función %{forgot_your_store_link}. Si deseas reactivar tu tienda, contacta %{shopify_support_link}.",
+            "shopify_support_link_text": "Soporte de Shopify"
           }
         }
       }
@@ -3234,56 +3240,58 @@
     "notices": {
       "customer": {
         "password_reset_error": "Error de restablecimiento de contraseña",
-        "no_account_found": "No se encontró ninguna cuenta con ese correo electrónico.",
-        "invalid_credentials": "Correo electrónico o contraseña incorrectos.",
-        "denylisted_reset_password": "No se pudo acceder a tu cuenta porque la contraseña actual no es segura. Recibirá un correo electrónico para actualizar su contraseña."
+        "no_account_found": "No se encontró una cuenta con ese correo electrónico.",
+        "invalid_credentials": "Correo electrónico o contraseña incorrecta.",
+        "denylisted_reset_password": "No se pudo acceder a tu cuenta porque la contraseña actual no es segura. Recibirás un correo electrónico para actualizar tu contraseña.",
+        "signup_disabled": "La creación de cuentas de clientes ha sido deshabilitada."
       },
       "address": {
-        "updated": "Dirección actualizada correctamente.",
+        "updated": "Dirección actualizada con éxito.",
         "error_updating": "Error al actualizar la dirección",
-        "created": "Dirección creada correctamente",
+        "created": "Dirección creada con éxito",
         "error_creating": "Error al crear la dirección.",
-        "deleted": "Dirección eliminada correctamente",
+        "deleted": "Dirección eliminada con éxito",
         "error_deleting": "Error al eliminar la dirección."
       },
       "order": {
         "not_available": "Este pedido no está disponible",
         "financial_status": {
-          "authorized": "Autorizar",
+          "authorized": "Autorizado",
           "pending": "Pendiente",
           "paid": "Pagado",
-          "unpaid": "Pagado",
-          "voided": "Anular",
-          "partially_paid": "Pagado parcialmente",
-          "partially_refunded": "Parcialmente reembolsada",
-          "refunded": "Reembolsar",
-          "expired": "Expirar"
+          "unpaid": "No pagado",
+          "voided": "Anulado",
+          "partially_paid": "Parcialmente pagado",
+          "partially_refunded": "Parcialmente reembolsado",
+          "refunded": "Reembolsado",
+          "expired": "Expirado"
         },
         "fulfillment_status": {
           "fulfilled": "Cumplido",
           "complete": "Completo",
           "partial": "Parcial",
-          "unfulfilled": "Insatisfecho",
-          "restocked": "Reponer"
+          "unfulfilled": "No cumplido",
+          "restocked": "Reabastecido"
         },
         "transaction_status": {
           "success": "Éxito",
           "pending": "Pendiente",
-          "failure": "Fallo",
+          "failure": "Fracaso",
           "error": "Error"
         },
         "cancel_reason": {
           "declined": "Pago rechazado",
           "inventory": "Artículos no disponibles",
           "fraud": "Pedido fraudulento",
-          "customer": "Pedido modificado/cancelado del cliente",
-          "other": "Otro"
+          "customer": "El cliente cambió/canceló el pedido",
+          "other": "Otro",
+          "staff": "Error del personal"
         },
-        "cash_on_delivery": "Contra reembolso (COD)"
+        "cash_on_delivery": "Pago contra entrega (COD)"
       },
       "cart": {
         "only_n_items_available": "Solo puedes añadir %{count} %{name} al carrito.",
-        "too_many_items_in_cart": "No se puede añadir más %{name} al carrito.",
+        "too_many_items_in_cart": "No puedes añadir más %{name} al carrito.",
         "less_than_minimum": "Este artículo tiene un mínimo de %{min}.",
         "more_than_maximum": "Este artículo tiene un máximo de %{max}.",
         "not_respect_step": "Solo puede agregar este elemento en múltiplos de %{step}.",
@@ -3305,7 +3313,9 @@
         "digital_product_not_available_for_company_locations": "Este artículo no se puede añadir a un pedido B2B",
         "selling_plan_not_applicable": "No se puede aplicar el plan de venta a la variante",
         "shipping_address_not_required": "Este carrito no requiere envío",
-        "shipping_address_invalid": "Hubo un problema al calcular sus tarifas de envío. Continúe con el proceso de pago para elegir una tarifa de envío antes de completar su pedido."
+        "shipping_address_invalid": "Hubo un problema al calcular sus tarifas de envío. Continúe con el proceso de pago para elegir una tarifa de envío antes de completar su pedido.",
+        "only_one_added_to_cart": "Solo se añadió 1 artículo a tu carrito debido a la disponibilidad.",
+        "only_n_added_to_cart": "Solo se añadieron %{quantity} artículos a tu carrito debido a la disponibilidad."
       },
       "storefront": {
         "invalid_password": "Contraseña incorrecta, inténtelo de nuevo."
@@ -3315,6 +3325,15 @@
         "add_products": "Limite la selección a los productos que coincidan con la etiqueta %{tag}",
         "remove_articles": "Ampliar la búsqueda a artículos que no están etiquetados %{tag}",
         "remove_products": "Eliminar etiqueta %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Añadido %{delta}",
+          "increment_item": "Añadido %{delta}",
+          "decrement_item": "Eliminado %{delta} de %{total}",
+          "decrement_fulfilled_line_item": "Devuelto %{delta} de %{total}",
+          "decrement_return_line_item": "Eliminado %{delta} de la devolución"
+        }
       }
     },
     "email_marketing": {
