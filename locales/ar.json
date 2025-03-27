@@ -570,6 +570,102 @@
           "header": "تمت إزالة بعض العناصر من سلتك",
           "message": "هذه العناصر غير متاحة لطلبات B2B.",
           "status_column_header": "غير متاح"
+        },
+        "unpurchasable_product_generic": {
+          "title": "منتج غير قابل للشراء",
+          "header": "تمت إزالة بعض العناصر من سلتك",
+          "message": "هذه العناصر غير متوفرة.",
+          "status_column_header": "غير متوفر"
+        },
+        "unfulfillable_product": {
+          "title": "التوصيل غير متاح",
+          "message": {
+            "one": "%{delivery_method} لم يعد متاحًا لهذا العنصر.",
+            "other": "%{delivery_method} لم يعد متاحًا لهذه العناصر."
+          },
+          "default_message": {
+            "one": "طريقة التوصيل المختارة لم تعد متاحة لهذا العنصر.",
+            "other": "طريقة التوصيل المختارة لم تعد متاحة لهذه العناصر."
+          }
+        },
+        "unshippable_product": {
+          "title": "لا يوجد توصيل متاح",
+          "header": {
+            "one": "لا يوجد توصيل متاح للعنصر %{count}",
+            "other": "لا يوجد توصيل متاح للعناصر %{count}"
+          },
+          "message": {
+            "one": "سيتم إزالة هذا العنصر من سلتك لأنه لا توجد طرق توصيل متاحة لعنوانك.",
+            "other": "سيتم إزالة هذه العناصر من سلتك لأنه لا توجد طرق توصيل متاحة لعنوانك."
+          },
+          "status_column_header": "لا يوجد توصيل"
+        },
+        "price_update": {
+          "title": "تحديث السعر",
+          "description": "تم تغيير أسعار هذه العناصر وتم تحديثها في سلتك."
+        },
+        "price_and_quantity_update": {
+          "title": "تحديث السعر والكمية",
+          "description": "تم تغيير الأسعار والكميات المتاحة لهذه العناصر وتم تحديثها في سلتك."
+        },
+        "out_of_stock": {
+          "description": "هذه العناصر لم تعد متوفرة وتمت إزالتها من سلتك.",
+          "items_unavailable": "بعض العناصر لم تعد متوفرة وتمت إزالتها من سلتك."
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "one": "منتج غير متوفر",
+          "other": "منتجات غير متوفرة"
+        },
+        "products_not_available": {
+          "one": "سيتم إزالة هذا المنتج من سلتك لأنه غير متوفر في بلدك/منطقتك.",
+          "other": "سيتم إزالة هذه المنتجات من سلتك لأنها غير متوفرة في بلدك/منطقتك."
+        },
+        "all_products_in_cart_unavailable": {
+          "one": "هذا المنتج غير متوفر في بلدك/منطقتك.",
+          "other": "هذه المنتجات غير متوفرة في بلدك/منطقتك."
+        },
+        "unavailable_label": "غير متوفر"
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "banner_title": {
+          "some_products_one": "هذا المنتج غير متاح للتوصيل إلى %{location_name}.",
+          "some_products_other": "هذه المنتجات غير متاحة للتوصيل إلى %{location_name}.",
+          "all_products_one": "المنتج في سلتك غير متاح للتوصيل إلى %{location_name}.",
+          "all_products_other": "المنتجات في سلتك غير متاحة للتوصيل إلى %{location_name}."
+        },
+        "missing_country_fallback": "بلدك",
+        "indeterminate_location_fallback": "موقعك",
+        "cart_updated": "تم تحديث سلتك.",
+        "change_address_only": "غير عنوان التوصيل للاستمرار.",
+        "change_address_or_remove": "غير عنوان التوصيل أو %{remove_action}.",
+        "remove_items_action": {
+          "one": "إزالة العنصر غير المتوفر",
+          "other": "إزالة العناصر غير المتوفرة"
+        },
+        "empty_cart_action": "إفراغ السلة والعودة إلى المتجر",
+        "unavailable_line_item": "%{product_name} / %{variant_label}"
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "one": "لا يوجد توصيل متاح للعنصر %{count}",
+            "other": "لا يوجد توصيل متاح للعناصر %{count}"
+          },
+          "message": {
+            "one": "سيتم إزالة هذا العنصر من سلتك لأنه لا توجد طرق توصيل متاحة لعنوانك.",
+            "other": "سيتم إزالة هذه العناصر من سلتك لأنه لا توجد طرق توصيل متاحة لعنوانك."
+          },
+          "label": "لا يوجد توصيل"
+        }
+      },
+      "order_summary": {
+        "title": "ملخص الطلب",
+        "group_title_label": "جزء من \"%{group_title}\"",
+        "number_items": {
+          "one": "عنصر %{count}",
+          "other": "عناصر %{count}"
         }
       }
     }
