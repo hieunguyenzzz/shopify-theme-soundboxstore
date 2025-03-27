@@ -3294,36 +3294,48 @@
         "too_many_items_in_cart": "No puedes añadir más %{name} al carrito.",
         "less_than_minimum": "Este artículo tiene un mínimo de %{min}.",
         "more_than_maximum": "Este artículo tiene un máximo de %{max}.",
-        "not_respect_step": "Solo puede agregar este elemento en múltiplos de %{step}.",
-        "all_items_in_cart": "Todo %{count} %{name} está en su carrito de compras.",
-        "empty_update": "no se puede actualizar el carrito vacío",
-        "missing_parameters": "sin id válido ni parámetro de línea",
-        "generic_error": "Error de Carrito",
+        "not_respect_step": "Solo puedes añadir este artículo en incrementos de %{step}.",
+        "all_items_in_cart": "Todos los %{count} %{name} están en tu carrito.",
+        "empty_update": "no se puede actualizar un carrito vacío",
+        "missing_parameters": "no hay un parámetro de id o línea válido",
+        "generic_error": "Error de carrito",
         "product_not_available": "El producto no está disponible",
-        "too_many_line_items_error": "Su carrito no puede contener más de %{max} elemento.",
+        "too_many_line_items_error": "Tu carrito no puede contener más de %{max} artículos.",
         "link_expired": "Enlace caducado",
         "link_no_longer_exists": "El enlace ya no existe.",
-        "stock_problems_html": "Uno o más artículos ya no están disponibles. Hemos proporcionado una <a href='%{link}'>carrito actualizado</a>.",
-        "changed": "Carro cambiado",
-        "items_changed": "Uno o más elementos han cambiado.",
-        "product_sold_out": "Producto '%{name}'ya está agotado.",
+        "stock_problems_html": "Uno o más artículos ya no están disponibles. Hemos proporcionado un <a href='%{link}'>carrito actualizado</a>.",
+        "changed": "Carrito cambiado",
+        "items_changed": "Uno o más artículos han cambiado.",
+        "product_sold_out": "El producto '%{name}' ya está agotado.",
         "variant_not_found": "No se puede encontrar la variante",
         "variant_requires_selling_plan": "La variante solo se puede comprar con un plan de venta.",
         "selling_plan_not_available_for_company_locations": "Solo está disponible la compra única para pedidos B2B",
-        "digital_product_not_available_for_company_locations": "Este artículo no se puede añadir a un pedido B2B",
-        "selling_plan_not_applicable": "No se puede aplicar el plan de venta a la variante",
+        "digital_product_not_available_for_company_locations": "Este artículo no se puede agregar a un pedido B2B",
+        "selling_plan_not_applicable": "No se puede aplicar el plan de ventas a la variante",
         "shipping_address_not_required": "Este carrito no requiere envío",
-        "shipping_address_invalid": "Hubo un problema al calcular sus tarifas de envío. Continúe con el proceso de pago para elegir una tarifa de envío antes de completar su pedido.",
+        "shipping_address_invalid": "Hubo un problema al calcular tus tarifas de envío. Continúa al pago para elegir una tarifa de envío antes de completar tu pedido.",
         "only_one_added_to_cart": "Solo se añadió 1 artículo a tu carrito debido a la disponibilidad.",
-        "only_n_added_to_cart": "Solo se añadieron %{quantity} artículos a tu carrito debido a la disponibilidad."
+        "only_n_added_to_cart": "Solo se añadieron %{quantity} artículos a tu carrito debido a la disponibilidad.",
+        "maximum_available_quantity_reached": "La cantidad máxima de este artículo ya está en tu carrito.",
+        "invalid_input": "El parámetro %{parameter} no es válido.",
+        "buyer_cannot_purchase_for_company_locations": "No puedes comprar para esta ubicación",
+        "bundle_requires_components": "El producto en paquete '%{name}' no se puede agregar al carrito.",
+        "gift_card_with_components_not_supported": "El producto en paquete '%{name}' no se puede agregar al carrito.",
+        "gift_card_price_must_be_greater_than_zero": "El producto en paquete '%{name}' no se puede agregar al carrito.",
+        "gift_card_recipient_validation_error": "El destinatario de la tarjeta de regalo especificada no es válido",
+        "view_lines_limit_reached": "Las líneas deben ser menos que %{limit}",
+        "cart_too_large": "El carrito es demasiado grande.",
+        "merchandise_line_transformers": {
+          "run_error": "Ocurrió un error en tu carrito."
+        }
       },
       "storefront": {
-        "invalid_password": "Contraseña incorrecta, inténtelo de nuevo."
+        "invalid_password": "Contraseña incorrecta, por favor intenta de nuevo."
       },
       "tags": {
-        "add_articles": "Limitar la búsqueda a artículos que también tienen etiqueta %{tag}",
-        "add_products": "Limite la selección a los productos que coincidan con la etiqueta %{tag}",
-        "remove_articles": "Ampliar la búsqueda a artículos que no están etiquetados %{tag}",
+        "add_articles": "Restringir búsqueda a artículos que también tienen la etiqueta %{tag}",
+        "add_products": "Restringir selección a productos que coincidan con la etiqueta %{tag}",
+        "remove_articles": "Ampliar búsqueda a artículos que no tienen la etiqueta %{tag}",
         "remove_products": "Eliminar etiqueta %{tag}"
       },
       "line_item": {
@@ -3338,26 +3350,26 @@
     },
     "email_marketing": {
       "subscribed": {
-        "confirmation": "Gracias por suscribirse a nuestra lista de correo.",
-        "disclaimer": "Puede darse de baja en cualquier momento.",
+        "confirmation": "Gracias por suscribirte a nuestra lista de correo.",
+        "disclaimer": "Puedes darte de baja en cualquier momento.",
         "unsubscribe": "Darse de baja"
       },
       "unsubscribed": {
-        "confirmation": "Se ha dado de baja de nuestra lista de correo.",
-        "disclaimer": "No recibirás más actualizaciones de marketing de nuestra parte. Puede volver a suscribirse en cualquier momento.",
-        "preview": "Está previsualizando lo que verán los clientes cuando se den de baja."
+        "confirmation": "Te has dado de baja de nuestra lista de correo.",
+        "disclaimer": "No recibirás más actualizaciones de marketing de nosotros. Puedes suscribirte de nuevo en cualquier momento.",
+        "preview": "Estás previsualizando lo que verán los clientes cuando se den de baja."
       },
       "open_tracking": {
         "opt_in": {
-          "opted_in_html": "<b>Ha optado por enviar un seguimiento abierto por correo electrónico.</b>",
-          "visibility": "Las tasas de apertura de correos electrónicos se informarán de forma anónima. Solo veremos si ha abierto un correo electrónico como parte de una tasa de apertura de correo electrónico agregada.",
-          "opt_out_html": "Usted puede <a style='text-decoration:underline;' href='%{link}'>optar por no participar</a> de seguimiento de apertura de correo electrónico si no desea compartir esta información.",
-          "preview_bar": "Está viendo una vista previa de lo que verán los clientes cuando opten por el seguimiento de apertura de correos electrónicos."
+          "opted_in_html": "<b>Te has suscrito al seguimiento de apertura de correos electrónicos.</b>",
+          "visibility": "Las tasas de apertura de correos electrónicos se informarán de manera anónima. Solo veremos si has abierto un correo electrónico como parte de una tasa de apertura de correos electrónicos agregada.",
+          "opt_out_html": "Puedes <a style='text-decoration:underline;' href='%{link}'>darte de baja</a> del seguimiento de apertura de correos electrónicos si no deseas compartir esta información.",
+          "preview_bar": "Estás previsualizando lo que verán los clientes cuando se suscriban al seguimiento de apertura de correos electrónicos."
         },
         "opt_out": {
-          "opted_out_html": "<b>Ha optado por no participar en el seguimiento de apertura de correo electrónico.</b>",
-          "visibility": "No veremos si ha abierto nuestros correos electrónicos.",
-          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Inscribirse</a> para enviar un correo electrónico de seguimiento abierto.",
+          "opted_out_html": "<b>Te has dado de baja del seguimiento de apertura de correos electrónicos.</b>",
+          "visibility": "No veremos si has abierto nuestros correos electrónicos.",
+          "opt_in_html": "<a style='text-decoration:underline;' href='%{link}'>Suscribirse</a> al seguimiento de apertura de correos electrónicos.",
           "preview_bar": "Está viendo una vista previa de lo que verán los clientes cuando opten por no participar en el seguimiento de apertura de correo electrónico."
         },
         "no_longer_track": {
