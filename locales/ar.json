@@ -1655,7 +1655,75 @@
         "continue_to_payment_gateway_notice": "تابع إلى الدفع لإضافة معلومات الدفع الخاصة بك.",
         "continue_to_payment_gateway_button_label": "تابع إلى الدفع",
         "complete_your_purchase_title_error": "صحيح معلومات الدفع الخاصة بك",
-        "continue_to_payment_gateway_notice_error": "لم يتم التحقق من معلومات الدفع الخاصة بك."
+        "continue_to_payment_gateway_notice_error": "لم يتم التحقق من معلومات الدفع الخاصة بك.",
+        "continue_to_payment_gateway_button_label_error": "تحديث معلومات الدفع",
+        "page_title": "معالجة الطلب",
+        "title": "معالجة الطلب",
+        "your_order_has_been_received_title": "شكرًا لطلبك",
+        "you_will_receive_confirmation": "نحن نتلقى الكثير من الطلبات الآن. يجب أن تتلقى تأكيدًا عبر البريد الإلكتروني أو الرسائل النصية قريبًا. إذا لم تتلقاه في الساعة القادمة، أعلِمنا.",
+        "you_will_not_be_charged": "لن يتم خصم أي مبلغ منك بعد.",
+        "wait": {
+          "short": "يتم معالجة طلبك.",
+          "medium": {
+            "one": "يتم معالجة طلبك. الوقت المتوقع للانتظار هو %{count} دقيقة.",
+            "other": "يتم معالجة طلبك. الوقت المتوقع للانتظار هو %{count} دقائق."
+          },
+          "long": "ستتلقى بريدًا إلكترونيًا بمجرد معالجة طلبك. هناك حاليًا حجم كبير من الطلبات.",
+          "no_auto_refresh_html": "إذا لم يتم إعادة توجيهك تلقائيًا، %{link}.",
+          "refresh_this_page": "قم بتحديث هذه الصفحة"
+        },
+        "action_required": "الإجراء مطلوب",
+        "modal_notice": "نحن نتواصل مع {{paymentMethod}}"
+      },
+      "payment_challenge_modal": {
+        "instructions": "أكمل عملية الشراء باستخدام {{paymentMethod}} code الخاص بك",
+        "timer_message": "لديك {{timeLeft}}  للدفع",
+        "copy_text": "انسخ {{paymentMethod}} code",
+        "header": "ادفع باستخدام {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "أكمل عملية الشراء باستخدام {{paymentMethod}} code الخاص بك"
+        },
+        "external": {
+          "instructions": "أكد الدفع على التطبيق الخاص بك لإكمال هذه العملية الشرائية"
+        },
+        "close": "أغلق التحدي"
+      },
+      "failed_payment": {
+        "page_title": "لم يتم معالجة الدفع",
+        "title": "لم يتم معالجة الدفع",
+        "payment_not_processed_title": "لم نتمكن من معالجة الدفع الخاص بك",
+        "payment_not_processed_text": "لم يتم خصم أي مبلغ منك. عُد إلى سلة التسوق لإكمال عملية الشراء.",
+        "return_to_cart_button_label": "العودة إلى السلة"
+      },
+      "payment_gateway": {
+        "credit_card_label": "بطاقة ائتمان",
+        "bank_deposit_label": "إيداع بنكي",
+        "cash_on_delivery_label": "الدفع عند الاستلام (COD)",
+        "money_order_label": "حوالة مالية",
+        "debit_card_label": "بطاقة خصم",
+        "deferred_payment_label": "اختر طريقة الدفع لاحقًا",
+        "fixed_payment_label": "سوف يستحق الدفع الخاص بك في {{dueDate}}.",
+        "generic_payment_terms": "أنت على {{translatedName}} terms. سوف يستحق الدفع الخاص بك في {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}}  إلى حساب لديه وصول إلى هذا الموقع لإضافة أو استخدام طرق الدفع المحفوظة.",
+            "link": "تسجيل الدخول"
+          }
+        },
+        "direct_payment_terms": "أنت على {{translatedName}} terms. سيتم خصم البطاقة الخاصة بك في {{dueDate}}.",
+        "fixed_direct_payment_terms": "سيتم خصم البطاقة الخاصة بك في {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "سيكون الدفع مستحقًا بمجرد تنفيذ طلبك.",
+        "order_due_on_fulfillment_payment": "سيتم خصم البطاقة الخاصة بك بمجرد تنفيذ طلبك.",
+        "order_due_on_receipt_choose_later": "سيكون الدفع مستحقًا عند الاستلام.",
+        "order_deposit_due_now": "{{depositAmount}}  مستحق اليوم. الرصيد على {{translatedName}} terms ومستحق في {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "{{depositAmount}}  مستحق اليوم. سيكون الرصيد مستحقًا بمجرد تنفيذ طلبك.",
+        "order_deposit_due_on_receipt": "{{depositAmount}}  مستحق اليوم. سيكون الرصيد مستحقًا لاحقًا.",
+        "order_deposit_due_on_fixed_date": "{{depositAmount}}  مستحق اليوم. سيكون الرصيد مستحقًا في {{dueDate}}.",
+        "draft_order_payment_due_later_no_terms": "سيكون الدفع مستحقًا بمجرد تأكيد طلبك.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "سيتم خصم البطاقة الخاصة بك بمجرد تأكيد طلبك.",
+        "draft_order_payment_due_later_terms": "ستكون على {{translatedName}} terms بمجرد تأكيد طلبك.",
+        "draft_order_payment_due_on_fulfillment": "سيكون الدفع مستحقًا بمجرد تأكيد وتنفيذ طلبك.",
+        "draft_order_deposit_due_later": "{{depositAmount}}  سيكون مستحقًا عند تأكيد طلبك. الرصيد سيكون على {{translatedName}} terms."
       }
     }
   }
