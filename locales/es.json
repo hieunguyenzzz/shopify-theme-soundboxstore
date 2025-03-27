@@ -1119,37 +1119,70 @@
         "pick_up_in_two_hours": "Usualmente listo en 2 horas",
         "pick_up_in_four_hours": "Usualmente listo en 4 horas",
         "pick_up_in_twenty_four_hours": "Usualmente listo en 24 horas",
-        "pick_up_in_two_to_four_days": "Por lo general, listo en 2-4 días",
-        "pick_up_in_five_or_more_days": "Por lo general, listo en más de 5 días",
+        "pick_up_in_two_to_four_days": "Usualmente listo en 2-4 días",
+        "pick_up_in_five_or_more_days": "Usualmente listo en más de 5 días",
         "pick_up_in_zero_to_two_hours": "Listo para recoger en 2 horas",
         "pick_up_in_two_to_four_hours": "Listo para recoger en 4 horas",
         "pick_up_immediately": "Listo para recoger ahora",
         "pick_up_next_day": "Listo para recoger al día siguiente",
         "ship_to_address": "Enviar a la dirección",
-        "pick_up_from_store": "Recoger en tienda"
+        "pick_up_from_store": "Recoger en tienda",
+        "pickup_point_method_definition": "Enviar al punto de recogida",
+        "retail_method_definition": "Envío minorista",
+        "none_method_definition": "Sin envío",
+        "subscription_pickup_information": "Este método de entrega se aplicará a todos los artículos de este pedido y a todos los pedidos futuros de esta suscripción."
       },
       "customer_account": {
-        "not_user_label": "Ni %{first_name}?",
-        "have_an_account_label": "¿Ya tienes una cuenta?",
+        "not_user_label": "¿No %{first_name}?",
+        "have_an_account_label": "¿Tienes una cuenta?",
         "sign_in_link_label": "Iniciar sesión",
         "sign_out_link_label": "Cerrar sesión",
-        "save_my_information_label": "Guarde esta información para la próxima vez"
+        "save_my_information_label": "Guarda esta información para la próxima vez",
+        "invalid_address": "La dirección seleccionada no es válida. %{update_address_link} o selecciona una dirección diferente.",
+        "incomplete_address": "La dirección seleccionada está incompleta. %{update_address_link} o selecciona una dirección diferente.",
+        "rollup_label": "Cuenta",
+        "invalid_shipping_method_summary": "Selecciona una dirección de envío válida para ver los métodos de envío disponibles",
+        "saved_address_option_description": {
+          "one": "Tienes {{count}} dirección guardada.",
+          "other": "Tienes {{count}} direcciones guardadas."
+        },
+        "saved_address_option_link": "Usar una dirección guardada",
+        "saved_address_modal_title": "Usar mi dirección guardada"
       },
       "stock": {
         "page_title": "Problemas de inventario",
-        "title": "Fuera de stock",
-        "items_unavailable_notice": "Algunos artículos ya no están disponibles. Su carrito ha sido actualizado.",
-        "product_column_header": "Producto",
+        "title": "Agotado",
+        "items_unavailable_notice": "Algunos artículos ya no están disponibles.",
+        "product_column_header": "Productos",
         "quantity_column_header": "Cantidad",
         "price_column_header": "Precio",
-        "status_column_header": "Estatus",
+        "status_column_header": "Estado",
         "removed_from_cart_notice": "Eliminado del carrito",
         "sold_out_label": "Agotado",
         "reduced_label": "Reducido",
-        "reduced_with_quantity_label": "Solo %{quantity_available} izquierda",
-        "remove_from_cart_button_label": "Quitar del carrito",
+        "reduced_with_quantity_label": "Solo queda %{quantity_available}",
+        "remove_from_cart_button_label": "Eliminar del carrito",
         "continue_shopping_button_label": "Continuar",
-        "go_back_to_cart_button_label": "Volver a mi carrito"
+        "go_back_to_cart_button_label": "Volver a mi carrito",
+        "remove": "Eliminar",
+        "return_to_store_label": "Regresar a la tienda",
+        "continue_cta_label": "Continuar con el pago",
+        "item_label": {
+          "one": "{{count}} artículo",
+          "other": "{{count}} artículos"
+        },
+        "empty_cart_label": "Tu carrito está vacío",
+        "quantity_update": {
+          "page_title": "Actualización de cantidad",
+          "title": "Actualización de cantidad",
+          "description": "Las cantidades disponibles para estos artículos han cambiado y se han actualizado en tu carrito."
+        },
+        "unpurchasable_product": {
+          "title": "Producto no comprable",
+          "header": "Algunos artículos fueron eliminados de tu carrito",
+          "message": "Estos artículos no están disponibles para pedidos B2B.",
+          "status_column_header": "No disponible"
+        }
       },
       "contextual_availability": {
         "title": {
