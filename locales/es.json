@@ -3848,29 +3848,55 @@
       "contact": "Contacto",
       "fully_refunded_label": "REEMBOLSADO",
       "discount": "Descuento",
-      "hide_items": "Ocultar elementos",
+      "hide_items": "Ocultar artículos",
       "loading": "Cargando detalles del pedido",
-      "loading_finished_accessibility_message": "Los detalles del pedido se han cargado",
+      "loading_finished_accessibility_message": "Detalles del pedido cargados",
       "location": "Ubicación",
       "mobile_summary_toggle_button": {
-        "open": "Mostrar resumen de pedido",
-        "closed": "Ocultar resumen de pedido"
+        "open": "Mostrar resumen del pedido",
+        "closed": "Ocultar resumen del pedido"
       },
       "no_data": "Ninguno",
-      "not_applicable": "N / A",
-      "partially_refunded_label": "PARCIALMENTE REEMBOLSADA",
+      "not_applicable": "N/A",
+      "partially_refunded_label": "PARCIALMENTE REEMBOLSADO",
       "payment": {
-        "status_in_review": "Pago adeudado después de la revisión",
-        "status_unpaid": "Pago adeudado el {{date}}",
+        "status_in_review": "Pago pendiente tras revisión",
+        "status_unpaid": "Pago pendiente el {{date}}",
         "title": "Pago",
         "transactions": {
           "show_emv_details": "Mostrar detalles de EMV",
-          "hide_emv_details": "Ocultar detalles de EMV"
+          "hide_emv_details": "Ocultar detalles de EMV",
+          "show_all": "Mostrar todo",
+          "show_less": "Mostrar menos",
+          "details": "Detalles",
+          "payment_details": "Detalles de pago"
         },
         "emv_details": {
-          "auth": "Auténtico",
-          "aid": "AYUDA",
-          "source": "FUENTE"
+          "auth": "AUTORIZACIÓN:",
+          "aid": "AID:",
+          "source": "FUENTE:"
+        },
+        "card_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}",
+        "payment_type": {
+          "gift_card": "Tarjeta de regalo",
+          "store_credit": "Crédito de la tienda",
+          "money_order": "Orden de pago",
+          "cash_on_delivery": "Pago contra entrega (COD)",
+          "bank_deposit": "Depósito bancario",
+          "manual": "Manual"
+        },
+        "card_payment_details": "terminando con {{lastDigits}} - {{formattedTransactionAmount}}",
+        "gift_card_payment_details": "terminando con {{lastDigits}} - {{formattedTransactionAmount}}",
+        "store_credit_payment_details": "Crédito de la tienda - {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "Pagado con cuotas de Shop Pay",
+          "view_schedule": "Ver cronograma"
+        },
+        "manual_payment_methods": {
+          "money_order": "Orden de pago - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "Pago contra entrega (COD) - {{formattedTransactionAmount}}",
+          "bank_deposit": "Depósito bancario - {{formattedTransactionAmount}}",
+          "manual": "Manual - {{formattedTransactionAmount}}"
         }
       },
       "refunded_amount": "Reembolsar",
@@ -3917,7 +3943,29 @@
         "expand_line_items": "Mostrar {{count}} artículos",
         "collapse_line_items": "Ocultar {{count}} artículos",
         "line_item_summary": "{{refundableQuantity}} x {{productTitle}}",
-        "line_item_summary_accessibility_label": "{{productTitle}}, Cantidad: {{refundableQuantity}}"
+        "line_item_summary_accessibility_label": "{{productTitle}}, Cantidad: {{refundableQuantity}}",
+        "line_item_summary_list_accessibility_label": "Artículos en {{productTitle}} bundle"
+      },
+      "image_gallery": {
+        "product_name_and_quantity": "{{productName}} quantity {{quantity}}",
+        "next": "Mostrar siguientes artículos",
+        "previous": "Mostrar artículos anteriores",
+        "load_more_items": {
+          "one": "Cargar {{count}} more items",
+          "other": "Cargar {{count}} more items"
+        }
+      },
+      "no_data_provided": "-",
+      "no_data_provided_accessibility_label": "{{fieldName}} está vacío",
+      "paid_amount": "Pagado",
+      "paid_with_shop_pay_installments_card": {
+        "paid_with_shop_pay_installments": "Pagado con cuotas de Shop Pay",
+        "description": "Mantente al tanto de tu cronograma de pagos con recordatorios en la aplicación Shop.",
+        "payment_reminders_button": "Obtener recordatorios de pago",
+        "desktop_qr_code_content": {
+          "title": "Escanear para recordatorios",
+          "description": "Obtén recordatorios de tus cuotas con Shop."
+        }
       }
     },
     "addresses": {
