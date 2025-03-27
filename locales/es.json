@@ -2121,38 +2121,62 @@
         "continue_to_payment_gateway_button_label": "Continúe al pago",
         "complete_your_purchase_title_error": "Corrija su información de pago",
         "continue_to_payment_gateway_notice_error": "No se pudo verificar su información de pago.",
-        "continue_to_payment_gateway_button_label_error": "Actualizar la información de pago",
-        "page_title": "Orden de procesamiento",
-        "title": "Orden de procesamiento",
-        "your_order_has_been_received_title": "Gracias por su pedido",
-        "you_will_receive_confirmation": "Estamos recibiendo muchos pedidos en este momento. Debería recibir la confirmación por correo electrónico o mensaje de texto pronto. Si no lo recibe en la próxima hora, háganoslo saber.",
-        "you_will_not_be_charged": "Aún no se le cobrará",
+        "continue_to_payment_gateway_button_label_error": "Actualizar información de pago",
+        "page_title": "Procesando pedido",
+        "title": "Procesando pedido",
+        "your_order_has_been_received_title": "Gracias por tu pedido",
+        "you_will_receive_confirmation": "Estamos recibiendo muchos pedidos en este momento. Deberías recibir la confirmación por correo electrónico o mensaje de texto pronto. Si no lo recibes en la próxima hora, háznoslo saber.",
+        "you_will_not_be_charged": "Aún no se te cobrará",
         "wait": {
-          "short": "Su pedido está siendo procesado.",
+          "short": "Tu pedido está siendo procesado.",
           "medium": {
-            "one": "Su pedido está siendo procesado. El tiempo de espera estimado es %{count} minuto.",
-            "other": "Su pedido está siendo procesado. El tiempo de espera estimado es %{count} minuto."
+            "one": "Tu pedido está siendo procesado. El tiempo de espera estimado es de %{count} minuto.",
+            "other": "Tu pedido está siendo procesado. El tiempo de espera estimado es de %{count} minutos."
           },
-          "long": "Recibirás un correo electrónico tan pronto como se procese tu pedido. Actualmente hay un gran volumen de pedidos.",
+          "long": "Recibirás un correo electrónico tan pronto como tu pedido sea procesado. Actualmente hay un volumen alto de pedidos.",
           "no_auto_refresh_html": "Si no eres redirigido automáticamente, %{link}.",
-          "refresh_this_page": "actualizar esta página"
+          "refresh_this_page": "actualiza esta página"
         },
-        "redirecting_to_bank": "Redirigiendo a {{bank}}"
+        "redirecting_to_bank": "Redirigiendo a {{bank}}",
+        "action_required": "Acción requerida",
+        "modal_notice": "Estamos contactando a {{paymentMethod}}"
       },
       "failed_payment": {
-        "page_title": "No se pudo procesar el pago",
-        "title": "No se pudo procesar el pago",
-        "payment_not_processed_title": "No se pudo procesar el pago",
-        "payment_not_processed_text": "No te han acusado. Regrese a su carrito para completar su compra.",
+        "page_title": "El pago no pudo ser procesado",
+        "title": "El pago no pudo ser procesado",
+        "payment_not_processed_title": "Tu pago no pudo ser procesado",
+        "payment_not_processed_text": "No se te ha cobrado. Vuelve a tu carrito para completar tu compra.",
         "return_to_cart_button_label": "Volver al carrito"
       },
       "payment_gateway": {
         "credit_card_label": "Tarjeta de crédito",
-        "bank_deposit_label": "Depósito Bancario",
-        "cash_on_delivery_label": "Contra reembolso (COD)",
-        "money_order_label": "Giro Postal",
-        "fixed_payment_label": "Su pago vencerá el {{dueDate}}.",
-        "fixed_direct_payment_terms": "El cargo en su tarjeta se efectuará el {{dueDate}}."
+        "bank_deposit_label": "Depósito bancario",
+        "cash_on_delivery_label": "Pago contra entrega (COD)",
+        "money_order_label": "Giro postal",
+        "fixed_payment_label": "Tu pago vencerá el {{dueDate}}.",
+        "fixed_direct_payment_terms": "Se cargará a tu tarjeta el {{dueDate}}.",
+        "debit_card_label": "Tarjeta de débito",
+        "deferred_payment_label": "Elegir método de pago más tarde",
+        "generic_payment_terms": "Estás en términos {{translatedName}} . Tu pago vencerá el {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} a una cuenta con acceso a esta ubicación para agregar o usar métodos de pago guardados.",
+            "link": "Iniciar sesión"
+          }
+        },
+        "direct_payment_terms": "Estás en términos {{translatedName}} . Se cargará a tu tarjeta el {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Tu pago vencerá una vez que tu pedido sea cumplido.",
+        "order_due_on_fulfillment_payment": "Se cargará a tu tarjeta una vez que tu pedido sea cumplido.",
+        "order_due_on_receipt_choose_later": "Tu pago vencerá al recibirlo.",
+        "order_deposit_due_now": "{{depositAmount}} vence hoy. El saldo está en términos {{translatedName}}  y vence el {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "{{depositAmount}} vence hoy. El saldo vencerá una vez que tu pedido sea cumplido.",
+        "order_deposit_due_on_receipt": "{{depositAmount}} vence hoy. El saldo vencerá más tarde.",
+        "order_deposit_due_on_fixed_date": "{{depositAmount}} vence hoy. El saldo vencerá el {{dueDate}}.",
+        "draft_order_payment_due_later_no_terms": "Tu pago vencerá una vez que tu pedido sea confirmado.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Se cargará a tu tarjeta una vez que tu pedido sea confirmado.",
+        "draft_order_payment_due_later_terms": "Estarás en términos {{translatedName}}  una vez que tu pedido sea confirmado.",
+        "draft_order_payment_due_on_fulfillment": "Tu pago vencerá una vez que tu pedido haya sido confirmado y cumplido.",
+        "draft_order_deposit_due_later": "{{depositAmount}} vencerá cuando tu pedido sea confirmado. El saldo estará en términos {{translatedName}} ."
       },
       "thank_you": {
         "title": "Gracias por su compra!",
@@ -2607,6 +2631,19 @@
         "invalid_stable_id_target": "La instrucción de mercancía %{position} %{name} hace referencia al ID estable %{stable_id}, pero ese ID estable no está en las líneas de mercancía.",
         "duplicate_variant_id": "La instrucción de mercancía %{position} %{name} contiene un ID de variante duplicado %{variant_id}.",
         "invalid_variant_id_target": "La instrucción de mercancía %{position} %{name} hace referencia al ID de variante %{variant_id}, pero esa variante no está en las líneas de mercancía."
+      },
+      "payment_challenge_modal": {
+        "instructions": "Completa tu compra usando tu código {{paymentMethod}} ",
+        "timer_message": "Tienes {{timeLeft}} para pagar",
+        "copy_text": "Copia el código {{paymentMethod}} ",
+        "header": "Paga con {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Completa tu compra usando tu código {{paymentMethod}} "
+        },
+        "external": {
+          "instructions": "Confirma el pago en tu aplicación para completar esta compra"
+        },
+        "close": "Cerrar el desafío"
       }
     },
     "sentence": {
