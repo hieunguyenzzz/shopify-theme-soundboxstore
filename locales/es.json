@@ -3566,19 +3566,19 @@
         },
         "items": {
           "one": "{{count}}  artículo",
-          "other": "{{count}} elemento"
+          "other": "{{count}} items"
         },
         "list_view": "Mostrar vista de lista",
         "multiple_shipments": "Envíos múltiples",
-        "no_filtered_results_description": "Elimina o ajusta los filtros para ver tus pedidos",
+        "no_filtered_results_description": "Eliminar o ajustar filtros para ver tus pedidos",
         "no_filtered_results_title": "No hay resultados filtrados",
         "order_link": "Ver pedido {{name}}",
-        "order_number": "Orden {{name}}",
-        "orders_title": "Confirmar",
+        "order_number": "Pedido {{name}}",
+        "orders_title": "Confirmado",
         "pagination": {
           "nav_accessibility_label": "Botones de navegación de pedidos",
           "next": "Siguiente",
-          "next_accessibility_label": "Próximos pedidos",
+          "next_accessibility_label": "Pedidos siguientes",
           "previous": "Anterior",
           "previous_accessibility_label": "Pedidos anteriores",
           "load_more": "Cargar más",
@@ -3587,12 +3587,12 @@
         "payment_status": {
           "list_view": {
             "overdue": "Pago atrasado",
-            "due": "Pago pendiente {{date}}",
-            "due_today": "Pago pendiente hoy",
+            "due": "Pago debido {{date}}",
+            "due_today": "Pago debido hoy",
             "due_without_date": "Pago pendiente",
-            "due_on_fulfillment": "Pago adeudado en cumplimiento",
+            "due_on_fulfillment": "Pago debido al cumplimiento",
             "pay_to_confirm": "Pagar para confirmar",
-            "payment_not_due": "Pago aún no vencido"
+            "payment_not_due": "Pago aún no debido"
           },
           "table_view": {
             "overdue": "Atrasado",
@@ -3600,32 +3600,32 @@
             "due_today": "Debido hoy",
             "paid": "Pagado",
             "due_without_date": "Debido",
-            "due_on_fulfillment": "Vencimiento en cumplimiento",
+            "due_on_fulfillment": "Debido al cumplimiento",
             "pay_to_confirm": "Pagar para confirmar",
-            "payment_not_due": "Aún no se ha vencido"
+            "payment_not_due": "Aún no debido"
           }
         },
         "sort_by": "Ordenar por: {{option}}",
-        "sort_hide_options_accessibility_label": "Ocultar las opciones de clasificación de los pedidos confirmados.",
-        "sort_show_options_accessibility_label": "Muestra las opciones de clasificación de los pedidos confirmados.",
+        "sort_hide_options_accessibility_label": "Ocultar opciones de ordenación para pedidos confirmados.",
+        "sort_show_options_accessibility_label": "Mostrar opciones de ordenación para pedidos confirmados.",
         "sort_currently_sorted_by_accessibility_label": "Actualmente ordenado por: {{option}}",
-        "sort_title": "Tipo",
+        "sort_title": "Ordenar",
         "sort": {
           "date": {
-            "newest": "De más reciente a más antiguo",
-            "oldest": "De más antiguo a más nuevo"
+            "newest": "Más nuevo a más antiguo",
+            "oldest": "Más antiguo a más nuevo"
           },
           "location": {
             "ascending": "Ubicación (A-Z)",
             "descending": "Ubicación (Z-A)"
           },
           "order_number": {
-            "ascending": "Número de pedido (de menor a mayor)",
-            "descending": "Número de pedido (de mayor a menor)"
+            "ascending": "Número de pedido (bajo a alto)",
+            "descending": "Número de pedido (alto a bajo)"
           },
           "order_total": {
-            "ascending": "Total de pedidos (de menor a mayor)",
-            "descending": "Total de pedidos (de mayor a menor)"
+            "ascending": "Total del pedido (bajo a alto)",
+            "descending": "Total del pedido (alto a bajo)"
           }
         },
         "table_view": "Mostrar vista de tabla",
@@ -3633,7 +3633,23 @@
         "order_status_and_message": "{{orderStatus}} - {{message}}",
         "no_order_banner": "Para probar tu extensión en la página de estado del pedido, crea un pedido.",
         "more_than_three_products_accessibility_label": "El pedido incluye {{lineItemName1}}, {{lineItemName2}},  y {{numberOfAdditionalProducts}}  más productos",
-        "plus_more": "+{{numberOfAdditionalProducts}}"
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Ver pedido para más detalles",
+            "estimated_delivery": "Esperado {{date}}",
+            "last_updated": "Última actualización {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Entrega estimada {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "filter_title": "Filtrar",
+        "filter": {
+          "clear_section": "Limpiar sección",
+          "clear_all": "Limpiar todo"
+        }
       },
       "order_status": {
         "attempted_delivery_label": "Intento de entrega",
