@@ -2673,24 +2673,24 @@
         "recurring_totals_with_policies": {
           "first_cycles": {
             "one": "Primer pago %{total_price}",
-            "other": "Primero %{count} pago %{total_price} cada"
+            "other": "Primeros %{count} pagos de %{total_price} cada uno"
           },
-          "following_cycles": ", entonces %{total_price} cada %{interval}"
+          "following_cycles": ", luego %{total_price} cada %{interval}"
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "one": ", entonces %{count} pago en %{total_price}",
-            "other": ", entonces %{count} pagos en %{total_price} cada"
+            "one": ", luego %{count} pago en %{total_price}",
+            "other": ", luego %{count} pagos en %{total_price} cada uno"
           }
         }
       },
       "customer_payment_methods": {
         "page_title": "Métodos de pago",
         "title": "Métodos de pago",
-        "update_card_button_label": "Tarjeta de actualización",
+        "update_card_button_label": "Actualizar tarjeta",
         "delete_customer_mandate": {
-          "generic_error": "Ha habido un problema al procesar su solicitud.",
-          "success_message": "Su método de pago se ha eliminado correctamente"
+          "generic_error": "Hubo un problema al procesar tu solicitud.",
+          "success_message": "Tu método de pago ha sido eliminado con éxito"
         }
       },
       "redeemable_errors": {
@@ -2787,6 +2787,72 @@
       },
       "markets": {
         "invalid_market_manager_error": "Revise su información de contacto antes de completar el pago"
+      },
+      "throttle": {
+        "too_many_attempts": {
+          "message": "Demasiados intentos",
+          "description": "Por favor, inténtalo de nuevo en unos minutos"
+        },
+        "line_to_check_out": "Estás en la fila para realizar el pago",
+        "cart_summary_heading": "Tu carrito",
+        "merchandise": {
+          "available": "Disponible",
+          "sold_out": "Agotado"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Parte de tu carrito está agotado y no estará disponible para comprar en el pago.",
+          "sold_out": {
+            "heading": "Tu carrito está agotado",
+            "storefront_body": "Regresa a la tienda para seguir comprando",
+            "no_storefront_body": "Desafortunadamente, el artículo que deseas comprar ya no está disponible.",
+            "link": "Volver a la tienda"
+          }
+        },
+        "title": "Cola",
+        "time_to_checkout_title": "Tiempo para pagar - {{shopName}}",
+        "estimated_wait_time": {
+          "calculating": "Calculando tiempo de espera estimado",
+          "less_than_one": "Tiempo de espera estimado: Menos de un minuto",
+          "one": "Tiempo de espera estimado: {{count}} minuto",
+          "other": "Tiempo de espera estimado: {{count}} minutos"
+        },
+        "last_checked": "(Última verificación: {{time}})",
+        "footer": {
+          "heading": "No actualices esta página, se actualizará automáticamente.",
+          "body": "Los artículos en tu carrito no están reservados hasta que completes el pago."
+        }
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Hubo un problema al procesar tu solicitud, por favor contacta al propietario de la tienda."
+      },
+      "no_address_location": {
+        "title": "Ubicación sin dirección",
+        "header": "No tienes una dirección de envío para esta ubicación",
+        "alt_header": "Dirección de envío faltante",
+        "message": "Contáctanos para agregar una dirección para esta ubicación y completar el pago.",
+        "email_us_button_label": "Envíanos un correo electrónico"
+      },
+      "order_errors": {
+        "creation_failure": "Hubo un problema al crear tu pedido. Inténtalo de nuevo, o contáctanos para más detalles.",
+        "network_failure": "Tu pedido no pudo ser enviado debido a un error de red. Verifica tu conexión e inténtalo de nuevo.",
+        "inventory_reservation_failure": "Algunos artículos ya no están disponibles."
+      },
+      "session_errors": {
+        "session_not_unique": "Hubo un problema al procesar tu pedido. Actualiza esta página para regresar a la tienda.",
+        "session_already_finished": "Este pedido ya ha sido enviado. Puedes regresar a la tienda para comenzar un nuevo pedido."
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Hubo un problema al procesar tu pedido. Inténtalo de nuevo en unos minutos."
+      },
+      "pickup_point": {
+        "location_is_currently_closed": "Cerrado",
+        "business_hours": "Horario de apertura",
+        "no_business_hours": "No hay horario de apertura disponible",
+        "open_twenty_four_hours": "Abierto 24/7",
+        "title": "Punto de recogida",
+        "or": "o",
+        "search_button": "Buscar",
+        "address_label": "Dirección"
       }
     },
     "sentence": {
