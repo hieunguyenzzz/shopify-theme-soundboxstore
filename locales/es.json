@@ -750,7 +750,7 @@
           "session_identifier_not_unique_error": "Algo salió mal con su pedido, por favor intente pagar nuevamente.",
           "line_item_limit_reached": "Se ha alcanzado el número máximo de artículos en la línea.",
           "payment": {
-            "shop_cash_not_available": "Shop Cash no es compatible con este pago.",
+            "shop_cash_not_available": "Shop Cash no es compatible con este proceso de pago.",
             "manual_payments_not_allowed_for_b2b": "Los pagos manuales no están permitidos en las tiendas B2B.",
             "positive_amount_expected": "La cantidad a pagar debe ser mayor que 0.",
             "total_amount_mismatch": "El total a pagar no coincide con la suma del monto de los pagos.",
@@ -770,7 +770,31 @@
             "shop_cash_not_found": "No se encontró Shop Cash.",
             "shop_cash_not_allowed": "Shop Cash no está permitido sin Shop Pay.",
             "shop_cash_unsupported_checkout_source": "Shop Cash no soporta este proceso de pago.",
-            "shop_cash_gift_card_not_allowed": "Shop Cash no permite la compra de tarjetas de regalo."
+            "shop_cash_gift_card_not_allowed": "Shop Cash no permite la compra de tarjetas de regalo.",
+            "shop_cash_not_enabled": "Shop Cash no está habilitado para esta tienda.",
+            "shop_cash_unsupported_subscriptions": "Shop Cash no admite suscripciones.",
+            "shop_cash_unsupported_shipping": "Shop Cash no admite mercancía sin envío.",
+            "invalid_address_type": "El tipo de dirección proporcionado no es válido para este método de pago.",
+            "missing_retail_attributions": "Se requieren atribuciones minoristas para pagos con tarjeta de crédito ingresados manualmente.",
+            "unexpected_retail_attributions": "Atribuciones minoristas proporcionadas inesperadamente para el pago con tarjeta de crédito.",
+            "invalid_card_source": "Esta sesión no tiene permiso para usar esta fuente de tarjeta.",
+            "wallet_content_missing": "Falta contenido de la billetera.",
+            "payment_instrument_not_found": "No se pudo encontrar el método de pago.",
+            "unauthorized_capture_method": "No está permitido configurar el método de captura de pago.",
+            "saved_payment_methods_not_allowed": "No se permite guardar métodos de pago.",
+            "saved_payment_methods_not_enabled": "Los métodos de pago guardados no están habilitados para esta tienda.",
+            "saved_payment_methods_cvv_verification_disabled": "El método de pago seleccionado requiere verificación de CVV, que no está habilitada para esta tienda. Seleccione un método de pago diferente.",
+            "store_credit_not_enabled": "El crédito de la tienda no está habilitado para esta tienda.",
+            "store_credit_account_not_found": "Cuenta de crédito de la tienda no encontrada.",
+            "store_credit_account_mismatch": "La cuenta de crédito de la tienda no coincide con la identidad del comprador.",
+            "store_credit_mismatched_currency": "La moneda de la cuenta de crédito de la tienda no coincide con la moneda del pago.",
+            "store_credit_insufficient_funds": "No hay fondos suficientes en la cuenta de crédito de la tienda.",
+            "store_credit_buying_gift_card": "No puedes usar crédito de la tienda para comprar una tarjeta de regalo.",
+            "gift_cards_not_allowed_for_b2b": "Las tarjetas de regalo no están permitidas en tiendas B2B.",
+            "method_required": "Se debe proponer un método de pago.",
+            "paypal_express_address_invalid": "PayPal devolvió una dirección no válida.",
+            "shop_cash_unsupported_currency": "Shop Cash no admite esta moneda.",
+            "market_manager_blocks_wallet_payments": "El método de pago no es compatible con el gestor de mercado."
           },
           "only_empty_terms_accepted": "Esta política solo acepta términos vacíos.",
           "session_is_already_finished": "Esta sesión de pago ya ha sido finalizada.",
@@ -868,6 +892,45 @@
             "allocated_required": "Falta el campo 'allocated'.",
             "value_required": "Falta el campo 'value'.",
             "line_splits_not_supported": "El campo 'líneas de mercancía' debe dividirse de tal manera que cada uno tenga un solo componente de línea en la propuesta del vendedor."
+          },
+          "tip": {
+            "not_accepted_by_shop": "La tienda no acepta propinas.",
+            "only_one_tip_line_allowed": "No se admiten múltiples líneas de propinas.",
+            "tips_not_allowed_for_b2b": "Las propinas no están permitidas en tiendas B2B.",
+            "currency_change_reset": "La propina se ha restablecido debido al cambio de moneda.",
+            "tips_not_allowed_for_deferred_purchase_options": "Las propinas aún no son compatibles con las opciones de compra diferida."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Este pedido preliminar no existe en la tienda actual.",
+            "staff_member_not_exist": "Este personal no existe en la tienda actual.",
+            "location_not_exist": "Esta ubicación no existe en la tienda actual.",
+            "point_of_sale_device_not_exist": "Este dispositivo de punto de venta no existe en la tienda actual.",
+            "unresolvable_target_merchandise_lines": "Las atribuciones de venta propuestas son irresolubles dado el contexto de negociación actual."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "La propuesta de su comprador debe contener términos no negociables.",
+            "invalid_signature": "La firma para {{target_terms}}  es inválida."
+          },
+          "inventory": {
+            "missing_quantity_value": "Falta el campo de cantidad en las líneas de inventario del comprador.",
+            "changing_behavior_not_allowed": "Este cliente no tiene permiso para cambiar el comportamiento del inventario.",
+            "only_one_inventory_behavior_allowed": "Actualmente solo se permite un comportamiento de inventario por pago."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "No se permite rechazar aranceles para este pago."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "La atribución minorista no está permitida para este pago.",
+            "retail_attribution_required": "Se requiere atribución minorista para este pago."
+          },
+          "captcha": {
+            "metadata_missing": "Se requiere completar un captcha para este pago.",
+            "metadata_mismatch": "El proveedor y tipo de captcha proporcionados no coinciden con los valores esperados.",
+            "token_missing": "Se debe proporcionar un token de captcha para completar este pago.",
+            "job_enqueue_failed": "El trabajo de validación de captcha no pudo ser encolado.",
+            "job_already_queued": "La validación de captcha ya ha sido encolada para este token de captcha.",
+            "token_expired": "El token de captcha proporcionado ha expirado. Complete un nuevo captcha para continuar con el pago.",
+            "token_invalid": "El token de captcha proporcionado era inválido. Complete un nuevo captcha para continuar con el pago."
           }
         },
         "full_price": "Precio completo:",
