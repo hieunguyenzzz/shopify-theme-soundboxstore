@@ -3815,7 +3815,67 @@
           "expirable_amount_label": "إجمالي المبلغ القابل للانتهاء",
           "expirable_amounts_info": "تُطبق المبالغ التي تنتهي صلاحيتها قريبًا أولاً عند الدفع",
           "expirable_amounts_button": "عرض",
-          "expired_amounts_button": "عرض المبالغ المنتهية الصلاحية"
+          "expired_amounts_button": "عرض المبالغ المنتهية الصلاحية",
+          "pagination": {
+            "load_more_label": "تحميل المزيد",
+            "load_more_accessibility_label": "تحميل المزيد من المبالغ القابلة للانتهاء"
+          }
+        }
+      },
+      "payment_details": {
+        "title": "تفاصيل طريقة الدفع",
+        "credit_card_details_accessibility_label": "تنتهي في {{lastDigits}}",
+        "billing_title": "عنوان الفواتير",
+        "card_info_title": "معلومات البطاقة",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "تنتهي في {{expiryDate}}",
+        "payment_method_expired_on": "انتهت في {{expiryDate}}",
+        "preauthorized_payments": "المدفوعات المسبقة التفويض",
+        "close_payment_modal": "إغلاق",
+        "close_payment_modal_accessibility_label": "إغلاق نافذة تفاصيل طريقة الدفع",
+        "payment_method_not_found_error": "غير قادر على العثور على طريقة الدفع",
+        "payment_details_loading": "تحميل تفاصيل طريقة الدفع",
+        "pre_authorized_payments": "المدفوعات المسبقة التفويض",
+        "total_amount_of_subscription_line_items_left": "و {{total}}  المزيد",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}}  إجمالي العناصر، عرض {{totalItemsToDisplay}}  عناصر.",
+        "next_payment_due": "الدفع التالي مستحق {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "تعديل",
+        "edit_payment_method_button_accessibility_label": "تعديل طريقة الدفع التي تنتهي في {{lastDigits}}",
+        "loading_shop_pay": "تحميل Shop Pay",
+        "invalid_payment_method": "طريقة دفع غير صالحة",
+        "invalid_payment_method_message": "استخدم بطاقة ائتمان جديدة لمواصلة تلقي الطلبات القادمة.",
+        "replace_payment_method": "استبدال طريقة الدفع",
+        "checkout_card_banner": "يمكن استخدام هذه الطريقة فقط للمدفوعات المسبقة التفويض. لن تظهر في صفحة الدفع إذا كنت مسجلاً في هذا المتجر.",
+        "default_checkbox": "تعيين كافتراضي",
+        "default_checkbox_accessibility_label": "تعيين هذه الطريقة كطريقة الدفع الافتراضية"
+      },
+      "edit_payment_method": {
+        "title": "تعديل طريقة الدفع",
+        "save_payment_method_button": "حفظ",
+        "cancel_edit_payment_method_button": "إلغاء",
+        "payment_method_updated_toast": "تم تحديث طريقة الدفع",
+        "billing_address": "عنوان الفواتير",
+        "billing_address_add_new": "إضافة جديد",
+        "billing_address_choose_from_list": "اختر من القائمة",
+        "future_purchases_notice": "سيتم حفظ هذه الطريقة للشراء في المستقبل.",
+        "generic_error": "حدثت مشكلة في التحديث. يرجى المحاولة مرة أخرى."
+      },
+      "card_fields": {
+        "card_number_label": "رقم البطاقة",
+        "card_number_placeholder": "رقم البطاقة",
+        "name_on_card_label": "الاسم على البطاقة",
+        "name_on_card_placeholder": "الاسم على البطاقة",
+        "card_expiry_label": "تاريخ الانتهاء (MM / YY)",
+        "card_expiry_placeholder": "تاريخ الانتهاء (MM / YY)",
+        "card_verification_value_label": "رمز الأمان",
+        "card_verification_value_placeholder": "رمز الأمان",
+        "card_start_label": "تاريخ الإصدار (MM / YY)",
+        "card_start_placeholder": "تاريخ الإصدار (MM / YY)",
+        "tooltip": {
+          "tooltip_accessibility_label": "مزيد من المعلومات",
+          "card_verification_value_explanation_amex": "رمز الأمان المكون من 4 أرقام على مقدمة بطاقتك",
+          "card_verification_value_explanation_other": "رمز الأمان المكون من 3 أرقام على ظهر بطاقتك",
+          "card_verification_value_explanation": "رمز الأمان المكون من 3 أرقام الموجود عادةً على ظهر بطاقتك. تحتوي بطاقات أمريكان إكسبريس على رمز مكون من 4 أرقام يقع على المقدمة."
         }
       }
     }
