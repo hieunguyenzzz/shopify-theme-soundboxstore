@@ -1302,41 +1302,44 @@
         "product_change_label": "Cambiar",
         "product_image_label": "Imagen del producto",
         "scroll_order_summary": "Desplazar para más artículos",
-        "expand_order_summary": "Mostrar resumen de pedido",
-        "collapse_order_summary": "Ocultar resumen de pedido",
+        "expand_order_summary": "Mostrar resumen del pedido",
+        "collapse_order_summary": "Ocultar resumen del pedido",
         "original_price": "Precio original",
-        "sale_price": "Precio de venta",
+        "sale_price": "Precio de oferta",
         "total_updated_label": "Precio total actualizado:",
         "order_total_updated_label": "Total actualizado",
-        "total_already_paid_label": "Ya pagado",
+        "total_already_paid_label": "Pagado",
         "unit_price": {
           "accessible_separator": "por",
           "content_html": "%{price}%{accessible_separator}%{per_unit}"
         },
-        "gift_card_ending": "Tarjeta de regalo que termina en %{last_characters}",
+        "gift_card_ending": "Tarjeta de regalo terminada en %{last_characters}",
         "estimated_tax_label": "Impuesto estimado",
         "multiple_shipping_lines_label": "Total de envío",
         "recurring_subtotal_label": "Subtotal recurrente",
         "recurring_total_label": "Total recurrente",
-        "recurring_total_tooltip": "No incluye envío, impuestos, aranceles ni ningún descuento aplicable.",
+        "recurring_total_tooltip": "No incluye envío, impuestos, aranceles ni descuentos aplicables.",
         "confirmation_number_label": "Confirmación #%{confirmation_number}",
-        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> no se pudo usar con los descuentos existentes. Ya tienes una mejor combinación.",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> no se pudo usar con tus descuentos existentes.",
         "percent_off_shipping": "%{percent}% de descuento en el envío",
-        "amount_off_shipping": "%{amount} fuera del envío",
+        "amount_off_shipping": "%{amount} de descuento en el envío",
         "deferred_payment_info": {
-          "title": "Pago de %{amount_due} vence el %{due_at}",
-          "description_html": "Para preguntas sobre su pedido, %{contact_us}.",
+          "title": "El pago de %{amount_due} vence el %{due_at}",
+          "description_html": "Para preguntas sobre tu pedido, %{contact_us}.",
           "paid_today": "Total pagado hoy",
-          "due_on_fulfillment_title": "Pago de %{amount_due} se debe en cumplimiento"
+          "due_on_fulfillment_title": "El pago de %{amount_due} vence al cumplimiento",
+          "due_on_receipt_title": "El pago de %{amount_due} vence al recibo"
         },
         "payment_terms_totals": {
-          "due_today": "Total a pagar hoy",
+          "due_today": "Total adeudado hoy",
           "due_later": "Total adeudado %{due_at}",
-          "due_on_fulfillment": "Total adeudado en cumplimiento",
-          "due_later_checkout_to_draft": "Total a pagar más tarde"
+          "due_on_fulfillment": "Total adeudado al cumplimiento",
+          "due_later_checkout_to_draft": "Total adeudado más tarde",
+          "due_on_receipt": "Total adeudado al recibo",
+          "total_paid": "Total pagado"
         },
-        "maximum_discount_code_limit_reached": "Has alcanzado el número máximo de códigos de descuento. Eliminar un código existente para usarlo <strong style=\"text-transform:uppercase\">%{code}</strong>.",
-        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> no está funcionando en este momento. Póngase en contacto con nosotros para obtener ayuda.",
+        "maximum_discount_code_limit_reached": "Has alcanzado el número máximo de códigos de descuento. Elimina un código existente para usar <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> no está funcionando en este momento. Contáctanos para obtener ayuda.",
         "group_title_label": "Parte de \"%{group_title}\"",
         "number_items": {
           "one": "artículo %{count}",
@@ -1397,7 +1400,29 @@
           "label": "%{price}/ea"
         },
         "product_image_quantity_label": "Cantidad",
-        "expand_order_summary_short": "Mostrar"
+        "expand_order_summary_short": "Mostrar",
+        "collapse_order_summary_short": "Ocultar",
+        "deferred_balance_info": {
+          "title": "El saldo de {{amount_due}}  vence el {{due_at}}",
+          "due_on_fulfillment_title": "El saldo de {{amount_due}}  vence al cumplimiento"
+        },
+        "due_on_fulfillment": "Vence al cumplimiento",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Suscripciones",
+        "duties_label": "Aranceles",
+        "duties_and_taxes_label": "Aranceles e impuestos",
+        "error_duties_tooltip": "Este pedido se envía desde otro país, por lo que pueden cobrarse aranceles e impuestos en la entrega.",
+        "may_be_charged_on_delivery": "Puede cobrarse en la entrega",
+        "total_updated_label_with_price": "Precio total actualizado: %{totalPrice}",
+        "updated_shipping_method": "Método de envío actualizado: %{shipping_method}",
+        "recurring_payments": "Pagos recurrentes",
+        "recurring_total_multiple_label": "Este pedido tiene un cargo recurrente para múltiples artículos.",
+        "deferred_total_due_date_label": "Total adeudado {{date}}",
+        "full_price": "Precio completo: %{price}",
+        "custom_discount": "Descuento personalizado",
+        "expand_component_information": {
+          "one": "Mostrar artículo %{count}"
+        }
       },
       "localized_fields": {
         "additional_information": {
