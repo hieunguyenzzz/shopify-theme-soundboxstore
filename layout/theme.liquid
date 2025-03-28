@@ -224,9 +224,7 @@
       </title>
     {% endif %}
 
-    {%- if disabled_by_yoast_seo -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
+    <meta name="description" content="{{ page_description | escape }}">
 
     {%- render 'social-meta-tags' -%}
     <style>

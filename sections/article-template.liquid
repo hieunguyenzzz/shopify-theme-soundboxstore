@@ -6,7 +6,7 @@
   .template-article .blog-article {
     max-width: 72ch;
     margin: auto;
-    padding-block:12px 0
+    padding-block: 12px 0;
   }
 </style>
 {%- liquid
@@ -47,11 +47,13 @@
       {%- if section.settings.blog_show_date -%}
         <span class="article__sub-meta-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
       {%- endif -%}
-      {%- if article.metafields.custom.custom_author -%}
-        <span>by {{ article.metafields.custom.custom_author }}</span>
-      {%- endif -%}
+
       {%- if section.settings.blog_show_author -%}
-        <span>by {{ article.author }}</span>
+        {%- if article.metafields.custom.custom_author -%}
+          <span>by {{ article.metafields.custom.custom_author }}</span>
+        {%- else -%}
+          <span>by {{ article.author }}</span>
+        {%- endif -%}
       {%- endif -%}
     </div>
   </header>

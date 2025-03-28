@@ -50,7 +50,7 @@
       overflow: hidden;
       display: block;
     }
-    
+
     .product-icon-text-section .flexbox .shopify-block {
       min-width: 100%;
       flex: 0 0 100%;
@@ -103,17 +103,17 @@
   </div>
 </section>
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     const initSlider = () => {
       const $flexbox = $('.product-icon-text-section .flexbox');
-      
+
       if (window.innerWidth <= 767) {
         if (!$flexbox.hasClass('slick-initialized')) {
           // Destroy any existing slider first
           if ($flexbox.hasClass('slick-initialized')) {
             $flexbox.slick('unslick');
           }
-          
+
           // Initialize new slider
           $flexbox.slick({
             dots: true,
@@ -126,13 +126,13 @@
             autoplaySpeed: 3000,
             adaptiveHeight: true,
             mobileFirst: true,
-            onInit: function(slick) {
-              setTimeout(function() {
+            onInit: function (slick) {
+              setTimeout(function () {
                 $flexbox.addClass('slick-initialized');
                 // Force refresh for Safari
                 $(window).trigger('resize');
               }, 100);
-            }
+            },
           });
         }
       } else {
@@ -144,12 +144,12 @@
 
     // Initialize on page load
     initSlider();
-    
+
     // Handle resize events
     let resizeTimer;
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function() {
+      resizeTimer = setTimeout(function () {
         initSlider();
       }, 250);
     });
@@ -162,19 +162,17 @@
 {% schema %}
 {
   "name": "Call actions",
-  "settings": [
-
-  ],
+  "settings": [],
   "blocks": [
     {
-      "type": "call-actions-item",
-    },
+      "type": "call-actions-item"
+    }
   ],
-    "presets": [
-     {
-       "name": "Call actions",
-       "blocks": []
-     }
-   ]
+  "presets": [
+    {
+      "name": "Call actions",
+      "blocks": []
+    }
+  ]
 }
 {% endschema %}
