@@ -323,8 +323,7 @@
             </div>
           </div>
           {% if product %}
-            <div id="feed-18121" class="instafeed-shopify"></div>
-
+            {% assign feedId = '18121' %}
             {% comment %}
               //do not use handles
                  {% capture custom %}
@@ -357,7 +356,11 @@
           {% else %}
             {% assign feedId = block.settings.feed_id %}
           {% endif %}
-          <div id="feed-18121" class="instafeed-shopify" style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"></div>
+          <div
+            id="feed-{{feedId}}"
+            class="instafeed-shopify"
+            style="  z-index:2;  margin: 0 var(--pageWidthPadding) var(--pageWidthPadding) var(--pageWidthPadding)!important;"
+          ></div>
         </div>
       {% endif %}
       {% if block.type == '@app' %}
