@@ -148,7 +148,7 @@
           "type": "feature-content",
           "repeater": "{{ product.metafields.custom.feature_content.value }}",
           "settings": {
-            "title": "{{ block.repeater.title.value }}",
+            "title": "{{ block.repeater.heading.value }}",
             "content": "{{ block.repeater.detection | metafield_tag }}",
             "image": "{{ block.repeater.image.value }}",
             "youtube_url": "{{ block.repeater.youtube_video.value }}"
