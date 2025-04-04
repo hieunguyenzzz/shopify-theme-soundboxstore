@@ -9,20 +9,26 @@
 
   }
     .template-index .{{ section.id }}-wrap img{
+      opacity:1;
   width:min(500px,40vw);
+
+  }
+   .{{ section.id }}-wrap:hover img{
+      opacity:1;
 
   }
        .{{ section.id }}-wrap a{
     position:absolute;z-index:2;right:0;width:min(300px,40vw);
-         height:min(300px,40vw);
+         height:min(200px,40vw);
 
   clip-path: polygon(10% 0, 100% 0, 100% 90%);
 
       }
 
    .{{ section.id }}-wrap img{
+          opacity:0.8;
     position: absolute;
-       width:min(300px,40vw);
+       width:min(200px,40vw);
      pointer-events: none;
                 transition: transform 0.2s ease-in-out;
     transform-origin: right top;
@@ -55,10 +61,10 @@
       "label": "Call Image",
     },
      {
-      "type": "text",
+      "type": "url",
        "id": "url",
       "label": "Url",
-       "default":"https://uk.bettshow.com/exhibitors/soundbox-store"
+       "default":"/"
     }
   ],
 
