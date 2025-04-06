@@ -143,6 +143,18 @@
         </div>
         <div class="my-4 md:my-8 md:text-lg prose prose-a:underline">
           {{ section.settings.content }}
+          {% if section.settings.date20th %}
+            <div>
+              {{ section.settings.date20t }}
+              {{ section.settings.date21st }}
+              {{ section.settings.date22nd }}
+            </div>
+          {% endif %}
+          {% if section.settings.address %}
+            <div>
+              {{ section.settings.address }}
+            </div>
+          {% endif %}
         </div>
         {% if section.settings.btn_text != blank %}
           <p>
