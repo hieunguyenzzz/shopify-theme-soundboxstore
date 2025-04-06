@@ -144,14 +144,20 @@
         <div class="my-4 md:my-8 md:text-lg prose prose-a:underline">
           {{ section.settings.content }}
           {% if section.settings.date20th %}
-            <div style="display:none">
-              {{ section.settings.date20t }}
-              {{ section.settings.date21st }}
-              {{ section.settings.date22nd }}
+            <div class="grid grid-cols-2 gap-3 m-0 mt-4">
+              <div>
+                {{ section.settings.date20t }}
+              </div>
+              <div>
+                {{ section.settings.date21st }}
+              </div>
+              <div>
+                {{ section.settings.date22nd }}
+              </div>
             </div>
           {% endif %}
           {% if section.settings.address %}
-            <div style="display:none">
+            <div>
               {{ section.settings.address }}
             </div>
           {% endif %}
