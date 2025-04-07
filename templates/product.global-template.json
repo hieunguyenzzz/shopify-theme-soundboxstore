@@ -210,13 +210,6 @@
     "acoustic-environment-next": {
       "type": "acoustic-environment-next",
       "blocks": {
-        "item_eEJGnC": {
-          "type": "item",
-          "settings": {
-            "heading": "Acoustic Environment especially important in office space",
-            "subheading": "<p>By creating a workplace with a good acoustics environment, you can develop an office that workers will enjoy working within.</p>"
-          }
-        },
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0": {
           "type": "item",
           "settings": {
@@ -261,7 +254,6 @@
         }
       },
       "block_order": [
-        "item_eEJGnC",
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-0",
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-1",
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-2",
@@ -275,6 +267,30 @@
         "heading": "A Comfort Cocoon",
         "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.</p>",
         "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
+      }
+    },
+    "acoustic_environment_next_QVNLWi": {
+      "type": "acoustic-environment-next",
+      "blocks": {
+        "item_dRFNkD": {
+          "type": "item",
+          "repeater": "{{ product.metafields.custom.acoustic_environment_next.value.environment_items.value }}",
+          "settings": {
+            "heading": "{{ block.repeater.heading.value }}",
+            "subheading": "{{ block.repeater.sub_heading | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "item_dRFNkD"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_image": "{{ product.metafields.custom.acoustic_environment_next.value.background_image.value }}",
+        "mobile-bg_image": "{{ product.metafields.custom.acoustic_environment_next.value.background_image_mobile_.value }}",
+        "heading": "{{ product.metafields.custom.acoustic_environment_next.value.heading.value }}",
+        "subheading": "{{ product.metafields.custom.acoustic_environment_next.value.sub_heading | metafield_tag }}",
+        "subheading2": "{{ product.metafields.custom.acoustic_environment_next.value.sub_heading_2 | metafield_tag }}"
       }
     },
     "logo-list": {
@@ -376,6 +392,7 @@
     "acoustic-environment",
     "subscribe_follow_kmB6a7",
     "acoustic-environment-next",
+    "acoustic_environment_next_QVNLWi",
     "logo-list",
     "product_upsell_VppKAU",
     "d860300d-7c49-4055-87c4-01913a46c1c6",
