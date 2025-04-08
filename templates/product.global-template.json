@@ -261,6 +261,7 @@
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-4",
         "template--16306515411169__70ae5f46-98c1-473e-8dae-1fe9b07248d6-16655654685b9477dd-5"
       ],
+      "disabled": true,
       "settings": {
         "bg_image": "shopify://shop_images/kabine-pod-desktop.jpg",
         "mobile-bg_image": "shopify://shop_images/sensory-booth-soundbox-store-2.jpg",
@@ -277,20 +278,19 @@
           "repeater": "{{ product.metafields.custom.acoustic_environment_next.value.environment_items.value }}",
           "settings": {
             "heading": "{{ block.repeater.heading.value }}",
-            "subheading": "{{ block.repeater.sub_heading | metafield_tag }}"
+            "subheading": "<p>{{ block.repeater.sub_heading | metafield_tag }}</p>"
           }
         }
       },
       "block_order": [
         "item_dRFNkD"
       ],
-      "disabled": true,
       "settings": {
         "bg_image": "{{ product.metafields.custom.acoustic_environment_next.value.background_image.value }}",
         "mobile-bg_image": "{{ product.metafields.custom.acoustic_environment_next.value.background_image_mobile_.value }}",
         "heading": "{{ product.metafields.custom.acoustic_environment_next.value.heading.value }}",
-        "subheading": "{{ product.metafields.custom.acoustic_environment_next.value.sub_heading | metafield_tag }}",
-        "subheading2": "{{ product.metafields.custom.acoustic_environment_next.value.sub_heading_2 | metafield_tag }}"
+        "subheading": "<p>{{ product.metafields.custom.acoustic_environment_next.value.sub_heading | metafield_tag }}</p>",
+        "subheading2": "<p>{{ product.metafields.custom.acoustic_environment_next.value.sub_heading_2 | metafield_tag }}</p>"
       }
     },
     "logo-list": {
