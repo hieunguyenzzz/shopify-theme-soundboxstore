@@ -244,8 +244,9 @@
             let e = document.querySelector(`#${slug}-value`)
             if(e){
               e.checked=true
+               document.querySelector("#consultation-form-wrap").scrollIntoView()
             }
-            document.querySelector("#consultation-form-wrap").scrollIntoView()
+           
         }
 
         // Listen for hash changes
