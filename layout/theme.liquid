@@ -21,8 +21,8 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>{% render 'yoast-seo' %}
-    
+  <head>
+    {% render 'yoast-seo' %}
 
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
@@ -372,7 +372,11 @@
         {% else %}
           false
         {% endif %},
+        {% comment %}
         moneyFormat: {%- if localization.country == 'United Arab Emirates'-%}{% raw %}"AED {{amount_no_decimals}}"{% endraw %}{%- else -%}{{ settings.product_save_type | json }}{%- endif -%},
+
+        {% endcomment %}
+         moneyFormat: {{ shop.money_format | json }},
         saveType: {{ settings.product_save_type | json }},
         productImageSize: {{ settings.product_grid_image_size | json }},
         productImageCover: {{ settings.product_grid_image_fill }},
