@@ -21,7 +21,9 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>
+  <head>{% render 'yoast-seo' %}
+    
+
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
     {% render 'pre-header' %}
@@ -370,7 +372,7 @@
         {% else %}
           false
         {% endif %},
-        moneyFormat: {{ shop.money_format | json }},
+        moneyFormat: {%- if localization.country == 'United Arab Emirates'-%}{% raw %}"AED {{amount_no_decimals}}"{% endraw %}{%- else -%}{{ settings.product_save_type | json }}{%- endif -%},
         saveType: {{ settings.product_save_type | json }},
         productImageSize: {{ settings.product_grid_image_size | json }},
         productImageCover: {{ settings.product_grid_image_fill }},
@@ -411,6 +413,7 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    {{ 'styles.css' | stylesheet_tag }}
   </head>
 
   <body
@@ -424,6 +427,7 @@
     data-type_header_capitalize="{{ settings.type_header_capitalize }}"
     data-swatch_style="{{ settings.swatch_style }}"
     data-grid-style="{{ settings.product_grid_style }}"
+    data-country="{{ localization.country.iso_code }}"
   >
     <script>
       (() => {
@@ -451,6 +455,7 @@
       <div class="transition-body">
         {%- section 'toolbar' -%}
         {%- section 'header' -%}
+        {%- section 'call-image' %}
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
@@ -462,26 +467,31 @@
         {% if page.handle == 'accessories' %}
           {% assign showCallActions = true %}
         {% endif %}
+        {%- if localization.country == 'United States' -%}
+          {% assign showCallActions = false %}
+        {%- endif -%}
         {% if showCallActions %}
           <div id="shopify-section-theme-call-actions" {{ template.name }}>
             <style>
-                          #shopify-section-theme-call-actions{
-                      margin:0;
-                 position:sticky;bottom:0;background:white;z-index:10
-                    }
-                      #shopify-section-theme-call-actions section{
-                      margin:0;
-                        font-size:16px
-                    }
-               #shopify-section-theme-call-actions .product-icon-text-section{
-                padding: 0
+              #shopify-section-theme-call-actions {
+                margin: 0;
+                position: sticky;
+                bottom: 0;
+                background: white;
+                z-index: 10;
+              }
+              #shopify-section-theme-call-actions section {
+                margin: 0;
+                font-size: 16px;
+              }
+              #shopify-section-theme-call-actions .product-icon-text-section {
+                padding: 0;
               }
 
-               #shopify-section-theme-call-actions .flexbox{
-                    padding: 10px;
-
+              #shopify-section-theme-call-actions .flexbox {
+                padding: 10px;
               }
-              #shopify-section-theme-call-actions  .page-width{
+              #shopify-section-theme-call-actions .page-width {
               }
             </style>
             
