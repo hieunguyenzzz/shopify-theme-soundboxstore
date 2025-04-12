@@ -21,8 +21,8 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>{% render 'yoast-seo' %}
-    
+  <head>
+    {% render 'yoast-seo' %}
 
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
@@ -413,7 +413,6 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-    {{ 'styles.css' | stylesheet_tag }}
   </head>
 
   <body
@@ -453,10 +452,10 @@
 
     <div class="page-container" id="PageContainer">
       <div class="transition-body">
-        <div style="display:none"> {%- section 'toolbar' -%} </div>
-        <div style="display:none"> {%- section 'header' -%} </div>
-        <div style="display:none"> {%- section 'call-image' %} </div>
-        <div style="display:none"> {%- section 'quick-search' -%} </div>
+        <div style="display:none">{%- section 'toolbar' -%}</div>
+        <div style="display:none">{%- section 'header' -%}</div>
+        <div style="display:none">{%- section 'call-image' %}</div>
+        <div style="display:none">{%- section 'quick-search' -%}</div>
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>

@@ -21,8 +21,8 @@
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
 >
-  <head>{% render 'yoast-seo' %}
-    
+  <head>
+    {% render 'yoast-seo' %}
 
     {% render 'gcm-integration-script' %}
     {% render 'pandectes-rules' %}
@@ -413,7 +413,6 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-    {{ 'styles.css' | stylesheet_tag }}
   </head>
 
   <body
@@ -460,7 +459,7 @@
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
         </main>
-        
+
         {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
           {% assign showCallActions = true %}
         {% endif %}
@@ -494,19 +493,12 @@
               #shopify-section-theme-call-actions .page-width {
               }
             </style>
-            
           </div>
         {% endif %}
-        
       </div>
     </div>
     {% if settings.header_show_quote_request %}
-      
     {% endif %}
-    
-    
-    
-    
 
     <script src="{{ 'slick.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
@@ -606,7 +598,6 @@
         },
       };
     </script>
-    
 
     <script>
       (function (ss, ex) {
