@@ -3,15 +3,13 @@
   {% assign discount = null %}
   {% if current_variant.price > 0 %}
     {% if current_variant.price < current_variant.compare_at_price %}
-      {% capture discount %}
-                                      {{ }}%
-                                  {% endcapture %}
-      {% assign discount = current_variant.compare_at_price
+      {% assign raw_discount = current_variant.compare_at_price
         | minus: current_variant.price
         | times: 100.000
         | divided_by: current_variant.compare_at_price
         | round
       %}
+      {% assign discount = raw_discount | divided_by: 5 | times: 5 %}
     {% endif %}
   {% endif %}
 
