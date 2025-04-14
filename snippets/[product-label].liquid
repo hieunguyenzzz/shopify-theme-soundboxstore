@@ -9,7 +9,7 @@
         | divided_by: current_variant.compare_at_price
         | round
       %}
-      {% assign discount = raw_discount | divided_by: 5 | times: 5 %}
+      {% assign discount = raw_discount | plus: 4 | divided_by: 5 | times: 5 %}
     {% endif %}
   {% endif %}
 
