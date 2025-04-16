@@ -323,7 +323,7 @@
             </div>
           </div>
           {% if product %}
-            {% assign feedId = '18121' %}
+            {% assign feedId = block.settings.feed_id | default: '18121' %}
             {% comment %}
               //do not use handles
                  {% capture custom %}
