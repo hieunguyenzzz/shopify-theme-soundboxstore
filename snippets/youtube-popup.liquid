@@ -200,11 +200,12 @@
 </script>
 {%- if block.settings.external_video_url or video_url -%}
   {%- assign date_created = page.published_at | default: product.published_at | default: collection.published_at -%}
+  {%- assign name = product.title | default: page.title | default: collection.title -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "VideoObject",
-      "name": "{{ product.title | default: page.title | default: block.settings.title }}",
+      "name": "{{ name }}",
       "embedUrl": "{{ block.settings.external_video_url | default: video_url }}",
       "thumbnailUrl": "https://img.youtube.com/vi/{{video_id}}/0.jpg",
       "uploadDate": "{{ date_created }}",
