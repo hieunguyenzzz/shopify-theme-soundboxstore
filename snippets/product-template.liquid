@@ -611,7 +611,11 @@
                       -%}
                     </div>
                   {%- when 'ticks' -%}
-                    {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
+                    {% assign texts = product.metafields.custom.ticks_content.value | newline_to_br | split: '<br />' %}
+                    {% unless product.metafields.custom.ticks_content.value %}
+                      {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
+                    {% endunless %}
+
                     <ul
                       {{ block.shopify_attributes }}
                       style="
