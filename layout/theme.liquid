@@ -372,11 +372,11 @@
         {% else %}
           false
         {% endif %},
-        {% comment %}
-        moneyFormat: {%- if localization.country == 'United Arab Emirates'-%}{% raw %}"AED {{amount_no_decimals}}"{% endraw %}{%- else -%}{{ settings.product_save_type | json }}{%- endif -%},
-
-        {% endcomment %}
-         moneyFormat: {{ shop.money_format | json }},
+        {% if localization.country.iso_code == 'AE' %}
+              moneyFormat: 'AED \{\{amount_no_decimals\}\}',
+        {% else %}
+          moneyFormat: {{ shop.money_format | json }},
+        {% endif %}
         saveType: {{ settings.product_save_type | json }},
         productImageSize: {{ settings.product_grid_image_size | json }},
         productImageCover: {{ settings.product_grid_image_fill }},
