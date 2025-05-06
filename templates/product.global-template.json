@@ -55,7 +55,7 @@
         "ticks_P4CKCQ": {
           "type": "ticks",
           "settings": {
-            "richtext": "Acoustic ISO-2355-1 Accredited\nBest Quality / Best Price\nExtensive Power Point Options\nBluetooth Connect Speaker\nTrade Discounts On Quantities\nEurope's #1 Sustainable Meeting Pod"
+            "richtext": ""
           }
         }
       },
@@ -68,7 +68,7 @@
         "ticks_P4CKCQ"
       ],
       "custom_css": [
-        ".variant-wrapper{display:block!important}"
+        ".variant-wrapper {display: block !important;}"
       ],
       "settings": {
         "sku_enable": false,
@@ -135,7 +135,7 @@
         "content": "<p>{{ product.metafields.custom.product_rooms_features.value.content | metafield_tag }}</p>",
         "show_videos": true,
         "no_sound": false,
-        "loop": true,
+        "loop": false,
         "close_label": "Close door",
         "close_video": "{{ product.metafields.custom.product_rooms_features.value.close_video.value }}",
         "close_thumb": "{{ product.metafields.custom.product_rooms_features.value.close_thumbnail.value }}",
@@ -349,20 +349,39 @@
       "blocks": {
         "48c52e75-eab5-4c4d-9962-5612d7ab3824": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "disabled": true,
           "settings": {
             "title": "",
             "title_color": "",
             "title_size_v2": 0,
             "alignment": "center",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "margin_sides": 0,
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
             "show_instagram_link": false,
             "link_alignment": "left",
             "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": "<div id=\"feed-37680\" class=\"instafeed-shopify\"></div>"
+          }
+        },
+        "instafeed_app_block_iQTjbG": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "feed-37680",
+            "html_area": ""
           }
         },
         "judge_me_reviews_review_widget_ymjamq": {
@@ -372,6 +391,7 @@
       },
       "block_order": [
         "48c52e75-eab5-4c4d-9962-5612d7ab3824",
+        "instafeed_app_block_iQTjbG",
         "judge_me_reviews_review_widget_ymjamq"
       ],
       "settings": {}
