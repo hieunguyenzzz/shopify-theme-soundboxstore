@@ -11,7 +11,7 @@
 {% endfor %}
 
 <div
-  class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant{% endunless %}"
+  class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant {% else %} color-variant{% endunless %}"
 
   {%- for value in option.values -%}
     {% unless value.swatch %}
