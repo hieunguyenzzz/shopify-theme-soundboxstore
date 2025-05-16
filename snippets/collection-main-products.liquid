@@ -1,0 +1,46 @@
+{% if collection.handle == 'rent' %}
+  {% assign isRent = true %}
+{% endif %}
+{% assign products = collection.products %}
+{% capture items %}
+     {% for product in products %}
+        <li>
+          {% if isRent %}
+          {% render '[product-item-rent]', product: product, image: product.metafields.my_fields.featured_images.value  %}
+            {% else %}
+          {% render '[product-item]', product: product, image: product.metafields.my_fields.featured_images.value %}
+          {% endif %}
+        </li>
+      {% endfor %}
+  {% endcapture %}
+<section style="margin:1em auto" class="collection-main page-width">
+  <ul class="collection-products">
+    {{ items }}
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign url = block.settings.url | default: product.url %}
+        <li {{ block.shopify_attributes }}>
+          {% if isRent %}
+            {% render '[product-item-rent]',
+              product: block.settings.product,
+              url: url,
+              title: block.settings.title,
+              subtitle: block.settings.subtitle,
+              image: block.settings.image,
+              image_2: block.settings.image_2
+            %}
+          {% else %}
+            {% render '[product-item]',
+              product: block.settings.product,
+              url: url,
+              title: block.settings.title,
+              subtitle: block.settings.subtitle,
+              image: block.settings.image,
+              image_2: block.settings.image_2
+            %}
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
