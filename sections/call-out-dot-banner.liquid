@@ -205,7 +205,16 @@
   products: collection.products,
   products_count: collection.products_count
 %}
-
+{% if section.settings.show_products %}
+  {% render 'collection-main-products',
+    title: title,
+    description: description,
+    image: image,
+    collection: collection,
+    products: collection.products,
+    products_count: collection.products_count
+  %}
+{% endif %}
 {% schema %}
 {
   "name": "call out dot banner",
