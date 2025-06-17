@@ -21,6 +21,7 @@
         {% if block.settings.url.first == '/' %}
           {% assign url = routes.root_url | append: block.settings.url %}
         {% endif %}
+        {{ block.settings.url.first }}
         <li {{ block.shopify_attributes }}>
           {% render '[product-item]',
             product: block.settings.product,
