@@ -19,9 +19,9 @@
     {% for block in section.blocks %}
       {% if block.type == 'product' %}
         {% assign url = block.settings.url | default: product.url %}
-        {% if block.settings.url %}
+        {% unless block.settings.url contains routes.root_url %}
           {% assign url = routes.root_url | append: block.settings.url %}
-        {% endif %}
+        {% endunless %}
         <li {{ block.shopify_attributes }}>
           {% if isRent %}
             {% render '[product-item-rent]',
