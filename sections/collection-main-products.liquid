@@ -18,7 +18,7 @@
     {% for block in section.blocks %}
       {% if block.type == 'product' %}
         {% assign url = block.settings.url | default: product.url %}
-        {% if block.settings.url %}
+        {% if block.settings.url.first == '/' %}
           {% assign url = routes.root_url | append: block.settings.url %}
         {% endif %}
         <li {{ block.shopify_attributes }}>
@@ -35,7 +35,7 @@
       {% if block.type == 'collection' %}
         {% assign collection = block.settings.collection %}
         {% assign url = block.settings.url | default: collection.url %}
-        {% if block.settings.url %}
+        {% if block.settings.url.first == '/' %}
           {% assign url = routes.root_url | append: block.settings.url %}
         {% endif %}
         <li {{ block.shopify_attributes }}>
