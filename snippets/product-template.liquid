@@ -448,6 +448,8 @@
                         {{ block.settings.product_tagline }}
                       </div>
                     {% endif %}
+                  {% when 'countdown' %}
+                    {% render 'product-countdown', section: block %}
                   {%- when 'buy_buttons' -%}
                     <div
                       class="product-block buy_buttons"
