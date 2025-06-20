@@ -1,0 +1,260 @@
+{% if section.settings.datetime %}
+  {% comment %}
+    <style>
+          #shopify-section-countdown {
+              position:relative;
+          }
+          .{{section.id}}-countDownDateWrap  {
+            padding: 0 0.3em;
+           font-size: min(3vw, 0.8em);
+          gap: 0.2em;
+          flex-direction: column;
+          margin-bottom: 1em;
+          text-transform: capitalize;
+          flex-wrap: wrap;
+          align-items: baseline;
+          }
+
+          .{{section.id}}-countDownDateWrap  #{{section.id}}-countDownDate {
+      display: flex
+      ;
+          text-align: center;
+          gap: 0.2em;
+          white-space: nowrap;
+          padding: 0.5em .5em;
+          background: #303a44;
+          color: white;font-size:14px;
+          }
+
+          .{{section.id}}-countDownDateWrap  .countdown {
+              line-height: 1em;
+              display:flex;gap:0.2em;
+             font-weight: 600;
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: "Banana Grotesk", var(--typeBasePrimary), var(--typeBaseFallback), system-ui;
+          }
+          .{{section.id}}-countDownDateWrap  .countdown>*:before {
+              display:block;
+              position: relative;
+              content: "00\A 01\A 02\A 03\A 04\A 05\A 06\A 07\A 08\A 09\A 10\A 11\A 12\A 13\A 14\A 15\A 16\A 17\A 18\A 19\A 20\A 21\A 22\A 23\A 24\A 25\A 26\A 27\A 28\A 29\A 30\A 31\A 32\A 33\A 34\A 35\A 36\A 37\A 38\A 39\A 40\A 41\A 42\A 43\A 44\A 45\A 46\A 47\A 48\A 49\A 50\A 51\A 52\A 53\A 54\A 55\A 56\A 57\A 58\A 59\A 60\A 61\A 62\A 63\A 64\A 65\A 66\A 67\A 68\A 69\A 70\A 71\A 72\A 73\A 74\A 75\A 76\A 77\A 78\A 79\A 80\A 81\A 82\A 83\A 84\A 85\A 86\A 87\A 88\A 89\A 90\A 91\A 92\A 93\A 94\A 95\A 96\A 97\A 98\A 99\A";
+              white-space: pre;
+              top: calc(var(--value) * -1em);
+              text-align: center;
+              transition: all 1s cubic-bezier(1,0,0,1);
+          }
+          .{{section.id}}-countDownDateWrap  .countdown-day:before {
+              display: block;
+              position: relative;
+              content: var(--content);
+          }
+          .{{section.id}}-countDownDateWrap  .countdown>* {
+              height: 1em;
+              display: inline-block;
+              overflow-y: hidden;
+          }
+          @media only screen and (max-width: 540px) {
+             .{{section.id}}-countDownDateWrap  {
+                  align-items:center
+              }
+
+          }
+    </style>
+  {% endcomment %}
+  <style>
+              #shopify-section-countdown {
+                  position:relative;
+              }
+              .{{section.id}}-countDownDateWrap  {
+                padding: 0 0.3em;
+               font-size: min(3vw, 0.8em);
+              gap: 0.2em;
+              flex-direction: column;
+              text-align:center
+              margin-bottom: 1em;
+              text-transform: capitalize;
+              flex-wrap: wrap;
+              align-items: center;
+    margin-bottom:1em
+              }
+
+              .{{section.id}}-countDownDateWrap  #{{section.id}}-countDownDate {
+          display: flex
+          ;
+              text-align: center;
+              gap: 1.5em;
+              white-space: nowrap;
+              padding: 1em 1em;
+              background: #303a44;
+              color: white;font-size:14px;
+              align-items: center;
+              justify-content: center;
+                width:100%;
+              }
+
+              .{{section.id}}-countDownDateWrap  .countdown {
+                  line-height: 1em;
+                  display:flex;gap:0.2em;
+                 font-weight: 600;
+          font-size: 10px;
+          line-height: 1;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-family: "Banana Grotesk", var(--typeBasePrimary), var(--typeBaseFallback), system-ui;
+        display:flex;flex-direction:column; align-items:center
+              }
+              .{{section.id}}-countDownDateWrap  .countdown>*:before {
+                  display:block;
+                  position: relative;
+                  content: "00\A 01\A 02\A 03\A 04\A 05\A 06\A 07\A 08\A 09\A 10\A 11\A 12\A 13\A 14\A 15\A 16\A 17\A 18\A 19\A 20\A 21\A 22\A 23\A 24\A 25\A 26\A 27\A 28\A 29\A 30\A 31\A 32\A 33\A 34\A 35\A 36\A 37\A 38\A 39\A 40\A 41\A 42\A 43\A 44\A 45\A 46\A 47\A 48\A 49\A 50\A 51\A 52\A 53\A 54\A 55\A 56\A 57\A 58\A 59\A 60\A 61\A 62\A 63\A 64\A 65\A 66\A 67\A 68\A 69\A 70\A 71\A 72\A 73\A 74\A 75\A 76\A 77\A 78\A 79\A 80\A 81\A 82\A 83\A 84\A 85\A 86\A 87\A 88\A 89\A 90\A 91\A 92\A 93\A 94\A 95\A 96\A 97\A 98\A 99\A";
+                  white-space: pre;
+                  top: calc(var(--value) * -1em);
+                  text-align: center;
+                  transition: all 1s cubic-bezier(1,0,0,1);
+              }
+              .{{section.id}}-countDownDateWrap  .countdown-day:before {
+                  display: block;
+                  position: relative;
+                  content: var(--content);
+              }
+              .{{section.id}}-countDownDateWrap  .countdown>* {
+                  height: 1em;
+                  display: inline-block;
+                  font-size:42px;
+
+                  overflow-y: hidden;
+              }
+              @media only screen and (max-width: 540px) {
+                 .{{section.id}}-countDownDateWrap  {
+                      align-items:center
+                  }
+
+              }
+  </style>
+  <div class="{{section.id}}-countDownDateWrap" style="display:none">
+    <span>
+      {{ section.settings.text }}
+    </span>
+    <span id="{{section.id}}-countDownDate" style="--days: 00; --hours: 00; --minutes: 00; --seconds: 00;">
+      <span class="countdown"><span style="--value: var(--days);"></span> days </span>
+      <span class="countdown"><span style="--value: var(--hours);"></span> hours </span>
+      <span class="countdown"><span style="--value: var(--minutes);"></span> minutes </span>
+      <span class="countdown"><span style="--value: var(--seconds);"></span> seconds </span>
+    </span>
+  </div>
+  <script>
+    (()=>{
+      let datetime = String({{section.settings.datetime | json}})
+      console.log({datetime})
+      if (!datetime) {
+        return
+      }
+      let strings = {
+        day:"day",
+        days:"days"
+      }
+      function addHours(date, h) {
+        date.setTime(date.getTime() + h * 60 * 60 * 1000)
+        return date
+      }
+      // Set the date we're counting down to
+      var date = new Date(datetime)
+      var countDownDate = addHours(date, 7).getTime()
+      var now = new Date().getTime()
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now
+      if (distance <= 0) {
+        return
+      }
+      if (distance > 0) {
+
+          const displayCD = () => {
+             document.querySelector(".{{section.id}}-countDownDateWrap").style.display = "flex"
+          };
+
+          // Fallback for browsers that don't support View Transitions:
+          if (!document.startViewTransition) {
+            displayCD();
+            return;
+          }
+
+          // With View Transitions:
+          const transition = document.startViewTransition(() => displayCD());
+        }
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get today's date and time
+        var now = new Date().getTime()
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now
+        if (distance <= 0) {
+
+          const displayCD = () => {
+             document.querySelector(".{{section.id}}-countDownDateWrap").style.display = "none"
+          };
+
+          // Fallback for browsers that don't support View Transitions:
+          if (!document.startViewTransition) {
+            displayCD();
+            return;
+          }
+
+          // With View Transitions:
+          const transition = document.startViewTransition(() => displayCD());
+          return
+        }
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        )
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+        // Display the result in the element with id="demo"
+        let countdownstring = " "
+        if (days === 0) {
+        } else if (days === 1) {
+          countdownstring = countdownstring + days + " " + strings["day"] + ", "
+        } else {
+          countdownstring = countdownstring + days + " " + strings["days"] + ", "
+        }
+        document
+          .getElementById("{{section.id}}-countDownDate")
+          .style.setProperty("--days", days + "")
+        document
+          .getElementById("{{section.id}}-countDownDate")
+          .style.setProperty("--hours", hours + "")
+        document
+          .getElementById("{{section.id}}-countDownDate")
+          .style.setProperty("--minutes", minutes + "")
+        document
+          .getElementById("{{section.id}}-countDownDate")
+          .style.setProperty("--seconds", seconds + "")
+      }, 1000)
+    })()
+  </script>
+{% endif %}
+{% comment %}
+    {% schema %}
+  {
+    "name": "Countdown",
+    "settings": [{
+      "type": "text",
+      "id": "datetime",
+      "label": "Datetime",
+
+    },{
+      "type": "text",
+      "default":"Beat the Price Hike on Folio Booths!",
+      "label": "Text",
+      "id": "text"
+    },{
+      "type": "url",
+      "id": "url",
+      "label": "Url"
+    }]
+  }
+  {% endschema %}
+{% endcomment %}
