@@ -146,7 +146,7 @@
   </div>
   <script>
     (()=>{
-      let datetime = String({{section.settings.datetime | json}})
+      let datetime = "2025-06-26" || String({{section.settings.datetime | json}})
       console.log({datetime})
       if (!datetime) {
         return
