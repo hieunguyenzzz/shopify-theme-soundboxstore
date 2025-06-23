@@ -135,13 +135,17 @@
   </style>
   <div class="{{section.id}}-countDownDateWrap" style="display:none">
     <span>
-      {{ section.settings.text }}
+      {{ 'strings.countdown.text' | t }}
     </span>
     <span id="{{section.id}}-countDownDate" style="--days: 00; --hours: 00; --minutes: 00; --seconds: 00;">
-      <span class="countdown"><span style="--value: var(--days);"></span> days </span>
-      <span class="countdown"><span style="--value: var(--hours);"></span> hours </span>
-      <span class="countdown"><span style="--value: var(--minutes);"></span> minutes </span>
-      <span class="countdown"><span style="--value: var(--seconds);"></span> seconds </span>
+      <span class="countdown"><span style="--value: var(--days);"></span> {{ 'strings.countdown.days' | t }} </span>
+      <span class="countdown"><span style="--value: var(--hours);"></span> {{ 'strings.countdown.hours' | t }} </span>
+      <span class="countdown"
+        ><span style="--value: var(--minutes);"></span> {{ 'strings.countdown.minutes' | t }}
+      </span>
+      <span class="countdown"
+        ><span style="--value: var(--seconds);"></span> {{ 'strings.countdown.seconds' | t }}
+      </span>
     </span>
   </div>
   <script>
