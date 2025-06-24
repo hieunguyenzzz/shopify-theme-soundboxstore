@@ -2,9 +2,15 @@
   {% assign sectionid = section.id %}
 {% endunless %}
 <style>
-     #shopify-section-{{sectionid}}{
+   #shopify-section-{{sectionid}}{
        margin-top:0;
+           visibility: hidden;
      }
+  #shopify-section-{{sectionid}}:has(.slick-initialized){
+       margin-top:0;
+           visibility: visible;
+     }
+
        #shopify-section-{{sectionid}} p{
        margin:0;
      }
