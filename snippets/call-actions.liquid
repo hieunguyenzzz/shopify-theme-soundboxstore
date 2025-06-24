@@ -4,12 +4,8 @@
 <style>
    #shopify-section-{{sectionid}}{
        margin-top:0;
-           visibility: hidden;
      }
-  #shopify-section-{{sectionid}}:has(.slick-initialized){
-       margin-top:0;
-           visibility: visible;
-     }
+
 
        #shopify-section-{{sectionid}} p{
        margin:0;
@@ -50,6 +46,14 @@
      .product-icon-text-section-{{sectionid}} .slick-initialized.slick-slider .col{
       display:unset
     }
+       #shopify-section-{{sectionid}}{
+       margin-top:0;
+           visibility: hidden;
+     }
+  #shopify-section-{{sectionid}}:has(.slick-initialized){
+       margin-top:0;
+           visibility: visible;
+     }
     }
       @media screen and (min-width: 1440) {
         .product-icon-text-section .page-width{
