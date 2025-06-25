@@ -35,12 +35,12 @@
            transform :scale(1.1)
       }
 </style>
-{% if section.settings.call_banner_0 %}
+{% if section.settings.call_banner_1 %}
   <div class="{{ section.id }}-wrap">
-    {{ section.settings.call_banner_0 | image_url: width: 700 | image_tag }}
+    {{ section.settings.call_banner_1 | image_url: width: 700 | image_tag }}
     <a
       target="_blank"
-      href="{{ section.settings.url_0 }}"
+      href="{{ section.settings.url_1 }}"
     >
     </a>
   </div>
@@ -52,12 +52,12 @@
   "settings": [
     {
       "type": "image_picker",
-       "id": "call_banner_0",
+       "id": "call_banner_1",
       "label": "Call Image",
     },
      {
       "type": "url",
-       "id": "url_0",
+       "id": "url_1",
       "label": "Url"
     }
   ],
