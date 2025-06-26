@@ -5,7 +5,7 @@
 <style type="text/tailwindcss">
   @layer base {
     h2 {
-          font-size: calc(var(--typeHeaderSize)*.85);
+      font-size: calc(var(--typeHeaderSize) * 0.85);
     }
   }
 </style>
@@ -86,7 +86,7 @@
               href=""
               onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
             >
-              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
+              {{- section.settings.btn_text | default: 'Free Design Survey ' -}}
             </a>
           </p>
         {% endif %}
@@ -200,88 +200,98 @@
   </div>
 </section>
 <script>
-  (()=>{
-   function logSubmit(event) {
+  (() => {
+    function logSubmit(event) {
       if (event.preventDefault) event.preventDefault();
       window.Shopify.captcha.protect(event.target, () => {
-         console.log(`Form Submitted! Timestamp: ${event.timeStamp}`,event);
+        console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
 
-     let data={}
-      new FormData(event.target).forEach((value, key) =>{
-          console.log(key,value);
-data[key]=value;
-      })
-      fetch("https://hooks.zapier.com/hooks/catch/14043376/2ustr8l/",
-{
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-      mode: "no-cors", 
-    body: JSON.stringify(data)
-})
-.then(function(res){ console.log(res) })
-.catch(function(res){ console.log(res) })
-
+        let data = {};
+        new FormData(event.target).forEach((value, key) => {
+          console.log(key, value);
+          data[key] = value;
+        });
+        fetch('https://hooks.zapier.com/hooks/catch/14043376/2ustr8l/', {
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify(data),
+        })
+          .then(function (res) {
+            console.log(res);
+          })
+          .catch(function (res) {
+            console.log(res);
+          });
       });
-setTimeout(()=>{event.target.submit();},300)
+      setTimeout(() => {
+        event.target.submit();
+      }, 300);
 
       return false;
-  
     }
-const form = document.getElementById("{{- form_id -}}");
-form.addEventListener("submit", logSubmit);
-  })()
+    const form = document.getElementById('{{- form_id -}}');
+    form.addEventListener('submit', logSubmit);
+  })();
 </script>
 {% schema %}
 {
   "name": "For Edu top",
-  "settings":[ {
-          "type": "image_picker",
-          "id": "avatar",
-          "label": "Avatar"
-  },{
-          "type": "text",
-          "id": "form-title",
-          "label": "Form title",
-    "default":"Find Out How Acoustic Booths Can Help Focus & Productivity"
-        },{
-          "type": "text",
-          "id": "sub-heading-top",
-          "label": "Sub Heading",
-    "default":"Embracing Sustainability"
-        },{
-          "type": "text",
-          "id": "heading",
-          "label": "Heading",
-    "default":"Embracing Sustainability"
-        },
+  "settings": [
     {
-          "type": "text",
-          "id": "sub-heading-bottom",
-          "label": "Sub Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-            "default":"<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
-        },
-         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-  },{
-          "type": "text",
-          "id": "btn_text",
-          "label": "Button text",
-            "default":"Schedule Design Survey "
-  },  {
-          "type": "url",
-          "id": "calendly_url",
-          "label": "calendly url"
-        }],
+      "type": "image_picker",
+      "id": "avatar",
+      "label": "Avatar"
+    },
+    {
+      "type": "text",
+      "id": "form-title",
+      "label": "Form title",
+      "default": "Find Out How Acoustic Booths Can Help Focus & Productivity"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading-top",
+      "label": "Sub Heading",
+      "default": "Embracing Sustainability"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Embracing Sustainability"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading-bottom",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "Free Design Survey "
+    },
+    {
+      "type": "url",
+      "id": "calendly_url",
+      "label": "calendly url"
+    }
+  ],
   "presets": [
     {
       "name": "For Edu top",

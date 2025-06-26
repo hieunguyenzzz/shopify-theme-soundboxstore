@@ -2,7 +2,7 @@
 <style type="text/tailwindcss">
   @layer base {
     h2 {
-          font-size: calc(var(--typeHeaderSize)*.85);
+      font-size: calc(var(--typeHeaderSize) * 0.85);
     }
   }
 </style>
@@ -58,7 +58,7 @@
                 href="{{ section.settings.calendly_url  }}"
                 onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url  | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
               >
-                {{- block.settings.btn_text | default: 'Schedule Design Survey ' -}}
+                {{- block.settings.btn_text | default: 'Free Design Survey ' -}}
               </a>
             </div>
           </div>
@@ -94,7 +94,7 @@
                 href="{{ section.settings.calendly_url  }}"
                 onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
               >
-                {{- block.settings.btn_text | default: 'Schedule Design Survey ' -}}
+                {{- block.settings.btn_text | default: 'Free Design Survey ' -}}
               </a>
             </div>
           </div>
@@ -125,11 +125,11 @@
       "id": "image",
       "label": "Image"
     },
-     {
-          "type": "url",
-          "id": "calendly_url",
-          "label": "calendly url"
-        }
+    {
+      "type": "url",
+      "id": "calendly_url",
+      "label": "calendly url"
+    }
   ],
   "blocks": [
     {
@@ -162,7 +162,7 @@
           "type": "text",
           "id": "btn_text",
           "label": "Button text",
-          "default": "Schedule Design Survey "
+          "default": "Free Design Survey "
         },
 
         {

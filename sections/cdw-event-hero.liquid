@@ -21,7 +21,7 @@
 <style type="text/tailwindcss">
   @layer base {
     h2 {
-          font-size: calc(var(--typeHeaderSize)*.85);
+      font-size: calc(var(--typeHeaderSize) * 0.85);
     }
   }
 </style>
@@ -170,7 +170,7 @@
               href="{{ section.settings.btn_url }}"
               onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
             >
-              {{- section.settings.btn_text | default: 'Schedule Design Survey ' -}}
+              {{- section.settings.btn_text | default: 'Free Design Survey ' -}}
             </a>
           </p>
         {% endif %}
@@ -218,114 +218,116 @@
   </div>
 </section>
 <script>
-  (()=>{
+  (() => {
+    // const calendlyLinks = [
+    //       "https://calendly.com/hush-w3u/kozee-demo-coffee-and-croissants",
+    //       "https://calendly.com/hush-w3u/importance-of-biophillia-talk",
+    //       "https://calendly.com/hush-w3u/guided-showroom-tour",
+    //       "https://calendly.com/hush-w3u/forecasting-for-the-future-of-workplace-design-talk",
+    //       "https://calendly.com/hush-w3u/quell-co-working-demo",
+    //       "https://calendly.com/hush-w3u/guided-showroom-tour-1"
+    //   ];
 
-      // const calendlyLinks = [
-      //       "https://calendly.com/hush-w3u/kozee-demo-coffee-and-croissants",
-      //       "https://calendly.com/hush-w3u/importance-of-biophillia-talk",
-      //       "https://calendly.com/hush-w3u/guided-showroom-tour",
-      //       "https://calendly.com/hush-w3u/forecasting-for-the-future-of-workplace-design-talk",
-      //       "https://calendly.com/hush-w3u/quell-co-working-demo",
-      //       "https://calendly.com/hush-w3u/guided-showroom-tour-1"
-      //   ];
-
-      //   // Extract slugs and create a mapping between slugs and full links
-      //   const slugToLinkMap = {};
-      //   calendlyLinks.forEach(link => {
-      //       // Extract the slug (last part of the URL)
-      //       const slug = link.split('/').pop();
-      //       slugToLinkMap[slug] = link;
-      //   });
+    //   // Extract slugs and create a mapping between slugs and full links
+    //   const slugToLinkMap = {};
+    //   calendlyLinks.forEach(link => {
+    //       // Extract the slug (last part of the URL)
+    //       const slug = link.split('/').pop();
+    //       slugToLinkMap[slug] = link;
+    //   });
     // Function to handle hash changes
-        function handleHashChange() {
-            const hash = window.location.hash.substring(1);
-            const slug = hash.split('/').pop();
-          console.log({slug})
-            let e = document.querySelector(`#${slug}-value`)
-            if(e){
-              e.checked=true
-               document.querySelector("#consultation-form-wrap").scrollIntoView()
-            }
-           
-        }
+    function handleHashChange() {
+      const hash = window.location.hash.substring(1);
+      const slug = hash.split('/').pop();
+      console.log({ slug });
+      let e = document.querySelector(`#${slug}-value`);
+      if (e) {
+        e.checked = true;
+        document.querySelector('#consultation-form-wrap').scrollIntoView();
+      }
+    }
 
-        // Listen for hash changes
-        window.addEventListener('hashchange', handleHashChange);
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
 
-        // Check the hash when the page initially loads
-        document.addEventListener('DOMContentLoaded', handleHashChange);
-  })()
+    // Check the hash when the page initially loads
+    document.addEventListener('DOMContentLoaded', handleHashChange);
+  })();
 </script>
 {% schema %}
 {
   "name": "cdw-event-hero",
-  "settings":[
+  "settings": [
     {
       "type": "image_picker",
       "id": "bg",
       "label": "Background"
-    }
-    ,
+    },
     {
-    "type": "checkbox",
-    "id": "hidemap",
-    "label": "Hide map"
-  }, {
-          "type": "url",
-          "id": "calendly_url",
-          "label": "calendly url"
-        },{
-          "type": "image_picker",
-          "id": "avatar",
-          "label": "Avatar"
-  },{
-          "type": "text",
-          "id": "form-title",
-          "label": "Form title",
-    "default":"Find Out How Acoustic Booths Can Help Focus & Productivity"
-        },{
-          "type": "text",
-          "id": "sub-heading-top",
-          "label": "Sub Heading",
-    "default":"Embracing Sustainability"
-        },{
-          "type": "text",
-          "id": "heading",
-          "label": "Heading",
-    "default":"Embracing Sustainability"
-        },
+      "type": "checkbox",
+      "id": "hidemap",
+      "label": "Hide map"
+    },
     {
-          "type": "text",
-          "id": "sub-heading-bottom",
-          "label": "Sub Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-            "default":"<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
-        },
-     {
-          "type": "richtext",
-          "id": "date20th",
-          "label": "20th"
-        },
-     {
-          "type": "richtext",
-          "id": "date21st",
-          "label": "21st"
-        },
-     {
-          "type": "richtext",
-          "id": "date22nd",
-          "label": "22nd"
-        },
+      "type": "url",
+      "id": "calendly_url",
+      "label": "calendly url"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar",
+      "label": "Avatar"
+    },
+    {
+      "type": "text",
+      "id": "form-title",
+      "label": "Form title",
+      "default": "Find Out How Acoustic Booths Can Help Focus & Productivity"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading-top",
+      "label": "Sub Heading",
+      "default": "Embracing Sustainability"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Embracing Sustainability"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading-bottom",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "date20th",
+      "label": "20th"
+    },
+    {
+      "type": "richtext",
+      "id": "date21st",
+      "label": "21st"
+    },
+    {
+      "type": "richtext",
+      "id": "date22nd",
+      "label": "22nd"
+    },
 
-{
-          "type": "richtext",
-          "id": "address",
-          "label": "Address"
-        },
+    {
+      "type": "richtext",
+      "id": "address",
+      "label": "Address"
+    }
   ],
   "presets": [
     {
