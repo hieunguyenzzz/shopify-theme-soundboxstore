@@ -52,10 +52,6 @@
   <div class="page-width">
     <div
       class="w-full md:flex gap-12 md:min-h-[40vw] md:items-center py-6 md:py-12 "
-      style="
-        background: #ffffffb8;
-        backdrop-filter: blur(3px);
-      "
     >
       {% if section.settings.image %}
         {{
@@ -66,7 +62,13 @@
       {% else %}
         <div class="inset-0 -z-10 h-full w-full object-cover absolute bg-[#f7f7f7]"></div>
       {% endif %}
-      <div class="py-6  md:w-1/2 md:bg-white rounded-lg md:p-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center ">
+      <div
+        style="
+          background: #ffffffb8;
+          backdrop-filter: blur(3px);
+        "
+        class="py-6  md:w-1/2 md:bg-white rounded-lg md:p-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center "
+      >
         <div class="flex gap-4 md:gap-8">
           {% if section.settings.avatar %}
             {{ section.settings.avatar | image_url: width: 500 | image_tag: class: 'max-w-[300px] w-1/3 rounded-lg' }}
