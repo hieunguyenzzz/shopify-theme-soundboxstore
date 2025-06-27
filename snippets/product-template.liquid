@@ -682,17 +682,6 @@
                       </div>
                     </div>
                 {%- endcase -%}
-              {%- else -%}
-                <div
-                  data-blocks-holder
-                  data-url="{{ product.url | within: collection }}"
-                  data-template="{{ product.template_suffix }}"
-                >
-                  <div
-                    class="placeholder-content"
-                    style="min-height: 86px;"
-                  ></div>
-                </div>
                 {% if product.metafields.custom.on_showroom.value %}
                   <style>
                                       a.showroom_available>div {
@@ -759,6 +748,17 @@
                     </div>
                   </a>
                 {% endif %}
+              {%- else -%}
+                <div
+                  data-blocks-holder
+                  data-url="{{ product.url | within: collection }}"
+                  data-template="{{ product.template_suffix }}"
+                >
+                  <div
+                    class="placeholder-content"
+                    style="min-height: 86px;"
+                  ></div>
+                </div>
               {%- endfor -%}
             </div>
           </div>
