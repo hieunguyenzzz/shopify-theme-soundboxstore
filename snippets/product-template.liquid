@@ -693,6 +693,72 @@
                     style="min-height: 86px;"
                   ></div>
                 </div>
+                {% if product.metafields.custom.on_showroom.value %}
+                  <style>
+                                      a.showroom_available>div {
+                        visibility:hidden;
+                        transition: all 0.2s ease-in-out;
+                        white-space:nowrap;
+                        text-overflow:ellipsis;
+                        overflow:hidden;
+                        opacity:0
+                    }
+                    a.showroom_available:hover>div {
+                        visibility:visible;
+                        text-decoration:underline;
+                        opacity:1
+                    }
+                  </style>
+                  <a
+                    href="{{ settings.page_showroom.url }}"
+                    style="
+                      background-color: #a7a973;
+                      border-color: #303a44;
+                      font-weight: 600;
+                      font-size: 14px;
+                      line-height: 1;
+                      letter-spacing: 2px;
+                      text-transform: uppercase;
+                      font-family: &quot;Banana Grotesk&quot;, var(--typeBasePrimary), var(--typeBaseFallback), system-ui;
+                      padding: 22px 15px;
+                      width: 100%;
+                      color: white;
+                      text-align: center;
+                      margin: auto;
+                      width: auto;
+                      display: block;
+                      min-width: 100%;
+                      position: relative;
+                    "
+                    class="showroom_available"
+                  >
+                    Available to view in showroom
+                    <div
+                      style="
+                        background-color: #a7a973;
+                        border-color: #303a44;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 1;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        font-family: &quot;Banana Grotesk&quot;, var(--typeBasePrimary), var(--typeBaseFallback), system-ui;
+                        padding: 22px 15px;
+                        width: 100%;
+                        color: white;
+                        text-align: center;
+                        margin: auto;
+                        width: auto;
+                        display: block;
+                        min-width: 100%;
+                        position: absolute;
+                        inset: 0;
+                      "
+                    >
+                      Schedule view / remote tour today!
+                    </div>
+                  </a>
+                {% endif %}
               {%- endfor -%}
             </div>
           </div>
