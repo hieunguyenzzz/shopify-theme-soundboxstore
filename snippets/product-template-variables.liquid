@@ -59,23 +59,23 @@ You can learn more about this (and learn how to cleanly revert these changes) at
       "name": {{ product.title | json }},
       "width": 1024,
       "height": 1024
-    }{% if product.metafields.reviews.rating.value and product.metafields.reviews.rating_count.value %},
+    }{%- assign product_rating = product.metafields.reviews.rating.value -%}
+    {%- assign product_rating_count = product.metafields.reviews.rating_count.value -%}
+    {%- if product_rating and product_rating_count and product_rating != blank and product_rating_count != blank -%},
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": {{ product.metafields.reviews.rating.value | json }},
-      "reviewCount": {{ product.metafields.reviews.rating_count.value | json }},
-      "bestRating": "5",
-      "worstRating": "1"
-    }{% endif %}
+      "ratingValue": {{ product_rating | times: 1.0 }},
+      "reviewCount": {{ product_rating_count | times: 1 }},
+      "bestRating": 5,
+      "worstRating": 1
+    }{%- endif -%}
   }
 {%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
 </script>
 {%- endif -%}
 
 {%- comment -%}Add individual review structured data if reviews exist{%- endcomment -%}
-{%- if product.metafields.spr.reviews != blank -%}
-  {%- assign spr_reviews = product.metafields.spr.reviews -%}
-  {%- if spr_reviews contains 'data-rating' -%}
+{%- if product.metafields.spr.reviews != blank or product_rating -%}
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -88,9 +88,9 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   },
   "reviewRating": {
     "@type": "Rating",
-    "ratingValue": "{% if product.metafields.reviews.rating.value %}{{ product.metafields.reviews.rating.value }}{% else %}5{% endif %}",
-    "bestRating": "5",
-    "worstRating": "1"
+    "ratingValue": {%- if product_rating and product_rating != blank -%}{{ product_rating | times: 1.0 }}{%- else -%}5{%- endif -%},
+    "bestRating": 5,
+    "worstRating": 1
   },
   "author": {
     "@type": "Organization",
@@ -103,5 +103,4 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   }
 }
 </script>
-  {%- endif -%}
 {%- endif -%}
