@@ -696,18 +696,18 @@
               {%- endfor -%}
               {% if product.metafields.custom.on_showroom.value %}
                 <style>
-                                    a.showroom_available>div {
-                      visibility:hidden;
-                      transition: all 0.2s ease-in-out;
-                      white-space:nowrap;
-                      text-overflow:ellipsis;
-                      overflow:hidden;
-                      opacity:0
+                  a.showroom_available > div {
+                    visibility: hidden;
+                    transition: all 0.2s ease-in-out;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    opacity: 0;
                   }
-                  a.showroom_available:hover>div {
-                      visibility:visible;
-                      text-decoration:underline;
-                      opacity:1
+                  a.showroom_available:hover > div {
+                    visibility: visible;
+                    text-decoration: underline;
+                    opacity: 1;
                   }
                 </style>
                 <a
@@ -730,6 +730,7 @@
                     display: block;
                     min-width: 100%;
                     position: relative;
+                    margin-top: 11px;
                   "
                   class="showroom_available"
                 >
