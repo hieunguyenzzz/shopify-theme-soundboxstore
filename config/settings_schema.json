@@ -16,8 +16,8 @@
         "label": "Is Reseller"
       },
       {
-        "type" :"url",
-        "id":"reseller_forgotpassword",
+        "type": "url",
+        "id": "reseller_forgotpassword",
         "label": "forgotpassword reseller page"
       }
     ]
@@ -54,44 +54,53 @@
   },
   {
     "name": "Collections",
-    "settings": [{
-      "type": "collection",
-      "id": "collection_products",
-      "label": "Explore Products"
-    },{
-      "type": "collection",
-      "id": "collection_accessories",
-      "label": "accessories"
-    }]
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection_products",
+        "label": "Explore Products"
+      },
+      {
+        "type": "collection",
+        "id": "collection_accessories",
+        "label": "accessories"
+      }
+    ]
   },
   {
     "name": "Pages",
-    "settings": [{
-      "type": "page",
-      "id": "page_showroom",
-      "label": "Showroom"
-    },{
-      "type": "page",
-      "id": "page_remote_tour",
-      "label": "Remote Tour"
-    }
-    ,{
-      "type": "page",
-      "id": "page_consultancy",
-      "label": "consultancy"
-    },{
-      "type": "page",
-      "id": "page_about",
-      "label": "About"
-    },{
-      "type": "page",
-      "id": "page_contact",
-      "label": "Contact"
-    },{
-      "type": "page",
-      "id": "page_accessories",
-      "label": "accessories"
-    }]
+    "settings": [
+      {
+        "type": "page",
+        "id": "page_showroom",
+        "label": "Showroom"
+      },
+      {
+        "type": "page",
+        "id": "page_remote_tour",
+        "label": "Remote Tour"
+      },
+      {
+        "type": "page",
+        "id": "page_consultancy",
+        "label": "consultancy"
+      },
+      {
+        "type": "page",
+        "id": "page_about",
+        "label": "About"
+      },
+      {
+        "type": "page",
+        "id": "page_contact",
+        "label": "Contact"
+      },
+      {
+        "type": "page",
+        "id": "page_accessories",
+        "label": "accessories"
+      }
+    ]
   },
   {
     "name": "Phone bumber",
@@ -101,6 +110,12 @@
         "id": "phone_number",
         "label": "Default Phone number",
         "default": "+44 (0) 20 4586 3800"
+      },
+      {
+        "type": "text",
+        "id": "phone_number_ie",
+        "label": "Ireland",
+        "default": "+353 19643450"
       },
       {
         "type": "text",
@@ -1189,8 +1204,8 @@
         "type": "header",
         "content": "Sharing options"
       },
-      
-         {
+
+      {
         "type": "checkbox",
         "id": "share_linkedin",
         "label": "Share on Linkedin",
