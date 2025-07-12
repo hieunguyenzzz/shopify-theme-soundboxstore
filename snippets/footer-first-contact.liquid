@@ -57,7 +57,9 @@
               {% if localization.country.iso_code == 'IE' %}
                 {% if block.settings['address-heading_ie'] != blank or block.settings.address_ie != blank %}
                   <li class="location address_ie">
-                    <style></style>
+                    <style>
+                      .location.address_1{display:none}
+                    </style>
                     {% if block.settings['address-heading_ie'] != blank %}
                       <strong>{{ block.settings['address-heading_ie'] }}</strong>
                     {% endif %}
@@ -85,7 +87,6 @@
               {% if localization.country.iso_code == 'ES' %}
                 {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
                   <li class="location address_3">
-                    <syle>.location.address_1{display:none} </syle>
                     {% if block.settings['address-heading3'] != blank %}
                       <strong>{{ block.settings['address-heading3'] }}</strong>
                     {% endif %}
