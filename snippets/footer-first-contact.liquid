@@ -54,6 +54,31 @@
                   {% endif %}
                 </li>
               {% endif %}
+              {% if block.settings['address-heading_ie'] != blank or block.settings.address_ie != blank %}
+                <li class="location address_ie">
+                  {% if block.settings['address-heading_ie'] != blank %}
+                    <strong>{{ block.settings['address-heading_ie'] }}</strong>
+                  {% endif %}
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    {% if block.settings.address_url_ie != blank %}
+                      href="{{ block.settings.address_url_ie }}"
+                    {% else %}
+                      href="https://www.google.com/search?q={{ block.settings.address_ie }}"
+                    {% endif %}
+                  >
+                    {{- block.settings.address_ie -}}
+                  </a>
+                  <br>
+                  {% if block.settings.phone_ie != blank %}
+                    {{ 'customer.addresses.phone' | t }}:
+                    <a href="tel:{{settings.phone_number_ie | default: block.settings.phone_ie}}">
+                      {{- settings.phone_number_ie | default: block.settings.phone_ie -}}
+                    </a>
+                  {% endif %}
+                </li>
+              {% endif %}
               {% if localization.country.iso_code == 'ES' %}
                 {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
                   <li class="location address_3">
