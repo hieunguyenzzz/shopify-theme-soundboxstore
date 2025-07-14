@@ -57,7 +57,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
 {%- endif -%}
     {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
 {%- if disabled_by_yoast_seo -%}
-<meta property="og:price:currency" content="{{ cart.currency.iso_code }}">
+<meta property="og:price:currency" content="{{ shop.currency }}">
 {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
 {%- endif -%}
   {%- endif -%}
