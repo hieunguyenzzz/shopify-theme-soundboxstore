@@ -36,6 +36,8 @@
       }
 </style>
 {% case localization.language.iso_code %}
+  {% when 'de' %}
+    {% assign image = section.settings.call_banner_de %}
   {% when 'fi' %}
     {% assign image = section.settings.call_banner_fi %}
   {% when 'sv' %}
