@@ -34,7 +34,7 @@
   {%- if section.settings.color_scheme != 'none' -%}
     {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
   {%- endif -%}
-  <div class="page-width{% if section.settings.narrow_column %} page-width--narrow{% endif %}">
+  <div style="max-width:675px" class="page-width{% if section.settings.narrow_column %} page-width--narrow{% endif %}">
     {%- if section.settings.title != blank or section.settings.text != blank -%}
       <div class="section-header text-center">
         {%- if section.settings.title != blank -%}
