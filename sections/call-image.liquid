@@ -55,7 +55,7 @@
   {% when 'po' %}
     {% assign image = section.settings.call_banner_po %}
   {% else %}
-    {% assign image = section.settings.call_banner_1 %}
+    {% assign image = section.settings.call_banner_en %}
 {% endcase %}
 {% if image %}
   <div class="{{ section.id }}-wrap">
@@ -79,7 +79,7 @@
     },
     {
       "type": "image_picker",
-      "id": "call_banner_1",
+      "id": "call_banner_en",
       "label": "Call Image (EN)"
     },
     {
