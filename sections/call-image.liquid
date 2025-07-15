@@ -35,6 +35,8 @@
            transform :scale(1.1)
       }
 </style>
+{% assign image = section.settings.call_banner_1 %}
+
 {% if section.settings.call_banner_1 %}
   <div class="{{ section.id }}-wrap">
     {{ section.settings.call_banner_1 | image_url: width: 700 | image_tag }}
