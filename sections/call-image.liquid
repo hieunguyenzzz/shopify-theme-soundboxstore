@@ -35,9 +35,31 @@
            transform :scale(1.1)
       }
 </style>
-{% if section.settings.call_banner_1 %}
+{% case localization.language.iso_code %}
+  {% when 'fi' %}
+    {% assign image = section.settings.call_banner_fi %}
+  {% when 'sv' %}
+    {% assign image = section.settings.call_banner_sv %}
+  {% when 'no' %}
+    {% assign image = section.settings.call_banner_no %}
+  {% when 'fr' %}
+    {% assign image = section.settings.call_banner_fr %}
+  {% when 'es' %}
+    {% assign image = section.settings.call_banner_es %}
+  {% when 'da' %}
+    {% assign image = section.settings.call_banner_da %}
+  {% when 'nl' %}
+    {% assign image = section.settings.call_banner_nl %}
+  {% when 'it' %}
+    {% assign image = section.settings.call_banner_it %}
+  {% when 'po' %}
+    {% assign image = section.settings.call_banner_po %}
+  {% else %}
+    {% assign image = section.settings.call_banner_1 %}
+{% endcase %}
+{% if image %}
   <div class="{{ section.id }}-wrap">
-    {{ section.settings.call_banner_1 | image_url: width: 700 | image_tag }}
+    {{ image | image_url: width: 700 | image_tag }}
     <a
       target="_blank"
       href="{{ section.settings.url_1 }}"
@@ -52,61 +74,60 @@
   "settings": [
     {
       "type": "url",
-       "id": "url_1",
+      "id": "url_1",
       "label": "Url"
     },
     {
       "type": "image_picker",
-       "id": "call_banner_1",
-      "label": "Call Image (EN)",
+      "id": "call_banner_1",
+      "label": "Call Image (EN)"
     },
     {
       "type": "image_picker",
-       "id": "call_banner_fi",
-      "label": "Call Image (FI)",
-    },
-      {
-      "type": "image_picker",
-       "id": "call_banner_sv",
-      "label": "Call Image (sv)",
-    },
-     {
-      "type": "image_picker",
-       "id": "call_banner_no",
-      "label": "Call Image (NO)",
-    },
-
-     {
-      "type": "image_picker",
-       "id": "call_banner_fr",
-      "label": "Call Image (FR)",
-    },
-     {
-      "type": "image_picker",
-       "id": "call_banner_es",
-      "label": "Call Image (ES)",
-    },
-     {
-      "type": "image_picker",
-       "id": "call_banner_da",
-      "label": "Call Image (DA)",
-    },
-     {
-      "type": "image_picker",
-       "id": "call_banner_NL",
-      "label": "Call Image (NL)",
-    }, {
-      "type": "image_picker",
-       "id": "call_banner_it",
-      "label": "Call Image (IT)",
+      "id": "call_banner_fi",
+      "label": "Call Image (FI)"
     },
     {
       "type": "image_picker",
-       "id": "call_banner_po",
-      "label": "Call Image (PO)",
+      "id": "call_banner_sv",
+      "label": "Call Image (sv)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_no",
+      "label": "Call Image (NO)"
     },
 
-  ],
-
+    {
+      "type": "image_picker",
+      "id": "call_banner_fr",
+      "label": "Call Image (FR)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_es",
+      "label": "Call Image (ES)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_da",
+      "label": "Call Image (DA)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_NL",
+      "label": "Call Image (NL)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_it",
+      "label": "Call Image (IT)"
+    },
+    {
+      "type": "image_picker",
+      "id": "call_banner_po",
+      "label": "Call Image (PO)"
+    }
+  ]
 }
 {% endschema %}
