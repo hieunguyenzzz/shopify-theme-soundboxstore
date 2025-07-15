@@ -1,113 +1,130 @@
 {%- assign form_id = 'contact-' | append: section.id -%}
 <style>
-      #{{form_id}}{
-        --color-error:red
+        #{{form_id}}{
+          --color-error:red
+        }
+        #{{form_id}} .input.blured:invalid{
+          border-color: var(--color-error);
+        }
+        #{{form_id}} .input.blured:invalid+label{
+          color: var(--color-error);
+        }
+        #{{form_id}} .input:not([required])+label::after{
+          content: ' (Optional)';
+        }
+        #{{form_id}} .grid__item{
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        #{{form_id}}  .grid__item input{
+          padding: 0.8em;
+        }
+        #{{form_id}} .grid__item label{
+          margin-bottom:0.2em
+        }
+        #Contact_us_form{
+          scroll-margin-top: 140px;
+          text-align:center
+        }
+        #{{section.id}}  .page-width {
+        max-width: 675px;
+        margin: 0 auto
       }
-      #{{form_id}} .input.blured:invalid{
-        border-color: var(--color-error);
+
+      #{{section.id}}  .section-header__rte p {
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+        margin: 14px 0
       }
-      #{{form_id}} .input.blured:invalid+label{
-        color: var(--color-error);
+
+      #{{section.id}}  .section-header__rte p a:hover {
+        color: var(--colorBtnPrimary);
       }
-      #{{form_id}} .input:not([required])+label::after{
-        content: ' (Optional)';
+
+      #{{section.id}} .grid {
+        margin: 0
       }
-      #{{form_id}} .grid__item{
-        display: flex;
-        flex-direction: column-reverse;
+
+      #{{section.id}} .grid__item {
+        padding: 0
       }
-      #{{form_id}}  .grid__item input{
-        padding: 0.8em;
+
+      #{{section.id}} .grid__item input::-webkit-input-placeholder,
+      #{{section.id}} .grid__item textarea::-webkit-input-placeholder {
+        font-family:
+          var(--typeBasePrimary), var(--typeBaseFallback);
+        font-size: 14px;
+        line-height:
+          1;
+        color: #303a44;
+        font-weight: 400
       }
-      #{{form_id}} .grid__item label{
-        margin-bottom:0.2em
+
+      #{{section.id}} .grid__item input:-ms-input-placeholder,
+      #{{section.id}} .grid__item textarea:-ms-input-placeholder {
+        font-family:
+          var(--typeBasePrimary), var(--typeBaseFallback);
+        font-size: 14px;
+        line-height:
+          1;
+        color: #303a44;
+        font-weight: 400
       }
-      #Contact_us_form{
-        scroll-margin-top: 140px;
-        text-align:center
+
+      #{{section.id}} .grid__item input::placeholder,
+      #{{section.id}} .grid__item textarea::placeholder {
+        font-family:
+          var(--typeBasePrimary), var(--typeBaseFallback);
+        font-size: 14px;
+        line-height:
+          1;
+        color: #303a44;
+        font-weight: 400
       }
-      #{{section.id}}  .page-width {
-      max-width: 675px;
-      margin: 0 auto
-    }
 
-    #{{section.id}}  .section-header__rte p {
-      font-size: 16px;
-      line-height: 1.5;
-      text-align: left;
-      margin: 14px 0
-    }
+      #{{section.id}} .grid__item input:focus-visible {
+        box-shadow: none;
+        outline: 0
+      }
 
-    #{{section.id}}  .section-header__rte p a:hover {
-      color: var(--colorBtnPrimary);
-    }
+      #{{section.id}} .submit-btn-wrap .btn {
+        line-height: 1;
+        padding: 15px
+      }
 
-    #{{section.id}} .grid {
-      margin: 0
-    }
+      #{{section.id}} .errors {
+        background: 0 0;
+        border: 0;
+        font-size: 16px;
+        padding:
+          0
+      }
 
-    #{{section.id}} .grid__item {
-      padding: 0
+      #{{section.id}} .errors ul {
+        list-style: none;
+        padding: 0;
+        margin: 0
+      }
+       #{{section.id}} .grid__item label {
+        font-size: .8rem;
     }
+    .page-contact .grid__item label {
+    font-size: .8rem
+  }
 
-    #{{section.id}} .grid__item input::-webkit-input-placeholder,
-    #{{section.id}} .grid__item textarea::-webkit-input-placeholder {
-      font-family:
-        var(--typeBasePrimary), var(--typeBaseFallback);
-      font-size: 14px;
-      line-height:
-        1;
-      color: #303a44;
-      font-weight: 400
-    }
-
-    #{{section.id}} .grid__item input:-ms-input-placeholder,
-    #{{section.id}} .grid__item textarea:-ms-input-placeholder {
-      font-family:
-        var(--typeBasePrimary), var(--typeBaseFallback);
-      font-size: 14px;
-      line-height:
-        1;
-      color: #303a44;
-      font-weight: 400
-    }
-
-    #{{section.id}} .grid__item input::placeholder,
-    #{{section.id}} .grid__item textarea::placeholder {
-      font-family:
-        var(--typeBasePrimary), var(--typeBaseFallback);
-      font-size: 14px;
-      line-height:
-        1;
-      color: #303a44;
-      font-weight: 400
-    }
-
-    #{{section.id}} .grid__item input:focus-visible {
-      box-shadow: none;
-      outline: 0
-    }
-
-    #{{section.id}} .submit-btn-wrap .btn {
-      line-height: 1;
-      padding: 15px
-    }
-
-    #{{section.id}} .errors {
-      background: 0 0;
-      border: 0;
-      font-size: 16px;
-      padding:
-        0
-    }
-
-    #{{section.id}} .errors ul {
-      list-style: none;
-      padding: 0;
-      margin: 0
-    }
-     #{{section.id}} .grid__item label {
-      font-size: .8rem;
+   #{{section.id}}  .grid__item input,
+   #{{section.id}}  .grid__item textarea {
+    border-color: #454545;
+    font-family:
+      var(--typeBasePrimary), var(--typeBaseFallback);
+    font-size: 14px;
+    line-height:
+      1;
+    color: #303a44;
+    font-weight: 400;
+    padding: 15px;
+    margin-bottom: 20px
   }
 </style>
 <div
