@@ -235,7 +235,7 @@
                 {{ block.settings.subheading | escape }}
               </div>
             {%- endunless -%}
-            <div style="display:flex;gap:1em">
+            <div style="display:flex;gap-x:1em;flex-wrap:wrap">
               {%- if block.settings.link_text != blank -%}
                 {%- assign link_href = block.settings.link -%}
                 {%- if block.settings.link == blank -%}
