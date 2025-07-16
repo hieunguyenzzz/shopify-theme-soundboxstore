@@ -64,16 +64,16 @@
     {% assign image = section.settings.call_banner_en %}
 {% endcase %}
 {% if localization.country.iso_code == 'GB' %}
-  {% assign url = settings.page_showroom %}
+  {% assign page = settings.page_showroom %}
 {% else %}
-  {% assign url = settings.page_remote_tour %}
+  {% assign page = settings.page_remote_tour %}
 {% endif %}
 {% if image %}
   <div class="{{ section.id }}-wrap">
     {{ image | image_url: width: 700 | image_tag }}
     <a
       target="_blank"
-      href="{{ section.settings.url_1 }}"
+      href="{{ page.url }}"
     >
     </a>
   </div>
