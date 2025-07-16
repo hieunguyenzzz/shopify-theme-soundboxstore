@@ -2405,6 +2405,14 @@
         "generic_processing_error": {
           "title": "حدثت مشكلة في معالجة طلبك",
           "body": "لم يتم خصم أي مبلغ منك. حاول مرة أخرى أو استخدم طريقة دفع مختلفة."
+        },
+        "payment_method_not_available_with_payment_terms": "لم تعد طريقة الدفع التي حددتها متوفرة لأن الدفع لهذا الطلب أصبح الآن قيد التشغيل {{paymentTerms}} الشروط",
+        "payment_method_not_available_with_fulfillment_terms": "لم تعد طريقة الدفع التي حددتها متاحة لأن الدفع لهذا الطلب أصبح الآن مستحقًا عند الاستيفاء",
+        "payment_method_not_available_with_fixed_terms": "طريقة الدفع التي حددتها لم تعد متاحة لأن الدفع لهذا الطلب مستحق الدفع لاحقاً",
+        "contact_information": {
+          "title": "معلومات الاتصال غير صالحة",
+          "header": "لتحديث معلوماتك, {{emailLink}}.",
+          "email_link": "اتصل بنا"
         }
       },
       "marketplaces": {
@@ -2573,6 +2581,18 @@
             "subtotal_limit_reached": "تم الوصول إلى القيمة القصوى لعناصر السطر."
           }
         }
+      },
+      "review_address_modal": {
+        "title": "مراجعة العنوان",
+        "subtitle": {
+          "one": "سيتم شحن هذا الطلب إلى العنوان المقدم من قبل {{merchant}}.",
+          "other": "سيتم شحن هذا الطلب إلى العنوان المقدم من قبل {{merchant}}. حدد عنوان الشحن"
+        },
+        "subtitle_no_match": "هذا العنوان لا يتطابق مع أي من عناوينك المحفوظة.",
+        "subtitle_must_use": "سيتم شحن طلبك إلى هذا العنوان.",
+        "continue": "تابع بهذا العنوان",
+        "use_saved_address": "استخدم عنواناً مختلفاً",
+        "return_to_cart": "العودة إلى عربة التسوق"
       }
     },
     "pagination": {
