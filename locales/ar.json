@@ -4319,7 +4319,77 @@
       "back_button_accessibility_label": "رجوع إلى {{paymentMethodStepTitle}}",
       "default": "افتراضي",
       "generic_card": "البطاقة",
-      "expiration_warning_button_accessibility_label": "إظهار تحذير انتهاء الصلاحية ل {{paymentMethodName}} تنتهي في {{lastDigits}}"
+      "expiration_warning_button_accessibility_label": "إظهار تحذير انتهاء الصلاحية ل {{paymentMethodName}} تنتهي في {{lastDigits}}",
+      "expires_soon": "ستنتهي صلاحية هذه البطاقة قريباً",
+      "expired": "انتهت صلاحية هذه البطاقة",
+      "card_update_consent": "سيتم حفظ طريقة الدفع هذه لعمليات الشراء المستقبلية.",
+      "card_update_consent_subscriptions": "سيتم حفظ طريقة الدفع هذه للمشتريات المستقبلية ويمكن استخدامها لأي عملية شراء متكررة أو مؤجلة.",
+      "digital_wallet_title": "المحفظة الرقمية",
+      "credit_or_debit_card_title": "بطاقة الائتمان أو بطاقة الخصم",
+      "google_pay": {
+        "iframe_title_accessibility_label": "إضافة طريقة دفع Google Pay",
+        "loading_accessibility_message": "تحميل Google Pay",
+        "loading": "تحميل Google Pay",
+        "errors": {
+          "generic": "كانت هناك مشكلة في Google Pay. حاول مرة أخرى أو استخدم طريقة دفع مختلفة.",
+          "missing_billing_address": "يتطلب Google Pay عنوان إرسال الفواتير. يُرجى إضافة عنوان إلى حسابك."
+        }
+      },
+      "pay_pal": {
+        "iframe_title_accessibility_label": "إضافة طريقة دفع PayPal",
+        "loading_accessibility_message": "تحميل باي بال"
+      },
+      "apple_pay": {
+        "loading": "تحميل Apple Pay",
+        "errors": {
+          "generic": "كانت هناك مشكلة في Apple Pay. حاول مرة أخرى أو استخدم طريقة دفع مختلفة.",
+          "not_available": "Apple Pay غير متوفر على هذا الجهاز.",
+          "missing_billing_address": "يتطلب Apple Pay عنوان إرسال الفواتير. يُرجى إضافة عنوان إلى حسابك."
+        }
+      },
+      "store_credit": {
+        "label": "رصيد المتجر",
+        "accesibility_label": "رصيد المتجر - {{formattedBalance}}",
+        "expirable_amounts_button": "عرض المبالغ المرغوب فيها",
+        "expirable_amounts_label": "المبالغ المرغوبة",
+        "details_modal": {
+          "title": "رصيد المتجر المرغوب فيه",
+          "balance_label": "الرصيد",
+          "expiration_date_label": "تاريخ انتهاء الصلاحية",
+          "amount_label": "المبلغ",
+          "date_label": "التاريخ",
+          "event_label": "الحدث",
+          "events": {
+            "adjustment": "التعديل",
+            "order_payment": "طلب الدفع",
+            "order_refund": "استرداد قيمة الطلب",
+            "payment_failure": "فشل في الدفع",
+            "payment_returned": "إرجاع المبلغ المدفوع",
+            "order_cancellation": "إلغاء الطلب",
+            "tax_finalization": "إنهاء الضريبة"
+          },
+          "expirable_balance_info": "ستنتهي صلاحية جزء من رصيدك في تاريخ مستقبلي",
+          "expirable_amount_label": "إجمالي المبلغ المرغوب فيه",
+          "expirable_amounts_info": "يتم تطبيق المبالغ التي تنتهي صلاحيتها في وقت أقرب عند الدفع أولاً",
+          "expirable_amounts_button": "عرض",
+          "expired_amounts_button": "عرض المبالغ المنتهية الصلاحية",
+          "pagination": {
+            "load_more_label": "تحميل المزيد",
+            "load_more_accessibility_label": "تحميل المزيد من المبالغ المنتهية الصلاحية"
+          }
+        }
+      },
+      "payment_details": {
+        "title": "تفاصيل طريقة الدفع",
+        "credit_card_details_accessibility_label": "تنتهي بـ {{lastDigits}}",
+        "billing_title": "عنوان إرسال الفواتير",
+        "card_info_title": "معلومات البطاقة",
+        "credit_card_details": "{{creditCardBrand}} •••• {{lastDigits}}",
+        "payment_method_expiring_on": "تنتهي صلاحيتها في {{expiryDate}}",
+        "payment_method_expired_on": "تنتهي صلاحيتها في {{expiryDate}}",
+        "preauthorized_payments": "المدفوعات المفوض بها مسبقاً",
+        "close_payment_modal": "إغلاق"
+      }
     }
   }
 }
