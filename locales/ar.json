@@ -796,7 +796,16 @@
         "total_already_paid_label": "مدفوع",
         "unit_price": {
           "accessible_separator": "لكل",
-          "content_html": "%{price}%{accessible_separator}%{per_unit}"
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_item": {
+            "single": "%{price} كل",
+            "one": "%{price} لكل %{count} صنف",
+            "other": "%{price} لكل %{count} الأصناف"
+          },
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
+          }
         },
         "gift_card_ending": "بطاقة الهدية تنتهي بـ %{last_characters}",
         "estimated_tax_label": "الضريبة المقدرة",
@@ -813,7 +822,8 @@
           "description_html": "لأسئلة حول طلبك، %{contact_us}.",
           "paid_today": "الإجمالي المدفوع اليوم",
           "due_on_fulfillment_title": "الدفع %{amount_due} مستحق عند التنفيذ",
-          "due_on_receipt_title": "الدفع %{amount_due} مستحق عند الاستلام"
+          "due_on_receipt_title": "الدفع %{amount_due} مستحق عند الاستلام",
+          "paid_today_next": "مدفوعة اليوم"
         },
         "deferred_balance_info": {
           "title": "الرصيد {{amount_due}}  مستحق في {{due_at}}",
@@ -825,7 +835,9 @@
           "due_on_fulfillment": "الإجمالي المستحق عند التنفيذ",
           "due_on_receipt": "الإجمالي المستحق عند الاستلام",
           "due_later_checkout_to_draft": "الإجمالي المستحق لاحقًا",
-          "total_paid": "الإجمالي المدفوع"
+          "total_paid": "الإجمالي المدفوع",
+          "due_today_next": "مستحق الدفع اليوم",
+          "due_on_fulfillment_next": "مستحق الدفع عند الاستيفاء"
         },
         "maximum_discount_code_limit_reached": "لقد وصلت إلى الحد الأقصى لعدد رموز الخصم. قم بإزالة رمز موجود لاستخدام <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> لا يعمل حاليًا. اتصل بنا للمساعدة.",
