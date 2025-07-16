@@ -283,7 +283,9 @@
               <button type="submit" class="btn btn--full">
                 {{ 'customer.login.sign_in' | t }}
               </button>
-              <a style="text-decoration:underline" href="{{ reUrl }}">Not a reseller apply here</a>
+              <a style="text-decoration:underline" href="{{ reUrl }}">
+                {{- 'strings.reseller.create_reseller_account' | t -}}
+              </a>
             </p>
           {%- endform -%}
         </div>
