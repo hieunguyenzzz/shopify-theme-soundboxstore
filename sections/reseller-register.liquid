@@ -46,49 +46,48 @@
     Date:
   {% endcomment %}
   <style>
-         .form-section{
-          display: grid;
-          gap:2em;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-        .form-vertical .form-section{
+    .form-section {
+      display: grid;
+      gap: 2em;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .form-vertical .form-section {
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgb(17 24 39 / 0.1);
+    }
+    .form-section:not(:first-child) {
+      margin-top: 3em;
+    }
 
-              padding-bottom: 3rem;
-              border-bottom: 1px solid rgb(17 24 39 / 0.1);
-        }
-        .form-section:not(:first-child){
-          margin-top: 3em;
-        }
-
-        .form-section .section-header{
-          margin:0;
-        }
-        .form-radio>div{
-          display: flex;
-          align-items: flex-start;
-        }
-        .form-radio input{
-          margin-top: 0.6em;
-        }
-        .form-radio{
-          margin-bottom: 30px;
-        }
-        .form-section h4{
-          line-height: 30.24px;
-        }
-        @media (min-width: 768px){
-          .form-section{
-            display: grid;
-              grid-template-columns: repeat(3,  minmax(0, 1fr));
-        }
-        .form-section h3{
+    .form-section .section-header {
+      margin: 0;
+    }
+    .form-radio > div {
+      display: flex;
+      align-items: flex-start;
+    }
+    .form-radio input {
+      margin-top: 0.6em;
+    }
+    .form-radio {
+      margin-bottom: 30px;
+    }
+    .form-section h4 {
+      line-height: 30.24px;
+    }
+    @media (min-width: 768px) {
+      .form-section {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .form-section h3 {
         text-align: right;
-        }
-     .form-section>div:nth-child(2) {
+      }
+      .form-section > div:nth-child(2) {
         grid-column: span 2 / 4;
         max-width: 500px;
+      }
     }
-        }
   </style>
   {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <div
@@ -131,18 +130,19 @@
   </div>
 {% else %}
   <style>
-    #form-login,#form-register{
-    background:white
+    #form-login,
+    #form-register {
+      background: white;
     }
-      #form-login{
-         display:none
-      }
-      #input-login:checked~#form-login{
-        display:block
-      }
-      #input-login:checked~#form-register{
-        display:none
-      }
+    #form-login {
+      display: none;
+    }
+    #input-login:checked ~ #form-login {
+      display: block;
+    }
+    #input-login:checked ~ #form-register {
+      display: none;
+    }
   </style>
   {% assign reUrl = routes.root_url | append: '/pages/register' | replace: '//pages/', '/pages/' %}
   <div
@@ -223,7 +223,9 @@
       </div>
       <div id="form-login" class="page-width page-width--tiny page-content">
         <header class="section-header">
-          <h1 class="section-header__title" style="text-align:center">Reseller login</h1>
+          <h1 class="section-header__title" style="text-align:center">
+            {{ 'strings.reseller.reseller_login_text' | t }}
+          </h1>
         </header>
         <div class="note note--success hide" id="ResetSuccess">
           {{ 'customer.recover_password.success' | t }}
@@ -299,9 +301,9 @@
         umami.track('reseller-register', {
           name: `${formData.get('customer[first_name]')} ${formData.get('customer[last_name]')}`,
           email: formData.get('customer[email]'),
-          industry: formData.get('contact[industry]') || 'not_provided'
+          industry: formData.get('contact[industry]') || 'not_provided',
         });
-      } catch(err) {
+      } catch (err) {
         console.error('Tracking error:', err);
       }
       e.target.submit();
@@ -311,16 +313,18 @@
 {% schema %}
 {
   "name": "Reseller Register",
-  "settings": [{
-    "type":"image_picker",
-          "id": "image",
-          "label": "Image"
-  }],
-   "presets": [
-  {
-    "name": "Reseller Register",
-    "blocks": []
-  }
-]
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reseller Register",
+      "blocks": []
+    }
+  ]
 }
 {% endschema %}
