@@ -4388,7 +4388,69 @@
         "payment_method_expiring_on": "تنتهي صلاحيتها في {{expiryDate}}",
         "payment_method_expired_on": "تنتهي صلاحيتها في {{expiryDate}}",
         "preauthorized_payments": "المدفوعات المفوض بها مسبقاً",
-        "close_payment_modal": "إغلاق"
+        "close_payment_modal": "إغلاق",
+        "close_payment_modal_accessibility_label": "إغلاق نموذج تفاصيل طريقة الدفع",
+        "payment_method_not_found_error": "تعذر العثور على طريقة الدفع",
+        "payment_details_loading": "تحميل تفاصيل طريقة الدفع",
+        "pre_authorized_payments": "المدفوعات المفوض بها مسبقاً",
+        "total_amount_of_subscription_line_items_left": "و {{total}} أكثر من ذلك",
+        "total_amount_of_subscription_line_items_left_accessibility_label": "{{totalItems}} العناصر الإجمالية، وعرض {{totalItemsToDisplay}} العناصر.",
+        "next_payment_due": "الدفعة التالية المستحقة الدفع {{dueDateInMonthDayYear}}",
+        "edit_payment_method_button": "تحرير",
+        "edit_payment_method_button_accessibility_label": "تحرير طريقة الدفع التي تنتهي بـ {{lastDigits}}",
+        "loading_shop_pay": "تحميل متجر الدفع",
+        "invalid_payment_method": "طريقة الدفع غير صالحة",
+        "invalid_payment_method_message": "استخدم بطاقة ائتمان جديدة لمتابعة استلام الطلبات القادمة.",
+        "replace_payment_method": "استبدال طريقة الدفع",
+        "checkout_card_banner": "يمكن استخدام طريقة الدفع هذه فقط للمدفوعات المفوض بها مسبقاً. لن تظهر عند الدفع إذا قمت بتسجيل الدخول إلى هذا المتجر.",
+        "default_checkbox": "تعيين كطريقة افتراضية",
+        "default_checkbox_accessibility_label": "تعيين طريقة الدفع هذه كطريقة افتراضية"
+      },
+      "edit_payment_method": {
+        "title": "تحرير طريقة الدفع",
+        "save_payment_method_button": "حفظ",
+        "cancel_edit_payment_method_button": "إلغاء",
+        "payment_method_updated_toast": "تم تحديث طريقة الدفع",
+        "billing_address": "عنوان الفواتير",
+        "billing_address_add_new": "إضافة جديد",
+        "billing_address_choose_from_list": "اختر من القائمة",
+        "future_purchases_notice": "سيتم حفظ طريقة الدفع هذه لعمليات الشراء المستقبلية.",
+        "generic_error": "كانت هناك مشكلة في التحديث. يرجى المحاولة مرة أخرى."
+      },
+      "card_fields": {
+        "card_number_label": "رقم البطاقة",
+        "card_number_placeholder": "رقم البطاقة",
+        "name_on_card_label": "الاسم على البطاقة",
+        "name_on_card_placeholder": "الاسم على البطاقة",
+        "card_expiry_label": "تاريخ انتهاء الصلاحية (MM / YY)",
+        "card_expiry_placeholder": "تاريخ انتهاء الصلاحية (MM / YY)",
+        "card_verification_value_label": "رمز الحماية",
+        "card_verification_value_placeholder": "رمز الحماية",
+        "card_start_label": "تاريخ الإصدار (MM / YY)",
+        "card_start_placeholder": "تاريخ الإصدار (MM / YY)",
+        "tooltip": {
+          "tooltip_accessibility_label": "المزيد من المعلومات",
+          "card_verification_value_explanation_amex": "رمز الأمان المكون من 4 أرقام على واجهة بطاقتك",
+          "card_verification_value_explanation_other": "رمز الأمان المكون من 3 أرقام على ظهر بطاقتك",
+          "card_verification_value_explanation": "رمز الأمان المكون من 3 أرقام يوجد عادةً على ظهر بطاقتك. تحتوي بطاقات أمريكان إكسبريس على رمز مكون من 4 أرقام موجود على الجهة الأمامية.",
+          "card_security_notice": "جميع المعاملات آمنة ومشفرة."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "أدخل اسمك تماماً كما هو مكتوب على بطاقتك",
+          "credit_card_number_invalid": "أدخل رقم بطاقة صالح",
+          "credit_card_expiry_invalid": "أدخل تاريخ انتهاء صلاحية البطاقة",
+          "credit_card_verification_value_blank": "أدخل رمز CVV أو رمز الأمان الموجود على بطاقتك"
+        },
+        "unavailable": {
+          "text": "عمليات الدفع ببطاقات الائتمان والخصم غير متوفرة في الوقت الحالي.",
+          "link_text": "قم بتحديث هذه الصفحة",
+          "suffix": "أو حاول مرة أخرى لاحقاً."
+        }
+      },
+      "payment_delete": {
+        "title": "حذف طريقة الدفع",
+        "description_without_replacement": "لن تكون طريقة الدفع هذه متاحة لعمليات الشراء المستقبلية.",
+        "description_with_replacement": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المفوض بها مسبقاً. يمكنك استبدالها اختياريًا بطريقة دفع أخرى لمواصلة تلقي الطلبات القادمة."
       }
     }
   }
