@@ -63,6 +63,11 @@
   {% else %}
     {% assign image = section.settings.call_banner_en %}
 {% endcase %}
+{% if localization.country.iso_code == 'GB' %}
+  {% assign url = settings.page_showroom %}
+{% else %}
+  {% assign url = settings.page_remote_tour %}
+{% endif %}
 {% if image %}
   <div class="{{ section.id }}-wrap">
     {{ image | image_url: width: 700 | image_tag }}
@@ -78,11 +83,7 @@
 {
   "name": "call image",
   "settings": [
-    {
-      "type": "url",
-      "id": "url_1",
-      "label": "Url"
-    },
+
     {
       "type": "image_picker",
       "id": "call_banner_en",
