@@ -43,8 +43,8 @@
         {%- capture phone -%}
               {%- render '[phone-number]' -%}
         {%- endcapture -%}
-        {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
-        {{ section.settings.content }}
+        {%- assign content = section.settings.content | replace: '+44 (0) 20 4586 3800', phone -%}
+        {{ content }}
       </div>
       <!-- Calendly link widget begin -->
       <link
