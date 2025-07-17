@@ -40,6 +40,10 @@
       "
     >
       <div class=" prose prose-a:underline">
+        {%- capture phone -%}
+              {%- render '[phone-number]' -%}
+        {%- endcapture -%}
+        {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
         {{ section.settings.content }}
       </div>
       <!-- Calendly link widget begin -->
@@ -78,7 +82,7 @@
     {
       "type": "checkbox",
       "id": "show_phone",
-      "label": "Show Phone Contact Number"
+      "label": "Show Contact Phone Number"
     },
     {
       "type": "image_picker",
