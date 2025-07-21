@@ -192,7 +192,7 @@
             "type": "richtext",
             "id": "desc",
             "label": "Content",
-            "default": "<p>Prices exclude VAT<\/p>"
+            "default": "{% if localization.country.iso_code == 'CH' %}<p>No additional taxes or customs duties<\/p>{% else %}<p>Prices exclude VAT<\/p>{% endif %}"
         }]
     },
     {

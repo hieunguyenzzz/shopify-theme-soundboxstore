@@ -61,7 +61,7 @@
           "type": "price",
           "disabled": true,
           "settings": {
-            "desc": "<p>Prices exclude VAT</p>"
+            "desc": "{% if localization.country.iso_code == 'CH' %}<p>No additional taxes or customs duties</p>{% else %}<p>Prices exclude VAT</p>{% endif %}"
           }
         },
         "soundboxstore_quote_quote_btn_mkNWhd": {
