@@ -348,21 +348,6 @@
         <div class="bottomBar-header-center" style="flex:1">
           <div class="seel-all-details-grid">
             {% for product in settings.collection_products.products %}
-              {% unless isResserllerOrTradeAccount %}
-                {% for p in collections['reseller-only'].products %}
-                  {% if p.handle == product.handle %}
-                    {% assign isResellerProduct = true %}
-                  {% endif %}
-                {% endfor %}
-                {% if isResellerProduct %}
-                  {% assign isResellerProduct = false %}
-                  {% continue %}
-                {% endif %}
-                <script>
-                  console.log({{isResserllerOrTradeAccount|json}})
-                  console.log({{isResellerProduct|json}})
-                </script>
-              {% endunless %}
               {%- if product.metafields.custom.page360.value.url -%}
                 <div
                   class="
