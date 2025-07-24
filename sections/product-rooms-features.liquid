@@ -1,513 +1,516 @@
-<style>
-    #shopify-section-{{section.id}}{
-      padding-top:50px;
-      border-top :1px solid #e8e8e1;
-    }
-    .meeting-rooms-features .flexbox{
-        display: flex;
+{% if section.blocks.size > 0 %}
+  <style>
+      #shopify-section-{{section.id}}{
+        padding-top:50px;
+        border-top :1px solid #e8e8e1;
+      }
+      .meeting-rooms-features .flexbox{
+          display: flex;
 
-    justify-content: center;
-    }
-    .meeting-rooms-features .flexbox .col:not(:last-child) {
-      flex:1;
-    }
-    .meeting-rooms-features .flexbox .col.right-col {
-      max-width: 440px;
-      margin-top: 20px;
-    margin-left: auto;
-    }
-    .features-list-row-wrap > label {
-      font-weight:bold!important;
-    }
+      justify-content: center;
+      }
+      .meeting-rooms-features .flexbox .col:not(:last-child) {
+        flex:1;
+      }
+      .meeting-rooms-features .flexbox .col.right-col {
+        max-width: 440px;
+        margin-top: 20px;
+      margin-left: auto;
+      }
+      .features-list-row-wrap > label {
+        font-weight:bold!important;
+      }
 
-    .features-list-row {
-      padding: 0.5em;
-    }
-    .features-list-row-wrap > div {
-      max-height: 0;
-      opacity: 0;
-      transition: all 0.5s ease-in-out;
-      overflow: hidden;
-    }
-    .features-list-row-wrap > label {
-      margin: 0;
-      line-height: 30px;
-      padding: 1rem 2rem;
-      border-bottom:1px solid #f1f1f1;
-      position: relative;
-      font-weight:bold;
-    }
-      .features-list-row-wrap > label::before {
-        content: "";
-    position: absolute;
-    background-color: black;
-    width: 0.8em;
-    height: 0.15em;
-    right: 14px;
-    top: calc(50% - 0.075em);
-    transition: all 0.5s ease-in-out;
-    transform: rotate(-90deg);
-    }
-    .features-list-row-wrap > label::after {
-       content: "";
+      .features-list-row {
+        padding: 0.5em;
+      }
+      .features-list-row-wrap > div {
+        max-height: 0;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        overflow: hidden;
+      }
+      .features-list-row-wrap > label {
+        margin: 0;
+        line-height: 30px;
+        padding: 1rem 2rem;
+        border-bottom:1px solid #f1f1f1;
+        position: relative;
+        font-weight:bold;
+      }
+        .features-list-row-wrap > label::before {
+          content: "";
       position: absolute;
       background-color: black;
-      height: 0.8em;
-      width: 0.15em;
-      right: calc(14px + 0.31em);
-      top: calc(50% - 0.4em);
+      width: 0.8em;
+      height: 0.15em;
+      right: 14px;
+      top: calc(50% - 0.075em);
       transition: all 0.5s ease-in-out;
       transform: rotate(-90deg);
-    }
-    .features-list-row input:checked + .features-list-row-wrap > label::before {
-       transition: all 0.5s ease-in-out;
-      transform: rotate(90deg);    opacity: 0;
-    }
-    .features-list-row input:checked + .features-list-row-wrap > label::after {
-    transition: all 0.5s ease-in-out;
-    transform: rotate(90deg);
+      }
+      .features-list-row-wrap > label::after {
+         content: "";
+        position: absolute;
+        background-color: black;
+        height: 0.8em;
+        width: 0.15em;
+        right: calc(14px + 0.31em);
+        top: calc(50% - 0.4em);
+        transition: all 0.5s ease-in-out;
+        transform: rotate(-90deg);
+      }
+      .features-list-row input:checked + .features-list-row-wrap > label::before {
+         transition: all 0.5s ease-in-out;
+        transform: rotate(90deg);    opacity: 0;
+      }
+      .features-list-row input:checked + .features-list-row-wrap > label::after {
+      transition: all 0.5s ease-in-out;
+      transform: rotate(90deg);
 
-    }
-    .meeting-rooms-features .features-list .features-list-row {
-      padding: 0;
-    }
-    .features-list-row-wrap > div > div {
+      }
+      .meeting-rooms-features .features-list .features-list-row {
+        padding: 0;
+      }
+      .features-list-row-wrap > div > div {
 
-            padding: 1rem 2rem;
-    }
-    .features-list-row input:checked + .features-list-row-wrap > div {
-      display: block;
-      max-height: 500px;
-      opacity: 1;
-      height: auto;
-
-
-    }
-    .features-list-row input:checked + .features-list-row-wrap > div > div {
-    }
-    .meeting-rooms-features .flexbox .col.right-col {
-      text-align: left;
-    }
-    .meeting-rooms-features .hotspot-icon:before {
-      opacity: 1;
-      visibility: visible;
-    }
+              padding: 1rem 2rem;
+      }
+      .features-list-row input:checked + .features-list-row-wrap > div {
+        display: block;
+        max-height: 500px;
+        opacity: 1;
+        height: auto;
 
 
-  .meeting-room-features-video .video-player-controls > button {
-    padding:0;
-    border-radius: 99em;
-    width: 60px;
-    height: 60px;
-  }
-  .meeting-room-features-video .video-player-controls > button svg {
-    height: 100%;
-    width: 100%;
-    color:#3A434D;
-  }
-  .meeting-room-features-video .video-player-controls.active .stop-button svg{
-    color:#979797;
-    opacity: .3;
-  }
-  .meeting-room-features-video .center-col .control .switch,
-  .meeting-room-features-video .center-col .control .switch:after{
-    border-radius:99em;
-  }
-  .meeting-room-features-video video{
-      -webkit-mask-image: -webkit-radial-gradient(white, black);
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-appearance: none
-  }
+      }
+      .features-list-row input:checked + .features-list-row-wrap > div > div {
+      }
+      .meeting-rooms-features .flexbox .col.right-col {
+        text-align: left;
+      }
+      .meeting-rooms-features .hotspot-icon:before {
+        opacity: 1;
+        visibility: visible;
+      }
 
-    {% for block in section.blocks %}
-      {% if block.settings.point_x != blank or block.settings.point_y != blank %}
-        .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
-          left: {{ block.settings.point_x }}%;
-          top: {{ block.settings.point_y }}%
-        }
-        {%- assign point_x = block.settings.point_x | times: 1 -%}
-        {%- if point_x < 40 -%}
-          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
-            left: unset;
-            right: 0;
+
+    .meeting-room-features-video .video-player-controls > button {
+      padding:0;
+      border-radius: 99em;
+      width: 60px;
+      height: 60px;
+    }
+    .meeting-room-features-video .video-player-controls > button svg {
+      height: 100%;
+      width: 100%;
+      color:#3A434D;
+    }
+    .meeting-room-features-video .video-player-controls.active .stop-button svg{
+      color:#979797;
+      opacity: .3;
+    }
+    .meeting-room-features-video .center-col .control .switch,
+    .meeting-room-features-video .center-col .control .switch:after{
+      border-radius:99em;
+    }
+    .meeting-room-features-video video{
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -webkit-appearance: none
+    }
+
+      {% for block in section.blocks %}
+        {% if block.settings.point_x != blank or block.settings.point_y != blank %}
+          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
+            left: {{ block.settings.point_x }}%;
+            top: {{ block.settings.point_y }}%
           }
-        {%- endif - %}
-      {% endif %}
-    {% endfor %}
-  .ping {
-    position: relative;
-  }
-  .ping::before {
-    position: absolute;
-    top: -0.5em;
-    bottom: -0.5em;
-    left: -0.5em;
-    right: -0.5em;
-    content: '';
-    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
-    border: 2px solid lightblue;
-  }
-  @keyframes ping {
-    75%,
-    100% {
-      transform: scale(1.1);
-      opacity: 0;
-    }
-  }
-  .features-list-row-wrap {
-    scroll-margin-top: 160px
-  }
-  .meeting-rooms-features .hotspot-icon {
-    width: 5vw;
-  }
-</style>
-<section
-  class="
-    meeting-rooms-features {{ ' ' }}
-    {%- if section.settings.show_videos -%}
-      meeting-room-features-video
-    {%- endif -%}
-  "
->
-  <div class="page-width">
-    <div class="flexbox">
-      {%- assign current_variant = product.selected_or_first_available_variant -%}
-      {%- assign imgs = current_variant.metafields.global.images.value -%}
-      {%- unless imgs -%}
-        {%- assign imgs = product.images | where: 'alt', vaSku -%}
-      {%- endunless -%}
-      {%- for image in imgs -%}
-        {%- if prod_img -%}
-          {%- assign prod_img = image -%}
-          {% break %}
-        {%- else -%}
-          {%- assign prod_img = image -%}
-        {%- endif -%}
-      {%- endfor -%}
-      <div
-        class="col center-col"
-        {%- if section.settings.show_videos -%}
-          style="align-self: start;margin-top:-30px"
+          {%- assign point_x = block.settings.point_x | times: 1 -%}
+          {%- if point_x < 40 -%}
+            .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
+              left: unset;
+              right: 0;
+            }
+          {%- endif - %}
         {% endif %}
-      >
-        <div class="col-wrap">
-          <label class="visually-hidden">{{ section.settings.seo }}</label>
+      {% endfor %}
+    .ping {
+      position: relative;
+    }
+    .ping::before {
+      position: absolute;
+      top: -0.5em;
+      bottom: -0.5em;
+      left: -0.5em;
+      right: -0.5em;
+      content: '';
+      animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
+      border: 2px solid lightblue;
+    }
+    @keyframes ping {
+      75%,
+      100% {
+        transform: scale(1.1);
+        opacity: 0;
+      }
+    }
+    .features-list-row-wrap {
+      scroll-margin-top: 160px
+    }
+    .meeting-rooms-features .hotspot-icon {
+      width: 5vw;
+    }
+  </style>
+  <section
+    class="
+      meeting-rooms-features {{ ' ' }}
+      {%- if section.settings.show_videos -%}
+        meeting-room-features-video
+      {%- endif -%}
+    "
+  >
+    <div class="page-width">
+      <div class="flexbox">
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        {%- assign imgs = current_variant.metafields.global.images.value -%}
+        {%- unless imgs -%}
+          {%- assign imgs = product.images | where: 'alt', vaSku -%}
+        {%- endunless -%}
+        {%- for image in imgs -%}
+          {%- if prod_img -%}
+            {%- assign prod_img = image -%}
+            {% break %}
+          {%- else -%}
+            {%- assign prod_img = image -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <div
+          class="col center-col"
           {%- if section.settings.show_videos -%}
-            <div>
-              <div class="video-player active">
-                <div class="video-wrapper">
-                  <video
-                    width="1000"
-                    height="1000"
-                    {% if section.settings.loop %}
-                      loop
-                    {% endif %}
-                    playsinline
-                    {% if section.settings.no_sound %}
-                      muted
-                    {% endif %}
-                    data-lazysrc="{{ section.settings.open_video.sources | where: 'format', 'mp4' | first | map: 'url' }}"
-                    {% if section.settings.open_thumb != blank %}
-                      poster="{{ section.settings.open_thumb | image_url }}"
-                    {% endif %}
-                    class="video video-primary"
-                    id="vid1"
-                  ></video>
-                  <video
-                    width="1000"
-                    height="1000"
-                    {% if section.settings.loop %}
-                      loop
-                    {% endif %}
-                    playsinline
-                    {% if section.settings.no_sound %}
-                      muted
-                    {% endif %}
-                    data-lazysrc="{{ section.settings.close_video.sources | where: 'format', 'mp4' | first | map: 'url' }}"
-                    {% if section.settings.close_thumb != blank %}
-                      poster="{{ section.settings.close_thumb | image_url }}"
-                    {% endif %}
-                    class="video video-secondary"
-                    id="vid2"
-                  ></video>
+            style="align-self: start;margin-top:-30px"
+          {% endif %}
+        >
+          <div class="col-wrap">
+            <label class="visually-hidden">{{ section.settings.seo }}</label>
+            {%- if section.settings.show_videos -%}
+              <div>
+                <div class="video-player active">
+                  <div class="video-wrapper">
+                    <video
+                      width="1000"
+                      height="1000"
+                      {% if section.settings.loop %}
+                        loop
+                      {% endif %}
+                      playsinline
+                      {% if section.settings.no_sound %}
+                        muted
+                      {% endif %}
+                      data-lazysrc="{{ section.settings.open_video.sources | where: 'format', 'mp4' | first | map: 'url' }}"
+                      {% if section.settings.open_thumb != blank %}
+                        poster="{{ section.settings.open_thumb | image_url }}"
+                      {% endif %}
+                      class="video video-primary"
+                      id="vid1"
+                    ></video>
+                    <video
+                      width="1000"
+                      height="1000"
+                      {% if section.settings.loop %}
+                        loop
+                      {% endif %}
+                      playsinline
+                      {% if section.settings.no_sound %}
+                        muted
+                      {% endif %}
+                      data-lazysrc="{{ section.settings.close_video.sources | where: 'format', 'mp4' | first | map: 'url' }}"
+                      {% if section.settings.close_thumb != blank %}
+                        poster="{{ section.settings.close_thumb | image_url }}"
+                      {% endif %}
+                      class="video video-secondary"
+                      id="vid2"
+                    ></video>
+                  </div>
                 </div>
-              </div>
-              <div class="video-player-controls  ended " style="margin-bottom:2em">
-                <button class="play-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
-                    <path d="M41 28.2679C42.3333 29.0377 42.3333 30.9623 41 31.7321L26 40.3923C24.6667 41.1621 23 40.1999 23 38.6603L23 21.3397C23 19.8001 24.6667 18.8379 26 19.6077L41 28.2679Z" fill="currentColor"/>
-                  </svg>
-                </button>
-                <button class="stop-button">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
-                    <rect x="22" y="18" width="4" height="24" rx="2" fill="currentColor"/>
-                    <rect x="34" y="18" width="4" height="24" rx="2" fill="currentColor"/>
-                  </svg>
-                </button>
+                <div class="video-player-controls  ended " style="margin-bottom:2em">
+                  <button class="play-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                      <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
+                      <path d="M41 28.2679C42.3333 29.0377 42.3333 30.9623 41 31.7321L26 40.3923C24.6667 41.1621 23 40.1999 23 38.6603L23 21.3397C23 19.8001 24.6667 18.8379 26 19.6077L41 28.2679Z" fill="currentColor"/>
+                    </svg>
+                  </button>
+                  <button class="stop-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                      <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
+                      <rect x="22" y="18" width="4" height="24" rx="2" fill="currentColor"/>
+                      <rect x="34" y="18" width="4" height="24" rx="2" fill="currentColor"/>
+                    </svg>
+                  </button>
 
-                <div class="control">
-                  <div class="label label-outside">{{ section.settings.close_label }}</div>
-                  <div class="switch"></div>
-                  <div class="label label-inside">{{ section.settings.open_label }}</div>
+                  <div class="control">
+                    <div class="label label-outside">{{ section.settings.close_label }}</div>
+                    <div class="switch"></div>
+                    <div class="label label-inside">{{ section.settings.open_label }}</div>
+                  </div>
                 </div>
+                <audio id="audio-close" loop>
+                  <!-- <source src="{{ section.settings.close_audio }}" type="audio/mpeg" > -->
+                  Your browser does not support the audio element.
+                </audio>
+                <audio id="audio-open" loop>
+                  <!-- <source src="{{ section.settings.open_audio }}" type="audio/mpeg"> -->
+                  Your browser does not support the audio element.
+                </audio>
               </div>
-              <audio id="audio-close" loop>
-                <!-- <source src="{{ section.settings.close_audio }}" type="audio/mpeg" > -->
-                Your browser does not support the audio element.
-              </audio>
-              <audio id="audio-open" loop>
-                <!-- <source src="{{ section.settings.open_audio }}" type="audio/mpeg"> -->
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-            <script>
-              document.addEventListener('app:ready', (e) => {
-                setTimeout(() => {
-                  document.querySelector('#vid1').src = document.querySelector('#vid1').dataset.lazysrc;
-                  document.querySelector('#vid2').src = document.querySelector('#vid2').dataset.lazysrc;
-                  $(document).ready(function () {
-                    $('#audio-close').get(0).muted = true;
-                    $('#audio-open').get(0).muted = true;
-                    $('#vid1').get(0).muted = true;
-                    $('#vid2').get(0).muted = true;
-                    let isClosed = true;
-                    let isPlaying = false;
-                    let ismuted = true;
-                    $('#vid2')
-                      .get(0)
-                      .addEventListener('ended', () => {
-                        if (isClosed) {
-                          console.log('#vid2');
-                          if (!ismuted) {
-                            $('#audio-close').get(0).muted = false;
-                          }
-                          $('#audio-close').get(0).currentTime = 0;
-                          $('#audio-close').get(0).play();
-                          isPlaying = false;
-                        }
-                      });
-                    $('#vid1')
-                      .get(0)
-                      .addEventListener('ended', () => {
-                        if (!isClosed) {
-                          console.log('#vid1');
-                          if (!ismuted) {
-                            $('#audio-open').get(0).muted = false;
-                          }
-                          $('#audio-open').get(0).currentTime = 0;
-                          $('#audio-open').get(0).play();
-                          isPlaying = false;
-                        }
-                      });
-                    $('.play-button').on('click', function () {
-                      ismuted = false;
-                      $('#audio-open').get(0).currentTime = 0;
-                      $('.video-player-controls').addClass('active');
-                      if (isClosed) {
-                        $('#audio-close').get(0).muted = false;
-                        if (!isPlaying) {
-                          $('#audio-close').get(0).play();
-                        }
-                      } else {
-                        $('#audio-open').get(0).muted = false;
-                        if (!isPlaying) {
-                          $('#audio-open').get(0).play();
-                        }
-                      }
-                      $('#vid1').get(0).muted = false;
-                      $('#vid2').get(0).muted = false;
-                    });
-                    $('.stop-button').on('click', function () {
-                      ismuted = true;
-                      $('.video-player-controls').removeClass('active');
+              <script>
+                document.addEventListener('app:ready', (e) => {
+                  setTimeout(() => {
+                    document.querySelector('#vid1').src = document.querySelector('#vid1').dataset.lazysrc;
+                    document.querySelector('#vid2').src = document.querySelector('#vid2').dataset.lazysrc;
+                    $(document).ready(function () {
                       $('#audio-close').get(0).muted = true;
                       $('#audio-open').get(0).muted = true;
                       $('#vid1').get(0).muted = true;
                       $('#vid2').get(0).muted = true;
-                    });
-                    $('.label-inside').on('click', function () {
-                      isClosed = false;
-                      isPlaying = true;
-                      $('#audio-close').get(0).pause();
-                      $('#audio-open').get(0).pause();
-                      $('.control').addClass('active');
-                      $('.video-player').addClass('active');
-                      $('#vid2').get(0).pause();
-                      $('#vid2').get(0).currentTime = 0;
-                      $('#vid1').get(0).currentTime = 0;
-                      $('#vid1').get(0).play();
-                    });
+                      let isClosed = true;
+                      let isPlaying = false;
+                      let ismuted = true;
+                      $('#vid2')
+                        .get(0)
+                        .addEventListener('ended', () => {
+                          if (isClosed) {
+                            console.log('#vid2');
+                            if (!ismuted) {
+                              $('#audio-close').get(0).muted = false;
+                            }
+                            $('#audio-close').get(0).currentTime = 0;
+                            $('#audio-close').get(0).play();
+                            isPlaying = false;
+                          }
+                        });
+                      $('#vid1')
+                        .get(0)
+                        .addEventListener('ended', () => {
+                          if (!isClosed) {
+                            console.log('#vid1');
+                            if (!ismuted) {
+                              $('#audio-open').get(0).muted = false;
+                            }
+                            $('#audio-open').get(0).currentTime = 0;
+                            $('#audio-open').get(0).play();
+                            isPlaying = false;
+                          }
+                        });
+                      $('.play-button').on('click', function () {
+                        ismuted = false;
+                        $('#audio-open').get(0).currentTime = 0;
+                        $('.video-player-controls').addClass('active');
+                        if (isClosed) {
+                          $('#audio-close').get(0).muted = false;
+                          if (!isPlaying) {
+                            $('#audio-close').get(0).play();
+                          }
+                        } else {
+                          $('#audio-open').get(0).muted = false;
+                          if (!isPlaying) {
+                            $('#audio-open').get(0).play();
+                          }
+                        }
+                        $('#vid1').get(0).muted = false;
+                        $('#vid2').get(0).muted = false;
+                      });
+                      $('.stop-button').on('click', function () {
+                        ismuted = true;
+                        $('.video-player-controls').removeClass('active');
+                        $('#audio-close').get(0).muted = true;
+                        $('#audio-open').get(0).muted = true;
+                        $('#vid1').get(0).muted = true;
+                        $('#vid2').get(0).muted = true;
+                      });
+                      $('.label-inside').on('click', function () {
+                        isClosed = false;
+                        isPlaying = true;
+                        $('#audio-close').get(0).pause();
+                        $('#audio-open').get(0).pause();
+                        $('.control').addClass('active');
+                        $('.video-player').addClass('active');
+                        $('#vid2').get(0).pause();
+                        $('#vid2').get(0).currentTime = 0;
+                        $('#vid1').get(0).currentTime = 0;
+                        $('#vid1').get(0).play();
+                      });
 
-                    $('.label-outside').on('click', function () {
-                      isClosed = true;
-                      isPlaying = true;
-                      $('#audio-close').get(0).pause();
-                      $('#audio-open').get(0).pause();
-                      $('.control').removeClass('active');
-                      $('.video-player').removeClass('active');
-                      $('#vid1').get(0).pause();
-                      $('#vid1').get(0).currentTime = 0;
-                      $('#vid2').get(0).currentTime = 0;
-                      $('#vid2').get(0).play();
+                      $('.label-outside').on('click', function () {
+                        isClosed = true;
+                        isPlaying = true;
+                        $('#audio-close').get(0).pause();
+                        $('#audio-open').get(0).pause();
+                        $('.control').removeClass('active');
+                        $('.video-player').removeClass('active');
+                        $('#vid1').get(0).pause();
+                        $('#vid1').get(0).currentTime = 0;
+                        $('#vid2').get(0).currentTime = 0;
+                        $('#vid2').get(0).play();
+                      });
+                      $('.switch').on('click', function () {
+                        if ($('.control').hasClass('active')) {
+                          $('.label-outside').click();
+                        } else {
+                          $('.label-inside').click();
+                        }
+                      });
                     });
-                    $('.switch').on('click', function () {
-                      if ($('.control').hasClass('active')) {
-                        $('.label-outside').click();
-                      } else {
-                        $('.label-inside').click();
-                      }
-                    });
-                  });
-                }, 1000);
-              });
-            </script>
-          {%- else -%}
-            <img
-              loading="lazy"
-              style="width:100%"
-              width="675"
-              height="675"
-              srcset="
-                {% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
-                {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
-                {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
-                {{ prod_img | image_url:  width: 700 }}
-              "
-              src="{{ prod_img | image_url: width: 550, height: 550 }}"
-              sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-              alt="{{ prod_img.alt | escape }}"
-            >
-          {%- endif -%}
-          <div
-            {% if section.settings.show_videos %}
-              style="
-                transform: scale(1);
-                position: absolute;
-                width: 100%;
-                top: 10%;
-                left: 0;
-                padding-bottom: 90%;
-              "
-            {% endif %}
-          >
-            {% for block in section.blocks %}
-              <span
-                {{ block.shopify_attributes }}
-                class="hotspot-icon unique-{{- block.id -}}"
-                data-tooltip="{{ block.settings.title }}"
-                data-target="feature-{{  block.settings.title | handleize }}"
+                  }, 1000);
+                });
+              </script>
+            {%- else -%}
+              <img
+                loading="lazy"
+                style="width:100%"
+                width="675"
+                height="675"
+                srcset="
+                  {% if prod_img.width >= 288 %}{{ prod_img | image_url: width: 288 }} 288w,{% endif %}
+                  {% if prod_img.width >= 576 %}{{ prod_img | image_url: width: 576 }} 576w,{% endif %}
+                  {% if prod_img.width >= 550 %}{{ prod_img | image_url: width: 550 }} 550w,{% endif %}
+                  {{ prod_img | image_url:  width: 700 }}
+                "
+                src="{{ prod_img | image_url: width: 550, height: 550 }}"
+                sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                alt="{{ prod_img.alt | escape }}"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  version="1.1"
-                  id="Capa_1"
-                  x="0px"
-                  y="0px"
-                  width="395.71px"
-                  height="395.71px"
-                  viewBox="0 0 395.71 395.71"
-                  style="enable-background:new 0 0 395.71 395.71;"
-                  xml:space="preserve"
+            {%- endif -%}
+            <div
+              {% if section.settings.show_videos %}
+                style="
+                  transform: scale(1);
+                  position: absolute;
+                  width: 100%;
+                  top: 10%;
+                  left: 0;
+                  padding-bottom: 90%;
+                "
+              {% endif %}
+            >
+              {% for block in section.blocks %}
+                <span
+                  {{ block.shopify_attributes }}
+                  class="hotspot-icon unique-{{- block.id -}}"
+                  data-tooltip="{{ block.settings.title }}"
+                  data-target="feature-{{  block.settings.title | handleize }}"
                 >
-                  <g>
-                    <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
-                  </g>
-                </svg>
-              </span>
-            {% endfor %}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1"
+                    id="Capa_1"
+                    x="0px"
+                    y="0px"
+                    width="395.71px"
+                    height="395.71px"
+                    viewBox="0 0 395.71 395.71"
+                    style="enable-background:new 0 0 395.71 395.71;"
+                    xml:space="preserve"
+                  >
+                    <g>
+                      <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738   c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388   C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191   c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
+                    </g>
+                  </svg>
+                </span>
+              {% endfor %}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col right-col">
-        <div class="col-wrap">
-          <h2
-            style="
-              font-size: calc(var(--typeHeaderSize)* .75);
-              margin-bottom: 0.4em;
-              padding: 0rem 2rem;
-            "
-          >
-            {{ section.settings.title }}
-          </h2>
-          <div
-            style="
-              padding: 0rem 2rem;
-              font-size: 0.7em;    color: #939393;
-            "
-          >
-            {{ section.settings.content | strip_html }}
-          </div>
-          <div
-            class="features-list"
-            style="
-              border-top: 1px solid #f1f1f1;
-              margin-top: 1em;
-            "
-          >
-            {% for block in section.blocks %}
-              {% if block.settings.title != blank %}
-                <div class="features-list-row" data-type="{{ block.settings.title }}" {{ block.shopify_attributes }}>
-                  <input
-                    name="{{ section.id }}-radio"
-                    hidden
-                    type="radio"
-                    value="block.settings.title"
-                    id="input-{{ block.settings.title | handleize }}"
-                  >
-                  <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
-                    <label onclick="hotspotIconClick(event)" for="input-{{ block.settings.title | handleize }}">
-                      {{- block.settings.title }}
-                    </label>
-                    <div>
+        <div class="col right-col">
+          <div class="col-wrap">
+            <h2
+              style="
+                font-size: calc(var(--typeHeaderSize)* .75);
+                margin-bottom: 0.4em;
+                padding: 0rem 2rem;
+              "
+            >
+              {{ section.settings.title }}
+            </h2>
+            <div
+              style="
+                padding: 0rem 2rem;
+                font-size: 0.7em;    color: #939393;
+              "
+            >
+              {{ section.settings.content | strip_html }}
+            </div>
+            <div
+              class="features-list"
+              style="
+                border-top: 1px solid #f1f1f1;
+                margin-top: 1em;
+              "
+            >
+              {% for block in section.blocks %}
+                {% if block.settings.title != blank %}
+                  <div class="features-list-row" data-type="{{ block.settings.title }}" {{ block.shopify_attributes }}>
+                    <input
+                      name="{{ section.id }}-radio"
+                      hidden
+                      type="radio"
+                      value="block.settings.title"
+                      id="input-{{ block.settings.title | handleize }}"
+                    >
+                    <div id="feature-{{ block.settings.title | handleize }}" class="features-list-row-wrap">
+                      <label onclick="hotspotIconClick(event)" for="input-{{ block.settings.title | handleize }}">
+                        {{- block.settings.title }}
+                      </label>
                       <div>
-                        {{ block.settings.description }}
+                        <div>
+                          {{ block.settings.description }}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              {% endif %}
-            {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-{% assign scrollWhenClick = true %}
+  {% assign scrollWhenClick = true %}
 
-<script>
-  function hotspotIconClick (event){
-    console.log(" event.target.control.checked", event.target.control.checked)
-    event.preventDefault()
-      event.target.control.checked=!event.target.control.checked
-  }
-  document.querySelectorAll(".hotspot-icon").forEach(node => {
-    node.addEventListener("click", (e) => {
-      console.log(node.dataset.target)
-      const targetE = document.querySelector("#" + node.dataset.target);
-      const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
-      {% if scrollWhenClick %}
-        if (window.innerWidth < 991) {
-          targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-        }
-      {%  endif %}
-      targetE.classList.remove('ping');
-      setTimeout(() => {
-        targetE.classList.add('ping');
-        if (targetInput) {
-          targetInput.checked = true
-        }
+  <script>
+    function hotspotIconClick (event){
+      console.log(" event.target.control.checked", event.target.control.checked)
+      event.preventDefault()
+        event.target.control.checked=!event.target.control.checked
+    }
+    document.querySelectorAll(".hotspot-icon").forEach(node => {
+      node.addEventListener("click", (e) => {
+        console.log(node.dataset.target)
+        const targetE = document.querySelector("#" + node.dataset.target);
+        const targetInput = document.querySelector("#" + node.dataset.target.replace('feature-', 'input-'));
+        {% if scrollWhenClick %}
+          if (window.innerWidth < 991) {
+            targetE.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+          }
+        {%  endif %}
+        targetE.classList.remove('ping');
+        setTimeout(() => {
+          targetE.classList.add('ping');
+          if (targetInput) {
+            targetInput.checked = true
+          }
 
+        })
       })
     })
-  })
-</script>
+  </script>
+{% endif %}
+
 {% render 'certicate' %}
 {% schema %}
 {
