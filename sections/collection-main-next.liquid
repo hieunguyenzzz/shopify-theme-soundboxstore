@@ -103,10 +103,13 @@
         }
 
         .collection-product-item .image {
-            border-radius: 1em;
-            width: 50%;
-            max-width: 500px;
-            flex-shrink: 0;
+          border-radius: 1em;
+          width: 50%;
+          max-width: 500px;
+          flex-shrink: 0;
+          max-width: 50%;
+          width: 0;
+          flex: 1;
         }
 
         .collection-product-item .collection-btn-group {
@@ -245,14 +248,13 @@
 {
   "name": "call out dot banner",
   "settings": [
-
     {
       "type": "header",
       "content": "Edit content",
       "info": "Subscribers added automatically to your “accepted marketing” customer list. [Go to Edit](https://admin.shopify.com/store/thankyou-485/apps/256-metafields-editor/collections)"
     },
-     {
-       "type": "collection",
+    {
+      "type": "collection",
       "id": "collection",
       "label": "Collection"
     },
@@ -260,39 +262,40 @@
       "type": "checkbox",
       "id": "show_products",
       "label": "Show products?",
-      "default":true
-    },{
+      "default": true
+    },
+    {
       "type": "range",
       "id": "title_size",
       "label": "Title size",
       "min": 1,
       "max": 5,
       "step": 1,
-      "default":2
+      "default": 2
     },
     {
-          "type": "richtext",
-          "id": "title",
-          "label": "Heading",
-          "default": "<p>Overlaid Hero Slide</p>"
-        },
-{
-          "type": "richtext",
-          "id": "subtitle",
-          "label": "Sub-Heading"
-        },
-         {
-          "type": "richtext",
-          "id": "subheading_richtext",
-          "label": "Rich Text"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
+      "type": "richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "<p>Overlaid Hero Slide</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Sub-Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading_richtext",
+      "label": "Rich Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
   ],
-    "blocks": [
+  "blocks": [
     {
       "name": "product",
       "type": "product",
@@ -308,14 +311,14 @@
           "label": "Vertical",
           "min": 0,
           "max": 100,
-          "default":0,
+          "default": 0,
           "unit": "%"
         },
         {
           "type": "range",
           "id": "horizontal",
           "label": "horizontal",
-          "default":0,
+          "default": 0,
           "min": 0,
           "max": 100,
           "unit": "%"
@@ -326,8 +329,7 @@
   "presets": [
     {
       "name": "Banner with callout dots",
-      "settings": {
-      }
+      "settings": {}
     }
   ]
 }
