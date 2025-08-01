@@ -5,122 +5,80 @@
     </label>
     <div
       class="variant-input-wrap"
-      name="Furniture"
-      data-index="option3"
-      data-handle="furniture"
-      id="ProductSelect-template--19970972549345__main-7587394781409-option-2"
     >
       <div
         class="variant-input "
-        data-index="option3"
-        data-value="With Furniture"
-        data-trvalue="White / Dark Grey / With Furniture"
       >
         <input
           type="radio"
           form="AddToCartForm-template--19970972549345__main-7587394781409"
           checked="checked"
-          value="With Furniture"
-          data-index="option3"
-          name="Furniture"
-          data-variant-input=""
-          class=""
-          id="ProductSelect-template--19970972549345__main-7587394781409-option-furniture-With+Furniture"
-          data-gtm-form-interact-field-id="2"
+          value="one-time-payment"
+          id="one-time-payment"
+          name="payment-type"
         >
         <label
-          for="ProductSelect-template--19970972549345__main-7587394781409-option-furniture-With+Furniture"
+          for="one-time-payment"
           class="variant__button-label"
         >
-          With Furniture
-
-          <span>Stool / Device Shelf</span></label
-        >
-      </div>
-
-      <div
-        class="variant-input "
-        data-index="option3"
-        data-value="No Furniture"
-        data-trvalue="White / Dark Grey / No Furniture"
-      >
-        <input
-          type="radio"
-          form="AddToCartForm-template--19970972549345__main-7587394781409"
-          value="No Furniture"
-          data-index="option3"
-          name="Furniture"
-          data-variant-input=""
-          class=""
-          id="ProductSelect-template--19970972549345__main-7587394781409-option-furniture-No+Furniture"
-          data-gtm-form-interact-field-id="1"
-        >
-        <label
-          for="ProductSelect-template--19970972549345__main-7587394781409-option-furniture-No+Furniture"
-          class="variant__button-label"
-        >
-          No Furniture
-        </label>
-      </div>
-    </div>
-    <div>
-      <span
-        data-product-price
-        class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
-      >
-        {%- unless product.empty? -%}
-          {%- render 'price' with current_variant.price -%}
-        {%- else -%}
-          {%- render 'price' with 1999 -%}
-        {%- endunless -%}
-        {%- if shop.taxes_included -%}
-          <span class="vat_text">(INC VAT)</span>
-        {%- endif -%}
-      </span>
-      {%- assign hide_sale_price = true -%}
-      {%- if product.compare_at_price_max > product.price -%}
-        {%- if current_variant.compare_at_price > current_variant.price -%}
-          {%- assign hide_sale_price = false -%}
-        {%- endif -%}
-        <span
-          data-a11y-price
-          class="visually-hidden"
-          aria-hidden="{{ hide_sale_price }}"
-        >
-          {{ 'products.general.regular_price' | t }}
-        </span>
-        <span
-          data-product-price-wrap
-          class="{% if hide_sale_price %} hide{% endif %}"
-        >
-          <span
-            data-compare-price
-            class="product__price product__price--compare"
-          >
-            {%- if current_variant.compare_at_price > current_variant.price -%}
-              {%- render 'price' with current_variant.compare_at_price -%}
+          <div>
+            <span
+              data-product-price
+              class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
+            >
+              {%- unless product.empty? -%}
+                {%- render 'price' with current_variant.price -%}
+              {%- else -%}
+                {%- render 'price' with 1999 -%}
+              {%- endunless -%}
+              {%- if shop.taxes_included -%}
+                <span class="vat_text">(INC VAT)</span>
+              {%- endif -%}
+            </span>
+            {%- assign hide_sale_price = true -%}
+            {%- if product.compare_at_price_max > product.price -%}
+              {%- if current_variant.compare_at_price > current_variant.price -%}
+                {%- assign hide_sale_price = false -%}
+              {%- endif -%}
+              <span
+                data-a11y-price
+                class="visually-hidden"
+                aria-hidden="{{ hide_sale_price }}"
+              >
+                {{ 'products.general.regular_price' | t }}
+              </span>
+              <span
+                data-product-price-wrap
+                class="{% if hide_sale_price %} hide{% endif %}"
+              >
+                <span
+                  data-compare-price
+                  class="product__price product__price--compare"
+                >
+                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                    {%- render 'price' with current_variant.compare_at_price -%}
+                  {%- endif -%}
+                </span>
+              </span>
+              <span data-compare-price-a11y class="visually-hidden">
+                {{- 'products.general.sale_price' | t -}}
+              </span>
+            {%- else -%}
+              <span
+                id="PriceA11y-{{ section_id }}"
+                class="visually-hidden"
+              >
+                {{- 'products.general.regular_price' | t -}}
+              </span>
             {%- endif -%}
-          </span>
-        </span>
-        <span data-compare-price-a11y class="visually-hidden">
-          {{- 'products.general.sale_price' | t -}}
-        </span>
-      {%- else -%}
-        <span
-          id="PriceA11y-{{ section_id }}"
-          class="visually-hidden"
-        >
-          {{- 'products.general.regular_price' | t -}}
-        </span>
-      {%- endif -%}
-      {%- if shop.taxes_included -%}
-        <span class="vat_text">(INC VAT)</span>
-      {%- endif -%}
-      <div
-        data-unit-price-wrapper
-        class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}"
-      >
-        {%- capture unit_price_base_unit -%}
+            {%- if shop.taxes_included -%}
+              <span class="vat_text">(INC VAT)</span>
+            {%- endif -%}
+            <div
+              data-unit-price-wrapper
+              class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}"
+            >
+              {%- capture unit_price_base_unit -%}
                           <span data-unit-base>
                             {%- if current_variant.unit_price_measurement -%}
                               {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
@@ -130,11 +88,34 @@
                             {%- endif -%}
                           </span>
                         {%- endcapture -%}
-        <span data-unit-price>
-          {%- render 'price' with current_variant.unit_price -%}</span
-        >/{{ unit_price_base_unit }}
+              <span data-unit-price>
+                {%- render 'price' with current_variant.unit_price -%}</span
+              >/{{ unit_price_base_unit }}
+            </div>
+          </div>
+          <span>One-time Payment</span>
+        </label>
       </div>
-      {%- render 'product-leasing', current_variant: current_variant -%}
+
+      <div
+        class="variant-input "
+      >
+        <input
+          type="radio"
+          value="per-month"
+          name="payment-type"
+          id="per-month"
+          data-gtm-form-interact-field-id="1"
+        >
+        <label
+          for="per-month"
+          class="variant__button-label"
+        >
+          Per month
+        </label>
+      </div>
     </div>
+
+    {%- render 'product-leasing', current_variant: current_variant -%}
   </div>
 </div>
