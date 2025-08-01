@@ -11,6 +11,7 @@
     {%- if leasing_price != blank and leasing_price != null -%}
       <div>
         {{- leasing_price.value | money }}
+        <input hidden name="leasing_price" value="{{- leasing_price.value | money }}">
       </div>
     {%- endif -%}
   </div>
@@ -20,6 +21,7 @@
       {%- if leasing_price != blank and leasing_price != null -%}
         <div>
           {{- leasing_price.value | money }}
+          <input hidden name="leasing_price" value="{{- leasing_price.value | money }}">
         </div>
       {%- endif -%}
     </template>
