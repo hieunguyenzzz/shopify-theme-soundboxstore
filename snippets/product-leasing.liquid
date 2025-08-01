@@ -1,6 +1,6 @@
-{%- assign leasing_price = current_variant.metafields.leasing.price -%}
-
 {% assign variant = product.selected_or_first_available_variant %}
+{%- assign leasing_price = variant.metafields.leasing.price -%}
+
 <button id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
   {%- assign leasing_price = variant.metafields.leasing.price -%}
   {%- if leasing_price != blank and leasing_price != null -%}
@@ -10,8 +10,8 @@
     >
       <p style="margin: 0; font-size: 0.95em; color: #495057; text-align: center;">
         💰 lease from
-        <strong
-          >{{ leasing_price.value | money }} per month<a
+        <strong>
+          {{- leasing_price.value | money }} per month<a
             href="#"
             onclick="openLeasingModal(event)"
             style="text-decoration: none; cursor: pointer; color: #007bff; margin-left: 4px;"
@@ -32,8 +32,8 @@
       >
         <p style="margin: 0; font-size: 0.95em; color: #495057; text-align: center;">
           💰 lease from
-          <strong
-            >{{ leasing_price.value | money }} per month<a
+          <strong>
+            {{- leasing_price.value | money }} per month<a
               href="#"
               onclick="openLeasingModal(event)"
               style="text-decoration: none; cursor: pointer; color: #007bff; margin-left: 4px;"
@@ -46,17 +46,17 @@
   </template>
 {% endfor %}
 <script>
-   document.addEventListener('variant:change', function (evt) {
-     console.log(evt.detail.variant.id+'123')
-     let subscriptionE = document.querySelector("#product__leasing-wrap")
-     let subscriptionT = document.querySelector("#product__leasing-"+evt.detail.variant.id)
+  document.addEventListener('variant:change', function (evt) {
+    console.log(evt.detail.variant.id + '123');
+    let subscriptionE = document.querySelector('#product__leasing-wrap');
+    let subscriptionT = document.querySelector('#product__leasing-' + evt.detail.variant.id);
 
-     if(subscriptionT){
-       const clone = subscriptionT.content.cloneNode(true);
-  subscriptionE.innerHTML=''
-       subscriptionE.appendChild(clone);
-     }
-   });
+    if (subscriptionT) {
+      const clone = subscriptionT.content.cloneNode(true);
+      subscriptionE.innerHTML = '';
+      subscriptionE.appendChild(clone);
+    }
+  });
 </script>
 <style>
   .spf-section.popup-overlay {
@@ -396,42 +396,42 @@
 </div>
 
 <script>
-        function closePopup() {
-            const popup = document.getElementById('popupOverlay');
-            popup.style.animation = 'fadeOut 0.3s ease-out forwards';
-            
-            setTimeout(() => {
-                popup.style.display = 'none';
-            }, 300);
-        }
-        function product__leasing_openPopup() {
-            const popup = document.getElementById('popupOverlay')
-            popup.style.animation = 'fadeIn 0.3s ease-out forwards';
-            setTimeout(() => {
-                popup.style.display = 'flex';
-            }, 300);
-        }
-        // Close popup when clicking outside
-        document.getElementById('popupOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePopup();
-            }
-        });
+  function closePopup() {
+    const popup = document.getElementById('popupOverlay');
+    popup.style.animation = 'fadeOut 0.3s ease-out forwards';
 
-        // Close popup with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closePopup();
-            }
-        });
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300);
+  }
+  function product__leasing_openPopup() {
+    const popup = document.getElementById('popupOverlay');
+    popup.style.animation = 'fadeIn 0.3s ease-out forwards';
+    setTimeout(() => {
+      popup.style.display = 'flex';
+    }, 300);
+  }
+  // Close popup when clicking outside
+  document.getElementById('popupOverlay').addEventListener('click', function (e) {
+    if (e.target === this) {
+      closePopup();
+    }
+  });
 
-        // Add fadeOut animation
-        const style = document.createElement('style');
-        style.textContent = `
+  // Close popup with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closePopup();
+    }
+  });
+
+  // Add fadeOut animation
+  const style = document.createElement('style');
+  style.textContent = `
             @keyframes fadeOut {
                 from { opacity: 1; }
                 to { opacity: 0; }
             }
         `;
-        document.head.appendChild(style);
+  document.head.appendChild(style);
 </script>
