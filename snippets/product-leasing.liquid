@@ -4,21 +4,8 @@
 <button id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
   {%- assign leasing_price = variant.metafields.leasing.price -%}
   {%- if leasing_price != blank and leasing_price != null -%}
-    <div
-      class="product__leasing-option"
-      style="margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px;"
-    >
-      <p style="margin: 0; font-size: 0.95em; color: #495057; text-align: center;">
-        💰 lease from
-        <strong>
-          {{- leasing_price.value | money }} per month<a
-            href="#"
-            onclick="openLeasingModal(event)"
-            style="text-decoration: none; cursor: pointer; color: #007bff; margin-left: 4px;"
-            >*</a
-          ></strong
-        >
-      </p>
+    <div>
+      {{- leasing_price.value | money }}
     </div>
   {%- endif -%}
 </button>
@@ -30,17 +17,7 @@
         class="product__leasing-option"
         style="margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px;"
       >
-        <p style="margin: 0; font-size: 0.95em; color: #495057; text-align: center;">
-          💰 lease from
-          <strong>
-            {{- leasing_price.value | money }} per month<a
-              href="#"
-              onclick="openLeasingModal(event)"
-              style="text-decoration: none; cursor: pointer; color: #007bff; margin-left: 4px;"
-              >*</a
-            ></strong
-          >
-        </p>
+        {{- leasing_price.value | money }}
       </div>
     {%- endif -%}
   </template>
