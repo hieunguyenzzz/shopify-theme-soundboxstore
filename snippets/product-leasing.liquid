@@ -1,12 +1,5 @@
 {%- assign leasing_price = current_variant.metafields.leasing.price -%}
-<style>
-   .template-product .product-right-col .buy_buttons {
-      display: none;
-  }
-  .template-product .product-right-col .product-leasing{
-    margin-bottom:40px;
-  }
-</style>
+
 {% assign variant = product.selected_or_first_available_variant %}
 <button id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
   {%- assign leasing_price = variant.metafields.leasing.price -%}
