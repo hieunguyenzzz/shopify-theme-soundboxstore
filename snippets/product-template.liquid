@@ -219,6 +219,7 @@
                       {% endcomment %}
 
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
+                      <div>
                       <span
                         data-product-price
                         class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
@@ -232,7 +233,6 @@
                           <span class="vat_text">(INC VAT)</span>
                         {%- endif -%}
                       </span>
-                      <div>
                       {%- assign hide_sale_price = true -%}
                       {%- if product.compare_at_price_max > product.price -%}
                         {%- if current_variant.compare_at_price > current_variant.price -%}
