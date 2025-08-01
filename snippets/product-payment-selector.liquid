@@ -51,7 +51,7 @@
               gap: 0.4em
             "
           >
-            <span
+            div
               data-product-price
               class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
             >
@@ -61,68 +61,68 @@
                 {%- render 'price' with 1999 -%}
               {%- endunless -%}
               {%- if shop.taxes_included -%}
-                <span class="vat_text">(INC VAT)</span>
+                div class="vat_text">(INC VAT)</div>
               {%- endif -%}
-            </span>
+            </div>
             {%- assign hide_sale_price = true -%}
             {%- if product.compare_at_price_max > product.price -%}
               {%- if current_variant.compare_at_price > current_variant.price -%}
                 {%- assign hide_sale_price = false -%}
               {%- endif -%}
-              <span
+              div
                 data-a11y-price
                 class="visually-hidden"
                 aria-hidden="{{ hide_sale_price }}"
               >
                 {{ 'products.general.regular_price' | t }}
-              </span>
-              <span
+              </div>
+              div
                 data-product-price-wrap
                 class="{% if hide_sale_price %} hide{% endif %}"
               >
-                <span
+                div
                   data-compare-price
                   class="product__price product__price--compare"
                 >
                   {%- if current_variant.compare_at_price > current_variant.price -%}
                     {%- render 'price' with current_variant.compare_at_price -%}
                   {%- endif -%}
-                </span>
-              </span>
-              <span data-compare-price-a11y class="visually-hidden">
+                </div>
+              </div>
+              div data-compare-price-a11y class="visually-hidden">
                 {{- 'products.general.sale_price' | t -}}
-              </span>
+              </div>
             {%- else -%}
-              <span
+              div
                 id="PriceA11y-{{ section_id }}"
                 class="visually-hidden"
               >
                 {{- 'products.general.regular_price' | t -}}
-              </span>
+              </div>
             {%- endif -%}
             {%- if shop.taxes_included -%}
-              <span class="vat_text">(INC VAT)</span>
+              div class="vat_text">(INC VAT)</div>
             {%- endif -%}
             <div
               data-unit-price-wrapper
               class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}"
             >
               {%- capture unit_price_base_unit -%}
-                          <span data-unit-base>
+                          div data-unit-base>
                             {%- if current_variant.unit_price_measurement -%}
                               {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
                                 {{ current_variant.unit_price_measurement.reference_value }}
                               {%- endif -%}
                               {{ current_variant.unit_price_measurement.reference_unit }}
                             {%- endif -%}
-                          </span>
+                          </div>
                         {%- endcapture -%}
-              <span data-unit-price>
-                {%- render 'price' with current_variant.unit_price -%}</span
+              div data-unit-price>
+                {%- render 'price' with current_variant.unit_price -%}</div
               >/{{ unit_price_base_unit }}
             </div>
           </div>
-          <span>One-time Payment</span>
+          div>One-time Payment</div>
         </label>
       </div>
       <div
