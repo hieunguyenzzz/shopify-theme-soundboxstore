@@ -1,0 +1,130 @@
+{%- assign leasing_price = current_variant.metafields.leasing.price -%}
+
+{%- if leasing_price != blank -%}
+  <div class="product-leasing" data-product-leasing>
+    <p class="product-leasing__text">
+      💰 or lease from <strong>{{ leasing_price | money }} per month<a href="#" class="product-leasing__asterisk" onclick="openLeasingModal(event)">*</a></strong>
+    </p>
+  </div>
+
+  <style>
+    .product-leasing {
+      margin: 10px 0;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    .product-leasing__text {
+      margin: 0;
+      color: #495057;
+    }
+    
+    .product-leasing__asterisk {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 2px;
+    }
+    
+    .product-leasing__asterisk:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .product-leasing {
+        font-size: 13px;
+        padding: 10px 12px;
+      }
+    }
+  </style>
+
+  <script>
+    function openLeasingModal(event) {
+      event.preventDefault();
+      const modal = document.getElementById('leasing-modal');
+      if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLeasingModal() {
+      const modal = document.getElementById('leasing-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Update leasing price when variant changes
+    document.addEventListener('DOMContentLoaded', function() {
+      const leasingElement = document.querySelector('[data-product-leasing]');
+      
+      if (leasingElement) {
+        // Listen for theme's variant change events
+        document.addEventListener('variantChange', handleVariantChange);
+        document.addEventListener('variant:change', handleVariantChange);
+        
+        // Also listen for direct input changes as fallback
+        const variantSelectors = document.querySelectorAll('input[name="id"], select[name="id"]');
+        variantSelectors.forEach(selector => {
+          selector.addEventListener('change', function() {
+            setTimeout(updateLeasingPrice, 100); // Small delay to ensure variant data is updated
+          });
+        });
+      }
+    });
+
+    function handleVariantChange(event) {
+      if (event.detail && event.detail.variant) {
+        updateLeasingPriceFromVariant(event.detail.variant);
+      } else {
+        updateLeasingPrice();
+      }
+    }
+
+    function updateLeasingPriceFromVariant(variant) {
+      const leasingElement = document.querySelector('[data-product-leasing]');
+      if (!leasingElement) return;
+
+      const leasingPrice = variant.metafields?.leasing?.price;
+      
+      if (leasingPrice) {
+        leasingElement.style.display = 'block';
+        const priceText = leasingElement.querySelector('.product-leasing__text strong');
+        if (priceText) {
+          priceText.innerHTML = `${leasingPrice} per month<a href="#" class="product-leasing__asterisk" onclick="openLeasingModal(event)">*</a>`;
+        }
+      } else {
+        leasingElement.style.display = 'none';
+      }
+    }
+
+    function updateLeasingPrice() {
+      const currentVariantId = document.querySelector('input[name="id"]:checked, select[name="id"]')?.value;
+      if (!currentVariantId) return;
+
+      // Try to get variant data from various sources
+      let variantData = null;
+      
+      // Try theme's product object first
+      if (window.theme && window.theme.productData) {
+        variantData = window.theme.productData.variants.find(v => v.id == currentVariantId);
+      }
+      
+      // Fallback to ShopifyAnalytics
+      if (!variantData && window.ShopifyAnalytics?.meta?.product) {
+        variantData = window.ShopifyAnalytics.meta.product.variants.find(v => v.id == currentVariantId);
+      }
+      
+      if (variantData) {
+        updateLeasingPriceFromVariant(variantData);
+      }
+    }
+  </script>
+{%- endif -%}
