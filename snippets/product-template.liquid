@@ -315,6 +315,7 @@
                           {%- render 'price' with current_variant.unit_price -%}</span
                         >/{{ unit_price_base_unit }}
                       </div>
+                      {%- render 'product-leasing', current_variant: current_variant -%}
                     </div>
                     {% unless block.settings.desc == blank %}
                       <div
@@ -480,7 +481,7 @@
                       {%- endif -%}
                     </div>
                     
-                     {%- render 'product-leasing', current_variant: current_variant -%}
+                     
                   {%- when 'product_icon' -%}
                     <div class="product-icon-wrap">
                       {% if block.settings.icon1 != blank and block.settings.text1 != blank %}
