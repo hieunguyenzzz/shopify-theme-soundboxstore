@@ -219,7 +219,7 @@
                       {% endcomment %}
 
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
-                      <div>
+                      {% if current_variant.metafields.leasing.price.value %}
                         <span
                           data-product-price
                           class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
@@ -313,8 +313,7 @@
                             {%- render 'price' with current_variant.unit_price -%}</span
                           >/{{ unit_price_base_unit }}
                         </div>
-                        {%- render 'product-leasing', current_variant: current_variant -%}
-                      </div>
+                      {% endif %}
                     </div>
                     {% unless block.settings.desc == blank %}
                       <div
