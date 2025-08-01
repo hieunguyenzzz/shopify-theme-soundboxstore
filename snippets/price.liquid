@@ -1,7 +1,6 @@
 {%- assign formatted_price = price | divided_by: 100.0 | round | times: 100 | money_without_trailing_zeros -%}
 
-<div aria-hidden="true" class="price-text">
-  <div class="text-total hide">Total</div>
-  <div>{{ formatted_price | replace: 'Dhs', 'AED' }}</div>
-</div>
-<div class="visually-hidden">{{ price | money }}</div>
+<span aria-hidden="true" class="price-text"
+  ><span class="text-total hide">Total</span><span>{{ formatted_price | replace: 'Dhs', 'AED' }}</span></span
+>
+<span class="visually-hidden">{{ price | money }}</span>
