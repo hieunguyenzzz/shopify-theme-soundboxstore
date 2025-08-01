@@ -1,22 +1,19 @@
 {% assign variant = product.selected_or_first_available_variant %}
 {%- assign leasing_price = variant.metafields.leasing.price -%}
 
-<button id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
+<div id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
   {%- assign leasing_price = variant.metafields.leasing.price -%}
   {%- if leasing_price != blank and leasing_price != null -%}
     <div>
       {{- leasing_price.value | money }}
     </div>
   {%- endif -%}
-</button>
+</div>
 {% for variant in product.variants %}
   <template id="product__leasing-{{ variant.id }}">
     {%- assign leasing_price = variant.metafields.leasing.price -%}
     {%- if leasing_price != blank and leasing_price != null -%}
-      <div
-        class="product__leasing-option"
-        style="margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px;"
-      >
+      <div>
         {{- leasing_price.value | money }}
       </div>
     {%- endif -%}
