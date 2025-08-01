@@ -1,7 +1,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 {%- assign leasing_price = variant.metafields.leasing.price -%}
 
-<div id="product__leasing-wrap" onclick="product__leasing_openPopup()" style="width:100%">
+<div id="product__leasing-wrap product-leasing-price" onclick="product__leasing_openPopup()" style="width:100%">
   {%- assign leasing_price = variant.metafields.leasing.price -%}
   {%- if leasing_price != blank and leasing_price != null -%}
     <div>
