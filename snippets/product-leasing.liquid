@@ -10,7 +10,7 @@
 {%- if leasing_price != blank -%}
   <div class="product-leasing" data-product-leasing>
     <p class="product-leasing__text">
-      💰 or lease from <strong>{{ leasing_price | money }} per month<a href="#" class="product-leasing__asterisk" onclick="openLeasingModal(event)">*</a></strong>
+      💰 or lease from <strong>{{ leasing_price.value | money }} per month<a href="#" class="product-leasing__asterisk" onclick="openLeasingModal(event)">*</a></strong>
     </p>
   </div>
 
