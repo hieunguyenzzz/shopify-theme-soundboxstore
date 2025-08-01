@@ -273,7 +273,7 @@
                         <span class="vat_text">(INC VAT)</span>
                       {%- endif -%}
 
-                      {%- render 'product-leasing', current_variant: current_variant -%}
+                     
 
                       {%- if settings.product_save_amount -%}
                         {%- if settings.product_save_type == 'dollar' -%}
@@ -479,6 +479,7 @@
                         ></div>
                       {%- endif -%}
                     </div>
+                     {%- render 'product-leasing', current_variant: current_variant -%}
                   {%- when 'product_icon' -%}
                     <div class="product-icon-wrap">
                       {% if block.settings.icon1 != blank and block.settings.text1 != blank %}
