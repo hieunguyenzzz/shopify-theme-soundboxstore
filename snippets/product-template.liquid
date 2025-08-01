@@ -220,7 +220,6 @@
 
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
                       {% if current_variant.metafields.leasing.price.value %}
-                        {% render 'product-payment-selector', current_variant: current_variant %}
                       {% else %}
                         <span
                           data-product-price
