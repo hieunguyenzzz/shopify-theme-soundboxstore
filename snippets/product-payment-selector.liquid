@@ -29,7 +29,12 @@
           for="one-time-payment"
           class="variant__button-label"
         >
-          <div>
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+            "
+          >
             <span
               data-product-price
               class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
