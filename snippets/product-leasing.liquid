@@ -1,5 +1,11 @@
 {%- assign leasing_price = current_variant.metafields.leasing.price -%}
-
+<style>
+                      @media only screen and (max-width: 1024px){
+                        .template-product .product-right-col .buy_buttons {
+                            display: none;
+                        }
+                      }
+</style>
 {%- if leasing_price != blank -%}
   <div class="product-leasing" data-product-leasing>
     <p class="product-leasing__text">
