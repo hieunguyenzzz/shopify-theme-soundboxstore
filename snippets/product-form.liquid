@@ -24,6 +24,7 @@
       </div>
     {%- endif -%}
   -->
+  {% render 'product-payment-selector' %}
   {%- liquid
     assign enable_dynamic_buttons = false
     if show_dynamic_checkout and template != 'product.preorder'
