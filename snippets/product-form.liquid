@@ -88,23 +88,6 @@
     {% endif %}
   {% endif %}
   {% if isResserllerOrTradeAccount or show_add_quote %}
-    {% if isResserllerOrTradeAccount %}
-      <style>
-        [data-add-to-cart]{
-          display:none
-        }
-      </style>
-    {% else %}
-      <style>
-        #{{form_id}}{
-          display:flex;
-          gap:10px
-        }
-         #{{form_id}} .btn{
-           flex: 1 0 ;
-         }
-      </style>
-    {% endif %}
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
