@@ -25,7 +25,7 @@
     {%- endif -%}
   -->
   {% assign current_variant = product.selected_or_first_available_variant %}
-  {% if current_variant.metafields.leasing.price and localization.country.iso_code == 'GB' %}
+  {% if current_variant.metafields.leasing.price.value and localization.country.iso_code == 'GB' %}
     {% render 'product-payment-selector', current_variant: current_variant %}
   {% endif %}
   {%- liquid
