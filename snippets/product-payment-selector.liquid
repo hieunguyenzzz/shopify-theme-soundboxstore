@@ -161,4 +161,15 @@
       </div>
     </div>
   </div>
+  <div
+    style="                              font-size: 0.7em;"
+  >
+    {%- if localization.country.iso_code == 'US' or localization.country.iso_code == 'AE' -%}
+      {{ 'products.product.price_exclude_taxes' | t }}
+    {%- elsif localization.country.iso_code == 'CH' -%}
+      {{ 'products.product.price_no_additional_taxes' | t }}
+    {%- else -%}
+      {{ block.settings.desc }}
+    {%- endif -%}
+  </div>
 </div>
