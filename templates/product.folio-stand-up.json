@@ -30,19 +30,19 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
-        "soundboxstore_quote_quote_btn_4AwgKQ": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_4AwgKQ": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "countdown_VYhbfi": {
@@ -85,8 +85,7 @@
       ],
       "custom_css": [
         ".product-block.product-block--sales-point:has(.inventory--low) {display: none;}",
-        ".product-block--sales-point {margin: 0;}",
-        ".buy_buttons {display: none;}"
+        ".product-block--sales-point {margin: 0;}"
       ],
       "settings": {
         "sku_enable": false,
