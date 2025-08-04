@@ -27,7 +27,7 @@
     color:white
   }
 </style>
-<div class="product-block variant_picker payment-type_picker " style="width:100%; margin-top:10px">
+<div class="product-block variant_picker payment-type_picker " style="width:100%; ">
   <div class="variant-wrapper option-variant">
     <div class="variant__label">Choose your plan</div>
     <div
@@ -162,7 +162,7 @@
     </div>
   </div>
   <div
-    style="                              font-size: 0.7em;"
+    style="margin-top:10px;font-size: 0.7em;"
   >
     {%- if localization.country.iso_code == 'US' or localization.country.iso_code == 'AE' -%}
       {{ 'products.product.price_exclude_taxes' | t }}
