@@ -1,0 +1,175 @@
+<style>
+  .payment-type_picker .variant-input-wrap label.disabled{
+    display:block
+  }
+  .payment-type_picker .variant-input-wrap label.disabled:after{
+    display:none
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input:has(label.disabled){
+     display:flex
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input  span{
+    padding:0 !important;
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input .product__price.on-sale span{
+    font-size:30px; font-weight:bold
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input  .product__price span.vat_text {
+    display: none;
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input .product-leasing-price {
+    font-size:30px; font-weight:bold
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input .product__price.product__price--compare span{
+    font-size:20px; font-weight:bold;opacity:0.8
+  }
+  .template-product .payment-type_picker .option-variant .variant-input-wrap .variant-input input[type=radio]:checked+label .product__price span {
+    color:white
+  }
+</style>
+<div class="product-block variant_picker payment-type_picker " style="width:100%; ">
+  <div class="variant-wrapper option-variant">
+    <div class="variant__label">Choose your plan</div>
+    <div
+      class="variant-input-wrap"
+    >
+      <div
+        class="variant-input "
+      >
+        <input
+          type="radio"
+          checked="checked"
+          value="one-time-payment"
+          id="one-time-payment"
+          name="payment-type"
+        >
+        <label
+          for="one-time-payment"
+          class="variant__button-label"
+        >
+          <div
+            style="
+              display: flex;
+              align-items: baseline;
+              gap: 0.4em;
+              padding:8px 0;
+            "
+          >
+            <div
+              data-product-price
+              class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
+            >
+              {%- unless product.empty? -%}
+                {%- render 'price' with current_variant.price -%}
+              {%- else -%}
+                {%- render 'price' with 1999 -%}
+              {%- endunless -%}
+              {%- if shop.taxes_included -%}
+                <div class="vat_text">(INC VAT)</div>
+              {%- endif -%}
+            </div>
+            {%- assign hide_sale_price = true -%}
+            {%- if product.compare_at_price_max > product.price -%}
+              {%- if current_variant.compare_at_price > current_variant.price -%}
+                {%- assign hide_sale_price = false -%}
+              {%- endif -%}
+              <div
+                data-a11y-price
+                class="visually-hidden"
+                aria-hidden="{{ hide_sale_price }}"
+              >
+                {{ 'products.general.regular_price' | t }}
+              </div>
+              <div
+                data-product-price-wrap
+                class="{% if hide_sale_price %} hide{% endif %}"
+              >
+                <div
+                  data-compare-price
+                  class="product__price product__price--compare"
+                >
+                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                    {%- render 'price' with current_variant.compare_at_price -%}
+                  {%- endif -%}
+                </div>
+              </div>
+              <div data-compare-price-a11y class="visually-hidden">
+                {{- 'products.general.sale_price' | t -}}
+              </div>
+            {%- else -%}
+              <div
+                id="PriceA11y-{{ section_id }}"
+                class="visually-hidden"
+              >
+                {{- 'products.general.regular_price' | t -}}
+              </div>
+            {%- endif -%}
+            {%- if shop.taxes_included -%}
+              <div class="vat_text">(INC VAT)</div>
+            {%- endif -%}
+            <div
+              data-unit-price-wrapper
+              class="product__unit-price{% unless current_variant.unit_price_measurement %} hide{% endunless %}"
+            >
+              {%- capture unit_price_base_unit -%}
+                          <div data-unit-base>
+                            {%- if current_variant.unit_price_measurement -%}
+                              {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+                                {{ current_variant.unit_price_measurement.reference_value }}
+                              {%- endif -%}
+                              {{ current_variant.unit_price_measurement.reference_unit }}
+                            {%- endif -%}
+                          </div>
+                        {%- endcapture -%}
+              <div data-unit-price>
+                {%- render 'price' with current_variant.unit_price -%}
+              </div>
+              /{{ unit_price_base_unit }}
+            </div>
+          </div>
+          <div style="padding:8px 0">
+            <span>One-time Payment</span>
+          </div>
+        </label>
+      </div>
+      <div
+        class="variant-input "
+      >
+        <input
+          type="radio"
+          value="per-month"
+          name="payment-type"
+          id="per-month"
+        >
+        <label
+          for="per-month"
+          class="variant__button-label"
+        >
+          <div
+            style="
+              width: 100%;
+              flex: 1;
+              padding: 8px 0;
+            "
+          >
+            {% render 'product-leasing' %}
+          </div>
+          <div style="padding:8px 0">
+            <span>Per month</span>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top:10px;font-size: 0.7em;"
+  >
+    {%- if localization.country.iso_code == 'US' or localization.country.iso_code == 'AE' -%}
+      {{ 'products.product.price_exclude_taxes' | t }}
+    {%- elsif localization.country.iso_code == 'CH' -%}
+      {{ 'products.product.price_no_additional_taxes' | t }}
+    {%- else -%}
+      {{ 'products.product.price_exclude_taxes' | t }}
+    {%- endif -%}
+  </div>
+</div>
