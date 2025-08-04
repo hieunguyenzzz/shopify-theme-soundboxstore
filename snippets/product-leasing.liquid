@@ -379,7 +379,10 @@
             <div class="spf-section contact-item">
               <div class="spf-section contact-label">Phone</div>
               <div class="spf-section contact-value">
-                <a href="tel:+44123456789">+44 (0) 123 456 789</a>
+                {% capture phone %}
+                  {% render '[phone-number]' %}
+                {% endcapture %}
+                <a href="tel:{{phone}}">{{ phone }}</a>
               </div>
             </div>
           </div>
