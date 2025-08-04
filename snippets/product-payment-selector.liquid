@@ -169,7 +169,7 @@
     {%- elsif localization.country.iso_code == 'CH' -%}
       {{ 'products.product.price_no_additional_taxes' | t }}
     {%- else -%}
-      {{ block.settings.desc }}
+      {{ 'products.product.price_exclude_taxes' | t }}
     {%- endif -%}
   </div>
 </div>
