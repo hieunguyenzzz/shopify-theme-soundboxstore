@@ -219,7 +219,7 @@
                       {% endcomment %}
 
                       {% comment %}<label class="variant__label" for="ProductPrice-{{ section_id }}">{{ 'cart.label.price' | t }}</label>{% endcomment %}
-                      {% if localization.country.iso_code == 'GB' %}
+                      {% if current_variant.metafields.leasing.price.value %}
                       {% else %}
                         <span
                           data-product-price
