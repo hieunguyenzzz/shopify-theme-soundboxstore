@@ -1,7 +1,7 @@
 {% assign variant = product.selected_or_first_available_variant %}
 {% assign popup_info = true %}
 {%- assign leasing_price = variant.metafields.leasing.price -%}
-<div style="position:relative" onclick="product__leasing_openPopup()">
+<div style="position:relative">
   <div
     id="product__leasing-wrap"
     class="product-leasing-price"
