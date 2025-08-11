@@ -2,7 +2,6 @@
   {% assign sectionid = section.id %}
 {% endunless %}
 <style>
-
    #shopify-section-{{sectionid}}{
        margin-top:0;
      }
@@ -71,6 +70,7 @@
     }
   #shopify-section-theme-call-actions{
     display: none;
+    z-index:10;
   }
   #shopify-section-theme-call-actions:has(.slick-current){
     display: block;
