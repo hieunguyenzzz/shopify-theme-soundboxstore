@@ -480,7 +480,7 @@
                 position: sticky;
                 bottom: 0;
                 background: white;
-                z-index: 1;
+                z-index: 10;
               }
               #shopify-section-theme-call-actions section {
                 margin: 0;
@@ -552,9 +552,9 @@
               $zoho.salesiq = $zoho.salesiq || {
                 widgetcode: 'siqe4beff2962397df933e0962fb943752d4e31cab6208e673d64811168126d5117',
                 values: {},
-                language:"{{ localization.language.iso_code | downcase }}",
+                language: '{{ localization.language.iso_code | downcase }}',
                 ready: function () {
-                  $zoho.salesiq.language("{{ localization.language.iso_code | downcase }}")
+                  $zoho.salesiq.language('{{ localization.language.iso_code | downcase }}');
                 },
               };
               var d = document;
