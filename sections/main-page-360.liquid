@@ -28,6 +28,9 @@
       opacity: 0;
       transition : opacity 0.5s ease-in-out ;
     }
+    @view-transition {
+      navigation: auto;
+    }
     body:has( iframe.ready ) .iframe-wrap iframe {
       opacity: 1;
     }
