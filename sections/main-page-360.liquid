@@ -315,6 +315,15 @@
   <div class="wrap">
     <div class="iframe-wrap">
       <iframe allowfullscreen="true" width="100%" height="100%" src="{{embed360Url}}"></iframe>
+      <script>
+        (() => {
+          let iframeE = document.querySelector('#page-360-{{section.id}} iframe');
+          if (!iframeE) {
+            throw new Error('iframe E not found!');
+          }
+          console.log({ iframe });
+        })();
+      </script>
       <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
         <svg
           stroke="currentColor"
