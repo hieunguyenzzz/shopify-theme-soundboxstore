@@ -314,14 +314,14 @@
   <input type="checkbox" id="open-see-all" hidden>
   <div class="wrap">
     <div class="iframe-wrap">
-      <iframe allowfullscreen="true" width="100%" height="100%" src="{{embed360Url}}"></iframe>
+      <iframe allowfullscreen="true" width="100%" height="100%" data-src="{{embed360Url}}"></iframe>
       <script>
         (() => {
           let iframeE = document.querySelector('#page-360-{{section.id}} iframe');
           if (!iframeE) {
             throw new Error('iframe E not found!');
           }
-          console.log({ iframeE });
+          iframeE.src = iframeE.dataset.src;
         })();
       </script>
       <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
