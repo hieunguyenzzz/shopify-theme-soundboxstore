@@ -322,6 +322,7 @@
             throw new Error('iframe E not found!');
           }
           iframeE.src = iframeE.dataset.src;
+          iframeE.classList.add('ready');
         })();
       </script>
       <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
