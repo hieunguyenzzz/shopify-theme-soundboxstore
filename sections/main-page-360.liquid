@@ -24,6 +24,13 @@
 {%- assign embed360Url = mainProduct.metafields.custom.embed360url.value -%}
 
 <style>
+    body{
+      opacity: 0;
+      transition : opacity 0.5s ease-in-out ;
+    }
+    body:has( iframe.ready ) {
+      opacity: 1;
+    }
     .widget-visible iframe {
       bottom: 100px !important;
     }
