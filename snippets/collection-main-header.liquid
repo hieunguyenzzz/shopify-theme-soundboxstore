@@ -4,8 +4,7 @@
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
 <div class="collection-main-header-wrap">
-  <header class="page-width">
-    <h1 class="visually-hidden">{{ collection.title }}</h1>
+  <header class="page-width">  
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
     <div class="collection-main-content">
       {{ image | image_url: width: 980, height: 653 | image_tag: class: 'image', preload: true }}
@@ -18,7 +17,7 @@
         "
         class="collection-main-description"
       >
-        <div class="collection-main-title desktop-only">{{ title | strip_html }}</div>
+        <h1 class="collection-main-title desktop-only">{{ title | strip_html }}</h1>
         {% if description != blank %}
           <div class="[&_ul]:list-disc [&_ul]:ml-[30px]">
             {{ description }}
