@@ -281,6 +281,138 @@
   products: collection.products,
   products_count: collection.products_count
 %}
+{% assign highlight_content = collection.metafields.custom.highlight %}
+{% if highlight_content != blank %}
+  {% assign collection_desc_section_id = 'collection-desc-' | append: section.id %}
+  <style>
+    .collection-desc-checkbox{
+      display:none
+    }
+    #{{collection_desc_section_id}}{
+      margin-top:0;
+      position: relative;
+      isolation: isolate;
+      max-height:250px;
+      height:250px;
+      overflow:hidden;
+      position:relative;
+      transition: all 0.7s cubic-bezier(0.95, 0.3, 0.56, 0.96);
+    }
+    #{{collection_desc_section_id}} .page-width{
+      padding-bottom:70px ;
+    }
+    #{{collection_desc_section_id}}{
+      --view-less:none;
+      --view-more:block;
+      margin-top:40px;
+      border-top:1px solid #e8e8e1;
+      padding:0;
+    }
+    #{{collection_desc_section_id}} .page-width-inner{
+      margin: 0;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    #{{collection_desc_section_id}} .page-width-overlay {
+      pointer-events:none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      display: flex;
+      z-index: 10;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 12px;
+      transition: all 0.7s cubic-bezier(0.95, 0.3, 0.56, 0.96);
+    }
+    #{{collection_desc_section_id}} .page-width-overlay:before{
+      content:'';
+      position:absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height:100%;
+      background: rgb(255,255,255);
+      background: linear-gradient(357deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 15%, rgb(255 255 255 / 0%) 100%);
+      transition: all 0.7s cubic-bezier(0.95, 0.3, 0.56, 0.96);
+      opacity: 1;
+      z-index:-1;
+    }
+    .collection-desc-checkbox:checked~#{{collection_desc_section_id}}{
+      max-height:var(--innerHeight);
+      height:var(--innerHeight);
+      --view-less:block;
+      --view-more:none;
+    }
+    .collection-desc-checkbox:checked~#{{collection_desc_section_id}} .page-width-overlay::before{
+      opacity: 0;
+      visibility: hidden;
+    }
+    #{{collection_desc_section_id}} .page-width-overlay label{
+      pointer-events:auto;
+      text-transform: uppercase;
+      padding: 0.3em 1em;
+      border: 1px solid currentColor;
+      border-radius: 99em;
+      font-size: 0.7em;
+    }
+    @media only screen and (max-width: 540px){
+      #{{collection_desc_section_id}} .page-width{
+        padding-bottom:120px ;
+      }
+    }
+  </style>
+
+  {% assign inputRef = collection_desc_section_id | append: '-checkbox' %}
+  <input
+    hidden
+    type="checkbox"
+    class="collection-desc-checkbox"
+    name="name-{{ inputRef }}"
+    id="{{ inputRef }}"
+  >
+
+  <div
+    style="--innerHeight:720px"
+    id="{{collection_desc_section_id}}"
+    class="index-section text-center"
+  >
+    <div class="page-width-overlay">
+      <label style="text-transform: uppercase;display:var(--view-more)" for="{{ inputRef }}">
+        {{ 'strings.others.view_more' | t }}
+      </label>
+      <label style="text-transform: uppercase;display:var(--view-less)" for="{{ inputRef }}">
+        {{ 'strings.others.view_less' | t }}
+      </label>
+    </div>
+
+    <div class="page-width-inner">
+      <div class="page-width page-width--narrow">
+        <div class="rte">
+          <div class="[&_ul]:list-disc [&_ul]:ml-[30px]">
+            {{ highlight_content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      function onCollapse(e){
+        const containerE = document.querySelector("#{{collection_desc_section_id}}")
+        if(e.target.checked){
+          containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
+        }else{
+          containerE.style.setProperty("--innerHeight","250px")
+        }
+      }
+      document.querySelector("#{{ inputRef }}").addEventListener("change", onCollapse);
+    })()
+  </script>
+{% endif %}
 {% if section.settings.show_products %}
   {% render 'collection-main-products',
     title: title,
