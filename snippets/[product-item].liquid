@@ -13,7 +13,7 @@
     {%- else -%}
       {% assign image_2 = img -%}
       {% break -%}
-    {% endif -%}
+    {%- endif -%}
   {% endfor -%}
 {% endunless -%}
 {% unless image -%}
@@ -28,7 +28,7 @@
   {%- for img in imgs -%}
     {%- if forloop.first -%}
       {% continue -%}
-    {% endif -%}
+    {%- endif -%}
     {% assign image_2 = img -%}
     {% break -%}
   {% endfor -%}
@@ -38,7 +38,7 @@
 {% endunless -%}
 {%- if url == blank -%}
   {% assign url = product.url -%}
-{% endif -%}
+{%- endif -%}
 {% capture seatimg -%}
 {{ settings.manicon | image_url :width:40 |image_tag }}
 {% endcapture -%}
@@ -46,21 +46,21 @@
   href="{{ url }}"
   class="collection-product-item"
 >
-  <div class="image {%- if image_2 -%} had_image_2 {% endif -%}">
+  <div class="image {%- if image_2 -%} had_image_2 {%- endif -%}">
     {%- if image -%}
       {{
         image
         | image_url: width: 400
         | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
       }}
-    {% endif -%}
+    {%- endif -%}
     {%- if image_2 -%}
       {{
         image_2
         | image_url: width: 400
         | image_tag: widths: '400, 600, 900', loading: 'lazy', class: 'js-lazy-image', alt: title
       }}
-    {% endif -%}
+    {%- endif -%}
   </div>
   <div class="content">
     <div>
@@ -76,7 +76,7 @@
         </div>
         <span style="display:none">{{ product.metafields.custom.seats.value }} Seats</span>
       </div>
-    {% endif -%}
+    {%- endif -%}
     {%- assign swatch_file_extension = 'png' -%}
     {%- for option in product.options_with_values -%}
       {%- liquid
@@ -112,13 +112,13 @@
                 {{ tranValue | escape }}
               </div>
               {% continue -%}
-            {% endif -%}
+            {%- endif -%}
             {% for variant in product.variants -%}
               {%- if variant.option1 == value -%}
                 {%- if variant.metafields.custom.color_image -%}
                   {% assign color_image = variant.metafields.custom.color_image | img_url: '50x50' -%}
-                {% endif -%}
-              {% endif -%}
+                {%- endif -%}
+              {%- endif -%}
             {%- endfor -%}
             {% unless color_image -%}
               {%- liquid
@@ -130,14 +130,14 @@
             <div
               title="{{ value }}"
               class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available -%} disabled{% endunless -%}"
-              style="width:1.5em;height:1.5em;margin:0;background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{%- if images[color_file_name] != blank -%}  background-image: url({{ color_image }});{% endif -%}"
+              style="width:1.5em;height:1.5em;margin:0;background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{%- if images[color_file_name] != blank -%}  background-image: url({{ color_image }});{%- endif -%}"
             >
               {{ tranValue | escape }}
             </div>
             {% assign color_image = null -%}
           {% endfor -%}
         </div>
-      {% endif -%}
+      {%- endif -%}
     {%- endfor -%}
     {%- if product.price_min > 0 -%}
       {% assign lowest_price = product.price_min
@@ -162,9 +162,9 @@
                 | replace: 'Dhs.', 'AED'
               -}}
             </span>
-          {% endif -%}
+          {%- endif -%}
         </div>
-      {% endif -%}
+      {%- endif -%}
       {%- if product.metafields.custom.reviews_rating.value > 1 -%}
         <div style="display:none" class="itempreviews">
           <div
@@ -176,22 +176,22 @@
                 <span class="jdgm-star jdgm--on"></span>
               {%- else -%}
                 <span class="jdgm-star jdgm--half"></span>
-              {% endif -%}
+              {%- endif -%}
               {%- if product.metafields.custom.reviews_rating.value > 1 -%}
                 <span class="jdgm-star jdgm--on"></span>
               {%- else -%}
                 <span class="jdgm-star jdgm--half"></span>
-              {% endif -%}
+              {%- endif -%}
               {%- if product.metafields.custom.reviews_rating.value > 2 -%}
                 <span class="jdgm-star jdgm--on"></span>
               {%- else -%}
                 <span class="jdgm-star jdgm--half"></span>
-              {% endif -%}
+              {%- endif -%}
               {%- if product.metafields.custom.reviews_rating.value > 3 -%}
                 <span class="jdgm-star jdgm--on"></span>
               {%- else -%}
                 <span class="jdgm-star jdgm--half"></span>
-              {% endif -%}
+              {%- endif -%}
               {%- if product.metafields.custom.reviews_rating.value > 4 -%}
                 <span class="jdgm-star jdgm--on"></span>
               {%- else -%}
