@@ -171,11 +171,6 @@
             class="jdgm-prev-badge"
           >
             <span class="jdgm-prev-badge__stars" role="button">
-              {% if product.metafields.custom.reviews_rating.value > 0 %}
-                <span class="jdgm-star jdgm--on"></span>
-              {% else %}
-                <span class="jdgm-star jdgm--half"></span>
-              {% endif %}
               {% if product.metafields.custom.reviews_rating.value > 1 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
@@ -192,6 +187,11 @@
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
               {% if product.metafields.custom.reviews_rating.value > 4 %}
+                <span class="jdgm-star jdgm--on"></span>
+              {% else %}
+                <span class="jdgm-star jdgm--half"></span>
+              {% endif %}
+              {% if product.metafields.custom.reviews_rating.value == 5 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
