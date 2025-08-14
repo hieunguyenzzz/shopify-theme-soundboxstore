@@ -229,7 +229,7 @@
   aria-haspopup="true"
 >
   <a
-    href="{{ collection.url }}"
+    href="{{ settings.collection_products.url }}"
     style="text-transform: uppercase;"
     class="site-nav__link site-nav__link--underline  site-nav__link--has-dropdown"
   >
@@ -534,50 +534,48 @@
   </div>
 </li>
 <script>
-   (() => {
-    const slider = document?.querySelector(
-      ".site-nav__dropdown-menu_left-slider"
-    );
+  (() => {
+    const slider = document?.querySelector('.site-nav__dropdown-menu_left-slider');
     if (!slider) {
-      console.error(".site-nav__dropdown-menu_left-slider not found!");
-      return
-    };
-    let timer = null
+      console.error('.site-nav__dropdown-menu_left-slider not found!');
+      return;
+    }
+    let timer = null;
     let isDown = false;
     let startX;
     let scrollLeft;
 
-    slider.addEventListener("mousedown", (e) => {
+    slider.addEventListener('mousedown', (e) => {
       isDown = true;
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
     });
-    slider.addEventListener("mouseleave", () => {
+    slider.addEventListener('mouseleave', () => {
       isDown = false;
     });
-    slider.addEventListener("mouseup", () => {
+    slider.addEventListener('mouseup', () => {
       isDown = false;
     });
-    slider.addEventListener("mousemove", (e) => {
+    slider.addEventListener('mousemove', (e) => {
       if (!isDown) return;
       e.preventDefault();
-      const handleMove = ()=>{
+      const handleMove = () => {
         const x = e.pageX - slider.offsetLeft;
         const walk = (x - startX) * 3; //scroll-fast
         slider.scrollLeft = scrollLeft - walk;
-      }
-      window.requestAnimationFrame(handleMove)
+      };
+      window.requestAnimationFrame(handleMove);
     });
     const sroller = slider;
     const start = () => {
-      const arrowLeft = document?.querySelector(".scrolling-arrow-left");
-      const arrowRight = document?.querySelector(".scrolling-arrow-right");
+      const arrowLeft = document?.querySelector('.scrolling-arrow-left');
+      const arrowRight = document?.querySelector('.scrolling-arrow-right');
       if (arrowLeft && arrowRight) {
-        arrowRight.addEventListener("click", () => {
-          sroller.scrollLeft = sroller.scrollLeft + (sroller.clientWidth/2);
+        arrowRight.addEventListener('click', () => {
+          sroller.scrollLeft = sroller.scrollLeft + sroller.clientWidth / 2;
         });
-        arrowLeft.addEventListener("click", () => {
-          sroller.scrollLeft = sroller.scrollLeft - (sroller.clientWidth/2);
+        arrowLeft.addEventListener('click', () => {
+          sroller.scrollLeft = sroller.scrollLeft - sroller.clientWidth / 2;
         });
         const valid = () => {
           if (sroller.scrollLeft === 0) {
@@ -592,18 +590,18 @@
           }
         };
         sroller.addEventListener(
-          "scroll",
+          'scroll',
           () => {
             if (timer !== null) {
               clearTimeout(timer);
             }
-            timer = setTimeout(()=>window.requestAnimationFrame(valid), 150);
+            timer = setTimeout(() => window.requestAnimationFrame(valid), 150);
           },
           false
         );
         window.requestAnimationFrame(valid);
       }
     };
-    start()
+    start();
   })();
 </script>
