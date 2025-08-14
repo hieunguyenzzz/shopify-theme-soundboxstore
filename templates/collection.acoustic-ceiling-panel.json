@@ -8,18 +8,19 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
+ "sections": {
     "collection-main-next": {
       "type": "collection-main-next",
       "custom_css": [
         "{margin-bottom: 2em;}"
       ],
       "settings": {
-        "collection": "accessories",
-        "show_products": false,
+        "collection": "",
+        "show_products": true,
         "title_size": 2,
-        "title": "<h2>The Potential Of Acoustic Control</h2>",
-        "subheading_richtext": "<p>Designed to add multiple layers of sound and reverberation control, these panels are an ideal solution for creating acoustically optimized environments.</p>",
+        "title": "<p>{{ collection.title }}</p>",
+        "subtitle": "",
+        "subheading_richtext": "{{ collection.metafields.custom.description | metafield_tag }}",
         "image": "shopify://shop_images/Acoustic-Panel-Landing.png"
       }
     },
