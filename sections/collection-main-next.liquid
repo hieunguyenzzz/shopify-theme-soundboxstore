@@ -281,6 +281,16 @@
   products: collection.products,
   products_count: collection.products_count
 %}
+{% if section.settings.show_products %}
+  {% render 'collection-main-products',
+    title: title,
+    description: description,
+    image: image,
+    collection: collection,
+    products: collection.products,
+    products_count: collection.products_count
+  %}
+{% endif %}
 {% assign highlight_content = collection.metafields.custom.highlight %}
 {% if highlight_content != blank %}
   {% assign collection_desc_section_id = 'collection-desc-' | append: section.id %}
@@ -412,16 +422,6 @@
       document.querySelector("#{{ inputRef }}").addEventListener("change", onCollapse);
     })()
   </script>
-{% endif %}
-{% if section.settings.show_products %}
-  {% render 'collection-main-products',
-    title: title,
-    description: description,
-    image: image,
-    collection: collection,
-    products: collection.products,
-    products_count: collection.products_count
-  %}
 {% endif %}
 <script type="application/ld+json">
     {
