@@ -23,6 +23,10 @@
       justify-content: center !important;
     }
   }
+  .tw :is(.data-\[state\=open\]\:zoom-in-95[data-state=open]) {
+    --tw-enter-scale: .95;
+    z-index: 22474836460;
+  }
 </style>
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
