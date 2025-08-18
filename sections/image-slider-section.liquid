@@ -62,86 +62,86 @@
           {%- assign imageMb = block.settings.image_mobile -%}
           <div class="image-wrap{% if section.settings.overlay %} overlay overlay_range_{{ section.settings.overlay_range }}{% endif %}">
             {% if section.settings.lazy_img == true %}
-            {% if forloop.first == true %}
-            <img
-              width="1898"
-              height="1081"
-              src="{{ image | img_url: '1800x' }}"
-              {% if imageMb != blank %}
-                class="desktop-only"
+              {% if forloop.first == true %}
+                <img
+                  width="1898"
+                  height="1081"
+                  src="{{ image | img_url: '1800x' }}"
+                  {% if imageMb != blank %}
+                    class="desktop-only"
+                  {% endif %}
+                  alt="{{ image.alt | default: 'background' }}"
+                >
+              {% else %}
+                <img
+                  {% if section.settings.lazyload %}
+                    loading="lazy"
+                  {% endif %}
+                  width="1898"
+                  height="1081"
+                  src="{{ image | image_url: width: 1920 }}"
+                  {% if imageMb != blank %}
+                    class="desktop-only"
+                  {% endif %}
+                  alt="{{ image.alt | default: 'background' }}"
+                >
               {% endif %}
-              alt="{{ image.alt | default: 'background' }}"
-            >
             {% else %}
-            <img
-              {% if section.settings.lazyload %}
-                loading="lazy"
-              {% endif %}
-              width="1898"
-              height="1081"
-              src="{{ image | image_url: width: 1920 }}"
-              {% if imageMb != blank %}
-                class="desktop-only"
-              {% endif %}
-              alt="{{ image.alt | default: 'background' }}"
-            >
-           {% endif %}
-           {% else %}   
-            <img
-              {% if section.settings.lazyload %}
-                loading="lazy"
-              {% endif %}
-              width="1898"
-              height="1081"
-              src="{{ image | image_url: width: 1920 }}"
-              {% if imageMb != blank %}
-                class="desktop-only"
-              {% endif %}
-              alt="{{ image.alt | default: 'background' }}"
-            >
+              <img
+                {% if section.settings.lazyload %}
+                  loading="lazy"
+                {% endif %}
+                width="1898"
+                height="1081"
+                src="{{ image | image_url: width: 1920 }}"
+                {% if imageMb != blank %}
+                  class="desktop-only"
+                {% endif %}
+                alt="{{ image.alt | default: 'background' }}"
+              >
             {% endif %}
             {% if imageMb != blank -%}
               {% if section.settings.lazy_img == true %}
-              {% if forloop.first == true %}
-              <img
-                {% if section.settings.lazyload %}
+                {% if forloop.first == true %}
+                  <img
+                    {% if section.settings.lazyload %}
+                    {% endif %}
+                    style="width: 100%;height:100%;"
+                    width="767"
+                    height="767"
+                    src="{{ imageMb | img_url: '800x' }}"
+                    class="mobile-only"
+                    alt="{{ imageMb.alt | default: 'background' }}"
+                  >
+                {% else %}
+                  <img
+                    {% if section.settings.lazyload %}
+                      {% unless forloop.first %}
+                        loading="lazy"
+                      {% endunless %}
+                    {% endif %}
+                    style="width: 100%;height:100%;"
+                    width="767"
+                    height="767"
+                    src="{{ imageMb | image_url: width: 767 }}"
+                    class="mobile-only"
+                    alt="{{ imageMb.alt | default: 'background' }}"
+                  >
                 {% endif %}
-                style="width: 100%;height:100%;"
-                width="767"
-                height="767"
-                src="{{ imageMb | img_url: '800x' }}"
-                class="mobile-only"
-                alt="{{ imageMb.alt | default: 'background' }}"
-              >
               {% else %}
-              <img
-                {% if section.settings.lazyload %}
-                  {% unless forloop.first %}
-                    loading="lazy"
-                  {% endunless %}
-                {% endif %}
-                style="width: 100%;height:100%;"
-                width="767"
-                height="767"
-                src="{{ imageMb | image_url: width: 767 }}"
-                class="mobile-only"
-                alt="{{ imageMb.alt | default: 'background' }}"
-              >
-              {% endif %}
-              {% else %}  
-              <img
-                {% if section.settings.lazyload %}
-                  {% unless forloop.first %}
-                    loading="lazy"
-                  {% endunless %}
-                {% endif %}
-                style="width: 100%;height:100%;"
-                width="767"
-                height="767"
-                src="{{ imageMb | image_url: width: 767 }}"
-                class="mobile-only"
-                alt="{{ imageMb.alt | default: 'background' }}"
-              >
+                <img
+                  {% if section.settings.lazyload %}
+                    {% unless forloop.first %}
+                      loading="lazy"
+                    {% endunless %}
+                  {% endif %}
+                  style="width: 100%;height:100%;"
+                  width="767"
+                  height="767"
+                  src="{{ imageMb | image_url: width: 767 }}"
+                  class="mobile-only"
+                  alt="{{ imageMb.alt | default: 'background' }}"
+                >
               {% endif %}
             {%- endif %}
           </div>
@@ -190,8 +190,8 @@
   </section>
 {% endif %}
 <script>
-  $(document).ready(function() {
-    let slider = $('#{{section.id}}-slider')
+  $(document).ready(function () {
+    let slider = $('#{{section.id}}-slider');
     $('#{{section.id}}-slider').slick({
       slidesToShow: 1,
       infinite: true,
@@ -204,20 +204,20 @@
       speed: 1500,
       autoplaySpeed: 14000,
       cssEase: 'ease-in-out',
-      touchThreshold: 100
+      touchThreshold: 100,
     });
 
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
       slider.slick('resize');
     });
-  })
+  });
 </script>
 {% schema %}
 {
   "name": "Image Slider section",
   "settings": [
     {
-       "type": "checkbox",
+      "type": "checkbox",
       "id": "lazy_img",
       "label": "Preload First Image"
     },
@@ -242,7 +242,8 @@
       "id": "overlay",
       "label": "Overlay",
       "default": true
-    }, {
+    },
+    {
       "type": "range",
       "id": "overlay_range",
       "label": "Overlay range",
@@ -251,35 +252,43 @@
       "unit": "%",
       "step": 10,
       "default": 60
-    }, {
+    },
+    {
       "type": "text",
       "id": "title",
       "label": "Title"
-    }, {
+    },
+    {
       "type": "text",
       "id": "title_width",
       "label": "Title width"
-    }, {
+    },
+    {
       "type": "richtext",
       "id": "description",
       "label": "Description"
-    }, {
+    },
+    {
       "type": "text",
       "id": "description_width",
       "label": "description width"
-    }, {
+    },
+    {
       "type": "text",
       "id": "button_text",
       "label": "Button Text"
-    }, {
+    },
+    {
       "type": "url",
       "id": "button_link",
       "label": "Button link"
-    }, {
+    },
+    {
       "type": "text",
       "id": "button_text_2",
       "label": "Get Specs Sheet Text"
-    }, {
+    },
+    {
       "type": "select",
       "id": "text_alignment",
       "label": "Text Alignment",
@@ -300,21 +309,26 @@
         {
           "value": "center-left",
           "label": "Center left"
-        }, {
+        },
+        {
           "value": "center-center",
           "label": "Center center"
-        }, {
+        },
+        {
           "value": "bottom-left",
           "label": "Bottom left"
-        }, {
+        },
+        {
           "value": "bottom-center",
           "label": "Bottom center"
-        }, {
+        },
+        {
           "value": "bottom-right",
           "label": "Bottom right"
         }
       ]
-    }, {
+    },
+    {
       "type": "text",
       "id": "section_class",
       "label": "Section class"
@@ -329,7 +343,8 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        }, {
+        },
+        {
           "type": "image_picker",
           "id": "image_mobile",
           "label": "Image (mobile)"
