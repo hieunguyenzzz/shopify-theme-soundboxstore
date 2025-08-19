@@ -182,15 +182,8 @@
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
-    {%- if template.name == 'index' -%}
-      {{ 'home.css' | asset_url | stylesheet_tag: preload: true }}
-      {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true, media:"print" onload:"this.media='all'" }}
-      {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
-    {% else %}
-      {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
-      {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
-    {%- else -%}
-    {%- endif -%}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- if settings.favicon != blank -%}
       <link
