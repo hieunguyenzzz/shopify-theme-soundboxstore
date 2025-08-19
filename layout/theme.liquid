@@ -199,7 +199,11 @@
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {%- if template.name == 'index' -%}
+      {{ 'home.css' | asset_url | stylesheet_tag: preload: true }}
+    {%- else -%}
+      {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {%- endif -%}
     {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- if settings.favicon != blank -%}
@@ -551,9 +555,9 @@
               $zoho.salesiq = $zoho.salesiq || {
                 widgetcode: 'siqe4beff2962397df933e0962fb943752d4e31cab6208e673d64811168126d5117',
                 values: {},
-                language:"{{ localization.language.iso_code | downcase }}",
+                language: '{{ localization.language.iso_code | downcase }}',
                 ready: function () {
-                  $zoho.salesiq.language("{{ localization.language.iso_code | downcase }}")
+                  $zoho.salesiq.language('{{ localization.language.iso_code | downcase }}');
                 },
               };
               var d = document;
