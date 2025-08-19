@@ -416,7 +416,7 @@
     data-grid-style="{{ settings.product_grid_style }}"
     data-country="{{ localization.country.iso_code }}"
   >
-    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true, media:"print" onload:"this.media='all'" }}
     {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
     <script>
       (() => {
