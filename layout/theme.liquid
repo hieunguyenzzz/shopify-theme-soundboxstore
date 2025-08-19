@@ -182,10 +182,7 @@
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'vendor-scripts-v1.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'custom-v2.js' | asset_url | preload_tag: as: 'script' }}
-    {%- if template.name == 'index' -%}
-      {{ 'home.css' | asset_url | stylesheet_tag: preload: true }}
-    {%- else -%}
-    {%- endif -%}
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- if settings.favicon != blank -%}
@@ -622,7 +619,5 @@
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     {% render 'zoho-google-ads-tracking' %}
-
-    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
   </body>
 </html>
