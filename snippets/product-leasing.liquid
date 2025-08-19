@@ -1,0 +1,43 @@
+{% assign variant = product.selected_or_first_available_variant %}
+{%- assign leasing_price = variant.metafields.leasing.price -%}
+<div style="position:relative">
+  <div
+    id="product__leasing-wrap"
+    class="product-leasing-price"
+
+    style="width:100%"
+  >
+    {%- assign leasing_price = variant.metafields.leasing.price -%}
+    {%- if leasing_price != blank and leasing_price != null -%}
+      <div>
+        {{- leasing_price.value | money }}
+        <input hidden name="leasing_price" value="{{- leasing_price.value | money }}">
+      </div>
+    {%- endif -%}
+  </div>
+  {% for variant in product.variants %}
+    <template id="product__leasing-{{ variant.id }}">
+      {%- assign leasing_price = variant.metafields.leasing.price -%}
+      {%- if leasing_price != blank and leasing_price != null -%}
+        <div>
+          {{- leasing_price.value | money }}
+          <input hidden name="leasing_price" value="{{- leasing_price.value | money }}">
+        </div>
+      {%- endif -%}
+    </template>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('variant:change', function (evt) {
+    console.log(evt.detail.variant.id + '123');
+    let subscriptionE = document.querySelector('#product__leasing-wrap');
+    let subscriptionT = document.querySelector('#product__leasing-' + evt.detail.variant.id);
+
+    if (subscriptionT) {
+      const clone = subscriptionT.content.cloneNode(true);
+      subscriptionE.innerHTML = '';
+      subscriptionE.appendChild(clone);
+    }
+  });
+</script>

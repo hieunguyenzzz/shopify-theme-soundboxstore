@@ -13,7 +13,7 @@
   width:min(350px,40vw);
 
   }
-  .template-product .{{ section.id }}-wrap {
+  .template-product .{{ section.id }}-wrap , .template-collection .{{ section.id }}-wrap{
   display:none
 
   }
@@ -70,7 +70,7 @@
 {% endif %}
 {% if image %}
   <div class="{{ section.id }}-wrap">
-    {{ image | image_url: width: 700 | image_tag }}
+    {{ image | image_url: width: 400 | image_tag: sizes: '(min-width:1024px) 400px, 30vw' }}
     <a
       target="_blank"
       href="{{ page.url }}"
@@ -83,7 +83,6 @@
 {
   "name": "call image",
   "settings": [
-
     {
       "type": "image_picker",
       "id": "call_banner_en",

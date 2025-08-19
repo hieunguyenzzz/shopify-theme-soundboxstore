@@ -24,6 +24,10 @@
       </div>
     {%- endif -%}
   -->
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  {% if current_variant.metafields.leasing.price.value and localization.country.iso_code == 'GB' %}
+    {% render 'product-payment-selector', current_variant: current_variant %}
+  {% endif %}
   {%- liquid
     assign enable_dynamic_buttons = false
     if show_dynamic_checkout and template != 'product.preorder'
@@ -84,29 +88,11 @@
     {% endif %}
   {% endif %}
   {% if isResserllerOrTradeAccount or show_add_quote %}
-    {% if isResserllerOrTradeAccount %}
-      <style>
-        [data-add-to-cart]{
-          display:none
-        }
-      </style>
-    {% else %}
-      <style>
-        #{{form_id}}{
-          display:flex;
-          gap:10px
-        }
-         #{{form_id}} .btn{
-           flex: 1 0 ;
-         }
-      </style>
-    {% endif %}
     <button
       type="button"
       class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
       id="rfq-btn-0"
       data-product-id="{{ product.id }}"
-      onclick="GRFQApp.addProduct(this,{{ product.id }})"
     >
       <span data-add-to-cart-text="" data-default-text="Add to cart">{{ 'strings.general.request_quote' | t }}</span>
     </button>

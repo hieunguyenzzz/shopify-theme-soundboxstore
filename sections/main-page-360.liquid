@@ -24,6 +24,23 @@
 {%- assign embed360Url = mainProduct.metafields.custom.embed360url.value -%}
 
 <style>
+    body .iframe-wrap iframe{
+      opacity: 0;
+      transition : opacity 0.5s ease-in-out ;
+    }
+    @view-transition {
+      navigation: auto;
+    }
+    body:has( iframe.ready ) .iframe-wrap iframe {
+      opacity: 1;
+    }
+    body {
+      opacity: 1;
+      transition : opacity 0.5s ease-in-out ;
+    }
+    body:has( .close-btn:focus) {
+      opacity: 0;
+    }
     .widget-visible iframe {
       bottom: 100px !important;
     }
@@ -41,6 +58,7 @@
     .iframe-wrap {
       flex: 1;
       position: relative;
+
     }
     .iframe-wrap iframe {
       border: none;
@@ -313,7 +331,17 @@
   <input type="checkbox" id="open-see-all" hidden>
   <div class="wrap">
     <div class="iframe-wrap">
-      <iframe allowfullscreen="true" width="100%" height="100%" src="{{embed360Url}}"></iframe>
+      <iframe allowfullscreen="true" width="100%" height="100%" data-src="{{embed360Url}}"></iframe>
+      <script>
+        (() => {
+          let iframeE = document.querySelector('#page-360-{{section.id}} iframe');
+          if (!iframeE) {
+            throw new Error('iframe E not found!');
+          }
+          iframeE.src = iframeE.dataset.src;
+          iframeE.classList.add('ready');
+        })();
+      </script>
       <a href="{{mainProduct.url}}" class="close-btn btn btn--secondary btn--circle">
         <svg
           stroke="currentColor"
@@ -570,11 +598,11 @@
 {
   "name": "Page 360",
   "tag": "section",
-  "settings":[
+  "settings": [
     {
-      "type":"product",
-      "id":"product",
-      "label":"Product"
+      "type": "product",
+      "id": "product",
+      "label": "Product"
     }
   ]
 }
