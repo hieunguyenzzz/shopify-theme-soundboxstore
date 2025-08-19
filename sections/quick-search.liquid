@@ -34,7 +34,8 @@
                 .site-header__search-container .grid-item.grid-product {
                 }
                 .site-header__search-container a.grid-item__link {
-                  display: flex;flex:1;
+                  display: flex;
+                  flex: 1;
                 }
 
                 .site-header__search-container .grid-product__image-wrap {
@@ -44,16 +45,16 @@
                   padding: 2%;
                   flex-shrink: 0;
                 }
-                .site-header__search-container .grid-product__image-wrap .grid__image-ratio{
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio {
                   background: transparent;
                 }
-                .site-header__search-container .grid-product__image-wrap .grid__image-ratio img{
+                .site-header__search-container .grid-product__image-wrap .grid__image-ratio img {
                   mix-blend-mode: multiply;
                 }
-                .site-header__search-container .grid-item .grid-product__title{
+                .site-header__search-container .grid-item .grid-product__title {
                   font-size: 1.1em;
                 }
-                .site-header__search-container .grid-item  .grid-item__meta{
+                .site-header__search-container .grid-item .grid-item__meta {
                   padding: 1em 2em 1em 0;
                 }
               </style>
@@ -70,31 +71,32 @@
         </div>
       {%- endif -%}
     </div>
-    {%- if settings.search_top_collection != blank -%}
-      {%- assign search_collection = collections[settings.search_top_collection] -%}
-      <div id="TopSearched" class="site-header__search-results-wrapper">
-        <div class="search-page-width">
-          {% for link in linklists.search.links %}
-            {% unless link.links.size != 0 %}
+
+    <div id="TopSearched" class="site-header__search-results-wrapper">
+      <div class="search-page-width">
+        {% for link in linklists.search.links %}
+          {% unless link.links.size != 0 %}
+            <div
+              style="
+                display: flex;
+                white-space: nowrap;
+                flex-wrap: wrap;
+                justify-content: center;
+                color: white;
+              "
+            >
               <div
                 style="
-                  display: flex;
-                  white-space: nowrap;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  color: white;
+                  width: 100%;
+                  text-align: center;
+                  margin: 1em 0 0.5em;
+                  font-weight: bold;
                 "
               >
-                <div
-                  style="
-                    width: 100%;
-                    text-align: center;
-                    margin: 1em 0 0.5em;
-                    font-weight: bold;
-                  "
-                >
-                  {{ 'general.search.products' | t }}
-                </div>
+                {{ 'general.search.products' | t }}
+              </div>
+              {%- if settings.search_top_collection != blank -%}
+                {%- assign search_collection = collections[settings.search_top_collection] -%}
                 {%- for product in search_collection.products -%}
                   <div>
                     <a
@@ -115,52 +117,52 @@
                     </a>
                   </div>
                 {%- endfor -%}
-              </div>
-              {% continue %}
-            {% endunless %}
+              {% endif %}
+            </div>
+            {% continue %}
+          {% endunless %}
+          <div
+            style="
+              display: flex;
+              white-space: nowrap;
+              flex-wrap: wrap;
+              justify-content: center;
+              color: white;
+            "
+          >
             <div
               style="
-                display: flex;
-                white-space: nowrap;
-                flex-wrap: wrap;
-                justify-content: center;
-                color: white;
+                width: 100%;
+                text-align: center;
+                margin: 1em 0 0.5em;
+                font-weight: bold;
               "
             >
-              <div
-                style="
-                  width: 100%;
-                  text-align: center;
-                  margin: 1em 0 0.5em;
-                  font-weight: bold;
-                "
-              >
-                {{ link.title }}
-              </div>
-              {%- for link in link.links -%}
-                <div>
-                  <a
-                    style="
-                      font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
-                      margin: 4px;
-                      padding: 7px 15px;
-                      font-size: 12px;
-                      line-height: 16px;
-                      color: #fff;
-                      border: 1px solid rgba(255,255,255,0.3);
-                      border-radius: 16px;
-                      background-color: rgba(0,0,0,0.3);
-                    "
-                    href="{{ link.url }}"
-                  >
-                    {{- link.title -}}
-                  </a>
-                </div>
-              {%- endfor -%}
+              {{ link.title }}
             </div>
-          {% endfor %}
-        </div>
+            {%- for link in link.links -%}
+              <div>
+                <a
+                  style="
+                    font-size: 16px; display: block; padding: 0.2em 0; color:white     ;display: inline-block;
+                    margin: 4px;
+                    padding: 7px 15px;
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #fff;
+                    border: 1px solid rgba(255,255,255,0.3);
+                    border-radius: 16px;
+                    background-color: rgba(0,0,0,0.3);
+                  "
+                  href="{{ link.url }}"
+                >
+                  {{- link.title -}}
+                </a>
+              </div>
+            {%- endfor -%}
+          </div>
+        {% endfor %}
       </div>
-    {%- endif -%}
+    </div>
   </div>
 </div>
