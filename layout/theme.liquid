@@ -186,7 +186,6 @@
       {{ 'home.css' | asset_url | stylesheet_tag: preload: true }}
     {%- else -%}
     {%- endif -%}
-    {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
 
     {%- if settings.favicon != blank -%}
       <link
@@ -417,6 +416,8 @@
     data-grid-style="{{ settings.product_grid_style }}"
     data-country="{{ localization.country.iso_code }}"
   >
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
     <script>
       (() => {
         if (window.innerWidth > 1024) {
@@ -622,7 +623,5 @@
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     {% render 'zoho-google-ads-tracking' %}
-
-    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
   </body>
 </html>
