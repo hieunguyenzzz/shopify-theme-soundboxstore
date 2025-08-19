@@ -185,7 +185,6 @@
     {%- if template.name == 'index' -%}
       {{ 'home.css' | asset_url | stylesheet_tag: preload: true }}
     {%- else -%}
-      {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
     {%- endif -%}
     {{ 'customize_style.css' | asset_url | stylesheet_tag: preload: true }}
 
@@ -623,5 +622,7 @@
     </script>
     <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
     {% render 'zoho-google-ads-tracking' %}
+
+    {{ 'theme_index.css' | asset_url | stylesheet_tag: preload: true }}
   </body>
 </html>
