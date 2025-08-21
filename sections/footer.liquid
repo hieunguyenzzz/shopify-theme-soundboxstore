@@ -101,9 +101,9 @@
 
   <div class="footer__section sub-footer">
     <div class="page-width">
-      <div class="flexbox" style="gap:1em">
+      <div class="flexbox" style="gap:1em;">
         {%- if section.settings.show_copyright -%}
-          <div class="col left-col">
+          <div class="col left-col" style="width:auto;flex:1">
             {% if localization.country.iso_code == 'GB' %}
               <p class="copyright-text" style="color:#ffffff; opacity: 1;">
                 {{ section.settings.copyright_text_uk }}
