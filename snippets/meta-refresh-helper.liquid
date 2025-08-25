@@ -1,0 +1,9 @@
+{% liquid
+  case request.path
+    when '/pages/office-phone-booths-soundproof-privacy-meeting-pods'
+      assign redirect_url = collections['office-phone-booth'].url
+  endcase
+%}
+{% if redirect_url != blank %}
+  <meta http-equiv="refresh" content="0; url={{ redirect_url }}">
+{% endif %}
