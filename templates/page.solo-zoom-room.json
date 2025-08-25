@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "redirect_fdfPUa": {
+      "type": "redirect",
+      "name": "Redirect",
+      "settings": {
+        "url": "shopify://collections/office-phone-booth"
+      }
+    },
     "collection-main-next": {
       "type": "collection-main-next",
       "custom_css": [
@@ -152,7 +159,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": "<div id=\"feed-24765\" class=\"instafeed-shopify\"></div>"
@@ -531,7 +545,8 @@
                 "text": "<p>SHOWROOM VISIT </p>",
                 "url": "shopify://pages/explore-premium-office-pods-collection-london-showroom",
                 "url_text": "Speak to Eva"
-              }
+              },
+              "blocks": {}
             },
             "call_actions_item_V7iVyj": {
               "type": "call-actions-item",
@@ -540,7 +555,8 @@
                 "text": "<p>SITE SURVEY</p>",
                 "url": "shopify://pages/consultancy",
                 "url_text": "Speak to Katy"
-              }
+              },
+              "blocks": {}
             },
             "call_actions_item_yYdybJ": {
               "type": "call-actions-item",
@@ -549,7 +565,8 @@
                 "text": "<p>REMOTE TOUR</p>",
                 "url": "shopify://pages/remote-tours",
                 "url_text": "Speak to Immie"
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -564,6 +581,7 @@
     }
   },
   "order": [
+    "redirect_fdfPUa",
     "collection-main-next",
     "79e8d093-77c2-4588-8678-9f011397b349",
     "main-collection",
