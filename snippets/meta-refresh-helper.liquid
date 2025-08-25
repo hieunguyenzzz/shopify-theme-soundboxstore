@@ -2,8 +2,20 @@
   case request.path
     when '/pages/office-phone-booths-soundproof-privacy-meeting-pods'
       assign redirect_url = collections['office-phone-booth'].url
+    when '/pages/6-person-private-meeting-booth-collaborative-space'
+      assign redirect_url = collections['6-person-meeting-booth-collaborative-private-workspace'].url
+    when '/pages/soundproof-office-booths-private-meeting-pods-workspaces'
+      assign redirect_url = collections['4-person-meeting-pod-private-meeting-acoustic-workspace'].url
+    when '/pages/2-person-phone-booth-soundproof-private-meeting-workspace'
+      assign redirect_url = collections['2-person-soundproof-office-booths-private-workspace'].url
   endcase
 %}
 {% if redirect_url != blank %}
-  <meta http-equiv="refresh" content="0; url={{ redirect_url }}">
+  <meta
+    http-equiv="refresh"
+    content="
+      0; url={{ redirect_url
+      }}
+    "
+  >
 {% endif %}
