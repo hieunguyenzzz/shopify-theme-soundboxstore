@@ -422,7 +422,8 @@
                 {%- if forloop.index > 4 -%}
                   {%- break -%}
                 {%- endif -%}
-                "{{- product.url -}}",
+                "{{- product.url -}}"
+                {%- if forloop.index == 3 -%},{%- endif -%}
               {%- endfor -%}
             ]
           }
