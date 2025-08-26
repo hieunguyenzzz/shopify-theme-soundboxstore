@@ -231,8 +231,7 @@
                   {% assign whatsapp_url = 'https://wa.me/' | append: settings.whatsapp_phone_number %}
                   {% assign whatsapp_url = whatsapp_url | replace: '+', '' %}
                   {% assign whatsapp_url = whatsapp_url | replace: ' ', '' %}
-                  <strong>Whatsapp: </strong>
-                  <a href="{{ whatsapp_url }}">{{ settings.whatsapp_phone_number }}</a>
+                  <a href="{{ whatsapp_url }}"><strong>Whatsapp: </strong> {{ settings.whatsapp_phone_number }}</a>
                 </li>
               {% endif %}
               {% comment %}
