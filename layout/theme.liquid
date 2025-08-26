@@ -424,6 +424,19 @@
     </script>
     <script type="speculationrules">
       {
+        "prerender": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/logout" } },
+                { "not": { "href_matches": "/*\\?*(^|&)add-to-cart=*" } },
+                { "not": { "selector_matches": ".no-prerender" } },
+                { "not": { "selector_matches": "[rel~=nofollow]" } }
+              ]
+            }
+          }
+        ],
         "prefetch": [
           {
             "urls": ["{{- routes.root_url -}}","{{-settings.collection_products.url-}}", "{{-settings.page_showroom.url-}}",
