@@ -400,6 +400,15 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script type="speculationrules">
+      {
+        "prerender": [
+          {
+            "urls": ["{{settings.collection_products.url}}", "{{settings.page_showroom.url}}"]
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body
