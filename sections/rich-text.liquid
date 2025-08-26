@@ -23,7 +23,7 @@
            --view-less:none;
            --view-more:block;
              margin-top:40px;
-          border-top:1px solid #e8e8e1;
+            border-top:1px solid #e8e8e1;
            padding:0;
          }
         #{{section.id}} .page-width-inner{
@@ -85,10 +85,15 @@
          }
          @media only screen and (max-width: 540px){
            #{{section.id}} .page-width{
-             padding-bottom:120px ;
+             padding-bottom:120px  ;
 
            }
          }
+         @media only screen and (min-width: 541px){
+          .template-collection #{{section.id}}{
+                border-top:0
+            }
+          }
   </style>
 {%- endif -%}
 {% assign iputRef = section.id | append: 'page-width-checkbox' %}
@@ -160,31 +165,33 @@
 </div>
 {%- if section.settings.divider -%}</div>{%- endif -%}
 <script>
-  (function(){
-     function onCollapse(e){
-       console.log(e)
-    const containerE =  document.querySelector("#{{section.id}}")
-    if(e.target.checked){
-      console.log("checked")
-      containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
-    }else{
-      containerE.style.setProperty("--innerHeight","250px")
-
+  (function () {
+    function onCollapse(e) {
+      console.log(e);
+      const containerE = document.querySelector('#{{section.id}}');
+      if (e.target.checked) {
+        console.log('checked');
+        containerE.style.setProperty(
+          '--innerHeight',
+          containerE.querySelector('.page-width-inner').clientHeight + 'px'
+        );
+      } else {
+        containerE.style.setProperty('--innerHeight', '250px');
+      }
     }
-  }
-    document.querySelector("#{{ iputRef }}").addEventListener("change", onCollapse);
-  })()
+    document.querySelector('#{{ iputRef }}').addEventListener('change', onCollapse);
+  })();
 </script>
 {% schema %}
 {
   "name": "Rich text",
-   "class" : "rich-text-section",
+  "class": "rich-text-section",
   "settings": [
     {
-      "type":"checkbox",
-      "id":"collapable",
-      "label":"collapable",
-      "default":true
+      "type": "checkbox",
+      "id": "collapable",
+      "label": "collapable",
+      "default": true
     },
     {
       "type": "select",
@@ -243,7 +250,7 @@
       "default": false
     }
   ],
-  "blocks" : [
+  "blocks": [
     {
       "type": "heading",
       "name": "Heading",
@@ -303,16 +310,18 @@
       ]
     }
   ],
-  "presets": [{
-    "name": "Rich text",
-    "blocks": [
-      {
-        "type": "heading"
-      },
-      {
-        "type": "text"
-      }
-    ]
-  }]
+  "presets": [
+    {
+      "name": "Rich text",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
