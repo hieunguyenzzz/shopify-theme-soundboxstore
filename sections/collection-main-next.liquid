@@ -4,7 +4,7 @@
             --image-bg: #e9f0f0;
         }
    .collection-main-header-wrap{
-         margin-bottom: 2em;
+         margin-bottom: 0em;
 
    }
          .main-content header {
@@ -410,17 +410,20 @@
   </div>
 
   <script>
-    (function(){
-      function onCollapse(e){
-        const containerE = document.querySelector("#{{collection_desc_section_id}}")
-        if(e.target.checked){
-          containerE.style.setProperty("--innerHeight",containerE.querySelector(".page-width-inner").clientHeight+"px")
-        }else{
-          containerE.style.setProperty("--innerHeight","250px")
+    (function () {
+      function onCollapse(e) {
+        const containerE = document.querySelector('#{{collection_desc_section_id}}');
+        if (e.target.checked) {
+          containerE.style.setProperty(
+            '--innerHeight',
+            containerE.querySelector('.page-width-inner').clientHeight + 'px'
+          );
+        } else {
+          containerE.style.setProperty('--innerHeight', '250px');
         }
       }
-      document.querySelector("#{{ inputRef }}").addEventListener("change", onCollapse);
-    })()
+      document.querySelector('#{{ inputRef }}').addEventListener('change', onCollapse);
+    })();
   </script>
 {% endif %}
 <script type="application/ld+json">
