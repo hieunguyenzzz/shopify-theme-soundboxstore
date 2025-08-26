@@ -216,12 +216,15 @@
 
               {% if block.settings.email != blank %}
                 <li class="email">
-                  <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                  <a href="mailto:{{ block.settings.email }}"
+                    ><strong>{{ 'contact.form.email' | t }}: </strong>{{ block.settings.email -}}
+                  </a>
                 </li>
               {% endif %}
-              {% if settings.whatapp_phone_number %}
-                <li class="phone whatapp_phone">
-                  <a href="tel:{{settings.whatapp_phone_number}}">{{ settings.whatapp_phone_number }}</a>
+              {% if settings.whatsapp_phone_number %}
+                <li class="phone whatsapp_phone">
+                  <strong>whatsapp: </strong>
+                  <a href="tel:{{settings.whatsapp_phone_number}}">{{ settings.whatsapp_phone_number }}</a>
                 </li>
               {% endif %}
               {% comment %}
