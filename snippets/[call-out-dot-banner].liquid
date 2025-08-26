@@ -4,8 +4,7 @@
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
 <div class="collection-main-header-wrap">
-  <header class="page-width">
-    
+  <div class="page-width">
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
     <div class="collection-main-content">
       <div>
@@ -46,7 +45,7 @@
           >
             {{ textR }}
           </a>
-          
+
           {% assign showroom_page = pages[settings.page_showroom] %}
           {% assign textF = 'call_actions.showroom_visit' | t %}
           <a
@@ -56,7 +55,7 @@
           >
             {{ textF }}
           </a>
-          
+
           {% assign consultancy_page = pages[settings.page_consultancy] %}
           <a
             href="{{ consultancy_page.url }}"
@@ -76,5 +75,5 @@
         </div>
       </div>
     </div>
-  </header>
+  </div>
 </div>
