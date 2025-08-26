@@ -51,7 +51,7 @@
                     right: 0;
                     top: 0;
                     bottom: 0;
-                    z-index: 3;
+                    z-index: 1;
                     background-color: #000;
                     opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
                   }
@@ -454,7 +454,7 @@
                                 >
                                   {{ textF }}
                                 </a>
-                                
+
                                 {% assign showroom_page = pages[settings.page_showroom] %}
                                 {% assign textF = 'call_actions.showroom_visit' | t %}
                                 <a
@@ -464,7 +464,7 @@
                                 >
                                   {{ textF }}
                                 </a>
-                                
+
                                 {% assign consultancy_page = pages[settings.page_consultancy] %}
                                 {% assign textC = 'strings.others.Schedule_Design_Survey' | t %}
                                 {%- if block.settings.link_text != blank -%}
@@ -609,7 +609,7 @@
           "max": 100,
           "unit": "px"
         },
-         {
+        {
           "type": "richtext",
           "id": "subheading_richtext",
           "label": "Rich Text"
