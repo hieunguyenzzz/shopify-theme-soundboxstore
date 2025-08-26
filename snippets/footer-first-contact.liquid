@@ -213,14 +213,15 @@
                   </li>
                 {% endif %}
               {% endunless %}
+              <li class="phone">
+                <a href="tel:+44 7757 124627">+44 7757 124627</a>
+              </li>
               {% if block.settings.email != blank %}
                 <li class="email">
                   <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
                 </li>
               {% endif %}
-              <li class="phone">
-                <a href="tel:+44 7757 124627">+44 7757 124627</a>
-              </li>
+
               {% comment %}
                 {%- capture phone -%}
                   {%- render '[phone-number]' -%}
