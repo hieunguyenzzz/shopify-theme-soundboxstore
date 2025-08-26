@@ -406,7 +406,7 @@
           {
             "urls": ["{{ routes.root_url }}","{{settings.collection_products.url}}", "{{settings.page_showroom.url}}",
               {% for product in settings.collection_products.products %}
-                {% if forloop.index > 4 %}\
+                {% if forloop.index > 4 %}
                 {% break %}
                   {% endif %}
                   "{{ product.url }}",
