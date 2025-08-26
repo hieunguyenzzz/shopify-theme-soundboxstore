@@ -223,6 +223,11 @@
               {% endif %}
               {% if settings.whatsapp_phone_number %}
                 <li class="phone whatsapp_phone">
+                  <style>
+                    .site-footer .footer-address-list ul li.phone:after{
+                      background:url(https://cdn.shopify.com/s/files/1/0631/9892/0929/files/whatapp_icon_a7ba9ce8-d3de-4f49-bf57-951c59f6d590.jpg?v=1756192149)
+                    }
+                  </style>
                   <strong>Whatsapp: </strong>
                   <a href="tel:{{settings.whatsapp_phone_number}}">{{ settings.whatsapp_phone_number }}</a>
                 </li>
