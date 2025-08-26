@@ -232,7 +232,7 @@
                   {% assign whatsapp_url = whatsapp_url | replace: '+', '' %}
                   {% assign whatsapp_url = whatsapp_url | replace: ' ', '' %}
                   <strong>Whatsapp: </strong>
-                  <a href="tel:{{settings.whatsapp_phone_number}}">{{ settings.whatsapp_phone_number }}</a>
+                  <a href="{{ whatsapp_url }}">{{ settings.whatsapp_phone_number }}</a>
                 </li>
               {% endif %}
               {% comment %}
