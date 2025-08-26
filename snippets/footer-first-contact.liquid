@@ -218,6 +218,9 @@
                   <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
                 </li>
               {% endif %}
+              <li class="phone">
+                <a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a>
+              </li>
               {% comment %}
                 {%- capture phone -%}
                   {%- render '[phone-number]' -%}
@@ -228,7 +231,7 @@
               {% endcomment %}
               {% if block.settings.phone != blank %}
                 <li class="phone">
-                  <a href="tel:{{ block.settings.phone }}">{{ block.settings.phone }}</a>
+                  <a href="tel:+44 7757 124627">+44 7757 124627</a>
                 </li>
               {% endif %}
             </ul>
