@@ -400,28 +400,6 @@
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
-  </head>
-
-  <body
-    {% if isResserllerOrTradeAccount %}
-      data-reseller
-    {% endif %}
-    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
-    data-transitions="{{ settings.animate_page_transitions }}"
-    data-button_style="{{ settings.button_style }}"
-    data-edges="{{ settings.roundness }}"
-    data-type_header_capitalize="{{ settings.type_header_capitalize }}"
-    data-swatch_style="{{ settings.swatch_style }}"
-    data-grid-style="{{ settings.product_grid_style }}"
-    data-country="{{ localization.country.iso_code }}"
-  >
-    <script>
-      (() => {
-        if (window.innerWidth > 1024) {
-          window.document.body.classList.add('desktop');
-        }
-      })();
-    </script>
     <script type="speculationrules">
       {
         "prerender": [
@@ -451,6 +429,29 @@
         ]
       }
     </script>
+  </head>
+
+  <body
+    {% if isResserllerOrTradeAccount %}
+      data-reseller
+    {% endif %}
+    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %} page-{{ page.handle }} {% if page.handle == 'silence-booth' %}topbar-page{% endif %}"
+    data-transitions="{{ settings.animate_page_transitions }}"
+    data-button_style="{{ settings.button_style }}"
+    data-edges="{{ settings.roundness }}"
+    data-type_header_capitalize="{{ settings.type_header_capitalize }}"
+    data-swatch_style="{{ settings.swatch_style }}"
+    data-grid-style="{{ settings.product_grid_style }}"
+    data-country="{{ localization.country.iso_code }}"
+  >
+    <script>
+      (() => {
+        if (window.innerWidth > 1024) {
+          window.document.body.classList.add('desktop');
+        }
+      })();
+    </script>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
