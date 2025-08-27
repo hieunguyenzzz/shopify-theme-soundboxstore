@@ -86,11 +86,14 @@
       -%}
       {%- assign optionValueHandlized = value | handleize -%}
       {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized | t -%}
-      {%- assign tranValue = value.variant.title -%}
+      {% unless value == 'Upgraded Device Shelf' %}
+        {%- assign tranValue = value.variant.title -%}
+      {% endunless %}
       <div
         class="variant-input {% unless product_available %} disabled{% endunless %}"
         data-index="option{{ option_index }}"
         data-value="{{ value | escape }}"
+        data-value1="{{ value  }}"
         data-trvalue="{{tranValue | escape}}"
       >
         <input
