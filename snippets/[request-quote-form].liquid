@@ -157,7 +157,7 @@
           id="ContactFormAddress-{{ section.id }}"
           class="input-full input"
           name="contact[address]"
-          placeholder="Address"
+          placeholder="{{ 'contact.form.address' | t }}"
         >
         <label for="ContactFormPhone-{{ section.id }}">{{ 'contact.form.address' | t }}</label>
       </div>
@@ -371,7 +371,7 @@ IT it /it-it' %}
             .catch(function (res) {
               console.log(res, data);
             });
-           fetch('https://n8n.soundboxstore.com/webhook/subscribe', {
+          fetch('https://n8n.soundboxstore.com/webhook/subscribe', {
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json',
