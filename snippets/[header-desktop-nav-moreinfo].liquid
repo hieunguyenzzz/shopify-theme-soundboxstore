@@ -276,10 +276,8 @@
                    {% assign whatsapp_url = 'https://wa.me/' | append: settings.whatsapp_phone_number %}
                   {% assign whatsapp_url = whatsapp_url | replace: '+', '' %}
                   {% assign whatsapp_url = whatsapp_url | replace: ' ', '' %}
-              
-      
-                  <a class="col_1-title" target="_blank" href="{{ whatsapp_url }}">{{ settings.whatsapp_phone_number }}</a>
-                  <div class="col_1-subtitle">{{ 'strings.general.live_time' | t }}</div>
+                  <a class="col_1-title" target="_blank" href="{{ whatsapp_url }}">Whatsapp</a>
+                  <div class="col_1-subtitle">{{ settings.whatsapp_phone_number }}</div>
                 </div>
               </div>
             </div>
