@@ -582,9 +582,7 @@
                 return;
               this._updateMasterSelect(e),
                 this._updateImages(e),
-                setTimeout(()=>{
-                  this._updateImagesCustom(e)
-                }),
+                this._updateImagesCustom(e),
                 this._updatePrice(e),
                 this._updateUnitPrice(e),
                 this._updateSKU(e),
@@ -643,7 +641,8 @@
                       "slickGoTo",
                       0
                     );
-                  var r = [
+                  setTimeout(()=>{
+          var r = [
                     ...document.querySelectorAll(
                       ".product-main-slider .image-gallery-block.slick-slide img"
                     ),
@@ -656,6 +655,8 @@
                       "srcset",
                       r.srcset
                     );
+                  },500)
+        
                 }
               })();
             },
