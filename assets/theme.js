@@ -582,7 +582,9 @@
                 return;
               this._updateMasterSelect(e),
                 this._updateImages(e),
-                this._updateImagesCustom(e),
+                setTimeout(()=>{
+                  this._updateImagesCustom(e)
+                }),
                 this._updatePrice(e),
                 this._updateUnitPrice(e),
                 this._updateSKU(e),
