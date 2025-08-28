@@ -41,16 +41,14 @@
   {% endfor %}
 </ul>
 <script>
-  (()=>{
-      document.addEventListener('variant:change', function (evt) {
-            try {
-              console.log(evt.detail.variant)
-              let e = document.querySelector(`#product-inventory-instock`)
-              e.dataset.variant=evt.detail.variant.id+""
-            } catch (error) {
-              console.log({ error })
-            }
-
-          });
-  })()
+  (() => {
+    document.addEventListener('variant:change', function (evt) {
+      try {
+        let e = document.querySelector(`#product-inventory-instock`);
+        e.dataset.variant = evt.detail.variant.id + '';
+      } catch (error) {
+        console.log({ error });
+      }
+    });
+  })();
 </script>
