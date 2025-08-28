@@ -592,74 +592,143 @@
               t && t.setAttribute("data-quantity-variant", "" + e.id);
             },
             _updateImagesCustom: function (e) {
-              !(function t() {
-                let i = document.querySelector(`template[data-id='${e.id}']`),
-                  n = document.querySelector(".product-main-slider");
-                if (i) {
-                  n.innerHTML = i.cloneNode(!0).innerHTML;
-                  var s = $(
-                      ".template-product .product-main-slider .image-gallery-main"
-                    ),
-                    a = $(
-                      ".template-product .thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
-                    );
-                  $(a).removeClass("slick-initialized slick-slider"),
-                    $(s).removeClass("slick-initialized slick-slider"),
-                    $(".product-main-slider .image-gallery-main").slick({
-                      slidesToShow: 1,
-                      slidesToScroll: 1,
-                      arrows: !1,
-                      adaptiveHeight: !0,
-                      fade: !0,
-                      asNavFor:
-                        ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
-                    }),
-                    $(
-                      ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
-                    ).slick({
+              function updateProductSlider(e) {
+                // Cache DOM queries at the top
+                const template = document.querySelector(`template[data-id='${e.id}']`);
+                if (!template) return; // Early return if template not found
+                
+                const productMainSlider = document.querySelector(".product-main-slider");
+                if (!productMainSlider) return; // Early return if main slider not found
+                
+                // Clone and update content once
+                productMainSlider.innerHTML = template.cloneNode(true).innerHTML;
+                
+                // Cache jQuery selectors to avoid repeated DOM queries
+                const $mainGallery = $(".template-product .product-main-slider .image-gallery-main");
+                const $thumbnailSlider = $(".template-product .thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner");
+                
+                // Remove slick classes in one operation
+                $thumbnailSlider.add($mainGallery).removeClass("slick-initialized slick-slider");
+                
+                // Define slick configurations as constants to avoid recreating objects
+                const mainSlickConfig = {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows: false,
+                  adaptiveHeight: true,
+                  fade: true,
+                  asNavFor: ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
+                };
+                
+                const thumbnailSlickConfig = {
+                  slidesToShow: 6,
+                  slidesToScroll: 1,
+                  asNavFor: ".product-main-slider .image-gallery-main",
+                  dots: false,
+                  adaptiveHeight: true,
+                  vertical: true,
+                  focusOnSelect: true,
+                  arrows: true,
+                  responsive: [{
+                    breakpoint: 861,
+                    settings: {
+                      vertical: false,
+                      infinite: true,
                       slidesToShow: 6,
-                      slidesToScroll: 1,
-                      asNavFor: ".product-main-slider .image-gallery-main",
-                      dots: !1,
-                      adaptiveHeight: !0,
-                      vertical: !0,
-                      focusOnSelect: !0,
-                      arrows: !0,
-                      responsive: [
-                        {
-                          breakpoint: 861,
-                          settings: {
-                            vertical: !1,
-                            infinite: !0,
-                            slidesToShow: 6,
-                            slidesToScroll: 1,
-                          },
-                        },
-                      ],
-                    }),
-                    $(".product-main-slider .image-gallery-main").slick(
-                      "slickGoTo",
-                      0
-                    );
-                  setTimeout(()=>{
-                    if($(".meeting-rooms-features .center-col img")){
-                      var r = [
-                        ...document.querySelectorAll(
-                          ".product-main-slider .image-gallery-block.slick-slide img"
-                        ),
-                      ][1];
-                      $(".meeting-rooms-features .center-col img").attr(
-                        "src",
-                        r.src
-                      ),
-                        $(".meeting-rooms-features .center-col img").attr(
-                          "srcset",
-                          r.srcset
-                        );
+                      slidesToScroll: 1
                     }
-                  },500)
+                  }]
+                };
+                
+                // Initialize slick sliders
+                $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
+                $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
+                
+                // Go to first slide
+                $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
+                
+                // Update meeting room features image more efficiently
+                const slideImages = document.querySelectorAll(".product-main-slider .image-gallery-block.slick-slide img");
+                if (slideImages.length > 1) {
+                  const secondImage = slideImages[1];
+                  const $centerImg = $(".meeting-rooms-features .center-col img");
+                  
+                  // Update both attributes in one jQuery chain
+                  $centerImg.attr({
+                    "src": secondImage.src,
+                    "srcset": secondImage.srcset
+                  });
                 }
-              })();
+              }
+              updateProductSlider(e)
+              // !(function t() {
+              //   let i = document.querySelector(`template[data-id='${e.id}']`),
+              //     n = document.querySelector(".product-main-slider");
+              //   if (i) {
+              //     n.innerHTML = i.cloneNode(!0).innerHTML;
+              //     var s = $(
+              //         ".template-product .product-main-slider .image-gallery-main"
+              //       ),
+              //       a = $(
+              //         ".template-product .thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
+              //       );
+              //     $(a).removeClass("slick-initialized slick-slider"),
+              //       $(s).removeClass("slick-initialized slick-slider"),
+              //       $(".product-main-slider .image-gallery-main").slick({
+              //         slidesToShow: 1,
+              //         slidesToScroll: 1,
+              //         arrows: !1,
+              //         adaptiveHeight: !0,
+              //         fade: !0,
+              //         asNavFor:
+              //           ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
+              //       }),
+              //       $(
+              //         ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
+              //       ).slick({
+              //         slidesToShow: 6,
+              //         slidesToScroll: 1,
+              //         asNavFor: ".product-main-slider .image-gallery-main",
+              //         dots: !1,
+              //         adaptiveHeight: !0,
+              //         vertical: !0,
+              //         focusOnSelect: !0,
+              //         arrows: !0,
+              //         responsive: [
+              //           {
+              //             breakpoint: 861,
+              //             settings: {
+              //               vertical: !1,
+              //               infinite: !0,
+              //               slidesToShow: 6,
+              //               slidesToScroll: 1,
+              //             },
+              //           },
+              //         ],
+              //       }),
+              //       $(".product-main-slider .image-gallery-main").slick(
+              //         "slickGoTo",
+              //         0
+              //       );
+              //     setTimeout(()=>{
+              //       if($(".meeting-rooms-features .center-col img")){
+              //         var r = [
+              //           ...document.querySelectorAll(
+              //             ".product-main-slider .image-gallery-block.slick-slide img"
+              //           ),
+              //         ][1];
+              //         $(".meeting-rooms-features .center-col img").attr(
+              //           "src",
+              //           r.src
+              //         ),
+              //           $(".meeting-rooms-features .center-col img").attr(
+              //             "srcset",
+              //             r.srcset
+              //           );
+              //       }
+              //     },500)
+              //   }
+              // })();
             },
             _updateImages: function (e) {
               var t = e.featured_image || {},
