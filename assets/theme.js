@@ -642,21 +642,22 @@
                       0
                     );
                   setTimeout(()=>{
-          var r = [
-                    ...document.querySelectorAll(
-                      ".product-main-slider .image-gallery-block.slick-slide img"
-                    ),
-                  ][1];
-                  $(".meeting-rooms-features .center-col img").attr(
-                    "src",
-                    r.src
-                  ),
-                    $(".meeting-rooms-features .center-col img").attr(
-                      "srcset",
-                      r.srcset
-                    );
+                    if($(".meeting-rooms-features .center-col img")){
+                      var r = [
+                        ...document.querySelectorAll(
+                          ".product-main-slider .image-gallery-block.slick-slide img"
+                        ),
+                      ][1];
+                      $(".meeting-rooms-features .center-col img").attr(
+                        "src",
+                        r.src
+                      ),
+                        $(".meeting-rooms-features .center-col img").attr(
+                          "srcset",
+                          r.srcset
+                        );
+                    }
                   },500)
-        
                 }
               })();
             },
