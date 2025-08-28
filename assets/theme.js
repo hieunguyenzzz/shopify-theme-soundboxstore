@@ -645,7 +645,7 @@
                 $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
                 
                 // Go to first slide
-                // $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
+                $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
                 
                 // Update meeting room features image more efficiently
                 const slideImages = document.querySelectorAll(".product-main-slider .image-gallery-block.slick-slide img");
