@@ -171,11 +171,26 @@
       // console.log('onPlayerReady', player);
       document.querySelector('#youtube-modal-input-{{ video_id }}').addEventListener('input', (e) => {
         console.log('e.target.checked', e.target.checked);
-        if (e.target.checked) {
-          player.playVideo();
-        } else {
-          player.pauseVideo();
-        }
+        const updateVideo = () => {
+          if (e.target.checked) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
+        };
+        const changeColor = () => {
+          // Fallback for browsers that don't support View Transitions:
+          if (!document.startViewTransition) {
+            updateColour();
+            return;
+          }
+
+          // With View Transitions:
+          const transition = document.startViewTransition(() => {
+            updateColour();
+          });
+        };
+        changeColor();
       });
     }
 
