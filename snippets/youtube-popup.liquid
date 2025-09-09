@@ -181,13 +181,13 @@
         const changeColor = () => {
           // Fallback for browsers that don't support View Transitions:
           if (!document.startViewTransition) {
-            updateColour();
+            updateVideo();
             return;
           }
 
           // With View Transitions:
           const transition = document.startViewTransition(() => {
-            updateColour();
+            updateVideo();
           });
         };
         changeColor();
