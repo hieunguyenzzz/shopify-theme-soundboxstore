@@ -80,6 +80,7 @@
     {% render '[header-desktop-nav]-next' %}
   {% endif %}
   <li class="site-nav__item" style="flex:1"></li>
+  {% render '[header-desktop-nav-showrooms]', sub_menu: sub_menu, title: 'Showrooms' %}
   {% render '[header-desktop-nav-moreinfo]', sub_menu: sub_menu %}
   {% if settings.predictive_search_enabled %}
     <li
