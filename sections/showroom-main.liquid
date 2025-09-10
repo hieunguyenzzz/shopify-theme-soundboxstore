@@ -45,9 +45,7 @@
             <span>All Showrooms</span>
           </a>
         </div>
-        <h1 class="text-2xl font-semibold  md:text-2xl 2xl:text-3xl">
-          {{ section.settings.title | default: page.title }}
-        </h1>
+
         <div class="p-3 md:p-6 bg-white">
           <div class="flex gap-4 md:gap-8">
             {% if section.settings.avatar != blank %}
@@ -75,6 +73,9 @@
             {{- section.settings.btn_text | default: 'Book a visit ' -}}
           </label>
         </div>
+        <h1 class="text-2xl font-semibold  md:text-2xl 2xl:text-3xl">
+          {{ section.settings.title | default: page.title }}
+        </h1>
         <div class=" prose prose-a:underline">
           {{ section.settings.content }}
         </div>
