@@ -8,6 +8,61 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "showroom_main_yEDn3G": {
+      "type": "showroom-main",
+      "name": "Show room main",
+      "settings": {
+        "title": "{{ metaobject.title.value }}",
+        "products": "{{ metaobject.products.value }}",
+        "calendly_url": "https://calendly.com/quell-design-team/clerkenwell-london",
+        "avatar": "shopify://shop_images/EVA-PROFILE.png",
+        "form-title": "Find Out How Acoustic Booths Can Help Focus & Productivity",
+        "sub-heading-top": "Speak to",
+        "heading": "Eva",
+        "google_embed_url": "{{ metaobject.address_embed.value }}",
+        "sub-heading-bottom": "Showroom Manager",
+        "content": "{{ metaobject.description | metafield_tag }}"
+      }
+    },
+    "27ff9005-1084-46d1-9cae-87da67b2e7a7": {
+      "type": "advanced-content",
+      "blocks": {
+        "fdd8d4fc-b0fe-4533-9108-b66046cf1e13": {
+          "type": "html",
+          "settings": {
+            "code": "<style>\nhtml {\n  scroll-behavior: smooth;\n}\n</style>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "fdd8d4fc-b0fe-4533-9108-b66046cf1e13"
+      ],
+      "custom_css": [
+        "{display: none;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "space_around": false
+      }
+    },
+    "showrooms_map_36cTG3": {
+      "type": "showrooms-map",
+      "name": "showroom-map",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "showroom_main_yEDn3G",
+    "27ff9005-1084-46d1-9cae-87da67b2e7a7",
+    "showrooms_map_36cTG3"
+  ]
 }
