@@ -1,167 +1,167 @@
 {% if section.blocks.size > 0 %}
   <style>
-      #shopify-section-{{section.id}}{
-        padding-top:50px;
-        border-top :1px solid #e8e8e1;
-      }
-      .meeting-rooms-features .flexbox{
-          display: flex;
+         #shopify-section-{{section.id}}{
+           padding-top:50px;
+           border-top :1px solid #e8e8e1;
+         }
+         .meeting-rooms-features .flexbox{
+             display: flex;
 
-      justify-content: center;
-      }
-      .meeting-rooms-features .flexbox .col:not(:last-child) {
-        flex:1;
-      }
-      .meeting-rooms-features .flexbox .col.right-col {
-        max-width: 440px;
-        margin-top: 20px;
-      margin-left: auto;
-      }
-      .features-list-row-wrap > label {
-        font-weight:bold!important;
-      }
+         justify-content: center;
+         }
+         .meeting-rooms-features .flexbox .col:not(:last-child) {
+           flex:1;
+         }
+         .meeting-rooms-features .flexbox .col.right-col {
+           max-width: 440px;
+           margin-top: 20px;
+         margin-left: auto;
+         }
+         .features-list-row-wrap > label {
+           font-weight:bold!important;
+         }
 
-      .features-list-row {
-        padding: 0.5em;
-      }
-      .features-list-row-wrap > div {
-        max-height: 0;
-        opacity: 0;
-        transition: all 0.5s ease-in-out;
-        overflow: hidden;
-      }
-      .features-list-row-wrap > label {
-        margin: 0;
-        line-height: 30px;
-        padding: 1rem 2rem;
-        border-bottom:1px solid #f1f1f1;
-        position: relative;
-        font-weight:bold;
-      }
-        .features-list-row-wrap > label::before {
-          content: "";
-      position: absolute;
-      background-color: black;
-      width: 0.8em;
-      height: 0.15em;
-      right: 14px;
-      top: calc(50% - 0.075em);
-      transition: all 0.5s ease-in-out;
-      transform: rotate(-90deg);
-      }
-      .features-list-row-wrap > label::after {
-         content: "";
-        position: absolute;
-        background-color: black;
-        height: 0.8em;
-        width: 0.15em;
-        right: calc(14px + 0.31em);
-        top: calc(50% - 0.4em);
-        transition: all 0.5s ease-in-out;
-        transform: rotate(-90deg);
-      }
-      .features-list-row input:checked + .features-list-row-wrap > label::before {
+         .features-list-row {
+           padding: 0.5em;
+         }
+         .features-list-row-wrap > div {
+           max-height: 0;
+           opacity: 0;
+           transition: all 0.5s ease-in-out;
+           overflow: hidden;
+         }
+         .features-list-row-wrap > label {
+           margin: 0;
+           line-height: 30px;
+           padding: 1rem 2rem;
+           border-bottom:1px solid #f1f1f1;
+           position: relative;
+           font-weight:bold;
+         }
+           .features-list-row-wrap > label::before {
+             content: "";
+         position: absolute;
+         background-color: black;
+         width: 0.8em;
+         height: 0.15em;
+         right: 14px;
+         top: calc(50% - 0.075em);
          transition: all 0.5s ease-in-out;
-        transform: rotate(90deg);    opacity: 0;
-      }
-      .features-list-row input:checked + .features-list-row-wrap > label::after {
-      transition: all 0.5s ease-in-out;
-      transform: rotate(90deg);
+         transform: rotate(-90deg);
+         }
+         .features-list-row-wrap > label::after {
+            content: "";
+           position: absolute;
+           background-color: black;
+           height: 0.8em;
+           width: 0.15em;
+           right: calc(14px + 0.31em);
+           top: calc(50% - 0.4em);
+           transition: all 0.5s ease-in-out;
+           transform: rotate(-90deg);
+         }
+         .features-list-row input:checked + .features-list-row-wrap > label::before {
+            transition: all 0.5s ease-in-out;
+           transform: rotate(90deg);    opacity: 0;
+         }
+         .features-list-row input:checked + .features-list-row-wrap > label::after {
+         transition: all 0.5s ease-in-out;
+         transform: rotate(90deg);
 
-      }
-      .meeting-rooms-features .features-list .features-list-row {
-        padding: 0;
-      }
-      .features-list-row-wrap > div > div {
+         }
+         .meeting-rooms-features .features-list .features-list-row {
+           padding: 0;
+         }
+         .features-list-row-wrap > div > div {
 
-              padding: 1rem 2rem;
-      }
-      .features-list-row input:checked + .features-list-row-wrap > div {
-        display: block;
-        max-height: 500px;
-        opacity: 1;
-        height: auto;
-
-
-      }
-      .features-list-row input:checked + .features-list-row-wrap > div > div {
-      }
-      .meeting-rooms-features .flexbox .col.right-col {
-        text-align: left;
-      }
-      .meeting-rooms-features .hotspot-icon:before {
-        opacity: 1;
-        visibility: visible;
-      }
+                 padding: 1rem 2rem;
+         }
+         .features-list-row input:checked + .features-list-row-wrap > div {
+           display: block;
+           max-height: 500px;
+           opacity: 1;
+           height: auto;
 
 
-    .meeting-room-features-video .video-player-controls > button {
-      padding:0;
-      border-radius: 99em;
-      width: 60px;
-      height: 60px;
-    }
-    .meeting-room-features-video .video-player-controls > button svg {
-      height: 100%;
-      width: 100%;
-      color:#3A434D;
-    }
-    .meeting-room-features-video .video-player-controls.active .stop-button svg{
-      color:#979797;
-      opacity: .3;
-    }
-    .meeting-room-features-video .center-col .control .switch,
-    .meeting-room-features-video .center-col .control .switch:after{
-      border-radius:99em;
-    }
-    .meeting-room-features-video video{
-        -webkit-mask-image: -webkit-radial-gradient(white, black);
-      -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -webkit-appearance: none
-    }
+         }
+         .features-list-row input:checked + .features-list-row-wrap > div > div {
+         }
+         .meeting-rooms-features .flexbox .col.right-col {
+           text-align: left;
+         }
+         .meeting-rooms-features .hotspot-icon:before {
+           opacity: 1;
+           visibility: visible;
+         }
 
-      {% for block in section.blocks %}
-        {% if block.settings.point_x != blank or block.settings.point_y != blank %}
-          .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
-            left: {{ block.settings.point_x }}%;
-            top: {{ block.settings.point_y }}%
-          }
-          {%- assign point_x = block.settings.point_x | times: 1 -%}
-          {%- if point_x < 40 -%}
-            .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
-              left: unset;
-              right: 0;
-            }
-          {%- endif - %}
-        {% endif %}
-      {% endfor %}
-    .ping {
-      position: relative;
-    }
-    .ping::before {
-      position: absolute;
-      top: -0.5em;
-      bottom: -0.5em;
-      left: -0.5em;
-      right: -0.5em;
-      content: '';
-      animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
-      border: 2px solid lightblue;
-    }
-    @keyframes ping {
-      75%,
-      100% {
-        transform: scale(1.1);
-        opacity: 0;
-      }
-    }
-    .features-list-row-wrap {
-      scroll-margin-top: 160px
-    }
+
+       .meeting-room-features-video .video-player-controls > button {
+         padding:0;
+         border-radius: 99em;
+         width: 60px;
+         height: 60px;
+       }
+       .meeting-room-features-video .video-player-controls > button svg {
+         height: 100%;
+         width: 100%;
+         color:#3A434D;
+       }
+       .meeting-room-features-video .video-player-controls.active .stop-button svg{
+         color:#979797;
+         opacity: .3;
+       }
+       .meeting-room-features-video .center-col .control .switch,
+       .meeting-room-features-video .center-col .control .switch:after{
+         border-radius:99em;
+       }
+       .meeting-room-features-video video{
+           -webkit-mask-image: -webkit-radial-gradient(white, black);
+         -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+         -webkit-appearance: none
+       }
+
+         {% for block in section.blocks %}
+           {% if block.settings.point_x != blank or block.settings.point_y != blank %}
+             .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}{
+               left: {{ block.settings.point_x }}%;
+               top: {{ block.settings.point_y }}%
+             }
+             {%- assign point_x = block.settings.point_x | times: 1 -%}
+             {%- if point_x < 40 -%}
+               .meeting-rooms-features .hotspot-icon.unique-{{ block.id }}::before{
+                 left: unset;
+                 right: 0;
+               }
+             {%- endif - %}
+           {% endif %}
+         {% endfor %}
+       .ping {
+         position: relative;
+       }
+       .ping::before {
+         position: absolute;
+         top: -0.5em;
+         bottom: -0.5em;
+         left: -0.5em;
+         right: -0.5em;
+         content: '';
+         animation: ping 3s cubic-bezier(0, 0, 0.2, 1) 1 forwards;
+         border: 2px solid lightblue;
+       }
+       @keyframes ping {
+         75%,
+         100% {
+           transform: scale(1.1);
+           opacity: 0;
+         }
+       }
+       .features-list-row-wrap {
+         scroll-margin-top: 160px
+       }
     .meeting-rooms-features .hotspot-icon {
-      width: 5vw;
-    }
+       width: 20px;height:20px
+     }
   </style>
   <section
     class="
