@@ -20,8 +20,11 @@
     opacity:0.5;
   }
 </style>
-<section class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)] sm:items-center">
-  <div class="block  flex-1  md:max-w-[52rem] ">
+<section
+  id="showrooms-blocks"
+  class=" my-6 flex flex-col justify-between gap-6 p-4 md:my-12 md:flex-row page-width px-[var(--pageWidthPadding)] sm:items-center"
+>
+  <div class="block   md:max-w-[65ch] ">
     <h3 class="block  flex-1 text-3xl font-semibold md:max-w-[52rem] md:text-4xl 2xl:text-5xl">
       {{ section.settings.heading }}
     </h3>
@@ -29,9 +32,9 @@
       {{ section.settings.content }}
     </div>
   </div>
-  <ul class="flex md:max-w-[50%] flex-wrap gap-2 md:w-[640px] lg:text-base text-xs">
+  <ul class="flex md:flex-1 flex-wrap gap-2 lg:text-base text-xs justify-end">
     {% for block in section.blocks %}
-      <li class="rounded flex-1 border border-gray-300 py-1 px-2 leading-none hover:border-gray-500">
+      <li class="rounded flex-1 border border-gray-300 py-1 px-2 leading-none hover:border-gray-500 max-w-md">
         <a
           href="#section-{{ section.id }}-{{ forloop.index }}"
           class="block rounded-lg bg-white p-3"
@@ -54,7 +57,7 @@
     {% assign content = block.settings.content | default: '' %}
     {% if block.type == 'map' %}
       {% capture map %}
-        {{ block.settings.google_url }}
+        {{ block.settings.google_url  | default:block.settings.google_embed_url }}
         {% endcapture %}
     {% endif %}
     {% if isLeft == 1 %}
@@ -84,8 +87,10 @@
               </div>
               <a
                 class="btn bg-[var(--colorBtnPrimary)]"
-                href="{{ block.settings.calendly_url }}"
-                onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url  | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                href="{{ block.settings.btn_url |default: block.settings.calendly_url }}"
+                {% unless block.settings.btn_url %}
+                  onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                {% endunless %}
               >
                 {{- block.settings.btn_text | default: 'Free Design Survey ' -}}
               </a>
@@ -121,8 +126,10 @@
               </div>
               <a
                 class="btn  bg-[var(--colorBtnPrimary)]"
-                href="{{ block.settings.calendly_url }}"
-                onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                href="{{ block.settings.btn_url |default: block.settings.calendly_url }}"
+                {% unless block.settings.btn_url %}
+                  onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                {% endunless %}
               >
                 {{- block.settings.btn_text | default: 'Free Design Survey ' -}}
               </a>
@@ -241,9 +248,19 @@
         },
         {
           "type": "text",
+          "id": "google_embed_url",
+          "label": "Google embed url"
+        },
+        {
+          "type": "text",
           "id": "btn_text",
           "label": "Button text",
           "default": "Free Design Survey "
+        },
+        {
+          "type": "text",
+          "id": "btn_url",
+          "label": "Button url"
         },
 
         {
