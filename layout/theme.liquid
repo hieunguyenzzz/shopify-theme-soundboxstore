@@ -472,7 +472,10 @@
       <div class="transition-body">
         {%- section 'toolbar' -%}
         {%- section 'header' -%}
-        {%- section 'call-image' %}
+        {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}
+          {%- section 'call-image' %}
+        {% endif %}
+
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
           {{ content_for_layout }}
