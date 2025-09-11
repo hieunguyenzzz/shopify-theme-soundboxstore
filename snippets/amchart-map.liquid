@@ -351,7 +351,7 @@
 
   (()=>{
     const options = {
-      root: document.querySelector("#amchart-map"),
+      root: document.body ,
       rootMargin: "0px",
       scrollMargin: "0px",
       threshold: 1.0,
@@ -364,5 +364,6 @@
       });
     };
     const observer = new IntersectionObserver(intersectionCallback, options);
+    observer.observe(document.querySelector("#amchart-map"))
   })()
 </script>
