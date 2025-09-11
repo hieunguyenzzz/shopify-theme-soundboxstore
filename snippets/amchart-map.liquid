@@ -13,6 +13,100 @@
   }
 </style>
 
+<!-- HTML -->
+<div class="bg-[#f8f8f8]" id="amchart-map">
+  <div
+    class="page-width  lg:flex "
+    style="padding:0"
+  >
+    <div class="flex-1 relative">
+      <h2
+        class="text-xl font-semibold  md:text-2xl 2xl:text-3xl"
+        style="
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          padding: 1em;
+          text-align: center;
+        "
+      >
+        Explore our showrooms
+      </h2>
+      <div id="chartdiv" class="flex-1"></div>
+    </div>
+    <style>
+      input.peer:checked + .peerchecked {
+        display:flex
+      }
+      .peerchecked{
+        animation: fade-in 1s cubic-bezier(.26, .54, .32, 1) 0s forwards;
+      }
+    </style>
+    <div class="lg:w-2/5 text-[14px] max-w-[62ch]  lg:flex flex items-center min-h-full py-6 m-[2em] bg-white shadow relative">
+      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-1" id="map-detail-1" checked>
+      <div class="flex-1 hidden peerchecked ">
+        <div
+          style="
+            position: absolute;
+            right: 1em;
+            top: 1em;
+            font-size: 0.9em;
+            color: white;
+            padding: 0.2em 1em;
+            border-radius: 99em;
+            line-height: 1.5em;
+            background: #fb4646;
+          "
+        >
+          FLAGSHIP
+        </div>
+        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+          <h3 class="text-xl font-semibold  md:text-2xl 2xl:text-3xl">{{ showroom_1.title }}</h3>
+          <div class="my-4 lg:my-8 prose text-sm">
+            {{ showroom_1.description | metafield_tag }}
+          </div>
+          <a
+            class="btn bg-[var(--colorBtnPrimary)]"
+            href="{{ showroom_1.system.url }}"
+          >
+            {{- 'strings.others.explore_now' | t -}}
+          </a>
+        </div>
+      </div>
+      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-2" id="map-detail-2">
+      <div class="flex-1 hidden peerchecked">
+        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+          <h3 class="text-xl font-semibold md:text-2xl 2xl:text-3xl">{{ showroom_2.title }}</h3>
+          <div class="my-4 lg:my-8 prose text-sm">
+            {{ showroom_2.description | metafield_tag }}
+          </div>
+          <a
+            class="btn  bg-[var(--colorBtnPrimary)]"
+            href="{{ showroom_2.system.url }}"
+            >Explore Showroom</a
+          >
+        </div>
+      </div>
+      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-3" id="map-detail-3">
+      <div class="flex-1 hidden peerchecked">
+        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
+          <h3 class="text-xl font-semibold  md:text-2xl 2xl:text-3xl">{{ showroom_3.title }}</h3>
+          <div class="my-4 lg:my-8 prose text-sm">
+            {{ showroom_3.description | metafield_tag }}
+          </div>
+          <a
+            class="btn bg-[var(--colorBtnPrimary)]"
+            href="{{ showroom_3.system.url }}"
+          >
+            {{- 'strings.others.explore_now' | t -}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
@@ -255,97 +349,3 @@
 
   }); // end am5.ready()
 </script>
-
-<!-- HTML -->
-<div class="bg-[#f8f8f8]" id="amchart-map">
-  <div
-    class="page-width  lg:flex "
-    style="padding:0"
-  >
-    <div class="flex-1 relative">
-      <h2
-        class="text-xl font-semibold  md:text-2xl 2xl:text-3xl"
-        style="
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 100%;
-          padding: 1em;
-          text-align: center;
-        "
-      >
-        Explore our showrooms
-      </h2>
-      <div id="chartdiv" class="flex-1"></div>
-    </div>
-    <style>
-      input.peer:checked + .peerchecked {
-        display:flex
-      }
-      .peerchecked{
-        animation: fade-in 1s cubic-bezier(.26, .54, .32, 1) 0s forwards;
-      }
-    </style>
-    <div class="lg:w-2/5 text-[14px] max-w-[62ch]  lg:flex flex items-center min-h-full py-6 m-[2em] bg-white shadow relative">
-      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-1" id="map-detail-1" checked>
-      <div class="flex-1 hidden peerchecked ">
-        <div
-          style="
-            position: absolute;
-            right: 1em;
-            top: 1em;
-            font-size: 0.9em;
-            color: white;
-            padding: 0.2em 1em;
-            border-radius: 99em;
-            line-height: 1.5em;
-            background: #fb4646;
-          "
-        >
-          FLAGSHIP
-        </div>
-        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-          <h3 class="text-xl font-semibold  md:text-2xl 2xl:text-3xl">{{ showroom_1.title }}</h3>
-          <div class="my-4 lg:my-8 prose text-sm">
-            {{ showroom_1.description | metafield_tag }}
-          </div>
-          <a
-            class="btn bg-[var(--colorBtnPrimary)]"
-            href="{{ showroom_1.system.url }}"
-          >
-            {{- 'strings.others.explore_now' | t -}}
-          </a>
-        </div>
-      </div>
-      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-2" id="map-detail-2">
-      <div class="flex-1 hidden peerchecked">
-        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-          <h3 class="text-xl font-semibold md:text-2xl 2xl:text-3xl">{{ showroom_2.title }}</h3>
-          <div class="my-4 lg:my-8 prose text-sm">
-            {{ showroom_2.description | metafield_tag }}
-          </div>
-          <a
-            class="btn  bg-[var(--colorBtnPrimary)]"
-            href="{{ showroom_2.system.url }}"
-            >Explore Showroom</a
-          >
-        </div>
-      </div>
-      <input class="peer hidden" hidden type="radio" name="map-detail" value="map-detail-3" id="map-detail-3">
-      <div class="flex-1 hidden peerchecked">
-        <div class="mx-auto max-w-[700px] p-4 pb-8 md:flex-1 md:px-[var(--pageWidthPadding)]">
-          <h3 class="text-xl font-semibold  md:text-2xl 2xl:text-3xl">{{ showroom_3.title }}</h3>
-          <div class="my-4 lg:my-8 prose text-sm">
-            {{ showroom_3.description | metafield_tag }}
-          </div>
-          <a
-            class="btn bg-[var(--colorBtnPrimary)]"
-            href="{{ showroom_3.system.url }}"
-          >
-            {{- 'strings.others.explore_now' | t -}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
