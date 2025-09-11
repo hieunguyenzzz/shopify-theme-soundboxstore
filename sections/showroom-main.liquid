@@ -34,7 +34,7 @@
       <div class="py-6 lg:p-12 mb-6  rounded-lg md:p-12 md:max-w-[52ch] lg:min-h-[70%] lg:flex flex flex-col justify-center relative ">
         <div class="x-col e1952-e3 m1i8-17">
           <a
-            href="{{pages['showrooms'].url}}#amchart-map"
+            href="{{settings.page_showroom.url}}#amchart-map"
             class="flex gap-2 mb-4 items-center text-[0.9em]"
           >
             <svg
@@ -83,7 +83,7 @@
             style="width: 100%;"
             {% comment %} href="#consultation-form-wrap" {% endcomment %}
           >
-            {{- section.settings.btn_text | default: 'Book a visit ' -}}
+            {{- 'strings.others.Book_a_visit' | t -}}
           </label>
         </div>
       </div>
