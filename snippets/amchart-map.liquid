@@ -356,7 +356,13 @@
       scrollMargin: "0px",
       threshold: 1.0,
     };
-
-    const observer = new IntersectionObserver(callback, options);
+    const intersectionCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log({entry})
+        }
+      });
+    };
+    const observer = new IntersectionObserver(intersectionCallback, options);
   })()
 </script>
