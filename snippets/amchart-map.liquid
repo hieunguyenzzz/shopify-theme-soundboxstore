@@ -270,6 +270,7 @@
     }
     const intersectionCallback = (entries) => {
       entries.forEach((entry) => {
+        console.log({entry})
         if (entry.isIntersecting) {
           alert(123)
           callback()
