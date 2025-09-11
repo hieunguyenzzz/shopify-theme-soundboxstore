@@ -28,8 +28,12 @@
       scrollMargin: "0px",
       threshold: 1.0,
     };
+    let disable = false
     let callback = ()=>{
-       am5.ready(function () {
+      if(disable){
+        return
+      }
+      am5.ready(function () {
         // Create root element
         // https://www.amcharts.com/docs/v5/getting-started/#Root_element
         var root = am5.Root.new('chartdiv');
@@ -262,6 +266,7 @@
         });
 
       }); // end am5.ready()
+      disable=true
     }
     const observer = new IntersectionObserver(callback, options);
   })()
