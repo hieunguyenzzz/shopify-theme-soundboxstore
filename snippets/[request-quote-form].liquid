@@ -513,14 +513,6 @@
               <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
             </option>
           </select>
-          <script>
-            (() => {
-              let s = document.querySelector('[name="contact[Phone country code]"]');
-              s.addEventListener('change', (e) => {
-                document.querySelector('[name="contact[Phone number]"]').value = e.target.value;
-              });
-            })();
-          </script>
           <input
             style="padding-left:70px"
             type="tel"
@@ -534,6 +526,18 @@
             value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
           <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_phone_number }}</label>
+          <script>
+            (() => {
+              let s = document.querySelector('[name="contact[Phone country code]"]');
+              let i = document.querySelector('[name="contact[Phone number]"]');
+              s.addEventListener('change', (e) => {
+                i.value = e.target.value + ' ';
+              });
+              i.addEventListener('focus', (e) => {
+                if (!e.target.value.length) e.target.value = s.value + ' ';
+              });
+            })();
+          </script>
         </div>
       </div>
 
