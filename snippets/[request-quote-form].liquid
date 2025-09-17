@@ -233,6 +233,14 @@
               display: none
             }
           </style>
+          <script>
+            (() => {
+              let s = document.querySelector('[name="contact[Mobile country code]"]');
+              s.addEventListener('change', (e) => {
+                document.querySelector('[name="contact[Mobile number]"]').value = e.target.value;
+              });
+            })();
+          </script>
           <input
             type="tel"
             required
