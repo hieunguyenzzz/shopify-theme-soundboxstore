@@ -147,7 +147,7 @@
           id="ContactFormPhone-{{ section.id }}"
           class="input-full input"
           name="contact[Mobile number]"
-          placeholder="{{  settings.quote_mobile_number }}. {{ phone_example }}"
+          placeholder="📱 {{  settings.quote_mobile_number }}. {{ phone_example }}"
           pattern="^\+[1-9]\d{1,14}$"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
         >
