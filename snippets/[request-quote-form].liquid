@@ -318,18 +318,7 @@
               height: auto;
             }
           </style>
-          <script>
-            (() => {
-              let s = document.querySelector('[name="contact[Mobile country code]"]');
-              let i = document.querySelector('[name="contact[Mobile number]"]');
-              s.addEventListener('change', (e) => {
-                i.value = e.target.value + ' ';
-              });
-              i.addEventListener('focus', (e) => {
-                e.target.value = s.value + ' ';
-              });
-            })();
-          </script>
+
           <input
             style="padding-left:70px"
             type="tel"
@@ -344,6 +333,18 @@
           >
           <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_mobile_number }}</label>
           <label for="ContactFormPhone-">Mobile number</label>
+          <script>
+            (() => {
+              let s = document.querySelector('[name="contact[Mobile country code]"]');
+              let i = document.querySelector('[name="contact[Mobile number]"]');
+              s.addEventListener('change', (e) => {
+                i.value = e.target.value + ' ';
+              });
+              i.addEventListener('focus', (e) => {
+                e.target.value = s.value + ' ';
+              });
+            })();
+          </script>
         </div>
       </div>
       <div class="grid__item">
