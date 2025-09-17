@@ -341,7 +341,7 @@
                 i.value = e.target.value + ' ';
               });
               i.addEventListener('focus', (e) => {
-                e.target.value = s.value + ' ';
+                if (!e.target.value.length) e.target.value = s.value + ' ';
               });
             })();
           </script>
