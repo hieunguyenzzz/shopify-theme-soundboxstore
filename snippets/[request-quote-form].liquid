@@ -159,9 +159,8 @@
               border-right: 1px solid;
               background-image:none;
             "
-            
           >
-           <button>
+            <button>
               <selectedcontent
                 style="
                   display: flex;
@@ -169,123 +168,140 @@
                 "
               ></selectedcontent>
             </button>
-            <option 
+            <option
               {% if localization.country.iso_code == 'GB' %}
                 selected
               {% endif %}
-              value="+44">
+              value="+44"
+            >
               <span class="icon" aria-hidden="true">🇬🇧</span><span class="option-label">United Kingdom +44</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'IE' %}
                 selected
               {% endif %}
-              value="+353">
+              value="+353"
+            >
               <span class="icon" aria-hidden="true">🇮🇪</span><span class="option-label">Ireland +353</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'AE' %}
                 selected
               {% endif %}
-              value="+971">
+              value="+971"
+            >
               <span class="icon" aria-hidden="true">🇦🇪</span><span class="option-label">United Arab Emirates +971</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'US' %}
                 selected
               {% endif %}
-              value="+1">
+              value="+1"
+            >
               <span class="icon" aria-hidden="true">🇺🇸</span><span class="option-label">United States +1</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'DK' %}
                 selected
               {% endif %}
-              value="+45">
+              value="+45"
+            >
               <span class="icon" aria-hidden="true">🇩🇰</span><span class="option-label">Denmark +45</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'SE' %}
                 selected
               {% endif %}
-              value="+46">
+              value="+46"
+            >
               <span class="icon" aria-hidden="true">🇸🇪</span><span class="option-label">Sweden +46</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'DE' %}
                 selected
               {% endif %}
-              value="+49">
+              value="+49"
+            >
               <span class="icon" aria-hidden="true">🇩🇪</span><span class="option-label">Germany +49</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'NO' %}
                 selected
               {% endif %}
-              value="+47">
+              value="+47"
+            >
               <span class="icon" aria-hidden="true">🇳🇴</span><span class="option-label">Norway +47</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'FR' %}
                 selected
               {% endif %}
-              value="+33">
+              value="+33"
+            >
               <span class="icon" aria-hidden="true">🇫🇷</span><span class="option-label">France +33</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'NL' %}
                 selected
               {% endif %}
-              value="+31">
+              value="+31"
+            >
               <span class="icon" aria-hidden="true">🇳🇱</span><span class="option-label">Netherlands +31</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'BE' %}
                 selected
               {% endif %}
-              value="+32">
+              value="+32"
+            >
               <span class="icon" aria-hidden="true">🇧🇪</span><span class="option-label">Belgium +32</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'AT' %}
                 selected
               {% endif %}
-              value="+43">
+              value="+43"
+            >
               <span class="icon" aria-hidden="true">🇦🇹</span><span class="option-label">Austria +43</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'CH' %}
                 selected
               {% endif %}
-              value="+41">
+              value="+41"
+            >
               <span class="icon" aria-hidden="true">🇨🇭</span><span class="option-label">Switzerland +41</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'ES' %}
                 selected
               {% endif %}
-              value="+34">
+              value="+34"
+            >
               <span class="icon" aria-hidden="true">🇪🇸</span><span class="option-label">Spain +34</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'FI' %}
                 selected
               {% endif %}
-              value="+358">
+              value="+358"
+            >
               <span class="icon" aria-hidden="true">🇫🇮</span><span class="option-label">Finland +358</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'PL' %}
                 selected
               {% endif %}
-              value="+48">
+              value="+48"
+            >
               <span class="icon" aria-hidden="true">🇵🇱</span><span class="option-label">Poland +48</span>
             </option>
-            <option 
+            <option
               {% if localization.country.iso_code == 'IT' %}
                 selected
               {% endif %}
-              value="+39">
+              value="+39"
+            >
               <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
             </option>
           </select>
@@ -353,58 +369,142 @@
                   display: flex;
                   align-items: center;
                 "
-                ><</selectedcontent
-              >
+              ></selectedcontent>
             </button>
-            <option value="+44">
+            <option
+              {% if localization.country.iso_code == 'GB' %}
+                selected
+              {% endif %}
+              value="+44"
+            >
               <span class="icon" aria-hidden="true">🇬🇧</span><span class="option-label">United Kingdom +44</span>
             </option>
-            <option value="+353">
+            <option
+              {% if localization.country.iso_code == 'IE' %}
+                selected
+              {% endif %}
+              value="+353"
+            >
               <span class="icon" aria-hidden="true">🇮🇪</span><span class="option-label">Ireland +353</span>
             </option>
-            <option value="+971">
+            <option
+              {% if localization.country.iso_code == 'AE' %}
+                selected
+              {% endif %}
+              value="+971"
+            >
               <span class="icon" aria-hidden="true">🇦🇪</span><span class="option-label">United Arab Emirates +971</span>
             </option>
-            <option value="+1">
+            <option
+              {% if localization.country.iso_code == 'US' %}
+                selected
+              {% endif %}
+              value="+1"
+            >
               <span class="icon" aria-hidden="true">🇺🇸</span><span class="option-label">United States +1</span>
             </option>
-            <option value="+45">
+            <option
+              {% if localization.country.iso_code == 'DK' %}
+                selected
+              {% endif %}
+              value="+45"
+            >
               <span class="icon" aria-hidden="true">🇩🇰</span><span class="option-label">Denmark +45</span>
             </option>
-            <option value="+46">
+            <option
+              {% if localization.country.iso_code == 'SE' %}
+                selected
+              {% endif %}
+              value="+46"
+            >
               <span class="icon" aria-hidden="true">🇸🇪</span><span class="option-label">Sweden +46</span>
             </option>
-            <option value="+49">
+            <option
+              {% if localization.country.iso_code == 'DE' %}
+                selected
+              {% endif %}
+              value="+49"
+            >
               <span class="icon" aria-hidden="true">🇩🇪</span><span class="option-label">Germany +49</span>
             </option>
-            <option value="+47">
+            <option
+              {% if localization.country.iso_code == 'NO' %}
+                selected
+              {% endif %}
+              value="+47"
+            >
               <span class="icon" aria-hidden="true">🇳🇴</span><span class="option-label">Norway +47</span>
             </option>
-            <option value="+33">
+            <option
+              {% if localization.country.iso_code == 'FR' %}
+                selected
+              {% endif %}
+              value="+33"
+            >
               <span class="icon" aria-hidden="true">🇫🇷</span><span class="option-label">France +33</span>
             </option>
-            <option value="+31">
+            <option
+              {% if localization.country.iso_code == 'NL' %}
+                selected
+              {% endif %}
+              value="+31"
+            >
               <span class="icon" aria-hidden="true">🇳🇱</span><span class="option-label">Netherlands +31</span>
             </option>
-            <option value="+32">
+            <option
+              {% if localization.country.iso_code == 'BE' %}
+                selected
+              {% endif %}
+              value="+32"
+            >
               <span class="icon" aria-hidden="true">🇧🇪</span><span class="option-label">Belgium +32</span>
             </option>
-            <option value="+43">
+            <option
+              {% if localization.country.iso_code == 'AT' %}
+                selected
+              {% endif %}
+              value="+43"
+            >
               <span class="icon" aria-hidden="true">🇦🇹</span><span class="option-label">Austria +43</span>
             </option>
-            <option value="+41">
+            <option
+              {% if localization.country.iso_code == 'CH' %}
+                selected
+              {% endif %}
+              value="+41"
+            >
               <span class="icon" aria-hidden="true">🇨🇭</span><span class="option-label">Switzerland +41</span>
             </option>
-            <option value="+34">
+            <option
+              {% if localization.country.iso_code == 'ES' %}
+                selected
+              {% endif %}
+              value="+34"
+            >
               <span class="icon" aria-hidden="true">🇪🇸</span><span class="option-label">Spain +34</span>
             </option>
-            <option value="+358">
+            <option
+              {% if localization.country.iso_code == 'FI' %}
+                selected
+              {% endif %}
+              value="+358"
+            >
               <span class="icon" aria-hidden="true">🇫🇮</span><span class="option-label">Finland +358</span>
             </option>
-            <option value="+48">
+            <option
+              {% if localization.country.iso_code == 'PL' %}
+                selected
+              {% endif %}
+              value="+48"
+            >
               <span class="icon" aria-hidden="true">🇵🇱</span><span class="option-label">Poland +48</span>
             </option>
-            <option value="+39">
+            <option
+              {% if localization.country.iso_code == 'IT' %}
+                selected
+              {% endif %}
+              value="+39"
+            >
               <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
             </option>
           </select>
