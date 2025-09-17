@@ -304,6 +304,14 @@
             >
               <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
             </option>
+            <option
+              {% if localization.country.iso_code == 'CA' %}
+                selected
+              {% endif %}
+              value="+39"
+            >
+              <span class="icon" aria-hidden="true">🇨🇦</span><span class="option-label">Canada +1</span>
+            </option>
           </select>
           <style>
             select.countryphonecode-selector,
@@ -511,6 +519,14 @@
               value="+39"
             >
               <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
+            </option>
+            <option
+              {% if localization.country.iso_code == 'CA' %}
+                selected
+              {% endif %}
+              value="+39"
+            >
+              <span class="icon" aria-hidden="true">🇨🇦</span><span class="option-label">Canada +1</span>
             </option>
           </select>
           <input
