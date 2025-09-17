@@ -328,7 +328,7 @@
             class="input-full input"
             name="contact[Mobile number]"
             placeholder="{{  settings.quote_mobile_number }}. {{ phone_example }}"
-            pattern="[\+]?[0-9\s\-\(\)]{7,20}"
+            pattern="^\+?[1-9][\d\s\-\(\)]{1,20}$"
             value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
           <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_mobile_number }}</label>
@@ -521,7 +521,7 @@
             id="ContactFormPhone-{{ section.id }}"
             class="input-full input"
             name="contact[Phone number]"
-            pattern="[\+]?[0-9\s\-\(\)]{7,20}"
+            pattern="^\+?[1-9][\d\s\-\(\)]{1,20}$"
             placeholder="{{  settings.quote_phone_number }}. {{ phone_example }}"
             value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
