@@ -140,18 +140,113 @@
       </div>
       {% assign phone_example = 'strings.others.phone_example' | t %}
       <div class="grid__item">
-        <input
-          type="tel"
-          required
-          autocomplete="tel"
-          id="ContactFormPhone-{{ section.id }}"
-          class="input-full input"
-          name="contact[Mobile number]"
-          placeholder="{{  settings.quote_mobile_number }}. {{ phone_example }}"
-          pattern="^\+[1-9]\d{1,14}$"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+        <div
+          style="    position: relative;"
         >
-        <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_mobile_number }}</label>
+          <select
+            style="
+              position: absolute;
+              left: 1px;
+              top: 1px;
+              bottom: 1px;
+              /* font-size: 1.4em; */
+              line-height: 1;
+              display: flex;
+              appearance: base-select;
+              align-items: center;
+              padding-right: 10px;
+              border-right: 1px solid;
+            "
+            data-gtm-form-interact-field-id="1"
+          >
+            <button>
+              <selectedcontent
+                style="
+                  display: flex;
+                  align-items: center;
+                "
+                ><span class="icon" aria-hidden="true">🇳🇴</span
+                ><span class="option-label">Norway +47</span></selectedcontent
+              >
+            </button>
+
+            <option value="GB">
+              <span class="icon" aria-hidden="true">🇬🇧</span><span class="option-label">United Kingdom +44</span>
+            </option>
+            <option value="IE">
+              <span class="icon" aria-hidden="true">🇮🇪</span><span class="option-label">Ireland +353</span>
+            </option>
+            <option value="AE">
+              <span class="icon" aria-hidden="true">🇦🇪</span><span class="option-label">United Arab Emirates +971</span>
+            </option>
+            <option value="US">
+              <span class="icon" aria-hidden="true">🇺🇸</span><span class="option-label">United States +1</span>
+            </option>
+            <option value="DK">
+              <span class="icon" aria-hidden="true">🇩🇰</span><span class="option-label">Denmark +45</span>
+            </option>
+            <option value="SE">
+              <span class="icon" aria-hidden="true">🇸🇪</span><span class="option-label">Sweden +46</span>
+            </option>
+            <option value="DE">
+              <span class="icon" aria-hidden="true">🇩🇪</span><span class="option-label">Germany +49</span>
+            </option>
+            <option value="NO">
+              <span class="icon" aria-hidden="true">🇳🇴</span><span class="option-label">Norway +47</span>
+            </option>
+            <option value="FR">
+              <span class="icon" aria-hidden="true">🇫🇷</span><span class="option-label">France +33</span>
+            </option>
+            <option value="NL">
+              <span class="icon" aria-hidden="true">🇳🇱</span><span class="option-label">Netherlands +31</span>
+            </option>
+            <option value="BE">
+              <span class="icon" aria-hidden="true">🇧🇪</span><span class="option-label">Belgium +32</span>
+            </option>
+            <option value="AT">
+              <span class="icon" aria-hidden="true">🇦🇹</span><span class="option-label">Austria +43</span>
+            </option>
+            <option value="CH">
+              <span class="icon" aria-hidden="true">🇨🇭</span><span class="option-label">Switzerland +41</span>
+            </option>
+            <option value="ES">
+              <span class="icon" aria-hidden="true">🇪🇸</span><span class="option-label">Spain +34</span>
+            </option>
+            <option value="FI">
+              <span class="icon" aria-hidden="true">🇫🇮</span><span class="option-label">Finland +358</span>
+            </option>
+            <option value="PL">
+              <span class="icon" aria-hidden="true">🇵🇱</span><span class="option-label">Poland +48</span>
+            </option>
+            <option value="IT">
+              <span class="icon" aria-hidden="true">🇮🇹</span><span class="option-label">Italy +39</span>
+            </option>
+          </select>
+          <style>
+                select,
+            ::picker(select) {
+              appearance: base-select;
+            }
+            selectedcontent .option-label{
+              display: none
+            }
+          </style>
+          <input
+            style="    padding-left: 70px;"
+            type="tel"
+            required
+            autocomplete="tel"
+            id="ContactFormPhone-{{ section.id }}"
+            class="input-full input"
+            name="contact[Mobile number]"
+            placeholder="{{  settings.quote_mobile_number }}. {{ phone_example }}"
+            pattern="^\+[1-9]\d{1,14}$"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          >
+          <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_mobile_number }}</label>
+
+          <label for="ContactFormPhone-">Mobile number</label>
+        </div>
       </div>
       <div class="grid__item">
         <input
