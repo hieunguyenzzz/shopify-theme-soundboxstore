@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "accessibility": {
@@ -1021,7 +1030,7 @@
           "one": "Bestillingen din dekkes av gavekortet ditt.",
           "other": "Bestillingen din dekkes av gavekortene dine."
         },
-        "offsite_gateway_redirect_hint": "Etter å ha klikket "Betale med %{button_label}", vil du bli omdirigert til %{gateway_label} For å fullføre kjøpet sikkert.",
+        "offsite_gateway_redirect_hint": "Etter å ha klikket “%{button_label}”, Vil du bli omdirigert til %{gateway_label} For å fullføre kjøpet sikkert.",
         "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} Total %{total_shop_price}",
         "billing_address_title": "Fakturaadresse",
         "billing_address_description": "Velg adressen som samsvarer med kortet eller betalingsmetoden.",
@@ -1051,7 +1060,7 @@
         "ideal_label": "ideell",
         "bank_picker_label": "Bank",
         "purchase_options_card_update_agreement_label_html": "Ved å oppdatere betalingsmetoden din, autoriserer du betalinger for ethvert tilbakevendende eller utsatt kjøp i henhold til denne butikkens <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">Avbestillingspolicy</a>.",
-        "subscription_card_update_agreement_label": "Endring av betalingsmetoden vil oppdatere abonnementet og fremtidige gjentakende betalinger.",
+        "subscription_card_update_agreement_label": "Endring av betalingsmetoden vil oppdatere abonnementet og fremtidige gjentagende betalinger.",
         "subscription_agreement_label": "En eller flere varer i handlekurven din er et utsatt eller abonnementskjøp. Ved å fortsette med betalingen din, samtykker du i at betalingsmetoden din automatisk blir belastet til prisen og frekvensen som er oppført på denne siden til den avsluttes eller du kansellerer. Alle avbestillinger er underlagt %{cancelled}.",
         "subscription_agreement_cancelled": "Avbestillingspolicy",
         "subscription_agreement_label_html": "Jeg forstår at jeg godtar et abonnement. Den vil fornye seg til prisen og frekvensen som er oppført til den slutter eller er\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">avbrutt</a>.\n",
@@ -1421,7 +1430,7 @@
         "development_store_order_limit_reached": "Du har nådd grensen for bestillinger av utviklingsbutikker med denne betalingsprosessoren. For å legge inn en annen bestilling, må du bruke en testbetalingsgateway. Lære mer om %{development_store_order_testing_docs_link}.",
         "development_store_with_order_limit": "For å legge inn en testordre, må du bruke en testbetalingsgateway. Lære mer om %{development_store_order_testing_docs_link}.",
         "development_store_order_testing_docs_link": "Testordrer i utviklingsbutikker",
-        "available_methods_updated": "Tilgjengelige betalingsmetoder er oppdateret.",
+        "available_methods_updated": "Tilgjengelige betalingsmetoder er oppdatert.",
         "selected_payment_method": "Det var et problem med den valgte betalingsmetoden din, og du har ikke blitt belastet. Prøv igjen eller bruk en annen betalingsmetode.",
         "payment_method_billing_address": "Det var et problem med den valgte betalingsmetodeens faktureringsadresse, og du har ikke blitt belastet. Sjekk adressen og prøv igjen eller bruk en annen betalingsmetode.",
         "processing_error_checkout_as_guest": "Det var et problem som behandler betalingen din. Prøv igjen med en annen betalingsmetode eller {{checkout_as_guest_link}}.",
@@ -1899,7 +1908,7 @@
         },
         "unsubscribe": {
           "title": "Du har avsluttet abonnert",
-          "description": "Du vil ikke motta flere påminnelser fra oss."
+          "description": "Du vil ikke motta flere påminnelser fra oss fra oss."
         },
         "accept_shop_pay_marketing_checkbox_label": "Registrer meg for nyheter og tilbud fra denne butikken",
         "disclaimer": {
@@ -2293,7 +2302,7 @@
         "payment_in_progress_title": "Betaling pågår",
         "payment_in_progress_body": "Betalingen din blir behandlet. Bestillingen din blir fullført snart.",
         "call_to_action": "Betale med {{walletName}}",
-        "redirection_notice": "Etter å ha klikket "Betale med {{buttonLabel}}", vil du bli omdirigert til {{walletName}} For å fullføre kjøpet sikkert.",
+        "redirection_notice": "Etter å ha klikket \"{{buttonLabel}}\", vil du bli omdirigert til {{walletName}} For å fullføre kjøpet sikkert.",
         "errors": {
           "unavailable": {
             "title": "{{walletName}} ikke tilgjengelig",
@@ -4335,7 +4344,8 @@
       "Remote_Tour": "Ekstern tur",
       "Showroom_Visit": "Showroom -besøk",
       "Save_Time": "Spar tid",
-      "email_description": "E-post mellom 9 til 17, så svarer vi samme dag."
+      "email_description": "E-post mellom 9 til 17, så svarer vi samme dag.",
+      "phone_example": "Eks: +47 901 23 456"
     },
     "general": {
       "days": "dager",
@@ -4353,16 +4363,12 @@
     },
     "reseller": {
       "reseller_login": "Forhandlerlogg inn - her",
-      "sign_out": "Logg ut av hvelvet",
-      "reseller_login_text": "Forhandlerlogg inn",
-      "create_reseller_account": "Ikke forhandler søk her",
-      "return_home": "TILBAKE HJEM",
-      "login": "Forhandlerlogg inn"
+      "sign_out": "Logg ut av hvelvet"
     }
   },
   "templates": {
     "search": {
-      "no_results": "Ingen resultater funnet for "{{ terms }}". Sjekk stavemåten eller bruk et annet ord eller en setning.",
+      "no_results": "Ingen resultater funnet for “{{ terms }}”. Sjekk stavemåten eller bruk et annet ord eller en setning.",
       "page": "Side",
       "products": "Produkter",
       "results_pages_with_count": {
@@ -4382,11 +4388,11 @@
         "other": "{{ count }} Resultater"
       },
       "results_with_count_and_term": {
-        "one": "{{ count }} resultat funnet for "{{ terms }}",
-        "other": "{{ count }} Resultater funnet for "{{ terms }}""
+        "one": "{{ count }} resultat funnet for “{{ terms }}”",
+        "other": "{{ count }} Resultater funnet for “{{ terms }}”"
       },
       "title": "Søkeresultater",
-      "search_for": "Søk etter "{{ terms }}",
+      "search_for": "Søk etter “{{ terms }}”",
       "suggestions": "Forslag",
       "pages": "Sider"
     }
