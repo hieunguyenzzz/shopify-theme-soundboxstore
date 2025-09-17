@@ -321,8 +321,12 @@
           <script>
             (() => {
               let s = document.querySelector('[name="contact[Mobile country code]"]');
+              let i = document.querySelector('[name="contact[Mobile number]"]');
               s.addEventListener('change', (e) => {
-                document.querySelector('[name="contact[Mobile number]"]').value = e.target.value;
+                i.value = e.target.value + ' ';
+              });
+              i.addEventListener('focus', (e) => {
+                e.target.value = s.value + ' ';
               });
             })();
           </script>
