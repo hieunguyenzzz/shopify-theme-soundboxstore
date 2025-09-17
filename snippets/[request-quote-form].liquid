@@ -144,6 +144,7 @@
           style="position: relative;"
         >
           <select
+            class="countryphonecode-selector"
             name="contact[Mobile country code]"
             style="
               position: absolute;
@@ -225,11 +226,11 @@
             <option value="+">Others</option>
           </select>
           <style>
-            select,
-            ::picker(select) {
+            select.countryphonecode-selector,
+            ::picker(select.countryphonecode-selector) {
               appearance: base-select;
             }
-            selectedcontent .option-label{
+            .countryphonecode-selector selectedcontent .option-label{
               display: none
             }
           </style>
