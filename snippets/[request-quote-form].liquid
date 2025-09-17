@@ -223,7 +223,7 @@
             </option>
           </select>
           <style>
-                select,
+            select,
             ::picker(select) {
               appearance: base-select;
             }
@@ -244,7 +244,6 @@
             value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
           >
           <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_mobile_number }}</label>
-
           <label for="ContactFormPhone-">Mobile number</label>
         </div>
       </div>
