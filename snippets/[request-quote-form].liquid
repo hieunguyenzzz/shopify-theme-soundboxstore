@@ -263,7 +263,7 @@
         >
           <select
             class="countryphonecode-selector"
-            name="contact[Mobile country code]"
+            name="contact[Phone country code]"
             style="
               position: absolute;
               left: 1px;
@@ -344,9 +344,9 @@
           </select>
           <script>
             (() => {
-              let s = document.querySelector('[name="contact[Mobile country code]"]');
+              let s = document.querySelector('[name="contact[Phone country code]"]');
               s.addEventListener('change', (e) => {
-                document.querySelector('[name="contact[Mobile number]"]').value = e.target.value;
+                document.querySelector('[name="contact[Phone number]"]').value = e.target.value;
               });
             })();
           </script>
