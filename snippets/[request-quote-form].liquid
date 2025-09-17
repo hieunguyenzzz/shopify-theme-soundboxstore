@@ -138,6 +138,7 @@
         >
         <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
       </div>
+      {% assign phone_example = 'strings.others.phone_example' | t %}
       <div class="grid__item">
         <input
           type="tel"
@@ -145,7 +146,7 @@
           id="ContactFormPhone-{{ section.id }}"
           class="input-full input"
           name="contact[Phone number]"
-          placeholder="{{  settings.quote_phone_number }}"
+          placeholder="{{  settings.quote_phone_number }}. {{ phone_example }}"
           pattern="[0-9\-]*"
           value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
         >
