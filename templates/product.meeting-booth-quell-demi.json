@@ -16,6 +16,18 @@
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
         },
+        "variant_button_custom_W7XY6h": {
+          "type": "variant-button-custom",
+          "settings": {
+            "name": "MODEL",
+            "option_1_name": "Quell Standard",
+            "option_1_url": "{{ product.url }}",
+            "option_2_name": "Quell Plus",
+            "option_2_url": "shopify://products/quell-demi-plus",
+            "option_3_name": "",
+            "option_3_url": ""
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -30,19 +42,19 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
-        "soundboxstore_quote_quote_btn_AQEYct": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_AQEYct": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "inventory_status_AViNqF": {
@@ -61,6 +73,7 @@
       },
       "block_order": [
         "judge_me_reviews_preview_badge_KBn6N6",
+        "variant_button_custom_W7XY6h",
         "variant_picker",
         "price",
         "buy_buttons",
@@ -877,7 +890,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": "<div id=\"feed-37680\" class=\"instafeed-shopify\"></div>"
@@ -885,7 +905,10 @@
         },
         "judge_me_reviews_review_widget_BVMrkm": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
         }
       },
       "block_order": [
