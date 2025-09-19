@@ -19,8 +19,8 @@
     rtl: "rtl" == document.documentElement.getAttribute("dir"),
   }),
   (theme.recentlyViewedIds = []),
-  theme.config.isTouch &&
-    (document.documentElement.className += " supports-touch"),
+  // theme.config.isTouch &&
+  //   (document.documentElement.className += " supports-touch"),
   (window.lazySizesConfig = window.lazySizesConfig || {}),
   (lazySizesConfig.expFactor = 4),
   (function () {
