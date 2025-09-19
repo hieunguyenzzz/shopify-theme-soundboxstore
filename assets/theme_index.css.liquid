@@ -7783,6 +7783,7 @@ input[type=image] {
 .site-header__drawer.is-active {
   opacity: 1;
   visibility: visible;
+  display:block;
 }
 
 .header-wrapper--compressed .site-header__drawer {
@@ -14845,11 +14846,12 @@ h6.h6 {
 }
 
 .site-header__drawer {
+  display:none;
   height: calc(100% - 63px);
   bottom: 0;
   top: unset;
   position: fixed;
-  padding: 20px 0 0
+  padding: 20px 0 0;
 }
 
 .mobile-menu .slide-nav__link {
