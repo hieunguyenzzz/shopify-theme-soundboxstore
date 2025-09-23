@@ -139,6 +139,19 @@
         <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
       </div>
       {% assign phone_example = 'strings.others.phone_example' | t %}
+      <style>
+        select.countryphonecode-selector,
+        ::picker(select.countryphonecode-selector) {
+          appearance: base-select;
+        }
+        .countryphonecode-selector selectedcontent .option-label{
+          display: none
+        }
+        .countryphonecode-selector selectedcontent .icon{
+          font-size: 20px;
+          height: auto;
+        }
+      </style>
       <div class="grid__item">
         <div
           style="position: relative;"
@@ -313,19 +326,7 @@
               <span class="icon" aria-hidden="true">🇨🇦</span><span class="option-label">Canada +1</span>
             </option>
           </select>
-          <style>
-            select.countryphonecode-selector,
-            ::picker(select.countryphonecode-selector) {
-              appearance: base-select;
-            }
-            .countryphonecode-selector selectedcontent .option-label{
-              display: none
-            }
-            .countryphonecode-selector selectedcontent .icon{
-              font-size: 20px;
-              height: auto;
-            }
-          </style>
+
           <input
             style="padding-left:70px"
             type="tel"
