@@ -326,7 +326,6 @@
               height: auto;
             }
           </style>
-
           <input
             style="padding-left:70px"
             type="tel"
@@ -544,8 +543,8 @@
           <label for="ContactFormPhone-{{ section.id }}">{{ settings.quote_phone_number }}</label>
           <script>
             (() => {
-              let s = document.querySelector('[name="contact[Phone country code]"]');
-              let i = document.querySelector('[name="contact[Phone number]"]');
+              let s = document.querySelector('[name="contact[Office Phone country code]"]');
+              let i = document.querySelector('[name="contact[Office Phone number]"]');
               s.addEventListener('change', (e) => {
                 i.value = e.target.value + ' ';
               });
