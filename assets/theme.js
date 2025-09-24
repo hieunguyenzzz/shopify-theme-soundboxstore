@@ -4993,16 +4993,17 @@
               Shopify &&
                 Shopify.designMode &&
                 (theme.sections.reinit("slideshow-section"),
-                // setTimeout(function () {
-                //   window.dispatchEvent(new Event("resize"));
-                // }, 500)),
+                setTimeout(function () {
+                  window.dispatchEvent(new Event("resize"));
+                }, 500))
+                // ,
                 // theme.headerNav.init(),
-                theme.announcementBar.init(),
-                theme.headerSearch.init(),
+                // theme.announcementBar.init(),
+                // theme.headerSearch.init(),
                 // document.body.classList.contains("template-cart") ||
                 //   new theme.HeaderCart(),
                 // new theme.MobileNav({ id: "MobileNav", inHeader: !0 }),
-                theme.config.bpSmall && this.cloneFooter()
+                // theme.config.bpSmall && this.cloneFooter(),
                 // window.on(
                 //   "resize.header",
                 //   theme.utils.debounce(300, theme.sizeDrawer)
