@@ -69,7 +69,7 @@
           justify-content: flex-start;
     }
   }
-        .header-item--icons-left{
+   .header-item--icons-left{
                           justify-content:flex-start;margin-left:-10px
                         }
                            @media only screen and (min-width:1025px) {
@@ -91,11 +91,9 @@
           <div
             class="header-layout"
             style="justify-content: space-between;min-height:59px;align-items: center;"
-            {% comment %}
-              data-layout="{{ section.settings.main_menu_alignment }}"
-              data-nav="{{ nav_position }}"
-              data-logo-align="{{ logo_alignment }}"
-            {% endcomment %}
+            data-layout="{{ section.settings.main_menu_alignment }}"
+            data-nav="{{ nav_position }}"
+            data-logo-align="{{ logo_alignment }}"
           >
             <div
               class="header-item header-item--icons header-item--icons-left"
