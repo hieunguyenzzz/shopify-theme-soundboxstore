@@ -2892,141 +2892,141 @@
         // };
       })()),
       (theme.MobileNav = (function () {
-        var e = {
-            wrapper: ".slide-nav__wrapper",
-            nav: ".slide-nav",
-            childList: ".slide-nav__dropdown",
-            allLinks: "a.slide-nav__link",
-            subNavToggleBtn: ".js-toggle-submenu",
-          },
-          t = { isActive: "is-active" },
-          i = { isOpen: !1, menuLevel: 1, inHeader: !1 };
-        function n(t) {
-          (this.config = Object.assign({}, i, t)),
-            (this.namespace = ".nav-header-" + t.id),
-            (this.container = document.getElementById(this.config.id)),
-            this.container &&
-              ((this.wrapper = this.container.querySelector(e.wrapper)),
-              this.wrapper &&
-                ((this.nav = this.wrapper.querySelector(e.nav)), this.init()));
-        }
-        return (
-          (n.prototype = Object.assign({}, n.prototype, {
-            init: function () {
-              this.nav.querySelectorAll(e.subNavToggleBtn).forEach((e) => {
-                e.addEventListener("click", this.toggleSubNav.bind(this));
-              }),
-                this.nav.querySelectorAll(e.allLinks).forEach((e) => {
-                  e.addEventListener("click", this.close.bind(this));
-                }),
-                this.inHeader &&
-                  (document.addEventListener(
-                    "unmatchSmall",
-                    function () {
-                      this.close(null, !0);
-                    }.bind(this)
-                  ),
-                  document.addEventListener(
-                    "CartDrawer:open",
-                    this.close.bind(this)
-                  ),
-                  document.addEventListener(
-                    "mobileNav:open",
-                    this.open.bind(this)
-                  ),
-                  document.addEventListener(
-                    "mobileNav:close",
-                    this.close.bind(this)
-                  ));
-            },
-            open: function (e) {
-              e && e.preventDefault(),
-                theme.sizeDrawer(),
-                theme.utils.prepareTransition(
-                  this.container,
-                  function () {
-                    this.container.classList.add("is-active");
-                  }.bind(this)
-                ),
-                window.on(
-                  "keyup" + this.namespace,
-                  function (e) {
-                    27 === e.keyCode && this.close();
-                  }.bind(this)
-                ),
-                theme.headerNav.removeOverlayClass(),
-                document.documentElement.classList.add("mobile-nav-open"),
-                document.dispatchEvent(new CustomEvent("MobileNav:open")),
-                (this.config.isOpen = !0),
-                setTimeout(
-                  function () {
-                    window.on(
-                      "click" + this.namespace,
-                      function (e) {
-                        this.close(e);
-                      }.bind(this)
-                    );
-                  }.bind(this),
-                  0
-                );
-            },
-            close: function (e, t) {
-              var i = !1;
-              (!(
-                e &&
-                e.target.closest &&
-                e.target.closest(".site-header__drawer")
-              ) ||
-                (e.currentTarget &&
-                  e.currentTarget.classList &&
-                  e.currentTarget.classList.contains("slide-nav__link") &&
-                  (i = !0),
-                i)) &&
-                (t
-                  ? this.container.classList.remove("is-active")
-                  : theme.utils.prepareTransition(
-                      this.container,
-                      function () {
-                        this.container.classList.remove("is-active");
-                      }.bind(this)
-                    ),
-                document.documentElement.classList.remove("mobile-nav-open"),
-                document.dispatchEvent(new CustomEvent("MobileNav:close")),
-                window.off("keyup" + this.namespace),
-                window.off("click" + this.namespace),
-                (this.config.isOpen = !1));
-            },
-            toggleSubNav: function (e) {
-              var t = e.currentTarget;
-              this.goToSubnav(t.dataset.target);
-            },
-            goToSubnav: function (i) {
-              var n = this.nav.querySelector(
-                e.childList + '[data-parent="' + i + '"]'
-              );
-              n
-                ? ((this.config.menuLevel = n.dataset.level),
-                  2 == this.config.menuLevel &&
-                    this.nav
-                      .querySelectorAll(e.childList + '[data-level="3"]')
-                      .forEach((e) => {
-                        e.classList.remove(t.isActive);
-                      }),
-                  n.classList.add(t.isActive),
-                  this.setWrapperHeight(n.offsetHeight))
-                : ((this.config.menuLevel = 1),
-                  this.wrapper.removeAttribute("style"),
-                  this.nav.querySelectorAll(e.childList).forEach((e) => {
-                    e.classList.remove(t.isActive);
-                  })),
-                (this.wrapper.dataset.level = this.config.menuLevel);
-            },
-            setWrapperHeight: function (e) {
-              this.wrapper.style.height = e + "px";
-            },
-          })),
-          n
-        );
+        // var e = {
+        //     wrapper: ".slide-nav__wrapper",
+        //     nav: ".slide-nav",
+        //     childList: ".slide-nav__dropdown",
+        //     allLinks: "a.slide-nav__link",
+        //     subNavToggleBtn: ".js-toggle-submenu",
+        //   },
+        //   t = { isActive: "is-active" },
+        //   i = { isOpen: !1, menuLevel: 1, inHeader: !1 };
+        // function n(t) {
+        //   (this.config = Object.assign({}, i, t)),
+        //     (this.namespace = ".nav-header-" + t.id),
+        //     (this.container = document.getElementById(this.config.id)),
+        //     this.container &&
+        //       ((this.wrapper = this.container.querySelector(e.wrapper)),
+        //       this.wrapper &&
+        //         ((this.nav = this.wrapper.querySelector(e.nav)), this.init()));
+        // }
+        // return (
+        //   (n.prototype = Object.assign({}, n.prototype, {
+        //     init: function () {
+        //       this.nav.querySelectorAll(e.subNavToggleBtn).forEach((e) => {
+        //         e.addEventListener("click", this.toggleSubNav.bind(this));
+        //       }),
+        //         this.nav.querySelectorAll(e.allLinks).forEach((e) => {
+        //           e.addEventListener("click", this.close.bind(this));
+        //         }),
+        //         this.inHeader &&
+        //           (document.addEventListener(
+        //             "unmatchSmall",
+        //             function () {
+        //               this.close(null, !0);
+        //             }.bind(this)
+        //           ),
+        //           document.addEventListener(
+        //             "CartDrawer:open",
+        //             this.close.bind(this)
+        //           ),
+        //           document.addEventListener(
+        //             "mobileNav:open",
+        //             this.open.bind(this)
+        //           ),
+        //           document.addEventListener(
+        //             "mobileNav:close",
+        //             this.close.bind(this)
+        //           ));
+        //     },
+        //     open: function (e) {
+        //       e && e.preventDefault(),
+        //         theme.sizeDrawer(),
+        //         theme.utils.prepareTransition(
+        //           this.container,
+        //           function () {
+        //             this.container.classList.add("is-active");
+        //           }.bind(this)
+        //         ),
+        //         window.on(
+        //           "keyup" + this.namespace,
+        //           function (e) {
+        //             27 === e.keyCode && this.close();
+        //           }.bind(this)
+        //         ),
+        //         theme.headerNav.removeOverlayClass(),
+        //         document.documentElement.classList.add("mobile-nav-open"),
+        //         document.dispatchEvent(new CustomEvent("MobileNav:open")),
+        //         (this.config.isOpen = !0),
+        //         setTimeout(
+        //           function () {
+        //             window.on(
+        //               "click" + this.namespace,
+        //               function (e) {
+        //                 this.close(e);
+        //               }.bind(this)
+        //             );
+        //           }.bind(this),
+        //           0
+        //         );
+        //     },
+        //     close: function (e, t) {
+        //       var i = !1;
+        //       (!(
+        //         e &&
+        //         e.target.closest &&
+        //         e.target.closest(".site-header__drawer")
+        //       ) ||
+        //         (e.currentTarget &&
+        //           e.currentTarget.classList &&
+        //           e.currentTarget.classList.contains("slide-nav__link") &&
+        //           (i = !0),
+        //         i)) &&
+        //         (t
+        //           ? this.container.classList.remove("is-active")
+        //           : theme.utils.prepareTransition(
+        //               this.container,
+        //               function () {
+        //                 this.container.classList.remove("is-active");
+        //               }.bind(this)
+        //             ),
+        //         document.documentElement.classList.remove("mobile-nav-open"),
+        //         document.dispatchEvent(new CustomEvent("MobileNav:close")),
+        //         window.off("keyup" + this.namespace),
+        //         window.off("click" + this.namespace),
+        //         (this.config.isOpen = !1));
+        //     },
+        //     toggleSubNav: function (e) {
+        //       var t = e.currentTarget;
+        //       this.goToSubnav(t.dataset.target);
+        //     },
+        //     goToSubnav: function (i) {
+        //       var n = this.nav.querySelector(
+        //         e.childList + '[data-parent="' + i + '"]'
+        //       );
+        //       n
+        //         ? ((this.config.menuLevel = n.dataset.level),
+        //           2 == this.config.menuLevel &&
+        //             this.nav
+        //               .querySelectorAll(e.childList + '[data-level="3"]')
+        //               .forEach((e) => {
+        //                 e.classList.remove(t.isActive);
+        //               }),
+        //           n.classList.add(t.isActive),
+        //           this.setWrapperHeight(n.offsetHeight))
+        //         : ((this.config.menuLevel = 1),
+        //           this.wrapper.removeAttribute("style"),
+        //           this.nav.querySelectorAll(e.childList).forEach((e) => {
+        //             e.classList.remove(t.isActive);
+        //           })),
+        //         (this.wrapper.dataset.level = this.config.menuLevel);
+        //     },
+        //     setWrapperHeight: function (e) {
+        //       this.wrapper.style.height = e + "px";
+        //     },
+        //   })),
+        //   n
+        // );
       })()),
       (window.onpageshow = function (e) {
         e.persisted &&
