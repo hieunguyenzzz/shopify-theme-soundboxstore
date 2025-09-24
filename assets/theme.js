@@ -6047,7 +6047,6 @@
             (new theme.QuickAdd(e.detail.section),
             new theme.QuickShop(e.detail.section));
         }),
-          theme.pageTransitions(),
           document.dispatchEvent(new CustomEvent("page:loaded"));
       }),
       "loading" != document.readyState
