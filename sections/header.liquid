@@ -69,6 +69,14 @@
           justify-content: flex-start;
     }
   }
+    .header-item--icons-left{
+                          justify-content:flex-start;margin-left:-10px
+                        }
+                           @media only screen and (min-width:1025px) {
+               .header-item--icons-left{
+                 display:none
+               }
+              }
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header">
   <div id="HeaderWrapper" class="header-wrapper{% if overlay_header %} header-wrapper--overlay is-light{% endif %}">
@@ -82,21 +90,11 @@
         <div class="page-width">
           <div
             class="header-layout"
-            style="justify-content: space-between;"
+            style="justify-content: space-between;min-height:59px"
             data-layout="{{ section.settings.main_menu_alignment }}"
             data-nav="{{ nav_position }}"
             data-logo-align="{{ logo_alignment }}"
           >
-            <style>
-                .header-item--icons-left{
-                          justify-content:flex-start;margin-left:-10px
-                        }
-                           @media only screen and (min-width:1025px) {
-               .header-item--icons-left{
-                 display:none
-               }
-              }
-            </style>
             <div
               class="header-item header-item--icons header-item--icons-left"
               style="justify-content:flex-start;margin-left:-10px"
