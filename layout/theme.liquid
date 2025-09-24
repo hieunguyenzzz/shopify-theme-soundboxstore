@@ -502,6 +502,18 @@
               }
               #shopify-section-theme-call-actions .page-width {
               }
+              @media screen and (max-width: 860px){
+                #shopify-section-theme-call-actions{
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 90px;
+                    padding-right: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;}
+              }
             </style>
             {% render 'call-actions', sectionid: 'theme-call-actions' %}
           </div>
