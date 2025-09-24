@@ -5037,42 +5037,6 @@
           t
         );
       })()),
-      (theme.Toolbar = (function () {
-        var e = {
-          locale: "[data-disclosure-locale]",
-          currency: "[data-disclosure-currency]",
-        };
-        function t(e) {
-          (this.container = e),
-            (this.sectionId = this.container.getAttribute("data-section-id")),
-            this.init();
-        }
-        return (
-          (t.prototype = Object.assign({}, t.prototype, {
-            init: function () {
-              this.initDisclosures(), theme.announcementBar.init();
-            },
-            initDisclosures: function () {
-              var t = this.container.querySelector(e.locale),
-                i = this.container.querySelector(e.currency);
-              t && (this.localeDisclosure = new theme.Disclosure(t)),
-                i && (this.currencyDisclosure = new theme.Disclosure(i));
-            },
-            onBlockSelect: function (e) {
-              theme.announcementBar.onBlockSelect(e.detail.blockId);
-            },
-            onBlockDeselect: function () {
-              theme.announcementBar.onBlockDeselect();
-            },
-            onUnload: function () {
-              theme.announcementBar.unload(),
-                this.localeDisclosure && this.localeDisclosure.destroy(),
-                this.currencyDisclosure && this.currencyDisclosure.destroy();
-            },
-          })),
-          t
-        );
-      })()),
       (theme.Product = (function () {
         var e = {},
           t = {
