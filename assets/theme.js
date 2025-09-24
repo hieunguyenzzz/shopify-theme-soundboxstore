@@ -5002,7 +5002,7 @@
                 // document.body.classList.contains("template-cart") ||
                 //   new theme.HeaderCart(),
                 // new theme.MobileNav({ id: "MobileNav", inHeader: !0 }),
-                theme.config.bpSmall && this.cloneFooter(),
+                theme.config.bpSmall && this.cloneFooter()
                 // window.on(
                 //   "resize.header",
                 //   theme.utils.debounce(300, theme.sizeDrawer)
