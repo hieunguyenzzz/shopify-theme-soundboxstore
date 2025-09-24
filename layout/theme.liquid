@@ -171,10 +171,13 @@
     <meta http-equiv="Expires" content="30">
 
     <link href="https://cdn.shopify.com" rel="preconnect">
+
+    {% comment %} <link href="https://fonts.shopifycdn.com" rel="preconnect"> {% endcomment %}
+    {% comment %} <link href="https://crmplus.zoho.eu" rel="preconnect"> {% endcomment %}
+
     <link href="https://ajax.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.googleapis.com" rel="dns-prefetch">
     <link href="https://maps.gstatic.com" rel="dns-prefetch">
-    <link href="https://crmplus.zoho.eu" rel="preconnect">
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
