@@ -4990,12 +4990,12 @@
         return (
           (t.prototype = Object.assign({}, t.prototype, {
             init: function () {
-              Shopify &&
-                Shopify.designMode &&
-                (theme.sections.reinit("slideshow-section"),
-                // setTimeout(function () {
-                //   window.dispatchEvent(new Event("resize"));
-                // }, 500)),
+              // Shopify &&
+              //   Shopify.designMode &&
+              //   (theme.sections.reinit("slideshow-section"),
+              //   setTimeout(function () {
+              //     window.dispatchEvent(new Event("resize"));
+              //   }, 500)),
                 theme.headerNav.init(),
                 theme.announcementBar.init(),
                 theme.headerSearch.init(),
