@@ -82,7 +82,7 @@
         <div class="page-width">
           <div
             class="header-layout"
-            style="justify-content: space-between;"
+            style="justify-content: space-between;min-height:59px"
             data-layout="{{ section.settings.main_menu_alignment }}"
             data-nav="{{ nav_position }}"
             data-logo-align="{{ logo_alignment }}"
@@ -260,7 +260,7 @@
       "label": "Navigation",
       "default": "main-menu"
     },
-     {
+    {
       "type": "link_list",
       "id": "sub_menu_link_list",
       "label": "Sub Navigation"
@@ -329,8 +329,8 @@
     },
     {
       "type": "image_picker",
-       "id": "call_banner",
-      "label": "Call Image",
+      "id": "call_banner",
+      "label": "Call Image"
     }
   ],
   "blocks": [
@@ -412,7 +412,7 @@
     }
   ],
   "default": {
-    "settings":{}
+    "settings": {}
   }
 }
 {% endschema %}
