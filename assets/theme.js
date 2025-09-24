@@ -4639,7 +4639,6 @@
                   this.initPriceRange(),
                   this.initGridOptions()),
                 (this.quickAdd = new theme.QuickAdd(this.container)),
-                (this.quickShop = new theme.QuickShop(this.container)),
                 (this.colorImages = this.container.querySelectorAll(
                   t.colorSwatchImage
                 )),
@@ -5938,183 +5937,6 @@
           n
         );
       })()),
-      (theme.RecentlyViewed = (function () {
-        var e = !1;
-        function t(e) {
-          e &&
-            ((this.container = e),
-            (this.sectionId = this.container.getAttribute("data-section-id")),
-            theme.initWhenVisible({
-              element: this.container,
-              callback: this.init.bind(this),
-              threshold: 600,
-            }));
-        }
-        return (
-          (t.prototype = Object.assign({}, t.prototype, {
-            init: function () {
-              if (!e) {
-                if (((e = !0), !theme.recentlyViewedIds.length)) {
-                  this.container.classList.add("hide");
-                  return;
-                }
-                this.outputContainer = document.getElementById(
-                  "RecentlyViewed-" + this.sectionId
-                );
-                var t = this.container.getAttribute("data-product-id"),
-                  i =
-                    theme.routes.search +
-                    "?view=recently-viewed&type=product&q=",
-                  n = "",
-                  s = 0;
-                theme.recentlyViewedIds.forEach(function (e) {
-                  e !== t && !(s >= 7) && ((n += "id:" + e + " OR "), s++);
-                }),
-                  fetch((i += encodeURIComponent(n)))
-                    .then(function (e) {
-                      return e.text();
-                    })
-                    .then(
-                      function (e) {
-                        var t = new DOMParser().parseFromString(e, "text/html");
-                        if (t.querySelectorAll(".grid-product").length > 0) {
-                          var i = t.querySelector(".product-grid");
-                          this.outputContainer.append(i),
-                            new theme.QuickAdd(this.outputContainer),
-                            new theme.QuickShop(this.outputContainer);
-                        } else this.container.classList.add("hide");
-                      }.bind(this)
-                    );
-              }
-            },
-            onUnload: function () {
-              e = !1;
-            },
-          })),
-          t
-        );
-      })()),
-      (theme.VendorProducts = (function () {
-        function e(e) {
-          e &&
-            ((this.container = e),
-            (this.sectionId = this.container.getAttribute("data-section-id")),
-            (this.currentProduct =
-              this.container.getAttribute("data-product-id")),
-            theme.initWhenVisible({
-              element: this.container,
-              callback: this.init.bind(this),
-              threshold: 600,
-            }));
-        }
-        return (
-          (e.prototype = Object.assign({}, e.prototype, {
-            init: function () {
-              (this.outputContainer = document.getElementById(
-                "VendorProducts-" + this.sectionId
-              )),
-                (this.vendor = this.container.getAttribute("data-vendor"));
-              var e =
-                theme.routes.collections +
-                "/vendors?view=vendor-ajax&q=" +
-                this.vendor;
-              fetch((e = e.replace("//", "/")))
-                .then(function (e) {
-                  return e.text();
-                })
-                .then((e) => {
-                  var t = 0,
-                    i = [],
-                    n = [],
-                    s = new DOMParser().parseFromString(e, "text/html");
-                  s.querySelectorAll(".grid-product").forEach((e) => {
-                    var a = e.dataset.productId;
-                    if (6 !== t && a !== this.currentProduct) {
-                      var r = s.querySelector(
-                        '.modal[data-product-id="' + a + '"]'
-                      );
-                      r && n.push(r), t++, i.push(e);
-                    }
-                  }),
-                    (this.outputContainer.innerHTML = ""),
-                    0 === i.length
-                      ? this.container.classList.add("hide")
-                      : (this.outputContainer.classList.remove("hide"),
-                        this.outputContainer.append(...i),
-                        n.length &&
-                          (this.outputContainer.append(...n),
-                          new theme.QuickShop(this.outputContainer)),
-                        new theme.QuickAdd(this.outputContainer));
-                });
-            },
-          })),
-          e
-        );
-      })()),
-      (theme.Testimonials = (function () {
-        var e = {
-          adaptiveHeight: !0,
-          avoidReflow: !0,
-          pageDots: !1,
-          wrapAround: !0,
-          freeScroll: !0,
-          prevNextButtons: !0,
-        };
-        function t(e) {
-          (this.container = e), this.timeout;
-          var t = e.getAttribute("data-section-id");
-          (this.slideshow = e.querySelector("#Testimonials-" + t)),
-            (this.namespace = ".testimonial-" + t),
-            this.slideshow &&
-              theme.initWhenVisible({
-                element: this.container,
-                callback: this.init.bind(this),
-                threshold: 600,
-              });
-        }
-        return (
-          (t.prototype = Object.assign({}, t.prototype, {
-            init: function () {
-              this.slideshow.dataset.count <= 3 && (e.wrapAround = !1),
-                (this.flickity = new theme.Slideshow(this.slideshow, e)),
-                this.slideshow.dataset.count > 2 &&
-                  (this.timeout = setTimeout(
-                    function () {
-                      this.flickity.goToSlide(1);
-                    }.bind(this),
-                    1e3
-                  ));
-            },
-            onUnload: function () {
-              this.flickity &&
-                "function" == typeof this.flickity.destroy &&
-                this.flickity.destroy();
-            },
-            onDeselect: function () {
-              this.flickity &&
-                "function" == typeof this.flickity.play &&
-                this.flickity.play();
-            },
-            onBlockSelect: function (e) {
-              var t = parseInt(
-                this.slideshow.querySelector(
-                  ".testimonials-slide--" + e.detail.blockId
-                ).dataset.index
-              );
-              clearTimeout(this.timeout),
-                this.flickity &&
-                  "function" == typeof this.flickity.pause &&
-                  (this.flickity.goToSlide(t), this.flickity.pause());
-            },
-            onBlockDeselect: function () {
-              this.flickity &&
-                "function" == typeof this.flickity.play &&
-                this.flickity.play();
-            },
-          })),
-          t
-        );
-      })()),
       (theme.isStorageSupported = function (e) {
         if (window.self !== window.top) return !1;
         var t,
@@ -6126,10 +5948,6 @@
         } catch (n) {
           return !1;
         }
-      }),
-      (theme.reinitProductGridItem = function (e) {
-        window.SPR && (SPR.initDomEls(), SPR.loadBadges()),
-          theme.collapsibles.init();
       }),
       (theme.sizeDrawer = function () {
         var e = document.getElementById("HeaderWrapper").offsetHeight,
@@ -6161,9 +5979,7 @@
             document.dispatchEvent(new CustomEvent("unmatchSmall")));
       }),
       (theme.initGlobals = function () {
-        theme.collapsibles.init(),
-          theme.videoModal(),
-          theme.animationObserver();
+        theme.collapsibles.init()
       }),
       (a = function () {
         if (
