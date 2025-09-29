@@ -53,24 +53,7 @@
         href="{{ routes.root_url }}"
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
-        <img
-          loading="eager"
-          width="230"
-          height="73"
-          class="small--hide"
-          src="{{ block.settings.logo | img_url: header_logo_size }}"
-          srcset="{{ block.settings.logo | img_url: header_logo_size }} 1x, {{ block.settings.logo | img_url: header_logo_size, scale: 2 }} 2x"
-          alt="{{ block.settings.logo.alt | default: shop.name }}"
-        >
-        <img
-          loading="eager"
-          width="130"
-          height="41.32"
-          class="medium-up--hide"
-          src="{{ block.settings.logo | img_url: header_logo_size_mobile }}"
-          srcset="{{ block.settings.logo | img_url: header_logo_size_mobile }} 1x, {{ block.settings.logo | img_url: header_logo_size_mobile, scale: 2 }} 2x"
-          alt="{{ block.settings.logo.alt | default: shop.name }}"
-        >
+        {{ block.settings.logo | image_url: width: 280, height: 85 | image_tag: shop.name, preload: true }}
       </a>
       {%- if block.settings['logo-inverted'] -%}
         <a
