@@ -53,7 +53,7 @@
         href="{{ routes.root_url }}"
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
-        {{ block.settings.logo | image_url: width: 280, height: 85 | image_tag: alt: shop.name, preload: true }}
+        {{ block.settings.logo | image_url: width: 560, height: 170 | image_tag: alt: shop.name, preload: true }}
       </a>
       {%- if block.settings['logo-inverted'] -%}
         <a
