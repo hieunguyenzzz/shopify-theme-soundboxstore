@@ -89,6 +89,9 @@
       {% unless value == 'Upgraded Device Shelf' %}
         {%- assign tranValue = value.variant.title -%}
       {% endunless %}
+      {% if tranValue contains 'missing' %}
+        {%- assign tranValue = value -%}
+      {% endif %}
       <div
         class="variant-input {% unless product_available %} disabled{% endunless %}"
         data-index="option{{ option_index }}"
