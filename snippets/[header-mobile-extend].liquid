@@ -56,11 +56,11 @@
           | image_tag: loading: 'lazy', preload: true
         }}
       {% endif %}
-      {{ settings.header_explore_product | default: 'Explore Products' -}}
+      {{- settings.header_explore_product | default: 'Explore Products' -}}
     </a>
   {% else %}
     <a href="/collections/all" style="background: #f6efe4;">
-      {{ settings.header_explore_product | default: 'Explore Products' -}}
+      {{- settings.header_explore_product | default: 'Explore Products' -}}
     </a>
   {% endif %}
   <a href="#" onclick="openSpecFormPopup(event)">
