@@ -53,16 +53,29 @@
     <div
       class="w-full md:flex gap-12 md:min-h-[40vw] md:items-center py-6 md:py-12 "
     >
-      {% if section.settings.image %}
-        {{
-          section.settings.image
-          | image_url: width: 3440
-          | image_tag:
-            style: 'filter: grayscale(1);opacity:0.3',
-            class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block border-b border-solid border-black border-[2px_solid_black]'
-        }}
+      {% if section.settings.gray %}
+        {% if section.settings.image %}
+          {{
+            section.settings.image
+            | image_url: width: 3440
+            | image_tag:
+              style: 'filter: grayscale(1);opacity:0.3',
+              class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block border-b border-solid border-black border-[2px_solid_black]'
+          }}
+        {% else %}
+          <div class="inset-0 -z-10 h-full w-full object-cover absolute bg-[#f7f7f7]"></div>
+        {% endif %}
       {% else %}
-        <div class="inset-0 -z-10 h-full w-full object-cover absolute bg-[#f7f7f7]"></div>
+        {% if section.settings.image %}
+          {{
+            section.settings.image
+            | image_url: width: 3440
+            | image_tag:
+              class: 'inset-0 -z-10 h-full w-full object-cover md:absolute hidden md:block border-b border-solid border-black border-[2px_solid_black]'
+          }}
+        {% else %}
+          <div class="inset-0 -z-10 h-full w-full object-cover absolute bg-[#f7f7f7]"></div>
+        {% endif %}
       {% endif %}
       <div
         style="
