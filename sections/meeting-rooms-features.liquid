@@ -166,6 +166,7 @@
   }
 </style>
 <section
+  style="overflow-x:hidden"
   class="
     meeting-rooms-features {{ ' ' }} {%- if section.settings.show_videos -%}
       meeting-room-features-video
@@ -182,12 +183,8 @@
         {%- assign imgs = product.images | where: 'alt', vaSku -%}
       {%- endunless -%}
       {%- for image in imgs -%}
-        {%- if prod_img -%}
-          {%- assign prod_img = image -%}
-          {% break %}
-        {%- else -%}
-          {%- assign prod_img = image -%}
-        {%- endif -%}
+        {%- assign prod_img = image -%}
+        {% break %}
       {%- endfor -%}
       <div
         class="col center-col"
