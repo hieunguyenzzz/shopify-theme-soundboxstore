@@ -218,3 +218,117 @@
     </div>
   </div>
 </div>
+{% schema %}
+{
+  "name": "trustpilot",
+  "class": "custome-blocks",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "header",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Embracing Sustainability"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "default": "default",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "image-left",
+              "label": "Image left"
+            },
+            {
+              "value": "image-right",
+              "label": "Image Right"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "video_url",
+          "id": "external_video_url",
+          "label": "Youtube video",
+          "accept": ["youtube"]
+        },
+        {
+          "type": "text",
+          "id": "sub-heading",
+          "label": "Sub Heading",
+          "default": "Embracing Sustainability"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Embracing Sustainability"
+        },
+        {
+          "type": "text",
+          "id": "sub-heading-botoom",
+          "label": "Sub Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text",
+          "default": "Schedule time with me"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "trustpilot",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
