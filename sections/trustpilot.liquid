@@ -1,61 +1,59 @@
-<div class="">
-  <div class=" mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-12">
-      <div class="flex items-center justify-center gap-2 mb-4">
-        <span class="text-4xl font-bold text-gray-900">
-          <img style="width:min(260px,25vw)" src="{{ 'logo-black.svg' | asset_url  }}">
-        </span>
-      </div>
-      <div class="flex items-center justify-center gap-1 mb-2">
-        <img
-          class="CDS_StarRating_starRating__614d2e"
-          alt="TrustScore 4.6 out of 5"
-          width="108px"
-          src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
-        >
-      </div>
-      <p class="text-gray-600 text-lg">
-        Rated <span class="font-bold text-gray-900">{{ section.settings.rate }}/5</span> based on
-        <span class="font-bold">{{ section.settings.reviews_number }} reviews</span>
-      </p>
+<div class=" mx-auto">
+  <!-- Header -->
+  <div class="text-center mb-12">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-4xl font-bold text-gray-900">
+        <img style="width:min(260px,25vw)" src="{{ 'logo-black.svg' | asset_url  }}">
+      </span>
     </div>
+    <div class="flex items-center justify-center gap-1 mb-2">
+      <img
+        class="CDS_StarRating_starRating__614d2e"
+        alt="TrustScore 4.6 out of 5"
+        width="108px"
+        src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg"
+      >
+    </div>
+    <p class="text-gray-600 text-lg">
+      Rated <span class="font-bold text-gray-900">{{ section.settings.rate }}/5</span> based on
+      <span class="font-bold">{{ section.settings.reviews_number }} reviews</span>
+    </p>
+  </div>
 
-    <!-- Reviews Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Review Card 1 -->
-      {% for block in section.blocks %}
-        {% case block.type %}
-          {% when 'review' %}
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
-              <div class="flex items-center gap-1 mb-3">
-                <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <h3 class="font-bold text-gray-900 mb-2">{{ block.settings.heading }}</h3>
-              <div class="text-gray-600 mb-4">
-                {{ block.settings.content }}
-              </div>
-              <div class="flex items-center justify-between text-sm">
-                <span class="font-semibold text-gray-900">{{ block.settings.author }}</span>
-              </div>
+  <!-- Reviews Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Review Card 1 -->
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'review' %}
+          <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center gap-1 mb-3">
+              <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
             </div>
-        {% endcase %}
-      {% endfor %}
-    </div>
+            <h3 class="font-bold text-gray-900 mb-2">{{ block.settings.heading }}</h3>
+            <div class="text-gray-600 mb-4">
+              {{ block.settings.content }}
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <span class="font-semibold text-gray-900">{{ block.settings.author }}</span>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 </div>
 {% schema %}
