@@ -16,7 +16,8 @@
         >
       </div>
       <p class="text-gray-600 text-lg">
-        Rated <span class="font-bold text-gray-900">4.6/5</span> based on <span class="font-bold">62 reviews</span>
+        Rated <span class="font-bold text-gray-900">{{ section.settings.rate }}/5</span> based on
+        <span class="font-bold">{{ section.settings.reviews_number }} reviews</span>
       </p>
     </div>
 
@@ -208,28 +209,42 @@
 {
   "name": "trustpilot",
   "class": "custome-blocks",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "rate",
+      "label": "Rate",
+      "default": "4.6"
+    },
+    {
+      "type": "text",
+      "id": "reviews_number",
+      "label": "Reviews number",
+      "default": "62"
+    }
+  ],
   "blocks": [
     {
-      "type": "header",
-      "name": "header",
+      "type": "review",
+      "name": "review",
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Embracing Sustainability"
+          "default": "Purchased 2 Meeting Booths"
         },
         {
           "type": "richtext",
           "id": "content",
           "label": "Content",
-          "default": "<p>As a pioneer in crafting soundproof phone booths, office pods, and meeting rooms for businesses, we take pride in our unwavering commitment to eco-friendly manufacturing practices. Join us as we embark on a journey toward agreener future, one sustainable product at a time.</p>"
+          "default": "<p>Eva in the Showroom was fantastic and explained all about the Booths I was looking for.After only 1 visit, I placed an order for two 4-person meeting booths, complete with seating, table and monitor....one green, one orange !They looked great after installation.....and now getting used daily.</p>"
         },
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "type": "text",
+          "id": "author",
+          "label": "author",
+          "default": "Andy Skeet"
         }
       ]
     }
@@ -237,7 +252,16 @@
   "presets": [
     {
       "name": "trustpilot",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "author": "Andy Skeet",
+            "heading": "Purchased 2 Meeting Booths",
+            "content": "<p>Eva in the Showroom was fantastic and explained all about the Booths I was looking for.After only 1 visit, I placed an order for two 4-person meeting booths, complete with seating, table and monitor....one green, one orange !They looked great after installation.....and now getting used daily.</p>"
+          }
+        }
+      ]
     }
   ]
 }
