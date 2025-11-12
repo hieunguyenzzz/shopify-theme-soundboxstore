@@ -1,0 +1,80 @@
+/**
+ * Strict Geo-Targeting Script
+ * Automatically redirects visitors to their correct regional store
+ * No exceptions - applies to all visitors
+ */
+
+(function() {
+  'use strict';
+
+  // Check if redirect has already been done this session
+  if (sessionStorage.getItem('geo_redirect_checked') === 'true') {
+    return;
+  }
+
+  // Get visitor's country from Shopify's geo-location
+  const visitorCountry = '{{ localization.country.iso_code }}';
+  const currentLocale = '{{ request.locale.iso_code }}'; // e.g., 'en-GB', 'de-DE'
+  const currentPath = window.location.pathname;
+  const currentRootUrl = '{{ request.locale.root_url }}';
+
+  // Country to locale root URL mapping (matching the location dropdown)
+  // Format: countryCode: { locale: 'xx-XX', rootUrl: '/xx-xx' }
+  const countryToLocaleMap = {
+    'GB': { locale: 'en-GB', rootUrl: '' },  // Default, no prefix
+    'IE': { locale: 'en-IE', rootUrl: '/en-ie' },
+    'AE': { locale: 'en-AE', rootUrl: '/en-ae' },
+    'US': { locale: 'en-US', rootUrl: '/en-us' },
+    'DK': { locale: 'da-DK', rootUrl: '/da-dk' },
+    'SE': { locale: 'sv-SE', rootUrl: '/sv-se' },
+    'DE': { locale: 'de-DE', rootUrl: '/de-de' },
+    'NO': { locale: 'no-NO', rootUrl: '/no-no' },
+    'FR': { locale: 'fr-FR', rootUrl: '/fr-fr' },
+    'NL': { locale: 'nl-NL', rootUrl: '/nl-nl' },
+    'BE': { locale: 'nl-BE', rootUrl: '/nl-be' },  // Belgium defaults to Dutch
+    'AT': { locale: 'de-AT', rootUrl: '/de-at' },
+    'CH': { locale: 'de-CH', rootUrl: '/de-ch' },
+    'ES': { locale: 'es-ES', rootUrl: '/es-es' },
+    'FI': { locale: 'fi-FI', rootUrl: '/fi-fi' },
+    'PL': { locale: 'pl-PL', rootUrl: '/pl-pl' },
+    'IT': { locale: 'it-IT', rootUrl: '/it-it' }
+  };
+
+  // Get the correct locale for visitor's country
+  let targetConfig = countryToLocaleMap[visitorCountry];
+
+  // If country not supported, default to UK store
+  if (!targetConfig) {
+    targetConfig = { locale: 'en-GB', rootUrl: '' };
+  }
+
+  // Normalize locales for comparison (case-insensitive)
+  const normalizedCurrent = currentLocale.toLowerCase();
+  const normalizedTarget = targetConfig.locale.toLowerCase();
+
+  // Check if visitor is on the wrong regional store
+  if (normalizedCurrent !== normalizedTarget) {
+    // Mark that we've checked (prevent redirect loops)
+    sessionStorage.setItem('geo_redirect_checked', 'true');
+
+    // Calculate the path without locale prefix
+    let pathWithoutLocale = currentPath;
+    if (currentRootUrl && currentRootUrl !== '/' && currentPath.startsWith(currentRootUrl)) {
+      pathWithoutLocale = currentPath.substring(currentRootUrl.length);
+    }
+
+    // Ensure path starts with /
+    if (!pathWithoutLocale.startsWith('/')) {
+      pathWithoutLocale = '/' + pathWithoutLocale;
+    }
+
+    // Construct new URL with correct locale
+    const redirectUrl = (targetConfig.rootUrl + pathWithoutLocale + window.location.search).replace('//', '/');
+
+    // Hard redirect to correct region
+    window.location.replace(redirectUrl);
+  } else {
+    // Visitor is on correct store, mark as checked
+    sessionStorage.setItem('geo_redirect_checked', 'true');
+  }
+})();
