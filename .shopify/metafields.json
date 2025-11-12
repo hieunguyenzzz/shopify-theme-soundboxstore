@@ -1,24 +1,26 @@
 {
-  "article": [],
-  "blog": [],
-  "collection": [
+  "article": [
     {
-      "key": "delivery_images",
+      "key": "custom_author",
       "namespace": "custom",
-      "name": "Delivery Images",
-      "description": "",
-      "type": {
-        "name": "list.file_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "delivery_message",
-      "namespace": "custom",
-      "name": "Delivery Message",
-      "description": "",
+      "name": "Custom Author",
+      "description": "Add an Author name",
       "type": {
         "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
+  "blog": [],
+  "brand": [],
+  "collection": [
+    {
+      "key": "description",
+      "namespace": "custom",
+      "name": "description",
+      "description": "",
+      "type": {
+        "name": "rich_text_field",
         "category": "TEXT"
       }
     },
@@ -51,26 +53,25 @@
         "name": "file_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "highlight",
+      "namespace": "custom",
+      "name": "highlight",
+      "description": "",
+      "type": {
+        "name": "rich_text_field",
+        "category": "TEXT"
+      }
     }
   ],
   "company": [],
   "company_location": [],
-  "location": [],
-  "market": [
+  "location": [
     {
-      "key": "phone",
+      "key": "phone_nl",
       "namespace": "custom",
-      "name": "phone",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "email",
-      "namespace": "custom",
-      "name": "email",
+      "name": "Phone (NL)",
       "description": "",
       "type": {
         "name": "single_line_text_field",
@@ -78,6 +79,7 @@
       }
     }
   ],
+  "market": [],
   "order": [],
   "page": [
     {
@@ -93,39 +95,9 @@
   ],
   "product": [
     {
-      "key": "description",
-      "namespace": "custom",
-      "name": "description",
-      "description": "",
-      "type": {
-        "name": "multi_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "embed360url",
-      "namespace": "custom",
-      "name": "embed360url",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "page360",
-      "namespace": "custom",
-      "name": "page360",
-      "description": "",
-      "type": {
-        "name": "page_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "featured_images",
+      "key": "product_bottom_image",
       "namespace": "my_fields",
-      "name": "Featured images",
+      "name": "Product Bottom Image",
       "description": "",
       "type": {
         "name": "file_reference",
@@ -133,53 +105,13 @@
       }
     },
     {
-      "key": "furniture_set_1",
+      "key": "explore_page_url",
       "namespace": "my_fields",
-      "name": "Furniture Set 1 ",
+      "name": "Explore Page URL",
       "description": "",
       "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "furniture_set_2",
-      "namespace": "my_fields",
-      "name": "Furniture Set 2",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "dulux_suite",
-      "namespace": "my_fields",
-      "name": "With Furniture",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "subtitle",
-      "namespace": "custom",
-      "name": "subtitle",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "base_product",
-      "namespace": "custom",
-      "name": "base_product",
-      "description": "",
-      "type": {
-        "name": "product_reference",
-        "category": "REFERENCE"
+        "name": "url",
+        "category": "URL"
       }
     },
     {
@@ -203,13 +135,193 @@
       }
     },
     {
-      "key": "product_for_rent",
-      "namespace": "custom",
-      "name": "product for rent",
+      "key": "standard_suite",
+      "namespace": "my_fields",
+      "name": "No Furniture",
       "description": "",
       "type": {
-        "name": "product_reference",
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "dulux_suite",
+      "namespace": "my_fields",
+      "name": "With Furniture",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "keypad_variant_id",
+      "namespace": "my_fields",
+      "name": "KeyPad Variant id",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_features_images",
+      "namespace": "my_fields",
+      "name": "Product Second Image",
+      "description": "",
+      "type": {
+        "name": "url",
+        "category": "URL"
+      }
+    },
+    {
+      "key": "furniture_set_1",
+      "namespace": "my_fields",
+      "name": "Furniture Set 1 ",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "furniture_set_2",
+      "namespace": "my_fields",
+      "name": "Furniture Set 2",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "furniture_set_3",
+      "namespace": "my_fields",
+      "name": "Furniture Set 3",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "featured_images",
+      "namespace": "my_fields",
+      "name": "Featured images",
+      "description": "",
+      "type": {
+        "name": "list.file_reference",
         "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "page360",
+      "namespace": "custom",
+      "name": "page360",
+      "description": "",
+      "type": {
+        "name": "page_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "embed360url",
+      "namespace": "custom",
+      "name": "embed360url",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "title",
+      "namespace": "custom",
+      "name": "title",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "description",
+      "namespace": "custom",
+      "name": "description",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "upsell_list",
+      "namespace": "custom",
+      "name": "upsell_list",
+      "description": "",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "subtitle",
+      "namespace": "custom",
+      "name": "subtitle",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "furniture_set_4",
+      "namespace": "my_fields",
+      "name": "Furniture Set 4",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "furniture_set_5",
+      "namespace": "my_fields",
+      "name": "Furniture Set 5",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "model",
+      "namespace": "custom",
+      "name": "model",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "usps",
+      "namespace": "custom",
+      "name": "usps",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "youtube_url",
+      "namespace": "custom",
+      "name": "youtube_url",
+      "description": "youtube.com/watch/... or youtu.be/...",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
       }
     },
     {
@@ -223,13 +335,33 @@
       }
     },
     {
-      "key": "menu_image",
+      "key": "base_product",
       "namespace": "custom",
-      "name": "menu_image",
+      "name": "base_product",
       "description": "",
       "type": {
-        "name": "file_reference",
+        "name": "product_reference",
         "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "delivery_fee",
+      "namespace": "custom",
+      "name": "delivery_fee",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "deposit_in_months",
+      "namespace": "custom",
+      "name": "deposit_in_months",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
       }
     },
     {
@@ -273,32 +405,82 @@
       }
     },
     {
-      "key": "color-pattern",
-      "namespace": "shopify",
-      "name": "Color",
-      "description": "Defines the primary color or pattern, such as blue or striped",
+      "key": "size",
+      "namespace": "custom",
+      "name": "Size",
+      "description": "",
       "type": {
-        "name": "list.metaobject_reference",
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "colour",
+      "namespace": "custom",
+      "name": "Colour",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "use_case",
+      "namespace": "custom",
+      "name": "Use case",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "colours",
+      "namespace": "custom",
+      "name": "Colours",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "collections",
+      "namespace": "custom",
+      "name": "collections",
+      "description": "",
+      "type": {
+        "name": "list.collection_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "color",
-      "namespace": "custom",
-      "name": "color",
-      "description": "",
+      "key": "custom_product",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Product",
+      "description": "Use to indicate whether or not the unique product identifiers (UPIs) GTIN, MPN, and brand are available for your product.",
       "type": {
-        "name": "metaobject_reference",
-        "category": "REFERENCE"
+        "name": "boolean",
+        "category": "TRUE_FALSE"
       }
     },
     {
-      "key": "colors",
+      "key": "ticks",
       "namespace": "custom",
-      "name": "colors",
+      "name": "ticks",
       "description": "",
       "type": {
-        "name": "list.metaobject_reference",
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "menu_image",
+      "namespace": "custom",
+      "name": "menu_image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
         "category": "REFERENCE"
       }
     },
@@ -328,138 +510,78 @@
       "name": "seats",
       "description": "",
       "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
+        "name": "number_integer",
+        "category": "NUMBER"
       }
     },
     {
-      "key": "storefront_fields",
+      "key": "card_images",
       "namespace": "custom",
-      "name": "storefront_fields",
+      "name": "card_images",
       "description": "",
       "type": {
-        "name": "metaobject_reference",
+        "name": "list.file_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "category",
-      "namespace": "custom",
-      "name": "Category",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "subcategory",
-      "namespace": "custom",
-      "name": "Subcategoy",
-      "description": "",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "config_renting",
-      "namespace": "custom",
-      "name": "config_renting",
-      "description": "",
-      "type": {
-        "name": "json",
-        "category": "JSON"
-      }
-    },
-    {
-      "key": "chair-features",
+      "key": "color-pattern",
       "namespace": "shopify",
-      "name": "Chair features",
-      "description": "Highlights special functions of a chair, such as massage function or power reclining",
+      "name": "Color",
+      "description": "Defines the primary color or pattern, such as blue or striped",
       "type": {
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "upholstery-material",
-      "namespace": "shopify",
-      "name": "Upholstery material",
-      "description": "Identifies the fabric used for upholstery, such as leather or velvet",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "seat-type",
-      "namespace": "shopify",
-      "name": "Seat type",
-      "description": "Describes the design of a chair or bench seat, such as padded or bucket ",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "backrest-type",
-      "namespace": "shopify",
-      "name": "Backrest type",
-      "description": "Specifies the material or style of a chair's backrest; e.g. mesh, padded",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "web_components_faqs",
+      "key": "f_color",
       "namespace": "custom",
-      "name": "web_components_faqs",
+      "name": "f_color",
       "description": "",
       "type": {
-        "name": "list.metaobject_reference",
+        "name": "mixed_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "web_components_ticks",
-      "namespace": "custom",
-      "name": "web_components_ticks",
-      "description": "",
-      "type": {
-        "name": "list.metaobject_reference",
-        "category": "REFERENCE"
-      }
-    },
-    {
-      "key": "web_components_recommendation",
-      "namespace": "custom",
-      "name": "web_components_recommendation",
-      "description": "",
+      "key": "complementary_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Complementary products",
+      "description": null,
       "type": {
         "name": "list.product_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "specifications",
-      "namespace": "custom",
-      "name": "Specifications",
-      "description": "",
+      "key": "related_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Related products",
+      "description": null,
       "type": {
-        "name": "json",
-        "category": "JSON"
+        "name": "list.product_reference",
+        "category": "REFERENCE"
       }
     },
     {
-      "key": "highlights",
+      "key": "bought_together_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Bought together products",
+      "description": null,
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "upsell_items",
       "namespace": "custom",
-      "name": "highlights",
+      "name": "upsell_items",
       "description": "",
       "type": {
-        "name": "json",
-        "category": "JSON"
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
       }
     },
     {
@@ -493,22 +615,22 @@
       }
     },
     {
-      "key": "product_rooms_features",
+      "key": "instagram_feed_id",
       "namespace": "custom",
-      "name": "Product Rooms Features",
+      "name": "Instagram Feed ID",
       "description": "",
       "type": {
-        "name": "metaobject_reference",
-        "category": "REFERENCE"
+        "name": "number_integer",
+        "category": "NUMBER"
       }
     },
     {
-      "key": "upsell_products",
+      "key": "company_logo",
       "namespace": "custom",
-      "name": "Upsell products",
+      "name": "Company logo",
       "description": "",
       "type": {
-        "name": "list.product_reference",
+        "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
     },
@@ -523,23 +645,33 @@
       }
     },
     {
-      "key": "company_logo",
+      "key": "upsell_products",
       "namespace": "custom",
-      "name": "Company logo",
+      "name": "Upsell products",
       "description": "",
       "type": {
-        "name": "list.metaobject_reference",
+        "name": "list.product_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "instagram_feed_id",
+      "key": "product_rooms_features",
       "namespace": "custom",
-      "name": "Instagram Feed ID",
+      "name": "Product Rooms Features",
       "description": "",
       "type": {
-        "name": "number_integer",
-        "category": "NUMBER"
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "ticks_content",
+      "namespace": "custom",
+      "name": "Ticks content",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
       }
     },
     {
@@ -553,17 +685,57 @@
       }
     },
     {
-      "key": "custom_product",
-      "namespace": "mm-google-shopping",
-      "name": "Google: Custom Product",
-      "description": "Use to indicate whether or not the unique product identifiers (UPIs) GTIN, MPN, and brand are available for your product.",
+      "key": "on_showroom",
+      "namespace": "custom",
+      "name": "on_showroom",
+      "description": "",
       "type": {
         "name": "boolean",
         "category": "TRUE_FALSE"
       }
+    },
+    {
+      "key": "secondary_image",
+      "namespace": "custom",
+      "name": "secondary_image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "reviews_rating",
+      "namespace": "custom",
+      "name": "reviews_rating",
+      "description": "",
+      "type": {
+        "name": "number_decimal",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "reviews_count",
+      "namespace": "custom",
+      "name": "reviews_count",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
     }
   ],
   "variant": [
+    {
+      "key": "additional_images",
+      "namespace": "global",
+      "name": "Additional images",
+      "description": "Add Image URLs (Separated by comma)",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
     {
       "key": "images",
       "namespace": "global",
@@ -575,9 +747,19 @@
       }
     },
     {
-      "key": "videos",
-      "namespace": "global",
-      "name": "videos",
+      "key": "bundle",
+      "namespace": "custom",
+      "name": "bundle",
+      "description": "",
+      "type": {
+        "name": "list.variant_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "color_image",
+      "namespace": "custom",
+      "name": "color-image",
       "description": "",
       "type": {
         "name": "file_reference",
@@ -585,59 +767,89 @@
       }
     },
     {
-      "key": "color",
-      "namespace": "custom",
-      "name": "Color",
+      "key": "videos",
+      "namespace": "global",
+      "name": "videos",
       "description": "",
       "type": {
-        "name": "mixed_reference",
+        "name": "list.file_reference",
         "category": "REFERENCE"
       }
     },
     {
-      "key": "specifications",
+      "key": "rent_variant",
       "namespace": "custom",
-      "name": "Specification",
+      "name": "rent-variant",
       "description": "",
       "type": {
-        "name": "json",
-        "category": "JSON"
+        "name": "variant_reference",
+        "category": "REFERENCE"
       }
     },
     {
-      "key": "highlights",
-      "namespace": "custom",
-      "name": "Highlights",
-      "description": "",
-      "type": {
-        "name": "json",
-        "category": "JSON"
-      }
-    },
-    {
-      "key": "custom_label_4",
+      "key": "age_group",
       "namespace": "mm-google-shopping",
-      "name": "Google: Custom Label 4",
-      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
+      "name": "Google: Age Group",
+      "description": "The demographic for which your product is intended.",
       "type": {
         "name": "single_line_text_field",
         "category": "TEXT"
       }
     },
     {
-      "key": "custom_label_3",
+      "key": "condition",
       "namespace": "mm-google-shopping",
-      "name": "Google: Custom Label 3",
-      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
+      "name": "Google: Condition",
+      "description": "The condition of your product at time of sale.",
       "type": {
         "name": "single_line_text_field",
         "category": "TEXT"
       }
     },
     {
-      "key": "custom_label_2",
+      "key": "gender",
       "namespace": "mm-google-shopping",
-      "name": "Google: Custom Label 2",
+      "name": "Google: Gender",
+      "description": "The gender for which your product is intended.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "mpn",
+      "namespace": "mm-google-shopping",
+      "name": "Google: MPN",
+      "description": "Your product’s Manufacturer Part Number (MPN).",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_type",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size Type",
+      "description": "Your apparel product’s cut.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "size_system",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Size System",
+      "description": "The country of the size system used by your product.",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "custom_label_0",
+      "namespace": "mm-google-shopping",
+      "name": "Google: Custom Label 0",
       "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
       "type": {
         "name": "single_line_text_field",
@@ -655,9 +867,9 @@
       }
     },
     {
-      "key": "custom_label_0",
+      "key": "custom_label_2",
       "namespace": "mm-google-shopping",
-      "name": "Google: Custom Label 0",
+      "name": "Google: Custom Label 2",
       "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
       "type": {
         "name": "single_line_text_field",
@@ -665,73 +877,83 @@
       }
     },
     {
-      "key": "size_system",
+      "key": "custom_label_3",
       "namespace": "mm-google-shopping",
-      "name": "Google: Size System",
-      "description": "The country of the size system used by your product.",
+      "name": "Google: Custom Label 3",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
       "type": {
         "name": "single_line_text_field",
         "category": "TEXT"
       }
     },
     {
-      "key": "size_type",
+      "key": "custom_label_4",
       "namespace": "mm-google-shopping",
-      "name": "Google: Size Type",
-      "description": "Your apparel product’s cut.",
+      "name": "Google: Custom Label 4",
+      "description": "Label that you assign to a product to help organize bidding and reporting in Shopping campaigns.",
       "type": {
         "name": "single_line_text_field",
         "category": "TEXT"
       }
     },
     {
-      "key": "mpn",
-      "namespace": "mm-google-shopping",
-      "name": "Google: MPN",
-      "description": "Your product’s Manufacturer Part Number (MPN).",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "gender",
-      "namespace": "mm-google-shopping",
-      "name": "Google: Gender",
-      "description": "The gender for which your product is intended.",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "condition",
-      "namespace": "mm-google-shopping",
-      "name": "Google: Condition",
-      "description": "The condition of your product at time of sale.",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "age_group",
-      "namespace": "mm-google-shopping",
-      "name": "Google: Age Group",
-      "description": "The demographic for which your product is intended.",
-      "type": {
-        "name": "single_line_text_field",
-        "category": "TEXT"
-      }
-    },
-    {
-      "key": "bundle",
+      "key": "upsell",
       "namespace": "custom",
-      "name": "Bundle",
+      "name": "upsell",
       "description": "",
       "type": {
         "name": "list.variant_reference",
         "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "display_title",
+      "namespace": "custom",
+      "name": "Display title",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "furniture",
+      "namespace": "custom",
+      "name": "furniture",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "upsell_product_for_quote",
+      "namespace": "global",
+      "name": "upsell_product_for_quote",
+      "description": "",
+      "type": {
+        "name": "list.variant_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "upsell_items",
+      "namespace": "custom",
+      "name": "upsell_items",
+      "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "price",
+      "namespace": "leasing",
+      "name": "price",
+      "description": "",
+      "type": {
+        "name": "money",
+        "category": "MONEY"
       }
     }
   ],
