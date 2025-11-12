@@ -22,6 +22,39 @@
     isEmpty: !visitorCountry || !currentLocale
   });
 
+  // FALLBACK: If Shopify locale is empty, detect from URL
+  let detectedLocale = currentLocale;
+  let localeSource = 'shopify';
+
+  if (!detectedLocale || detectedLocale === '') {
+    // Try to extract from URL path
+    // Match patterns: /de-de/... or /de-de
+    const pathMatchWithSlash = currentPath.match(/^\/([a-z]{2}-[a-z]{2})\//);
+    const pathMatchExact = currentPath.match(/^\/([a-z]{2}-[a-z]{2})$/);
+
+    if (pathMatchWithSlash) {
+      detectedLocale = pathMatchWithSlash[1];
+      localeSource = 'url-path';
+    } else if (pathMatchExact) {
+      detectedLocale = currentPath.substring(1);
+      localeSource = 'url-exact';
+    } else if (currentPath === '/') {
+      detectedLocale = 'en-gb';
+      localeSource = 'default-root';
+    } else {
+      detectedLocale = 'en-gb';
+      localeSource = 'default-fallback';
+    }
+
+    console.log('[GEO-FALLBACK] Shopify locale empty - detected from URL:', {
+      detectedLocale: detectedLocale,
+      source: localeSource,
+      currentPath: currentPath
+    });
+  } else {
+    console.log('[GEO-FALLBACK] Using Shopify locale (not empty)');
+  }
+
   // Country to locale root URL mapping
   const countryToLocaleMap = {
     'GB': { locale: 'en-GB', rootUrl: '' },
@@ -70,13 +103,15 @@
 
       console.log('[GEO-DECISION] Locale Analysis:', {
         apiCountry: apiCountry,
-        currentLocale: currentLocale,
+        shopifyLocale: currentLocale,
+        detectedLocale: detectedLocale,
+        localeSource: localeSource,
         expectedLocale: targetConfig.locale,
         expectedRootUrl: targetConfig.rootUrl
       });
 
-      // Normalize for comparison
-      const normalizedCurrent = currentLocale.toLowerCase();
+      // Normalize for comparison (use detected locale instead of Shopify's empty one)
+      const normalizedCurrent = detectedLocale.toLowerCase();
       const normalizedTarget = targetConfig.locale.toLowerCase();
       const currentLangCode = normalizedCurrent.split('-')[0];
       const targetLangCode = normalizedTarget.split('-')[0];
