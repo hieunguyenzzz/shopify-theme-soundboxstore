@@ -136,7 +136,13 @@
 
       if (localeMatch) {
         // Remove the locale part: /fr-fr/products → /products, or /fr-fr → /
-        pathWithoutLocale = pathWithoutLocale.substring(localeMatch[0].length - 1);
+        if (localeMatch[2] === '') {
+          // Exact match like /fr-fr with no trailing content
+          pathWithoutLocale = '/';
+        } else {
+          // Has trailing content like /fr-fr/products
+          pathWithoutLocale = pathWithoutLocale.substring(localeMatch[1].length + 1);
+        }
         console.log('[GEO-PATH] Removed locale from path:', {
           originalPath: currentPath,
           removedLocale: localeMatch[1],
