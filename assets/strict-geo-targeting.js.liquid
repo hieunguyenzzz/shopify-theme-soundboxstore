@@ -1,26 +1,16 @@
 /**
- * Strict Geo-Targeting Script - Debug Mode
- * Testing AJAX geo-detection with logging only (no redirects)
+ * Strict Geo-Targeting Script
+ * Automatically redirects visitors to their correct regional store based on location
  */
 
 (function() {
   'use strict';
-
-  console.log('[GEO] ========== Geo-Targeting Debug Started ==========');
 
   // Get visitor's country from Shopify's geo-location
   const visitorCountry = '{{ localization.country.iso_code }}';
   const currentLocale = '{{ request.locale.iso_code }}';
   const currentPath = window.location.pathname;
   const currentRootUrl = '{{ request.locale.root_url }}';
-
-  console.log('[GEO-SHOPIFY] Shopify Localization Data:', {
-    visitorCountry: visitorCountry,
-    currentLocale: currentLocale,
-    currentPath: currentPath,
-    currentRootUrl: currentRootUrl,
-    isEmpty: !visitorCountry || !currentLocale
-  });
 
   // FALLBACK: If Shopify locale is empty, detect from URL
   let detectedLocale = currentLocale;
@@ -46,13 +36,6 @@
       localeSource = 'default-fallback';
     }
 
-    console.log('[GEO-FALLBACK] Shopify locale empty - detected from URL:', {
-      detectedLocale: detectedLocale,
-      source: localeSource,
-      currentPath: currentPath
-    });
-  } else {
-    console.log('[GEO-FALLBACK] Using Shopify locale (not empty)');
   }
 
   // Country to locale root URL mapping
@@ -77,54 +60,19 @@
   };
 
   // Fetch from AJAX API
-  console.log('[GEO-AJAX] Fetching geo-location from API...');
   fetch('https://test.hieunguyenel2686.workers.dev/')
     .then(response => response.json())
     .then(data => {
-      console.log('[GEO-AJAX] API Response:', {
-        country: data.country,
-        city: data.city,
-        fullResponse: data
-      });
-
       const apiCountry = data.country;
-
-      // Compare Shopify vs API
-      console.log('[GEO-COMPARE] Shopify vs API Comparison:', {
-        shopifyCountry: visitorCountry,
-        apiCountry: apiCountry,
-        countriesMatch: visitorCountry === apiCountry,
-        shopifyIsEmpty: !visitorCountry,
-        apiIsReliable: !!apiCountry
-      });
 
       // Get expected locale for API detected country
       const targetConfig = countryToLocaleMap[apiCountry] || { locale: 'en-GB', rootUrl: '' };
-
-      console.log('[GEO-DECISION] Locale Analysis:', {
-        apiCountry: apiCountry,
-        shopifyLocale: currentLocale,
-        detectedLocale: detectedLocale,
-        localeSource: localeSource,
-        expectedLocale: targetConfig.locale,
-        expectedRootUrl: targetConfig.rootUrl
-      });
 
       // Normalize for comparison (use detected locale instead of Shopify's empty one)
       const normalizedCurrent = detectedLocale.toLowerCase();
       const normalizedTarget = targetConfig.locale.toLowerCase();
       const currentLangCode = normalizedCurrent.split('-')[0];
       const targetLangCode = normalizedTarget.split('-')[0];
-
-      console.log('[GEO-DECISION] Comparison Details:', {
-        normalizedCurrent: normalizedCurrent,
-        normalizedTarget: normalizedTarget,
-        currentLangCode: currentLangCode,
-        targetLangCode: targetLangCode,
-        fullMatch: normalizedCurrent === normalizedTarget,
-        langMatch: currentLangCode === targetLangCode,
-        isCorrectStore: normalizedCurrent === normalizedTarget || currentLangCode === targetLangCode
-      });
 
       // Calculate what redirect URL would be
       // First, remove any existing locale prefix from the path
@@ -143,11 +91,6 @@
           // Has trailing content like /fr-fr/products
           pathWithoutLocale = pathWithoutLocale.substring(localeMatch[1].length + 1);
         }
-        console.log('[GEO-PATH] Removed locale from path:', {
-          originalPath: currentPath,
-          removedLocale: localeMatch[1],
-          pathAfterRemoval: pathWithoutLocale
-        });
       }
 
       // Ensure path starts with /
@@ -160,30 +103,18 @@
       // Build redirect URL
       const redirectUrl = (targetConfig.rootUrl + pathWithoutLocale + window.location.search).replace('//', '/');
 
-      console.log('[GEO-SIMULATION] Redirect Simulation:', {
-        wouldRedirect: !(normalizedCurrent === normalizedTarget || currentLangCode === targetLangCode),
-        fromPath: currentPath,
-        toPath: redirectUrl,
-        pathCalculation: {
-          currentPath: currentPath,
-          currentRootUrl: currentRootUrl,
-          pathWithoutLocale: pathWithoutLocale,
-          targetRootUrl: targetConfig.rootUrl
-        }
-      });
-
       if (normalizedCurrent === normalizedTarget || currentLangCode === targetLangCode) {
-        console.log('[GEO-SIMULATION] ✓ Visitor is on correct store - NO REDIRECT NEEDED');
+        console.log('[GEO] ✓ Visitor is on correct store');
+        // Store the country to track if they travel
+        sessionStorage.setItem('geo_visitor_country', apiCountry);
       } else {
-        console.log('[GEO-SIMULATION] ✗ Visitor is on WRONG store - WOULD REDIRECT TO:', redirectUrl);
-        console.log('[GEO-SIMULATION] Reason: Visitor from', apiCountry, 'should use', targetConfig.locale, 'store');
+        console.log('[GEO] ✗ Redirecting to correct store:', redirectUrl);
+        // Perform the redirect
+        window.location.replace(redirectUrl);
       }
-
-      console.log('[GEO] ========== Debug Complete (NO REDIRECTS PERFORMED) ==========');
     })
     .catch(error => {
-      console.error('[GEO-AJAX] API Error:', error);
-      console.log('[GEO-AJAX] Geo-targeting would be disabled due to API failure');
+      console.error('[GEO] API Error - geo-targeting disabled:', error);
     });
 
 })();
