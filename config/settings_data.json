@@ -752,8 +752,8 @@
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "<p>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}</p>",
-              "richtext_mobile": "<p>{% if localization.country.iso_code != 'US' %}\n  {{ 'strings.announcement.delivery_message' | t }}\n{% endif %}</p>"
+              "richtext": "<p>\n<a href=\"/pages/reseller-login\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>",
+              "richtext_mobile": "<p>\n<a href=\"/pages/reseller-login\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>"
             }
           }
         },
