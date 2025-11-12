@@ -113,17 +113,30 @@ IT it /it-it' %}
   });
 
   // Show dropdown only for US visitors
-  fetch('https://test.hieunguyenel2686.workers.dev/')
-    .then(response => response.json())
-    .then(data => {
-      if (data.country === 'US') {
-        const dropdown = document.getElementById('location-dropdown');
-        if (dropdown) {
-          dropdown.style.display = 'flex';
-        }
+  // Check sessionStorage first (set by geo-targeting script)
+  const checkAndShowDropdown = () => {
+    const visitorCountry = sessionStorage.getItem('geo_visitor_country');
+    if (visitorCountry === 'US') {
+      const dropdown = document.getElementById('location-dropdown');
+      if (dropdown) {
+        dropdown.style.display = 'flex';
       }
-    })
-    .catch(error => {
-      console.error('[DROPDOWN] Geo-detection failed:', error);
-    });
+    }
+  };
+
+  // Try sessionStorage first
+  if (sessionStorage.getItem('geo_visitor_country')) {
+    checkAndShowDropdown();
+  } else {
+    // Fallback to API if sessionStorage not set yet
+    fetch('https://test.hieunguyenel2686.workers.dev/')
+      .then(response => response.json())
+      .then(data => {
+        sessionStorage.setItem('geo_visitor_country', data.country);
+        checkAndShowDropdown();
+      })
+      .catch(error => {
+        console.error('[DROPDOWN] Geo-detection failed:', error);
+      });
+  }
 </script>
