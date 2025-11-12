@@ -65,6 +65,13 @@
     .then(data => {
       const apiCountry = data.country;
 
+      // Skip geo-targeting for US visitors - let them browse freely
+      if (apiCountry === 'US') {
+        console.log('[GEO] Skipping geo-targeting for US visitor - free navigation enabled');
+        sessionStorage.setItem('geo_visitor_country', apiCountry);
+        return;
+      }
+
       // Get expected locale for API detected country
       const targetConfig = countryToLocaleMap[apiCountry] || { locale: 'en-GB', rootUrl: '' };
 
