@@ -127,13 +127,31 @@
       });
 
       // Calculate what redirect URL would be
+      // First, remove any existing locale prefix from the path
       let pathWithoutLocale = currentPath;
-      if (currentRootUrl && currentRootUrl !== '/' && currentPath.startsWith(currentRootUrl)) {
-        pathWithoutLocale = currentPath.substring(currentRootUrl.length);
+
+      // Match and remove locale patterns like /de-de or /fr-fr from start of path
+      const localePattern = /^\/([a-z]{2}-[a-z]{2})(\/|$)/;
+      const localeMatch = pathWithoutLocale.match(localePattern);
+
+      if (localeMatch) {
+        // Remove the locale part: /fr-fr/products → /products, or /fr-fr → /
+        pathWithoutLocale = pathWithoutLocale.substring(localeMatch[0].length - 1);
+        console.log('[GEO-PATH] Removed locale from path:', {
+          originalPath: currentPath,
+          removedLocale: localeMatch[1],
+          pathAfterRemoval: pathWithoutLocale
+        });
       }
-      if (!pathWithoutLocale.startsWith('/')) {
+
+      // Ensure path starts with /
+      if (!pathWithoutLocale || pathWithoutLocale === '') {
+        pathWithoutLocale = '/';
+      } else if (!pathWithoutLocale.startsWith('/')) {
         pathWithoutLocale = '/' + pathWithoutLocale;
       }
+
+      // Build redirect URL
       const redirectUrl = (targetConfig.rootUrl + pathWithoutLocale + window.location.search).replace('//', '/');
 
       console.log('[GEO-SIMULATION] Redirect Simulation:', {
