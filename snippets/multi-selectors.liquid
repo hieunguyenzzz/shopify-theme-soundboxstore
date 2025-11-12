@@ -2,7 +2,7 @@
 {%- assign formClass = 'multi-selectors multi-selectors--' | append: location -%}
 {%- form 'localization', id: formId, class: formClass, data-disclosure-form: '' -%}
   {%- if locale_selector -%}
-    <div class="multi-selectors__item">
+    <div id="locale-selector-native" style="display: none;" class="multi-selectors__item">
       {%- if location == 'footer' -%}
         <div class="footer__title" id="LangHeading-{{ location }}">
           {{ 'general.language.dropdown_label' | t }}
@@ -34,6 +34,26 @@
         <input type="hidden" name="locale_code" value="{{ form.current_locale.iso_code }}" data-disclosure-input>
       </div>
     </div>
+
+    <script>
+      // Show locale selector only for US visitors
+      console.log('[LOCALE-SELECTOR] Checking visitor location...');
+      fetch('https://test.hieunguyenel2686.workers.dev/')
+        .then(response => response.json())
+        .then(data => {
+          console.log('[LOCALE-SELECTOR] Detected country:', data.country);
+          if (data.country === 'US') {
+            const selector = document.getElementById('locale-selector-native');
+            if (selector) {
+              selector.style.display = 'block';
+              console.log('[LOCALE-SELECTOR] Showing for US visitor');
+            }
+          } else {
+            console.log('[LOCALE-SELECTOR] Keeping hidden for non-US visitor');
+          }
+        })
+        .catch(error => console.error('[LOCALE-SELECTOR] Error:', error));
+    </script>
   {%- endif -%}
 
   {%- if currency_selector -%}
