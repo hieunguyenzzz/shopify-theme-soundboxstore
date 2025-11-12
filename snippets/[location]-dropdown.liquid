@@ -113,14 +113,27 @@ IT it /it-it' %}
   });
 
   // Show dropdown only for US visitors
+  console.log('[DROPDOWN] Starting location detection...');
+
+  const dropdown = document.getElementById('location-dropdown');
+  console.log('[DROPDOWN] Dropdown element found:', !!dropdown);
+  console.log('[DROPDOWN] Dropdown initial display:', dropdown ? window.getComputedStyle(dropdown).display : 'N/A');
+
   fetch('https://test.hieunguyenel2686.workers.dev/')
     .then(response => response.json())
     .then(data => {
+      console.log('[DROPDOWN] API Response:', data);
+      console.log('[DROPDOWN] Detected country:', data.country);
+      console.log('[DROPDOWN] Is US visitor?', data.country === 'US');
+
       if (data.country === 'US') {
-        const dropdown = document.getElementById('location-dropdown');
+        console.log('[DROPDOWN] Showing dropdown for US visitor');
         if (dropdown) {
           dropdown.style.display = 'flex';
+          console.log('[DROPDOWN] Dropdown display set to flex');
         }
+      } else {
+        console.log('[DROPDOWN] Keeping dropdown hidden for non-US visitor');
       }
     })
     .catch(error => {
