@@ -29,6 +29,7 @@ IT it /it-it' %}
     display: block;
   }
 </style>
+{% if localization.country.iso_code == 'US' %}
 <div class="tw-dropdown tw-flex tw-dropdown-end tw-dropdown-hover">
   <div
     tabindex="0"
@@ -112,3 +113,4 @@ IT it /it-it' %}
     });
   });
 </script>
+{% endif %}
