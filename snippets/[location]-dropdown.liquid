@@ -29,8 +29,7 @@ IT it /it-it' %}
     display: block;
   }
 </style>
-{% if localization.country.iso_code == 'US' %}
-<div class="tw-dropdown tw-flex tw-dropdown-end tw-dropdown-hover">
+<div id="location-dropdown" style="display: none;" class="tw-dropdown tw-flex tw-dropdown-end tw-dropdown-hover">
   <div
     tabindex="0"
     class="tw-btn tw-btn-ghost !tw-font-normal !tw-mb-0 tw-rounded-none tw-btn-xs tw-items-center tw-gap-1"
@@ -112,5 +111,19 @@ IT it /it-it' %}
       });
     });
   });
+
+  // Show dropdown only for US visitors
+  fetch('https://test.hieunguyenel2686.workers.dev/')
+    .then(response => response.json())
+    .then(data => {
+      if (data.country === 'US') {
+        const dropdown = document.getElementById('location-dropdown');
+        if (dropdown) {
+          dropdown.style.display = 'flex';
+        }
+      }
+    })
+    .catch(error => {
+      console.error('[DROPDOWN] Geo-detection failed:', error);
+    });
 </script>
-{% endif %}
