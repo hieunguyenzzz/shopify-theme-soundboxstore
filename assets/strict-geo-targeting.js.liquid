@@ -6,11 +6,20 @@
 (function() {
   'use strict';
 
+  // Check if US visitor was already identified (prevents redirects on navigation)
+  const savedCountry = sessionStorage.getItem('geo_visitor_country');
+  if (savedCountry === 'US') {
+    console.log('[GEO] US visitor from session - allowing free navigation to:', window.location.pathname);
+    return; // Exit entire script - no redirects
+  }
+
   // Get visitor's country from Shopify's geo-location
   const visitorCountry = '{{ localization.country.iso_code }}';
   const currentLocale = '{{ request.locale.iso_code }}';
   const currentPath = window.location.pathname;
   const currentRootUrl = '{{ request.locale.root_url }}';
+
+  console.log('[GEO] Starting geo-targeting check for:', currentPath);
 
   // FALLBACK: If Shopify locale is empty, detect from URL
   let detectedLocale = currentLocale;
