@@ -37,19 +37,19 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
-        "soundboxstore_quote_quote_btn_HgJ9bg": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_HgJ9bg": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "82b38b2e-eff3-4c06-9b68-ca746d098f59": {
@@ -251,7 +251,7 @@
           "type": "features_list_right",
           "settings": {
             "title": "Electrical / Lighting",
-            "description": "<p><br/>*LED Middle Strip 4000k, 50Lx, Daylight <br/>*LED Side Strips 4000k, 50Lx, Daylight <br/>*Multiple Power Outlets, 220- 24V USB, USB-C<br/>*Energy Saving Motion Sensor<br/>*2 * Ethernet (Cat 6) Connector <br/>*Bluetooth Connect Speaker<br/>*Wireless Charging Dock *Furniture Option Only</p>"
+            "description": "<p><br/>*LED Middle Strip 6500k, 50Lx, Daylight <br/>*LED Side Strips 4000k, 50Lx, Daylight <br/>*Multiple Power Outlets, 220- 24V USB, USB-C<br/>*Energy Saving Motion Sensor<br/>*2 * Ethernet (Cat 6) Connector <br/>*Bluetooth Connect Speaker<br/>*Wireless Charging Dock *Furniture Option Only</p>"
           }
         },
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348": {
@@ -899,7 +899,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": "<div id=\"feed-37680\" class=\"instafeed-shopify\"></div>"
@@ -907,7 +914,12 @@
         },
         "judge_me_reviews_review_widget_wEyQAx": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
