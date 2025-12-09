@@ -387,12 +387,43 @@
         transition: none !important;
       }
 
-      .jdgm-glider-track {
-        width: 1760px!important;
-      }
-      .jdgm-glider-track .jdgm-rev {
-        width: 333px!important;
-      }
+      /* --- PC (≥ 1025px) --- */
+@media (min-width: 1025px) {
+  .jdgm-glider-track {
+    width: 1760px !important;
+  }
+  .jdgm-glider-track .jdgm-rev {
+    width: 333px !important;
+  }
+}
+
+/* --- Tablet (768px – 1024px) --- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .jdgm-glider-track {
+    width: 1400px !important;
+  }
+  .jdgm-glider-track .jdgm-rev {
+    width: 300px !important;
+  }
+}
+
+/* --- Mobile (≤ 767px) --- */
+/* Hiển thị dạng 1 slide/1 lần */
+@media (max-width: 767px) {
+  .jdgm-glider-track {
+    width: 100% !important;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .jdgm-glider-track .jdgm-rev {
+    min-width: 85% !important; /* slide rộng 1 chút để đẹp */
+    margin-right: 12px;
+    scroll-snap-align: start;
+  }
+}
+
     </style>
 
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
