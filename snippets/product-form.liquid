@@ -54,7 +54,7 @@
   -%}
 
   <button
-    {% if product.empty? or settings.hide_add_to_cart %}
+    {% if product.empty? %}
       type="button"
     {% else %}
       type="submit"
@@ -65,39 +65,11 @@
     {% unless current_variant.available %}
       disabled="disabled"
     {% endunless %}
-    {% if settings.hide_add_to_cart %}
-      hidden
-      disabled="disabled"
-      style="display:none"
-      data-add-to-cart-disabled="true"
-    {% endif %}
   >
     <span data-add-to-cart-text data-default-text="{{ default_text }}">
       {{ button_text }}
     </span>
   </button>
-
-  {% if settings.hide_add_to_cart %}
-  <script>
-    (function() {
-      var form = document.getElementById('{{ form_id }}');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        });
-      }
-      document.querySelectorAll('[data-add-to-cart-disabled="true"]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        });
-      });
-    })();
-  </script>
-  {% endif %}
 
   {% assign isResserllerOrTradeAccount = false %}
 
