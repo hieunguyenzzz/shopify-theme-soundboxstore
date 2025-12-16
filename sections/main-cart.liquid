@@ -110,6 +110,7 @@
                       >No
                     </label>
                   </div>
+                  <div id="showroom_visit_error" style="color:red;font-size: 14px;display:none">Please select an option</div>
                 </div>
                 {% if cart.items_subtotal_price >= 1500000 %}
                   <div
@@ -145,6 +146,7 @@
                         >No
                       </label>
                     </div>
+                    <div id="site_survey_error" style="color:red;font-size: 14px;display:none">Please select an option</div>
                   </div>
                 {% endif %}
               </template>
@@ -159,7 +161,6 @@
                 <div style="display:flex;gap:1em;margin-top:0.5em">
                   <label style="flex:1"
                     ><input
-                      required
                       type="radio"
                       name="attributes[remote_tour]"
                       value="Yes"
@@ -181,7 +182,35 @@
                     {{- 'strings.others.No' | t }}
                   </label>
                 </div>
+                <div id="remote_tour_error" style="color:red;font-size: 14px;display:none">Please select an option</div>
               </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const remoteTourError = document.querySelector('#remote_tour_error');
+                  const remoteTourInputs = document.querySelectorAll('input[name="attributes[remote_tour]"]');
+                  remoteTourInputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                      remoteTourError.style.display = 'none';
+                    });
+                  });
+
+                  const btnSubmit = document.querySelector('.cart__checkout');
+                  btnSubmit.addEventListener('click', (event) => {
+                    let remoteTourChecked = false;
+                    remoteTourInputs.forEach(input => {
+                      if (input.checked) {
+                        remoteTourChecked = true;
+                      }
+                    });
+                    
+                    if (!remoteTourChecked) {
+                      event.preventDefault();
+                      remoteTourError.style.display = 'block';
+                      return false;
+                    }
+                  });
+                })
+              </script>
             </div>
             <script>
               (()=>{
