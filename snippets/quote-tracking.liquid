@@ -5,6 +5,7 @@
 
   GA4 Property: G-0HET6EXHTH (SoundBoxStore)
   Created: 2025-12-16
+  Updated: 2025-12-16 - Fixed duplicate event firing issue
 {% endcomment %}
 <script>
 (function() {
@@ -13,16 +14,41 @@
   // GA4 Measurement ID
   const GA4_ID = 'G-0HET6EXHTH';
 
-  // Prevent duplicate events per session
-  let requestQuoteFired = false;
-  let quoteSubmitFired = false;
+  // Use sessionStorage for robust de-duplication across page interactions
+  const STORAGE_KEY_REQUEST = 'qt_request_quote_fired';
+  const STORAGE_KEY_SUBMIT = 'qt_quote_submit_fired';
+
+  function hasEventFired(key) {
+    try {
+      return sessionStorage.getItem(key) === 'true';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markEventFired(key) {
+    try {
+      sessionStorage.setItem(key, 'true');
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }
+
+  function resetEventFlags() {
+    try {
+      sessionStorage.removeItem(STORAGE_KEY_REQUEST);
+      sessionStorage.removeItem(STORAGE_KEY_SUBMIT);
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }
 
   // 1. Track request_quote on button click (INTENT)
   // Selectors: Product page button + Header "Request a Quote" button
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
-    if (btn && !requestQuoteFired) {
-      requestQuoteFired = true;
+    if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
+      markEventFired(STORAGE_KEY_REQUEST);
       gtag('event', 'request_quote', {
         send_to: GA4_ID,
         event_category: 'Quote',
@@ -31,33 +57,41 @@
       });
       console.log('[QuoteTracking] request_quote fired');
     }
-  });
+  }, { capture: true, once: false });
 
   // 2. Track quote_submit on form submission (COMPLETION)
-  document.addEventListener('click', function(e) {
-    const submitBtn = e.target.closest('button[type="submit"]');
-    if (submitBtn && submitBtn.textContent.includes('Submit') && !quoteSubmitFired) {
-      // Check if we're in the quote popup context
-      const inQuotePopup = document.querySelector('input[placeholder*="Company"]');
-      if (inQuotePopup) {
-        quoteSubmitFired = true;
-        gtag('event', 'quote_submit', {
-          send_to: GA4_ID,
-          event_category: 'Quote',
-          event_label: window.location.pathname,
-          page_path: window.location.pathname
-        });
-        console.log('[QuoteTracking] quote_submit fired');
-      }
+  // Listen for actual form submit event for more reliable tracking
+  document.addEventListener('submit', function(e) {
+    const form = e.target;
+    // Check if this is a quote-related form
+    const isQuoteForm = form.querySelector('input[placeholder*="Company"]') ||
+                        form.querySelector('input[name*="Company"]') ||
+                        form.closest('.meraki-popup-wrapper');
+
+    if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
+      markEventFired(STORAGE_KEY_SUBMIT);
+      gtag('event', 'quote_submit', {
+        send_to: GA4_ID,
+        event_category: 'Quote',
+        event_label: window.location.pathname,
+        page_path: window.location.pathname
+      });
+      console.log('[QuoteTracking] quote_submit fired');
     }
-  });
+  }, { capture: true });
 
   // Reset flags when popup closes (for multiple quotes in same session)
   document.addEventListener('click', function(e) {
-    if (e.target.closest('[aria-label="Close"]') || e.target.closest('.close-button')) {
-      requestQuoteFired = false;
-      quoteSubmitFired = false;
+    const closeBtn = e.target.closest('[aria-label="Close"]') ||
+                     e.target.closest('.close-button') ||
+                     e.target.closest('.meraki-popup-close');
+    if (closeBtn) {
+      resetEventFlags();
+      console.log('[QuoteTracking] flags reset');
     }
   });
+
+  // Also reset on page navigation (for SPA behavior)
+  window.addEventListener('popstate', resetEventFlags);
 })();
 </script>
