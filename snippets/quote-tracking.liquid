@@ -61,10 +61,12 @@
 
   // 2. Track quote_submit on form submission (COMPLETION)
   // Listen for actual form submit event for more reliable tracking
+  // Covers: Header quote form (id="quote-form") and MerakiQuote popup
   document.addEventListener('submit', function(e) {
     const form = e.target;
     // Check if this is a quote-related form
-    const isQuoteForm = form.querySelector('input[placeholder*="Company"]') ||
+    const isQuoteForm = form.id === 'quote-form' ||
+                        form.querySelector('input[placeholder*="Company"]') ||
                         form.querySelector('input[name*="Company"]') ||
                         form.closest('.meraki-popup-wrapper');
 
@@ -76,7 +78,7 @@
         event_label: window.location.pathname,
         page_path: window.location.pathname
       });
-      console.log('[QuoteTracking] quote_submit fired');
+      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed');
     }
   }, { capture: true });
 
