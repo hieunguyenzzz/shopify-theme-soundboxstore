@@ -19643,3 +19643,24 @@ body.template-article h2 span {
   font-weight: 900;
 }
 [data-radix-popper-content-wrapper]{z-index:22474836462}
+
+/* Fix tooltip positioning on cart page */
+.template-cart [data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+.template-cart .cart__page-col [role="tooltip"],
+.template-cart .cart__page-col [data-radix-popper-content-wrapper] > div {
+  max-width: 250px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Ensure tooltip is properly positioned above trigger */
+.template-cart [data-side="top"] {
+  margin-bottom: 8px !important;
+}
+
+.template-cart [data-side="bottom"] {
+  margin-top: 8px !important;
+}
