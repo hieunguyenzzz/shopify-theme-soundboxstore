@@ -1,0 +1,62 @@
+{% comment %}
+  Quote Tracking - Direct GA4 Implementation
+  Replaces GTM-based tracking for consistency across all locales
+  Events: request_quote (intent) and quote_submit (completion)
+
+  GA4 Property: G-0HET6EXHTH (SoundBoxStore)
+  Created: 2025-12-16
+{% endcomment %}
+<script>
+(function() {
+  'use strict';
+
+  // GA4 Measurement ID
+  const GA4_ID = 'G-0HET6EXHTH';
+
+  // Prevent duplicate events per session
+  let requestQuoteFired = false;
+  let quoteSubmitFired = false;
+
+  // 1. Track request_quote on button click (INTENT)
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button');
+    if (btn && !requestQuoteFired) {
+      requestQuoteFired = true;
+      gtag('event', 'request_quote', {
+        send_to: GA4_ID,
+        event_category: 'Quote',
+        event_label: window.location.pathname,
+        page_path: window.location.pathname
+      });
+      console.log('[QuoteTracking] request_quote fired');
+    }
+  });
+
+  // 2. Track quote_submit on form submission (COMPLETION)
+  document.addEventListener('click', function(e) {
+    const submitBtn = e.target.closest('button[type="submit"]');
+    if (submitBtn && submitBtn.textContent.includes('Submit') && !quoteSubmitFired) {
+      // Check if we're in the quote popup context
+      const inQuotePopup = document.querySelector('input[placeholder*="Company"]');
+      if (inQuotePopup) {
+        quoteSubmitFired = true;
+        gtag('event', 'quote_submit', {
+          send_to: GA4_ID,
+          event_category: 'Quote',
+          event_label: window.location.pathname,
+          page_path: window.location.pathname
+        });
+        console.log('[QuoteTracking] quote_submit fired');
+      }
+    }
+  });
+
+  // Reset flags when popup closes (for multiple quotes in same session)
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[aria-label="Close"]') || e.target.closest('.close-button')) {
+      requestQuoteFired = false;
+      quoteSubmitFired = false;
+    }
+  });
+})();
+</script>
