@@ -110,7 +110,7 @@
                       >No
                     </label>
                   </div>
-                  <div id="showroom_visit_error" style="color:red;font-size: 14px;display:none">Please select an option</div>
+                  <div id="showroom_visit_error" style="color:red;font-size: 14px;display:none">{{ 'cart.general.showroom_visit_required' | t }}</div>
                 </div>
                 {% if cart.items_subtotal_price >= 1500000 %}
                   <div
@@ -182,7 +182,7 @@
                     {{- 'strings.others.No' | t }}
                   </label>
                 </div>
-                <div id="remote_tour_error" style="color:red;font-size: 14px;display:none">Please select an option</div>
+                <div id="remote_tour_error" style="color:red;font-size: 14px;display:none">{{ 'cart.general.showroom_visit_required' | t }}</div>
               </div>
               <script>
                 document.addEventListener('DOMContentLoaded', function() {
