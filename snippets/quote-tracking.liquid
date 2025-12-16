@@ -18,8 +18,9 @@
   let quoteSubmitFired = false;
 
   // 1. Track request_quote on button click (INTENT)
+  // Selectors: Product page button + Header "Request a Quote" button
   document.addEventListener('click', function(e) {
-    const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button');
+    const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
     if (btn && !requestQuoteFired) {
       requestQuoteFired = true;
       gtag('event', 'request_quote', {
