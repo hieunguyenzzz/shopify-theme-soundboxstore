@@ -41,31 +41,7 @@
     <div class="payment-buttons">
   {%- endif -%}
 
-  {% assign isResserllerOrTradeAccount = false %}
-
-  {% if customer %}
-    {% if customer.metafields['custom-register'].trade_account_type == 'credit' %}
-      {% if customer.metafields['custom-register'].trade_account_status == '1' %}
-        {% assign isResserllerOrTradeAccount = true %}
-      {% endif %}
-    {% endif %}
-  {% endif %}
-  {% if request.design_mode %}
-    {% if settings.isreseller %}
-      {% assign isResserllerOrTradeAccount = true %}
-    {% endif %}
-  {% endif %}
-  {% if isResserllerOrTradeAccount or show_add_quote %}
-    <button
-      type="button"
-      class="btn btn--full add-to-cart rfq-btn-0 rfq-btn"
-      id="rfq-btn-0"
-      data-product-id="{{ product.id }}"
-    >
-      <span data-add-to-cart-text="" data-default-text="Add to cart">{{ 'strings.general.request_quote' | t }}</span>
-    </button>
-  {% endif %}
-  {%- if enable_dynamic_buttons -%}
+    {%- if enable_dynamic_buttons -%}
     {{ form | payment_button }}
   {%- endif -%}
 
