@@ -635,6 +635,7 @@ IT it /it-it' %}
       >
         <input type="hidden" name="contact[tags]" value="quote-request">
         <input type="hidden" name="contact[context]" value="quote-request-header">
+        <input type="hidden" name="contact[gclid]" id="quote-form-gclid" value="">
         <div class="">
           <input
             class="input-full input"
@@ -736,13 +737,46 @@ IT it /it-it' %}
   {%- endform -%}
   <script>
     (() => {
+      // Helper to get gclid from various sources (matches MerakiQuote plugin approach)
+      function getGclid() {
+        try {
+          // Priority: URL param > localStorage > cookie
+          const urlParams = new URLSearchParams(window.location.search);
+          const fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
+          if (fromUrl) return fromUrl;
+
+          const fromStorage = localStorage.getItem('_gcl_aw');
+          if (fromStorage) return fromStorage;
+
+          // Try cookie as fallback
+          const cookies = document.cookie.split(';');
+          for (let c of cookies) {
+            const [name, val] = c.trim().split('=');
+            if (name === '_gcl_aw') return val.split('.').pop();
+          }
+        } catch (e) {}
+        return '';
+      }
+
       function logSubmit(event) {
         event.preventDefault();
         try {
           console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
+
+          // Get gclid for Google Ads attribution
+          const gclid = getGclid();
+
+          // Set the hidden field value
+          const gclidField = document.getElementById('quote-form-gclid');
+          if (gclidField) {
+            gclidField.value = gclid;
+          }
+
           let data = {
             create_at: new Date().toISOString(),
             products: [],
+            gclid: gclid,
+            _gcl_aw: gclid, // For consistency with MerakiQuote plugin
           };
           new FormData(event.target).forEach((value, key) => {
             console.log(key, value);
@@ -758,6 +792,7 @@ IT it /it-it' %}
             }
           });
           console.log({ data });
+          console.log('[QuoteForm] gclid:', gclid || 'none');
           let stringproducts = JSON.stringify(data.products);
           if (form.elements['contact[products]']) {
             form.elements['contact[products]'].value = stringproducts;

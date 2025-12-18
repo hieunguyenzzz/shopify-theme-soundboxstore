@@ -6,6 +6,7 @@
   GA4 Property: G-0HET6EXHTH (SoundBoxStore)
   Created: 2025-12-16
   Updated: 2025-12-16 - Fixed duplicate event firing issue
+  Updated: 2025-12-18 - Added gclid capture for Google Ads attribution
 {% endcomment %}
 <script>
 (function() {
@@ -17,6 +18,43 @@
   // Use sessionStorage for robust de-duplication across page interactions
   const STORAGE_KEY_REQUEST = 'qt_request_quote_fired';
   const STORAGE_KEY_SUBMIT = 'qt_quote_submit_fired';
+
+  // Capture gclid from URL on page load (for Google Ads attribution)
+  // Uses same localStorage key as MerakiQuote plugin for consistency
+  (function captureGclid() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gclid = urlParams.get('gclid') || urlParams.get('_gcl_aw');
+      if (gclid) {
+        localStorage.setItem('_gcl_aw', gclid);
+        localStorage.setItem('_gcl_aw_timestamp', Date.now().toString());
+        console.log('[QuoteTracking] gclid captured:', gclid);
+      }
+    } catch (e) {
+      // Ignore storage errors (private browsing, etc.)
+    }
+  })();
+
+  // Helper to get gclid from various sources
+  function getGclid() {
+    try {
+      // Priority: URL param > localStorage > cookie
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
+      if (fromUrl) return fromUrl;
+
+      const fromStorage = localStorage.getItem('_gcl_aw');
+      if (fromStorage) return fromStorage;
+
+      // Try cookie as fallback
+      const cookies = document.cookie.split(';');
+      for (let c of cookies) {
+        const [name, val] = c.trim().split('=');
+        if (name === '_gcl_aw') return val.split('.').pop();
+      }
+    } catch (e) {}
+    return '';
+  }
 
   function hasEventFired(key) {
     try {
@@ -72,13 +110,15 @@
 
     if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
       markEventFired(STORAGE_KEY_SUBMIT);
+      const gclid = getGclid();
       gtag('event', 'quote_submit', {
         send_to: GA4_ID,
         event_category: 'Quote',
         event_label: window.location.pathname,
-        page_path: window.location.pathname
+        page_path: window.location.pathname,
+        gclid: gclid
       });
-      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed');
+      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', 'gclid:', gclid || 'none');
     }
   }, { capture: true });
 
