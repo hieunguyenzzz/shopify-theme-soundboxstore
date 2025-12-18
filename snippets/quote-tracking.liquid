@@ -87,13 +87,15 @@
     const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
     if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
       markEventFired(STORAGE_KEY_REQUEST);
+      const gclid = getGclid();
       gtag('event', 'request_quote', {
         send_to: GA4_ID,
         event_category: 'Quote',
         event_label: window.location.pathname,
-        page_path: window.location.pathname
+        page_path: window.location.pathname,
+        gclid: gclid
       });
-      console.log('[QuoteTracking] request_quote fired');
+      console.log('[QuoteTracking] request_quote fired', 'gclid:', gclid || 'none');
     }
   }, { capture: true, once: false });
 
