@@ -51,16 +51,13 @@
                     <div class="icon-wrap">
                       <img
                         loading="lazy"
-                        src="{{ block.settings.iconimage | image_url : width: 50 }}"
-                        width="50"
-                        height="50"
+                        src="{{ block.settings.iconimage | image_url : width: 80 }}"
+                        width="80"
+                        height="80"
                         alt="{{ block.settings.iconimage.alt }}"
                       >
                     </div>
                   </div>
-                {% endif %}
-                {% if block.settings.text != blank %}
-                  <div class="text-block">{{ block.settings.text }}</div>
                 {% endif %}
               </div>
             </div>
@@ -78,12 +75,11 @@
                     <div class="icon-text-block">
                       <div class="icon-block">
                         <div class="icon-wrap">
-                          {{ image | image_url: width: 50 | image_tag }}
+                          {{ image | image_url: width: 80 | image_tag }}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="text-block">{{ image.alt }}</div>
                 </div>
               </div>
             </div>
