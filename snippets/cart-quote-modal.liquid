@@ -11,10 +11,10 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 9999;
     opacity: 0;
-    animation: fade-in 0.3s cubic-bezier(0.29, 0.65, 0.58, 1) forwards;
+    animation: cart-quote-fade-in 0.3s cubic-bezier(0.29, 0.65, 0.58, 1) forwards;
   }
 
   .cart-quote-modal-toggle:checked + .cart-quote-modal {
@@ -23,163 +23,218 @@
     align-items: center;
   }
 
-  @keyframes fade-in {
+  @keyframes cart-quote-fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
   }
 
-  @keyframes slide-up {
+  @keyframes cart-quote-slide-up {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
 
   .cart-quote-modal-inner {
-    background: #fff;
-    width: 90%;
-    max-width: 500px;
+    background: #f5f5f5;
+    width: 94%;
+    max-width: 640px;
     max-height: 90vh;
     overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    animation: slide-up 0.3s ease-out;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: cart-quote-slide-up 0.3s ease-out;
   }
 
   .cart-quote-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
+    padding: 24px 28px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 12px 12px 0 0;
   }
 
   .cart-quote-modal-header h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
   }
 
   .cart-quote-modal-close {
-    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #1a1a1a;
     border: none;
-    font-size: 1.5rem;
+    border-radius: 50%;
+    font-size: 1.25rem;
     cursor: pointer;
     padding: 0;
     line-height: 1;
-    color: #666;
+    color: #fff;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   .cart-quote-modal-close:hover {
-    color: #000;
+    background: #333;
+    transform: scale(1.05);
   }
 
   .cart-quote-modal-body {
-    padding: 20px;
+    padding: 28px;
   }
 
   .cart-quote-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   .cart-quote-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: 500;
     font-size: 14px;
+    color: #374151;
   }
 
   .cart-quote-form input,
   .cart-quote-form textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
     box-sizing: border-box;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .cart-quote-form input:focus,
   .cart-quote-form textarea:focus {
     outline: none;
-    border-color: #333;
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+  }
+
+  .cart-quote-form input::placeholder,
+  .cart-quote-form textarea::placeholder {
+    color: #9ca3af;
   }
 
   .cart-quote-form .required::after {
     content: ' *';
-    color: red;
+    color: #dc2626;
   }
 
   .cart-quote-form .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
+    .cart-quote-modal-inner {
+      width: 96%;
+      max-width: none;
+    }
+
+    .cart-quote-modal-header {
+      padding: 20px;
+    }
+
+    .cart-quote-modal-body {
+      padding: 20px;
+    }
+
     .cart-quote-form .form-row {
       grid-template-columns: 1fr;
+      gap: 0;
     }
   }
 
   .cart-quote-form button[type="submit"] {
     width: 100%;
-    padding: 14px;
-    background: #333;
+    padding: 16px 24px;
+    background: #1a1a1a;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   .cart-quote-form button[type="submit"]:hover {
-    background: #555;
+    background: #333;
+  }
+
+  .cart-quote-form button[type="submit"]:active {
+    transform: scale(0.98);
   }
 
   .cart-quote-items {
-    background: #f8f8f8;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    border: 1px solid #e5e5e5;
   }
 
   .cart-quote-items-title {
     font-weight: 600;
-    margin-bottom: 10px;
-    font-size: 14px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #1a1a1a;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
   }
 
   .cart-quote-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .cart-quote-item:last-child {
     border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .cart-quote-item:first-child {
+    padding-top: 0;
   }
 
   .cart-quote-item img {
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    background: #f9f9f9;
   }
 
   .cart-quote-item-details {
     flex: 1;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .cart-quote-item-title {
     font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-bottom: 4px;
   }
 
   .cart-quote-item-qty {
-    color: #666;
+    color: #6b7280;
+    font-size: 13px;
   }
 </style>
 
