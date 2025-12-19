@@ -1,0 +1,334 @@
+{% comment %}
+  Cart Quote Modal - Simple quote request form for cart page
+  Triggered by: <label for="quote-form-modal-cart">
+{% endcomment %}
+
+<style>
+  .cart-quote-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    opacity: 0;
+    animation: fade-in 0.3s cubic-bezier(0.29, 0.65, 0.58, 1) forwards;
+  }
+
+  .cart-quote-modal-toggle:checked + .cart-quote-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .cart-quote-modal-inner {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slide-up 0.3s ease-out;
+  }
+
+  .cart-quote-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cart-quote-modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .cart-quote-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    color: #666;
+  }
+
+  .cart-quote-modal-close:hover {
+    color: #000;
+  }
+
+  .cart-quote-modal-body {
+    padding: 20px;
+  }
+
+  .cart-quote-form .form-group {
+    margin-bottom: 15px;
+  }
+
+  .cart-quote-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .cart-quote-form input,
+  .cart-quote-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .cart-quote-form input:focus,
+  .cart-quote-form textarea:focus {
+    outline: none;
+    border-color: #333;
+  }
+
+  .cart-quote-form .required::after {
+    content: ' *';
+    color: red;
+  }
+
+  .cart-quote-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    .cart-quote-form .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cart-quote-form button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .cart-quote-form button[type="submit"]:hover {
+    background: #555;
+  }
+
+  .cart-quote-items {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .cart-quote-items-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .cart-quote-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cart-quote-item:last-child {
+    border-bottom: none;
+  }
+
+  .cart-quote-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .cart-quote-item-details {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  .cart-quote-item-title {
+    font-weight: 500;
+  }
+
+  .cart-quote-item-qty {
+    color: #666;
+  }
+</style>
+
+<input hidden type="checkbox" id="quote-form-modal-cart" class="cart-quote-modal-toggle">
+<div class="cart-quote-modal">
+  <div class="cart-quote-modal-inner">
+    <div class="cart-quote-modal-header">
+      <h3>{{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}</h3>
+      <label for="quote-form-modal-cart" class="cart-quote-modal-close" aria-label="Close">&times;</label>
+    </div>
+    <div class="cart-quote-modal-body">
+      <!-- Cart Items Summary -->
+      <div class="cart-quote-items">
+        <div class="cart-quote-items-title">{{ 'cart.general.your_items' | t | default: 'Your Items' }}</div>
+        {% for item in cart.items %}
+          <div class="cart-quote-item">
+            {% if item.image %}
+              <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title | escape }}">
+            {% endif %}
+            <div class="cart-quote-item-details">
+              <div class="cart-quote-item-title">{{ item.product.title }}</div>
+              <div class="cart-quote-item-qty">{{ 'cart.label.quantity' | t | default: 'Qty' }}: {{ item.quantity }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Quote Form -->
+      <form id="cart-quote-form" class="cart-quote-form" method="post" action="/contact#contact_form">
+        <input type="hidden" name="form_type" value="contact">
+        <input type="hidden" name="utf8" value="&#x2713;">
+        <input type="hidden" name="contact[subject]" value="Cart Quote Request">
+        <input type="hidden" name="contact[tags]" value="quote-request,cart-quote">
+        <input type="hidden" name="contact[cart_items]" id="cart-quote-items-hidden" value="">
+        <input type="hidden" name="contact[gclid]" id="cart-quote-gclid" value="">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cart-quote-name" class="required">{{ 'contact.form.name' | t | default: 'Full Name' }}</label>
+            <input type="text" id="cart-quote-name" name="contact[Full name]" required placeholder="{{ 'contact.form.name' | t | default: 'Full Name' }}">
+          </div>
+          <div class="form-group">
+            <label for="cart-quote-email" class="required">{{ 'contact.form.email' | t | default: 'Email' }}</label>
+            <input type="email" id="cart-quote-email" name="contact[email]" required placeholder="{{ 'contact.form.email' | t | default: 'Email' }}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cart-quote-company" class="required">{{ 'customer.addresses.company' | t | default: 'Company Name' }}</label>
+            <input type="text" id="cart-quote-company" name="contact[Company name]" required placeholder="{{ 'customer.addresses.company' | t | default: 'Company Name' }}">
+          </div>
+          <div class="form-group">
+            <label for="cart-quote-phone" class="required">{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}</label>
+            <input type="tel" id="cart-quote-phone" name="contact[Phone]" required placeholder="{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cart-quote-message">{{ 'contact.form.message' | t | default: 'Message' }}</label>
+          <textarea id="cart-quote-message" name="contact[body]" rows="3" placeholder="{{ 'cart.general.quote_message_placeholder' | t | default: 'Please include any special requirements (e.g., delivery to upper floors, multiple locations)' }}"></textarea>
+        </div>
+
+        <button type="submit">{{ 'cart.general.submit_quote' | t | default: 'Submit Quote Request' }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Close modal when clicking overlay
+    const modal = document.querySelector('.cart-quote-modal');
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          document.getElementById('quote-form-modal-cart').checked = false;
+        }
+      });
+    }
+
+    // Populate cart items in hidden field
+    const cartItems = [];
+    {% for item in cart.items %}
+      cartItems.push({
+        title: {{ item.product.title | json }},
+        variant: {{ item.variant.title | json }},
+        sku: {{ item.sku | json }},
+        quantity: {{ item.quantity }},
+        price: {{ item.price | money | json }}
+      });
+    {% endfor %}
+
+    const hiddenField = document.getElementById('cart-quote-items-hidden');
+    if (hiddenField) {
+      hiddenField.value = JSON.stringify(cartItems);
+    }
+
+    // Get gclid for attribution
+    function getGclid() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
+        if (fromUrl) return fromUrl;
+        const fromStorage = localStorage.getItem('_gcl_aw');
+        if (fromStorage) return fromStorage;
+      } catch (e) {}
+      return '';
+    }
+
+    const gclidField = document.getElementById('cart-quote-gclid');
+    if (gclidField) {
+      gclidField.value = getGclid();
+    }
+
+    // Handle form submission
+    const form = document.getElementById('cart-quote-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = {
+          create_at: new Date().toISOString(),
+          source: 'cart-quote-modal',
+          cart_items: cartItems,
+          gclid: getGclid()
+        };
+
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+
+        // Send to webhook
+        fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(console.error);
+
+        // Track event
+        if (typeof umami !== 'undefined') {
+          umami.track('cart_quote_submit');
+        }
+
+        // Submit the form
+        form.submit();
+      });
+    }
+  })();
+</script>

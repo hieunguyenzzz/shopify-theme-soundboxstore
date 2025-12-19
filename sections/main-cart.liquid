@@ -322,9 +322,9 @@
               </div>
             {% endif %}
 
-            <a href="/pages/request-a-quote" class="btn btn--secondary cart__request-quote" style="width: 100%; margin-top: 10px; text-align: center;">
+            <label for="quote-form-modal-cart" class="btn btn--secondary cart__request-quote" style="width: 100%; margin-top: 10px; text-align: center; cursor: pointer;">
               {{ 'cart.general.request_quote' | t }}
-            </a>
+            </label>
 
             {% comment %}
               <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary cart__continue">
@@ -415,6 +415,9 @@
     </form>
   {%- endif -%}
 </div>
+
+{% comment %} Cart Quote Request Modal {% endcomment %}
+{% render 'cart-quote-modal' %}
 
 {% schema %}
 {
