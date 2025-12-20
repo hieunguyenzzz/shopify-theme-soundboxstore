@@ -240,7 +240,7 @@ __DL__jQueryinterval = setInterval(function(){
                 'phone'     : {{checkout.billing_address.phone | json}},
             },
             'checkoutEmail' : {{checkout.email | json}},
-            'currency'      : {{shop.currency | json}},
+            'currency'      : {{cart.currency.iso_code | json}},
             'pageType'      : 'Log State',
             'event'         : 'logState'
         }

@@ -245,7 +245,7 @@
       eventData.item_name = productTitle;
       eventData.item_id = productId;
       eventData.price = price.replace(/[^0-9.,]/g, '');
-      eventData.currency = '{{ shop.currency }}';
+      eventData.currency = '{{ cart.currency.iso_code }}';
 
       gtag('event', 'add_to_cart', eventData);
       trackUmami('add_to_cart', {

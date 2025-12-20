@@ -33,7 +33,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
           {%- endif -%}
           "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
           "price" : {{ variant.price | divided_by: 100.00 | json }},
-          "priceCurrency" : {{ shop.currency | json }},
+          "priceCurrency" : {{ cart.currency.iso_code | json }},
           "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d' }}",
           "url" : {{ shop.url | append: variant.url | json }}
         }{% unless forloop.last %},{% endunless %}
