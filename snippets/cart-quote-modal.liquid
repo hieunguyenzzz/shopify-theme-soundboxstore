@@ -4,6 +4,7 @@
 {% endcomment %}
 
 <style>
+  /* Cart Quote Modal - Soundbox Store Design System */
   .cart-quote-modal {
     display: none;
     position: fixed;
@@ -11,7 +12,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(45, 62, 80, 0.6);
     z-index: 9999;
     opacity: 0;
     animation: cart-quote-fade-in 0.3s cubic-bezier(0.29, 0.65, 0.58, 1) forwards;
@@ -34,12 +35,12 @@
   }
 
   .cart-quote-modal-inner {
-    background: #f5f5f5;
+    background: #FFFFFF;
     width: 94%;
     max-width: 640px;
     max-height: 90vh;
     overflow-y: auto;
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     animation: cart-quote-slide-up 0.3s ease-out;
   }
@@ -48,48 +49,49 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 28px;
-    background: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    border-radius: 12px 12px 0 0;
+    padding: 24px 32px;
+    background: #2D3E50;
+    border-bottom: none;
   }
 
   .cart-quote-modal-header h3 {
     margin: 0;
-    font-size: 1.375rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    color: #1a1a1a;
-    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .cart-quote-modal-close {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: #1a1a1a;
-    border: none;
-    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 0;
     font-size: 1.25rem;
     cursor: pointer;
     padding: 0;
     line-height: 1;
-    color: #fff;
+    color: #FFFFFF;
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   .cart-quote-modal-close:hover {
-    background: #333;
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
   }
 
   .cart-quote-modal-body {
-    padding: 28px;
+    padding: 32px;
+    background: #F8F7F4;
   }
 
   .cart-quote-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .cart-quote-form label {
@@ -97,42 +99,46 @@
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 14px;
-    color: #374151;
+    color: #2D2D2D;
+    letter-spacing: 0.02em;
   }
 
   .cart-quote-form input,
   .cart-quote-form textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 15px;
+    border: 1px solid #E0E0E0;
+    border-radius: 0;
+    font-size: 16px;
+    line-height: 1.6;
     box-sizing: border-box;
-    background: #fff;
+    background: #FFFFFF;
+    color: #2D2D2D;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
   }
 
   .cart-quote-form input:focus,
   .cart-quote-form textarea:focus {
     outline: none;
-    border-color: #1a1a1a;
-    box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
+    border-color: #2D3E50;
+    box-shadow: 0 0 0 2px rgba(45, 62, 80, 0.1);
   }
 
   .cart-quote-form input::placeholder,
   .cart-quote-form textarea::placeholder {
-    color: #9ca3af;
+    color: #9B9B9B;
   }
 
   .cart-quote-form .required::after {
     content: ' *';
-    color: #dc2626;
+    color: #C99E92;
   }
 
   .cart-quote-form .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 
   @media (max-width: 540px) {
@@ -142,11 +148,11 @@
     }
 
     .cart-quote-modal-header {
-      padding: 20px;
+      padding: 20px 24px;
     }
 
     .cart-quote-modal-body {
-      padding: 20px;
+      padding: 24px;
     }
 
     .cart-quote-form .form-row {
@@ -157,20 +163,25 @@
 
   .cart-quote-form button[type="submit"] {
     width: 100%;
-    padding: 16px 24px;
-    background: #1a1a1a;
-    color: #fff;
+    padding: 16px 32px;
+    background: #2D3E50;
+    color: #FFFFFF;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 0;
+    font-size: 14px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     cursor: pointer;
     margin-top: 8px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
   }
 
   .cart-quote-form button[type="submit"]:hover {
-    background: #333;
+    background: #1A2332;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
   }
 
   .cart-quote-form button[type="submit"]:active {
@@ -178,28 +189,30 @@
   }
 
   .cart-quote-items {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
+    background: #FFFFFF;
+    padding: 24px;
+    border-radius: 0;
     margin-bottom: 24px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid #E0E0E0;
   }
 
   .cart-quote-items-title {
     font-weight: 600;
     margin-bottom: 16px;
-    font-size: 15px;
-    color: #1a1a1a;
+    font-size: 14px;
+    color: #2D3E50;
     padding-bottom: 12px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #E0E0E0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .cart-quote-item {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 0;
+    border-bottom: 1px solid #F5F5F5;
   }
 
   .cart-quote-item:last-child {
@@ -215,9 +228,9 @@
     width: 64px;
     height: 64px;
     object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #e5e5e5;
-    background: #f9f9f9;
+    border-radius: 0;
+    border: 1px solid #E0E0E0;
+    background: #F8F7F4;
   }
 
   .cart-quote-item-details {
@@ -227,14 +240,72 @@
 
   .cart-quote-item-title {
     font-weight: 500;
-    color: #1a1a1a;
+    color: #2D2D2D;
     line-height: 1.4;
     margin-bottom: 4px;
   }
 
   .cart-quote-item-qty {
-    color: #6b7280;
+    color: #6B6B6B;
     font-size: 13px;
+  }
+
+  /* Thank you message styles */
+  .cart-quote-thank-you {
+    display: none;
+    text-align: center;
+    padding: 64px 32px;
+    background: #FFFFFF;
+  }
+
+  .cart-quote-thank-you.show {
+    display: block;
+  }
+
+  .cart-quote-thank-you h4 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2D3E50;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .cart-quote-thank-you p {
+    color: #6B6B6B;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cart-quote-thank-you .btn-close-modal {
+    display: inline-block;
+    padding: 16px 48px;
+    background: #2D3E50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  }
+
+  .cart-quote-thank-you .btn-close-modal:hover {
+    background: #1A2332;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
+  }
+
+  .cart-quote-form-content.hide {
+    display: none;
   }
 </style>
 
@@ -246,8 +317,17 @@
       <label for="quote-form-modal-cart" class="cart-quote-modal-close" aria-label="Close">&times;</label>
     </div>
     <div class="cart-quote-modal-body">
-      <!-- Cart Items Summary -->
-      <div class="cart-quote-items">
+      <!-- Thank You Message -->
+      <div class="cart-quote-thank-you" id="cart-quote-thank-you">
+        <h4>{{ 'cart.general.quote_thank_you_title' | t | default: 'Thank You!' }}</h4>
+        <p>{{ 'cart.general.quote_thank_you_message' | t | default: 'Your quote request has been submitted successfully. Our team will review your requirements and get back to you shortly.' }}</p>
+        <label for="quote-form-modal-cart" class="btn-close-modal">{{ 'cart.general.close' | t | default: 'Close' }}</label>
+      </div>
+
+      <!-- Form Content -->
+      <div class="cart-quote-form-content" id="cart-quote-form-content">
+        <!-- Cart Items Summary -->
+        <div class="cart-quote-items">
         <div class="cart-quote-items-title">{{ 'cart.general.your_items' | t | default: 'Your Items' }}</div>
         {% for item in cart.items %}
           <div class="cart-quote-item">
@@ -300,6 +380,7 @@
 
         <button type="submit">{{ 'cart.general.submit_quote' | t | default: 'Submit Quote Request' }}</button>
       </form>
+      </div><!-- end cart-quote-form-content -->
     </div>
   </div>
 </div>
@@ -368,7 +449,7 @@
           data[key] = value;
         });
 
-        // Send to webhook
+        // Send to Zapier webhook
         fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
           method: 'POST',
           mode: 'no-cors',
@@ -376,13 +457,54 @@
           body: JSON.stringify(data)
         }).catch(console.error);
 
+        // Send to Cloud Run for Zoho CRM sync
+        const zohoData = {
+          Full_Name: formData.get('contact[Full name]'),
+          Email: formData.get('contact[email]'),
+          Company: formData.get('contact[Company name]'),
+          Phone: formData.get('contact[Phone]'),
+          Message: formData.get('contact[body]'),
+          Lead_Source: 'WebSite Visit',
+          Description: 'Cart Quote Request: ' + JSON.stringify(cartItems),
+          source: 'cart-quote-modal',
+          gclid: getGclid()
+        };
+        fetch('https://soundboxstore-zoho-webhook-1008501784095.europe-west1.run.app/webhook/cart-quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(zohoData)
+        }).catch(console.error);
+
         // Track event
         if (typeof umami !== 'undefined') {
           umami.track('cart_quote_submit');
         }
 
-        // Submit the form
-        form.submit();
+        // Show thank you message instead of redirecting
+        const formContent = document.getElementById('cart-quote-form-content');
+        const thankYou = document.getElementById('cart-quote-thank-you');
+        if (formContent && thankYou) {
+          formContent.classList.add('hide');
+          thankYou.classList.add('show');
+        }
+      });
+    }
+
+    // Reset modal when closed
+    const modalCheckbox = document.getElementById('quote-form-modal-cart');
+    if (modalCheckbox) {
+      modalCheckbox.addEventListener('change', function() {
+        if (!this.checked) {
+          // Modal is being closed, reset after animation
+          setTimeout(function() {
+            const formContent = document.getElementById('cart-quote-form-content');
+            const thankYou = document.getElementById('cart-quote-thank-you');
+            const form = document.getElementById('cart-quote-form');
+            if (formContent) formContent.classList.remove('hide');
+            if (thankYou) thankYou.classList.remove('show');
+            if (form) form.reset();
+          }, 300);
+        }
       });
     }
   })();
