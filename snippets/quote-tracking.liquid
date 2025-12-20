@@ -1,14 +1,17 @@
 {% comment %}
-  Quote & Cart Tracking - Direct GA4 Implementation
+  Quote & Cart Tracking - GA4 + Umami Implementation
   Tracks key conversion events with UTM attribution for campaign performance analysis
   Events: form_start, request_quote, quote_submit, add_to_cart
 
   GA4 Property: G-0HET6EXHTH (SoundBoxStore)
+  Umami: umami.mobelaris.com (33c86e50-36c8-428d-8b39-d1dfa548a808)
+
   Created: 2025-12-16
   Updated: 2025-12-16 - Fixed duplicate event firing issue
   Updated: 2025-12-18 - Added gclid capture for Google Ads attribution
   Updated: 2025-12-20 - Added UTM parameter capture for attribution without cookies
   Updated: 2025-12-20 - Added add_to_cart tracking with UTM attribution
+  Updated: 2025-12-20 - Added Umami tracking with UTM attribution for all events
 {% endcomment %}
 <script>
 (function() {
@@ -145,6 +148,31 @@
     };
   }
 
+  // Helper to track events in Umami with UTM attribution
+  function trackUmami(eventName, extraProps) {
+    if (typeof umami === 'undefined') return;
+
+    const gclid = getGclid();
+    const attribution = getAttribution();
+
+    const props = {
+      utm_source: attribution.utm_source || (gclid ? 'google' : ''),
+      utm_medium: attribution.utm_medium || (gclid ? 'cpc' : ''),
+      utm_campaign: attribution.utm_campaign || '',
+      gclid: gclid || '',
+      landing_page: attribution.landing_page || '',
+      page_path: window.location.pathname,
+      ...extraProps
+    };
+
+    try {
+      umami.track(eventName, props);
+      console.log('[QuoteTracking] Umami:', eventName, props);
+    } catch (e) {
+      // Ignore Umami errors
+    }
+  }
+
   // Storage key for form_start
   const STORAGE_KEY_FORM_START = 'qt_form_start_fired';
 
@@ -159,6 +187,7 @@
       eventData.form_id = form.id || 'quote-form';
 
       gtag('event', 'form_start', eventData);
+      trackUmami('form_start', { form_id: eventData.form_id });
       console.log('[QuoteTracking] form_start fired', eventData);
     }
   }, { capture: true });
@@ -172,6 +201,7 @@
       const eventData = buildEventData('request_quote');
 
       gtag('event', 'request_quote', eventData);
+      trackUmami('request_quote', {});
       console.log('[QuoteTracking] request_quote fired', eventData);
     }
   }, { capture: true, once: false });
@@ -193,6 +223,7 @@
       eventData.form_id = form.id || 'quote-form';
 
       gtag('event', 'quote_submit', eventData);
+      trackUmami('quote_submit', { form_id: eventData.form_id });
       console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', eventData);
     }
   }, { capture: true });
@@ -217,6 +248,11 @@
       eventData.currency = '{{ shop.currency }}';
 
       gtag('event', 'add_to_cart', eventData);
+      trackUmami('add_to_cart', {
+        item_name: productTitle,
+        item_id: productId,
+        price: eventData.price
+      });
       console.log('[QuoteTracking] add_to_cart fired', eventData);
 
       // Don't use de-duplication for add_to_cart - users may add multiple products
