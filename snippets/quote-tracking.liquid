@@ -1,12 +1,14 @@
 {% comment %}
-  Quote Tracking - Direct GA4 Implementation
-  Replaces GTM-based tracking for consistency across all locales
-  Events: request_quote (intent) and quote_submit (completion)
+  Quote & Cart Tracking - Direct GA4 Implementation
+  Tracks key conversion events with UTM attribution for campaign performance analysis
+  Events: form_start, request_quote, quote_submit, add_to_cart
 
   GA4 Property: G-0HET6EXHTH (SoundBoxStore)
   Created: 2025-12-16
   Updated: 2025-12-16 - Fixed duplicate event firing issue
   Updated: 2025-12-18 - Added gclid capture for Google Ads attribution
+  Updated: 2025-12-20 - Added UTM parameter capture for attribution without cookies
+  Updated: 2025-12-20 - Added add_to_cart tracking with UTM attribution
 {% endcomment %}
 <script>
 (function() {
@@ -19,21 +21,61 @@
   const STORAGE_KEY_REQUEST = 'qt_request_quote_fired';
   const STORAGE_KEY_SUBMIT = 'qt_quote_submit_fired';
 
-  // Capture gclid from URL on page load (for Google Ads attribution)
-  // Uses same localStorage key as MerakiQuote plugin for consistency
-  (function captureGclid() {
+  // UTM and attribution parameters to capture
+  const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'];
+  const STORAGE_KEY_ATTRIBUTION = 'qt_attribution';
+
+  // Capture gclid and UTM parameters from URL on page load
+  // Store in localStorage to persist across page navigations
+  (function captureAttribution() {
     try {
       const urlParams = new URLSearchParams(window.location.search);
+
+      // Capture gclid
       const gclid = urlParams.get('gclid') || urlParams.get('_gcl_aw');
       if (gclid) {
         localStorage.setItem('_gcl_aw', gclid);
         localStorage.setItem('_gcl_aw_timestamp', Date.now().toString());
         console.log('[QuoteTracking] gclid captured:', gclid);
       }
+
+      // Capture UTM parameters if any are present
+      const hasUtmParams = UTM_PARAMS.some(p => urlParams.get(p));
+      if (hasUtmParams || gclid) {
+        const attribution = {
+          timestamp: Date.now(),
+          gclid: gclid || '',
+          utm_source: urlParams.get('utm_source') || '',
+          utm_medium: urlParams.get('utm_medium') || '',
+          utm_campaign: urlParams.get('utm_campaign') || '',
+          utm_term: urlParams.get('utm_term') || '',
+          utm_content: urlParams.get('utm_content') || '',
+          utm_id: urlParams.get('utm_id') || '',
+          landing_page: window.location.pathname
+        };
+        localStorage.setItem(STORAGE_KEY_ATTRIBUTION, JSON.stringify(attribution));
+        console.log('[QuoteTracking] Attribution captured:', attribution);
+      }
     } catch (e) {
       // Ignore storage errors (private browsing, etc.)
     }
   })();
+
+  // Helper to get stored attribution data
+  function getAttribution() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY_ATTRIBUTION);
+      if (stored) {
+        const data = JSON.parse(stored);
+        // Check if attribution is still valid (30 days)
+        const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+        if (Date.now() - data.timestamp < thirtyDaysMs) {
+          return data;
+        }
+      }
+    } catch (e) {}
+    return {};
+  }
 
   // Helper to get gclid from various sources
   function getGclid() {
@@ -76,10 +118,50 @@
     try {
       sessionStorage.removeItem(STORAGE_KEY_REQUEST);
       sessionStorage.removeItem(STORAGE_KEY_SUBMIT);
+      sessionStorage.removeItem(STORAGE_KEY_FORM_START);
     } catch (e) {
       // Ignore storage errors
     }
   }
+
+  // Helper to build event data with attribution
+  function buildEventData(eventName) {
+    const gclid = getGclid();
+    const attribution = getAttribution();
+
+    return {
+      send_to: GA4_ID,
+      event_category: 'Quote',
+      event_label: window.location.pathname,
+      page_path: window.location.pathname,
+      gclid: gclid,
+      // Include UTM parameters as custom dimensions for attribution
+      traffic_source: attribution.utm_source || (gclid ? 'google' : ''),
+      traffic_medium: attribution.utm_medium || (gclid ? 'cpc' : ''),
+      traffic_campaign: attribution.utm_campaign || '',
+      traffic_term: attribution.utm_term || '',
+      traffic_content: attribution.utm_content || '',
+      landing_page: attribution.landing_page || ''
+    };
+  }
+
+  // Storage key for form_start
+  const STORAGE_KEY_FORM_START = 'qt_form_start_fired';
+
+  // 0. Track form_start when user focuses on quote form (ENGAGEMENT)
+  document.addEventListener('focusin', function(e) {
+    const input = e.target;
+    // Check if this is an input inside a quote form
+    const form = input.closest('#quote-form, .meraki-popup-wrapper, [id^="quote-form"]');
+    if (form && input.matches('input, textarea, select') && !hasEventFired(STORAGE_KEY_FORM_START)) {
+      markEventFired(STORAGE_KEY_FORM_START);
+      const eventData = buildEventData('form_start');
+      eventData.form_id = form.id || 'quote-form';
+
+      gtag('event', 'form_start', eventData);
+      console.log('[QuoteTracking] form_start fired', eventData);
+    }
+  }, { capture: true });
 
   // 1. Track request_quote on button click (INTENT)
   // Selectors: Product page button + Header "Request a Quote" button
@@ -87,15 +169,10 @@
     const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
     if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
       markEventFired(STORAGE_KEY_REQUEST);
-      const gclid = getGclid();
-      gtag('event', 'request_quote', {
-        send_to: GA4_ID,
-        event_category: 'Quote',
-        event_label: window.location.pathname,
-        page_path: window.location.pathname,
-        gclid: gclid
-      });
-      console.log('[QuoteTracking] request_quote fired', 'gclid:', gclid || 'none');
+      const eventData = buildEventData('request_quote');
+
+      gtag('event', 'request_quote', eventData);
+      console.log('[QuoteTracking] request_quote fired', eventData);
     }
   }, { capture: true, once: false });
 
@@ -112,15 +189,37 @@
 
     if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
       markEventFired(STORAGE_KEY_SUBMIT);
-      const gclid = getGclid();
-      gtag('event', 'quote_submit', {
-        send_to: GA4_ID,
-        event_category: 'Quote',
-        event_label: window.location.pathname,
-        page_path: window.location.pathname,
-        gclid: gclid
-      });
-      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', 'gclid:', gclid || 'none');
+      const eventData = buildEventData('quote_submit');
+      eventData.form_id = form.id || 'quote-form';
+
+      gtag('event', 'quote_submit', eventData);
+      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', eventData);
+    }
+  }, { capture: true });
+
+  // 3. Track add_to_cart on Add to Cart button click
+  // Selectors: Product page Add to Cart button, quick add buttons
+  const STORAGE_KEY_ADD_CART = 'qt_add_to_cart_fired';
+
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button.add-to-cart, button[name="add"], [data-add-to-cart], .cpb-add-to-cart-button');
+    if (btn) {
+      // Get product info if available
+      const form = btn.closest('form[action*="/cart/add"]');
+      const productTitle = document.querySelector('h1.product-single__title, h1')?.textContent?.trim() || '';
+      const productId = form?.querySelector('[name="id"]')?.value || '';
+      const price = document.querySelector('.product__price, [data-product-price]')?.textContent?.trim() || '';
+
+      const eventData = buildEventData('add_to_cart');
+      eventData.item_name = productTitle;
+      eventData.item_id = productId;
+      eventData.price = price.replace(/[^0-9.,]/g, '');
+      eventData.currency = '{{ shop.currency }}';
+
+      gtag('event', 'add_to_cart', eventData);
+      console.log('[QuoteTracking] add_to_cart fired', eventData);
+
+      // Don't use de-duplication for add_to_cart - users may add multiple products
     }
   }, { capture: true });
 
