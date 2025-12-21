@@ -30,10 +30,24 @@
    }
    #shopify-section-{{section.id}} .modal__close {
      position: absolute;
-     top: -10px;
-     right: -10px;
+     top: -12px;
+     right: -12px;
      z-index: 10;
      cursor: pointer;
+     width: 36px;
+     height: 36px;
+     min-width: 36px;
+     min-height: 36px;
+     padding: 8px;
+     background: #3d3d3d;
+     border-radius: 50%;
+   }
+   #shopify-section-{{section.id}} .modal__close .icon {
+     width: 16px;
+     height: 16px;
+   }
+   #shopify-section-{{section.id}} .modal__close .icon .cls-1 {
+     stroke: #fff;
    }
   #shopify-section-{{section.id}}  .modal__centered >* {
          flex: 1 1 auto;
