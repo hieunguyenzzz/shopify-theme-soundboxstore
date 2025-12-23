@@ -171,6 +171,12 @@
     <meta name="theme-color" content="{{ settings.color_button }}">
     <meta http-equiv="Expires" content="30">
 
+    {%- comment -%} Preconnect to critical third-party origins for faster resource loading {%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
