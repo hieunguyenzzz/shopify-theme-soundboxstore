@@ -122,7 +122,8 @@ $(document).ready(function () {
             fade: !1,
             swipe: !0,
             touchMove: !0,
-            arrows: !1
+            arrows: !1,
+            asNavFor: null
           }
         }
       ]

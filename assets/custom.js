@@ -243,7 +243,8 @@ $(document).ready(function() {
           fade: false,
           swipe: true,
           touchMove: true,
-          arrows: false
+          arrows: false,
+          asNavFor: null
         }
       }
     ]
