@@ -45,6 +45,32 @@ calc(100vw - 4rem)
       opacity: 0.7;
       top: 30%;
   }
+
+  /* Mobile gallery fix - horizontal scroll instead of vertical stack */
+  @media only screen and (max-width: 860px) {
+    .product-main-slider .image-gallery-main {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .product-main-slider .image-gallery-main::-webkit-scrollbar {
+      display: none;
+    }
+    .product-main-slider .image-gallery-main .image-gallery-block {
+      flex: 0 0 100%;
+      min-width: 100%;
+      scroll-snap-align: start;
+    }
+    .product-main-slider .image-gallery-main .image-gallery-block .gallery-wrap {
+      display: block !important;
+    }
+    .product-main-slider .thumbnail-gallery {
+      display: none;
+    }
+  }
 </style>
 
 {%- unless product.empty? -%}
