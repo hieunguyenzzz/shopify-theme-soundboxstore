@@ -642,9 +642,9 @@
           document.head.appendChild(c);
         }
         if (document.readyState === 'complete') {
-          setTimeout(loadSmartLook, 200);
+          setTimeout(loadSmartLook, 2000);
         } else {
-          window.addEventListener('load', function() { setTimeout(loadSmartLook, 200); });
+          window.addEventListener('load', function() { setTimeout(loadSmartLook, 2000); });
         }
       })();
     </script>
