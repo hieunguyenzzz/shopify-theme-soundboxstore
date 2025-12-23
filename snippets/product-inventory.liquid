@@ -84,24 +84,13 @@
    {% endfor %}
 </script>
 
-{% comment %}
-  If loaded in quick view, it might be from a JS-loaded function
-  that loads recommended products. If that's the case, the above
-  JS will not set the variant inventory. Add it to an accessible
-  data div to read later instead.
-{% endcomment %}
+{%- comment -%}
+  Variant inventory data stored in JS object for better performance.
+  This replaces multiple hidden divs with a single data attribute.
+{%- endcomment -%}
 <div
   data-product-id="{{ product.id }}"
   class="hide js-product-inventory-data"
   aria-hidden="true"
->
-  {%- for variant in variants_with_inventory_tracking -%}
-    <div
-      class="js-variant-inventory-data"
-      data-id="{{ variant.id }}"
-      data-quantity="{{ variant.inventory_quantity  | default: 0 }}"
-      data-incoming="{{ variant.incoming | default: false }}"
-      data-date="{{ variant.next_incoming_date | date: format: 'date' }}"
-    ></div>
-  {%- endfor -%}
-</div>
+  data-inventory-json='{%- for variant in variants_with_inventory_tracking -%}{% unless forloop.first %},{% endunless %}"{{ variant.id }}":{"q":{{ variant.inventory_quantity | default: 0 }},"i":"{{ variant.incoming | default: false }}","d":"{{ variant.next_incoming_date | date: format: 'date' }}"}{%- endfor -%}'
+></div>
