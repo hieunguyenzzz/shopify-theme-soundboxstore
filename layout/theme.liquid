@@ -52,28 +52,25 @@
     {% endif %}
     <script defer src="https://umami.mobelaris.com/script.js" data-website-id="33c86e50-36c8-428d-8b39-d1dfa548a808"></script>
 
-    {%- comment -%} Bing UET - deferred to improve page load {%- endcomment -%}
     <script>
-      window.uetq = window.uetq || [];
-      (function() {
-        function loadBingUET() {
-          var n = document.createElement('script');
-          n.src = '//bat.bing.com/bat.js';
-          n.async = true;
-          n.onload = function() {
+      (function (w, d, t, r, u) {
+        var f, n, i;
+        (w[u] = w[u] || []),
+          (f = function () {
             var o = { ti: '187133965', enableAutoSpaTracking: true };
-            o.q = window.uetq;
-            window.uetq = new UET(o);
-            window.uetq.push('pageLoad');
-          };
-          document.head.appendChild(n);
-        }
-        if (document.readyState === 'complete') {
-          setTimeout(loadBingUET, 100);
-        } else {
-          window.addEventListener('load', function() { setTimeout(loadBingUET, 100); });
-        }
-      })();
+            (o.q = w[u]), (w[u] = new UET(o)), w[u].push('pageLoad');
+          }),
+          (n = d.createElement(t)),
+          (n.src = r),
+          (n.async = 1),
+          (n.onload = n.onreadystatechange =
+            function () {
+              var s = this.readyState;
+              (s && s !== 'loaded' && s !== 'complete') || (f(), (n.onload = n.onreadystatechange = null));
+            }),
+          (i = d.getElementsByTagName(t)[0]),
+          i.parentNode.insertBefore(n, i);
+      })(window, document, 'script', '//bat.bing.com/bat.js', 'uetq');
     </script>
     <!-- Google Tag Manager -->
     <script>
@@ -582,27 +579,22 @@
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- comment -%} SmartLook - deferred to improve page load {%- endcomment -%}
-    <script>
-      window.smartlook = window.smartlook || function() {
-        (smartlook.api = smartlook.api || []).push(arguments);
-      };
-      (function() {
-        function loadSmartLook() {
-          var c = document.createElement('script');
+    <script type="text/javascript">
+      window.smartlook ||
+        (function (d) {
+          var o = (smartlook = function () {
+              o.api.push(arguments);
+            }),
+            h = d.getElementsByTagName('head')[0];
+          var c = d.createElement('script');
+          o.api = new Array();
           c.async = true;
+          c.type = 'text/javascript';
+          c.charset = 'utf-8';
           c.src = 'https://web-sdk.smartlook.com/recorder.js';
-          c.onload = function() {
-            smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
-          };
-          document.head.appendChild(c);
-        }
-        if (document.readyState === 'complete') {
-          setTimeout(loadSmartLook, 200);
-        } else {
-          window.addEventListener('load', function() { setTimeout(loadSmartLook, 200); });
-        }
-      })();
+          h.appendChild(c);
+        })(document);
+      smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
     </script>
     <script>
       (() => {
@@ -680,52 +672,29 @@
         },
       };
     </script>
-    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
-    {% render 'zoho-google-ads-tracking' %}
+    {% render 'linkedin_insights_tag' %}
 
-    {%- comment -%}
-      Performance optimization: Load third-party tracking scripts on user interaction
-      This defers Claydar, LinkedIn, and Leadfeeder to improve LCP and TBT
-    {%- endcomment -%}
     <script>
-      (function() {
-        var thirdPartyLoaded = false;
-        function loadThirdPartyScripts() {
-          if (thirdPartyLoaded) return;
-          thirdPartyLoaded = true;
-
-          // Claydar - defer load
-          var claydar = document.createElement('script');
-          claydar.src = 'https://static.claydar.com/init.v1.js?id=cLZFz2Xi0D';
-          claydar.async = true;
-          document.body.appendChild(claydar);
-
-          // LinkedIn Insights Tag - defer load
-          window._linkedin_partner_id = "5305010";
-          window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-          window._linkedin_data_partner_ids.push("5305010");
-          var linkedin = document.createElement('script');
-          linkedin.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
-          linkedin.async = true;
-          document.body.appendChild(linkedin);
-
-          // Leadfeeder - defer load
-          window.ldfdr = window.ldfdr || function() {
+      (function (ss, ex) {
+        window.ldfdr =
+          window.ldfdr ||
+          function () {
             (ldfdr._q = ldfdr._q || []).push([].slice.call(arguments));
           };
-          var leadfeeder = document.createElement('script');
-          leadfeeder.src = 'https://sc.lfeeder.com/lftracker_v1_bElvO73QlzEaZMqj.js';
-          leadfeeder.async = true;
-          document.body.appendChild(leadfeeder);
-        }
-
-        // Load on user interaction or after 5 seconds
-        var events = ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'];
-        events.forEach(function(e) {
-          document.addEventListener(e, loadThirdPartyScripts, { once: true, passive: true });
-        });
-        setTimeout(loadThirdPartyScripts, 5000);
-      })();
+        (function (d, s) {
+          fs = d.getElementsByTagName(s)[0];
+          function ce(src) {
+            var cs = d.createElement(s);
+            cs.src = src;
+            cs.async = 1;
+            fs.parentNode.insertBefore(cs, fs);
+          }
+          ce('https://sc.lfeeder.com/lftracker_v1_' + ss + (ex ? '_' + ex : '') + '.js');
+        })(document, 'script');
+      })('bElvO73QlzEaZMqj');
     </script>
+    <script src="{{ 'youtubeplayer.js' | asset_url }}" defer="defer"></script>
+    {% render 'zoho-google-ads-tracking' %}
+    <script src="https://static.claydar.com/init.v1.js?id=cLZFz2Xi0D"></script>
   </body>
 </html>
