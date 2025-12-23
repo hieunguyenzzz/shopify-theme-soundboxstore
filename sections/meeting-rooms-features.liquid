@@ -267,92 +267,94 @@
             <script>
               document.addEventListener('app:ready', (e) => {
                 setTimeout(() => {
-                  document.querySelector('#vid1').src = document.querySelector('#vid1').dataset.lazysrc;
-                  document.querySelector('#vid2').src = document.querySelector('#vid2').dataset.lazysrc;
+                  var vid1El = document.querySelector('#vid1');
+                  var vid2El = document.querySelector('#vid2');
+                  if (!vid1El || !vid2El) return;
+                  vid1El.src = vid1El.dataset.lazysrc;
+                  vid2El.src = vid2El.dataset.lazysrc;
                   $(document).ready(function () {
-                    $('#audio-close').get(0).muted = true;
-                    $('#audio-open').get(0).muted = true;
-                    $('#vid1').get(0).muted = true;
-                    $('#vid2').get(0).muted = true;
+                    var audioClose = $('#audio-close').get(0);
+                    var audioOpen = $('#audio-open').get(0);
+                    var vid1 = $('#vid1').get(0);
+                    var vid2 = $('#vid2').get(0);
+                    if (!audioClose || !audioOpen || !vid1 || !vid2) return;
+                    audioClose.muted = true;
+                    audioOpen.muted = true;
+                    vid1.muted = true;
+                    vid2.muted = true;
                     let isClosed = true;
                     let isPlaying = false;
                     let ismuted = true;
-                    $('#vid2')
-                      .get(0)
-                      .addEventListener('ended', () => {
-                        if (isClosed) {
-                          console.log('#vid2');
-                          if (!ismuted) {
-                            $('#audio-close').get(0).muted = false;
-                          }
-                          $('#audio-close').get(0).currentTime = 0;
-                          $('#audio-close').get(0).play();
-                          isPlaying = false;
+                    vid2.addEventListener('ended', () => {
+                      if (isClosed) {
+                        if (!ismuted) {
+                          audioClose.muted = false;
                         }
-                      });
-                    $('#vid1')
-                      .get(0)
-                      .addEventListener('ended', () => {
-                        if (!isClosed) {
-                          console.log('#vid1');
-                          if (!ismuted) {
-                            $('#audio-open').get(0).muted = false;
-                          }
-                          $('#audio-open').get(0).currentTime = 0;
-                          $('#audio-open').get(0).play();
-                          isPlaying = false;
+                        audioClose.currentTime = 0;
+                        audioClose.play();
+                        isPlaying = false;
+                      }
+                    });
+                    vid1.addEventListener('ended', () => {
+                      if (!isClosed) {
+                        if (!ismuted) {
+                          audioOpen.muted = false;
                         }
-                      });
+                        audioOpen.currentTime = 0;
+                        audioOpen.play();
+                        isPlaying = false;
+                      }
+                    });
                     $('.play-button').on('click', function () {
                       ismuted = false;
-                      $('#audio-open').get(0).currentTime = 0;
+                      audioOpen.currentTime = 0;
                       $('.video-player-controls').addClass('active');
                       if (isClosed) {
-                        $('#audio-close').get(0).muted = false;
+                        audioClose.muted = false;
                         if (!isPlaying) {
-                          $('#audio-close').get(0).play();
+                          audioClose.play();
                         }
                       } else {
-                        $('#audio-open').get(0).muted = false;
+                        audioOpen.muted = false;
                         if (!isPlaying) {
-                          $('#audio-open').get(0).play();
+                          audioOpen.play();
                         }
                       }
-                      $('#vid1').get(0).muted = false;
-                      $('#vid2').get(0).muted = false;
+                      vid1.muted = false;
+                      vid2.muted = false;
                     });
                     $('.stop-button').on('click', function () {
                       ismuted = true;
                       $('.video-player-controls').removeClass('active');
-                      $('#audio-close').get(0).muted = true;
-                      $('#audio-open').get(0).muted = true;
-                      $('#vid1').get(0).muted = true;
-                      $('#vid2').get(0).muted = true;
+                      audioClose.muted = true;
+                      audioOpen.muted = true;
+                      vid1.muted = true;
+                      vid2.muted = true;
                     });
                     $('.label-inside').on('click', function () {
                       isClosed = false;
                       isPlaying = true;
-                      $('#audio-close').get(0).pause();
-                      $('#audio-open').get(0).pause();
+                      audioClose.pause();
+                      audioOpen.pause();
                       $('.control').addClass('active');
                       $('.video-player').addClass('active');
-                      $('#vid2').get(0).pause();
-                      $('#vid2').get(0).currentTime = 0;
-                      $('#vid1').get(0).currentTime = 0;
-                      $('#vid1').get(0).play();
+                      vid2.pause();
+                      vid2.currentTime = 0;
+                      vid1.currentTime = 0;
+                      vid1.play();
                     });
 
                     $('.label-outside').on('click', function () {
                       isClosed = true;
                       isPlaying = true;
-                      $('#audio-close').get(0).pause();
-                      $('#audio-open').get(0).pause();
+                      audioClose.pause();
+                      audioOpen.pause();
                       $('.control').removeClass('active');
                       $('.video-player').removeClass('active');
-                      $('#vid1').get(0).pause();
-                      $('#vid1').get(0).currentTime = 0;
-                      $('#vid2').get(0).currentTime = 0;
-                      $('#vid2').get(0).play();
+                      vid1.pause();
+                      vid1.currentTime = 0;
+                      vid2.currentTime = 0;
+                      vid2.play();
                     });
                     $('.switch').on('click', function () {
                       if ($('.control').hasClass('active')) {
