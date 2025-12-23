@@ -302,7 +302,7 @@ calc(100vw - 4rem)
               style="display:none ;"
             {%- endif -%}
           >
-            {{ video | media_tag: class: 'photoswipe__image', autoplay: true, loop: true, controls: false }}
+            {{ video | media_tag: class: 'photoswipe__image', autoplay: false, loop: true, controls: true, preload: 'none' }}
             {{ new_label }}
           </div>
         </div>
@@ -483,7 +483,7 @@ calc(100vw - 4rem)
                 style="display:none ;"
               {%- endif -%}
             >
-              {{ video | media_tag: class: 'photoswipe__image', autoplay: true, loop: true, controls: false }}
+              {{ video | media_tag: class: 'photoswipe__image', autoplay: false, loop: true, controls: true, preload: 'none' }}
               {{ new_label }}
             </div>
           </div>
