@@ -234,7 +234,19 @@ $(document).ready(function() {
     arrows: false,
     adaptiveHeight: true,
     fade: true,
-    asNavFor: '.thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner'
+    asNavFor: '.thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner',
+    responsive: [
+      {
+        breakpoint: 861,
+        settings: {
+          dots: true,
+          fade: false,
+          swipe: true,
+          touchMove: true,
+          arrows: false
+        }
+      }
+    ]
   });
   $('.thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner').slick({
     slidesToShow: 6,

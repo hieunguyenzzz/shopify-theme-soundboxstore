@@ -19664,3 +19664,42 @@ body.template-article h2 span {
 .template-cart [data-side="bottom"] {
   margin-top: 8px !important;
 }
+/* Mobile gallery dots styling for Slick slider */
+.product-main-slider .slick-dots {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+.product-main-slider .slick-dots li {
+  margin: 0 5px !important;
+}
+.product-main-slider .slick-dots li button {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background: #ccc !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  text-indent: -9999px !important;
+  cursor: pointer !important;
+}
+.product-main-slider .slick-dots li.slick-active button {
+  background: #333 !important;
+}
+
+/* Mobile: hide thumbnails */
+@media only screen and (max-width: 860px) {
+  .product-main-slider .thumbnail-gallery {
+    display: none !important;
+  }
+}
+
+/* Desktop: hide dots (use thumbnails instead) */
+@media only screen and (min-width: 861px) {
+  .product-main-slider .slick-dots {
+    display: none !important;
+  }
+}

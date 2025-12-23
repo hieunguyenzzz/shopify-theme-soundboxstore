@@ -114,6 +114,18 @@ $(document).ready(function () {
       adaptiveHeight: !0,
       fade: !0,
       asNavFor: ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner",
+      responsive: [
+        {
+          breakpoint: 861,
+          settings: {
+            dots: !0,
+            fade: !1,
+            swipe: !0,
+            touchMove: !0,
+            arrows: !1
+          }
+        }
+      ]
     }),
     $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick({
       slidesToShow: 6,
