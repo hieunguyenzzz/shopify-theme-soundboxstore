@@ -320,6 +320,9 @@
                 {{ 'cart.general.continue_shopping' | t }}
               </a>
             {% endcomment %}
+
+            {% comment %} Request a Quote Button and Modal {% endcomment %}
+            {% render 'cart-quote-modal' %}
           </div>
 
           {% if settings.cart_terms_conditions_enable %}

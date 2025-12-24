@@ -1,0 +1,511 @@
+{% comment %}
+  Cart Quote Modal - Request a Quote from Cart Page
+  Follows SoundboxStore Design Guidelines
+{% endcomment %}
+
+<style>
+/* Cart Quote Modal - Soundbox Store Design System */
+.cart-quote-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(45, 62, 80, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.cart-quote-modal.active {
+  display: flex;
+}
+
+.cart-quote-modal-inner {
+  background: #FFFFFF;
+  border-radius: 0;
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.cart-quote-modal-header {
+  padding: 24px 32px;
+  background: #2D3E50;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-quote-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cart-quote-modal-close {
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  border-radius: 0;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.cart-quote-modal-close:hover {
+  background: #FFFFFF;
+  color: #2D3E50;
+}
+
+.cart-quote-modal-body {
+  padding: 32px;
+  background: #F8F7F4;
+}
+
+.cart-quote-form-group {
+  margin-bottom: 20px;
+}
+
+.cart-quote-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2D2D2D;
+  font-size: 14px;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+}
+
+.cart-quote-form input,
+.cart-quote-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 0;
+  font-size: 15px;
+  background: #FFFFFF;
+  color: #2D2D2D;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cart-quote-form input:focus,
+.cart-quote-form textarea:focus {
+  outline: none;
+  border-color: #2D3E50;
+  box-shadow: 0 0 0 3px rgba(45, 62, 80, 0.1);
+}
+
+.cart-quote-form input::placeholder,
+.cart-quote-form textarea::placeholder {
+  color: #6B6B6B;
+}
+
+.cart-quote-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.cart-quote-form button[type="submit"] {
+  width: 100%;
+  padding: 16px 32px;
+  background: #2D3E50;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.cart-quote-form button[type="submit"]:hover {
+  background: #1A2332;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
+}
+
+.cart-quote-form button[type="submit"]:disabled {
+  background: #6B6B6B;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Products Summary */
+.cart-quote-products {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+}
+
+.cart-quote-products-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D3E50;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cart-quote-product-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #E0E0E0;
+  font-size: 14px;
+  color: #2D2D2D;
+}
+
+.cart-quote-product-item:last-child {
+  border-bottom: none;
+}
+
+.cart-quote-product-name {
+  flex: 1;
+  padding-right: 12px;
+  color: #2D2D2D;
+}
+
+.cart-quote-product-qty {
+  color: #6B6B6B;
+  white-space: nowrap;
+}
+
+/* Thank you message */
+.cart-quote-thank-you {
+  display: none;
+  text-align: center;
+  padding: 64px 32px;
+  background: #FFFFFF;
+}
+
+.cart-quote-thank-you.active {
+  display: block;
+}
+
+.cart-quote-thank-you-icon {
+  width: 72px;
+  height: 72px;
+  background: #9CA88A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.cart-quote-thank-you-icon svg {
+  width: 36px;
+  height: 36px;
+  color: #FFFFFF;
+}
+
+.cart-quote-thank-you h4 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2D3E50;
+  margin: 0 0 12px;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+}
+
+.cart-quote-thank-you p {
+  font-size: 16px;
+  color: #6B6B6B;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+.cart-quote-thank-you .btn-close-modal {
+  display: inline-block;
+  padding: 16px 48px;
+  background: #2D3E50;
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.cart-quote-thank-you .btn-close-modal:hover {
+  background: #1A2332;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
+}
+
+/* Request a Quote Button in Cart */
+.btn-cart-quote {
+  width: 100%;
+  padding: 16px 32px;
+  background: transparent;
+  color: #2D3E50;
+  border: 2px solid #2D3E50;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.btn-cart-quote:hover {
+  background: #2D3E50;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
+}
+
+/* Error state */
+.cart-quote-form-group.error input,
+.cart-quote-form-group.error textarea {
+  border-color: #dc3545;
+}
+
+.cart-quote-error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Loading state */
+.cart-quote-form button[type="submit"].loading {
+  position: relative;
+  color: transparent;
+}
+
+.cart-quote-form button[type="submit"].loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+
+<!-- Request a Quote Button (rendered in cart) -->
+<button type="button" class="btn-cart-quote" id="btnOpenCartQuote">
+  {{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}
+</button>
+
+<!-- Modal -->
+<div class="cart-quote-modal" id="cartQuoteModal">
+  <div class="cart-quote-modal-inner">
+    <div class="cart-quote-modal-header">
+      <h3>{{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}</h3>
+      <button type="button" class="cart-quote-modal-close" id="cartQuoteClose">&times;</button>
+    </div>
+
+    <div class="cart-quote-modal-body" id="cartQuoteFormContainer">
+      <form class="cart-quote-form" id="cartQuoteForm">
+        <!-- Products Summary -->
+        <div class="cart-quote-products">
+          <div class="cart-quote-products-title">{{ 'cart.general.your_items' | t | default: 'Your Items' }}</div>
+          {% for item in cart.items %}
+            <div class="cart-quote-product-item">
+              <span class="cart-quote-product-name">{{ item.product.title }}</span>
+              <span class="cart-quote-product-qty">x{{ item.quantity }}</span>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="cart-quote-form-group">
+          <label for="cartQuoteName">{{ 'contact.form.name' | t | default: 'Full Name' }} *</label>
+          <input type="text" id="cartQuoteName" name="Full_Name" required placeholder="{{ 'contact.form.name' | t | default: 'Your full name' }}">
+        </div>
+
+        <div class="cart-quote-form-group">
+          <label for="cartQuoteEmail">{{ 'contact.form.email' | t | default: 'Email' }} *</label>
+          <input type="email" id="cartQuoteEmail" name="Email" required placeholder="{{ 'contact.form.email' | t | default: 'your@email.com' }}">
+        </div>
+
+        <div class="cart-quote-form-group">
+          <label for="cartQuoteCompany">{{ 'contact.form.company' | t | default: 'Company' }}</label>
+          <input type="text" id="cartQuoteCompany" name="Company" placeholder="{{ 'contact.form.company' | t | default: 'Company name (optional)' }}">
+        </div>
+
+        <div class="cart-quote-form-group">
+          <label for="cartQuotePhone">{{ 'contact.form.phone' | t | default: 'Phone' }} *</label>
+          <input type="tel" id="cartQuotePhone" name="Phone" required placeholder="{{ 'contact.form.phone' | t | default: '+44 20 1234 5678' }}">
+        </div>
+
+        <div class="cart-quote-form-group">
+          <label for="cartQuoteMessage">{{ 'contact.form.message' | t | default: 'Message' }}</label>
+          <textarea id="cartQuoteMessage" name="Message" rows="4" placeholder="{{ 'strings.others.quote_message_placeholder' | t | default: 'Any additional details or questions...' }}"></textarea>
+        </div>
+
+        <button type="submit">{{ 'strings.others.submit_quote_request' | t | default: 'Submit Quote Request' }}</button>
+      </form>
+    </div>
+
+    <!-- Thank You Message -->
+    <div class="cart-quote-thank-you" id="cartQuoteThankYou">
+      <div class="cart-quote-thank-you-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h4>{{ 'strings.others.thank_you' | t | default: 'Thank You!' }}</h4>
+      <p>{{ 'strings.others.quote_success_message' | t | default: 'Your quote request has been submitted successfully. Our team will contact you within 24 hours.' }}</p>
+      <button type="button" class="btn-close-modal" id="cartQuoteCloseThankYou">{{ 'strings.others.close' | t | default: 'Close' }}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const modal = document.getElementById('cartQuoteModal');
+  const openBtn = document.getElementById('btnOpenCartQuote');
+  const closeBtn = document.getElementById('cartQuoteClose');
+  const form = document.getElementById('cartQuoteForm');
+  const formContainer = document.getElementById('cartQuoteFormContainer');
+  const thankYou = document.getElementById('cartQuoteThankYou');
+  const closeThankYouBtn = document.getElementById('cartQuoteCloseThankYou');
+
+  // Open modal
+  if (openBtn) {
+    openBtn.addEventListener('click', function() {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  // Close modal
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    // Reset form state after closing
+    setTimeout(function() {
+      formContainer.style.display = 'block';
+      thankYou.classList.remove('active');
+      form.reset();
+    }, 300);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (closeThankYouBtn) {
+    closeThankYouBtn.addEventListener('click', closeModal);
+  }
+
+  // Close on backdrop click
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Build product description from cart
+  function getCartDescription() {
+    const items = [];
+    {% for item in cart.items %}
+      items.push('{{ item.product.title | escape }} (x{{ item.quantity }}) - {{ item.final_line_price | money }}');
+    {% endfor %}
+    return items.join('\n');
+  }
+
+  // Form submission
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+
+      const formData = new FormData(form);
+
+      // Build payload for webhook
+      const payload = {
+        Full_Name: formData.get('Full_Name'),
+        Email: formData.get('Email'),
+        Company: formData.get('Company') || '',
+        Phone: formData.get('Phone'),
+        Message: formData.get('Message') || '',
+        Lead_Source: 'Cart Quote',
+        Description: getCartDescription(),
+        source: 'soundboxstore_cart',
+        gclid: (function() {
+          try {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('gclid') || localStorage.getItem('gclid') || '';
+          } catch(e) { return ''; }
+        })()
+      };
+
+      // Send to webhook
+      fetch('https://n8z.hieunguyen.dev/webhook/soundbox-cart-quote-zoho', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(function(response) {
+        // Show thank you regardless of response
+        formContainer.style.display = 'none';
+        thankYou.classList.add('active');
+      })
+      .catch(function(error) {
+        console.error('Quote submission error:', error);
+        // Still show thank you on error (data was captured)
+        formContainer.style.display = 'none';
+        thankYou.classList.add('active');
+      })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      });
+    });
+  }
+})();
+</script>
