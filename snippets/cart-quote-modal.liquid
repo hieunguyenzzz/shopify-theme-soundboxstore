@@ -34,11 +34,14 @@
     to { transform: translateY(0); opacity: 1; }
   }
 
-  .cart-quote-modal-inner {
+  .cart-quote-modal-wrapper {
     position: relative;
-    background: #FFFFFF;
     width: 94%;
     max-width: 640px;
+  }
+
+  .cart-quote-modal-inner {
+    background: #FFFFFF;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 4px;
@@ -145,7 +148,7 @@
   }
 
   @media (max-width: 540px) {
-    .cart-quote-modal-inner {
+    .cart-quote-modal-wrapper {
       width: 96%;
       max-width: none;
     }
@@ -326,12 +329,13 @@
 
 <input hidden type="checkbox" id="quote-form-modal-cart" class="cart-quote-modal-toggle">
 <div class="cart-quote-modal">
-  <div class="cart-quote-modal-inner">
+  <div class="cart-quote-modal-wrapper">
     <label for="quote-form-modal-cart" class="cart-quote-modal-close" aria-label="Close">&times;</label>
-    <div class="cart-quote-modal-title">
-      <h3>{{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}</h3>
-    </div>
-    <div class="cart-quote-modal-body">
+    <div class="cart-quote-modal-inner">
+      <div class="cart-quote-modal-title">
+        <h3>{{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}</h3>
+      </div>
+      <div class="cart-quote-modal-body">
       <!-- Thank You Message -->
       <div class="cart-quote-thank-you" id="cart-quote-thank-you">
         <h4>{{ 'cart.general.quote_thank_you_title' | t | default: 'Thank You!' }}</h4>
@@ -396,9 +400,10 @@
         <button type="submit">{{ 'cart.general.submit_quote' | t | default: 'Submit Quote Request' }}</button>
       </form>
       </div><!-- end cart-quote-form-content -->
-    </div>
-  </div>
-</div>
+      </div><!-- end cart-quote-modal-body -->
+    </div><!-- end cart-quote-modal-inner -->
+  </div><!-- end cart-quote-modal-wrapper -->
+</div><!-- end cart-quote-modal -->
 
 <script>
   (function() {
