@@ -37,10 +37,18 @@
           {%- for option in product.options_with_values -%}
             {%- assign optionNameHandlized = option.name | handleize -%}
             {%- assign optionValueHandlized = option.value | handleize -%}
-            {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized  | t -%}
+            {%- assign tranName = 'strings.option_name.' | append: optionNameHandlized | t -%}
+            {%- assign tranValue = 'strings.option_value.' | append: optionValueHandlized | t -%}
+            {%- comment -%}Fall back to raw values if translation is missing{%- endcomment -%}
+            {%- if tranName contains 'Translation missing' -%}
+              {%- assign tranName = option.name -%}
+            {%- endif -%}
+            {%- if tranValue contains 'Translation missing' -%}
+              {%- assign tranValue = option.value -%}
+            {%- endif -%}
             <div>
               <span>
-                {{- 'strings.option_name.' | append: optionNameHandlized  | t -}}
+                {{- tranName -}}
                 :</span
               >
               {{ tranValue }}

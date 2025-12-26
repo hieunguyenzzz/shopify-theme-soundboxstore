@@ -11,6 +11,12 @@ This is a Shopify Liquid theme for SoundboxStore, a company selling acoustic off
 - **Development server**: `npm run dev` - Starts Shopify theme development server connected to thankyou-485.myshopify.com
 - **Code formatting**: `npm run prettier` - Formats Liquid, CSS, and JS files using Prettier with Shopify Liquid plugin
 
+## Deployment
+
+- **DO NOT use `shopify theme push`** to deploy changes to the live theme
+- Instead, commit changes to GitHub - deployment is handled automatically via GitHub integration
+- The live theme syncs with the `master` branch
+
 ## Theme Architecture
 
 ### Core Structure
