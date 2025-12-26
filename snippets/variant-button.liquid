@@ -30,7 +30,12 @@
     {% if isColorSwatch %}
       {{ option.name }}
     {% else %}
-      {{ 'strings.option_name.' | append: optionNameHandlized | t }}
+      {%- assign tranOptionName = 'strings.option_name.' | append: optionNameHandlized | t -%}
+      {%- if tranOptionName contains 'Translation missing' -%}
+        {{ option.name }}
+      {%- else -%}
+        {{ tranOptionName }}
+      {%- endif -%}
     {% endif %}
 
     {% comment %}
