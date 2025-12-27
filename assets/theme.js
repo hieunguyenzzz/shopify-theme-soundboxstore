@@ -1672,8 +1672,7 @@
           (e.prototype.close = function (e) {
             if (this.modalIsOpen) {
               if (e) {
-                if (e.target.closest(".js-modal-close"));
-                else if (e.target.closest(".modal__inner")) return;
+                if (!e.target.closest(".js-modal-close") && e.target.closest(".modal__inner")) return;
               }
               document.activeElement.blur(),
                 this.modal.classList.remove(this.config.openClass),

@@ -37,6 +37,7 @@
         </div>
         <div class="cart__page-col">
           <h1 class="cart-col-title">{{ 'cart.general.order_summary' | t }}</h1>
+
           {% if settings.cart_notes_enable %}
             <div class="cart__item-row">
               <label for="CartNote" class="add-note">
@@ -299,12 +300,24 @@
             {%- endcase -%}
           {%- endfor -%}
 
+          <div class="cart__delivery-disclaimer" style="padding: 15px; background-color: #f8f8f8; border-radius: 4px; margin-bottom: 15px; font-size: 14px; line-height: 1.5;">
+            <p style="margin: 0;">
+              <strong>{{ 'cart.general.delivery_disclaimer_title' | t | default: 'Please note:' }}</strong>
+              {{ 'cart.general.delivery_disclaimer' | t | default: 'Delivery and installation prices are based on ground floor only. For other floors, multiple buildings, or multiple booths, please request a quote.' }}
+            </p>
+          </div>
+
           <div class="cart__item-row cart__checkout-wrapper">
+            <label for="quote-form-modal-cart" class="btn cart__request-quote" style="width: 100%; text-align: center; cursor: pointer;">
+              {{ 'cart.general.request_quote' | t }}
+            </label>
+
             <button
               type="submit"
               name="checkout"
               data-terms-required="{{ settings.cart_terms_conditions_enable }}"
-              class="btn cart__checkout"
+              class="btn btn--secondary cart__checkout"
+              style="margin-top: 10px;"
             >
               {{ 'cart.general.checkout' | t }}
             </button>
@@ -407,6 +420,9 @@
     </form>
   {%- endif -%}
 </div>
+
+{% comment %} Cart Quote Request Modal {% endcomment %}
+{% render 'cart-quote-modal' %}
 
 {% schema %}
 {
