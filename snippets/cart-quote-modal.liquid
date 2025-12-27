@@ -109,9 +109,12 @@
     letter-spacing: 0.02em;
   }
 
-  .cart-quote-form input,
+  .cart-quote-form input[type="text"],
+  .cart-quote-form input[type="email"],
+  .cart-quote-form input[type="tel"],
   .cart-quote-form textarea {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     padding: 14px 16px;
     border: 1px solid #E0E0E0;
     border-radius: 0;
@@ -142,9 +145,18 @@
   }
 
   .cart-quote-form .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 24px;
+  }
+
+  .cart-quote-form .form-row .form-group {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .cart-quote-form .form-group {
+    width: 100%;
   }
 
   @media (max-width: 540px) {
