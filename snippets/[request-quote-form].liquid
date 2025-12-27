@@ -827,6 +827,22 @@ IT it /it-it' %}
             .catch(function (res) {
               console.log(res, data);
             });
+
+          // Send to Brevo worker for email marketing
+          fetch('https://brevo-subscribe.soundboxstore.com/quote', {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify(data),
+          })
+            .then(function (res) {
+              console.log('Brevo worker response:', res);
+            })
+            .catch(function (err) {
+              console.log('Brevo worker error:', err);
+            });
         } catch (err) {
           console.error(err);
         }

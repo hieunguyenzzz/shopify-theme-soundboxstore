@@ -406,19 +406,31 @@
       if (e.preventDefault) e.preventDefault();
       window.Shopify.captcha.protect(e.target, () => {
         console.log(e.target);
+        const formData = Object.fromEntries(new FormData(e.target));
+
+        // Send to Brevo worker for email marketing
+        fetch("https://brevo-subscribe.soundboxstore.com/membership", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((res) => {
+            console.log('Brevo worker response:', res);
+          })
+          .catch((err) => {
+            console.log('Brevo worker error:', err);
+          });
+
         fetch(
           "https://shopify-plugin-reseller-manager.hieunguyen.dev/api/createResellerHandle?redirectUrl=https://{{ request.host | append:'/pages/thankpage' }}",
           {
-            method: "POST", // or 'PUT'
-            // body: new FormData(e.target),
-            // headers: {
-            //   "Content-Type": "application/x-www-form-urlencoded",
-            //   // "Content-Type": "multipart/form-data",
-            // },
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(Object.fromEntries(new FormData(e.target))),
+            body: JSON.stringify(formData),
           }
         ).then((res) => {
           location.href =

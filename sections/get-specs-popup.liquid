@@ -313,6 +313,7 @@ $(document).ready(function () {
             });
             
             form.dataset.state="loading"
+            // Send to original API
             fetch('{{- section.settings.api_url -}}', {
               headers: {
                 Accept: 'application/json',
@@ -327,13 +328,29 @@ $(document).ready(function () {
                  form.dataset.state="success";
                  // Get form data
                  const formData = new FormData(form);
-                 umami.track('get-specs', { 
+                 umami.track('get-specs', {
                    name: formData.get('contact[fullname]') || 'not_provided',
                    email: formData.get('contact[email]') || 'not_provided'
                  });
               })
               .catch(function (res) {
                 console.log(res, data);
+              });
+
+            // Send to Brevo worker for email marketing
+            fetch('https://brevo-subscribe.soundboxstore.com/getspec', {
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              method: 'POST',
+              body: JSON.stringify(data),
+            })
+              .then(function (res) {
+                console.log('Brevo worker response:', res);
+              })
+              .catch(function (err) {
+                console.log('Brevo worker error:', err);
               });
           } catch (err) {
             console.error(err);

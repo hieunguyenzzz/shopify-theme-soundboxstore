@@ -1,5 +1,5 @@
 {%- assign newsletter_form_id = 'newsletter-' | append: section_id -%}
-{% form 'customer', id: newsletter_form_id %}
+{% form 'customer', id: newsletter_form_id, onsubmit: 'return handleNewsletterSubmit(event, this)' %}
   {%- if form.posted_successfully? -%}
     <div class="note note--success">
       {{ 'general.newsletter_form.newsletter_confirmation' | t }}
@@ -56,3 +56,33 @@
     </div>
   {%- endunless -%}
 {% endform %}
+<script>
+  function handleNewsletterSubmit(event, form) {
+    try {
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Send to Brevo worker for email marketing
+      fetch('https://brevo-subscribe.soundboxstore.com/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(function(res) {
+          console.log('Brevo worker newsletter response:', res);
+        })
+        .catch(function(err) {
+          console.log('Brevo worker newsletter error:', err);
+        });
+    } catch (err) {
+      console.error('Newsletter submit error:', err);
+    }
+    // Allow form to continue submitting to Shopify
+    return true;
+  }
+</script>
