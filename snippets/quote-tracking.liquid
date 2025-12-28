@@ -206,6 +206,28 @@
     }
   }, { capture: true, once: false });
 
+  // Helper to extract customer data from MerakiQuote popup or any form container
+  function extractCustomerData(container) {
+    const getValue = (selectors) => {
+      for (const sel of selectors) {
+        const el = container.querySelector(sel);
+        if (el && el.value) return el.value.trim();
+      }
+      return '';
+    };
+
+    return {
+      email: getValue(['input[placeholder*="email" i]', 'input[type="email"]', 'input[name*="email" i]']),
+      name: getValue(['input[placeholder*="First Name" i]', 'input[name*="first" i]']) + ' ' +
+            getValue(['input[placeholder*="Last Name" i]', 'input[name*="last" i]']),
+      company: getValue(['input[placeholder*="Company" i]', 'input[name*="company" i]']),
+      phone: getValue(['input[placeholder*="Mobile" i]', 'input[placeholder*="Phone" i]', 'input[type="tel"]']),
+      postcode: getValue(['input[placeholder*="Post Code" i]', 'input[placeholder*="Postcode" i]', 'input[name*="postcode" i]']),
+      city: getValue(['input[placeholder*="City" i]', 'input[name*="city" i]']),
+      country: getValue(['select[name*="country" i]', 'input[name*="country" i]'])
+    };
+  }
+
   // 2. Track quote_submit on form submission (COMPLETION)
   // Listen for actual form submit event for more reliable tracking
   // Covers: Header quote form (id="quote-form") and MerakiQuote popup
@@ -238,6 +260,42 @@
       gtag('event', 'quote_submit', eventData);
       trackUmami('quote_submit', customerData);
       console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', customerData);
+    }
+  }, { capture: true });
+
+  // 2b. Track MerakiQuote popup submission (uses AJAX, not form submit)
+  // Listen for click on "Submit Quote" or final step button in MerakiQuote popup
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+
+    // Check if this is inside a MerakiQuote popup
+    const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]');
+    if (!popup) return;
+
+    // Check if this is the submit/send button (final step)
+    const btnText = btn.textContent.toLowerCase().trim();
+    const isSubmitBtn = btnText.includes('submit') ||
+                        btnText.includes('send quote') ||
+                        btnText.includes('request quote') ||
+                        btnText.includes('get quote') ||
+                        (btn.classList.contains('primary') && popup.querySelector('[class*="step-3"], [class*="review"]'));
+
+    if (isSubmitBtn && !hasEventFired(STORAGE_KEY_SUBMIT)) {
+      // Extract data from popup inputs
+      const customerData = extractCustomerData(popup);
+      customerData.form_id = 'meraki-quote-popup';
+
+      // Only fire if we have at least email
+      if (customerData.email) {
+        markEventFired(STORAGE_KEY_SUBMIT);
+        const eventData = buildEventData('quote_submit');
+        eventData.form_id = 'meraki-quote-popup';
+
+        gtag('event', 'quote_submit', eventData);
+        trackUmami('quote_submit', customerData);
+        console.log('[QuoteTracking] MerakiQuote quote_submit fired', customerData);
+      }
     }
   }, { capture: true });
 
