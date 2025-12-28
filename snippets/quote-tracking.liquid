@@ -222,9 +222,22 @@
       const eventData = buildEventData('quote_submit');
       eventData.form_id = form.id || 'quote-form';
 
+      // Extract customer data from form fields for attribution
+      const formData = new FormData(form);
+      const customerData = {
+        form_id: eventData.form_id,
+        // Try common field name patterns
+        email: formData.get('contact[email]') || formData.get('email') || '',
+        name: formData.get('contact[Full Name]') || formData.get('name') || '',
+        phone: formData.get('contact[Mobile number]') || formData.get('contact[Office Phone number]') || formData.get('phone') || '',
+        company: formData.get('contact[Company]') || formData.get('company') || '',
+        postcode: formData.get('contact[postcode]') || formData.get('postcode') || '',
+        country: formData.get('contact[Country / region]') || formData.get('country') || ''
+      };
+
       gtag('event', 'quote_submit', eventData);
-      trackUmami('quote_submit', { form_id: eventData.form_id });
-      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', eventData);
+      trackUmami('quote_submit', customerData);
+      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', customerData);
     }
   }, { capture: true });
 
