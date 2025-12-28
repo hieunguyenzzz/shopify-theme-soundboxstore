@@ -394,7 +394,7 @@
       data-shopify-captcha="true"
       id="form-{{ section.id }}"
       method="POST"
-      action=""
+      action="{{ pages.thankpage.url | default: '/pages/thankpage' }}"
     >
       {{ content }}
     </form>
