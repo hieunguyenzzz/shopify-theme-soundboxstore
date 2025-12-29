@@ -809,9 +809,14 @@
                   {%- endform -%}
                 </div>
               {%- endunless -%}
-              <p>
-                {{ 'products.product.quell_range_compatibility' | t }}
-              </p>
+              <script>
+                console.log({{ product.template_suffix | json }},"====")
+              </script>
+              {% if product.template_suffix == 'smartlock' %}
+                <p>
+                  This product is only compatible with our standard Quell range
+                </p>
+              {% endif %}
 
             </div>
           </div>
