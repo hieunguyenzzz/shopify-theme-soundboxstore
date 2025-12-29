@@ -381,19 +381,38 @@
     lastProgressMilestone: 0
   };
 
-  // Get all quote form selectors
-  const QUOTE_FORM_SELECTORS = '#quote-form, #cart-quote-form, .meraki-popup-wrapper, [role="dialog"]:has(input[name*="company" i]), [role="dialog"]:has(input[placeholder*="Company" i])';
+  // Get all quote form selectors - multiple selectors for different form types
+  const QUOTE_FORM_SELECTORS = '#quote-form, #cart-quote-form, .meraki-popup-wrapper';
 
   // Helper to identify form and get its ID
   function getFormContext(element) {
-    const form = element.closest(QUOTE_FORM_SELECTORS);
+    // First try direct selectors
+    let form = element.closest(QUOTE_FORM_SELECTORS);
+
+    // If not found, check for MerakiQuote popup (React dialog with fixed positioning)
+    if (!form) {
+      const dialog = element.closest('[role="dialog"]');
+      // MerakiQuote popup uses Tailwind fixed positioning and contains a form
+      if (dialog && dialog.classList.contains('fixed') && dialog.querySelector('form')) {
+        form = dialog;
+      }
+    }
+
+    // Fallback: check for React form with flex classes (MerakiQuote)
+    if (!form) {
+      const reactForm = element.closest('form.flex.flex-col');
+      if (reactForm) {
+        form = reactForm.closest('[role="dialog"]') || reactForm;
+      }
+    }
+
     if (!form) return null;
 
     let formId = 'unknown';
     if (form.id === 'quote-form') formId = 'header-quote-form';
     else if (form.id === 'cart-quote-form') formId = 'cart-quote-modal';
     else if (form.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) formId = 'meraki-quote-popup';
-    else if (form.matches('[role="dialog"]')) formId = 'quote-popup';
+    else if (form.matches('[role="dialog"]') || form.matches('form.flex.flex-col')) formId = 'meraki-quote-popup';
 
     // Determine step for multi-step forms
     let currentStep = 1;
