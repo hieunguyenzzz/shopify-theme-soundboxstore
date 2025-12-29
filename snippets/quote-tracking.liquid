@@ -31,6 +31,9 @@
   Updated: 2025-12-29 - Fixed quote_session_id race condition: now generates session ID on first field focus
                        if not already set, ensuring all events have a session ID even when field focus
                        occurs before request_quote button click
+  Updated: 2025-12-29 - Enhanced request_quote detection: expanded button selectors and added MutationObserver
+                       to detect when quote popups/dialogs become visible, ensuring request_quote is the
+                       first event fired before any field interactions
 {% endcomment %}
 <script>
 (function() {
@@ -249,13 +252,27 @@
   }, { capture: true });
 
   // 1. Track request_quote on button click (INTENT)
-  // Selectors: Product page button + Header "Request a Quote" button
+  // Extended selectors to catch all quote button types including MerakiQuote
+  const QUOTE_BUTTON_SELECTORS = [
+    '[id^="ProductQuoteButton-"]',
+    '.product-qoute-button',
+    'label[for="quote-form-modal"]',
+    'label[for="quote-form-modal-cart"]',
+    '.cart__request-quote',
+    '[data-quote-button]',
+    // MerakiQuote and similar React popup triggers
+    'button[class*="quote"]',
+    'a[class*="quote"]',
+    '[class*="request-quote"]',
+    '[class*="get-quote"]'
+  ].join(', ');
+
   document.addEventListener('click', function(e) {
-    const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
+    const btn = e.target.closest(QUOTE_BUTTON_SELECTORS);
     if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
       markEventFired(STORAGE_KEY_REQUEST);
 
-      // Generate a unique session ID for this quote request
+      // Generate a unique session ID for this quote request IMMEDIATELY
       const quoteSessionId = generateQuoteSessionId();
       setQuoteSessionId(quoteSessionId);
 
@@ -266,6 +283,42 @@
       console.log('[QuoteTracking] request_quote fired, session:', quoteSessionId, eventData);
     }
   }, { capture: true, once: false });
+
+  // 1b. Also detect when quote popups/dialogs become visible (for React-based popups like MerakiQuote)
+  // This fires request_quote when the popup appears, ensuring session ID is ready before field focus
+  const quotePopupObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType !== 1) return; // Only element nodes
+
+        // Check if this is a quote popup/dialog
+        const isQuotePopup =
+          node.matches?.('[role="dialog"]') ||
+          node.matches?.('.meraki-popup-wrapper') ||
+          node.querySelector?.('[role="dialog"]') ||
+          node.querySelector?.('form[class*="quote"]') ||
+          (node.matches?.('.fixed') && node.querySelector?.('input[placeholder*="Company" i]'));
+
+        if (isQuotePopup && !hasEventFired(STORAGE_KEY_REQUEST)) {
+          markEventFired(STORAGE_KEY_REQUEST);
+
+          // Generate session ID immediately when popup appears
+          const quoteSessionId = generateQuoteSessionId();
+          setQuoteSessionId(quoteSessionId);
+
+          const eventData = buildEventData('request_quote');
+          eventData.trigger = 'popup_visible';
+
+          gtag('event', 'request_quote', eventData);
+          trackUmami('request_quote', { quote_session_id: quoteSessionId });
+          console.log('[QuoteTracking] request_quote fired (popup detected), session:', quoteSessionId);
+        }
+      });
+    });
+  });
+
+  // Start observing for quote popups
+  quotePopupObserver.observe(document.body, { childList: true, subtree: true });
 
   // Helper to extract customer data from MerakiQuote popup or any form container
   function extractCustomerData(container) {
