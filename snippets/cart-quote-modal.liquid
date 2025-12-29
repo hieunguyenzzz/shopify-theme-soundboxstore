@@ -1,10 +1,10 @@
 {% comment %}
-  Cart Quote Modal - Simple quote request form for cart page
+  Cart Quote Modal - 3-Step Wizard (MerakiQuote-style - IDENTICAL)
   Triggered by: <label for="quote-form-modal-cart">
 {% endcomment %}
 
 <style>
-  /* Cart Quote Modal - Soundbox Store Design System */
+  /* Cart Quote Modal - Exact MerakiQuote Clone */
   .cart-quote-modal {
     display: none;
     position: fixed;
@@ -12,10 +12,10 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(45, 62, 80, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10001;
     opacity: 0;
-    animation: cart-quote-fade-in 0.3s cubic-bezier(0.29, 0.65, 0.58, 1) forwards;
+    animation: cart-quote-fade-in 0.3s ease forwards;
   }
 
   .cart-quote-modal-toggle:checked + .cart-quote-modal {
@@ -29,262 +29,496 @@
     to { opacity: 1; }
   }
 
-  @keyframes cart-quote-slide-up {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
   .cart-quote-modal-wrapper {
     position: relative;
     width: 94%;
-    max-width: 640px;
+    max-width: 600px;
   }
 
   .cart-quote-modal-inner {
     background: #FFFFFF;
     max-height: 90vh;
     overflow-y: auto;
-    border-radius: 4px;
+    border-radius: 12px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    animation: cart-quote-slide-up 0.3s ease-out;
   }
 
   .cart-quote-modal-close {
     position: absolute;
-    top: -16px;
-    right: -16px;
+    top: -8px;
+    right: -8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: #2D3E50;
+    width: 32px;
+    height: 32px;
+    background: #1a1a1a;
     border: none;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 18px;
     cursor: pointer;
     padding: 0;
     line-height: 1;
     color: #FFFFFF;
     z-index: 10;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease;
   }
 
   .cart-quote-modal-close:hover {
-    background: #1A2332;
-    transform: scale(1.05);
+    background: #333;
   }
 
-  .cart-quote-modal-title {
-    text-align: center;
-    padding: 40px 32px 24px;
-    background: #FFFFFF;
+  /* Step Indicators - Exact MerakiQuote style */
+  .cart-quote-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    background: #fff;
+    border-radius: 12px 12px 0 0;
   }
 
-  .cart-quote-modal-title h3 {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #2D2D2D;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+  .cart-quote-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
+  .cart-quote-step.active {
+    color: #1a1a1a;
+    font-weight: 400;
+  }
+
+  .cart-quote-step.completed {
+    color: #1a1a1a;
+  }
+
+  .cart-quote-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .cart-quote-step.active .cart-quote-step-number {
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .cart-quote-step.completed .cart-quote-step-number {
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .cart-quote-step-divider {
+    display: none;
+  }
+
+  /* Modal Body */
   .cart-quote-modal-body {
-    padding: 0 32px 32px;
+    padding: 0;
     background: #FFFFFF;
   }
 
+  /* Step Content */
+  .cart-quote-step-content {
+    display: none;
+    padding: 20px 24px;
+  }
+
+  .cart-quote-step-content.active {
+    display: block;
+  }
+
+  .cart-quote-step-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-step-subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Products List (Step 1) - Exact MerakiQuote style */
+  .cart-quote-product {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: #fff;
+    transition: border-color 0.2s;
+  }
+
+  /* All products have same styling - no special first-child */
+
+  .cart-quote-product:last-child {
+    margin-bottom: 0;
+  }
+
+  .cart-quote-product img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #f8f8f8;
+    margin-right: 16px;
+  }
+
+  .cart-quote-product-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cart-quote-product-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+    line-height: 1.3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-product-variant {
+    font-size: 13px;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-product-qty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    margin-left: 12px;
+  }
+
+  .cart-quote-product-qty label {
+    font-size: 12px;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-product-qty input {
+    width: 64px;
+    padding: 8px 8px 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-align: left;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .cart-quote-product-qty input::-webkit-outer-spin-button,
+  .cart-quote-product-qty input::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button;
+    opacity: 1;
+    height: 100%;
+    margin: 0;
+  }
+
+  .cart-quote-product-qty input:focus {
+    outline: none;
+    border-color: #1a1a1a;
+  }
+
+  /* Contact Form (Step 2) - Exact MerakiQuote style */
   .cart-quote-form .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .cart-quote-form label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 500;
-    font-size: 14px;
-    color: #2D2D2D;
-    letter-spacing: 0.02em;
+    font-size: 13px;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   .cart-quote-form input[type="text"],
   .cart-quote-form input[type="email"],
   .cart-quote-form input[type="tel"],
   .cart-quote-form textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 14px 16px;
-    border: 1px solid #E0E0E0;
-    border-radius: 0;
-    font-size: 16px;
-    line-height: 1.6;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.5;
     box-sizing: border-box;
-    background: #FFFFFF;
-    color: #2D2D2D;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    transition: border-color 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   .cart-quote-form input:focus,
   .cart-quote-form textarea:focus {
     outline: none;
-    border-color: #2D3E50;
-    box-shadow: 0 0 0 2px rgba(45, 62, 80, 0.1);
+    border-color: #1a1a1a;
   }
 
   .cart-quote-form input::placeholder,
   .cart-quote-form textarea::placeholder {
-    color: #9B9B9B;
+    color: #999;
   }
 
   .cart-quote-form .required::after {
     content: ' *';
-    color: #C99E92;
+    color: #e74c3c;
   }
 
   .cart-quote-form .form-row {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px;
-  }
-
-  .cart-quote-form .form-row .form-group {
-    min-width: 0;
-    width: 100%;
-  }
-
-  .cart-quote-form .form-group {
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
   @media (max-width: 540px) {
     .cart-quote-modal-wrapper {
-      width: 96%;
+      width: 100%;
+      height: 100%;
       max-width: none;
     }
 
+    .cart-quote-modal-inner {
+      height: 100%;
+      max-height: 100%;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     .cart-quote-modal-close {
-      top: -12px;
-      right: -12px;
-      width: 40px;
-      height: 40px;
-      font-size: 1.25rem;
+      top: 16px;
+      right: 16px;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
     }
 
-    .cart-quote-modal-title {
-      padding: 32px 24px 16px;
+    .cart-quote-steps {
+      padding: 16px;
+      justify-content: space-around;
+      flex-shrink: 0;
     }
 
-    .cart-quote-modal-title h3 {
-      font-size: 1.5rem;
+    .cart-quote-step {
+      font-size: 12px;
+      gap: 6px;
+    }
+
+    .cart-quote-step-number {
+      width: 18px;
+      height: 18px;
+      font-size: 11px;
+    }
+
+    .cart-quote-step.active .cart-quote-step-number {
+      font-size: 10px;
     }
 
     .cart-quote-modal-body {
-      padding: 0 24px 24px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .cart-quote-step-content {
+      padding: 16px;
+    }
+
+    .cart-quote-step-title {
+      font-size: 15px;
+    }
+
+    .cart-quote-step-subtitle {
+      font-size: 12px;
+    }
+
+    .cart-quote-product {
+      padding: 10px 12px;
+    }
+
+    .cart-quote-product img {
+      width: 52px;
+      height: 52px;
+      margin-right: 12px;
+    }
+
+    .cart-quote-product-title {
+      font-size: 13px;
+    }
+
+    .cart-quote-product-variant {
+      font-size: 12px;
+    }
+
+    .cart-quote-product-qty {
+      margin-left: 8px;
+    }
+
+    .cart-quote-product-qty label {
+      font-size: 11px;
+    }
+
+    .cart-quote-product-qty input {
+      width: 56px;
+      padding: 6px 8px;
+      font-size: 13px;
     }
 
     .cart-quote-form .form-row {
       grid-template-columns: 1fr;
       gap: 0;
     }
+
+    .cart-quote-buttons {
+      padding: 12px 16px 20px;
+      flex-shrink: 0;
+      gap: 8px;
+    }
+
+    .cart-quote-btn {
+      padding: 10px 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .cart-quote-btn-secondary {
+      flex: 0.9;
+    }
+
+    .cart-quote-btn-primary {
+      flex: 1.1;
+    }
   }
 
-  .cart-quote-form button[type="submit"] {
-    width: 100%;
-    padding: 16px 32px;
-    background: #2D3E50;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 0;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
-  }
-
-  .cart-quote-form button[type="submit"]:hover {
-    background: #1A2332;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
-  }
-
-  .cart-quote-form button[type="submit"]:active {
-    transform: scale(0.98);
-  }
-
-  .cart-quote-items {
-    background: #FFFFFF;
-    padding: 24px;
-    border-radius: 0;
-    margin-bottom: 24px;
-    border: 1px solid #E0E0E0;
-  }
-
-  .cart-quote-items-title {
-    font-weight: 600;
+  /* Review Section (Step 3) - Exact MerakiQuote style */
+  .cart-quote-review-section {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
     margin-bottom: 16px;
-    font-size: 14px;
-    color: #2D3E50;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .cart-quote-review-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .cart-quote-review-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  .cart-quote-item {
+  .cart-quote-review-item {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid #F5F5F5;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
   }
 
-  .cart-quote-item:last-child {
+  .cart-quote-review-item:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
 
-  .cart-quote-item:first-child {
-    padding-top: 0;
-  }
-
-  .cart-quote-item img {
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
-    border-radius: 0;
-    border: 1px solid #E0E0E0;
-    background: #F8F7F4;
-  }
-
-  .cart-quote-item-details {
-    flex: 1;
-    font-size: 14px;
-  }
-
-  .cart-quote-item-title {
-    font-weight: 500;
-    color: #2D2D2D;
-    line-height: 1.4;
-    margin-bottom: 4px;
-  }
-
-  .cart-quote-item-qty {
-    color: #6B6B6B;
+  .cart-quote-review-label {
     font-size: 13px;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  /* Thank you message styles */
+  .cart-quote-review-value {
+    font-size: 13px;
+    color: #1a1a1a;
+    font-weight: 500;
+    text-align: right;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Buttons - Exact MerakiQuote style */
+  .cart-quote-buttons {
+    display: flex;
+    gap: 12px;
+    padding: 16px 24px 24px;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .cart-quote-btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-btn-secondary {
+    background: #fff;
+    color: #1a1a1a;
+    border: 1px solid #ddd;
+  }
+
+  .cart-quote-btn-secondary:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+  }
+
+  .cart-quote-btn-primary {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  .cart-quote-btn-primary:hover {
+    background: #333;
+  }
+
+  .cart-quote-btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* Thank you message - Exact MerakiQuote style */
   .cart-quote-thank-you {
     display: none;
     text-align: center;
-    padding: 64px 32px;
+    padding: 48px 24px;
     background: #FFFFFF;
   }
 
@@ -292,50 +526,51 @@
     display: block;
   }
 
+  .cart-quote-thank-you-icon {
+    width: 56px;
+    height: 56px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .cart-quote-thank-you-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+  }
+
   .cart-quote-thank-you h4 {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
-    color: #2D3E50;
-    margin: 0 0 16px;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   .cart-quote-thank-you p {
-    color: #6B6B6B;
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 0 32px;
-    max-width: 400px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+    max-width: 320px;
     margin-left: auto;
     margin-right: auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  .cart-quote-thank-you .btn-close-modal {
-    display: inline-block;
-    padding: 16px 48px;
-    background: #2D3E50;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 0;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    font-family: "Helvetica Neue", system-ui, -apple-system, sans-serif;
-  }
-
-  .cart-quote-thank-you .btn-close-modal:hover {
-    background: #1A2332;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 62, 80, 0.3);
-  }
-
-  .cart-quote-form-content.hide {
+  /* Hide steps when showing thank you */
+  .cart-quote-modal-inner.show-thank-you .cart-quote-steps,
+  .cart-quote-modal-inner.show-thank-you .cart-quote-modal-body .cart-quote-step-content,
+  .cart-quote-modal-inner.show-thank-you .cart-quote-buttons {
     display: none;
+  }
+
+  .cart-quote-modal-inner.show-thank-you .cart-quote-thank-you {
+    display: block;
   }
 </style>
 
@@ -343,108 +578,168 @@
 <div class="cart-quote-modal">
   <div class="cart-quote-modal-wrapper">
     <label for="quote-form-modal-cart" class="cart-quote-modal-close" aria-label="Close">&times;</label>
-    <div class="cart-quote-modal-inner">
-      <div class="cart-quote-modal-title">
-        <h3>{{ 'cart.general.request_quote' | t | default: 'Request a Quote' }}</h3>
-      </div>
-      <div class="cart-quote-modal-body">
-      <!-- Thank You Message -->
-      <div class="cart-quote-thank-you" id="cart-quote-thank-you">
-        <h4>{{ 'cart.general.quote_thank_you_title' | t | default: 'Thank You!' }}</h4>
-        <p>{{ 'cart.general.quote_thank_you_message' | t | default: 'Your quote request has been submitted successfully. Our team will review your requirements and get back to you shortly.' }}</p>
-        <label for="quote-form-modal-cart" class="btn-close-modal">{{ 'cart.general.close' | t | default: 'Close' }}</label>
+    <div class="cart-quote-modal-inner" id="cart-quote-modal-inner">
+      <!-- Step Indicators -->
+      <div class="cart-quote-steps">
+        <div class="cart-quote-step active" data-step="1">
+          <span class="cart-quote-step-number">1</span>
+          <span>{{ 'cart.quote.step_products' | t | default: 'Products selection' }}</span>
+        </div>
+        <div class="cart-quote-step-divider"></div>
+        <div class="cart-quote-step" data-step="2">
+          <span class="cart-quote-step-number">2</span>
+          <span>{{ 'cart.quote.step_contact' | t | default: 'Contact information' }}</span>
+        </div>
+        <div class="cart-quote-step-divider"></div>
+        <div class="cart-quote-step" data-step="3">
+          <span class="cart-quote-step-number">3</span>
+          <span>{{ 'cart.quote.step_review' | t | default: 'Review information' }}</span>
+        </div>
       </div>
 
-      <!-- Form Content -->
-      <div class="cart-quote-form-content" id="cart-quote-form-content">
-        <!-- Cart Items Summary -->
-        <div class="cart-quote-items">
-        <div class="cart-quote-items-title">{{ 'cart.general.your_items' | t | default: 'Your Items' }}</div>
-        {% for item in cart.items %}
-          <div class="cart-quote-item">
-            {% if item.image %}
-              <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title | escape }}">
-            {% endif %}
-            <div class="cart-quote-item-details">
-              <div class="cart-quote-item-title">{{ item.product.title }}</div>
-              <div class="cart-quote-item-qty">{{ 'cart.label.quantity' | t | default: 'Qty' }}: {{ item.quantity }}</div>
+      <div class="cart-quote-modal-body">
+        <!-- Thank You Message -->
+        <div class="cart-quote-thank-you" id="cart-quote-thank-you">
+          <div class="cart-quote-thank-you-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+          </div>
+          <h4>{{ 'cart.general.quote_thank_you_title' | t | default: 'Thank You!' }}</h4>
+          <p>{{ 'cart.general.quote_thank_you_message' | t | default: 'Your quote request has been submitted successfully. Our team will review your requirements and get back to you within 24 hours.' }}</p>
+          <label for="quote-form-modal-cart" class="cart-quote-btn cart-quote-btn-primary" style="display: inline-block; max-width: 160px;">{{ 'cart.general.close' | t | default: 'Close' }}</label>
+        </div>
+
+        <!-- Step 1: Products Selection -->
+        <div class="cart-quote-step-content active" data-step="1">
+          <div class="cart-quote-step-title">{{ 'cart.quote.products_title' | t | default: 'Product' }}</div>
+          <div class="cart-quote-step-subtitle">{{ 'cart.quote.products_subtitle' | t | default: 'The following products will be added to your quote request.' }}</div>
+
+          <div class="cart-quote-products" id="cart-quote-products">
+            {% for item in cart.items %}
+              <div class="cart-quote-product" data-variant-id="{{ item.variant.id }}">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}">
+                {% else %}
+                  <img src="{{ 'no-image.svg' | asset_url }}" alt="{{ item.title | escape }}">
+                {% endif %}
+                <div class="cart-quote-product-info">
+                  <div class="cart-quote-product-title">{{ item.product.title }}</div>
+                  {% if item.variant.title != 'Default Title' %}
+                    <div class="cart-quote-product-variant">{{ item.variant.title }}</div>
+                  {% endif %}
+                </div>
+                <div class="cart-quote-product-qty">
+                  <label>{{ 'cart.label.quantity' | t | default: 'Quantity' }}</label>
+                  <input type="number" min="1" value="{{ item.quantity }}" data-item-key="{{ item.key }}" class="quote-qty-input">
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Step 2: Contact Information -->
+        <div class="cart-quote-step-content" data-step="2">
+          <div class="cart-quote-step-title">{{ 'cart.quote.contact_title' | t | default: 'Contact Information' }}</div>
+          <div class="cart-quote-step-subtitle">{{ 'cart.quote.contact_subtitle' | t | default: 'Please provide your contact details so we can send you the quote.' }}</div>
+
+          <form id="cart-quote-form" class="cart-quote-form">
+            <input type="hidden" name="contact[subject]" value="Cart Quote Request">
+            <input type="hidden" name="contact[tags]" value="quote-request,cart-quote">
+            <input type="hidden" name="contact[cart_items]" id="cart-quote-items-hidden" value="">
+            <input type="hidden" name="contact[gclid]" id="cart-quote-gclid" value="">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cart-quote-name" class="required">{{ 'contact.form.name' | t | default: 'Full Name' }}</label>
+                <input type="text" id="cart-quote-name" name="contact[Full name]" required>
+              </div>
+              <div class="form-group">
+                <label for="cart-quote-email" class="required">{{ 'contact.form.email' | t | default: 'Email' }}</label>
+                <input type="email" id="cart-quote-email" name="contact[email]" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cart-quote-company" class="required">{{ 'customer.addresses.company' | t | default: 'Company Name' }}</label>
+                <input type="text" id="cart-quote-company" name="contact[Company name]" required>
+              </div>
+              <div class="form-group">
+                <label for="cart-quote-phone" class="required">{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}</label>
+                <input type="tel" id="cart-quote-phone" name="contact[Phone]" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cart-quote-message">{{ 'contact.form.message' | t | default: 'Additional Notes' }}</label>
+              <textarea id="cart-quote-message" name="contact[body]" rows="3" placeholder="{{ 'cart.general.quote_message_placeholder' | t | default: 'Any special requirements? (delivery to upper floors, multiple locations, etc.)' }}"></textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 3: Review -->
+        <div class="cart-quote-step-content" data-step="3">
+          <div class="cart-quote-step-title">{{ 'cart.quote.review_title' | t | default: 'Review Your Request' }}</div>
+          <div class="cart-quote-step-subtitle">{{ 'cart.quote.review_subtitle' | t | default: 'Please review your information before submitting.' }}</div>
+
+          <div class="cart-quote-review-section">
+            <div class="cart-quote-review-title">{{ 'cart.quote.products_title' | t | default: 'Products' }}</div>
+            <div id="review-products"></div>
+          </div>
+
+          <div class="cart-quote-review-section">
+            <div class="cart-quote-review-title">{{ 'cart.quote.contact_title' | t | default: 'Contact Information' }}</div>
+            <div class="cart-quote-review-item">
+              <span class="cart-quote-review-label">{{ 'contact.form.name' | t | default: 'Name' }}</span>
+              <span class="cart-quote-review-value" id="review-name"></span>
+            </div>
+            <div class="cart-quote-review-item">
+              <span class="cart-quote-review-label">{{ 'contact.form.email' | t | default: 'Email' }}</span>
+              <span class="cart-quote-review-value" id="review-email"></span>
+            </div>
+            <div class="cart-quote-review-item">
+              <span class="cart-quote-review-label">{{ 'customer.addresses.company' | t | default: 'Company' }}</span>
+              <span class="cart-quote-review-value" id="review-company"></span>
+            </div>
+            <div class="cart-quote-review-item">
+              <span class="cart-quote-review-label">{{ 'customer.addresses.phone' | t | default: 'Phone' }}</span>
+              <span class="cart-quote-review-value" id="review-phone"></span>
             </div>
           </div>
-        {% endfor %}
+        </div>
       </div>
 
-      <!-- Quote Form -->
-      <form id="cart-quote-form" class="cart-quote-form" method="post" action="/contact#contact_form">
-        <input type="hidden" name="form_type" value="contact">
-        <input type="hidden" name="utf8" value="&#x2713;">
-        <input type="hidden" name="contact[subject]" value="Cart Quote Request">
-        <input type="hidden" name="contact[tags]" value="quote-request,cart-quote">
-        <input type="hidden" name="contact[cart_items]" id="cart-quote-items-hidden" value="">
-        <input type="hidden" name="contact[gclid]" id="cart-quote-gclid" value="">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="cart-quote-name" class="required">{{ 'contact.form.name' | t | default: 'Full Name' }}</label>
-            <input type="text" id="cart-quote-name" name="contact[Full name]" required placeholder="{{ 'contact.form.name' | t | default: 'Full Name' }}">
-          </div>
-          <div class="form-group">
-            <label for="cart-quote-email" class="required">{{ 'contact.form.email' | t | default: 'Email' }}</label>
-            <input type="email" id="cart-quote-email" name="contact[email]" required placeholder="{{ 'contact.form.email' | t | default: 'Email' }}">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="cart-quote-company" class="required">{{ 'customer.addresses.company' | t | default: 'Company Name' }}</label>
-            <input type="text" id="cart-quote-company" name="contact[Company name]" required placeholder="{{ 'customer.addresses.company' | t | default: 'Company Name' }}">
-          </div>
-          <div class="form-group">
-            <label for="cart-quote-phone" class="required">{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}</label>
-            <input type="tel" id="cart-quote-phone" name="contact[Phone]" required placeholder="{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="cart-quote-message">{{ 'contact.form.message' | t | default: 'Message' }}</label>
-          <textarea id="cart-quote-message" name="contact[body]" rows="3" placeholder="{{ 'cart.general.quote_message_placeholder' | t | default: 'Please include any special requirements (e.g., delivery to upper floors, multiple locations)' }}"></textarea>
-        </div>
-
-        <button type="submit">{{ 'cart.general.submit_quote' | t | default: 'Submit Quote Request' }}</button>
-      </form>
-      </div><!-- end cart-quote-form-content -->
-      </div><!-- end cart-quote-modal-body -->
-    </div><!-- end cart-quote-modal-inner -->
-  </div><!-- end cart-quote-modal-wrapper -->
-</div><!-- end cart-quote-modal -->
+      <!-- Navigation Buttons -->
+      <div class="cart-quote-buttons">
+        <label for="quote-form-modal-cart" class="cart-quote-btn cart-quote-btn-secondary" id="btn-back">
+          Continue Shopping
+        </label>
+        <button type="button" class="cart-quote-btn cart-quote-btn-primary" id="btn-next">
+          {{ 'cart.quote.next_step' | t | default: 'Next step' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   (function() {
-    // Close modal when clicking overlay
-    const modal = document.querySelector('.cart-quote-modal');
-    if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          document.getElementById('quote-form-modal-cart').checked = false;
-        }
-      });
-    }
+    let currentStep = 1;
+    const totalSteps = 3;
 
-    // Populate cart items in hidden field
+    // Cart items data
     const cartItems = [];
     {% for item in cart.items %}
       cartItems.push({
+        key: {{ item.key | json }},
         title: {{ item.product.title | json }},
         variant: {{ item.variant.title | json }},
+        variantId: {{ item.variant.id }},
         sku: {{ item.sku | json }},
         quantity: {{ item.quantity }},
-        price: {{ item.price | money | json }}
+        price: {{ item.price | money | json }},
+        image: {{ item.image | image_url: width: 100 | json }}
       });
     {% endfor %}
-
-    const hiddenField = document.getElementById('cart-quote-items-hidden');
-    if (hiddenField) {
-      hiddenField.value = JSON.stringify(cartItems);
-    }
 
     // Get gclid for attribution
     function getGclid() {
@@ -458,66 +753,192 @@
       return '';
     }
 
+    // Set gclid
     const gclidField = document.getElementById('cart-quote-gclid');
-    if (gclidField) {
-      gclidField.value = getGclid();
+    if (gclidField) gclidField.value = getGclid();
+
+    // Step navigation
+    function updateSteps() {
+      // Update step indicators
+      document.querySelectorAll('.cart-quote-step').forEach(step => {
+        const stepNum = parseInt(step.dataset.step);
+        step.classList.remove('active', 'completed');
+        if (stepNum === currentStep) {
+          step.classList.add('active');
+        } else if (stepNum < currentStep) {
+          step.classList.add('completed');
+        }
+      });
+
+      // Update step content
+      document.querySelectorAll('.cart-quote-step-content').forEach(content => {
+        content.classList.remove('active');
+        if (parseInt(content.dataset.step) === currentStep) {
+          content.classList.add('active');
+        }
+      });
+
+      // Update buttons
+      const btnBack = document.getElementById('btn-back');
+      const btnNext = document.getElementById('btn-next');
+
+      if (currentStep === 1) {
+        btnBack.textContent = 'Continue Shopping';
+        btnBack.setAttribute('for', 'quote-form-modal-cart');
+        btnNext.textContent = 'Next step';
+      } else if (currentStep === 2) {
+        btnBack.textContent = 'Previous';
+        btnBack.removeAttribute('for');
+        btnNext.textContent = 'Next step';
+      } else if (currentStep === 3) {
+        btnBack.textContent = 'Previous';
+        btnBack.removeAttribute('for');
+        btnNext.textContent = 'Submit Quote Request';
+        updateReviewSection();
+      }
     }
 
-    // Handle form submission
-    const form = document.getElementById('cart-quote-form');
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    function updateReviewSection() {
+      // Update contact info review
+      document.getElementById('review-name').textContent = document.getElementById('cart-quote-name').value;
+      document.getElementById('review-email').textContent = document.getElementById('cart-quote-email').value;
+      document.getElementById('review-company').textContent = document.getElementById('cart-quote-company').value;
+      document.getElementById('review-phone').textContent = document.getElementById('cart-quote-phone').value;
 
-        const formData = new FormData(form);
-        const data = {
-          create_at: new Date().toISOString(),
-          source: 'cart-quote-modal',
-          cart_items: cartItems,
-          gclid: getGclid()
-        };
+      // Update products review
+      const reviewProducts = document.getElementById('review-products');
+      reviewProducts.innerHTML = '';
 
-        formData.forEach((value, key) => {
-          data[key] = value;
-        });
+      document.querySelectorAll('.cart-quote-product').forEach((product, index) => {
+        const qty = product.querySelector('.quote-qty-input').value;
+        const title = cartItems[index]?.title || '';
+        const variant = cartItems[index]?.variant || '';
 
-        // Send to Zapier webhook
-        fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).catch(console.error);
+        const item = document.createElement('div');
+        item.className = 'cart-quote-review-item';
+        item.innerHTML = `
+          <span class="cart-quote-review-label">${title}${variant && variant !== 'Default Title' ? ' - ' + variant : ''}</span>
+          <span class="cart-quote-review-value">Qty: ${qty}</span>
+        `;
+        reviewProducts.appendChild(item);
+      });
+    }
 
-        // Send to Cloud Run for Zoho CRM sync
-        const zohoData = {
-          Full_Name: formData.get('contact[Full name]'),
-          Email: formData.get('contact[email]'),
-          Company: formData.get('contact[Company name]'),
-          Phone: formData.get('contact[Phone]'),
-          Message: formData.get('contact[body]'),
-          Lead_Source: 'WebSite Visit',
-          Description: 'Cart Quote Request: ' + JSON.stringify(cartItems),
-          source: 'cart-quote-modal',
-          gclid: getGclid()
-        };
-        fetch('https://soundboxstore-zoho-webhook-1008501784095.europe-west1.run.app/webhook/cart-quote', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(zohoData)
-        }).catch(console.error);
+    function validateStep2() {
+      const form = document.getElementById('cart-quote-form');
+      const name = document.getElementById('cart-quote-name').value.trim();
+      const email = document.getElementById('cart-quote-email').value.trim();
+      const company = document.getElementById('cart-quote-company').value.trim();
+      const phone = document.getElementById('cart-quote-phone').value.trim();
 
-        // Track event
-        if (typeof umami !== 'undefined') {
-          umami.track('cart_quote_submit');
+      if (!name || !email || !company || !phone) {
+        alert('{{ 'cart.quote.fill_required' | t | default: 'Please fill in all required fields.' }}');
+        return false;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('{{ 'cart.quote.valid_email' | t | default: 'Please enter a valid email address.' }}');
+        return false;
+      }
+
+      return true;
+    }
+
+    function submitQuote() {
+      const form = document.getElementById('cart-quote-form');
+      const formData = new FormData(form);
+
+      // Get updated quantities
+      const updatedItems = [];
+      document.querySelectorAll('.cart-quote-product').forEach((product, index) => {
+        const qty = parseInt(product.querySelector('.quote-qty-input').value) || 1;
+        if (cartItems[index]) {
+          updatedItems.push({
+            ...cartItems[index],
+            quantity: qty
+          });
         }
+      });
 
-        // Show thank you message instead of redirecting
-        const formContent = document.getElementById('cart-quote-form-content');
-        const thankYou = document.getElementById('cart-quote-thank-you');
-        if (formContent && thankYou) {
-          formContent.classList.add('hide');
-          thankYou.classList.add('show');
+      const data = {
+        created_at: new Date().toISOString(),
+        source: 'cart-quote-modal-wizard',
+        cart_items: updatedItems,
+        gclid: getGclid()
+      };
+
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Update hidden field
+      const hiddenField = document.getElementById('cart-quote-items-hidden');
+      if (hiddenField) hiddenField.value = JSON.stringify(updatedItems);
+
+      // Send to Zapier webhook
+      fetch('https://hooks.zapier.com/hooks/catch/14043376/248z11w/', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(console.error);
+
+      // Send to Cloud Run for Zoho CRM sync
+      const zohoData = {
+        Full_Name: formData.get('contact[Full name]'),
+        Email: formData.get('contact[email]'),
+        Company: formData.get('contact[Company name]'),
+        Phone: formData.get('contact[Phone]'),
+        Message: formData.get('contact[body]'),
+        Lead_Source: 'WebSite Visit',
+        Description: 'Cart Quote Request: ' + JSON.stringify(updatedItems),
+        source: 'cart-quote-modal-wizard',
+        gclid: getGclid()
+      };
+      fetch('https://soundboxstore-zoho-webhook-1008501784095.europe-west1.run.app/webhook/cart-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(zohoData)
+      }).catch(console.error);
+
+      // Track event
+      if (typeof umami !== 'undefined') {
+        umami.track('cart_quote_submit');
+      }
+
+      // Show thank you
+      document.getElementById('cart-quote-modal-inner').classList.add('show-thank-you');
+    }
+
+    // Button handlers
+    document.getElementById('btn-next').addEventListener('click', function() {
+      if (currentStep === 2 && !validateStep2()) {
+        return;
+      }
+
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateSteps();
+      } else {
+        submitQuote();
+      }
+    });
+
+    document.getElementById('btn-back').addEventListener('click', function(e) {
+      if (currentStep > 1) {
+        e.preventDefault();
+        currentStep--;
+        updateSteps();
+      }
+    });
+
+    // Close modal on overlay click
+    const modal = document.querySelector('.cart-quote-modal');
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          document.getElementById('quote-form-modal-cart').checked = false;
         }
       });
     }
@@ -527,17 +948,17 @@
     if (modalCheckbox) {
       modalCheckbox.addEventListener('change', function() {
         if (!this.checked) {
-          // Modal is being closed, reset after animation
           setTimeout(function() {
-            const formContent = document.getElementById('cart-quote-form-content');
-            const thankYou = document.getElementById('cart-quote-thank-you');
-            const form = document.getElementById('cart-quote-form');
-            if (formContent) formContent.classList.remove('hide');
-            if (thankYou) thankYou.classList.remove('show');
-            if (form) form.reset();
+            currentStep = 1;
+            updateSteps();
+            document.getElementById('cart-quote-modal-inner').classList.remove('show-thank-you');
+            document.getElementById('cart-quote-form').reset();
           }, 300);
         }
       });
     }
+
+    // Initialize
+    updateSteps();
   })();
 </script>

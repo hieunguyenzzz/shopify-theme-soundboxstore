@@ -3,6 +3,16 @@
   Tracks key conversion events with UTM attribution for campaign performance analysis
   Events: form_start, request_quote, quote_submit, add_to_cart
 
+  Enhanced Events (2025-12-29):
+  - quote_field_focus: Track every field focus
+  - quote_field_blur: Track every field blur with fill status
+  - quote_field_error: Track validation errors
+  - quote_progress: Track form completion milestones (25%, 50%, 75%, 100%)
+  - quote_step_change: Track multi-step form navigation
+  - quote_abandon: Track form abandonment with context
+  - upsell_view: Track when upsell section is visible
+  - upsell_click: Track clicks on upsell products
+
   GA4 Property: G-0HET6EXHTH (SoundBoxStore)
   Umami: umami.mobelaris.com (33c86e50-36c8-428d-8b39-d1dfa548a808)
 
@@ -12,6 +22,8 @@
   Updated: 2025-12-20 - Added UTM parameter capture for attribution without cookies
   Updated: 2025-12-20 - Added add_to_cart tracking with UTM attribution
   Updated: 2025-12-20 - Added Umami tracking with UTM attribution for all events
+  Updated: 2025-12-28 - Fixed MerakiQuote popup detection (new [role="dialog"] selector)
+  Updated: 2025-12-29 - Added comprehensive field-level tracking and abandonment detection
 {% endcomment %}
 <script>
 (function() {
@@ -180,7 +192,8 @@
   document.addEventListener('focusin', function(e) {
     const input = e.target;
     // Check if this is an input inside a quote form
-    const form = input.closest('#quote-form, .meraki-popup-wrapper, [id^="quote-form"]');
+    // Supports: header quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
+    const form = input.closest('#quote-form, .meraki-popup-wrapper, [id^="quote-form"], [role="dialog"]');
     if (form && input.matches('input, textarea, select') && !hasEventFired(STORAGE_KEY_FORM_START)) {
       markEventFired(STORAGE_KEY_FORM_START);
       const eventData = buildEventData('form_start');
@@ -234,10 +247,12 @@
   document.addEventListener('submit', function(e) {
     const form = e.target;
     // Check if this is a quote-related form
+    // Supports: header quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
     const isQuoteForm = form.id === 'quote-form' ||
                         form.querySelector('input[placeholder*="Company"]') ||
                         form.querySelector('input[name*="Company"]') ||
-                        form.closest('.meraki-popup-wrapper');
+                        form.closest('.meraki-popup-wrapper') ||
+                        form.closest('[role="dialog"]');
 
     if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
       markEventFired(STORAGE_KEY_SUBMIT);
@@ -270,8 +285,14 @@
     if (!btn) return;
 
     // Check if this is inside a MerakiQuote popup
-    const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]');
+    // Supports: old .meraki-popup-wrapper class + new [role="dialog"] with Company input
+    const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"], [role="dialog"]');
     if (!popup) return;
+
+    // For [role="dialog"], verify it's a quote form by checking for Company input
+    if (!popup.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) {
+      if (!popup.querySelector('input[placeholder*="Company" i], input[name*="company" i]')) return;
+    }
 
     // Check if this is the submit/send button (final step)
     const btnText = btn.textContent.toLowerCase().trim();
@@ -343,5 +364,383 @@
 
   // Also reset on page navigation (for SPA behavior)
   window.addEventListener('popstate', resetEventFlags);
+
+  // ============================================
+  // ENHANCED TRACKING: Field-level & Abandonment
+  // ============================================
+
+  // Form state tracking
+  const formState = {
+    startTime: null,
+    lastFieldName: null,
+    lastFieldFocusTime: null,
+    fieldsInteracted: new Set(),
+    fieldsFilled: new Set(),
+    currentStep: 1,
+    totalFields: 0,
+    lastProgressMilestone: 0
+  };
+
+  // Get all quote form selectors
+  const QUOTE_FORM_SELECTORS = '#quote-form, #cart-quote-form, .meraki-popup-wrapper, [role="dialog"]:has(input[name*="company" i]), [role="dialog"]:has(input[placeholder*="Company" i])';
+
+  // Helper to identify form and get its ID
+  function getFormContext(element) {
+    const form = element.closest(QUOTE_FORM_SELECTORS);
+    if (!form) return null;
+
+    let formId = 'unknown';
+    if (form.id === 'quote-form') formId = 'header-quote-form';
+    else if (form.id === 'cart-quote-form') formId = 'cart-quote-modal';
+    else if (form.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) formId = 'meraki-quote-popup';
+    else if (form.matches('[role="dialog"]')) formId = 'quote-popup';
+
+    // Determine step for multi-step forms
+    let currentStep = 1;
+    const activeStep = form.querySelector('.cart-quote-step.active, [class*="step"].active, [data-step].active');
+    if (activeStep) {
+      currentStep = parseInt(activeStep.dataset.step) || parseInt(activeStep.className.match(/step-?(\d)/)?.[1]) || 1;
+    }
+
+    return { form, formId, currentStep };
+  }
+
+  // Helper to get clean field name
+  function getFieldName(field) {
+    // Try to get a meaningful name
+    const name = field.name || '';
+    const placeholder = field.placeholder || '';
+    const label = field.closest('.form-group, .grid__item')?.querySelector('label')?.textContent?.trim() || '';
+
+    // Clean up contact[] format: contact[Full name] -> Full name
+    if (name.includes('[')) {
+      return name.replace(/^contact\[|\]$/g, '').replace(/[\[\]]/g, '');
+    }
+    return label || placeholder || name || field.id || field.type;
+  }
+
+  // Get total fields and filled count in a form
+  function getFormStats(form) {
+    const fields = form.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), textarea, select');
+    let filled = 0;
+    let total = 0;
+
+    fields.forEach(field => {
+      if (field.offsetParent !== null) { // Visible only
+        total++;
+        if (field.value && field.value.trim().length > 0) filled++;
+      }
+    });
+
+    return { filled, total };
+  }
+
+  // Track field focus
+  document.addEventListener('focusin', function(e) {
+    const field = e.target;
+    if (!field.matches('input, textarea, select')) return;
+
+    const context = getFormContext(field);
+    if (!context) return;
+
+    const fieldName = getFieldName(field);
+
+    // Initialize form state on first field focus
+    if (!formState.startTime) {
+      formState.startTime = Date.now();
+      formState.totalFields = getFormStats(context.form).total;
+    }
+
+    formState.lastFieldName = fieldName;
+    formState.lastFieldFocusTime = Date.now();
+    formState.currentStep = context.currentStep;
+    formState.fieldsInteracted.add(fieldName);
+
+    trackUmami('quote_field_focus', {
+      field_name: fieldName,
+      field_type: field.type,
+      step: context.currentStep,
+      form_id: context.formId,
+      time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
+    });
+
+    console.log('[QuoteTracking] quote_field_focus:', fieldName);
+  }, { capture: true });
+
+  // Track field blur (leaving a field)
+  document.addEventListener('focusout', function(e) {
+    const field = e.target;
+    if (!field.matches('input, textarea, select')) return;
+
+    const context = getFormContext(field);
+    if (!context) return;
+
+    const fieldName = getFieldName(field);
+    const wasFilled = field.value && field.value.trim().length > 0;
+    const timeOnField = formState.lastFieldFocusTime ? Math.round((Date.now() - formState.lastFieldFocusTime) / 1000) : 0;
+
+    if (wasFilled) {
+      formState.fieldsFilled.add(fieldName);
+    }
+
+    trackUmami('quote_field_blur', {
+      field_name: fieldName,
+      field_type: field.type,
+      was_filled: wasFilled,
+      time_on_field: timeOnField,
+      step: context.currentStep,
+      form_id: context.formId
+    });
+
+    console.log('[QuoteTracking] quote_field_blur:', fieldName, 'filled:', wasFilled, 'time:', timeOnField + 's');
+
+    // Check form progress and fire milestone events
+    const stats = getFormStats(context.form);
+    const progressPct = Math.round((stats.filled / stats.total) * 100);
+    const milestone = Math.floor(progressPct / 25) * 25;
+
+    if (milestone > formState.lastProgressMilestone && milestone <= 100) {
+      formState.lastProgressMilestone = milestone;
+      trackUmami('quote_progress', {
+        progress_pct: milestone,
+        fields_filled: stats.filled,
+        total_fields: stats.total,
+        form_id: context.formId
+      });
+      console.log('[QuoteTracking] quote_progress:', milestone + '%');
+    }
+  }, { capture: true });
+
+  // Track validation errors
+  document.addEventListener('invalid', function(e) {
+    const field = e.target;
+    const context = getFormContext(field);
+    if (!context) return;
+
+    const fieldName = getFieldName(field);
+    let errorType = 'required';
+
+    if (field.validity) {
+      if (field.validity.typeMismatch) errorType = 'format';
+      else if (field.validity.patternMismatch) errorType = 'pattern';
+      else if (field.validity.tooShort) errorType = 'too_short';
+      else if (field.validity.tooLong) errorType = 'too_long';
+    }
+
+    trackUmami('quote_field_error', {
+      field_name: fieldName,
+      error_type: errorType,
+      form_id: context.formId
+    });
+
+    console.log('[QuoteTracking] quote_field_error:', fieldName, errorType);
+  }, { capture: true });
+
+  // Track multi-step form navigation
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button, [role="button"]');
+    if (!btn) return;
+
+    const context = getFormContext(btn);
+    if (!context) return;
+
+    const btnText = btn.textContent.toLowerCase().trim();
+    const isNext = btnText.includes('next') || btnText.includes('continue') || btn.id === 'btn-next';
+    const isPrev = btnText.includes('previous') || btnText.includes('back') || btn.id === 'btn-back';
+
+    if ((isNext || isPrev) && formState.currentStep) {
+      const fromStep = formState.currentStep;
+      const toStep = isNext ? fromStep + 1 : fromStep - 1;
+
+      // Only track if step actually changes (give DOM time to update)
+      setTimeout(() => {
+        const newContext = getFormContext(btn);
+        if (newContext && newContext.currentStep !== fromStep) {
+          const timeOnStep = formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0;
+
+          trackUmami('quote_step_change', {
+            from_step: fromStep,
+            to_step: newContext.currentStep,
+            time_on_step: timeOnStep,
+            form_id: context.formId
+          });
+
+          formState.currentStep = newContext.currentStep;
+          console.log('[QuoteTracking] quote_step_change:', fromStep, '->', newContext.currentStep);
+        }
+      }, 100);
+    }
+  }, { capture: true });
+
+  // Track form abandonment (modal close without submit)
+  function trackFormAbandon(formId) {
+    if (!formState.startTime) return; // Never interacted
+    if (hasEventFired(STORAGE_KEY_SUBMIT)) return; // Already submitted
+
+    const timeSpent = Math.round((Date.now() - formState.startTime) / 1000);
+
+    trackUmami('quote_abandon', {
+      last_field: formState.lastFieldName || 'none',
+      fields_interacted: formState.fieldsInteracted.size,
+      fields_filled: formState.fieldsFilled.size,
+      total_fields: formState.totalFields,
+      completion_pct: formState.totalFields > 0 ? Math.round((formState.fieldsFilled.size / formState.totalFields) * 100) : 0,
+      time_spent: timeSpent,
+      step_reached: formState.currentStep,
+      form_id: formId
+    });
+
+    console.log('[QuoteTracking] quote_abandon fired', {
+      lastField: formState.lastFieldName,
+      fieldsInteracted: formState.fieldsInteracted.size,
+      fieldsFilled: formState.fieldsFilled.size,
+      timeSpent: timeSpent
+    });
+  }
+
+  // Reset form state
+  function resetFormState() {
+    formState.startTime = null;
+    formState.lastFieldName = null;
+    formState.lastFieldFocusTime = null;
+    formState.fieldsInteracted.clear();
+    formState.fieldsFilled.clear();
+    formState.currentStep = 1;
+    formState.totalFields = 0;
+    formState.lastProgressMilestone = 0;
+  }
+
+  // Listen for modal close events - track abandonment
+  document.addEventListener('click', function(e) {
+    const closeBtn = e.target.closest('[aria-label="Close"], .close-button, .meraki-popup-close, .cart-quote-modal-close, label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
+    if (!closeBtn) return;
+
+    // Check if this is closing a quote form
+    const form = closeBtn.closest(QUOTE_FORM_SELECTORS) || document.querySelector('.quote-form-modal, .cart-quote-modal');
+    if (form) {
+      let formId = 'unknown';
+      if (form.classList.contains('quote-form-modal') || closeBtn.matches('label[for="quote-form-modal"]')) formId = 'header-quote-form';
+      else if (form.classList.contains('cart-quote-modal') || closeBtn.matches('label[for="quote-form-modal-cart"]')) formId = 'cart-quote-modal';
+      else if (form.matches('.meraki-popup-wrapper, [class*="meraki"]')) formId = 'meraki-quote-popup';
+
+      trackFormAbandon(formId);
+      resetFormState();
+    }
+  }, { capture: true });
+
+  // Also track abandonment on page unload if form was started
+  window.addEventListener('beforeunload', function() {
+    if (formState.startTime && !hasEventFired(STORAGE_KEY_SUBMIT)) {
+      // Use sendBeacon for reliable delivery
+      const data = {
+        event: 'quote_abandon',
+        last_field: formState.lastFieldName || 'none',
+        fields_filled: formState.fieldsFilled.size,
+        time_spent: Math.round((Date.now() - formState.startTime) / 1000),
+        step_reached: formState.currentStep
+      };
+      // Note: Umami doesn't support sendBeacon, so we log for debugging
+      console.log('[QuoteTracking] Page unload abandon:', data);
+    }
+  });
+
+  // ============================================
+  // UPSELL SECTION TRACKING
+  // ============================================
+
+  const upsellState = {
+    viewedSections: new Set()
+  };
+
+  // Upsell section selectors
+  const UPSELL_SELECTORS = '.product-recommendations, .cart-recommendations, .product-upsell, [class*="upsell"], [class*="cross-sell"], [class*="recommendation"]';
+
+  // Track upsell section visibility
+  if ('IntersectionObserver' in window) {
+    const upsellObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const section = entry.target;
+          const sectionId = section.id || section.className.split(' ')[0] || 'upsell-section';
+
+          // Only track once per section per page view
+          if (upsellState.viewedSections.has(sectionId)) return;
+          upsellState.viewedSections.add(sectionId);
+
+          // Count visible products
+          const products = section.querySelectorAll('.grid-product, .cart-quote-product, [class*="product-card"], .product-item');
+          const productCount = products.length;
+
+          // Get location context
+          const location = window.location.pathname.includes('/cart') ? 'cart' :
+                          window.location.pathname.includes('/products/') ? 'product' : 'other';
+
+          trackUmami('upsell_view', {
+            section_id: sectionId,
+            products_shown: productCount,
+            location: location,
+            page_path: window.location.pathname
+          });
+
+          console.log('[QuoteTracking] upsell_view:', sectionId, 'products:', productCount);
+        }
+      });
+    }, {
+      threshold: 0.5 // Trigger when 50% visible
+    });
+
+    // Observe upsell sections (with delay for dynamic content)
+    function observeUpsellSections() {
+      document.querySelectorAll(UPSELL_SELECTORS).forEach(section => {
+        upsellObserver.observe(section);
+      });
+    }
+
+    // Initial observation
+    observeUpsellSections();
+
+    // Re-observe after dynamic content loads
+    const mutationObserver = new MutationObserver(() => {
+      observeUpsellSections();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Track clicks on upsell products
+  document.addEventListener('click', function(e) {
+    const productLink = e.target.closest('a[href*="/products/"], .grid-product a, .product-item');
+    if (!productLink) return;
+
+    // Check if inside an upsell section
+    const upsellSection = productLink.closest(UPSELL_SELECTORS);
+    if (!upsellSection) return;
+
+    // Get product info
+    const productTitle = productLink.querySelector('.product-item_title, .grid-product__title, [class*="title"]')?.textContent?.trim() ||
+                        productLink.querySelector('img')?.alt || 'unknown';
+    const productUrl = productLink.href || productLink.closest('a')?.href || '';
+    const productSku = productLink.dataset.sku || productLink.dataset.variantId || '';
+
+    // Get position in list
+    const products = upsellSection.querySelectorAll('.grid-product, .product-item, [class*="product-card"]');
+    let position = 0;
+    products.forEach((p, i) => {
+      if (p.contains(productLink) || p === productLink) position = i + 1;
+    });
+
+    const location = window.location.pathname.includes('/cart') ? 'cart' :
+                    window.location.pathname.includes('/products/') ? 'product' : 'other';
+
+    trackUmami('upsell_click', {
+      product_name: productTitle,
+      product_url: productUrl,
+      product_sku: productSku,
+      position: position,
+      location: location
+    });
+
+    console.log('[QuoteTracking] upsell_click:', productTitle, 'position:', position);
+  }, { capture: true });
+
 })();
 </script>
