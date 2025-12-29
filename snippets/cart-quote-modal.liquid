@@ -905,6 +905,7 @@
       // Track event with customer data for attribution
       if (typeof umami !== 'undefined') {
         const customerData = {
+          quote_session_id: sessionStorage.getItem('qt_quote_session_id') || '',
           form_id: 'cart-quote-modal',
           email: formData.get('contact[email]') || '',
           name: formData.get('contact[Full name]') || '',

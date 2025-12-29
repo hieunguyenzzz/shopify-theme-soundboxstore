@@ -27,6 +27,7 @@
   Updated: 2025-12-29 - Fixed quote_submit customer data capture (email, first_name, last_name, company, phone)
                        - Improved extractCustomerData() with more field name patterns
                        - Added support for cart-quote-form, header quote form, and MerakiQuote popup
+                       - Added quote_session_id to link all field events to their request_quote session
 {% endcomment %}
 <script>
 (function() {
@@ -38,6 +39,41 @@
   // Use sessionStorage for robust de-duplication across page interactions
   const STORAGE_KEY_REQUEST = 'qt_request_quote_fired';
   const STORAGE_KEY_SUBMIT = 'qt_quote_submit_fired';
+  const STORAGE_KEY_SESSION_ID = 'qt_quote_session_id';
+
+  // Generate a unique quote session ID (timestamp + random string)
+  function generateQuoteSessionId() {
+    const timestamp = Date.now().toString(36);
+    const random = Math.random().toString(36).substring(2, 8);
+    return `qs_${timestamp}_${random}`;
+  }
+
+  // Get or create quote session ID
+  function getQuoteSessionId() {
+    try {
+      return sessionStorage.getItem(STORAGE_KEY_SESSION_ID) || '';
+    } catch (e) {
+      return '';
+    }
+  }
+
+  // Store quote session ID
+  function setQuoteSessionId(sessionId) {
+    try {
+      sessionStorage.setItem(STORAGE_KEY_SESSION_ID, sessionId);
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }
+
+  // Clear quote session ID
+  function clearQuoteSessionId() {
+    try {
+      sessionStorage.removeItem(STORAGE_KEY_SESSION_ID);
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }
 
   // UTM and attribution parameters to capture
   const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'];
@@ -137,6 +173,7 @@
       sessionStorage.removeItem(STORAGE_KEY_REQUEST);
       sessionStorage.removeItem(STORAGE_KEY_SUBMIT);
       sessionStorage.removeItem(STORAGE_KEY_FORM_START);
+      clearQuoteSessionId();
     } catch (e) {
       // Ignore storage errors
     }
@@ -214,11 +251,16 @@
     const btn = e.target.closest('[id^="ProductQuoteButton-"], .product-qoute-button, label[for="quote-form-modal"]');
     if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
       markEventFired(STORAGE_KEY_REQUEST);
+
+      // Generate a unique session ID for this quote request
+      const quoteSessionId = generateQuoteSessionId();
+      setQuoteSessionId(quoteSessionId);
+
       const eventData = buildEventData('request_quote');
 
       gtag('event', 'request_quote', eventData);
-      trackUmami('request_quote', {});
-      console.log('[QuoteTracking] request_quote fired', eventData);
+      trackUmami('request_quote', { quote_session_id: quoteSessionId });
+      console.log('[QuoteTracking] request_quote fired, session:', quoteSessionId, eventData);
     }
   }, { capture: true, once: false });
 
@@ -342,6 +384,7 @@
 
       // Build customer data with multiple fallbacks
       const customerData = {
+        quote_session_id: getQuoteSessionId(),
         form_id: eventData.form_id,
         email: extractedData.email || formData.get('contact[email]') || formData.get('email') || '',
         first_name: extractedData.first_name || '',
@@ -395,6 +438,7 @@
     if (isSubmitBtn && !hasEventFired(STORAGE_KEY_SUBMIT)) {
       // Extract data from popup inputs
       const customerData = extractCustomerData(popup);
+      customerData.quote_session_id = getQuoteSessionId();
       customerData.form_id = 'meraki-quote-popup';
 
       // Parse first_name/last_name from full name if not available
@@ -571,6 +615,7 @@
     formState.fieldsInteracted.add(fieldName);
 
     trackUmami('quote_field_focus', {
+      quote_session_id: getQuoteSessionId(),
       field_name: fieldName,
       field_type: field.type,
       step: context.currentStep,
@@ -598,6 +643,7 @@
     }
 
     trackUmami('quote_field_blur', {
+      quote_session_id: getQuoteSessionId(),
       field_name: fieldName,
       field_type: field.type,
       was_filled: wasFilled,
@@ -620,6 +666,7 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (emailRegex.test(emailValue)) {
         trackUmami('quote_field_email', {
+          quote_session_id: getQuoteSessionId(),
           email: emailValue,
           form_id: context.formId,
           step: context.currentStep,
@@ -637,6 +684,7 @@
     if (milestone > formState.lastProgressMilestone && milestone <= 100) {
       formState.lastProgressMilestone = milestone;
       trackUmami('quote_progress', {
+        quote_session_id: getQuoteSessionId(),
         progress_pct: milestone,
         fields_filled: stats.filled,
         total_fields: stats.total,
@@ -663,6 +711,7 @@
     }
 
     trackUmami('quote_field_error', {
+      quote_session_id: getQuoteSessionId(),
       field_name: fieldName,
       error_type: errorType,
       form_id: context.formId
@@ -694,6 +743,7 @@
           const timeOnStep = formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0;
 
           trackUmami('quote_step_change', {
+            quote_session_id: getQuoteSessionId(),
             from_step: fromStep,
             to_step: newContext.currentStep,
             time_on_step: timeOnStep,
@@ -715,6 +765,7 @@
     const timeSpent = Math.round((Date.now() - formState.startTime) / 1000);
 
     trackUmami('quote_abandon', {
+      quote_session_id: getQuoteSessionId(),
       last_field: formState.lastFieldName || 'none',
       fields_interacted: formState.fieldsInteracted.size,
       fields_filled: formState.fieldsFilled.size,
