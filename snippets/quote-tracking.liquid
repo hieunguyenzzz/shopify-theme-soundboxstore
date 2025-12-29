@@ -28,6 +28,9 @@
                        - Improved extractCustomerData() with more field name patterns
                        - Added support for cart-quote-form, header quote form, and MerakiQuote popup
                        - Added quote_session_id to link all field events to their request_quote session
+  Updated: 2025-12-29 - Fixed quote_session_id race condition: now generates session ID on first field focus
+                       if not already set, ensuring all events have a session ID even when field focus
+                       occurs before request_quote button click
 {% endcomment %}
 <script>
 (function() {
@@ -609,13 +612,22 @@
       formState.totalFields = getFormStats(context.form).total;
     }
 
+    // Ensure we have a quote session ID - generate one if missing
+    // This handles cases where field focus happens before/without request_quote click
+    let quoteSessionId = getQuoteSessionId();
+    if (!quoteSessionId) {
+      quoteSessionId = generateQuoteSessionId();
+      setQuoteSessionId(quoteSessionId);
+      console.log('[QuoteTracking] Generated session ID on field focus:', quoteSessionId);
+    }
+
     formState.lastFieldName = fieldName;
     formState.lastFieldFocusTime = Date.now();
     formState.currentStep = context.currentStep;
     formState.fieldsInteracted.add(fieldName);
 
     trackUmami('quote_field_focus', {
-      quote_session_id: getQuoteSessionId(),
+      quote_session_id: quoteSessionId,
       field_name: fieldName,
       field_type: field.type,
       step: context.currentStep,
@@ -623,7 +635,7 @@
       time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
     });
 
-    console.log('[QuoteTracking] quote_field_focus:', fieldName);
+    console.log('[QuoteTracking] quote_field_focus:', fieldName, 'session:', quoteSessionId);
   }, { capture: true });
 
   // Track field blur (leaving a field)
@@ -642,8 +654,11 @@
       formState.fieldsFilled.add(fieldName);
     }
 
+    // Get session ID (should already exist from focus event)
+    const quoteSessionId = getQuoteSessionId();
+
     trackUmami('quote_field_blur', {
-      quote_session_id: getQuoteSessionId(),
+      quote_session_id: quoteSessionId,
       field_name: fieldName,
       field_type: field.type,
       was_filled: wasFilled,
@@ -652,7 +667,7 @@
       form_id: context.formId
     });
 
-    console.log('[QuoteTracking] quote_field_blur:', fieldName, 'filled:', wasFilled, 'time:', timeOnField + 's');
+    console.log('[QuoteTracking] quote_field_blur:', fieldName, 'filled:', wasFilled, 'session:', quoteSessionId);
 
     // Special tracking for email field - capture email value for partial lead tracking
     const isEmailField = field.type === 'email' ||
@@ -666,13 +681,13 @@
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (emailRegex.test(emailValue)) {
         trackUmami('quote_field_email', {
-          quote_session_id: getQuoteSessionId(),
+          quote_session_id: quoteSessionId,
           email: emailValue,
           form_id: context.formId,
           step: context.currentStep,
           time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
         });
-        console.log('[QuoteTracking] quote_field_email:', emailValue);
+        console.log('[QuoteTracking] quote_field_email:', emailValue, 'session:', quoteSessionId);
       }
     }
 
@@ -684,13 +699,13 @@
     if (milestone > formState.lastProgressMilestone && milestone <= 100) {
       formState.lastProgressMilestone = milestone;
       trackUmami('quote_progress', {
-        quote_session_id: getQuoteSessionId(),
+        quote_session_id: quoteSessionId,
         progress_pct: milestone,
         fields_filled: stats.filled,
         total_fields: stats.total,
         form_id: context.formId
       });
-      console.log('[QuoteTracking] quote_progress:', milestone + '%');
+      console.log('[QuoteTracking] quote_progress:', milestone + '%, session:', quoteSessionId);
     }
   }, { capture: true });
 
@@ -701,6 +716,7 @@
     if (!context) return;
 
     const fieldName = getFieldName(field);
+    const quoteSessionId = getQuoteSessionId();
     let errorType = 'required';
 
     if (field.validity) {
@@ -711,13 +727,13 @@
     }
 
     trackUmami('quote_field_error', {
-      quote_session_id: getQuoteSessionId(),
+      quote_session_id: quoteSessionId,
       field_name: fieldName,
       error_type: errorType,
       form_id: context.formId
     });
 
-    console.log('[QuoteTracking] quote_field_error:', fieldName, errorType);
+    console.log('[QuoteTracking] quote_field_error:', fieldName, errorType, 'session:', quoteSessionId);
   }, { capture: true });
 
   // Track multi-step form navigation
@@ -735,6 +751,7 @@
     if ((isNext || isPrev) && formState.currentStep) {
       const fromStep = formState.currentStep;
       const toStep = isNext ? fromStep + 1 : fromStep - 1;
+      const quoteSessionId = getQuoteSessionId();
 
       // Only track if step actually changes (give DOM time to update)
       setTimeout(() => {
@@ -743,7 +760,7 @@
           const timeOnStep = formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0;
 
           trackUmami('quote_step_change', {
-            quote_session_id: getQuoteSessionId(),
+            quote_session_id: quoteSessionId,
             from_step: fromStep,
             to_step: newContext.currentStep,
             time_on_step: timeOnStep,
@@ -751,7 +768,7 @@
           });
 
           formState.currentStep = newContext.currentStep;
-          console.log('[QuoteTracking] quote_step_change:', fromStep, '->', newContext.currentStep);
+          console.log('[QuoteTracking] quote_step_change:', fromStep, '->', newContext.currentStep, 'session:', quoteSessionId);
         }
       }, 100);
     }
@@ -763,9 +780,10 @@
     if (hasEventFired(STORAGE_KEY_SUBMIT)) return; // Already submitted
 
     const timeSpent = Math.round((Date.now() - formState.startTime) / 1000);
+    const quoteSessionId = getQuoteSessionId();
 
     trackUmami('quote_abandon', {
-      quote_session_id: getQuoteSessionId(),
+      quote_session_id: quoteSessionId,
       last_field: formState.lastFieldName || 'none',
       fields_interacted: formState.fieldsInteracted.size,
       fields_filled: formState.fieldsFilled.size,
@@ -777,6 +795,7 @@
     });
 
     console.log('[QuoteTracking] quote_abandon fired', {
+      session: quoteSessionId,
       lastField: formState.lastFieldName,
       fieldsInteracted: formState.fieldsInteracted.size,
       fieldsFilled: formState.fieldsFilled.size,
