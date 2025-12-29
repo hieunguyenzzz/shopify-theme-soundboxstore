@@ -24,6 +24,9 @@
   Updated: 2025-12-20 - Added Umami tracking with UTM attribution for all events
   Updated: 2025-12-28 - Fixed MerakiQuote popup detection (new [role="dialog"] selector)
   Updated: 2025-12-29 - Added comprehensive field-level tracking and abandonment detection
+  Updated: 2025-12-29 - Fixed quote_submit customer data capture (email, first_name, last_name, company, phone)
+                       - Improved extractCustomerData() with more field name patterns
+                       - Added support for cart-quote-form, header quote form, and MerakiQuote popup
 {% endcomment %}
 <script>
 (function() {
@@ -223,32 +226,104 @@
   function extractCustomerData(container) {
     const getValue = (selectors) => {
       for (const sel of selectors) {
-        const el = container.querySelector(sel);
-        if (el && el.value) return el.value.trim();
+        try {
+          const el = container.querySelector(sel);
+          if (el && el.value) return el.value.trim();
+        } catch (e) {
+          // Ignore selector errors
+        }
       }
       return '';
     };
 
+    // Get first name and last name separately, then combine
+    const firstName = getValue([
+      'input[name="first_name"]',
+      'input[name*="first" i]',
+      'input[placeholder*="First Name" i]',
+      'input[placeholder*="First name" i]'
+    ]);
+    const lastName = getValue([
+      'input[name="last_name"]',
+      'input[name*="last" i]',
+      'input[placeholder*="Last Name" i]',
+      'input[placeholder*="Last name" i]'
+    ]);
+    const fullName = getValue([
+      'input[name="contact[Full name]"]',
+      'input[name*="Full name" i]',
+      'input[name="name"]',
+      'input[placeholder*="Full Name" i]'
+    ]);
+
+    // Build combined name
+    let name = '';
+    if (firstName || lastName) {
+      name = (firstName + ' ' + lastName).trim();
+    } else if (fullName) {
+      name = fullName;
+    }
+
     return {
-      email: getValue(['input[placeholder*="email" i]', 'input[type="email"]', 'input[name*="email" i]']),
-      name: getValue(['input[placeholder*="First Name" i]', 'input[name*="first" i]']) + ' ' +
-            getValue(['input[placeholder*="Last Name" i]', 'input[name*="last" i]']),
-      company: getValue(['input[placeholder*="Company" i]', 'input[name*="company" i]']),
-      phone: getValue(['input[placeholder*="Mobile" i]', 'input[placeholder*="Phone" i]', 'input[type="tel"]']),
-      postcode: getValue(['input[placeholder*="Post Code" i]', 'input[placeholder*="Postcode" i]', 'input[name*="postcode" i]']),
-      city: getValue(['input[placeholder*="City" i]', 'input[name*="city" i]']),
-      country: getValue(['select[name*="country" i]', 'input[name*="country" i]'])
+      email: getValue([
+        'input[name="email"]',
+        'input[name="contact[email]"]',
+        'input[type="email"]',
+        'input[placeholder*="email" i]',
+        'input[name*="email" i]'
+      ]),
+      first_name: firstName || (fullName ? fullName.split(' ')[0] : ''),
+      last_name: lastName || (fullName && fullName.includes(' ') ? fullName.split(' ').slice(1).join(' ') : ''),
+      name: name,
+      company: getValue([
+        'input[name="Address_Company"]',
+        'input[name="company"]',
+        'input[name="contact[Company name]"]',
+        'input[name*="company" i]',
+        'input[placeholder*="Company" i]'
+      ]),
+      phone: getValue([
+        'input[name="phone"]',
+        'input[name="contact[Phone]"]',
+        'input[name="contact[Mobile number]"]',
+        'input[name="contact[Office Phone number]"]',
+        'input[type="tel"]',
+        'input[placeholder*="Mobile" i]',
+        'input[placeholder*="Phone" i]'
+      ]),
+      postcode: getValue([
+        'input[name="PostCode"]',
+        'input[name="postcode"]',
+        'input[name="contact[postcode]"]',
+        'input[placeholder*="Post Code" i]',
+        'input[placeholder*="Postcode" i]',
+        'input[placeholder*="Zip" i]',
+        'input[name*="postcode" i]'
+      ]),
+      city: getValue([
+        'input[name="city"]',
+        'input[name="contact[city]"]',
+        'input[placeholder*="City" i]',
+        'input[name*="city" i]'
+      ]),
+      country: getValue([
+        'select[name="Country"]',
+        'select[name="contact[Country/Region]"]',
+        'select[name*="country" i]',
+        'input[name*="country" i]'
+      ])
     };
   }
 
   // 2. Track quote_submit on form submission (COMPLETION)
   // Listen for actual form submit event for more reliable tracking
-  // Covers: Header quote form (id="quote-form") and MerakiQuote popup
+  // Covers: Header quote form (id="quote-form"), cart quote form, and MerakiQuote popup
   document.addEventListener('submit', function(e) {
     const form = e.target;
     // Check if this is a quote-related form
-    // Supports: header quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
+    // Supports: header quote form, cart quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
     const isQuoteForm = form.id === 'quote-form' ||
+                        form.id === 'cart-quote-form' ||
                         form.querySelector('input[placeholder*="Company"]') ||
                         form.querySelector('input[name*="Company"]') ||
                         form.closest('.meraki-popup-wrapper') ||
@@ -259,18 +334,32 @@
       const eventData = buildEventData('quote_submit');
       eventData.form_id = form.id || 'quote-form';
 
-      // Extract customer data from form fields for attribution
+      // Extract customer data from form fields for attribution using extractCustomerData helper
+      const extractedData = extractCustomerData(form);
+
+      // Also try FormData for additional field patterns
       const formData = new FormData(form);
+
+      // Build customer data with multiple fallbacks
       const customerData = {
         form_id: eventData.form_id,
-        // Try common field name patterns
-        email: formData.get('contact[email]') || formData.get('email') || '',
-        name: formData.get('contact[Full Name]') || formData.get('name') || '',
-        phone: formData.get('contact[Mobile number]') || formData.get('contact[Office Phone number]') || formData.get('phone') || '',
-        company: formData.get('contact[Company]') || formData.get('company') || '',
-        postcode: formData.get('contact[postcode]') || formData.get('postcode') || '',
-        country: formData.get('contact[Country / region]') || formData.get('country') || ''
+        email: extractedData.email || formData.get('contact[email]') || formData.get('email') || '',
+        first_name: extractedData.first_name || '',
+        last_name: extractedData.last_name || '',
+        name: extractedData.name || formData.get('contact[Full name]') || formData.get('name') || '',
+        phone: extractedData.phone || formData.get('contact[Phone]') || formData.get('contact[Mobile number]') || formData.get('contact[Office Phone number]') || formData.get('phone') || '',
+        company: extractedData.company || formData.get('contact[Company name]') || formData.get('company') || '',
+        postcode: extractedData.postcode || formData.get('contact[postcode]') || formData.get('postcode') || '',
+        city: extractedData.city || formData.get('contact[city]') || formData.get('city') || '',
+        country: extractedData.country || formData.get('contact[Country/Region]') || formData.get('country') || ''
       };
+
+      // Parse first_name/last_name from full name if not available
+      if (!customerData.first_name && customerData.name) {
+        const nameParts = customerData.name.trim().split(' ');
+        customerData.first_name = nameParts[0] || '';
+        customerData.last_name = nameParts.slice(1).join(' ') || '';
+      }
 
       gtag('event', 'quote_submit', eventData);
       trackUmami('quote_submit', customerData);
@@ -289,9 +378,9 @@
     const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"], [role="dialog"]');
     if (!popup) return;
 
-    // For [role="dialog"], verify it's a quote form by checking for Company input
+    // For [role="dialog"], verify it's a quote form by checking for Company input or email input
     if (!popup.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) {
-      if (!popup.querySelector('input[placeholder*="Company" i], input[name*="company" i]')) return;
+      if (!popup.querySelector('input[placeholder*="Company" i], input[name*="company" i], input[name="email"], input[type="email"]')) return;
     }
 
     // Check if this is the submit/send button (final step)
@@ -300,6 +389,7 @@
                         btnText.includes('send quote') ||
                         btnText.includes('request quote') ||
                         btnText.includes('get quote') ||
+                        btnText.includes('send') ||
                         (btn.classList.contains('primary') && popup.querySelector('[class*="step-3"], [class*="review"]'));
 
     if (isSubmitBtn && !hasEventFired(STORAGE_KEY_SUBMIT)) {
@@ -307,16 +397,21 @@
       const customerData = extractCustomerData(popup);
       customerData.form_id = 'meraki-quote-popup';
 
-      // Only fire if we have at least email
-      if (customerData.email) {
-        markEventFired(STORAGE_KEY_SUBMIT);
-        const eventData = buildEventData('quote_submit');
-        eventData.form_id = 'meraki-quote-popup';
-
-        gtag('event', 'quote_submit', eventData);
-        trackUmami('quote_submit', customerData);
-        console.log('[QuoteTracking] MerakiQuote quote_submit fired', customerData);
+      // Parse first_name/last_name from full name if not available
+      if (!customerData.first_name && customerData.name) {
+        const nameParts = customerData.name.trim().split(' ');
+        customerData.first_name = nameParts[0] || '';
+        customerData.last_name = nameParts.slice(1).join(' ') || '';
       }
+
+      // Fire event even without email - log what we have for debugging
+      markEventFired(STORAGE_KEY_SUBMIT);
+      const eventData = buildEventData('quote_submit');
+      eventData.form_id = 'meraki-quote-popup';
+
+      gtag('event', 'quote_submit', eventData);
+      trackUmami('quote_submit', customerData);
+      console.log('[QuoteTracking] MerakiQuote quote_submit fired', customerData);
     }
   }, { capture: true });
 

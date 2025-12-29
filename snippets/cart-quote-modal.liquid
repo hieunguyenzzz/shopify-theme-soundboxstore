@@ -902,9 +902,19 @@
         body: JSON.stringify(zohoData)
       }).catch(console.error);
 
-      // Track event
+      // Track event with customer data for attribution
       if (typeof umami !== 'undefined') {
-        umami.track('cart_quote_submit');
+        const customerData = {
+          form_id: 'cart-quote-modal',
+          email: formData.get('contact[email]') || '',
+          name: formData.get('contact[Full name]') || '',
+          first_name: (formData.get('contact[Full name]') || '').split(' ')[0] || '',
+          last_name: (formData.get('contact[Full name]') || '').split(' ').slice(1).join(' ') || '',
+          company: formData.get('contact[Company name]') || '',
+          phone: formData.get('contact[Phone]') || ''
+        };
+        umami.track('quote_submit', customerData);
+        console.log('[CartQuoteModal] quote_submit fired with customer data:', customerData);
       }
 
       // Show thank you
