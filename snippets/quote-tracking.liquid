@@ -494,6 +494,27 @@
 
     console.log('[QuoteTracking] quote_field_blur:', fieldName, 'filled:', wasFilled, 'time:', timeOnField + 's');
 
+    // Special tracking for email field - capture email value for partial lead tracking
+    const isEmailField = field.type === 'email' ||
+                         field.name?.toLowerCase().includes('email') ||
+                         field.placeholder?.toLowerCase().includes('email') ||
+                         fieldName.toLowerCase().includes('email');
+
+    if (isEmailField && wasFilled) {
+      const emailValue = field.value.trim();
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(emailValue)) {
+        trackUmami('quote_field_email', {
+          email: emailValue,
+          form_id: context.formId,
+          step: context.currentStep,
+          time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
+        });
+        console.log('[QuoteTracking] quote_field_email:', emailValue);
+      }
+    }
+
     // Check form progress and fire milestone events
     const stats = getFormStats(context.form);
     const progressPct = Math.round((stats.filled / stats.total) * 100);
