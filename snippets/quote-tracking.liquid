@@ -530,7 +530,6 @@
                         form.closest('[role="dialog"]');
 
     if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
-      markEventFired(STORAGE_KEY_SUBMIT);
       const eventData = buildEventData('quote_submit');
       eventData.form_id = form.id || 'quote-form';
 
@@ -564,6 +563,8 @@
 
       gtag('event', 'quote_submit', eventData);
       trackUmami('quote_submit', customerData);
+      // Mark as fired AFTER trackUmami to avoid interceptor blocking our own event
+      markEventFired(STORAGE_KEY_SUBMIT);
       console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', customerData);
     }
   }, { capture: true });
@@ -606,13 +607,13 @@
         customerData.last_name = nameParts.slice(1).join(' ') || '';
       }
 
-      // Fire event even without email - log what we have for debugging
-      markEventFired(STORAGE_KEY_SUBMIT);
       const eventData = buildEventData('quote_submit');
       eventData.form_id = 'meraki-quote-popup';
 
       gtag('event', 'quote_submit', eventData);
       trackUmami('quote_submit', customerData);
+      // Mark as fired AFTER trackUmami to avoid interceptor blocking our own event
+      markEventFired(STORAGE_KEY_SUBMIT);
       console.log('[QuoteTracking] MerakiQuote quote_submit fired', customerData);
     }
   }, { capture: true });
