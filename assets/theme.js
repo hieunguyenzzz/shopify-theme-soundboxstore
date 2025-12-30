@@ -641,7 +641,7 @@
                 };
                 
                 // Initialize slick sliders
-                if ($(".product-main-slider .image-gallery-main")) {
+                if ($(".product-main-slider .image-gallery-main").length) {
                   $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
                   $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
                 }
