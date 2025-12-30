@@ -640,33 +640,16 @@
                     }]
                   };
 
-                  // Initialize slick sliders - wait for jQuery and slick to be available
-                  const initSliders = () => {
-                    // Check if jQuery is loaded first
-                    if (typeof $ === 'undefined' || typeof jQuery === 'undefined') {
-                      console.warn('[SLICK] jQuery not loaded yet, retrying...');
-                      setTimeout(initSliders, 100);
-                      return;
-                    }
+                  // Initialize slick sliders
+                  // jQuery and Slick are now loaded synchronously before this script
+                  if ($(".product-main-slider .image-gallery-main").length) {
+                    $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
+                    $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
+                  }
 
-                    // Then check if slick is loaded
-                    if (typeof $.fn.slick === 'undefined') {
-                      console.warn('[SLICK] Slick not loaded yet, retrying...');
-                      setTimeout(initSliders, 100);
-                      return;
-                    }
-
-                    if ($(".product-main-slider .image-gallery-main").length) {
-                      $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
-                      $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
-                    }
-
-                    if ($(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").length) {
-                      $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
-                    }
-                  };
-
-                  initSliders();
+                  if ($(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").length) {
+                    $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
+                  }
 
                   // Go to first slide
 
