@@ -641,11 +641,15 @@
                 };
                 
                 // Initialize slick sliders
-                $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
+                if ($(".product-main-slider .image-gallery-main")) {
+                  $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
+                  $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
+                }
+               
                 $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
                 
                 // Go to first slide
-                $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
+                
                 
                 // Update meeting room features image more efficiently
                 const slideImages = document.querySelectorAll(".product-main-slider .image-gallery-block.slick-slide img");
