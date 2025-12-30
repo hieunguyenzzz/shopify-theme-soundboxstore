@@ -1,3 +1,4 @@
+{%- comment -%}Fix: thumbnail-slider-inner class whitespace{%- endcomment -%}
 {%- liquid
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
   assign first_3d_model = product.media | where: 'media_type', 'model' | first

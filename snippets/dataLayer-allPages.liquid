@@ -28,14 +28,8 @@
 
 /**********************
 * PRELOADS
-* load jquery if it doesn't exist
+* jQuery is loaded by theme.liquid with defer, so we just wait for it
 ***********************/
-
-if(!window.jQuery){
-    var jqueryScript = document.createElement('script');
-    jqueryScript.setAttribute('src','https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js');
-    document.head.appendChild(jqueryScript);
-}
 
 __DL__jQueryinterval = setInterval(function(){
     // wait for jQuery to load & run script after jQuery has loaded
