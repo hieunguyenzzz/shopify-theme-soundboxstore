@@ -910,7 +910,29 @@
       }).catch(console.error);
 
       // Track event with customer data for attribution
-      if (typeof umami !== 'undefined') {
+      // Use global deduplication flag shared with quote-tracking.liquid
+      const SUBMIT_FLAG = 'qt_quote_submit_fired';
+      const alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true';
+
+      if (typeof umami !== 'undefined' && !alreadyFired) {
+        // Mark as fired to prevent duplicate events
+        sessionStorage.setItem(SUBMIT_FLAG, 'true');
+
+        // Get attribution data from localStorage (captured by quote-tracking.liquid)
+        let gclid = '';
+        let utmSource = '';
+        let utmMedium = '';
+        let utmCampaign = '';
+        let landingPage = '';
+        try {
+          const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
+          gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
+          utmSource = attribution.utm_source || (gclid ? 'google' : '');
+          utmMedium = attribution.utm_medium || (gclid ? 'cpc' : '');
+          utmCampaign = attribution.utm_campaign || '';
+          landingPage = attribution.landing_page || '';
+        } catch (e) {}
+
         const customerData = {
           quote_session_id: sessionStorage.getItem('qt_quote_session_id') || '',
           form_id: 'cart-quote-modal',
@@ -919,10 +941,21 @@
           first_name: (formData.get('contact[Full name]') || '').split(' ')[0] || '',
           last_name: (formData.get('contact[Full name]') || '').split(' ').slice(1).join(' ') || '',
           company: formData.get('contact[Company name]') || '',
-          phone: formData.get('contact[Phone]') || ''
+          phone: formData.get('contact[Phone]') || formData.get('contact[Mobile number]') || '',
+          postcode: formData.get('contact[postcode]') || '',
+          city: formData.get('contact[city]') || '',
+          country: formData.get('contact[Country/Region]') || '',
+          gclid: gclid,
+          utm_source: utmSource,
+          utm_medium: utmMedium,
+          utm_campaign: utmCampaign,
+          landing_page: landingPage,
+          page_path: window.location.pathname
         };
         umami.track('quote_submit', customerData);
         console.log('[CartQuoteModal] quote_submit fired with customer data:', customerData);
+      } else if (alreadyFired) {
+        console.log('[CartQuoteModal] quote_submit skipped - already fired');
       }
 
       // Show thank you
