@@ -640,8 +640,16 @@
                     }]
                   };
 
-                  // Initialize slick sliders - wait for slick to be available
+                  // Initialize slick sliders - wait for jQuery and slick to be available
                   const initSliders = () => {
+                    // Check if jQuery is loaded first
+                    if (typeof $ === 'undefined' || typeof jQuery === 'undefined') {
+                      console.warn('[SLICK] jQuery not loaded yet, retrying...');
+                      setTimeout(initSliders, 100);
+                      return;
+                    }
+
+                    // Then check if slick is loaded
                     if (typeof $.fn.slick === 'undefined') {
                       console.warn('[SLICK] Slick not loaded yet, retrying...');
                       setTimeout(initSliders, 100);
@@ -5376,22 +5384,34 @@
                         : theme.Currency.formatMoney(
                           n,
                           theme.settings.moneyFormat
-                        )),
-                      this.cache.savePrice.classList.remove(t.hidden),
-                      (this.cache.savePrice.innerHTML =
-                        theme.strings.savePrice.replace("[saved_amount]", n));
-                  } else
+                        ));
+
+                    if (this.cache.savePrice) {
+                      this.cache.savePrice.classList.remove(t.hidden);
+                      this.cache.savePrice.innerHTML =
+                        theme.strings.savePrice.replace("[saved_amount]", n);
+                    }
+                  } else {
                     this.cache.priceWrapper &&
-                      this.cache.priceWrapper.classList.add(t.hidden),
-                      this.cache.savePrice.classList.add(t.hidden),
-                      this.cache.price.classList.remove(t.onSale),
-                      this.cache.comparePriceA11y &&
+                      this.cache.priceWrapper.classList.add(t.hidden);
+
+                    if (this.cache.savePrice) {
+                      this.cache.savePrice.classList.add(t.hidden);
+                    }
+
+                    if (this.cache.price) {
+                      this.cache.price.classList.remove(t.onSale);
+                    }
+
+                    this.cache.comparePriceA11y &&
                       this.cache.comparePriceA11y.setAttribute(
                         "aria-hidden",
                         "true"
-                      ),
-                      this.cache.priceA11y &&
+                      );
+
+                    this.cache.priceA11y &&
                       this.cache.priceA11y.setAttribute("aria-hidden", "true");
+                  }
                 }
               },
               updateUnitPrice: function (e) {
