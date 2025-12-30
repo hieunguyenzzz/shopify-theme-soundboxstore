@@ -915,9 +915,6 @@
       const alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true';
 
       if (typeof umami !== 'undefined' && !alreadyFired) {
-        // Mark as fired to prevent duplicate events
-        sessionStorage.setItem(SUBMIT_FLAG, 'true');
-
         // Get attribution data from localStorage (captured by quote-tracking.liquid)
         let gclid = '';
         let utmSource = '';
@@ -953,6 +950,8 @@
           page_path: window.location.pathname
         };
         umami.track('quote_submit', customerData);
+        // Mark as fired AFTER umami.track to avoid interceptor blocking our own event
+        sessionStorage.setItem(SUBMIT_FLAG, 'true');
         console.log('[CartQuoteModal] quote_submit fired with customer data:', customerData);
       } else if (alreadyFired) {
         console.log('[CartQuoteModal] quote_submit skipped - already fired');
