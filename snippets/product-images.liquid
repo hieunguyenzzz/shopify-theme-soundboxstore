@@ -429,17 +429,16 @@ calc(100vw - 4rem)
   </a>
 {%- endif -%}
 
-{%- for current_variant in product.variants -%}
-  {%- assign current_variant = product.selected_or_first_available_variant -%}
-  {%- assign vaSku = current_variant.sku | strip -%}
+{%- for variant in product.variants -%}
+  {%- assign vaSku = variant.sku | strip -%}
   {%- assign slide_count = 0 -%}
-  {%- assign imgs = current_variant.metafields.global.images.value -%}
-  {%- assign videos = current_variant.metafields.global.videos.value -%}
+  {%- assign imgs = variant.metafields.global.images.value -%}
+  {%- assign videos = variant.metafields.global.videos.value -%}
   {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt', vaSku -%}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
-  <template data-id="{{ current_variant.id }}" data-videos="{{videos | json}}">
+  <template data-id="{{ variant.id }}" data-videos="{{videos | json}}">
     <div class="slider-wrap">
       <div class="image-gallery-main">
         {%- assign had_images = false -%}
@@ -492,25 +491,27 @@ calc(100vw - 4rem)
         {%- unless had_images -%}
           <div class="image-gallery-block">
             {%- assign lazy = 'lazy' -%}
-            {%- assign image = current_variant.image -%}
+            {%- assign image = variant.image | default: variant.featured_image | default: product.featured_image -%}
             <div
               class="gallery-wrap"
               {%- if lazy -%}
                 style="display:none ;"
               {%- endif -%}
             >
-              {{
-                image
-                | image_url: width: 1900
-                | image_tag:
-                  loading: lazy,
-                  data-orgin-url: image.src,
-                  class: 'photoswipe__image',
-                  sizes: sizes,
-                  widths: '246, 493, 600, 713, 823, 990',
-                  alt: image.alt
-                | escape
-              }}
+              {%- if image -%}
+                {{
+                  image
+                  | image_url: width: 1900
+                  | image_tag:
+                    loading: lazy,
+                    data-orgin-url: image.src,
+                    class: 'photoswipe__image',
+                    sizes: sizes,
+                    widths: '246, 493, 600, 713, 823, 990',
+                    alt: image.alt
+                  | escape
+                }}
+              {%- endif -%}
               {{ new_label }}
             </div>
           </div>
@@ -557,6 +558,23 @@ calc(100vw - 4rem)
                 </div>
               </div>
             {%- endfor -%}
+            {%- comment -%} Fallback thumbnail when no variant-specific images {%- endcomment -%}
+            {%- unless had_images -%}
+              {%- assign thumb_image = variant.image | default: variant.featured_image | default: product.featured_image -%}
+              {%- if thumb_image -%}
+                <div class="thumnail-gallery-block">
+                  <div class="thumbnail-wrap">
+                    <img
+                      src="{{ thumb_image | image_url : width: 100 }}"
+                      loading="lazy"
+                      width="100"
+                      height="100"
+                      alt="{{ thumb_image.alt | default: 'product thumb' | escape }}"
+                    >
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
           </div>
         </div>
       </div>

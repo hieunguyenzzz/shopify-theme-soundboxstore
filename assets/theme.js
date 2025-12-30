@@ -596,20 +596,36 @@
                 // Cache DOM queries at the top
                 const template = document.querySelector(`template[data-id='${e.id}']`);
                 if (!template) return; // Early return if template not found
-                
+
                 const productMainSlider = document.querySelector(".product-main-slider");
                 if (!productMainSlider) return; // Early return if main slider not found
-                
+
                 // Clone and update content once
                 productMainSlider.innerHTML = template.cloneNode(true).innerHTML;
-                
+
+                // Remove display:none from gallery wraps (set for lazy loading in templates)
+                productMainSlider.querySelectorAll('.gallery-wrap').forEach(function(wrap) {
+                  wrap.style.display = '';
+                });
+
                 // Cache jQuery selectors to avoid repeated DOM queries
                 const $mainGallery = $(".template-product .product-main-slider .image-gallery-main");
                 const $thumbnailSlider = $(".template-product .thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner");
-                
+
                 // Remove slick classes in one operation
                 $thumbnailSlider.add($mainGallery).removeClass("slick-initialized slick-slider");
-                
+
+                // Check if slick is available
+                if (typeof $.fn.slick !== 'function') {
+                  console.warn('Slick slider not available, showing first image as fallback');
+                  // Fallback: just show the first image without slider
+                  const firstBlock = productMainSlider.querySelector('.image-gallery-block');
+                  if (firstBlock) {
+                    firstBlock.style.display = 'block';
+                  }
+                  return;
+                }
+
                 // Define slick configurations as constants to avoid recreating objects
                 const mainSlickConfig = {
                   slidesToShow: 1,
@@ -617,9 +633,10 @@
                   arrows: false,
                   adaptiveHeight: true,
                   fade: true,
+                  dots: true,
                   asNavFor: ".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner"
                 };
-                
+
                 const thumbnailSlickConfig = {
                   slidesToShow: 6,
                   slidesToScroll: 1,
@@ -639,20 +656,20 @@
                     }
                   }]
                 };
-                
+
                 // Initialize slick sliders
                 $(".product-main-slider .image-gallery-main").slick(mainSlickConfig);
                 $(".thumbnail-gallery .thumbnail-slider .thumbnail-slider-inner").slick(thumbnailSlickConfig);
-                
+
                 // Go to first slide
                 $(".product-main-slider .image-gallery-main").slick("slickGoTo", 0);
-                
+
                 // Update meeting room features image more efficiently
                 const slideImages = document.querySelectorAll(".product-main-slider .image-gallery-block.slick-slide img");
                 if (slideImages.length > 1) {
                   const secondImage = slideImages[1];
                   const $centerImg = $(".meeting-rooms-features .center-col img");
-                  
+
                   // Update both attributes in one jQuery chain
                   $centerImg.attr({
                     "src": secondImage.src,
