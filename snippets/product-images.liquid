@@ -337,7 +337,7 @@ calc(100vw - 4rem)
 
     <div class="thumbnail-gallery">
       <div class="thumbnail-slider">
-        <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
+        <div class="thumbnail-slider-inner{% if slide_count > 4 %} arrows_in_slider{% endif %}">
           {%- for image in imgs -%}
             <div class="thumnail-gallery-block">
               <div class="thumbnail-wrap">
@@ -520,7 +520,7 @@ calc(100vw - 4rem)
 
       <div class="thumbnail-gallery">
         <div class="thumbnail-slider">
-          <div class="thumbnail-slider-inner {%- if slide_count > 4 -%}arrows_in_slider{%- endif -%}">
+          <div class="thumbnail-slider-inner{% if slide_count > 4 %} arrows_in_slider{% endif %}">
             {%- for image in imgs -%}
               <div class="thumnail-gallery-block">
                 <div class="thumbnail-wrap">
