@@ -293,6 +293,27 @@
     color: #e74c3c;
   }
 
+  .cart-quote-form .form-group {
+    position: relative;
+  }
+
+  .cart-quote-form .error-message {
+    display: none;
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cart-quote-form .form-group.has-error .error-message {
+    display: block;
+  }
+
+  .cart-quote-form .form-group.has-error input,
+  .cart-quote-form .form-group.has-error textarea {
+    border-color: #e74c3c;
+  }
+
   .cart-quote-form .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -656,22 +677,26 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="cart-quote-name" class="required">{{ 'contact.form.name' | t | default: 'Full Name' }}</label>
-                <input type="text" id="cart-quote-name" name="contact[Full name]" required>
+                <input type="text" id="cart-quote-name" name="contact[Full name]">
+                <span class="error-message">This field is required</span>
               </div>
               <div class="form-group">
                 <label for="cart-quote-email" class="required">{{ 'contact.form.email' | t | default: 'Email' }}</label>
-                <input type="email" id="cart-quote-email" name="contact[email]" required>
+                <input type="email" id="cart-quote-email" name="contact[email]">
+                <span class="error-message" id="email-error">This field is required</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="cart-quote-company" class="required">{{ 'customer.addresses.company' | t | default: 'Company Name' }}</label>
-                <input type="text" id="cart-quote-company" name="contact[Company name]" required>
+                <input type="text" id="cart-quote-company" name="contact[Company name]">
+                <span class="error-message">This field is required</span>
               </div>
               <div class="form-group">
                 <label for="cart-quote-phone" class="required">{{ 'customer.addresses.phone' | t | default: 'Phone Number' }}</label>
-                <input type="tel" id="cart-quote-phone" name="contact[Phone]" required>
+                <input type="tel" id="cart-quote-phone" name="contact[Phone]">
+                <span class="error-message">This field is required</span>
               </div>
             </div>
 
@@ -831,24 +856,46 @@
     }
 
     function validateStep2() {
-      const form = document.getElementById('cart-quote-form');
-      const name = document.getElementById('cart-quote-name').value.trim();
-      const email = document.getElementById('cart-quote-email').value.trim();
-      const company = document.getElementById('cart-quote-company').value.trim();
-      const phone = document.getElementById('cart-quote-phone').value.trim();
+      const fields = [
+        { id: 'cart-quote-name', value: document.getElementById('cart-quote-name').value.trim() },
+        { id: 'cart-quote-email', value: document.getElementById('cart-quote-email').value.trim() },
+        { id: 'cart-quote-company', value: document.getElementById('cart-quote-company').value.trim() },
+        { id: 'cart-quote-phone', value: document.getElementById('cart-quote-phone').value.trim() }
+      ];
 
-      if (!name || !email || !company || !phone) {
-        alert('{{ 'cart.quote.fill_required' | t | default: 'Please fill in all required fields.' }}');
-        return false;
-      }
+      let isValid = true;
 
+      // Clear all previous errors
+      document.querySelectorAll('.cart-quote-form .form-group').forEach(group => {
+        group.classList.remove('has-error');
+      });
+
+      // Check each required field
+      fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const formGroup = input.closest('.form-group');
+
+        if (!field.value) {
+          formGroup.classList.add('has-error');
+          isValid = false;
+        }
+      });
+
+      // Special email validation
+      const emailField = document.getElementById('cart-quote-email');
+      const emailValue = emailField.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('{{ 'cart.quote.valid_email' | t | default: 'Please enter a valid email address.' }}');
-        return false;
+
+      if (emailValue && !emailRegex.test(emailValue)) {
+        const formGroup = emailField.closest('.form-group');
+        formGroup.classList.add('has-error');
+        document.getElementById('email-error').textContent = 'Please enter a valid email address';
+        isValid = false;
+      } else if (emailValue) {
+        document.getElementById('email-error').textContent = 'This field is required';
       }
 
-      return true;
+      return isValid;
     }
 
     function submitQuote() {
@@ -1009,6 +1056,16 @@
         }
       });
     }
+
+    // Clear error on input
+    document.querySelectorAll('.cart-quote-form input, .cart-quote-form textarea').forEach(input => {
+      input.addEventListener('input', function() {
+        const formGroup = this.closest('.form-group');
+        if (formGroup) {
+          formGroup.classList.remove('has-error');
+        }
+      });
+    });
 
     // Initialize
     updateSteps();
