@@ -479,21 +479,18 @@
 
   .cart-quote-btn {
     flex: 1;
-    padding: 12px 20px;
+    height: 46px;
+    padding: 0 20px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     text-align: center;
-    border: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     box-sizing: border-box;
-    line-height: 1.2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
+    line-height: 46px;
+    display: block;
   }
 
   .cart-quote-btn-secondary {
@@ -510,10 +507,12 @@
   .cart-quote-btn-primary {
     background: #1a1a1a;
     color: #fff;
+    border: 1px solid #1a1a1a;
   }
 
   .cart-quote-btn-primary:hover {
     background: #333;
+    border-color: #333;
   }
 
   .cart-quote-btn-primary:disabled {
@@ -717,9 +716,9 @@
 
       <!-- Navigation Buttons -->
       <div class="cart-quote-buttons">
-        <label for="quote-form-modal-cart" class="cart-quote-btn cart-quote-btn-secondary" id="btn-back">
+        <button type="button" class="cart-quote-btn cart-quote-btn-secondary" id="btn-back">
           Continue Shopping
-        </label>
+        </button>
         <button type="button" class="cart-quote-btn cart-quote-btn-primary" id="btn-next">
           {{ 'cart.quote.next_step' | t | default: 'Next step' }}
         </button>
@@ -980,6 +979,9 @@
         e.preventDefault();
         currentStep--;
         updateSteps();
+      } else {
+        // Close modal on step 1
+        document.getElementById('quote-form-modal-cart').checked = false;
       }
     });
 
