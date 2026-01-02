@@ -6,6 +6,13 @@
 (function() {
   'use strict';
 
+  // Skip geo-targeting on localhost/development
+  const hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.ngrok.io') || hostname.endsWith('.ngrok-free.app')) {
+    console.log('[GEO] Development environment detected - geo-targeting disabled');
+    return;
+  }
+
   // Check if US visitor was already identified (prevents redirects on navigation)
   const savedCountry = sessionStorage.getItem('geo_visitor_country');
   if (savedCountry === 'US') {
