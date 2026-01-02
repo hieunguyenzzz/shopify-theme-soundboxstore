@@ -221,7 +221,7 @@
   }
 </style>
 {%- unless title -%}
-  {%- assign title = settings.header_moreinfo -%}
+  {%- assign title = 'header.more_info' | t -%}
 {%- endunless -%}
 {% capture col_1 %}
   
@@ -324,7 +324,7 @@
           <div class="header-desktop-nav-showrooms-col2" style="flex:1">{{ col_2 }}</div>
         </div>
         <div class="header-desktop-nav-showrooms-bottom">
-          <div>{{ settings.header_delivery_message }}</div>
+          <div>{{ 'header.header_delivery_message.title' | t }}</div>
           <div
             class="site-nav__dropdown-menu_left-icons"
             style="display: flex;margin-top: 1em;gap: 1em;flex-wrap: wrap;"

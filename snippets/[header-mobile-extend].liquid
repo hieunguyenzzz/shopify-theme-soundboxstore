@@ -56,11 +56,11 @@
           | image_tag: loading: 'lazy', preload: true
         }}
       {% endif %}
-      {{- settings.header_explore_product | default: 'Explore Products' -}}
+      {{- 'header.explore_products' | t | default: 'Explore Products' -}}
     </a>
   {% else %}
     <a href="/collections/all" style="background: #f6efe4;">
-      {{- settings.header_explore_product | default: 'Explore Products' -}}
+      {{- 'header.explore_products' | t | default: 'Explore Products' -}}
     </a>
   {% endif %}
   <a href="#" onclick="openSpecFormPopup(event)">
@@ -79,12 +79,12 @@
         src="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/folio-brochure-graph.png?v=1700815295"
       >
     {% endif %}
-    {{ settings.header_guide_button -}}
+    {{ 'header.product_guide.button' | t -}}
   </a>
   {% assign page_about = settings.page_about %}
 
   <a style="flex:1 1 300px" href="{{ page_about.url }}">
-    {{- settings.header_moreinfo }}
+    {{- 'header.more_info' | t }}
     <span class="visually-hidden">{{ page_about.title }}</span></a
   >
 </div>
