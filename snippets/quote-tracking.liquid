@@ -39,6 +39,9 @@
                        - Block quote_submit events with no email data
                        - Unified deduplication across all tracking sources
   Updated: 2026-01-03 - Added form_id: 'meraki-quote-popup' to intercepted quote_submit events
+  Updated: 2026-01-03 - Fixed Meraki popup quote_submit tracking: cache customer data when email field
+                       is filled, use cached data as fallback when Meraki fires empty quote_submit
+                       (form inputs are gone on review/thank-you step)
 {% endcomment %}
 <script>
 (function() {
@@ -97,6 +100,22 @@
               if (emailField && emailField.value) {
                 normalizedData.email = emailField.value.trim();
               }
+            }
+
+            // Fallback: try to get cached customer data from sessionStorage
+            // (captured when user filled the form, before review step)
+            if (!normalizedData.email || normalizedData.email.trim().length === 0) {
+              try {
+                const cachedData = JSON.parse(sessionStorage.getItem('qt_customer_data') || '{}');
+                if (cachedData.email) {
+                  normalizedData.email = cachedData.email;
+                  if (!normalizedData.first_name && cachedData.first_name) normalizedData.first_name = cachedData.first_name;
+                  if (!normalizedData.last_name && cachedData.last_name) normalizedData.last_name = cachedData.last_name;
+                  if (!normalizedData.company && cachedData.company) normalizedData.company = cachedData.company;
+                  if (!normalizedData.phone && cachedData.phone) normalizedData.phone = cachedData.phone;
+                  console.log('[QuoteTracking] Using cached customer data:', cachedData);
+                }
+              } catch (e) {}
             }
 
             // If still no email, block the event to prevent empty submissions
@@ -850,6 +869,23 @@
           time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
         });
         console.log('[QuoteTracking] quote_field_email:', emailValue, 'session:', quoteSessionId);
+
+        // Cache customer data for Meraki popup fallback
+        // (data may not be available when quote_submit fires on review/thank-you step)
+        try {
+          const form = field.closest('[role="dialog"], .meraki-popup-wrapper, #quote-form, #cart-quote-form');
+          if (form) {
+            const cachedData = {
+              email: emailValue,
+              first_name: form.querySelector('input[placeholder*="First" i], input[name*="first_name" i]')?.value?.trim() || '',
+              last_name: form.querySelector('input[placeholder*="Last" i], input[name*="last_name" i]')?.value?.trim() || '',
+              company: form.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
+              phone: form.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i]')?.value?.trim() || ''
+            };
+            sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
+            console.log('[QuoteTracking] Cached customer data for Meraki fallback:', cachedData);
+          }
+        } catch (e) {}
       }
     }
 
