@@ -45,6 +45,9 @@
   Updated: 2026-01-04 - Enhanced Meraki popup tracking: added robust caching on button clicks
                        (next/submit) in addition to blur events, ensuring data is captured even
                        when automated tools set values directly without triggering native events
+  Updated: 2026-01-04 - Fixed quote popup detection on review step (step 3): inputs are removed
+                       on review step, so now also checks for cached data or review-specific
+                       buttons ("Submit Request", "Previous step") to detect the popup
 {% endcomment %}
 <script>
 (function() {
@@ -608,9 +611,16 @@
     const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"], [role="dialog"]');
     if (!popup) return;
 
-    // For [role="dialog"], verify it's a quote form by checking for Company input or email input
+    // For [role="dialog"], verify it's a quote form by checking for:
+    // 1. Company/email input fields (step 2), OR
+    // 2. Cached customer data from sessionStorage (indicates we were on step 2), OR
+    // 3. "Submit Request" or "Previous step" buttons (review step indicators)
     if (!popup.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) {
-      if (!popup.querySelector('input[placeholder*="Company" i], input[name*="company" i], input[name="email"], input[type="email"]')) return;
+      const hasInputs = popup.querySelector('input[placeholder*="Company" i], input[name*="company" i], input[name="email"], input[type="email"]');
+      const hasCachedData = sessionStorage.getItem('qt_customer_data');
+      const hasReviewButtons = popup.querySelector('button[type="submit"]')?.textContent?.toLowerCase().includes('submit') ||
+                               popup.textContent?.includes('Previous step');
+      if (!hasInputs && !hasCachedData && !hasReviewButtons) return;
     }
 
     // Check if this is the submit/send button (final step)
