@@ -42,6 +42,9 @@
   Updated: 2026-01-03 - Fixed Meraki popup quote_submit tracking: cache customer data when email field
                        is filled, use cached data as fallback when Meraki fires empty quote_submit
                        (form inputs are gone on review/thank-you step)
+  Updated: 2026-01-04 - Enhanced Meraki popup tracking: added robust caching on button clicks
+                       (next/submit) in addition to blur events, ensuring data is captured even
+                       when automated tools set values directly without triggering native events
 {% endcomment %}
 <script>
 (function() {
@@ -619,11 +622,47 @@
                         btnText.includes('send') ||
                         (btn.classList.contains('primary') && popup.querySelector('[class*="step-3"], [class*="review"]'));
 
+    // Also check for "next step" style buttons - cache data before step transition
+    const isNextBtn = btnText.includes('next') || btnText.includes('continue') || btnText.includes('weiter');
+
+    // Cache customer data on any button that could trigger step change (before inputs are removed)
+    if (isSubmitBtn || isNextBtn) {
+      try {
+        const email = popup.querySelector('input[type="email"], input[name*="email" i], input[placeholder*="email" i]')?.value?.trim();
+        if (email) {
+          const cachedData = {
+            email: email,
+            first_name: popup.querySelector('input[placeholder*="First" i], input[name*="first_name" i], input[name*="first" i]')?.value?.trim() || '',
+            last_name: popup.querySelector('input[placeholder*="Last" i], input[name*="last_name" i], input[name*="last" i]')?.value?.trim() || '',
+            company: popup.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
+            phone: popup.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i], input[type="tel"]')?.value?.trim() || ''
+          };
+          sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
+          console.log('[QuoteTracking] Cached Meraki popup data on button click:', cachedData);
+        }
+      } catch (e) {}
+    }
+
     if (isSubmitBtn && !hasEventFired(STORAGE_KEY_SUBMIT)) {
       // Extract data from popup inputs
       const customerData = extractCustomerData(popup);
       customerData.quote_session_id = getQuoteSessionId();
       customerData.form_id = 'meraki-quote-popup';
+
+      // Fallback to cached data if extraction failed
+      if (!customerData.email) {
+        try {
+          const cached = JSON.parse(sessionStorage.getItem('qt_customer_data') || '{}');
+          if (cached.email) {
+            customerData.email = cached.email;
+            if (!customerData.first_name && cached.first_name) customerData.first_name = cached.first_name;
+            if (!customerData.last_name && cached.last_name) customerData.last_name = cached.last_name;
+            if (!customerData.company && cached.company) customerData.company = cached.company;
+            if (!customerData.phone && cached.phone) customerData.phone = cached.phone;
+            console.log('[QuoteTracking] Using cached data for MerakiQuote submit:', cached);
+          }
+        } catch (e) {}
+      }
 
       // Parse first_name/last_name from full name if not available
       if (!customerData.first_name && customerData.name) {
@@ -934,6 +973,29 @@
     console.log('[QuoteTracking] quote_field_error:', fieldName, errorType, 'session:', quoteSessionId);
   }, { capture: true });
 
+  // Helper to cache customer data from form (for Meraki popup fallback)
+  function cacheCustomerDataFromForm(form) {
+    try {
+      const email = form.querySelector('input[type="email"], input[name*="email" i], input[placeholder*="email" i]')?.value?.trim() || '';
+      if (!email) return null;
+
+      const cachedData = {
+        email: email,
+        first_name: form.querySelector('input[placeholder*="First" i], input[name*="first_name" i], input[name*="first" i]')?.value?.trim() || '',
+        last_name: form.querySelector('input[placeholder*="Last" i], input[name*="last_name" i], input[name*="last" i]')?.value?.trim() || '',
+        company: form.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
+        phone: form.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i], input[type="tel"]')?.value?.trim() || ''
+      };
+
+      sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
+      console.log('[QuoteTracking] Cached customer data on step change:', cachedData);
+      return cachedData;
+    } catch (e) {
+      console.log('[QuoteTracking] Failed to cache customer data:', e);
+      return null;
+    }
+  }
+
   // Track multi-step form navigation
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('button, [role="button"]');
@@ -950,6 +1012,12 @@
       const fromStep = formState.currentStep;
       const toStep = isNext ? fromStep + 1 : fromStep - 1;
       const quoteSessionId = getQuoteSessionId();
+
+      // IMPORTANT: Cache customer data BEFORE step changes (inputs may be removed on review step)
+      // This ensures we have the data even if blur events weren't triggered
+      if (isNext) {
+        cacheCustomerDataFromForm(context.form);
+      }
 
       // Only track if step actually changes (give DOM time to update)
       setTimeout(() => {
