@@ -38,6 +38,7 @@
                        - Added umami.track wrapper to normalize data schema (customer.* -> flat keys)
                        - Block quote_submit events with no email data
                        - Unified deduplication across all tracking sources
+  Updated: 2026-01-03 - Added form_id: 'meraki-quote-popup' to intercepted quote_submit events
 {% endcomment %}
 <script>
 (function() {
@@ -102,6 +103,11 @@
             if (!normalizedData.email || normalizedData.email.trim().length === 0) {
               console.log('[QuoteTracking] Blocked quote_submit with no email data:', normalizedData);
               return; // Block empty submission
+            }
+
+            // Add form_id for Meraki popup submissions
+            if (!normalizedData.form_id) {
+              normalizedData.form_id = 'meraki-quote-popup';
             }
 
             // Ensure we have attribution data
