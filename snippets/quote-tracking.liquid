@@ -761,20 +761,22 @@
     // First try direct selectors
     let form = element.closest(QUOTE_FORM_SELECTORS);
 
-    // If not found, check for MerakiQuote popup (React dialog with fixed positioning)
+    // If not found, check for MerakiQuote popup (React dialog)
     if (!form) {
       const dialog = element.closest('[role="dialog"]');
-      // MerakiQuote popup uses Tailwind fixed positioning and contains a form
-      if (dialog && dialog.classList.contains('fixed') && dialog.querySelector('form')) {
+      // MerakiQuote popup - just needs to be a dialog with a form or quote-related inputs
+      if (dialog && (dialog.querySelector('form') ||
+                     dialog.querySelector('input[placeholder*="Company" i]') ||
+                     dialog.querySelector('input[type="email"]'))) {
         form = dialog;
       }
     }
 
     // Fallback: check for React form with flex classes (MerakiQuote)
     if (!form) {
-      const reactForm = element.closest('form.flex.flex-col');
-      if (reactForm) {
-        form = reactForm.closest('[role="dialog"]') || reactForm;
+      const reactForm = element.closest('form.flex.flex-col, form');
+      if (reactForm && reactForm.closest('[role="dialog"]')) {
+        form = reactForm.closest('[role="dialog"]');
       }
     }
 
