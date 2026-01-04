@@ -1,268 +1,93 @@
 {% comment %}
-  Quote & Cart Tracking - GA4 + Umami Implementation
-  Tracks key conversion events with UTM attribution for campaign performance analysis
-  Events: form_start, request_quote, quote_submit, add_to_cart
+  Form Tracking - Umami Implementation
+  Tracks form interactions for analytics (excludes MerakiQuote popup on product pages)
 
-  Enhanced Events (2025-12-29):
-  - quote_field_focus: Track every field focus
-  - quote_field_blur: Track every field blur with fill status
-  - quote_field_error: Track validation errors
-  - quote_progress: Track form completion milestones (25%, 50%, 75%, 100%)
-  - quote_step_change: Track multi-step form navigation
-  - quote_abandon: Track form abandonment with context
-  - upsell_view: Track when upsell section is visible
-  - upsell_click: Track clicks on upsell products
+  Events:
+  - form_start: First field focus in a form
+  - form_submit: Form submission with customer data
+  - add_to_cart: Product added to cart
 
-  GA4 Property: G-0HET6EXHTH (SoundBoxStore)
-  Umami: umami.mobelaris.com (33c86e50-36c8-428d-8b39-d1dfa548a808)
+  Forms tracked:
+  - Header quote form (#quote-form)
+  - Cart quote form (#cart-quote-form)
+  - Newsletter/subscribe forms
+  - Contact forms
+  - Get specs forms
 
-  Created: 2025-12-16
-  Updated: 2025-12-16 - Fixed duplicate event firing issue
-  Updated: 2025-12-18 - Added gclid capture for Google Ads attribution
-  Updated: 2025-12-20 - Added UTM parameter capture for attribution without cookies
-  Updated: 2025-12-20 - Added add_to_cart tracking with UTM attribution
-  Updated: 2025-12-20 - Added Umami tracking with UTM attribution for all events
-  Updated: 2025-12-28 - Fixed MerakiQuote popup detection (new [role="dialog"] selector)
-  Updated: 2025-12-29 - Added comprehensive field-level tracking and abandonment detection
-  Updated: 2025-12-29 - Fixed quote_submit customer data capture (email, first_name, last_name, company, phone)
-                       - Improved extractCustomerData() with more field name patterns
-                       - Added support for cart-quote-form, header quote form, and MerakiQuote popup
-                       - Added quote_session_id to link all field events to their request_quote session
-  Updated: 2025-12-29 - Fixed quote_session_id race condition: now generates session ID on first field focus
-                       if not already set, ensuring all events have a session ID even when field focus
-                       occurs before request_quote button click
-  Updated: 2025-12-29 - Enhanced request_quote detection: expanded button selectors and added MutationObserver
-                       to detect when quote popups/dialogs become visible, ensuring request_quote is the
-                       first event fired before any field interactions
-  Updated: 2025-12-30 - MAJOR FIX: Intercept umami.track to prevent empty quote_submit events from MerakiQuote
-                       - Added umami.track wrapper to normalize data schema (customer.* -> flat keys)
-                       - Block quote_submit events with no email data
-                       - Unified deduplication across all tracking sources
-  Updated: 2026-01-03 - Added form_id: 'meraki-quote-popup' to intercepted quote_submit events
-  Updated: 2026-01-03 - Fixed Meraki popup quote_submit tracking: cache customer data when email field
-                       is filled, use cached data as fallback when Meraki fires empty quote_submit
-                       (form inputs are gone on review/thank-you step)
-  Updated: 2026-01-04 - Enhanced Meraki popup tracking: added robust caching on button clicks
-                       (next/submit) in addition to blur events, ensuring data is captured even
-                       when automated tools set values directly without triggering native events
-  Updated: 2026-01-04 - Fixed quote popup detection on review step (step 3): inputs are removed
-                       on review step, so now also checks for cached data or review-specific
-                       buttons ("Submit Request", "Previous step") to detect the popup
+  Umami: umami.mobelaris.com
 {% endcomment %}
 <script>
 (function() {
   'use strict';
 
   // ============================================
-  // UMAMI INTERCEPTION - Prevent empty events and normalize data
+  // CONFIGURATION
   // ============================================
-  // This intercepts umami.track calls from MerakiQuote and other sources
-  // to ensure all quote_submit events have proper data
 
-  (function interceptUmami() {
-    // Wait for umami to be available
-    const checkUmami = setInterval(function() {
-      if (typeof umami !== 'undefined' && umami.track) {
-        clearInterval(checkUmami);
+  const TRACKED_FORMS = {
+    'quote-form': 'header-quote-form',
+    'cart-quote-form': 'cart-quote-form',
+    'contact-form': 'contact-form',
+    'newsletter-form': 'newsletter-form',
+    'get-specs-form': 'get-specs-form'
+  };
 
-        // Store original track function
-        const originalTrack = umami.track.bind(umami);
-
-        // Replace with interceptor
-        umami.track = function(eventName, data) {
-          // Only intercept quote_submit events
-          if (eventName === 'quote_submit') {
-            // Check deduplication flag
-            try {
-              if (sessionStorage.getItem('qt_quote_submit_fired') === 'true') {
-                console.log('[QuoteTracking] Intercepted duplicate quote_submit, blocking');
-                return;
-              }
-            } catch (e) {}
-
-            // Normalize data - convert customer.* prefix to flat keys
-            const normalizedData = {};
-            if (data && typeof data === 'object') {
-              Object.keys(data).forEach(function(key) {
-                // Convert customer.email -> email, customer.first_name -> first_name, etc.
-                const normalizedKey = key.replace(/^customer\./, '');
-                normalizedData[normalizedKey] = data[key];
-              });
-            }
-
-            // Check if we have required data (email)
-            const hasEmail = normalizedData.email && normalizedData.email.trim().length > 0;
-
-            if (!hasEmail) {
-              // Try to extract email from visible forms
-              const emailField = document.querySelector([
-                '[role="dialog"] input[type="email"]',
-                '[role="dialog"] input[name*="email"]',
-                '.meraki-popup-wrapper input[type="email"]',
-                '#quote-form input[type="email"]',
-                '#cart-quote-form input[type="email"]'
-              ].join(', '));
-
-              if (emailField && emailField.value) {
-                normalizedData.email = emailField.value.trim();
-              }
-            }
-
-            // Fallback: try to get cached customer data from sessionStorage
-            // (captured when user filled the form, before review step)
-            if (!normalizedData.email || normalizedData.email.trim().length === 0) {
-              try {
-                const cachedData = JSON.parse(sessionStorage.getItem('qt_customer_data') || '{}');
-                if (cachedData.email) {
-                  normalizedData.email = cachedData.email;
-                  if (!normalizedData.first_name && cachedData.first_name) normalizedData.first_name = cachedData.first_name;
-                  if (!normalizedData.last_name && cachedData.last_name) normalizedData.last_name = cachedData.last_name;
-                  if (!normalizedData.company && cachedData.company) normalizedData.company = cachedData.company;
-                  if (!normalizedData.phone && cachedData.phone) normalizedData.phone = cachedData.phone;
-                  console.log('[QuoteTracking] Using cached customer data:', cachedData);
-                }
-              } catch (e) {}
-            }
-
-            // If still no email, block the event to prevent empty submissions
-            if (!normalizedData.email || normalizedData.email.trim().length === 0) {
-              console.log('[QuoteTracking] Blocked quote_submit with no email data:', normalizedData);
-              return; // Block empty submission
-            }
-
-            // Add form_id for Meraki popup submissions
-            if (!normalizedData.form_id) {
-              normalizedData.form_id = 'meraki-quote-popup';
-            }
-
-            // Ensure we have attribution data
-            try {
-              const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
-              const gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
-
-              if (!normalizedData.gclid && gclid) normalizedData.gclid = gclid;
-              if (!normalizedData.utm_source && attribution.utm_source) normalizedData.utm_source = attribution.utm_source;
-              if (!normalizedData.utm_medium && attribution.utm_medium) normalizedData.utm_medium = attribution.utm_medium;
-              if (!normalizedData.utm_campaign && attribution.utm_campaign) normalizedData.utm_campaign = attribution.utm_campaign;
-              if (!normalizedData.landing_page && attribution.landing_page) normalizedData.landing_page = attribution.landing_page;
-              if (!normalizedData.page_path) normalizedData.page_path = window.location.pathname;
-              if (!normalizedData.quote_session_id) {
-                normalizedData.quote_session_id = sessionStorage.getItem('qt_quote_session_id') || '';
-              }
-            } catch (e) {}
-
-            // Mark as fired to prevent duplicates
-            try {
-              sessionStorage.setItem('qt_quote_submit_fired', 'true');
-            } catch (e) {}
-
-            console.log('[QuoteTracking] Intercepted quote_submit, normalized data:', normalizedData);
-            return originalTrack(eventName, normalizedData);
-          }
-
-          // Pass through all other events unchanged
-          return originalTrack(eventName, data);
-        };
-
-        console.log('[QuoteTracking] Umami interception installed');
-      }
-    }, 100);
-
-    // Stop checking after 10 seconds
-    setTimeout(function() { clearInterval(checkUmami); }, 10000);
-  })();
-
-  // GA4 Measurement ID
-  const GA4_ID = 'G-0HET6EXHTH';
-
-  // Use sessionStorage for robust de-duplication across page interactions
-  const STORAGE_KEY_REQUEST = 'qt_request_quote_fired';
-  const STORAGE_KEY_SUBMIT = 'qt_quote_submit_fired';
-  const STORAGE_KEY_SESSION_ID = 'qt_quote_session_id';
-
-  // Generate a unique quote session ID (timestamp + random string)
-  function generateQuoteSessionId() {
-    const timestamp = Date.now().toString(36);
-    const random = Math.random().toString(36).substring(2, 8);
-    return `qs_${timestamp}_${random}`;
+  // Forms to exclude (MerakiQuote popup)
+  function isExcludedForm(element) {
+    return element.closest('[role="dialog"]') ||
+           element.closest('.meraki-popup-wrapper') ||
+           element.closest('[class*="meraki"]');
   }
 
-  // Get or create quote session ID
-  function getQuoteSessionId() {
-    try {
-      return sessionStorage.getItem(STORAGE_KEY_SESSION_ID) || '';
-    } catch (e) {
-      return '';
+  // ============================================
+  // STORAGE HELPERS
+  // ============================================
+
+  const fired = {
+    get: (key) => {
+      try { return sessionStorage.getItem(key) === 'true'; } catch (e) { return false; }
+    },
+    set: (key) => {
+      try { sessionStorage.setItem(key, 'true'); } catch (e) {}
+    },
+    clear: (key) => {
+      try { sessionStorage.removeItem(key); } catch (e) {}
     }
-  }
+  };
 
-  // Store quote session ID
-  function setQuoteSessionId(sessionId) {
+  // ============================================
+  // ATTRIBUTION CAPTURE
+  // ============================================
+
+  const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+  function captureAttribution() {
     try {
-      sessionStorage.setItem(STORAGE_KEY_SESSION_ID, sessionId);
-    } catch (e) {
-      // Ignore storage errors
-    }
-  }
+      const params = new URLSearchParams(window.location.search);
+      const gclid = params.get('gclid');
+      const hasUtm = UTM_PARAMS.some(p => params.get(p));
 
-  // Clear quote session ID
-  function clearQuoteSessionId() {
-    try {
-      sessionStorage.removeItem(STORAGE_KEY_SESSION_ID);
-    } catch (e) {
-      // Ignore storage errors
-    }
-  }
-
-  // UTM and attribution parameters to capture
-  const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id'];
-  const STORAGE_KEY_ATTRIBUTION = 'qt_attribution';
-
-  // Capture gclid and UTM parameters from URL on page load
-  // Store in localStorage to persist across page navigations
-  (function captureAttribution() {
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-
-      // Capture gclid
-      const gclid = urlParams.get('gclid') || urlParams.get('_gcl_aw');
-      if (gclid) {
-        localStorage.setItem('_gcl_aw', gclid);
-        localStorage.setItem('_gcl_aw_timestamp', Date.now().toString());
-        console.log('[QuoteTracking] gclid captured:', gclid);
-      }
-
-      // Capture UTM parameters if any are present
-      const hasUtmParams = UTM_PARAMS.some(p => urlParams.get(p));
-      if (hasUtmParams || gclid) {
-        const attribution = {
-          timestamp: Date.now(),
+      if (gclid || hasUtm) {
+        const data = {
           gclid: gclid || '',
-          utm_source: urlParams.get('utm_source') || '',
-          utm_medium: urlParams.get('utm_medium') || '',
-          utm_campaign: urlParams.get('utm_campaign') || '',
-          utm_term: urlParams.get('utm_term') || '',
-          utm_content: urlParams.get('utm_content') || '',
-          utm_id: urlParams.get('utm_id') || '',
-          landing_page: window.location.pathname
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          landing_page: window.location.pathname,
+          timestamp: Date.now()
         };
-        localStorage.setItem(STORAGE_KEY_ATTRIBUTION, JSON.stringify(attribution));
-        console.log('[QuoteTracking] Attribution captured:', attribution);
+        localStorage.setItem('qt_attribution', JSON.stringify(data));
       }
-    } catch (e) {
-      // Ignore storage errors (private browsing, etc.)
-    }
-  })();
+    } catch (e) {}
+  }
 
-  // Helper to get stored attribution data
   function getAttribution() {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY_ATTRIBUTION);
+      const stored = localStorage.getItem('qt_attribution');
       if (stored) {
         const data = JSON.parse(stored);
-        // Check if attribution is still valid (30 days)
-        const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
-        if (Date.now() - data.timestamp < thirtyDaysMs) {
+        // Valid for 30 days
+        if (Date.now() - data.timestamp < 30 * 24 * 60 * 60 * 1000) {
           return data;
         }
       }
@@ -270,960 +95,223 @@
     return {};
   }
 
-  // Helper to get gclid from various sources
-  function getGclid() {
-    try {
-      // Priority: URL param > localStorage > cookie
-      const urlParams = new URLSearchParams(window.location.search);
-      const fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
-      if (fromUrl) return fromUrl;
+  // Capture on page load
+  captureAttribution();
 
-      const fromStorage = localStorage.getItem('_gcl_aw');
-      if (fromStorage) return fromStorage;
+  // ============================================
+  // UMAMI TRACKING
+  // ============================================
 
-      // Try cookie as fallback
-      const cookies = document.cookie.split(';');
-      for (let c of cookies) {
-        const [name, val] = c.trim().split('=');
-        if (name === '_gcl_aw') return val.split('.').pop();
-      }
-    } catch (e) {}
-    return '';
-  }
-
-  function hasEventFired(key) {
-    try {
-      return sessionStorage.getItem(key) === 'true';
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function markEventFired(key) {
-    try {
-      sessionStorage.setItem(key, 'true');
-    } catch (e) {
-      // Ignore storage errors
-    }
-  }
-
-  function resetEventFlags() {
-    try {
-      sessionStorage.removeItem(STORAGE_KEY_REQUEST);
-      sessionStorage.removeItem(STORAGE_KEY_SUBMIT);
-      sessionStorage.removeItem(STORAGE_KEY_FORM_START);
-      clearQuoteSessionId();
-    } catch (e) {
-      // Ignore storage errors
-    }
-  }
-
-  // Helper to build event data with attribution
-  function buildEventData(eventName) {
-    const gclid = getGclid();
-    const attribution = getAttribution();
-
-    return {
-      send_to: GA4_ID,
-      event_category: 'Quote',
-      event_label: window.location.pathname,
-      page_path: window.location.pathname,
-      gclid: gclid,
-      // Include UTM parameters as custom dimensions for attribution
-      traffic_source: attribution.utm_source || (gclid ? 'google' : ''),
-      traffic_medium: attribution.utm_medium || (gclid ? 'cpc' : ''),
-      traffic_campaign: attribution.utm_campaign || '',
-      traffic_term: attribution.utm_term || '',
-      traffic_content: attribution.utm_content || '',
-      landing_page: attribution.landing_page || ''
-    };
-  }
-
-  // Helper to track events in Umami with UTM attribution
-  function trackUmami(eventName, extraProps) {
+  function track(eventName, props = {}) {
     if (typeof umami === 'undefined') return;
 
-    const gclid = getGclid();
-    const attribution = getAttribution();
-
-    const props = {
-      utm_source: attribution.utm_source || (gclid ? 'google' : ''),
-      utm_medium: attribution.utm_medium || (gclid ? 'cpc' : ''),
-      utm_campaign: attribution.utm_campaign || '',
-      gclid: gclid || '',
-      landing_page: attribution.landing_page || '',
+    const attr = getAttribution();
+    const data = {
+      ...props,
       page_path: window.location.pathname,
-      ...extraProps
+      gclid: attr.gclid || '',
+      utm_source: attr.utm_source || '',
+      utm_medium: attr.utm_medium || '',
+      utm_campaign: attr.utm_campaign || '',
+      landing_page: attr.landing_page || ''
     };
 
     try {
-      umami.track(eventName, props);
-      console.log('[QuoteTracking] Umami:', eventName, props);
-    } catch (e) {
-      // Ignore Umami errors
-    }
+      umami.track(eventName, data);
+      console.log('[Tracking]', eventName, data);
+    } catch (e) {}
   }
 
-  // Storage key for form_start
-  const STORAGE_KEY_FORM_START = 'qt_form_start_fired';
+  // ============================================
+  // FORM DETECTION
+  // ============================================
 
-  // 0. Track form_start when user focuses on quote form (ENGAGEMENT)
-  document.addEventListener('focusin', function(e) {
-    const input = e.target;
-    // Check if this is an input inside a quote form
-    // Supports: header quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
-    const form = input.closest('#quote-form, .meraki-popup-wrapper, [id^="quote-form"], [role="dialog"]');
-    if (form && input.matches('input, textarea, select') && !hasEventFired(STORAGE_KEY_FORM_START)) {
-      markEventFired(STORAGE_KEY_FORM_START);
-      const eventData = buildEventData('form_start');
-      eventData.form_id = form.id || 'quote-form';
-
-      gtag('event', 'form_start', eventData);
-      trackUmami('form_start', { form_id: eventData.form_id });
-      console.log('[QuoteTracking] form_start fired', eventData);
+  function getFormId(element) {
+    // Check by ID first
+    const form = element.closest('form');
+    if (form && TRACKED_FORMS[form.id]) {
+      return TRACKED_FORMS[form.id];
     }
-  }, { capture: true });
 
-  // 1. Track request_quote on button click (INTENT)
-  // Extended selectors to catch all quote button types including MerakiQuote
-  const QUOTE_BUTTON_SELECTORS = [
-    '[id^="ProductQuoteButton-"]',
-    '.product-qoute-button',
-    'label[for="quote-form-modal"]',
-    'label[for="quote-form-modal-cart"]',
-    '.cart__request-quote',
-    '[data-quote-button]',
-    // MerakiQuote and similar React popup triggers
-    'button[class*="quote"]',
-    'a[class*="quote"]',
-    '[class*="request-quote"]',
-    '[class*="get-quote"]'
-  ].join(', ');
-
-  document.addEventListener('click', function(e) {
-    const btn = e.target.closest(QUOTE_BUTTON_SELECTORS);
-    if (btn && !hasEventFired(STORAGE_KEY_REQUEST)) {
-      markEventFired(STORAGE_KEY_REQUEST);
-
-      // Generate a unique session ID for this quote request IMMEDIATELY
-      const quoteSessionId = generateQuoteSessionId();
-      setQuoteSessionId(quoteSessionId);
-
-      const eventData = buildEventData('request_quote');
-
-      gtag('event', 'request_quote', eventData);
-      trackUmami('request_quote', { quote_session_id: quoteSessionId });
-      console.log('[QuoteTracking] request_quote fired, session:', quoteSessionId, eventData);
+    // Check by class/content patterns
+    if (element.closest('.newsletter-form, [class*="newsletter"], [class*="subscribe"]')) {
+      return 'newsletter-form';
     }
-  }, { capture: true, once: false });
+    if (element.closest('.contact-form, [class*="contact"]')) {
+      return 'contact-form';
+    }
+    if (element.closest('[class*="get-specs"], [class*="spec"]')) {
+      return 'get-specs-form';
+    }
 
-  // 1b. Also detect when quote popups/dialogs become visible (for React-based popups like MerakiQuote)
-  // This fires request_quote when the popup appears, ensuring session ID is ready before field focus
-  const quotePopupObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      mutation.addedNodes.forEach(function(node) {
-        if (node.nodeType !== 1) return; // Only element nodes
+    // Check for quote forms by ID pattern
+    if (form?.id?.includes('quote')) {
+      return form.id;
+    }
 
-        // Check if this is a quote popup/dialog
-        const isQuotePopup =
-          node.matches?.('[role="dialog"]') ||
-          node.matches?.('.meraki-popup-wrapper') ||
-          node.querySelector?.('[role="dialog"]') ||
-          node.querySelector?.('form[class*="quote"]') ||
-          (node.matches?.('.fixed') && node.querySelector?.('input[placeholder*="Company" i]'));
+    return null;
+  }
 
-        if (isQuotePopup && !hasEventFired(STORAGE_KEY_REQUEST)) {
-          markEventFired(STORAGE_KEY_REQUEST);
-
-          // Generate session ID immediately when popup appears
-          const quoteSessionId = generateQuoteSessionId();
-          setQuoteSessionId(quoteSessionId);
-
-          const eventData = buildEventData('request_quote');
-          eventData.trigger = 'popup_visible';
-
-          gtag('event', 'request_quote', eventData);
-          trackUmami('request_quote', { quote_session_id: quoteSessionId });
-          console.log('[QuoteTracking] request_quote fired (popup detected), session:', quoteSessionId);
-        }
-      });
-    });
-  });
-
-  // Start observing for quote popups
-  quotePopupObserver.observe(document.body, { childList: true, subtree: true });
-
-  // Helper to extract customer data from MerakiQuote popup or any form container
-  function extractCustomerData(container) {
-    const getValue = (selectors) => {
+  function extractCustomerData(form) {
+    const get = (selectors) => {
       for (const sel of selectors) {
-        try {
-          const el = container.querySelector(sel);
-          if (el && el.value) return el.value.trim();
-        } catch (e) {
-          // Ignore selector errors
-        }
+        const el = form.querySelector(sel);
+        if (el?.value?.trim()) return el.value.trim();
       }
       return '';
     };
 
-    // Get first name and last name separately, then combine
-    const firstName = getValue([
-      'input[name="first_name"]',
-      'input[name*="first" i]',
-      'input[placeholder*="First Name" i]',
-      'input[placeholder*="First name" i]'
-    ]);
-    const lastName = getValue([
-      'input[name="last_name"]',
-      'input[name*="last" i]',
-      'input[placeholder*="Last Name" i]',
-      'input[placeholder*="Last name" i]'
-    ]);
-    const fullName = getValue([
-      'input[name="contact[Full name]"]',
-      'input[name*="Full name" i]',
-      'input[name="name"]',
-      'input[placeholder*="Full Name" i]'
-    ]);
-
-    // Build combined name
-    let name = '';
-    if (firstName || lastName) {
-      name = (firstName + ' ' + lastName).trim();
-    } else if (fullName) {
-      name = fullName;
-    }
-
     return {
-      email: getValue([
-        'input[name="email"]',
-        'input[name="contact[email]"]',
-        'input[type="email"]',
-        'input[placeholder*="email" i]',
-        'input[name*="email" i]'
-      ]),
-      first_name: firstName || (fullName ? fullName.split(' ')[0] : ''),
-      last_name: lastName || (fullName && fullName.includes(' ') ? fullName.split(' ').slice(1).join(' ') : ''),
-      name: name,
-      company: getValue([
-        'input[name="Address_Company"]',
-        'input[name="company"]',
-        'input[name="contact[Company name]"]',
-        'input[name*="company" i]',
-        'input[placeholder*="Company" i]'
-      ]),
-      phone: getValue([
-        'input[name="phone"]',
-        'input[name="contact[Phone]"]',
-        'input[name="contact[Mobile number]"]',
-        'input[name="contact[Office Phone number]"]',
-        'input[type="tel"]',
-        'input[placeholder*="Mobile" i]',
-        'input[placeholder*="Phone" i]'
-      ]),
-      postcode: getValue([
-        'input[name="PostCode"]',
-        'input[name="postcode"]',
-        'input[name="contact[postcode]"]',
-        'input[placeholder*="Post Code" i]',
-        'input[placeholder*="Postcode" i]',
-        'input[placeholder*="Zip" i]',
-        'input[name*="postcode" i]'
-      ]),
-      city: getValue([
-        'input[name="city"]',
-        'input[name="contact[city]"]',
-        'input[placeholder*="City" i]',
-        'input[name*="city" i]'
-      ]),
-      country: getValue([
-        'select[name="Country"]',
-        'select[name="contact[Country/Region]"]',
-        'select[name*="country" i]',
-        'input[name*="country" i]'
-      ])
+      email: get(['input[type="email"]', 'input[name*="email" i]']),
+      first_name: get(['input[name*="first" i]', 'input[placeholder*="First" i]']),
+      last_name: get(['input[name*="last" i]', 'input[placeholder*="Last" i]']),
+      company: get(['input[name*="company" i]', 'input[placeholder*="Company" i]']),
+      phone: get(['input[type="tel"]', 'input[name*="phone" i]', 'input[placeholder*="Phone" i]']),
+      city: get(['input[name*="city" i]', 'input[placeholder*="City" i]']),
+      country: get(['select[name*="country" i]', 'input[name*="country" i]'])
     };
   }
 
-  // 2. Track quote_submit on form submission (COMPLETION)
-  // Listen for actual form submit event for more reliable tracking
-  // Covers: Header quote form (id="quote-form"), cart quote form, and MerakiQuote popup
+  // ============================================
+  // EVENT LISTENERS
+  // ============================================
+
+  // 1. form_start - First field focus
+  document.addEventListener('focusin', function(e) {
+    if (!e.target.matches('input, textarea, select')) return;
+    if (isExcludedForm(e.target)) return;
+
+    const formId = getFormId(e.target);
+    if (!formId) return;
+
+    const key = `form_start_${formId}`;
+    if (fired.get(key)) return;
+
+    fired.set(key);
+    track('form_start', { form_id: formId });
+  }, { capture: true });
+
+  // 2. form_submit - Form submission (native submit event)
   document.addEventListener('submit', function(e) {
     const form = e.target;
-    // Check if this is a quote-related form
-    // Supports: header quote form, cart quote form, MerakiQuote popup (old .meraki-popup-wrapper + new [role="dialog"])
-    const isQuoteForm = form.id === 'quote-form' ||
-                        form.id === 'cart-quote-form' ||
-                        form.querySelector('input[placeholder*="Company"]') ||
-                        form.querySelector('input[name*="Company"]') ||
-                        form.closest('.meraki-popup-wrapper') ||
-                        form.closest('[role="dialog"]');
+    if (isExcludedForm(form)) return;
 
-    if (isQuoteForm && !hasEventFired(STORAGE_KEY_SUBMIT)) {
-      const eventData = buildEventData('quote_submit');
-      eventData.form_id = form.id || 'quote-form';
+    const formId = getFormId(form) || form.id || 'unknown-form';
+    const key = `form_submit_${formId}`;
+    if (fired.get(key)) return;
 
-      // Extract customer data from form fields for attribution using extractCustomerData helper
-      const extractedData = extractCustomerData(form);
+    fired.set(key);
+    const customer = extractCustomerData(form);
 
-      // Also try FormData for additional field patterns
-      const formData = new FormData(form);
-
-      // Build customer data with multiple fallbacks
-      const customerData = {
-        quote_session_id: getQuoteSessionId(),
-        form_id: eventData.form_id,
-        email: extractedData.email || formData.get('contact[email]') || formData.get('email') || '',
-        first_name: extractedData.first_name || '',
-        last_name: extractedData.last_name || '',
-        name: extractedData.name || formData.get('contact[Full name]') || formData.get('name') || '',
-        phone: extractedData.phone || formData.get('contact[Phone]') || formData.get('contact[Mobile number]') || formData.get('contact[Office Phone number]') || formData.get('phone') || '',
-        company: extractedData.company || formData.get('contact[Company name]') || formData.get('company') || '',
-        postcode: extractedData.postcode || formData.get('contact[postcode]') || formData.get('postcode') || '',
-        city: extractedData.city || formData.get('contact[city]') || formData.get('city') || '',
-        country: extractedData.country || formData.get('contact[Country/Region]') || formData.get('country') || ''
-      };
-
-      // Parse first_name/last_name from full name if not available
-      if (!customerData.first_name && customerData.name) {
-        const nameParts = customerData.name.trim().split(' ');
-        customerData.first_name = nameParts[0] || '';
-        customerData.last_name = nameParts.slice(1).join(' ') || '';
-      }
-
-      gtag('event', 'quote_submit', eventData);
-      trackUmami('quote_submit', customerData);
-      // Mark as fired AFTER trackUmami to avoid interceptor blocking our own event
-      markEventFired(STORAGE_KEY_SUBMIT);
-      console.log('[QuoteTracking] quote_submit fired for form:', form.id || 'unnamed', customerData);
-    }
+    track('form_submit', {
+      form_id: formId,
+      email: customer.email,
+      first_name: customer.first_name,
+      last_name: customer.last_name,
+      company: customer.company,
+      phone: customer.phone,
+      city: customer.city,
+      country: customer.country
+    });
   }, { capture: true });
 
-  // 2b. Track MerakiQuote popup submission (uses AJAX, not form submit)
-  // Listen for click on "Submit Quote" or final step button in MerakiQuote popup
+  // 2b. form_submit - AJAX form submission (click on submit button)
+  // Handles forms that use JavaScript/AJAX instead of native form submit
   document.addEventListener('click', function(e) {
-    const btn = e.target.closest('button');
+    const btn = e.target.closest([
+      '.cart-quote-btn-primary',                 // Cart quote modal submit button
+      '#btn-next',                               // Cart quote next/submit button
+      '.quote-form-submit',                      // Generic submit class
+      'button[data-submit-quote]',               // Data attribute pattern
+      '.cpb-submit-button'                       // Cart page builder submit
+    ].join(', '));
+
     if (!btn) return;
 
-    // Check if this is inside a MerakiQuote popup
-    // Supports: old .meraki-popup-wrapper class + new [role="dialog"] with Company input
-    const popup = btn.closest('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"], [role="dialog"]');
-    if (!popup) return;
-
-    // For [role="dialog"], verify it's a quote form by checking for:
-    // 1. Company/email input fields (step 2), OR
-    // 2. Cached customer data from sessionStorage (indicates we were on step 2), OR
-    // 3. "Submit Request" or "Previous step" buttons (review step indicators)
-    if (!popup.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) {
-      const hasInputs = popup.querySelector('input[placeholder*="Company" i], input[name*="company" i], input[name="email"], input[type="email"]');
-      const hasCachedData = sessionStorage.getItem('qt_customer_data');
-      const hasReviewButtons = popup.querySelector('button[type="submit"]')?.textContent?.toLowerCase().includes('submit') ||
-                               popup.textContent?.includes('Previous step');
-      if (!hasInputs && !hasCachedData && !hasReviewButtons) return;
-    }
-
-    // Check if this is the submit/send button (final step)
-    const btnText = btn.textContent.toLowerCase().trim();
+    // Check if this looks like a final submit button (not navigation)
+    const btnText = btn.textContent?.toLowerCase() || '';
     const isSubmitBtn = btnText.includes('submit') ||
-                        btnText.includes('send quote') ||
-                        btnText.includes('request quote') ||
-                        btnText.includes('get quote') ||
                         btnText.includes('send') ||
-                        (btn.classList.contains('primary') && popup.querySelector('[class*="step-3"], [class*="review"]'));
+                        btnText.includes('request quote');
+    if (!isSubmitBtn) return;
 
-    // Also check for "next step" style buttons - cache data before step transition
-    const isNextBtn = btnText.includes('next') || btnText.includes('continue') || btnText.includes('weiter');
-
-    // Cache customer data on any button that could trigger step change (before inputs are removed)
-    if (isSubmitBtn || isNextBtn) {
-      try {
-        const email = popup.querySelector('input[type="email"], input[name*="email" i], input[placeholder*="email" i]')?.value?.trim();
-        if (email) {
-          const cachedData = {
-            email: email,
-            first_name: popup.querySelector('input[placeholder*="First" i], input[name*="first_name" i], input[name*="first" i]')?.value?.trim() || '',
-            last_name: popup.querySelector('input[placeholder*="Last" i], input[name*="last_name" i], input[name*="last" i]')?.value?.trim() || '',
-            company: popup.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
-            phone: popup.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i], input[type="tel"]')?.value?.trim() || ''
-          };
-          sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
-          console.log('[QuoteTracking] Cached Meraki popup data on button click:', cachedData);
-        }
-      } catch (e) {}
+    // For cart quote modal, button is outside form - find form by ID
+    let form = btn.closest('form');
+    if (!form && btn.closest('.cart-quote-modal, [class*="cart-quote"]')) {
+      form = document.getElementById('cart-quote-form');
     }
+    if (!form) return;
+    if (isExcludedForm(form)) return;
 
-    if (isSubmitBtn && !hasEventFired(STORAGE_KEY_SUBMIT)) {
-      // Extract data from popup inputs
-      const customerData = extractCustomerData(popup);
-      customerData.quote_session_id = getQuoteSessionId();
-      customerData.form_id = 'meraki-quote-popup';
+    const formId = getFormId(form) || form.id || 'unknown-form';
+    const key = `form_submit_${formId}`;
+    if (fired.get(key)) return;
 
-      // Fallback to cached data if extraction failed
-      if (!customerData.email) {
-        try {
-          const cached = JSON.parse(sessionStorage.getItem('qt_customer_data') || '{}');
-          if (cached.email) {
-            customerData.email = cached.email;
-            if (!customerData.first_name && cached.first_name) customerData.first_name = cached.first_name;
-            if (!customerData.last_name && cached.last_name) customerData.last_name = cached.last_name;
-            if (!customerData.company && cached.company) customerData.company = cached.company;
-            if (!customerData.phone && cached.phone) customerData.phone = cached.phone;
-            console.log('[QuoteTracking] Using cached data for MerakiQuote submit:', cached);
-          }
-        } catch (e) {}
-      }
+    fired.set(key);
+    const customer = extractCustomerData(form);
 
-      // Parse first_name/last_name from full name if not available
-      if (!customerData.first_name && customerData.name) {
-        const nameParts = customerData.name.trim().split(' ');
-        customerData.first_name = nameParts[0] || '';
-        customerData.last_name = nameParts.slice(1).join(' ') || '';
-      }
-
-      const eventData = buildEventData('quote_submit');
-      eventData.form_id = 'meraki-quote-popup';
-
-      gtag('event', 'quote_submit', eventData);
-      trackUmami('quote_submit', customerData);
-      // Mark as fired AFTER trackUmami to avoid interceptor blocking our own event
-      markEventFired(STORAGE_KEY_SUBMIT);
-      console.log('[QuoteTracking] MerakiQuote quote_submit fired', customerData);
-    }
+    track('form_submit', {
+      form_id: formId,
+      email: customer.email,
+      first_name: customer.first_name,
+      last_name: customer.last_name,
+      company: customer.company,
+      phone: customer.phone,
+      city: customer.city,
+      country: customer.country
+    });
   }, { capture: true });
 
-  // 3. Track add_to_cart on Add to Cart button click
-  // Selectors: Product page Add to Cart button, quick add buttons
-  const STORAGE_KEY_ADD_CART = 'qt_add_to_cart_fired';
-
+  // 3. add_to_cart - Add to cart button click
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('button.add-to-cart, button[name="add"], [data-add-to-cart], .cpb-add-to-cart-button');
-    if (btn) {
-      // Get product info if available
-      const form = btn.closest('form[action*="/cart/add"]');
-      const productTitle = document.querySelector('h1.product-single__title, h1')?.textContent?.trim() || '';
-      const productId = form?.querySelector('[name="id"]')?.value || '';
-      const price = document.querySelector('.product__price, [data-product-price]')?.textContent?.trim() || '';
-
-      const eventData = buildEventData('add_to_cart');
-      eventData.item_name = productTitle;
-      eventData.item_id = productId;
-      eventData.price = price.replace(/[^0-9.,]/g, '');
-      eventData.currency = '{{ cart.currency.iso_code }}';
-
-      gtag('event', 'add_to_cart', eventData);
-      trackUmami('add_to_cart', {
-        item_name: productTitle,
-        item_id: productId,
-        price: eventData.price
-      });
-      console.log('[QuoteTracking] add_to_cart fired', eventData);
-
-      // Don't use de-duplication for add_to_cart - users may add multiple products
-    }
-  }, { capture: true });
-
-  // Reset flags when popup closes (for multiple quotes in same session)
-  document.addEventListener('click', function(e) {
-    const closeBtn = e.target.closest('[aria-label="Close"]') ||
-                     e.target.closest('.close-button') ||
-                     e.target.closest('.meraki-popup-close');
-    if (closeBtn) {
-      resetEventFlags();
-      console.log('[QuoteTracking] flags reset');
-    }
-  });
-
-  // Also reset on page navigation (for SPA behavior)
-  window.addEventListener('popstate', resetEventFlags);
-
-  // ============================================
-  // ENHANCED TRACKING: Field-level & Abandonment
-  // ============================================
-
-  // Form state tracking
-  const formState = {
-    startTime: null,
-    lastFieldName: null,
-    lastFieldFocusTime: null,
-    fieldsInteracted: new Set(),
-    fieldsFilled: new Set(),
-    currentStep: 1,
-    totalFields: 0,
-    lastProgressMilestone: 0
-  };
-
-  // Get all quote form selectors - multiple selectors for different form types
-  const QUOTE_FORM_SELECTORS = '#quote-form, #cart-quote-form, .meraki-popup-wrapper';
-
-  // Helper to identify form and get its ID
-  function getFormContext(element) {
-    // First try direct selectors
-    let form = element.closest(QUOTE_FORM_SELECTORS);
-
-    // If not found, check for MerakiQuote popup (React dialog)
-    if (!form) {
-      const dialog = element.closest('[role="dialog"]');
-      // MerakiQuote popup - just needs to be a dialog with a form or quote-related inputs
-      if (dialog && (dialog.querySelector('form') ||
-                     dialog.querySelector('input[placeholder*="Company" i]') ||
-                     dialog.querySelector('input[type="email"]'))) {
-        form = dialog;
-      }
-    }
-
-    // Fallback: check for React form with flex classes (MerakiQuote)
-    if (!form) {
-      const reactForm = element.closest('form.flex.flex-col, form');
-      if (reactForm && reactForm.closest('[role="dialog"]')) {
-        form = reactForm.closest('[role="dialog"]');
-      }
-    }
-
-    if (!form) return null;
-
-    let formId = 'unknown';
-    if (form.id === 'quote-form') formId = 'header-quote-form';
-    else if (form.id === 'cart-quote-form') formId = 'cart-quote-modal';
-    else if (form.matches('.meraki-popup-wrapper, [class*="meraki"], [id*="meraki"]')) formId = 'meraki-quote-popup';
-    else if (form.matches('[role="dialog"]') || form.matches('form.flex.flex-col')) formId = 'meraki-quote-popup';
-
-    // Determine step for multi-step forms
-    let currentStep = 1;
-    const activeStep = form.querySelector('.cart-quote-step.active, [class*="step"].active, [data-step].active');
-    if (activeStep) {
-      currentStep = parseInt(activeStep.dataset.step) || parseInt(activeStep.className.match(/step-?(\d)/)?.[1]) || 1;
-    }
-
-    return { form, formId, currentStep };
-  }
-
-  // Helper to get clean field name
-  function getFieldName(field) {
-    // Try to get a meaningful name
-    const name = field.name || '';
-    const placeholder = field.placeholder || '';
-    const label = field.closest('.form-group, .grid__item')?.querySelector('label')?.textContent?.trim() || '';
-
-    // Clean up contact[] format: contact[Full name] -> Full name
-    if (name.includes('[')) {
-      return name.replace(/^contact\[|\]$/g, '').replace(/[\[\]]/g, '');
-    }
-    return label || placeholder || name || field.id || field.type;
-  }
-
-  // Get total fields and filled count in a form
-  function getFormStats(form) {
-    const fields = form.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]), textarea, select');
-    let filled = 0;
-    let total = 0;
-
-    fields.forEach(field => {
-      if (field.offsetParent !== null) { // Visible only
-        total++;
-        if (field.value && field.value.trim().length > 0) filled++;
-      }
-    });
-
-    return { filled, total };
-  }
-
-  // Track field focus
-  document.addEventListener('focusin', function(e) {
-    const field = e.target;
-    if (!field.matches('input, textarea, select')) return;
-
-    const context = getFormContext(field);
-    if (!context) return;
-
-    const fieldName = getFieldName(field);
-
-    // Initialize form state on first field focus
-    if (!formState.startTime) {
-      formState.startTime = Date.now();
-      formState.totalFields = getFormStats(context.form).total;
-    }
-
-    // Ensure we have a quote session ID - generate one if missing
-    // This handles cases where field focus happens before/without request_quote click
-    let quoteSessionId = getQuoteSessionId();
-    if (!quoteSessionId) {
-      quoteSessionId = generateQuoteSessionId();
-      setQuoteSessionId(quoteSessionId);
-      console.log('[QuoteTracking] Generated session ID on field focus:', quoteSessionId);
-    }
-
-    formState.lastFieldName = fieldName;
-    formState.lastFieldFocusTime = Date.now();
-    formState.currentStep = context.currentStep;
-    formState.fieldsInteracted.add(fieldName);
-
-    trackUmami('quote_field_focus', {
-      quote_session_id: quoteSessionId,
-      field_name: fieldName,
-      field_type: field.type,
-      step: context.currentStep,
-      form_id: context.formId,
-      time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
-    });
-
-    console.log('[QuoteTracking] quote_field_focus:', fieldName, 'session:', quoteSessionId);
-  }, { capture: true });
-
-  // Track field blur (leaving a field)
-  document.addEventListener('focusout', function(e) {
-    const field = e.target;
-    if (!field.matches('input, textarea, select')) return;
-
-    const context = getFormContext(field);
-    if (!context) return;
-
-    const fieldName = getFieldName(field);
-    const wasFilled = field.value && field.value.trim().length > 0;
-    const timeOnField = formState.lastFieldFocusTime ? Math.round((Date.now() - formState.lastFieldFocusTime) / 1000) : 0;
-
-    if (wasFilled) {
-      formState.fieldsFilled.add(fieldName);
-    }
-
-    // Get session ID (should already exist from focus event)
-    const quoteSessionId = getQuoteSessionId();
-
-    trackUmami('quote_field_blur', {
-      quote_session_id: quoteSessionId,
-      field_name: fieldName,
-      field_type: field.type,
-      was_filled: wasFilled,
-      time_on_field: timeOnField,
-      step: context.currentStep,
-      form_id: context.formId
-    });
-
-    console.log('[QuoteTracking] quote_field_blur:', fieldName, 'filled:', wasFilled, 'session:', quoteSessionId);
-
-    // Special tracking for email field - capture email value for partial lead tracking
-    const isEmailField = field.type === 'email' ||
-                         field.name?.toLowerCase().includes('email') ||
-                         field.placeholder?.toLowerCase().includes('email') ||
-                         fieldName.toLowerCase().includes('email');
-
-    if (isEmailField && wasFilled) {
-      const emailValue = field.value.trim();
-      // Basic email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (emailRegex.test(emailValue)) {
-        trackUmami('quote_field_email', {
-          quote_session_id: quoteSessionId,
-          email: emailValue,
-          form_id: context.formId,
-          step: context.currentStep,
-          time_since_start: formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0
-        });
-        console.log('[QuoteTracking] quote_field_email:', emailValue, 'session:', quoteSessionId);
-
-        // Cache customer data for Meraki popup fallback
-        // (data may not be available when quote_submit fires on review/thank-you step)
-        try {
-          const form = field.closest('[role="dialog"], .meraki-popup-wrapper, #quote-form, #cart-quote-form');
-          if (form) {
-            const cachedData = {
-              email: emailValue,
-              first_name: form.querySelector('input[placeholder*="First" i], input[name*="first_name" i]')?.value?.trim() || '',
-              last_name: form.querySelector('input[placeholder*="Last" i], input[name*="last_name" i]')?.value?.trim() || '',
-              company: form.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
-              phone: form.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i]')?.value?.trim() || ''
-            };
-            sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
-            console.log('[QuoteTracking] Cached customer data for Meraki fallback:', cachedData);
-          }
-        } catch (e) {}
-      }
-    }
-
-    // Check form progress and fire milestone events
-    const stats = getFormStats(context.form);
-    const progressPct = Math.round((stats.filled / stats.total) * 100);
-    const milestone = Math.floor(progressPct / 25) * 25;
-
-    if (milestone > formState.lastProgressMilestone && milestone <= 100) {
-      formState.lastProgressMilestone = milestone;
-      trackUmami('quote_progress', {
-        quote_session_id: quoteSessionId,
-        progress_pct: milestone,
-        fields_filled: stats.filled,
-        total_fields: stats.total,
-        form_id: context.formId
-      });
-      console.log('[QuoteTracking] quote_progress:', milestone + '%, session:', quoteSessionId);
-    }
-  }, { capture: true });
-
-  // Track validation errors
-  document.addEventListener('invalid', function(e) {
-    const field = e.target;
-    const context = getFormContext(field);
-    if (!context) return;
-
-    const fieldName = getFieldName(field);
-    const quoteSessionId = getQuoteSessionId();
-    let errorType = 'required';
-
-    if (field.validity) {
-      if (field.validity.typeMismatch) errorType = 'format';
-      else if (field.validity.patternMismatch) errorType = 'pattern';
-      else if (field.validity.tooShort) errorType = 'too_short';
-      else if (field.validity.tooLong) errorType = 'too_long';
-    }
-
-    trackUmami('quote_field_error', {
-      quote_session_id: quoteSessionId,
-      field_name: fieldName,
-      error_type: errorType,
-      form_id: context.formId
-    });
-
-    console.log('[QuoteTracking] quote_field_error:', fieldName, errorType, 'session:', quoteSessionId);
-  }, { capture: true });
-
-  // Helper to cache customer data from form (for Meraki popup fallback)
-  function cacheCustomerDataFromForm(form) {
-    try {
-      const email = form.querySelector('input[type="email"], input[name*="email" i], input[placeholder*="email" i]')?.value?.trim() || '';
-      if (!email) return null;
-
-      const cachedData = {
-        email: email,
-        first_name: form.querySelector('input[placeholder*="First" i], input[name*="first_name" i], input[name*="first" i]')?.value?.trim() || '',
-        last_name: form.querySelector('input[placeholder*="Last" i], input[name*="last_name" i], input[name*="last" i]')?.value?.trim() || '',
-        company: form.querySelector('input[placeholder*="Company" i], input[name*="company" i]')?.value?.trim() || '',
-        phone: form.querySelector('input[placeholder*="Telephone" i], input[placeholder*="Phone" i], input[name*="phone" i], input[name*="mobile" i], input[type="tel"]')?.value?.trim() || ''
-      };
-
-      sessionStorage.setItem('qt_customer_data', JSON.stringify(cachedData));
-      console.log('[QuoteTracking] Cached customer data on step change:', cachedData);
-      return cachedData;
-    } catch (e) {
-      console.log('[QuoteTracking] Failed to cache customer data:', e);
-      return null;
-    }
-  }
-
-  // Track multi-step form navigation
-  document.addEventListener('click', function(e) {
-    const btn = e.target.closest('button, [role="button"]');
     if (!btn) return;
 
-    const context = getFormContext(btn);
-    if (!context) return;
+    const form = btn.closest('form[action*="/cart/add"]');
+    const title = document.querySelector('h1.product-single__title, h1')?.textContent?.trim() || '';
+    const variantId = form?.querySelector('[name="id"]')?.value || '';
 
-    const btnText = btn.textContent.toLowerCase().trim();
-    const isNext = btnText.includes('next') || btnText.includes('continue') || btn.id === 'btn-next';
-    const isPrev = btnText.includes('previous') || btnText.includes('back') || btn.id === 'btn-back';
-
-    if ((isNext || isPrev) && formState.currentStep) {
-      const fromStep = formState.currentStep;
-      const toStep = isNext ? fromStep + 1 : fromStep - 1;
-      const quoteSessionId = getQuoteSessionId();
-
-      // IMPORTANT: Cache customer data BEFORE step changes (inputs may be removed on review step)
-      // This ensures we have the data even if blur events weren't triggered
-      if (isNext) {
-        cacheCustomerDataFromForm(context.form);
-      }
-
-      // Only track if step actually changes (give DOM time to update)
-      setTimeout(() => {
-        const newContext = getFormContext(btn);
-        if (newContext && newContext.currentStep !== fromStep) {
-          const timeOnStep = formState.startTime ? Math.round((Date.now() - formState.startTime) / 1000) : 0;
-
-          trackUmami('quote_step_change', {
-            quote_session_id: quoteSessionId,
-            from_step: fromStep,
-            to_step: newContext.currentStep,
-            time_on_step: timeOnStep,
-            form_id: context.formId
-          });
-
-          formState.currentStep = newContext.currentStep;
-          console.log('[QuoteTracking] quote_step_change:', fromStep, '->', newContext.currentStep, 'session:', quoteSessionId);
-        }
-      }, 100);
-    }
+    track('add_to_cart', {
+      item_name: title,
+      item_id: variantId
+    });
   }, { capture: true });
 
-  // Track form abandonment (modal close without submit)
-  function trackFormAbandon(formId) {
-    if (!formState.startTime) return; // Never interacted
-    if (hasEventFired(STORAGE_KEY_SUBMIT)) return; // Already submitted
-
-    const timeSpent = Math.round((Date.now() - formState.startTime) / 1000);
-    const quoteSessionId = getQuoteSessionId();
-
-    trackUmami('quote_abandon', {
-      quote_session_id: quoteSessionId,
-      last_field: formState.lastFieldName || 'none',
-      fields_interacted: formState.fieldsInteracted.size,
-      fields_filled: formState.fieldsFilled.size,
-      total_fields: formState.totalFields,
-      completion_pct: formState.totalFields > 0 ? Math.round((formState.fieldsFilled.size / formState.totalFields) * 100) : 0,
-      time_spent: timeSpent,
-      step_reached: formState.currentStep,
-      form_id: formId
-    });
-
-    console.log('[QuoteTracking] quote_abandon fired', {
-      session: quoteSessionId,
-      lastField: formState.lastFieldName,
-      fieldsInteracted: formState.fieldsInteracted.size,
-      fieldsFilled: formState.fieldsFilled.size,
-      timeSpent: timeSpent
-    });
-  }
-
-  // Reset form state
-  function resetFormState() {
-    formState.startTime = null;
-    formState.lastFieldName = null;
-    formState.lastFieldFocusTime = null;
-    formState.fieldsInteracted.clear();
-    formState.fieldsFilled.clear();
-    formState.currentStep = 1;
-    formState.totalFields = 0;
-    formState.lastProgressMilestone = 0;
-  }
-
-  // Listen for modal close events - track abandonment
+  // 4. request_quote - Quote button click (opens modal)
   document.addEventListener('click', function(e) {
-    const closeBtn = e.target.closest('[aria-label="Close"], .close-button, .meraki-popup-close, .cart-quote-modal-close, label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
-    if (!closeBtn) return;
+    const btn = e.target.closest([
+      'label[for="quote-form-modal"]',
+      'label[for="quote-form-modal-cart"]',
+      '.cart__request-quote',
+      '[data-quote-button]'
+    ].join(', '));
 
-    // Check if this is closing a quote form
-    const form = closeBtn.closest(QUOTE_FORM_SELECTORS) || document.querySelector('.quote-form-modal, .cart-quote-modal');
-    if (form) {
-      let formId = 'unknown';
-      if (form.classList.contains('quote-form-modal') || closeBtn.matches('label[for="quote-form-modal"]')) formId = 'header-quote-form';
-      else if (form.classList.contains('cart-quote-modal') || closeBtn.matches('label[for="quote-form-modal-cart"]')) formId = 'cart-quote-modal';
-      else if (form.matches('.meraki-popup-wrapper, [class*="meraki"]')) formId = 'meraki-quote-popup';
+    if (!btn) return;
+    if (isExcludedForm(btn)) return;
 
-      trackFormAbandon(formId);
-      resetFormState();
-    }
+    const formId = btn.matches('[for="quote-form-modal-cart"], .cart__request-quote')
+      ? 'cart-quote-form'
+      : 'header-quote-form';
+
+    const key = `request_quote_${formId}`;
+    if (fired.get(key)) return;
+
+    fired.set(key);
+    track('request_quote', { form_id: formId });
   }, { capture: true });
 
-  // Also track abandonment on page unload if form was started
-  window.addEventListener('beforeunload', function() {
-    if (formState.startTime && !hasEventFired(STORAGE_KEY_SUBMIT)) {
-      // Use sendBeacon for reliable delivery
-      const data = {
-        event: 'quote_abandon',
-        last_field: formState.lastFieldName || 'none',
-        fields_filled: formState.fieldsFilled.size,
-        time_spent: Math.round((Date.now() - formState.startTime) / 1000),
-        step_reached: formState.currentStep
-      };
-      // Note: Umami doesn't support sendBeacon, so we log for debugging
-      console.log('[QuoteTracking] Page unload abandon:', data);
+  // Reset flags when modal closes
+  document.addEventListener('click', function(e) {
+    const closeBtn = e.target.closest('[aria-label="Close"], .close-button, label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
+    if (closeBtn && e.target.closest('.quote-form-modal, .cart-quote-modal, #quote-form, #cart-quote-form')) {
+      // Clear form-specific flags
+      Object.values(TRACKED_FORMS).forEach(id => {
+        fired.clear(`form_start_${id}`);
+        fired.clear(`form_submit_${id}`);
+        fired.clear(`request_quote_${id}`);
+      });
     }
   });
-
-  // ============================================
-  // UPSELL SECTION TRACKING
-  // ============================================
-
-  const upsellState = {
-    viewedSections: new Set()
-  };
-
-  // Upsell section selectors
-  const UPSELL_SELECTORS = '.product-recommendations, .cart-recommendations, .product-upsell, [class*="upsell"], [class*="cross-sell"], [class*="recommendation"]';
-
-  // Track upsell section visibility
-  if ('IntersectionObserver' in window) {
-    const upsellObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          const sectionId = section.id || section.className.split(' ')[0] || 'upsell-section';
-
-          // Only track once per section per page view
-          if (upsellState.viewedSections.has(sectionId)) return;
-          upsellState.viewedSections.add(sectionId);
-
-          // Count visible products
-          const products = section.querySelectorAll('.grid-product, .cart-quote-product, [class*="product-card"], .product-item');
-          const productCount = products.length;
-
-          // Get location context
-          const location = window.location.pathname.includes('/cart') ? 'cart' :
-                          window.location.pathname.includes('/products/') ? 'product' : 'other';
-
-          trackUmami('upsell_view', {
-            section_id: sectionId,
-            products_shown: productCount,
-            location: location,
-            page_path: window.location.pathname
-          });
-
-          console.log('[QuoteTracking] upsell_view:', sectionId, 'products:', productCount);
-        }
-      });
-    }, {
-      threshold: 0.5 // Trigger when 50% visible
-    });
-
-    // Observe upsell sections (with delay for dynamic content)
-    function observeUpsellSections() {
-      document.querySelectorAll(UPSELL_SELECTORS).forEach(section => {
-        upsellObserver.observe(section);
-      });
-    }
-
-    // Initial observation
-    observeUpsellSections();
-
-    // Re-observe after dynamic content loads
-    const mutationObserver = new MutationObserver(() => {
-      observeUpsellSections();
-    });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
-  }
-
-  // Track clicks on upsell products
-  document.addEventListener('click', function(e) {
-    const productLink = e.target.closest('a[href*="/products/"], .grid-product a, .product-item');
-    if (!productLink) return;
-
-    // Check if inside an upsell section
-    const upsellSection = productLink.closest(UPSELL_SELECTORS);
-    if (!upsellSection) return;
-
-    // Get product info
-    const productTitle = productLink.querySelector('.product-item_title, .grid-product__title, [class*="title"]')?.textContent?.trim() ||
-                        productLink.querySelector('img')?.alt || 'unknown';
-    const productUrl = productLink.href || productLink.closest('a')?.href || '';
-    const productSku = productLink.dataset.sku || productLink.dataset.variantId || '';
-
-    // Get position in list
-    const products = upsellSection.querySelectorAll('.grid-product, .product-item, [class*="product-card"]');
-    let position = 0;
-    products.forEach((p, i) => {
-      if (p.contains(productLink) || p === productLink) position = i + 1;
-    });
-
-    const location = window.location.pathname.includes('/cart') ? 'cart' :
-                    window.location.pathname.includes('/products/') ? 'product' : 'other';
-
-    trackUmami('upsell_click', {
-      product_name: productTitle,
-      product_url: productUrl,
-      product_sku: productSku,
-      position: position,
-      location: location
-    });
-
-    console.log('[QuoteTracking] upsell_click:', productTitle, 'position:', position);
-  }, { capture: true });
 
 })();
 </script>
