@@ -193,6 +193,8 @@
           formatMoney: function t(i, n) {
             n || (n = theme.settings.moneyFormat),
               "string" == typeof i && (i = i.replace(".", ""));
+            // Round to nearest whole currency unit (e.g., €13729.95 -> €13730)
+            i = Math.round(i / 100) * 100;
             var s = "",
               a = /\{\{\s*(\w+)\s*\}\}/,
               r = n || "${{amount}}";
