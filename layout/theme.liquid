@@ -177,6 +177,13 @@
     <link rel="dns-prefetch" href="https://cdn.shopify.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
+    {%- comment -%} Calendly preconnect for pages with booking widgets {%- endcomment -%}
+    <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+    <link rel="preconnect" href="https://calendly.com" crossorigin>
+    <link rel="dns-prefetch" href="https://assets.calendly.com">
+    <link rel="dns-prefetch" href="https://calendly.com">
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" crossorigin>
+
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
