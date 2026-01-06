@@ -1,6 +1,9 @@
 {% comment %}
   https://play.tailwindcss.com/qwvCADIYZy
 {% endcomment %}
+<!-- Preconnect to Calendly for faster widget loading -->
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="preconnect" href="https://calendly.com" crossorigin>
 <script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
 <style type="text/tailwindcss">
   @layer base {
@@ -139,9 +142,46 @@
             <div
               class="calendly-inline-widget "
               data-url="{{  section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy'  }}?hide_event_type_details=1&hide_gdpr_banner=1"
-              style="min-width:320px;height:600px;"
-            ></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+              style="min-width:320px;height:600px;position:relative;"
+            >
+              <!-- Loading skeleton - hidden when Calendly iframe loads -->
+              <div class="calendly-loading-skeleton" style="position:absolute;inset:0;background:#fff;padding:20px;display:flex;flex-direction:column;align-items:center;">
+                <div style="width:100%;max-width:300px;text-align:center;">
+                  <div style="font-weight:600;font-size:18px;margin-bottom:20px;color:#333;">Select a Day</div>
+                  <div style="display:flex;justify-content:center;align-items:center;gap:10px;margin-bottom:15px;">
+                    <div style="width:24px;height:24px;border-radius:50%;background:#e5e7eb;"></div>
+                    <div style="width:120px;height:20px;background:#e5e7eb;border-radius:4px;"></div>
+                    <div style="width:24px;height:24px;border-radius:50%;background:#e5e7eb;"></div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:10px;">
+                    {% for i in (1..7) %}<div style="height:16px;background:#f3f4f6;border-radius:2px;"></div>{% endfor %}
+                  </div>
+                  {% for row in (1..5) %}
+                  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px;">
+                    {% for i in (1..7) %}<div style="height:32px;background:#f3f4f6;border-radius:50%;animation:pulse 1.5s ease-in-out infinite;animation-delay:{{ row | times: 100 | append: 'ms' }};"></div>{% endfor %}
+                  </div>
+                  {% endfor %}
+                </div>
+                <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}</style>
+              </div>
+            </div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async onload="window.calendlyLoaded=true"></script>
+            <script>
+              (function(){
+                function hideSkeleton(){
+                  var skeleton = document.querySelector('.calendly-loading-skeleton');
+                  if(skeleton) skeleton.style.display = 'none';
+                }
+                var checkCalendly = setInterval(function(){
+                  var widget = document.querySelector('.calendly-inline-widget iframe');
+                  if(widget && widget.contentWindow){
+                    hideSkeleton();
+                    clearInterval(checkCalendly);
+                  }
+                }, 100);
+                setTimeout(function(){ clearInterval(checkCalendly); hideSkeleton(); }, 10000);
+              })();
+            </script>
             <!-- Calendly inline widget end -->
           </div>
         </div>
