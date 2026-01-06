@@ -168,7 +168,7 @@
             <a
               class="btn  bg-[var(--colorBtnPrimary)]"
               href="{{ section.settings.btn_url }}"
-              onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+              onclick="Calendly.initPopupWidget({url: '{{ section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1&locale={{ request.locale.iso_code }}'});return false;"
             >
               {{- section.settings.btn_text | default: 'Free Design Survey ' -}}
             </a>
@@ -205,7 +205,7 @@
               <div
                 id="{{ slug }}"
                 class="calendly-inline-widget "
-                data-url="{{  url | default :'https://calendly.com/hush-w3u/kozee-demo-coffee-and-croissants'  }}?hide_gdpr_banner=1"
+                data-url="{{  url | default :'https://calendly.com/hush-w3u/kozee-demo-coffee-and-croissants'  }}?hide_gdpr_banner=1&locale={{ request.locale.iso_code }}"
                 style="min-width:320px;height:600px;"
               ></div>
             {% endfor %}

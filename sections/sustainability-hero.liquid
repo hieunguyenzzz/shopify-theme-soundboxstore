@@ -141,7 +141,7 @@
             <!-- Calendly inline widget begin -->
             <div
               class="calendly-inline-widget "
-              data-url="{{  section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy'  }}?hide_event_type_details=1&hide_gdpr_banner=1"
+              data-url="{{  section.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy'  }}?hide_event_type_details=1&hide_gdpr_banner=1&locale={{ request.locale.iso_code }}"
               style="min-width:320px;height:600px;position:relative;"
             >
               <!-- Loading skeleton - hidden when Calendly iframe loads -->
