@@ -1212,7 +1212,7 @@ select {
 
 select {
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/ico-select.svg);
+    url({{ 'ico-select.svg' | asset_url }});
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 11px
@@ -4455,7 +4455,7 @@ h5 {
 .site-footer .footer-address-list ul li.location:after {
   content: "";
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/location-icon.svg?v=48350791518328107131659608920);
+    url({{ 'location-icon.svg' | asset_url }});
   width: 12px;
   height: 19px;
   display: block;
@@ -4474,7 +4474,7 @@ h5 {
 .site-footer .footer-address-list ul li.phone:after {
   content: "";
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/email-icon.svg?v=75904082006570276191659608914);
+    url({{ 'email-icon.svg' | asset_url }});
   width: 15px;
   height: 19px;
   display: block;
@@ -4488,7 +4488,7 @@ h5 {
 
 .site-footer .footer-address-list ul li.phone:after {
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/phone-icon.svg?v=168865371846508124721660124532);
+    url({{ 'phone-icon.svg' | asset_url }});
   width: 17px;
   height: 26px;
   background-size: 18px;
@@ -5037,7 +5037,7 @@ h5 {
 
 .product-list-group .slick-arrow.slick-prev {
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/left-arrow.svg?v=114092530217665876341659608919);
+    url({{ 'left-arrow.svg' | asset_url }});
   background-repeat: no-repeat;
   background-position: left 17px center;
   background-size: 12px;
@@ -5046,7 +5046,7 @@ h5 {
 
 .product-list-group .slick-arrow.slick-next {
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/right-arrow.svg?v=46107978447234239461659608922);
+    url({{ 'right-arrow.svg' | asset_url }});
   background-repeat: no-repeat;
   background-position: right 17px center;
   background-size: 12px;
@@ -5148,11 +5148,11 @@ h5 {
 
 .brand-details-section .slick-arrow.slick-prev:after {
   background-image:
-    url(//cdn.shopify.com/s/files/1/0631/9892/0929/t/17/assets/left-arrow.svg?v=114092530217665876341659608919)
+    url({{ 'left-arrow.svg' | asset_url }})
 }
 
 .brand-details-section .slick-arrow.slick-next:after {
-  background-image: url(\ right-arrow.svg)
+  background-image: url({{ 'right-arrow.svg' | asset_url }})
 }
 
 .template-collection .grid-product__colors,
