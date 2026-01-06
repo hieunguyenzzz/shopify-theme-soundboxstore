@@ -433,6 +433,28 @@
 
     </style>
 
+    <!-- jQuery queue to prevent errors before jQuery loads -->
+    <script>
+      (function() {
+        var queue = [];
+        var jQueryReady = false;
+        window.$ = window.jQuery = function(fn) {
+          if (jQueryReady) return window.jQuery.apply(this, arguments);
+          if (typeof fn === 'function') queue.push(fn);
+          return { ready: function(f) { queue.push(f); }, on: function() {}, each: function() {}, slick: function() {} };
+        };
+        window.$.fn = window.jQuery.fn = {};
+        document.addEventListener('DOMContentLoaded', function() {
+          var checkjQuery = setInterval(function() {
+            if (window.jQuery && window.jQuery.fn && window.jQuery.fn.jquery) {
+              jQueryReady = true;
+              clearInterval(checkjQuery);
+              queue.forEach(function(fn) { try { fn(); } catch(e) {} });
+            }
+          }, 50);
+        });
+      })();
+    </script>
     <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
     <script type="speculationrules">
       {
@@ -451,13 +473,12 @@
         ],
         "prefetch": [
           {
-            "urls": ["{{- routes.root_url -}}","{{-settings.collection_products.url-}}", "{{-settings.page_showroom.url-}}",
-              {%- for product in settings.collection_products.products -%}
-                {%- if forloop.index > 4 -%}
-                  {%- break -%}
-                {%- endif -%}
-                "{{- product.url -}}"
-                {%- if forloop.index == 3 -%},{%- endif -%}
+            "urls": [
+              "{{- routes.root_url -}}",
+              "{{- settings.collection_products.url -}}",
+              "{{- settings.page_showroom.url -}}"
+              {%- for product in settings.collection_products.products limit: 4 -%}
+                ,"{{- product.url -}}"
               {%- endfor -%}
             ]
           }
