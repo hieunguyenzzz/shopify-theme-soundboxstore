@@ -89,7 +89,7 @@
                 class="btn bg-[var(--colorBtnPrimary)]"
                 href="{{ block.settings.btn_url |default: block.settings.calendly_url }}"
                 {% unless block.settings.btn_url %}
-                  onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+                  onclick="Calendly.initPopupWidget({url: '{{ block.settings.calendly_url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1&locale={{ request.locale.iso_code }}'});return false;"
                 {% endunless %}
               >
                 {{- block.settings.btn_text | default: 'Free Design Survey ' -}}

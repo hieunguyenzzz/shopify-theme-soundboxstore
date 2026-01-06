@@ -55,7 +55,7 @@
       <a
         class="btn btn--full bg-[var(--colorBtnPrimary)] mt-6"
         href="{{ section.settings.url  }}"
-        onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1'});return false;"
+        onclick="Calendly.initPopupWidget({url: '{{ section.settings.url | default :'https://calendly.com/james-low-wyy/consultancy' }}?hide_gdpr_banner=1&locale={{ request.locale.iso_code }}'});return false;"
       >
         {{- section.settings.btn_text | default: 'Schedule time with me' -}}
       </a>
