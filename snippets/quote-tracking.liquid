@@ -1,8 +1,9 @@
 {% comment %}
   Form Tracking - Umami Implementation
-  Tracks form interactions for analytics (excludes MerakiQuote popup on product pages)
+  Tracks form interactions for analytics
 
   Events:
+  - request_quote: Quote button click (header, cart, product page)
   - form_start: First field focus in a form
   - form_submit: Form submission with customer data
   - add_to_cart: Product added to cart
@@ -10,9 +11,13 @@
   Forms tracked:
   - Header quote form (#quote-form)
   - Cart quote form (#cart-quote-form)
+  - Product page quote button (MerakiQuote popup)
   - Newsletter/subscribe forms
   - Contact forms
   - Get specs forms
+
+  Note: MerakiQuote popup form interactions are excluded (tracked by plugin-quote)
+  Only the button click (request_quote) is tracked here.
 
   Umami: umami.mobelaris.com
 {% endcomment %}
@@ -283,15 +288,22 @@
       'label[for="quote-form-modal"]',
       'label[for="quote-form-modal-cart"]',
       '.cart__request-quote',
-      '[data-quote-button]'
+      '[data-quote-button]',
+      '[id^="ProductQuoteButton-"]',
+      '.product-qoute-button'
     ].join(', '));
 
     if (!btn) return;
-    if (isExcludedForm(btn)) return;
+
+    // Skip exclusion check for product page buttons (they open MerakiQuote popup)
+    const isProductPageBtn = btn.matches('[id^="ProductQuoteButton-"], .product-qoute-button');
+    if (!isProductPageBtn && isExcludedForm(btn)) return;
 
     const formId = btn.matches('[for="quote-form-modal-cart"], .cart__request-quote')
       ? 'cart-quote-form'
-      : 'header-quote-form';
+      : isProductPageBtn
+        ? 'product-quote-form'
+        : 'header-quote-form';
 
     const key = `request_quote_${formId}`;
     if (fired.get(key)) return;
