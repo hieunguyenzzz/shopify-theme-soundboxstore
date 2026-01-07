@@ -3,6 +3,8 @@
   Tracks form interactions for analytics
 
   Events:
+  - page_view: Page load with context (page_type, product/collection info)
+  - checkout_start: Checkout button click with cart data
   - request_quote: Quote button click (header, cart, product page)
   - form_start: First field focus in a form
   - form_submit: Form submission with customer data
@@ -21,6 +23,27 @@
 
   Umami: umami.mobelaris.com
 {% endcomment %}
+
+{% comment %} Inject page context for tracking {% endcomment %}
+<script id="tracking-page-context" type="application/json">
+{
+  "page_type": "{% if template.name == 'product' %}product{% elsif template.name == 'collection' %}collection{% elsif template.name == 'cart' %}cart{% elsif template.name == 'index' %}homepage{% elsif template.name == 'search' %}search{% elsif template.name == 'page' %}page{% elsif template.name == 'blog' %}blog{% elsif template.name == 'article' %}article{% else %}other{% endif %}",
+  {% if product %}
+  "product_id": "{{ product.id }}",
+  "product_handle": "{{ product.handle }}",
+  "product_title": {{ product.title | json }},
+  "product_type": {{ product.type | json }},
+  "product_vendor": {{ product.vendor | json }},
+  "product_price": {{ product.price | money_without_currency | remove: ',' }},
+  {% endif %}
+  {% if collection %}
+  "collection_id": "{{ collection.id }}",
+  "collection_handle": "{{ collection.handle }}",
+  "collection_title": {{ collection.title | json }},
+  {% endif %}
+  "template": "{{ template.name }}"
+}
+</script>
 <script>
 (function() {
   'use strict';
@@ -102,6 +125,20 @@
 
   // Capture on page load
   captureAttribution();
+
+  // ============================================
+  // PAGE CONTEXT
+  // ============================================
+
+  function getPageContext() {
+    try {
+      const el = document.getElementById('tracking-page-context');
+      if (el) {
+        return JSON.parse(el.textContent);
+      }
+    } catch (e) {}
+    return { page_type: 'unknown', template: '' };
+  }
 
   // ============================================
   // UMAMI TRACKING
@@ -324,6 +361,89 @@
       });
     }
   });
+
+  // 5. checkout_start - Checkout button click
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest([
+      'button[name="checkout"]',
+      'input[name="checkout"]',
+      '[data-checkout-button]',
+      'a[href*="/checkout"]',
+      '.cart__checkout-button',
+      '.cart__checkout',
+      '#checkout',
+      '.shopify-payment-button button'
+    ].join(', '));
+
+    if (!btn) return;
+
+    const key = 'checkout_start';
+    if (fired.get(key)) return;
+    fired.set(key);
+
+    // Get cart data from Shopify cart object or DOM
+    const cartData = {
+      cart_total: '',
+      cart_item_count: '',
+      product_ids: ''
+    };
+
+    try {
+      // Try to get cart data from page
+      const cartCountEl = document.querySelector('.cart-count, [data-cart-count], .cart__count');
+      if (cartCountEl) {
+        cartData.cart_item_count = cartCountEl.textContent.trim();
+      }
+
+      const cartTotalEl = document.querySelector('.cart__total-price, [data-cart-total], .cart-total');
+      if (cartTotalEl) {
+        cartData.cart_total = cartTotalEl.textContent.trim();
+      }
+
+      // Try to get product IDs from cart items
+      const cartItems = document.querySelectorAll('[data-product-id], [data-variant-id]');
+      const productIds = [];
+      cartItems.forEach(item => {
+        const id = item.dataset.productId || item.dataset.variantId;
+        if (id && !productIds.includes(id)) productIds.push(id);
+      });
+      cartData.product_ids = productIds.join(',');
+    } catch (e) {}
+
+    track('checkout_start', cartData);
+  }, { capture: true });
+
+  // 6. page_view - Track page view with context (fires once per page)
+  (function trackPageView() {
+    const key = 'page_view_' + window.location.pathname;
+    if (fired.get(key)) return;
+    fired.set(key);
+
+    const ctx = getPageContext();
+    const props = {
+      page_type: ctx.page_type || 'unknown',
+      template: ctx.template || ''
+    };
+
+    // Add product context if on product page
+    if (ctx.product_id) {
+      props.product_id = ctx.product_id;
+      props.product_handle = ctx.product_handle || '';
+      props.product_title = ctx.product_title || '';
+      props.product_type = ctx.product_type || '';
+      props.product_vendor = ctx.product_vendor || '';
+      props.product_price = ctx.product_price || '';
+    }
+
+    // Add collection context if on collection page
+    if (ctx.collection_id) {
+      props.collection_id = ctx.collection_id;
+      props.collection_handle = ctx.collection_handle || '';
+      props.collection_title = ctx.collection_title || '';
+    }
+
+    track('page_view', props);
+  })();
 
 })();
 </script>
