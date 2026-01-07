@@ -117,8 +117,37 @@
 <script>
 
     (() => {
-      
+
         const form = document.getElementById('{{- newsletter_form_id -}}');
+        const TRACKED_EMAILS_KEY = 'newsletter_popup_tracked_emails';
+
+        // Get already tracked emails from sessionStorage
+        function getTrackedEmails() {
+          try {
+            const tracked = sessionStorage.getItem(TRACKED_EMAILS_KEY);
+            return tracked ? JSON.parse(tracked) : [];
+          } catch (e) {
+            return [];
+          }
+        }
+
+        // Check if email was already tracked this session
+        function isEmailTracked(email) {
+          const trackedEmails = getTrackedEmails();
+          return trackedEmails.includes(email.toLowerCase().trim());
+        }
+
+        // Mark email as tracked in sessionStorage
+        function markEmailTracked(email) {
+          try {
+            const trackedEmails = getTrackedEmails();
+            trackedEmails.push(email.toLowerCase().trim());
+            sessionStorage.setItem(TRACKED_EMAILS_KEY, JSON.stringify(trackedEmails));
+          } catch (e) {
+            console.error('Failed to save tracked email:', e);
+          }
+        }
+
         function handleSubmit(event) {
           event.preventDefault();
          event.stopPropagation()
@@ -131,7 +160,7 @@
             new FormData(event.target).forEach((value, key) => {
                 data[key] = value;
             });
-            
+
             form.dataset.state="loading"
             fetch('{{- section.settings.api_url -}}', {
               headers: {
@@ -145,12 +174,18 @@
               .then(function (res) {
                 console.log(res, data);
                  form.dataset.state="success";
-                 
+
                  const formData = new FormData(form);
-                 umami.track('subscribe-popup-submit', { 
-                   name: formData.get('contact[fullname]') || 'not_provided',
-                   email: formData.get('contact[email]') || 'not_provided'
-                 });
+                 const email = formData.get('contact[email]') || 'not_provided';
+
+                 // Only track if this email hasn't been tracked this session
+                 if (!isEmailTracked(email)) {
+                   umami.track('subscribe-popup-submit', {
+                     name: formData.get('contact[fullname]') || 'not_provided',
+                     email: email
+                   });
+                   markEmailTracked(email);
+                 }
               })
               .catch(function (res) {
                 console.log(res, data);
