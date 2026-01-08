@@ -304,7 +304,8 @@
     });
   }, { capture: true });
 
-  // 3. add_to_cart - Add to cart button click
+  // 3. add_to_cart - Add to cart button click (with debounce to prevent duplicates)
+  let lastAddToCart = { variantId: null, timestamp: 0 };
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('button.add-to-cart, button[name="add"], [data-add-to-cart], .cpb-add-to-cart-button');
     if (!btn) return;
@@ -313,13 +314,21 @@
     const title = document.querySelector('h1.product-single__title, h1')?.textContent?.trim() || '';
     const variantId = form?.querySelector('[name="id"]')?.value || '';
 
+    // Debounce: prevent duplicate fires within 1 second for same variant
+    const now = Date.now();
+    if (lastAddToCart.variantId === variantId && now - lastAddToCart.timestamp < 1000) {
+      return;
+    }
+    lastAddToCart = { variantId, timestamp: now };
+
     track('add_to_cart', {
       item_name: title,
       item_id: variantId
     });
   }, { capture: true });
 
-  // 4. request_quote - Quote button click (opens modal)
+  // 4. request_quote - Quote button click (opens modal) with debounce
+  let lastRequestQuote = { formId: null, timestamp: 0 };
   document.addEventListener('click', function(e) {
     const btn = e.target.closest([
       'label[for="quote-form-modal"]',
@@ -341,6 +350,13 @@
       : isProductPageBtn
         ? 'product-quote-form'
         : 'header-quote-form';
+
+    // Debounce: prevent duplicate fires within 1 second for same form
+    const now = Date.now();
+    if (lastRequestQuote.formId === formId && now - lastRequestQuote.timestamp < 1000) {
+      return;
+    }
+    lastRequestQuote = { formId, timestamp: now };
 
     const key = `request_quote_${formId}`;
     if (fired.get(key)) return;
