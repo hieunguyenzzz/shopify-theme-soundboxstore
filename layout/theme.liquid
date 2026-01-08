@@ -182,7 +182,8 @@
     <link rel="preconnect" href="https://calendly.com" crossorigin>
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://calendly.com">
-    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script" crossorigin>
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style">
+    <link rel="preload" href="https://assets.calendly.com/assets/external/widget.js" as="script">
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
     {{ 'slick.js' | asset_url | preload_tag: as: 'script' }}
