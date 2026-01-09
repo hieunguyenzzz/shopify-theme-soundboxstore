@@ -404,84 +404,84 @@
 </div>
 
 <script>
-  // Video controls
-  const video = document.getElementById('productVideo');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const playIcon = document.getElementById('playIcon');
-  const pauseIcon = document.getElementById('pauseIcon');
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('productVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
 
-  // Auto-play video on load (muted)
-  window.addEventListener('load', () => {
+    // Auto-play video after DOM is loaded
     video.play().catch(e => {
       console.log('Autoplay prevented:', e);
     });
-  });
 
-  // Toggle play/pause
-  playPauseBtn.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
+    // Toggle play/pause
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
 
-  // Update button visibility and icon
-  video.addEventListener('play', () => {
-    playPauseBtn.classList.add('hidden');
-    playIcon.style.display = 'none';
-    pauseIcon.style.display = 'block';
-  });
+    // Update button visibility and icon
+    video.addEventListener('play', () => {
+      playPauseBtn.classList.add('hidden');
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+    });
 
-  video.addEventListener('pause', () => {
-    playPauseBtn.classList.remove('hidden');
-    playIcon.style.display = 'block';
-    pauseIcon.style.display = 'none';
-  });
-
-  // Show button on video end
-  video.addEventListener('ended', () => {
-    playPauseBtn.classList.remove('hidden');
-    playIcon.style.display = 'block';
-    pauseIcon.style.display = 'none';
-  });
-
-  // Show button on hover (desktop)
-  const videoContainer = document.querySelector('.video-container');
-  let hideTimeout;
-
-  videoContainer.addEventListener('mouseenter', () => {
-    clearTimeout(hideTimeout);
-    if (!video.paused) {
+    video.addEventListener('pause', () => {
       playPauseBtn.classList.remove('hidden');
-    }
-  });
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+    });
 
-  videoContainer.addEventListener('mouseleave', () => {
-    if (!video.paused) {
-      hideTimeout = setTimeout(() => {
-        playPauseBtn.classList.add('hidden');
-      }, 1000);
-    }
-  });
+    // Show button on video end
+    video.addEventListener('ended', () => {
+      playPauseBtn.classList.remove('hidden');
+      playIcon.style.display = 'block';
+      pauseIcon.style.display = 'none';
+    });
 
-  // Mobile: tap to show/hide controls
-  videoContainer.addEventListener('click', (e) => {
-    if (e.target === video) {
-      if (playPauseBtn.classList.contains('hidden')) {
+    // Show button on hover (desktop)
+    const videoContainer = document.querySelector('.video-container');
+    let hideTimeout;
+
+    videoContainer.addEventListener('mouseenter', () => {
+      clearTimeout(hideTimeout);
+      if (!video.paused) {
         playPauseBtn.classList.remove('hidden');
-        if (!video.paused) {
-          setTimeout(() => {
-            playPauseBtn.classList.add('hidden');
-          }, 2000);
+      }
+    });
+
+    videoContainer.addEventListener('mouseleave', () => {
+      if (!video.paused) {
+        hideTimeout = setTimeout(() => {
+          playPauseBtn.classList.add('hidden');
+        }, 1000);
+      }
+    });
+
+    // Mobile: tap to show/hide controls
+    videoContainer.addEventListener('click', (e) => {
+      if (e.target === video) {
+        if (playPauseBtn.classList.contains('hidden')) {
+          playPauseBtn.classList.remove('hidden');
+          if (!video.paused) {
+            setTimeout(() => {
+              playPauseBtn.classList.add('hidden');
+            }, 2000);
+          }
         }
       }
-    }
-  });
+    });
 
-  // Loop video
-  video.addEventListener('ended', () => {
-    video.currentTime = 0;
-    video.play();
+    // Loop video
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      video.play();
+    });
   });
 </script>
