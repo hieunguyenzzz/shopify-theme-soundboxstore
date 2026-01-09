@@ -305,12 +305,8 @@ __DL__jQueryinterval = setInterval(function(){
                 'event'    : 'view_item',
             ecommerce
             });
-            $(__DL__.cartTriggers).click(function(){
-dataLayer.push({                    
-                    'event'    : 'add_to_cart',
-                    ecommerce
-                });                  
-            });              
+            // REMOVED: add_to_cart click handler - now handled by quote-tracking.liquid (Umami)
+            // This prevents duplicate tracking events firing from both scripts
   {% endif %}
      
         /** DATALAYER: Cart View

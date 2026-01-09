@@ -153,9 +153,18 @@
                 form.dataset.state = "success";
 
                 const formData = new FormData(form);
+                const email = formData.get('contact[email]') || 'not_provided';
+
+                // Prevent duplicate tracking - only track once per email per session
+                const trackingKey = 'subscribe_tracked_' + email;
+                if (sessionStorage.getItem(trackingKey)) {
+                  return;
+                }
+                sessionStorage.setItem(trackingKey, 'true');
+
                 umami.track('subscribe-popup-submit', {
                   name: formData.get('contact[fullname]') || 'not_provided',
-                  email: formData.get('contact[email]') || 'not_provided'
+                  email: email
                 });
               })
               .catch(function (res) {
