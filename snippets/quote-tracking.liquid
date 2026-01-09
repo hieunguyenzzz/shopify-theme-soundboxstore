@@ -314,9 +314,9 @@
     const title = document.querySelector('h1.product-single__title, h1')?.textContent?.trim() || '';
     const variantId = form?.querySelector('[name="id"]')?.value || '';
 
-    // Debounce: prevent duplicate fires within 1 second for same variant
+    // Debounce: prevent duplicate fires within 5 seconds for same variant
     const now = Date.now();
-    if (lastAddToCart.variantId === variantId && now - lastAddToCart.timestamp < 1000) {
+    if (lastAddToCart.variantId === variantId && now - lastAddToCart.timestamp < 5000) {
       return;
     }
     lastAddToCart = { variantId, timestamp: now };
@@ -351,9 +351,9 @@
         ? 'product-quote-form'
         : 'header-quote-form';
 
-    // Debounce: prevent duplicate fires within 1 second for same form
+    // Debounce: prevent duplicate fires within 5 seconds for same form
     const now = Date.now();
-    if (lastRequestQuote.formId === formId && now - lastRequestQuote.timestamp < 1000) {
+    if (lastRequestQuote.formId === formId && now - lastRequestQuote.timestamp < 5000) {
       return;
     }
     lastRequestQuote = { formId, timestamp: now };
