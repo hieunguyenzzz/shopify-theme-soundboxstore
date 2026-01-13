@@ -408,6 +408,12 @@
     const playIcon = document.getElementById('playIcon');
     const pauseIcon = document.getElementById('pauseIcon');
 
+    
+    video.addEventListener('loadedmetadata', () => {
+      console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
+      console.log('Aspect ratio:', (video.videoWidth / video.videoHeight).toFixed(2));
+    });
+
     // Auto-play video after DOM is loaded
     video.play().catch(e => {
       console.log('Autoplay prevented:', e);
