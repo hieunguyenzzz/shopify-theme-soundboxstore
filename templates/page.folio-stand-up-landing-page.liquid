@@ -311,7 +311,7 @@
           class="video-player"
           playsinline
           preload="metadata"
-          poster="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/WA-Thumbnails-A2.png?v=1767958696"
+          poster="https://cdn.shopify.com/s/files/1/0631/9892/0929/files/Gemini_Generated_Image_mk35ncmk35ncmk35.png?v=1768309888"
         >
           <source src="https://cdn.shopify.com/videos/c/o/v/6883ac26b6984498b7975fe8aef72e19.mov" type="video/mp4">
           Your browser does not support the video tag.
@@ -407,12 +407,6 @@
     const playPauseBtn = document.getElementById('playPauseBtn');
     const playIcon = document.getElementById('playIcon');
     const pauseIcon = document.getElementById('pauseIcon');
-
-    
-    video.addEventListener('loadedmetadata', () => {
-      console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
-      console.log('Aspect ratio:', (video.videoWidth / video.videoHeight).toFixed(2));
-    });
 
     // Auto-play video after DOM is loaded
     video.play().catch(e => {
