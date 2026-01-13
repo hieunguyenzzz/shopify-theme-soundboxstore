@@ -23,7 +23,6 @@
   <head>
     {% render 'meta-refresh-helper' %}
     {% render 'gcm-integration-script' %}
-    {% render 'pandectes-rules' %}
     {% render 'pre-header' %}
     {% render 'yett' %}
     {% if template.name == 'product' %}
@@ -800,5 +799,6 @@
         setTimeout(loadThirdPartyScripts, 5000);
       })();
     </script>
+    {% render 'cookie-banner' %}
   </body>
 </html>
