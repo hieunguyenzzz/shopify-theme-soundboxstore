@@ -17,6 +17,7 @@
     margin-bottom: 20px;
     max-width: 850px;
     width: calc(100% - 40px);
+    display: none; /* Ẩn mặc định */
   }
 
   .cookie-banner-content {
@@ -102,7 +103,7 @@
       <a href="/policies/privacy-policy">{{ 'general.cookie_banner.privacy_policy' | t | default: "Privacy Policy" }}</a>
     </div>
     <div class="cookie-buttons">
-      <button id="cookie-preferences" class="cookie-btn btn-preferences">
+      <button id="cookie-preferences" class="cookie-btn btn-preferences" data-preferences-message="{{ 'general.cookie_banner.preferences_coming_soon' | t | default: 'Preferences feature coming soon. For now, you can Accept or Reject all.' }}">
         {{ 'general.cookie_banner.preferences' | t | default: "Preferences" }}
       </button>
       <button id="cookie-reject" class="cookie-btn btn-reject">
@@ -127,16 +128,31 @@
     
     // Check if user has already chosen
     function getConsent() {
-      return localStorage.getItem(COOKIE_NAME);
+      // Check localStorage first, then fallback to cookie
+      var consent = localStorage.getItem(COOKIE_NAME);
+      if (!consent) {
+        // Fallback to cookie if localStorage is empty
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.indexOf(COOKIE_NAME + '=') === 0) {
+            consent = cookie.substring(COOKIE_NAME.length + 1);
+            break;
+          }
+        }
+      }
+      return consent;
     }
 
     function setConsent(status) {
+      // Set both localStorage and cookie for maximum compatibility
       localStorage.setItem(COOKIE_NAME, status);
-      // Also set a real cookie for server-side compatibility if needed (optional)
+
+      // Also set a real cookie for server-side compatibility and cross-tab persistence
       var d = new Date();
       d.setTime(d.getTime() + (365*24*60*60*1000)); // 365 days
-      document.cookie = COOKIE_NAME + "=" + status + ";expires=" + d.toUTCString() + ";path=/";
-      
+      document.cookie = COOKIE_NAME + "=" + status + ";expires=" + d.toUTCString() + ";path=/;SameSite=Lax";
+
       // Integrate with Shopify Customer Privacy API if needed
       if(window.Shopify && window.Shopify.customerPrivacy) {
          var userCanBeTracked = (status === 'accepted');
@@ -144,30 +160,36 @@
             console.log('Shopify tracking consent set to: ' + userCanBeTracked);
          });
       }
+
+      // Hide banner immediately
+      banner.style.display = 'none';
     }
 
     // Show banner if no consent
-    if (!getConsent()) {
+    var currentConsent = getConsent();
+
+    if (!currentConsent) {
       banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none'; // Đảm bảo ẩn nếu đã có consent
     }
 
     // Event Listeners
     acceptBtn.addEventListener('click', function() {
       setConsent('accepted');
-      banner.style.display = 'none';
       // Reload mainly to fire pixels immediately if needed
-      // location.reload(); 
+      // location.reload();
     });
 
     rejectBtn.addEventListener('click', function() {
       setConsent('rejected');
-      banner.style.display = 'none';
     });
 
     prefBtn.addEventListener('click', function() {
        // For simple version, treat preference as accept or just alert
        // Or you can expand this to show a modal
-       alert("Preferences feature coming soon. For now, you can Accept or Reject all.");
+       var message = prefBtn.getAttribute('data-preferences-message');
+       alert(message);
     });
 
   })();
