@@ -117,28 +117,35 @@
 </div>
 
 <script>
-  (function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var banner = document.getElementById('simple-cookie-banner');
     var acceptBtn = document.getElementById('cookie-accept');
     var rejectBtn = document.getElementById('cookie-reject');
     var prefBtn = document.getElementById('cookie-preferences');
 
-    // Key to store consent
     var COOKIE_NAME = 'simple_cookie_consent';
     
-    // Check if user has already chosen
     function getConsent() {
-      return localStorage.getItem(COOKIE_NAME);
+      var stored = localStorage.getItem(COOKIE_NAME);
+      if (stored) return stored;
+
+      var nameEQ = COOKIE_NAME + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      
+      return null;
     }
 
     function setConsent(status) {
       localStorage.setItem(COOKIE_NAME, status);
-      // Also set a real cookie for server-side compatibility if needed (optional)
       var d = new Date();
-      d.setTime(d.getTime() + (365*24*60*60*1000)); // 365 days
+      d.setTime(d.getTime() + (365*24*60*60*1000)); 
       document.cookie = COOKIE_NAME + "=" + status + ";expires=" + d.toUTCString() + ";path=/";
       
-      // Integrate with Shopify Customer Privacy API if needed
       if(window.Shopify && window.Shopify.customerPrivacy) {
          var userCanBeTracked = (status === 'accepted');
          window.Shopify.customerPrivacy.setTrackingConsent(userCanBeTracked, function() {
@@ -147,29 +154,30 @@
       }
     }
 
-    // Show banner if no consent
     if (!getConsent()) {
-      banner.style.display = 'block';
+      if(banner) banner.style.display = 'block';
     }
 
-    // Event Listeners
-    acceptBtn.addEventListener('click', function() {
-      setConsent('accepted');
-      banner.style.display = 'none';
-      // Reload mainly to fire pixels immediately if needed
-      // location.reload(); 
-    });
+    if(acceptBtn) {
+      acceptBtn.addEventListener('click', function() {
+        setConsent('accepted');
+        if(banner) banner.style.display = 'none';
+      });
+    }
 
-    rejectBtn.addEventListener('click', function() {
-      setConsent('rejected');
-      banner.style.display = 'none';
-    });
+    if(rejectBtn) {
+      rejectBtn.addEventListener('click', function() {
+        setConsent('rejected');
+        if(banner) banner.style.display = 'none';
+      });
+    }
 
-    prefBtn.addEventListener('click', function() {
-       // For simple version, treat preference as accept or just alert
-       // Or you can expand this to show a modal
-       alert("Preferences feature coming soon. For now, you can Accept or Reject all.");
-    });
+    if(prefBtn) {
+      prefBtn.addEventListener('click', function() {
+         var msg = "{{ 'general.cookie_banner.preferences_coming_soon' | t | default: 'Preferences feature coming soon. For now, you can Accept or Reject all.' }}";
+         alert(msg);
+      });
+    }
 
-  })();
+  });
 </script>
