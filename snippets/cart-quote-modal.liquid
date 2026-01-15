@@ -999,6 +999,42 @@
         // Mark as fired AFTER umami.track to avoid interceptor blocking our own event
         sessionStorage.setItem(SUBMIT_FLAG, 'true');
         console.log('[CartQuoteModal] quote_submit fired with customer data:', customerData);
+
+        // GA4 tracking
+        try {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'quote_submit', {
+              form_id: 'cart-quote-modal',
+              customer: {
+                name: customerData.name,
+                email: customerData.email,
+                phone: customerData.phone,
+                company: customerData.company,
+                address: {
+                  city: customerData.city,
+                  zip: customerData.postcode,
+                  country: customerData.country
+                }
+              },
+              products: updatedItems.map(function(item) {
+                return {
+                  product_id: item.sku || item.variantId,
+                  product_name: item.title + (item.variant ? ' - ' + item.variant : ''),
+                  quantity: item.quantity,
+                  price: item.price
+                };
+              }),
+              total_quote_value: updatedItems.reduce(function(total, item) {
+                var priceNum = parseFloat((item.price || '0').replace(/[^0-9.-]/g, ''));
+                return total + (item.quantity * priceNum);
+              }, 0),
+              timestamp: new Date().toISOString()
+            });
+            console.log('[CartQuoteModal] GA4 quote_submit fired');
+          }
+        } catch (e) {
+          console.error('[CartQuoteModal] GA4 tracking error:', e);
+        }
       } else if (alreadyFired) {
         console.log('[CartQuoteModal] quote_submit skipped - already fired');
       }
