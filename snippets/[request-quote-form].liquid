@@ -841,6 +841,65 @@ IT it /it-it' %}
             .catch(function (err) {
               console.log('Brevo worker error:', err);
             });
+
+          // Analytics tracking - quote_submit
+          var customerData = {
+            form_id: 'header-quote-form',
+            email: data['contact[email]'] || '',
+            name: data['contact[Full name]'] || '',
+            first_name: (data['contact[Full name]'] || '').split(' ')[0] || '',
+            last_name: (data['contact[Full name]'] || '').split(' ').slice(1).join(' ') || '',
+            company: data['contact[Company name]'] || '',
+            phone: data['contact[Mobile number]'] || data['contact[Phone]'] || '',
+            postcode: data['contact[postcode]'] || '',
+            city: data['contact[city]'] || '',
+            country: data['contact[Country/Region]'] || '',
+            gclid: gclid,
+            landing_page: window.location.pathname,
+            page_path: window.location.pathname,
+            products: data.products
+          };
+
+          // Umami tracking
+          try {
+            if (typeof umami !== 'undefined') {
+              umami.track('quote_submit', customerData);
+              console.log('[HeaderQuoteForm] Umami quote_submit fired with customer data:', customerData);
+            }
+          } catch (e) {
+            console.error('[HeaderQuoteForm] Umami tracking error:', e);
+          }
+
+          // GA4 tracking
+          try {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'quote_submit', {
+                form_id: 'header-quote-form',
+                customer: {
+                  name: customerData.name,
+                  email: customerData.email,
+                  phone: customerData.phone,
+                  company: customerData.company,
+                  address: {
+                    city: customerData.city,
+                    zip: customerData.postcode,
+                    country: customerData.country
+                  }
+                },
+                products: data.products.map(function(item) {
+                  return {
+                    product_id: item.sku || '',
+                    product_name: item.title || '',
+                    quantity: item.quantity || 1
+                  };
+                }),
+                timestamp: new Date().toISOString()
+              });
+              console.log('[HeaderQuoteForm] GA4 quote_submit fired');
+            }
+          } catch (e) {
+            console.error('[HeaderQuoteForm] GA4 tracking error:', e);
+          }
         } catch (err) {
           console.error(err);
         }
