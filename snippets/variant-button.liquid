@@ -2,12 +2,12 @@
 {%- assign swatch_file_extension = 'png' -%}
 {% assign product_available = true %}
 {%- for value in option.values -%}
-  {% unless optionNameHandlized != 'color' and optionNameHandlized != 'colour' %}
+  {% if optionNameHandlized != 'color' or optionNameHandlized != 'colour' or optionNameHandlized != 'Couleur' or optionNameHandlized != 'farve' or optionNameHandlized != 'Farbe' or optionNameHandlized != 'väri' or optionNameHandlized != 'dath' or optionNameHandlized != 'colore' or optionNameHandlized != 'kleur' or optionNameHandlized != 'farge' or optionNameHandlized != 'kolor' or optionNameHandlized != 'färg' %}
     {% if value.swatch %}
       {% assign isColorSwatch = true %}
       {% assign is_color = true %}
     {% endif %}
-  {% endunless %}
+  {% endif %}
 {% endfor %}
 
 <div
