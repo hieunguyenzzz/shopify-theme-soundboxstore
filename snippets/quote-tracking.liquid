@@ -21,6 +21,13 @@
   Note: MerakiQuote popup form interactions are excluded (tracked by plugin-quote)
   Only the button click (request_quote) is tracked here.
 
+  QUOTE_SUBMIT INTERCEPTOR:
+  This file includes an umami.track interceptor that:
+  1. Blocks empty quote_submit events (no email = no tracking)
+  2. Normalizes data schema (customer.* prefix -> flat keys)
+  3. Prevents duplicate events via sessionStorage flag
+  4. Injects missing attribution data (gclid, UTM params, quote_session_id)
+
   Umami: umami.mobelaris.com
 {% endcomment %}
 
@@ -66,6 +73,110 @@
            element.closest('.meraki-popup-wrapper') ||
            element.closest('[class*="meraki"]');
   }
+
+  // ============================================
+  // UMAMI INTERCEPTION - Prevent empty quote_submit events
+  // ============================================
+  // Intercepts umami.track calls to ensure all quote_submit events have proper data
+  // Blocks empty events and normalizes data schema
+
+  (function interceptUmami() {
+    const SUBMIT_FLAG = 'qt_quote_submit_fired';
+
+    function waitForUmami() {
+      if (typeof umami !== 'undefined' && umami.track) {
+        installInterceptor();
+      } else {
+        setTimeout(waitForUmami, 100);
+      }
+    }
+
+    function installInterceptor() {
+      const originalTrack = umami.track.bind(umami);
+
+      umami.track = function(eventName, data) {
+        // Only intercept quote_submit events
+        if (eventName !== 'quote_submit') {
+          return originalTrack(eventName, data);
+        }
+
+        // Check deduplication flag
+        try {
+          if (sessionStorage.getItem(SUBMIT_FLAG) === 'true') {
+            console.log('[QuoteTracking] Blocked duplicate quote_submit');
+            return;
+          }
+        } catch (e) {}
+
+        // Normalize data - convert customer.* prefix to flat keys
+        const normalizedData = {};
+        if (data && typeof data === 'object') {
+          Object.keys(data).forEach(function(key) {
+            const normalizedKey = key.replace(/^customer\./, '');
+            normalizedData[normalizedKey] = data[key];
+          });
+        }
+
+        // Ensure form_id exists
+        if (!normalizedData.form_id) {
+          normalizedData.form_id = 'unknown';
+        }
+
+        // Check if we have email
+        const hasEmail = normalizedData.email && normalizedData.email.trim().length > 0;
+
+        if (!hasEmail) {
+          // Try to extract email from visible forms
+          const emailField = document.querySelector([
+            '[role="dialog"] input[type="email"]',
+            '[role="dialog"] input[name*="email"]',
+            '.meraki-popup-wrapper input[type="email"]',
+            '#quote-form input[type="email"]',
+            '#cart-quote-form input[type="email"]'
+          ].join(', '));
+
+          if (emailField && emailField.value) {
+            normalizedData.email = emailField.value.trim();
+          }
+        }
+
+        // Block events without email
+        if (!normalizedData.email || normalizedData.email.trim().length === 0) {
+          console.log('[QuoteTracking] Blocked quote_submit - no email:', normalizedData);
+          return;
+        }
+
+        // Inject missing attribution data
+        try {
+          const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
+          const gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
+
+          if (!normalizedData.gclid && gclid) normalizedData.gclid = gclid;
+          if (!normalizedData.utm_source && attribution.utm_source) normalizedData.utm_source = attribution.utm_source;
+          if (!normalizedData.utm_medium && attribution.utm_medium) normalizedData.utm_medium = attribution.utm_medium;
+          if (!normalizedData.utm_campaign && attribution.utm_campaign) normalizedData.utm_campaign = attribution.utm_campaign;
+          if (!normalizedData.landing_page && attribution.landing_page) normalizedData.landing_page = attribution.landing_page;
+          if (!normalizedData.page_path) normalizedData.page_path = window.location.pathname;
+          if (!normalizedData.quote_session_id) {
+            normalizedData.quote_session_id = sessionStorage.getItem('qt_quote_session_id') || '';
+          }
+        } catch (e) {}
+
+        // Mark as fired to prevent duplicates
+        try {
+          sessionStorage.setItem(SUBMIT_FLAG, 'true');
+        } catch (e) {}
+
+        console.log('[QuoteTracking] quote_submit passed validation:', normalizedData);
+        return originalTrack(eventName, normalizedData);
+      };
+
+      console.log('[QuoteTracking] Umami interceptor installed');
+    }
+
+    // Start checking for umami
+    waitForUmami();
+  })();
 
   // ============================================
   // STORAGE HELPERS
