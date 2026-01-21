@@ -1,11 +1,10 @@
 {%- comment -%}
   Organization schema for homepage
   Renders Organization structured data for AI search optimization
-  Works with Yoast SEO conditional pattern
+  Note: FAQPage schema is custom content Yoast doesn't generate
+  Organization schema on homepage complements (doesn't duplicate) Yoast's product schema
 {%- endcomment -%}
 
-{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
-{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.organization -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -48,4 +47,3 @@
   ]
 }
 </script>
-{%- endif -%}
