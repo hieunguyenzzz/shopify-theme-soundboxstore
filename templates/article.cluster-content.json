@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "main": {
+      "type": "article-template",
+      "settings": {
+        "blog_capitalize_first": true,
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": false,
+        "blog_show_author": true
+      }
+    },
+    "cluster-nav": {
+      "type": "cluster-sidebar",
+      "blocks": {
+        "cluster-1": {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Sound Reduction Technology",
+            "url": "/blogs/news/sound-reduction-acoustic-pods",
+            "article_handle": "sound-reduction-acoustic-pods"
+          }
+        },
+        "cluster-2": {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Installation Guide",
+            "url": "/blogs/news/acoustic-pod-installation-guide",
+            "article_handle": "acoustic-pod-installation-guide"
+          }
+        },
+        "cluster-3": {
+          "type": "cluster_link",
+          "settings": {
+            "title": "ROI Calculator",
+            "url": "/blogs/news/acoustic-office-pod-roi",
+            "article_handle": "acoustic-office-pod-roi"
+          }
+        },
+        "cluster-4": {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Comparison Guide",
+            "url": "/blogs/news/acoustic-pod-comparison-guide",
+            "article_handle": "acoustic-pod-comparison-guide"
+          }
+        },
+        "cluster-5": {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Maintenance Tips",
+            "url": "/blogs/news/acoustic-pod-maintenance",
+            "article_handle": "acoustic-pod-maintenance"
+          }
+        }
+      },
+      "block_order": [
+        "cluster-1",
+        "cluster-2",
+        "cluster-3",
+        "cluster-4",
+        "cluster-5"
+      ],
+      "settings": {
+        "show_pillar_link": true,
+        "pillar_label": "Complete Guide",
+        "pillar_title": "Complete Guide to Acoustic Office Pods",
+        "pillar_url": "/pages/acoustic-office-pods-guide",
+        "clusters_label": "Related Topics"
+      }
+    },
+    "related-products": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Related Products",
+        "collection": "office-meeting-pods",
+        "per_row": 4,
+        "rows": 1,
+        "show_vendor": false,
+        "enable_sidebar": false,
+        "collapse_sidebar": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cluster-nav",
+    "related-products"
+  ],
+  "wrapper": "div.page-width.page-content.blog-layout"
+}

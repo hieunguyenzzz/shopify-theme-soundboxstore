@@ -1,0 +1,168 @@
+{%- comment -%}
+  Topic Cluster Navigation - Links pillar to clusters
+  Usage: {% render 'topic-cluster-nav', current: 'pillar' %}
+
+  Options for 'current':
+  - 'pillar' - Highlights the pillar page
+  - 'sound-reduction' - Highlights sound reduction cluster
+  - 'installation' - Highlights installation cluster
+  - 'roi' - Highlights ROI cluster
+  - 'comparison' - Highlights comparison cluster
+  - 'maintenance' - Highlights maintenance cluster
+{%- endcomment -%}
+
+{%- liquid
+  assign pillar_url = '/pages/acoustic-office-pods-guide'
+  assign pillar_title = 'Complete Guide to Acoustic Office Pods'
+
+  assign clusters = 'sound-reduction,installation,roi,comparison,maintenance' | split: ','
+
+  assign cluster_titles = 'Sound Reduction Technology,Installation Guide,ROI Calculator,Comparison Guide,Maintenance Tips' | split: ','
+
+  assign cluster_urls = '/blogs/news/sound-reduction-acoustic-pods,/blogs/news/acoustic-pod-installation-guide,/blogs/news/acoustic-office-pod-roi,/blogs/news/acoustic-pod-comparison-guide,/blogs/news/acoustic-pod-maintenance' | split: ','
+-%}
+
+<nav class="topic-cluster-nav" aria-label="Topic cluster navigation">
+  <div class="topic-cluster-nav__inner">
+    {%- comment -%} Pillar Page Link {%- endcomment -%}
+    <div class="topic-cluster-nav__pillar">
+      <span class="topic-cluster-nav__label">Guide</span>
+      <a href="{{ pillar_url }}" class="topic-cluster-nav__pillar-link{% if current == 'pillar' %} topic-cluster-nav__pillar-link--active{% endif %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        {{ pillar_title }}
+      </a>
+    </div>
+
+    {%- comment -%} Cluster Links {%- endcomment -%}
+    <div class="topic-cluster-nav__clusters">
+      <span class="topic-cluster-nav__label">Topics</span>
+      <ul class="topic-cluster-nav__list">
+        {%- for cluster in clusters -%}
+          {%- assign cluster_index = forloop.index0 -%}
+          {%- assign cluster_title = cluster_titles[cluster_index] -%}
+          {%- assign cluster_url = cluster_urls[cluster_index] -%}
+          {%- assign is_active = false -%}
+          {%- if current == cluster -%}
+            {%- assign is_active = true -%}
+          {%- endif -%}
+          <li class="topic-cluster-nav__item">
+            <a href="{{ cluster_url }}" class="topic-cluster-nav__link{% if is_active %} topic-cluster-nav__link--active{% endif %}">
+              {{ cluster_title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .topic-cluster-nav {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .topic-cluster-nav__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media screen and (min-width: 769px) {
+    .topic-cluster-nav__inner {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .topic-cluster-nav__pillar {
+      flex: 0 0 auto;
+      min-width: 280px;
+    }
+
+    .topic-cluster-nav__clusters {
+      flex: 1;
+    }
+  }
+
+  .topic-cluster-nav__label {
+    display: block;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .topic-cluster-nav__pillar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #212529;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+  }
+
+  .topic-cluster-nav__pillar-link:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+  }
+
+  .topic-cluster-nav__pillar-link--active {
+    background: #212529;
+    color: white;
+  }
+
+  .topic-cluster-nav__pillar-link svg {
+    flex-shrink: 0;
+  }
+
+  .topic-cluster-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .topic-cluster-nav__item {
+    margin: 0;
+  }
+
+  .topic-cluster-nav__link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #495057;
+    text-decoration: none;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+  }
+
+  .topic-cluster-nav__link:hover {
+    border-color: #212529;
+    color: #212529;
+  }
+
+  .topic-cluster-nav__link--active {
+    background: #212529;
+    border-color: #212529;
+    color: white;
+  }
+</style>
