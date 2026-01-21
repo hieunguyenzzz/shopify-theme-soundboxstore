@@ -1,0 +1,224 @@
+{%- comment -%}
+  Cluster Sidebar - Navigation for topic cluster articles
+  Shows link to pillar page and all cluster articles
+{%- endcomment -%}
+
+<div class="cluster-sidebar" {{ block.shopify_attributes }}>
+  <div class="cluster-sidebar__inner">
+    {%- if section.settings.show_pillar_link -%}
+      <div class="cluster-sidebar__pillar">
+        <span class="cluster-sidebar__label">{{ section.settings.pillar_label | default: 'Complete Guide' }}</span>
+        <a href="{{ section.settings.pillar_url }}" class="cluster-sidebar__pillar-link">
+          {{ section.settings.pillar_title | default: 'Complete Guide to Acoustic Office Pods' }}
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="cluster-sidebar__clusters">
+        <span class="cluster-sidebar__label">{{ section.settings.clusters_label | default: 'Related Topics' }}</span>
+        <ul class="cluster-sidebar__list">
+          {%- for block in section.blocks -%}
+            {%- assign is_current = false -%}
+            {%- if article.handle == block.settings.article_handle -%}
+              {%- assign is_current = true -%}
+            {%- endif -%}
+            <li class="cluster-sidebar__item{% if is_current %} cluster-sidebar__item--current{% endif %}" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.url }}" class="cluster-sidebar__link">
+                {{ block.settings.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .cluster-sidebar {
+    background: var(--color-bg-alt, #f7f7f7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .cluster-sidebar__label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted, #666);
+    margin-bottom: 0.5rem;
+  }
+
+  .cluster-sidebar__pillar {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border, #ddd);
+  }
+
+  .cluster-sidebar__pillar-link {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary, #333);
+    text-decoration: none;
+  }
+
+  .cluster-sidebar__pillar-link:hover {
+    text-decoration: underline;
+  }
+
+  .cluster-sidebar__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cluster-sidebar__item {
+    margin-bottom: 0.75rem;
+  }
+
+  .cluster-sidebar__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .cluster-sidebar__link {
+    display: block;
+    color: var(--color-text, #333);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    padding: 0.5rem 0;
+    border-left: 3px solid transparent;
+    padding-left: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .cluster-sidebar__link:hover {
+    color: var(--color-primary, #000);
+    border-left-color: var(--color-primary, #000);
+  }
+
+  .cluster-sidebar__item--current .cluster-sidebar__link {
+    font-weight: 600;
+    color: var(--color-primary, #000);
+    border-left-color: var(--color-primary, #000);
+  }
+
+  @media screen and (min-width: 769px) {
+    .cluster-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cluster Sidebar",
+  "class": "cluster-sidebar-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_pillar_link",
+      "label": "Show pillar page link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pillar_label",
+      "label": "Pillar section label",
+      "default": "Complete Guide"
+    },
+    {
+      "type": "text",
+      "id": "pillar_title",
+      "label": "Pillar page title",
+      "default": "Complete Guide to Acoustic Office Pods"
+    },
+    {
+      "type": "url",
+      "id": "pillar_url",
+      "label": "Pillar page URL"
+    },
+    {
+      "type": "text",
+      "id": "clusters_label",
+      "label": "Related topics label",
+      "default": "Related Topics"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cluster_link",
+      "name": "Cluster Article",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Article URL"
+        },
+        {
+          "type": "text",
+          "id": "article_handle",
+          "label": "Article handle",
+          "info": "Used to highlight current article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cluster Sidebar",
+      "blocks": [
+        {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Sound Reduction Technology",
+            "url": "/blogs/news/sound-reduction-acoustic-pods",
+            "article_handle": "sound-reduction-acoustic-pods"
+          }
+        },
+        {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Installation Guide",
+            "url": "/blogs/news/acoustic-pod-installation-guide",
+            "article_handle": "acoustic-pod-installation-guide"
+          }
+        },
+        {
+          "type": "cluster_link",
+          "settings": {
+            "title": "ROI Calculator",
+            "url": "/blogs/news/acoustic-office-pod-roi",
+            "article_handle": "acoustic-office-pod-roi"
+          }
+        },
+        {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Comparison Guide",
+            "url": "/blogs/news/acoustic-pod-comparison-guide",
+            "article_handle": "acoustic-pod-comparison-guide"
+          }
+        },
+        {
+          "type": "cluster_link",
+          "settings": {
+            "title": "Maintenance Tips",
+            "url": "/blogs/news/acoustic-pod-maintenance",
+            "article_handle": "acoustic-pod-maintenance"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

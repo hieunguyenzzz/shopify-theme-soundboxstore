@@ -1,0 +1,146 @@
+{%- comment -%}
+  Cluster FAQ Schema - Dynamic FAQPage schema for topic cluster content
+  Usage: {% render 'cluster-faq-schema', faqs: faq_items %}
+
+  Parameters:
+  - faqs: Array of FAQ objects with 'question' and 'answer' properties
+         Can be passed as a comma-separated string or from metafields
+
+  Example usage in article content or section:
+  {% assign faq_data = article.metafields.custom.faqs.value %}
+  {% render 'cluster-faq-schema', faqs: faq_data %}
+
+  Or with inline data:
+  {% assign my_faqs = '[{"question":"Q1?","answer":"A1"},{"question":"Q2?","answer":"A2"}]' %}
+  {% render 'cluster-faq-schema', faqs_json: my_faqs %}
+{%- endcomment -%}
+
+{%- liquid
+  assign has_faqs = false
+
+  if faqs != blank and faqs.size > 0
+    assign has_faqs = true
+  elsif faqs_json != blank
+    assign has_faqs = true
+  endif
+-%}
+
+{%- if has_faqs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- if faqs != blank and faqs.size > 0 -%}
+      {%- for faq in faqs -%}
+        {
+          "@type": "Question",
+          "name": {{ faq.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ faq.answer | strip_html | json }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    {%- elsif faqs_json != blank -%}
+      {{ faqs_json }}
+    {%- endif -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+{%- comment -%}
+  Pre-defined FAQ schema for pillar page
+  This can be used when no dynamic data is provided
+{%- endcomment -%}
+{%- if include_pillar_faqs -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much sound reduction do acoustic office pods provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SoundBoxStore acoustic pods provide 30-35 dB sound reduction, blocking approximately 95% of typical office noise. All pods are ISO 23351-1 certified for acoustic performance, ensuring consistent and measurable sound isolation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to install an acoustic office pod?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most single-person pods can be assembled in 2-4 hours. Larger 4-6 person meeting booths typically take 4-8 hours. Professional installation is available across the UK and Europe, and all pods are modular for easy assembly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do acoustic pods require ventilation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all SoundBoxStore pods include integrated ventilation systems with silent fans that provide fresh air circulation while maintaining acoustic performance. The ventilation operates quietly without compromising soundproofing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the warranty on acoustic office pods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SoundBoxStore provides a 2-year manufacturer warranty covering defects in materials and workmanship. Extended warranties are available for additional peace of mind. Our quality materials ensure long-term durability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can acoustic pods be relocated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all SoundBoxStore pods feature modular design allowing disassembly and relocation without structural damage to your building. Moving kits are available for easy transport between offices or locations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What power and connectivity features are included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All acoustic pods include integrated power outlets, USB-A and USB-C charging ports, LED lighting with dimmer control, and optional ethernet connectivity. Electrical specifications comply with UK and EU standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What sizes of acoustic pods are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer pods from 1-person phone booths to 6-person meeting rooms. Single pods are ideal for calls and focused work. 2-person pods suit small meetings. 4-person and 6-person booths accommodate team discussions and presentations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the typical ROI for acoustic office pods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Studies show employees save 30-60 minutes daily when using acoustic pods for focused work. At average UK salaries, a pod typically pays for itself within 6-12 months through productivity gains. Space efficiency is also improved versus traditional meeting rooms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose between Folio, Quell, and Kozee pods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quell pods offer premium features and highest acoustic ratings. Folio pods provide excellent value with modern aesthetics. Kozee pods are ideal for budget-conscious projects. All models meet ISO 23351-1 certification standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What maintenance do acoustic pods require?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acoustic pods require minimal maintenance: weekly surface cleaning, monthly ventilation filter checks, and annual comprehensive inspections. Use appropriate non-abrasive cleaners on acoustic panels and upholstery. Regular care extends pod lifespan significantly."
+      }
+    }
+  ]
+}
+</script>
+{%- endif -%}

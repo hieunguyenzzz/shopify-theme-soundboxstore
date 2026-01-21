@@ -1,0 +1,68 @@
+{%- comment -%}
+  Pillar FAQ Schema Section
+  Outputs FAQPage structured data for topic cluster pillar pages
+  This section is invisible - it only outputs JSON-LD schema
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq_item' -%}
+        {
+          "@type": "Question",
+          "name": {{ block.settings.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ block.settings.answer | strip_html | json }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pillar FAQ Schema",
+  "class": "pillar-faq-schema-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pillar FAQ Schema",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Sample question?",
+            "answer": "<p>Sample answer.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
