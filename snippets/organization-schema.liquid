@@ -1,0 +1,51 @@
+{%- comment -%}
+  Organization schema for homepage
+  Renders Organization structured data for AI search optimization
+  Works with Yoast SEO conditional pattern
+{%- endcomment -%}
+
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.organization -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SoundBox Store",
+  "alternateName": "SoundBoxStore",
+  "url": "{{ shop.url }}",
+  "logo": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+  "description": "UK and Europe's leading supplier of acoustic office pods, meeting booths, and phone booths. ISO 23351-1 certified soundproof solutions with 30-35 dB noise reduction.",
+  "sameAs": [
+    "https://www.facebook.com/soundboxstore",
+    "https://www.instagram.com/soundboxstore",
+    "https://www.linkedin.com/company/soundboxstore"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "info@soundboxstore.com",
+    "availableLanguage": ["English", "German", "French", "Spanish", "Italian", "Dutch"]
+  },
+  "areaServed": [
+    {"@type": "Country", "name": "United Kingdom"},
+    {"@type": "Country", "name": "Germany"},
+    {"@type": "Country", "name": "France"},
+    {"@type": "Country", "name": "Netherlands"},
+    {"@type": "Country", "name": "Belgium"},
+    {"@type": "Country", "name": "Austria"},
+    {"@type": "Country", "name": "Spain"},
+    {"@type": "Country", "name": "Italy"},
+    {"@type": "Country", "name": "United States"},
+    {"@type": "Country", "name": "Canada"}
+  ],
+  "knowsAbout": [
+    "acoustic office pods",
+    "phone booths",
+    "meeting rooms",
+    "soundproof booths",
+    "office privacy solutions",
+    "workspace acoustics"
+  ]
+}
+</script>
+{%- endif -%}

@@ -1,0 +1,65 @@
+{%- comment -%}
+  FAQPage schema for product pages
+  Renders FAQ structured data for AI search optimization
+  Works with Yoast SEO conditional pattern
+{%- endcomment -%}
+
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much sound reduction do acoustic office pods provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SoundBoxStore acoustic pods provide 30-35 dB sound reduction, blocking approximately 95% of typical office noise. All pods are ISO 23351-1 certified for acoustic performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to install an acoustic office pod?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most single-person pods can be assembled in 2-4 hours. Larger 4-6 person meeting booths typically take 4-8 hours. Professional installation is available across the UK and Europe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do acoustic pods require ventilation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all SoundBoxStore pods include integrated ventilation systems with silent fans that provide fresh air circulation while maintaining acoustic performance. The ventilation operates quietly without compromising soundproofing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the warranty on acoustic office pods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SoundBoxStore provides a 2-year manufacturer warranty covering defects in materials and workmanship. Extended warranties are available for additional peace of mind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can acoustic pods be relocated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all SoundBoxStore pods feature modular design allowing disassembly and relocation without structural damage to your building. Moving kits are available for easy transport between offices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What power and connectivity features are included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All acoustic pods include integrated power outlets, USB-A and USB-C charging ports, LED lighting with dimmer control, and optional ethernet connectivity. Electrical specifications comply with UK and EU standards."
+      }
+    }
+  ]
+}
+</script>
+{%- endif -%}

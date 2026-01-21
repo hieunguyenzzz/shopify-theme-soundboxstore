@@ -215,6 +215,12 @@
     <meta name="description" content="{{ page_description | escape }}">
 
     {%- render 'social-meta-tags' -%}
+
+    {%- comment -%}Organization schema for homepage - AI search optimization{%- endcomment -%}
+    {%- if template.name == 'index' -%}
+      {%- render 'organization-schema' -%}
+    {%- endif -%}
+
     <style>
       @font-face {
         font-family: 'Banana Grotesk';
