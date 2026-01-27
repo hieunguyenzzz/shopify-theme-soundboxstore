@@ -50,13 +50,6 @@
           "settings": {
             "desc": "<p>Prices exclude VAT</p>"
           }
-        }, 
-        "soundboxstore_quote_quote_btn_yq97UA": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -64,6 +57,13 @@
             "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_yq97UA": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "inventory_status_mdU7ne": {
@@ -201,7 +201,7 @@
           "type": "features_list_left",
           "settings": {
             "title": "Materials",
-            "description": "<p><strong>Construction<br/></strong>Carbon Composite / Honey Comb Panels ≤0.071kg CO2e<br/><strong>Glass<br/></strong>Similar To High Speed Trains<strong><br/></strong>≤0.4MJ<br/><strong>Adjustable Feet / Castors<br/></strong>Reduce feet to deploy wheels to move the Folio Phone Booth<strong><br/></strong></p>"
+            "description": "<p><strong>Construction<br/></strong>Carbon Composite / Honey Comb Panels ≤0.071kg CO2e<br/><strong>Glass<br/></strong>10mm Laminated Front & Back, Similar To High Speed Trains ≤0.4MJ<br/><strong>Adjustable Feet / Castors<br/></strong>Reduce feet to deploy wheels to move the Folio Phone Booth<strong><br/></strong></p>"
           }
         },
         "453c3266-3dfc-413c-a2c1-d76c8e57c79d": {
@@ -249,6 +249,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 24,
+            "negative_y": false,
             "point_y": 22,
             "hotspot_title": "Dimensions"
           }
@@ -257,6 +258,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 62,
+            "negative_y": false,
             "point_y": 32,
             "hotspot_title": "Sound / Acoustics"
           }
@@ -265,6 +267,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 61,
+            "negative_y": false,
             "point_y": 53,
             "hotspot_title": "Materials"
           }
@@ -273,6 +276,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 33,
+            "negative_y": false,
             "point_y": 1,
             "hotspot_title": "Ventilation"
           }
@@ -281,6 +285,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 47,
+            "negative_y": false,
             "point_y": 1,
             "hotspot_title": "Electrical / Lighting"
           }
@@ -289,6 +294,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 47,
+            "negative_y": false,
             "point_y": 77,
             "hotspot_title": "Furniture Included"
           }
@@ -297,6 +303,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 31,
+            "negative_y": false,
             "point_y": 38,
             "hotspot_title": "Safety"
           }
@@ -313,6 +320,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 24,
+            "negative_y": false,
             "point_y": 56,
             "hotspot_title": "Sustainability"
           }
@@ -340,6 +348,8 @@
       ],
       "settings": {
         "seo": "Experience This Phone Booth Yourself",
+        "title": "Finer Details",
+        "content": "<p>Design, Function & More</p>",
         "show_videos": false,
         "no_sound": false,
         "loop": true,
@@ -950,14 +960,27 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
+            "feed_id": "",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"></div>"
           }
         },
         "judge_me_reviews_review_widget_FBLR3h": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
