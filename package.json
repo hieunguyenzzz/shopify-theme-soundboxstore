@@ -2,11 +2,15 @@
   "scripts": {
     "prettier": "prettier",
     "dev": "shopify theme dev --store=thankyou-485.myshopify.com",
-    "purgecss:home":"purgecss --css assets/theme_index.css.liquid --content scripts/pages/home.html --output scripts/"
+    "purgecss:home": "purgecss --css assets/theme_index.css.liquid --content scripts/pages/home.html --output scripts/"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^0.1.4",
-    "prettier": "^2.7.1"
+    "@types/node": "^25.0.10",
+    "playwright": "^1.57.0",
+    "prettier": "^2.7.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@shopify/cli": "^3.67.1",
