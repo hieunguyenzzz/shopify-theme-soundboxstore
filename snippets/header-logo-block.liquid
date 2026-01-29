@@ -64,6 +64,11 @@
           href="{{ routes.root_url }}"
           class="site-header__logo-link logo--inverted"
         >
+
+        {% assign logo = block.settings.logo-inverted | img_url: header_logo_size  %}
+        <script>
+          console.log({{ logo |  json }},"====");
+        </script>
           <img
             class="small--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
