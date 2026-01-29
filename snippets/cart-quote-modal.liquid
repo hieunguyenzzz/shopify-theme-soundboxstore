@@ -993,7 +993,14 @@
           utm_medium: utmMedium,
           utm_campaign: utmCampaign,
           landing_page: landingPage,
-          page_path: window.location.pathname
+          page_path: window.location.pathname,
+          products: updatedItems.map(item => ({
+            product_name: item.title || '',
+            sku: item.sku || '',
+            variant: item.variant || '',
+            quantity: item.quantity || 1,
+            price: item.price || ''
+          }))
         };
         umami.track('quote_submit', customerData);
         // Mark as fired AFTER umami.track to avoid interceptor blocking our own event

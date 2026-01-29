@@ -168,6 +168,45 @@
         } catch (e) {}
 
         console.log('[QuoteTracking] quote_submit passed validation:', normalizedData);
+
+        // Send to Supabase Edge Function for lead capture
+        try {
+          fetch('https://dxpumaudylibnnpcbxts.supabase.co/functions/v1/quote-lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              timestamp: new Date().toISOString(),
+              email: normalizedData.email || '',
+              first_name: normalizedData.first_name || '',
+              last_name: normalizedData.last_name || '',
+              company: normalizedData.company || '',
+              phone: normalizedData.phone || '',
+              country: normalizedData.country || '',
+              city: normalizedData.city || '',
+              postcode: normalizedData.postcode || '',
+              form_id: normalizedData.form_id || '',
+              gclid: normalizedData.gclid || '',
+              utm_source: normalizedData.utm_source || '',
+              utm_medium: normalizedData.utm_medium || '',
+              utm_campaign: normalizedData.utm_campaign || '',
+              landing_page: normalizedData.landing_page || '',
+              page_path: normalizedData.page_path || window.location.pathname,
+              referrer: document.referrer || '',
+              products: (Array.isArray(normalizedData.products) ? normalizedData.products : []).map(function(p) {
+                return {
+                  product_name: p.product_name || p.title || p.name || '',
+                  sku: p.sku || '',
+                  variant: p.variant || p.variant_name || p.options || '',
+                  quantity: p.quantity || p.qty || 1,
+                  price: p.price || ''
+                };
+              }),
+              quote_session_id: normalizedData.quote_session_id || ''
+            }),
+            keepalive: true
+          }).catch(function() {});
+        } catch (e) {}
+
         return originalTrack(eventName, normalizedData);
       };
 
