@@ -53,22 +53,37 @@
         href="{{ routes.root_url }}"
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
-        {{
+        {% comment %} {{
           block.settings.logo
           | image_url: width: 560, height: 170
           | image_tag: alt: shop.name, preload: true, fetchPriority: 'hight', sizes: '(min-width:769px) 280px, 160px'
-        }}
-        <script>
-          console.log({{ block.settings.logo |  json }},"=======logo");
-          
-        </script>
+        }} {% endcomment %}
+        <img
+          class="small--hide"
+          src="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967"
+          srcset="
+            https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967 1x,
+            https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967 2x
+          "
+          alt="{{ shop.name }}"
+        >
+
+        <img
+          class="medium-up--hide"
+          src="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967"
+          srcset="
+            https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967 1x,
+            https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967 2x
+          "
+          alt="{{ shop.name }}"
+        >
+
       </a>
       {%- if block.settings['logo-inverted'] -%}
         <a
           href="{{ routes.root_url }}"
           class="site-header__logo-link logo--inverted"
         >
-
           <img
             class="small--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
