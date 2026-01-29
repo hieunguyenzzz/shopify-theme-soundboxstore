@@ -228,25 +228,13 @@
               {{ block.settings.title | newline_to_br }}
             </h2>
           {%- endunless -%}
-          {% if block.settings.custom_link != blank and block.settings.custom_image != blank %}
-            <a  target="_blank" href="{{ block.settings.custom_link }}" style="margin-bottom: 15px;display: block;color: #fff;text-decoration: underline;">
-              {% if block.settings.custom_image != blank %}
-                <img 
-                  style="width: 80%; height: unset; position: unset; max-width: 500px;"
-                  src="{{ block.settings.custom_image | img_url: '500x' }}" 
-                  alt="{{ block.settings.custom_image.alt }}" 
-                  width="100" 
-                  height="100">
-              {% endif %}
-            </a>
-          {% endif %}
           {%- if block.settings.subheading or block.settings.link -%}
             {%- unless block.settings.subheading == blank -%}
               <div class="hero__subtitle">
                 {{ block.settings.subheading | escape }}
               </div>
             {%- endunless -%}
-            <div style="display:flex;gap-x:1em;flex-wrap:wrap">
+            <div style="display:flex;gap-x:1em;flex-wrap:wrap;margin-bottom: 15px;">
               {%- if block.settings.link_text != blank -%}
                 {%- assign link_href = block.settings.link -%}
                 {%- if block.settings.link == blank -%}
@@ -287,6 +275,20 @@
                 </div>
               {%- endif -%}
             </div>
+
+             {% if block.settings.custom_link != blank and block.settings.custom_image != blank %}
+                <a  target="_blank" href="{{ block.settings.custom_link }}" style="margin-bottom: 15px;display: block;color: #fff;text-decoration: underline;">
+                  {% if block.settings.custom_image != blank %}
+                    <img 
+                      style="width: 80%; height: unset; position: unset; max-width: 500px;"
+                      src="{{ block.settings.custom_image | img_url: '500x' }}" 
+                      alt="{{ block.settings.custom_image.alt }}" 
+                      width="100" 
+                      height="100">
+                  {% endif %}
+                </a>
+              {% endif %}
+
           {%- endif -%}
         </div>
       </div>
