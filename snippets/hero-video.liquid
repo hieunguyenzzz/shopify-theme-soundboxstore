@@ -228,9 +228,11 @@
               {{ block.settings.title | newline_to_br }}
             </h2>
           {%- endunless -%}
-          {% if block.settings.custom_link != blank and block.settings.custom_link != blank %}
+          {% if block.settings.custom_link != blank and block.settings.custom_image != blank %}
             <a  target="_blank" href="{{ block.settings.custom_link }}" style="margin-bottom: 15px;display: block;color: #fff;text-decoration: underline;">
-              {{ block.settings.custom_link_label }}
+              {% if block.settings.custom_image != blank %}
+                {{ block.settings.custom_image | image_url: width: 100 | image_tag: width: 100 }}
+              {% endif %}
             </a>
           {% endif %}
           {%- if block.settings.subheading or block.settings.link -%}
