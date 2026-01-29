@@ -53,12 +53,8 @@
         href="{{ routes.root_url }}"
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
-        <script>
-          console.log({{ block.settings.logo |  json }},"=============2");
-          console.log({{ block.settings |  json }},"=============2");
-        </script>
         {{
-          block.settings.logo
+          block.settings.logo-inverted
           | image_url: width: 560, height: 170
           | image_tag: alt: shop.name, preload: true, fetchPriority: 'hight', sizes: '(min-width:769px) 280px, 160px'
         }}
@@ -69,10 +65,6 @@
           class="site-header__logo-link logo--inverted"
         >
 
-        {% assign logo = block.settings.logo-inverted | img_url: header_logo_size  %}
-        <script>
-          console.log({{ logo |  json }},"=============1");
-        </script>
           <img
             class="small--hide"
             src="{{ block.settings.logo-inverted | img_url: header_logo_size }}"
