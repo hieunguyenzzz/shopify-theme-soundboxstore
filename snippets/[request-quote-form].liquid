@@ -857,7 +857,15 @@ IT it /it-it' %}
             gclid: gclid,
             landing_page: window.location.pathname,
             page_path: window.location.pathname,
-            products: data.products
+            products: (data.products || []).map(function(item) {
+              return {
+                product_name: item.title || '',
+                sku: item.sku || '',
+                variant: '',
+                quantity: item.quantity || 1,
+                price: ''
+              };
+            })
           };
 
           // Umami tracking
