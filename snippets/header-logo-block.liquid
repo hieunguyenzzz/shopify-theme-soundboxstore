@@ -54,7 +54,7 @@
         class="site-header__logo-link{% if block.settings.logo-inverted %} logo--has-inverted{% endif %}"
       >
         {{
-          block.settings.logo-inverted
+          block.settings.logo
           | image_url: width: 560, height: 170
           | image_tag: alt: shop.name, preload: true, fetchPriority: 'hight', sizes: '(min-width:769px) 280px, 160px'
         }}
