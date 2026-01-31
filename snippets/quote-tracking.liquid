@@ -176,6 +176,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               timestamp: new Date().toISOString(),
+              website: 'soundboxstore',
               email: normalizedData.email || '',
               first_name: normalizedData.first_name || '',
               last_name: normalizedData.last_name || '',
