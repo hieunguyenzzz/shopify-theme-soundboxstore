@@ -42,19 +42,19 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
-        "soundboxstore_quote_quote_btn_pncfGh": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_add_quote": true,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_pncfGh": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "inventory_status_HpzEBW": {
@@ -482,6 +482,18 @@
     },
     "1655472797be735185": {
       "type": "image-text-column",
+      "blocks": {
+        "youtube_popup_QGHPTz": {
+          "type": "youtube-popup",
+          "settings": {
+            "image": "shopify://shop_images/Lrge-Pod-Control-Panel.png",
+            "external_video_url": "https://www.youtube.com/watch?v=Z0zScNarmCE"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_popup_QGHPTz"
+      ],
       "settings": {
         "image": "shopify://shop_images/Lrge-Pod-Control-Panel.png",
         "image_position": "right",
@@ -860,7 +872,12 @@
         },
         "judge_me_reviews_review_widget_Hmt7rL": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
