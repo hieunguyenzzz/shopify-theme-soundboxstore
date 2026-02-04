@@ -513,6 +513,18 @@
     },
     "8281adaf-628d-4174-9d8a-c0e2b81add14": {
       "type": "image-text-column",
+      "blocks": {
+        "youtube_popup_jQkBhL": {
+          "type": "youtube-popup",
+          "settings": {
+            "image": "shopify://shop_images/Lrge-Pod-Control-Panel.png",
+            "external_video_url": "https://www.youtube.com/watch?v=Z0zScNarmCE"
+          }
+        }
+      },
+      "block_order": [
+        "youtube_popup_jQkBhL"
+      ],
       "settings": {
         "image": "shopify://shop_images/Lrge-Pod-Control-Panel.png",
         "image_position": "right",
@@ -899,7 +911,9 @@
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
-            "max_width": 1200
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
           }
         }
       },
