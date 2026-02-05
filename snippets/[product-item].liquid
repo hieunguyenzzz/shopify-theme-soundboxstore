@@ -90,6 +90,7 @@
       -%}
       {%- if is_color -%}
         <div class="colours" style="display:flex;gap:0.3em">
+          <script>console.log({{ option.values | json }},"=======")</script>
           {% for value in option.values %}
             {% if value.swatch %}
               {% assign swatch = value.swatch %}
