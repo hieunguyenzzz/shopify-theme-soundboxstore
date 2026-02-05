@@ -90,13 +90,9 @@
       -%}
       {%- if is_color -%}
         <div class="colours" style="display:flex;gap:0.3em">
-          <script>console.log({{ option.values | json }},"=======")</script>
           {% for value in option.values %}
             {% if value.swatch %}
               {% assign swatch = value.swatch %}
-              <script>
-                console.log({{ swatch | json }},{{ swatch.image |json }},"=======");
-              </script>
               {%- liquid
                 assign swatch_value = null
                 if swatch.image
@@ -108,6 +104,9 @@
                   assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
                 endif
               -%}
+               <script>
+                console.log({{ swatch_value | json }},"=======");
+              </script>
               <div
                 title="{{ value }}"
                 class="variant__button-label color-swatch "
