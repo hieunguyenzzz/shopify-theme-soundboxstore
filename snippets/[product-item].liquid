@@ -94,6 +94,9 @@
           {% for value in option.values %}
             {% if value.swatch %}
               {% assign swatch = value.swatch %}
+              <script>
+                console.log({{ swatch | json }},{{ swatch.image |json }},"=======");
+              </script>
               {%- liquid
                 assign swatch_value = null
                 if swatch.image
