@@ -503,8 +503,9 @@
       }
     </script>
 
-    <!-- Strict Geo-Targeting Script -->
+    <!-- Geo-targeting disabled for GMC compliance - causes price mismatch and landing page errors
     <script src="{{ 'strict-geo-targeting.js' | asset_url }}" defer></script>
+    -->
 
     <!-- Mobile gallery dots styling -->
     <style>
@@ -658,7 +659,9 @@
     <script src="{{ 'vendor-scripts-v1.js' | asset_url  }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'custom-v2.js' | asset_url }}" defer="defer"></script>
+    <!-- Geo-targeting disabled for GMC compliance - causes price mismatch and landing page errors
     <script src="{{ 'geo-targeting.js' | asset_url }}" defer="defer"></script>
+    -->
 
     {%- if request.page_type contains 'customers/' -%}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
