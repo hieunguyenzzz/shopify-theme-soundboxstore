@@ -52,3 +52,30 @@ This is a Shopify Liquid theme for SoundboxStore, a company selling acoustic off
 - Many templates have context-specific versions for different markets
 - Heavy use of metafields for custom product data and customer account types
 - Integration with various third-party services for compliance and functionality
+
+## Translation Management
+
+### When Updating User-Facing Text in Templates
+
+If you modify text in any of these files:
+- `templates/index.json` (homepage)
+- `templates/*.json` (any template)
+- `sections/*.liquid` (section settings)
+
+**You MUST also update translations** for all 10 locales:
+de, fr, es, it, nl, da, sv, no, fi, pl
+
+### How to Update Translations
+
+1. Load the `soundboxstore-shopify` skill
+2. Find the translatable resource ID (e.g., `gid://shopify/OnlineStoreThemeJsonTemplate/index?theme_id=134463520993`)
+3. Query `translatableContent` to get the key and digest for the changed text
+4. Register translations using `translationsRegister` mutation with the correct digest
+5. Verify translations are registered (outdated: false)
+
+### Translation Rules
+
+- **Keep "UK" as "UK"** in all languages (do not translate to local equivalents)
+- **Keep brand names** unchanged (Soundbox Store, Quell, etc.)
+- **Keep technical terms** in English when appropriate (e.g., ISO certifications)
+- Norwegian locale code is `no` (not `nb`)
