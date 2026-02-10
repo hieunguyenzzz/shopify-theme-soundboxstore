@@ -74,6 +74,59 @@
            element.closest('[class*="meraki"]');
   }
 
+  // Quote form IDs that should trigger generate_lead
+  const QUOTE_FORM_IDS = ['header-quote-form', 'cart-quote-form', 'quote-form', 'cart-quote-form'];
+
+  // ============================================
+  // DATALAYER - Push generate_lead for GTM
+  // ============================================
+
+  function pushGenerateLead(formId, customer) {
+    // Only push for quote forms
+    if (!QUOTE_FORM_IDS.includes(formId) && !formId.includes('quote')) {
+      return;
+    }
+
+    if (typeof window === 'undefined' || !window.dataLayer) {
+      console.log('[QuoteTracking] dataLayer not available');
+      return;
+    }
+
+    const attr = getAttribution();
+    const formTitles = {
+      'header-quote-form': 'Header Quote Form',
+      'quote-form': 'Header Quote Form',
+      'cart-quote-form': 'Cart Quote Form'
+    };
+
+    window.dataLayer.push({
+      'event': 'generate_lead',
+      'customer_email': customer.email || '',
+      'customer_phone': customer.phone || '',
+      'customer_country': customer.country || '',
+      'customer_company': customer.company || '',
+      'customer_name': [customer.first_name, customer.last_name].filter(Boolean).join(' '),
+      'form_id': formId,
+      'form_title': formTitles[formId] || formId,
+      // Attribution data
+      'gclid': attr.gclid || '',
+      'utm_source': attr.utm_source || '',
+      'utm_medium': attr.utm_medium || '',
+      'utm_campaign': attr.utm_campaign || '',
+      // Enhanced Conversions user_data
+      'user_data': {
+        'email': customer.email || '',
+        'phone_number': customer.phone || '',
+        'address': {
+          'country': customer.country || '',
+          'city': customer.city || ''
+        }
+      }
+    });
+
+    console.log('[QuoteTracking] dataLayer.push generate_lead:', formId);
+  }
+
   // ============================================
   // UMAMI INTERCEPTION - Prevent empty quote_submit events
   // ============================================
@@ -406,6 +459,9 @@
       city: customer.city,
       country: customer.country
     });
+
+    // Push to dataLayer for GTM (quote forms only)
+    pushGenerateLead(formId, customer);
   }, { capture: true });
 
   // 2b. form_submit - AJAX form submission (click on submit button)
@@ -453,6 +509,9 @@
       city: customer.city,
       country: customer.country
     });
+
+    // Push to dataLayer for GTM (quote forms only)
+    pushGenerateLead(formId, customer);
   }, { capture: true });
 
   // 3. add_to_cart - Add to cart button click (with debounce to prevent duplicates)
