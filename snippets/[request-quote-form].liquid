@@ -908,6 +908,36 @@ IT it /it-it' %}
           } catch (e) {
             console.error('[HeaderQuoteForm] GA4 tracking error:', e);
           }
+
+          // dataLayer push for GTM (generate_lead event)
+          try {
+            if (typeof window !== 'undefined' && window.dataLayer) {
+              window.dataLayer.push({
+                'event': 'generate_lead',
+                'customer_email': customerData.email || '',
+                'customer_phone': customerData.phone || '',
+                'customer_country': customerData.country || '',
+                'customer_company': customerData.company || '',
+                'customer_name': customerData.name || '',
+                'form_id': 'header-quote-form',
+                'form_title': 'Header Quote Form',
+                'gclid': gclid || '',
+                // Enhanced Conversions user_data
+                'user_data': {
+                  'email': customerData.email || '',
+                  'phone_number': customerData.phone || '',
+                  'address': {
+                    'country': customerData.country || '',
+                    'city': customerData.city || '',
+                    'postal_code': customerData.postcode || ''
+                  }
+                }
+              });
+              console.log('[HeaderQuoteForm] dataLayer.push generate_lead fired');
+            }
+          } catch (e) {
+            console.error('[HeaderQuoteForm] dataLayer tracking error:', e);
+          }
         } catch (err) {
           console.error(err);
         }
