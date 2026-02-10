@@ -69,36 +69,5 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   }
 </script>
 
-{%- comment -%}Add individual review structured data if reviews exist{%- endcomment -%}
-{%- if product.metafields.spr.reviews != blank or product_rating -%}
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Review",
-  "itemReviewed": {
-    "@type": "Product",
-    "name": {{ product.title | json }},
-    "brand": {{ product.vendor | json }},
-    "url": "{{ shop.url }}{{ product.url }}"
-  },
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": {%- if product_rating and product_rating != blank -%}{{ product_rating | times: 1.0 }}{%- else -%}5{%- endif -%},
-    "bestRating": 5,
-    "worstRating": 1
-  },
-  "author": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }}
-  },
-  "reviewBody": "Customer reviews for {{ product.title }}",
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ shop.name | json }}
-  }
-}
-</script>
-{%- endif -%}
-
 {%- comment -%}FAQPage schema for AI search optimization{%- endcomment -%}
 {%- render 'product-faq-schema' -%}
