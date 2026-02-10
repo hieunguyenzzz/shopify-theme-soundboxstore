@@ -1042,6 +1042,41 @@
         } catch (e) {
           console.error('[CartQuoteModal] GA4 tracking error:', e);
         }
+
+        // dataLayer push for GTM (generate_lead event)
+        try {
+          if (typeof window !== 'undefined' && window.dataLayer) {
+            window.dataLayer.push({
+              'event': 'generate_lead',
+              'customer_email': customerData.email || '',
+              'customer_phone': customerData.phone || '',
+              'customer_country': customerData.country || '',
+              'customer_company': customerData.company || '',
+              'customer_name': customerData.name || '',
+              'form_id': 'cart-quote-form',
+              'form_title': 'Cart Quote Form',
+              'gclid': gclid || '',
+              'quote_value': updatedItems.reduce(function(total, item) {
+                var priceNum = parseFloat((item.price || '0').replace(/[^0-9.-]/g, ''));
+                return total + (item.quantity * priceNum);
+              }, 0),
+              'products_count': updatedItems.length,
+              // Enhanced Conversions user_data
+              'user_data': {
+                'email': customerData.email || '',
+                'phone_number': customerData.phone || '',
+                'address': {
+                  'country': customerData.country || '',
+                  'city': customerData.city || '',
+                  'postal_code': customerData.postcode || ''
+                }
+              }
+            });
+            console.log('[CartQuoteModal] dataLayer.push generate_lead fired');
+          }
+        } catch (e) {
+          console.error('[CartQuoteModal] dataLayer tracking error:', e);
+        }
       } else if (alreadyFired) {
         console.log('[CartQuoteModal] quote_submit skipped - already fired');
       }
