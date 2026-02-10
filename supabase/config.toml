@@ -1,0 +1,63 @@
+# Supabase Configuration for SoundboxStore Delivery API
+# Project: soundboxstore-delivery-matrix
+# Project ID: nvaaqxwcjwjknpqhuahc
+# URL: https://nvaaqxwcjwjknpqhuahc.supabase.co
+# Documentation: https://supabase.com/docs/guides/cli/config
+
+[api]
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.pooler]
+enabled = true
+port = 54329
+pool_mode = "transaction"
+default_pool_size = 15
+max_client_conn = 100
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "https://www.soundboxstore.com"
+
+[auth.email]
+enable_signup = false
+enable_confirmations = false
+
+# Edge Functions Configuration
+# delivery-rates: Shopify Carrier Service callback - NO JWT (Shopify doesn't send auth)
+# sync-products and sync-delivery-matrix: Require service role key
+
+[functions.delivery-rates]
+verify_jwt = false
+
+[functions.sync-products]
+verify_jwt = true
+
+[functions.sync-delivery-matrix]
+verify_jwt = true
+
+[functions.gmc-shipping-feed]
+verify_jwt = false  # GMC fetcher can't send auth headers
+
+[analytics]
+enabled = false
+
+[experimental]
