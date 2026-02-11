@@ -456,6 +456,12 @@
                       <div>
                         <div>
                           {{ block.settings.description }}
+                          {%- assign title_lower = block.settings.title | downcase -%}
+                          {%- if title_lower contains 'electrical' -%}
+                            <p class="power-notice" style="margin-top: 1em; font-style: italic; color: #666;">
+                              {{ 'products.product.power_notice' | t }}
+                            </p>
+                          {%- endif -%}
                         </div>
                       </div>
                     </div>
