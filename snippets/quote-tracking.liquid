@@ -59,14 +59,6 @@
   // CONFIGURATION
   // ============================================
 
-  const TRACKED_FORMS = {
-    'quote-form': 'header-quote-form',
-    'cart-quote-form': 'cart-quote-form',
-    'contact-form': 'contact-form',
-    'newsletter-form': 'newsletter-form',
-    'get-specs-form': 'get-specs-form'
-  };
-
   // Forms to exclude (MerakiQuote popup)
   function isExcludedForm(element) {
     return element.closest('[role="dialog"]') ||
@@ -74,33 +66,34 @@
            element.closest('[class*="meraki"]');
   }
 
-  // Quote form IDs that should trigger generate_lead
-  const QUOTE_FORM_IDS = ['header-quote-form', 'cart-quote-form', 'quote-form', 'cart-quote-form'];
+  // Lead form IDs that should trigger generate_lead
+  const LEAD_FORM_IDS = [
+    'header-quote-form',
+    'cart-quote-form',
+    'contact-form',
+    'get-specs-form',
+  ];
 
   // ============================================
   // DATALAYER - Push generate_lead for GTM
   // ============================================
 
   function pushGenerateLead(formId, customer) {
-    // Only push for quote forms
-    if (!QUOTE_FORM_IDS.includes(formId) && !formId.includes('quote')) {
-      return;
-    }
-
-    if (typeof window === 'undefined' || !window.dataLayer) {
-      console.log('[QuoteTracking] dataLayer not available');
+    // Only push for lead capture forms
+    if (!LEAD_FORM_IDS.includes(formId) && !formId.includes('quote')) {
       return;
     }
 
     const attr = getAttribution();
     const formTitles = {
       'header-quote-form': 'Header Quote Form',
-      'quote-form': 'Header Quote Form',
-      'cart-quote-form': 'Cart Quote Form'
+      'quote-form':        'Header Quote Form',
+      'cart-quote-form':   'Cart Quote Form',
+      'contact-form':      'Contact Form',
+      'get-specs-form':    'Get Specs Form',
     };
 
-    window.dataLayer.push({
-      'event': 'generate_lead',
+    const payload = {
       'customer_email': customer.email || '',
       'customer_phone': customer.phone || '',
       'customer_country': customer.country || '',
@@ -122,9 +115,20 @@
           'city': customer.city || ''
         }
       }
-    });
+    };
 
-    console.log('[QuoteTracking] dataLayer.push generate_lead:', formId);
+    // Keep existing dataLayer push (backup for GTM)
+    if (window.dataLayer) {
+      window.dataLayer.push({ 'event': 'generate_lead', ...payload });
+    }
+
+    // Direct gtag() call bypassing GTM (handles paused GTM tags)
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', payload);
+      console.log('[QuoteTracking] gtag generate_lead fired:', formId);
+    } else {
+      console.log('[QuoteTracking] dataLayer.push generate_lead:', formId);
+    }
   }
 
   // ============================================
@@ -373,27 +377,31 @@
   // ============================================
 
   function getFormId(element) {
-    // Check by ID first
     const form = element.closest('form');
-    if (form && TRACKED_FORMS[form.id]) {
-      return TRACKED_FORMS[form.id];
-    }
+    const id = form?.id || '';
 
-    // Check by class/content patterns
-    if (element.closest('.newsletter-form, [class*="newsletter"], [class*="subscribe"]')) {
+    // Exact matches (static IDs)
+    if (id === 'quote-form')      return 'header-quote-form';
+    if (id === 'cart-quote-form') return 'cart-quote-form';
+    if (id === 'CartPageForm')    return null; // skip cart page
+
+    // Dynamic Shopify IDs (prefix matching)
+    if (id.startsWith('contact-'))       return 'contact-form';
+    if (id.startsWith('get-specs-form-')) return 'get-specs-form';
+    if (id.startsWith('getSpec-'))        return 'get-specs-form'; // catalog popup
+
+    if (id.startsWith('newsletter-'))    return 'newsletter-form';
+
+    // Class/content fallbacks (for forms with no stable ID)
+    if (element.closest('.newsletter-form, [class*="newsletter"], [class*="subscribe"]'))
       return 'newsletter-form';
-    }
-    if (element.closest('.contact-form, [class*="contact"]')) {
-      return 'contact-form';
-    }
-    if (element.closest('[class*="get-specs"], [class*="spec"]')) {
+    if (element.closest('[class*="get-specs"], [class*="spec"]'))
       return 'get-specs-form';
-    }
+    if (element.closest('.contact-form, [class*="contact"]'))
+      return 'contact-form';
 
-    // Check for quote forms by ID pattern
-    if (form?.id?.includes('quote')) {
-      return form.id;
-    }
+    // Quote pattern fallback
+    if (id.includes('quote')) return id;
 
     return null;
   }
@@ -575,15 +583,15 @@
     track('request_quote', { form_id: formId });
   }, { capture: true });
 
-  // Reset flags when modal closes
+  // Reset flags when modal closes (allow re-fill but not re-fire of request_quote)
   document.addEventListener('click', function(e) {
     const closeBtn = e.target.closest('[aria-label="Close"], .close-button, label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
     if (closeBtn && e.target.closest('.quote-form-modal, .cart-quote-modal, #quote-form, #cart-quote-form')) {
-      // Clear form-specific flags
-      Object.values(TRACKED_FORMS).forEach(id => {
+      // Clear form interaction flags so user can re-fill and re-submit
+      // Do NOT clear request_quote_* — it should fire only once per session
+      LEAD_FORM_IDS.forEach(id => {
         fired.clear(`form_start_${id}`);
         fired.clear(`form_submit_${id}`);
-        fired.clear(`request_quote_${id}`);
       });
     }
   });
