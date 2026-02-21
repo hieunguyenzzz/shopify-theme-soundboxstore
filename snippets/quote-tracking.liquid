@@ -140,6 +140,10 @@
   (function interceptUmami() {
     const SUBMIT_FLAG = 'qt_quote_submit_fired';
 
+    // Clear on every page load — page navigation resets submission state
+    // Without this, the flag persists across same-tab navigations and blocks re-submission
+    try { sessionStorage.removeItem(SUBMIT_FLAG); } catch (e) {}
+
     function waitForUmami() {
       if (typeof umami !== 'undefined' && umami.track) {
         installInterceptor();
@@ -590,7 +594,11 @@
   // Reset flags when modal closes (allow re-fill but not re-fire of request_quote)
   document.addEventListener('click', function(e) {
     const closeBtn = e.target.closest('[aria-label="Close"], .close-button, label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
-    if (closeBtn && e.target.closest('.quote-form-modal, .cart-quote-modal, #quote-form, #cart-quote-form')) {
+    // Note: label[for="quote-form-modal"] is OUTSIDE the modal container, so we check the
+    // modal context only for generic close selectors, not the specific modal-toggle labels
+    const inModal = e.target.closest('.quote-form-modal, .cart-quote-modal, #quote-form, #cart-quote-form');
+    const isModalClose = closeBtn && (inModal || e.target.closest('label[for="quote-form-modal"], label[for="quote-form-modal-cart"]'));
+    if (isModalClose) {
       // Clear form interaction flags so user can re-fill and re-submit
       // Do NOT clear request_quote_* — it should fire only once per session
       LEAD_FORM_IDS.forEach(id => {
