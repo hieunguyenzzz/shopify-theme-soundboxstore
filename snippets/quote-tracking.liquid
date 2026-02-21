@@ -446,14 +446,18 @@
   }, { capture: true });
 
   // 2. form_submit - Form submission (native submit event)
+  const _submittedForms = new Set(); // in-memory guard for rapid double-submits
   document.addEventListener('submit', function(e) {
     const form = e.target;
     if (isExcludedForm(form)) return;
 
     const formId = getFormId(form) || form.id || 'unknown-form';
     const key = `form_submit_${formId}`;
-    if (fired.get(key)) return;
+    if (_submittedForms.has(formId) || fired.get(key)) return;
 
+    _submittedForms.add(formId);
+    // Auto-clear in-memory guard after 3s (allows re-submit after modal close)
+    setTimeout(function() { _submittedForms.delete(formId); }, 3000);
     fired.set(key);
     const customer = extractCustomerData(form);
 
@@ -593,6 +597,10 @@
         fired.clear(`form_start_${id}`);
         fired.clear(`form_submit_${id}`);
       });
+      // Sync: also clear the quote_submit interceptor flag so re-submit creates a new lead
+      fired.clear('qt_quote_submit_fired');
+      // Clear in-memory guard so user can re-submit after re-opening modal
+      LEAD_FORM_IDS.forEach(id => _submittedForms.delete(id));
     }
   });
 
