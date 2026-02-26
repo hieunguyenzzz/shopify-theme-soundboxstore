@@ -1,3 +1,6 @@
+{%- if page.handle == 'competitor-framery' -%}
+  {%- render 'competitor-framery-page' -%}
+{%- else -%}
 <div class="page-width page-width--narrow page-content">
   <header class="section-header">
     <h1 class="section-header__title">
@@ -9,6 +12,7 @@
     {{ page.content }}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
