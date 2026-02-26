@@ -192,11 +192,7 @@
         </div>
       </div>
       <div class="comp-hero-image">
-        {%- if section.settings.hero_image != blank -%}
-          <img src="{{ section.settings.hero_image | img_url: '800x' }}" alt="Quell Flex acoustic office pod" loading="eager">
-        {%- else -%}
-          {{ 'collection-1' | placeholder_svg_tag: 'w-full h-full object-cover' }}
-        {%- endif -%}
+        <img src="https://cdn.shopify.com/s/files/1/0642/6572/1633/files/quell-flex-pod-office.jpg" alt="Quell Flex acoustic office pod" loading="eager" onerror="this.parentElement.style.background='#e8ede0'">
       </div>
     </div>
   </section>
