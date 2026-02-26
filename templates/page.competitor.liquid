@@ -1,0 +1,309 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  .competitor-page { font-family: inherit; }
+
+  /* ---- Hero ---- */
+  .comp-hero { background: #f0f4f0; }
+  .comp-hero-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .comp-hero-heading {
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 1rem;
+    color: #1a1a1a;
+  }
+  .comp-hero-sub { color: #555; line-height: 1.6; margin: 0 0 1.5rem; }
+  .comp-hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.2rem; }
+  .comp-btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: #5c6b3a;
+    color: #fff !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .comp-btn-primary:hover { background: #4a5630; color: #fff !important; }
+  .comp-btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border: 2px solid #5c6b3a;
+    color: #5c6b3a !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+  .comp-btn-secondary:hover { background: #5c6b3a; color: #fff !important; }
+  .comp-delivery-text {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem; color: #555; margin: 0;
+  }
+  .comp-delivery-text svg { flex-shrink: 0; color: #5c6b3a; }
+
+  /* ---- Features ---- */
+  .comp-features { background: #fff; padding: 4rem 0; }
+  .comp-features-heading { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; text-align: center; margin: 0 0 0.5rem; }
+  .comp-features-sub { text-align: center; color: #666; max-width: 600px; margin: 0 auto 2.5rem; }
+  .comp-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .comp-feature-card {
+    background: #f7f8f5;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .comp-feature-title { font-weight: 700; font-size: 1.1rem; margin: 0 0 0.5rem; color: #1a1a1a; }
+  .comp-feature-body { color: #555; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+  /* ---- Comparison table ---- */
+  .comp-table-section { background: #f4f4f2; padding: 4rem 0; }
+  .comp-table-heading { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; text-align: center; margin: 0 0 2rem; }
+  .comp-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+  .comp-table { border-collapse: collapse; width: 100%; font-size: clamp(13px, 1.8vw, 15px); }
+  .comp-table th, .comp-table td { padding: 0.85em 1.2em; text-align: left; border-bottom: 2px solid #fff; }
+  .comp-table thead th { background: #dadada; font-weight: 700; font-size: 1.05em; }
+  .comp-table thead th:nth-child(2) { background: #5c6b3a; color: #fff; }
+  .comp-table tbody tr:nth-child(even) td:not(.hl), .comp-table tbody tr:nth-child(even) th:not(.hl) { background: #eeeeee; }
+  .comp-table tbody tr:nth-child(odd) td:not(.hl), .comp-table tbody tr:nth-child(odd) th:not(.hl) { background: #f4f4f4; }
+  .comp-table .feat-col { font-weight: 600; color: #333; min-width: 10em; }
+  .comp-table .hl { background: #5c6b3a !important; color: #fff !important; font-weight: 600; }
+  .comp-table tbody td:last-child { color: #666; }
+  .comp-table-footnote { font-size: 0.85rem; color: #888; text-align: center; margin-top: 1rem; }
+
+  /* ---- Mid CTA ---- */
+  .comp-mid-cta { background: #fff; padding: 3rem 0; text-align: center; }
+  .comp-mid-cta h2 { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 800; margin: 0 0 0.75rem; }
+  .comp-mid-cta p { color: #555; font-size: 1rem; }
+  .comp-mid-cta a { color: #5c6b3a; font-weight: 600; }
+
+  /* ---- Testimonials ---- */
+  .comp-testimonials { background: #f0f4f0; padding: 4rem 0; }
+  .comp-test-left-heading { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin: 0 0 0.75rem; line-height: 1.25; }
+  .comp-test-left-sub { color: #555; margin: 0 0 2rem; }
+  .comp-test-nav { display: flex; align-items: center; gap: 1rem; }
+  .comp-test-nav-btn {
+    width: 40px; height: 40px;
+    border: 2px solid #5c6b3a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; background: white; color: #5c6b3a;
+    transition: background 0.2s, color 0.2s; flex-shrink: 0;
+  }
+  .comp-test-nav-btn:hover { background: #5c6b3a; color: #fff; }
+  .comp-test-dots { display: flex; gap: 6px; align-items: center; }
+  .comp-test-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ccc; cursor: pointer; transition: background 0.2s;
+  }
+  .comp-test-dot.active { background: #5c6b3a; }
+  .comp-test-card { display: none; }
+  .comp-test-card.active { display: block; }
+  .comp-test-card-inner {
+    background: #fff; border-radius: 12px; padding: 2.5rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .comp-test-stars { color: #f5a623; font-size: 1.3em; letter-spacing: 2px; margin-bottom: 1rem; }
+  .comp-test-text { color: #333; font-size: 1.05rem; line-height: 1.7; margin: 0 0 1.25rem; }
+  .comp-test-author { font-weight: 700; color: #1a1a1a; margin: 0; }
+
+  /* ---- Layout helpers ---- */
+  .comp-page-width { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+  .comp-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  @media (max-width: 768px) {
+    .comp-split { grid-template-columns: 1fr; }
+    .comp-hero-card { padding: 2rem 1.5rem; }
+    .comp-features-grid { grid-template-columns: 1fr; }
+    .comp-table thead th:nth-child(3) { display: none; }
+    .comp-table tbody td:last-child { display: none; }
+  }
+</style>
+
+<div class="competitor-page">
+
+  <!-- SECTION 1: Hero -->
+  <section class="comp-hero" style="padding: 3rem 0 2rem;">
+    <div class="comp-page-width">
+      <div class="comp-split">
+        <div class="comp-hero-card">
+          <h1 class="comp-hero-heading">The Premium Alternative to Framery Office Pods</h1>
+          <p class="comp-hero-sub">Discover why leading businesses choose Soundbox Store for superior acoustic performance, faster delivery, and better value than Framery.</p>
+          <div class="comp-hero-btns">
+            <a href="/pages/schedule-a-callback" class="comp-btn-primary">Get a Free Quote</a>
+            <a href="/collections/all" class="comp-btn-secondary">View Our Products</a>
+          </div>
+          <p class="comp-delivery-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Delivered in as little as 2 weeks
+          </p>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; min-height:280px; background:#e8ede8; border-radius:12px; color:#7a8f5a; font-size:1.1rem; text-align:center; padding:2rem;">
+          <p style="margin:0;">Pod image<br><span style="font-size:0.85em;opacity:0.7;">(Upload in Theme Editor)</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Feature Cards -->
+  <section class="comp-features">
+    <div class="comp-page-width">
+      <h2 class="comp-features-heading">Why Choose Soundbox Store Over Framery?</h2>
+      <p class="comp-features-sub">We built our pods to outperform on the features that matter most to modern workplaces.</p>
+      <div class="comp-features-grid">
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">Superior Acoustic Performance</h3>
+          <p class="comp-feature-body">Our pods achieve up to 40dB noise reduction — outperforming Framery on real-world speech privacy tests.</p>
+        </div>
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">Faster Delivery</h3>
+          <p class="comp-feature-body">Delivered and installed in as little as 2 weeks. Framery lead times can stretch to 12+ weeks.</p>
+        </div>
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">Better Value</h3>
+          <p class="comp-feature-body">Premium acoustic pods at a fraction of the Framery price — without compromising on quality or warranty.</p>
+        </div>
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">UK-Based Support</h3>
+          <p class="comp-feature-body">Our expert team is based in the UK, offering on-site consultations, installation, and after-sales support.</p>
+        </div>
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">Certified &amp; Compliant</h3>
+          <p class="comp-feature-body">All pods carry CE, UL, and ISO certifications — meeting the highest standards for workplace safety and sustainability.</p>
+        </div>
+        <div class="comp-feature-card">
+          <h3 class="comp-feature-title">Fully Customisable</h3>
+          <p class="comp-feature-body">Choose from a wide range of finishes, fabrics, and configurations to match your office design perfectly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Comparison Table -->
+  <section class="comp-table-section">
+    <div class="comp-page-width">
+      <h2 class="comp-table-heading">Soundbox Store vs Framery — Feature Comparison</h2>
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th class="feat-col">Feature</th>
+              <th>Quell Flex<br><span style="font-size:0.8em;font-weight:400;">from £4,995</span></th>
+              <th>Framery One<br><span style="font-size:0.8em;font-weight:400;">from £8,500</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="feat-col">Starting Price</td><td class="hl">From £4,995</td><td>From £8,500</td></tr>
+            <tr><td class="feat-col">Delivery Time</td><td class="hl">2–4 weeks</td><td>12–16 weeks</td></tr>
+            <tr><td class="feat-col">Acoustic Rating</td><td>Up to 40dB</td><td>Up to 37dB</td></tr>
+            <tr><td class="feat-col">Pod Weight</td><td class="hl">185kg</td><td>290kg</td></tr>
+            <tr><td class="feat-col">Airflow</td><td class="hl">Active ventilation included</td><td>Optional add-on</td></tr>
+            <tr><td class="feat-col">Power Outlets</td><td class="hl">4 x UK + 2 x EU standard</td><td>2 x power sockets</td></tr>
+            <tr><td class="feat-col">USB Charging</td><td class="hl">USB-A + USB-C included</td><td>USB-A only</td></tr>
+            <tr><td class="feat-col">Connectivity</td><td class="hl">Ethernet + WiFi pass-through</td><td>WiFi only</td></tr>
+            <tr><td class="feat-col">Warranty</td><td>5 years</td><td>2 years</td></tr>
+            <tr><td class="feat-col">UK-Based Support</td><td>&#10003; Yes</td><td>&#10007; International only</td></tr>
+            <tr><td class="feat-col">Sustainability</td><td class="hl">Recycled materials, carbon neutral shipping</td><td>Standard manufacturing</td></tr>
+            <tr><td class="feat-col">Certifications</td><td>CE, UL, ISO 9001</td><td>CE</td></tr>
+            <tr><td class="feat-col">Finance Options</td><td>0% interest available</td><td>Not offered</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="comp-table-footnote">Prices correct as of 2024. Subject to change. Contact us for a personalised quote.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Mid CTA -->
+  <section class="comp-mid-cta">
+    <div class="comp-page-width">
+      <h2>We could make this list much longer!</h2>
+      <p><a href="/pages/schedule-a-callback">Talk to our team today</a> to see the full picture — or request a free sample.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Testimonials -->
+  <section class="comp-testimonials" id="comp-testimonials">
+    <div class="comp-page-width">
+      <div class="comp-split" style="align-items:start;">
+
+        <!-- Left panel -->
+        <div>
+          <h2 class="comp-test-left-heading">What Our Customers Say</h2>
+          <p class="comp-test-left-sub">Real reviews from real customers who switched to Soundbox Store.</p>
+          <div class="comp-test-nav">
+            <button class="comp-test-nav-btn" id="comp-prev" aria-label="Previous">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <div class="comp-test-dots">
+              <div class="comp-test-dot active" data-idx="0"></div>
+              <div class="comp-test-dot" data-idx="1"></div>
+            </div>
+            <button class="comp-test-nav-btn" id="comp-next" aria-label="Next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right panel — testimonial cards -->
+        <div id="comp-cards">
+          <div class="comp-test-card active" data-idx="0">
+            <div class="comp-test-card-inner">
+              <div class="comp-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="comp-test-text">"We compared Soundbox Store directly with Framery and the difference in value was staggering. Same acoustic performance, delivered in 3 weeks, at nearly half the price. Couldn't recommend more highly."</p>
+              <p class="comp-test-author">— Tom Rae, Facilities Manager</p>
+            </div>
+          </div>
+          <div class="comp-test-card" data-idx="1">
+            <div class="comp-test-card-inner">
+              <div class="comp-test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="comp-test-text">"After a long search for acoustic pods that didn't break the budget, we found Soundbox Store. The pods look stunning, the team was incredibly helpful, and they arrived faster than any competitor could promise."</p>
+              <p class="comp-test-author">— Andrew Garwood Watkin, Office Manager</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('#comp-cards .comp-test-card');
+  var dots = document.querySelectorAll('.comp-test-dots .comp-test-dot');
+  var prevBtn = document.getElementById('comp-prev');
+  var nextBtn = document.getElementById('comp-next');
+  var current = 0;
+
+  function goTo(idx) {
+    cards[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + cards.length) % cards.length;
+    cards[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() { goTo(parseInt(dot.getAttribute('data-idx'))); });
+  });
+})();
+</script>
