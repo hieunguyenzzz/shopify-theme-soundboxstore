@@ -1,0 +1,296 @@
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+<style>
+  .competitor-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: clamp(13px, 2vw, 16px);
+  }
+  .competitor-table th,
+  .competitor-table td {
+    padding: 0.85em 1.2em;
+    text-align: left;
+    border-bottom: 2px solid #fff;
+  }
+  .competitor-table thead th {
+    background: #dadada;
+    font-weight: 700;
+    font-size: 1.05em;
+  }
+  .competitor-table thead th:nth-child(2) {
+    background: #5c6b3a;
+    color: #fff;
+  }
+  .competitor-table tbody tr:nth-child(even) td:not(.row-highlight),
+  .competitor-table tbody tr:nth-child(even) th:not(.row-highlight) {
+    background: #eeeeee;
+  }
+  .competitor-table tbody tr:nth-child(odd) td:not(.row-highlight),
+  .competitor-table tbody tr:nth-child(odd) th:not(.row-highlight) {
+    background: #f4f4f4;
+  }
+  .competitor-table .feature-col {
+    font-weight: 600;
+    color: #333;
+    min-width: 10em;
+  }
+  .row-highlight {
+    background: #5c6b3a !important;
+    color: #fff !important;
+    font-weight: 600;
+  }
+  .competitor-table tbody td:last-child {
+    color: #666;
+  }
+  .competitor-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+</style>
+
+<section class="py-12 md:py-16 bg-gray-50">
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-10">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="competitor-table-wrap">
+      <table class="competitor-table">
+        <thead>
+          <tr>
+            <th class="feature-col">Feature</th>
+            <th>
+              {{ section.settings.our_product_name | default: 'Quell Flex' }}
+              {%- if section.settings.our_product_price != blank -%}
+                <br><span style="font-size:0.8em; font-weight:400;">from {{ section.settings.our_product_price }}</span>
+              {%- endif -%}
+            </th>
+            <th>
+              {{ section.settings.competitor_name | default: 'Framery One' }}
+              {%- if section.settings.competitor_price != blank -%}
+                <br><span style="font-size:0.8em; font-weight:400;">from {{ section.settings.competitor_price }}</span>
+              {%- endif -%}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="feature-col">{{ block.settings.feature }}</td>
+              <td {% if block.settings.highlight %}class="row-highlight"{% endif %}>
+                {{ block.settings.our_value }}
+              </td>
+              <td>{{ block.settings.competitor_value }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="text-sm text-gray-500 mt-4 text-center">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Competitor Comparison Table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Soundbox Store vs Framery — Feature Comparison"
+    },
+    {
+      "type": "text",
+      "id": "our_product_name",
+      "label": "Our Product Name",
+      "default": "Quell Flex"
+    },
+    {
+      "type": "text",
+      "id": "our_product_price",
+      "label": "Our Starting Price",
+      "default": "£4,995"
+    },
+    {
+      "type": "text",
+      "id": "competitor_name",
+      "label": "Competitor Product Name",
+      "default": "Framery One"
+    },
+    {
+      "type": "text",
+      "id": "competitor_price",
+      "label": "Competitor Starting Price",
+      "default": "£8,500"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Prices correct as of 2024. Subject to change. Contact us for a personalised quote."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature",
+          "label": "Feature Name",
+          "default": "Feature"
+        },
+        {
+          "type": "text",
+          "id": "our_value",
+          "label": "Our Value",
+          "default": "✓ Yes"
+        },
+        {
+          "type": "text",
+          "id": "competitor_value",
+          "label": "Competitor Value",
+          "default": "✗ No"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight (Soundbox wins)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competitor Comparison Table",
+      "blocks": [
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Starting Price",
+            "our_value": "From £4,995",
+            "competitor_value": "From £8,500",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Delivery Time",
+            "our_value": "2–4 weeks",
+            "competitor_value": "12–16 weeks",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Acoustic Rating",
+            "our_value": "Up to 40dB",
+            "competitor_value": "Up to 37dB",
+            "highlight": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Pod Weight",
+            "our_value": "185kg",
+            "competitor_value": "290kg",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Airflow",
+            "our_value": "Active ventilation included",
+            "competitor_value": "Optional add-on",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Power Outlets",
+            "our_value": "4 x UK + 2 x EU standard",
+            "competitor_value": "2 x power sockets",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "USB Charging",
+            "our_value": "USB-A + USB-C included",
+            "competitor_value": "USB-A only",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Connectivity",
+            "our_value": "Ethernet + WiFi pass-through",
+            "competitor_value": "WiFi only",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Warranty",
+            "our_value": "5 years",
+            "competitor_value": "2 years",
+            "highlight": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "UK-Based Support",
+            "our_value": "✓ Yes",
+            "competitor_value": "✗ International only",
+            "highlight": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Sustainability",
+            "our_value": "Recycled materials, carbon neutral shipping",
+            "competitor_value": "Standard manufacturing",
+            "highlight": true
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Certifications",
+            "our_value": "CE, UL, ISO 9001",
+            "competitor_value": "CE",
+            "highlight": false
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Finance Options",
+            "our_value": "0% interest available",
+            "competitor_value": "Not offered",
+            "highlight": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

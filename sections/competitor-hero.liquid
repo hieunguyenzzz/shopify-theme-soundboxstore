@@ -1,0 +1,195 @@
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+<style type="text/tailwindcss">
+  @layer base {
+    h1 {
+      font-size: calc(var(--typeHeaderSize) * 0.85);
+    }
+  }
+</style>
+<style>
+  html { scroll-behavior: smooth; }
+  .competitor-hero-section { background: #f0f4f0; }
+</style>
+
+<section class="competitor-hero-section relative isolate">
+  <div class="page-width">
+    <div class="w-full md:flex gap-12 md:min-h-[36vw] md:items-center py-8 md:py-14">
+
+      {%- if section.settings.image != blank -%}
+        <div class="absolute inset-0 -z-10 hidden md:block overflow-hidden">
+          {{
+            section.settings.image
+            | image_url: width: 1440
+            | image_tag:
+              class: 'w-full h-full object-cover object-center',
+              loading: 'eager'
+          }}
+          <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f0] via-[#f0f4f0]/80 to-transparent"></div>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Left white card {%- endcomment -%}
+      <div class="relative z-10 bg-white rounded-xl p-8 md:p-12 md:w-1/2 md:max-w-[50ch] shadow-sm flex flex-col gap-6">
+
+        {%- if section.settings.heading != blank -%}
+          <h1 class="text-2xl md:text-4xl font-bold leading-tight m-0">
+            {{ section.settings.heading }}
+          </h1>
+        {%- endif -%}
+
+        {%- if section.settings.subheading != blank -%}
+          <div class="prose prose-sm text-gray-700">
+            {{ section.settings.subheading }}
+          </div>
+        {%- endif -%}
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          {%- if section.settings.cta1_text != blank -%}
+            <a
+              href="{{ section.settings.cta1_url }}"
+              class="btn bg-[var(--colorBtnPrimary)] text-center px-6 py-3 rounded font-semibold no-underline"
+            >
+              {{ section.settings.cta1_text }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.cta2_text != blank -%}
+            <a
+              href="{{ section.settings.cta2_url }}"
+              class="btn border-2 border-current text-center px-6 py-3 rounded font-semibold no-underline"
+              style="background: transparent;"
+            >
+              {{ section.settings.cta2_text }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.delivery_text != blank -%}
+          <p class="text-sm text-gray-600 flex items-center gap-2 m-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            {{ section.settings.delivery_text }}
+          </p>
+        {%- endif -%}
+
+        {%- assign has_badge = false -%}
+        {%- if section.settings.badge_1 != blank or section.settings.badge_2 != blank or section.settings.badge_3 != blank -%}
+          {%- assign has_badge = true -%}
+        {%- endif -%}
+
+        {%- if has_badge -%}
+          <div class="flex items-center gap-4 flex-wrap mt-2">
+            {%- if section.settings.badge_1 != blank -%}
+              {{
+                section.settings.badge_1
+                | image_url: width: 120
+                | image_tag: class: 'h-12 w-auto object-contain', loading: 'lazy'
+              }}
+            {%- endif -%}
+            {%- if section.settings.badge_2 != blank -%}
+              {{
+                section.settings.badge_2
+                | image_url: width: 120
+                | image_tag: class: 'h-12 w-auto object-contain', loading: 'lazy'
+              }}
+            {%- endif -%}
+            {%- if section.settings.badge_3 != blank -%}
+              {{
+                section.settings.badge_3
+                | image_url: width: 120
+                | image_tag: class: 'h-12 w-auto object-contain', loading: 'lazy'
+              }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+
+      {%- comment -%} Right image (mobile — shown below card) {%- endcomment -%}
+      {%- if section.settings.image != blank -%}
+        <div class="md:hidden mt-6 rounded-xl overflow-hidden">
+          {{
+            section.settings.image
+            | image_url: width: 800
+            | image_tag: class: 'w-full h-auto object-cover', loading: 'lazy'
+          }}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Competitor Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Premium Alternative to Framery Office Pods"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Discover why leading businesses choose Soundbox Store for superior acoustic performance, faster delivery, and better value than Framery.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Pod Image (right side)"
+    },
+    {
+      "type": "text",
+      "id": "cta1_text",
+      "label": "Primary Button Text",
+      "default": "Get a Free Quote"
+    },
+    {
+      "type": "url",
+      "id": "cta1_url",
+      "label": "Primary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "cta2_text",
+      "label": "Secondary Button Text",
+      "default": "View Our Products"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Secondary Button URL"
+    },
+    {
+      "type": "text",
+      "id": "delivery_text",
+      "label": "Delivery Text",
+      "default": "Delivered in as little as 2 weeks"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_1",
+      "label": "Badge 1 (e.g. UL Certification)"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_2",
+      "label": "Badge 2 (e.g. CE Certification)"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_3",
+      "label": "Badge 3 (e.g. ISO Certification)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competitor Hero"
+    }
+  ]
+}
+{% endschema %}

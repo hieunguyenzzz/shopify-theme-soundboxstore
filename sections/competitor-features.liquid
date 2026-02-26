@@ -1,0 +1,126 @@
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+
+<section class="py-12 md:py-16 bg-white">
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="text-center mb-10 max-w-3xl mx-auto">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="text-2xl md:text-4xl font-bold mb-4">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <div class="prose prose-lg text-gray-600 mx-auto">{{ section.settings.subheading }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {%- for block in section.blocks -%}
+          <div
+            class="bg-gray-50 rounded-xl p-8 flex flex-col gap-3"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.title != blank -%}
+              <h3 class="font-bold text-lg m-0">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <div class="prose prose-sm text-gray-600">{{ block.settings.body }}</div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Competitor Features",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why Choose Soundbox Store Over Framery?"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "default": "<p>We built our pods to outperform on the features that matter most to modern workplaces.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body",
+          "default": "<p>Describe this feature and why it matters to your customers.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competitor Features",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Superior Acoustic Performance",
+            "body": "<p>Our pods achieve up to 40dB noise reduction — outperforming Framery on real-world speech privacy tests.</p>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Faster Delivery",
+            "body": "<p>Delivered and installed in as little as 2 weeks. Framery lead times can stretch to 12+ weeks.</p>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Better Value",
+            "body": "<p>Premium acoustic pods at a fraction of the Framery price — without compromising on quality or warranty.</p>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "UK-Based Support",
+            "body": "<p>Our expert team is based in the UK, offering on-site consultations, installation, and after-sales support.</p>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Certified & Compliant",
+            "body": "<p>All pods carry CE, UL, and ISO certifications — meeting the highest standards for workplace safety and sustainability.</p>"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Fully Customisable",
+            "body": "<p>Choose from a wide range of finishes, fabrics, and configurations to match your office design perfectly.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
