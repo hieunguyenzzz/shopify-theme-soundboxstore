@@ -27,9 +27,9 @@
 
             width="1898"
             height="1081"
-            data-src="{{ section.settings.image | image_url: width: 1920 }}"
+            src="{{ section.settings.image | image_url: width: 1920 }}"
             {% if section.settings.mobile_image != blank %}
-              class="desktop-only lazyload"
+              class="desktop-only"
             {% endif %}
             alt="{{ section.settings.image.alt | default :section.settings.title }}"
           >
