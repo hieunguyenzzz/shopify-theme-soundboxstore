@@ -12,7 +12,106 @@
     "main": {
       "type": "competitor-framery-main",
       "settings": {}
+    },
+    "competitor-cta": {
+      "type": "cta",
+      "blocks": {
+        "competitor-cta-button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get a Free Quote",
+            "button_link": "/pages/schedule-a-callback"
+          }
+        }
+      },
+      "block_order": ["competitor-cta-button"],
+      "settings": {
+        "title": "Ready to Experience the Difference?",
+        "description": "<p>Book a free remote tour or request a quote today.</p>",
+        "text_alignment": "center-center",
+        "overlay": true,
+        "overlay_range": 60
+      }
+    },
+    "competitor-instafeed": {
+      "type": "instafeed",
+      "settings": {
+        "feed_width": 100,
+        "heading_size": 20,
+        "html_area": ""
+      }
+    },
+    "competitor-faq": {
+      "type": "faq",
+      "blocks": {
+        "competitor-faq-q1": {
+          "type": "question",
+          "settings": {
+            "title": "How does Soundbox Store compare to Framery on price?",
+            "text": "<p>Soundbox Store pods are typically 20–40% more affordable than comparable Framery models, without compromising on quality or acoustic performance. We offer transparent pricing and flexible payment options to suit different budgets.</p>"
+          }
+        },
+        "competitor-faq-q2": {
+          "type": "question",
+          "settings": {
+            "title": "How quickly can I receive my acoustic pod?",
+            "text": "<p>Most Soundbox Store pods ship within 2–4 weeks from order confirmation. We stock a wide range of models in our UK and EU warehouses, enabling faster delivery than many competitors. Exact lead times depend on your location and chosen model.</p>"
+          }
+        },
+        "competitor-faq-q3": {
+          "type": "question",
+          "settings": {
+            "title": "Are Soundbox Store pods certified?",
+            "text": "<p>Yes. All our pods carry CE certification and meet relevant safety and acoustic standards. Many models also hold UL certification for the North American market and comply with ISO acoustic performance benchmarks, giving you confidence in your purchase.</p>"
+          }
+        },
+        "competitor-faq-q4": {
+          "type": "question",
+          "settings": {
+            "title": "Can I arrange a trial or remote tour before buying?",
+            "text": "<p>Absolutely. We offer free remote tours via video call so you can see our pods up close, ask questions, and explore configurations before committing. Contact our team or use the form above to book your tour at a time that suits you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "competitor-faq-q1",
+        "competitor-faq-q2",
+        "competitor-faq-q3",
+        "competitor-faq-q4"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "competitor-newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "competitor-newsletter-title": {
+          "type": "title",
+          "settings": {
+            "text": "Stay in the Loop"
+          }
+        },
+        "competitor-newsletter-text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Subscribe for product updates, workspace inspiration, and exclusive offers from Soundbox Store.</p>"
+          }
+        },
+        "competitor-newsletter-form": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "competitor-newsletter-title",
+        "competitor-newsletter-text",
+        "competitor-newsletter-form"
+      ],
+      "settings": {
+        "color_scheme": "1"
+      }
     }
   },
-  "order": ["main"]
+  "order": ["main", "competitor-cta", "competitor-instafeed", "competitor-faq", "competitor-newsletter"]
 }
