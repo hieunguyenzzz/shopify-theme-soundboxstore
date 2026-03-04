@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "call_out_dot_banner_9Yjkbk": {
+      "type": "call-out-dot-banner",
+      "name": "call out dot banner",
+      "settings": {
+        "collection": "",
+        "title_size": 2,
+        "title": "<p>The Premium Alternative to Framery Office Pods</p>",
+        "subheading_richtext": "<p>Why wait months for privacy? Get elite<br/>30dB+ sound isolation and ISO-certified<br/>quality with a smaller carbon footprint and<br/>immediate stock availability.</p>",
+        "image": "shopify://shop_images/1.0_Quell__White.webp"
+      }
+    },
     "main": {
       "type": "competitor-framery-main",
       "settings": {}
@@ -24,22 +35,24 @@
           }
         }
       },
-      "block_order": ["competitor-cta-button"],
+      "block_order": [
+        "competitor-cta-button"
+      ],
       "settings": {
+        "lazyload": true,
         "image": "shopify://shop_images/Meeting-Pod-4-6-Persons.png",
-        "title": "Ready to Experience the Difference?",
-        "description": "<p>Book a free remote tour or request a quote today.</p>",
-        "text_alignment": "center-center",
         "overlay": true,
-        "overlay_range": 60
-      }
-    },
-    "competitor-instafeed": {
-      "type": "instafeed",
-      "settings": {
-        "feed_width": 100,
-        "heading_size": 20,
-        "html_area": ""
+        "overlay_range": 60,
+        "title": "Ready to Experience the Difference?",
+        "title_width": "",
+        "description": "<p>Book a free remote tour or request a quote today.</p>",
+        "description_width": "",
+        "button_text": "",
+        "button_link": "",
+        "button_text_2": "",
+        "button_link_2": "",
+        "text_alignment": "center-center",
+        "section_class": ""
       }
     },
     "competitor-faq": {
@@ -84,6 +97,20 @@
         "title": "Frequently Asked Questions"
       }
     },
+    "competitor-instafeed": {
+      "type": "instafeed",
+      "settings": {
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": ""
+      }
+    }
   },
-  "order": ["main", "competitor-cta", "competitor-faq", "competitor-instafeed"]
+  "order": [
+    "call_out_dot_banner_9Yjkbk",
+    "main",
+    "competitor-cta",
+    "competitor-faq",
+    "competitor-instafeed"
+  ]
 }
