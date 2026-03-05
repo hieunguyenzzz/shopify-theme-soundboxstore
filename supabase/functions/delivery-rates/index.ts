@@ -148,7 +148,7 @@ Deno.serve(async (req: Request) => {
       .from('products')
       .select(
         `
-        id,
+        shopify_id,
         title,
         delivery_category_id,
         product_categories (
@@ -158,7 +158,7 @@ Deno.serve(async (req: Request) => {
         )
       `
       )
-      .in('id', productIds)
+      .in('shopify_id', productIds)
 
     if (productsError) {
       console.error('Error fetching products:', productsError)
@@ -177,7 +177,7 @@ Deno.serve(async (req: Request) => {
         name: string
       } | null
       if (category?.slug) {
-        productMap.set(product.id, {
+        productMap.set(product.shopify_id, {
           category_slug: category.slug,
           title: product.title,
         })
