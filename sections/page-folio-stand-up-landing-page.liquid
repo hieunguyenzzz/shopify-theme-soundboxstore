@@ -64,7 +64,7 @@
     left: 0;
     width: var(--poster-width, 100%);
     height: var(--poster-height, 100%);
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     cursor: pointer;
     z-index: 5;
@@ -271,6 +271,7 @@
     .video-player {
       height: auto;
       object-fit: contain;
+      max-height: 800px;
     }
 
     .details-section {
