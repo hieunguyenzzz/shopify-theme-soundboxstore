@@ -230,9 +230,9 @@
 
         console.log('[QuoteTracking] quote_submit passed validation:', normalizedData);
 
-        // Send to Supabase Edge Function for lead capture
+        // Send to n8n webhook for lead capture
         try {
-          fetch('https://nvaaqxwcjwjknpqhuahc.supabase.co/functions/v1/quote-lead', {
+          fetch('https://n8n.soundboxstore.com/webhook/quote-submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
