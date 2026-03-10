@@ -21,9 +21,9 @@
   Note: MerakiQuote popup form interactions are excluded (tracked by plugin-quote)
   Only the button click (request_quote) is tracked here.
 
-  QUOTE_SUBMIT INTERCEPTOR:
+  LEAD EVENT INTERCEPTOR:
   This file includes an umami.track interceptor that:
-  1. Blocks empty quote_submit events (no email = no tracking)
+  1. Blocks empty generate_lead/quote_submit events (no email = no tracking)
   2. Normalizes data schema (customer.* prefix -> flat keys)
   3. Prevents duplicate events via sessionStorage flag
   4. Injects missing attribution data (gclid, UTM params, quote_session_id)
@@ -132,13 +132,13 @@
   }
 
   // ============================================
-  // UMAMI INTERCEPTION - Prevent empty quote_submit events
+  // UMAMI INTERCEPTION - Intercept generate_lead / quote_submit events
   // ============================================
-  // Intercepts umami.track calls to ensure all quote_submit events have proper data
+  // Intercepts umami.track calls to ensure all lead events have proper data
   // Blocks empty events and normalizes data schema
 
   (function interceptUmami() {
-    const SUBMIT_FLAG = 'qt_quote_submit_fired';
+    const SUBMIT_FLAG = 'qt_lead_submitted';
 
     // Clear on every page load — page navigation resets submission state
     // Without this, the flag persists across same-tab navigations and blocks re-submission
@@ -156,15 +156,16 @@
       const originalTrack = umami.track.bind(umami);
 
       umami.track = function(eventName, data) {
-        // Only intercept quote_submit events
-        if (eventName !== 'quote_submit') {
+        // Intercept generate_lead (primary) and quote_submit (legacy fallback)
+        const isLeadEvent = eventName === 'generate_lead' || eventName === 'quote_submit';
+        if (!isLeadEvent) {
           return originalTrack(eventName, data);
         }
 
         // Check deduplication flag
         try {
           if (sessionStorage.getItem(SUBMIT_FLAG) === 'true') {
-            console.log('[QuoteTracking] Blocked duplicate quote_submit');
+            console.log('[QuoteTracking] Blocked duplicate lead event:', eventName);
             return;
           }
         } catch (e) {}
@@ -203,7 +204,7 @@
 
         // Block events without email
         if (!normalizedData.email || normalizedData.email.trim().length === 0) {
-          console.log('[QuoteTracking] Blocked quote_submit - no email:', normalizedData);
+          console.log('[QuoteTracking] Blocked lead event - no email:', normalizedData);
           return;
         }
 
@@ -228,7 +229,7 @@
           sessionStorage.setItem(SUBMIT_FLAG, 'true');
         } catch (e) {}
 
-        console.log('[QuoteTracking] quote_submit passed validation:', normalizedData);
+        console.log('[QuoteTracking] Lead event passed validation:', eventName, normalizedData);
 
         // Send to n8n webhook for lead capture
         try {
@@ -605,8 +606,8 @@
         fired.clear(`form_start_${id}`);
         fired.clear(`form_submit_${id}`);
       });
-      // Sync: also clear the quote_submit interceptor flag so re-submit creates a new lead
-      fired.clear('qt_quote_submit_fired');
+      // Sync: also clear the lead interceptor flag so re-submit creates a new lead
+      fired.clear('qt_lead_submitted');
       // Clear in-memory guard so user can re-submit after re-opening modal
       LEAD_FORM_IDS.forEach(id => _submittedForms.delete(id));
     }

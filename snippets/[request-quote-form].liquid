@@ -571,8 +571,8 @@ IT it /it-it' %}
           // Umami tracking
           try {
             if (typeof umami !== 'undefined') {
-              umami.track('quote_submit', customerData);
-              console.log('[HeaderQuoteForm] Umami quote_submit fired with customer data:', customerData);
+              umami.track('generate_lead', customerData);
+              console.log('[HeaderQuoteForm] Umami generate_lead fired with customer data:', customerData);
             }
           } catch (e) {
             console.error('[HeaderQuoteForm] Umami tracking error:', e);

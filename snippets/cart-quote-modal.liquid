@@ -957,7 +957,7 @@
 
       // Track event with customer data for attribution
       // Use global deduplication flag shared with quote-tracking.liquid
-      const SUBMIT_FLAG = 'qt_quote_submit_fired';
+      const SUBMIT_FLAG = 'qt_lead_submitted';
       const alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true';
 
       if (typeof umami !== 'undefined' && !alreadyFired) {
@@ -1002,10 +1002,10 @@
             price: item.price || ''
           }))
         };
-        umami.track('quote_submit', customerData);
+        umami.track('generate_lead', customerData);
         // Mark as fired AFTER umami.track to avoid interceptor blocking our own event
         sessionStorage.setItem(SUBMIT_FLAG, 'true');
-        console.log('[CartQuoteModal] quote_submit fired with customer data:', customerData);
+        console.log('[CartQuoteModal] generate_lead fired with customer data:', customerData);
 
         // GA4 tracking
         try {
