@@ -1,11 +1,22 @@
-{%- if block.settings.external_video_url contains 'youtube.com/watch' -%}
-  {%- assign video_id = block.settings.external_video_url | split: 'v=' -%}
-  {%- assign video_id = video_id[1] | split: '&' | first -%}
-{%- endif -%}
-{%- if block.settings.external_video_url contains 'youtu.be/' -%}
-  {%- assign video_id = block.settings.external_video_url | split: '.be/' -%}
-  {%- assign video_id = video_id[1] | split: '&' | first -%}
-{%- endif -%}
+{% if block.settings.external_video_url != blank %}
+  {%- if block.settings.external_video_url contains 'youtube.com/watch' -%}
+    {%- assign video_id = block.settings.external_video_url | split: 'v=' -%}
+    {%- assign video_id = video_id[1] | split: '&' | first -%}
+  {%- endif -%}
+  {%- if block.settings.external_video_url contains 'youtu.be/' -%}
+    {%- assign video_id = block.settings.external_video_url | split: '.be/' -%}
+    {%- assign video_id = video_id[1] | split: '&' | first -%}
+  {%- endif -%}
+  {% elsif block.settings.youtube_url != blank %}
+    {%- if block.settings.youtube_url contains 'youtube.com/watch' -%}
+      {%- assign video_id = block.settings.youtube_url | split: 'v=' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+    {%- endif -%}
+    {%- if block.settings.youtube_url contains 'youtu.be/' -%}
+      {%- assign video_id = block.settings.youtube_url | split: '.be/' -%}
+      {%- assign video_id = video_id[1] | split: '&' | first -%}
+    {%- endif -%}
+{% endif %}
 
 <script>
   console.log({{ video_id |  json }}, {{ block.settings |  json  }}, "========= VIDEO ID ==========");
