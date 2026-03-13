@@ -18,6 +18,13 @@
     {%- endif -%}
 {% endif %}
 
+{% liquid
+  assign video_url_2 = block.settings.external_video_url
+  if video_url_2 == blank
+     assign video_url_2 = block.settings.youtube_url
+  endif
+%}
+
 <style>
            #youtube-wrap-{{ video_id }} img{
                  transition: all 0.7s cubic-bezier(0.4, 0, 1, 1);
@@ -130,7 +137,14 @@
     for="youtube-modal-input-{{ video_id }}"
     style="width:100%;position:relative;padding-bottom:67%;  pointer-events: none;"
   >
-    {% if block.settings.image %}
+    {% if block.settings.youtube_url != blank %}
+      <img src="https://img.youtube.com/vi/{{video_id}}/0.jpg" width="1024" height="auto" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius: 8px;"/>
+       <div class="text-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
+          <path fill="currentColor" d="M31.328 8.271a4.006 4.006 0 0 0-2.787-2.781c-2.495-.667-12.525-.667-12.525-.667S6.005 4.807 3.484 5.49A4.005 4.005 0 0 0 .703 8.271a41.574 41.574 0 0 0-.697 7.745a42.136 42.136 0 0 0 .697 7.708a4.022 4.022 0 0 0 2.781 2.787c2.495.667 12.532.667 12.532.667s10.005 0 12.525-.667a4.023 4.023 0 0 0 2.787-2.787c.459-2.541.683-5.125.667-7.708c.016-2.6-.203-5.188-.667-7.745zM12.812 20.803v-9.595l8.349 4.808z"/>
+        </svg>
+      </div>
+    {% elsif block.settings.image %}
       {{
         block.settings.image
         | image_url: width: 1024
@@ -209,7 +223,7 @@
     window.onYouTubePlayerAPIReadyCalls.push(onYouTubePlayerAPIReady);
   })();
 </script>
-{%- if block.settings.external_video_url or video_url -%}
+{%- if video_url or video_url_2 -%}
   {%- assign date_created = page.published_at | default: product.published_at | default: collection.published_at -%}
   {%- assign name = product.title | default: page.title | default: collection.title -%}
   <script type="application/ld+json">
@@ -217,7 +231,7 @@
       "@context": "https://schema.org",
       "@type": "VideoObject",
       "name": "{{ name }}",
-      "embedUrl": "{{ block.settings.external_video_url | default: video_url }}",
+      "embedUrl": "{{ video_url_2 | default: video_url }}",
       "thumbnailUrl": "https://img.youtube.com/vi/{{video_id}}/0.jpg",
       "uploadDate": "{{ date_created }}",
       "publisher": {
