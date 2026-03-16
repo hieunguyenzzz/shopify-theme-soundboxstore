@@ -455,10 +455,7 @@
         assign canonical_primary_prefix = 'pl'
       endif
     -%}
-    <!-- DEBUG_CANON: override={{ needs_canonical_override }} prefix={{ url_prefix }} primary={{ canonical_primary_prefix }} path={{ req_path }} -->
     {%- if needs_canonical_override -%}
-      {%- capture header_content -%}{{ content_for_header }}{%- endcapture -%}
-      {%- comment -%}Build primary canonical URL by replacing the locale prefix in the path{%- endcomment -%}
       {%- assign rest_of_path = req_path | remove_first: '/' | remove_first: url_prefix -%}
       {%- if canonical_primary_prefix == '' -%}
         {%- if rest_of_path == '' or rest_of_path == '/' -%}
@@ -469,16 +466,11 @@
       {%- else -%}
         {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: rest_of_path -%}
       {%- endif -%}
-      {%- comment -%}
-        content_for_header outputs canonical with the full locale path (e.g., /fr-be).
-        canonical_url Liquid object may already strip the country suffix (e.g., /fr).
-        We need to match what content_for_header actually outputs, so build from request.path.
-      {%- endcomment -%}
-      {%- assign full_locale_canonical = 'https://soundboxstore.com' | append: req_path -%}
-      {%- assign old_canonical_tag = 'rel="canonical" href="' | append: full_locale_canonical | append: '"' -%}
-      {%- assign new_canonical_tag = 'rel="canonical" href="' | append: canonical_override | append: '"' -%}
-      <!-- DEBUG_REPLACE: old={{ old_canonical_tag }} new={{ new_canonical_tag }} override={{ canonical_override }} -->
-      {{ header_content | replace: old_canonical_tag, new_canonical_tag }}
+      {%- capture header_content -%}{{ content_for_header }}{%- endcapture -%}
+      {%- assign full_locale_url = 'https://soundboxstore.com' | append: req_path -%}
+      {%- assign old_link = '<link rel="canonical" href="' | append: full_locale_url | append: '">' -%}
+      {%- assign new_link = '<link rel="canonical" href="' | append: canonical_override | append: '">' -%}
+      {{ header_content | replace: old_link, new_link }}
     {%- else -%}
       {{ content_for_header }}
     {%- endif -%}
