@@ -455,6 +455,7 @@
         assign canonical_primary_prefix = 'pl'
       endif
     -%}
+    <!-- CDBG:{{ url_prefix }}|{{ needs_canonical_override }}|{{ canonical_primary_prefix }} -->
     {%- if needs_canonical_override -%}
       {%- assign rest_of_path = req_path | remove_first: '/' | remove_first: url_prefix -%}
       {%- if canonical_primary_prefix == '' -%}
