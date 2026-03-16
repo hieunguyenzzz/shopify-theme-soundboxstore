@@ -11,6 +11,7 @@
   {%- unless form.posted_successfully? -%}
     <input type="hidden" name="contact[tags]" value="newsletter">
     <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
+    {% render 'gclid-field', form_id: newsletter_form_id %}
 
     <div class="input-group newsletter__input-group">
       <label for="Name-{{ section_id }}" class="hidden-label">

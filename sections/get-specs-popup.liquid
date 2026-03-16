@@ -137,6 +137,7 @@
                 </label>
                 <input type="hidden" name="contact[tags]" value="newsletter,getSpecs">
                 <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
+                {% render 'gclid-field', form_id: form_id %}
                 <div class="input-group newsletter__input-group">
                   <input
                     type="name"

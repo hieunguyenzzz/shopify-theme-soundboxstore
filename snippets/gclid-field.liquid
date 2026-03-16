@@ -1,0 +1,28 @@
+{% comment %}
+  Reusable hidden gclid field for any form.
+  Usage: {% render 'gclid-field', form_id: 'my-form-id' %}
+
+  Captures Google Ads gclid from:
+  1. URL parameter (direct click)
+  2. localStorage '_gcl_aw' (stored by quote-tracking.liquid)
+  3. localStorage 'qt_attribution' (stored by quote-tracking.liquid)
+{% endcomment %}
+<input type="hidden" name="contact[gclid]" id="gclid-{{ form_id }}" value="">
+<script>
+  (function() {
+    try {
+      var field = document.getElementById('gclid-{{ form_id }}');
+      if (!field) return;
+      var params = new URLSearchParams(window.location.search);
+      var gclid = params.get('gclid') || params.get('_gcl_aw') || '';
+      if (!gclid) gclid = localStorage.getItem('_gcl_aw') || '';
+      if (!gclid) {
+        try {
+          var attr = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
+          gclid = attr.gclid || '';
+        } catch(e) {}
+      }
+      field.value = gclid;
+    } catch(e) {}
+  })();
+</script>

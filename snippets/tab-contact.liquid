@@ -9,6 +9,7 @@
       <div class="collapsible-content__inner rte">
         <div class="form-vertical">
           <input type="hidden" name="contact[product]" value="Product question for: {{ shop.secure_url }}{{ product.url }}">
+          {% render 'gclid-field', form_id: contact_form_id %}
 
           <div class="grid grid--small">
             <div class="grid__item medium-up--one-half">
