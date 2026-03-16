@@ -231,6 +231,7 @@
       "@context": "https://schema.org",
       "@type": "VideoObject",
       "name": "{{ name }}",
+      "description": {{ product.description | default: page.content | default: collection.description | default: name | strip_html | truncate: 200 | json }},
       "embedUrl": "{{ video_url_2 | default: video_url }}",
       "thumbnailUrl": "https://img.youtube.com/vi/{{video_id}}/0.jpg",
       "uploadDate": "{{ date_created }}",
