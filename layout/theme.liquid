@@ -387,6 +387,7 @@
       };
     </script>
     <!-- content_for_header -->
+    <!-- DEBUG_LOCALE: locale={{ request.locale.iso_code }} country={{ request.country.iso_code }} canonical={{ canonical_url }} -->
     {%- liquid
       assign locale_prefix = request.locale.iso_code | downcase
       assign country_prefix = request.country.iso_code | downcase
