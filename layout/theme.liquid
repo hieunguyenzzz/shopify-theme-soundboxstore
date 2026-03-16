@@ -470,7 +470,16 @@
       {%- assign full_locale_url = 'https://soundboxstore.com' | append: req_path -%}
       {%- assign old_link = '<link rel="canonical" href="' | append: full_locale_url | append: '">' -%}
       {%- assign new_link = '<link rel="canonical" href="' | append: canonical_override | append: '">' -%}
-      {{ header_content | replace: old_link, new_link }}
+      {%- assign replaced_header = header_content | replace: old_link, new_link -%}
+      {%- assign has_canonical = replaced_header | split: 'rel="canonical"' -%}
+      {%- if has_canonical.size < 2 -%}
+        {%- comment -%}Replace failed to keep canonical — try without trailing >{%- endcomment -%}
+        {%- assign old_href = 'href="' | append: full_locale_url | append: '"' -%}
+        {%- assign new_href = 'href="' | append: canonical_override | append: '"' -%}
+        {{ header_content | replace: old_href, new_href }}
+      {%- else -%}
+        {{ replaced_header }}
+      {%- endif -%}
     {%- else -%}
       {{ content_for_header }}
     {%- endif -%}
