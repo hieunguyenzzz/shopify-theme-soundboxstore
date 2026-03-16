@@ -387,112 +387,96 @@
       };
     </script>
     <!-- content_for_header -->
-    <!-- DEBUG_LOCALE: locale={{ request.locale.iso_code }} country={{ request.country.iso_code }} canonical={{ canonical_url }} -->
     {%- liquid
-      assign locale_prefix = request.locale.iso_code | downcase
-      assign country_prefix = request.country.iso_code | downcase
-      assign locale_country = locale_prefix | append: '-' | append: country_prefix
+      comment
+        Detect secondary locale pages by parsing the URL path prefix.
+        Secondary locales get their canonical overridden to the primary language URL.
+        E.g., /de-at/products/x → canonical to /de/products/x
+              /en-us/products/x → canonical to /products/x
+        Hreflang tags remain untouched — only the canonical <link> is swapped.
+      endcomment
+      assign req_path = request.path
+      assign path_parts = req_path | remove_first: '/' | split: '/'
+      assign url_prefix = path_parts[0] | downcase
       assign needs_canonical_override = false
       assign canonical_primary_prefix = ''
 
       comment
-        English-in-foreign-market locales → canonical to root /
+        List of secondary locale prefixes and their primary targets.
+        Format: prefix=primary (empty primary means root /)
       endcomment
-      if locale_prefix == 'en' and country_prefix != '' and country_prefix != 'gb'
+      assign secondary_to_en = 'en-us,en-ae,en-at,en-be,en-ch,en-de,en-dk,en-es,en-fr,en-ie,en-it,en-nl,en-no,en-pl,en-se'
+      assign secondary_to_de = 'de-de,de-at,de-ch,de-ae'
+      assign secondary_to_es = 'es-es,es-ae'
+      assign secondary_to_fr = 'fr-fr,fr-be,fr-ae'
+      assign secondary_to_it = 'it-it,it-ae'
+      assign secondary_to_nl = 'nl-nl,nl-be,nl-ae'
+      assign secondary_to_no = 'no-no,no-ae'
+      assign secondary_to_fi = 'fi-fi,fi-ae'
+      assign secondary_to_pl = 'pl-pl,pl-ae'
+
+      assign url_prefix_with_comma = ',' | append: url_prefix | append: ','
+      assign secondary_en_check = ',' | append: secondary_to_en | append: ','
+      assign secondary_de_check = ',' | append: secondary_to_de | append: ','
+      assign secondary_es_check = ',' | append: secondary_to_es | append: ','
+      assign secondary_fr_check = ',' | append: secondary_to_fr | append: ','
+      assign secondary_it_check = ',' | append: secondary_to_it | append: ','
+      assign secondary_nl_check = ',' | append: secondary_to_nl | append: ','
+      assign secondary_no_check = ',' | append: secondary_to_no | append: ','
+      assign secondary_fi_check = ',' | append: secondary_to_fi | append: ','
+      assign secondary_pl_check = ',' | append: secondary_to_pl | append: ','
+
+      if secondary_en_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = ''
-      endif
-
-      comment
-        Same-language regional variants → canonical to primary language prefix
-        German: /de-de, /de-at, /de-ch, /de-ae → /de
-      endcomment
-      if locale_prefix == 'de' and country_prefix != ''
+      elsif secondary_de_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'de'
-      endif
-
-      comment
-        Spanish: /es-es, /es-ae → /es
-      endcomment
-      if locale_prefix == 'es' and country_prefix != ''
+      elsif secondary_es_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'es'
-      endif
-
-      comment
-        French: /fr-fr, /fr-be, /fr-ae → /fr
-      endcomment
-      if locale_prefix == 'fr' and country_prefix != ''
+      elsif secondary_fr_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'fr'
-      endif
-
-      comment
-        Italian: /it-it, /it-ae → /it
-      endcomment
-      if locale_prefix == 'it' and country_prefix != ''
+      elsif secondary_it_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'it'
-      endif
-
-      comment
-        Dutch: /nl-nl, /nl-be, /nl-ae → /nl
-      endcomment
-      if locale_prefix == 'nl' and country_prefix != ''
+      elsif secondary_nl_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'nl'
-      endif
-
-      comment
-        Norwegian: /no-no, /no-ae → /no
-      endcomment
-      if locale_prefix == 'no' and country_prefix != ''
+      elsif secondary_no_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'no'
-      endif
-
-      comment
-        Finnish: /fi-fi, /fi-ae → /fi
-      endcomment
-      if locale_prefix == 'fi' and country_prefix != ''
+      elsif secondary_fi_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'fi'
-      endif
-
-      comment
-        Polish: /pl-pl, /pl-ae → /pl
-      endcomment
-      if locale_prefix == 'pl' and country_prefix != ''
+      elsif secondary_pl_check contains url_prefix_with_comma
         assign needs_canonical_override = true
         assign canonical_primary_prefix = 'pl'
       endif
-
-      comment
-        Danish: /da-dk stays as-is (only one Danish locale)
-        Swedish: /sv-se stays as-is (only one Swedish locale)
-      endcomment
     -%}
     {%- if needs_canonical_override -%}
       {%- capture header_content -%}{{ content_for_header }}{%- endcapture -%}
-      {%- assign current_path = request.path -%}
-      {%- comment -%}
-        Build the canonical URL for the primary locale.
-        Strip the current locale prefix from the path and prepend the primary one.
-      {%- endcomment -%}
-      {%- assign locale_slug = locale_prefix | append: '-' | append: country_prefix -%}
-      {%- assign path_without_locale = current_path | remove_first: locale_slug -%}
-      {%- if path_without_locale == '/' or path_without_locale == '' -%}
-        {%- assign path_without_locale = '' -%}
-      {%- endif -%}
+      {%- comment -%}Build primary canonical URL by replacing the locale prefix in the path{%- endcomment -%}
+      {%- assign rest_of_path = req_path | remove_first: '/' | remove_first: url_prefix -%}
       {%- if canonical_primary_prefix == '' -%}
-        {%- assign canonical_override = 'https://soundboxstore.com' | append: path_without_locale -%}
+        {%- if rest_of_path == '' or rest_of_path == '/' -%}
+          {%- assign canonical_override = 'https://soundboxstore.com/' -%}
+        {%- else -%}
+          {%- assign canonical_override = 'https://soundboxstore.com' | append: rest_of_path -%}
+        {%- endif -%}
       {%- else -%}
-        {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: path_without_locale -%}
+        {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: rest_of_path -%}
       {%- endif -%}
-      {%- assign old_canonical = '<link rel="canonical" href="' | append: canonical_url | append: '">' -%}
-      {%- assign new_canonical = '<link rel="canonical" href="' | append: canonical_override | append: '">' -%}
-      {{ header_content | replace: old_canonical, new_canonical }}
+      {%- comment -%}
+        content_for_header outputs canonical with the full locale path (e.g., /fr-be).
+        canonical_url Liquid object may already strip the country suffix (e.g., /fr).
+        We need to match what content_for_header actually outputs, so build from request.path.
+      {%- endcomment -%}
+      {%- assign full_locale_canonical = 'https://soundboxstore.com' | append: req_path -%}
+      {%- assign old_canonical_tag = 'rel="canonical" href="' | append: full_locale_canonical | append: '"' -%}
+      {%- assign new_canonical_tag = 'rel="canonical" href="' | append: canonical_override | append: '"' -%}
+      {{ header_content | replace: old_canonical_tag, new_canonical_tag }}
     {%- else -%}
       {{ content_for_header }}
     {%- endif -%}
