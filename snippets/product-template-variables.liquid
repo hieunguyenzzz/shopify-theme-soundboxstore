@@ -56,13 +56,8 @@ You can learn more about this (and learn how to cleanly revert these changes) at
       "name": {{ product.title | json }},
       "width": 1024,
       "height": 1024
-    }
+    }{%- assign product_rating_number = product.metafields.reviews.rating.value.rating | plus: 0 -%}
     {%- assign product_rating_count = product.metafields.reviews.rating_count.value -%}
-    <!-- DEBUG_RATING: raw={{ product.metafields.reviews.rating }} val={{ product.metafields.reviews.rating.value }} val_rating={{ product.metafields.reviews.rating.value.rating }} val_val={{ product.metafields.reviews.rating.value.value }} count={{ product_rating_count }} type={{ product.metafields.reviews.rating.type }} -->
-    {%- assign product_rating_number = product.metafields.reviews.rating.value.rating | plus: 0 -%}
-    {%- if product_rating_number == 0 -%}
-      {%- assign product_rating_number = product.metafields.reviews.rating.value | plus: 0 -%}
-    {%- endif -%}
     {%- if product_rating_number > 0 and product_rating_number <= 5 and product_rating_count != blank -%},
     "aggregateRating": {
       "@type": "AggregateRating",
