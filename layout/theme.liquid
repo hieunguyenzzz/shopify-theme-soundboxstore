@@ -455,6 +455,7 @@
         assign canonical_primary_prefix = 'pl'
       endif
     -%}
+    <!-- DEBUG_CANON: override={{ needs_canonical_override }} prefix={{ url_prefix }} primary={{ canonical_primary_prefix }} path={{ req_path }} -->
     {%- if needs_canonical_override -%}
       {%- capture header_content -%}{{ content_for_header }}{%- endcapture -%}
       {%- comment -%}Build primary canonical URL by replacing the locale prefix in the path{%- endcomment -%}
@@ -476,6 +477,7 @@
       {%- assign full_locale_canonical = 'https://soundboxstore.com' | append: req_path -%}
       {%- assign old_canonical_tag = 'rel="canonical" href="' | append: full_locale_canonical | append: '"' -%}
       {%- assign new_canonical_tag = 'rel="canonical" href="' | append: canonical_override | append: '"' -%}
+      <!-- DEBUG_REPLACE: old={{ old_canonical_tag }} new={{ new_canonical_tag }} override={{ canonical_override }} -->
       {{ header_content | replace: old_canonical_tag, new_canonical_tag }}
     {%- else -%}
       {{ content_for_header }}
