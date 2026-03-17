@@ -455,7 +455,6 @@
         assign canonical_primary_prefix = 'pl'
       endif
     -%}
-    <!-- CDBG:{{ url_prefix }}|{{ needs_canonical_override }}|{{ canonical_primary_prefix }} -->
     {%- if needs_canonical_override -%}
       {%- assign rest_of_path = req_path | remove_first: '/' | remove_first: url_prefix -%}
       {%- if canonical_primary_prefix == '' -%}
@@ -467,14 +466,8 @@
       {%- else -%}
         {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: rest_of_path -%}
       {%- endif -%}
-      {%- capture header_content -%}{{ content_for_header }}{%- endcapture -%}
-      {%- assign full_locale_url = 'https://soundboxstore.com' | append: req_path -%}
-      {%- assign old_canonical_href = 'canonical" href="' | append: full_locale_url -%}
-      {%- assign new_canonical_href = 'canonical" href="' | append: canonical_override -%}
-      {{ header_content | replace: old_canonical_href, new_canonical_href }}
-    {%- else -%}
-      {{ content_for_header }}
     {%- endif -%}
+    {{ content_for_header }}
     <!-- end content_for_header -->
     <style>
       label[for='_gcl_au'],
@@ -627,6 +620,14 @@
         }
       }
     </style>
+    {%- if needs_canonical_override -%}
+      <script>
+        (function(){
+          var el = document.querySelector('link[rel="canonical"]');
+          if (el) el.setAttribute('href', '{{ canonical_override }}');
+        })();
+      </script>
+    {%- endif -%}
   </head>
 
   <body
