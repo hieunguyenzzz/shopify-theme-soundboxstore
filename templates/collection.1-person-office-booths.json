@@ -151,6 +151,7 @@
       "blocks": {
         "28cea507-6689-4704-af63-50ae541df227": {
           "type": "email",
+          "disabled": true,
           "settings": {
             "title": "Thinking Outside The Box, Inside The Booth",
             "text": "<p>Stay ahead of the curve by subscribing to our newsletter. Don't miss out on exciting events, product launches, meet-and-greets, and valuable upgrades. Join our community and be a part of the workspace revolution.</p>",
@@ -159,6 +160,7 @@
         },
         "785f0f73-a5dd-4535-a55c-41ab723a40dc": {
           "type": "instagram",
+          "disabled": true,
           "settings": {
             "feed_id": "37698",
             "title": "Follow Us",
@@ -171,6 +173,7 @@
         "28cea507-6689-4704-af63-50ae541df227",
         "785f0f73-a5dd-4535-a55c-41ab723a40dc"
       ],
+      "disabled": true,
       "custom_css": [
         ".main-collection-next {padding: 10;}",
         ".collection-template-grid {padding: 10; gap: 10;}"
@@ -470,6 +473,40 @@
       "settings": {
         "title": "Office Phone Booth FAQs"
       }
+    },
+    "competitor-cta": {
+      "type": "cta",
+      "blocks": {
+        "competitor-cta-button": {
+          "type": "button",
+          "settings": {
+            "text": "Get a Free Quote",
+            "url": "/pages/schedule-a-callback"
+          }
+        }
+      },
+      "block_order": [
+        "competitor-cta-button"
+      ],
+      "custom_css": [
+        ".image-text-section .section-content.text-center-center {justify-content: center!important;}"
+      ],
+      "settings": {
+        "lazyload": true,
+        "image": "shopify://shop_images/Meeting-Pod-4-6-Persons.png",
+        "overlay": true,
+        "overlay_range": 60,
+        "title": "Ready to Experience the Difference?",
+        "title_width": "",
+        "description": "<p>Book a free remote tour or request a quote today.</p>",
+        "description_width": "",
+        "button_text": "",
+        "button_link": "",
+        "button_text_2": "",
+        "button_link_2": "",
+        "text_alignment": "center-center",
+        "section_class": ""
+      }
     }
   },
   "order": [
@@ -485,6 +522,7 @@
     "77a1042c-44e2-40ba-adcb-f33ca7c5f3a5",
     "42b9a232-453e-4f8c-bd67-f0d0296d9d8a",
     "2d2546d2-4e1c-4a3b-8153-28abb8521aa5",
-    "a0981c62-effb-4bc4-9677-fcbf897d6158"
+    "a0981c62-effb-4bc4-9677-fcbf897d6158",
+    "competitor-cta"
   ]
 }

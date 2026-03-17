@@ -550,35 +550,12 @@
       ],
       "settings": {}
     },
-    "42b9a232-453e-4f8c-bd67-f0d0296d9d8a": {
-      "type": "custom-blocks",
-      "blocks": {
-        "4a699ce5-60d5-4454-8f1c-f336acbdd1f9": {
-          "type": "block",
-          "settings": {
-            "style": "default",
-            "color": "#e8e8e1",
-            "image": "shopify://shop_images/Screenshot_2023-11-03_160542.png",
-            "external_video_url": "https://youtu.be/u4Tc535R0bQ",
-            "sub-heading": "Embracing Sustainability",
-            "heading": "Unlock the Future of Team Collaboration",
-            "sub-heading-botoom": "",
-            "content": "<h4><strong>Experience the Power of Our Solo Acoustic Office Pods</strong></h4><p>Whether you need guidance on selecting a suitable quiet workspace or a discussion on acoustic measurement in our booth, we're here to help you make informed decisions that enhance your work environment and office productivity.</p>",
-            "btn_text": "LET’S TALK",
-            "btn_url": "shopify://pages/contact"
-          }
-        }
-      },
-      "block_order": [
-        "4a699ce5-60d5-4454-8f1c-f336acbdd1f9"
-      ],
-      "settings": {}
-    },
     "four-3": {
       "type": "main-collection-next",
       "blocks": {
         "28cea507-6689-4704-af63-50ae541df227": {
           "type": "email",
+          "disabled": true,
           "settings": {
             "title": "Thinking Outside The box, Inside The Booth....",
             "text": "<p>Stay Updated with Our Latest Innovations</p><p> Stay in the know about our latest events, product launches, upgrades, and more! Subscribe to our newsletter and be the first to explore innovations that enhance your workspace.</p>",
@@ -587,6 +564,7 @@
         },
         "785f0f73-a5dd-4535-a55c-41ab723a40dc": {
           "type": "instagram",
+          "disabled": true,
           "settings": {
             "feed_id": "37698",
             "title": "Follow Us",
@@ -599,6 +577,7 @@
         "28cea507-6689-4704-af63-50ae541df227",
         "785f0f73-a5dd-4535-a55c-41ab723a40dc"
       ],
+      "disabled": true,
       "custom_css": [
         ".main-collection-next {padding: 10;}",
         ".collection-template-grid {padding: 10; gap: 10;}"
@@ -677,6 +656,7 @@
     },
     "176414533222b2d8d6": {
       "type": "apps",
+      "disabled": true,
       "blocks": {
         "instafeed_app_block_L4JLFe": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
@@ -701,6 +681,40 @@
         "instafeed_app_block_L4JLFe"
       ],
       "settings": {}
+    },
+    "competitor-cta": {
+      "type": "cta",
+      "blocks": {
+        "competitor-cta-button": {
+          "type": "button",
+          "settings": {
+            "text": "Get a Free Quote",
+            "url": "/pages/schedule-a-callback"
+          }
+        }
+      },
+      "block_order": [
+        "competitor-cta-button"
+      ],
+      "custom_css": [
+        ".image-text-section .section-content.text-center-center {justify-content: center!important;}"
+      ],
+      "settings": {
+        "lazyload": true,
+        "image": "shopify://shop_images/Meeting-Pod-4-6-Persons.png",
+        "overlay": true,
+        "overlay_range": 60,
+        "title": "Ready to Experience the Difference?",
+        "title_width": "",
+        "description": "<p>Book a free remote tour or request a quote today.</p>",
+        "description_width": "",
+        "button_text": "",
+        "button_link": "",
+        "button_text_2": "",
+        "button_link_2": "",
+        "text_alignment": "center-center",
+        "section_class": ""
+      }
     }
   },
   "order": [
@@ -717,10 +731,10 @@
     "three-2",
     "four-1",
     "four-4",
-    "42b9a232-453e-4f8c-bd67-f0d0296d9d8a",
     "four-3",
     "shop-accessories",
     "faq_N9ftNK",
-    "176414533222b2d8d6"
+    "176414533222b2d8d6",
+    "competitor-cta"
   ]
 }
