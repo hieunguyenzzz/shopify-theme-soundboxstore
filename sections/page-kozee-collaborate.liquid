@@ -120,7 +120,7 @@
   }
 
   .product-title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 16px;
@@ -282,7 +282,7 @@
     }
 
     .product-title {
-      font-size: 42px;
+      font-size: 36px;
     }
 
     .product-subtitle {
@@ -310,7 +310,7 @@
     }
 
     .product-title {
-      font-size: 48px;
+      font-size: 42px;
     }
   }
 
@@ -337,6 +337,12 @@
           class="video-player"
           playsinline
           preload="metadata"
+          muted
+          autoplay
+          loop
+          {% if section.settings.video_poster != blank %}
+            poster="{{ section.settings.video_poster | image_url: width: 1100 }}"
+          {% endif %}
         >
           {% if section.settings.video_src != blank %}
             {% for source in section.settings.video_src.sources %}
@@ -347,12 +353,14 @@
         </video>
 
         {% if section.settings.video_poster != blank %}
-          <img
-            id="videoPoster"
-            class="video-poster-img"
-            src="{{ section.settings.video_poster | image_url: width: 1920 }}"
-            alt="{{ section.settings.video_poster.alt | escape }}"
-          >
+          {{ section.settings.video_poster | image_url: width: 1100 | image_tag: 
+            id: 'videoPoster',
+            class: 'video-poster-img',
+            loading: 'lazy',
+            widths: '360, 540, 720, 900, 1100',
+            sizes: '(min-width: 768px) 50vw, 100vw',
+            alt: section.settings.video_poster.alt | escape
+          }}
         {% endif %}
 
         <button id="playPauseBtn" class="play-pause-btn" aria-label="Play video">
@@ -377,6 +385,14 @@
         {% if section.settings.product_description != blank %}
           <div class="product-description">
             <p>{{ section.settings.product_description }}</p>
+          </div>
+        {% endif %}
+
+        {% if section.settings.cta_url != blank %}
+          <div class="cta-section" style="margin-bottom: 32px;">
+            <a href="{{ section.settings.cta_url }}" class="cta-button">
+              {{ section.settings.cta_text | default: 'View Full Details & Pricing' }}
+            </a>
           </div>
         {% endif %}
 
@@ -418,13 +434,7 @@
           </div>
         {% endif %}
 
-        {% if section.settings.cta_url != blank %}
-          <div class="cta-section">
-            <a href="{{ section.settings.cta_url }}" class="cta-button">
-              {{ section.settings.cta_text | default: 'View Full Details & Pricing' }}
-            </a>
-          </div>
-        {% endif %}
+
       </div>
     </div>
   </div>
