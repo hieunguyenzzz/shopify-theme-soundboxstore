@@ -361,7 +361,7 @@
         </video>
 
         {% if section.settings.video_poster != blank %}
-          {{ section.settings.video_poster | image_url: width: 900, quality: 70 | image_tag: 
+          {{ section.settings.video_poster | image_url: width: 900, quality: 70, format: 'pjpg' | image_tag: 
             id: 'videoPoster',
             class: 'video-poster-img',
             loading: 'eager',
