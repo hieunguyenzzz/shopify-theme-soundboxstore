@@ -346,10 +346,9 @@
           playsinline
           preload="metadata"
           muted
-          autoplay
           loop
           {% if section.settings.video_poster != blank %}
-            poster="{{ section.settings.video_poster | image_url: width: 1100 }}"
+            poster="{{ section.settings.video_poster | image_url: width: 1100, format: 'pjpg' }}"
           {% endif %}
         >
           {% if section.settings.video_src != blank %}
@@ -470,9 +469,12 @@
       posterImg.addEventListener('click', () => video.play());
     }
 
-    video.play().catch(e => {
-      console.log('Autoplay prevented:', e);
-    });
+    // Delayed autoplay after DOM is fully loaded + 1.5 seconds
+    setTimeout(() => {
+      video.play().catch(e => {
+        console.log('Autoplay prevented:', e);
+      });
+    }, 1500);
 
     playPauseBtn.addEventListener('click', () => {
       if (video.paused) {
