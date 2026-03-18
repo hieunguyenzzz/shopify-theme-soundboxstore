@@ -353,19 +353,28 @@
           {% endif %}
         >
           {% if section.settings.video_src != blank %}
+            {% comment %}Prioritize mp4 sources with lower height for faster initial load on slow networks{% endcomment %}
+            {% assign low_res = section.settings.video_src.sources | where: "format", "mp4" | sort: "height" | first %}
+            {% if low_res %}
+              <source src="{{ low_res.url }}" type="{{ low_res.mime_type }}">
+            {% endif %}
+            
             {% for source in section.settings.video_src.sources %}
-              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+              {% if source.url != low_res.url %}
+                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+              {% endif %}
             {% endfor %}
           {% endif %}
           Your browser does not support the video tag.
         </video>
 
         {% if section.settings.video_poster != blank %}
-          {{ section.settings.video_poster | image_url: width: 1100 | image_tag: 
+          {{ section.settings.video_poster | image_url: width: 900, quality: 70 | image_tag: 
             id: 'videoPoster',
             class: 'video-poster-img',
-            loading: 'lazy',
-            widths: '360, 540, 720, 900, 1100',
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '360, 540, 720, 900',
             sizes: '(min-width: 768px) 50vw, 100vw',
             alt: section.settings.video_poster.alt | escape
           }}
