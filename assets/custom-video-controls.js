@@ -180,17 +180,30 @@
 
     // Fullscreen
     fullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
+      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } else {
+        // Enter fullscreen
         if (container.requestFullscreen) {
           container.requestFullscreen();
         } else if (container.webkitRequestFullscreen) {
           container.webkitRequestFullscreen();
         } else if (container.msRequestFullscreen) {
           container.msRequestFullscreen();
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
+        } else if (videoElement.webkitEnterFullscreen) {
+          // Fallback specifically for iOS (iPhone)
+          videoElement.webkitEnterFullscreen();
+        } else if (videoElement.enterFullscreen) {
+          videoElement.enterFullscreen();
         }
       }
     });
