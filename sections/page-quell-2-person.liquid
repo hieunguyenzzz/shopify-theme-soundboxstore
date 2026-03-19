@@ -345,7 +345,6 @@
           class="video-player"
           playsinline
           preload="metadata"
-          muted
           loop
           {% if section.settings.video_poster != blank %}
             poster="{{ section.settings.video_poster | image_url: width: 1100, format: 'pjpg' }}"
