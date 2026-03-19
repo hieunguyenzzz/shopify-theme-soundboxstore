@@ -7,6 +7,9 @@
     --poster-height: {{ section.settings.poster_height | default: '100%' }};
   }
 </style>
+{{ 'custom-video-controls.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-video-controls.js' | asset_url }}" defer></script>
+
 
 <style>
   * {
@@ -457,88 +460,9 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const video = document.getElementById('productVideo');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const posterImg = document.getElementById('videoPoster');
-
-    if (posterImg) {
-      posterImg.addEventListener('click', () => video.play());
-    }
-
-    // Delayed autoplay after DOM is fully loaded + 1.5 seconds
-    // setTimeout(() => {
-    //   video.play().catch(e => {
-    //     console.log('Autoplay prevented:', e);
-    //   });
-    // }, 1500);
-
-    playPauseBtn.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    });
-
-    video.addEventListener('play', () => {
-      playPauseBtn.classList.add('hidden');
-      playIcon.style.display = 'none';
-      pauseIcon.style.display = 'block';
-      if (posterImg) posterImg.classList.add('hidden');
-    });
-
-    video.addEventListener('pause', () => {
-      playPauseBtn.classList.remove('hidden');
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-    });
-
-    video.addEventListener('ended', () => {
-      playPauseBtn.classList.remove('hidden');
-      playIcon.style.display = 'block';
-      pauseIcon.style.display = 'none';
-    });
-
-    const videoContainer = document.querySelector('.video-container');
-    let hideTimeout;
-
-    videoContainer.addEventListener('mouseenter', () => {
-      clearTimeout(hideTimeout);
-      if (!video.paused) {
-        playPauseBtn.classList.remove('hidden');
-      }
-    });
-
-    videoContainer.addEventListener('mouseleave', () => {
-      if (!video.paused) {
-        hideTimeout = setTimeout(() => {
-          playPauseBtn.classList.add('hidden');
-        }, 1000);
-      }
-    });
-
-    videoContainer.addEventListener('click', (e) => {
-      if (e.target === video) {
-        if (playPauseBtn.classList.contains('hidden')) {
-          playPauseBtn.classList.remove('hidden');
-          if (!video.paused) {
-            setTimeout(() => {
-              playPauseBtn.classList.add('hidden');
-            }, 2000);
-          }
-        }
-      }
-    });
-
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.play();
-    });
-  });
+  // Custom video controls are handled by custom-video-controls.js
 </script>
+
 
 {% schema %}
 {

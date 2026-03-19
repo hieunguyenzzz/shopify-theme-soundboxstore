@@ -1,0 +1,192 @@
+.video-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Original play button styling is maintained but controlled by JS */
+.video-container .play-pause-btn {
+  /* Keep default styles from liquid files */
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video-container .play-pause-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-video-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 10px 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #fff;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+.video-container:hover .custom-video-controls,
+.video-container.touch-active .custom-video-controls {
+  opacity: 1;
+}
+
+.custom-video-controls .progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: height 0.2s ease;
+}
+
+.custom-video-controls .progress-container:hover {
+  height: 6px;
+}
+
+.custom-video-controls .progress-bar {
+  height: 100%;
+  background: #fff;
+  width: 0%;
+  position: relative;
+}
+
+.custom-video-controls .progress-bar::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  display: none;
+}
+
+.custom-video-controls .progress-container:hover .progress-bar::after {
+  display: block;
+}
+
+.custom-video-controls .controls-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-video-controls .controls-left,
+.custom-video-controls .controls-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.custom-video-controls .control-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+.custom-video-controls .control-btn:hover {
+  transform: scale(1.1);
+}
+
+.custom-video-controls .control-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.custom-video-controls .time-display {
+  font-size: 13px;
+  min-width: 80px;
+}
+
+.custom-video-controls .volume-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.custom-video-controls .volume-slider {
+  width: 0;
+  height: 12px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to bottom, transparent 40%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.3) 60%, transparent 60%);
+  outline: none;
+  border-radius: 3px;
+  padding: 0;
+  border: none;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.custom-video-controls .volume-container:hover .volume-slider {
+  width: 120px;
+}
+
+.custom-video-controls .volume-slider::-webkit-slider-runnable-track {
+  height: 12px;
+  -webkit-appearance: none;
+  color: #fff;
+}
+
+.custom-video-controls .volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: -200px 0 0 200px #fff;
+}
+
+.custom-video-controls .options-menu {
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+  background: rgba(28, 28, 28, 0.9);
+  border-radius: 8px;
+  padding: 8px 0;
+  display: none;
+  flex-direction: column;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.custom-video-controls .options-menu.active {
+  display: flex;
+}
+
+.custom-video-controls .option-item {
+  padding: 8px 15px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.custom-video-controls .option-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-video-controls .option-item.active {
+  color: #4CAF50;
+  font-weight: bold;
+}
