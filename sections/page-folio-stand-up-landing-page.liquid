@@ -337,7 +337,6 @@
           class="video-player"
           playsinline
           preload="metadata"
-          muted
           loop
           {% if section.settings.video_poster != blank %}
             poster="{{ section.settings.video_poster | image_url: width: 1100, format: 'pjpg' }}"
@@ -461,11 +460,11 @@
     }
 
     // Delayed autoplay after DOM is fully loaded + 1.5 seconds
-    setTimeout(() => {
-      video.play().catch(e => {
-        console.log('Autoplay prevented:', e);
-      });
-    }, 1500);
+    // setTimeout(() => {
+    //   video.play().catch(e => {
+    //     console.log('Autoplay prevented:', e);
+    //   });
+    // }, 1500);
 
     playPauseBtn.addEventListener('click', () => {
       if (video.paused) {
