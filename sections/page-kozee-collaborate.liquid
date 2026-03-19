@@ -339,39 +339,41 @@
           id="productVideo"
           class="video-player"
           playsinline
-          preload="metadata"
+          preload="auto"
           loop
           {% if section.settings.video_poster != blank %}
-            poster="{{ section.settings.video_poster | image_url: width: 1100, format: 'pjpg' }}"
+            poster="{{ section.settings.video_poster | image_url: width: 800, format: 'pjpg' }}"
           {% endif %}
         >
           {% if section.settings.video_src != blank %}
-            {% comment %}Prioritize mp4 sources with lower height for faster initial load on slow networks{% endcomment %}
-            {% assign low_res = section.settings.video_src.sources | where: "format", "mp4" | sort: "height" | first %}
-            {% if low_res %}
-              <source src="{{ low_res.url }}" type="{{ low_res.mime_type }}">
+            {% comment %}1. Prioritize HLS (m3u8) for adaptive bitrate streaming{% endcomment %}
+            {% assign hls_src = section.settings.video_src.sources | where: "format", "m3u8" | first %}
+            {% if hls_src %}
+              <source src="{{ hls_src.url }}" type="{{ hls_src.mime_type }}">
             {% endif %}
             
-            {% for source in section.settings.video_src.sources %}
-              {% if source.url != low_res.url %}
-                <source src="{{ source.url }}" type="{{ source.mime_type }}">
-              {% endif %}
+            {% comment %}2. Fallback to optimized MP4 sources sorted by height{% endcomment %}
+            {% assign mp4_sources = section.settings.video_src.sources | where: "format", "mp4" | sort: "height" %}
+            {% for source in mp4_sources %}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
             {% endfor %}
           {% endif %}
           Your browser does not support the video tag.
         </video>
 
+
         {% if section.settings.video_poster != blank %}
-          {{ section.settings.video_poster | image_url: width: 900, quality: 70, format: 'pjpg' | image_tag: 
+          {{ section.settings.video_poster | image_url: width: 800, quality: 70, format: 'pjpg' | image_tag: 
             id: 'videoPoster',
             class: 'video-poster-img',
             loading: 'eager',
             fetchpriority: 'high',
-            widths: '360, 540, 720, 900',
+            widths: '360, 540, 720, 800',
             sizes: '(min-width: 768px) 50vw, 100vw',
             alt: section.settings.video_poster.alt | escape
           }}
         {% endif %}
+
 
         <button id="playPauseBtn" class="play-pause-btn" aria-label="Play video">
           <svg id="playIcon" viewBox="0 0 24 24">
