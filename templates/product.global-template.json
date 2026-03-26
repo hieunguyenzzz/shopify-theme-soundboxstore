@@ -137,10 +137,20 @@
             "point_x": "{{ block.repeater.hotspot_point_left.value }}",
             "point_y": "{{ block.repeater.hotspot_point_right.value }}"
           }
+        },
+        "feature_item_pRXyCm": {
+          "type": "feature_item",
+          "settings": {
+            "title": "Pod Placement",
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>",
+            "point_x": "0",
+            "point_y": "0"
+          }
         }
       },
       "block_order": [
-        "feature_item_j7tBNW"
+        "feature_item_j7tBNW",
+        "feature_item_pRXyCm"
       ],
       "settings": {
         "seo": "{{ product.metafields.custom.product_rooms_features.value.seo_title.value }}",
