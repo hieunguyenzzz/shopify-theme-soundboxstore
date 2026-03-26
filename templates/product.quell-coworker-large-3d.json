@@ -19,14 +19,6 @@
             "product_tagline": "<p>Open up a new way to collaborate</p>"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "variant_labels": true,
-            "picker_type": "button",
-            "color_swatches": true
-          }
-        },
         "variant_button_custom_jYkXPa": {
           "type": "variant-button-custom",
           "disabled": true,
@@ -40,15 +32,33 @@
             "option_3_url": ""
           }
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": true
+          }
+        },
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "desc": "<p>Prices exclude VAT</p>"
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "show_add_quote": false,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_pHCExt": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "82b38b2e-eff3-4c06-9b68-ca746d098f59": {
@@ -61,13 +71,6 @@
             "text2": "Plug & play",
             "icon3": "shopify://shop_images/space-icon.jpg",
             "text3": "Flexible to any space"
-          }
-        },
-        "soundboxstore_quote_quote_btn_pHCExt": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
           }
         }
       },
@@ -155,6 +158,7 @@
         "165656720836c7d25b-1"
       ],
       "settings": {
+        "collapable": true,
         "align_text": "center",
         "narrow_column": false,
         "color_scheme": "none",
@@ -220,6 +224,13 @@
             "description": "<p><strong>Recycled materials approx</strong><br/>≥180kg (12m²/0.66m³) each</p><p><strong>Carbon Footprint</strong><br/>≤0.071kg CO2e<br/><strong>Energy Consumption<br/></strong>≤0.4MJ</p>"
           }
         },
+        "features_list_right_rmMhKM": {
+          "type": "features_list_right",
+          "settings": {
+            "title": "Pod Placement",
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
+          }
+        },
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23": {
           "type": "feature_middle_image",
           "settings": {
@@ -230,6 +241,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 7,
+            "negative_y": false,
             "point_y": 2,
             "hotspot_title": "Dimensions"
           }
@@ -238,6 +250,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 5,
+            "negative_y": false,
             "point_y": 43,
             "hotspot_title": "Sound / Acoustics"
           }
@@ -246,6 +259,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 38,
+            "negative_y": false,
             "point_y": 5,
             "hotspot_title": "Electrical / Lighting"
           }
@@ -254,6 +268,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 80,
+            "negative_y": false,
             "point_y": 4,
             "hotspot_title": "Materials"
           }
@@ -262,6 +277,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 49,
+            "negative_y": false,
             "point_y": 1,
             "hotspot_title": "Ventilation"
           }
@@ -270,6 +286,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 27,
+            "negative_y": false,
             "point_y": 65,
             "hotspot_title": "Optional Furniture"
           }
@@ -278,6 +295,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 35,
+            "negative_y": false,
             "point_y": 39,
             "hotspot_title": "Safety"
           }
@@ -286,6 +304,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 82,
+            "negative_y": false,
             "point_y": 48,
             "hotspot_title": "Sustainability"
           }
@@ -300,6 +319,7 @@
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
         "19323c70-b1a6-44b1-b5b4-12733c55ae2e",
         "aade32d9-6806-430b-b9c3-07623b95803d",
+        "features_list_right_rmMhKM",
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23",
         "6cf7c02f-a050-4d80-8e04-8f288286c6d2",
         "03433a09-09b3-4e6b-a6c9-e5517ee3f7e0",
@@ -311,6 +331,9 @@
         "d1f069e7-7a57-45bf-96af-c70758c98580"
       ],
       "settings": {
+        "seo": "Experience This Phone Booth Yourself",
+        "title": "Finer Details",
+        "content": "<p>Design, Function & More</p>",
         "show_videos": true,
         "no_sound": false,
         "loop": false,
@@ -488,6 +511,7 @@
       "disabled": true,
       "settings": {
         "full_width": true,
+        "h1": "Phone Booths",
         "title": "",
         "title_size": 70,
         "subheading": "",
@@ -570,126 +594,144 @@
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-2.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "2fa437b2-fed3-4284-8b40-9bb394126de1": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-3.webp",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "8b60849e-f0e9-4575-ae20-69d8628f7b74": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-6.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "954c6494-0cb9-405f-8f54-204457e99ce2": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-10.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "5ec58e57-ab14-4ee8-8ed3-66e052f12124": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-9.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "689577df-1015-4a24-a21a-f9d5bea657bc": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-5.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "510c667a-b977-4956-bef6-3a1d363bbb68": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-7.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "d0500776-d1d2-42c0-8bdf-9640f3e8b3e0": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-1_29a0e9ab-dca7-41e0-b209-c4708164cf92.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "a351b0ec-1067-483e-ae8b-f19432a26ddb": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-4.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "cd8f5712-0188-487d-a4d6-06db29ccdef0": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-8.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "ab2355e4-62b2-42d0-81b8-537ba5bbf20c": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-19.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "f60861ff-fb19-4096-a129-adf702a1ad08": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-18.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "b3d14ea2-6554-4bef-b0e3-216a121efd02": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-16.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "e456399e-363e-4255-b3f3-8427cc859204": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-15.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "73ae46b9-abb7-418a-90a0-b4a8aed0c8d9": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-14.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "508f4fb6-8c0e-4358-a2ed-1519e143a1d9": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-11.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "b8f0514e-3f7e-439b-8411-25cc207a0e05": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-17.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "543ba823-fd6f-4c7b-a07b-d9dbcc1c2de8": {
           "type": "logo_image",
           "settings": {
             "image": "shopify://shop_images/Untitled-13.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         },
         "eeb0aeff-90e6-4620-adb9-1f75bee86076": {
@@ -697,7 +739,8 @@
           "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Untitled-12.jpg",
-            "link": ""
+            "link": "",
+            "link-2": ""
           }
         }
       },
@@ -724,12 +767,14 @@
       ],
       "settings": {
         "title": "You're in good company.",
+        "content": "",
         "divider": false
       }
     },
     "165414989285a6b146": {
       "type": "image-text-section",
       "settings": {
+        "style": "default",
         "lazyload": true,
         "image": "shopify://shop_images/1900X600_Booth_Spread_PC_SRP_Large_fad80d25-4ab4-4d74-b7b3-77dcb3d7e752.png",
         "mobile_image": "shopify://shop_images/2000X2000_Mobile_Page_Image_-_Large_353dcd05-a478-449d-a779-cce14a46df46.png",
@@ -742,6 +787,7 @@
         "button_text": "Full Range",
         "button_link": "shopify://collections/all",
         "button_text_2": "",
+        "button_link_2": "",
         "text_alignment": "center-left",
         "section_class": "movable-silence-booth"
       }
@@ -766,6 +812,18 @@
         "48c52e75-eab5-4c4d-9962-5612d7ab3824": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"></div>"
           }
         }
