@@ -32,6 +32,11 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "judge_me_reviews_preview_badge_L4RdnG": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        },
         "variant_button_custom": {
           "type": "variant-button-custom",
           "settings": {
@@ -43,11 +48,6 @@
             "option_3_name": "",
             "option_3_url": ""
           }
-        },
-        "judge_me_reviews_preview_badge_L4RdnG": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -71,6 +71,13 @@
             "surface_pickup_enable": false
           }
         },
+        "soundboxstore_quote_quote_btn_yq97UA": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
+          }
+        },
         "inventory_status_mdU7ne": {
           "type": "inventory_status",
           "settings": {
@@ -88,13 +95,6 @@
           "type": "ticks",
           "settings": {
             "richtext": "DDA Compliant Booth\nOpening Door Sensor\nBest Quality / Best Price\nTrade Discount On Quantity\nAcoustic ISO-2355-1 Accredited\nEuropes's #1 Sustainable Meeting Pod"
-          }
-        },
-        "soundboxstore_quote_quote_btn_yq97UA": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
           }
         }
       },
@@ -252,6 +252,13 @@
             "description": "<p><strong>Recycled materials approx</strong><br/>≥180kg (12m²/0.66m³) each</p><p><strong>Carbon Footprint</strong><br/>≤0.071kg CO2e<br/><strong>Energy Consumption<br/></strong>≤0.4MJ</p>"
           }
         },
+        "features_list_right_fFdHPq": {
+          "type": "features_list_right",
+          "settings": {
+            "title": "Pod Placement",
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
+          }
+        },
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23": {
           "type": "feature_middle_image",
           "settings": {
@@ -262,6 +269,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 7,
+            "negative_y": false,
             "point_y": 2,
             "hotspot_title": "Dimensions"
           }
@@ -270,6 +278,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 5,
+            "negative_y": false,
             "point_y": 43,
             "hotspot_title": "Sound / Acoustics"
           }
@@ -278,6 +287,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 38,
+            "negative_y": false,
             "point_y": 5,
             "hotspot_title": "Electrical / Lighting"
           }
@@ -286,6 +296,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 80,
+            "negative_y": false,
             "point_y": 4,
             "hotspot_title": "Materials"
           }
@@ -294,6 +305,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 49,
+            "negative_y": false,
             "point_y": 1,
             "hotspot_title": "Ventilation"
           }
@@ -302,6 +314,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 27,
+            "negative_y": false,
             "point_y": 65,
             "hotspot_title": "Optional Furniture"
           }
@@ -310,6 +323,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 35,
+            "negative_y": false,
             "point_y": 39,
             "hotspot_title": "Safety"
           }
@@ -318,6 +332,7 @@
           "type": "hotspot_point",
           "settings": {
             "point_x": 82,
+            "negative_y": false,
             "point_y": 48,
             "hotspot_title": "Sustainability"
           }
@@ -332,6 +347,7 @@
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
         "19323c70-b1a6-44b1-b5b4-12733c55ae2e",
         "aade32d9-6806-430b-b9c3-07623b95803d",
+        "features_list_right_fFdHPq",
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23",
         "6cf7c02f-a050-4d80-8e04-8f288286c6d2",
         "03433a09-09b3-4e6b-a6c9-e5517ee3f7e0",
@@ -344,6 +360,8 @@
       ],
       "settings": {
         "seo": "Experience This Phone Booth Yourself",
+        "title": "Finer Details",
+        "content": "<p>Design, Function & More</p>",
         "show_videos": true,
         "no_sound": false,
         "loop": false,
@@ -936,7 +954,14 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
             "html_area": "<div id=\"feed-37680\" class=\"instafeed-shopify\"></div>"
@@ -944,7 +969,12 @@
         },
         "judge_me_reviews_review_widget_FBLR3h": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
