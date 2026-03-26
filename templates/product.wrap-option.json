@@ -54,19 +54,19 @@
             "desc": "<p>Prices exclude VAT</p>"
           }
         },
-        "soundboxstore_quote_quote_btn_HGYAFW": {
-          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
-          "settings": {
-            "btn_text": "Request Quote",
-            "btn_class": "btn btn--full"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_add_quote": false,
             "show_dynamic_checkout": false,
             "surface_pickup_enable": false
+          }
+        },
+        "soundboxstore_quote_quote_btn_HGYAFW": {
+          "type": "shopify://apps/soundboxstore-quote/blocks/quote_btn/9479e891-78b2-4740-be01-e64e9e3bbefd",
+          "settings": {
+            "btn_text": "Request Quote",
+            "btn_class": "btn btn--full"
           }
         },
         "82b38b2e-eff3-4c06-9b68-ca746d098f59": {
@@ -247,6 +247,13 @@
             "description": "<p><strong>Recycled materials approx</strong><br/>≥180kg (12m²/0.66m³) each</p><p><strong>Carbon Footprint</strong><br/>≤0.071kg CO2e<br/><strong>Energy Consumption<br/></strong>≤0.4MJ</p>"
           }
         },
+        "features_list_right_X3VHC6": {
+          "type": "features_list_right",
+          "settings": {
+            "title": "Pod Placement",
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
+          }
+        },
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23": {
           "type": "feature_middle_image",
           "settings": {
@@ -258,6 +265,7 @@
           "disabled": true,
           "settings": {
             "point_x": 28,
+            "negative_y": false,
             "point_y": 22,
             "hotspot_title": "Dimensions"
           }
@@ -267,6 +275,7 @@
           "disabled": true,
           "settings": {
             "point_x": 62,
+            "negative_y": false,
             "point_y": 32,
             "hotspot_title": "Sound / Acoustics"
           }
@@ -276,6 +285,7 @@
           "disabled": true,
           "settings": {
             "point_x": 64,
+            "negative_y": false,
             "point_y": 53,
             "hotspot_title": "Materials"
           }
@@ -285,6 +295,7 @@
           "disabled": true,
           "settings": {
             "point_x": 33,
+            "negative_y": false,
             "point_y": 0,
             "hotspot_title": "Ventilation"
           }
@@ -294,6 +305,7 @@
           "disabled": true,
           "settings": {
             "point_x": 47,
+            "negative_y": false,
             "point_y": 0,
             "hotspot_title": "Electrical / Lighting"
           }
@@ -303,6 +315,7 @@
           "disabled": true,
           "settings": {
             "point_x": 47,
+            "negative_y": false,
             "point_y": 77,
             "hotspot_title": "Optional Furniture"
           }
@@ -312,6 +325,7 @@
           "disabled": true,
           "settings": {
             "point_x": 33,
+            "negative_y": false,
             "point_y": 41,
             "hotspot_title": "Safety"
           }
@@ -329,6 +343,7 @@
           "disabled": true,
           "settings": {
             "point_x": 30,
+            "negative_y": false,
             "point_y": 56,
             "hotspot_title": "Sustainability"
           }
@@ -343,6 +358,7 @@
         "6b66cb21-f9e3-4ec5-89ed-37a0d24af348",
         "19323c70-b1a6-44b1-b5b4-12733c55ae2e",
         "aade32d9-6806-430b-b9c3-07623b95803d",
+        "features_list_right_X3VHC6",
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23",
         "fb107c97-6e74-48d9-9b89-e66a254e5cdc",
         "62eeb179-89b9-4b0f-aa8a-5779ebbf255b",
@@ -356,6 +372,8 @@
       ],
       "settings": {
         "seo": "Experience This Phone Booth Yourself",
+        "title": "Finer Details",
+        "content": "<p>Design, Function & More</p>",
         "show_videos": false,
         "no_sound": false,
         "loop": false,
@@ -430,6 +448,7 @@
         "b781bad8-6c0a-4ac9-86de-bedf4e1fdc25": {
           "type": "instagram",
           "settings": {
+            "feed_id": "37698",
             "title": "Follow Us",
             "text": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>",
             "image_bg": "shopify://shop_images/sbs-stn6-3-4-bg.jpg"
@@ -821,8 +840,16 @@
           "settings": {
             "title": "",
             "title_color": "",
+            "title_size_v2": 0,
             "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
             "background_color": "",
+            "feed_id": "",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"></div>"
           }
         }
