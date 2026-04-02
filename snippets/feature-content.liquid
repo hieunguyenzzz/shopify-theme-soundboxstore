@@ -1,37 +1,56 @@
+{% liquid
+  assign feat_title = block.settings.title
+  assign feat_content = block.settings.content
+  assign feat_image = block.settings.image
+  assign feat_youtube = block.settings.youtube_url
+
+  if feat_image == blank and block.repeater != blank
+    assign feat_image = block.repeater.image.value
+  endif
+  if feat_youtube == blank and block.repeater != blank
+    assign feat_youtube = block.repeater.youtube_video.value
+  endif
+%}
+
 {% capture mediaitem %}
-    {% if block.settings.youtube_url != blank %}
+    {% if feat_youtube != blank %}
       <div style="width:100%;max-width:528px">
-      {% render 'youtube-popup' ,block :block %}
-      {% assign hadmedia = true %}
+        <a href="{{ feat_youtube }}" class="youtube-popup__link" data-video-id="{{ feat_youtube | split: 'v=' | last | split: '&' | first | default: feat_youtube | split: 'youtu.be/' | last | split: '?' | first }}">
+          {% if feat_image != blank %}
+            {{ feat_image | image_url: width: 528 | image_tag: alt: feat_title }}
+          {% endif %}
+          <span class="youtube-popup__play-btn"></span>
+        </a>
       </div>
+      {% assign hadmedia = true %}
     {% endif %}
 {% endcapture %}
-{% assign alt = block.settings.image.alt | default: block.settings.title %}
+{% assign alt = feat_image.alt | default: feat_title %}
 {%- assign reverse = index | modulo: 2 -%}
 <section class="image-text-column" style="margin:60px 0">
   <div class="section-wrap page-width">
     <div class="flexbox {% if reverse == 0 %}row-reverse{% endif %} mobile-column-reverse">
-      {% if block.settings.image != blank %}
+      {% if feat_image != blank %}
         <div class="col right-col">
           <div class="col-wrap" style="width:100%; display: flex; justify-content: center;">
             {% if hadmedia %}
               {{ mediaitem }}
             {% else %}
-              {{ block.settings.image | image_url: width: 528 | image_tag: alt: alt }}
+              {{ feat_image | image_url: width: 528 | image_tag: alt: alt }}
             {% endif %}
           </div>
         </div>
       {% endif %}
       <div class="col left-col">
         <div class="col-wrap">
-          {% if block.settings.title != blank %}
+          {% if feat_title != blank %}
             <h2 class="title-font">
-              {{ block.settings.title }}
+              {{ feat_title }}
             </h2>
           {% endif %}
-          {% if block.settings.content != blank %}
+          {% if feat_content != blank %}
             <div class="column-content">
-              {{ block.settings.content }}
+              {{ feat_content }}
             </div>
           {% endif %}
         </div>
