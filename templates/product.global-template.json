@@ -68,11 +68,24 @@
           "settings": {
             "richtext": ""
           }
+        },
+        "variant_button_custom_global": {
+          "type": "variant-button-custom",
+          "settings": {
+            "name": "{{ product.metafields.custom.size_selector.value.name.value }}",
+            "option_1_name": "{{ product.metafields.custom.size_selector.value.option_1_name.value }}",
+            "option_1_url": "{{ product.metafields.custom.size_selector.value.option_1_url.value }}",
+            "option_2_name": "{{ product.metafields.custom.size_selector.value.option_2_name.value }}",
+            "option_2_url": "{{ product.metafields.custom.size_selector.value.option_2_url.value }}",
+            "option_3_name": "{{ product.metafields.custom.size_selector.value.option_3_name.value }}",
+            "option_3_url": "{{ product.metafields.custom.size_selector.value.option_3_url.value }}"
+          }
         }
       },
       "block_order": [
         "judge_me_reviews_preview_badge_4B7DM9",
         "80d88b2f-fa19-4538-ad26-bbbc66103e15",
+        "variant_button_custom_global",
         "variant_picker",
         "price",
         "buy_buttons",
