@@ -10,6 +10,10 @@
   assign opt_2_url = sel.option_2_url.value
   assign opt_3_name = sel.option_3_name.value
   assign opt_3_url = sel.option_3_url.value
+  assign cur_handle = product.handle
+  assign opt_1_handle = opt_1_url | split: '/products/' | last
+  assign opt_2_handle = opt_2_url | split: '/products/' | last
+  assign opt_3_handle = opt_3_url | split: '/products/' | last
 %}
 
 {% if opt_name != blank %}
@@ -36,7 +40,7 @@
         <a
           href="{{ opt_1_url }}"
           class="variant__button-label"
-          {% if opt_1_url == product.url %}
+          {% if opt_1_handle == cur_handle %}
             style="background-color: #303a44; color: #fff;"
           {% endif %}
         >
@@ -49,7 +53,7 @@
         <a
           href="{{ opt_2_url }}"
           class="variant__button-label"
-          {% if opt_2_url == product.url %}
+          {% if opt_2_handle == cur_handle %}
             style="background-color: #303a44; color: #fff;"
           {% endif %}
         >
@@ -62,7 +66,7 @@
         <a
           href="{{ opt_3_url }}"
           class="variant__button-label"
-          {% if opt_3_url == product.url %}
+          {% if opt_3_handle == cur_handle %}
             style="background-color: #303a44; color: #fff;"
           {% endif %}
         >
