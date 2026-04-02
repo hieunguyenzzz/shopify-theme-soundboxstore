@@ -1,3 +1,25 @@
+{% liquid
+  assign sel = product.metafields.custom.size_selector.value
+  if block.settings.name != blank
+    assign opt_name = block.settings.name
+    assign opt_1_name = block.settings.option_1_name
+    assign opt_1_url = block.settings.option_1_url
+    assign opt_2_name = block.settings.option_2_name
+    assign opt_2_url = block.settings.option_2_url
+    assign opt_3_name = block.settings.option_3_name
+    assign opt_3_url = block.settings.option_3_url
+  elsif sel != blank
+    assign opt_name = sel.name.value
+    assign opt_1_name = sel.option_1_name.value
+    assign opt_1_url = sel.option_1_url.value
+    assign opt_2_name = sel.option_2_name.value
+    assign opt_2_url = sel.option_2_url.value
+    assign opt_3_name = sel.option_3_name.value
+    assign opt_3_url = sel.option_3_url.value
+  endif
+%}
+
+{% if opt_name != blank %}
 <style>
   .variant-wrapper.option-variant-custom .variant__button-label{
         font-size: 16px;
@@ -11,36 +33,36 @@
   <div
     class="variant__label"
   >
-    {{ block.settings.name }}
+    {{ opt_name }}
   </div>
   <div
     class="variant-input-wrap"
   >
-    {% if block.settings.option_1_url %}
+    {% if opt_1_url != blank %}
       <div
         class="variant-input "
       >
         <a
-          href="{{  block.settings.option_1_url }}"
+          href="{{ opt_1_url }}"
           class="variant__button-label"
-          {% if block.settings.option_1_url == product.url %}
+          {% if opt_1_url == product.url %}
             style="
               background-color: #303a44;
               color: #fff;
             "
           {% endif %}
         >
-          {{ block.settings.option_1_name }}
+          {{ opt_1_name }}
         </a>
       </div>
     {% endif %}
-    {% if block.settings.option_2_url %}
+    {% if opt_2_url != blank %}
       <div
         class="variant-input "
       >
         <a
-          href="{{  block.settings.option_2_url }}"
-          {% if block.settings.option_2_url == product.url %}
+          href="{{ opt_2_url }}"
+          {% if opt_2_url == product.url %}
             style="
               background-color: #303a44;
               color: #fff;
@@ -48,17 +70,17 @@
           {% endif %}
           class="variant__button-label"
         >
-          {{ block.settings.option_2_name }}
+          {{ opt_2_name }}
         </a>
       </div>
     {% endif %}
-    {% if block.settings.option_3_url %}
+    {% if opt_3_url != blank %}
       <div
         class="variant-input "
       >
         <a
-          href="{{  block.settings.option_3_url }}"
-          {% if block.settings.option_2_url == product.url %}
+          href="{{ opt_3_url }}"
+          {% if opt_3_url == product.url %}
             style="
               background-color: #303a44;
               color: #fff;
@@ -66,7 +88,7 @@
           {% endif %}
           class="variant__button-label"
         >
-          {{ block.settings.option_3_name }}
+          {{ opt_3_name }}
         </a>
       </div>
     {% endif %}
@@ -78,11 +100,12 @@
     "prerender": [
       {
         "urls": [
-          "{{block.settings.option_1_url}}",
-          "{{block.settings.option_2_url}}",
-          "{{block.settings.option_3_url}}"
+          "{{ opt_1_url }}",
+          "{{ opt_2_url }}",
+          "{{ opt_3_url }}"
         ]
       }
     ]
   }
 </script>
+{% endif %}
