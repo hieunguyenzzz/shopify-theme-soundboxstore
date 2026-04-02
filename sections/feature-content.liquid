@@ -1,5 +1,7 @@
+<!-- DEBUG: blocks={{ section.blocks.size }} metafield={{ product.metafields.custom.feature_content | size }} -->
 {%- if section.blocks.size > 0 -%}
   {%- for block in section.blocks -%}
+    <!-- DEBUG block: type={{ block.type }} title={{ block.settings.title }} -->
     {% render 'feature-content', block: block, index: forloop.index %}
   {%- endfor -%}
 {%- endif -%}
