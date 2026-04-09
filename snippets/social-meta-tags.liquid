@@ -82,6 +82,14 @@ You can learn more about this (and learn how to cleanly revert these changes) at
 <meta property="og:image:height" content="{{ page_image.height }}">
 {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
 {%- endif -%}
+  {%- else -%}
+    {%- comment -%}
+      Fallback: Khi không có page_image, dùng logo SVG mới 2025 làm og:image.
+      Điều này đảm bảo preview trên Google/social media hiển thị đúng logo.
+    {%- endcomment -%}
+    <meta property="og:image" content="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967">
+    <meta property="og:image:secure_url" content="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967">
+    <meta property="og:image:type" content="image/svg+xml">
   {%- endif -%}
   {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
 {%- if disabled_by_yoast_seo -%}
