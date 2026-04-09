@@ -1,6 +1,12 @@
 {% liquid
   assign sel = product.metafields.custom.size_selector.value
   assign use_metafield = false
+
+  assign locale_prefix = ''
+  unless request.locale.primary
+    assign locale_prefix = '/' | append: request.locale.iso_code
+  endunless
+
   if sel != blank
     assign use_metafield = true
     assign opt_name = sel.name.value
@@ -10,19 +16,31 @@
     assign opt_2_url = sel.option_2_url.value | replace: 'shopify://products/', '/products/'
     assign opt_3_name = sel.option_3_name.value
     assign opt_3_url = sel.option_3_url.value | replace: 'shopify://products/', '/products/'
-    assign cur_handle = product.handle
     assign opt_1_handle = opt_1_url | split: '/products/' | last
     assign opt_2_handle = opt_2_url | split: '/products/' | last
     assign opt_3_handle = opt_3_url | split: '/products/' | last
+    assign opt_1_url_full = locale_prefix | append: opt_1_url
+    assign opt_2_url_full = locale_prefix | append: opt_2_url
+    assign opt_3_url_full = locale_prefix | append: opt_3_url
+    assign opt_1_product = all_products[opt_1_handle]
+    assign opt_2_product = all_products[opt_2_handle]
+    assign opt_3_product = all_products[opt_3_handle]
   elsif block.settings.name != blank
     assign opt_name = block.settings.name
     assign opt_1_name = block.settings.option_1_name
     assign opt_2_name = block.settings.option_2_name
     assign opt_3_name = block.settings.option_3_name
+    assign opt_1_handle_bs = block.settings.option_1_url | split: '/products/' | last
+    assign opt_2_handle_bs = block.settings.option_2_url | split: '/products/' | last
+    assign opt_3_handle_bs = block.settings.option_3_url | split: '/products/' | last
+    assign opt_1_url_full = locale_prefix | append: block.settings.option_1_url
+    assign opt_2_url_full = locale_prefix | append: block.settings.option_2_url
+    assign opt_3_url_full = locale_prefix | append: block.settings.option_3_url
   endif
 %}
 
 {% if opt_name != blank %}
+
 <style>
   .variant-wrapper.option-variant-custom .variant__button-label{
         font-size: 16px;
@@ -44,44 +62,44 @@
     {% if use_metafield %}
       {% if opt_1_url != blank %}
         <div class="variant-input">
-          <a href="{{ opt_1_url }}" class="variant__button-label"
-            {% if opt_1_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_1_url_full }}" class="variant__button-label"
+            {% if opt_1_product.id == product.id or request.path contains opt_1_handle or product.handle == opt_1_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_1_name }}</a>
         </div>
       {% endif %}
       {% if opt_2_url != blank %}
         <div class="variant-input">
-          <a href="{{ opt_2_url }}" class="variant__button-label"
-            {% if opt_2_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_2_url_full }}" class="variant__button-label"
+            {% if opt_2_product.id == product.id or request.path contains opt_2_handle or product.handle == opt_2_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_2_name }}</a>
         </div>
       {% endif %}
       {% if opt_3_url != blank %}
         <div class="variant-input">
-          <a href="{{ opt_3_url }}" class="variant__button-label"
-            {% if opt_3_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_3_url_full }}" class="variant__button-label"
+            {% if opt_3_product.id == product.id or request.path contains opt_3_handle or product.handle == opt_3_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_3_name }}</a>
         </div>
       {% endif %}
     {% else %}
       {% if block.settings.option_1_url != blank %}
         <div class="variant-input">
-          <a href="{{ block.settings.option_1_url }}" class="variant__button-label"
-            {% if block.settings.option_1_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_1_url_full }}" class="variant__button-label"
+            {% if request.path contains opt_1_handle_bs or product.handle == opt_1_handle_bs %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_1_name }}</a>
         </div>
       {% endif %}
       {% if block.settings.option_2_url != blank %}
         <div class="variant-input">
-          <a href="{{ block.settings.option_2_url }}" class="variant__button-label"
-            {% if block.settings.option_2_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_2_url_full }}" class="variant__button-label"
+            {% if request.path contains opt_2_handle_bs or product.handle == opt_2_handle_bs %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_2_name }}</a>
         </div>
       {% endif %}
       {% if block.settings.option_3_url != blank %}
         <div class="variant-input">
-          <a href="{{ block.settings.option_3_url }}" class="variant__button-label"
-            {% if block.settings.option_3_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+          <a href="{{ opt_3_url_full }}" class="variant__button-label"
+            {% if request.path contains opt_3_handle_bs or product.handle == opt_3_handle_bs %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_3_name }}</a>
         </div>
       {% endif %}
@@ -94,11 +112,7 @@
     "prerender": [
       {
         "urls": [
-          {% if use_metafield %}
-            "{{ opt_1_url }}", "{{ opt_2_url }}", "{{ opt_3_url }}"
-          {% else %}
-            "{{ block.settings.option_1_url }}", "{{ block.settings.option_2_url }}", "{{ block.settings.option_3_url }}"
-          {% endif %}
+          "{{ opt_1_url_full }}", "{{ opt_2_url_full }}", "{{ opt_3_url_full }}"
         ]
       }
     ]
