@@ -2,10 +2,7 @@
   assign sel = product.metafields.custom.size_selector.value
   assign use_metafield = false
 
-  assign locale_prefix = ''
-  unless request.locale.primary
-    assign locale_prefix = '/' | append: request.locale.iso_code
-  endunless
+  assign locale_prefix = request.path | split: '/products/' | first
 
   if sel != blank
     assign use_metafield = true
