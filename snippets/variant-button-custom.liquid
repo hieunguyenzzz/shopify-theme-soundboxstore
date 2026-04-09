@@ -46,22 +46,22 @@
     class="variant-input-wrap"
   >
     {% if use_metafield %}
-      {% if opt_1_url != blank %}
-        <div class="variant-input">
+      {% if opt_1_url_raw != blank %}
+        <div class="variant-input{% if opt_1_handle == cur_handle %} active{% endif %}">
           <a href="{{ opt_1_url }}" class="variant__button-label"
             {% if opt_1_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_1_name }}</a>
         </div>
       {% endif %}
-      {% if opt_2_url != blank %}
-        <div class="variant-input">
+      {% if opt_2_url_raw != blank %}
+        <div class="variant-input{% if opt_2_handle == cur_handle %} active{% endif %}">
           <a href="{{ opt_2_url }}" class="variant__button-label"
             {% if opt_2_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_2_name }}</a>
         </div>
       {% endif %}
-      {% if opt_3_url != blank %}
-        <div class="variant-input">
+      {% if opt_3_url_raw != blank %}
+        <div class="variant-input{% if opt_3_handle == cur_handle %} active{% endif %}">
           <a href="{{ opt_3_url }}" class="variant__button-label"
             {% if opt_3_handle == cur_handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_3_name }}</a>
@@ -71,25 +71,28 @@
       {% assign locale_root = request.locale.root_url %}
       {% if block.settings.option_1_url != blank %}
         {% assign bs_opt_1_url = locale_root | append: block.settings.option_1_url %}
-        <div class="variant-input">
+        {% assign bs_opt_1_handle = block.settings.option_1_url | split: '/products/' | last %}
+        <div class="variant-input{% if bs_opt_1_handle == product.handle %} active{% endif %}">
           <a href="{{ bs_opt_1_url }}" class="variant__button-label"
-            {% if block.settings.option_1_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+            {% if bs_opt_1_handle == product.handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_1_name }}</a>
         </div>
       {% endif %}
       {% if block.settings.option_2_url != blank %}
         {% assign bs_opt_2_url = locale_root | append: block.settings.option_2_url %}
-        <div class="variant-input">
+        {% assign bs_opt_2_handle = block.settings.option_2_url | split: '/products/' | last %}
+        <div class="variant-input{% if bs_opt_2_handle == product.handle %} active{% endif %}">
           <a href="{{ bs_opt_2_url }}" class="variant__button-label"
-            {% if block.settings.option_2_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+            {% if bs_opt_2_handle == product.handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_2_name }}</a>
         </div>
       {% endif %}
       {% if block.settings.option_3_url != blank %}
         {% assign bs_opt_3_url = locale_root | append: block.settings.option_3_url %}
-        <div class="variant-input">
+        {% assign bs_opt_3_handle = block.settings.option_3_url | split: '/products/' | last %}
+        <div class="variant-input{% if bs_opt_3_handle == product.handle %} active{% endif %}">
           <a href="{{ bs_opt_3_url }}" class="variant__button-label"
-            {% if block.settings.option_3_url == product.url %}style="background-color: #303a44; color: #fff;"{% endif %}
+            {% if bs_opt_3_handle == product.handle %}style="background-color: #303a44; color: #fff;"{% endif %}
           >{{ opt_3_name }}</a>
         </div>
       {% endif %}
