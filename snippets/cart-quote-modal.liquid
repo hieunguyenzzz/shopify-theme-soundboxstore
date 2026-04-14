@@ -929,8 +929,8 @@
       const hiddenField = document.getElementById('cart-quote-items-hidden');
       if (hiddenField) hiddenField.value = JSON.stringify(updatedItems);
 
-      // Send to Zapier webhook
-      fetch('https://hooks.zapier.com/hooks/catch/14043376/uasv8l8', {
+      // Send to n8n webhook
+      fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
