@@ -474,18 +474,24 @@ IT it /it-it' %}
         return '';
       }
 
+      // Gate to block form.submit() calls from external scripts when validation fails
+      let productValidationPassed = false;
+
       function logSubmit(event) {
         event.preventDefault();
+        event.stopImmediatePropagation();
 
         // Validate at least one product is selected
         const productCheckboxes = form.querySelectorAll('input[name="contact[product]"]:checked');
         const productsError = document.getElementById('{{form_id}}-products-error');
         const productsWrap = document.getElementById('{{form_id}}-products-wrap');
         if (productCheckboxes.length === 0) {
+          productValidationPassed = false;
           if (productsError) productsError.style.display = 'block';
           if (productsWrap) productsWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
+        productValidationPassed = true;
         if (productsError) productsError.style.display = 'none';
 
         try {
@@ -663,6 +669,17 @@ IT it /it-it' %}
       }
       const form = document.getElementById('{{- form_id -}}');
       form.addEventListener('submit', logSubmit);
+
+      // Override form.submit() to enforce product validation
+      // This prevents external scripts (Shopify apps, injected JS) from bypassing our validation
+      const originalSubmit = form.submit.bind(form);
+      form.submit = function() {
+        if (!productValidationPassed) {
+          console.warn('[QuoteForm] Blocked form.submit() — no products selected');
+          return;
+        }
+        originalSubmit();
+      };
 
       // Clear product validation error when a product is selected
       form.querySelectorAll('input[name="contact[product]"]').forEach(cb => {
