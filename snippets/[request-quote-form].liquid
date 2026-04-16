@@ -436,7 +436,7 @@ IT it /it-it' %}
           {{- settings.quote_interested_booths -}}
         </label>
         <p id="{{form_id}}-products-error" style="color:red;font-size:0.85em;margin-top:0.3em;display:none;">
-          {{ 'contact.form.select_product_required' | t | default: 'Please select at least one product' }}
+          Please select at least one product
         </p>
       </div>
       <div class="submit-btn-wrap grid__item">
@@ -656,7 +656,10 @@ IT it /it-it' %}
         } catch (err) {
           console.error(err);
         }
-        event.target.submit();
+        // Only submit if products are selected (re-check as safety net)
+        if (form.querySelectorAll('input[name="contact[product]"]:checked').length > 0) {
+          event.target.submit();
+        }
       }
       const form = document.getElementById('{{- form_id -}}');
       form.addEventListener('submit', logSubmit);
