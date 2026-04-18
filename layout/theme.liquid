@@ -467,44 +467,20 @@
         {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: rest_of_path -%}
       {%- endif -%}
     {%- endif -%}
+    {%- comment -%}
+      Đặt og:image TRƯỚC content_for_header để crawler mạng xã hội lấy tag đầu tiên.
+      Yoast SEO inject logo cũ (2023) qua content_for_header — tag này ghi đè vì xuất hiện trước.
+      Dùng ?format=jpg để Shopify CDN chuyển SVG→JPEG, tương thích 100% Facebook/LinkedIn/Twitter.
+      Áp dụng cho tất cả trang trừ product/article (những trang đó Yoast dùng ảnh riêng của sản phẩm/bài viết).
+    {%- endcomment -%}
+    {%- unless template.name == 'product' or template.name == 'article' -%}
+      <meta property="og:image" content="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967&format=jpg&width=1200">
+      <meta property="og:image:secure_url" content="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967&format=jpg&width=1200">
+      <meta property="og:image:type" content="image/jpeg">
+      <meta property="og:image:width" content="1200">
+    {%- endunless -%}
     {{ content_for_header }}
     <!-- end content_for_header -->
-    {%- comment -%}
-      Override og:image để đảm bảo logo preview (Google Search, social media) dùng đúng logo mới 2025.
-      Yoast SEO đang inject ảnh logo cũ (JPG 2023), script này replace bằng logo SVG mới.
-      Đặt sau content_for_header để chạy sau khi Yoast inject meta tags.
-    {%- endcomment -%}
-    <meta name="og-image-override" content="https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967">
-    <script>
-      (function() {
-        var newLogoUrl = 'https://soundboxstore.com/cdn/shop/files/SBS_Logo_2025_Final.svg?v=1769608967';
-        function overrideOgImage() {
-          var ogImageTags = document.querySelectorAll('meta[property="og:image"], meta[property="og:image:secure_url"]');
-          ogImageTags.forEach(function(tag) {
-            var currentContent = tag.getAttribute('content');
-            if (currentContent && currentContent !== newLogoUrl) {
-              tag.setAttribute('content', newLogoUrl);
-            }
-          });
-          var ogWidthTag = document.querySelector('meta[property="og:image:width"]');
-          var ogHeightTag = document.querySelector('meta[property="og:image:height"]');
-          var ogTypeTag = document.querySelector('meta[property="og:image:type"]');
-          if (ogWidthTag) ogWidthTag.setAttribute('content', '1200');
-          if (ogHeightTag) ogHeightTag.setAttribute('content', '400');
-          if (!ogTypeTag) {
-            var newTypeMeta = document.createElement('meta');
-            newTypeMeta.setAttribute('property', 'og:image:type');
-            newTypeMeta.setAttribute('content', 'image/svg+xml');
-            document.head.appendChild(newTypeMeta);
-          }
-        }
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', overrideOgImage);
-        } else {
-          overrideOgImage();
-        }
-      })();
-    </script>
     <style>
       label[for='_gcl_au'],
       label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
