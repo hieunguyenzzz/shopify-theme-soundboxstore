@@ -481,6 +481,15 @@
     {%- endunless -%}
     {{ content_for_header }}
     <!-- end content_for_header -->
+    {%- comment -%}
+      Inject en-GB hreflang for UK market. Shopify does not auto-generate en-GB because
+      the UK is served by the default market (no URL prefix). Without this tag, Google
+      has no explicit signal that soundboxstore.com targets UK English users, which can
+      cause Italian or other locale pages to appear in UK search results.
+    {%- endcomment -%}
+    {%- if request.locale.iso_code == 'en' and needs_canonical_override == false -%}
+      <link rel="alternate" hreflang="en-GB" href="{{ canonical_url }}">
+    {%- endif -%}
     <style>
       label[for='_gcl_au'],
       label[for='_gcl_au'] + .grfq__popupForm__formLabelOptional,
