@@ -68,6 +68,9 @@
 {% else %}
   {% assign page = settings.page_remote_tour %}
 {% endif %}
+<script>
+  console.log({{ image | json }},"===)
+</script>
 {% if image %}
   <div class="{{ section.id }}-wrap">
     {{ image | image_url: width: 400 | image_tag: sizes: '(min-width:1024px) 400px, 30vw' }}
