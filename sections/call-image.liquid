@@ -68,19 +68,7 @@
 {% else %}
   {% assign page = settings.page_remote_tour %}
 {% endif %}
-<script>
-  console.log("DE:", {{ section.settings.call_banner_de | json }});
-  console.log("FI:", {{ section.settings.call_banner_fi | json }});
-  console.log("SV:", {{ section.settings.call_banner_sv | json }});
-  console.log("NO:", {{ section.settings.call_banner_no | json }});
-  console.log("FR:", {{ section.settings.call_banner_fr | json }});
-  console.log("ES:", {{ section.settings.call_banner_es | json }});
-  console.log("DA:", {{ section.settings.call_banner_da | json }});
-  console.log("NL:", {{ section.settings.call_banner_nl | json }});
-  console.log("IT:", {{ section.settings.call_banner_it | json }});
-  console.log("PL:", {{ section.settings.call_banner_po | json }});
-  console.log("EN:", {{ section.settings.call_banner_en | json }});
-</script>
+
 {% if image %}
   <div class="{{ section.id }}-wrap">
     {{ image | image_url: width: 400 | image_tag: sizes: '(min-width:1024px) 400px, 30vw' }}
