@@ -23,7 +23,7 @@
 
   LEAD EVENT INTERCEPTOR:
   This file includes an umami.track interceptor that:
-  1. Blocks empty generate_lead/quote_submit events (no email = no tracking)
+  1. Blocks empty generate_lead events (no email = no tracking)
   2. Normalizes data schema (customer.* prefix -> flat keys)
   3. Prevents duplicate events via sessionStorage flag
   4. Injects missing attribution data (gclid, UTM params, quote_session_id)
@@ -132,7 +132,7 @@
   }
 
   // ============================================
-  // UMAMI INTERCEPTION - Intercept generate_lead / quote_submit events
+  // UMAMI INTERCEPTION - Intercept generate_lead events
   // ============================================
   // Intercepts umami.track calls to ensure all lead events have proper data
   // Blocks empty events and normalizes data schema
@@ -156,8 +156,8 @@
       const originalTrack = umami.track.bind(umami);
 
       umami.track = function(eventName, data) {
-        // Intercept generate_lead (primary) and quote_submit (legacy fallback)
-        const isLeadEvent = eventName === 'generate_lead' || eventName === 'quote_submit';
+        // Intercept generate_lead events
+        const isLeadEvent = eventName === 'generate_lead';
         if (!isLeadEvent) {
           return originalTrack(eventName, data);
         }

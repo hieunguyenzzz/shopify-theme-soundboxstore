@@ -563,7 +563,7 @@ IT it /it-it' %}
               console.log('Brevo worker error:', err);
             });
 
-          // Analytics tracking - quote_submit
+          // Analytics tracking
           var customerData = {
             form_id: 'header-quote-form',
             email: data['contact[email]'] || '',
@@ -597,37 +597,6 @@ IT it /it-it' %}
             }
           } catch (e) {
             console.error('[HeaderQuoteForm] Umami tracking error:', e);
-          }
-
-          // GA4 tracking
-          try {
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'quote_submit', {
-                form_id: 'header-quote-form',
-                customer: {
-                  name: customerData.name,
-                  email: customerData.email,
-                  phone: customerData.phone,
-                  company: customerData.company,
-                  address: {
-                    city: customerData.city,
-                    zip: customerData.postcode,
-                    country: customerData.country
-                  }
-                },
-                products: data.products.map(function(item) {
-                  return {
-                    product_id: item.sku || '',
-                    product_name: item.title || '',
-                    quantity: item.quantity || 1
-                  };
-                }),
-                timestamp: new Date().toISOString()
-              });
-              console.log('[HeaderQuoteForm] GA4 quote_submit fired');
-            }
-          } catch (e) {
-            console.error('[HeaderQuoteForm] GA4 tracking error:', e);
           }
 
           // dataLayer push for GTM (generate_lead event)
