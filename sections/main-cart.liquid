@@ -29,7 +29,7 @@
           <h1 class="cart-col-title">{{ 'cart.general.your_items' | t }}</h1>
           <div data-products class="cart-items-list" style="border-bottom:none">
             {% for item in cart.items %}
-              {%- render 'cart-item', product: item -%}
+              {%- render 'cart-item', product: item, line: forloop.index -%}
             {% endfor %}
           </div>
           {% render 'certicate', id: 'product-icon-text-section-cart' %}

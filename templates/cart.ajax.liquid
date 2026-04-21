@@ -14,7 +14,7 @@
   data-count="{{ cart.item_count }}"
   data-cart-subtotal="{{ cart.total_price }}">
   {% for item in cart.items %}
-    {%- render 'cart-item', product: item -%}
+    {%- render 'cart-item', product: item, line: forloop.index -%}
   {% endfor %}
 </div>
 <div class="cart__discounts text-right{% if cart.cart_level_discount_applications == blank %} hide{% endif %}">

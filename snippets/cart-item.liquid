@@ -1,6 +1,6 @@
 <div class="cart__item" data-key="{{ product.key }}">
   <a
-    href="{{ routes.cart_change_url }}?id={{ product.key }}&amp;quantity=0"
+    href="{{ routes.cart_change_url }}?line={{ line }}&amp;quantity=0"
     class="text-link cart__remove"
   >
     {% comment %}{{ 'cart.general.remove' | t }}{% endcomment %}
