@@ -151,67 +151,6 @@
                   </div>
                 {% endif %}
               </template>
-              <div
-                style="
-                  padding: 20px 0;
-                  border-top: 1px solid #eaeaea;
-                  border-bottom: 1px solid #eaeaea;
-                "
-              >
-                {{ 'strings.others.remote_viewing_question' | t }}
-                <div style="display:flex;gap:1em;margin-top:0.5em">
-                  <label style="flex:1"
-                    ><input
-                      type="radio"
-                      name="attributes[remote_tour]"
-                      value="Yes"
-                      {% if cart.attributes.remote_tour == 'Yes' %}
-                        checked
-                      {% endif %}
-                      style="font-size: 1em;margin-top: 0.25em;"
-                    >
-                    {{- 'strings.others.Yes' | t }}
-                  </label>
-                  <label style="flex:1"
-                    ><input
-                      type="radio"
-                      name="attributes[remote_tour]"
-                      value="No"
-
-                      style="font-size: 1em;margin-top: 0.25em;"
-                    >
-                    {{- 'strings.others.No' | t }}
-                  </label>
-                </div>
-                <div id="remote_tour_error" style="color:red;font-size: 14px;display:none">{{ 'cart.general.showroom_visit_required' | t }}</div>
-              </div>
-              <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                  const remoteTourError = document.querySelector('#remote_tour_error');
-                  const remoteTourInputs = document.querySelectorAll('input[name="attributes[remote_tour]"]');
-                  remoteTourInputs.forEach(input => {
-                    input.addEventListener('change', () => {
-                      remoteTourError.style.display = 'none';
-                    });
-                  });
-
-                  const btnSubmit = document.querySelector('.cart__checkout');
-                  btnSubmit.addEventListener('click', (event) => {
-                    let remoteTourChecked = false;
-                    remoteTourInputs.forEach(input => {
-                      if (input.checked) {
-                        remoteTourChecked = true;
-                      }
-                    });
-                    
-                    if (!remoteTourChecked) {
-                      event.preventDefault();
-                      remoteTourError.style.display = 'block';
-                      return false;
-                    }
-                  });
-                })
-              </script>
             </div>
           </div>
 
