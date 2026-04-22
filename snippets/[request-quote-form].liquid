@@ -589,44 +589,57 @@ IT it /it-it' %}
             })
           };
 
-          // Umami tracking
-          try {
-            if (typeof umami !== 'undefined') {
-              umami.track('generate_lead', customerData);
-              console.log('[HeaderQuoteForm] Umami generate_lead fired with customer data:', customerData);
-            }
-          } catch (e) {
-            console.error('[HeaderQuoteForm] Umami tracking error:', e);
-          }
+          // Shared dedup flag: blocks duplicate generate_lead across theme tracking
+          // paths (quote-tracking.liquid interceptor, pushGenerateLead, etc.)
+          var SUBMIT_FLAG = 'qt_lead_submitted';
+          var alreadyFired = false;
+          try { alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true'; } catch (e) {}
 
-          // dataLayer push for GTM (generate_lead event)
-          try {
-            if (typeof window !== 'undefined' && window.dataLayer) {
-              window.dataLayer.push({
-                'event': 'generate_lead',
-                'customer_email': customerData.email || '',
-                'customer_phone': customerData.phone || '',
-                'customer_country': customerData.country || '',
-                'customer_company': customerData.company || '',
-                'customer_name': customerData.name || '',
-                'form_id': 'header-quote-form',
-                'form_title': 'Header Quote Form',
-                'gclid': gclid || '',
-                // Enhanced Conversions user_data
-                'user_data': {
-                  'email': customerData.email || '',
-                  'phone_number': customerData.phone || '',
-                  'address': {
-                    'country': customerData.country || '',
-                    'city': customerData.city || '',
-                    'postal_code': customerData.postcode || ''
-                  }
-                }
-              });
-              console.log('[HeaderQuoteForm] dataLayer.push generate_lead fired');
+          if (!alreadyFired) {
+            // Umami tracking (passes through interceptor which validates + sets flag)
+            try {
+              if (typeof umami !== 'undefined') {
+                umami.track('generate_lead', customerData);
+                console.log('[HeaderQuoteForm] Umami generate_lead fired with customer data:', customerData);
+              }
+            } catch (e) {
+              console.error('[HeaderQuoteForm] Umami tracking error:', e);
             }
-          } catch (e) {
-            console.error('[HeaderQuoteForm] dataLayer tracking error:', e);
+
+            // dataLayer push for GTM (generate_lead event) — GTM fires the GA4 tag
+            // from this push. Do NOT also call gtag() directly: double-fires GA4.
+            try {
+              if (typeof window !== 'undefined' && window.dataLayer) {
+                window.dataLayer.push({
+                  'event': 'generate_lead',
+                  'customer_email': customerData.email || '',
+                  'customer_phone': customerData.phone || '',
+                  'customer_country': customerData.country || '',
+                  'customer_company': customerData.company || '',
+                  'customer_name': customerData.name || '',
+                  'form_id': 'header-quote-form',
+                  'form_title': 'Header Quote Form',
+                  'gclid': gclid || '',
+                  // Enhanced Conversions user_data
+                  'user_data': {
+                    'email': customerData.email || '',
+                    'phone_number': customerData.phone || '',
+                    'address': {
+                      'country': customerData.country || '',
+                      'city': customerData.city || '',
+                      'postal_code': customerData.postcode || ''
+                    }
+                  }
+                });
+                console.log('[HeaderQuoteForm] dataLayer.push generate_lead fired');
+              }
+            } catch (e) {
+              console.error('[HeaderQuoteForm] dataLayer tracking error:', e);
+            }
+
+            try { sessionStorage.setItem(SUBMIT_FLAG, 'true'); } catch (e) {}
+          } else {
+            console.log('[HeaderQuoteForm] generate_lead skipped - already fired');
           }
         } catch (err) {
           console.error(err);
