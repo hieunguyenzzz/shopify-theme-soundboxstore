@@ -631,7 +631,12 @@
                     {% unless product.metafields.custom.ticks_content.value %}
                       {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     {% endunless %}
-<script>console.log({{ texts | json }},"====")</script>
+<script>
+  console.log('locale:', {{ request.locale.iso_code | json }});
+  console.log('raw value:', {{ product.metafields.custom.ticks_content.value | json }});
+  console.log('type:', {{ product.metafields.custom.ticks_content.type | json }});
+  console.log('texts after split:', {{ texts | json }});
+</script>
                     <ul
                       {{ block.shopify_attributes }}
                       style="
