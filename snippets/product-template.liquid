@@ -776,37 +776,19 @@
                 </a>
               {% endif %}
 
-              {%- comment -%} Add to Cart button below showroom {%- endcomment -%}
+              {%- comment -%} Request Quote button below showroom (opens MerakiQuote popup via window.MerakiQuoteApp.openPopup — defined by soundboxstore-quote app-embed) {%- endcomment -%}
               {%- unless product.empty? -%}
-                <div class="product-block add-to-cart-below-showroom" style="margin-top: 15px;">
-                  {%- form 'product', product, id: 'product-form-bottom', class: 'product-single__form' -%}
-                    {%- assign current_variant = product.selected_or_first_available_variant -%}
-                    <button
-                      type="submit"
-                      name="add"
-                      data-add-to-cart
-                      class="btn btn--full add-to-cart"
-                      style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center;"
-                      {% unless current_variant.available %}disabled="disabled"{% endunless %}
-                    >
-                      <span data-add-to-cart-text>
-                        {%- if current_variant.available -%}
-                          {{ 'products.product.add_to_cart' | t }}
-                        {%- else -%}
-                          {{ 'products.product.sold_out' | t }}
-                        {%- endif -%}
-                      </span>
-                    </button>
-                    <select name="id" class="hide" aria-label="Product variant">
-                      {%- for variant in product.variants -%}
-                        <option
-                          {% if variant == current_variant %}selected="selected"{% endif %}
-                          value="{{ variant.id }}"
-                          {% unless variant.available %}disabled{% endunless %}
-                        >{{ variant.title }}</option>
-                      {%- endfor -%}
-                    </select>
-                  {%- endform -%}
+                <div class="product-block request-quote-below-showroom" style="margin-top: 15px;">
+                  <button
+                    type="button"
+                    id="ProductQuoteButton-{{ product.id }}"
+                    name="quote"
+                    class="btn btn--full request-quote-btn product-qoute-button"
+                    onclick="if(window.MerakiQuoteApp&&window.MerakiQuoteApp.openPopup){window.MerakiQuoteApp.openPopup(event);}"
+                    style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
+                  >
+                    {{ 'header.quote_btn_text' | t }}
+                  </button>
                 </div>
               {%- endunless -%}
               <script>
