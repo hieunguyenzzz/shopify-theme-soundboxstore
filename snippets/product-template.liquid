@@ -776,17 +776,16 @@
                 </a>
               {% endif %}
 
-              {%- comment -%} Request Quote button below showroom (opens MerakiQuote popup via soundboxstore-quote app-embed listener) {%- endcomment -%}
+              {%- comment -%} Request Quote button below showroom (B2B quote-only flow — replaces Add to Cart) {%- endcomment -%}
               {%- unless product.empty? -%}
                 <div class="product-block request-quote-below-showroom" style="margin-top: 15px;">
-                  <button
-                    type="button"
-                    id="ProductQuoteButton-{{ product.id }}"
+                  <label
+                    for="quote-form-modal"
                     class="btn btn--full request-quote-btn product-qoute-button"
                     style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
                   >
                     {{ 'header.quote_btn_text' | t }}
-                  </button>
+                  </label>
                 </div>
               {%- endunless -%}
               <script>
