@@ -74,21 +74,43 @@
     'get-specs-form',
   ];
 
+  // Forms that push generate_lead themselves (in their own submit handlers
+  // with richer product/quote data). pushGenerateLead() below is a fallback
+  // ONLY for forms that do not emit generate_lead on their own.
+  const FORMS_WITH_OWN_LEAD_PUSH = [
+    'header-quote-form',
+    'cart-quote-form',
+    'meraki-quote',
+    'meraki-quote-popup',
+  ];
+
+  const LEAD_SUBMIT_FLAG = 'qt_lead_submitted';
+
   // ============================================
   // DATALAYER - Push generate_lead for GTM
   // ============================================
 
   function pushGenerateLead(formId, customer) {
-    // Only push for lead capture forms
-    if (!LEAD_FORM_IDS.includes(formId) && !formId.includes('quote')) {
+    // Skip forms that have their own lead push (avoids duplicate GA4 events)
+    if (FORMS_WITH_OWN_LEAD_PUSH.includes(formId)) {
       return;
     }
 
+    // Only push for remaining lead capture forms (contact, get-specs)
+    if (!LEAD_FORM_IDS.includes(formId)) {
+      return;
+    }
+
+    // Shared dedup: if any other path already fired generate_lead this session, skip
+    try {
+      if (sessionStorage.getItem(LEAD_SUBMIT_FLAG) === 'true') {
+        console.log('[QuoteTracking] pushGenerateLead skipped - already fired:', formId);
+        return;
+      }
+    } catch (e) {}
+
     const attr = getAttribution();
     const formTitles = {
-      'header-quote-form': 'Header Quote Form',
-      'quote-form':        'Header Quote Form',
-      'cart-quote-form':   'Cart Quote Form',
       'contact-form':      'Contact Form',
       'get-specs-form':    'Get Specs Form',
     };
@@ -117,18 +139,14 @@
       }
     };
 
-    // Keep existing dataLayer push (backup for GTM)
+    // Single dataLayer.push — GTM's trigger on this event fires the GA4 tag.
+    // Do NOT also call gtag() directly: it double-fires GA4 alongside GTM.
     if (window.dataLayer) {
       window.dataLayer.push({ 'event': 'generate_lead', ...payload });
-    }
-
-    // Direct gtag() call bypassing GTM (handles paused GTM tags)
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', payload);
-      console.log('[QuoteTracking] gtag generate_lead fired:', formId);
-    } else {
       console.log('[QuoteTracking] dataLayer.push generate_lead:', formId);
     }
+
+    try { sessionStorage.setItem(LEAD_SUBMIT_FLAG, 'true'); } catch (e) {}
   }
 
   // ============================================
