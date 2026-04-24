@@ -343,6 +343,20 @@
                         {% endunless %}
                       {% endif %}
                     </div>
+                    {%- unless product.empty? -%}
+                      <div class="product-block request-quote-below-showroom" style="margin-top: 11px;">
+                        <button
+                          type="button"
+                          id="ProductQuoteButton-{{ product.id }}"
+                          name="quote"
+                          class="btn btn--full request-quote-btn product-qoute-button"
+                          onclick="if(window.MerakiQuoteApp&&window.MerakiQuoteApp.openPopup){window.MerakiQuoteApp.openPopup(event);}"
+                          style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
+                        >
+                          {{ 'header.quote_btn_text' | t }}
+                        </button>
+                      </div>
+                    {%- endunless -%}
 
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
@@ -631,12 +645,6 @@
                     {% unless product.metafields.custom.ticks_content.value %}
                       {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     {% endunless %}
-<script>
-  console.log('locale:', {{ request.locale.iso_code | json }});
-  console.log('raw value:', {{ product.metafields.custom.ticks_content.value | json }});
-  console.log('type:', {{ product.metafields.custom.ticks_content.type | json }});
-  console.log('texts after split:', {{ texts | json }});
-</script>
                     <ul
                       {{ block.shopify_attributes }}
                       style="
@@ -780,22 +788,6 @@
                   </div>
                 </a>
               {% endif %}
-
-              {%- comment -%} Request Quote button below showroom (opens MerakiQuote popup via window.MerakiQuoteApp.openPopup — defined by soundboxstore-quote app-embed) {%- endcomment -%}
-              {%- unless product.empty? -%}
-                <div class="product-block request-quote-below-showroom" style="margin-top: 15px;">
-                  <button
-                    type="button"
-                    id="ProductQuoteButton-{{ product.id }}"
-                    name="quote"
-                    class="btn btn--full request-quote-btn product-qoute-button"
-                    onclick="if(window.MerakiQuoteApp&&window.MerakiQuoteApp.openPopup){window.MerakiQuoteApp.openPopup(event);}"
-                    style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
-                  >
-                    {{ 'header.quote_btn_text' | t }}
-                  </button>
-                </div>
-              {%- endunless -%}
               <script>
                 console.log({{ product.template_suffix | json }},"====")
               </script>
