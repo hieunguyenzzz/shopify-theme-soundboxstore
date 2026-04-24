@@ -150,18 +150,129 @@
   }
 
   // ============================================
-  // UMAMI INTERCEPTION - Intercept generate_lead events
+  // LEAD SUBMIT — writes to Supabase via n8n webhook
   // ============================================
-  // Intercepts umami.track calls to ensure all lead events have proper data
-  // Blocks empty events and normalizes data schema
+  // Exposed as window.sbsSubmitLead so form handlers can call it directly.
+  // Decoupled from Umami: ad-blockers that block umami.mobelaris.com used to
+  // kill the Supabase write path (see SBS-106). This function now runs even
+  // when Umami is blocked, unloaded, or hasn't arrived yet.
+
+  const LEAD_DEDUP_FLAG = 'qt_lead_submitted';
+
+  // Clear dedup flag on every page load — navigation resets submission state
+  try { sessionStorage.removeItem(LEAD_DEDUP_FLAG); } catch (e) {}
+
+  function sbsSubmitLead(data) {
+    // Normalize data - convert customer.* prefix to flat keys
+    const normalizedData = {};
+    if (data && typeof data === 'object') {
+      Object.keys(data).forEach(function(key) {
+        const normalizedKey = key.replace(/^customer\./, '');
+        normalizedData[normalizedKey] = data[key];
+      });
+    }
+
+    // Dedup: block if this session already submitted
+    try {
+      if (sessionStorage.getItem(LEAD_DEDUP_FLAG) === 'true') {
+        console.log('[QuoteTracking] sbsSubmitLead: blocked duplicate');
+        return false;
+      }
+    } catch (e) {}
+
+    if (!normalizedData.form_id) normalizedData.form_id = 'unknown';
+
+    // Email is required — try DOM fallback if missing
+    const hasEmail = normalizedData.email && normalizedData.email.trim().length > 0;
+    if (!hasEmail) {
+      const emailField = document.querySelector([
+        '[role="dialog"] input[type="email"]',
+        '[role="dialog"] input[name*="email"]',
+        '.meraki-popup-wrapper input[type="email"]',
+        '#quote-form input[type="email"]',
+        '#cart-quote-form input[type="email"]'
+      ].join(', '));
+      if (emailField && emailField.value) normalizedData.email = emailField.value.trim();
+    }
+    if (!normalizedData.email || normalizedData.email.trim().length === 0) {
+      console.log('[QuoteTracking] sbsSubmitLead: no email, skipping', normalizedData);
+      return false;
+    }
+
+    // Inject attribution data from storage if missing on caller
+    try {
+      const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
+      const gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
+
+      if (!normalizedData.gclid && gclid) normalizedData.gclid = gclid;
+      if (!normalizedData.utm_source && attribution.utm_source) normalizedData.utm_source = attribution.utm_source;
+      if (!normalizedData.utm_medium && attribution.utm_medium) normalizedData.utm_medium = attribution.utm_medium;
+      if (!normalizedData.utm_campaign && attribution.utm_campaign) normalizedData.utm_campaign = attribution.utm_campaign;
+      if (!normalizedData.landing_page && attribution.landing_page) normalizedData.landing_page = attribution.landing_page;
+      if (!normalizedData.page_path) normalizedData.page_path = window.location.pathname;
+      if (!normalizedData.quote_session_id) {
+        normalizedData.quote_session_id = sessionStorage.getItem('qt_quote_session_id') || '';
+      }
+    } catch (e) {}
+
+    // Mark as fired BEFORE fetch to prevent any retry/parallel double-write
+    try { sessionStorage.setItem(LEAD_DEDUP_FLAG, 'true'); } catch (e) {}
+
+    console.log('[QuoteTracking] sbsSubmitLead: posting', normalizedData);
+
+    try {
+      fetch('https://n8n.soundboxstore.com/webhook/quote-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          website: 'soundboxstore',
+          email: normalizedData.email || '',
+          first_name: normalizedData.first_name || '',
+          last_name: normalizedData.last_name || '',
+          company: normalizedData.company || '',
+          phone: normalizedData.phone || '',
+          country: normalizedData.country || '',
+          city: normalizedData.city || '',
+          postcode: normalizedData.postcode || '',
+          form_id: normalizedData.form_id || '',
+          gclid: normalizedData.gclid || '',
+          utm_source: normalizedData.utm_source || '',
+          utm_medium: normalizedData.utm_medium || '',
+          utm_campaign: normalizedData.utm_campaign || '',
+          landing_page: normalizedData.landing_page || '',
+          page_path: normalizedData.page_path || window.location.pathname,
+          referrer: document.referrer || '',
+          products: (Array.isArray(normalizedData.products) ? normalizedData.products : []).map(function(p) {
+            return {
+              product_name: p.product_name || p.title || p.name || '',
+              sku: p.sku || '',
+              variant: p.variant || p.variant_name || p.options || '',
+              quantity: p.quantity || p.qty || 1,
+              price: p.price || ''
+            };
+          }),
+          quote_session_id: normalizedData.quote_session_id || ''
+        }),
+        keepalive: true
+      }).catch(function() {});
+    } catch (e) {}
+
+    return true;
+  }
+
+  // Expose globally so form handlers (this file, cart-quote-modal.liquid,
+  // [request-quote-form].liquid, MerakiQuote plugin) can all call it.
+  window.sbsSubmitLead = sbsSubmitLead;
+
+  // ============================================
+  // UMAMI INTERCEPTION - delegates generate_lead to sbsSubmitLead
+  // ============================================
+  // Kept for backwards compatibility: older callers (incl. MerakiQuote plugin)
+  // that fire umami.track('generate_lead', ...) still end up writing the lead.
+  // When Umami is blocked/unloaded, the form handlers call sbsSubmitLead directly.
 
   (function interceptUmami() {
-    const SUBMIT_FLAG = 'qt_lead_submitted';
-
-    // Clear on every page load — page navigation resets submission state
-    // Without this, the flag persists across same-tab navigations and blocks re-submission
-    try { sessionStorage.removeItem(SUBMIT_FLAG); } catch (e) {}
-
     function waitForUmami() {
       if (typeof umami !== 'undefined' && umami.track) {
         installInterceptor();
@@ -174,127 +285,20 @@
       const originalTrack = umami.track.bind(umami);
 
       umami.track = function(eventName, data) {
-        // Intercept generate_lead events
-        const isLeadEvent = eventName === 'generate_lead';
-        if (!isLeadEvent) {
+        if (eventName !== 'generate_lead') {
           return originalTrack(eventName, data);
         }
 
-        // Check deduplication flag
-        try {
-          if (sessionStorage.getItem(SUBMIT_FLAG) === 'true') {
-            console.log('[QuoteTracking] Blocked duplicate lead event:', eventName);
-            return;
-          }
-        } catch (e) {}
+        // Delegate to sbsSubmitLead (handles dedup, email check, attribution, fetch)
+        sbsSubmitLead(data);
 
-        // Normalize data - convert customer.* prefix to flat keys
-        const normalizedData = {};
-        if (data && typeof data === 'object') {
-          Object.keys(data).forEach(function(key) {
-            const normalizedKey = key.replace(/^customer\./, '');
-            normalizedData[normalizedKey] = data[key];
-          });
-        }
-
-        // Ensure form_id exists
-        if (!normalizedData.form_id) {
-          normalizedData.form_id = 'unknown';
-        }
-
-        // Check if we have email
-        const hasEmail = normalizedData.email && normalizedData.email.trim().length > 0;
-
-        if (!hasEmail) {
-          // Try to extract email from visible forms
-          const emailField = document.querySelector([
-            '[role="dialog"] input[type="email"]',
-            '[role="dialog"] input[name*="email"]',
-            '.meraki-popup-wrapper input[type="email"]',
-            '#quote-form input[type="email"]',
-            '#cart-quote-form input[type="email"]'
-          ].join(', '));
-
-          if (emailField && emailField.value) {
-            normalizedData.email = emailField.value.trim();
-          }
-        }
-
-        // Block events without email
-        if (!normalizedData.email || normalizedData.email.trim().length === 0) {
-          console.log('[QuoteTracking] Blocked lead event - no email:', normalizedData);
-          return;
-        }
-
-        // Inject missing attribution data
-        try {
-          const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
-          const gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
-
-          if (!normalizedData.gclid && gclid) normalizedData.gclid = gclid;
-          if (!normalizedData.utm_source && attribution.utm_source) normalizedData.utm_source = attribution.utm_source;
-          if (!normalizedData.utm_medium && attribution.utm_medium) normalizedData.utm_medium = attribution.utm_medium;
-          if (!normalizedData.utm_campaign && attribution.utm_campaign) normalizedData.utm_campaign = attribution.utm_campaign;
-          if (!normalizedData.landing_page && attribution.landing_page) normalizedData.landing_page = attribution.landing_page;
-          if (!normalizedData.page_path) normalizedData.page_path = window.location.pathname;
-          if (!normalizedData.quote_session_id) {
-            normalizedData.quote_session_id = sessionStorage.getItem('qt_quote_session_id') || '';
-          }
-        } catch (e) {}
-
-        // Mark as fired to prevent duplicates
-        try {
-          sessionStorage.setItem(SUBMIT_FLAG, 'true');
-        } catch (e) {}
-
-        console.log('[QuoteTracking] Lead event passed validation:', eventName, normalizedData);
-
-        // Send to n8n webhook for lead capture
-        try {
-          fetch('https://n8n.soundboxstore.com/webhook/quote-submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              timestamp: new Date().toISOString(),
-              website: 'soundboxstore',
-              email: normalizedData.email || '',
-              first_name: normalizedData.first_name || '',
-              last_name: normalizedData.last_name || '',
-              company: normalizedData.company || '',
-              phone: normalizedData.phone || '',
-              country: normalizedData.country || '',
-              city: normalizedData.city || '',
-              postcode: normalizedData.postcode || '',
-              form_id: normalizedData.form_id || '',
-              gclid: normalizedData.gclid || '',
-              utm_source: normalizedData.utm_source || '',
-              utm_medium: normalizedData.utm_medium || '',
-              utm_campaign: normalizedData.utm_campaign || '',
-              landing_page: normalizedData.landing_page || '',
-              page_path: normalizedData.page_path || window.location.pathname,
-              referrer: document.referrer || '',
-              products: (Array.isArray(normalizedData.products) ? normalizedData.products : []).map(function(p) {
-                return {
-                  product_name: p.product_name || p.title || p.name || '',
-                  sku: p.sku || '',
-                  variant: p.variant || p.variant_name || p.options || '',
-                  quantity: p.quantity || p.qty || 1,
-                  price: p.price || ''
-                };
-              }),
-              quote_session_id: normalizedData.quote_session_id || ''
-            }),
-            keepalive: true
-          }).catch(function() {});
-        } catch (e) {}
-
-        return originalTrack(eventName, normalizedData);
+        // Also fire the original umami event for analytics
+        return originalTrack(eventName, data);
       };
 
       console.log('[QuoteTracking] Umami interceptor installed');
     }
 
-    // Start checking for umami
     waitForUmami();
   })();
 
