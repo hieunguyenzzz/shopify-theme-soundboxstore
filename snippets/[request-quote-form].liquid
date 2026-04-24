@@ -596,7 +596,16 @@ IT it /it-it' %}
           try { alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true'; } catch (e) {}
 
           if (!alreadyFired) {
-            // Umami tracking (passes through interceptor which validates + sets flag)
+            // Supabase lead write (always runs, independent of Umami)
+            try {
+              if (typeof window.sbsSubmitLead === 'function') {
+                window.sbsSubmitLead(customerData);
+              }
+            } catch (e) {
+              console.error('[HeaderQuoteForm] sbsSubmitLead error:', e);
+            }
+
+            // Umami analytics (best-effort, may be blocked by ad-blockers)
             try {
               if (typeof umami !== 'undefined') {
                 umami.track('generate_lead', customerData);

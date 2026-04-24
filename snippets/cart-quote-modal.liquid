@@ -960,7 +960,7 @@
       const SUBMIT_FLAG = 'qt_lead_submitted';
       const alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true';
 
-      if (typeof umami !== 'undefined' && !alreadyFired) {
+      if (!alreadyFired) {
         // Get attribution data from localStorage (captured by quote-tracking.liquid)
         let gclid = '';
         let utmSource = '';
@@ -1002,10 +1002,24 @@
             price: item.price || ''
           }))
         };
-        umami.track('generate_lead', customerData);
-        // Mark as fired AFTER umami.track to avoid interceptor blocking our own event
-        sessionStorage.setItem(SUBMIT_FLAG, 'true');
-        console.log('[CartQuoteModal] generate_lead fired with customer data:', customerData);
+
+        // Supabase lead write (always runs, independent of Umami).
+        // sbsSubmitLead sets the dedup flag internally.
+        try {
+          if (typeof window.sbsSubmitLead === 'function') {
+            window.sbsSubmitLead(customerData);
+          }
+        } catch (e) {
+          console.error('[CartQuoteModal] sbsSubmitLead error:', e);
+        }
+
+        // Umami analytics (best-effort, may be blocked by ad-blockers)
+        try {
+          if (typeof umami !== 'undefined') {
+            umami.track('generate_lead', customerData);
+            console.log('[CartQuoteModal] generate_lead fired with customer data:', customerData);
+          }
+        } catch (e) {}
 
         // dataLayer push for GTM (generate_lead event)
         try {
