@@ -1,0 +1,112 @@
+{%- comment -%}
+  Renders the inline "SoundBox Advantage" block for the
+  competitor-framery-main section.
+  Required parameter:
+    block — the block object (type: soundbox_advantage)
+{%- endcomment -%}
+
+{%- style -%}
+  .cfp-soundbox-advantage {
+    background: #f0f4f0;
+    padding: 4rem 0;
+  }
+  .cfp-soundbox-advantage__header {
+    margin: 0 auto 2.5rem;
+    max-width: 720px;
+    text-align: center;
+  }
+  .cfp-soundbox-advantage__title {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .cfp-soundbox-advantage__subheading {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #555;
+  }
+  .cfp-soundbox-advantage__subheading p { margin: 0; }
+  .cfp-soundbox-advantage__card {
+    background: #fff;
+    border: 2px solid #5c6b3a;
+    border-radius: 8px;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .cfp-soundbox-advantage__card-tagline {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    color: #5c6b3a;
+  }
+  .cfp-soundbox-advantage__card-title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    margin: 0 0 1.5rem;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .cfp-soundbox-advantage__benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+  .cfp-soundbox-advantage__benefit-item {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: #555;
+  }
+  .cfp-soundbox-advantage__benefit-icon {
+    font-weight: 700;
+    color: #5c6b3a;
+    flex-shrink: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .cfp-soundbox-advantage__benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .cfp-soundbox-advantage__card { padding: 1.75rem 1.5rem; }
+  }
+{%- endstyle -%}
+
+<section class="cfp-soundbox-advantage" {{ block.shopify_attributes }}>
+  <div class="comp-pw">
+    <div class="cfp-soundbox-advantage__header">
+      {% if block.settings.heading != blank %}
+        <h2 class="cfp-soundbox-advantage__title">{{ block.settings.heading }}</h2>
+      {% endif %}
+      {% if block.settings.subheading != blank %}
+        <div class="cfp-soundbox-advantage__subheading">{{ block.settings.subheading }}</div>
+      {% endif %}
+    </div>
+    <div class="cfp-soundbox-advantage__card">
+      {% if block.settings.card_tagline != blank %}
+        <div class="cfp-soundbox-advantage__card-tagline">{{ block.settings.card_tagline }}</div>
+      {% endif %}
+      {% if block.settings.card_title != blank %}
+        <h3 class="cfp-soundbox-advantage__card-title">{{ block.settings.card_title }}</h3>
+      {% endif %}
+      {% assign benefits = block.settings.benefits | newline_to_br | split: '<br />' %}
+      {% if benefits.size > 0 %}
+        <div class="cfp-soundbox-advantage__benefits-grid">
+          {% for benefit in benefits %}
+            {% assign b = benefit | strip %}
+            {% if b != blank %}
+              <div class="cfp-soundbox-advantage__benefit-item">
+                <span class="cfp-soundbox-advantage__benefit-icon">→</span>
+                <div>{{ b }}</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
