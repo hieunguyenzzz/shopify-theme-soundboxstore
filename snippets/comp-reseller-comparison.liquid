@@ -1,0 +1,146 @@
+{%- comment -%}
+  Renders the inline "Reseller Comparison" block for the
+  competitor-framery-main section.
+  Required parameter:
+    block — the block object (type: reseller_comparison)
+{%- endcomment -%}
+
+{%- style -%}
+  .cfp-reseller-comparison {
+    background: #f7f8f5;
+    padding: 4rem 0;
+  }
+  .cfp-reseller-comparison__header {
+    margin: 0 auto 2.5rem;
+    max-width: 720px;
+    text-align: center;
+  }
+  .cfp-reseller-comparison__title {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .cfp-reseller-comparison__subheading {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #555;
+  }
+  .cfp-reseller-comparison__subheading p { margin: 0; }
+  .cfp-reseller-comparison__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .cfp-reseller-comparison__card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .cfp-reseller-comparison__card--soundbox { border: 2px solid #5c6b3a; }
+  .cfp-reseller-comparison__card--competitor { border: 1px solid #e8e8e8; }
+  .cfp-reseller-comparison__tagline {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    color: #5c6b3a;
+  }
+  .cfp-reseller-comparison__card--competitor .cfp-reseller-comparison__tagline { color: #666; }
+  .cfp-reseller-comparison__card-title {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .cfp-reseller-comparison__description {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 0 0 1.25rem;
+    color: #555;
+  }
+  .cfp-reseller-comparison__description p { margin: 0; }
+  .cfp-reseller-comparison__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: auto;
+  }
+  .cfp-reseller-comparison__feature-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.85rem 0;
+    border-top: 1px solid #e8e8e8;
+    color: #333;
+    line-height: 1.5;
+  }
+  @media screen and (max-width: 768px) {
+    .cfp-reseller-comparison__grid { grid-template-columns: 1fr; gap: 1rem; }
+  }
+{%- endstyle -%}
+
+<section class="cfp-reseller-comparison" {{ block.shopify_attributes }}>
+  <div class="comp-pw">
+    <div class="cfp-reseller-comparison__header">
+      {% if block.settings.heading != blank %}
+        <h2 class="cfp-reseller-comparison__title">{{ block.settings.heading }}</h2>
+      {% endif %}
+      {% if block.settings.subheading != blank %}
+        <div class="cfp-reseller-comparison__subheading">{{ block.settings.subheading }}</div>
+      {% endif %}
+    </div>
+    <div class="cfp-reseller-comparison__grid">
+      <div class="cfp-reseller-comparison__card cfp-reseller-comparison__card--soundbox">
+        {% if block.settings.sb_tagline != blank %}
+          <div class="cfp-reseller-comparison__tagline">{{ block.settings.sb_tagline }}</div>
+        {% endif %}
+        {% if block.settings.sb_title != blank %}
+          <h3 class="cfp-reseller-comparison__card-title">{{ block.settings.sb_title }}</h3>
+        {% endif %}
+        {% if block.settings.sb_description != blank %}
+          <div class="cfp-reseller-comparison__description">{{ block.settings.sb_description }}</div>
+        {% endif %}
+        {% assign sb_features = block.settings.sb_features | newline_to_br | split: '<br />' %}
+        {% if sb_features.size > 0 %}
+          <ul class="cfp-reseller-comparison__features">
+            {% for feature in sb_features %}
+              {% assign f = feature | strip %}
+              {% if f != blank %}
+                <li class="cfp-reseller-comparison__feature-item">{{ f }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="cfp-reseller-comparison__card cfp-reseller-comparison__card--competitor">
+        {% if block.settings.comp_tagline != blank %}
+          <div class="cfp-reseller-comparison__tagline">{{ block.settings.comp_tagline }}</div>
+        {% endif %}
+        {% if block.settings.comp_title != blank %}
+          <h3 class="cfp-reseller-comparison__card-title">{{ block.settings.comp_title }}</h3>
+        {% endif %}
+        {% if block.settings.comp_description != blank %}
+          <div class="cfp-reseller-comparison__description">{{ block.settings.comp_description }}</div>
+        {% endif %}
+        {% assign comp_features = block.settings.comp_features | newline_to_br | split: '<br />' %}
+        {% if comp_features.size > 0 %}
+          <ul class="cfp-reseller-comparison__features">
+            {% for feature in comp_features %}
+              {% assign f = feature | strip %}
+              {% if f != blank %}
+                <li class="cfp-reseller-comparison__feature-item">{{ f }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
