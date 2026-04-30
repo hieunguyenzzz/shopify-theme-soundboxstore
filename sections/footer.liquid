@@ -208,7 +208,33 @@
                 <span class="visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
               </a>
             {%- endif -%}
-            {% include 'social-sharing' %}
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.facebook.com/profile.php?id=61570253993234"
+              class="social-sharing__link"
+              title="{{ 'general.social.alt_text.share_on_facebook' | t }}"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="icon icon-facebook"
+                stroke="white"
+                fill="white"
+                stroke-width="0"
+                viewBox="0 0 320 512"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+              </svg>
+              <span class="social-sharing__title" aria-hidden="true">
+                {{- 'general.social.share_on_facebook' | t -}}
+              </span>
+              <span class="visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+            </a>
           </div>
         </div>
       </div>
