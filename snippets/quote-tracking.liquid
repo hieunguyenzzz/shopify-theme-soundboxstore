@@ -150,12 +150,13 @@
   }
 
   // ============================================
-  // LEAD SUBMIT — writes to Supabase via n8n webhook
+  // LEAD DEDUP SHIM (formerly Supabase writer — SBS-116 Phase B)
   // ============================================
-  // Exposed as window.sbsSubmitLead so form handlers can call it directly.
-  // Decoupled from Umami: ad-blockers that block umami.mobelaris.com used to
-  // kill the Supabase write path (see SBS-106). This function now runs even
-  // when Umami is blocked, unloaded, or hasn't arrived yet.
+  // Lead writes to Supabase / Brevo / Mattermost are now performed by the
+  // n8n form-to-zoho workflow (tPGOG4gv1Gv0o0a7) for ALL submission paths,
+  // unifying browser and plugin-server flows behind a single fan-out.
+  // This function is kept as a session-dedup shim so the umami interceptor
+  // and any direct callers continue to receive the same true/false signal.
 
   const LEAD_DEDUP_FLAG = 'qt_lead_submitted';
 
@@ -163,101 +164,14 @@
   try { sessionStorage.removeItem(LEAD_DEDUP_FLAG); } catch (e) {}
 
   function sbsSubmitLead(data) {
-    // Normalize data - convert customer.* prefix to flat keys
-    const normalizedData = {};
-    if (data && typeof data === 'object') {
-      Object.keys(data).forEach(function(key) {
-        const normalizedKey = key.replace(/^customer\./, '');
-        normalizedData[normalizedKey] = data[key];
-      });
-    }
-
-    // Dedup: block if this session already submitted
     try {
-      if (sessionStorage.getItem(LEAD_DEDUP_FLAG) === 'true') {
-        console.log('[QuoteTracking] sbsSubmitLead: blocked duplicate');
-        return false;
-      }
+      if (sessionStorage.getItem(LEAD_DEDUP_FLAG) === 'true') return false;
     } catch (e) {}
 
-    if (!normalizedData.form_id) normalizedData.form_id = 'unknown';
+    const email = (data && (data.email || data['customer.email'])) || '';
+    if (!email || String(email).trim().length === 0) return false;
 
-    // Email is required — try DOM fallback if missing
-    const hasEmail = normalizedData.email && normalizedData.email.trim().length > 0;
-    if (!hasEmail) {
-      const emailField = document.querySelector([
-        '[role="dialog"] input[type="email"]',
-        '[role="dialog"] input[name*="email"]',
-        '.meraki-popup-wrapper input[type="email"]',
-        '#quote-form input[type="email"]',
-        '#cart-quote-form input[type="email"]'
-      ].join(', '));
-      if (emailField && emailField.value) normalizedData.email = emailField.value.trim();
-    }
-    if (!normalizedData.email || normalizedData.email.trim().length === 0) {
-      console.log('[QuoteTracking] sbsSubmitLead: no email, skipping', normalizedData);
-      return false;
-    }
-
-    // Inject attribution data from storage if missing on caller
-    try {
-      const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
-      const gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
-
-      if (!normalizedData.gclid && gclid) normalizedData.gclid = gclid;
-      if (!normalizedData.utm_source && attribution.utm_source) normalizedData.utm_source = attribution.utm_source;
-      if (!normalizedData.utm_medium && attribution.utm_medium) normalizedData.utm_medium = attribution.utm_medium;
-      if (!normalizedData.utm_campaign && attribution.utm_campaign) normalizedData.utm_campaign = attribution.utm_campaign;
-      if (!normalizedData.landing_page && attribution.landing_page) normalizedData.landing_page = attribution.landing_page;
-      if (!normalizedData.page_path) normalizedData.page_path = window.location.pathname;
-      if (!normalizedData.quote_session_id) {
-        normalizedData.quote_session_id = sessionStorage.getItem('qt_quote_session_id') || '';
-      }
-    } catch (e) {}
-
-    // Mark as fired BEFORE fetch to prevent any retry/parallel double-write
     try { sessionStorage.setItem(LEAD_DEDUP_FLAG, 'true'); } catch (e) {}
-
-    console.log('[QuoteTracking] sbsSubmitLead: posting', normalizedData);
-
-    try {
-      fetch('https://n8n.soundboxstore.com/webhook/quote-submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          website: 'soundboxstore',
-          email: normalizedData.email || '',
-          first_name: normalizedData.first_name || '',
-          last_name: normalizedData.last_name || '',
-          company: normalizedData.company || '',
-          phone: normalizedData.phone || '',
-          country: normalizedData.country || '',
-          city: normalizedData.city || '',
-          postcode: normalizedData.postcode || '',
-          form_id: normalizedData.form_id || '',
-          gclid: normalizedData.gclid || '',
-          utm_source: normalizedData.utm_source || '',
-          utm_medium: normalizedData.utm_medium || '',
-          utm_campaign: normalizedData.utm_campaign || '',
-          landing_page: normalizedData.landing_page || '',
-          page_path: normalizedData.page_path || window.location.pathname,
-          referrer: document.referrer || '',
-          products: (Array.isArray(normalizedData.products) ? normalizedData.products : []).map(function(p) {
-            return {
-              product_name: p.product_name || p.title || p.name || '',
-              sku: p.sku || '',
-              variant: p.variant || p.variant_name || p.options || '',
-              quantity: p.quantity || p.qty || 1,
-              price: p.price || ''
-            };
-          }),
-          quote_session_id: normalizedData.quote_session_id || ''
-        }),
-        keepalive: true
-      }).catch(function() {});
-    } catch (e) {}
-
     return true;
   }
 
