@@ -476,6 +476,28 @@ IT it /it-it' %}
       // Gate to block form.submit() calls from external scripts when validation fails
       let productValidationPassed = false;
 
+      // localStorage dedup — survives page navigation (back-button resubmit, refresh)
+      // sessionStorage flags are cleared on page load so they can't catch this case.
+      const DEDUP_KEY = 'sbs_header_quote_submitted';
+      const DEDUP_WINDOW_MS = 60 * 1000;
+
+      function isDuplicateSubmit(email) {
+        if (!email) return false;
+        try {
+          const raw = localStorage.getItem(DEDUP_KEY);
+          if (!raw) return false;
+          const { email: prevEmail, ts } = JSON.parse(raw);
+          return prevEmail === email && (Date.now() - ts) < DEDUP_WINDOW_MS;
+        } catch (e) { return false; }
+      }
+
+      function markSubmitted(email) {
+        if (!email) return;
+        try {
+          localStorage.setItem(DEDUP_KEY, JSON.stringify({ email, ts: Date.now() }));
+        } catch (e) {}
+      }
+
       function logSubmit(event) {
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -492,6 +514,25 @@ IT it /it-it' %}
         }
         productValidationPassed = true;
         if (productsError) productsError.style.display = 'none';
+
+        // Disable submit button to prevent rapid double-click on the same page
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn && !submitBtn.disabled) {
+          submitBtn.disabled = true;
+          submitBtn.dataset.origText = submitBtn.textContent.trim();
+          submitBtn.textContent = 'Submitting...';
+        }
+
+        const emailField = form.elements['contact[email]'];
+        const submitterEmail = ((emailField && emailField.value) || '').trim().toLowerCase();
+
+        if (isDuplicateSubmit(submitterEmail)) {
+          console.warn('[QuoteForm] Duplicate submit suppressed for', submitterEmail);
+          // Still navigate to thank page so user gets confirmation; skip side-effects.
+          event.target.submit();
+          return;
+        }
+        markSubmitted(submitterEmail);
 
         try {
           console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
