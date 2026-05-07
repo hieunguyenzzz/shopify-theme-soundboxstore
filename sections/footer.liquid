@@ -2,6 +2,10 @@
   .site-footer .footer__menu li a.specBtn{
     text-align:left
   }
+  .site-footer .footer__section.sub-footer .col {
+    max-width: unset!important;
+    width: unset!important;
+  }
 </style>
 {%- if section.settings.show_newsletter -%}
   <div class="footer__section footer__section--border">
@@ -103,7 +107,7 @@
     <div class="page-width">
       <div class="flexbox" style="gap:1em;">
         {%- if section.settings.show_copyright -%}
-          <div class="col left-col" style="width:auto;flex:1">
+          <div class="col left-col" style="width:auto;">
             {% if localization.country.iso_code == 'GB' %}
               <p class="copyright-text" style="color:#ffffff; opacity: 1;">
                 {{ section.settings.copyright_text_uk }}
@@ -117,6 +121,11 @@
             {% endif %}
           </div>
         {%- endif -%}
+        <div class="col center-col" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <p class="distributor-text" style="margin:0;color:#ffffff;font-size:14px;letter-spacing:0.4px;opacity:0.9;">
+            {{ 'layout.footer.distributor_text' | t }}
+          </p>
+        </div>
         <div class="col right-col footer-social-icon " style="padding:0 80px">
           <div class="icon-wrap " style="display:flex">
             {%- if settings.social_instagram_link -%}
