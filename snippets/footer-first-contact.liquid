@@ -215,9 +215,17 @@
               {% endunless %}
 
               {% if block.settings.email != blank %}
+                {%- comment -%}
+                  HTML-entity-encode @ and . so Cloudflare's Email Address Obfuscation
+                  doesn't rewrite the mailto link to /cdn-cgi/l/email-protection (which
+                  returns 404 for crawlers without JS, breaking 79 internal links per
+                  the SEMrush audit). Browsers decode entities transparently, so the
+                  visible email and clickable mailto behave identically to before.
+                {%- endcomment -%}
+                {%- assign email_obfuscated = block.settings.email | replace: '@', '&#64;' | replace: '.', '&#46;' -%}
                 <li class="email">
-                  <a href="mailto:{{ block.settings.email }}"
-                    ><strong>{{ 'contact.form.email' | t }}: </strong>{{ block.settings.email -}}
+                  <a href="mailto:{{ email_obfuscated }}"
+                    ><strong>{{ 'contact.form.email' | t }}: </strong>{{ email_obfuscated -}}
                   </a>
                 </li>
               {% endif %}
