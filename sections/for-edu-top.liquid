@@ -212,6 +212,9 @@
           console.log(key, value);
           data[key] = value;
         });
+        // SBS-11 Phase 2: shared lead_id for Supabase row id + GTM dedup.
+        var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
+        if (sbsLeadId) data.lead_id = sbsLeadId;
         fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
           headers: {
             Accept: 'application/json',
