@@ -115,7 +115,12 @@
       'get-specs-form':    'Get Specs Form',
     };
 
+    // SBS-11 Phase 2: include transaction_id so GTM tag 88 dedups with
+    // Workflow D's Data Manager server-side push for the same submission.
+    const txnId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
+
     const payload = {
+      'transaction_id': txnId,
       'customer_email': customer.email || '',
       'customer_phone': customer.phone || '',
       'customer_country': customer.country || '',
@@ -178,6 +183,29 @@
   // Expose globally so form handlers (this file, cart-quote-modal.liquid,
   // [request-quote-form].liquid, MerakiQuote plugin) can all call it.
   window.sbsSubmitLead = sbsSubmitLead;
+
+  // SBS-11 Phase 2: mint a UUID per lead submission. Same UUID flows to the
+  // n8n form-to-zoho webhook (becomes Supabase leads.id) and to the GTM
+  // dataLayer as transaction_id, so the GTM tag 88 client-side conversion
+  // and the Workflow D server-side Data Manager push dedup at Google Ads.
+  // Memoized within a submission so the form-specific fetch and the generic
+  // pushGenerateLead capture listener observe the same UUID.
+  function generateLeadUuid() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+    } catch (e) {}
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0;
+      var v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+  window.sbsMintLeadId = function () {
+    if (!window.__sbsLeadId) window.__sbsLeadId = generateLeadUuid();
+    return window.__sbsLeadId;
+  };
 
   // ============================================
   // UMAMI INTERCEPTION - delegates generate_lead to sbsSubmitLead

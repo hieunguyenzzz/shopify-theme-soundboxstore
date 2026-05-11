@@ -571,6 +571,10 @@ IT it /it-it' %}
           if (form.elements['contact[products]']) {
             form.elements['contact[products]'].value = stringproducts;
           }
+          // SBS-11 Phase 2: mint lead_id once for both server (Supabase row id +
+          // Workflow D transactionId) and client (GTM dataLayer transaction_id).
+          var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
+          if (sbsLeadId) data.lead_id = sbsLeadId;
           fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
             headers: {
               Accept: 'application/json',
@@ -661,6 +665,9 @@ IT it /it-it' %}
               if (typeof window !== 'undefined' && window.dataLayer) {
                 window.dataLayer.push({
                   'event': 'generate_lead',
+                  // SBS-11 Phase 2: transaction_id dedups GTM tag 88 fire with
+                  // Workflow D server-side Data Manager push (same UUID).
+                  'transaction_id': sbsLeadId || '',
                   'customer_email': customerData.email || '',
                   'customer_phone': customerData.phone || '',
                   'customer_country': customerData.country || '',
