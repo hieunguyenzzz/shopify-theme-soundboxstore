@@ -246,6 +246,7 @@ window.dataLayer = window.dataLayer || [];
     </script>
 
     {{ content_for_header }}
+    {% render 'hreflang-en-gb' %}
     <script src="{{ 'jquery.min.js' | asset_url }}"></script>
     <script src="{{ 'slick.js' | asset_url }}"></script>
     <script src="{{ 'vendor-scripts-v1.js' | asset_url | split: '?' | first }}" defer="defer"></script>
