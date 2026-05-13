@@ -8,6 +8,13 @@
   [country="DE"] .address_2,[country="AT"] .address_2,[country="CH"] .address_2{
         display:none
   }
+  .site-footer .footer-contact-dec p {
+    margin-bottom: 10px!important;
+  }
+
+  .footer-group-affiliation {
+    margin-bottom: 10px!important;
+  }
 </style>
 {% if block.type == 'footer_contact' %}
   <div class="footer-contact">
@@ -21,6 +28,9 @@
             {{ block.settings['contact-sub-headiing'] }}
           </div>
         {% endif %}
+
+        <div class="footer-group-affiliation"> {{ 'layout.footer.footer_group_affiliation' | t }}</div>
+
         {% if block.settings['address-heading1'] != blank
           or block.settings.address1 != blank
           or block.settings['address-heading2'] != blank
