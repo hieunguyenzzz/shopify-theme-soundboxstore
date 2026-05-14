@@ -2,9 +2,24 @@
 This file has been modified by the Yoast SEO for Shopify app.
 You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
 {%- endcomment -%}
+
+<style>
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  @media (min-width: 769px) {
+    .faq-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+    }
+  }
+</style>
+
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
 
-<div class="page-width page-width--narrow">
+<div class="page-width">
   {%- if section.settings.title != blank -%}
     <header class="section-header text-center">
       <h2 class="section-header__title title-font">
@@ -14,6 +29,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   {%- endif -%}
 
   {%- if section.blocks.size > 0 -%}
+    <div class="faq-grid">
     {%- for block in section.blocks -%}
       <div {{ block.shopify_attributes }}>
         {% case block.type %}
@@ -64,6 +80,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
         {% endcase %}
       </div>
     {%- endfor -%}
+    </div>
   {%- endif -%}
 
   {%- if section.blocks.size == 0 -%}
