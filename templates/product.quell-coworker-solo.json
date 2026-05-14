@@ -86,7 +86,7 @@
           "type": "text",
           "settings": {
             "enlarge_text": true,
-            "text": "<p>Looking for a solution to noisy office environments? Look no further than our top of the line acoustic controlled phone pods, manufactured to the highest standard with aviation-grade aluminum and thick glass door and back panel, similar to that of train carriage glass..</p><p>At our company, we understand the importance of privacy in the workplace, especially when it comes to confidential conversations. Our acoustic phone pods are designed to provide a private space for personal or private commercial conversations, making them ideal for sales, financial departments, and stakeholder calls.</p><p>Our booths are available in a range of finishes, ensuring that they will blend seamlessly into any office environment. And with Bluetooth connectivity speaker and a singular motor upgraded turbo fan ventilation system, our booths are optimised for comfort and productivity.</p><p>We believe that our customers deserve the very best, which is why we only use the highest quality materials and technology in our products. Our acoustic controlled phone booths are no exception. They are designed to provide a private, distraction-free environment, allowing employees to focus on their work and increase productivity.</p><p>If you're looking for a solution to noisy office environments and want to provide your employees with a private space for important conversations, look no further than our acoustic controlled phone booths. Contact us today to learn more about our products and how they can benefit your workplace.</p>"
+            "text": "<p>Looking for a solution to noisy office environments? Look no further than our top of the line acoustic controlled phone pods, manufactured to the highest standard with aviation-grade aluminum and thick glass door and back panel, similar to that of train carriage glass..</p><p>At our company, we understand the importance of privacy in the workplace, especially when it comes to confidential conversations. Our acoustic phone pods are designed to provide a private space for personal or private commercial conversations, making them ideal for sales, financial departments, and stakeholder calls.</p><p>Our booths are available in a range of finishes, ensuring that they will blend seamlessly into any office environment. And with Bluetooth connectivity speaker and a singular motor upgraded turbo fan ventilation system, our booths are optimised for comfort and productivity.</p><p>We believe that our customers deserve the very best, which is why we only use the highest quality materials and technology in our products. Our acoustic controlled phone booths are no exception. They are designed to provide a private, distraction-free environment, allowing employees to focus on their work and increase productivity.</p><p>If you're looking for a solution to noisy office environments and want to provide your employees with a private space for important conversations, look no further than our acoustic controlled phone booths. Contact us today to learn more about our products and how they can benefit your workplace.</p>"
           }
         }
       },
@@ -151,7 +151,7 @@
           "type": "features_list_right",
           "settings": {
             "title": "Safety",
-            "description": "<p><strong>Emergency Safety Hammer<br/></strong>Included For Internal Fitting<br/><strong>Fire Rated Foam<br/></strong>UK Fire foam where required.<strong> <br/>Sprinkler / Mains Fire Alarm<br/></strong>Laser cut and usable if required<strong> <br/>Formaldehyde Free<br/></strong>No wood or glue<strong><br/></strong></p>"
+            "description": "<p><strong>Emergency Safety Hammer<br/></strong>Included For Internal Fitting<br/><strong>Fire Rated Foam<br/></strong>UK Fire foam where required.<strong> <br/>Sprinkler / Mains Fire Alarm<br/></strong>Laser cut and usable if required<strong> <br/>Formaldehyde Free<br/></strong>No wood or glue<strong><br/></strong></p>"
           }
         },
         "aade32d9-6806-430b-b9c3-07623b95803d": {
@@ -165,7 +165,7 @@
           "type": "features_list_right",
           "settings": {
             "title": "Pod Placement",
-            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It's also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you're unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
           }
         },
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23": {
@@ -388,7 +388,7 @@
         "image": "shopify://shop_images/Why-Soundbox-13.jpg",
         "mobile_image": "shopify://shop_images/Why-Soundbox-30.jpg",
         "perameter_text": "<li>Focus</li> <li> Errors </li> <li> Stress </li> <li> Efficiency </li> <li> Fatigue </li>",
-        "graphtitle": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
+        "graphtitle": "<p>Sykes, David M., PhD., 2004, \"Productivity: How Acoustics Affect Workers' Performance in Open Areas\"</p>"
       }
     },
     "acoustic-environment-next": {
@@ -450,7 +450,7 @@
         "mobile-bg_image": "shopify://shop_images/Background-Mobile-SRP-Quell-CoWorker-Tulip.jpg",
         "heading": "A Comfort Cocoon",
         "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.</p>",
-        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
+        "subheading2": "<p>Sykes, David M., PhD., 2004, \"Productivity: How Acoustics Affect Workers' Performance in Open Areas\"</p>"
       }
     },
     "logo-list": {
@@ -699,6 +699,25 @@
       ],
       "settings": {}
     },
+    "d860300d-7c49-4055-87c4-01913a46c1c6": {
+      "type": "faq",
+      "blocks": {
+        "question_gCDgFE": {
+          "type": "question",
+          "repeater": "{{ product.metafields.custom.faqs.value }}",
+          "settings": {
+            "title": "{{ block.repeater.question.value }}",
+            "text": "{{ block.repeater.text | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "question_gCDgFE"
+      ],
+      "settings": {
+        "title": "FAQs"
+      }
+    },
     "16574290364e705c32": {
       "type": "Divider",
       "settings": {
@@ -726,6 +745,7 @@
     "1657429069e84bffe7",
     "1651488261633e1eab",
     "1651508688dadacecf",
+    "d860300d-7c49-4055-87c4-01913a46c1c6",
     "16574290364e705c32"
   ]
 }
