@@ -1,26 +1,86 @@
-{%- comment -%} DEBUG VERSION - tests section inclusion {%- endcomment -%}
-<section class="product-faqs-metafield-debug" style="padding:40px;background:#ffeb3b;border:4px solid red;text-align:center;">
-  <h2 style="font-size:24px;font-weight:bold">FAQ SECTION DEBUG MARKER</h2>
-  <p>If you see this, the section IS being included by templates/product.json.</p>
-  <p>Product handle: {{ product.handle }}</p>
-  {%- if product.metafields.custom.faqs == blank -%}
-    <p>Metafield is BLANK</p>
-  {%- else -%}
-    <p>Metafield is SET</p>
-    <p>faqs metafield type: {{ product.metafields.custom.faqs.type }}</p>
-    {%- assign faqs = product.metafields.custom.faqs.value -%}
-    <p>faqs.value size: {{ faqs.size }}</p>
-    {%- if faqs.size > 0 -%}
-      <p>First faq id: {{ faqs.first.id }}</p>
-      <p>First faq question: {{ faqs.first.question }}</p>
-      <p>First faq question.value: {{ faqs.first.question.value }}</p>
+{%- comment -%}
+  Product FAQs from metafield
+  Reads product.metafields.custom.faqs (list.metaobject_reference of type 'faqs')
+  Renders accordion + FAQPage JSON-LD for AEO/SEO
+  Created via Claude MCP on 2026-05-14 (SBS-38 fix)
+{%- endcomment -%}
+
+{%- assign faqs = product.metafields.custom.faqs.value -%}
+{%- if faqs != blank and faqs.size > 0 -%}
+<section class="product-faqs-metafield index-section">
+  <div class="page-width page-width--narrow">
+    {%- if section.settings.heading != blank -%}
+      <header class="section-header text-center">
+        <h2 class="section-header__title title-font">{{ section.settings.heading | escape }}</h2>
+      </header>
     {%- endif -%}
-  {%- endif -%}
+
+    <div class="product-faqs-metafield__list">
+      {%- for faq in faqs -%}
+        {%- if faq.question != blank -%}
+          {%- assign faq_id = faq.id | replace: 'gid://shopify/Metaobject/', '' -%}
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              type="button"
+              class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
+              aria-controls="FAQ-mf-content-{{ faq_id }}"
+              aria-expanded="false"
+            >
+              <span class="collapsible-trigger__layout">
+                <span style="padding-right:50px">
+                  <span itemprop="name">{{ faq.question }}</span>
+                </span>
+                {%- render 'collapsible-icons' -%}
+              </span>
+            </button>
+            <div
+              id="FAQ-mf-content-{{ faq_id }}"
+              class="collapsible-content collapsible-content--all"
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <div class="collapsible-content__inner rte" itemprop="text">
+                {{ faq.text }}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- assign first_emitted = false -%}
+    {%- for faq in faqs -%}
+      {%- if faq.question != blank -%}
+        {%- if first_emitted -%},{%- endif -%}
+        {
+          "@type": "Question",
+          "name": {{ faq.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ faq.text | strip_html | strip_newlines | json }}
+          }
+        }
+        {%- assign first_emitted = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Product FAQs (metafield)",
+  "tag": "section",
+  "class": "section-product-faqs-metafield",
   "settings": [
     {
       "type": "text",
