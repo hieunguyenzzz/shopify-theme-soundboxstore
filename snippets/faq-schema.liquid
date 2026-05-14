@@ -1,0 +1,27 @@
+{%- comment -%}
+  FAQ schema — emits JSON-LD FAQPage from accordion blocks.
+  Usage: {% render 'faq-schema', blocks: section.blocks %}
+  Pulls directly from the same blocks rendered to the page, so any
+  edit in the theme editor automatically updates the structured data.
+  Output is wrapped in a script tag and is safe to render multiple times
+  (only emits if at least one valid Q/A pair is present).
+{%- endcomment -%}
+{%- capture faq_items -%}
+  {%- assign separator = '' -%}
+  {%- for block in blocks -%}
+    {%- if block.type == 'accordion-block' -%}
+      {%- assign q = block.settings.accordion-title | strip | strip_html -%}
+      {%- assign a = block.settings.accordion-content | strip_html | strip_newlines | strip -%}
+      {%- if q != blank and a != blank -%}
+{{ separator }}{"@type":"Question","name":{{ q | json }},"acceptedAnswer":{"@type":"Answer","text":{{ a | json }}}}
+        {%- assign separator = ',' -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign faq_items = faq_items | strip -%}
+{%- if faq_items != blank -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ faq_items }}]}
+</script>
+{%- endif -%}
