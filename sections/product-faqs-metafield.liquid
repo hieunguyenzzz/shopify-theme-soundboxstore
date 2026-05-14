@@ -1,0 +1,84 @@
+{%- comment -%}
+  Product FAQs (from custom.faqs metafield)
+  Renders accordion + FAQPage JSON-LD for AEO/SEO.
+  Source: product.metafields.custom.faqs (list.metaobject_reference -> faqs type)
+{%- endcomment -%}
+
+{%- assign faqs = product.metafields.custom.faqs.value -%}
+
+{%- if faqs.size > 0 -%}
+  <div class="page-width page-width--narrow product-faqs-metafield-wrap">
+    {%- if section.settings.heading != blank -%}
+      <header class="section-header text-center">
+        <h2 class="section-header__title title-font">{{ section.settings.heading | escape }}</h2>
+      </header>
+    {%- endif -%}
+
+    <div class="product-faqs-metafield">
+      {%- for faq in faqs -%}
+        {%- assign faq_uid = faq.id | replace: 'gid://shopify/Metaobject/', '' -%}
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <button
+            type="button"
+            class="label collapsible-trigger collapsible-trigger-btn collapsible-trigger-btn--borders collapsible--auto-height"
+            aria-controls="FAQ-meta-content-{{ faq_uid }}"
+            aria-expanded="false"
+          >
+            <span class="collapsible-trigger__layout">
+              <span style="padding-right:50px">
+                <span itemprop="name">{{ faq.question }}</span>
+              </span>
+              {%- render 'collapsible-icons' -%}
+            </span>
+          </button>
+          <div
+            id="FAQ-meta-content-{{ faq_uid }}"
+            class="collapsible-content collapsible-content--all"
+            itemscope
+            itemprop="acceptedAnswer"
+            itemtype="https://schema.org/Answer"
+          >
+            <div class="collapsible-content__inner rte" itemprop="text">
+              {{ faq.text }}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for faq in faqs -%}
+        {
+          "@type": "Question",
+          "name": {{ faq.question | json }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ faq.text | strip_html | strip_newlines | json }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product FAQs (Metafield)",
+  "tag": "section",
+  "class": "index-section index-section--faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FAQs"
+    }
+  ]
+}
+{% endschema %}
