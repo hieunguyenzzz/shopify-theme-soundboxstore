@@ -15,6 +15,12 @@ You can learn more about this (and learn how to cleanly revert these changes) at
       column-gap: 2rem;
     }
   }
+  .faq-grid .collapsible-trigger .h2.title-font {
+    display: inline-block;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+  }
 </style>
 
 {%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
@@ -60,7 +66,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
               >
                 <span class="collapsible-trigger__layout">
                   <span style="padding-right:50px">
-                    <span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %}>{{ block.settings.title }}</span>
+                    <span {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} class="h2 title-font">{{ block.settings.title }}</span>
                   </span>
                   {%- render 'collapsible-icons' -%}
                 </span>
