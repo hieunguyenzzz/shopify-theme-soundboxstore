@@ -200,7 +200,7 @@
           "type": "features_list_right",
           "settings": {
             "title": "Safety",
-            "description": "<p><strong>Emergency Safety Hammer<br/></strong>Included For Internal Fitting<br/><strong>Fire Rated Foam<br/></strong>UK Fire foam where required.<strong> <br/>Sprinkler / Mains Fire Alarm<br/></strong>Laser cut and usable if required<strong> <br/>Formaldehyde Free<br/></strong>No wood or glue<strong><br/></strong></p>"
+            "description": "<p><strong>Emergency Safety Hammer<br/></strong>Included For Internal Fitting<br/><strong>Fire Rated Foam<br/></strong>UK Fire foam where required.<strong> <br/>Sprinkler / Mains Fire Alarm<br/></strong>Laser cut and usable if required<strong> <br/>Formaldehyde Free<br/></strong>No wood or glue<strong><br/></strong></p>"
           }
         },
         "aade32d9-6806-430b-b9c3-07623b95803d": {
@@ -214,7 +214,7 @@
           "type": "features_list_right",
           "settings": {
             "title": "Pod Placement",
-            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It’s also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you’re unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
+            "description": "<p>The placement of an acoustic pod can make a big difference to how well it performs. In spaces with high ceilings and large windows, positioning pods near a wall helps reduce echo.</p><p>It's also important to leave enough space around the pod for proper airflow, and adding soft furnishings or plants nearby can further improve acoustics.</p><p>If you're unsure where to place your pod, feel free to get in touch—our team will be happy to help you find the best spot.</p>"
           }
         },
         "c21a0fde-facf-4d41-9329-1ea7cbfdac23": {
@@ -472,7 +472,7 @@
         "image": "shopify://shop_images/Why-Soundbox-13.jpg",
         "mobile_image": "shopify://shop_images/Why-Soundbox-30.jpg",
         "perameter_text": "<li>Focus</li> <li> Errors </li> <li> Stress </li> <li> Efficiency </li> <li> Fatigue </li>",
-        "graphtitle": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
+        "graphtitle": "<p>Sykes, David M., PhD., 2004, \"Productivity: How Acoustics Affect Workers' Performance in Open Areas\"</p>"
       }
     },
     "subscribe_follow_EkDtmh": {
@@ -568,7 +568,7 @@
         "mobile-bg_image": "shopify://shop_images/Background-SR-Quell-Flex-Tulip-Mobile.jpg",
         "heading": "A Comfort Cocoon",
         "subheading": "<p>Acoustics-controlled environments develop motivation, well-being, mindfulness, productivity, and focus.</p>",
-        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>"
+        "subheading2": "<p>Sykes, David M., PhD., 2004, \"Productivity: How Acoustics Affect Workers' Performance in Open Areas\"</p>"
       }
     },
     "logo-list": {
@@ -844,56 +844,17 @@
     "faq_wzrnMa": {
       "type": "faq",
       "blocks": {
-        "question_FtxMQw": {
+        "question_gCDgFE": {
           "type": "question",
+          "repeater": "{{ product.metafields.custom.faqs.value }}",
           "settings": {
-            "title": "Can I customise the interior of the Office Pods to match our office's style and functionality?",
-            "text": "<p>Yes, you can! At Soundbox Store, we offer customisation options that let you personalise the interior of your Office Pods to align with your office's unique style and functional needs. Whether you envision a traditional conference room layout or a more creative and open workspace, we can bring your vision to life.</p>"
-          }
-        },
-        "question_4WGeX7": {
-          "type": "question",
-          "settings": {
-            "title": "Can I easily relocate the Office Pods within my workspace?",
-            "text": "<p>Yes, you can. The Office Pods are designed with adjustable feet that can be reduced to deploy wheels, allowing for effortless mobility. This feature makes it simple to relocate your phone booth as needed, providing flexibility in your workspace arrangement.</p>"
-          }
-        },
-        "question_wzWiCf": {
-          "type": "question",
-          "settings": {
-            "title": "Power supply set up, do we need to do any thing?",
-            "text": "<p>No. All our booths come with a 13amp power supply which plugs into the side of the booth with standard insert. Plug into your wall socket with locally supplied wall plug. If you are purchasing in UK, Europe or the US you will be supplied with local wall socket and correct electrical certificated components CE / UL Certificated.</p>"
-          }
-        },
-        "question_RLyfCt": {
-          "type": "question",
-          "settings": {
-            "title": "How do the meeting and phone booths connect to power?",
-            "text": "<p>Our meeting and phone booths require simple installation, we recommend using our professional installation team. Each booth features a built-in power inlet on the side with an integrated 13-amp fused spur. Once assembled, the included 2-metre cable simply plugs into a standard mains socket, making setup simple.</p>"
-          }
-        },
-        "question_QUmbUJ": {
-          "type": "question",
-          "settings": {
-            "title": "Is special electric power supply required?",
-            "text": "<p>All of our meeting and phone booths are plug and play, meaning once built there is an insert for a 13amp cable on the side of the booth which approximately 2 metres long. This is the simply plugged into your normal power socket. <br/><br/>(UAE, UK / USA, Euro, Swiss supplied depending on the delivery address.)</p>"
-          }
-        },
-        "question_ay7EL7": {
-          "type": "question",
-          "settings": {
-            "title": "Can the product be written off as a depreciating asset for a company?",
-            "text": "<p>Yes - Regarding the classification of goods for profit and loss purposes, all our products are categorised as movable office furniture. They come with a five-year warranty, which indicates that they are manufactured to last beyond 12 months. Consequently, office furniture is typically regarded as a fixed asset and can be depreciated over time.</p>"
+            "title": "{{ block.repeater.question.value }}",
+            "text": "{{ block.repeater.text | metafield_tag }}"
           }
         }
       },
       "block_order": [
-        "question_FtxMQw",
-        "question_4WGeX7",
-        "question_wzWiCf",
-        "question_RLyfCt",
-        "question_QUmbUJ",
-        "question_ay7EL7"
+        "question_gCDgFE"
       ],
       "settings": {
         "title": "FAQs"
