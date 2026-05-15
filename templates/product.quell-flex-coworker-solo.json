@@ -12,6 +12,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "judge_me_reviews_preview_badge_6LHRmE": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
         "80d88b2f-fa19-4538-ad26-bbbc66103e15": {
           "type": "tagline",
           "disabled": true,
@@ -73,6 +77,7 @@
         }
       },
       "block_order": [
+        "judge_me_reviews_preview_badge_6LHRmE",
         "80d88b2f-fa19-4538-ad26-bbbc66103e15",
         "variant_button_custom_jYkXPa",
         "variant_picker",
@@ -830,10 +835,8 @@
       }
     },
     "165414989285a6b146": {
-      "type": "review-section",
-      "settings": {
-        "productId": "quell-office-pod-solo"
-      }
+      "type": "apps",
+      "settings": {}
     },
     "d860300d-7c49-4055-87c4-01913a46c1c6": {
       "type": "faq",
@@ -888,10 +891,20 @@
             "feed_id": "",
             "html_area": "<div id=\"feed-18121\" class=\"instafeed-shopify\"></div>"
           }
+        },
+        "judge_me_reviews_review_widget_GjXtzY": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
-        "48c52e75-eab5-4c4d-9962-5612d7ab3824"
+        "48c52e75-eab5-4c4d-9962-5612d7ab3824",
+        "judge_me_reviews_review_widget_GjXtzY"
       ],
       "settings": {}
     },
