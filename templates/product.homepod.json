@@ -893,7 +893,40 @@
     },
     "1651488261633e1eab": {
       "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_ymjamq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_ymjamq"
+      ],
       "settings": {}
+    },
+    "d860300d-7c49-4055-87c4-01913a46c1c6": {
+      "type": "faq",
+      "blocks": {
+        "question_gCDgFE": {
+          "type": "question",
+          "repeater": "{{ product.metafields.custom.faqs.value }}",
+          "settings": {
+            "title": "{{ block.repeater.question.value }}",
+            "text": "{{ block.repeater.text | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "question_gCDgFE"
+      ],
+      "settings": {
+        "title": "FAQs"
+      }
     },
     "1651508688dadacecf": {
       "type": "apps",
@@ -934,42 +967,13 @@
             "feed_id": "37680",
             "html_area": ""
           }
-        },
-        "judge_me_reviews_review_widget_ymjamq": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
         }
       },
       "block_order": [
         "48c52e75-eab5-4c4d-9962-5612d7ab3824",
-        "instafeed_app_block_TW3mEg",
-        "judge_me_reviews_review_widget_ymjamq"
+        "instafeed_app_block_TW3mEg"
       ],
       "settings": {}
-    },
-    "d860300d-7c49-4055-87c4-01913a46c1c6": {
-      "type": "faq",
-      "blocks": {
-        "question_gCDgFE": {
-          "type": "question",
-          "repeater": "{{ product.metafields.custom.faqs.value }}",
-          "settings": {
-            "title": "{{ block.repeater.question.value }}",
-            "text": "{{ block.repeater.text | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "question_gCDgFE"
-      ],
-      "settings": {
-        "title": "FAQs"
-      }
     },
     "16574290364e705c32": {
       "type": "Divider",
@@ -1002,8 +1006,8 @@
     "165414989285a6b146",
     "collection_recommendations_QQbAU6",
     "1651488261633e1eab",
-    "1651508688dadacecf",
     "d860300d-7c49-4055-87c4-01913a46c1c6",
+    "1651508688dadacecf",
     "16574290364e705c32"
   ]
 }
