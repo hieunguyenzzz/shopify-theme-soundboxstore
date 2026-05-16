@@ -15,7 +15,7 @@
 {% endunless %}
 <!doctype html>
 <html
-  lang="{{ request.locale.iso_code }}"
+  lang="{{ request.locale.iso_code | default: shop.locale }}"
   dir="{{ settings.text_direction }}"
   country="{{  localization.country.iso_code }}"
   currency="{{  localization.country.currency.iso_code }}"
@@ -390,86 +390,13 @@
       };
     </script>
     <!-- content_for_header -->
-    {%- liquid
-      comment
-        Detect secondary locale pages by parsing the URL path prefix.
-        Secondary locales get their canonical overridden to the primary language URL.
-        E.g., /de-at/products/x → canonical to /de/products/x
-              /en-us/products/x → canonical to /products/x
-        Hreflang tags remain untouched — only the canonical <link> is swapped.
-      endcomment
-      assign req_path = request.path
-      assign path_parts = req_path | remove_first: '/' | split: '/'
-      assign url_prefix = path_parts[0] | downcase
-      assign needs_canonical_override = false
-      assign canonical_primary_prefix = ''
-
-      comment
-        List of secondary locale prefixes and their primary targets.
-        Format: prefix=primary (empty primary means root /)
-      endcomment
-      assign secondary_to_en = 'en-us,en-ae,en-at,en-be,en-ch,en-de,en-dk,en-es,en-fr,en-ie,en-it,en-nl,en-no,en-pl,en-se'
-      assign secondary_to_de = 'de-de,de-at,de-ch,de-ae'
-      assign secondary_to_es = 'es-es,es-ae'
-      assign secondary_to_fr = 'fr-fr,fr-be,fr-ae'
-      assign secondary_to_it = 'it-it,it-ae'
-      assign secondary_to_nl = 'nl-nl,nl-be,nl-ae'
-      assign secondary_to_no = 'no-no,no-ae'
-      assign secondary_to_fi = 'fi-fi,fi-ae'
-      assign secondary_to_pl = 'pl-pl,pl-ae'
-
-      assign url_prefix_with_comma = ',' | append: url_prefix | append: ','
-      assign secondary_en_check = ',' | append: secondary_to_en | append: ','
-      assign secondary_de_check = ',' | append: secondary_to_de | append: ','
-      assign secondary_es_check = ',' | append: secondary_to_es | append: ','
-      assign secondary_fr_check = ',' | append: secondary_to_fr | append: ','
-      assign secondary_it_check = ',' | append: secondary_to_it | append: ','
-      assign secondary_nl_check = ',' | append: secondary_to_nl | append: ','
-      assign secondary_no_check = ',' | append: secondary_to_no | append: ','
-      assign secondary_fi_check = ',' | append: secondary_to_fi | append: ','
-      assign secondary_pl_check = ',' | append: secondary_to_pl | append: ','
-
-      if secondary_en_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = ''
-      elsif secondary_de_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'de'
-      elsif secondary_es_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'es'
-      elsif secondary_fr_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'fr'
-      elsif secondary_it_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'it'
-      elsif secondary_nl_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'nl'
-      elsif secondary_no_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'no'
-      elsif secondary_fi_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'fi'
-      elsif secondary_pl_check contains url_prefix_with_comma
-        assign needs_canonical_override = true
-        assign canonical_primary_prefix = 'pl'
-      endif
-    -%}
-    {%- if needs_canonical_override -%}
-      {%- assign rest_of_path = req_path | remove_first: '/' | remove_first: url_prefix -%}
-      {%- if canonical_primary_prefix == '' -%}
-        {%- if rest_of_path == '' or rest_of_path == '/' -%}
-          {%- assign canonical_override = 'https://soundboxstore.com/' -%}
-        {%- else -%}
-          {%- assign canonical_override = 'https://soundboxstore.com' | append: rest_of_path -%}
-        {%- endif -%}
-      {%- else -%}
-        {%- assign canonical_override = 'https://soundboxstore.com/' | append: canonical_primary_prefix | append: rest_of_path -%}
-      {%- endif -%}
-    {%- endif -%}
+    {%- comment -%}
+      SBS-44 (2026-05-15): Canonical override block removed.
+      Country-specific market URLs (/fr-fr, /de-de, /es-es, /it-it, /nl-nl, /no-no, /fi-fi, /pl-pl, /en-XX)
+      now self-canonical so each ranks independently in local Google search.
+      Hreflang mesh (rendered separately via hreflang-en-gb snippet) handles cross-market relationships.
+      Strategy: Option A — country URLs as independent ranking pages for local SEO.
+    {%- endcomment -%}
     {%- comment -%}
       Đặt og:image TRƯỚC content_for_header để crawler mạng xã hội lấy tag đầu tiên.
       Yoast SEO inject logo cũ (2023) qua content_for_header — tag này ghi đè vì xuất hiện trước.
@@ -636,14 +563,6 @@
         }
       }
     </style>
-    {%- if needs_canonical_override -%}
-      <script>
-        (function(){
-          var el = document.querySelector('link[rel="canonical"]');
-          if (el) el.setAttribute('href', '{{ canonical_override }}');
-        })();
-      </script>
-    {%- endif -%}
   </head>
 
   <body
