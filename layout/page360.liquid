@@ -34,14 +34,13 @@ window.dataLayer = window.dataLayer || [];
       <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
     {%- endif -%}
 
+    {%- unless disabled_by_yoast_seo -%}
+      <title>{{ page_title | escape }}</title>
+    {%- endunless -%}
     {%- render 'seo-title' -%}
 
     {%- if page_description -%}
-      {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
-{%- if disabled_by_yoast_seo -%}
-<meta name="description" content="{{ page_description | escape }}">
-{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
-{%- endif -%}
+      <meta name="description" content="{{ page_description | escape }}">
     {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
