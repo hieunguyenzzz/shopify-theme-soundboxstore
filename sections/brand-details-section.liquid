@@ -71,6 +71,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image1.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
         {% if block.settings.slide_image2 != blank %}
@@ -82,6 +83,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image2.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
         {% if block.settings.slide_image3 != blank %}
@@ -93,6 +95,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image3.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
 
@@ -105,6 +108,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image4.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
         {% if block.settings.slide_image5 != blank %}
@@ -116,6 +120,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image5.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
         {% if block.settings.slide_image6 != blank %}
@@ -127,6 +132,7 @@
             data-fancybox="{{ section.id }}-{{ block.id }}"
             data-caption="&lt;b&gt;{{ block.settings.bottom_title }}&lt;/b&gt;&lt;br /&gt;{{ block.settings.bottm_right_text}}"
           >
+            <span class="visually-hidden">{{ block.settings.slide_image6.alt | default: 'Brand installation photo' }}</span>
           </a>
         {% endif %}
       </div>
