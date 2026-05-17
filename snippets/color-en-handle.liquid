@@ -1,0 +1,48 @@
+{%- comment -%}
+  Maps a translated colour value (from option.values in any locale)
+  back to its EN handle so we can load the matching image file from
+  /assets (charcoal.png, wooden.png, dark-grey.png, …).
+
+  Source: Translate & Adapt option value translations (Shopify Admin),
+  NOT the locale JSON files — those two systems are independent.
+
+  Usage:
+    {% capture en_handle %}{% render 'color-en-handle', value: value %}{% endcapture %}
+
+  Input:  value (string) — raw option value, e.g. "Anthrazit"
+  Output: prints the EN handle, e.g. "charcoal"
+{%- endcomment -%}
+{%- liquid
+  assign vh = value | handle
+
+  case vh
+    when 'charcoal', 'anthrazit', 'anthracite', 'antracite', 'antracit', 'antracita', 'antraciet', 'antrasitt', 'antracyt'
+      assign en = 'charcoal'
+
+    when 'wooden', 'holz', 'trae', 'tre', 'tra', 'madera', 'bois', 'legno', 'hout', 'drewno'
+      assign en = 'wooden'
+
+    when 'dark-grey', 'dunkelgrau', 'morkegra', 'morkgra', 'mork-gra', 'gris-oscuro', 'gris-fonce', 'grigio-scuro', 'donkergrijs', 'donker-grijs', 'ciemnoszary'
+      assign en = 'dark-grey'
+
+    when 'light-grey', 'hellgrau', 'lysegra', 'lys-gra', 'ljusgra', 'gris-claro', 'gris-clair', 'grigio-chiaro', 'lichtgrijs', 'licht-grijs', 'jasnoszary'
+      assign en = 'light-grey'
+
+    when 'white', 'weiss', 'weiß', 'hvid', 'hvit', 'vit', 'wit', 'blanco', 'blanc', 'bianco', 'bialy', 'valkoinen'
+      assign en = 'white'
+
+    when 'green', 'grun', 'gruen', 'gron', 'gronn', 'vert', 'verde', 'groen', 'zielony', 'vihrea'
+      assign en = 'green'
+
+    when 'orange', 'oranje', 'oransje', 'oranssi', 'naranja', 'arancione', 'arancia', 'pomaranczowy'
+      assign en = 'orange'
+
+    when 'delux', 'deluxe', 'luxus', 'luksus', 'luksusowy', 'lujo', 'luxe', 'lusso', 'lyx'
+      assign en = 'delux'
+
+    else
+      assign en = vh
+  endcase
+
+  echo en
+-%}
