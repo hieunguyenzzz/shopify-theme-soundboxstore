@@ -59,7 +59,9 @@
     class="whatsapp_url"
     target="_blank"
     rel="nofollow noopener"
-    href="{{whatsapp_url}}"
+    href="#whatsapp"
+    data-wa="{{ whatsapp_url }}"
+    onclick="event.preventDefault();window.open(this.dataset.wa,'_blank','noopener,noreferrer');"
     aria-label="Chat with us on WhatsApp"
   ><span class="visually-hidden">Chat with us on WhatsApp</span></a>
 {% endif %}
