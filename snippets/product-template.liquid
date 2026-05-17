@@ -435,7 +435,7 @@
                               assign color_option_index = forloop.index0
                               assign downcased_option = option.name | downcase
 
-                              if downcased_option contains 'color'
+                              if downcased_option contains 'color' or downcased_option contains 'couleur' or downcased_option contains 'colour' or downcased_option contains 'farve' or downcased_option contains 'farbe' or downcased_option contains 'väri' or downcased_option contains 'dath' or downcased_option contains 'colore' or downcased_option contains 'kleur' or downcased_option contains 'farge' or downcased_option contains 'kolor' or downcased_option contains 'färg'
                                 assign is_color = true
                               elsif downcased_option contains swatch_trigger
                                 assign is_color = true
