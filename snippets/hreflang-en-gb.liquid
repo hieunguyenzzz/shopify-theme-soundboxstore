@@ -5,13 +5,17 @@
 
   Suppressed on secondary locale prefixes (e.g. /en-us/, /de-at/) where the page
   canonicalises to a primary-locale URL handled elsewhere.
+  Suppressed on ?variant= URLs to avoid non-reciprocal hreflang conflicts with
+  Shopify's native hreflang output in content_for_header.
 {%- endcomment -%}
-{%- if request.locale.iso_code == 'en' -%}
-  {%- assign _hf_prefix = request.path | remove_first: '/' | split: '/' | first | downcase -%}
-  {%- assign _hf_secondary = 'en-us,en-ae,en-at,en-be,en-ch,en-de,en-dk,en-es,en-fr,en-ie,en-it,en-nl,en-no,en-pl,en-se,de-de,de-at,de-ch,de-ae,es-es,es-ae,fr-fr,fr-be,fr-ae,it-it,it-ae,nl-nl,nl-be,nl-ae,no-no,no-ae,fi-fi,fi-ae,pl-pl,pl-ae' -%}
-  {%- assign _hf_check = ',' | append: _hf_secondary | append: ',' -%}
-  {%- assign _hf_needle = ',' | append: _hf_prefix | append: ',' -%}
-  {%- unless _hf_check contains _hf_needle -%}
-    <link rel="alternate" hreflang="en-GB" href="{{ canonical_url | split: '?' | first }}">
-  {%- endunless -%}
-{%- endif -%}
+{%- unless request.query_string contains 'variant' -%}
+  {%- if request.locale.iso_code == 'en' -%}
+    {%- assign _hf_prefix = request.path | remove_first: '/' | split: '/' | first | downcase -%}
+    {%- assign _hf_secondary = 'en-us,en-ae,en-at,en-be,en-ch,en-de,en-dk,en-es,en-fr,en-ie,en-it,en-nl,en-no,en-pl,en-se,de-de,de-at,de-ch,de-ae,es-es,es-ae,fr-fr,fr-be,fr-ae,it-it,it-ae,nl-nl,nl-be,nl-ae,no-no,no-ae,fi-fi,fi-ae,pl-pl,pl-ae' -%}
+    {%- assign _hf_check = ',' | append: _hf_secondary | append: ',' -%}
+    {%- assign _hf_needle = ',' | append: _hf_prefix | append: ',' -%}
+    {%- unless _hf_check contains _hf_needle -%}
+      <link rel="alternate" hreflang="en-GB" href="{{ canonical_url | split: '?' | first }}">
+    {%- endunless -%}
+  {%- endif -%}
+{%- endunless -%}
