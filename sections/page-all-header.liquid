@@ -7,6 +7,9 @@
   {% assign prodHandle =prodHandle| append:product.handle | append:coma %}
 {% endfor %}
 {% assign prodHandle = prodHandle | split:',' %}
+{%- if page.title != blank or collection.title != blank -%}
+  <h1 class="visually-hidden">{{ page.title | default: collection.title }}</h1>
+{%- endif -%}
 
 {% if section.settings.product-thumb != blank %}
   <div class="new-coll-header">
