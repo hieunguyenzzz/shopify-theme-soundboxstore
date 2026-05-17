@@ -75,6 +75,7 @@
             data-fancybox="{{ galleryid }}"
             data-caption="&lt;b&gt;{{ block.title }}&lt;/b&gt;&lt;br /&gt;{{ content | escape  }}"
           >
+            <span class="visually-hidden">{{ image.alt | default: block.title }}</span>
           </a>
         {% endfor %}
       </div>

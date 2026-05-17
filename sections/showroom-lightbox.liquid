@@ -16,6 +16,7 @@
     data-fancybox="{{ section.id }}-{{ block.id }}"
     data-caption="{{block.settings.image.alt }}"
   >
+    <span class="visually-hidden">{{ block.settings.image.alt | default: 'Showroom image' }}</span>
   </a>
 {% endfor %}
 <div style="height: min(60vw,400px);display:flex;background: #f1f1f1;flex-wrap: wrap;border-top: 2px solid;border-bottom: 2px solid;">
@@ -53,6 +54,7 @@
             block.settings.image
             | image_url: width: 800
             | image_tag:
+              alt: block.settings.image.alt,
               style: 'position: absolute;
                 inset: 0;
                 width: 100%;
