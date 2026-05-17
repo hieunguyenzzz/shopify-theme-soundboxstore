@@ -129,10 +129,6 @@
 
   <div class="page-content page-content--product">
     <div class="page-width">
-      <div class="product-single__header--mobile medium-up--hide small--hide">
-        {{ product_header }}
-      </div>
-
       <div class="product-grid__container grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}{% if mobile_layout == 'partial' %} grid--product-images--partial{% endif %}">
         {%- if image_position == 'left' -%}
           <div class="grid__item {{ product_image_width }}  product-left-col">
