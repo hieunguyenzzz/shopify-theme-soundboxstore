@@ -186,22 +186,28 @@
 .pseo-content .pseo-byline strong { color: var(--pseo-text-secondary); }
 
 .pseo-content table {
-  width: 100%;
-  table-layout: fixed;
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
   border-collapse: collapse;
   margin: 32px 0;
   font-size: 15px;
   background: transparent;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
 }
-.pseo-content th, .pseo-content td {
+.pseo-content table th,
+.pseo-content table td {
   text-align: left;
   padding: 14px 16px 14px 0;
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   vertical-align: top;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  hyphens: auto;
+  white-space: normal !important;
 }
 .pseo-content th {
   font-weight: 700;
