@@ -3,6 +3,19 @@
 {% assign products = products | default: collection.products %}
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
+{% style %}
+  @media screen and (min-width: 979px) {
+    .collection-main-header-wrap .collection-main-content {
+      margin-right: calc(50% - 50vw);
+    }
+    .collection-main-header-wrap .collection-main-content .image {
+      aspect-ratio: 21 / 9;
+      width: 100%;
+      object-fit: cover;
+      object-position: right center;
+    }
+  }
+{% endstyle %}
 <div class="collection-main-header-wrap">
   <div class="page-width">
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
