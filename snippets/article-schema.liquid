@@ -1,0 +1,34 @@
+{%- comment -%}
+  Article JSON-LD schema for blog posts
+  Renders structured article data for search engines and AI
+{%- endcomment -%}
+
+{%- if article -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ article.title | json }},
+  "description": {{ article.excerpt_or_content | strip_html | truncate: 160 | json }},
+  "image": {%- if article.image -%}"{{ article.image | image_url: width: 1200 }}"{%- else -%}"{{ shop.url }}/cdn/shop/files/SBS-new-logo_c8db171c-f035-4268-8051-67ed14b0fefa.jpg"{%- endif -%},
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ article.author | json }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SoundBox Store",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ shop.url }}/cdn/shop/files/SBS-new-logo_c8db171c-f035-4268-8051-67ed14b0fefa.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ shop.url }}{{ article.url }}"
+  }
+}
+</script>
+{%- endif -%}
