@@ -227,15 +227,12 @@
     {%- comment -%}Organization schema for homepage - AI search optimization{%- endcomment -%}
     {%- if template.name == 'index' -%}
       {%- render 'organization-schema' -%}
-  {%- comment -%}WebSite schema with SearchAction for sitelinks search box{%- endcomment -%}
-  {%- if template.name == 'index' -%}
-    {%- render 'website-schema' -%}
-  {%- endif -%}
-  {%- comment -%}BreadcrumbList schema for product/collection/article pages{%- endcomment -%}
-  {%- render 'breadcrumb-schema' -%}
-  {%- comment -%}Article schema for blog posts{%- endcomment -%}
-  {%- render 'article-schema' -%}
+      {%- render 'website-schema' -%}
     {%- endif -%}
+    {%- comment -%}BreadcrumbList schema for product/collection/article pages{%- endcomment -%}
+    {%- render 'breadcrumb-schema' -%}
+    {%- comment -%}Article schema for blog posts{%- endcomment -%}
+    {%- render 'article-schema' -%}
 
     <style>
       @font-face {
