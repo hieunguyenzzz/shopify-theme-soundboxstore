@@ -4,7 +4,7 @@
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
-  {%- assign crumb_collection = product.metafields.custom.collections | default: product.collections.first -%}
+  {%- assign crumb_collection = product.collections | first -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,8 +73,8 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": {{ article.blog.title | json }},
-        "item": "{{ shop.url }}/blogs/{{ article.blog.handle }}"
+        "name": {{ blog.title | json }},
+        "item": "{{ shop.url }}/blogs/{{ blog.handle }}"
       },
       {
         "@type": "ListItem",
