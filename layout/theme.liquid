@@ -212,15 +212,34 @@
     {% else %}
       <title>
         {{ page_title -}}
+        {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | capitalize }}{% endif -%}
+        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       </title>
     {% endif %}
 
-    {%- if template.name == 'policy' and page_description == blank -%}
-      {%- assign _policy_desc = policy.title | append: ' — ' | append: shop.name | append: '. ' | append: policy.body | strip_html | truncate: 155 -%}
-      <meta name="description" content="{{ _policy_desc | escape }}">
-    {%- else -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
+    {%- liquid
+      if template.name == 'blog' and current_tags
+        assign _tag_str = current_tags | join: '& ' | capitalize
+        assign _meta_desc = blog.title | append: ': ' | append: _tag_str | append: ' — ' | append: shop.name
+      elsif page_description != blank
+        assign _meta_desc = page_description
+      elsif template.name == 'policy'
+        assign _meta_desc = policy.title | append: ' — ' | append: shop.name | append: '. ' | append: policy.body | strip_html | truncate: 155
+      elsif page
+        assign _meta_desc = page.content | strip_html | strip_newlines | strip | truncate: 155
+        if _meta_desc == blank
+          assign _meta_desc = page.title | append: ' — ' | append: shop.name
+        endif
+      elsif collection
+        assign _meta_desc = collection.description | strip_html | strip_newlines | strip | truncate: 155
+        if _meta_desc == blank
+          assign _meta_desc = collection.title | append: ' — ' | append: shop.name
+        endif
+      else
+        assign _meta_desc = page_title | append: ' — ' | append: shop.name
+      endif
+    -%}
+    <meta name="description" content="{{ _meta_desc | escape }}">
 
     {%- render 'social-meta-tags' -%}
 
