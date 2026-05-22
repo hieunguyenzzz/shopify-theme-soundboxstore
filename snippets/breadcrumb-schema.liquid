@@ -1,10 +1,13 @@
 {%- comment -%}
   BreadcrumbList JSON-LD schema
-  Renders structured breadcrumb data for search engines and AI
+  Renders structured breadcrumb data for search engines and AI.
+  item property uses object form { @id, name } to satisfy Google's
+  'item.name required' validation on ListItem entries.
 {%- endcomment -%}
 
 {%- if template.name == 'product' and product -%}
   {%- assign crumb_collection = product.collections | first -%}
+  {%- assign _bc_product_url = shop.url | append: '/products/' | append: product.handle -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -14,25 +17,39 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "{{ shop.url }}"
+        "item": {
+          "@id": "{{ shop.url }}",
+          "name": "Home"
+        }
       }
       {%- if crumb_collection -%}
       ,{
         "@type": "ListItem",
         "position": 2,
         "name": {{ crumb_collection.title | json }},
-        "item": "{{ shop.url }}/collections/{{ crumb_collection.handle }}"
+        "item": {
+          "@id": "{{ shop.url }}/collections/{{ crumb_collection.handle }}",
+          "name": {{ crumb_collection.title | json }}
+        }
       }
       ,{
         "@type": "ListItem",
         "position": 3,
-        "name": {{ product.title | json }}
+        "name": {{ product.title | json }},
+        "item": {
+          "@id": "{{ _bc_product_url }}",
+          "name": {{ product.title | json }}
+        }
       }
       {%- else -%}
       ,{
         "@type": "ListItem",
         "position": 2,
-        "name": {{ product.title | json }}
+        "name": {{ product.title | json }},
+        "item": {
+          "@id": "{{ _bc_product_url }}",
+          "name": {{ product.title | json }}
+        }
       }
       {%- endif -%}
     ]
@@ -48,12 +65,19 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "{{ shop.url }}"
+        "item": {
+          "@id": "{{ shop.url }}",
+          "name": "Home"
+        }
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": {{ collection.title | json }}
+        "name": {{ collection.title | json }},
+        "item": {
+          "@id": "{{ shop.url }}/collections/{{ collection.handle }}",
+          "name": {{ collection.title | json }}
+        }
       }
     ]
   }
@@ -68,18 +92,28 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "{{ shop.url }}"
+        "item": {
+          "@id": "{{ shop.url }}",
+          "name": "Home"
+        }
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": {{ blog.title | json }},
-        "item": "{{ shop.url }}/blogs/{{ blog.handle }}"
+        "item": {
+          "@id": "{{ shop.url }}/blogs/{{ blog.handle }}",
+          "name": {{ blog.title | json }}
+        }
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": {{ article.title | json }}
+        "name": {{ article.title | json }},
+        "item": {
+          "@id": "{{ shop.url }}/blogs/{{ blog.handle }}/{{ article.handle }}",
+          "name": {{ article.title | json }}
+        }
       }
     ]
   }
