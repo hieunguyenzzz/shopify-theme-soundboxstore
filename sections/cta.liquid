@@ -164,7 +164,11 @@
           <div class="section-btn">
             {% for block in section.blocks %}
               {% if block.type == 'button' %}
-                <a href="{{ routes.root_url | append: block.settings.url | replace: '//', '/' }}" class="btn">
+                {%- assign _btn_url = block.settings.url -%}
+                {%- unless _btn_url contains '://' -%}
+                  {%- assign _btn_url = routes.root_url | append: _btn_url | replace: '//', '/' -%}
+                {%- endunless -%}
+                <a href="{{ _btn_url }}" class="btn">
                   {{- block.settings.text }}
                   <svg
                     style="

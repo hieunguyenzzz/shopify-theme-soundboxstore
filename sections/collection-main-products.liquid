@@ -19,7 +19,7 @@
       {% if block.type == 'product' %}
         {% assign url = block.settings.url | default: product.url %}
         {% if block.settings.url %}
-          {% unless block.settings.url contains routes.root_url %}
+          {% unless block.settings.url contains '://' or block.settings.url contains routes.root_url %}
             {% assign url = routes.root_url | append: block.settings.url %}
           {% endunless %}
         {% endif %}
@@ -38,7 +38,7 @@
         {% assign collection = block.settings.collection %}
         {% assign url = block.settings.url | default: collection.url %}
         {% if block.settings.url %}
-          {% unless block.settings.url contains routes.root_url %}
+          {% unless block.settings.url contains '://' or block.settings.url contains routes.root_url %}
             {% assign url = routes.root_url | append: block.settings.url %}
           {% endunless %}
         {% endif %}
