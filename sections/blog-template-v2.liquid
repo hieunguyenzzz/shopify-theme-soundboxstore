@@ -466,7 +466,7 @@
       </div>
     </div>
   </div>
-  {%- paginate blog.articles by 50 -%}
+  {%- paginate blog.articles by 9 -%}
     <div class="page-width blog-grid">
       {% assign blocks = section.blocks | sort: 'settings.article.published_at' %}
       {% for article in blog.articles %}

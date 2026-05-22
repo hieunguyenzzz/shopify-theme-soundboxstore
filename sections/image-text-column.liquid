@@ -29,18 +29,18 @@
                 {{
                   section.settings.image
                   | image_url: width: 528
-                  | image_tag: class: 'desktop-only', alt:alt
+                  | image_tag: class: 'desktop-only', alt:alt, loading: 'lazy'
                 }}
                 {{
                   section.settings.mobile_image
                   | image_url: width: 450
-                  | image_tag: class: 'mobile-only', alt: alt
+                  | image_tag: class: 'mobile-only', alt: alt, loading: 'lazy'
                 }}
               {% else %}
                 {{
                   section.settings.image
                   | image_url: width: 528
-                  | image_tag: alt: alt
+                  | image_tag: alt: alt, loading: 'lazy'
                 }}
               {% endif %}
             {% endif %}
