@@ -1,0 +1,11 @@
+{%- if page.title != blank -%}
+<h1 class="visually-hidden">{{ page.title | escape }}</h1>
+{%- elsif collection.title != blank -%}
+<h1 class="visually-hidden">{{ collection.title | escape }}</h1>
+{%- endif -%}
+{% schema %}
+{
+  "name": "SEO H1",
+  "tag": "section"
+}
+{% endschema %}
