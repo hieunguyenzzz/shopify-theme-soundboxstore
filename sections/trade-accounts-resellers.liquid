@@ -71,7 +71,11 @@
       </a>
     {% endif %}
   </header>
-  {% endif %}
+{% elsif page.title != blank %}
+  <header class="section-header" style="text-align: center;">
+    <h1 class="section-header__title">{{ page.title | escape }}</h1>
+  </header>
+{% endif %}
 </div>
 <div class="{{section.id}}-page-width page-width">
   <div class="{{section.id}}-row">
