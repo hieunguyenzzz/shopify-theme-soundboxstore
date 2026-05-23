@@ -149,7 +149,7 @@
       {%- for image in imgs -%}
         {%- assign had_images = true -%}
         {%- assign alt = product.title | append: current_variant.title | strip -%}
-        {% assign orgin_url = image | image_url %}
+        {% assign orgin_url = image | image_url: width: 2000 %}
         <div class="image-gallery-block">
           {%- unless forloop.first -%}
             {%- assign lazy = 'lazy' -%}
