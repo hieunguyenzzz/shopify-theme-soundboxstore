@@ -222,18 +222,28 @@
         assign _tag_str = current_tags | join: '& ' | capitalize
         assign _meta_desc = blog.title | append: ': ' | append: _tag_str | append: ' — ' | append: shop.name
       elsif page_description != blank
-        assign _meta_desc = page_description
+        assign _meta_desc = page_description | truncate: 160
       elsif template.name == 'policy'
-        assign _meta_desc = policy.title | append: ' — ' | append: shop.name | append: '. ' | append: policy.body | strip_html | truncate: 155
+        assign _meta_desc = policy.title | append: ' — ' | append: shop.name | append: '. ' | append: policy.body | strip_html | truncate: 160
       elsif page
-        assign _meta_desc = page.content | strip_html | strip_newlines | strip | truncate: 155
+        assign _meta_desc = page.content | strip_html | strip_newlines | strip | truncate: 160
         if _meta_desc == blank
           assign _meta_desc = page.title | append: ' — ' | append: shop.name
         endif
       elsif collection
-        assign _meta_desc = collection.description | strip_html | strip_newlines | strip | truncate: 155
+        assign _meta_desc = collection.description | strip_html | strip_newlines | strip | truncate: 160
         if _meta_desc == blank
           assign _meta_desc = collection.title | append: ' — ' | append: shop.name
+        endif
+      elsif product
+        assign _meta_desc = product.description | strip_html | strip_newlines | strip | truncate: 160
+        if _meta_desc == blank
+          assign _meta_desc = product.title | append: ' — ' | append: shop.name
+        endif
+      elsif article
+        assign _meta_desc = article.excerpt_or_content | strip_html | strip_newlines | strip | truncate: 160
+        if _meta_desc == blank
+          assign _meta_desc = article.title | append: ' — ' | append: shop.name
         endif
       else
         assign _meta_desc = page_title | append: ' — ' | append: shop.name
