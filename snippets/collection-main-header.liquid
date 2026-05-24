@@ -36,7 +36,7 @@
             {{ description }}
           </div>
         {% else %}
-          {{ collection.description }}
+          {{ collection.description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
         {% endif %}
         <div
           style="

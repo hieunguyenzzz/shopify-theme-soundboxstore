@@ -39,10 +39,10 @@
         <h1 class="collection-main-title desktop-only">{{ title | strip_html }}</h1>
         {% if description != blank %}
           <div class="[&_ul]:list-disc [&_ul]:ml-[30px]">
-            {{ description }}
+            {{ description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
           </div>
         {% else %}
-          {{ collection.description }}
+          {{ collection.description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
         {% endif %}
         <div
           style="

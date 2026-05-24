@@ -2,7 +2,7 @@
   {%- if product.empty? -%}
     {{ 'home_page.onboarding.product_description' | t }}
   {%- else -%}
-    {{ product.description }}
+    {{ product.description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
   {%- endif -%}
 {% endcapture %}
 {%- if is_tab -%}

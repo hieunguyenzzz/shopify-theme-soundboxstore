@@ -15,7 +15,7 @@
     {%- if collection.description != blank and current_filter_size == 0 -%}
     <div class="rte rte--collection-desc" {{ block.shopify_attributes }}>
         <div class="enlarge-text">
-          {{ collection.description }}
+          {{ collection.description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
         </div>
       </div>
     {%- endif -%}
