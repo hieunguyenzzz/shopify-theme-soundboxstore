@@ -1,28 +1,27 @@
 {%- comment -%}
-  Inject en-GB hreflang for UK market on ALL pages (default and secondary locales).
-  Shopify does not auto-emit en-GB because the UK is served by the default market
-  (no URL prefix). Without this tag on every locale page, the hreflang mesh is
-  non-reciprocal: secondary locale pages never link back to the en-GB URL.
-  Suppressed on ?variant= URLs to avoid conflicts with Shopify's native hreflang output.
+  Inject en-GB hreflang on ALL pages.
+  Yoast SEO outputs 39 locale alternates (x-default, en, and all market locales) but
+  omits en-GB because the UK is the default market (no URL prefix). Without this tag on
+  every locale page the hreflang mesh is non-reciprocal.
+  Uses routes.root_url (blank = primary/en-GB, non-blank = secondary market) so new
+  markets are handled automatically without updating a hardcoded list.
+  Suppressed on ?variant= URLs and 404 pages.
 {%- endcomment -%}
 {%- unless request.query_string contains 'variant' -%}
-  {%- assign _hf_secondary = 'en-us,en-ae,en-at,en-be,en-ch,en-de,en-dk,en-es,en-fr,en-ie,en-it,en-nl,en-no,en-pl,en-se,de-de,de-at,de-ch,de-ae,es-es,es-ae,fr-fr,fr-be,fr-ae,it-it,it-ae,nl-nl,nl-be,nl-ae,no-no,no-ae,fi-fi,fi-ae,pl-pl,pl-ae' -%}
-  {%- assign _hf_path = request.path -%}
-  {%- assign _hf_prefix = _hf_path | remove_first: '/' | split: '/' | first | downcase -%}
-  {%- assign _hf_check = ',' | append: _hf_secondary | append: ',' -%}
-  {%- assign _hf_needle = ',' | append: _hf_prefix | append: ',' -%}
-  {%- if _hf_check contains _hf_needle -%}
-    {%- assign _hf_parts = _hf_path | remove_first: '/' | split: '/' -%}
-    {%- assign _hf_en_gb_path = '' -%}
-    {%- for _part in _hf_parts -%}
-      {%- unless forloop.first -%}
-        {%- assign _hf_en_gb_path = _hf_en_gb_path | append: '/' | append: _part -%}
-      {%- endunless -%}
-    {%- endfor -%}
-    {%- if _hf_en_gb_path == blank -%}{%- assign _hf_en_gb_path = '/' -%}{%- endif -%}
-    {%- assign _hf_en_gb_url = shop.url | append: _hf_en_gb_path -%}
-  {%- else -%}
-    {%- assign _hf_en_gb_url = canonical_url | split: '?' | first -%}
-  {%- endif -%}
-  <link rel="alternate" hreflang="en-GB" href="{{ _hf_en_gb_url }}">
+  {%- unless template.name == '404' -%}
+    {%- assign _hf_root = routes.root_url | rstrip: '/' -%}
+    {%- if _hf_root == blank -%}
+      {%- comment -%}Primary locale (en-GB): use canonical URL directly{%- endcomment -%}
+      {%- assign _hf_en_gb_url = canonical_url | split: '?' | first -%}
+    {%- else -%}
+      {%- comment -%}Secondary locale: strip market prefix to get primary-locale path{%- endcomment -%}
+      {%- assign _hf_canon_path = canonical_url | split: '?' | first | remove: shop.url -%}
+      {%- assign _hf_en_gb_path = _hf_canon_path | remove_first: _hf_root -%}
+      {%- if _hf_en_gb_path == blank -%}
+        {%- assign _hf_en_gb_path = '/' -%}
+      {%- endif -%}
+      {%- assign _hf_en_gb_url = shop.url | append: _hf_en_gb_path -%}
+    {%- endif -%}
+    <link rel="alternate" hreflang="en-GB" href="{{ _hf_en_gb_url }}">
+  {%- endunless -%}
 {%- endunless -%}
