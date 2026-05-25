@@ -1,3 +1,23 @@
+{%- liquid
+  assign _seo_noindex = false
+  if request.page_type == 'cart' or request.page_type == 'search'
+    assign _seo_noindex = true
+  elsif request.page_type contains 'customers/'
+    assign _seo_noindex = true
+  elsif template.name == 'collection'
+    if current_tags
+      assign _seo_noindex = true
+    else
+      assign _noindex_handles = 'reseller-only,redesign-test-collection,menu-booths-redesign,menu-booths,accessories-test-only,all-for-reseller,globofilter-best-selling-products-index' | split: ','
+      if _noindex_handles contains collection.handle
+        assign _seo_noindex = true
+      endif
+    endif
+  endif
+-%}
+{%- if _seo_noindex -%}
+<meta name="robots" content="noindex, nofollow">
+{%- endif -%}
 {%- comment -%}
   Inject en-GB hreflang on ALL pages.
   Yoast SEO outputs 39 locale alternates (x-default, en, and all market locales) but

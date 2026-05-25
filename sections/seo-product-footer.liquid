@@ -1,0 +1,33 @@
+{%- if product.collections.first -%}
+  {%- assign _rel_collection = product.collections.first -%}
+  {%- assign _has_related = false -%}
+  {%- for _rp in _rel_collection.products limit: 8 -%}
+    {%- unless _rp.handle == product.handle -%}{%- assign _has_related = true -%}{%- endunless -%}
+  {%- endfor -%}
+  {%- if _has_related -%}
+    <div class="page-width seo-related-products" style="padding:2rem 0 1.5rem;">
+      <h3 style="font-size:1.1rem;margin-bottom:1rem;text-align:center;">More from <a href="{{ _rel_collection.url }}">{{ _rel_collection.title }}</a></h3>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+        {%- for _rp in _rel_collection.products limit: 5 -%}
+          {%- unless _rp.handle == product.handle -%}
+            <a href="{{ _rp.url }}" aria-label="{{ _rp.title | escape }}" style="flex:1;min-width:140px;max-width:170px;text-decoration:none;color:inherit;text-align:center;">
+              {%- if _rp.featured_image -%}
+                <img src="{{ _rp.featured_image | img_url: '200x200' }}" alt="{{ _rp.title | escape }}" loading="lazy" style="width:100%;height:auto;border-radius:4px;">
+              {%- endif -%}
+              <p style="font-size:0.8rem;margin:0.4rem 0 0;line-height:1.3;">{{ _rp.title }}</p>
+            </a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+{%- render 'seo-hub-links' -%}
+
+{% schema %}
+{
+  "name": "SEO Product Footer",
+  "class": "seo-product-footer-section",
+  "settings": []
+}
+{% endschema %}
