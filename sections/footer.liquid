@@ -79,23 +79,27 @@
         </style>
         <div class="ISO-images">
           {%- if section.settings.ISO_img_1 -%}
-            <a href="{{section.settings.ISO_url_1}}">
-              <img src="{{section.settings.ISO_img_1 | img_url: '150x'}}">
+            {%- assign iso_label_1 = section.settings.ISO_label_1 | default: 'ISO Certification' -%}
+            <a href="{{section.settings.ISO_url_1}}" aria-label="{{ iso_label_1 }}">
+              <img src="{{section.settings.ISO_img_1 | img_url: '150x'}}" alt="{{ iso_label_1 }}">
             </a>
           {%- endif -%}
           {%- if section.settings.ISO_img_2 -%}
-            <a href="{{section.settings.ISO_url_2}}">
-              <img src="{{section.settings.ISO_img_2 | img_url: '150x'}}">
+            {%- assign iso_label_2 = section.settings.ISO_label_2 | default: 'ISO Certification' -%}
+            <a href="{{section.settings.ISO_url_2}}" aria-label="{{ iso_label_2 }}">
+              <img src="{{section.settings.ISO_img_2 | img_url: '150x'}}" alt="{{ iso_label_2 }}">
             </a>
           {%- endif -%}
           {%- if section.settings.ISO_img_3 -%}
-            <a href="{{section.settings.ISO_url_3}}">
-              <img src="{{section.settings.ISO_img_3 | img_url: '150x'}}">
+            {%- assign iso_label_3 = section.settings.ISO_label_3 | default: 'ISO Certification' -%}
+            <a href="{{section.settings.ISO_url_3}}" aria-label="{{ iso_label_3 }}">
+              <img src="{{section.settings.ISO_img_3 | img_url: '150x'}}" alt="{{ iso_label_3 }}">
             </a>
           {%- endif -%}
           {%- if section.settings.ISO_img_4 -%}
-            <a href="{{section.settings.ISO_url_4}}">
-              <img src="{{section.settings.ISO_img_4 | img_url: '150x'}}">
+            {%- assign iso_label_4 = section.settings.ISO_label_4 | default: 'ISO Certification' -%}
+            <a href="{{section.settings.ISO_url_4}}" aria-label="{{ iso_label_4 }}">
+              <img src="{{section.settings.ISO_img_4 | img_url: '150x'}}" alt="{{ iso_label_4 }}">
             </a>
           {%- endif -%}
         </div>
@@ -186,7 +190,7 @@
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
+                  <path d="M416 32H31.9C14.3 14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
                 </svg>
                 <span class="social-sharing__title" aria-hidden="true">
                   {{- 'general.social.share_on_linkedin' | t -}}
@@ -314,6 +318,12 @@
       "label": "ISO url 1"
     },
     {
+      "type": "text",
+      "id": "ISO_label_1",
+      "label": "ISO label 1",
+      "info": "Used for alt text and accessibility (e.g. ISO 9001 Quality Management)"
+    },
+    {
       "type": "image_picker",
       "id": "ISO_img_2",
       "label": "ISO image 2"
@@ -322,6 +332,12 @@
       "type": "url",
       "id": "ISO_url_2",
       "label": "ISO url 2"
+    },
+    {
+      "type": "text",
+      "id": "ISO_label_2",
+      "label": "ISO label 2",
+      "info": "Used for alt text and accessibility (e.g. ISO 14001 Environmental Management)"
     },
     {
       "type": "image_picker",
@@ -334,6 +350,12 @@
       "label": "ISO url 3"
     },
     {
+      "type": "text",
+      "id": "ISO_label_3",
+      "label": "ISO label 3",
+      "info": "Used for alt text and accessibility"
+    },
+    {
       "type": "image_picker",
       "id": "ISO_img_4",
       "label": "ISO image 4"
@@ -342,6 +364,12 @@
       "type": "url",
       "id": "ISO_url_4",
       "label": "ISO url 4"
+    },
+    {
+      "type": "text",
+      "id": "ISO_label_4",
+      "label": "ISO label 4",
+      "info": "Used for alt text and accessibility"
     }
   ],
   "blocks": [
