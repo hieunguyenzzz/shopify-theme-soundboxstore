@@ -121,7 +121,7 @@
               </div>
 
               {%- if block.settings.link != blank and block.settings.link_2 == blank -%}
-                <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"></a>
+                <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"><span class="visually-hidden">{{ block.settings.title | strip_html | strip }}</span></a>
               {%- endif -%}
 
               {%- if hero_text -%}
@@ -413,7 +413,7 @@
                 </div>
 
                 {%- if block.settings.link != blank and block.settings.link_2 == blank -%}
-                  <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"></a>
+                  <a href="{{ block.settings.link }}" class="hero__slide-link" aria-hidden="true"><span class="visually-hidden">{{ block.settings.title | strip_html | strip }}</span></a>
                 {%- endif -%}
 
                 {%- if hero_text -%}
