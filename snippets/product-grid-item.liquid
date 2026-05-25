@@ -132,7 +132,7 @@
       -%}
       <div style="display:none">{{ product.metafields.my_fields.featured_images.value.last | file_url }}</div>
       <div class="product-image-wrap">
-        <a href="{{ product.url | within: collection }}" class="grid-item__link">
+        <a href="{{ product.url | within: collection }}" class="grid-item__link" aria-label="{{ product.title | escape }}">
           <div class="grid-product__image-wrap">
             {%- if fixed_aspect_ratio -%}
               <div
@@ -416,7 +416,7 @@
             {% endif %}
 
             <div class="collection-btn-group">
-              <a href="{{ product.url }}" class="btn buy-btn">
+              <a href="{{ product.url }}" class="btn buy-btn" aria-label="{{ 'strings.others.explore_now' | t }}: {{ product.title | escape }}">
                 {{- 'strings.others.explore_now' | t -}}
               </a>
             </div>
