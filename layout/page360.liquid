@@ -39,9 +39,19 @@ window.dataLayer = window.dataLayer || [];
     {%- endunless -%}
     {%- render 'seo-title' -%}
 
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
+    {%- liquid
+      if page_description != blank
+        assign _meta_desc = page_description | truncate: 160
+      elsif page
+        assign _meta_desc = page.content | strip_html | strip_newlines | strip | truncate: 160
+        if _meta_desc == blank
+          assign _meta_desc = page.title | append: ' — ' | append: shop.name
+        endif
+      else
+        assign _meta_desc = page_title | append: ' — ' | append: shop.name
+      endif
+    -%}
+    <meta name="description" content="{{ _meta_desc | escape }}">
 
     {%- render 'social-meta-tags' -%}
 
