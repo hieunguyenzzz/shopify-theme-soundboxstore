@@ -212,9 +212,13 @@
       </title>
     {% else %}
       <title>
-        {{ page_title -}}
-        {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | capitalize }}{% endif -%}
-        {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- if template.name == 'blog' and current_tags -%}
+          {{- current_tags | join: ', ' | capitalize }} &ndash; {{ shop.name -}}
+        {%- else -%}
+          {{ page_title -}}
+          {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | capitalize }}{% endif -%}
+          {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+        {%- endif -%}
       </title>
     {% endif %}
 
