@@ -35,7 +35,7 @@ window.dataLayer = window.dataLayer || [];
     {%- endif -%}
 
     {%- unless disabled_by_yoast_seo -%}
-      <title>{{ page_title | escape }}</title>
+      {%- render 'seo-title-tag' -%}
     {%- endunless -%}
     {%- render 'seo-title' -%}
 
