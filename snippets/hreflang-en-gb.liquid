@@ -19,29 +19,18 @@
 <meta name="robots" content="noindex, nofollow">
 {%- endif -%}
 {%- comment -%}
-  Inject en-GB hreflang on ALL pages.
-  Yoast SEO outputs 39 locale alternates (x-default, en, and all market locales) but
-  omits en-GB because the UK is the default market (no URL prefix). Without this tag on
-  every locale page the hreflang mesh is non-reciprocal.
-  Uses routes.root_url (blank = primary/en-GB, non-blank = secondary market) so new
-  markets are handled automatically without updating a hardcoded list.
-  Suppressed on ?variant= URLs and 404 pages.
+  This snippet now ONLY handles the noindex robots meta above
+  (cart / search / customer / filtered-collection / internal-collection pages).
+
+  The en-GB hreflang injection that used to live here was REMOVED (2026-05).
+  It emitted hreflang="en-GB" pointing at the current localised URL on every
+  secondary-market page (e.g. /de-de/... claimed to be both de-DE AND en-GB),
+  colliding two languages onto one URL and breaking hreflang reciprocity across
+  ~10,000 pages (Ahrefs health 2/100, ticket SBS-115).
+
+  Shopify Markets already emits a complete, reciprocal alternate cluster
+  natively (en + x-default -> the UK primary URL), so an explicit en-GB tag is
+  unnecessary and was actively harmful. Filename retained to avoid touching the
+  8 layout files that render this snippet; rename to seo-noindex.liquid is a
+  safe follow-up.
 {%- endcomment -%}
-{%- unless request.query_string contains 'variant' -%}
-  {%- unless template.name == '404' -%}
-    {%- assign _hf_root = routes.root_url | rstrip: '/' -%}
-    {%- if _hf_root == blank -%}
-      {%- comment -%}Primary locale (en-GB): use canonical URL directly{%- endcomment -%}
-      {%- assign _hf_en_gb_url = canonical_url | split: '?' | first -%}
-    {%- else -%}
-      {%- comment -%}Secondary locale: strip market prefix to get primary-locale path{%- endcomment -%}
-      {%- assign _hf_canon_path = canonical_url | split: '?' | first | remove: shop.url -%}
-      {%- assign _hf_en_gb_path = _hf_canon_path | remove_first: _hf_root -%}
-      {%- if _hf_en_gb_path == blank -%}
-        {%- assign _hf_en_gb_path = '/' -%}
-      {%- endif -%}
-      {%- assign _hf_en_gb_url = shop.url | append: _hf_en_gb_path -%}
-    {%- endif -%}
-    <link rel="alternate" hreflang="en-GB" href="{{ _hf_en_gb_url }}">
-  {%- endunless -%}
-{%- endunless -%}
