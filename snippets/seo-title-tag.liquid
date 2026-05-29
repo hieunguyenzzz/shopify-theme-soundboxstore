@@ -1,0 +1,31 @@
+{%- comment -%}
+  snippets/seo-title-tag.liquid
+
+  Single source for the <title> tag with short-title branding (SEMrush Tier 2.1):
+  when the page title is under 35 chars and not already branded, append the shop
+  name so it clears the "title too short" check. Long titles are left unchanged.
+
+  Mirrors the title logic in layout/theme.liquid so the other layouts
+  (page360, GemPages) brand titles the same way the main layout does.
+{%- endcomment -%}
+{%- capture _seo_title -%}
+  {%- if template.name == 'index' -%}
+    {{ page_title -}}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- elsif template.name == 'blog' and current_tags -%}
+    {{- current_tags | join: ', ' | capitalize }} &ndash; {{ shop.name -}}
+  {%- else -%}
+    {{ page_title -}}
+    {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | capitalize }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign _seo_title = _seo_title | strip -%}
+{%- if template.name != 'index' and page_title.size < 35 -%}
+  {%- unless _seo_title contains shop.name -%}
+    {%- assign _seo_title = _seo_title | append: ' &ndash; ' | append: shop.name -%}
+  {%- endunless -%}
+{%- endif -%}
+<title>{{ _seo_title }}</title>
