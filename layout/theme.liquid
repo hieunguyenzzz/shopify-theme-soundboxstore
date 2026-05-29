@@ -211,7 +211,7 @@
         {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
       </title>
     {% else %}
-      <title>
+      {%- capture _seo_title -%}
         {%- if template.name == 'blog' and current_tags -%}
           {{- current_tags | join: ', ' | capitalize }} &ndash; {{ shop.name -}}
         {%- else -%}
@@ -219,7 +219,18 @@
           {%- if current_tags %} &ndash; {{ current_tags | join: ', ' | capitalize }}{% endif -%}
           {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
         {%- endif -%}
-      </title>
+      {%- endcapture -%}
+      {%- comment -%}
+        SEO Tier 2.1: brand short titles (<35 chars) that aren't already branded,
+        lifting them out of the "title too short" bucket. Long titles left as-is.
+      {%- endcomment -%}
+      {%- assign _seo_title = _seo_title | strip -%}
+      {%- if page_title.size < 35 -%}
+        {%- unless _seo_title contains shop.name -%}
+          {%- assign _seo_title = _seo_title | append: ' &ndash; ' | append: shop.name -%}
+        {%- endunless -%}
+      {%- endif -%}
+      <title>{{ _seo_title }}</title>
     {% endif %}
 
     {%- liquid
