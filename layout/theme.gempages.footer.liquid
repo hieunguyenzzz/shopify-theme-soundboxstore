@@ -219,7 +219,7 @@
       </title>
     {% endif %}
 
-    <meta name="description" content="{{ page_description | escape }}">
+    {%- render 'meta-description' -%}
 
     {%- render 'social-meta-tags' -%}
     <style>

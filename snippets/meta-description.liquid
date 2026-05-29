@@ -1,0 +1,47 @@
+{%- comment -%}
+  snippets/meta-description.liquid
+
+  Renders a non-empty <meta name="description"> using a fallback chain, so no
+  page ships an empty or missing description (SEMrush Tier 2.1, issue 106).
+
+  Order: page_description (SEO metafield) -> resource body -> resource title.
+  Emits an HTML comment recording which branch produced the text, for debugging.
+
+  Used by the GemPages layouts, which previously output the raw page_description
+  and rendered an empty tag whenever no SEO description was set.
+{%- endcomment -%}
+{%- liquid
+  assign _md_source = 'page_description'
+  if page_description != blank
+    assign _meta_desc = page_description | truncate: 160
+  elsif template.name == 'policy' and policy
+    assign _meta_desc = policy.title | append: ' — ' | append: shop.name | append: '. ' | append: policy.body | strip_html | strip_newlines | strip | truncate: 160
+    assign _md_source = 'policy.body'
+  elsif page
+    assign _meta_desc = page.content | strip_html | strip_newlines | strip | truncate: 160
+    assign _md_source = 'page.content'
+    if _meta_desc == blank
+      assign _meta_desc = page.title | append: ' — ' | append: shop.name
+      assign _md_source = 'page.title'
+    endif
+  elsif collection
+    assign _meta_desc = collection.description | strip_html | strip_newlines | strip | truncate: 160
+    assign _md_source = 'collection.description'
+    if _meta_desc == blank
+      assign _meta_desc = collection.title | append: ' — ' | append: shop.name
+      assign _md_source = 'collection.title'
+    endif
+  elsif product
+    assign _meta_desc = product.description | strip_html | strip_newlines | strip | truncate: 160
+    assign _md_source = 'product.description'
+    if _meta_desc == blank
+      assign _meta_desc = product.title | append: ' — ' | append: shop.name
+      assign _md_source = 'product.title'
+    endif
+  else
+    assign _meta_desc = page_title | append: ' — ' | append: shop.name
+    assign _md_source = 'page_title'
+  endif
+-%}
+<!-- meta-desc: source={{ _md_source }} (fallback snippet) -->
+<meta name="description" content="{{ _meta_desc | escape }}">
