@@ -51,7 +51,6 @@
       <button type="submit" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
         {{ 'cart.general.checkout' | t }}
       </button>
-<!--       <a href="/cart" class="btn cart__checkout">View Cart</a> -->
       {% if additional_checkout_buttons and settings.cart_additional_buttons %}
         <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
       {% endif %}
