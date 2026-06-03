@@ -8,13 +8,29 @@
     .collection-main-header-wrap .collection-main-content {
       margin-right: calc(50% - 50vw);
     }
+    .collection-main-header-wrap .collection-main-title.mobile-only {
+      display: none;
+    }
+    .collection-main-header-wrap .collection-main-title.desktop-only {
+      display: block;
+    }
     .collection-main-header-wrap .collection-main-content > div:first-child {
       flex: 1;
       min-width: 0;
+      aspect-ratio: 2 / 1;
+      align-self: stretch;
+      position: relative;
+    }
+    .collection-main-header-wrap .collection-main-content > div:first-child > div {
+      position: absolute;
+      inset: 0;
+    }
+    .collection-main-header-wrap .collection-main-content > div:first-child > div > div {
+      height: 100%;
     }
     .collection-main-header-wrap .collection-main-content .image {
-      aspect-ratio: 2 / 1;
       width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: right center;
     }
