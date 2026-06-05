@@ -117,7 +117,7 @@
       assign preview_image = _variant.image | default: product.featured_media.preview_image
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
-    <a href="{{ _variant.url | within: collection }}" class="grid-item__link">
+    <a href="{{ _variant.url }}" class="grid-item__link">
       <div class="grid-product__image-wrap">
         <div class="grid-product__tags">
           {%- if has_custom_label -%}
