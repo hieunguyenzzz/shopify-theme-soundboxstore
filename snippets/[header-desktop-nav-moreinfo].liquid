@@ -247,7 +247,11 @@
                   </span>
                 </div>
                 <div class="">
-                  <a class="col_1-title" href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                  {%- comment -%}
+                    email_off stops Cloudflare rewriting this to /cdn-cgi/l/email-protection,
+                    which crawlers see as a broken (404) internal link on every page.
+                  {%- endcomment -%}
+                  <!--email_off--><a class="col_1-title" href="mailto:{{ shop.email }}">{{ shop.email }}</a><!--/email_off-->
                   <div class="col_1-subtitle">{{ 'strings.others.email_description' | t }}</div>
                 </div>
               </div>
