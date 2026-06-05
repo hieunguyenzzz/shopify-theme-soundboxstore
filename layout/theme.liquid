@@ -238,6 +238,22 @@
       if template.name == 'blog' and current_tags
         assign _tag_str = current_tags | join: '& ' | capitalize
         assign _meta_desc = blog.title | append: ': ' | append: _tag_str | append: ' — ' | append: shop.name
+      elsif template.name == 'list-collections'
+        comment
+          Without this branch the collections list inherits the shop-wide
+          description and duplicates the homepage meta on every locale.
+          Built from translated data (page title + collection titles) so no
+          locale keys are needed.
+        endcomment
+        capture _coll_titles
+          for _c in collections limit: 6
+            unless forloop.first
+              echo ', '
+            endunless
+            echo _c.title
+          endfor
+        endcapture
+        assign _meta_desc = page_title | append: ' — ' | append: shop.name | append: ': ' | append: _coll_titles | truncate: 160
       elsif page_description != blank
         assign _meta_desc = page_description | truncate: 160
       elsif template.name == 'policy'
