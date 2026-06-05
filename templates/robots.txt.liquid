@@ -29,6 +29,10 @@ Allow: /
 # See: https://soundboxstore.com/pages/llms-txt
 
 User-agent: *
+# Shopify injects this script on every page; without the Allow, the broad
+# /checkouts/ disallow makes audit tools flag it as a blocked resource on
+# every URL (longest-match wins, so checkout pages themselves stay blocked)
+Allow: /checkouts/internal/preloads.js
 Disallow: /a/downloads/-/*
 Disallow: /admin
 Disallow: /cart
@@ -84,6 +88,7 @@ User-agent: Nutch
 Disallow: /
 
 User-agent: AhrefsBot
+Allow: /checkouts/internal/preloads.js
 Disallow: /a/downloads/-/*
 Disallow: /admin
 Disallow: /cart
@@ -124,6 +129,7 @@ Disallow: */collections/*filter*&*filter*
 Sitemap: https://soundboxstore.com/sitemap.xml
 
 User-agent: AhrefsSiteAudit
+Allow: /checkouts/internal/preloads.js
 Disallow: /a/downloads/-/*
 Disallow: /admin
 Disallow: /cart
