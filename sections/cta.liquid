@@ -164,8 +164,13 @@
           <div class="section-btn">
             {% for block in section.blocks %}
               {% if block.type == 'button' %}
+                {%- comment -%}
+                  url-type settings resolve shopify:// values to locale-prefixed paths already,
+                  so only prepend root_url to legacy raw paths that lack the locale prefix
+                  (otherwise /en-se/pages/x becomes /en-se/en-se/pages/x → 404).
+                {%- endcomment -%}
                 {%- assign _btn_url = block.settings.url -%}
-                {%- unless _btn_url contains '://' -%}
+                {%- unless _btn_url contains '://' or _btn_url contains routes.root_url -%}
                   {%- assign _btn_url = routes.root_url | append: _btn_url | replace: '//', '/' -%}
                 {%- endunless -%}
                 <a href="{{ _btn_url }}" class="btn">
