@@ -119,7 +119,7 @@
       assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
     -%}
     <div class="product-image-wrap">
-      <a href="{{ product.url | within: collection }}" class="grid-item__link">
+      <a href="{{ product.url }}" class="grid-item__link">
         <div class="grid-product__image-wrap">
           {%- if fixed_aspect_ratio -%}
             <div
@@ -276,7 +276,7 @@
                       {%- if color_count <= max_colors_show -%}
                         <span
                           class="color-swatch color-swatch--small color-swatch--{{ value | handle }}{% if variant.image %} color-swatch--with-image{% endif %}"
-                          data-url="{{ variant.url | within: collection }}"
+                          data-url="{{ variant.url }}"
                           {% if variant.image %}
                             data-variant-id="{{ variant.id }}"
                             data-variant-image="{{ variant.image | img_url: '400x' }}"
