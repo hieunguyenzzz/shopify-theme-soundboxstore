@@ -143,7 +143,12 @@
               {%- render '[phone-number]' -%}
               {%- endcapture -%}
           {%- assign content = section.settings.text | replace: '+44 (0) 20 4586 3800', phone -%}
-          <div class="rte section-header__rte">{{ content }}</div>
+          {%- comment -%}
+            email_off comments tell Cloudflare's Email Address Obfuscation to skip
+            mailto links in this admin-managed text, so they aren't rewritten to
+            /cdn-cgi/l/email-protection (404 for crawlers, flagged by SEMrush).
+          {%- endcomment -%}
+          <div class="rte section-header__rte"><!--email_off-->{{ content }}<!--/email_off--></div>
         {%- endif -%}
       </div>
     {% endif %}
