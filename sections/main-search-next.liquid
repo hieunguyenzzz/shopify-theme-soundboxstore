@@ -286,7 +286,7 @@
             {{ pageresult }}
             <div class="grid-item grid-product">
               <div class="grid-item__content">
-                <a href="{{ item.url }}" class="grid-item__link">
+                <a href="{{ item.url | split: '?' | first }}" class="grid-item__link">
                   <div class="grid-item__meta">
                     <span class="h4">
                       {{- item.title }}
@@ -301,7 +301,7 @@
           {{ othersresult }}
           <div class="grid-item grid-product">
             <div class="grid-item__content">
-              <a href="{{ item.url }}" class="grid-item__link">
+              <a href="{{ item.url | split: '?' | first }}" class="grid-item__link">
                 <div class="grid-item__meta">
                   <span class="h4">
                     {{- item.title }}
