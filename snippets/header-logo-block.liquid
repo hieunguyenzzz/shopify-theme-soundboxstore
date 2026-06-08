@@ -38,11 +38,8 @@
       }
     {%- endstyle -%}
 
-    {%- if template == 'index' -%}
-      <h1 class="site-header__logo">
-    {%- else -%}
-      <div class="h1 site-header__logo">
-    {%- endif -%}
+    {%- comment -%} SBS-78: logo is no longer an <h1> on the homepage; the hero title is the single page H1. The "h1" class is kept so styling is unchanged. {%- endcomment -%}
+    <div class="h1 site-header__logo">
 
     {%- if block.settings.logo -%}
       <span class="visually-hidden">{{ shop.name }}</span>
@@ -101,11 +98,7 @@
     {%- else -%}
       <a href="{{ routes.root_url }}">{{ shop.name }}</a>
     {%- endif -%}
-    {%- if template == 'index' -%}
-      </h1>
-    {%- else -%}
-      </div>
-    {%- endif -%}
+    </div>
   {%- endif -%}
 {%- endfor -%}
 
@@ -116,17 +109,10 @@
       max-width: 60%;
     }
   {%- endstyle -%}
-  {%- if template == 'index' -%}
-    <h1 class="site-header__logo">
-  {%- else -%}
-    <div class="h1 site-header__logo">
-  {%- endif -%}
+  {%- comment -%} SBS-78: text-only logo is also a <div>, not an <h1>, on the homepage. {%- endcomment -%}
+  <div class="h1 site-header__logo">
   <a href="{{ routes.root_url }}" class="site-header__logo-link">
     {{ shop.name }}
   </a>
-  {%- if template == 'index' -%}
-    </h1>
-  {%- else -%}
-    </div>
-  {%- endif -%}
+  </div>
 {%- endunless -%}

@@ -59,7 +59,8 @@
   </header>
 
   <div class="rte{% if section.settings.blog_capitalize_first %} capitalize-first-letter{% endif %}">
-    {{ article.content }}
+    {%- comment -%} SBS-78: the article title above is the single H1; downgrade any authored H1 in the body to H2. {%- endcomment -%}
+    {{ article.content | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
   </div>
 
   {%- if blog.comments_enabled? -%}

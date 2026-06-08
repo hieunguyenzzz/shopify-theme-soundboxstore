@@ -55,7 +55,8 @@
 </header>
 
 <div class="rte" style="max-width:1024px; margin:auto">
-  {{ page.content }}
+  {%- comment -%} SBS-78: the page title above is the single H1; downgrade any authored H1 in the body to H2. {%- endcomment -%}
+  {{ page.content | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
 </div>
 
 {% schema %}
