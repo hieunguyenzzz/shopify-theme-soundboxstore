@@ -33,6 +33,12 @@
     {% break %}
   {% endfor %}
 {% endunless %}
+{% unless image %}
+  {% assign image = product.featured_image %}
+{% endunless %}
+{% unless image_2 %}
+  {% assign image_2 = product.metafields.custom.secondary_image.value %}
+{% endunless %}
 {% unless description %}
   {% assign description = product.description | strip_html | slice: 0, 150 | append: '...' %}
 {% endunless %}
