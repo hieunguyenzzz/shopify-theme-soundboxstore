@@ -40,10 +40,10 @@
           <div class="footer-address-list">
             <ul>
               {% if localization.country.iso_code == 'US' %}
-                <style>
-                  .location.address_1,.location.address_2,.location.address_3{display:none}
-                </style>
                 {% if block.settings['address-heading_us'] != blank or block.settings.address_us != blank %}
+                  <style>
+                    .location.address_1,.location.address_2,.location.address_3{display:none}
+                  </style>
                   <li class="location address_us">
                     {% if block.settings['address-heading_us'] != blank %}
                       <strong>{{ block.settings['address-heading_us'] }}</strong>
