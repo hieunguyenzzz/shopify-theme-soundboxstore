@@ -39,6 +39,35 @@
         %}
           <div class="footer-address-list">
             <ul>
+              {% if localization.country.iso_code == 'US' %}
+                <style>
+                  .location.address_1,.location.address_2,.location.address_3{display:none}
+                </style>
+                {% if block.settings['address-heading_us'] != blank or block.settings.address_us != blank %}
+                  <li class="location address_us">
+                    {% if block.settings['address-heading_us'] != blank %}
+                      <strong>{{ block.settings['address-heading_us'] }}</strong>
+                    {% endif %}
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      {% if block.settings.address_url_us != blank %}
+                        href="{{ block.settings.address_url_us }}"
+                      {% else %}
+                        href="https://www.google.com/search?q={{ block.settings.address_us }}"
+                      {% endif %}
+                    >
+                      {{- block.settings.address_us -}}
+                    </a>
+                    {% assign us_phone = settings.phone_number_us | default: block.settings.phone_us %}
+                    {% if us_phone != blank %}
+                      <br>
+                      {{ 'customer.addresses.phone' | t }}:
+                      <a href="tel:{{ us_phone }}">{{ us_phone }}</a>
+                    {% endif %}
+                  </li>
+                {% endif %}
+              {% endif %}
               {% if block.settings['address-heading_de'] != blank or block.settings.address_de != blank %}
                 <li class="location address_de">
                   {% if block.settings['address-heading_de'] != blank %}
