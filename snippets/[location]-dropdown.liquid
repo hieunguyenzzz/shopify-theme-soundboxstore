@@ -34,13 +34,21 @@ IT it /it-it' %}
     tabindex="0"
     class="tw-btn tw-btn-ghost !tw-font-normal !tw-mb-0 tw-rounded-none tw-btn-xs tw-items-center tw-gap-1"
   >
-    {%- assign iconPath = localization.country.iso_code | downcase | append: '-flag' | append: '.svg' %}
+    {%- assign available_flags = 'ae,at,be,ch,de,dk,es,eu,fi,fr,gb,gr,ie,it,nl,no,pl,se,us' | split: ',' -%}
+    {%- assign current_iso = localization.country.iso_code | downcase -%}
+    {%- if available_flags contains current_iso -%}
+      {%- assign iconPath = current_iso | append: '-flag.svg' -%}
+      {%- assign iconAlt = localization.country.name | append: ' flag' -%}
+    {%- else -%}
+      {%- assign iconPath = 'globe-flag.svg' -%}
+      {%- assign iconAlt = localization.country.name -%}
+    {%- endif -%}
     <img
       width="16"
       height="16"
       class="tw-w-4 tw-h-4 tw-rounded-full tw-object-cover"
-      src="{{ iconPath | asset_url}}"
-      alt="{{ localization.country.name }} flag"
+      src="{{ iconPath | asset_url }}"
+      alt="{{ iconAlt }}"
     >
     {{
       localization.language.iso_code
