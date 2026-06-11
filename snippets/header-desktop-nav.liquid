@@ -26,7 +26,7 @@
 <style>
         .site-nav__item a{
                                line-height: 1.3;
-                          padding: 0.2em 2em;
+                          padding: 0.2em clamp(0.5em, 1.4vw, 2em);
                           font-size: 16px;
                           margin-bottom: 0.4em;
           white-space:nowrap;
@@ -53,13 +53,15 @@
       .header-item--icons{
         flex:none!important
       }
+      .header-item--navigation{
+        min-width:0
+      }
     .site-nav.site-navigation {
   display: flex;
       width: 100%;
       justify-content: space-around;
       padding-left: 0;
-      min-width: 50%;
-      width: 50%;
+      min-width: 0;
       flex: 1;
     }
   .site-nav img{
@@ -68,11 +70,30 @@
   .site-nav:hover img{
     display:block;
   }
+  @media only screen and (min-width: 1025px) {
+    .site-header .header-layout[data-logo-align=left] .site-nav>li.site-nav__item>a.site-nav__link{
+      font-size: clamp(11px, 1.1vw, 14px);
+      letter-spacing: 0.14em;
+    }
+  }
+  @media only screen and (max-width: 1440px) {
+    .site-header .header-layout[data-logo-align=left] .header-item--logo{
+      margin-right: min(40px, 2.5vw);
+    }
+    .site-header .header-layout[data-logo-align=left] .site-nav>li.site-nav__item:not(:last-child){
+      margin-right: 0;
+      padding-right: min(20px, 1.4vw);
+    }
+    ul.site-nav.site-navigation{
+      gap: min(2em, 1.4vw) !important;
+      padding-left: min(3em, 1.2vw) !important;
+    }
+  }
 </style>
 <ul
   style="
     padding: 0 1em;
-    gap: min(2em, 3vw);
+    gap: min(2em, 2vw);
     padding-left: min(3em, 3vw);
     width: 100%;
   "
