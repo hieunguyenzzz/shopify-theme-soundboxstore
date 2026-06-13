@@ -1,3 +1,4 @@
+{%- render 'product-schema', product: product -%}
 {% assign reseller_product = collections['reseller-only'].products | where: 'handle', product.handle %}
 {% if reseller_product.size > 0 %}
   {% render 'reseller_only' %}
