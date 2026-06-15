@@ -134,7 +134,7 @@
         "165734829349367447-0": {
           "type": "heading",
           "settings": {
-            "title": "Folio 4 Person Office Phone Booth: Your Space for Focus"
+            "title": "Folio 4 Person Meeting Booth: Your Space for Focus"
           }
         },
         "165734829349367447-1": {
@@ -919,6 +919,25 @@
       ],
       "settings": {}
     },
+    "d860300d-7c49-4055-87c4-01913a46c1c6": {
+      "type": "faq",
+      "blocks": {
+        "question_gCDgFE": {
+          "type": "question",
+          "repeater": "{{ product.metafields.custom.faqs.value }}",
+          "settings": {
+            "title": "{{ block.repeater.question.value }}",
+            "text": "{{ block.repeater.text | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "question_gCDgFE"
+      ],
+      "settings": {
+        "title": "FAQs"
+      }
+    },
     "1651508688dadacecf": {
       "type": "apps",
       "blocks": {
@@ -974,25 +993,6 @@
         "height": 41,
         "color": "#ffffff",
         "full_width": false
-      }
-    },
-    "d860300d-7c49-4055-87c4-01913a46c1c6": {
-      "type": "faq",
-      "blocks": {
-        "question_gCDgFE": {
-          "type": "question",
-          "repeater": "{{ product.metafields.custom.faqs.value }}",
-          "settings": {
-            "title": "{{ block.repeater.question.value }}",
-            "text": "{{ block.repeater.text | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "question_gCDgFE"
-      ],
-      "settings": {
-        "title": "FAQs"
       }
     }
   },
