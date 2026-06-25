@@ -4,7 +4,23 @@
 {% assign products_count = products_count | default: collection.products_count %}
 {% assign image = image | default: collection.image %}
 {% style %}
-  @media screen and (min-width: 979px) {
+  /* Mobile-first: title above image, image full-width */
+  .collection-main-header-wrap .collection-main-title.mobile-only {
+    display: block;
+  }
+  .collection-main-header-wrap .collection-main-title.desktop-only {
+    display: none;
+  }
+  /* Mobile/tablet: image fills container width, keeps natural 3:2 ratio from CDN */
+  .collection-main-header-wrap .collection-main-media {
+    width: 100%;
+  }
+  .collection-main-header-wrap .collection-main-content .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media screen and (min-width: 1200px) {
     .collection-main-header-wrap .collection-main-content {
       margin-right: calc(50% - 50vw);
     }
@@ -14,25 +30,26 @@
     .collection-main-header-wrap .collection-main-title.desktop-only {
       display: block;
     }
-    .collection-main-header-wrap .collection-main-content > div:first-child {
+    /* Desktop: image in a fixed-ratio frame with absolute positioning (original pattern) */
+    .collection-main-header-wrap .collection-main-media {
       flex: 1;
       min-width: 0;
-      aspect-ratio: 2 / 1;
+      aspect-ratio: 1.75 / 1;
       align-self: stretch;
       position: relative;
     }
-    .collection-main-header-wrap .collection-main-content > div:first-child > div {
+    .collection-main-header-wrap .collection-main-media > div {
       position: absolute;
       inset: 0;
     }
-    .collection-main-header-wrap .collection-main-content > div:first-child > div > div {
+    .collection-main-header-wrap .collection-main-media > div > div {
       height: 100%;
     }
     .collection-main-header-wrap .collection-main-content .image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: right center;
+      object-position: center;
     }
   }
 {% endstyle %}
@@ -40,7 +57,7 @@
   <div class="page-width">
     <div class="collection-main-title mobile-only">{{ title | strip_html }}</div>
     <div class="collection-main-content">
-      <div>
+      <div class="collection-main-media">
         {% render '[callout-image]', image: image, blocks: blocks %}
       </div>
       <div

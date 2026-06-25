@@ -11,8 +11,8 @@
            padding-top:2em;
         }
 
-         .main-content  .image {
-            aspect-ratio: 3 / 2 ;
+         .main-content  .collection-main-header-wrap .image {
+            aspect-ratio: 3 / 2;
             object-fit: cover;
         }
          {% assign title_size = 0 | plus:section.settings.title_size %}
@@ -114,7 +114,6 @@
             justify-content: center;
             margin-top: 1em;
         }
-    }
 
     .collection-main .image img:not(:first-child) {
         opacity: 0
@@ -163,7 +162,7 @@
         width: auto;
     }
 
-    @media screen and (min-width: 979px) {
+    @media screen and (min-width: 1200px) {
            .main-content  {
            padding-top:0;
            padding-bottom:0;
@@ -183,7 +182,7 @@
         }
 
          .main-content  .collection-main-content .collection-main-description {
-            flex: 1 1 aut0;
+            flex: 1 1 auto;
             max-width: 520px;
         }
        .main-content  .collection-main-content .collection-main-description {

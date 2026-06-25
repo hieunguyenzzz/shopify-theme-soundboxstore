@@ -1,49 +1,51 @@
 <style>
-    .callout-image-point{
-      font-size:min(0.8em,3vw);
-      position:relative;
-      cursor:pointer;transform:scale(1.4)
-    }
-  .callout-image-point-wrap .callout-image-point-detail{
-    display:none;position:absolute;
-           width:240px;
-              background:white;
-                    border: 1px solid #cccccc;
-                  max-width:min(320px,40vw);
-                border-radius:0.3em;
+  .callout-image-point {
+    font-size: min(0.8em, 3vw);
+    position: relative;
+    cursor: pointer;
+    transform: scale(1.4);
   }
-  .callout-image-point-wrap:focus .callout-image-point-detail,  .callout-image-point-wrap:focus-within .callout-image-point-detail{
-     display:block
+  .callout-image-point-wrap .callout-image-point-detail {
+    display: none;
+    position: absolute;
+    width: 240px;
+    background: white;
+    border: 1px solid #cccccc;
+    max-width: min(320px, 40vw);
+    border-radius: 0.3em;
   }
-  .callout-image-point:focus+div{
-    display:block
+  .callout-image-point-wrap:focus .callout-image-point-detail,
+  .callout-image-point-wrap:focus-within .callout-image-point-detail {
+    display: block;
+  }
+  .callout-image-point:focus + div {
+    display: block;
   }
 
-    .callout-image-point:after,
-    .callout-image-point:before {
-      width: 1em;
-      height:1em;
-      background: #54c63a;
-      border-radius: 99em;
-      position: absolute;
-      left: 0;
-      top: 0;
-      content: "";
-    }
+  .callout-image-point:after,
+  .callout-image-point:before {
+    width: 1em;
+    height: 1em;
+    background: #54c63a;
+    border-radius: 99em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+  }
 
-    .callout-image-point:before {
-
-      animation: inventory-pulse 2s linear infinite;
-      display: block;
-      position: relative;
-    }
+  .callout-image-point:before {
+    animation: inventory-pulse 2s linear infinite;
+    display: block;
+    position: relative;
+  }
 </style>
 {% capture image %}
   {% if image %}
-      {{ image | image_url: width: 980, height: 653 | image_tag: class: 'image', preload: true }}
-    {% else %}
+    {{ image | image_url: width: 980, height: 653 | image_tag: class: 'image', preload: true }}
+  {% else %}
     {{ 'product-1' | placeholder_svg_tag }}
-    {% endif %}
+  {% endif %}
 {% endcapture %}
 <div>
   <div style="position:relative;width:100%">
@@ -101,7 +103,6 @@
                  margin:0
               "
               id="popover_{{ forloop.index }}"
-
               {% assign product = point.settings.product %}
             >
               <a
