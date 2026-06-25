@@ -72,9 +72,12 @@
     grid-auto-rows: min-content;
   }
 
-  /* Phone (<=767px): ORIGINAL mobile layout - unchanged (mobile image as a
-     full-bleed background, pod anchored to the bottom). */
-  @media only screen and (max-width: 767px) {
+  /* Tablet + mobile (<=1024px): stacked layout (the theme's original mobile
+     design). The image stays a full-bleed background, so it always matches itself
+     - no colour gaps, no white edges, no cropping issues - with the content
+     sitting on the wall and the pod anchored to the bottom. This auto-matches
+     every product's photo. Desktop (>=1025) keeps the side-by-side layout. */
+  @media only screen and (max-width: 1024px) {
     .acoustic-environment .custom-content {
       width: 100%;
     }
@@ -83,33 +86,6 @@
     }
     .acoustic-environment .custom-background {
       object-position: bottom;
-    }
-  }
-  /* Tablet (768-1024px): match the desktop look but stacked - content on top,
-     image below. The content sits on the desktop photo's wall colour (used as a
-     backdrop so it auto-matches each product, same blue as desktop), and the full
-     pod is shown below as a banner at natural aspect (sharp, never cropped).
-     Desktop (>=1025) keeps its side-by-side layout, unchanged. */
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .acoustic-environment .custom-content {
-      width: 100%;
-      background-color: {{ section.settings.bgcolor | default: '#c1cdcd' }};
-    }
-    .acoustic-environment .custom-content-space {
-      display: none;
-    }
-    .acoustic-environment .custom-background.desktop-only {
-      display: block;
-    }
-    .acoustic-environment .custom-background.mobile-only {
-      display: none;
-    }
-    .acoustic-environment .custom-background {
-      position: relative; /* flow as a banner below the text */
-      order: 1;
-      width: 100%;
-      height: auto; /* natural aspect -> full pod, never cropped */
-      z-index: auto;
     }
   }
 </style>
@@ -175,13 +151,6 @@
       "type": "image_picker",
       "id": "mobile-bg_image",
       "label": "Background Image (Mobile)"
-    },
-    {
-      "type": "color",
-      "id": "bgcolor",
-      "label": "Tablet content background colour",
-      "info": "Used behind the text on tablet (768-1024px). Match it to the photo's wall colour.",
-      "default": "#c1cdcd"
     },
     {
       "type": "text",
