@@ -19703,3 +19703,15 @@ body.template-article h2 span {
     display: none !important;
   }
 }
+
+/* iPad/tablet fix: when image-text-column stacks (<=1024px) the text column
+   becomes full-width, but its inner wrap keeps max-width:650px + margin-left:auto,
+   which shoves the text to the right with a large empty gap on the left.
+   Centre the wrap so it lines up with the centred image. Affects About-us
+   (image-text-column) and product pages (feature-content), both use .image-text-column. */
+@media only screen and (max-width: 1024px) {
+  .image-text-column .col.left-col .col-wrap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
