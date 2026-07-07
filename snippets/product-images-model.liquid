@@ -96,10 +96,10 @@
 {%- assign imgs = current_variant.metafields.global.images.value -%}
 {%- assign videos = current_variant.metafields.global.videos.value -%}
 
-{%- unless imgs.first -%}
+{%- unless imgs -%}
   {%- assign imgs = product.images | where: 'alt', vaSku -%}
 {%- endunless -%}
-{%- unless imgs.first -%}
+{%- unless imgs.size > 0 -%}
   {%- assign imgs = product.images -%}
 {%- endunless -%}
 {%- assign slide_count = imgs.size -%}
@@ -359,10 +359,10 @@
   {%- assign imgs = current_variant.metafields.global.images.value -%}
   {%- assign videos = current_variant.metafields.global.videos.value -%}
   {%- assign alt = product.title | append: current_variant.title | strip -%}
-  {%- unless imgs.first -%}
+  {%- unless imgs -%}
     {%- assign imgs = product.images | where: 'alt', vaSku -%}
   {%- endunless -%}
-  {%- unless imgs.first -%}
+  {%- unless imgs.size > 0 -%}
     {%- assign imgs = product.images -%}
   {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
