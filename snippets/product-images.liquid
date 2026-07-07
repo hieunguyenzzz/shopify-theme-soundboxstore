@@ -244,6 +244,9 @@ calc(100vw - 4rem)
 {%- unless imgs -%}
   {%- assign imgs = product.images | where: 'alt', vaSku -%}
 {%- endunless -%}
+{%- if imgs.size == 0 -%}
+  {%- assign imgs = product.images -%}
+{%- endif -%}
 {%- assign slide_count = imgs.size -%}
 <div class="product-main-slider">
   <div class="slider-wrap">
