@@ -241,12 +241,13 @@ calc(100vw - 4rem)
 {%- assign imgs = current_variant.metafields.global.images.value -%}
 {%- assign videos = current_variant.metafields.global.videos.value -%}
 
-{%- if imgs == blank -%}
+{%- unless imgs.first -%}
   {%- assign imgs = product.images | where: 'alt', vaSku -%}
-{%- endif -%}
-{%- if imgs == blank -%}
+{%- endunless -%}
+{%- unless imgs.first -%}
   {%- assign imgs = product.images -%}
-{%- endif -%}
+{%- endunless -%}
+<!-- ANJA-GALLERY-FIX-v3 imgs:{{ imgs.size }} -->
 {%- assign slide_count = imgs.size -%}
 <div class="product-main-slider">
   <div class="slider-wrap">
