@@ -241,10 +241,10 @@ calc(100vw - 4rem)
 {%- assign imgs = current_variant.metafields.global.images.value -%}
 {%- assign videos = current_variant.metafields.global.videos.value -%}
 
-{%- unless imgs -%}
+{%- if imgs == blank -%}
   {%- assign imgs = product.images | where: 'alt', vaSku -%}
-{%- endunless -%}
-{%- if imgs.size == 0 -%}
+{%- endif -%}
+{%- if imgs == blank -%}
   {%- assign imgs = product.images -%}
 {%- endif -%}
 {%- assign slide_count = imgs.size -%}
