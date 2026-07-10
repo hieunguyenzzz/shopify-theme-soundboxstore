@@ -1043,7 +1043,7 @@
               'gclid': gclid || '',
               'quote_value': updatedItems.reduce(function(total, item) {
                 var priceNum = parseFloat((item.price || '0').replace(/[^0-9.-]/g, ''));
-                return total + (item.quantity * priceNum);
+                return total + (item.quantity * Math.round(priceNum * 100));
               }, 0),
               'products_count': updatedItems.length,
               // Enhanced Conversions user_data
