@@ -42,13 +42,15 @@
     "url":{{ prod_url | json }},
     "seller":{"@type":"Organization","name":"SoundBoxStore","url":{{ shop.url | json }}}
   }
-  {%- if product.metafields.reviews.rating != blank and product.metafields.reviews.rating_count != blank -%}
+  {%- assign product_rating_number = product.metafields.reviews.rating.value.rating | plus: 0 -%}
+  {%- assign product_rating_count  = product.metafields.reviews.rating_count.value -%}
+  {%- if product_rating_number > 0 and product_rating_number <= 5 and product_rating_count != blank -%}
   ,"aggregateRating":{
     "@type":"AggregateRating",
-    "ratingValue":{{ product.metafields.reviews.rating | json }},
-    "reviewCount":{{ product.metafields.reviews.rating_count | json }},
-    "bestRating":"5",
-    "worstRating":"1"
+    "ratingValue":{{ product_rating_number }},
+    "reviewCount":{{ product_rating_count | times: 1 }},
+    "bestRating":{{ product.metafields.reviews.rating.value.scale_max | default: 5 }},
+    "worstRating":{{ product.metafields.reviews.rating.value.scale_min | default: 1 }}
   }
   {%- endif -%}
 }
