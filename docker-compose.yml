@@ -1,0 +1,28 @@
+services:
+  theme:
+    build: .
+    working_dir: /theme
+    volumes:
+      # Live-edit: local theme files are mounted so the CLI pushes changes in real time.
+      - ./:/theme
+      # Keep the CLI auth/config cache off the bind mount and out of the repo.
+      - shopify-config:/root/.config
+    environment:
+      # Left = env name the CLI reads; right = key in .env.
+      # Store domain, e.g. thankyou-485.myshopify.com
+      SHOPIFY_FLAG_STORE: ${SHOPIFY_STORE:?set SHOPIFY_STORE in .env}
+      # Theme Access app password (shptka_...) — enables headless auth, no browser.
+      SHOPIFY_CLI_THEME_TOKEN: ${SHOPIFY_THEME_ACCESS:?set SHOPIFY_THEME_ACCESS in .env}
+    # --host 0.0.0.0 so the port is reachable from outside the container.
+    # --live-reload off avoids the CLI hot-reload proxy "Theme ID mismatch" 502s
+    # that this store's primary-domain redirect triggers.
+    command: shopify theme dev --host 0.0.0.0 --port 3000
+
+    # Host access / networking is environment-specific, so it lives in
+    # docker-compose.override.yml (git-ignored, auto-merged by `docker compose`).
+    # Copy docker-compose.override.example.yml -> docker-compose.override.yml:
+    #   • local machine: publish a port (http://localhost:3000)
+    #   • this Caddy dev host: join shared_network + set container_name
+
+volumes:
+  shopify-config:
