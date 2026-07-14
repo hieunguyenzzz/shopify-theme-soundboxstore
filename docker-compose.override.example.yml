@@ -1,0 +1,23 @@
+# Copy to docker-compose.override.yml (git-ignored). `docker compose up` merges
+# it on top of docker-compose.yml automatically. Keep the block you need.
+#
+# ── Option A — local machine (most devs) ───────────────────────────────
+# Publish the theme dev server on http://localhost:3000
+services:
+  theme:
+    ports:
+      - "3000:3000"
+
+# ── Option B — shared Caddy dev host ───────────────────────────────────
+# Route <name>.vyte.dev -> <name>:3000 over the shared Caddy network instead
+# of publishing a host port. Delete Option A above and uncomment this:
+#
+# services:
+#   theme:
+#     container_name: soundboxstore   # this name IS the vyte.dev subdomain
+#     networks:
+#       - shared_network
+#
+# networks:
+#   shared_network:
+#     external: true
