@@ -1,8 +1,12 @@
 {%- comment -%}
   Product JSON-LD — single source of truth for Product structured data.
-  Emits Product + BreadcrumbList on every product page. Runs independently
-  of Yoast SEO so rich-result eligibility is not gated on Yoast settings.
+  Emits the Product node on every product page. Runs independently of Yoast
+  SEO so rich-result eligibility is not gated on Yoast settings.
   Renders once regardless of how many sections are on the page.
+
+  BreadcrumbList is emitted separately by snippets/breadcrumb-schema.liquid
+  (rendered globally from layout/theme.liquid) to avoid duplicate breadcrumb
+  nodes on the page (SBS-296).
 
   Consolidated here in SBS-292 (previously duplicated by the Yoast-managed
   snippets/product-template-variables.liquid).
@@ -98,20 +102,5 @@
     "worstRating":{{ product.metafields.reviews.rating.value.scale_min | default: 1 }}
   }
   {%- endif -%}
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"BreadcrumbList",
-  "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":{{ shop.url | json }}}
-    {%- if collection != blank -%}
-    ,{"@type":"ListItem","position":2,"name":{{ collection.title | json }},"item":{{ shop.url | append: collection.url | json }}}
-    ,{"@type":"ListItem","position":3,"name":{{ product.title | json }},"item":{{ prod_url | json }}}
-    {%- else -%}
-    ,{"@type":"ListItem","position":2,"name":{{ product.title | json }},"item":{{ prod_url | json }}}
-    {%- endif -%}
-  ]
 }
 </script>
