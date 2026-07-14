@@ -16,6 +16,16 @@
   assign prod_brand  = product.vendor | default: 'SoundBoxStore'
   assign offer_year  = 'now' | date: '%Y'
   assign offer_valid = offer_year | append: '-12-31'
+  comment
+    Shipping + returns mirror the published storefront terms in
+    sections/toolbar.liquid ("FREE UK / EUROPEAN DELIVERY" and
+    "30-day postage paid returns"). Country follows the shopper's
+    market via localization; GB is the fallback (primary market).
+    Change these three values here if the published policy changes.
+  endcomment
+  assign ship_country = localization.country.iso_code | default: 'GB'
+  assign ship_rate    = 0
+  assign return_days  = 30
   assign gtin_key    = 'gtin'
   assign has_barcode = false
   assign valid_gtin  = false
@@ -45,6 +55,8 @@
   "{{ gtin_key }}":{{ variant.barcode | json }},
   {%- elsif has_barcode -%}
   "mpn":{{ variant.barcode | json }},
+  {%- elsif variant.sku != blank -%}
+  "mpn":{{ variant.sku | json }},
   {%- endif -%}
   "brand":{"@type":"Brand","name":{{ prod_brand | json }}},
   "offers":[
@@ -58,10 +70,23 @@
       "itemCondition":"https://schema.org/NewCondition",
       "priceValidUntil":{{ offer_valid | json }},
       "url":{{ shop.url | append: v.url | json }},
-      "seller":{"@type":"Organization","name":"SoundBoxStore","url":{{ shop.url | json }}}
+      "seller":{"@type":"Organization","name":"SoundBoxStore","url":{{ shop.url | json }}},
+      "shippingDetails":{
+        "@type":"OfferShippingDetails",
+        "shippingRate":{"@type":"MonetaryAmount","value":{{ ship_rate }},"currency":{{ prod_curr | json }}},
+        "shippingDestination":{"@type":"DefinedRegion","addressCountry":{{ ship_country | json }}}
+      }
     }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
   ]
+  ,"hasMerchantReturnPolicy":{
+    "@type":"MerchantReturnPolicy",
+    "applicableCountry":{{ ship_country | json }},
+    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays":{{ return_days }},
+    "returnMethod":"https://schema.org/ReturnByMail",
+    "returnFees":"https://schema.org/FreeReturn"
+  }
   {%- assign product_rating_number = product.metafields.reviews.rating.value.rating | plus: 0 -%}
   {%- assign product_rating_count  = product.metafields.reviews.rating_count.value -%}
   {%- if product_rating_number > 0 and product_rating_number <= 5 and product_rating_count != blank -%}
