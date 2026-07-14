@@ -574,6 +574,10 @@
           // SBS-11 Phase 2: mint shared lead_id for Supabase row id + GTM dedup.
           var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
           if (sbsLeadId) data.lead_id = sbsLeadId;
+          // SBS-287: attach Consentmo state + transaction_id so n8n can write the
+          // immutable consent snapshot onto the Zoho Quote. Fails closed.
+          if (typeof window.sbsReadConsent === 'function') Object.assign(data, window.sbsReadConsent());
+          if (sbsLeadId) data.transaction_id = sbsLeadId;
           fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
             headers: {
               Accept: 'application/json',

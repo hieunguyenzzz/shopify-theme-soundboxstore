@@ -207,6 +207,69 @@
     return window.__sbsLeadId;
   };
 
+  // SBS-287: read the visitor's Consentmo consent state at submission time and
+  // classify the advertising/marketing choice for the CRM consent snapshot.
+  // Signals verified against the live Consentmo (gdpr-backpack-799) client API:
+  //   - window.Consentmo.getStatus() : 'accept_all' | 'decline' | 'custom' | null
+  //   - gdprCache.lastConsentGiven   : present only after an explicit choice
+  //   - gdprCache.updatedPreferences : comma-list of DENIED categories ('' = none)
+  //   - gdprCache.countryDetection   : { country, ... }
+  // Rules (SBS-287): never upgrade a default-granted state to EXPLICIT_GRANTED;
+  // capture at submit time; fail closed to NOT_CAPTURED when unreadable.
+  window.sbsReadConsent = function () {
+    var out = {
+      consent_ad_user_data: 'NOT_CAPTURED',
+      consent_ts: new Date().toISOString(),
+      consent_source: 'consentmo',
+      consent_region: '',
+      consent_version: 'sbs-consent-1'
+    };
+    try {
+      var cache = null;
+      try { cache = JSON.parse(localStorage.getItem('gdprCache')); } catch (e) {}
+      if (cache) {
+        try {
+          var cd = typeof cache.countryDetection === 'string'
+            ? JSON.parse(cache.countryDetection) : cache.countryDetection;
+          if (cd && cd.country) out.consent_region = cd.country;
+        } catch (e) {}
+        if (cache.version) out.consent_version = 'consentmo:' + cache.version;
+      }
+
+      var cm = window.Consentmo;
+      var status = (cm && typeof cm.getStatus === 'function') ? cm.getStatus() : null;
+      var interacted = !!status || !!(cache && cache.lastConsentGiven);
+
+      // Effective marketing/advertising consent (drives consent_ad_user_data).
+      var marketingGranted = null;
+      if (cm && typeof cm.currentVisitorConsent === 'function') {
+        var cvc = cm.currentVisitorConsent();
+        if (cvc && typeof cvc.marketing === 'boolean') marketingGranted = cvc.marketing;
+      }
+      if (marketingGranted === null && cm && typeof cm.marketingAllowed === 'function') {
+        try { marketingGranted = !!cm.marketingAllowed(); } catch (e) {}
+      }
+      if (marketingGranted === null && cache && typeof cache.updatedPreferences === 'string') {
+        marketingGranted = cache.updatedPreferences.indexOf('marketing') === -1;
+        interacted = true; // updatedPreferences only exists after a choice
+      }
+
+      if (marketingGranted === null) {
+        out.consent_ad_user_data = 'NOT_CAPTURED'; // state unreadable
+      } else if (interacted) {
+        out.consent_ad_user_data = marketingGranted ? 'EXPLICIT_GRANTED' : 'EXPLICIT_DENIED';
+      } else {
+        // No explicit interaction. Only DEFAULT_GRANTED_ONLY when the browser is
+        // actually on a default-granted state (non-GDPR auto-grant); an EEA
+        // default-denied visitor has given no consent -> NOT_CAPTURED.
+        out.consent_ad_user_data = marketingGranted ? 'DEFAULT_GRANTED_ONLY' : 'NOT_CAPTURED';
+      }
+    } catch (e) {
+      out.consent_ad_user_data = 'NOT_CAPTURED'; // fail closed
+    }
+    return out;
+  };
+
   // ============================================
   // UMAMI INTERCEPTION - delegates generate_lead to sbsSubmitLead
   // ============================================
