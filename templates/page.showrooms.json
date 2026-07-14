@@ -77,52 +77,6 @@
         "calendly_url": "https://calendly.com/james-low-wyy/consultancy"
       }
     },
-    "showroom_blocks_HzMW3y": {
-      "type": "showroom-blocks",
-      "blocks": {
-        "map_CNDcxB": {
-          "type": "map",
-          "disabled": true,
-          "source": "{{ metaobjects.showroom[\"pst-transports-services\"] }}",
-          "settings": {
-            "color": "",
-            "heading": "{{ metaobjects.showroom[\"pst-transports-services\"].title.value }}",
-            "subheading": "{{ metaobjects.showroom[\"pst-transports-services\"].address.value }}",
-            "content": "{{ metaobjects.showroom[\"pst-transports-services\"].description | metafield_tag }}",
-            "google_url": "",
-            "google_embed_url": "{{ metaobjects.showroom[\"pst-transports-services\"].address_embed.value }}",
-            "btn_text": "EXPLORE SHOWROOM",
-            "btn_url": "",
-            "calendly_url": "{{ metaobjects.showroom[\"pst-transports-services\"].system.url }}"
-          }
-        },
-        "map_UcaNMe": {
-          "type": "map",
-          "source": "{{ metaobjects.showroom[\"oliveti-group-uk\"] }}",
-          "settings": {
-            "color": "",
-            "heading": "{{ metaobjects.showroom[\"oliveti-group-uk\"].title.value }}",
-            "subheading": "{{ metaobjects.showroom[\"oliveti-group-uk\"].address.value }}",
-            "content": "{{ metaobjects.showroom[\"oliveti-group-uk\"].description | metafield_tag }}",
-            "google_url": "",
-            "google_embed_url": "{{ metaobjects.showroom[\"oliveti-group-uk\"].address_embed.value }}",
-            "btn_text": "EXPLORE SHOWROOM",
-            "btn_url": "",
-            "calendly_url": "{{ metaobjects.showroom[\"oliveti-group-uk\"].system.url }}"
-          }
-        }
-      },
-      "block_order": [
-        "map_CNDcxB",
-        "map_UcaNMe"
-      ],
-      "settings": {
-        "heading": "Our partner Showrooms",
-        "content": "<p>Our team is on hand to guide you through all our booths on display and the various options available. </p><p>Most options are available to view.</p>",
-        "image": "shopify://shop_images/EVA-PROFILE.png",
-        "calendly_url": "https://calendly.com/james-low-wyy/consultancy"
-      }
-    },
     "showrooms_map_36cTG3": {
       "type": "showrooms-map",
       "name": "showroom-map",
@@ -147,7 +101,6 @@
     "85f205e8-0e1a-46e8-a3d2-c31cb741d850",
     "27ff9005-1084-46d1-9cae-87da67b2e7a7",
     "showroom-blocks",
-    "showroom_blocks_HzMW3y",
     "showrooms_map_36cTG3",
     "contact_callendy_DXqbK6"
   ]
