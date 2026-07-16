@@ -236,24 +236,35 @@
                 {%- if block.settings.link == blank -%}
                   {%- assign link_href = block.settings.video_url -%}
                 {%- endif -%}
+                {%- assign hero_btn_class = 'btn' -%}
+                {%- if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' -%}
+                  {%- assign hero_btn_class = 'btn btn--inverse' -%}
+                {%- endif -%}
                 <div class="hero__link">
-                  <a
-                    href="{{ link_href }}"
-                    class="btn{% if block.settings.color_accent and block.settings.color_accent == 'rgba(0,0,0,0)' %} btn--inverse{% endif %}"
-                  >
-                    {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        role="presentation"
-                        class="icon icon-play"
-                        viewBox="18.24 17.35 24.52 28.3"
-                      >
-                        <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
-                      </svg>
-                    {%- endif -%}
-                    {{ block.settings.link_text }}
-                  </a>
+                  {%- if link_href == '#request-quote' -%}
+                    {%- comment -%} Opens the global quote modal (#quote-form-modal) instead of navigating {%- endcomment -%}
+                    <label for="quote-form-modal" class="{{ hero_btn_class }}" style="cursor:pointer;">
+                      {{ block.settings.link_text }}
+                    </label>
+                  {%- else -%}
+                    <a
+                      href="{{ link_href }}"
+                      class="{{ hero_btn_class }}"
+                    >
+                      {%- if link_href contains 'youtube.com/watch' or link_href contains 'youtu.be/' -%}
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          role="presentation"
+                          class="icon icon-play"
+                          viewBox="18.24 17.35 24.52 28.3"
+                        >
+                          <path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"/>
+                        </svg>
+                      {%- endif -%}
+                      {{ block.settings.link_text }}
+                    </a>
+                  {%- endif -%}
                 </div>
               {%- endif -%}
               {%- if block.settings.link2_text != blank -%}
