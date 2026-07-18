@@ -183,6 +183,53 @@
       </div>
     </div>
   </div>
+  {%- comment -%} SBS-311: rental period selector — longer terms are cheaper (discount off base monthly, set in theme settings). Shown only when "Per month" is chosen. {%- endcomment -%}
+  <style>
+    #leasing-period-picker { margin-top: 14px; }
+    #leasing-period-picker .lp-label { font-weight: 600; margin-bottom: 8px; }
+    #leasing-period-picker .lp-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    #leasing-period-picker .lp-opt { position: relative; display: block; cursor: pointer; margin: 0; }
+    #leasing-period-picker .lp-opt input { position: absolute; opacity: 0; pointer-events: none; }
+    #leasing-period-picker .lp-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 6px; text-align: center; transition: border-color .15s, box-shadow .15s; height: 100%; }
+    #leasing-period-picker .lp-opt input:checked + .lp-card { border-color: #313652; box-shadow: 0 0 0 1px #313652; }
+    #leasing-period-picker .lp-term { display: block; font-size: 12px; color: #4a5568; }
+    #leasing-period-picker .lp-rate { display: block; font-size: 16px; font-weight: 700; color: #1a202c; margin-top: 2px; }
+    #leasing-period-picker .lp-rate small { font-weight: 500; font-size: 11px; color: #718096; }
+    #leasing-period-picker .lp-save { display: block; margin-top: 4px; font-size: 10px; font-weight: 600; color: #ba4444; min-height: 12px; }
+    #leasing-period-picker .lp-save:empty { min-height: 0; }
+    @media (max-width: 480px) { #leasing-period-picker .lp-options { grid-template-columns: 1fr; } }
+  </style>
+  <div id="leasing-period-picker" style="display:none">
+    <div class="lp-label">Choose your rental period</div>
+    <div class="lp-options">
+      <label class="lp-opt">
+        <input type="radio" name="leasing-period" value="Monthly" data-discount="0" data-deposit-discount="0" checked>
+        <div class="lp-card">
+          <span class="lp-term">Monthly</span>
+          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
+          <span class="lp-save"></span>
+        </div>
+      </label>
+      <label class="lp-opt">
+        <input type="radio" name="leasing-period" value="6 months" data-discount="{{ settings.leasing_discount_6m | default: 10 }}" data-deposit-discount="{{ settings.leasing_deposit_discount_6m | default: 30 }}">
+        <div class="lp-card">
+          <span class="lp-term">6 months</span>
+          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
+          <span class="lp-save">Save {{ settings.leasing_discount_6m | default: 10 }}%</span>
+        </div>
+      </label>
+      <label class="lp-opt">
+        <input type="radio" name="leasing-period" value="12 months" data-discount="{{ settings.leasing_discount_12m | default: 20 }}" data-deposit-discount="{{ settings.leasing_deposit_discount_12m | default: 50 }}">
+        <div class="lp-card">
+          <span class="lp-term">12 months</span>
+          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
+          <span class="lp-save">Save {{ settings.leasing_discount_12m | default: 20 }}%</span>
+        </div>
+      </label>
+    </div>
+    <div class="lp-deposit" data-lp-deposit style="display:none;margin-top:10px;font-size:13px;color:#1a202c"></div>
+  </div>
+
   <div
     style="margin-top:10px;font-size: 0.7em;"
   >
@@ -686,6 +733,112 @@
     document.head.appendChild(style);
 
     // ============================================
+    // Rental period selector (SBS-311)
+    // Base monthly = leasing.price; longer terms apply a discount (theme settings).
+    // Base deposit = leasing.deposit (per variant); longer terms reduce it (settings).
+    // Exposes window.sbsLeasingSelection() -> { period, monthly, deposit } for the enquiry.
+    // ============================================
+    (function () {
+      var picker = document.getElementById('leasing-period-picker');
+      if (!picker) return;
+
+      // Per-variant base deposit (money-formatted; empty when a variant has no deposit).
+      var LEASING_DEPOSITS = {
+        {%- for v in product.variants -%}
+          {%- assign dep = v.metafields.leasing.deposit -%}
+          {{ v.id | json }}: {% if dep != blank and dep.value != blank %}{{ dep.value | money | json }}{% else %}""{% endif %}{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      };
+      var curVariantId = {{ current_variant.id | json }};
+
+      function baseMonthly() {
+        var lp = document.querySelector('#product__leasing-wrap input[name="leasing_price"]');
+        if (!lp) return null;
+        var n = parseFloat(String(lp.value).replace(/[^0-9.]/g, ''));
+        return isNaN(n) ? null : n;
+      }
+      function baseDeposit() {
+        var s = LEASING_DEPOSITS[curVariantId];
+        if (!s) return null;
+        var n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
+        return isNaN(n) ? null : n;
+      }
+      function fmt(n) {
+        try {
+          return new Intl.NumberFormat('en-GB', {
+            style: 'currency', currency: 'GBP', maximumFractionDigits: 0
+          }).format(n);
+        } catch (e) { return '£' + Math.round(n); }
+      }
+      function effective(base, discount) {
+        return base * (1 - (discount || 0) / 100);
+      }
+      function checkedRadio() {
+        return picker.querySelector('input[name="leasing-period"]:checked')
+          || picker.querySelector('input[name="leasing-period"]');
+      }
+
+      // Read by the enquiry submit handler so the lead carries the chosen term.
+      window.sbsLeasingSelection = function () {
+        var base = baseMonthly();
+        var r = checkedRadio();
+        if (base == null || !r) return { period: 'Monthly', monthly: '', deposit: '' };
+        var disc = parseFloat(r.getAttribute('data-discount')) || 0;
+        var dep = baseDeposit();
+        var depDisc = parseFloat(r.getAttribute('data-deposit-discount')) || 0;
+        return {
+          period: r.value,
+          monthly: fmt(effective(base, disc)),
+          deposit: dep == null ? '' : fmt(effective(dep, depDisc))
+        };
+      };
+
+      function renderRates() {
+        var base = baseMonthly();
+        var radios = picker.querySelectorAll('input[name="leasing-period"]');
+        Array.prototype.forEach.call(radios, function (r) {
+          var rateEl = r.parentNode.querySelector('[data-lp-rate]');
+          if (!rateEl) return;
+          if (base == null) { rateEl.textContent = '—'; return; }
+          var disc = parseFloat(r.getAttribute('data-discount')) || 0;
+          rateEl.textContent = fmt(effective(base, disc));
+        });
+      }
+
+      function renderDeposit() {
+        var line = picker.querySelector('[data-lp-deposit]');
+        if (!line) return;
+        var dep = baseDeposit();
+        var r = checkedRadio();
+        if (dep == null || !r) { line.style.display = 'none'; line.textContent = ''; return; }
+        var depDisc = parseFloat(r.getAttribute('data-deposit-discount')) || 0;
+        line.textContent = '+ ' + fmt(effective(dep, depDisc)) + ' deposit (one-off)';
+        line.style.display = 'block';
+      }
+
+      function togglePicker() {
+        var per = document.getElementById('per-month');
+        picker.style.display = (per && per.checked) ? 'block' : 'none';
+      }
+
+      var payType = document.querySelectorAll('input[name="payment-type"]');
+      Array.prototype.forEach.call(payType, function (el) {
+        el.addEventListener('change', togglePicker);
+      });
+      // Term change: update the shown deposit for the chosen term.
+      picker.addEventListener('change', renderDeposit);
+      // product-leasing.liquid swaps the base price on variant:change; defer so we read the new value.
+      document.addEventListener('variant:change', function (evt) {
+        if (evt.detail && evt.detail.variant) curVariantId = evt.detail.variant.id;
+        setTimeout(function () { renderRates(); renderDeposit(); }, 0);
+      });
+
+      renderRates();
+      renderDeposit();
+      togglePicker();
+    })();
+
+    // ============================================
     // Leasing enquiry lead capture (SBS-311)
     // Reuses the shared n8n form-to-zoho endpoint + lead/consent helpers
     // (sbsMintLeadId / sbsReadConsent / sbsSubmitLead from quote-tracking.liquid),
@@ -737,11 +890,12 @@
           submitBtn.textContent = 'Submitting...';
         }
 
+        // Selected rental term + its effective monthly rate (falls back to the base monthly).
+        var leaseSel = (typeof window.sbsLeasingSelection === 'function')
+          ? window.sbsLeasingSelection()
+          : { period: 'Monthly', monthly: readMonthlyPrice() };
         var monthlyEl = document.getElementById('leasing-enquiry-monthly');
-        if (monthlyEl) {
-          var mp = readMonthlyPrice();
-          monthlyEl.value = mp ? mp + ' /month' : '';
-        }
+        if (monthlyEl) monthlyEl.value = leaseSel.monthly ? leaseSel.monthly + ' /month' : '';
         var gclid = getGclid();
         var gEl = document.getElementById('leasing-enquiry-gclid');
         if (gEl) gEl.value = gclid;
@@ -765,8 +919,21 @@
           variant: currentVariant.title,
           sku: currentVariant.sku,
           quantity: 1,
-          leasing_monthly: data['contact[Indicative monthly price]'] || ''
+          leasing_period: leaseSel.period || 'Monthly',
+          leasing_monthly: data['contact[Indicative monthly price]'] || '',
+          leasing_deposit: leaseSel.deposit || ''
         }];
+
+        // Capture the chosen term + deposit on the lead. Structured for future n8n
+        // mapping, and appended to the message so it lands on the CRM record today.
+        data.leasing_period = leaseSel.period || 'Monthly';
+        data.leasing_deposit = leaseSel.deposit || '';
+        var termNote = 'Requested leasing term: ' + data.leasing_period
+          + (leaseSel.monthly ? ' (' + leaseSel.monthly + '/month indicative)' : '')
+          + (leaseSel.deposit ? '; deposit ' + leaseSel.deposit + ' (one-off)' : '');
+        data['contact[body]'] = data['contact[body]']
+          ? data['contact[body]'] + '\n\n' + termNote
+          : termNote;
 
         // SBS-11 / SBS-287: shared lead_id + Consentmo snapshot (same as other forms).
         var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
@@ -779,7 +946,9 @@
           lead_id: sbsLeadId,
           form_type: data.form_type,
           product: data['contact[Product title]'],
-          monthly: data['contact[Indicative monthly price]']
+          period: data.leasing_period,
+          monthly: data['contact[Indicative monthly price]'],
+          deposit: data.leasing_deposit
         });
 
         fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
