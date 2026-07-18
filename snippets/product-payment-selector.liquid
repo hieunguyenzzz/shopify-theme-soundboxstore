@@ -183,53 +183,6 @@
       </div>
     </div>
   </div>
-  {%- comment -%} SBS-311: rental period selector — longer terms are cheaper (discount off base monthly, set in theme settings). Shown only when "Per month" is chosen. {%- endcomment -%}
-  <style>
-    #leasing-period-picker { margin-top: 14px; }
-    #leasing-period-picker .lp-label { font-weight: 600; margin-bottom: 8px; }
-    #leasing-period-picker .lp-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    #leasing-period-picker .lp-opt { position: relative; display: block; cursor: pointer; margin: 0; }
-    #leasing-period-picker .lp-opt input { position: absolute; opacity: 0; pointer-events: none; }
-    #leasing-period-picker .lp-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 6px; text-align: center; transition: border-color .15s, box-shadow .15s; height: 100%; }
-    #leasing-period-picker .lp-opt input:checked + .lp-card { border-color: #313652; box-shadow: 0 0 0 1px #313652; }
-    #leasing-period-picker .lp-term { display: block; font-size: 12px; color: #4a5568; }
-    #leasing-period-picker .lp-rate { display: block; font-size: 16px; font-weight: 700; color: #1a202c; margin-top: 2px; }
-    #leasing-period-picker .lp-rate small { font-weight: 500; font-size: 11px; color: #718096; }
-    #leasing-period-picker .lp-save { display: block; margin-top: 4px; font-size: 10px; font-weight: 600; color: #ba4444; min-height: 12px; }
-    #leasing-period-picker .lp-save:empty { min-height: 0; }
-    @media (max-width: 480px) { #leasing-period-picker .lp-options { grid-template-columns: 1fr; } }
-  </style>
-  <div id="leasing-period-picker" style="display:none">
-    <div class="lp-label">Choose your rental period</div>
-    <div class="lp-options">
-      <label class="lp-opt">
-        <input type="radio" name="leasing-period" value="Monthly" data-discount="0" data-deposit-discount="0" checked>
-        <div class="lp-card">
-          <span class="lp-term">Monthly</span>
-          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
-          <span class="lp-save"></span>
-        </div>
-      </label>
-      <label class="lp-opt">
-        <input type="radio" name="leasing-period" value="6 months" data-discount="{{ settings.leasing_discount_6m | default: 10 }}" data-deposit-discount="{{ settings.leasing_deposit_discount_6m | default: 30 }}">
-        <div class="lp-card">
-          <span class="lp-term">6 months</span>
-          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
-          <span class="lp-save">Save {{ settings.leasing_discount_6m | default: 10 }}%</span>
-        </div>
-      </label>
-      <label class="lp-opt">
-        <input type="radio" name="leasing-period" value="12 months" data-discount="{{ settings.leasing_discount_12m | default: 20 }}" data-deposit-discount="{{ settings.leasing_deposit_discount_12m | default: 50 }}">
-        <div class="lp-card">
-          <span class="lp-term">12 months</span>
-          <span class="lp-rate"><span data-lp-rate>—</span> <small>/mo</small></span>
-          <span class="lp-save">Save {{ settings.leasing_discount_12m | default: 20 }}%</span>
-        </div>
-      </label>
-    </div>
-    <div class="lp-deposit" data-lp-deposit style="display:none;margin-top:10px;font-size:13px;color:#1a202c"></div>
-  </div>
-
   <div
     style="margin-top:10px;font-size: 0.7em;"
   >
@@ -460,77 +413,6 @@
         border: 1px solid #e2e8f0;
     }
 
-    #leasing-enquiry-form .leasing-form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    #leasing-enquiry-form .leasing-form-group {
-        margin-bottom: 12px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #leasing-enquiry-form label {
-        font-size: 12px;
-        font-weight: 600;
-        color: #4a5568;
-        margin-bottom: 4px;
-    }
-
-    #leasing-enquiry-form label.leasing-required::after {
-        content: ' *';
-        color: #e53e3e;
-    }
-
-    #leasing-enquiry-form input,
-    #leasing-enquiry-form textarea {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #cbd5e0;
-        border-radius: 8px;
-        font-size: 14px;
-        font-family: inherit;
-        color: #1a202c;
-        background: #fff;
-    }
-
-    #leasing-enquiry-form input:focus,
-    #leasing-enquiry-form textarea:focus {
-        outline: none;
-        border-color: #000000;
-    }
-
-    #leasing-enquiry-form .leasing-submit-btn {
-        width: 100%;
-        margin-top: 6px;
-        padding: 12px 16px;
-        background: #000000;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: opacity 0.2s ease;
-    }
-
-    #leasing-enquiry-form .leasing-submit-btn:hover {
-        opacity: 0.85;
-    }
-
-    #leasing-enquiry-form .leasing-submit-btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-
-    .spf-section .leasing-success {
-        text-align: center;
-        padding: 24px 12px;
-        color: #1a202c;
-    }
-
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -566,10 +448,6 @@
         }
 
         .spf-section.contact-grid {
-            grid-template-columns: 1fr;
-        }
-
-        #leasing-enquiry-form .leasing-form-row {
             grid-template-columns: 1fr;
         }
 
@@ -620,57 +498,27 @@
         </div>
 
         <div class="spf-section section">
-          <h2 class="spf-section section-title">Enquire about leasing</h2>
+          <h2 class="spf-section section-title">How to Apply</h2>
           <p style="margin-bottom: 20px; color: #4a5568; line-height: 1.5; font-size: 14px;">
-            Tell us where to reach you and our leasing team will be in touch to start your application.
+            Ready to get started? Please contact us to begin your leasing application:
           </p>
 
-          <form id="leasing-enquiry-form" novalidate>
-            <div class="leasing-form-row">
-              <div class="leasing-form-group">
-                <label for="leasing-name" class="leasing-required">Full name</label>
-                <input type="text" id="leasing-name" name="contact[Full name]" required>
-              </div>
-              <div class="leasing-form-group">
-                <label for="leasing-company" class="leasing-required">Business name</label>
-                <input type="text" id="leasing-company" name="contact[Company name]" required>
+          <div class="spf-section contact-grid">
+            <div class="spf-section contact-item">
+              <div class="spf-section contact-label">Email</div>
+              <div class="spf-section contact-value">
+                <a href="mailto:hush@soundboxstore.com">hush@soundboxstore.com</a>
               </div>
             </div>
-            <div class="leasing-form-row">
-              <div class="leasing-form-group">
-                <label for="leasing-email" class="leasing-required">Work email</label>
-                <input type="email" id="leasing-email" name="contact[email]" required>
-              </div>
-              <div class="leasing-form-group">
-                <label for="leasing-phone" class="leasing-required">Phone</label>
-                <input type="tel" id="leasing-phone" name="contact[Phone]" required>
+            <div class="spf-section contact-item">
+              <div class="spf-section contact-label">Phone</div>
+              <div class="spf-section contact-value">
+                {% capture phone %}
+                  {% render '[phone-number]' %}
+                {% endcapture %}
+                <a href="tel:{{phone}}">{{ phone }}</a>
               </div>
             </div>
-            <div class="leasing-form-group">
-              <label for="leasing-message">Message (optional)</label>
-              <textarea id="leasing-message" name="contact[body]" rows="3"></textarea>
-            </div>
-
-            {%- comment -%} Distinguishers so n8n/Zoho can route this as Leasing, not a normal quote {%- endcomment -%}
-            <input type="hidden" name="source" value="product-leasing-enquiry">
-            <input type="hidden" name="form_type" value="leasing">
-            <input type="hidden" name="lead_source" value="Leasing">
-            <input type="hidden" name="contact[subject]" value="LEASING ENQUIRY">
-            <input type="hidden" name="contact[tags]" value="leasing,leasing-enquiry">
-            <input type="hidden" name="contact[context]" value="product-leasing">
-            {%- comment -%} Product context (variant + monthly price kept current by the submit JS) {%- endcomment -%}
-            <input type="hidden" name="contact[Product title]" value="{{ product.title | escape }}">
-            <input type="hidden" id="leasing-enquiry-variant" name="contact[Variant]" value="{{ current_variant.title | escape }} (SKU {{ current_variant.sku }})">
-            <input type="hidden" id="leasing-enquiry-monthly" name="contact[Indicative monthly price]" value="">
-            <input type="hidden" name="contact[Product URL]" value="{{ shop.url }}{{ product.url }}">
-            <input type="hidden" id="leasing-enquiry-gclid" name="contact[gclid]" value="">
-
-            <button type="submit" class="leasing-submit-btn">Submit leasing enquiry</button>
-          </form>
-
-          <div id="leasing-enquiry-success" class="leasing-success" style="display:none">
-            <div style="font-size:32px;line-height:1">✓</div>
-            <p style="margin:8px 0 0;font-weight:600;color:#1a202c">Thank you — our leasing team will be in touch.</p>
           </div>
 
           <div
@@ -678,14 +526,12 @@
             style="
               text-align: center;
               font-size: 12px;
+              font-style: italic;
               color:#4a5568;
-              margin-top:16px;
             "
           >
-            {% capture phone %}{% render '[phone-number]' %}{% endcapture %}
-            Prefer to talk? Email
-            <a href="mailto:hush@soundboxstore.com" style="color:#1a202c">hush@soundboxstore.com</a>
-            or call <a href="tel:{{ phone }}" style="color:#1a202c">{{ phone }}</a>.
+            Our team will guide you through the application process and help you find the best leasing solution for your
+            business needs.
           </div>
         </div>
       </div>
@@ -731,248 +577,5 @@
             }
         `;
     document.head.appendChild(style);
-
-    // ============================================
-    // Rental period selector (SBS-311)
-    // Base monthly = leasing.price; longer terms apply a discount (theme settings).
-    // Base deposit = leasing.deposit (per variant); longer terms reduce it (settings).
-    // Exposes window.sbsLeasingSelection() -> { period, monthly, deposit } for the enquiry.
-    // ============================================
-    (function () {
-      var picker = document.getElementById('leasing-period-picker');
-      if (!picker) return;
-
-      // Per-variant base deposit (money-formatted; empty when a variant has no deposit).
-      var LEASING_DEPOSITS = {
-        {%- for v in product.variants -%}
-          {%- assign dep = v.metafields.leasing.deposit -%}
-          {{ v.id | json }}: {% if dep != blank and dep.value != blank %}{{ dep.value | money | json }}{% else %}""{% endif %}{%- unless forloop.last -%},{%- endunless -%}
-        {%- endfor -%}
-      };
-      var curVariantId = {{ current_variant.id | json }};
-
-      function baseMonthly() {
-        var lp = document.querySelector('#product__leasing-wrap input[name="leasing_price"]');
-        if (!lp) return null;
-        var n = parseFloat(String(lp.value).replace(/[^0-9.]/g, ''));
-        return isNaN(n) ? null : n;
-      }
-      function baseDeposit() {
-        var s = LEASING_DEPOSITS[curVariantId];
-        if (!s) return null;
-        var n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
-        return isNaN(n) ? null : n;
-      }
-      function fmt(n) {
-        try {
-          return new Intl.NumberFormat('en-GB', {
-            style: 'currency', currency: 'GBP', maximumFractionDigits: 0
-          }).format(n);
-        } catch (e) { return '£' + Math.round(n); }
-      }
-      function effective(base, discount) {
-        return base * (1 - (discount || 0) / 100);
-      }
-      function checkedRadio() {
-        return picker.querySelector('input[name="leasing-period"]:checked')
-          || picker.querySelector('input[name="leasing-period"]');
-      }
-
-      // Read by the enquiry submit handler so the lead carries the chosen term.
-      window.sbsLeasingSelection = function () {
-        var base = baseMonthly();
-        var r = checkedRadio();
-        if (base == null || !r) return { period: 'Monthly', monthly: '', deposit: '' };
-        var disc = parseFloat(r.getAttribute('data-discount')) || 0;
-        var dep = baseDeposit();
-        var depDisc = parseFloat(r.getAttribute('data-deposit-discount')) || 0;
-        return {
-          period: r.value,
-          monthly: fmt(effective(base, disc)),
-          deposit: dep == null ? '' : fmt(effective(dep, depDisc))
-        };
-      };
-
-      function renderRates() {
-        var base = baseMonthly();
-        var radios = picker.querySelectorAll('input[name="leasing-period"]');
-        Array.prototype.forEach.call(radios, function (r) {
-          var rateEl = r.parentNode.querySelector('[data-lp-rate]');
-          if (!rateEl) return;
-          if (base == null) { rateEl.textContent = '—'; return; }
-          var disc = parseFloat(r.getAttribute('data-discount')) || 0;
-          rateEl.textContent = fmt(effective(base, disc));
-        });
-      }
-
-      function renderDeposit() {
-        var line = picker.querySelector('[data-lp-deposit]');
-        if (!line) return;
-        var dep = baseDeposit();
-        var r = checkedRadio();
-        if (dep == null || !r) { line.style.display = 'none'; line.textContent = ''; return; }
-        var depDisc = parseFloat(r.getAttribute('data-deposit-discount')) || 0;
-        line.textContent = '+ ' + fmt(effective(dep, depDisc)) + ' deposit (one-off)';
-        line.style.display = 'block';
-      }
-
-      function togglePicker() {
-        var per = document.getElementById('per-month');
-        picker.style.display = (per && per.checked) ? 'block' : 'none';
-      }
-
-      var payType = document.querySelectorAll('input[name="payment-type"]');
-      Array.prototype.forEach.call(payType, function (el) {
-        el.addEventListener('change', togglePicker);
-      });
-      // Term change: update the shown deposit for the chosen term.
-      picker.addEventListener('change', renderDeposit);
-      // product-leasing.liquid swaps the base price on variant:change; defer so we read the new value.
-      document.addEventListener('variant:change', function (evt) {
-        if (evt.detail && evt.detail.variant) curVariantId = evt.detail.variant.id;
-        setTimeout(function () { renderRates(); renderDeposit(); }, 0);
-      });
-
-      renderRates();
-      renderDeposit();
-      togglePicker();
-    })();
-
-    // ============================================
-    // Leasing enquiry lead capture (SBS-311)
-    // Reuses the shared n8n form-to-zoho endpoint + lead/consent helpers
-    // (sbsMintLeadId / sbsReadConsent / sbsSubmitLead from quote-tracking.liquid),
-    // so leasing leads flow through the same CRM pipeline but flagged form_type=leasing.
-    // ============================================
-    (function () {
-      var form = document.getElementById('leasing-enquiry-form');
-      if (!form) return;
-
-      function getGclid() {
-        try {
-          var urlParams = new URLSearchParams(window.location.search);
-          var fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
-          if (fromUrl) return fromUrl;
-          var fromStorage = localStorage.getItem('_gcl_aw');
-          if (fromStorage) return fromStorage;
-        } catch (e) {}
-        return '';
-      }
-
-      function readMonthlyPrice() {
-        var lp = document.querySelector('#product__leasing-wrap input[name="leasing_price"]');
-        return lp ? lp.value : '';
-      }
-
-      // Track the selected variant so the CRM lead carries a product line.
-      // n8n's form-to-zoho requires a non-empty products[] or the lead is dropped.
-      var currentVariant = {
-        title: {{ current_variant.title | json }},
-        sku: {{ current_variant.sku | json }}
-      };
-
-      // Keep the variant label + tracked variant current as the shopper switches.
-      document.addEventListener('variant:change', function (evt) {
-        var v = evt.detail && evt.detail.variant;
-        if (!v) return;
-        currentVariant = { title: v.title || '', sku: v.sku || '' };
-        var variantEl = document.getElementById('leasing-enquiry-variant');
-        if (variantEl) variantEl.value = (v.title || '') + ' (SKU ' + (v.sku || '') + ')';
-      });
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!form.reportValidity()) return;
-
-        var submitBtn = form.querySelector('.leasing-submit-btn');
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Submitting...';
-        }
-
-        // Selected rental term + its effective monthly rate (falls back to the base monthly).
-        var leaseSel = (typeof window.sbsLeasingSelection === 'function')
-          ? window.sbsLeasingSelection()
-          : { period: 'Monthly', monthly: readMonthlyPrice() };
-        var monthlyEl = document.getElementById('leasing-enquiry-monthly');
-        if (monthlyEl) monthlyEl.value = leaseSel.monthly ? leaseSel.monthly + ' /month' : '';
-        var gclid = getGclid();
-        var gEl = document.getElementById('leasing-enquiry-gclid');
-        if (gEl) gEl.value = gclid;
-
-        var data = {
-          created_at: new Date().toISOString(),
-          source: 'product-leasing-enquiry',
-          form_type: 'leasing',
-          lead_source: 'Leasing',
-          gclid: gclid,
-          _gcl_aw: gclid
-        };
-        new FormData(form).forEach(function (value, key) {
-          data[key] = value;
-        });
-
-        // Carry the leased product as a line item so n8n treats this as a valid
-        // lead (products.length > 0) and the Zoho Quote records what's being leased.
-        data.products = [{
-          title: data['contact[Product title]'] || currentVariant.title,
-          variant: currentVariant.title,
-          sku: currentVariant.sku,
-          quantity: 1,
-          leasing_period: leaseSel.period || 'Monthly',
-          leasing_monthly: data['contact[Indicative monthly price]'] || '',
-          leasing_deposit: leaseSel.deposit || ''
-        }];
-
-        // Capture the chosen term + deposit on the lead. Structured for future n8n
-        // mapping, and appended to the message so it lands on the CRM record today.
-        data.leasing_period = leaseSel.period || 'Monthly';
-        data.leasing_deposit = leaseSel.deposit || '';
-        var termNote = 'Requested leasing term: ' + data.leasing_period
-          + (leaseSel.monthly ? ' (' + leaseSel.monthly + '/month indicative)' : '')
-          + (leaseSel.deposit ? '; deposit ' + leaseSel.deposit + ' (one-off)' : '');
-        data['contact[body]'] = data['contact[body]']
-          ? data['contact[body]'] + '\n\n' + termNote
-          : termNote;
-
-        // SBS-11 / SBS-287: shared lead_id + Consentmo snapshot (same as other forms).
-        var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
-        if (sbsLeadId) data.lead_id = sbsLeadId;
-        if (typeof window.sbsReadConsent === 'function') Object.assign(data, window.sbsReadConsent());
-        if (sbsLeadId) data.transaction_id = sbsLeadId;
-
-        // Boundary log with correlation id — no PII in the console.
-        console.log('[LeasingEnquiry] submit', {
-          lead_id: sbsLeadId,
-          form_type: data.form_type,
-          product: data['contact[Product title]'],
-          period: data.leasing_period,
-          monthly: data['contact[Indicative monthly price]'],
-          deposit: data.leasing_deposit
-        });
-
-        fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
-          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify(data)
-        })
-          .then(function (res) { console.log('[LeasingEnquiry] n8n request sent', sbsLeadId); })
-          .catch(function (err) { console.error('[LeasingEnquiry] n8n error', sbsLeadId, err); });
-
-        try {
-          if (typeof window.sbsSubmitLead === 'function') {
-            window.sbsSubmitLead({ email: data['contact[email]'] });
-          }
-        } catch (err) {
-          console.error('[LeasingEnquiry] dedup shim error', err);
-        }
-
-        // Popup context: show inline success, no navigation.
-        form.style.display = 'none';
-        var success = document.getElementById('leasing-enquiry-success');
-        if (success) success.style.display = 'block';
-      });
-    })();
   </script>
 {% endif %}

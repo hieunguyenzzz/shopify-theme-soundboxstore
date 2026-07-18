@@ -886,69 +886,6 @@
         "type": "checkbox",
         "id": "vendor_enable",
         "label": "Show vendor"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_payment_selector",
-        "label": "Enable pay-monthly / leasing selector (UK product pages)",
-        "info": "Shows the one-time vs per-month plan toggle on GB product pages for variants that have a leasing.price metafield. The value must be enabled in Customize (settings_data.json is not git-synced).",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Leasing period discounts"
-      },
-      {
-        "type": "paragraph",
-        "content": "Discount off the base monthly leasing.price for longer rental terms. Monthly = full price (0%). Only affects GB product pages when the pay-monthly selector is on."
-      },
-      {
-        "type": "range",
-        "id": "leasing_discount_6m",
-        "label": "6-month term discount (%)",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "%",
-        "default": 10
-      },
-      {
-        "type": "range",
-        "id": "leasing_discount_12m",
-        "label": "12-month term discount (%)",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "unit": "%",
-        "default": 20
-      },
-      {
-        "type": "header",
-        "content": "Leasing deposit"
-      },
-      {
-        "type": "paragraph",
-        "content": "One-off deposit shown alongside the monthly rent (captured on the enquiry, not charged on-site). Base amount is set per product via the variant 'leasing.deposit' metafield. Longer terms reduce the deposit by the % below."
-      },
-      {
-        "type": "range",
-        "id": "leasing_deposit_discount_6m",
-        "label": "6-month term deposit reduction (%)",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "%",
-        "default": 30
-      },
-      {
-        "type": "range",
-        "id": "leasing_deposit_discount_12m",
-        "label": "12-month term deposit reduction (%)",
-        "min": 0,
-        "max": 100,
-        "step": 5,
-        "unit": "%",
-        "default": 50
       }
     ]
   },

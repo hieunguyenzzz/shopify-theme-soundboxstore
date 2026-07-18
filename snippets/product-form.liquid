@@ -1,19 +1,12 @@
 {% assign show_add_quote = settings.show_add_quote %}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
-{%- comment -%}
-  Rendered OUTSIDE the product form on purpose: the leasing popup contains its own
-  <form id="leasing-enquiry-form">, and a nested <form> is invalid HTML (the browser
-  drops the inner one), which would break the enquiry submit. Keep it above {% form %}.
-{%- endcomment -%}
-{%- comment -%} Off by default: only shows when the product is explicitly opted in via the leasing.enabled metafield. {%- endcomment -%}
-{% if settings.enable_payment_selector and product.metafields.leasing.enabled.value %}
-  {% if current_variant.metafields.leasing.price.value and localization.country.iso_code == 'GB' %}
-    {% render 'product-payment-selector', current_variant: current_variant %}
-  {% endif %}
-{% endif %}
 {%- form 'product', product, id: form_id, class: 'product-single__form' -%}
-
+  
   {% assign current_variant = product.selected_or_first_available_variant %}
+  {% if settings.enable_payment_selector %}
+    {% if current_variant.metafields.leasing.price.value and localization.country.iso_code == 'GB' %}
+      {% render 'product-payment-selector', current_variant: current_variant %}
+    {% endif %}
+  {% endif %}
   {%- liquid
     assign enable_dynamic_buttons = false
     if show_dynamic_checkout and template != 'product.preorder'
