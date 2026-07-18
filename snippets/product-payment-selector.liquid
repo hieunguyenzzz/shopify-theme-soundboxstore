@@ -711,10 +711,18 @@
         return lp ? lp.value : '';
       }
 
-      // Keep the variant label current as the shopper switches variants.
+      // Track the selected variant so the CRM lead carries a product line.
+      // n8n's form-to-zoho requires a non-empty products[] or the lead is dropped.
+      var currentVariant = {
+        title: {{ current_variant.title | json }},
+        sku: {{ current_variant.sku | json }}
+      };
+
+      // Keep the variant label + tracked variant current as the shopper switches.
       document.addEventListener('variant:change', function (evt) {
         var v = evt.detail && evt.detail.variant;
         if (!v) return;
+        currentVariant = { title: v.title || '', sku: v.sku || '' };
         var variantEl = document.getElementById('leasing-enquiry-variant');
         if (variantEl) variantEl.value = (v.title || '') + ' (SKU ' + (v.sku || '') + ')';
       });
@@ -749,6 +757,16 @@
         new FormData(form).forEach(function (value, key) {
           data[key] = value;
         });
+
+        // Carry the leased product as a line item so n8n treats this as a valid
+        // lead (products.length > 0) and the Zoho Quote records what's being leased.
+        data.products = [{
+          title: data['contact[Product title]'] || currentVariant.title,
+          variant: currentVariant.title,
+          sku: currentVariant.sku,
+          quantity: 1,
+          leasing_monthly: data['contact[Indicative monthly price]'] || ''
+        }];
 
         // SBS-11 / SBS-287: shared lead_id + Consentmo snapshot (same as other forms).
         var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
