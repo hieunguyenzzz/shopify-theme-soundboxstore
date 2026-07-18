@@ -886,6 +886,13 @@
         "type": "checkbox",
         "id": "vendor_enable",
         "label": "Show vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_selector",
+        "label": "Enable pay-monthly / leasing selector (UK product pages)",
+        "info": "Shows the one-time vs per-month plan toggle on GB product pages for variants that have a leasing.price metafield. The value must be enabled in Customize (settings_data.json is not git-synced).",
+        "default": false
       }
     ]
   },

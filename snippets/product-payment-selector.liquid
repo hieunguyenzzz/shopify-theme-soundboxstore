@@ -413,6 +413,77 @@
         border: 1px solid #e2e8f0;
     }
 
+    #leasing-enquiry-form .leasing-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    #leasing-enquiry-form .leasing-form-group {
+        margin-bottom: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #leasing-enquiry-form label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #4a5568;
+        margin-bottom: 4px;
+    }
+
+    #leasing-enquiry-form label.leasing-required::after {
+        content: ' *';
+        color: #e53e3e;
+    }
+
+    #leasing-enquiry-form input,
+    #leasing-enquiry-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #1a202c;
+        background: #fff;
+    }
+
+    #leasing-enquiry-form input:focus,
+    #leasing-enquiry-form textarea:focus {
+        outline: none;
+        border-color: #000000;
+    }
+
+    #leasing-enquiry-form .leasing-submit-btn {
+        width: 100%;
+        margin-top: 6px;
+        padding: 12px 16px;
+        background: #000000;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    #leasing-enquiry-form .leasing-submit-btn:hover {
+        opacity: 0.85;
+    }
+
+    #leasing-enquiry-form .leasing-submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .spf-section .leasing-success {
+        text-align: center;
+        padding: 24px 12px;
+        color: #1a202c;
+    }
+
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -448,6 +519,10 @@
         }
 
         .spf-section.contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        #leasing-enquiry-form .leasing-form-row {
             grid-template-columns: 1fr;
         }
 
@@ -498,27 +573,57 @@
         </div>
 
         <div class="spf-section section">
-          <h2 class="spf-section section-title">How to Apply</h2>
+          <h2 class="spf-section section-title">Enquire about leasing</h2>
           <p style="margin-bottom: 20px; color: #4a5568; line-height: 1.5; font-size: 14px;">
-            Ready to get started? Please contact us to begin your leasing application:
+            Tell us where to reach you and our leasing team will be in touch to start your application.
           </p>
 
-          <div class="spf-section contact-grid">
-            <div class="spf-section contact-item">
-              <div class="spf-section contact-label">Email</div>
-              <div class="spf-section contact-value">
-                <a href="mailto:hush@soundboxstore.com">hush@soundboxstore.com</a>
+          <form id="leasing-enquiry-form" novalidate>
+            <div class="leasing-form-row">
+              <div class="leasing-form-group">
+                <label for="leasing-name" class="leasing-required">Full name</label>
+                <input type="text" id="leasing-name" name="contact[Full name]" required>
+              </div>
+              <div class="leasing-form-group">
+                <label for="leasing-company" class="leasing-required">Business name</label>
+                <input type="text" id="leasing-company" name="contact[Company name]" required>
               </div>
             </div>
-            <div class="spf-section contact-item">
-              <div class="spf-section contact-label">Phone</div>
-              <div class="spf-section contact-value">
-                {% capture phone %}
-                  {% render '[phone-number]' %}
-                {% endcapture %}
-                <a href="tel:{{phone}}">{{ phone }}</a>
+            <div class="leasing-form-row">
+              <div class="leasing-form-group">
+                <label for="leasing-email" class="leasing-required">Work email</label>
+                <input type="email" id="leasing-email" name="contact[email]" required>
+              </div>
+              <div class="leasing-form-group">
+                <label for="leasing-phone" class="leasing-required">Phone</label>
+                <input type="tel" id="leasing-phone" name="contact[Phone]" required>
               </div>
             </div>
+            <div class="leasing-form-group">
+              <label for="leasing-message">Message (optional)</label>
+              <textarea id="leasing-message" name="contact[body]" rows="3"></textarea>
+            </div>
+
+            {%- comment -%} Distinguishers so n8n/Zoho can route this as Leasing, not a normal quote {%- endcomment -%}
+            <input type="hidden" name="source" value="product-leasing-enquiry">
+            <input type="hidden" name="form_type" value="leasing">
+            <input type="hidden" name="lead_source" value="Leasing">
+            <input type="hidden" name="contact[subject]" value="LEASING ENQUIRY">
+            <input type="hidden" name="contact[tags]" value="leasing,leasing-enquiry">
+            <input type="hidden" name="contact[context]" value="product-leasing">
+            {%- comment -%} Product context (variant + monthly price kept current by the submit JS) {%- endcomment -%}
+            <input type="hidden" name="contact[Product title]" value="{{ product.title | escape }}">
+            <input type="hidden" id="leasing-enquiry-variant" name="contact[Variant]" value="{{ current_variant.title | escape }} (SKU {{ current_variant.sku }})">
+            <input type="hidden" id="leasing-enquiry-monthly" name="contact[Indicative monthly price]" value="">
+            <input type="hidden" name="contact[Product URL]" value="{{ shop.url }}{{ product.url }}">
+            <input type="hidden" id="leasing-enquiry-gclid" name="contact[gclid]" value="">
+
+            <button type="submit" class="leasing-submit-btn">Submit leasing enquiry</button>
+          </form>
+
+          <div id="leasing-enquiry-success" class="leasing-success" style="display:none">
+            <div style="font-size:32px;line-height:1">✓</div>
+            <p style="margin:8px 0 0;font-weight:600;color:#1a202c">Thank you — our leasing team will be in touch.</p>
           </div>
 
           <div
@@ -526,12 +631,14 @@
             style="
               text-align: center;
               font-size: 12px;
-              font-style: italic;
               color:#4a5568;
+              margin-top:16px;
             "
           >
-            Our team will guide you through the application process and help you find the best leasing solution for your
-            business needs.
+            {% capture phone %}{% render '[phone-number]' %}{% endcapture %}
+            Prefer to talk? Email
+            <a href="mailto:hush@soundboxstore.com" style="color:#1a202c">hush@soundboxstore.com</a>
+            or call <a href="tel:{{ phone }}" style="color:#1a202c">{{ phone }}</a>.
           </div>
         </div>
       </div>
@@ -577,5 +684,108 @@
             }
         `;
     document.head.appendChild(style);
+
+    // ============================================
+    // Leasing enquiry lead capture (SBS-311)
+    // Reuses the shared n8n form-to-zoho endpoint + lead/consent helpers
+    // (sbsMintLeadId / sbsReadConsent / sbsSubmitLead from quote-tracking.liquid),
+    // so leasing leads flow through the same CRM pipeline but flagged form_type=leasing.
+    // ============================================
+    (function () {
+      var form = document.getElementById('leasing-enquiry-form');
+      if (!form) return;
+
+      function getGclid() {
+        try {
+          var urlParams = new URLSearchParams(window.location.search);
+          var fromUrl = urlParams.get('gclid') || urlParams.get('_gcl_aw');
+          if (fromUrl) return fromUrl;
+          var fromStorage = localStorage.getItem('_gcl_aw');
+          if (fromStorage) return fromStorage;
+        } catch (e) {}
+        return '';
+      }
+
+      function readMonthlyPrice() {
+        var lp = document.querySelector('#product__leasing-wrap input[name="leasing_price"]');
+        return lp ? lp.value : '';
+      }
+
+      // Keep the variant label current as the shopper switches variants.
+      document.addEventListener('variant:change', function (evt) {
+        var v = evt.detail && evt.detail.variant;
+        if (!v) return;
+        var variantEl = document.getElementById('leasing-enquiry-variant');
+        if (variantEl) variantEl.value = (v.title || '') + ' (SKU ' + (v.sku || '') + ')';
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var submitBtn = form.querySelector('.leasing-submit-btn');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+        }
+
+        var monthlyEl = document.getElementById('leasing-enquiry-monthly');
+        if (monthlyEl) {
+          var mp = readMonthlyPrice();
+          monthlyEl.value = mp ? mp + ' /month' : '';
+        }
+        var gclid = getGclid();
+        var gEl = document.getElementById('leasing-enquiry-gclid');
+        if (gEl) gEl.value = gclid;
+
+        var data = {
+          created_at: new Date().toISOString(),
+          source: 'product-leasing-enquiry',
+          form_type: 'leasing',
+          lead_source: 'Leasing',
+          gclid: gclid,
+          _gcl_aw: gclid
+        };
+        new FormData(form).forEach(function (value, key) {
+          data[key] = value;
+        });
+
+        // SBS-11 / SBS-287: shared lead_id + Consentmo snapshot (same as other forms).
+        var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
+        if (sbsLeadId) data.lead_id = sbsLeadId;
+        if (typeof window.sbsReadConsent === 'function') Object.assign(data, window.sbsReadConsent());
+        if (sbsLeadId) data.transaction_id = sbsLeadId;
+
+        // Boundary log with correlation id — no PII in the console.
+        console.log('[LeasingEnquiry] submit', {
+          lead_id: sbsLeadId,
+          form_type: data.form_type,
+          product: data['contact[Product title]'],
+          monthly: data['contact[Indicative monthly price]']
+        });
+
+        fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
+          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify(data)
+        })
+          .then(function (res) { console.log('[LeasingEnquiry] n8n request sent', sbsLeadId); })
+          .catch(function (err) { console.error('[LeasingEnquiry] n8n error', sbsLeadId, err); });
+
+        try {
+          if (typeof window.sbsSubmitLead === 'function') {
+            window.sbsSubmitLead({ email: data['contact[email]'] });
+          }
+        } catch (err) {
+          console.error('[LeasingEnquiry] dedup shim error', err);
+        }
+
+        // Popup context: show inline success, no navigation.
+        form.style.display = 'none';
+        var success = document.getElementById('leasing-enquiry-success');
+        if (success) success.style.display = 'block';
+      });
+    })();
   </script>
 {% endif %}
