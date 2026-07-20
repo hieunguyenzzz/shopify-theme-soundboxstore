@@ -124,12 +124,14 @@
         >
         {%- if is_color -%}
           {%- comment -%}
-            Anja Booth (anja-m / anja-s) uses its own fabric swatch images
-            uploaded to Files as anja-<colour-handle>.png, so the swatch is
-            product-specific and does not affect other products.
+            Any Anja Booth product (anja-m, anja-s, anja-xl, …) loads its own
+            fabric swatch images uploaded to Files as anja-<colour-handle>.png,
+            so swatches stay product-specific and never affect other products.
+            Matches handles starting with "anja" so new Anja sizes work with
+            no code change (prefix check avoids substring false positives).
           {%- endcomment -%}
-          {%- assign anja_swatch_products = 'anja-m,anja-s' | split: ',' -%}
-          {%- if anja_swatch_products contains product.handle -%}
+          {%- assign product_handle_prefix = product.handle | slice: 0, 4 -%}
+          {%- if product_handle_prefix == 'anja' -%}
             {%- capture en_color_handle -%}{%- render 'color-en-handle', value: value -%}{%- endcapture -%}
             {%- liquid
               assign color_file_name = 'anja-' | append: en_color_handle | append: '.' | append: swatch_file_extension
