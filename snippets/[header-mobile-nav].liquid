@@ -79,6 +79,13 @@
 {% endunless %}
 <div class="slide-nav__wrapper" style="flex-shrink: 0;" data-level="1">
   <ul class="slide-nav">
+    {% if settings.header_show_quote_request %}
+      <li class="slide-nav__item" style="list-style:none;display:block;width:100%;">
+        <label for="quote-form-modal" class="btn" style="display:block;margin:0.5em 0 1em;text-align:center;cursor:pointer;">
+          {{ 'header.quote_btn_text' | t }}
+        </label>
+      </li>
+    {% endif %}
     <li class="slide-nav__item slide-mobilenav__dropdown" style="padding-right:0">
       <button
         type="button"
