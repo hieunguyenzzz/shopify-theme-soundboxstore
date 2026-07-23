@@ -160,6 +160,9 @@
       {% endif %}
     {%- endfor -%}
     {% if product.price_min > 0 %}
+      {% if product.template_suffix == 'omni-booth' %}
+        <div class="itemprice">POA</div>
+      {% else %}
       {% assign lowest_price = product.price_min
         | divided_by: 100.0
         | round
@@ -184,6 +187,7 @@
             </span>
           {% endif %}
         </div>
+      {% endif %}
       {% endif %}
       {% if product.metafields.custom.reviews_rating.value > 1 %}
         <div class="itempreviews">

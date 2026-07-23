@@ -209,6 +209,9 @@
                       class="product-block grfq-price product-block--price"
                       {{ block.shopify_attributes }}
                     >
+                      {%- if product.template_suffix == 'omni-booth' -%}
+                        <span class="product__price product__price--poa">POA</span>
+                      {%- endif -%}
                       {% comment %}
                         {% if product.metafields.my_fields.keypad_variant_id != blank %}
                           <div class="addon_keypad">

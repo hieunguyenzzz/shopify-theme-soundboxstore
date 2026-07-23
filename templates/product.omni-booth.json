@@ -24,7 +24,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "desc": "<p>Prices exclude VAT</p>"
+            "desc": ""
           }
         },
         "buy_buttons": {
@@ -65,7 +65,8 @@
       ],
       "custom_css": [
         ".variant-wrapper {display: block !important;}",
-        ".product-single__title h2 {max-width: none !important; margin-bottom: 0.7em;}"
+        ".product-single__title h2 {max-width: none !important; margin-bottom: 0.7em;}",
+        ".product-block--price [data-product-price], .product-block--price [data-product-price-wrap], .product-block--price .product__price-savings, .product-block--price [data-unit-price-wrapper], .product-block--price .vat_text {display: none !important;}"
       ],
       "settings": {
         "sku_enable": false,
