@@ -1,0 +1,179 @@
+{%- assign panoramas = product.metafields.custom.statistics_360_images.value -%}
+{%- if panoramas != blank and panoramas.size > 0 -%}
+  {%- assign has_pano = false -%}
+  {%- for pano in panoramas -%}
+    {%- if pano.embed_link360.value != blank -%}{%- assign has_pano = true -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if has_pano -%}
+    <style>
+      .omni-360-btn {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        z-index: 5;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        background: #fff;
+        border: none;
+        border-radius: 99em;
+        padding: 12px 20px;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
+        color: #303a44;
+      }
+      .omni-360-btn .omni-360-deg { opacity: 0.55; }
+      .omni-360-btn svg { width: 15px; height: 15px; opacity: 0.55; }
+      .omni-360-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        background: #f3f1ee;
+        display: none;
+        flex-direction: column;
+      }
+      .omni-360-modal.is-open { display: flex; }
+      .omni-360-frame-wrap { position: relative; flex: 1 1 auto; min-height: 0; }
+      .omni-360-frame-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+      .omni-360-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 3;
+        background: #fff;
+        border: none;
+        border-radius: 99em;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+      .omni-360-options {
+        flex: 0 0 auto;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: stretch;
+        padding: 16px;
+        background: #f3f1ee;
+        overflow-x: auto;
+      }
+      .omni-360-option {
+        background: #fff;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        padding: 10px 18px 8px;
+        cursor: pointer;
+        text-align: center;
+        min-width: 120px;
+        transition: border-color 0.15s ease;
+      }
+      .omni-360-option.is-active { border-color: #303a44; }
+      .omni-360-option img { height: 66px; width: auto; display: block; margin: 0 auto 6px; object-fit: contain; }
+      .omni-360-option span { font-size: 12px; color: #303a44; white-space: nowrap; }
+    </style>
+
+    <button type="button" class="omni-360-btn" data-omni-360-open>
+      Step Inside
+      <span class="omni-360-deg">360&deg;</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+    </button>
+
+    <div class="omni-360-modal" data-omni-360-modal role="dialog" aria-modal="true" aria-label="360 degree view">
+      <button type="button" class="omni-360-close" data-omni-360-close aria-label="Close 360 view">&times;</button>
+      <div class="omni-360-frame-wrap">
+        <iframe
+          data-omni-360-frame
+          src="about:blank"
+          allow="fullscreen; accelerometer; gyroscope; xr-spatial-tracking"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="omni-360-options">
+        {%- for pano in panoramas -%}
+          {%- if pano.embed_link360.value != blank -%}
+            {%- assign fo = pano.display_name.value -%}
+            {%- assign thumb = blank -%}
+            {%- for v in product.variants -%}
+              {%- if v.option1 == fo -%}
+                {%- for img in v.metafields.global.images.value -%}
+                  {%- assign isrc = img | image_url: width: 1 -%}
+                  {%- if isrc contains 'View_02' -%}{%- assign thumb = img -%}{%- break -%}{%- endif -%}
+                {%- endfor -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if thumb == blank -%}
+              {%- for img in product.variants.first.metafields.global.images.value -%}
+                {%- assign isrc = img | image_url: width: 1 -%}
+                {%- if isrc contains 'View_02' -%}{%- assign thumb = img -%}{%- break -%}{%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+            {%- if thumb == blank -%}{%- assign thumb = product.featured_image -%}{%- endif -%}
+            <button
+              type="button"
+              class="omni-360-option"
+              data-360-url="{{ pano.embed_link360.value | escape }}"
+              data-360-furniture="{{ fo | escape }}"
+            >
+              {%- if thumb != blank -%}
+                <img src="{{ thumb | image_url: width: 130 }}" alt="{{ pano.title.value | escape }}" loading="lazy">
+              {%- endif -%}
+              <span>{{ pano.title.value | default: fo }}</span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var openBtn = document.querySelector('[data-omni-360-open]');
+        var modal = document.querySelector('[data-omni-360-modal]');
+        if (!openBtn || !modal) return;
+        var frame = modal.querySelector('[data-omni-360-frame]');
+        var closeBtn = modal.querySelector('[data-omni-360-close]');
+        var options = [].slice.call(modal.querySelectorAll('.omni-360-option'));
+        if (!options.length) return;
+
+        function activate(opt) {
+          if (!opt) return;
+          options.forEach(function (o) { o.classList.remove('is-active'); });
+          opt.classList.add('is-active');
+          var url = opt.getAttribute('data-360-url');
+          if (frame.getAttribute('src') !== url) frame.setAttribute('src', url);
+        }
+        function optionForCurrentFurniture() {
+          var sel = document.querySelector('input[name="Furniture Option"]:checked');
+          var val = sel ? sel.value.trim() : null;
+          if (val) {
+            for (var i = 0; i < options.length; i++) {
+              if ((options[i].getAttribute('data-360-furniture') || '').trim() === val) return options[i];
+            }
+          }
+          return options[0];
+        }
+        function open() {
+          activate(optionForCurrentFurniture());
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+        function close() {
+          modal.classList.remove('is-open');
+          frame.setAttribute('src', 'about:blank');
+          document.body.style.overflow = '';
+        }
+        openBtn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+        options.forEach(function (o) { o.addEventListener('click', function () { activate(o); }); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+      })();
+    </script>
+  {%- endif -%}
+{%- endif -%}

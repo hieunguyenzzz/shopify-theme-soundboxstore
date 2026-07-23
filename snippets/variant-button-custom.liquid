@@ -4,6 +4,9 @@
 
   assign locale_prefix = request.path | split: '/products/' | first
 
+  assign size_family = product.metafields.custom.size_family.value
+  assign size_family_label = block.settings.name | default: 'Choose your size'
+
   if sel != blank
     assign use_metafield = true
     assign opt_name = sel.name.value
@@ -36,7 +39,47 @@
   endif
 %}
 
-{% if opt_name != blank %}
+{% if size_family != blank and size_family.size > 0 %}
+
+<style>
+  .variant-wrapper.option-variant-custom .variant__button-label{
+        font-size: 16px;
+    font-weight: 500;padding:7px 15px
+  }
+</style>
+<div
+  class="variant-wrapper js  variant_picker option-variant option-variant-custom"
+  data-type="button"
+>
+  <div class="variant__label">{{ size_family_label }}</div>
+  <div class="variant-input-wrap">
+    {% for p in size_family %}
+      {% assign p_label = p.metafields.custom.size_label.value | default: p.title %}
+      {% assign p_label = p_label | remove_first: 'Omni ' %}
+      <div class="variant-input">
+        <a
+          href="{{ locale_prefix }}/products/{{ p.handle }}"
+          class="variant__button-label"
+          {% if p.id == product.id %}style="background-color: #303a44; color: #fff;"{% endif %}
+        >{{ p_label }}</a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "urls": [
+          {% for p in size_family %}"{{ locale_prefix }}/products/{{ p.handle }}"{% unless forloop.last %}, {% endunless %}{% endfor %}
+        ]
+      }
+    ]
+  }
+</script>
+
+{% elsif opt_name != blank %}
 
 <style>
   .variant-wrapper.option-variant-custom .variant__button-label{

@@ -10,9 +10,23 @@
   {% endif %}
 {% endfor %}
 
-<div
-  class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant {% else %} color-variant{% endunless %}"
+{%- assign finish_grouped = false -%}
+{%- assign active_finish = 'upholstered' -%}
+{%- if is_color -%}
+  {%- assign has_ral = false -%}
+  {%- assign has_uph = false -%}
+  {%- for value in option.values -%}
+    {%- if value contains 'RAL' -%}{%- assign has_ral = true -%}{%- else -%}{%- assign has_uph = true -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if has_ral and has_uph -%}
+    {%- assign finish_grouped = true -%}
+    {%- if option.selected_value contains 'RAL' -%}{%- assign active_finish = 'powder' -%}{%- endif -%}
+  {%- endif -%}
+{%- endif -%}
 
+<div
+  class="variant-wrapper js {{ option.name | downcase }}-variant {% unless is_color %}option-variant {% else %} color-variant{% endunless %}{% if finish_grouped %} finish-grouped{% endif %}"
+  {% if finish_grouped %}data-active-finish="{{ active_finish }}"{% endif %}
   {%- for value in option.values -%}
     {% unless value.swatch %}
       {% if option.values.size == 1 %}
@@ -47,6 +61,12 @@
       {%- endif -%}
     {% endcomment %}
   </label>
+  {%- if finish_grouped -%}
+    <div class="finish-toggle" data-finish-toggle role="tablist" aria-label="{{ option.name }} finish">
+      <button type="button" class="finish-btn{% if active_finish == 'powder' %} active{% endif %}" data-finish="powder">Powder-coated</button>
+      <button type="button" class="finish-btn{% if active_finish == 'upholstered' %} active{% endif %}" data-finish="upholstered">Upholstered</button>
+    </div>
+  {%- endif -%}
   {%- assign option_index = forloop.index -%}
   <div
     class="variant-input-wrap"
@@ -59,6 +79,10 @@
     {% comment %}<legend class="hide">{{ option.name }}</legend>{% endcomment %}
     {%- for value in option.values -%}
       {% if value.swatch %}
+        {%- assign value_finish = '' -%}
+        {%- if finish_grouped -%}
+          {%- if value contains 'RAL' -%}{%- assign value_finish = 'powder' -%}{%- else -%}{%- assign value_finish = 'upholstered' -%}{%- endif -%}
+        {%- endif -%}
         {% render 'swatch',
           swatch: value.swatch,
           value: value,
@@ -66,7 +90,8 @@
           product_available: product_available,
           section_id: section_id,
           form_id: form_id,
-          option_index: option_index
+          option_index: option_index,
+          finish: value_finish
         %}
         {% continue %}
       {% endif %}
@@ -96,6 +121,16 @@
           {%- assign tranValue = value -%}
         {% endif %}
       {% endunless %}
+      {%- assign omni_swatch_bg = '' -%}
+      {%- if value contains '#' -%}
+        {%- capture omni_internal_name -%}{%- render 'omni-internal-colour-name', value: value -%}{%- endcapture -%}
+        {%- assign omni_internal_name = omni_internal_name | strip -%}
+        {%- if omni_internal_name != blank -%}
+          {%- assign tranValue = omni_internal_name -%}
+        {%- endif -%}
+        {%- capture omni_swatch_bg -%}{%- render 'omni-internal-swatch-bg', value: value -%}{%- endcapture -%}
+        {%- assign omni_swatch_bg = omni_swatch_bg | strip -%}
+      {%- endif -%}
 
       <div
         class="variant-input {% unless product_available %} disabled{% endunless %}"
@@ -140,16 +175,20 @@
           {% unless color_image %}
             {%- capture en_color_handle -%}{%- render 'color-en-handle', value: value -%}{%- endcapture -%}
             {%- liquid
-              assign color_file_name = en_color_handle | append: '.' | append: swatch_file_extension
-              assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
-              assign color_swatch_fallback = color_swatch_fallback | split: ' ' | last | handle
+              if value contains '#'
+                assign color_image = null
+              else
+                assign color_file_name = en_color_handle | append: '.' | append: swatch_file_extension
+                assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                assign color_swatch_fallback = color_swatch_fallback | split: ' ' | last | handle
+              endif
             -%}
           {% endunless %}
 
           <label
             for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
             class="variant__button-label color-swatch color-swatch--{{ value | handle }}{% unless product_available %} disabled{% endunless %}"
-            style="background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+            style="{% if omni_swatch_bg != blank %}background: {{ omni_swatch_bg }};{% else %}background-color: {{ color_swatch_fallback }};background-image: url({{ color_image }});{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}{% endif %}"
           >
             {{ tranValue | escape }}
           </label>
@@ -204,3 +243,45 @@
     {%- endfor -%}
   </div>
 </div>
+{%- if finish_grouped -%}
+  <style>
+    .variant-wrapper.finish-grouped { margin-bottom: 1.5rem; }
+    .variant-wrapper.finish-grouped .variant-input-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .variant-wrapper.finish-grouped .finish-toggle { display: flex; gap: 0.5rem; margin: 0.2rem 0 0.8rem; }
+    .variant-wrapper.finish-grouped .finish-btn {
+      border: 1px solid #d9d9d2; background: #fff; padding: 8px 16px; border-radius: 8px;
+      font-size: 14px; line-height: 1; cursor: pointer; font-family: inherit; color: #303a44;
+    }
+    .variant-wrapper.finish-grouped .finish-btn.active { background: #dfe1c4; border-color: #c9cba6; }
+    .variant-wrapper.finish-grouped .variant-input[data-finish] { display: none; }
+    .variant-wrapper.finish-grouped[data-active-finish="powder"] .variant-input[data-finish="powder"] { display: inline-flex; }
+    .variant-wrapper.finish-grouped[data-active-finish="upholstered"] .variant-input[data-finish="upholstered"] { display: inline-flex; }
+  </style>
+  <script>
+    (function () {
+      document.querySelectorAll('.variant-wrapper.finish-grouped').forEach(function (wrap) {
+        if (wrap.dataset.finishInit) return;
+        wrap.dataset.finishInit = '1';
+        var toggle = wrap.querySelector('[data-finish-toggle]');
+        if (!toggle) return;
+        toggle.addEventListener('click', function (e) {
+          var btn = e.target.closest('.finish-btn');
+          if (!btn) return;
+          var finish = btn.getAttribute('data-finish');
+          wrap.setAttribute('data-active-finish', finish);
+          toggle.querySelectorAll('.finish-btn').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          // select the first colour in the chosen finish so the variant stays valid
+          var group = wrap.querySelectorAll('.variant-input[data-finish="' + finish + '"]');
+          var already = false;
+          group.forEach(function (gi) { if (gi.querySelector('input:checked')) already = true; });
+          if (!already && group.length) {
+            var lbl = group[0].querySelector('label');
+            if (lbl) lbl.click();
+          }
+        });
+      });
+    })();
+  </script>
+{%- endif -%}

@@ -1,0 +1,13 @@
+{%- liquid
+  assign hex = value | downcase | strip
+  case hex
+    when '#a49f98'
+      echo 'Light Grey Pet Board'
+    when '#615f5d'
+      echo 'Dark Grey Pet Board'
+    when '#a18e7e'
+      echo 'Beige Ribbed Pet Board'
+    when '#6d6c69'
+      echo 'Grey Ribbed Pet Board'
+  endcase
+-%}
