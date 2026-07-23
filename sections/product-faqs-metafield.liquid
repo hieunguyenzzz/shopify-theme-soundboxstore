@@ -41,7 +41,7 @@
               itemtype="https://schema.org/Answer"
             >
               <div class="collapsible-content__inner rte" itemprop="text">
-                {{ faq.text }}
+                {{ faq.text | metafield_tag }}
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
           "name": {{ faq.question | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ faq.text | strip_html | strip_newlines | json }}
+            "text": {{ faq.text | metafield_tag | strip_html | strip_newlines | json }}
           }
         }
         {%- assign first_emitted = true -%}

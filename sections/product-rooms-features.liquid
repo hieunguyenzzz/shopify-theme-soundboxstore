@@ -177,14 +177,16 @@
         {%- unless imgs -%}
           {%- assign imgs = product.images | where: 'alt', vaSku -%}
         {%- endunless -%}
+        {%- assign side_img = blank -%}
+        {%- assign first_img = blank -%}
+        {%- assign second_img = blank -%}
         {%- for image in imgs -%}
-          {%- if prod_img -%}
-            {%- assign prod_img = image -%}
-            {% break %}
-          {%- else -%}
-            {%- assign prod_img = image -%}
-          {%- endif -%}
+          {%- assign isrc = image | image_url: width: 1 -%}
+          {%- if side_img == blank and isrc contains 'View_02' -%}{%- assign side_img = image -%}{%- endif -%}
+          {%- if forloop.first -%}{%- assign first_img = image -%}{%- endif -%}
+          {%- if forloop.index == 2 -%}{%- assign second_img = image -%}{%- endif -%}
         {%- endfor -%}
+        {%- assign prod_img = side_img | default: second_img | default: first_img -%}
         <div
           class="col center-col"
           {%- if section.settings.show_videos -%}

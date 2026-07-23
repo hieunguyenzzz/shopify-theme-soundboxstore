@@ -102,6 +102,29 @@
 {%- unless imgs.size > 0 -%}
   {%- assign imgs = product.images -%}
 {%- endunless -%}
+{%- assign imgs_arr = imgs | where: 'media_type', 'image' -%}
+{%- assign ordered_imgs = '' | split: ',' -%}
+{%- assign view_seq = '_View_02,_View_01,_View_03,_View_04,_View_05' | split: ',' -%}
+{%- for token in view_seq -%}
+  {%- for image in imgs_arr -%}
+    {%- assign isrc = image | image_url: width: 1 -%}
+    {%- if isrc contains token -%}
+      {%- assign one = imgs_arr | slice: forloop.index0, 1 -%}
+      {%- assign ordered_imgs = ordered_imgs | concat: one -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- for image in imgs_arr -%}
+  {%- assign isrc = image | image_url: width: 1 -%}
+  {%- assign is_view = false -%}
+  {%- if isrc contains '_View_01' or isrc contains '_View_02' or isrc contains '_View_03' or isrc contains '_View_04' or isrc contains '_View_05' -%}{%- assign is_view = true -%}{%- endif -%}
+  {%- unless is_view -%}
+    {%- assign one = imgs_arr | slice: forloop.index0, 1 -%}
+    {%- assign ordered_imgs = ordered_imgs | concat: one -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- if ordered_imgs.size > 0 -%}{%- assign imgs = ordered_imgs -%}{%- endif -%}
 {%- assign slide_count = imgs.size -%}
 
 {% capture youtubeopener %}
@@ -291,6 +314,7 @@
     </div>
   </div>
 </div>
+{% render 'omni-360-viewer' %}
 {% assign page360url = product.metafields.custom.page360.value.url %}
 {%- if page360url -%}
   <style>
@@ -353,18 +377,36 @@
   {% render 'model-3d', first_3d_model: first_3d_model %}
 {%- endif -%}
 {%- for current_variant in product.variants -%}
-  {%- assign current_variant = product.selected_or_first_available_variant -%}
-  {%- assign vaSku = current_variant.sku | strip -%}
-  {%- assign slide_count = 0 -%}
   {%- assign imgs = current_variant.metafields.global.images.value -%}
+  {%- unless imgs and imgs.size > 0 -%}
+    {%- continue -%}
+  {%- endunless -%}
+  {%- assign imgs_arr = imgs | where: 'media_type', 'image' -%}
+  {%- assign ordered_imgs = '' | split: ',' -%}
+  {%- assign view_seq = '_View_02,_View_01,_View_03,_View_04,_View_05' | split: ',' -%}
+  {%- for token in view_seq -%}
+    {%- for image in imgs_arr -%}
+      {%- assign isrc = image | image_url: width: 1 -%}
+      {%- if isrc contains token -%}
+        {%- assign one = imgs_arr | slice: forloop.index0, 1 -%}
+        {%- assign ordered_imgs = ordered_imgs | concat: one -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {%- for image in imgs_arr -%}
+    {%- assign isrc = image | image_url: width: 1 -%}
+    {%- assign is_view = false -%}
+    {%- if isrc contains '_View_01' or isrc contains '_View_02' or isrc contains '_View_03' or isrc contains '_View_04' or isrc contains '_View_05' -%}{%- assign is_view = true -%}{%- endif -%}
+    {%- unless is_view -%}
+      {%- assign one = imgs_arr | slice: forloop.index0, 1 -%}
+      {%- assign ordered_imgs = ordered_imgs | concat: one -%}
+    {%- endunless -%}
+  {%- endfor -%}
+  {%- if ordered_imgs.size > 0 -%}{%- assign imgs = ordered_imgs -%}{%- endif -%}
+  {%- assign vaSku = current_variant.sku | strip -%}
   {%- assign videos = current_variant.metafields.global.videos.value -%}
   {%- assign alt = product.title | append: current_variant.title | strip -%}
-  {%- unless imgs -%}
-    {%- assign imgs = product.images | where: 'alt', vaSku -%}
-  {%- endunless -%}
-  {%- unless imgs.size > 0 -%}
-    {%- assign imgs = product.images -%}
-  {%- endunless -%}
   {%- assign slide_count = imgs.size -%}
   <template data-id="{{ current_variant.id }}" data-videos="{{videos | json}}">
     <div class="slider-wrap">

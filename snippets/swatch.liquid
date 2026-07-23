@@ -15,6 +15,7 @@
   data-index="option{{ option_index }}"
   data-value="{{ value | escape }}"
   data-trvalue="{{value | escape}}"
+  {% if finish != blank %}data-finish="{{ finish }}"{% endif %}
 >
   <input
     type="radio"

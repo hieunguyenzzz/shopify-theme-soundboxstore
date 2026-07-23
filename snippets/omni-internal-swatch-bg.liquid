@@ -1,0 +1,15 @@
+{%- liquid
+  assign hex = value | downcase | strip
+  case hex
+    when '#a18e7e'
+      echo 'repeating-linear-gradient(90deg,#b3a48f 0,#b3a48f 3px,#8a7663 3px,#8a7663 6px)'
+    when '#6d6c69'
+      echo 'repeating-linear-gradient(90deg,#7d7c78 0,#7d7c78 3px,#585754 3px,#585754 6px)'
+    when '#a49f98'
+      echo '#a49f98'
+    when '#615f5d'
+      echo '#615f5d'
+    else
+      echo hex
+  endcase
+-%}
