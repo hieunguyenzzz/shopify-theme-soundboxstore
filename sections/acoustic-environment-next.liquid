@@ -91,10 +91,11 @@
 </style>
 <div class="page-width ">
   <div class="custom-content">
-    {% assign imgMobile = section.settings['mobile-bg_image'] | default: section.settings.bg_image %}
+    {% assign bgDesktop = product.metafields.custom.acoustic_bg.value | default: section.settings.bg_image %}
+    {% assign imgMobile = product.metafields.custom.acoustic_bg_mobile.value | default: section.settings['mobile-bg_image'] | default: bgDesktop %}
     <img
       loading="lazy"
-      src="{{ section.settings.bg_image | image_url }}"
+      src="{{ bgDesktop | image_url }}"
       width="1404"
       height="687"
       alt="background"

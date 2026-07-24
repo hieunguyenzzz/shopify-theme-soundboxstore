@@ -41,12 +41,14 @@
     class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}{% unless variant_labels %} hidden-label{% endunless %}"
     for="ProductSelect-{{ section_id }}-{{ product.id }}-option-{{ forloop.index0 }}"
   >
+    {%- assign option_label = option.name -%}
+    {%- if option_label == 'External Colour' -%}{%- assign option_label = 'Colour' -%}{%- endif -%}
     {% if isColorSwatch %}
-      {{ option.name }}
+      {{ option_label }}
     {% else %}
       {%- assign tranOptionName = 'strings.option_name.' | append: optionNameHandlized | t -%}
       {%- if tranOptionName contains 'Translation missing' -%}
-        {{ option.name }}
+        {{ option_label }}
       {%- else -%}
         {{ tranOptionName }}
       {%- endif -%}

@@ -7,6 +7,15 @@
   if feat_image == blank and block.repeater != blank
     assign feat_image = block.repeater.image.value
   endif
+  if feat_image == blank and block.settings.image_from_feature != blank
+    assign feat_src_index = block.settings.image_from_feature | plus: 0
+    for feat_src in product.metafields.custom.omni_features.value
+      if forloop.index == feat_src_index
+        assign feat_image = feat_src.image.value
+        break
+      endif
+    endfor
+  endif
   if feat_youtube == blank and block.repeater != blank
     assign feat_youtube = block.repeater.youtube_video.value
   endif

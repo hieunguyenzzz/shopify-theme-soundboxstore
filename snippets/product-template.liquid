@@ -209,7 +209,7 @@
                       class="product-block grfq-price product-block--price"
                       {{ block.shopify_attributes }}
                     >
-                      {%- if product.template_suffix == 'omni-booth' -%}
+                      {%- if product.template_suffix == 'omni-booth' or product.template_suffix == 'kozee-booth' -%}
                         <span class="product__price product__price--poa">POA</span>
                       {%- endif -%}
                       {% comment %}
