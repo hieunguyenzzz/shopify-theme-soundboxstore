@@ -1,0 +1,477 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "judge_me_reviews_preview_badge_4B7DM9": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "80d88b2f-fa19-4538-ad26-bbbc66103e15": {
+          "type": "tagline",
+          "settings": {
+            "product_tagline": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "desc": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_add_quote": false,
+            "show_dynamic_checkout": false,
+            "surface_pickup_enable": false
+          }
+        },
+        "82b38b2e-eff3-4c06-9b68-ca746d098f59": {
+          "type": "product_icon",
+          "disabled": true,
+          "settings": {
+            "icon1": "shopify://shop_images/door-icon.jpg",
+            "text1": "Ships flat to your door",
+            "icon2": "shopify://shop_images/plug-play-icon.jpg",
+            "text2": "Plug & play",
+            "icon3": "shopify://shop_images/space-icon.jpg",
+            "text3": "Flexible to any space"
+          }
+        },
+        "ticks_P4CKCQ": {
+          "type": "ticks",
+          "settings": {
+            "richtext": ""
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_4B7DM9",
+        "80d88b2f-fa19-4538-ad26-bbbc66103e15",
+        "variant_picker",
+        "price",
+        "buy_buttons",
+        "82b38b2e-eff3-4c06-9b68-ca746d098f59",
+        "ticks_P4CKCQ"
+      ],
+      "custom_css": [
+        ".variant-wrapper {display: block !important;}",
+        ".product-single__title h2 {max-width: none !important; margin-bottom: 0.7em;}",
+        ".product-block--price [data-product-price], .product-block--price [data-product-price-wrap], .product-block--price .product__price-savings, .product-block--price [data-unit-price-wrapper], .product-block--price .vat_text {display: none !important;}"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_container_size": "large",
+        "product_image_size": "square",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "product_intro_richtext": {
+      "type": "rich-text",
+      "blocks": {
+        "product_intro_heading": {
+          "type": "heading",
+          "settings": {
+            "title": "{{ product.metafields.custom.function.value }}"
+          }
+        },
+        "product_intro_text": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>{{ product.metafields.custom.statistics_citation.value }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "product_intro_heading",
+        "product_intro_text"
+      ],
+      "settings": {
+        "collapable": true,
+        "align_text": "center",
+        "narrow_column": true,
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "product_rooms_features_ryHBAa": {
+      "type": "product-rooms-features",
+      "blocks": {
+        "finer_detail_item": {
+          "type": "feature_item",
+          "repeater": "{{ product.metafields.custom.finer_details.value }}",
+          "settings": {
+            "title": "{{ block.repeater.title.value }}",
+            "description": "{{ block.repeater.content | metafield_tag }}",
+            "point_x": "{{ block.repeater.hotspot_x.value }}",
+            "point_y": "{{ block.repeater.hotspot_y.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "finer_detail_item"
+      ],
+      "settings": {
+        "seo": "Experience this booth for yourself",
+        "title": "The finer details",
+        "content": "<p>Design, function and everything in between.</p>",
+        "show_videos": false,
+        "no_sound": false,
+        "loop": false,
+        "close_label": "Close door",
+        "open_label": "Open door"
+      },
+      "custom_css": [
+        ".product-icon-text-section {margin-top: 3.5em;}"
+      ]
+    },
+    "feature_content_zkRWaV": {
+      "type": "feature-content",
+      "blocks": {
+        "tab_highlight_2": {
+          "type": "feature-content",
+          "settings": {
+            "title": "Intelligent Environmental Control",
+            "content": "<p><strong>Every Kozee Gen 2 booth includes:</strong><br/>- Automatic occupancy light display<br/>- Integrated air circulation<br/>- Dimmable, tunable lighting<br/><br/>Users can set lighting levels and temperature tone to suit personal preference and the task at hand, supporting comfort across different sensory needs.</p>",
+            "youtube_url": ""
+          }
+        },
+        "tab_highlight_3": {
+          "type": "feature-content",
+          "settings": {
+            "title": "Practical Benefits",
+            "content": "<p><strong>Built for flexibility in day-to-day use:</strong><br/>Fast installation (phone booth in around 30 minutes)<br/>Integrated castors for easy relocation<br/>Fully demountable construction<br/>Top or base cable feed-in<br/>Ventilation to base and top<br/>Side-to-side or central placement<br/><br/>Kozee Gen 2 can be reconfigured as workspace needs change.</p>",
+            "youtube_url": ""
+          }
+        },
+        "tab_highlight_4": {
+          "type": "feature-content",
+          "settings": {
+            "title": "A Versatile Solution for Modern Environments",
+            "content": "<p>Kozee Gen 2 booths suit a wide range of settings, from corporate offices to universities and industrial sites, giving teams focused, acoustically controlled space wherever it is needed.<br/><br/>Considered design and solid technical performance make the range practical to specify and easy to live with, and its adaptability supports inclusive, neurodiverse ways of working.</p>",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_highlight_2",
+        "tab_highlight_3",
+        "tab_highlight_4"
+      ],
+      "settings": {}
+    },
+    "subscribe_follow_kmB6a7": {
+      "type": "main-collection-next",
+      "blocks": {
+        "28cea507-6689-4704-af63-50ae541df227": {
+          "type": "email",
+          "settings": {
+            "title": "Thinking Outside The Box, Inside The Booth",
+            "text": "<p>Stay ahead of the curve by subscribing to our newsletter. Don't miss out on exciting events, product launches, meet and greets, and valuable upgrades. Join our community and be a part of the workspace revolution.</p>",
+            "image_bg": "shopify://shop_images/sbs-stn6-1-2-bg.jpg"
+          }
+        },
+        "b781bad8-6c0a-4ac9-86de-bedf4e1fdc25": {
+          "type": "instagram",
+          "settings": {
+            "feed_id": "18121",
+            "title": "Follow Us",
+            "text": "<p><a href=\"https://www.instagram.com/soundboxstore/\" target=\"_blank\">@soundboxstore</a></p>",
+            "image_bg": "shopify://shop_images/sbs-stn6-3-4-bg.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "28cea507-6689-4704-af63-50ae541df227",
+        "b781bad8-6c0a-4ac9-86de-bedf4e1fdc25"
+      ],
+      "custom_css": [
+        ".main-collection-next {padding: 10;}",
+        ".collection-template-grid {padding: 10; gap: 10;}"
+      ],
+      "settings": {
+        "collection": ""
+      }
+    },
+    "acoustic_environment_next_QVNLWi": {
+      "type": "acoustic-environment-next",
+      "blocks": {
+        "statistic_item": {
+          "type": "item",
+          "repeater": "{{ product.metafields.custom.statistics.value }}",
+          "settings": {
+            "heading": "{{ block.repeater.percentage.value }}%",
+            "subheading": "<p>{{ block.repeater.label.value }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "statistic_item"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/Soundbox-Folio-4-person-meeting-room-set.png",
+        "heading": "{{ product.metafields.custom.statistics_title.value }}",
+        "subheading": "<p>Acoustics-controlled environments improve motivation, wellbeing, focus and productivity.</p>",
+        "subheading2": "<p>Sykes, David M., PhD., 2004, “Productivity: How Acoustics Affect Workers’ Performance in Open Areas”</p>",
+        "mobile-bg_image": "shopify://shop_images/color_roomset_modified_4_person_mobile_view.png"
+      }
+    },
+    "product_faqs_metafield": {
+      "type": "product-faqs-metafield",
+      "settings": {
+        "heading": "FAQs"
+      }
+    },
+    "1651508688dadacecf": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_ymjamq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_ymjamq"
+      ],
+      "settings": {}
+    },
+    "16574290364e705c32": {
+      "type": "Divider",
+      "settings": {
+        "padding_top": 8,
+        "padding_bottom": 8,
+        "height": 41,
+        "color": "#ffffff",
+        "full_width": false
+      }
+    },
+    "logo_list": {
+      "type": "logo-list",
+      "blocks": {
+        "eb5ccb84-f1f3-497c-b1f4-390de4137a01": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-2.webp",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "2fa437b2-fed3-4284-8b40-9bb394126de1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-3.webp",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "8b60849e-f0e9-4575-ae20-69d8628f7b74": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-6.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "954c6494-0cb9-405f-8f54-204457e99ce2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-10.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "5ec58e57-ab14-4ee8-8ed3-66e052f12124": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-9.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "689577df-1015-4a24-a21a-f9d5bea657bc": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-5.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "510c667a-b977-4956-bef6-3a1d363bbb68": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-7.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "d0500776-d1d2-42c0-8bdf-9640f3e8b3e0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-1_29a0e9ab-dca7-41e0-b209-c4708164cf92.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "a351b0ec-1067-483e-ae8b-f19432a26ddb": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-4.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "cd8f5712-0188-487d-a4d6-06db29ccdef0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-8.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "ab2355e4-62b2-42d0-81b8-537ba5bbf20c": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-19.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "f60861ff-fb19-4096-a129-adf702a1ad08": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-18.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "b3d14ea2-6554-4bef-b0e3-216a121efd02": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-16.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "e456399e-363e-4255-b3f3-8427cc859204": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-15.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "73ae46b9-abb7-418a-90a0-b4a8aed0c8d9": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-14.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "508f4fb6-8c0e-4358-a2ed-1519e143a1d9": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-11.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "b8f0514e-3f7e-439b-8411-25cc207a0e05": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-17.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "543ba823-fd6f-4c7b-a07b-d9dbcc1c2de8": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled-13.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        },
+        "eeb0aeff-90e6-4620-adb9-1f75bee86076": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Untitled-12.jpg",
+            "link": "",
+            "link-2": ""
+          }
+        }
+      },
+      "block_order": [
+        "eb5ccb84-f1f3-497c-b1f4-390de4137a01",
+        "2fa437b2-fed3-4284-8b40-9bb394126de1",
+        "8b60849e-f0e9-4575-ae20-69d8628f7b74",
+        "954c6494-0cb9-405f-8f54-204457e99ce2",
+        "5ec58e57-ab14-4ee8-8ed3-66e052f12124",
+        "689577df-1015-4a24-a21a-f9d5bea657bc",
+        "510c667a-b977-4956-bef6-3a1d363bbb68",
+        "d0500776-d1d2-42c0-8bdf-9640f3e8b3e0",
+        "a351b0ec-1067-483e-ae8b-f19432a26ddb",
+        "cd8f5712-0188-487d-a4d6-06db29ccdef0",
+        "ab2355e4-62b2-42d0-81b8-537ba5bbf20c",
+        "f60861ff-fb19-4096-a129-adf702a1ad08",
+        "b3d14ea2-6554-4bef-b0e3-216a121efd02",
+        "e456399e-363e-4255-b3f3-8427cc859204",
+        "73ae46b9-abb7-418a-90a0-b4a8aed0c8d9",
+        "508f4fb6-8c0e-4358-a2ed-1519e143a1d9",
+        "b8f0514e-3f7e-439b-8411-25cc207a0e05",
+        "543ba823-fd6f-4c7b-a07b-d9dbcc1c2de8",
+        "eeb0aeff-90e6-4620-adb9-1f75bee86076"
+      ],
+      "custom_css": [
+        "section {padding-top: 1.5em;}"
+      ],
+      "settings": {
+        "title": "You're in good company.",
+        "content": "",
+        "divider": false
+      }
+    },
+    "goes_great_with": {
+      "type": "collection-recommendations",
+      "settings": {
+        "title": "Goes great with",
+        "collection": "acoustic-wall-and-ceiling-panel"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product_intro_richtext",
+    "product_rooms_features_ryHBAa",
+    "feature_content_zkRWaV",
+    "subscribe_follow_kmB6a7",
+    "acoustic_environment_next_QVNLWi",
+    "logo_list",
+    "goes_great_with",
+    "1651508688dadacecf",
+    "product_faqs_metafield",
+    "16574290364e705c32"
+  ]
+}
