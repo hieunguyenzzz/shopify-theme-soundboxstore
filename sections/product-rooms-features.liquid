@@ -186,7 +186,11 @@
           {%- if forloop.first -%}{%- assign first_img = image -%}{%- endif -%}
           {%- if forloop.index == 2 -%}{%- assign second_img = image -%}{%- endif -%}
         {%- endfor -%}
-        {%- assign prod_img = side_img | default: second_img | default: first_img -%}
+        {%- if product.template_suffix contains 'kozee-booth' -%}
+          {%- assign prod_img = first_img | default: side_img -%}
+        {%- else -%}
+          {%- assign prod_img = side_img | default: second_img | default: first_img -%}
+        {%- endif -%}
         <div
           class="col center-col"
           {%- if section.settings.show_videos -%}

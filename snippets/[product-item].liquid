@@ -160,7 +160,7 @@
       {% endif %}
     {%- endfor -%}
     {% if product.price_min > 0 %}
-      {% if product.template_suffix == 'omni-booth' or product.template_suffix == 'kozee-booth' %}
+      {% if product.template_suffix == 'omni-booth' or product.template_suffix contains 'kozee-booth' %}
         <div class="itemprice">POA</div>
       {% else %}
       {% assign lowest_price = product.price_min
