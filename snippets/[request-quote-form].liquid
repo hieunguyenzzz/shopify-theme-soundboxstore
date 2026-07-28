@@ -743,6 +743,14 @@ IT it /it-it' %}
       const form = document.getElementById('{{- form_id -}}');
       form.addEventListener('submit', logSubmit);
 
+      // SBS-335: populate the braid fields on load as well as on submit, so the
+      // form carries them even if something submits it without going through
+      // logSubmit. Matches how 'gclid-field' behaves for the other forms.
+      [['quote-form-gbraid', 'gbraid'], ['quote-form-wbraid', 'wbraid']].forEach(([id, name]) => {
+        const field = document.getElementById(id);
+        if (field && !field.value) field.value = getBraid(name);
+      });
+
       // Override form.submit() to enforce product validation
       // This prevents external scripts (Shopify apps, injected JS) from bypassing our validation
       const originalSubmit = form.submit.bind(form);
