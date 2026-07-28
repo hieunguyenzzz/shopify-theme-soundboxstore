@@ -23,7 +23,6 @@
   <head>
     {%- comment -%} Ahrefs Web Analytics {%- endcomment -%}
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZDYnszN+naiaUE2SecbMNw" async></script>
-    <script src="{{ 'gclid-capture.js' | asset_url }}" defer></script>
     {% render 'calendly-tracking' %}
     {% render 'meta-refresh-helper' %}
     {% render 'pre-header' %}
@@ -77,25 +76,7 @@
         }
       })();
     </script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-W3VDBP8N');
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- SBS-287: GA4 (G-0HET6EXHTH) loads via GTM only; Google Consent Mode v2
-         defaults + updates are handled by the Consentmo app. Removed the duplicate
-         theme GA4 loader + competing consent default (was re-denying non-EEA). -->
-
-    {% render 'quote-tracking' %}
+    {% render 'tracking-head' %}
 
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -587,16 +568,7 @@
       })();
     </script>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    {% render 'tracking-body' %}
 
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">
       {{- 'general.accessibility.skip_to_content' | t -}}

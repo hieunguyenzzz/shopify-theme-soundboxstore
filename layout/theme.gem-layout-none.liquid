@@ -77,23 +77,7 @@
           i.parentNode.insertBefore(n, i);
       })(window, document, 'script', '//bat.bing.com/bat.js', 'uetq');
     </script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-W3VDBP8N');
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- SBS-287: GA4 (G-0HET6EXHTH) loads via GTM only; Google Consent Mode v2
-         defaults + updates are handled by the Consentmo app. Removed the duplicate
-         theme GA4 loader + competing consent default (was re-denying non-EEA). -->
+    {% render 'tracking-head' %}
 
     {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{% endcomment -%}
     {%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value
@@ -335,6 +319,7 @@
   </head>
 
   <body>
+{% render 'tracking-body' %}
 <div class="gem-container">
 	{{ content_for_layout }}
 </div><!-- end .gem-container --></body>

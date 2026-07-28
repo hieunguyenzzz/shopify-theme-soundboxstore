@@ -278,10 +278,14 @@
   // When Umami is blocked/unloaded, the form handlers call sbsSubmitLead directly.
 
   (function interceptUmami() {
+    // SBS-335: give up after ~15s. Some layouts (page360) never load the umami
+    // script at all, and an unbounded poll would tick for the life of the page.
+    let umamiTries = 150;
+
     function waitForUmami() {
       if (typeof umami !== 'undefined' && umami.track) {
         installInterceptor();
-      } else {
+      } else if (umamiTries-- > 0) {
         setTimeout(waitForUmami, 100);
       }
     }

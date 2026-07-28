@@ -1,19 +1,38 @@
 {% comment %}
-  Reusable hidden gclid field for any form.
+  Reusable hidden Google click-id fields for any form.
   Usage: {% render 'gclid-field', form_id: 'my-form-id' %}
 
-  Captures Google Ads gclid from:
+  Captures Google Ads click ids from:
   1. URL parameter (direct click)
-  2. localStorage '_gcl_aw' (stored by quote-tracking.liquid)
-  3. localStorage 'qt_attribution' (stored by quote-tracking.liquid)
+  2. localStorage / cookie (stored by gclid-capture.js)
+  3. localStorage 'qt_attribution' (stored by quote-tracking.liquid) — gclid only
+
+  SBS-335: gbraid/wbraid are now sent alongside gclid. Google substitutes them
+  for gclid on iOS app + YouTube traffic, and n8n (SBS-287c) already maps
+  contact[gbraid]/contact[wbraid] onto the Zoho GBRAID/WBRAID fields.
 {% endcomment %}
 <input type="hidden" name="contact[gclid]" id="gclid-{{ form_id }}" value="">
+<input type="hidden" name="contact[gbraid]" id="gbraid-{{ form_id }}" value="">
+<input type="hidden" name="contact[wbraid]" id="wbraid-{{ form_id }}" value="">
 <script>
   (function() {
     try {
-      var field = document.getElementById('gclid-{{ form_id }}');
-      if (!field) return;
       var params = new URLSearchParams(window.location.search);
+
+      function readCookie(name) {
+        var m = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+        return m ? decodeURIComponent(m[1]) : '';
+      }
+
+      function resolveBraid(name) {
+        var value = params.get(name) || '';
+        if (!value) {
+          try { value = localStorage.getItem('_' + name) || ''; } catch(e) {}
+        }
+        if (!value) value = readCookie('_' + name);
+        return value;
+      }
+
       var gclid = params.get('gclid') || params.get('_gcl_aw') || '';
       if (!gclid) gclid = localStorage.getItem('_gcl_aw') || '';
       if (!gclid) {
@@ -22,7 +41,17 @@
           gclid = attr.gclid || '';
         } catch(e) {}
       }
-      field.value = gclid;
+
+      var values = {
+        gclid: gclid,
+        gbraid: resolveBraid('gbraid'),
+        wbraid: resolveBraid('wbraid')
+      };
+
+      Object.keys(values).forEach(function(name) {
+        var field = document.getElementById(name + '-{{ form_id }}');
+        if (field) field.value = values[name];
+      });
     } catch(e) {}
   })();
 </script>

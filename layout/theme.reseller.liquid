@@ -14,13 +14,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
   {% render 'yett' %}
 
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W3VDBP8N');</script>
-<!-- End Google Tag Manager -->
+    {% render 'tracking-head' %}
 
 <script defer src="https://umami.mobelaris.com/script.js" data-website-id="33c86e50-36c8-428d-8b39-d1dfa548a808"></script>
     
@@ -261,10 +255,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     data-grid-style="{{ settings.product_grid_style }}"
   >
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3VDBP8N"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    {% render 'tracking-body' %}
     
     {% if settings.animate_page_transitions %}
       <script type="text/javascript">
