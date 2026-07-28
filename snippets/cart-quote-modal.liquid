@@ -673,6 +673,8 @@
             <input type="hidden" name="contact[tags]" value="quote-request,cart-quote">
             <input type="hidden" name="contact[cart_items]" id="cart-quote-items-hidden" value="">
             <input type="hidden" name="contact[gclid]" id="cart-quote-gclid" value="">
+            <input type="hidden" name="contact[gbraid]" id="cart-quote-gbraid" value="">
+            <input type="hidden" name="contact[wbraid]" id="cart-quote-wbraid" value="">
 
             <div class="form-row">
               <div class="form-group">
@@ -784,9 +786,28 @@
       return '';
     }
 
-    // Set gclid
+    // SBS-335: gbraid/wbraid replace gclid on iOS app + YouTube traffic.
+    // Persisted by gclid-capture.js; n8n maps them to Zoho GBRAID/WBRAID.
+    function getBraid(name) {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromUrl = urlParams.get(name);
+        if (fromUrl) return fromUrl;
+        const fromStorage = localStorage.getItem('_' + name);
+        if (fromStorage) return fromStorage;
+        const m = document.cookie.match('(?:^|; )_' + name + '=([^;]*)');
+        if (m) return decodeURIComponent(m[1]);
+      } catch (e) {}
+      return '';
+    }
+
+    // Set click ids
     const gclidField = document.getElementById('cart-quote-gclid');
     if (gclidField) gclidField.value = getGclid();
+    const gbraidField = document.getElementById('cart-quote-gbraid');
+    if (gbraidField) gbraidField.value = getBraid('gbraid');
+    const wbraidField = document.getElementById('cart-quote-wbraid');
+    if (wbraidField) wbraidField.value = getBraid('wbraid');
 
     // Step navigation
     function updateSteps() {
@@ -918,7 +939,9 @@
         created_at: new Date().toISOString(),
         source: 'cart-quote-modal-wizard',
         cart_items: updatedItems,
-        gclid: getGclid()
+        gclid: getGclid(),
+        gbraid: getBraid('gbraid'),
+        wbraid: getBraid('wbraid')
       };
 
       formData.forEach((value, key) => {

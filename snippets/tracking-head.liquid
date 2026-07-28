@@ -1,0 +1,35 @@
+{% comment %}
+  SBS-335: single source of truth for site-wide tracking in <head>.
+  Render this in every content-facing layout, plus 'tracking-body' just
+  before </body> for the GTM noscript fallback.
+
+  Every layout used to carry its own copy of the GTM snippet, so layouts
+  that were never kept in step drifted: page360.liquid was left with an
+  empty dataLayer and no GTM at all, and no layout but theme.liquid loaded
+  gclid-capture.js — so a paid click landing on a 360 or GemPages page
+  never persisted its gclid.
+{% endcomment %}
+
+<script src="{{ 'gclid-capture.js' | asset_url }}" defer></script>
+
+<!-- Google Tag Manager -->
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-W3VDBP8N');
+</script>
+<!-- End Google Tag Manager -->
+{%- comment -%}
+  SBS-287: GA4 (G-0HET6EXHTH) loads via GTM only; Google Consent Mode v2
+  defaults + updates are handled by the Consentmo app. Do not add a second
+  GA4 loader or a competing consent default here.
+{%- endcomment -%}
+
+{% render 'quote-tracking' %}

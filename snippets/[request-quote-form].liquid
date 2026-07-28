@@ -350,6 +350,8 @@ IT it /it-it' %}
         <input type="hidden" name="contact[tags]" value="quote-request">
         <input type="hidden" name="contact[context]" value="quote-request-header">
         <input type="hidden" name="contact[gclid]" id="quote-form-gclid" value="">
+        <input type="hidden" name="contact[gbraid]" id="quote-form-gbraid" value="">
+        <input type="hidden" name="contact[wbraid]" id="quote-form-wbraid" value="">
         <div class="">
           <input
             class="input-full input"
@@ -473,6 +475,23 @@ IT it /it-it' %}
         return '';
       }
 
+      // SBS-335: gbraid/wbraid replace gclid on iOS app + YouTube traffic.
+      // Persisted by gclid-capture.js; n8n maps them to Zoho GBRAID/WBRAID.
+      function getBraid(name) {
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const fromUrl = urlParams.get(name);
+          if (fromUrl) return fromUrl;
+
+          const fromStorage = localStorage.getItem('_' + name);
+          if (fromStorage) return fromStorage;
+
+          const m = document.cookie.match('(?:^|; )_' + name + '=([^;]*)');
+          if (m) return decodeURIComponent(m[1]);
+        } catch (e) {}
+        return '';
+      }
+
       // Gate to block form.submit() calls from external scripts when validation fails
       let productValidationPassed = false;
 
@@ -537,13 +556,23 @@ IT it /it-it' %}
         try {
           console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
 
-          // Get gclid for Google Ads attribution
+          // Get click ids for Google Ads attribution
           const gclid = getGclid();
+          const gbraid = getBraid('gbraid');
+          const wbraid = getBraid('wbraid');
 
-          // Set the hidden field value
+          // Set the hidden field values
           const gclidField = document.getElementById('quote-form-gclid');
           if (gclidField) {
             gclidField.value = gclid;
+          }
+          const gbraidField = document.getElementById('quote-form-gbraid');
+          if (gbraidField) {
+            gbraidField.value = gbraid;
+          }
+          const wbraidField = document.getElementById('quote-form-wbraid');
+          if (wbraidField) {
+            wbraidField.value = wbraid;
           }
 
           let data = {
@@ -551,6 +580,8 @@ IT it /it-it' %}
             products: [],
             gclid: gclid,
             _gcl_aw: gclid, // For consistency with MerakiQuote plugin
+            gbraid: gbraid,
+            wbraid: wbraid,
           };
           new FormData(event.target).forEach((value, key) => {
             console.log(key, value);
@@ -711,6 +742,14 @@ IT it /it-it' %}
       }
       const form = document.getElementById('{{- form_id -}}');
       form.addEventListener('submit', logSubmit);
+
+      // SBS-335: populate the braid fields on load as well as on submit, so the
+      // form carries them even if something submits it without going through
+      // logSubmit. Matches how 'gclid-field' behaves for the other forms.
+      [['quote-form-gbraid', 'gbraid'], ['quote-form-wbraid', 'wbraid']].forEach(([id, name]) => {
+        const field = document.getElementById(id);
+        if (field && !field.value) field.value = getBraid(name);
+      });
 
       // Override form.submit() to enforce product validation
       // This prevents external scripts (Shopify apps, injected JS) from bypassing our validation
