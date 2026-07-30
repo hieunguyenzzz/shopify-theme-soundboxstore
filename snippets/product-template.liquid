@@ -640,25 +640,14 @@
                     {% unless product.metafields.custom.ticks_content.value %}
                       {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
                     {% endunless %}
-                    <ul
-                      {{ block.shopify_attributes }}
-                      style="
-                                           display: grid;text-align:left;
-                        list-style: none;
-                        margin: 0;
-                        font-size: 13.5px;
-                        line-height: 1.2;
-                        gap: 0.3em;
-                        grid-template-columns: repeat(2, minmax(0, 1fr));
-                      "
-                    >
+                    <style>
+                      .product-ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.5em 1em;text-align:left;font-size:13.5px;line-height:1.2}
+                      .product-ticks__item{display:flex;align-items:flex-start;gap:0.3em;min-width:0}
+                      @media (max-width:768px){.product-ticks{grid-template-columns:1fr}}
+                    </style>
+                    <ul class="product-ticks" {{ block.shopify_attributes }}>
                       {% for line in texts %}
-                        <li
-                          style="
-                            display: flex;
-                            gap: 0.3em;
-                          "
-                        >
+                        <li class="product-ticks__item">
                           <span
                             class="icon icon--inventory"
                             style="
@@ -669,10 +658,9 @@
                               margin-top: -0.3em;
                             "
                           ></span>
-                          {{- line | rstrip }}
+                          <span class="product-ticks__text">{{- line | strip }}</span>
                         </li>
                       {% endfor %}
-                      <li></li>
                     </ul>
                   {%- when 'trust_badge' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
