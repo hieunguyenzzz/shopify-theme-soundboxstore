@@ -333,23 +333,37 @@
 
   const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
+  // SBS-335: merge, never replace. assets/sbs-lead-forms.js keeps gbraid,
+  // wbraid, utm_term, utm_content, the referrer and the original landing page in
+  // this same qt_attribution key, and the old overwrite erased all of them as
+  // soon as any page carried a gclid or utm parameter.
   function captureAttribution() {
     try {
       const params = new URLSearchParams(window.location.search);
       const gclid = params.get('gclid');
       const hasUtm = UTM_PARAMS.some(p => params.get(p));
+      if (!gclid && !hasUtm) return;
 
-      if (gclid || hasUtm) {
-        const data = {
-          gclid: gclid || '',
-          utm_source: params.get('utm_source') || '',
-          utm_medium: params.get('utm_medium') || '',
-          utm_campaign: params.get('utm_campaign') || '',
-          landing_page: window.location.pathname,
-          timestamp: Date.now()
-        };
-        localStorage.setItem('qt_attribution', JSON.stringify(data));
-      }
+      let stored = {};
+      try {
+        stored = JSON.parse(localStorage.getItem('qt_attribution') || '{}') || {};
+      } catch (e) {}
+
+      const fresh = {
+        gclid: gclid || '',
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || ''
+      };
+      // Last touch per key: a blank parameter never clears a stored value.
+      Object.keys(fresh).forEach(function (key) {
+        if (fresh[key]) stored[key] = fresh[key];
+      });
+
+      if (!stored.landing_page) stored.landing_page = window.location.pathname;
+      if (!stored.original_landing_page) stored.original_landing_page = stored.landing_page;
+      stored.timestamp = Date.now();
+      localStorage.setItem('qt_attribution', JSON.stringify(stored));
     } catch (e) {}
   }
 

@@ -741,6 +741,17 @@
         </div>
       </div>
 
+      <p
+        class="cart-quote-submit-error"
+        id="cart-quote-submit-error"
+        style="display:none;color:#b00020;font-size:0.9em;margin:0 0 0.6em;"
+      >
+        {%- assign sbs_cart_quote_error = 'cart.quote.submit_error' | t -%}
+        {%- if sbs_cart_quote_error contains 'Translation missing' -%}
+          {%- assign sbs_cart_quote_error = 'Sorry, we could not send your quote request. Please try again.' -%}
+        {%- endif -%}
+        {{ sbs_cart_quote_error }}
+      </p>
       <!-- Navigation Buttons -->
       <div class="cart-quote-buttons">
         <button type="button" class="cart-quote-btn cart-quote-btn-secondary" id="btn-back">
@@ -922,8 +933,11 @@
     function submitQuote() {
       const form = document.getElementById('cart-quote-form');
       const formData = new FormData(form);
+      const nextBtn = document.getElementById('btn-next');
+      const errorEl = document.getElementById('cart-quote-submit-error');
+      if (errorEl) errorEl.style.display = 'none';
 
-      // Get updated quantities
+      // Cart lines, with the quantities the customer edited inside the wizard.
       const updatedItems = [];
       document.querySelectorAll('.cart-quote-product').forEach((product, index) => {
         const qty = parseInt(product.querySelector('.quote-qty-input').value) || 1;
@@ -935,42 +949,68 @@
         }
       });
 
-      const data = {
-        created_at: new Date().toISOString(),
-        source: 'cart-quote-modal-wizard',
-        cart_items: updatedItems,
-        gclid: getGclid(),
-        gbraid: getBraid('gbraid'),
-        wbraid: getBraid('wbraid')
-      };
-
-      formData.forEach((value, key) => {
-        data[key] = value;
-      });
-
-      // Update hidden field
       const hiddenField = document.getElementById('cart-quote-items-hidden');
       if (hiddenField) hiddenField.value = JSON.stringify(updatedItems);
 
-      // SBS-11 Phase 2: mint lead_id for native Google Ads dedup (GTM tag 88
-      // transaction_id matches Workflow D Data Manager transactionId).
-      const sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
-      if (sbsLeadId) data.lead_id = sbsLeadId;
+      // SBS-335 root cause: this submission used to POST with CORS switched off
+      // and a JSON Content-Type. In that mode the browser drops the header and
+      // sends text/plain, so the JSON intake never parsed the body and the opaque
+      // response could not be inspected - yet the wizard showed the thank-you
+      // panel regardless. It now runs through the shared canonical transport and
+      // only reports success once n8n confirms acceptance.
+      if (!window.SBSLeadForms) {
+        console.warn('[CartQuoteModal] SBSLeadForms unavailable');
+        if (errorEl) errorEl.style.display = 'block';
+        return;
+      }
 
-      // SBS-287: attach Consentmo state + transaction_id so n8n can write the
-      // immutable consent snapshot onto the Zoho Quote. Fails closed.
-      if (typeof window.sbsReadConsent === 'function') Object.assign(data, window.sbsReadConsent());
-      if (sbsLeadId) data.transaction_id = sbsLeadId;
+      const sbsScope = 'cart-quote';
+      const sbsBuilt = window.SBSLeadForms.buildPayload({
+        formData: formData,
+        formSource: 'cart-quote',
+        products: updatedItems,
+        scope: sbsScope,
+        extra: { cart_item_count: updatedItems.length }
+      });
+      if (!sbsBuilt.ok) {
+        console.warn('[CartQuoteModal] canonical payload rejected:', sbsBuilt.errors.join('; '));
+        if (errorEl) errorEl.style.display = 'block';
+        return;
+      }
 
-      // Send to n8n webhook
-      fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).catch(console.error);
+      // One in-flight request per scope, submit button disabled while pending,
+      // 5xx retried with the same transaction_id, 400/422 never retried.
+      window.SBSLeadForms.submit(sbsBuilt.payload, { scope: sbsScope, button: nextBtn })
+        .then(function (result) {
+          if (result.status === 'in_flight_duplicate') return;
 
-      // Send to Cloud Run for Zoho CRM sync
+          if (result.status !== 'success' && result.status !== 'duplicate') {
+            console.warn('[CartQuoteModal] intake not confirmed:', result.status);
+            // SBS-335: the legacy worker is a transport-failure fallback only. A 400 or a 422 is
+            // a deterministic refusal from the canonical intake, so writing the same lead
+            // straight to Zoho would bypass that decision and re-create exactly the
+            // ambiguous attribution SBS-335 exists to remove.
+            if (result.status !== 'validation_error' && result.status !== 'attribution_conflict') {
+              sendLegacyZohoFallback(formData, updatedItems);
+            }
+            if (errorEl) errorEl.style.display = 'block';
+            return;
+          }
+
+          window.SBSLeadForms.resetTransaction(sbsScope);
+          pushCartQuoteLead(formData, updatedItems, sbsBuilt.payload.transaction_id);
+          // Success panel only after accepted_and_completed or
+          // duplicate_already_processed. The cart itself is never cleared here.
+          document.getElementById('cart-quote-modal-inner').classList.add('show-thank-you');
+        });
+    }
+
+    // Legacy direct-to-Zoho worker, payload unchanged. It has been carrying cart
+    // quotes while the intake POST was broken, so it is kept as a failure-path
+    // fallback only - the happy path can no longer create two CRM records.
+    // TODO SBS-335 follow-up: retire once production cart-quote executions are
+    // confirmed on the canonical intake.
+    function sendLegacyZohoFallback(formData, updatedItems) {
       const zohoData = {
         Full_Name: formData.get('contact[Full name]'),
         Email: formData.get('contact[email]'),
@@ -987,115 +1027,94 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(zohoData)
       }).catch(console.error);
+    }
 
-      // Track event with customer data for attribution
-      // Use global deduplication flag shared with quote-tracking.liquid
+    // generate_lead analytics. Fires only after the intake confirms acceptance,
+    // so no conversion is reported for a submission that never landed. Uses the
+    // shared attribution reader instead of re-deriving click ids locally.
+    function pushCartQuoteLead(formData, updatedItems, transactionId) {
       const SUBMIT_FLAG = 'qt_lead_submitted';
-      const alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true';
-
-      if (!alreadyFired) {
-        // Get attribution data from localStorage (captured by quote-tracking.liquid)
-        let gclid = '';
-        let utmSource = '';
-        let utmMedium = '';
-        let utmCampaign = '';
-        let landingPage = '';
-        try {
-          const attribution = JSON.parse(localStorage.getItem('qt_attribution') || '{}');
-          gclid = localStorage.getItem('_gcl_aw') || attribution.gclid || '';
-          utmSource = attribution.utm_source || (gclid ? 'google' : '');
-          utmMedium = attribution.utm_medium || (gclid ? 'cpc' : '');
-          utmCampaign = attribution.utm_campaign || '';
-          landingPage = attribution.landing_page || '';
-        } catch (e) {}
-
-        const customerData = {
-          quote_session_id: sessionStorage.getItem('qt_quote_session_id') || '',
-          form_id: 'cart-quote-modal',
-          email: formData.get('contact[email]') || '',
-          name: formData.get('contact[Full name]') || '',
-          first_name: (formData.get('contact[Full name]') || '').split(' ')[0] || '',
-          last_name: (formData.get('contact[Full name]') || '').split(' ').slice(1).join(' ') || '',
-          company: formData.get('contact[Company name]') || '',
-          phone: formData.get('contact[Phone]') || formData.get('contact[Mobile number]') || '',
-          postcode: formData.get('contact[postcode]') || '',
-          city: formData.get('contact[city]') || '',
-          country: formData.get('contact[Country/Region]') || '',
-          gclid: gclid,
-          utm_source: utmSource,
-          utm_medium: utmMedium,
-          utm_campaign: utmCampaign,
-          landing_page: landingPage,
-          page_path: window.location.pathname,
-          products: updatedItems.map(item => ({
-            product_name: item.title || '',
-            sku: item.sku || '',
-            variant: item.variant || '',
-            quantity: item.quantity || 1,
-            price: item.price || ''
-          }))
-        };
-
-        // Supabase lead write (always runs, independent of Umami).
-        // sbsSubmitLead sets the dedup flag internally.
-        try {
-          if (typeof window.sbsSubmitLead === 'function') {
-            window.sbsSubmitLead(customerData);
-          }
-        } catch (e) {
-          console.error('[CartQuoteModal] sbsSubmitLead error:', e);
-        }
-
-        // Umami analytics (best-effort, may be blocked by ad-blockers)
-        try {
-          if (typeof umami !== 'undefined') {
-            umami.track('generate_lead', customerData);
-            console.log('[CartQuoteModal] generate_lead fired with customer data:', customerData);
-          }
-        } catch (e) {}
-
-        // dataLayer push for GTM (generate_lead event)
-        try {
-          if (typeof window !== 'undefined' && window.dataLayer) {
-            window.dataLayer.push({
-              'event': 'generate_lead',
-              // SBS-11 Phase 2: transaction_id matches Workflow D server push.
-              'transaction_id': sbsLeadId || '',
-              'customer_email': customerData.email || '',
-              'customer_phone': customerData.phone || '',
-              'customer_country': customerData.country || '',
-              'customer_company': customerData.company || '',
-              'customer_name': customerData.name || '',
-              'form_id': 'cart-quote-form',
-              'form_title': 'Cart Quote Form',
-              'gclid': gclid || '',
-              'quote_value': updatedItems.reduce(function(total, item) {
-                var priceNum = parseFloat((item.price || '0').replace(/[^0-9.-]/g, ''));
-                return total + (item.quantity * Math.round(priceNum * 100));
-              }, 0),
-              'products_count': updatedItems.length,
-              // Enhanced Conversions user_data
-              'user_data': {
-                'email': customerData.email || '',
-                'phone_number': customerData.phone || '',
-                'address': {
-                  'country': customerData.country || '',
-                  'city': customerData.city || '',
-                  'postal_code': customerData.postcode || ''
-                }
-              }
-            });
-            console.log('[CartQuoteModal] dataLayer.push generate_lead fired');
-          }
-        } catch (e) {
-          console.error('[CartQuoteModal] dataLayer tracking error:', e);
-        }
-      } else if (alreadyFired) {
+      let alreadyFired = false;
+      try { alreadyFired = sessionStorage.getItem(SUBMIT_FLAG) === 'true'; } catch (e) {}
+      if (alreadyFired) {
         console.log('[CartQuoteModal] generate_lead skipped - already fired');
+        return;
       }
 
-      // Show thank you
-      document.getElementById('cart-quote-modal-inner').classList.add('show-thank-you');
+      const attr = window.SBSLeadForms.readAttribution();
+      const customerData = {
+        quote_session_id: sessionStorage.getItem('qt_quote_session_id') || '',
+        form_id: 'cart-quote-modal',
+        email: formData.get('contact[email]') || '',
+        name: formData.get('contact[Full name]') || '',
+        first_name: (formData.get('contact[Full name]') || '').split(' ')[0] || '',
+        last_name: (formData.get('contact[Full name]') || '').split(' ').slice(1).join(' ') || '',
+        company: formData.get('contact[Company name]') || '',
+        phone: formData.get('contact[Phone]') || formData.get('contact[Mobile number]') || '',
+        postcode: formData.get('contact[postcode]') || '',
+        city: formData.get('contact[city]') || '',
+        country: formData.get('contact[Country/Region]') || '',
+        gclid: attr.gclid || '',
+        utm_source: attr.utm_source || '',
+        utm_medium: attr.utm_medium || '',
+        utm_campaign: attr.utm_campaign || '',
+        landing_page: attr.original_landing_page || '',
+        page_path: window.location.pathname,
+        products: updatedItems.map(item => ({
+          product_name: item.title || '',
+          sku: item.sku || '',
+          variant: item.variant || '',
+          quantity: item.quantity || 1,
+          price: item.price || ''
+        }))
+      };
+
+      try {
+        if (typeof window.sbsSubmitLead === 'function') {
+          window.sbsSubmitLead(customerData);
+        }
+      } catch (e) {
+        console.error('[CartQuoteModal] sbsSubmitLead error:', e);
+      }
+
+      try {
+        if (typeof umami !== 'undefined') {
+          umami.track('generate_lead', customerData);
+        }
+      } catch (e) {}
+
+      try {
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            'event': 'generate_lead',
+            'transaction_id': transactionId || '',
+            'customer_email': customerData.email || '',
+            'customer_phone': customerData.phone || '',
+            'customer_country': customerData.country || '',
+            'customer_company': customerData.company || '',
+            'customer_name': customerData.name || '',
+            'form_id': 'cart-quote-form',
+            'form_title': 'Cart Quote Form',
+            'gclid': customerData.gclid || '',
+            'quote_value': updatedItems.reduce(function (total, item) {
+              var priceNum = parseFloat((item.price || '0').replace(/[^0-9.-]/g, ''));
+              return total + (item.quantity * Math.round(priceNum * 100));
+            }, 0),
+            'products_count': updatedItems.length,
+            'user_data': {
+              'email': customerData.email || '',
+              'phone_number': customerData.phone || '',
+              'address': {
+                'country': customerData.country || '',
+                'city': customerData.city || '',
+                'postal_code': customerData.postcode || ''
+              }
+            }
+          });
+        }
+      } catch (e) {
+        console.error('[CartQuoteModal] dataLayer tracking error:', e);
+      }
     }
 
     // Button handlers

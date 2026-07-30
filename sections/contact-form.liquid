@@ -555,51 +555,73 @@
 </script>
 <script>
     (() => {
+      const sbsForm = document.getElementById('{{- form_id -}}');
+
+      // SBS-335: exactly one submit path. The native Shopify contact submission
+      // is what renders the success notice, and navigating aborts any in-flight
+      // request, so it now runs only after the canonical intake call resolves.
+      let sbsNavigated = false;
+      function sbsFinishNativeSubmit() {
+        if (sbsNavigated) return;
+        sbsNavigated = true;
+        sbsForm.submit();
+      }
+
       function logSubmit(event) {
         event.preventDefault();
+        // Watchdog: never trap the customer behind a disabled button if the
+        // transport stalls. n8n dedups on transaction_id, so a late POST is safe.
+        setTimeout(sbsFinishNativeSubmit, 12000);
+
+        // Pending state only. The label is left untouched so no untranslated
+        // string can reach a localised storefront.
+        const submitBtn = sbsForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.setAttribute('aria-busy', 'true');
+        }
+
         try {
-          console.log(`Form Submitted! Timestamp: ${event.timeStamp}`, event);
-          let data = {
-            create_at: new Date().toISOString(),
-            products: [],
-          };
-          new FormData(event.target).forEach((value, key) => {
-              data[key] = value;
-          });
-          console.log({ data });
-          let stringproducts = JSON.stringify(data.products);
-          if (form.elements['contact[products]']) {
-            form.elements['contact[products]'].value = stringproducts;
+          // Canonical intake through assets/sbs-lead-forms.js: form_source=contact,
+          // UUIDv4 transaction_id reused across retries, canonical gclid/gbraid/
+          // wbraid only - the hidden contact[gclid]/contact[gbraid]/contact[wbraid]
+          // inputs stay in the DOM for the native Shopify submission but never
+          // reach the JSON payload - plus the submit-time consent snapshot, UTM
+          // fields, landing page, referrer and page URL. The previous call opted
+          // out of CORS, which silently downgraded Content-Type to text/plain and
+          // made the response unreadable, and it never waited for the request, so
+          // navigation regularly aborted it.
+          if (!window.SBSLeadForms) {
+            console.warn('[ContactForm] SBSLeadForms unavailable - native submit only');
+            sbsFinishNativeSubmit();
+            return;
           }
-          // SBS-11 Phase 2: mint shared lead_id for Supabase row id + GTM dedup.
-          var sbsLeadId = (typeof window.sbsMintLeadId === 'function') ? window.sbsMintLeadId() : '';
-          if (sbsLeadId) data.lead_id = sbsLeadId;
-          // SBS-287: attach Consentmo state + transaction_id so n8n can write the
-          // immutable consent snapshot onto the Zoho Quote. Fails closed.
-          if (typeof window.sbsReadConsent === 'function') Object.assign(data, window.sbsReadConsent());
-          if (sbsLeadId) data.transaction_id = sbsLeadId;
-          fetch('https://n8n.soundboxstore.com/webhook/form-to-zoho', {
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify(data),
-          })
-            .then(function (res) {
-              console.log(res, data);
-            })
-            .catch(function (res) {
-              console.log(res, data);
-            });
+          const sbsScope = 'contact';
+          const sbsBuilt = window.SBSLeadForms.buildPayload({
+            formData: new FormData(event.target),
+            formSource: 'contact',
+            scope: sbsScope
+          });
+          if (!sbsBuilt.ok) {
+            console.warn('[ContactForm] canonical payload rejected:', sbsBuilt.errors.join('; '));
+            sbsFinishNativeSubmit();
+            return;
+          }
+          window.SBSLeadForms.submit(sbsBuilt.payload, { scope: sbsScope }).then(function (result) {
+            if (result.status === 'success' || result.status === 'duplicate') {
+              window.SBSLeadForms.resetTransaction(sbsScope);
+            } else {
+              console.warn('[ContactForm] intake not confirmed:', result.status);
+            }
+            sbsFinishNativeSubmit();
+          });
         } catch (err) {
           console.error(err);
+          sbsFinishNativeSubmit();
         }
-        event.target.submit();
       }
-      const form = document.getElementById('{{- form_id -}}');
-      form.addEventListener('submit', logSubmit);
+
+      sbsForm.addEventListener('submit', logSubmit);
     })();
 </script>
 {% schema %}

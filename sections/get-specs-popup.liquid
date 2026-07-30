@@ -59,6 +59,12 @@
        border-color: transparent #fff #fff;
        animation: spin 1s linear infinite;
    }
+  #shopify-section-{{section.id}} .sbs-lead-error{
+    color:#b91c1c;
+    font-size:0.9375rem;
+    line-height:1.4;
+    margin-bottom:0.75rem;
+  }
 </style>
 {% assign section_id = section.id %}
 {% assign snippet_context = 'get-specs-form' %}
@@ -119,6 +125,19 @@
                 </button>
               </div>
               <div class="form-main">
+                {%- comment -%}
+                  SBS-335: the intake result is only trusted for accepted_and_completed
+                  and duplicate_already_processed. Anything else - including an HTTP 200
+                  without a contract marker - returns the form to its input state and
+                  shows this safe retry notice. No technical response detail is exposed.
+                {%- endcomment -%}
+                {%- assign sbs_lead_error_text = 'contact.form.submit_error' | t -%}
+                {%- if sbs_lead_error_text contains 'Translation missing' -%}
+                  {%- assign sbs_lead_error_text = 'Sorry, we could not send your request. Please try again.' -%}
+                {%- endif -%}
+                <div class="sbs-lead-error" data-sbs-lead-error role="alert" aria-live="polite" style="display:none;">
+                  {{ sbs_lead_error_text }}
+                </div>
                 {%- if form.errors and form.context == snippet_context -%}
                   {{ form.errors | default_errors }}
                 {%- endif -%}
@@ -313,33 +332,69 @@ $(document).ready(function () {
                 data[key] = value;
             });
             
-            form.dataset.state="loading"
-            // Send to original API
-            fetch('{{- section.settings.api_url -}}', {
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              },
-              method: 'POST',
-              mode: 'no-cors',
-              body: JSON.stringify(data),
-            })
-              .then(function (res) {
-                console.log(res, data);
-                 form.dataset.state="success";
-                 // Get form data
-                 const formData = new FormData(form);
-                 umami.track('get-specs', {
-                   name: formData.get('contact[fullname]') || 'not_provided',
-                   email: formData.get('contact[email]') || 'not_provided'
-                 });
-              })
-              .catch(function (res) {
-                console.log(res, data);
-              });
+            // SBS-335: clear any previous failure notice before a new attempt.
+            var sbsLeadError = form.querySelector('[data-sbs-lead-error]');
+            if (sbsLeadError) sbsLeadError.style.display = 'none';
+            form.dataset.state = 'loading';
 
-            // Send to Brevo worker for email marketing
-            fetch('https://brevo-subscribe.soundboxstore.com/getspec', {
+            // SBS-335: the lead intake endpoint is no longer a merchant-editable theme
+            // setting. It lives in assets/sbs-lead-forms.js, so a stale setting can no
+            // longer point this form at the retired third-party subscribe hook.
+            var sbsScope = 'get-specs-{{ section.id }}';
+            var sbsFields = new FormData(event.target);
+            var sbsFullName = sbsFields.get('contact[fullname]') || '';
+            if (sbsFullName && !sbsFields.get('contact[Full name]')) {
+              sbsFields.append('contact[Full name]', sbsFullName);
+            }
+            var sbsBuilt = window.SBSLeadForms.buildPayload({
+              formData: sbsFields,
+              formSource: 'get-specs',
+              scope: sbsScope,
+              extra: { spec_request_type: event.target.dataset.type || '' }
+            });
+            if (!sbsBuilt.ok) {
+              console.warn('[GetSpecs] payload rejected:', sbsBuilt.errors.join('; '));
+              if (sbsLeadError) sbsLeadError.style.display = 'block';
+              form.dataset.state = 'input';
+              return;
+            }
+            window.SBSLeadForms.submit(sbsBuilt.payload, {
+              scope: sbsScope,
+              button: form.querySelector('button[type="submit"]')
+            }).then(function (result) {
+              // CORS on the intake was verified from the storefront origin, so
+              // success is claimed only for the two documented acceptance
+              // responses. A network or CORS failure returns the form to its
+              // input state instead of showing a success it cannot confirm.
+              var accepted = result.status === 'success' || result.status === 'duplicate';
+              if (accepted) {
+                form.dataset.state = 'success';
+                window.SBSLeadForms.resetTransaction(sbsScope);
+                if (typeof sbsSpecDelivery === 'function' && !sbsSpecDelivered) {
+                  sbsSpecDelivered = true;
+                  sbsSpecDelivery();
+                }
+                try {
+                  if (typeof umami !== 'undefined') {
+                    umami.track('get-specs', {
+                      name: sbsFields.get('contact[fullname]') || 'not_provided',
+                      email: sbsFields.get('contact[email]') || 'not_provided'
+                    });
+                  }
+                } catch (e) {}
+              } else {
+                if (sbsLeadError) sbsLeadError.style.display = 'block';
+                form.dataset.state = 'input';
+                console.warn('[GetSpecs] submission not confirmed:', result.status);
+              }
+            });
+
+            // SBS-335: the spec-delivery worker used to fire unconditionally, in parallel
+            // with the intake, so a spec could be delivered - and a Brevo contact
+            // created - for a lead the intake never accepted. It is now only defined
+            // here and is invoked from the accepted branch, exactly once per submission.
+            var sbsSpecDelivered = false;
+            var sbsSpecDelivery = () => fetch('https://brevo-subscribe.soundboxstore.com/getspec', {
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -390,8 +445,7 @@ $(document).ready(function () {
      {
       "type": "text",
       "id": "api_url",
-      "label": "Api Url",
-      "default": "https://n8n.hieunguyen.dev/webhook/quell-specification-download"
+      "label": "Legacy Api Url (unused since SBS-335)"
     },
     {
       "type": "text",

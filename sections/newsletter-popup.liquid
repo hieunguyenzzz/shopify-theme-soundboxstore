@@ -139,6 +139,14 @@
             });
 
             form.dataset.state = "loading";
+            // SBS-335 Newsletter destination decision required.
+            // This form is NOT part of the lead intake standardisation: it still posts to
+            // the historical marketing subscribe endpoint configured in the theme setting
+            // api_url, and it must not be pointed at the form-to-Zoho lead intake (or at
+            // Brevo) until a business owner approves a destination, list id and consent
+            // rule. window.SBSLeadForms deliberately rejects form_source "newsletter", and
+            // the generic lead handlers exclude newsletter-* form ids, so nothing here
+            // reaches the CRM by accident. Tracked separately - see the SBS-335 PR.
             fetch('{{- section.settings.api_url -}}', {
               headers: {
                 Accept: 'application/json',

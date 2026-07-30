@@ -12,6 +12,13 @@
 
 <script src="{{ 'gclid-capture.js' | asset_url }}" defer></script>
 
+{%- comment -%}
+  SBS-335: the shared lead-form attribution reader, canonical payload builder
+  and n8n transport. Loaded before quote-tracking so window.SBSLeadForms exists
+  by the time any form handler runs. Deferred: every caller runs on submit.
+{%- endcomment -%}
+<script src="{{ 'sbs-lead-forms.js' | asset_url }}" defer></script>
+
 <!-- Google Tag Manager -->
 <script>
   (function (w, d, s, l, i) {
