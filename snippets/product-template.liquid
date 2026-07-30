@@ -720,8 +720,16 @@
                     opacity: 1;
                   }
                 </style>
+                {%- comment -%} SBS-346: UK visits the London showroom; EU/international get the remote tour {%- endcomment -%}
+                {%- if localization.country.iso_code == 'GB' -%}
+                  {%- assign showroom_cta_url = settings.page_showroom.url -%}
+                  {%- assign showroom_cta_label = 'products.product.showroom_button_text_1' | t -%}
+                {%- else -%}
+                  {%- assign showroom_cta_url = settings.page_remote_tour.url -%}
+                  {%- assign showroom_cta_label = 'products.product.remote_tour_button_text_1' | t -%}
+                {%- endif -%}
                 <a
-                  href="{{ settings.page_showroom.url }}"
+                  href="{{ showroom_cta_url }}"
                   style="
                     background-color: #a7a973;
                     border-color: #303a44;
@@ -744,7 +752,7 @@
                   "
                   class="showroom_available"
                 >
-                  {{ 'products.product.showroom_button_text_1' | t }}
+                  {{ showroom_cta_label }}
                   <div
                     style="
                       background-color: #a7a973;
