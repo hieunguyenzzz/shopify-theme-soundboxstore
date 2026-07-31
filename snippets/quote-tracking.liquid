@@ -222,7 +222,13 @@
       consent_ts: new Date().toISOString(),
       consent_source: 'consentmo',
       consent_region: '',
-      consent_version: 'sbs-consent-1'
+      consent_version: 'sbs-consent-1',
+      // SBS Consentmo GCM V2: the four Consent Mode v2 signals travel with the
+      // snapshot. They start unknown so an unreadable state can never look granted.
+      ad_storage: 'unknown',
+      ad_user_data: 'unknown',
+      ad_personalization: 'unknown',
+      analytics_storage: 'unknown'
     };
     try {
       var cache = null;
@@ -240,14 +246,54 @@
       var status = (cm && typeof cm.getStatus === 'function') ? cm.getStatus() : null;
       var interacted = !!status || !!(cache && cache.lastConsentGiven);
 
-      // Effective marketing/advertising consent (drives consent_ad_user_data).
-      var marketingGranted = null;
-      if (cm && typeof cm.currentVisitorConsent === 'function') {
-        var cvc = cm.currentVisitorConsent();
-        if (cvc && typeof cvc.marketing === 'boolean') marketingGranted = cvc.marketing;
+      /* SBS Consentmo GCM V2 - fail closed when no current choice exists.
+         After Consentmo.reset() the SDK clears getStatus() and both cookies but its
+         analyticsAllowed()/marketingAllowed()/preferencesAllowed() accessors keep
+         returning true, and gdprCache still holds the previous updatedPreferences.
+         Trusting either of those reported a withdrawn visitor as EXPLICIT_GRANTED.
+         A snapshot is therefore only taken when a current stored Consentmo choice
+         can actually be seen; otherwise everything stays unknown. */
+      var loaderState = null;
+      try {
+        var loader = window.SBSConsentLoader;
+        if (loader && typeof loader.state === 'function') { loaderState = loader.state(); }
+      } catch (e) {}
+      /* SBS Consentmo GCM V2 - the hardened loader reports four sources:
+         consentmo-cookie, shopify-explicit, non-managed-baseline and
+         fail-closed-default. A snapshot may only be taken when the resolved
+         state carries a real visitor decision, or when the visitor sits on the
+         approved non-managed regional baseline that GTM also defaults to.
+         Every fail-closed or unreadable state returns NOT_CAPTURED with all
+         four Consent Mode v2 signals left unknown. */
+      var loaderSource = (loaderState && loaderState.source) || null;
+      var explicitLoaderSource =
+        loaderSource === 'consentmo-cookie' || loaderSource === 'shopify-explicit';
+      var baselineLoaderSource = loaderSource === 'non-managed-baseline';
+      var storedChoice = !!status || explicitLoaderSource || baselineLoaderSource;
+      if (!storedChoice) {
+        out.consent_ad_user_data = 'NOT_CAPTURED';
+        return out; // the four signals stay unknown
       }
-      if (marketingGranted === null && cm && typeof cm.marketingAllowed === 'function') {
-        try { marketingGranted = !!cm.marketingAllowed(); } catch (e) {}
+      if (loaderSource) { out.consent_source = 'loader:' + loaderSource; }
+      if (explicitLoaderSource) {
+        interacted = true;
+      } else if (baselineLoaderSource && !status) {
+        /* A regional default is not a decision, and a stale lastConsentGiven
+           from an earlier session must never upgrade it to an explicit choice. */
+        interacted = false;
+      }
+
+      // Effective marketing/advertising consent (drives consent_ad_user_data).
+      // The hardened consent-aware loader is the single source of truth here: it
+      // only trusts an allow-listed persisted Consentmo status value. Measured on
+      // the preview theme, Consentmo.getStatus(), currentVisitorConsent() and
+      // marketingAllowed() all still report full consent when the stored status
+      // value is unrecognised, which turned an unknown state into EXPLICIT_GRANTED.
+      // Those vendor accessors are therefore no longer consulted.
+      var marketingGranted = null;
+      if (loaderState && loaderState.granted &&
+          typeof loaderState.granted.marketing === 'boolean') {
+        marketingGranted = loaderState.granted.marketing;
       }
       if (marketingGranted === null && cache && typeof cache.updatedPreferences === 'string') {
         marketingGranted = cache.updatedPreferences.indexOf('marketing') === -1;
@@ -264,6 +310,26 @@
         // default-denied visitor has given no consent -> NOT_CAPTURED.
         out.consent_ad_user_data = marketingGranted ? 'DEFAULT_GRANTED_ONLY' : 'NOT_CAPTURED';
       }
+      /* SBS Consentmo GCM V2: derive the four Consent Mode v2 signals from the
+         same state this snapshot already resolved. Advertising signals follow the
+         marketing category and analytics_storage follows analytics, matching the
+         category mapping configured in the Consentmo app. A state that cannot be
+         read stays unknown - it is never promoted to granted. */
+      var analyticsGranted = null;
+      if (loaderState && loaderState.granted &&
+          typeof loaderState.granted.analytics === 'boolean') {
+        analyticsGranted = loaderState.granted.analytics === true;
+      } else if (cache && typeof cache.updatedPreferences === 'string') {
+        analyticsGranted = cache.updatedPreferences.indexOf('analytics') === -1;
+      }
+      function sbsSignal(value) {
+        if (value === null) { return 'unknown'; }
+        return value ? 'granted' : 'denied';
+      }
+      out.ad_storage = sbsSignal(marketingGranted);
+      out.ad_user_data = sbsSignal(marketingGranted);
+      out.ad_personalization = sbsSignal(marketingGranted);
+      out.analytics_storage = sbsSignal(analyticsGranted);
     } catch (e) {
       out.consent_ad_user_data = 'NOT_CAPTURED'; // fail closed
     }

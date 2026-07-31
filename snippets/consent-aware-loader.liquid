@@ -1,0 +1,461 @@
+{%- comment -%}
+SBS - Consent-aware third-party loader (SBS-XXX Consentmo GCM V2 hardening).
+
+Contract:
+- This snippet NEVER writes consent and never issues a Consent Mode command.
+  It only reads consent state.
+- Precedence, highest first: a valid stored Consentmo choice; any Consentmo
+  state that exists but cannot be read (fail closed); an explicit Shopify
+  visitor decision backed by a proven choice marker; the non-managed regional
+  baseline (granted, matching the approved GTM global default outside the 55
+  managed ISO codes); fail closed.
+  - Consentmo remains the sole CMP and the sole owner of the user choice.
+  - Trackers are registered with a category and are only loaded once the
+matching category is granted. Anything registered as "unknown" is never
+loaded until an owner, purpose and category have been documented.
+  - Reacts to later consent changes (grant and withdrawal) and never loads
+the same script twice.
+
+  Usage:
+{% render 'consent-aware-loader', part: 'head' %}
+{% render 'consent-aware-loader', part: 'body' %}
+  {%- endcomment -%}
+
+{%- if part == 'head' -%}
+  <script>
+  /* SBS consent-aware loader - mechanism. Reads consent, never writes it. */
+  (function () {
+  'use strict';
+if (window.SBSConsentLoader) { return; }
+
+var KNOWN = ['analytics', 'marketing', 'functionality'];
+var DENIED = { analytics: false, marketing: false, functionality: false };
+var registry = [];
+var loaded = {};
+var granted = DENIED;
+var source = 'fail-closed-default';
+var RELOAD_FLAG = 'sbs_consent_withdrawal_reload';
+var CHOICE_SEEN_FLAG = 'sbs_consent_choice_seen';
+var WITHDRAWN_FLAG = 'sbs_consent_withdrawn';
+var SHOPIFY_CHOICE_FLAG = 'sbs_consent_shopify_choice';
+var NON_MANAGED = { analytics: true, marketing: true, functionality: true };
+var conflict = false;
+
+/* Session-scoped observation markers. None of these is consent and none of them
+   leaves the browser; they only record what has already happened this visit. */
+function flagGet(key) {
+  try { return sessionStorage.getItem(key) === '1'; } catch (e) { return false; }
+}
+
+function flagSet(key) {
+  try { sessionStorage.setItem(key, '1'); } catch (e) {}
+}
+
+function flagClear(key) {
+  try { sessionStorage.removeItem(key); } catch (e) {}
+}
+
+function cookieValue(name) {
+  try {
+var parts = ('; ' + document.cookie).split('; ' + name + '=');
+if (parts.length < 2) { return null; }
+return decodeURIComponent(parts.pop().split(';').shift());
+  } catch (e) { return null; }
+}
+
+/* Primary source: the visitor's stored Consentmo choice.
+   Only the persisted, allow-listed status value is trusted. The vendor's own
+   Consentmo.getStatus() is deliberately NOT used as a source of truth: measured
+   on the preview theme, a status cookie holding an unrecognised value still makes
+   getStatus() report "allow", which would silently turn an unknown state into
+   full consent. Both the correct cookie name and the malformed name the app
+   currently writes (cookieconsent_status with 'undefined' appended) are read, so
+   this loader does not depend on the timing of consentmo-cookie-compat.liquid.
+   cookieconsent_preferences_disabled is written correctly by the app and is what
+   reveals that a choice exists at all. Consentmo also does not reliably push a
+   rejection into Shopify's Customer Privacy record, which can keep reporting yes
+   after the visitor has rejected everything. Once any Consentmo choice exists it
+   is therefore authoritative and the Shopify fallback is not consulted.
+   Allow-listed values: accept_all, accept_selected, custom, allow, deny, decline,
+   dismiss, reject. Anything else is unreadable state and fails closed. */
+var STATUS_ALLOWED = ['accept_all', 'accept_selected', 'custom', 'allow', 'deny', 'decline', 'dismiss', 'reject'];
+
+function allowedStatus(value) {
+  if (value === null || value === undefined) { return null; }
+  var v = String(value).trim().toLowerCase();
+  for (var i = 0; i < STATUS_ALLOWED.length; i++) {
+    if (STATUS_ALLOWED[i] === v) { return v; }
+  }
+  return null;
+}
+
+/* Presence is tracked separately from validity: a status cookie that exists but
+   holds an unrecognised value is unreadable state, not "no choice", so it has to
+   fail closed instead of falling through to a regional baseline. */
+function rawStatus(name) {
+  var value = cookieValue(name);
+  if (value === null || String(value).trim() === '') { return null; }
+  return String(value).trim().toLowerCase();
+}
+
+function statusPresent() {
+  return rawStatus('cookieconsent_status') !== null ||
+    rawStatus('cookieconsent_statusundefined') !== null;
+}
+
+function consentmoStatus() {
+  var vendor = rawStatus('cookieconsent_status');
+  var mirrored = rawStatus('cookieconsent_statusundefined');
+  conflict = vendor !== null && mirrored !== null && vendor !== mirrored;
+  /* The correctly named vendor cookie always wins. The malformed name is only a
+     compatibility fallback and never overrides it. */
+  var stored = allowedStatus(vendor);
+  if (stored) { return stored; }
+  return allowedStatus(mirrored);
+}
+
+function fromConsentmo() {
+  var status = consentmoStatus();
+var off = cookieValue('cookieconsent_preferences_disabled');
+if (!status && !statusPresent() && off === null) { return null; }
+/* A choice exists but its status is unreadable: fail closed rather than guess. */
+if (!status) { return DENIED; }
+if (status === 'deny' || status === 'decline' ||
+status === 'dismiss' || status === 'reject') { return DENIED; }
+off = (off || '').toLowerCase();
+function on(key) { return off.indexOf(key) === -1; }
+if (status === 'accept_all' || status === 'accept_selected' ||
+status === 'allow' || status === 'custom' || status === 'accept') {
+return {
+  analytics: on('analytics') && on('statistics'),
+  marketing: on('marketing') && on('retargeting'),
+  functionality: on('functionality') && on('preferences')
+  };
+}
+return DENIED;
+}
+
+/* Secondary source: the Shopify Customer Privacy API. Only trusted when Shopify
+   says no banner is required AND Shopify holds an explicit yes/no record for every
+   category we gate on. An absent or partial record is not consent, so it fails
+   closed instead of being guessed at. */
+function explicit(value) {
+  return value === 'yes' || value === 'no';
+}
+
+/* Evidence of a genuine, explicit Shopify visitor decision. Accepted proof is
+   either a visitorConsentCollected event seen during this session, or Shopify's
+   own tracking-consent record carrying at least one recorded per-category answer.
+   shouldShowBanner() === false on its own is deliberately NOT accepted: outside
+   the managed regions Shopify reports no banner and still returns a default
+   record, which is a regional default rather than a visitor choice. */
+function shopifyChoiceMarker() {
+  if (flagGet(SHOPIFY_CHOICE_FLAG)) { return true; }
+  var raw = cookieValue('_tracking_consent');
+  if (!raw) { return false; }
+  try {
+    var data = JSON.parse(raw);
+    var cmp = data && data.con && data.con.CMP;
+    if (!cmp) { return false; }
+    for (var key in cmp) {
+      if (Object.prototype.hasOwnProperty.call(cmp, key) &&
+          String(cmp[key]).length > 0) { return true; }
+    }
+  } catch (e) { return false; }
+  return false;
+}
+
+function fromShopify() {
+  try {
+var cp = window.Shopify && window.Shopify.customerPrivacy;
+if (!cp || typeof cp.shouldShowBanner !== 'function') { return null; }
+if (cp.shouldShowBanner()) { return null; }
+/* No proven visitor decision: this source stays out of the way and the regional
+   baseline below decides instead. */
+if (!shopifyChoiceMarker()) { return null; }
+/* A decision was made but its record cannot be read: ownership is ambiguous, so
+   fail closed rather than fall through to the granted baseline. */
+if (typeof cp.currentVisitorConsent !== 'function') { return DENIED; }
+var record = cp.currentVisitorConsent() || {};
+if (!explicit(record.analytics) || !explicit(record.marketing) ||
+!explicit(record.preferences)) { return DENIED; }
+return {
+  analytics: record.analytics === 'yes',
+  marketing: record.marketing === 'yes',
+  functionality: record.preferences === 'yes'
+  };
+  } catch (e) { return null; }
+}
+
+/* Baseline for visitors outside the managed regions. It mirrors the approved GTM
+   global default (granted outside the 55 managed ISO codes) so the theme is never
+   stricter than the container. Reachable only when no Consentmo choice exists, no
+   explicit Shopify decision exists, the Customer Privacy API is fully available
+   and positively reports that no banner is required, and no withdrawal has
+   happened during this session. Anything less establishes nothing, so it fails
+   closed. */
+function nonManagedBaseline() {
+  if (flagGet(WITHDRAWN_FLAG)) { return null; }
+  try {
+    var cp = window.Shopify && window.Shopify.customerPrivacy;
+    if (!cp || typeof cp.shouldShowBanner !== 'function') { return null; }
+    if (typeof cp.currentVisitorConsent !== 'function') { return null; }
+    if (cp.shouldShowBanner() !== false) { return null; }
+  } catch (e) { return null; }
+  return NON_MANAGED;
+}
+
+function resolve() {
+  var state = fromConsentmo();
+  if (state) {
+    flagSet(CHOICE_SEEN_FLAG);
+    flagClear(WITHDRAWN_FLAG);
+    source = 'consentmo-cookie';
+    return state;
+  }
+  /* A choice existed earlier in this session and is now gone: that is a
+     withdrawal, not a fresh visitor. Never hand back a regional grant until a new
+     choice is stored. */
+  if (flagGet(CHOICE_SEEN_FLAG)) { flagSet(WITHDRAWN_FLAG); }
+  if (flagGet(WITHDRAWN_FLAG)) { source = 'withdrawn-fail-closed'; return DENIED; }
+  state = fromShopify();
+  if (state) { source = 'shopify-explicit'; return state; }
+  state = nonManagedBaseline();
+  if (state) { source = 'non-managed-baseline'; return state; }
+  source = 'fail-closed-default';
+  return DENIED;
+}
+
+function isGranted(category) {
+  if (KNOWN.indexOf(category) === -1) { return false; }
+return granted[category] === true;
+}
+
+function apply() {
+  granted = resolve();
+var needsReload = false;
+for (var i = 0; i < registry.length; i++) {
+var entry = registry[i];
+var allow = isGranted(entry.category);
+if (allow && !loaded[entry.id]) {
+loaded[entry.id] = true;
+try { entry.load(); } catch (e) { loaded[entry.id] = false; }
+} else if (!allow && loaded[entry.id]) {
+if (typeof entry.cleanup === 'function') {
+try { entry.cleanup(); loaded[entry.id] = false; } catch (e) { needsReload = true; }
+} else {
+needsReload = true;
+}
+}
+}
+if (needsReload) { reloadOnce(); }
+}
+
+/* Withdrawal for SDKs that cannot be torn down: one controlled reload. */
+function reloadOnce() {
+  try {
+if (sessionStorage.getItem(RELOAD_FLAG)) { return; }
+sessionStorage.setItem(RELOAD_FLAG, '1');
+  } catch (e) { return; }
+window.location.reload();
+}
+
+/* Fingerprint covers both consent sources, so a Customer Privacy API that only
+   becomes available (or changes) after the first pass is still picked up. */
+function fingerprint() {
+  var shopify = '';
+try {
+var cp = window.Shopify && window.Shopify.customerPrivacy;
+if (cp && typeof cp.shouldShowBanner === 'function') {
+var record = (typeof cp.currentVisitorConsent === 'function' ? cp.currentVisitorConsent() : null) || {};
+shopify = [cp.shouldShowBanner(), record.analytics, record.marketing, record.preferences].join(',');
+}
+} catch (e) { shopify = 'error'; }
+return [consentmoStatus(), statusPresent(), conflict,
+cookieValue('cookieconsent_preferences_disabled'),
+flagGet(WITHDRAWN_FLAG), shopifyChoiceMarker(), shopify].join('|');
+}
+
+var api = {
+register: function (entry) {
+if (!entry || !entry.id || typeof entry.load !== 'function') { return; }
+for (var i = 0; i < registry.length; i++) {
+if (registry[i].id === entry.id) { return; }
+}
+var category = KNOWN.indexOf(entry.category) === -1 ? 'unknown' : entry.category;
+var safe = { id: entry.id, category: category, load: entry.load };
+if (typeof entry.cleanup === 'function') { safe.cleanup = entry.cleanup; }
+registry.push(safe);
+apply();
+},
+state: function () {
+  /* conflict is diagnostics only: it is never logged and never acted on. */
+  return { granted: granted, source: source, conflict: conflict };
+},
+isGranted: isGranted,
+  refresh: apply
+};
+
+window.SBSConsentLoader = api;
+
+/* Change detection: Shopify event, Consentmo events, and a short poll. */
+  /* Registered before apply so the marker already exists when consent resolves. */
+  document.addEventListener('visitorConsentCollected', function () {
+    flagSet(SHOPIFY_CHOICE_FLAG);
+  });
+  document.addEventListener('visitorConsentCollected', apply);
+/* Official Consentmo SDK event names, taken from window.Consentmo.events. */
+document.addEventListener('consentmoSignal', apply);
+document.addEventListener('consentmoSignal_onLoad', apply);
+/* Tolerated legacy/alternate spellings. */
+document.addEventListener('consentmo:consent-updated', apply);
+document.addEventListener('isense_gdpr_consent_updated', apply);
+
+var last = fingerprint();
+var ticks = 0;
+var timer = setInterval(function () {
+var now = fingerprint();
+if (now !== last) {
+last = now;
+try { sessionStorage.removeItem(RELOAD_FLAG); } catch (e) {}
+apply();
+}
+ticks++;
+if (ticks > 600) { clearInterval(timer); }
+}, 500);
+
+apply();
+}());
+</script>
+
+  <script>
+  /* Head-side tracker registrations. */
+  (function () {
+  var L = window.SBSConsentLoader;
+if (!L) { return; }
+
+function addScript(src, attrs) {
+  var s = document.createElement('script');
+s.src = src;
+s.async = true;
+if (attrs) {
+for (var k in attrs) { if (attrs.hasOwnProperty(k)) { s.setAttribute(k, attrs[k]); } }
+}
+document.head.appendChild(s);
+return s;
+}
+
+/* Ahrefs Web Analytics - measurement only. */
+  L.register({
+id: 'ahrefs',
+category: 'analytics',
+load: function () {
+addScript('https://analytics.ahrefs.com/analytics.js', { 'data-key': 'ZDYnszN+naiaUE2SecbMNw' });
+}
+});
+
+/* Microsoft Bing UET - advertising. */
+L.register({
+id: 'bing-uet',
+category: 'marketing',
+load: function () {
+window.uetq = window.uetq || [];
+var n = document.createElement('script');
+n.src = 'https://bat.bing.com/bat.js';
+n.async = true;
+n.onload = function () {
+var o = { ti: '187133965', enableAutoSpaTracking: true };
+o.q = window.uetq;
+window.uetq = new UET(o);
+window.uetq.push('pageLoad');
+};
+document.head.appendChild(n);
+}
+});
+
+/* Umami (umami.mobelaris.com) - OWNER AND PURPOSE NOT CONFIRMED.
+Registered as unknown so it stays disabled in preview. Re-classify only
+after owner, purpose and consent category are documented. */
+L.register({
+id: 'umami',
+category: 'unknown',
+load: function () {
+addScript('https://umami.mobelaris.com/script.js', { 'data-website-id': '33c86e50-36c8-428d-8b39-d1dfa548a808' });
+}
+});
+}());
+</script>
+{%- endif -%}
+
+{%- if part == 'body' -%}
+<script>
+/* Body-side tracker registrations. */
+(function () {
+var L = window.SBSConsentLoader;
+if (!L) { return; }
+
+/* Smartlook session recording - analytics. */
+L.register({
+id: 'smartlook',
+category: 'analytics',
+load: function () {
+window.smartlook = window.smartlook || function () {
+(smartlook.api = smartlook.api || []).push(arguments);
+};
+var c = document.createElement('script');
+c.async = true;
+c.src = 'https://web-sdk.smartlook.com/recorder.js';
+c.onload = function () {
+smartlook('init', '0d821aa743fb104f806561a25692ed54dcf086cc', { region: 'eu' });
+};
+document.head.appendChild(c);
+}
+});
+
+/* Leadfeeder - B2B visitor measurement. */
+L.register({
+id: 'leadfeeder',
+category: 'analytics',
+load: function () {
+window.ldfdr = window.ldfdr || function () {
+(ldfdr._q = ldfdr._q || []).push([].slice.call(arguments));
+};
+var s = document.createElement('script');
+s.src = 'https://sc.lfeeder.com/lftracker_v1_bElvO73QlzEaZMqj.js';
+s.async = true;
+document.body.appendChild(s);
+}
+});
+
+/* LinkedIn Insight Tag - advertising. Single load only. */
+L.register({
+id: 'linkedin-insight',
+category: 'marketing',
+load: function () {
+window._linkedin_partner_id = '5305010';
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+if (window._linkedin_data_partner_ids.indexOf('5305010') === -1) {
+window._linkedin_data_partner_ids.push('5305010');
+}
+var s = document.createElement('script');
+s.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+s.async = true;
+document.body.appendChild(s);
+}
+});
+
+/* Claydar visitor identification - classified marketing, pending owner sign-off. */
+L.register({
+id: 'claydar',
+category: 'marketing',
+load: function () {
+var s = document.createElement('script');
+s.src = 'https://static.claydar.com/init.v1.js?id=cLZFz2Xi0D';
+s.async = true;
+document.body.appendChild(s);
+}
+});
+}());
+</script>
+{%- endif -%}
+

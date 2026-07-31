@@ -1,0 +1,242 @@
+{%- comment -%}
+  SBS - Consentmo cookie compatibility bridge (temporary vendor workaround).
+
+  WHY THIS EXISTS
+    Consentmo currently persists the visitor's choice under a malformed cookie
+    name: "cookieconsent_status" with the literal string "undefined" appended.
+    The official Consentmo GDPR CMP template in GTM is permissioned to read only
+    "cookieconsent_status" and "cookieconsent_preferences_disabled", so it can
+    never see a stored choice and no Consent Update is replayed on page load.
+    Measured effect: on a reload with a stored choice every consent-gated tag
+    stays blocked forever.
+
+  WHAT THIS DOES
+    Mirrors an allow-listed status value from the malformed cookie onto the
+    correct, officially supported cookie name, synchronously, before GTM loads.
+
+  WHAT THIS MUST NEVER DO
+    - never call gtag(), dataLayer.push(), Shopify customer privacy APIs or any
+      Consentmo accept / reject / open-dialog method;
+    - never infer, upgrade or invent consent;
+    - never turn missing, unknown or malformed state into a granted state;
+    - never overwrite or delete a cookie that Consentmo itself created;
+    - never reload the page and never poll permanently;
+    - never log cookie values or customer data.
+
+  PRECEDENCE
+    1. A correct cookie this bridge did not create always wins and is left
+       completely untouched. That is the post-vendor-fix state.
+    2. Otherwise the malformed cookie is the source of truth and is mirrored.
+    3. Any value outside the allow-list is ignored. Unknown stays unknown.
+
+  OWNERSHIP MARKER
+    A separate marker cookie records that the correct cookie was created by this
+    bridge, so the mirror can be withdrawn again without ever touching a
+    vendor-created cookie. The marker holds a non-reversible fingerprint of the
+    mirrored value only, never the value itself.
+
+  PRESERVED, NEVER TOUCHED
+    cookieconsent_preferences_disabled is read by consumers such as
+    consent-aware-loader and the CMP template. This bridge neither writes,
+    rewrites nor interprets it.
+
+  REMOVAL / SUNSET
+    Delete this snippet and its render in layout/theme.liquid once Consentmo
+    ships the cookie-name fix. The bridge is already a no-op in that state, so
+    removal is safe at any time after the vendor cookie appears.
+
+  USAGE - render as the very first thing inside <head>, ahead of GTM,
+  tracking-head, the consent-aware loader and every third-party tag:
+    {% render 'consentmo-cookie-compat' %}
+{%- endcomment -%}
+
+<script>
+  /* SBS Consentmo cookie compatibility bridge. Mirrors a cookie name. Writes no consent commands. */
+  (function () {
+    'use strict';
+
+    if (window.SBSConsentmoCookieCompat) { return; }
+
+    var CORRECT = 'cookieconsent_status';
+    var MALFORMED = 'cookieconsent_statusundefined';
+    var MARKER = 'sbs_consentmo_cookie_compat';
+    var ALLOWED = ['accept_all', 'accept_selected', 'deny', 'allow', 'dismiss'];
+    var MAX_AGE = 60 * 60 * 24 * 365;
+    var POLL_MS = 300;
+    var LOAD_TICKS = 40;
+    var BURST_TICKS = 20;
+
+    var state = {
+      version: '1.0.0',
+      owner: 'none',
+      writes: 0,
+      deletes: 0,
+      checks: 0,
+      lastAction: null
+    };
+
+    function readCookie(name) {
+      try {
+        var parts = ('; ' + document.cookie).split('; ' + name + '=');
+        if (parts.length < 2) { return null; }
+        return decodeURIComponent(parts.pop().split(';').shift());
+      } catch (e) { return null; }
+    }
+
+    /* Strict allow-list. Anything else is rejected and the state stays unknown. */
+    function normalise(raw) {
+      if (raw === null || raw === undefined) { return null; }
+      var v = String(raw).trim().toLowerCase();
+      for (var i = 0; i < ALLOWED.length; i++) {
+        if (ALLOWED[i] === v) { return v; }
+      }
+      return null;
+    }
+
+    function attributes() {
+      var s = '; path=/; SameSite=Lax';
+      if (location.protocol === 'https:') { s += '; Secure'; }
+      return s;
+    }
+
+    function writeCookie(name, value, maxAge) {
+      try {
+        document.cookie = name + '=' + encodeURIComponent(value) + '; max-age=' + maxAge + attributes();
+        state.writes++;
+        return true;
+      } catch (e) { return false; }
+    }
+
+    function dropCookie(name) {
+      try {
+        document.cookie = name + '=; max-age=0' + attributes();
+        state.deletes++;
+        return true;
+      } catch (e) { return false; }
+    }
+
+    /* Non-reversible short fingerprint, used only to prove which cookie we wrote. */
+    function fingerprint(value) {
+      var h = 5381;
+      for (var i = 0; i < value.length; i++) {
+        h = ((h << 5) + h + value.charCodeAt(i)) >>> 0;
+      }
+      return h.toString(36);
+    }
+
+    function sync() {
+      state.checks++;
+
+      var correctRaw = readCookie(CORRECT);
+      var correct = normalise(correctRaw);
+      var marker = readCookie(MARKER);
+      var source = normalise(readCookie(MALFORMED));
+
+      if (correctRaw !== null) {
+        var ours = marker !== null && correct !== null && marker === fingerprint(correct);
+
+        if (!ours) {
+          /* Vendor-created or third-party cookie. Never overwrite, never delete. */
+          if (marker !== null) {
+            dropCookie(MARKER);
+            state.lastAction = 'stale-marker-cleared';
+          }
+          state.owner = 'vendor';
+          return;
+        }
+
+        state.owner = 'bridge';
+
+        if (source === null) {
+          /* Source withdrawn, reset, or no longer allow-listed: withdraw our own mirror. */
+          dropCookie(CORRECT);
+          dropCookie(MARKER);
+          state.owner = 'none';
+          state.lastAction = 'mirror-withdrawn';
+          return;
+        }
+
+        if (source !== correct) {
+          writeCookie(CORRECT, source, MAX_AGE);
+          writeCookie(MARKER, fingerprint(source), MAX_AGE);
+          state.lastAction = 'mirror-updated';
+        }
+        return;
+      }
+
+      if (source === null) {
+        if (marker !== null) {
+          dropCookie(MARKER);
+          state.lastAction = 'stale-marker-cleared';
+        }
+        state.owner = 'none';
+        return;
+      }
+
+      writeCookie(CORRECT, source, MAX_AGE);
+      writeCookie(MARKER, fingerprint(source), MAX_AGE);
+      state.owner = 'bridge';
+      state.lastAction = 'mirror-created';
+    }
+
+    /* Bounded, self-terminating sweep. There is no permanent polling loop. */
+    var timer = null;
+    var ticksLeft = 0;
+
+    function pump(ticks) {
+      if (ticks > ticksLeft) { ticksLeft = ticks; }
+      if (timer !== null) { return; }
+      timer = setInterval(function () {
+        sync();
+        ticksLeft--;
+        if (ticksLeft <= 0) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }, POLL_MS);
+    }
+
+    /* Run before anything else on the page can read consent. */
+    sync();
+    pump(LOAD_TICKS);
+
+    /* Supported Shopify customer privacy event. */
+    try {
+      document.addEventListener('visitorConsentCollected', function () { pump(BURST_TICKS); });
+    } catch (e) {}
+
+    /* Best-effort Consentmo events. Harmless if the vendor never dispatches them. */
+    ['consentmo_consent_updated', 'consentmoConsentUpdated', 'cookieconsent_status_changed'].forEach(function (name) {
+      try {
+        document.addEventListener(name, function () { pump(BURST_TICKS); });
+        window.addEventListener(name, function () { pump(BURST_TICKS); });
+      } catch (e) {}
+    });
+
+    /* A banner interaction is the only other way the source cookie can change. */
+    try {
+      document.addEventListener('click', function () { pump(BURST_TICKS); }, true);
+      window.addEventListener('pageshow', function () { sync(); });
+    } catch (e) {}
+
+    window.SBSConsentmoCookieCompat = {
+      version: state.version,
+      correctCookie: CORRECT,
+      markerCookie: MARKER,
+      allowedValues: ALLOWED.slice(),
+      sync: function () { sync(); return state.owner; },
+      state: function () {
+        return {
+          version: state.version,
+          owner: state.owner,
+          writes: state.writes,
+          deletes: state.deletes,
+          checks: state.checks,
+          lastAction: state.lastAction,
+          polling: timer !== null
+        };
+      }
+    };
+  })();
+</script>
+
