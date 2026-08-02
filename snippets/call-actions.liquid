@@ -199,9 +199,8 @@
 </section>
 <script>
   (()=>{
-    const handleSlider = ()=>{
-     $(window).on('load', function() {
-      $("#shopify-section-{{sectionid}} .flexbox").slick({
+    const initSlider = ()=>{
+      $("#shopify-section-{{sectionid}} .flexbox").not('.slick-initialized').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     mobileFirst: true,
@@ -219,7 +218,13 @@
 
     ],
   });
-  })
+    }
+    const handleSlider = ()=>{
+      if (document.readyState === 'complete') {
+        initSlider();
+        return;
+      }
+      $(window).off('load.callActionsSlider').one('load.callActionsSlider', initSlider);
     }
     if(window.yett.lazyloaded){
           setTimeout(handleSlider,2000)
