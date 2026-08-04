@@ -163,7 +163,14 @@
   <div class="cookie-banner-content">
     <div class="cookie-text">
       {{ 'general.cookie_banner.message' | t | default: "This website uses cookies to ensure you get the best experience on our website." }}
-      <a href="/policies/privacy-policy">{{ 'general.cookie_banner.privacy_policy' | t | default: "Privacy Policy" }}</a>
+      {%- liquid
+  if routes.root_url == '/'
+    assign sbs_cb_privacy_url = '/policies/privacy-policy'
+  else
+    assign sbs_cb_privacy_url = routes.root_url | append: '/policies/privacy-policy'
+  endif
+-%}
+<a href="{{ sbs_cb_privacy_url }}">{{ 'general.cookie_banner.privacy_policy' | t | default: "Privacy Policy" }}</a>
     </div>
     <div class="cookie-buttons">
       <button id="cookie-preferences" class="cookie-btn btn-preferences">

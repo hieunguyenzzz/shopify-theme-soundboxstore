@@ -96,6 +96,13 @@
                   {{ 'general.search.products' | t }}
                 </div>
                 {%- for product in search_collection.products -%}
+                  {%- comment -%} SBS US market launch: central product eligibility gate. {%- endcomment -%}
+                  {%- capture sbs_pill_eligibility -%}
+                    {%- render 'sbs-us-eligibility', product: product -%}
+                  {%- endcapture -%}
+                  {%- if sbs_pill_eligibility contains 'DENY' -%}
+                    {%- continue -%}
+                  {%- endif -%}
                   <div>
                     <a
                       style="

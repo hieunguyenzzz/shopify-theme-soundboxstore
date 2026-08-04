@@ -1,4 +1,11 @@
 {%- assign form_id = 'contact-' | append: section.id -%}
+{%- comment -%} SBS US launch: market-aware ZIP Code terminology. Non-US markets keep their translated string. {%- endcomment -%}
+{%- liquid
+  assign sbs_postcode_label = 'contact.form.postcode' | t
+  if localization.country.iso_code == 'US'
+    assign sbs_postcode_label = 'ZIP Code'
+  endif
+-%}
 <style>
         #{{form_id}}{
           --color-error:red
@@ -241,12 +248,12 @@
               required
 
               class="input-full input"
-              placeholder="{{ 'contact.form.postcode' | t }}"
+              placeholder="{{ sbs_postcode_label }}"
               name="contact[postcode]"
               autocapitalize="words"
               value="{% if form.postcode %}{{ form.postcode }}{% elsif customer %}{{ customer.postcode }}{% endif %}"
             >
-            <label for="ContactFormName-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+            <label for="ContactFormName-{{ section.id }}">{{ sbs_postcode_label }}</label>
           </div>
           <div class="grid__item">
             <input
@@ -505,6 +512,9 @@
             <label for="ContactFormMessage-{{ section.id }}">{{ 'contact.form.message' | t }}</label>
           </div>
 
+          <div class="grid__item">
+            {% render 'sbs-privacy-notice' %}
+          </div>
           <div class="submit-btn-wrap grid__item">
             <button
               type="submit"

@@ -1,0 +1,8 @@
+{%- comment -%}
+  vat-note
+
+  Market-aware tax note shown next to prices. The United States market is not a
+  VAT jurisdiction, so US sessions must never render an '(INC VAT)' claim.
+  Wording is consistent with the US cart notice added in Wave B.
+{%- endcomment -%}
+{%- if localization.country.iso_code == 'US' -%}(EXCL. TAX){%- else -%}(INC VAT){%- endif -%}

@@ -59,7 +59,7 @@
       {{- 'header.explore_products' | t | default: 'Explore Products' -}}
     </a>
   {% else %}
-    <a href="/collections/all" style="background: #f6efe4;">
+    <a href="{{ routes.all_products_collection_url }}" style="background: #f6efe4;">
       {{- 'header.explore_products' | t | default: 'Explore Products' -}}
     </a>
   {% endif %}

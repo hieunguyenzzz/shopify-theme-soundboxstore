@@ -67,7 +67,7 @@
                 {%- render 'price' with 1999 -%}
               {%- endunless -%}
               {%- if shop.taxes_included -%}
-                <div class="vat_text">(INC VAT)</div>
+                <div class="vat_text">{%- render 'vat-note' -%}</div>
               {%- endif -%}
             </div>
             {%- assign hide_sale_price = true -%}
@@ -107,7 +107,7 @@
               </div>
             {%- endif -%}
             {%- if shop.taxes_included -%}
-              <div class="vat_text">(INC VAT)</div>
+              <div class="vat_text">{%- render 'vat-note' -%}</div>
             {%- endif -%}
             <div
               data-unit-price-wrapper

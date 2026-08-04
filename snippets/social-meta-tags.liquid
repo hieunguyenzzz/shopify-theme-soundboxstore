@@ -47,6 +47,10 @@ You can learn more about this (and learn how to cleanly revert these changes) at
 {%- endif -%}
   {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
 {%- if disabled_by_yoast_seo -%}
+{%- comment -%} US market: adapt allowlisted Folio social description to US electrical/compliance wording. {%- endcomment -%}
+{%- capture og_description -%}
+  {%- render 'us-product-copy', content: og_description, product: product -%}
+{%- endcapture -%}
 <meta property="og:description" content="{{ og_description | strip_html }}">
 {%- comment -%} End Yoast auto-disable. {%- endcomment -%}
 {%- endif -%}

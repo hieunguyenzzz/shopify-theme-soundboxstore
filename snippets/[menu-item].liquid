@@ -1,3 +1,12 @@
+{%- comment -%}
+  SBS US market launch — product eligibility gate.
+  The rule lives in snippets/sbs-us-eligibility.liquid. Non-US markets are
+  unaffected and every product remains reachable at its own URL.
+{%- endcomment -%}
+{%- capture sbs_card_eligibility -%}
+  {%- render 'sbs-us-eligibility', product: product -%}
+{%- endcapture -%}
+{%- unless sbs_card_eligibility contains 'DENY' -%}
 {% capture seatimg %}
   {{ settings.manicon | image_url :width:40 |image_tag }}
   {% endcapture %}
@@ -61,3 +70,4 @@
     {% endif %}
   </div>
 </a>
+{%- endunless -%}

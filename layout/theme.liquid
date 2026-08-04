@@ -28,6 +28,8 @@
     {% render 'meta-refresh-helper' %}
     {% render 'pre-header' %}
     {% render 'yett' %}
+{%- comment -%} SBS US market launch: removes US-excluded products from the Shopify predictive-search payload before theme.js renders it. US sessions only. {%- endcomment -%}
+{% render 'sbs-us-predictive-filter' %}
     {% if template.name == 'product' %}
       <script>
         (function () {
@@ -172,6 +174,10 @@
         assign _meta_desc = page_title | append: ' — ' | append: shop.name
       endif
     -%}
+    {%- comment -%} US market: adapt allowlisted Folio meta description to US electrical/compliance wording. {%- endcomment -%}
+    {%- capture _meta_desc -%}
+      {%- render 'us-product-copy', content: _meta_desc, product: product -%}
+    {%- endcapture -%}
     <meta name="description" content="{{ _meta_desc | escape }}">
 
     {%- render 'social-meta-tags' -%}
@@ -296,6 +302,7 @@
 
     <script>
       window.theme = window.theme || {};
+      window.SBS_VAT_NOTE = "{%- render 'vat-note' -%}";
       {% if isResserllerOrTradeAccount %}
       theme.reseller=true;
       {% endif %}
@@ -564,7 +571,18 @@
 
         {%- section 'quick-search' -%}
         <main class="main-content" id="MainContent">
+          {%- comment -%} US market receives a market-specific body for the two mapped policy documents. {%- endcomment -%}
+          {%- assign sbs_us_policy_override = false -%}
+          {%- if localization.country.iso_code == 'US' -%}
+            {%- if request.path contains 'policies/shipping-policy' or request.path contains 'policies/refund-policy' -%}
+              {%- assign sbs_us_policy_override = true -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if sbs_us_policy_override -%}
+            {%- render 'us-policy-override' -%}
+          {%- else -%}
           {{ content_for_layout }}
+          {%- endif -%}
         </main>
         {%- section 'footer-promotions' -%}
         {% if template.name == 'index' or template.name == 'product' or template.name == 'collection' %}

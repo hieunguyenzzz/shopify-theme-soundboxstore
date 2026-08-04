@@ -28,6 +28,7 @@
     "phone_number_ch": "+41 56 588 05 72",
     "phone_number_fr": "+33 805119611",
     "phone_number_it": "+ 39 800561908",
+    "phone_number_us": "+1 888-306-7695",
     "color_body_bg": "#ffffff",
     "color_body_text": "#454545",
     "color_price": "#1c1d1d",
@@ -703,8 +704,8 @@
           "c606012e-52ee-46cd-9ada-a7bd73ac4bda": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}</a></p>",
-              "richtext_mobile": "<p><a href=\"tel: {% render '[phone-number]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}</a></p>"
+              "richtext": "<p><a href=\"tel:{% render '[phone-number-tel]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}</a></p>",
+              "richtext_mobile": "<p><a href=\"tel:{% render '[phone-number-tel]' %}\" target=\"_blank\" title=\"tel: {% render '[phone-number]' %}\">{{ 'strings.general.call_today' | t }}  {% render '[phone-number]' %}</a></p>"
             }
           },
           "1bb63430-805b-4467-9cb9-0a8b97fe3680": {
@@ -755,8 +756,8 @@
           "b31556f5-2ca9-4667-a95a-5e73ca5b58f9": {
             "type": "announcement_liquid",
             "settings": {
-              "richtext": "<p>\n<a href=\"/pages/reseller-login\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>",
-              "richtext_mobile": "<p>\n<a href=\"/pages/reseller-login\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>"
+              "richtext": "<p>\n<a href=\"{{ routes.root_url | append: '/pages/reseller-login' | replace: '//pages', '/pages' }}\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>",
+              "richtext_mobile": "<p>\n<a href=\"{{ routes.root_url | append: '/pages/reseller-login' | replace: '//pages', '/pages' }}\">{{ 'strings.announcement.dealer_login' | t }}</a>\n</p>"
             }
           }
         },
@@ -806,7 +807,7 @@
               "address_url_ie": "",
               "phone_ie": "+353 19643450",
               "address-heading_us": "New York Office:",
-              "address_us": "33 West 19th Street, 4th Floor, New York City, New York 10011",
+              "address_us": "33 West 19th Street, 4th Floor, New York, NY 10011, United States",
               "address_url_us": "https://www.google.com/maps?q=33+West+19th+Street+4th+Floor+New+York+NY+10011",
               "phone_us": "",
               "email": "hush@soundboxstore.com",

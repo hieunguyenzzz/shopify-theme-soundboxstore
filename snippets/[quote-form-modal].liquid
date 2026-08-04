@@ -228,7 +228,7 @@
                   </div>
                   <div class="">
                     <div class="quote-form-card-title" style="">{{ 'strings.others.Schedule_Design_Survey' | t }}</div>
-                    <div class="quote-form-card-subtitle">M–F, 9am–5pm</div>
+                    <div class="quote-form-card-subtitle">{{ 'strings.general.live_time' | t }}</div>
                   </div>
                 </div>
               </div>
@@ -246,7 +246,7 @@
                 </div>
                 <div class="">
                   <div class="quote-form-card-title">{{ 'strings.others.Live_chat' | t }}</div>
-                  <div class="quote-form-card-subtitle">M–F, 9am–5pm</div>
+                  <div class="quote-form-card-subtitle">{{ 'strings.general.live_time' | t }}</div>
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@
                 </div>
                 <div class="">
                   <div class="quote-form-card-title">{{ 'strings.others.Contact_us' | t }}</div>
-                  <div class="quote-form-card-subtitle">M–F, 9am–5pm</div>
+                  <div class="quote-form-card-subtitle">{{ 'strings.general.live_time' | t }}</div>
                 </div>
               </div>
             </div>
@@ -292,8 +292,8 @@
                   {%- render '[phone-number]' -%}
                 {%- endcapture -%}
                 <div class="">
-                  <a class="quote-form-card-title" href="tel: {{ phonenumber }}">{{ phonenumber }}</a>
-                  <div class="quote-form-card-subtitle">M–F, 9am–5pm</div>
+                  <a class="quote-form-card-title" href="tel:{%- render 'tel-href', phone: phonenumber -%}">{{ phonenumber | strip }}</a>
+                  <div class="quote-form-card-subtitle">{{ 'strings.general.live_time' | t }}</div>
                 </div>
               </div>
             </div>

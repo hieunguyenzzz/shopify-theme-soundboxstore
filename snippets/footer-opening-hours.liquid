@@ -31,7 +31,12 @@
             </p>
           {%- endif %}
           {% if block.settings.richtext != blank -%}
-            <div style="font-size:13px">{{ block.settings.richtext }}</div>
+            {%- comment -%} US market: ISO 23351-1 is an international standard, not an accreditation. {%- endcomment -%}
+            {%- if localization.country.iso_code == 'US' -%}
+              <div style="font-size:13px">{{ block.settings.richtext | replace: 'Acoustic Industry Accredited', 'Acoustic Industry Standard' }}</div>
+            {%- else -%}
+              <div style="font-size:13px">{{ block.settings.richtext }}</div>
+            {%- endif -%}
           {%- endif %}
           <style>
             .iso-images img{

@@ -430,7 +430,11 @@
       "@context": "http://schema.org",
       "@type": "CollectionPage",
       {% if collection.description != blank %}
-        "description": {{ collection.description | strip_html | json }},
+        {%- comment -%} SBS US market launch: corrects the shared UK/Europe delivery statement for US sessions only. See snippets/sbs-us-market-copy.liquid. {%- endcomment -%}
+        {%- capture sbs_collection_description -%}
+          {%- render 'sbs-us-market-copy', text: collection.description -%}
+        {%- endcapture -%}
+        "description": {{ sbs_collection_description | strip_html | json }},
       {% endif %}
       {% assign page_image = collection.image %}
       {% if page_image %}

@@ -87,7 +87,12 @@ You can learn more about this (and learn how to cleanly revert these changes) at
                 {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Answer"{% endif %}
               >
                 <div class="collapsible-content__inner rte" {% if disabled_by_yoast_seo %}itemprop="text"{% endif %}>
-                  {{ block.settings.text }}
+                  {%- comment -%} US market: adapt allowlisted Folio FAQ answers to US electrical/compliance wording. {%- endcomment -%}
+                  {%- capture sbs_faq_folio_copy -%}
+                    {%- render 'us-product-copy', content: block.settings.text, product: product -%}
+                  {%- endcapture -%}
+                  {%- comment -%} SBS US market launch: corrects the shared UK/Europe delivery statement for US sessions on every product, not only the Folio allowlist. See snippets/sbs-us-market-copy.liquid. {%- endcomment -%}
+                  {%- render 'sbs-us-market-copy', text: sbs_faq_folio_copy -%}
                 </div>
               </div>
             </div>

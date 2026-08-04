@@ -63,7 +63,7 @@
                     {% if us_phone != blank %}
                       <br>
                       {{ 'customer.addresses.phone' | t }}:
-                      <a href="tel:{{ us_phone }}">{{ us_phone }}</a>
+                      <a href="tel:{%- render 'tel-href', phone: us_phone -%}">{{ us_phone }}</a>
                     {% endif %}
                   </li>
                 {% endif %}
@@ -262,7 +262,6 @@
               {% unless localization.country.iso_code == 'ES' %}
                 {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
                   <li class="location address_3">
-                    <syle> </syle>
                     {% if block.settings['address-heading3'] != blank %}
                       <strong>{{ block.settings['address-heading3'] }}</strong>
                     {% endif %}
@@ -301,7 +300,7 @@
                   </a><!--/email_off-->
                 </li>
               {% endif %}
-              {% if settings.whatsapp_phone_number %}
+              {% if settings.whatsapp_phone_number and localization.country.iso_code != 'US' %}
                 <li class="phone whatsapp_phone">
                   <style>
                     .site-footer .footer-address-list ul li.phone:after{

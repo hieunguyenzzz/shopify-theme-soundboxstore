@@ -139,6 +139,14 @@
         <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
       </div>
       {% assign phone_example = 'strings.others.phone_example' | t %}
+{%- comment -%} SBS US launch: market-aware US phone example and ZIP Code terminology. Non-US markets keep their existing translated strings. {%- endcomment -%}
+{%- liquid
+  assign sbs_postcode_label = 'contact.form.postcode' | t
+  if localization.country.iso_code == 'US'
+    assign phone_example = 'Ex: +1 212 555 0123'
+    assign sbs_postcode_label = 'ZIP Code'
+  endif
+-%}
       <style>
         .countryphonecode-selector {
           font-size: 0.85em;
@@ -363,7 +371,7 @@ IT it /it-it' %}
             aria-required="true"
             placeholder="{{  'customer.addresses.city' | t }}"
           >
-          <label for="ContactFormCity-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+          <label for="ContactForm-city">{{ 'customer.addresses.city' | t }}</label>
         </div>
         <div class="">
           <input
@@ -374,9 +382,9 @@ IT it /it-it' %}
             name="contact[postcode]"
             value=""
             aria-required="true"
-            placeholder="{{ 'contact.form.postcode' | t }}"
+            placeholder="{{ sbs_postcode_label }}"
           >
-          <label for="ContactFormPostcode-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+          <label for="ContactForm-postcode">{{ sbs_postcode_label }}</label>
         </div>
       </div>
       <div class="grid__item">
@@ -409,6 +417,13 @@ IT it /it-it' %}
           "
         >
           {% for product in collection.products %}
+            {%- comment -%} SBS US market launch: central product eligibility gate. {%- endcomment -%}
+            {%- capture sbs_quote_pick_eligibility -%}
+              {%- render 'sbs-us-eligibility', product: product -%}
+            {%- endcapture -%}
+            {%- if sbs_quote_pick_eligibility contains 'DENY' -%}
+              {%- continue -%}
+            {%- endif -%}
             <label style="display:block">
               <input
                 hidden
@@ -439,6 +454,9 @@ IT it /it-it' %}
         <p id="{{form_id}}-products-error" style="color:red;font-size:0.85em;margin-top:0.3em;display:none;">
           Please select at least one product
         </p>
+      </div>
+      <div class="grid__item">
+        {% render 'sbs-privacy-notice' %}
       </div>
       <div class="submit-btn-wrap grid__item">
         <div>

@@ -41,7 +41,10 @@
               itemtype="https://schema.org/Answer"
             >
               <div class="collapsible-content__inner rte" itemprop="text">
-                {{ faq.text | metafield_tag }}
+                {%- comment -%} SBS US market launch: corrects the shared UK/Europe delivery statement for US sessions only. See snippets/sbs-us-market-copy.liquid. {%- endcomment -%}
+                {%- capture sbs_faq_answer_raw -%}{{ faq.text | metafield_tag }}{%- endcapture -%}
+                {%- capture sbs_faq_answer -%}{%- render 'sbs-us-market-copy', text: sbs_faq_answer_raw -%}{%- endcapture -%}
+                {{ sbs_faq_answer }}
               </div>
             </div>
           </div>
@@ -65,7 +68,9 @@
           "name": {{ faq.question | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ faq.text | metafield_tag | strip_html | strip_newlines | json }}
+            {%- capture sbs_faq_schema_raw -%}{{ faq.text | metafield_tag }}{%- endcapture -%}
+            {%- capture sbs_faq_schema -%}{%- render 'sbs-us-market-copy', text: sbs_faq_schema_raw -%}{%- endcapture -%}
+            "text": {{ sbs_faq_schema | strip_html | strip_newlines | json }}
           }
         }
         {%- assign first_emitted = true -%}

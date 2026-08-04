@@ -17,22 +17,25 @@
     {{ items }}
     {% for block in section.blocks %}
       {% if block.type == 'product' %}
-        {% assign url = block.settings.url | default: product.url %}
-        {% if block.settings.url %}
-          {% unless block.settings.url contains '://' or block.settings.url contains routes.root_url %}
-            {% assign url = routes.root_url | append: block.settings.url %}
-          {% endunless %}
+        {% comment %} Skip product blocks whose product is not in the current market's catalog (block.settings.product is blank), otherwise the card renders empty. {% endcomment %}
+        {% if block.settings.product != blank %}
+          {% assign url = block.settings.url | default: product.url %}
+          {% if block.settings.url %}
+            {% unless block.settings.url contains '://' or block.settings.url contains routes.root_url %}
+              {% assign url = routes.root_url | append: block.settings.url %}
+            {% endunless %}
+          {% endif %}
+          <li {{ block.shopify_attributes }}>
+            {% render '[product-item]',
+              product: block.settings.product,
+              url: url,
+              title: block.settings.title,
+              subtitle: block.settings.subtitle,
+              image: block.settings.image,
+              image_2: block.settings.image_2
+            %}
+          </li>
         {% endif %}
-        <li {{ block.shopify_attributes }}>
-          {% render '[product-item]',
-            product: block.settings.product,
-            url: url,
-            title: block.settings.title,
-            subtitle: block.settings.subtitle,
-            image: block.settings.image,
-            image_2: block.settings.image_2
-          %}
-        </li>
       {% endif %}
       {% if block.type == 'collection' %}
         {% assign collection = block.settings.collection %}

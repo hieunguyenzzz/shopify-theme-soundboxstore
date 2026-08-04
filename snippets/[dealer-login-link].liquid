@@ -12,5 +12,12 @@
 {%- if isResserllerOrTradeAccount -%}
   <a href="{{ pages['reseller-home'].url }}">{{ 'strings.announcement.the_vault' | t }}</a>
 {%- else -%}
-  <a href="/pages/reseller-login">{{ 'strings.announcement.dealer_login' | t }}</a>
+  {%- liquid
+  if routes.root_url == '/'
+    assign sbs_reseller_url = '/pages/reseller-login'
+  else
+    assign sbs_reseller_url = routes.root_url | append: '/pages/reseller-login'
+  endif
+-%}
+<a href="{{ sbs_reseller_url }}">{{ 'strings.announcement.dealer_login' | t }}</a>
 {%- endif -%}

@@ -162,6 +162,14 @@
               </span>
             </div>
 
+            {%- if localization.country.iso_code == 'US' -%}
+              <div class="tax-text">
+                <span>Prices exclude delivery, installation, taxes and duties.</span>
+              </div>
+              <div class="shipping-text">
+                <span>Final charges will be confirmed in your quotation.</span>
+              </div>
+            {%- else -%}
             <div class="tax-text">
               <span>{{ 'cart.general.tax' | t }}</span>
               <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
@@ -171,6 +179,7 @@
               <span>{{ 'cart.general.shipping' | t }}</span>
               <span>{{ 'cart.general.calculated_at_checkout' | t }}</span>
             </div>
+            {%- endif -%}
 
             {% comment %}
               <div data-subtotal class="data-subtotal-block">
@@ -239,7 +248,14 @@
             <label for="quote-form-modal-cart" class="btn cart__request-quote" style="width: 100%; text-align: center; cursor: pointer;">
               {{ 'cart.general.request_quote' | t }}
             </label>
+            {%- if localization.country.iso_code == 'US' -%}
+              <div class="cart__us-quote-notice" style="margin-top: 10px; font-size: 14px; line-height: 1.5;">
+                US orders are handled by quotation. Delivery and professional installation are priced separately based on project location, product configuration, access requirements, and site conditions.
+              </div>
+            {%- endif -%}
 
+            {%- comment -%} US market is quote-only: no standard checkout affordance. {%- endcomment -%}
+            {%- unless localization.country.iso_code == 'US' -%}
             <button
               type="submit"
               name="checkout"
@@ -255,6 +271,7 @@
                 {{ content_for_additional_checkout_buttons }}
               </div>
             {% endif %}
+            {%- endunless -%}
 
             {% comment %}
               <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary cart__continue">

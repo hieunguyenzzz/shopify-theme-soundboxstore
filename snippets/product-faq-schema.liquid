@@ -22,7 +22,7 @@
       "name": "How long does it take to install an acoustic office pod?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most single-person pods can be assembled in 2-3 hours. Larger 4-6 person meeting booths typically take 3-6 hours. Professional installation is available across the UK and Europe."
+        "text": "Most single-person pods can be assembled in 2-3 hours. Larger 4-6 person meeting booths typically take 3-6 hours. Professional installation is available across {% if localization.country.iso_code == 'US' %}the United States{% else %}the UK and Europe{% endif %}."
       }
     },
     {
@@ -54,7 +54,7 @@
       "name": "What power and connectivity features are included?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "All acoustic pods include integrated power outlets, USB-A and USB-C charging ports, LED lighting with dimmer control, and optional ethernet connectivity. Electrical specifications comply with UK and EU standards."
+        "text": "All acoustic pods include integrated power outlets, USB-A and USB-C charging ports, LED lighting with dimmer control, and optional ethernet connectivity. {% if localization.country.iso_code == 'US' %}Electrical specifications are configured for 120V US power.{% else %}Electrical specifications comply with UK and EU standards.{% endif %}"
       }
     }
   ]

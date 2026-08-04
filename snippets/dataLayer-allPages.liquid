@@ -290,11 +290,30 @@ __DL__jQueryinterval = setInterval(function(){
         /** DATALAYER: Product Page
         * Fire on all Product View pages. */
         {% if template contains 'product' %}  
+            {%- comment -%}
+              SBS Workstream 4: view_item numeric values.
+
+              product.price is Shopify's authoritative amount in the presentment
+              currency minor unit, so dividing by 100.0 gives a real JSON number.
+              money_without_currency was previously used and produced a locale
+              formatted string such as "5,247.00", which GA4 cannot use as a value.
+              Currency comes from the active market rather than a hard-coded value.
+            {%- endcomment -%}
+            {%- assign sbs_dl_price = product.price | divided_by: 100.0 -%}
+            {%- assign sbs_dl_currency = cart.currency.iso_code | default: shop.currency -%}
             var ecommerce = {
+                'currency': {{ sbs_dl_currency | json }},
+                'value': {{ sbs_dl_price }},
                 'items': [{
                     'item_id'         : {{'shopify_US_' | append:product.id |append:'_' |append:product.selected_or_first_available_variant.id | json}},  
                     'item_name'       : {{product.title | json}},
-                    'price'           : {{product.price | money_without_currency | json}},
+                    'price'           : {{ sbs_dl_price }},
+                    'currency'        : {{ sbs_dl_currency | json }},
+                    'quantity'        : 1,
+                    'product_id'      : {{ product.id | json }},
+                    'variant_id'      : {{ product.selected_or_first_available_variant.id | json }},
+                    'item_variant'    : {{ product.selected_or_first_available_variant.title | json }},
+                    'item_sku'        : {{ product.selected_or_first_available_variant.sku | json }},
                     'item_brand'      : {{product.vendor | json}},
                     'item_category'   : {{product.type | json}},
                     'item_list_name'  : {{collection.title | json}}
@@ -311,14 +330,26 @@ __DL__jQueryinterval = setInterval(function(){
      
         /** DATALAYER: Cart View
         * Fire anytime a user views their cart (non-dynamic) */              
-        {% if template contains 'cart' %}
+        {%- comment -%}
+          SBS Workstream 4: view_cart correctness.
+
+          1. view_cart must only fire for a non-empty cart, so the guard now also
+             requires cart.item_count > 0. Previously an empty cart still emitted
+             view_cart.
+          2. money_without_currency emits a locale formatted string such as
+             5,247.00. Unquoted that is not a valid JavaScript number, so value and
+             price were malformed. Amounts are now derived from Shopify minor units.
+        {%- endcomment -%}
+        {% if template contains 'cart' and cart.item_count > 0 %}
             var ecommerce = {
                 'currency': {{cart.currency.iso_code | json}},
-                'value': {{cart.total_price | money_without_currency}},
+                'value': {{ cart.total_price | divided_by: 100.0 }},
                 'items':[{% for line_item in cart.items %}{
                     'item_id'        : {{'shopify_US_' | append:line_item.product.id |append:'_' | append:line_item.variant.id | json}},              
                     'item_name'      : {{line_item.product.title | json}},
-                    'price'           : {{line_item.variant.price | money_without_currency}},
+                    'price'           : {{ line_item.variant.price | divided_by: 100.0 }},
+                    'currency'        : {{cart.currency.iso_code | json}},
+                    'variant_id'      : {{ line_item.variant.id | json }},
                     'item_brand'      : {{line_item.product.vendor | downcase |json}},
                     'quantity'        : {{line_item.quantity | json}},
                 },{% endfor %}],

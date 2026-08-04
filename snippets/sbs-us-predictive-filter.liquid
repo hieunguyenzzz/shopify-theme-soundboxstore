@@ -1,0 +1,79 @@
+{%- comment -%}
+  SBS US market launch — predictive-search eligibility filter.
+
+  Predictive search is served by Shopify's own /search/suggest.json endpoint and
+  rendered client side by theme.js, so it cannot be gated in Liquid the way the
+  server-rendered card renderers are. This snippet removes excluded products from
+  the response payload before theme.js ever renders them, so the excluded items
+  are absent from the rendered output rather than merely hidden with CSS.
+
+  The exclusion list is read from snippets/sbs-us-eligibility.liquid in list mode,
+  so there is still exactly one source of truth for US launch eligibility.
+
+  Only rendered for US market sessions. Every other market keeps the unmodified
+  Shopify predictive-search behaviour.
+{%- endcomment -%}
+{%- if localization.country.iso_code == 'US' -%}
+  {%- capture sbs_ps_denied_raw -%}
+    {%- render 'sbs-us-eligibility', list: 'denied_handles' -%}
+  {%- endcapture -%}
+  {%- assign sbs_ps_denied = sbs_ps_denied_raw | strip -%}
+  <script>
+    (function () {
+      var denied = {{ sbs_ps_denied | json }}
+        .split(',')
+        .map(function (h) { return h.trim(); })
+        .filter(function (h) { return h.length > 0; });
+
+      if (!denied.length || typeof window.fetch !== 'function' || typeof window.Response !== 'function') {
+        return;
+      }
+
+      function handleOf(url) {
+        var parts = String(url || '').split('/products/');
+        if (parts.length < 2) { return ''; }
+        return parts[1].split('?')[0].split('#')[0].split('/')[0];
+      }
+
+      var nativeFetch = window.fetch;
+
+      window.fetch = function (input, init) {
+        var url = typeof input === 'string' ? input : (input && input.url) || '';
+        var pending = nativeFetch.apply(this, arguments);
+
+        if (url.indexOf('/search/suggest.json') === -1) {
+          return pending;
+        }
+
+        return pending.then(function (response) {
+          if (!response || !response.ok) { return response; }
+
+          return response
+            .clone()
+            .json()
+            .then(function (data) {
+              var results =
+                data && data.resources && data.resources.results
+                  ? data.resources.results
+                  : null;
+
+              if (results && Array.isArray(results.products)) {
+                results.products = results.products.filter(function (product) {
+                  return denied.indexOf(handleOf(product && product.url)) === -1;
+                });
+              }
+
+              return new Response(JSON.stringify(data), {
+                status: response.status,
+                statusText: response.statusText,
+                headers: { 'Content-Type': 'application/json' }
+              });
+            })
+            .catch(function () {
+              return response;
+            });
+        });
+      };
+    })();
+  </script>
+{%- endif -%}
