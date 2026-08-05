@@ -237,7 +237,7 @@
                             {%- render 'price' with 1999 -%}
                           {%- endunless -%}
                           {%- if shop.taxes_included -%}
-                            <span class="vat_text">(INC VAT)</span>
+                            <span class="vat_text">{%- render 'vat-note' -%}</span>
                           {%- endif -%}
                         </span>
                         {%- assign hide_sale_price = true -%}
@@ -277,7 +277,7 @@
                           </span>
                         {%- endif -%}
                         {%- if shop.taxes_included -%}
-                          <span class="vat_text">(INC VAT)</span>
+                          <span class="vat_text">{%- render 'vat-note' -%}</span>
                         {%- endif -%}
 
                         {%- if settings.product_save_amount -%}
@@ -636,10 +636,15 @@
                       -%}
                     </div>
                   {%- when 'ticks' -%}
-                    {% assign texts = product.metafields.custom.ticks_content.value | newline_to_br | split: '<br />' %}
-                    {% unless product.metafields.custom.ticks_content.value %}
-                      {% assign texts = block.settings.richtext | newline_to_br | split: '<br />' %}
-                    {% endunless %}
+                    {%- assign ticks_source = product.metafields.custom.ticks_content.value -%}
+                    {%- unless product.metafields.custom.ticks_content.value -%}
+                      {%- assign ticks_source = block.settings.richtext -%}
+                    {%- endunless -%}
+                    {%- comment -%} US market: adapt allowlisted Folio tick claims to approved ISO 23351-1 / UL Listed wording. {%- endcomment -%}
+                    {%- capture ticks_source -%}
+                      {%- render 'us-product-copy', content: ticks_source, product: product -%}
+                    {%- endcapture -%}
+                    {% assign texts = ticks_source | strip | newline_to_br | split: '<br />' %}
                     <style>
                       .product-ticks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.5em 1em;text-align:left;font-size:13.5px;line-height:1.2}
                       .product-ticks__item{display:flex;align-items:flex-start;gap:0.3em;min-width:0}
@@ -831,7 +836,7 @@
       </svg>
     </div>
   </div>
-  <img src="#">
+  <img alt="">
 </div>
 <style>
   .template-product .product-single__meta .product-blocks-wrap .shopify-block.shopify-app-block .spr-starrating a:after{content: "{{ 'strings.others.reviews' | t }}"}

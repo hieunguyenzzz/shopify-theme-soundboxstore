@@ -1,0 +1,63 @@
+{%- comment -%}
+  US market policy output.
+
+  Scope: rendered from layout/theme.liquid ONLY when the active country is US
+  and the requested path is one of the two mapped policy documents. Every other
+  market, and every other policy, falls through to content_for_layout unchanged.
+
+  Shopify does not support market-specific policy documents or policy templates,
+  so the US body is rendered server-side here using the same Shopify policy
+  container classes.
+
+  Removal path: delete this snippet and the conditional in layout/theme.liquid
+  once Shopify supports market-specific policies natively.
+{%- endcomment -%}
+
+{%- if request.path contains 'policies/shipping-policy' -%}
+  <div class="shopify-policy__container">
+    <div class="shopify-policy__title">
+      <h1>United States Delivery and Installation</h1>
+    </div>
+    <div class="shopify-policy__body">
+      <div class="rte">
+        <p>SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis.</p>
+        <p>Delivery and professional installation are priced according to project location, product configuration, access requirements, and site conditions.</p>
+        <p>The final quotation will confirm delivery, installation, expected lead time, customs, duties, taxes, and any other applicable charges before an order is accepted.</p>
+        <p>For a project-specific quotation, contact our US office on <a href="tel:+18883067695">+1 888-306-7695</a>.</p>
+      </div>
+    </div>
+  </div>
+{%- elsif request.path contains 'policies/refund-policy' -%}
+  {%- assign sbs_refund_body = shop.refund_policy.body -%}
+  {%- assign sbs_refund_body = sbs_refund_body | replace: '<p>Where the Buyer is returning any Goods from Norway or Switzerland, the Supplier will not refund any duty fees paid at customs for the initial receipt of the goods.</p>', '' -%}
+  {%- comment -%}
+    The shared Shopify refund policy carries a GBP returns-fee table headed
+    Return Rate UK / Return Rate Europe and a UK 24/7 support telephone number.
+    Neither applies to a United States order and both contradict the US launch,
+    so both blocks are removed server side for US sessions only. The US contact
+    paragraph appended below supplies the correct US route. Every other market
+    keeps the merchant-managed policy unchanged.
+  {%- endcomment -%}
+  {%- if sbs_refund_body contains '<div class="refund-policy-table">' -%}
+    {%- assign sbs_refund_split = sbs_refund_body | split: '<div class="refund-policy-table">' -%}
+    {%- assign sbs_refund_after = sbs_refund_split[1] | split: '</table>' -%}
+    {%- assign sbs_refund_tail = sbs_refund_after[1] | remove_first: '</div>' -%}
+    {%- assign sbs_refund_body = sbs_refund_split[0] | append: sbs_refund_tail -%}
+  {%- endif -%}
+  {%- if sbs_refund_body contains '<div><strong>Customer Support 24/7</strong></div>' -%}
+    {%- assign sbs_refund_support = sbs_refund_body | split: '<div><strong>Customer Support 24/7</strong></div>' -%}
+    {%- assign sbs_refund_body = sbs_refund_support[0] -%}
+  {%- endif -%}
+  {%- assign sbs_refund_body = sbs_refund_body | replace: 'you must pay the cost noted below.', 'you must pay the return or collection fee confirmed in your quotation and order documentation.' -%}
+  <div class="shopify-policy__container">
+    <div class="shopify-policy__title">
+      <h1>{{ shop.refund_policy.title }}</h1>
+    </div>
+    <div class="shopify-policy__body">
+      <div class="rte">
+        {{ sbs_refund_body }}
+        <p>Project-specific commercial terms, including delivery, installation, taxes and duties, are confirmed in your quotation and order documentation. For help with a return, contact our US office on <a href="tel:+18883067695">+1 888-306-7695</a> or email <a href="mailto:hush@soundboxstore.com">hush@soundboxstore.com</a>.</p>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

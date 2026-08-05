@@ -1,0 +1,8 @@
+{%- comment -%}
+  Renders a canonical, dial-safe tel: href value from a display phone number.
+  Usage: <a href="tel:{%- render 'tel-href', phone: some_phone -%}">{{ some_phone }}</a>
+  Strips newlines, spaces, bracketed trunk prefixes, hyphens and dots so the
+  resulting href is a valid RFC 3966 / E.164-style dial string.
+{%- endcomment -%}
+{%- assign _tel_value = phone | strip_newlines | strip | remove: '(0)' | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.' | remove: '/' -%}
+{{- _tel_value -}}

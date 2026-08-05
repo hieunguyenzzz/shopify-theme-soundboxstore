@@ -1,0 +1,65 @@
+{%- comment -%}
+  us-product-copy
+
+  Renders US-market-adapted product copy for an explicit allowlist of Folio
+  products. Outside the US market, or for any product that is not on the
+  allowlist, the original content is returned completely unchanged.
+
+  Usage:
+    {%- capture raw_copy -%}...{%- endcapture -%}
+    {%- render 'us-product-copy', content: raw_copy, product: product -%}
+
+  Only exact, previously audited phrases are mapped. No regular expressions,
+  no JavaScript text replacement, no whole-page replacement and no mutation of
+  non-US output. Socket, USB, Ethernet, lighting, ventilation, dimension and
+  acoustic values are never altered - only the voltage/region wording and the
+  public compliance wording are adapted.
+{%- endcomment -%}
+{%- liquid
+  assign us_copy = content
+  assign us_suffix = product.template_suffix
+  assign us_allowlist = 'homepod,folio-stand-up,folio-4-person-pod'
+  assign us_is_market = false
+  if localization.country.iso_code == 'US'
+    assign us_is_market = true
+  endif
+  assign us_is_allowed = false
+  if us_suffix != blank
+    assign us_allow_items = us_allowlist | split: ','
+    for us_item in us_allow_items
+      if us_item == us_suffix
+        assign us_is_allowed = true
+      endif
+    endfor
+  endif
+-%}
+{%- if us_is_market and us_is_allowed -%}
+  {%- liquid
+    # Electrical: canonical US voltage and socket wording.
+    assign us_copy = us_copy | replace: 'a singular UL/CE 220-240V power socket (UK or EU)', '1 × 120V US power socket'
+    assign us_copy = us_copy | replace: 'singular UL/CE 220-240V power socket (UK or EU)', '1 × 120V US power socket'
+    assign us_copy = us_copy | replace: 'UL/CE 2 * 220-240v power sockets (UK or EU)', '2 × 120V US power sockets'
+    assign us_copy = us_copy | replace: '2 * 220-240v UK / EURO Power Supply', '2 × 120V US power sockets'
+    assign us_copy = us_copy | replace: '- UK / EURO Power Supply', '- 1 × 120V US power socket'
+    assign us_copy = us_copy | replace: 'UK / EURO Power Supply', '120V US power socket'
+    # Compliance: approved public wording only (ISO 23351-1 / UL Listed).
+    assign us_copy = us_copy | replace: 'with full CE and UL electrical certification included as standard', 'with UL Listed electrical components as standard'
+    assign us_copy = us_copy | replace: 'with CE / UL certified components', 'with UL Listed components'
+    assign us_copy = us_copy | replace: '(UK, EU, US, Swiss or UAE)', 'for the United States'
+    assign us_copy = us_copy | replace: 'Acoustic ISO-2355-1 Accredited', 'Acoustic ISO 23351-1'
+    assign us_copy = us_copy | replace: 'Acoustic ISO 23351-1 Accredited', 'Acoustic ISO 23351-1'
+    assign us_copy = us_copy | replace: "Europe's #1 Best Seller", 'UL Listed'
+    assign us_copy = us_copy | replace: 'UK Fire foam where required.', 'Fire-rated foam where required.'
+    # Compliance: ISO is an international standard and is not an accreditation.
+    assign us_copy = us_copy | replace: 'Acoustic Industry Accredited', 'Acoustic Industry Standard'
+    assign us_copy = us_copy | replace: 'accredited to ISO 23351-1', 'tested to ISO 23351-1'
+    assign us_copy = us_copy | replace: 'ISO 23351-1 accredited', 'ISO 23351-1 tested'
+    assign us_copy = us_copy | replace: 'the European standard for office acoustic enclosures', 'the international standard for office acoustic enclosures'
+    assign us_copy = us_copy | replace: 'the European standard governing', 'the international standard governing'
+    assign us_copy = us_copy | replace: 'Trusted European Seller', 'UL Listed'
+    # Electrical: additional audited phrasings.
+    assign us_copy = us_copy | replace: '220–240 V UK/European sockets', '120V US sockets'
+    assign us_copy = us_copy | replace: '220-240 V UK/European sockets', '120V US sockets'
+  -%}
+{%- endif -%}
+{{- us_copy -}}

@@ -5,6 +5,13 @@
     {{ product.description | replace: '<h1>', '<h2>' | replace: '</h1>', '</h2>' | replace: '<h1 ', '<h2 ' }}
   {%- endif -%}
 {% endcapture %}
+{%- comment -%}
+  US market: adapt allowlisted Folio product descriptions to US electrical and
+  compliance wording. Non-US markets and non-allowlisted products are unchanged.
+{%- endcomment -%}
+{%- capture description -%}
+  {%- render 'us-product-copy', content: description, product: product -%}
+{%- endcapture -%}
 {%- if is_tab -%}
   {% assign title = 'products.product.description' | t %}
   {%- render 'tab', id: id, title: title, content: description -%}

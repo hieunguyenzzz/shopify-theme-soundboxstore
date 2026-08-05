@@ -1,0 +1,113 @@
+{% comment %}
+  SBS — central US market product eligibility rule.
+
+  Single source of truth for whether a product may be rendered to a US market
+  session. Every US-facing product renderer (collection cards, search result
+  cards, recommendation cards, mega-menu tiles, top-searched pills) calls this
+  snippet so that the launch-eligibility decision lives in exactly one place.
+
+  Usage:
+
+    {%- capture sbs_us_eligibility -%}
+      {%- render 'sbs-us-eligibility', product: product -%}
+    {%- endcapture -%}
+    {%- unless sbs_us_eligibility contains 'DENY' -%}
+      ... render the card ...
+    {%- endunless -%}
+
+  Accepted inputs, any one is enough:
+    product  a Shopify product object
+    handle   a product handle string
+    url      a product URL string containing /products/<handle>
+
+  List mode:
+    Passing list: 'denied_handles' returns the comma-delimited exclusion handle
+    list instead of a verdict. This lets client-side renderers such as the
+    predictive-search filter reuse the same single source of truth rather than
+    keeping a second copy of the list.
+
+  Output is exactly one token:
+    ALLOW  render normally
+    DENY   do not render for this US session
+
+  Behaviour:
+    * Non-US sessions always receive ALLOW. Other markets are never affected.
+    * Neutral input with no resolvable product receives ALLOW so that pages,
+      collections, articles and general content are never hidden.
+    * Approved products are matched on stable numeric product IDs.
+    * Excluded products are matched on stable numeric product IDs first and on
+      exact handles as a secondary safeguard. No title substring matching.
+    * Products that are neither approved nor excluded are unclassified and
+      receive ALLOW.
+
+  US launch-approved products (Folio):
+    7836616818913  office-phone-booth-soundproof-folio-private-workspace
+    7976286322913  office-phone-booth-stand-up-soundproof-meeting-pod
+    8159685771489  folio-office-pod-2-4-person-soundproof-meeting-booth
+
+  US-excluded products and the evidence for each exclusion:
+    9551092187361  anja-s
+    9539197698273  anja-m
+      Product FAQ metafield states delivery and installation across the UK and
+      Europe only. No US inventory or US compliance content has been supplied.
+    8850989187297  sensory-booths-inclusive-design
+    8777704407265  soundproof-prayer-booth-peaceful-worship-meditation
+    8777735078113  access-large-soundproof-meeting-booth-inclusive-work
+    8582325895393  quell-max-club-house-8-person-soundproof-meeting-pod
+    7587424076001  quell-4-person-soundproof-office-pod-private-meeting
+    7587412672737  2-person-meeting-booth-soundproof-quiet-office-pod
+    7587394781409  quell-office-pod-solo
+      Visible US product content advertises 220-240 V UK or European power
+      sockets. No US electrical specification has been supplied, so the US
+      presentation cannot be corrected without fabricating a specification.
+
+  Omni products are not published to the Online Store sales channel and
+  therefore cannot render. They appear in the cutover manifest only.
+
+  To reopen a product for the US market, remove its ID and handle from the
+  exclusion lists below once truthful US content has been supplied.
+{% endcomment %}
+{%- liquid
+  assign sbs_elig_approved_ids = ',7836616818913,7976286322913,8159685771489,'
+  assign sbs_elig_denied_ids = ',9551092187361,9539197698273,8850989187297,8777704407265,8777735078113,8582325895393,7587424076001,7587412672737,7587394781409,'
+  assign sbs_elig_denied_handles = ',anja-s,anja-m,sensory-booths-inclusive-design,soundproof-prayer-booth-peaceful-worship-meditation,access-large-soundproof-meeting-booth-inclusive-work,quell-max-club-house-8-person-soundproof-meeting-pod,quell-4-person-soundproof-office-pod-private-meeting,2-person-meeting-booth-soundproof-quiet-office-pod,quell-office-pod-solo,'
+
+  assign sbs_elig_verdict = 'ALLOW'
+
+  if list == 'denied_handles'
+    assign sbs_elig_verdict = sbs_elig_denied_handles
+  elsif localization.country.iso_code == 'US'
+    assign sbs_elig_id = ''
+    assign sbs_elig_handle = ''
+
+    if product != blank
+      assign sbs_elig_id = product.id | append: ''
+      assign sbs_elig_handle = product.handle
+    endif
+
+    if sbs_elig_handle == blank and handle != blank
+      assign sbs_elig_handle = handle
+    endif
+
+    if sbs_elig_handle == blank and url != blank
+      if url contains '/products/'
+        assign sbs_elig_handle = url | split: '/products/' | last | split: '?' | first | split: '#' | first
+      endif
+    endif
+
+
+    assign sbs_elig_id_key = ',' | append: sbs_elig_id | append: ','
+    assign sbs_elig_handle_key = ',' | append: sbs_elig_handle | append: ','
+
+    if sbs_elig_id == blank and sbs_elig_handle == blank
+      assign sbs_elig_verdict = 'ALLOW'
+    elsif sbs_elig_approved_ids contains sbs_elig_id_key
+      assign sbs_elig_verdict = 'ALLOW'
+    elsif sbs_elig_denied_ids contains sbs_elig_id_key
+      assign sbs_elig_verdict = 'DENY'
+    elsif sbs_elig_denied_handles contains sbs_elig_handle_key
+      assign sbs_elig_verdict = 'DENY'
+    endif
+  endif
+-%}
+{{- sbs_elig_verdict -}}

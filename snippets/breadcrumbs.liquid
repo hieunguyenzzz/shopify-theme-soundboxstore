@@ -28,7 +28,7 @@
 
 <div class="breadcrumbs" aria-label="breadcrumbs">
   {%- unless template == 'index' or template == 'cart' -%}
-    <a href="/" title="Home">Home</a>
+    <a href="{{ routes.root_url }}" title="Home">Home</a>
     {%- case template.name -%}
       {%- when 'article' -%}
         {%- for link in linklists['main-menu'].links -%}

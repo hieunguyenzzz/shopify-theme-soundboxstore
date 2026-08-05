@@ -1,0 +1,6 @@
+{%- comment -%}
+  Renders the canonical dial-safe tel: value for the active market phone number.
+  Usage: <a href="tel:{% render '[phone-number-tel]' %}">
+{%- endcomment -%}
+{%- capture sbs_phone_display -%}{%- render '[phone-number]' -%}{%- endcapture -%}
+{%- render 'tel-href', phone: sbs_phone_display -%}

@@ -5349,7 +5349,7 @@
                       i.price,
                       theme.settings.moneyFormat
                     ) +
-                    "</span><span class='vat_text'> (INC VAT)</span>"),
+                    "</span><span class='vat_text'> " + (window.SBS_VAT_NOTE || "(INC VAT)") + "</span>"),
                   i.compare_at_price > i.price)
                 ) {
                   (this.cache.comparePrice.innerHTML =
@@ -5363,7 +5363,7 @@
                       i.compare_at_price,
                       theme.settings.moneyFormat
                     ) +
-                    "</span><span class='vat_text'> (INC VAT)</span>"),
+                    "</span><span class='vat_text'> " + (window.SBS_VAT_NOTE || "(INC VAT)") + "</span>"),
                     this.cache.priceWrapper.classList.remove(t.hidden),
                     this.cache.price.classList.add(t.onSale),
                     this.cache.comparePriceA11y &&

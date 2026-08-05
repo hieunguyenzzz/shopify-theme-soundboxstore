@@ -87,6 +87,13 @@
         {% if block.type == 'item' %}
           {% if block.settings.product != blank %}
             {% assign product = block.settings.product %}
+            {%- comment -%} SBS US market launch: central product eligibility gate. {%- endcomment -%}
+            {%- capture sbs_scroller_eligibility -%}
+              {%- render 'sbs-us-eligibility', product: product -%}
+            {%- endcapture -%}
+            {%- if sbs_scroller_eligibility contains 'DENY' -%}
+              {%- continue -%}
+            {%- endif -%}
             <div class="col">
               <div class="col-wrap">
                 <div class="col-image">

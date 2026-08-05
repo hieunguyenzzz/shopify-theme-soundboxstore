@@ -1,3 +1,16 @@
+{%- comment -%}
+  SBS US market launch — product eligibility gate.
+  The rule lives in snippets/sbs-us-eligibility.liquid.
+
+  This snippet renders both real cart line items and recommendation cards.
+  Cart line items must always render, so callers that render an existing cart
+  line pass sbs_cart_line: true to bypass the gate. Recommendation callers do
+  not pass it and are therefore gated. Non-US markets are never affected.
+{%- endcomment -%}
+{%- capture sbs_card_eligibility -%}
+  {%- if sbs_cart_line -%}ALLOW{%- else -%}{%- render 'sbs-us-eligibility', product: product -%}{%- endif -%}
+{%- endcapture -%}
+{%- unless sbs_card_eligibility contains 'DENY' -%}
 {% assign _variant = variant |default :product.first_available_variant %}
 {%- liquid
   # Link to the clean product URL unless a non-default variant was deep-linked.
@@ -279,10 +292,11 @@
                 {{- unit_price_base_unit }}
               </div>
             {%- endif -%}
-            <span class="vat_text">(INC VAT)</span>
+            <span class="vat_text">{%- render 'vat-note' -%}</span>
           </div>
         </div>
       </div>
     </a>
   </div>
 </div>
+{%- endunless -%}

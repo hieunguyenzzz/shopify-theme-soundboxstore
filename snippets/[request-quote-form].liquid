@@ -139,6 +139,14 @@
         <label for="ContactFormEmail-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
       </div>
       {% assign phone_example = 'strings.others.phone_example' | t %}
+{%- comment -%} SBS US launch: market-aware US phone example and ZIP Code terminology. Non-US markets keep their existing translated strings. {%- endcomment -%}
+{%- liquid
+  assign sbs_postcode_label = 'contact.form.postcode' | t
+  if localization.country.iso_code == 'US'
+    assign phone_example = 'Ex: +1 212 555 0123'
+    assign sbs_postcode_label = 'ZIP Code'
+  endif
+-%}
       <style>
         .countryphonecode-selector {
           font-size: 0.85em;
@@ -296,50 +304,31 @@
 
       <div class="grid__item">
         <select
-          type="text"
           required
-          placeholder="{{ settings.quote_country }}"
           class="input-full input"
           name="contact[Country/Region]"
-          style="    appearance: auto;"
-          value="{{ localization.country.iso_code }}"
+          style="appearance: auto; color-scheme: light;"
         >
-          {% assign countrymap = 'GB en,
-IE ie /en-ie,
-US en /en-us,
-DK da /da-dk,
-SE se /sv-se,
-DE de /de-de,
-NO no /no-no,
-FR fr /fr-fr,
-NL nl /nl-nl,
-BE nl /nl-be show,
-BE fr /fr-be show,
-AT de /de-at,
-CH de /de-ch,
-ES es /es-es,
-FI fi /fi-fi,
-PL pl /pl-pl,
-IT it /it-it' %}
-
-          {% assign contrylangs = countrymap | split: ',' %}
-          {%- for contrylang in contrylangs -%}
-            {% assign contrylangarray = contrylang | split: ' ' %}
-            {% assign contrycode = contrylangarray[0] %}
-            {% assign country = localization.available_countries | where: 'iso_code', contrycode | first %}
+          {% assign country_codes = 'GB,IE,US,DK,SE,DE,NO,FR,NL,BE,AT,CH,ES,FI,PL,IT' | split: ',' %}
+          {% assign country_names = 'United Kingdom,Ireland,United States,Denmark,Sweden,Germany,Norway,France,Netherlands,Belgium,Austria,Switzerland,Spain,Finland,Poland,Italy'
+            | split: ','
+          %}
+          {%- for country_code in country_codes -%}
+            {% assign country = localization.available_countries | where: 'iso_code', country_code | first %}
             {% unless country %}
               {% continue %}
             {% endunless %}
             <option
-              value="{{ country.iso_code }}"
-              {% if localization.country.iso_code == country.iso_code %}
+              value="{{ country_names[forloop.index0] }}"
+              data-iso="{{ country_code }}"
+              {% if localization.country.iso_code == country_code %}
                 selected
               {% endif %}
             >
               {{ country.name }}
             </option>
           {%- endfor -%}
-          <option value="other">Other</option>
+          <option value="Other" data-iso="">Other</option>
         </select>
         <label for="ContactFormName-{{ section.id }}">{{ settings.quote_country }}</label>
       </div>
@@ -363,7 +352,7 @@ IT it /it-it' %}
             aria-required="true"
             placeholder="{{  'customer.addresses.city' | t }}"
           >
-          <label for="ContactFormCity-{{ section.id }}">{{ 'contact.form.email' | t }}</label>
+          <label for="ContactForm-city">{{ 'customer.addresses.city' | t }}</label>
         </div>
         <div class="">
           <input
@@ -374,9 +363,9 @@ IT it /it-it' %}
             name="contact[postcode]"
             value=""
             aria-required="true"
-            placeholder="{{ 'contact.form.postcode' | t }}"
+            placeholder="{{ sbs_postcode_label }}"
           >
-          <label for="ContactFormPostcode-{{ section.id }}">{{ 'contact.form.postcode' | t }}</label>
+          <label for="ContactForm-postcode">{{ sbs_postcode_label }}</label>
         </div>
       </div>
       <div class="grid__item">
@@ -409,6 +398,13 @@ IT it /it-it' %}
           "
         >
           {% for product in collection.products %}
+            {%- comment -%} SBS US market launch: central product eligibility gate. {%- endcomment -%}
+            {%- capture sbs_quote_pick_eligibility -%}
+              {%- render 'sbs-us-eligibility', product: product -%}
+            {%- endcapture -%}
+            {%- if sbs_quote_pick_eligibility contains 'DENY' -%}
+              {%- continue -%}
+            {%- endif -%}
             <label style="display:block">
               <input
                 hidden
@@ -439,6 +435,9 @@ IT it /it-it' %}
         <p id="{{form_id}}-products-error" style="color:red;font-size:0.85em;margin-top:0.3em;display:none;">
           Please select at least one product
         </p>
+      </div>
+      <div class="grid__item">
+        {% render 'sbs-privacy-notice' %}
       </div>
       <div class="submit-btn-wrap grid__item">
         <div>
@@ -674,6 +673,10 @@ IT it /it-it' %}
               console.log('Brevo worker error:', err);
             });
 
+          var countrySelect = form.querySelector('select[name="contact[Country/Region]"]');
+          var countryIso =
+            (countrySelect && countrySelect.selectedOptions[0] && countrySelect.selectedOptions[0].dataset.iso) || '';
+
           // Analytics tracking
           var customerData = {
             form_id: 'header-quote-form',
@@ -748,7 +751,7 @@ IT it /it-it' %}
                     'email': customerData.email || '',
                     'phone_number': customerData.phone || '',
                     'address': {
-                      'country': customerData.country || '',
+                      'country': countryIso || customerData.country || '',
                       'city': customerData.city || '',
                       'postal_code': customerData.postcode || ''
                     }

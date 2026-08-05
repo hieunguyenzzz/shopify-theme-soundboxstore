@@ -223,7 +223,7 @@
                   {%- render '[phone-number]' -%}
                 {%- endcapture -%}
       
-                  <a class="col_1-title" href="tel: {{ phonenumber }}">{{ phonenumber }}</a>
+                  <a class="col_1-title" href="tel:{%- render 'tel-href', phone: phonenumber -%}">{{ phonenumber | strip }}</a>
                   <div class="col_1-subtitle">{{ 'strings.general.live_time' | t }}</div>
                 </div>
               </div>
@@ -257,7 +257,7 @@
               </div>
             </div>
           </button>
-          {% if settings.whatsapp_phone_number %}
+          {% if settings.whatsapp_phone_number and localization.country.iso_code != 'US' %}
                      <button class="col_1">
             <div class="col_1-content">
               <div class="col_1-content-inner">

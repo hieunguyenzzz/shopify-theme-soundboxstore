@@ -1,3 +1,15 @@
+{%- comment -%}
+  SBS US market launch — product eligibility gate.
+
+  The eligibility decision itself lives in snippets/sbs-us-eligibility.liquid so
+  that collection cards, search cards, recommendation cards, mega-menu tiles and
+  top-searched pills all share one rule. Non-US markets are unaffected and every
+  product remains reachable at its own URL.
+{%- endcomment -%}
+{%- capture sbs_item_eligibility -%}
+  {%- render 'sbs-us-eligibility', product: product -%}
+{%- endcapture -%}
+{%- unless sbs_item_eligibility contains 'DENY' -%}
 {% unless title != blank %}
   {% assign title = product.metafields.custom.menu_title.value | default: product.title %}
 {% endunless %}
@@ -189,40 +201,62 @@
         </div>
       {% endif %}
       {% endif %}
-      {% if product.metafields.custom.reviews_rating.value > 1 %}
+      {%- liquid
+        # Review badge source of truth: prefer real Judge.me numbers (same data as the
+        # product page, read server-side), fall back to the manual custom.reviews_* stars,
+        # render nothing when neither exists.
+        assign card_rating = 0
+        assign card_count = 0
+        assign jm_data = product.metafields.judgeme.review_widget_data.value
+        if jm_data != blank and jm_data.number_of_reviews != blank
+          assign card_count = jm_data.number_of_reviews | plus: 0
+          assign card_rating = jm_data.average_rating | times: 1.0
+        else
+          assign jm_badge = product.metafields.judgeme.badge
+          if jm_badge != blank and jm_badge contains "data-number-of-reviews='"
+            assign card_count = jm_badge | split: "data-number-of-reviews='" | last | split: "'" | first | plus: 0
+            assign card_rating = jm_badge | split: "data-average-rating='" | last | split: "'" | first | times: 1.0
+          endif
+        endif
+        if card_count <= 0 and product.metafields.custom.reviews_rating.value > 1
+          assign card_rating = product.metafields.custom.reviews_rating.value | times: 1.0
+          assign card_count = product.metafields.custom.reviews_count | plus: 0
+        endif
+      -%}
+      {% if card_count > 0 %}
         <div class="itempreviews">
           <div
             class="jdgm-prev-badge"
           >
             <span class="jdgm-prev-badge__stars" role="button">
-              {% if product.metafields.custom.reviews_rating.value > 1 %}
+              {% if card_rating > 1 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
-              {% if product.metafields.custom.reviews_rating.value > 2 %}
+              {% if card_rating > 2 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
-              {% if product.metafields.custom.reviews_rating.value > 3 %}
+              {% if card_rating > 3 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
-              {% if product.metafields.custom.reviews_rating.value > 4 %}
+              {% if card_rating > 4 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
-              {% if product.metafields.custom.reviews_rating.value == 5 %}
+              {% if card_rating >= 5 %}
                 <span class="jdgm-star jdgm--on"></span>
               {% else %}
                 <span class="jdgm-star jdgm--half"></span>
               {% endif %}
             </span>
             <span class="jdgm-prev-badge__text">
-              {{ product.metafields.custom.reviews_count }}
+              {{ card_count }}
               {{ 'strings.others.reviews' | t }}
             </span>
           </div>
@@ -232,3 +266,4 @@
     <!-- <div class="description">{{ description }}</div> -->
   </div>
 </a>
+{%- endunless -%}

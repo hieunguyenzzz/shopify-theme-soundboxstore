@@ -1,0 +1,59 @@
+{%- comment -%}
+  SBS — US market copy correction for merchant-managed content.
+
+  Some collection descriptions and product FAQ answers are stored in Shopify as
+  merchant-managed content that is shared by every market. A few of those answers
+  state that Soundbox Store delivers and installs across the UK and Europe, which
+  is correct for GB, AT and FR but contradicts the US launch.
+
+  This snippet performs an explicit, phrase-level correction of only those exact
+  statements, and only while the active market is the United States. It is not a
+  whole-page regex and it is not a client-side text replacement: the corrected
+  text is rendered server side, so the original wording is never sent to a US
+  visitor and the original wording is preserved unchanged for every other market.
+
+  Usage:
+
+    {%- capture sbs_corrected -%}
+      {%- render 'sbs-us-market-copy', text: collection.description -%}
+    {%- endcapture -%}
+
+  Approved US replacement statement:
+
+    SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.
+
+  The replacement deliberately does not promise free delivery, a fixed lead time,
+  nationwide stock, or installation included in the product price.
+
+  Mappings are applied longest-first so that a full sentence is replaced by the
+  approved statement before the shorter geography-only fallback is considered.
+{%- endcomment -%}
+{%- liquid
+  assign sbs_copy = text
+
+  if localization.country.iso_code == 'US'
+    assign sbs_copy = sbs_copy | replace: 'SoundBox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
+    assign sbs_copy = sbs_copy | replace: 'Soundbox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
+    assign sbs_copy = sbs_copy | replace: 'SoundBox Store delivers and installs across the UK and Europe.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
+    assign sbs_copy = sbs_copy | replace: 'Soundbox Store delivers and installs across the UK and Europe.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
+    assign sbs_copy = sbs_copy | replace: 'across the UK and Europe', 'across the United States'
+    assign sbs_copy = sbs_copy | replace: 'across the UK &amp; Europe', 'across the United States'
+    assign sbs_copy = sbs_copy | replace: 'across the UK & Europe', 'across the United States'
+
+    # US market launch: the shared office-pod FAQ answers describe a UK 13 amp
+    # power supply and claim CE / UL Certificated components for UK, Europe and
+    # US orders. Neither the connector standard nor that certification wording is
+    # verified for the United States, so the US market receives a factual
+    # quotation-based statement instead. Every other market keeps the original
+    # merchant-managed answer unchanged.
+    assign sbs_copy = sbs_copy | replace: 'No. All our office pods come with a 13amp power supply which plugs into the side of the booth with standard insert. Plug into your wall socket with locally supplied wall plug. If you are purchasing in UK, Europe or the US you will be supplied with local wall socket and correct electrical certificated components CE / UL Certificated.', 'No. Office pods are supplied with a power lead that plugs into the side of the booth with a standard insert, and then into your wall socket. The connector type, electrical specification and certification of the components supplied for United States orders are confirmed in writing as part of your quotation.'
+    assign sbs_copy = sbs_copy | replace: 'All of our meeting and office pods are plug and play, meaning once built there is an insert for a 13amp cable on the side of the booth which approximately 2 metres long. This is the simply plugged into your normal power socket. <br><br>(UAE, UK / USA, Euro, Swiss supplied depending on the delivery address.)', 'All of our meeting and office pods are plug and play: once built, there is an insert on the side of the booth for a power lead, which is then plugged into your normal power socket. <br><br>The lead length, connector type and electrical specification supplied for United States orders are confirmed in writing as part of your quotation.'
+    assign sbs_copy = sbs_copy | replace: 'All of our meeting and office pods are plug and play, meaning once built there is an insert for a 13amp cable on the side of the booth which approximately 2 metres long. This is the simply plugged into your normal power socket. <br /><br />(UAE, UK / USA, Euro, Swiss supplied depending on the delivery address.)', 'All of our meeting and office pods are plug and play: once built, there is an insert on the side of the booth for a power lead, which is then plugged into your normal power socket. <br /><br />The lead length, connector type and electrical specification supplied for United States orders are confirmed in writing as part of your quotation.'
+    assign sbs_copy = sbs_copy | replace: 'correct electrical certificated components CE / UL Certificated.', 'electrical components whose specification and certification are confirmed in writing as part of your quotation.'
+    assign sbs_copy = sbs_copy | replace: '(UAE, UK / USA, Euro, Swiss supplied depending on the delivery address.)', 'The connector type supplied for United States orders is confirmed in writing as part of your quotation.'
+    assign sbs_copy = sbs_copy | replace: 'If you are purchasing in UK, Europe or the US you will be supplied with local wall socket and ', 'For United States orders you will be supplied with '
+    assign sbs_copy = sbs_copy | replace: 'a 13amp power supply', 'a power lead'
+    assign sbs_copy = sbs_copy | replace: 'a 13amp cable', 'a power lead'
+  endif
+-%}
+{{- sbs_copy -}}

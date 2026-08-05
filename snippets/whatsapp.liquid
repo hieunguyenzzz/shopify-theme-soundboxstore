@@ -1,4 +1,4 @@
-{% if settings.whatsapp_phone_number %}
+{% if settings.whatsapp_phone_number and localization.country.iso_code != 'US' %}
   {% assign whatsapp_url = 'https://wa.me/' | append: settings.whatsapp_phone_number %}
   {% assign whatsapp_url = whatsapp_url | replace: '+', '' %}
   {% assign whatsapp_url = whatsapp_url | replace: ' ', '' %}

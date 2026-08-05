@@ -16,7 +16,7 @@
 {%- liquid
   assign prod_url    = shop.url | append: product.url
   assign variant     = product.selected_or_first_available_variant
-  assign prod_curr   = shop.currency
+  assign prod_curr   = cart.currency.iso_code | default: shop.currency
   assign prod_brand  = product.vendor | default: 'SoundBoxStore'
   assign offer_year  = 'now' | date: '%Y'
   assign offer_valid = offer_year | append: '-12-31'
@@ -48,7 +48,11 @@
   "@type":"Product",
   "@id":{{ prod_url | append: '/#/schema/Product' | json }},
   "name":{{ product.title | json }},
-  "description":{{ product.description | strip_html | truncate: 500 | json }},
+  {%- comment -%} US market: adapt allowlisted Folio schema description to US electrical/compliance wording. {%- endcomment -%}
+  {%- capture _schema_desc -%}
+    {%- render 'us-product-copy', content: product.description, product: product -%}
+  {%- endcapture -%}
+  "description":{{ _schema_desc | strip_html | truncate: 500 | json }},
   "image":[
     {%- for img in product.images limit: 5 -%}
       {{ img | image_url: width: 800 | prepend: 'https:' | json }}{%- unless forloop.last -%},{%- endunless -%}

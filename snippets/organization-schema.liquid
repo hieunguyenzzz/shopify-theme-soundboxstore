@@ -3,7 +3,15 @@
   Renders Organization structured data for AI search optimization
   Note: FAQPage schema is custom content Yoast doesn't generate
   Organization schema on homepage complements (doesn't duplicate) Yoast's product schema
+
+  Market-aware: a US session receives US contact data, the US postal address and
+  United States areaServed. All other markets keep the existing global data.
 {%- endcomment -%}
+
+{%- assign sbs_is_us = false -%}
+{%- if localization.country.iso_code == 'US' -%}
+  {%- assign sbs_is_us = true -%}
+{%- endif -%}
 
 <script type="application/ld+json">
 {
@@ -13,12 +21,39 @@
   "alternateName": "SoundBoxStore",
   "url": "{{ shop.url }}",
   "logo": "{{ 'logo.png' | asset_url | prepend: 'https:' }}",
+{%- if sbs_is_us -%}
+  "description": "Supplier of acoustic office pods, meeting booths and phone booths for workplaces in the United States. Soundproof solutions tested to ISO 23351-1:2020 with 30-35 dB noise reduction (Class A rating).",
+{%- else -%}
   "description": "UK and Europe's leading supplier of acoustic office pods, meeting booths, and phone booths. Soundproof solutions tested to ISO 23351-1:2020 with 30-35 dB noise reduction (Class A rating).",
+{%- endif -%}
   "sameAs": [
     "https://www.facebook.com/soundboxstore",
     "https://www.instagram.com/soundboxstore",
     "https://www.linkedin.com/company/soundboxstore"
   ],
+{%- if sbs_is_us -%}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "33 West 19th Street, 4th Floor",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10011",
+    "addressCountry": "US"
+  },
+  "telephone": "+18883067695",
+  "email": "hush@soundboxstore.com",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "telephone": "+18883067695",
+    "email": "hush@soundboxstore.com",
+    "areaServed": "US",
+    "availableLanguage": ["English"]
+  },
+  "areaServed": [
+    {"@type": "Country", "name": "United States"}
+  ],
+{%- else -%}
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
@@ -37,6 +72,7 @@
     {"@type": "Country", "name": "United States"},
     {"@type": "Country", "name": "Canada"}
   ],
+{%- endif -%}
   "knowsAbout": [
     "acoustic office pods",
     "phone booths",

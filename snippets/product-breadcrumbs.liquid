@@ -37,7 +37,7 @@
 
   <div class="breadcrumbs" aria-label="breadcrumbs">
     {%- unless template == 'index' or template == 'cart' -%}
-      <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t  }}">{{ 'general.breadcrumbs.home' | t }}</a>
+      <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t  }}">{{ 'general.breadcrumbs.home' | t }}</a>
       <span class="breadcrumb-delimeter" aria-hidden="true"></span>
       {% for collection in product.metafields.custom.collections.value %}
         {% if forloop.first %}

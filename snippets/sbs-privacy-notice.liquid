@@ -1,0 +1,22 @@
+{%- comment -%}
+  SBS US market launch — shared privacy notice for forms that collect personal data.
+
+  Renders the approved wording with a locale-aware Privacy Policy link that always
+  stays inside the active market. Deliberately renders no checkbox and no marketing
+  consent control: responding to a quote request must not require consent capture,
+  and no marketing subscription may be implied.
+
+  Usage: render the snippet 'sbs-privacy-notice' inside the form, above the submit control.
+{%- endcomment -%}
+{%- liquid
+  if routes.root_url == '/'
+    assign sbs_pn_root = ''
+  else
+    assign sbs_pn_root = routes.root_url
+  endif
+  assign sbs_pn_url = sbs_pn_root | append: '/policies/privacy-policy'
+-%}
+<p class="sbs-privacy-notice" data-sbs-privacy-notice style="font-size:0.85em;line-height:1.45;margin:0.75em 0;">
+  We&rsquo;ll use the information you provide to respond to your request.
+  See our <a class="sbs-privacy-notice__link" href="{{ sbs_pn_url }}">Privacy Policy</a>.
+</p>
