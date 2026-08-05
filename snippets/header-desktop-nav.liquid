@@ -105,7 +105,21 @@
   {% else %}
     {% render '[header-desktop-nav]-next' %}
   {% endif %}
-  <li class="site-nav__item" style="flex:1"></li>
+  {% comment %}
+    SBS US Catalogue Expansion - Omni & Anja.
+    This list item is a deliberate flex spacer that pushes the Showrooms and
+    More Info groups to the right of the desktop navigation. It is not a
+    broken menu item, so it is not removed. A non-list element cannot be used
+    here because the spacer is a direct child of the site-nav unordered list
+    and its siblings are list items, and moving the rule onto the parent or a
+    pseudo-element changes the flex distribution of the real menu items.
+    It is therefore kept with role="presentation" and aria-hidden="true" so
+    that it carries no semantics, contributes nothing to the accessibility
+    tree and remains unreachable by keyboard, while desktop alignment,
+    dropdown positioning, mobile navigation and the GB, AT and FR menus are
+    all pixel-identical.
+  {% endcomment %}
+  <li class="site-nav__item" style="flex:1" role="presentation" aria-hidden="true"></li>
   {% assign showroomtitle = 'strings.others.Showrooms' | t %}
   {% render '[header-desktop-nav-showrooms]', sub_menu: sub_menu, title: showroomtitle %}
   {% render '[header-desktop-nav-moreinfo]', sub_menu: sub_menu %}

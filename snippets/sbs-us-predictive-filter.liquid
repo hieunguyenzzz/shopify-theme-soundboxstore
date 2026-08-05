@@ -1,31 +1,34 @@
 {%- comment -%}
-  SBS US market launch — predictive-search eligibility filter.
+  SBS US market - predictive-search eligibility filter.
 
-  Predictive search is served by Shopify's own /search/suggest.json endpoint and
+  Predictive search is served by Shopify own /search/suggest.json endpoint and
   rendered client side by theme.js, so it cannot be gated in Liquid the way the
-  server-rendered card renderers are. This snippet removes excluded products from
-  the response payload before theme.js ever renders them, so the excluded items
-  are absent from the rendered output rather than merely hidden with CSS.
+  server-rendered card renderers are. This snippet removes non-approved products
+  from the response payload before theme.js ever renders them, so the excluded
+  items are absent from the rendered output rather than merely hidden with CSS.
 
-  The exclusion list is read from snippets/sbs-us-eligibility.liquid in list mode,
-  so there is still exactly one source of truth for US launch eligibility.
+  The approved handle list is read from snippets/sbs-us-eligibility.liquid in
+  list mode, so there is still exactly one source of truth for US eligibility.
+
+  Release: US Catalogue Expansion - Omni & Anja. The rule is now an explicit
+  allowlist: only approved Folio, Omni and Anja handles survive the filter.
 
   Only rendered for US market sessions. Every other market keeps the unmodified
   Shopify predictive-search behaviour.
 {%- endcomment -%}
 {%- if localization.country.iso_code == 'US' -%}
-  {%- capture sbs_ps_denied_raw -%}
-    {%- render 'sbs-us-eligibility', list: 'denied_handles' -%}
+  {%- capture sbs_ps_allowed_raw -%}
+    {%- render 'sbs-us-eligibility', list: 'allowed_handles' -%}
   {%- endcapture -%}
-  {%- assign sbs_ps_denied = sbs_ps_denied_raw | strip -%}
+  {%- assign sbs_ps_allowed = sbs_ps_allowed_raw | strip -%}
   <script>
     (function () {
-      var denied = {{ sbs_ps_denied | json }}
+      var allowed = {{ sbs_ps_allowed | json }}
         .split(',')
         .map(function (h) { return h.trim(); })
         .filter(function (h) { return h.length > 0; });
 
-      if (!denied.length || typeof window.fetch !== 'function' || typeof window.Response !== 'function') {
+      if (!allowed.length || typeof window.fetch !== 'function' || typeof window.Response !== 'function') {
         return;
       }
 
@@ -59,7 +62,7 @@
 
               if (results && Array.isArray(results.products)) {
                 results.products = results.products.filter(function (product) {
-                  return denied.indexOf(handleOf(product && product.url)) === -1;
+                  return allowed.indexOf(handleOf(product && product.url)) !== -1;
                 });
               }
 

@@ -172,7 +172,20 @@
       {% endif %}
     {%- endfor -%}
     {% if product.price_min > 0 %}
-      {% if product.template_suffix == 'omni-booth' or product.template_suffix contains 'kozee-booth' %}
+      {%- liquid
+        # SBS US Catalogue Expansion - Omni & Anja.
+        # Approved Omni models must show their real USD price on US cards, so the
+        # POA placeholder is suppressed for US sessions. Every non-US market keeps
+        # the existing POA behaviour unchanged.
+        assign sbs_card_poa = false
+        if product.template_suffix == 'omni-booth' or product.template_suffix contains 'kozee-booth'
+          assign sbs_card_poa = true
+        endif
+        if localization.country.iso_code == 'US'
+          assign sbs_card_poa = false
+        endif
+      -%}
+      {% if sbs_card_poa %}
         <div class="itemprice">POA</div>
       {% else %}
       {% assign lowest_price = product.price_min

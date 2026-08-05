@@ -1,0 +1,98 @@
+{%- comment -%}
+  us-compliance-block
+
+  One shared, market-aware US compliance component for the approved Omni and
+  Anja booths. It is rendered once from snippets/product-template.liquid so a
+  single source produces the block on every applicable PDP. There is no
+  per-model hardcoded compliance copy anywhere in the theme.
+
+  It renders only when all of the following are true:
+
+    * the active market country is the United States;
+    * the product is in the APPROVED US product set
+      (snippets/sbs-us-eligibility.liquid, scope: 'approved');
+    * the product is in the COMPLIANCE-BLOCK set
+      (snippets/sbs-us-eligibility.liquid, scope: 'compliance_block').
+
+  The compliance-block set deliberately excludes the three Folio models. Their
+  existing tick list and specification content already state 120V, UL Listed
+  and ISO 23351-1 for US sessions through snippets/us-product-copy.liquid, so
+  rendering this block on Folio would duplicate an equivalent compliant
+  section.
+
+  Content rules for the US Catalogue Expansion release:
+
+    * Electrical wording is limited to the approved public wording 120V. No
+      socket quantity, USB quantity or connector standard is stated because
+      those values are not proven for the US configuration.
+    * Compliance wording is limited to the approved public wording UL Listed.
+      'UL certified', 'full UL certification' and 'CE / UL certified' are
+      never emitted, and no listing number or testing laboratory is named.
+    * ISO 23351-1 is shown only for products whose existing content already
+      supports the standard (scope: 'iso_23351'). It is never introduced as a
+      new claim and it is never described as a certification or an
+      accreditation.
+    * The commercial note states only that the product is available by
+      quotation and that delivery, installation, taxes and duties are
+      confirmed in the quotation. It never claims stock, free delivery, taxes
+      included or a fixed lead time.
+
+  Usage:
+    {%- render 'us-compliance-block', product: product -%}
+{%- endcomment -%}
+{%- liquid
+  assign us_cb_render = false
+
+  if localization.country.iso_code == 'US' and product != blank
+    capture us_cb_approved
+      render 'sbs-us-eligibility', product: product, scope: 'approved'
+    endcapture
+    capture us_cb_scoped
+      render 'sbs-us-eligibility', product: product, scope: 'compliance_block'
+    endcapture
+    unless us_cb_approved contains 'DENY' or us_cb_scoped contains 'DENY'
+      assign us_cb_render = true
+    endunless
+  endif
+
+  assign us_cb_show_iso = false
+  if us_cb_render
+    capture us_cb_iso
+      render 'sbs-us-eligibility', product: product, scope: 'iso_23351'
+    endcapture
+    unless us_cb_iso contains 'DENY'
+      assign us_cb_show_iso = true
+    endunless
+  endif
+-%}
+{%- if us_cb_render -%}
+  <div class="product-block us-compliance-block" data-us-compliance-block>
+    <style>
+      .us-compliance-block{border:1px solid #e8e8e1;border-radius:4px;padding:1em 1.15em;margin-top:1em;font-size:0.9em;line-height:1.5}
+      .us-compliance-block__list{list-style:none;margin:0;padding:0}
+      .us-compliance-block__item{display:flex;flex-wrap:wrap;gap:0.35em;padding:0.15em 0}
+      .us-compliance-block__label{font-weight:600}
+      .us-compliance-block__note{margin:0.65em 0 0;color:#5a5a5a}
+      @media (max-width:768px){.us-compliance-block__item{flex-direction:column;gap:0}}
+    </style>
+    <ul class="us-compliance-block__list">
+      <li class="us-compliance-block__item">
+        <span class="us-compliance-block__label">US electrical configuration:</span>
+        <span>120V</span>
+      </li>
+      <li class="us-compliance-block__item">
+        <span class="us-compliance-block__label">Compliance:</span>
+        <span>UL Listed</span>
+      </li>
+      {%- if us_cb_show_iso -%}
+        <li class="us-compliance-block__item">
+          <span class="us-compliance-block__label">Acoustic performance:</span>
+          <span>ISO 23351-1</span>
+        </li>
+      {%- endif -%}
+    </ul>
+    <p class="us-compliance-block__note">
+      Available in the United States by quotation. Delivery, installation, taxes and duties will be confirmed in your quotation.
+    </p>
+  </div>
+{%- endif -%}

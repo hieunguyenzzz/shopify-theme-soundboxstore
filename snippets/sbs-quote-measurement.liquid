@@ -1,0 +1,57 @@
+{%- comment -%}
+  sbs-quote-measurement
+
+  Canonical dataLayer emitter for the two productless quote journeys:
+
+    header quote CTA  label[for="quote-form-modal"]      quote_source: header
+    cart quote CTA    label[for="quote-form-modal-cart"]  quote_source: cart
+
+  Both journeys previously shared the same generic GA4 click tag as the
+  product CTA, which made a productless enquiry indistinguishable from a
+  product enquiry. They now emit their own explicit event.
+
+  Rules:
+    * Exactly one event per genuine click. The listener is delegated and
+      bound once per page.
+    * Clicks on the close controls inside .quote-form-modal and
+      .cart-quote-modal are ignored, so opening and closing the modal cannot
+      double count.
+    * No product id, variant id, SKU or single-product value is ever sent:
+      these journeys have no product context.
+    * Cart parameters come from Shopify cart data only. An empty cart still
+      reports item_count 0 and a zero cart value rather than a guess.
+
+  Rendered once from layout/theme.liquid.
+{%- endcomment -%}
+<script>
+  (function () {
+    if (window.__sbsGeneralQuoteBound) { return; }
+    window.__sbsGeneralQuoteBound = true;
+    var cartContext = {
+      item_count: {{ cart.item_count | default: 0 }},
+      cart_value: {{ cart.total_price | default: 0 | divided_by: 100.0 }},
+      currency: {{ cart.currency.iso_code | default: shop.currency | json }}
+    };
+    document.addEventListener('click', function (event) {
+      if (!event.target || !event.target.closest) { return; }
+      var target = event.target.closest('label[for="quote-form-modal"], label[for="quote-form-modal-cart"]');
+      if (!target) { return; }
+      if (target.closest('.quote-form-modal, .cart-quote-modal')) { return; }
+      var isCart = target.getAttribute('for') === 'quote-form-modal-cart';
+      var payload = {
+        event: 'click_general_quote',
+        quote_source: isCart ? 'cart' : 'header',
+        form_source: isCart ? 'cart_quote' : 'header_quote',
+        page_location: window.location.href,
+        page_title: document.title,
+        currency: cartContext.currency
+      };
+      if (isCart) {
+        payload.item_count = cartContext.item_count;
+        payload.cart_value = cartContext.cart_value;
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(payload);
+    }, true);
+  })();
+</script>

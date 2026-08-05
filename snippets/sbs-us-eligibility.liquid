@@ -1,30 +1,56 @@
 {% comment %}
-  SBS — central US market product eligibility rule.
+  SBS - central US market product eligibility rule.
 
-  Single source of truth for whether a product may be rendered to a US market
-  session. Every US-facing product renderer (collection cards, search result
-  cards, recommendation cards, mega-menu tiles, top-searched pills) calls this
-  snippet so that the launch-eligibility decision lives in exactly one place.
+  Single source of truth for (a) which products are APPROVED for sale in the
+  US market and (b) which of those approved products are currently
+  DISCOVERY-ENABLED, meaning they may appear in US storefront discovery
+  surfaces such as collection cards, search result cards, predictive search,
+  recommendation cards, mega-menu tiles, top-searched pills, product
+  scrollers, the quote-modal product picker and cart recommendations.
 
-  Usage:
+  Release: US Catalogue Expansion - Omni & Anja.
 
-    {%- capture sbs_us_eligibility -%}
-      {%- render 'sbs-us-eligibility', product: product -%}
-    {%- endcapture -%}
-    {%- unless sbs_us_eligibility contains 'DENY' -%}
-      ... render the card ...
-    {%- endunless -%}
+  Two distinct sets
+  -----------------
+  APPROVED           may be sold in the US and must render correctly when a
+                     shopper reaches the product directly by URL.
+  DISCOVERY-ENABLED  a subset of APPROVED. Only these products may be
+                     surfaced by US discovery surfaces. A product is added
+                     here only after it has passed direct-URL canary QA.
+
+  Usage
+  -----
+    Discovery surfaces (default scope):
+
+      {%- capture sbs_us_eligibility -%}
+        {%- render 'sbs-us-eligibility', product: product -%}
+      {%- endcapture -%}
+      {%- unless sbs_us_eligibility contains 'DENY' -%}
+        ... render the card ...
+      {%- endunless -%}
+
+    Product-level rendering that must work for any approved model reached by
+    direct URL, for example US pricing, 120V and UL Listed copy:
+
+      {%- render 'sbs-us-eligibility', product: product, scope: 'approved' -%}
 
   Accepted inputs, any one is enough:
     product  a Shopify product object
     handle   a product handle string
     url      a product URL string containing /products/<handle>
 
-  List mode:
-    Passing list: 'denied_handles' returns the comma-delimited exclusion handle
-    list instead of a verdict. This lets client-side renderers such as the
-    predictive-search filter reuse the same single source of truth rather than
-    keeping a second copy of the list.
+  Optional inputs:
+    scope    'approved' to test the approved set. Anything else, including
+             blank, tests the discovery-enabled set.
+
+  List mode, for client-side renderers that must share the same source of
+  truth:
+    list: 'allowed_handles'   discovery-enabled handles
+    list: 'allowed_ids'       discovery-enabled product IDs
+    list: 'enabled_handles'   discovery-enabled handles
+    list: 'enabled_ids'       discovery-enabled product IDs
+    list: 'approved_handles'  approved handles
+    list: 'approved_ids'      approved product IDs
 
   Output is exactly one token:
     ALLOW  render normally
@@ -33,49 +59,118 @@
   Behaviour:
     * Non-US sessions always receive ALLOW. Other markets are never affected.
     * Neutral input with no resolvable product receives ALLOW so that pages,
-      collections, articles and general content are never hidden.
-    * Approved products are matched on stable numeric product IDs.
-    * Excluded products are matched on stable numeric product IDs first and on
-      exact handles as a secondary safeguard. No title substring matching.
-    * Products that are neither approved nor excluded are unclassified and
-      receive ALLOW.
+      collections, articles, policies and general content are never hidden.
+    * Products are matched on stable numeric product IDs first and on exact
+      handles only when no ID is available. No title substring matching.
+    * Any resolvable product outside the tested set receives DENY.
 
-  US launch-approved products (Folio):
+  US APPROVED products - Folio family:
     7836616818913  office-phone-booth-soundproof-folio-private-workspace
     7976286322913  office-phone-booth-stand-up-soundproof-meeting-pod
     8159685771489  folio-office-pod-2-4-person-soundproof-meeting-booth
 
-  US-excluded products and the evidence for each exclusion:
-    9551092187361  anja-s
+  US APPROVED products - Omni family (template suffix omni-booth):
+    9532084289761  omni-one
+    9532084388065  omni-one-plus
+    9532084519137  omni-two
+    9532084617441  omni-demi
+    9532084650209  omni-four
+    9532084715745  omni-six
+    9532084814049  omni-sleep-pod
+
+  US APPROVED products - Anja family:
     9539197698273  anja-m
-      Product FAQ metafield states delivery and installation across the UK and
-      Europe only. No US inventory or US compliance content has been supplied.
-    8850989187297  sensory-booths-inclusive-design
-    8777704407265  soundproof-prayer-booth-peaceful-worship-meditation
-    8777735078113  access-large-soundproof-meeting-booth-inclusive-work
-    8582325895393  quell-max-club-house-8-person-soundproof-meeting-pod
-    7587424076001  quell-4-person-soundproof-office-pod-private-meeting
-    7587412672737  2-person-meeting-booth-soundproof-quiet-office-pod
-    7587394781409  quell-office-pod-solo
-      Visible US product content advertises 220-240 V UK or European power
-      sockets. No US electrical specification has been supplied, so the US
-      presentation cannot be corrected without fabricating a specification.
+    9551092187361  anja-s
 
-  Omni products are not published to the Online Store sales channel and
-  therefore cannot render. They appear in the cutover manifest only.
+  Products whose title merely contains Folio or Omni (Folio 4-Person Sofa,
+  Folio Solo Booth Sofa, Omni Corner Sofa, Omni Demi Sofa, Omni Four Sofa,
+  Omni One Plus Sofa, Omni Sleep Pod Bed, Omni Flow, Omni Group and the Omni
+  Module range) are standalone furniture and accessory products, not booth
+  models, and are deliberately NOT approved.
 
-  To reopen a product for the US market, remove its ID and handle from the
-  exclusion lists below once truthful US content has been supplied.
+  To add a product to the US market, add its numeric ID and exact handle to
+  the approved lists below and add it to the US market catalog in Shopify.
+  To make an approved product discoverable, add it to the enabled lists below
+  in the final activation commit.
+
+  Scopes
+  ------
+    (default)          discovery-enabled subset - use for every US discovery
+                       surface (cards, search, menus, recommendations).
+    'approved'         full approved set - use for direct-URL correctness such
+                       as US copy adaptation, pricing and schema.
+    'compliance_block' approved Omni and Anja only - drives the shared US
+                       compliance component snippets/us-compliance-block.liquid.
+    'iso_23351'        approved products whose existing content already
+                       supports ISO 23351-1 and may therefore display it.
+
+  List modes (return the raw comma-delimited set instead of a verdict):
+    'enabled_ids' / 'enabled_handles' / 'allowed_ids' / 'allowed_handles'
+    'approved_ids' / 'approved_handles'
+    'compliance_ids' / 'compliance_handles'
+    'iso_ids' / 'iso_handles'
+
 {% endcomment %}
 {%- liquid
-  assign sbs_elig_approved_ids = ',7836616818913,7976286322913,8159685771489,'
-  assign sbs_elig_denied_ids = ',9551092187361,9539197698273,8850989187297,8777704407265,8777735078113,8582325895393,7587424076001,7587412672737,7587394781409,'
-  assign sbs_elig_denied_handles = ',anja-s,anja-m,sensory-booths-inclusive-design,soundproof-prayer-booth-peaceful-worship-meditation,access-large-soundproof-meeting-booth-inclusive-work,quell-max-club-house-8-person-soundproof-meeting-pod,quell-4-person-soundproof-office-pod-private-meeting,2-person-meeting-booth-soundproof-quiet-office-pod,quell-office-pod-solo,'
+  assign sbs_elig_approved_ids = ',7836616818913,7976286322913,8159685771489,9532084289761,9532084388065,9532084519137,9532084617441,9532084650209,9532084715745,9532084814049,9539197698273,9551092187361,'
+  assign sbs_elig_approved_handles = ',office-phone-booth-soundproof-folio-private-workspace,office-phone-booth-stand-up-soundproof-meeting-pod,folio-office-pod-2-4-person-soundproof-meeting-booth,omni-one,omni-one-plus,omni-two,omni-demi,omni-four,omni-six,omni-sleep-pod,anja-m,anja-s,'
+
+  # Discovery-enabled subset. Extended only by the final activation commit,
+  # after each model has passed direct-URL canary QA.
+  assign sbs_elig_enabled_ids = ',7836616818913,7976286322913,8159685771489,'
+  assign sbs_elig_enabled_handles = ',office-phone-booth-soundproof-folio-private-workspace,office-phone-booth-stand-up-soundproof-meeting-pod,folio-office-pod-2-4-person-soundproof-meeting-booth,'
+
+
+  # Compliance-block set. Approved Omni and Anja models render the shared US
+  # compliance component snippets/us-compliance-block.liquid. The three Folio
+  # models are deliberately excluded: their existing tick list already states
+  # 120V, UL Listed and ISO 23351-1 for the US market through
+  # snippets/us-product-copy.liquid, so adding the block to Folio would
+  # duplicate an equivalent compliant section.
+  assign sbs_elig_compliance_ids = ',9532084289761,9532084388065,9532084519137,9532084617441,9532084650209,9532084715745,9532084814049,9539197698273,9551092187361,'
+  assign sbs_elig_compliance_handles = ',omni-one,omni-one-plus,omni-two,omni-demi,omni-four,omni-six,omni-sleep-pod,anja-m,anja-s,'
+
+  # ISO 23351-1 support set. Only products whose existing product content
+  # already supports the standard may display it. Evidence:
+  #   Folio  tick list 'Acoustic ISO-2355-1 Accredited' plus the 2-4 person
+  #          FAQ answers that reference ISO 23351-1.
+  #   Omni   custom.finer_details 'Sound/Acoustics' -> 'ISO 23351-1 Grade A+'.
+  # Anja product content contains no ISO statement, so Anja is excluded and
+  # must never display an ISO claim.
+  assign sbs_elig_iso_ids = ',7836616818913,7976286322913,8159685771489,9532084289761,9532084388065,9532084519137,9532084617441,9532084650209,9532084715745,9532084814049,'
+  assign sbs_elig_iso_handles = ',office-phone-booth-soundproof-folio-private-workspace,office-phone-booth-stand-up-soundproof-meeting-pod,folio-office-pod-2-4-person-soundproof-meeting-booth,omni-one,omni-one-plus,omni-two,omni-demi,omni-four,omni-six,omni-sleep-pod,'
+
+  assign sbs_elig_test_ids = sbs_elig_enabled_ids
+  assign sbs_elig_test_handles = sbs_elig_enabled_handles
+  if scope == 'approved'
+    assign sbs_elig_test_ids = sbs_elig_approved_ids
+    assign sbs_elig_test_handles = sbs_elig_approved_handles
+  elsif scope == 'compliance_block'
+    assign sbs_elig_test_ids = sbs_elig_compliance_ids
+    assign sbs_elig_test_handles = sbs_elig_compliance_handles
+  elsif scope == 'iso_23351'
+    assign sbs_elig_test_ids = sbs_elig_iso_ids
+    assign sbs_elig_test_handles = sbs_elig_iso_handles
+  endif
 
   assign sbs_elig_verdict = 'ALLOW'
 
-  if list == 'denied_handles'
-    assign sbs_elig_verdict = sbs_elig_denied_handles
+  if list == 'allowed_handles' or list == 'enabled_handles'
+    assign sbs_elig_verdict = sbs_elig_enabled_handles
+  elsif list == 'allowed_ids' or list == 'enabled_ids'
+    assign sbs_elig_verdict = sbs_elig_enabled_ids
+  elsif list == 'approved_handles'
+    assign sbs_elig_verdict = sbs_elig_approved_handles
+  elsif list == 'approved_ids'
+    assign sbs_elig_verdict = sbs_elig_approved_ids
+  elsif list == 'compliance_handles'
+    assign sbs_elig_verdict = sbs_elig_compliance_handles
+  elsif list == 'compliance_ids'
+    assign sbs_elig_verdict = sbs_elig_compliance_ids
+  elsif list == 'iso_handles'
+    assign sbs_elig_verdict = sbs_elig_iso_handles
+  elsif list == 'iso_ids'
+    assign sbs_elig_verdict = sbs_elig_iso_ids
   elsif localization.country.iso_code == 'US'
     assign sbs_elig_id = ''
     assign sbs_elig_handle = ''
@@ -95,18 +190,23 @@
       endif
     endif
 
-
     assign sbs_elig_id_key = ',' | append: sbs_elig_id | append: ','
     assign sbs_elig_handle_key = ',' | append: sbs_elig_handle | append: ','
 
-    if sbs_elig_id == blank and sbs_elig_handle == blank
+    if sbs_elig_id != blank
+      if sbs_elig_test_ids contains sbs_elig_id_key
+        assign sbs_elig_verdict = 'ALLOW'
+      else
+        assign sbs_elig_verdict = 'DENY'
+      endif
+    elsif sbs_elig_handle != blank
+      if sbs_elig_test_handles contains sbs_elig_handle_key
+        assign sbs_elig_verdict = 'ALLOW'
+      else
+        assign sbs_elig_verdict = 'DENY'
+      endif
+    else
       assign sbs_elig_verdict = 'ALLOW'
-    elsif sbs_elig_approved_ids contains sbs_elig_id_key
-      assign sbs_elig_verdict = 'ALLOW'
-    elsif sbs_elig_denied_ids contains sbs_elig_id_key
-      assign sbs_elig_verdict = 'DENY'
-    elsif sbs_elig_denied_handles contains sbs_elig_handle_key
-      assign sbs_elig_verdict = 'DENY'
     endif
   endif
 -%}

@@ -459,7 +459,9 @@
                       </label>
                       <div>
                         <div>
-                          {{ block.settings.description }}
+                          {%- comment -%} US market: the Omni finer-detail metaobjects are shared with every market, so approved US products render their specification text through the central US copy layer. Non-US markets and non-approved products receive the original rich text unchanged. {%- endcomment -%}
+                          {%- capture prf_description -%}{{ block.settings.description }}{%- endcapture -%}
+                          {%- render 'us-product-copy', content: prf_description, product: product -%}
                         </div>
                       </div>
                     </div>
