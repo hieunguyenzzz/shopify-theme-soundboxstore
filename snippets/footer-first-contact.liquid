@@ -5,7 +5,7 @@
   [country="DE"] .address_de,[country="AT"] .address_de,[country="CH"] .address_de{
     display:block
   }
-  [country="DE"] .address_2,[country="AT"] .address_2,[country="CH"] .address_2{
+  [country="AT"] .address_2,[country="CH"] .address_2{
         display:none
   }
   .site-footer .footer-contact-dec p {
@@ -71,7 +71,7 @@
               {% if block.settings['address-heading_de'] != blank or block.settings.address_de != blank %}
                 <li class="location address_de">
                   {% if block.settings['address-heading_de'] != blank %}
-                    <strong>{{ block.settings['address-heading_de'] }}</strong>
+                    <strong>Deutsche Geschäftsstelle:</strong>
                   {% endif %}
                   <a
                     target="_blank"
@@ -149,46 +149,20 @@
                 {% endif %}
               {% endif %}
               {% if localization.country.iso_code == 'FR' %}
-                {% if block.settings['address-heading_fr'] != blank or block.settings.address_fr != blank %}
-                  <style>
-                    .location.address_1,.location.address_3{display:none}
-                  </style>
-                  <li class="location address_fr">
-                    {% if block.settings['address-heading_fr'] != blank %}
-                      <strong>{{ block.settings['address-heading_fr'] }}</strong>
-                    {% endif %}
-                    <a
-                      target="_blank"
-                      rel="noreferrer"
-                      {% if block.settings.address_url_fr != blank %}
-                        href="{{ block.settings.address_url_fr }}"
-                      {% else %}
-                        href="https://www.google.com/search?q={{ block.settings.address_fr }}"
-                      {% endif %}
-                    >
-                      {{- block.settings.address_fr -}}
-                    </a>
-                    {% assign fr_phone = settings.phone_number_fr | default: block.settings.phone_fr %}
-                    {% if fr_phone != blank %}
-                      <br>
-                      {{ 'customer.addresses.phone' | t }}:
-                      <a href="tel:{{ fr_phone }}">{{ fr_phone }}</a>
-                    {% endif %}
-                    {% if block.settings.vat_fr != blank %}
-                      <br>
-                      TVA : {{ block.settings.vat_fr }}
-                    {% endif %}
-                  </li>
-                {% endif %}
+                <style>
+                  .location.address_3{display:none}
+                </style>
               {% endif %}
               {% assign headoffice = shop.metaobjects.address['head-office'] %}
-              {% if headoffice %}
+              {% if headoffice and localization.country.iso_code != 'DE' %}
                 {% assign label = headoffice.label %}
                 {% assign address = headoffice.address %}
                 {% assign url = headoffice.url %}
                 {% assign phone = headoffice.phone %}
                 <li class="location address_1">
-                  {% if label != blank %}
+                  {% if localization.country.iso_code == 'FR' %}
+                    <strong>Office:</strong>
+                  {% elsif label != blank %}
                     <strong>{{ label }}:</strong>
                   {% endif %}
 
@@ -239,7 +213,11 @@
               {% endif %}
               {% if block.settings['address-heading2'] != blank or block.settings.address2 != blank %}
                 <li class="location address_2">
-                  {% if block.settings['address-heading2'] != blank %}
+                  {% if localization.country.iso_code == 'DE' %}
+                    <strong>Ausstellungsraum in London/Großbritannien</strong>
+                  {% elsif localization.country.iso_code == 'FR' %}
+                    <strong>Showroom de Londres (Royaume-Uni)</strong>
+                  {% elsif block.settings['address-heading2'] != blank %}
                     <strong>{{ block.settings['address-heading2'] }}</strong>
                   {% endif %}
                   <a
@@ -259,7 +237,7 @@
                     <a href="tel:{{block.settings.phone2}}">{{ block.settings.phone2 }}</a>
                   {% endif %}
               {% endif %}
-              {% unless localization.country.iso_code == 'ES' %}
+              {% unless localization.country.iso_code == 'ES' or localization.country.iso_code == 'DE' %}
                 {% if block.settings['address-heading3'] != blank or block.settings.address3 != blank %}
                   <li class="location address_3">
                     {% if block.settings['address-heading3'] != blank %}
