@@ -32,6 +32,12 @@
   assign sbs_copy = text
 
   if localization.country.iso_code == 'US'
+    # US catalogue expansion: the Anja product FAQ answers use a longer variant
+    # of the shared delivery statement that ends with the UK term 'postcode'.
+    # It is mapped first so the complete sentence pair is replaced before the
+    # shorter fallbacks below are considered.
+    assign sbs_copy = sbs_copy | replace: 'SoundBox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote for your postcode.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements. Please contact our team for a delivery and installation quote for your delivery address.'
+    assign sbs_copy = sbs_copy | replace: 'Soundbox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote for your postcode.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements. Please contact our team for a delivery and installation quote for your delivery address.'
     assign sbs_copy = sbs_copy | replace: 'SoundBox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
     assign sbs_copy = sbs_copy | replace: 'Soundbox Store delivers and installs across the UK and Europe. Please contact our team for a delivery and installation quote.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'
     assign sbs_copy = sbs_copy | replace: 'SoundBox Store delivers and installs across the UK and Europe.', 'SoundBox Store supplies selected office pods and phone booths across the United States on a quotation basis. Delivery and professional installation are priced according to project location and site requirements.'

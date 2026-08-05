@@ -41,9 +41,6 @@
             <ul>
               {% if localization.country.iso_code == 'US' %}
                 {% if block.settings['address-heading_us'] != blank or block.settings.address_us != blank %}
-                  <style>
-                    .location.address_1,.location.address_2,.location.address_3{display:none}
-                  </style>
                   <li class="location address_us">
                     {% if block.settings['address-heading_us'] != blank %}
                       <strong>{{ block.settings['address-heading_us'] }}</strong>
@@ -68,6 +65,19 @@
                   </li>
                 {% endif %}
               {% endif %}
+              {% comment %}
+                SBS US Catalogue Expansion - Omni & Anja.
+                Contact-data hygiene: for a US market session the non-US office,
+                showroom and warehouse locations are not emitted at all, so no hidden
+                London, UK, German or Spanish telephone, address or office markup
+                reaches US HTML. Previously these list items were rendered and then
+                hidden with CSS, which left the contact data in the source. Every
+                non-US market keeps exactly the previous output, including the
+                DE/AT/CH and ES rules below. The legitimate London showroom page and
+                navigation, and the international showroom references elsewhere in
+                the theme, are untouched.
+              {% endcomment %}
+              {% unless localization.country.iso_code == 'US' %}
               {% if block.settings['address-heading_de'] != blank or block.settings.address_de != blank %}
                 <li class="location address_de">
                   {% if block.settings['address-heading_de'] != blank %}
@@ -283,6 +293,7 @@
                     {% endif %}
                   </li>
                 {% endif %}
+              {% endunless %}
               {% endunless %}
 
               {% if block.settings.email != blank %}

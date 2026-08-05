@@ -1,13 +1,27 @@
 {%- comment -%}
   us-product-copy
 
-  Renders US-market-adapted product copy for an explicit allowlist of Folio
-  products. Outside the US market, or for any product that is not on the
-  allowlist, the original content is returned completely unchanged.
+  Renders US-market-adapted product copy for the approved US booth families
+  (Folio, Omni and Anja). Outside the US market, or for any product that is
+  not on the approved list, the original content is returned unchanged.
+
+  Membership is read from snippets/sbs-us-eligibility.liquid in approved
+  scope, so the approved product set lives in exactly one place. This snippet
+  deliberately uses the APPROVED set rather than the discovery-enabled set:
+  an approved model reached by direct URL must always render US-correct copy,
+  even while it is still hidden from US discovery surfaces.
 
   Usage:
     {%- capture raw_copy -%}...{%- endcapture -%}
     {%- render 'us-product-copy', content: raw_copy, product: product -%}
+
+  Call sites: snippets/product-description.liquid, snippets/product-schema.liquid,
+  snippets/social-meta-tags.liquid, snippets/product-template.liquid (ticks),
+  layout/theme.liquid (meta description), sections/faq.liquid,
+  sections/product-rooms-features.liquid (Omni custom.finer_details),
+  sections/meeting-rooms-features.liquid (Anja and Folio specification lists)
+  and sections/product-faqs-metafield.liquid (custom.faqs answers and the
+  FAQPage JSON-LD).
 
   Only exact, previously audited phrases are mapped. No regular expressions,
   no JavaScript text replacement, no whole-page replacement and no mutation of
@@ -17,20 +31,20 @@
 {%- endcomment -%}
 {%- liquid
   assign us_copy = content
-  assign us_suffix = product.template_suffix
-  assign us_allowlist = 'homepod,folio-stand-up,folio-4-person-pod'
+
   assign us_is_market = false
   if localization.country.iso_code == 'US'
     assign us_is_market = true
   endif
+
   assign us_is_allowed = false
-  if us_suffix != blank
-    assign us_allow_items = us_allowlist | split: ','
-    for us_item in us_allow_items
-      if us_item == us_suffix
-        assign us_is_allowed = true
-      endif
-    endfor
+  if us_is_market and product != blank
+    capture us_copy_elig
+      render 'sbs-us-eligibility', product: product, scope: 'approved'
+    endcapture
+    unless us_copy_elig contains 'DENY'
+      assign us_is_allowed = true
+    endunless
   endif
 -%}
 {%- if us_is_market and us_is_allowed -%}
@@ -60,6 +74,24 @@
     # Electrical: additional audited phrasings.
     assign us_copy = us_copy | replace: '220–240 V UK/European sockets', '120V US sockets'
     assign us_copy = us_copy | replace: '220-240 V UK/European sockets', '120V US sockets'
+    # Omni family: exact audited phrases from the shared Omni specification
+    # block. Socket, USB and dimension values are never altered.
+    assign us_copy = us_copy | replace: 'Grade A ISO 23351-1 Certified', 'ISO 23351-1'
+    assign us_copy = us_copy | replace: '220–240 V AC universal input', '120V AC US-compatible input'
+    assign us_copy = us_copy | replace: '220-240 V AC universal input', '120V AC US-compatible input'
+    assign us_copy = us_copy | replace: 'Certification:</strong> SGS Verified', 'Certification:</strong> SGS Verified, UL Listed'
+    assign us_copy = us_copy | replace: 'Certification: SGS Verified', 'Certification: SGS Verified, UL Listed'
+    # Omni family: exact strings audited in the live custom.finer_details
+    # metaobjects (Sound/Acoustics and Electricals/Lighting entries) that are
+    # rendered by sections/product-rooms-features.liquid. Verified identical
+    # across all seven Omni models on 2026-08-05. Transformer wattage, USB and
+    # network-port counts and every acoustic value are left untouched.
+    assign us_copy = us_copy | replace: 'Universal input: 220–240V AC', 'US-compatible 120V power configuration'
+    assign us_copy = us_copy | replace: 'Universal input: 220-240V AC', 'US-compatible 120V power configuration'
+    assign us_copy = us_copy | replace: 'ISO 23351-1 Grade A+', 'ISO 23351-1'
+    # Anja family: the shared certification strip stores 'UL Certification'.
+    # Only the approved public wording UL Listed may be shown in the US.
+    assign us_copy = us_copy | replace: 'UL Certification', 'UL Listed'
   -%}
 {%- endif -%}
 {{- us_copy -}}

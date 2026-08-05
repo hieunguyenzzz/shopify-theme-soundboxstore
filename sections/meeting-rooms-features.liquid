@@ -455,7 +455,9 @@
                       </label>
                       <div>
                         <div>
-                          {{ block.settings.description }}
+                          {%- comment -%} US market: the Anja and Folio specification lists are shared with every market, so approved US products render them through the central US copy layer. Non-US markets and non-approved products are unchanged. {%- endcomment -%}
+                          {%- capture mrf_description_left -%}{{ block.settings.description }}{%- endcapture -%}
+                          {%- render 'us-product-copy', content: mrf_description_left, product: product -%}
                         </div>
                       </div>
                     </div>
@@ -480,7 +482,9 @@
                       </label>
                       <div>
                         <div>
-                          {{ block.settings.description }}
+                          {%- comment -%} US market: the Anja and Folio specification lists are shared with every market, so approved US products render them through the central US copy layer. Non-US markets and non-approved products are unchanged. {%- endcomment -%}
+                          {%- capture mrf_description_right -%}{{ block.settings.description }}{%- endcapture -%}
+                          {%- render 'us-product-copy', content: mrf_description_right, product: product -%}
                         </div>
                       </div>
                     </div>

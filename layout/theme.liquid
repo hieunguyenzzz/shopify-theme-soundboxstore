@@ -714,5 +714,7 @@
 
 {%- comment -%} Claydar, LinkedIn Insight and Leadfeeder are loaded by the consent-aware loader (marketing / marketing / analytics) instead of on first interaction. {%- endcomment -%}
 {% render 'consent-aware-loader', part: 'body' %}
+    {%- comment -%} SBS US catalogue expansion: canonical dataLayer emitter for the header and cart quote CTAs. {%- endcomment -%}
+    {%- render 'sbs-quote-measurement' -%}
   </body>
 </html>

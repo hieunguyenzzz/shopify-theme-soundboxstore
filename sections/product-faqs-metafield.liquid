@@ -43,7 +43,9 @@
               <div class="collapsible-content__inner rte" itemprop="text">
                 {%- comment -%} SBS US market launch: corrects the shared UK/Europe delivery statement for US sessions only. See snippets/sbs-us-market-copy.liquid. {%- endcomment -%}
                 {%- capture sbs_faq_answer_raw -%}{{ faq.text | metafield_tag }}{%- endcapture -%}
-                {%- capture sbs_faq_answer -%}{%- render 'sbs-us-market-copy', text: sbs_faq_answer_raw -%}{%- endcapture -%}
+                {%- capture sbs_faq_answer_market -%}{%- render 'sbs-us-market-copy', text: sbs_faq_answer_raw -%}{%- endcapture -%}
+                {%- comment -%} SBS US catalogue expansion: approved US products additionally receive the central product-scoped copy adaptation for electrical, compliance and ISO wording. See snippets/us-product-copy.liquid. {%- endcomment -%}
+                {%- capture sbs_faq_answer -%}{%- render 'us-product-copy', content: sbs_faq_answer_market, product: product -%}{%- endcapture -%}
                 {{ sbs_faq_answer }}
               </div>
             </div>
@@ -69,7 +71,8 @@
           "acceptedAnswer": {
             "@type": "Answer",
             {%- capture sbs_faq_schema_raw -%}{{ faq.text | metafield_tag }}{%- endcapture -%}
-            {%- capture sbs_faq_schema -%}{%- render 'sbs-us-market-copy', text: sbs_faq_schema_raw -%}{%- endcapture -%}
+            {%- capture sbs_faq_schema_market -%}{%- render 'sbs-us-market-copy', text: sbs_faq_schema_raw -%}{%- endcapture -%}
+            {%- capture sbs_faq_schema -%}{%- render 'us-product-copy', content: sbs_faq_schema_market, product: product -%}{%- endcapture -%}
             "text": {{ sbs_faq_schema | strip_html | strip_newlines | json }}
           }
         }

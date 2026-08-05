@@ -1,0 +1,133 @@
+{%- comment -%}
+  product-quote-cta
+
+  Single source for the product-level Request a Quote call to action and for
+  the canonical click_product_quote dataLayer event.
+
+  Why this snippet exists
+  -----------------------
+  1. Product-level CTA coverage. The CTA used to be written inline inside the
+     'price' product block, so any product template whose main-product section
+     has no price block rendered no product-level quote route at all and the
+     header CTA was the only way to request a quote. That affects the
+     quote-led accessory templates (smartlock, privacyfilm, wrap-option,
+     accessories-joy-stool, furniture-medium and furniture-large).
+  2. Measurement. GA4 previously received a generic, once-per-page click event
+     with no product parameters. The CTA now emits one explicit dataLayer
+     event per genuine click, carrying the selected variant.
+
+  Parameters
+  ----------
+    product      required.
+    form_source  optional. Defaults to 'product_quote'. Quote-led accessory
+                 pages pass 'accessory_product_quote'.
+
+  Behaviour
+  ---------
+    * Nothing is rendered for an empty product.
+    * The button keeps its existing id, classes, inline styling and Meraki
+      popup handler, so the visual result and the quote journey are unchanged
+      on every page that already had the CTA.
+    * The variant map lets the click handler report the variant that is
+      actually selected at click time, including after the shopper changes an
+      option, without depending on any theme-specific variant event.
+    * The listener is delegated and bound once per page. It fires on every
+      genuine click, never on page load and never on modal visibility.
+    * No price, SKU or currency value is invented: every value comes from
+      Shopify presentment data.
+    * Quote-led pages with no authoritative price emit no value at all rather
+      than a fabricated zero.
+{%- endcomment -%}
+{%- liquid
+  assign sbs_cta_source = form_source | default: 'product_quote'
+  assign sbs_cta_variant = product.selected_or_first_available_variant
+  assign sbs_cta_template = product.template_suffix
+  if sbs_cta_template == blank
+    assign sbs_cta_template = 'default'
+  endif
+  assign sbs_cta_currency = cart.currency.iso_code | default: shop.currency
+-%}
+{%- unless product == blank or product.empty? -%}
+  <div class="product-block request-quote-below-showroom" style="margin-top: 11px;">
+    <button
+      type="button"
+      id="ProductQuoteButton-{{ product.id }}"
+      name="quote"
+      class="btn btn--full request-quote-btn product-qoute-button"
+      data-sbs-quote-cta
+      data-product-id="{{ product.id }}"
+      data-product-name="{{ product.title | escape }}"
+      data-product-template="{{ sbs_cta_template | escape }}"
+      data-form-source="{{ sbs_cta_source | escape }}"
+      data-currency="{{ sbs_cta_currency | escape }}"
+      data-variant-id="{{ sbs_cta_variant.id }}"
+      data-variant-name="{{ sbs_cta_variant.title | escape }}"
+      data-sku="{{ sbs_cta_variant.sku | escape }}"
+      {%- if sbs_cta_variant.price > 0 -%}data-value="{{ sbs_cta_variant.price | divided_by: 100.0 }}"{%- endif -%}
+      onclick="if(window.MerakiQuoteApp&&window.MerakiQuoteApp.openPopup){window.MerakiQuoteApp.openPopup(event);}"
+      style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
+    >
+      {{ 'header.quote_btn_text' | t }}
+    </button>
+  </div>
+  <script type="application/json" data-sbs-quote-variants="{{ product.id }}">
+    {
+      {%- for v in product.variants -%}
+        {{ v.id | append: '' | json }}:{"sku":{{ v.sku | json }},"name":{{ v.title | json }}{%- if v.price > 0 -%},"value":{{ v.price | divided_by: 100.0 }}{%- endif -%}}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    }
+  </script>
+  <script>
+    (function () {
+      if (window.__sbsQuoteCtaBound) { return; }
+      window.__sbsQuoteCtaBound = true;
+      document.addEventListener('click', function (event) {
+        var button = event.target && event.target.closest ? event.target.closest('[data-sbs-quote-cta]') : null;
+        if (!button) { return; }
+        var productId = button.getAttribute('data-product-id');
+        var variantId = button.getAttribute('data-variant-id');
+        var sku = button.getAttribute('data-sku') || '';
+        var variantName = button.getAttribute('data-variant-name') || '';
+        var value = parseFloat(button.getAttribute('data-value'));
+        var selected = null;
+        var select = document.querySelector('select[name="id"], [data-product-select]');
+        if (select && select.value) {
+          selected = String(select.value);
+        } else {
+          var match = window.location.search.match(/[?&]variant=(\d+)/);
+          if (match) { selected = match[1]; }
+        }
+        if (selected) {
+          var mapNode = document.querySelector('script[data-sbs-quote-variants="' + productId + '"]');
+          if (mapNode) {
+            try {
+              var map = JSON.parse(mapNode.textContent);
+              if (map && map[selected]) {
+                variantId = selected;
+                sku = map[selected].sku || '';
+                variantName = map[selected].name || '';
+                value = (typeof map[selected].value === 'number') ? map[selected].value : NaN;
+              }
+            } catch (error) { /* keep the server-rendered variant */ }
+          }
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'click_product_quote',
+          product_id: productId,
+          variant_id: variantId,
+          sku: sku,
+          product_name: button.getAttribute('data-product-name') || '',
+          variant_name: variantName,
+          value: (typeof value === 'number' && isFinite(value)) ? value : null,
+          currency: button.getAttribute('data-currency') || '',
+          quantity: 1,
+          product_template: button.getAttribute('data-product-template') || '',
+          form_source: button.getAttribute('data-form-source') || '',
+          page_location: window.location.href,
+          page_title: document.title
+        });
+      }, true);
+    })();
+  </script>
+{%- endunless -%}

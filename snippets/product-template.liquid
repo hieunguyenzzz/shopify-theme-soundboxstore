@@ -18,6 +18,10 @@
   .product-block--price .vat_text {
     display: none !important;
   }
+{%- if localization.country.iso_code == 'US' -%}
+/* SBS US catalogue expansion: the omni-booth and kozee-booth product templates hide every price element through section custom CSS because those templates show POA instead. Approved US products must show their real USD price, so that hide rule is reversed for US market sessions only. Non-US markets are unchanged. */
+#shopify-section-{{ section_id }} .product-block--price[class] [data-product-price],#shopify-section-{{ section_id }} .product-block--price[class] [data-product-price-wrap] { display: inline !important; }
+{%- endif -%}
   @media only screen and (max-width: 540px) {
     .product-block--price {
       justify-content: center !important;
@@ -158,6 +162,16 @@
 
             <div class="product-blocks-wrap" data-product-blocks>
               {%- capture form_id -%}AddToCartForm-{{ section_id }}-{{ product.id }}{%- endcapture -%}
+              {%- liquid
+                # SBS US catalogue expansion: detect whether this template renders a
+                # price block, which is where the product-level quote CTA lives.
+                assign sbs_price_block_present = false
+                for sbs_block in blocks
+                  if sbs_block.type == 'price'
+                    assign sbs_price_block_present = true
+                  endif
+                endfor
+              -%}
               {%- for block in blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
@@ -209,7 +223,20 @@
                       class="product-block grfq-price product-block--price"
                       {{ block.shopify_attributes }}
                     >
-                      {%- if product.template_suffix == 'omni-booth' or product.template_suffix contains 'kozee-booth' -%}
+                      {%- liquid
+                        # SBS US Catalogue Expansion - Omni & Anja.
+                        # Approved Omni models must display their real USD price on the
+                        # US PDP, so the POA placeholder is suppressed for US sessions.
+                        # Every non-US market keeps the existing POA behaviour.
+                        assign sbs_pdp_poa = false
+                        if product.template_suffix == 'omni-booth' or product.template_suffix contains 'kozee-booth'
+                          assign sbs_pdp_poa = true
+                        endif
+                        if localization.country.iso_code == 'US'
+                          assign sbs_pdp_poa = false
+                        endif
+                      -%}
+                      {%- if sbs_pdp_poa -%}
                         <span class="product__price product__price--poa">POA</span>
                       {%- endif -%}
                       {% comment %}
@@ -338,20 +365,15 @@
                         {% endunless %}
                       {% endif %}
                     </div>
-                    {%- unless product.empty? -%}
-                      <div class="product-block request-quote-below-showroom" style="margin-top: 11px;">
-                        <button
-                          type="button"
-                          id="ProductQuoteButton-{{ product.id }}"
-                          name="quote"
-                          class="btn btn--full request-quote-btn product-qoute-button"
-                          onclick="if(window.MerakiQuoteApp&&window.MerakiQuoteApp.openPopup){window.MerakiQuoteApp.openPopup(event);}"
-                          style="background-color: #313652; border-color: #313652; font-weight: 600; font-size: 14px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; font-family: 'Banana Grotesk', var(--typeBasePrimary), var(--typeBaseFallback), system-ui; padding: 22px 15px; width: 100%; color: white; text-align: center; display: block; cursor: pointer;"
-                        >
-                          {{ 'header.quote_btn_text' | t }}
-                        </button>
-                      </div>
-                    {%- endunless -%}
+                    {%- render 'product-quote-cta', product: product -%}
+                    {%- comment -%}
+                      SBS US catalogue expansion: shared US compliance component for the
+                      approved Omni and Anja booths, placed directly beneath the primary
+                      product-level quote journey. The snippet renders nothing outside the
+                      US market and nothing for products outside the compliance-block set,
+                      so Folio and every non-approved product are unaffected.
+                    {%- endcomment -%}
+                    {%- render 'us-compliance-block', product: product -%}
 
                   {%- when 'quantity_selector' -%}
                     <div class="product-block" {{ block.shopify_attributes }}>
@@ -709,6 +731,17 @@
                   ></div>
                 </div>
               {%- endfor -%}
+              {%- comment -%}
+                SBS US catalogue expansion: product-level quote fallback. The CTA above
+                lives inside the 'price' product block, so quote-led templates whose
+                main-product section has no price block previously offered no
+                product-level quote route at all and the header CTA was the only way to
+                request a quote. Those pages now render the same shared CTA, tagged as
+                accessory_product_quote so the two journeys stay distinguishable in GA4.
+              {%- endcomment -%}
+              {%- unless sbs_price_block_present -%}
+                {%- render 'product-quote-cta', product: product, form_source: 'accessory_product_quote' -%}
+              {%- endunless -%}
               {% if product.metafields.custom.on_showroom.value %}
                 <style>
                   a.showroom_available > div {
